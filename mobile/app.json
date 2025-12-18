@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "JewishOnTheWay",
+    "slug": "jewish-on-the-way",
+    "scheme": "jewishontheway",
+    "ios": {
+      "bundleIdentifier": "com.jewishontheway.app"
+    },
+    "android": {
+      "package": "com.jewishontheway.app"
+    }
+  }
+}
