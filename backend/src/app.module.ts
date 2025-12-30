@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthModule } from './health/health.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -22,17 +23,15 @@ import { HealthModule } from './health/health.module';
         username: config.get<string>('DB_USER'),
         password: config.get<string>('DB_PASS'),
         database: config.get<string>('DB_NAME'),
-
-        // בשלב הזה נשאיר בלי entities כדי קודם לוודא חיבור
-        entities: [],
-
-        // חשוב: בפרויקט גמר עדיף migrations, לא synchronize
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: false,
         logging: true,
       }),
     }),
 
     HealthModule,
+
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
