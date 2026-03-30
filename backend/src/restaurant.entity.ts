@@ -18,7 +18,6 @@ export class Restaurant {
   @Column({ name: 'restaurant_type' })
   restaurantType: string;
 
-
   @Column({ name: 'kashrut_level' })
   kashrutLevel: string;
 

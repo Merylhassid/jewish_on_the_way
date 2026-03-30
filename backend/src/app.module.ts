@@ -1,3 +1,4 @@
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -8,7 +9,6 @@ import { HealthModule } from './health/health.module';
 import { AuthModule } from './auth/auth.module';
 
 import { UsersModule } from './users/users.module';
-
 
 @Module({
   imports: [
@@ -27,7 +27,7 @@ import { UsersModule } from './users/users.module';
         password: config.get<string>('DB_PASS'),
         database: config.get<string>('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: false,
+        synchronize: true,
         logging: true,
       }),
     }),
@@ -37,6 +37,8 @@ import { UsersModule } from './users/users.module';
     AuthModule,
 
     UsersModule,
+
+    CloudinaryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

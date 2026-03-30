@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
+import { DeleteDateColumn } from 'typeorm';
 
 @Entity('users')
 export class User {
@@ -20,12 +26,12 @@ export class User {
   @Column({ name: 'last_name' })
   lastName: string;
 
-  @Column({ name: 'kashrut_pref', nullable: true })
-  kashrutPref?: string;
-
-  @Column({ name: 'profile_image_url', nullable: true })
-  profileImageUrl?: string;
+  @Column({ name: 'profile_image_url', type: 'varchar', nullable: true })
+  profileImageUrl: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
+
+  @DeleteDateColumn({ name: 'deleted_at', nullable: true })
+  deletedAt?: Date;
 }

@@ -16,8 +16,7 @@ async function bootstrap() {
   await app.listen(port, '0.0.0.0');
 
   console.log(`✅ Server running on http://localhost:${port}`);
-  console.log("PORT from env =", process.env.PORT);
-  console.log("DB_HOST from env =", process.env.DB_HOST);
-
+  console.log('PORT from env =', process.env.PORT);
+  console.log('DB_HOST from env =', process.env.DB_HOST);
 }
 bootstrap();

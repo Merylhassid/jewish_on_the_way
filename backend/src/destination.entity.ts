@@ -10,7 +10,6 @@ import { Minyan } from './minyan.entity';
 import { HostingOffer } from './hosting/entities/hosting-offer.entity';
 import { HostingRequest } from './hosting/entities/hosting-request.entity';
 
-
 @Entity('destinations')
 export class Destination {
   @PrimaryGeneratedColumn()
