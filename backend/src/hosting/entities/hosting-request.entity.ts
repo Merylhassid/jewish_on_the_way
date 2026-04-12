@@ -6,30 +6,34 @@ import {
   CreateDateColumn,
   JoinColumn,
 } from 'typeorm';
-
 import { User } from '../../users/user.entity';
 import { Destination } from '../../destination.entity';
+import { HostingOffer } from './hosting-offer.entity';
+
+export type HostingRequestStatus = 'pending' | 'approved' | 'rejected';
 
 @Entity('hosting_requests')
 export class HostingRequest {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // מי שמבקש להתארח
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  // יעד הבקשה
   @ManyToOne(() => Destination, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'destination_id' })
   destination: Destination;
 
-  @Column({ type: 'date' })
-  arrival_date: Date;
+  @ManyToOne(() => HostingOffer, { nullable: true, onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'offer_id' })
+  offer: HostingOffer | null;
 
   @Column({ type: 'date' })
-  departure_date: Date;
+  arrival_date: string;
+
+  @Column({ type: 'date' })
+  departure_date: string;
 
   @Column()
   guests_count: number;
@@ -41,7 +45,10 @@ export class HostingRequest {
   for_shabbat: boolean;
 
   @Column({ type: 'text', nullable: true })
-  special_requests: string;
+  special_requests: string | null;
+
+  @Column({ default: 'pending' })
+  status: HostingRequestStatus;
 
   @Column({ default: true })
   is_active: boolean;

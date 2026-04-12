@@ -1,4 +1,5 @@
 import {
+  IsIn,
   IsOptional,
   IsString,
   Matches,
@@ -25,7 +26,8 @@ export class UpdateUserDto {
   })
   lastName?: string;
 
+  // req 2.1.1 — kashrut preference
   @IsOptional()
-  @IsString()
-  profileImageUrl?: string;
+  @IsIn(['none', 'rabbinate', 'mehadrin', 'badatz'])
+  kashrutLevel?: string;
 }

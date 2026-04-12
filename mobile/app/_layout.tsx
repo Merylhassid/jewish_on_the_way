@@ -4,21 +4,30 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { AuthProvider } from '@/src/store/auth';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="destination/[id]" options={{ headerShown: false }} />
+          <Stack.Screen name="restaurants/[destinationId]" options={{ headerShown: false }} />
+          <Stack.Screen name="restaurant/[id]" options={{ headerShown: false }} />
+          <Stack.Screen name="chat/[destinationId]" options={{ headerShown: false }} />
+          <Stack.Screen name="minyans/[destinationId]" options={{ headerShown: false }} />
+          <Stack.Screen name="minyan/[id]" options={{ headerShown: false }} />
+          <Stack.Screen name="hosting/[destinationId]" options={{ headerShown: false }} />
+          <Stack.Screen name="hosting/my-requests" options={{ headerShown: false }} />
+          <Stack.Screen name="hosting/my-offers" options={{ headerShown: false }} />
+          <Stack.Screen name="hosting/chat/[requestId]" options={{ headerShown: false }} />
+        </Stack>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
