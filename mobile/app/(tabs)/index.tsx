@@ -1,98 +1,153 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  ActivityIndicator,
+  FlatList,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+import client from '@/src/api/client';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+interface Destination {
+  id: number;
+  name: string;
+  city: string;
+  country: string;
+  countryCode: string;
+}
 
-export default function HomeScreen() {
+function flagEmoji(countryCode: string) {
+  return countryCode
+    .toUpperCase()
+    .split('')
+    .map((c) => String.fromCodePoint(0x1f1e6 - 65 + c.charCodeAt(0)))
+    .join('');
+}
+
+export default function DestinationsScreen() {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  const fetchDestinations = async (q?: string) => {
+    try {
+      const res = await client.get('/destinations', { params: q ? { q } : {} });
+      setDestinations(res.data);
+    } catch {
+      // silent
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // On mount: load destinations and redirect to last visited destination if any
+  useEffect(() => {
+    fetchDestinations();
+    AsyncStorage.getItem('lastDestinationId').then((id) => {
+      if (id) router.push(`/destination/${id}`);
+    });
+  }, []);
+
+  const onSearch = (text: string) => {
+    setSearch(text);
+    fetchDestinations(text || undefined);
+  };
+
+  if (loading) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" color="#1a3a6b" />
+      </View>
+    );
+  }
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>✡️ Jewish On The Way</Text>
+        <Text style={styles.headerSub}>Where are you traveling?</Text>
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.searchWrapper}>
+        <TextInput
+          style={styles.search}
+          placeholder="🔍  Search a city..."
+          placeholderTextColor="#999"
+          value={search}
+          onChangeText={onSearch}
+        />
+      </View>
+
+      <FlatList
+        data={destinations}
+        keyExtractor={(item) => String(item.id)}
+        contentContainerStyle={styles.list}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <Pressable
+            style={styles.card}
+            onPress={() => {
+              AsyncStorage.setItem('lastDestinationId', String(item.id));
+              router.push(`/destination/${item.id}`);
+            }}
+          >
+            <Text style={styles.flag}>{flagEmoji(item.countryCode)}</Text>
+            <View style={styles.cardInfo}>
+              <Text style={styles.cardCity}>{item.city}</Text>
+              <Text style={styles.cardCountry}>{item.country}</Text>
+            </View>
+            <Text style={styles.arrow}>›</Text>
+          </Pressable>
+        )}
+        ListEmptyComponent={
+          <Text style={styles.empty}>No destinations found</Text>
+        }
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: { flex: 1, backgroundColor: '#f0f4ff' },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  header: {
+    backgroundColor: '#1a3a6b',
+    paddingTop: 60,
+    paddingBottom: 24,
+    paddingHorizontal: 20,
+  },
+  headerTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
+  headerSub: { fontSize: 14, color: '#a8c4e8' },
+  searchWrapper: { paddingHorizontal: 16, paddingVertical: 12, backgroundColor: '#fff' },
+  search: {
+    backgroundColor: '#f0f4ff',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 15,
+    color: '#1a1a2e',
+  },
+  list: { padding: 16, gap: 10 },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 14,
+    padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  flag: { fontSize: 36, marginRight: 14 },
+  cardInfo: { flex: 1 },
+  cardCity: { fontSize: 17, fontWeight: '600', color: '#1a1a2e' },
+  cardCountry: { fontSize: 13, color: '#888', marginTop: 2 },
+  arrow: { fontSize: 24, color: '#bbb' },
+  empty: { textAlign: 'center', color: '#888', marginTop: 40, fontSize: 16 },
 });

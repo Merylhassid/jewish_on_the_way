@@ -21,19 +21,23 @@ export class Destination {
   @Column({ type: 'text', nullable: true })
   description?: string;
 
-  // PostGIS location (lat/lng)
+  @Column()
+  country: string;
+
+  // ISO 3166-1 alpha-2 country code (e.g. "FR", "IL") — used for flag emoji on client
+  @Column({ name: 'country_code', length: 2 })
+  countryCode: string;
+
+  @Column()
+  city: string;
+
+  // PostGIS location (lat/lng) — req 3.1.2
   @Column({
     type: 'geography',
     spatialFeatureType: 'Point',
     srid: 4326,
   })
   location: object;
-
-  @Column()
-  country: string;
-
-  @Column()
-  city: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

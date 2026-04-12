@@ -8,6 +8,20 @@
     },
     "android": {
       "package": "com.jewishontheway.app"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Jewish On The Way to access your photos to update your profile picture."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow Jewish On The Way to show distances to nearby restaurants and minyans."
+        }
+      ]
+    ]
   }
 }
