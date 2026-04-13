@@ -47,6 +47,7 @@ export default function MinyanDetailScreen() {
   const [minyan, setMinyan] = useState<MinyanDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
+  const [cancelConfirm, setCancelConfirm] = useState(false);
 
   const fetch = async () => {
     try {
@@ -76,25 +77,17 @@ export default function MinyanDetailScreen() {
     }
   };
 
-  const handleCancel = () => {
-    Alert.alert('Cancel Registration', 'Are you sure you want to cancel your registration?', [
-      { text: 'Keep', style: 'cancel' },
-      {
-        text: 'Cancel Registration',
-        style: 'destructive',
-        onPress: async () => {
-          try {
-            setActionLoading(true);
-            const res = await client.delete(`/minyans/${id}/register`);
-            setMinyan((prev) => prev ? { ...prev, isRegistered: false, participantsCount: res.data.participantsCount } : prev);
-          } catch (err: any) {
-            Alert.alert('Error', err?.response?.data?.message ?? 'Failed to cancel');
-          } finally {
-            setActionLoading(false);
-          }
-        },
-      },
-    ]);
+  const handleCancel = async () => {
+    try {
+      setActionLoading(true);
+      const res = await client.delete(`/minyans/${id}/register`);
+      setMinyan((prev) => prev ? { ...prev, isRegistered: false, participantsCount: res.data.participantsCount } : prev);
+      setCancelConfirm(false);
+    } catch (err: any) {
+      Alert.alert('Error', err?.response?.data?.message ?? 'Failed to cancel');
+    } finally {
+      setActionLoading(false);
+    }
   };
 
   if (loading) {
@@ -166,15 +159,25 @@ export default function MinyanDetailScreen() {
         {/* Action button */}
         {!isCreator && (
           minyan.isRegistered ? (
-            <TouchableOpacity
-              style={styles.cancelBtn}
-              onPress={handleCancel}
-              disabled={actionLoading}
-            >
-              {actionLoading
-                ? <ActivityIndicator color="#e53935" />
-                : <Text style={styles.cancelBtnText}>Cancel My Registration</Text>}
-            </TouchableOpacity>
+            cancelConfirm ? (
+              <View style={styles.confirmBox}>
+                <Text style={styles.confirmText}>Cancel your registration?</Text>
+                <View style={styles.confirmRow}>
+                  <TouchableOpacity style={styles.confirmKeepBtn} onPress={() => setCancelConfirm(false)}>
+                    <Text style={styles.confirmKeepText}>Keep</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.confirmCancelBtn} onPress={handleCancel} disabled={actionLoading}>
+                    {actionLoading
+                      ? <ActivityIndicator color="#fff" size="small" />
+                      : <Text style={styles.confirmCancelText}>Yes, Cancel</Text>}
+                  </TouchableOpacity>
+                </View>
+              </View>
+            ) : (
+              <TouchableOpacity style={styles.cancelBtn} onPress={() => setCancelConfirm(true)}>
+                <Text style={styles.cancelBtnText}>Cancel My Registration</Text>
+              </TouchableOpacity>
+            )
           ) : (
             <TouchableOpacity
               style={[styles.registerBtn, minyan.isFull && styles.registerBtnDisabled]}
@@ -239,8 +242,15 @@ const styles = StyleSheet.create({
   registerBtn:    { backgroundColor: '#1a3a6b', borderRadius: 14, padding: 18, alignItems: 'center' },
   registerBtnDisabled: { backgroundColor: '#ccc' },
   registerBtnText:{ color: '#fff', fontSize: 17, fontWeight: '700' },
-  cancelBtn:      { backgroundColor: '#fff', borderRadius: 14, padding: 18, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
-  cancelBtnText:  { color: '#e53935', fontSize: 16, fontWeight: '600' },
+  cancelBtn:       { backgroundColor: '#fff', borderRadius: 14, padding: 18, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
+  cancelBtnText:   { color: '#e53935', fontSize: 16, fontWeight: '600' },
+  confirmBox:      { backgroundColor: '#fff0f0', borderRadius: 14, padding: 16, borderWidth: 1, borderColor: '#ffcccc' },
+  confirmText:     { fontSize: 14, color: '#c00', textAlign: 'center', marginBottom: 12 },
+  confirmRow:      { flexDirection: 'row', gap: 10 },
+  confirmKeepBtn:  { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#f0f4ff', alignItems: 'center' },
+  confirmKeepText: { fontSize: 15, fontWeight: '600', color: '#1a3a6b' },
+  confirmCancelBtn:{ flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#e53935', alignItems: 'center' },
+  confirmCancelText:{ fontSize: 15, fontWeight: '600', color: '#fff' },
   creatorNote:    { backgroundColor: '#e8eef8', borderRadius: 14, padding: 16, alignItems: 'center' },
   creatorNoteText:{ color: '#1a3a6b', fontSize: 14, fontWeight: '600' },
 });

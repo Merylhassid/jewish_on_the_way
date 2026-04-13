@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import {
   ActivityIndicator,
@@ -62,6 +63,7 @@ function EditProfileModal({
       });
       onSaved(firstName.trim(), lastName.trim(), kashrut);
       onClose();
+      Alert.alert('Saved', 'Your profile has been updated.');
     } catch (err: any) {
       const msg = err?.response?.data?.message ?? 'Failed to update profile';
       Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : msg);
@@ -198,10 +200,27 @@ export default function ProfileScreen() {
   const [editVisible, setEditVisible] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [avatarLoading, setAvatarLoading] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   // ── Sign Out ──
   const handleLogout = async () => {
     await logout();
+  };
+
+  // ── Delete Account (req 2.2.5) ──
+  const confirmDelete = async () => {
+    try {
+      setDeleteLoading(true);
+      await client.delete('/users/me');
+      await logout();
+      router.replace('/(auth)/login');
+    } catch (err: any) {
+      setDeleteLoading(false);
+      setDeleteConfirm(false);
+      const msg = err?.response?.data?.message ?? err?.message ?? 'Failed to delete account';
+      Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : String(msg));
+    }
   };
 
   // ── Avatar Upload — uses native fetch so React Native handles multipart boundary correctly ──
@@ -327,6 +346,27 @@ export default function ProfileScreen() {
         <Text style={styles.logoutText}>Sign Out</Text>
       </TouchableOpacity>
 
+      {/* ── Delete Account (req 2.2.5) ── */}
+      {!deleteConfirm ? (
+        <TouchableOpacity style={styles.deleteBtn} onPress={() => setDeleteConfirm(true)} activeOpacity={0.7}>
+          <Text style={styles.deleteText}>Delete Account</Text>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.deleteConfirmBox}>
+          <Text style={styles.deleteConfirmText}>Permanently delete your account?{'\n'}This cannot be undone.</Text>
+          <View style={styles.deleteConfirmRow}>
+            <TouchableOpacity style={styles.deleteCancelBtn} onPress={() => setDeleteConfirm(false)}>
+              <Text style={styles.deleteCancelText}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.deleteConfirmBtn} onPress={confirmDelete} disabled={deleteLoading}>
+              {deleteLoading
+                ? <ActivityIndicator color="#fff" size="small" />
+                : <Text style={styles.deleteConfirmBtnText}>Yes, Delete</Text>}
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
+
       {/* ── Modals ── */}
       <EditProfileModal
         visible={editVisible}
@@ -359,8 +399,17 @@ const styles = StyleSheet.create({
   rowIcon: { fontSize: 20, marginRight: 14 },
   rowLabel: { flex: 1, fontSize: 16, color: '#1a1a2e' },
   rowArrow: { fontSize: 20, color: '#bbb' },
-  logoutBtn: { margin: 16, backgroundColor: '#fff', borderRadius: 12, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
+  logoutBtn: { marginHorizontal: 16, marginTop: 16, backgroundColor: '#fff', borderRadius: 12, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
   logoutText: { color: '#e53935', fontSize: 16, fontWeight: '600' },
+  deleteBtn: { marginHorizontal: 16, marginTop: 8, marginBottom: 8, padding: 12, alignItems: 'center' },
+  deleteText: { color: '#bbb', fontSize: 13, textDecorationLine: 'underline' },
+  deleteConfirmBox: { margin: 16, backgroundColor: '#fff0f0', borderRadius: 12, padding: 16, borderWidth: 1, borderColor: '#ffcccc' },
+  deleteConfirmText: { fontSize: 14, color: '#c00', textAlign: 'center', marginBottom: 14, lineHeight: 20 },
+  deleteConfirmRow: { flexDirection: 'row', gap: 10 },
+  deleteCancelBtn: { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#f0f4ff', alignItems: 'center' },
+  deleteCancelText: { fontSize: 15, fontWeight: '600', color: '#1a3a6b' },
+  deleteConfirmBtn: { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#e53935', alignItems: 'center' },
+  deleteConfirmBtnText: { fontSize: 15, fontWeight: '600', color: '#fff' },
   modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
   modalSheet: { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
   modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },

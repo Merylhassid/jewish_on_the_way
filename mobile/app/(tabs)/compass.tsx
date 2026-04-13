@@ -198,26 +198,17 @@ export default function CompassScreen() {
           })}
         </Animated.View>
 
-        {/* Jerusalem needle (animated) */}
+        {/* Jerusalem needle (animated) — star rides at the gold tip */}
         <Animated.View
           style={[styles.needleContainer, { transform: [{ rotate: needleRotate }] }]}
           pointerEvents="none"
         >
+          {/* Star of David sits above the gold triangle tip */}
+          <Text style={styles.starIcon}>✡</Text>
           {/* Gold tip → Jerusalem */}
           <View style={styles.tipJerusalem} />
           {/* Grey tail */}
           <View style={styles.tipSouth} />
-        </Animated.View>
-
-        {/* Star of David — rides on the gold tip */}
-        <Animated.View
-          style={[
-            styles.starContainer,
-            { transform: [{ rotate: needleRotate }] },
-          ]}
-          pointerEvents="none"
-        >
-          <Text style={styles.starIcon}>✡</Text>
         </Animated.View>
 
         {/* Centre pin */}
@@ -299,7 +290,6 @@ const styles = StyleSheet.create({
     width: DISC_SIZE,
     height: DISC_SIZE,
     borderRadius: DISC_RADIUS,
-    overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -321,11 +311,11 @@ const styles = StyleSheet.create({
 
   needleContainer: {
     position: 'absolute',
-    width: 14,
-    height: NEEDLE_LEN * 2,
+    width: 32,
     alignItems: 'center',
     zIndex: 8,
   },
+  starIcon: { fontSize: 15, color: '#d4a017', marginBottom: 2 },
   tipJerusalem: {
     width: 0,
     height: 0,
@@ -346,16 +336,6 @@ const styles = StyleSheet.create({
     borderRightColor: 'transparent',
     borderTopColor: '#a0b0c8',
   },
-
-  // Star rides on the gold tip: positioned NEEDLE_LEN above center
-  starContainer: {
-    position: 'absolute',
-    top: DISC_RADIUS - NEEDLE_LEN - 12,
-    width: DISC_SIZE,
-    alignItems: 'center',
-    zIndex: 9,
-  },
-  starIcon: { fontSize: 16, color: '#d4a017' },
 
   centerPin: {
     position: 'absolute',

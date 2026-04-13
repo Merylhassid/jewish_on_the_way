@@ -5,14 +5,25 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // req 9.1.2 / 13.3 — security headers (HTTPS enforced by reverse proxy in production)
-  app.use((_req: any, res: any, next: () => void) => {
+  // req 9.1.2 / 13.3 — HTTPS enforcement + security headers
+  app.use((req: any, res: any, next: () => void) => {
+    // In production, redirect plain HTTP requests to HTTPS
+    if (
+      process.env.NODE_ENV === 'production' &&
+      req.headers['x-forwarded-proto'] === 'http'
+    ) {
+      return res.redirect(301, `https://${req.headers.host}${req.url}`);
+    }
+
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     if (process.env.NODE_ENV === 'production') {
-      res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+      res.setHeader(
+        'Strict-Transport-Security',
+        'max-age=31536000; includeSubDomains',
+      );
     }
     next();
   });
