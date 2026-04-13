@@ -1,4 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
+import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -27,6 +28,7 @@ interface Minyan {
   participantsCount: number;
   almostFull: boolean;
   isFull: boolean;
+  distanceMeters?: number;
   creator: { id: number; firstName: string; lastName: string } | null;
 }
 
@@ -44,10 +46,21 @@ function formatDate(iso: string) {
   return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
 
+function formatDistance(meters: number): string {
+  if (meters < 1000) return `${Math.round(meters)} m`;
+  return `${(meters / 1000).toFixed(1)} km`;
+}
+
 // ─── Create Minyan Modal ───────────────────────────────────────────────────────
 function CreateMinyanModal({
-  visible, onClose, destinationId, onCreated,
-}: { visible: boolean; onClose: () => void; destinationId: number; onCreated: () => void }) {
+  visible, onClose, destinationId, onCreated, userLocation,
+}: {
+  visible: boolean;
+  onClose: () => void;
+  destinationId: number;
+  onCreated: () => void;
+  userLocation: { lat: number; lng: number } | null;
+}) {
   const [prayerType, setPrayerType] = useState('shacharit');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -66,6 +79,9 @@ function CreateMinyanModal({
         locationText: locationText.trim(),
         notes: notes.trim() || undefined,
         destinationId,
+        // req 8.2 — attach user coordinates so distance can be shown in the list
+        lat: userLocation?.lat,
+        lng: userLocation?.lng,
       });
       onCreated();
       onClose();
@@ -117,6 +133,10 @@ function CreateMinyanModal({
           <TextInput style={[styles.input, { height: 70 }]} value={notes} onChangeText={setNotes}
             placeholder="Any special instructions…" placeholderTextColor="#999" multiline />
 
+          {userLocation && (
+            <Text style={styles.locationNote}>📍 Your location will be attached to help others see distance</Text>
+          )}
+
           <TouchableOpacity style={styles.submitBtn} onPress={handleCreate} disabled={loading}>
             {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitText}>Create Minyan</Text>}
           </TouchableOpacity>
@@ -133,12 +153,29 @@ export default function MinyansScreen() {
   const [loading, setLoading] = useState(true);
   const [typeFilter, setTypeFilter] = useState('all');
   const [createVisible, setCreateVisible] = useState(false);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+
+  // req 8.1.1 — request location only on this screen
+  useEffect(() => {
+    (async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status === 'granted') {
+        const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
+        setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+      }
+    })();
+  }, []);
 
   const fetchMinyans = async (prayerType?: string) => {
     try {
       setLoading(true);
-      const params: any = { destinationId };
+      const params: Record<string, string> = { destinationId };
       if (prayerType && prayerType !== 'all') params.prayerType = prayerType;
+      // req 8.2 — pass user location so backend can calculate distance
+      if (userLocation) {
+        params.lat = String(userLocation.lat);
+        params.lng = String(userLocation.lng);
+      }
       const res = await client.get('/minyans', { params });
       setMinyans(res.data);
     } catch {
@@ -148,7 +185,9 @@ export default function MinyansScreen() {
     }
   };
 
-  useEffect(() => { fetchMinyans(typeFilter); }, [typeFilter]);
+  useEffect(() => { fetchMinyans(typeFilter); }, [typeFilter, userLocation]);
+
+  const hasSomeDistance = minyans.some((m) => m.distanceMeters !== undefined);
 
   return (
     <View style={styles.container}>
@@ -159,7 +198,9 @@ export default function MinyansScreen() {
         </Pressable>
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle}>🤝 Minyans</Text>
-          <Text style={styles.headerSub}>{minyans.length} upcoming</Text>
+          <Text style={styles.headerSub}>
+            {minyans.length} upcoming{hasSomeDistance ? '  •  📍 distance shown' : ''}
+          </Text>
         </View>
         <TouchableOpacity style={styles.addBtn} onPress={() => setCreateVisible(true)}>
           <Text style={styles.addBtnText}>+ New</Text>
@@ -198,7 +239,12 @@ export default function MinyansScreen() {
                 </View>
                 <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
                 <Text style={styles.cardLocation} numberOfLines={1}>📍 {item.locationText}</Text>
-                <Text style={styles.cardCount}>👥 {item.participantsCount} / 10</Text>
+                <View style={styles.cardBottomRow}>
+                  <Text style={styles.cardCount}>👥 {item.participantsCount} / 10</Text>
+                  {item.distanceMeters !== undefined && (
+                    <Text style={styles.cardDistance}>📏 {formatDistance(item.distanceMeters)}</Text>
+                  )}
+                </View>
               </View>
               <Text style={styles.arrow}>›</Text>
             </Pressable>
@@ -217,56 +263,60 @@ export default function MinyansScreen() {
         onClose={() => setCreateVisible(false)}
         destinationId={Number(destinationId)}
         onCreated={() => fetchMinyans(typeFilter)}
+        userLocation={userLocation}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:        { flex: 1, backgroundColor: '#f0f4ff' },
-  center:           { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 60 },
-  header:           { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
-  backBtn:          { marginRight: 12 },
-  backText:         { fontSize: 24, color: '#fff' },
-  headerCenter:     { flex: 1 },
-  headerTitle:      { fontSize: 20, fontWeight: '700', color: '#fff' },
-  headerSub:        { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
-  addBtn:           { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7 },
-  addBtnText:       { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
-  filterRow:        { maxHeight: 48, backgroundColor: '#fff' },
-  filterContent:    { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
-  chip:             { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  chipActive:       { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  chipText:         { fontSize: 13, color: '#555', fontWeight: '500' },
-  chipTextActive:   { color: '#fff' },
-  list:             { padding: 16, gap: 12 },
-  card:             { backgroundColor: '#fff', borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
-  cardLeft:         { marginRight: 14 },
-  cardEmoji:        { fontSize: 32 },
-  cardBody:         { flex: 1, gap: 3 },
-  cardTopRow:       { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  cardPrayer:       { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
-  badge:            { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
-  badgeText:        { color: '#fff', fontSize: 11, fontWeight: '600' },
-  cardDate:         { fontSize: 13, color: '#555' },
-  cardLocation:     { fontSize: 13, color: '#777' },
-  cardCount:        { fontSize: 13, color: '#1a3a6b', fontWeight: '600', marginTop: 2 },
-  arrow:            { fontSize: 22, color: '#bbb', marginLeft: 8 },
-  empty:            { alignItems: 'center', marginTop: 60 },
-  emptyIcon:        { fontSize: 48, marginBottom: 12 },
-  emptyText:        { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
+  container:          { flex: 1, backgroundColor: '#f0f4ff' },
+  center:             { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 60 },
+  header:             { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
+  backBtn:            { marginRight: 12 },
+  backText:           { fontSize: 24, color: '#fff' },
+  headerCenter:       { flex: 1 },
+  headerTitle:        { fontSize: 20, fontWeight: '700', color: '#fff' },
+  headerSub:          { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
+  addBtn:             { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7 },
+  addBtnText:         { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
+  filterRow:          { maxHeight: 48, backgroundColor: '#fff' },
+  filterContent:      { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
+  chip:               { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
+  chipActive:         { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
+  chipText:           { fontSize: 13, color: '#555', fontWeight: '500' },
+  chipTextActive:     { color: '#fff' },
+  list:               { padding: 16, gap: 12 },
+  card:               { backgroundColor: '#fff', borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
+  cardLeft:           { marginRight: 14 },
+  cardEmoji:          { fontSize: 32 },
+  cardBody:           { flex: 1, gap: 3 },
+  cardTopRow:         { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  cardPrayer:         { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
+  badge:              { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
+  badgeText:          { color: '#fff', fontSize: 11, fontWeight: '600' },
+  cardDate:           { fontSize: 13, color: '#555' },
+  cardLocation:       { fontSize: 13, color: '#777' },
+  cardBottomRow:      { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 2 },
+  cardCount:          { fontSize: 13, color: '#1a3a6b', fontWeight: '600' },
+  cardDistance:       { fontSize: 13, color: '#555', fontWeight: '500' },
+  arrow:              { fontSize: 22, color: '#bbb', marginLeft: 8 },
+  empty:              { alignItems: 'center', marginTop: 60 },
+  emptyIcon:          { fontSize: 48, marginBottom: 12 },
+  emptyText:          { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
   // Modal
-  overlay:          { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  sheet:            { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
-  sheetHeader:      { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
-  sheetTitle:       { fontSize: 20, fontWeight: '700', color: '#1a3a6b' },
-  closeBtn:         { fontSize: 18, color: '#999' },
-  label:            { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6 },
-  input:            { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, fontSize: 15, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0', color: '#1a1a2e' },
-  typeChip:         { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  typeChipActive:   { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  typeChipText:     { fontSize: 13, color: '#555', fontWeight: '500' },
-  typeChipTextActive:{ color: '#fff' },
-  submitBtn:        { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
-  submitText:       { color: '#fff', fontSize: 16, fontWeight: '600' },
+  overlay:            { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
+  sheet:              { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
+  sheetHeader:        { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
+  sheetTitle:         { fontSize: 20, fontWeight: '700', color: '#1a3a6b' },
+  closeBtn:           { fontSize: 18, color: '#999' },
+  label:              { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6 },
+  input:              { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, fontSize: 15, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0', color: '#1a1a2e' },
+  typeChip:           { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
+  typeChipActive:     { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
+  typeChipText:       { fontSize: 13, color: '#555', fontWeight: '500' },
+  typeChipTextActive: { color: '#fff' },
+  locationNote:       { fontSize: 12, color: '#888', fontStyle: 'italic', marginBottom: 12 },
+  submitBtn:          { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
+  submitText:         { color: '#fff', fontSize: 16, fontWeight: '600' },
 });

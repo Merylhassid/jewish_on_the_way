@@ -32,8 +32,14 @@ const KASHRUT_INFO: Record<string, { label: string; color: string; description: 
   unknown:   { label: 'Kosher',    color: '#9e9e9e', description: 'Kosher certified' },
 };
 
+function formatDistance(meters: number): string {
+  if (meters < 1000) return `${Math.round(meters)} m away`;
+  return `${(meters / 1000).toFixed(1)} km away`;
+}
+
 export default function RestaurantDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, distance } = useLocalSearchParams<{ id: string; distance?: string }>();
+  const distanceMeters = distance ? parseInt(distance, 10) : undefined;
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -78,6 +84,9 @@ export default function RestaurantDetailScreen() {
           <Text style={styles.headerSub}>
             📍 {restaurant.destination.city}, {restaurant.destination.country}
           </Text>
+        )}
+        {distanceMeters !== undefined && (
+          <Text style={styles.headerDistance}>📏 {formatDistance(distanceMeters)}</Text>
         )}
       </View>
 
@@ -126,6 +135,7 @@ const styles = StyleSheet.create({
   headerEmoji:    { fontSize: 52, marginBottom: 10 },
   headerName:     { fontSize: 22, fontWeight: '700', color: '#fff', textAlign: 'center', marginBottom: 6 },
   headerSub:      { fontSize: 14, color: '#a8c4e8' },
+  headerDistance: { fontSize: 13, color: '#ffd700', fontWeight: '600', marginTop: 4 },
   body:           { padding: 16, gap: 12 },
   typeCard:       { borderRadius: 16, padding: 16 },
   badgeRow:       { flexDirection: 'row', gap: 10, marginBottom: 8 },

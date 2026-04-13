@@ -199,7 +199,8 @@ export default function RestaurantsScreen() {
                 style={[styles.card, { backgroundColor: bgColor }]}
                 onPress={() => {
                   sendAiFeedback(item);
-                  router.push(`/restaurant/${item.id}`);
+                  const dist = item.distanceMeters !== undefined ? `?distance=${item.distanceMeters}` : '';
+                  router.push(`/restaurant/${item.id}${dist}`);
                 }}
               >
                 <View style={styles.cardTop}>
