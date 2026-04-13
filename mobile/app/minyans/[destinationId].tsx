@@ -70,6 +70,7 @@ function CreateMinyanModal({
       onCreated();
       onClose();
       setDate(''); setTime(''); setLocationText(''); setNotes(''); setPrayerType('shacharit');
+      Alert.alert('Minyan Created! 🙏', 'You have been registered as the first participant.');
     } catch (err: any) {
       const msg = err?.response?.data?.message ?? 'Failed to create minyan';
       Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : msg);

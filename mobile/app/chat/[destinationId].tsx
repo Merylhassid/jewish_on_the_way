@@ -108,6 +108,21 @@ export default function ChatScreen() {
     return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
+  // req 5.5 — report a message
+  const reportMessage = (messageId: number) => {
+    Alert.alert('Report Message', 'Flag this message as inappropriate?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Report',
+        style: 'destructive',
+        onPress: () => {
+          socketRef.current?.emit('chat:report', { messageId });
+          Alert.alert('Reported', 'Thank you — our team will review this message.');
+        },
+      },
+    ]);
+  };
+
   const renderItem = ({ item }: { item: ChatMsg }) => {
     const isMe = item.user.id === user?.id;
     const initials = `${item.user.firstName[0]}${item.user.lastName[0]}`.toUpperCase();
@@ -119,13 +134,17 @@ export default function ChatScreen() {
             <Text style={styles.avatarText}>{initials}</Text>
           </View>
         )}
-        <View style={[styles.bubble, isMe ? styles.bubbleMe : styles.bubbleOther]}>
+        <Pressable
+          style={[styles.bubble, isMe ? styles.bubbleMe : styles.bubbleOther]}
+          onLongPress={() => !isMe && reportMessage(item.id)}
+          delayLongPress={500}
+        >
           {!isMe && (
             <Text style={styles.senderName}>{item.user.firstName} {item.user.lastName}</Text>
           )}
           <Text style={[styles.msgText, isMe && styles.msgTextMe]}>{item.content}</Text>
           <Text style={[styles.msgTime, isMe && styles.msgTimeMe]}>{formatTime(item.createdAt)}</Text>
-        </View>
+        </Pressable>
       </View>
     );
   };

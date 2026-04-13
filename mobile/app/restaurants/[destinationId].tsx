@@ -48,6 +48,7 @@ export default function RestaurantsScreen() {
   const [kashrutFilter, setKashrutFilter] = useState('all');
   const [search, setSearch] = useState('');
   const [aiMode, setAiMode] = useState(false);
+  const [lastAiQuery, setLastAiQuery] = useState('');
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const searchTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -77,6 +78,7 @@ export default function RestaurantsScreen() {
           // req 4.3.1 — AI classifier endpoint: extracts type/kashrut from free text
           endpoint = '/restaurants/search';
           params.q = search.trim();
+          setLastAiQuery(search.trim());
         } else {
           if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
           if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
@@ -93,6 +95,19 @@ export default function RestaurantsScreen() {
     }, 300);
     return () => { if (searchTimeout.current) clearTimeout(searchTimeout.current); };
   }, [typeFilter, kashrutFilter, search, aiMode, userLocation, destinationId]);
+
+  // When user taps a restaurant in AI mode, record the click so Claude can learn
+  const sendAiFeedback = (item: Restaurant) => {
+    if (!aiMode || !lastAiQuery) return;
+    client
+      .post('/restaurants/search/feedback', {
+        query: lastAiQuery,
+        clickedRestaurantName: item.name,
+        clickedRestaurantType: item.restaurantType,
+        clickedRestaurantKashrut: item.kashrutLevel,
+      })
+      .catch(() => {/* silent — feedback is best-effort */});
+  };
 
   return (
     <View style={styles.container}>
@@ -182,7 +197,10 @@ export default function RestaurantsScreen() {
             return (
               <Pressable
                 style={[styles.card, { backgroundColor: bgColor }]}
-                onPress={() => router.push(`/restaurant/${item.id}`)}
+                onPress={() => {
+                  sendAiFeedback(item);
+                  router.push(`/restaurant/${item.id}`);
+                }}
               >
                 <View style={styles.cardTop}>
                   <Text style={styles.emoji}>{emoji}</Text>

@@ -50,4 +50,20 @@ export class AdminController {
   syncDestination(@Param('id', ParseIntPipe) id: number) {
     return this.adminService.syncDestination(id);
   }
+
+  // --- Users ---
+  // req 9.4.1 — admin can block (deactivate) any user account
+  @Delete('users/:id')
+  @HttpCode(HttpStatus.OK)
+  blockUser(@Param('id', ParseIntPipe) id: number) {
+    return this.adminService.blockUser(id);
+  }
+
+  // --- Chat messages ---
+  // req 9.4.1 — admin can delete abusive chat messages
+  @Delete('messages/:id')
+  @HttpCode(HttpStatus.OK)
+  deleteMessage(@Param('id', ParseIntPipe) id: number) {
+    return this.adminService.deleteMessage(id);
+  }
 }

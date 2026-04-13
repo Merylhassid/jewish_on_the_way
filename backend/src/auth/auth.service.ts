@@ -33,7 +33,9 @@ export class AuthService {
     const email = dto.email.toLowerCase();
 
     const exists = await this.usersRepo.findOne({ where: { email } });
-    if (exists) throw new BadRequestException('Email already exists');
+    if (exists && exists.isActive) throw new BadRequestException('Email already exists');
+    // If a soft-deleted account had this email, remove it so the new account can use it
+    if (exists && !exists.isActive) await this.usersRepo.delete({ id: exists.id });
 
     const passwordHash = await bcrypt.hash(dto.password, 10);
 
@@ -59,7 +61,7 @@ export class AuthService {
     const email = dto.email.toLowerCase();
 
     const user = await this.usersRepo.findOne({ where: { email } });
-    if (!user) {
+    if (!user || !user.isActive) {
       this.audit.log('USER_LOGIN_FAILED', null, { email });
       throw new UnauthorizedException('Invalid credentials');
     }

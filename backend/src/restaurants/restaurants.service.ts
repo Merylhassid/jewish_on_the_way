@@ -19,7 +19,7 @@ export class RestaurantsService {
   ) {}
 
   // req 4.1 — list restaurants with optional filters + distance
-  async findByDestination(destinationId: number, filters: RestaurantFilters = {}) {
+  async findByDestination(destinationId: number, filters: RestaurantFilters = {}): Promise<Restaurant[]> {
     const { type, kashrut, q, lat, lng } = filters;
 
     // With distance: use raw SQL so PostGIS can compute ST_Distance

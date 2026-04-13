@@ -8,6 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import client from '@/src/api/client';
 
 interface Destination {
@@ -41,9 +42,14 @@ export default function DestinationScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    client.get(`/destinations/${id}`).then((res) => {
-      setDestination(res.data);
-    }).finally(() => setLoading(false));
+    client.get(`/destinations/${id}`)
+      .then((res) => setDestination(res.data))
+      .catch(() => {
+        // Stale lastDestinationId (e.g. from old DB) — clear it and go home
+        AsyncStorage.removeItem('lastDestinationId');
+        router.replace('/(tabs)');
+      })
+      .finally(() => setLoading(false));
   }, [id]);
 
   if (loading) {

@@ -74,15 +74,14 @@ export class UsersService {
   }
 
   async deleteCurrentUser(userId: number) {
-    const user = await this.usersRepository.findOne({
-      where: { id: userId },
-    });
+    const result = await this.usersRepository.update(
+      { id: userId },
+      { isActive: false },
+    );
 
-    if (!user) {
+    if (result.affected === 0) {
       throw new NotFoundException('User not found');
     }
-
-    await this.usersRepository.softDelete({ id: user.id });
 
     return { message: 'Account deleted successfully' };
   }
