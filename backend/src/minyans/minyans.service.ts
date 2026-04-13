@@ -6,7 +6,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOptionsWhere, MoreThanOrEqual, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Minyan } from '../minyan.entity';
 import { MinyanRegistration } from '../minyan-registration.entity';
 import { Destination } from '../destination.entity';
@@ -29,26 +29,108 @@ export class MinyansService {
   ) {}
 
   // req 6.1 + 6.1.2 — upcoming minyans, no past events
+  // req 8.2 — include distance when user provides lat/lng
+  // Uses minyan's own coordinates when available, falls back to destination coordinates
   async findUpcoming(
     destinationId: number,
-    filters: { date?: string; prayerType?: string },
+    filters: { date?: string; prayerType?: string; lat?: number; lng?: number },
   ) {
     const today = new Date().toISOString().split('T')[0];
 
-    const where: FindOptionsWhere<Minyan> = {
-      destination: { id: destinationId },
-      date: MoreThanOrEqual(today),
-    };
-    if (filters.prayerType) where.prayerType = filters.prayerType;
-    if (filters.date) where.date = filters.date;
+    // Raw SQL so we can pull destination lat/lng from PostGIS in one query
+    let sql = `
+      SELECT
+        m.id,
+        m.prayer_type       AS "prayerType",
+        m.date,
+        m.time,
+        m.location_text     AS "locationText",
+        m.notes,
+        m.participants_count AS "participantsCount",
+        m.created_at        AS "createdAt",
+        m.lat,
+        m.lng,
+        u.id                AS "creatorId",
+        u.first_name        AS "creatorFirstName",
+        u.last_name         AS "creatorLastName",
+        ST_Y(d.location::geometry) AS "destLat",
+        ST_X(d.location::geometry) AS "destLng"
+      FROM minyans m
+      LEFT JOIN users u ON u.id = m.creator_id
+      JOIN destinations d ON d.id = m.destination_id
+      WHERE m.destination_id = $1 AND m.date >= $2
+    `;
+    const params: (string | number)[] = [destinationId, today];
+    let idx = 3;
 
-    const minyans = await this.minyansRepo.find({
-      where,
-      order: { date: 'ASC', time: 'ASC' },
-      relations: ['creator'],
+    if (filters.prayerType) {
+      sql += ` AND m.prayer_type = $${idx}`;
+      params.push(filters.prayerType);
+      idx++;
+    }
+    if (filters.date) {
+      sql += ` AND m.date = $${idx}`;
+      params.push(filters.date);
+    }
+    sql += ' ORDER BY m.date ASC, m.time ASC';
+
+    const rows: Record<string, unknown>[] = await this.minyansRepo.query(
+      sql,
+      params,
+    );
+
+    return rows.map((row) => {
+      const count = Number(row['participantsCount']);
+      // Prefer minyan's own coordinates; fall back to destination centre
+      const mLat = row['lat'] !== null ? Number(row['lat']) : Number(row['destLat']);
+      const mLng = row['lng'] !== null ? Number(row['lng']) : Number(row['destLng']);
+
+      const distanceMeters =
+        filters.lat !== undefined &&
+        filters.lng !== undefined &&
+        !isNaN(mLat) &&
+        !isNaN(mLng)
+          ? Math.round(this.haversine(filters.lat, filters.lng, mLat, mLng))
+          : undefined;
+
+      return {
+        id: Number(row['id']),
+        prayerType: row['prayerType'],
+        date: row['date'],
+        time: row['time'],
+        locationText: row['locationText'],
+        notes: row['notes'] ?? null,
+        participantsCount: count,
+        almostFull: count >= ALMOST_FULL_THRESHOLD && count < MINYAN_FULL,
+        isFull: count >= MINYAN_FULL,
+        createdAt: row['createdAt'],
+        distanceMeters,
+        creator: row['creatorId']
+          ? {
+              id: Number(row['creatorId']),
+              firstName: row['creatorFirstName'],
+              lastName: row['creatorLastName'],
+            }
+          : null,
+      };
     });
+  }
 
-    return minyans.map((m) => this.format(m));
+  /** Great-circle distance in metres between two lat/lng points */
+  private haversine(
+    lat1: number,
+    lng1: number,
+    lat2: number,
+    lng2: number,
+  ): number {
+    const R = 6_371_000;
+    const toRad = (d: number) => (d * Math.PI) / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLng = toRad(lng2 - lng1);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
 
   // req 6.1 — single minyan + registration status
@@ -84,16 +166,24 @@ export class MinyansService {
       where: { id: creatorId },
     });
 
-    const minyan = this.minyansRepo.create({
-      prayerType: dto.prayerType,
-      date: dto.date,
-      time: dto.time,
-      locationText: dto.locationText,
-      notes: dto.notes,
-      participantsCount: 1,
-      destination,
-      creator,
-    });
+    const minyan = Object.assign(
+      this.minyansRepo.create({
+        prayerType: dto.prayerType,
+        date: dto.date,
+        time: dto.time,
+        locationText: dto.locationText,
+        notes: dto.notes,
+        participantsCount: 1,
+        destination,
+        creator,
+      }),
+      {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        lat: typeof dto.lat === 'number' ? dto.lat : null,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        lng: typeof dto.lng === 'number' ? dto.lng : null,
+      },
+    );
     const saved = await this.minyansRepo.save(minyan);
 
     await this.registrationsRepo.save(

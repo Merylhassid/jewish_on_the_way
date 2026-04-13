@@ -40,7 +40,7 @@ export class RestaurantsService {
             )::numeric
           ) AS "distanceMeters"
         FROM restaurants r
-        WHERE r.destination_id = $3
+        WHERE r."destinationId" = $3
       `;
       const params: (string | number)[] = [lng, lat, destinationId];
       let idx = 4;

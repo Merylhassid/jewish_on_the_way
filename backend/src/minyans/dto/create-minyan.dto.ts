@@ -1,4 +1,4 @@
-import { IsDateString, IsIn, IsInt, IsOptional, IsString, Length, Matches } from 'class-validator';
+import { IsDateString, IsIn, IsInt, IsNumber, IsOptional, IsString, Length, Matches } from 'class-validator';
 
 export class CreateMinyanDto {
   @IsIn(['shacharit', 'mincha', 'maariv', 'musaf', 'other'])
@@ -18,6 +18,14 @@ export class CreateMinyanDto {
   @IsString()
   @Length(0, 500)
   notes?: string;
+
+  @IsOptional()
+  @IsNumber()
+  lat?: number;
+
+  @IsOptional()
+  @IsNumber()
+  lng?: number;
 
   @IsInt()
   destinationId: number;

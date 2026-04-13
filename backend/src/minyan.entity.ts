@@ -31,6 +31,13 @@ export class Minyan {
   @Column({ name: 'location_text', type: 'text' })
   locationText: string;
 
+  // req 8.2 — optional coordinates so we can show distance to user
+  @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
+  lat: number | null;
+
+  @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true })
+  lng: number | null;
+
   @Column({ type: 'text', nullable: true })
   notes?: string;
 

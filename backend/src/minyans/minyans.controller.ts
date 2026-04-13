@@ -21,14 +21,21 @@ import { CreateMinyanDto } from './dto/create-minyan.dto';
 export class MinyansController {
   constructor(private readonly minyansService: MinyansService) {}
 
-  // GET /minyans?destinationId=1&prayerType=shacharit&date=2026-04-20
+  // GET /minyans?destinationId=1&prayerType=shacharit&date=2026-04-20&lat=48.8&lng=2.3
   @Get()
   findAll(
     @Query('destinationId', ParseIntPipe) destinationId: number,
     @Query('prayerType') prayerType?: string,
     @Query('date') date?: string,
+    @Query('lat') lat?: string,
+    @Query('lng') lng?: string,
   ) {
-    return this.minyansService.findUpcoming(destinationId, { prayerType, date });
+    return this.minyansService.findUpcoming(destinationId, {
+      prayerType,
+      date,
+      lat: lat ? parseFloat(lat) : undefined,
+      lng: lng ? parseFloat(lng) : undefined,
+    });
   }
 
   // GET /minyans/:id
