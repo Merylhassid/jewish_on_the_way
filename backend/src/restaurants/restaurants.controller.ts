@@ -1,5 +1,6 @@
 import { CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -28,7 +29,6 @@ class RecordFeedbackDto {
   clickedRestaurantKashrut?: string;
 }
 
-@UseGuards(JwtAuthGuard)
 @Controller('restaurants')
 export class RestaurantsController {
   constructor(
@@ -40,6 +40,7 @@ export class RestaurantsController {
 
   // GET /restaurants?destinationId=1&type=meat&kashrut=mehadrin&q=pizza&lat=48.8&lng=2.3
   // req 11.1 — cache filtered list for 30 s
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(CacheInterceptor)
   @CacheTTL(30_000)
   @Get()
@@ -63,6 +64,7 @@ export class RestaurantsController {
 
   // GET /restaurants/search?destinationId=1&q=I+want+a+badatz+steak+place
   // req 4.3.1/4.3.2 — AI text classifier extracts type/kashrut from free-text
+  @UseGuards(JwtAuthGuard)
   @Get('search')
   async aiSearch(
     @Query('destinationId', ParseIntPipe) destinationId: number,
@@ -93,6 +95,7 @@ export class RestaurantsController {
 
   // POST /restaurants/search/feedback
   // Records which restaurant the user actually clicked — used as few-shot learning data
+  @UseGuards(JwtAuthGuard)
   @Post('search/feedback')
   async recordFeedback(
     @Body() dto: RecordFeedbackDto,
@@ -127,8 +130,33 @@ export class RestaurantsController {
   }
 
   // GET /restaurants/:id
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<Restaurant> {
     return this.restaurantsService.findOne(id);
+  }
+
+  // POST /restaurants/import-google — import kosher restaurants from Google Places
+  @Post('import-google')
+  async importFromGoogle() {
+    return this.restaurantsService.importKosherRestaurantsFromGoogle();
+  }
+
+  // POST /restaurants/reclassify — reprocess existing restaurants and update classification
+  @Post('reclassify')
+  async reclassifyExisting() {
+    return this.restaurantsService.reclassifyExistingRestaurants();
+  }
+
+  // POST /restaurants/import-batch — batch import restaurants for specified destinations
+  @Post('import-batch')
+  async importBatch(
+    @Body() body: { destinationIds: number[]; limit?: number },
+  ) {
+    const { destinationIds, limit = 3 } = body;
+    if (!destinationIds?.length) {
+      throw new BadRequestException('destinationIds is required');
+    }
+    return this.restaurantsService.importBatch(destinationIds, limit);
   }
 }

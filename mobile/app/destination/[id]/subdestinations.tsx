@@ -1,6 +1,5 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   ActivityIndicator,
   FlatList,
@@ -29,33 +28,45 @@ function flagEmoji(countryCode: string) {
     .join('');
 }
 
-export default function DestinationsScreen() {
+export default function SubdestinationsScreen() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const [parent, setParent] = useState<Destination | null>(null);
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const fetchDestinations = async (q?: string) => {
+  const fetchSubdestinations = async (q?: string) => {
     try {
-      const res = await client.get('/destinations', { params: q ? { q } : {} });
+      const params: Record<string, string> = { parentId: String(id) };
+      if (q) params.q = q;
+      const res = await client.get('/destinations', { params });
       setDestinations(res.data);
     } catch {
       // silent
-    } finally {
-      setLoading(false);
     }
   };
 
-  // On mount: load destinations and redirect to last visited destination if any
   useEffect(() => {
-    fetchDestinations();
-    AsyncStorage.getItem('lastDestinationId').then((id) => {
-      if (id) router.push(`/destination/${id}`);
-    });
-  }, []);
+    setLoading(true);
+    if (!id) return;
+
+    Promise.all([
+      client.get(`/destinations/${id}`),
+      client.get('/destinations', { params: { parentId: String(id) } }),
+    ])
+      .then(([parentRes, childrenRes]) => {
+        setParent(parentRes.data);
+        setDestinations(childrenRes.data);
+      })
+      .catch(() => {
+        router.replace('/(tabs)');
+      })
+      .finally(() => setLoading(false));
+  }, [id]);
 
   const onSearch = (text: string) => {
     setSearch(text);
-    fetchDestinations(text || undefined);
+    fetchSubdestinations(text || undefined);
   };
 
   if (loading) {
@@ -69,14 +80,19 @@ export default function DestinationsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>✡️ Jewish On The Way</Text>
-        <Text style={styles.headerSub}>Where are you traveling?</Text>
+        <Pressable style={styles.backBtn} onPress={() => router.back()}>
+          <Text style={styles.backText}>←</Text>
+        </Pressable>
+        <Text style={styles.headerTitle}>{parent?.city || 'Choose destination'}</Text>
+        <Text style={styles.headerSub}>
+          {parent?.country ? `Locations in ${parent.country}` : 'Choose a sub-destination'}
+        </Text>
       </View>
 
       <View style={styles.searchWrapper}>
         <TextInput
           style={styles.search}
-          placeholder="🔍  Search a city..."
+          placeholder="🔍 Search a sub-destination..."
           placeholderTextColor="#999"
           value={search}
           onChangeText={onSearch}
@@ -91,13 +107,7 @@ export default function DestinationsScreen() {
         renderItem={({ item }) => (
           <Pressable
             style={styles.card}
-            onPress={() => {
-              AsyncStorage.setItem('lastDestinationId', String(item.id));
-              const destinationPath = item.hasChildren
-                ? `/destination/${item.id}/subdestinations`
-                : `/destination/${item.id}`;
-              router.push(destinationPath);
-            }}
+            onPress={() => router.push(`/destination/${item.id}`)}
           >
             <Text style={styles.flag}>{flagEmoji(item.countryCode)}</Text>
             <View style={styles.cardInfo}>
@@ -108,7 +118,7 @@ export default function DestinationsScreen() {
           </Pressable>
         )}
         ListEmptyComponent={
-          <Text style={styles.empty}>No destinations found</Text>
+          <Text style={styles.empty}>No sub-destinations found</Text>
         }
       />
     </View>
@@ -124,6 +134,8 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     paddingHorizontal: 20,
   },
+  backBtn: { position: 'absolute', top: 60, left: 20 },
+  backText: { fontSize: 24, color: '#fff' },
   headerTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
   headerSub: { fontSize: 14, color: '#a8c4e8' },
   searchWrapper: { paddingHorizontal: 16, paddingVertical: 12, backgroundColor: '#fff' },

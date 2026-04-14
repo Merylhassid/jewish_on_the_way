@@ -18,6 +18,7 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // If already authenticated (e.g. app relaunch with saved token), go to tabs
   useEffect(() => {
@@ -32,11 +33,15 @@ export default function LoginScreen() {
       return;
     }
     try {
+      setError(null);
       setLoading(true);
       await login(email.trim(), password);
       router.replace('/(tabs)');
     } catch (e: any) {
-      Alert.alert('Login failed', e?.response?.data?.message ?? 'Invalid credentials');
+      const errorMessage = e?.message || e?.response?.data?.message || 'Invalid email or password';
+      console.log('Login error:', errorMessage, e);
+      setError(errorMessage);
+      Alert.alert('Login Failed', errorMessage);
     } finally {
       setLoading(false);
     }
@@ -69,6 +74,8 @@ export default function LoginScreen() {
           onChangeText={setPassword}
           secureTextEntry
         />
+
+        {error ? <Text style={styles.error}>{error}</Text> : null}
 
         <Pressable style={styles.button} onPress={handleLogin} disabled={loading}>
           {loading ? (
@@ -141,5 +148,11 @@ const styles = StyleSheet.create({
   link: { color: '#1a3a6b', textAlign: 'center', marginBottom: 24, fontSize: 14 },
   footer: { flexDirection: 'row', justifyContent: 'center' },
   footerText: { color: '#666', fontSize: 14 },
+  error: {
+    color: '#d32f2f',
+    textAlign: 'center',
+    marginBottom: 14,
+    fontSize: 14,
+  },
   linkBold: { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
 });

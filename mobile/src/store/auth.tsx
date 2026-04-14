@@ -43,16 +43,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (email: string, password: string) => {
-    const res = await client.post('/auth/login', { email, password });
-    const { access_token, user: userData } = res.data;
-    await AsyncStorage.setItem('token', access_token);
-    setToken(access_token);
-    setUser(userData);
+    try {
+      const res = await client.post('/auth/login', { email, password });
+      const { access_token, user: userData } = res.data;
+      await AsyncStorage.setItem('token', access_token);
+      setToken(access_token);
+      setUser(userData);
+    } catch (e: any) {
+      // Re-throw with clearer error message
+      const message = e?.response?.data?.message || e?.message || 'Login failed';
+      const error = new Error(message);
+      (error as any).response = e?.response; // Keep original response for caller
+      throw error;
+    }
   };
 
   const register = async (email: string, password: string, firstName: string, lastName: string) => {
-    await client.post('/auth/register', { email, password, firstName, lastName });
-    await login(email, password);
+    try {
+      await client.post('/auth/register', { email, password, firstName, lastName });
+      await login(email, password);
+    } catch (e: any) {
+      // Re-throw with clearer error message
+      const message = e?.response?.data?.message || e?.message || 'Registration failed';
+      const error = new Error(message);
+      (error as any).response = e?.response;
+      throw error;
+    }
   };
 
   const logout = async () => {

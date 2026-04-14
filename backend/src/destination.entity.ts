@@ -4,6 +4,9 @@ import {
   Column,
   CreateDateColumn,
   OneToMany,
+  ManyToOne,
+  JoinColumn,
+  RelationId,
 } from 'typeorm';
 import { Restaurant } from './restaurant.entity';
 import { Minyan } from './minyan.entity';
@@ -41,6 +44,19 @@ export class Destination {
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
+
+  // Parent/child destination hierarchy
+  @ManyToOne(() => Destination, (destination) => destination.children, {
+    nullable: true,
+  })
+  @JoinColumn({ name: 'parent_id' })
+  parent?: Destination;
+
+  @RelationId((destination: Destination) => destination.parent)
+  parentId?: number;
+
+  @OneToMany(() => Destination, (destination) => destination.parent)
+  children: Destination[];
 
   // Relations
   @OneToMany(() => Restaurant, (restaurant) => restaurant.destination)
