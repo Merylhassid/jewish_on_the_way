@@ -36,8 +36,8 @@ export default function RegisterScreen() {
       await register(email.trim(), password, firstName.trim(), lastName.trim());
       router.replace('/(tabs)');
     } catch (e: any) {
-      const msg = e?.response?.data?.message;
-      Alert.alert('Registration failed', Array.isArray(msg) ? msg.join('\n') : msg ?? 'Something went wrong');
+      const errorMessage = e?.message || e?.response?.data?.message || 'Registration failed';
+      Alert.alert('Registration Failed', errorMessage);
     } finally {
       setLoading(false);
     }

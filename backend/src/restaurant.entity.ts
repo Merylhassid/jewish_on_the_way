@@ -20,8 +20,12 @@ export class Restaurant {
   name: string;
 
   // 'meat' | 'dairy' | 'pareve' — req 4.2
-  @Column({ name: 'restaurant_type' })
-  restaurantType: string;
+  @Column({ name: 'restaurant_type', type: 'varchar', length: 32, nullable: true })
+  restaurantType: string | null;
+
+  // Confidence score for restaurant type classification (0-1)
+  @Column({ name: 'restaurant_type_confidence', type: 'decimal', precision: 3, scale: 2, nullable: true })
+  restaurantTypeConfidence?: number;
 
   // 'rabbinate' | 'mehadrin' | 'badatz' — req 4.2.1
   @Column({ name: 'kashrut_level' })
@@ -41,6 +45,14 @@ export class Restaurant {
     srid: 4326,
   })
   location: object;
+
+  // Google Places rating (0-5)
+  @Column({ type: 'decimal', precision: 2, scale: 1, nullable: true })
+  rating?: number;
+
+  // Whether this restaurant is confirmed kosher
+  @Column({ name: 'is_kosher', default: false })
+  isKosher: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

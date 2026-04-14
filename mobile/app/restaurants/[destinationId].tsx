@@ -16,7 +16,7 @@ import client from '@/src/api/client';
 interface Restaurant {
   id: number;
   name: string;
-  restaurantType: string;
+  restaurantType: string | null;
   kashrutLevel: string;
   address?: string;
   openingHours?: string;
@@ -38,6 +38,11 @@ const KASHRUT_FILTERS = ['all', 'rabbinate', 'mehadrin', 'badatz'];
 function formatDistance(meters: number): string {
   if (meters < 1000) return `${Math.round(meters)} m`;
   return `${(meters / 1000).toFixed(1)} km`;
+}
+
+function formatLabel(value: string | null | undefined) {
+  if (!value) return 'Unknown';
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 export default function RestaurantsScreen() {
@@ -153,7 +158,7 @@ export default function RestaurantsScreen() {
                 onPress={() => setTypeFilter(f)}
               >
                 <Text style={[styles.chipText, typeFilter === f && styles.chipTextActive]}>
-                  {f === 'all' ? 'All types' : `${TYPE_EMOJI[f]} ${f.charAt(0).toUpperCase() + f.slice(1)}`}
+                  {f === 'all' ? 'All types' : `${TYPE_EMOJI[f]} ${formatLabel(f)}`}
                 </Text>
               </Pressable>
             ))}
@@ -167,7 +172,7 @@ export default function RestaurantsScreen() {
                 onPress={() => setKashrutFilter(f)}
               >
                 <Text style={[styles.chipText, kashrutFilter === f && styles.chipTextActive]}>
-                  {f === 'all' ? 'All kashrut' : f.charAt(0).toUpperCase() + f.slice(1)}
+                  {f === 'all' ? 'All kashrut' : formatLabel(f)}
                 </Text>
               </Pressable>
             ))}
@@ -208,7 +213,7 @@ export default function RestaurantsScreen() {
                   <View style={styles.cardInfo}>
                     <Text style={styles.cardName}>{item.name}</Text>
                     <Text style={styles.cardType}>
-                      {item.restaurantType.charAt(0).toUpperCase() + item.restaurantType.slice(1)}
+                      {formatLabel(item.restaurantType)}
                     </Text>
                   </View>
                   <View style={styles.rightCol}>

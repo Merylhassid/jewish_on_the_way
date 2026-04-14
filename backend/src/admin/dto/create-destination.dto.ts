@@ -21,6 +21,10 @@ export class CreateDestinationDto {
   @IsString()
   description?: string;
 
+  @IsOptional()
+  @IsNumber()
+  parentId?: number;
+
   @IsNumber()
   lat: number;
 

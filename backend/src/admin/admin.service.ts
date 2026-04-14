@@ -24,6 +24,14 @@ export class AdminService {
   ) {}
 
   async createDestination(dto: CreateDestinationDto) {
+    let parent: Destination | undefined | null;
+    if (dto.parentId) {
+      parent = await this.destinationsRepo.findOne({ where: { id: dto.parentId } });
+      if (!parent) {
+        throw new NotFoundException(`Parent destination #${dto.parentId} not found`);
+      }
+    }
+
     const destination = this.destinationsRepo.create({
       name: dto.name,
       city: dto.city,
@@ -31,6 +39,7 @@ export class AdminService {
       countryCode: dto.countryCode.toUpperCase(),
       description: dto.description,
       location: { type: 'Point', coordinates: [dto.lng, dto.lat] },
+      parent: parent ?? undefined,
     });
     return this.destinationsRepo.save(destination);
   }
