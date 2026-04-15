@@ -96,7 +96,7 @@ export class AdminService {
     return { message: `Message #${id} deleted` };
   }
 
-  // Fetch real places from Google Places API for a destination
+  // Fetch real places from Google Places API for a single destination
   async syncDestination(id: number) {
     const destination = await this.destinationsRepo.findOne({ where: { id } });
     if (!destination) throw new NotFoundException(`Destination #${id} not found`);
@@ -107,6 +107,60 @@ export class AdminService {
       newRestaurants: result.restaurants,
       newSynagogues: result.synagogues,
       newChabadHouses: result.chabad,
+    };
+  }
+
+  // --- Kosher validation system (req 8-point spec) ---
+
+  // Returns all destination IDs that currently have restaurant data in the DB
+  async getDestinationsWithRestaurants() {
+    return this.placesService.getDestinationIdsWithRestaurants();
+  }
+
+  // req 7 — audit specific destinations (scan + log, no writes)
+  async auditDestinations(destinationIds: number[]) {
+    return this.placesService.auditDestinations(destinationIds);
+  }
+
+  // req 7 — cleanup non-kosher restaurants in specific destinations (dry-run or delete)
+  async cleanupDestinations(destinationIds: number[], confirm: boolean) {
+    return this.placesService.cleanupDestinations(destinationIds, confirm);
+  }
+
+  // req 7 — revalidate & reclassify restaurants in specific destinations
+  async revalidateDestinations(destinationIds: number[]) {
+    return this.placesService.revalidateDestinations(destinationIds);
+  }
+
+  // req 7 — re-sync (fetch from Google) for specific destinations only
+  async resyncDestinations(destinationIds: number[]) {
+    return this.placesService.syncSpecificDestinations(destinationIds);
+  }
+
+  // Fetch real places from Google Places API for ALL cities (skip country-level parents)
+  async syncAllDestinations() {
+    const destinations = await this.destinationsRepo.find();
+    // Only sync leaf cities (those that have a parent OR have no children = real cities)
+    const cities = destinations.filter(
+      (d) => d.parentId !== undefined && d.parentId !== null,
+    );
+
+    const results: { city: string; restaurants: number; error?: string }[] = [];
+    let totalRestaurants = 0;
+
+    for (const destination of cities) {
+      try {
+        const result = await this.placesService.syncDestination(destination);
+        results.push({ city: destination.city, restaurants: result.restaurants });
+        totalRestaurants += result.restaurants;
+      } catch (err: any) {
+        results.push({ city: destination.city, restaurants: 0, error: err.message });
+      }
+    }
+
+    return {
+      message: `Sync complete — ${totalRestaurants} restaurants imported across ${cities.length} cities`,
+      results,
     };
   }
 }
