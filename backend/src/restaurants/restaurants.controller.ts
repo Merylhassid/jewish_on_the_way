@@ -20,11 +20,11 @@ import { SearchFeedback } from '../ai/search-feedback.entity';
 import { Restaurant } from '../restaurant.entity';
 
 class RecordFeedbackDto {
-  query: string;
+  query!: string;
   detectedType?: string;
   detectedKashrut?: string;
   detectedKeyword?: string;
-  clickedRestaurantName: string;
+  clickedRestaurantName!: string;
   clickedRestaurantType?: string;
   clickedRestaurantKashrut?: string;
 }

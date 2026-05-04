@@ -10,6 +10,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 
 interface Destination {
@@ -30,6 +31,7 @@ function flagEmoji(countryCode: string) {
 }
 
 export default function DestinationsScreen() {
+  const { t } = useTranslation();
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
@@ -45,7 +47,6 @@ export default function DestinationsScreen() {
     }
   };
 
-  // On mount: load destinations and redirect to last visited destination if any
   useEffect(() => {
     fetchDestinations();
     AsyncStorage.getItem('lastDestinationId').then((id) => {
@@ -58,100 +59,127 @@ export default function DestinationsScreen() {
     fetchDestinations(text || undefined);
   };
 
-  if (loading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" color="#1a3a6b" />
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
+      {/* ── Header ── */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>✡️ Jewish On The Way</Text>
-        <Text style={styles.headerSub}>Where are you traveling?</Text>
+        <Text style={styles.headerTitle}>{t('home.title')}</Text>
+        <Text style={styles.headerSub}>{t('home.subtitle')}</Text>
+        <View style={styles.searchWrapper}>
+          <Text style={styles.searchIcon}>🔍</Text>
+          <TextInput
+            style={styles.searchInput}
+            placeholder={t('home.searchPlaceholder').replace('🔍  ', '')}
+            placeholderTextColor="rgba(255,255,255,0.45)"
+            value={search}
+            onChangeText={onSearch}
+          />
+        </View>
       </View>
 
-      <View style={styles.searchWrapper}>
-        <TextInput
-          style={styles.search}
-          placeholder="🔍  Search a city..."
-          placeholderTextColor="#999"
-          value={search}
-          onChangeText={onSearch}
-        />
-      </View>
-
-      <FlatList
-        data={destinations}
-        keyExtractor={(item) => String(item.id)}
-        contentContainerStyle={styles.list}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <Pressable
-            style={styles.card}
-            onPress={() => {
-              AsyncStorage.setItem('lastDestinationId', String(item.id));
-              const destinationPath = item.hasChildren
-                ? `/destination/${item.id}/subdestinations`
-                : `/destination/${item.id}`;
-              router.push(destinationPath);
-            }}
-          >
-            <Text style={styles.flag}>{flagEmoji(item.countryCode)}</Text>
-            <View style={styles.cardInfo}>
-              <Text style={styles.cardCity}>{item.city}</Text>
-              <Text style={styles.cardCountry}>{item.country}</Text>
+      {loading ? (
+        <View style={styles.center}>
+          <ActivityIndicator size="large" color="#0C2461" />
+        </View>
+      ) : (
+        <FlatList
+          data={destinations}
+          keyExtractor={(item) => String(item.id)}
+          contentContainerStyle={styles.list}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <Pressable
+              style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+              onPress={() => {
+                AsyncStorage.setItem('lastDestinationId', String(item.id));
+                const path = item.hasChildren
+                  ? `/destination/${item.id}/subdestinations`
+                  : `/destination/${item.id}`;
+                router.push(path);
+              }}
+            >
+              <Text style={styles.flag}>{flagEmoji(item.countryCode)}</Text>
+              <View style={styles.cardInfo}>
+                <Text style={styles.cardCity}>{item.city}</Text>
+                <Text style={styles.cardCountry}>{item.country}</Text>
+              </View>
+              <View style={styles.chevronBadge}>
+                <Text style={styles.chevronText}>›</Text>
+              </View>
+            </Pressable>
+          )}
+          ListEmptyComponent={
+            <View style={styles.emptyBox}>
+              <Text style={styles.emptyIcon}>🔍</Text>
+              <Text style={styles.emptyText}>{t('home.noResults')}</Text>
             </View>
-            <Text style={styles.arrow}>›</Text>
-          </Pressable>
-        )}
-        ListEmptyComponent={
-          <Text style={styles.empty}>No destinations found</Text>
-        }
-      />
+          }
+        />
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f0f4ff' },
+  container: { flex: 1, backgroundColor: '#F2F5FB' },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+
   header: {
-    backgroundColor: '#1a3a6b',
-    paddingTop: 60,
-    paddingBottom: 24,
-    paddingHorizontal: 20,
+    backgroundColor: '#0C2461',
+    paddingTop: 64,
+    paddingHorizontal: 22,
+    paddingBottom: 22,
   },
-  headerTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  headerSub: { fontSize: 14, color: '#a8c4e8' },
-  searchWrapper: { paddingHorizontal: 16, paddingVertical: 12, backgroundColor: '#fff' },
-  search: {
-    backgroundColor: '#f0f4ff',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+  headerTitle: { fontSize: 24, fontWeight: '800', color: '#fff', marginBottom: 3, letterSpacing: 0.2 },
+  headerSub: { fontSize: 14, color: 'rgba(255,255,255,0.55)', marginBottom: 18 },
+
+  searchWrapper: {
+    backgroundColor: 'rgba(255,255,255,0.13)',
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.2)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 14,
+  },
+  searchIcon: { fontSize: 15, marginRight: 8 },
+  searchInput: {
+    flex: 1,
+    paddingVertical: 14,
     fontSize: 15,
-    color: '#1a1a2e',
+    color: '#fff',
   },
+
   list: { padding: 16, gap: 10 },
   card: {
     backgroundColor: '#fff',
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: 18,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
+    shadowColor: '#0C2461',
+    shadowOpacity: 0.07,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 3,
   },
-  flag: { fontSize: 36, marginRight: 14 },
+  cardPressed: { opacity: 0.85, transform: [{ scale: 0.99 }] },
+  flag: { fontSize: 38, marginRight: 16 },
   cardInfo: { flex: 1 },
-  cardCity: { fontSize: 17, fontWeight: '600', color: '#1a1a2e' },
-  cardCountry: { fontSize: 13, color: '#888', marginTop: 2 },
-  arrow: { fontSize: 24, color: '#bbb' },
-  empty: { textAlign: 'center', color: '#888', marginTop: 40, fontSize: 16 },
+  cardCity: { fontSize: 17, fontWeight: '700', color: '#0C1A2E' },
+  cardCountry: { fontSize: 13, color: '#8A96B0', marginTop: 2 },
+  chevronBadge: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#F2F5FB',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  chevronText: { fontSize: 18, color: '#0C2461', fontWeight: '700', lineHeight: 22 },
+
+  emptyBox: { alignItems: 'center', paddingTop: 64 },
+  emptyIcon: { fontSize: 36, marginBottom: 12 },
+  emptyText: { fontSize: 15, color: '#8A96B0' },
 });

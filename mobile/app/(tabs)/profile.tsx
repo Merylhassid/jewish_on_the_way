@@ -17,17 +17,15 @@ import {
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 import client, { API_URL } from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
-// ─── Edit Profile Modal ─────────────────────────���───────────��─────────────────
+const KASHRUT_VALUES = ['none', 'rabbinate', 'mehadrin', 'badatz'] as const;
+type KashrutValue = typeof KASHRUT_VALUES[number];
 
-const KASHRUT_OPTIONS = [
-  { value: 'none',       label: 'None / Not specified' },
-  { value: 'rabbinate',  label: '🟡 Rabbinate' },
-  { value: 'mehadrin',   label: '🔵 Mehadrin' },
-  { value: 'badatz',     label: '🟢 Badatz' },
-];
+// ─── Edit Profile Modal ───────────────────────────────────────────────────────
 
 function EditProfileModal({
   visible,
@@ -44,14 +42,20 @@ function EditProfileModal({
   initialKashrut?: string | null;
   onSaved: (firstName: string, lastName: string, kashrutLevel: string) => void;
 }) {
+  const { t } = useTranslation();
   const [firstName, setFirstName] = useState(initialFirst);
   const [lastName, setLastName] = useState(initialLast);
   const [kashrut, setKashrut] = useState(initialKashrut ?? 'none');
   const [loading, setLoading] = useState(false);
 
+  const kashrutOptions = KASHRUT_VALUES.map((v) => ({
+    value: v,
+    label: t(`profile.kashrut.${v}` as any),
+  }));
+
   const handleSave = async () => {
     if (!firstName.trim() || !lastName.trim()) {
-      Alert.alert('Error', 'First name and last name are required');
+      Alert.alert(t('profile.alerts.error'), t('profile.errors.firstLastRequired'));
       return;
     }
     try {
@@ -63,10 +67,10 @@ function EditProfileModal({
       });
       onSaved(firstName.trim(), lastName.trim(), kashrut);
       onClose();
-      Alert.alert('Saved', 'Your profile has been updated.');
+      Alert.alert(t('profile.alerts.saved'), t('profile.alerts.profileUpdated'));
     } catch (err: any) {
-      const msg = err?.response?.data?.message ?? 'Failed to update profile';
-      Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : msg);
+      const msg = err?.response?.data?.message ?? t('profile.errors.failedUpdate');
+      Alert.alert(t('profile.alerts.error'), Array.isArray(msg) ? msg.join('\n') : msg);
     } finally {
       setLoading(false);
     }
@@ -79,36 +83,37 @@ function EditProfileModal({
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <View style={styles.modalSheet}>
+          <View style={styles.modalHandle} />
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Edit Profile</Text>
-            <Pressable onPress={onClose} hitSlop={12}>
-              <Text style={styles.modalClose}>✕</Text>
+            <Text style={styles.modalTitle}>{t('profile.edit.title')}</Text>
+            <Pressable onPress={onClose} hitSlop={12} style={styles.modalCloseBtn}>
+              <Text style={styles.modalCloseText}>✕</Text>
             </Pressable>
           </View>
 
-          <Text style={styles.inputLabel}>First Name</Text>
+          <Text style={styles.inputLabel}>{t('profile.edit.firstName')}</Text>
           <TextInput
             style={styles.input}
             value={firstName}
             onChangeText={setFirstName}
-            placeholder="First name"
-            placeholderTextColor="#999"
+            placeholder={t('profile.edit.firstNamePlaceholder')}
+            placeholderTextColor="#9AA8C0"
             autoCapitalize="words"
           />
 
-          <Text style={styles.inputLabel}>Last Name</Text>
+          <Text style={styles.inputLabel}>{t('profile.edit.lastName')}</Text>
           <TextInput
             style={styles.input}
             value={lastName}
             onChangeText={setLastName}
-            placeholder="Last name"
-            placeholderTextColor="#999"
+            placeholder={t('profile.edit.lastNamePlaceholder')}
+            placeholderTextColor="#9AA8C0"
             autoCapitalize="words"
           />
 
-          <Text style={styles.inputLabel}>Kashrut Level</Text>
+          <Text style={styles.inputLabel}>{t('profile.edit.kashrutLevel')}</Text>
           <View style={styles.kashrutRow}>
-            {KASHRUT_OPTIONS.map((opt) => (
+            {kashrutOptions.map((opt) => (
               <Pressable
                 key={opt.value}
                 style={[styles.kashrutChip, kashrut === opt.value && styles.kashrutChipActive]}
@@ -121,8 +126,8 @@ function EditProfileModal({
             ))}
           </View>
 
-          <Pressable style={styles.primaryBtn} onPress={handleSave} disabled={loading}>
-            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryBtnText}>Save Changes</Text>}
+          <Pressable style={({ pressed }) => [styles.primaryBtn, pressed && { opacity: 0.88 }]} onPress={handleSave} disabled={loading}>
+            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryBtnText}>{t('profile.edit.save')}</Text>}
           </Pressable>
         </View>
       </KeyboardAvoidingView>
@@ -130,9 +135,10 @@ function EditProfileModal({
   );
 }
 
-// ─── Change Password Modal ──────────────────────────────���─────────────────────
+// ─── Change Password Modal ────────────────────────────────────────────────────
 
 function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: () => void }) {
+  const { t } = useTranslation();
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -141,18 +147,18 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
   const reset = () => { setCurrentPassword(''); setNewPassword(''); setConfirmPassword(''); };
 
   const handleSave = async () => {
-    if (!currentPassword) { Alert.alert('Error', 'Enter your current password'); return; }
-    if (newPassword.length < 6) { Alert.alert('Error', 'New password must be at least 6 characters'); return; }
-    if (newPassword !== confirmPassword) { Alert.alert('Error', 'New passwords do not match'); return; }
+    if (!currentPassword) { Alert.alert(t('profile.alerts.error'), t('profile.errors.enterCurrentPassword')); return; }
+    if (newPassword.length < 6) { Alert.alert(t('profile.alerts.error'), t('profile.errors.passwordMinLength')); return; }
+    if (newPassword !== confirmPassword) { Alert.alert(t('profile.alerts.error'), t('profile.errors.passwordMismatch')); return; }
     try {
       setLoading(true);
       await client.put('/users/me/password', { currentPassword, newPassword });
-      Alert.alert('Success', 'Password updated successfully');
+      Alert.alert(t('profile.alerts.success'), t('profile.alerts.passwordUpdated'));
       reset();
       onClose();
     } catch (err: any) {
-      const msg = err?.response?.data?.message ?? 'Failed to change password';
-      Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : msg);
+      const msg = err?.response?.data?.message ?? t('profile.errors.failedChangePassword');
+      Alert.alert(t('profile.alerts.error'), Array.isArray(msg) ? msg.join('\n') : msg);
     } finally {
       setLoading(false);
     }
@@ -165,27 +171,28 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <View style={styles.modalSheet}>
+          <View style={styles.modalHandle} />
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Change Password</Text>
-            <Pressable onPress={onClose} hitSlop={12}>
-              <Text style={styles.modalClose}>✕</Text>
+            <Text style={styles.modalTitle}>{t('profile.password.title')}</Text>
+            <Pressable onPress={onClose} hitSlop={12} style={styles.modalCloseBtn}>
+              <Text style={styles.modalCloseText}>✕</Text>
             </Pressable>
           </View>
 
-          <Text style={styles.inputLabel}>Current Password</Text>
+          <Text style={styles.inputLabel}>{t('profile.password.current')}</Text>
           <TextInput style={styles.input} value={currentPassword} onChangeText={setCurrentPassword}
-            placeholder="Current password" placeholderTextColor="#999" secureTextEntry />
+            placeholder={t('profile.password.currentPlaceholder')} placeholderTextColor="#9AA8C0" secureTextEntry />
 
-          <Text style={styles.inputLabel}>New Password</Text>
+          <Text style={styles.inputLabel}>{t('profile.password.new')}</Text>
           <TextInput style={styles.input} value={newPassword} onChangeText={setNewPassword}
-            placeholder="New password (min 6 characters)" placeholderTextColor="#999" secureTextEntry />
+            placeholder={t('profile.password.newPlaceholder')} placeholderTextColor="#9AA8C0" secureTextEntry />
 
-          <Text style={styles.inputLabel}>Confirm New Password</Text>
+          <Text style={styles.inputLabel}>{t('profile.password.confirm')}</Text>
           <TextInput style={styles.input} value={confirmPassword} onChangeText={setConfirmPassword}
-            placeholder="Repeat new password" placeholderTextColor="#999" secureTextEntry />
+            placeholder={t('profile.password.confirmPlaceholder')} placeholderTextColor="#9AA8C0" secureTextEntry />
 
-          <Pressable style={styles.primaryBtn} onPress={handleSave} disabled={loading}>
-            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryBtnText}>Update Password</Text>}
+          <Pressable style={({ pressed }) => [styles.primaryBtn, pressed && { opacity: 0.88 }]} onPress={handleSave} disabled={loading}>
+            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryBtnText}>{t('profile.password.update')}</Text>}
           </Pressable>
         </View>
       </KeyboardAvoidingView>
@@ -193,9 +200,10 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
   );
 }
 
-// ─── Main Profile Screen ──────────────────────────��───────────────────────────
+// ─── Main Profile Screen ──────────────────────────────────────────────────────
 
 export default function ProfileScreen() {
+  const { t } = useTranslation();
   const { user, logout, updateUser } = useAuth();
   const [editVisible, setEditVisible] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -203,12 +211,8 @@ export default function ProfileScreen() {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
-  // ── Sign Out ──
-  const handleLogout = async () => {
-    await logout();
-  };
+  const handleLogout = async () => { await logout(); };
 
-  // ── Delete Account (req 2.2.5) ──
   const confirmDelete = async () => {
     try {
       setDeleteLoading(true);
@@ -218,26 +222,23 @@ export default function ProfileScreen() {
     } catch (err: any) {
       setDeleteLoading(false);
       setDeleteConfirm(false);
-      const msg = err?.response?.data?.message ?? err?.message ?? 'Failed to delete account';
-      Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : String(msg));
+      const msg = err?.response?.data?.message ?? err?.message ?? t('profile.errors.failedDelete');
+      Alert.alert(t('profile.alerts.error'), Array.isArray(msg) ? msg.join('\n') : String(msg));
     }
   };
 
-  // ── Avatar Upload — uses native fetch so React Native handles multipart boundary correctly ──
   const handleChangeAvatar = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
-      Alert.alert('Permission required', 'Allow access to your photo library to change your avatar.');
+      Alert.alert(t('profile.errors.permissionRequired'), t('profile.errors.photoLibraryPermission'));
       return;
     }
-
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.8,
     });
-
     if (result.canceled) return;
 
     const asset = result.assets[0];
@@ -264,17 +265,17 @@ export default function ProfileScreen() {
       const data = await response.json();
       updateUser({ profileImageUrl: data.profileImageUrl });
     } catch (err: any) {
-      Alert.alert('Upload failed', err.message ?? 'Something went wrong');
+      Alert.alert(t('profile.errors.uploadFailed'), err.message ?? 'Something went wrong');
     } finally {
       setAvatarLoading(false);
     }
   };
 
   const handleRemoveAvatar = async () => {
-    Alert.alert('Remove Avatar', 'Remove your profile picture?', [
-      { text: 'Cancel', style: 'cancel' },
+    Alert.alert(t('profile.alerts.removeAvatar'), t('profile.alerts.removeAvatarConfirm'), [
+      { text: t('profile.alerts.cancel'), style: 'cancel' },
       {
-        text: 'Remove',
+        text: t('profile.alerts.remove'),
         style: 'destructive',
         onPress: async () => {
           try {
@@ -282,7 +283,7 @@ export default function ProfileScreen() {
             await client.delete('/users/me/avatar');
             updateUser({ profileImageUrl: null });
           } catch {
-            Alert.alert('Error', 'Failed to remove avatar');
+            Alert.alert(t('profile.alerts.error'), t('profile.errors.failedRemoveAvatar'));
           } finally {
             setAvatarLoading(false);
           }
@@ -294,24 +295,29 @@ export default function ProfileScreen() {
   const initials = `${user?.firstName?.[0] ?? ''}${user?.lastName?.[0] ?? ''}`.toUpperCase();
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
       {/* ── Header ── */}
       <View style={styles.header}>
         <Pressable style={styles.avatarWrapper} onPress={handleChangeAvatar} disabled={avatarLoading}>
           {avatarLoading ? (
-            <View style={styles.avatar}><ActivityIndicator color="#1a3a6b" /></View>
+            <View style={styles.avatarRing}><ActivityIndicator color="#C9A84C" /></View>
           ) : user?.profileImageUrl ? (
-            <Image source={{ uri: user.profileImageUrl }} style={styles.avatarImage} contentFit="cover" />
+            <View style={styles.avatarRing}>
+              <Image source={{ uri: user.profileImageUrl }} style={styles.avatarImage} contentFit="cover" />
+            </View>
           ) : (
-            <View style={styles.avatar}><Text style={styles.avatarText}>{initials}</Text></View>
+            <View style={[styles.avatarRing, styles.avatarInitialsRing]}>
+              <Text style={styles.avatarInitials}>{initials}</Text>
+            </View>
           )}
-          <View style={styles.avatarBadge}>
-            <Text style={styles.avatarBadgeText}>📷</Text>
+          <View style={styles.cameraPin}>
+            <Text style={styles.cameraPinText}>📷</Text>
           </View>
         </Pressable>
 
         <Text style={styles.name}>{user?.firstName} {user?.lastName}</Text>
-        <Text style={styles.email}>{user?.email}</Text>
+        <Text style={styles.emailText}>{user?.email}</Text>
+
         {user?.kashrutLevel && user.kashrutLevel !== 'none' && (
           <View style={styles.kashrutBadge}>
             <Text style={styles.kashrutBadgeText}>
@@ -321,53 +327,69 @@ export default function ProfileScreen() {
         )}
 
         {user?.profileImageUrl && (
-          <Pressable onPress={handleRemoveAvatar} style={styles.removeAvatarBtn}>
-            <Text style={styles.removeAvatarText}>Remove photo</Text>
+          <Pressable onPress={handleRemoveAvatar} style={styles.removePhotoBtn}>
+            <Text style={styles.removePhotoText}>{t('profile.removePhoto')}</Text>
           </Pressable>
         )}
       </View>
 
-      {/* ── Menu ── */}
+      {/* ── Menu section ── */}
       <View style={styles.section}>
         <Pressable style={styles.row} onPress={() => setEditVisible(true)}>
-          <Text style={styles.rowIcon}>👤</Text>
-          <Text style={styles.rowLabel}>Edit Profile</Text>
-          <Text style={styles.rowArrow}>›</Text>
+          <View style={[styles.rowIconBox, { backgroundColor: '#EEF2FF' }]}>
+            <Text style={styles.rowIconText}>👤</Text>
+          </View>
+          <Text style={styles.rowLabel}>{t('profile.editProfile')}</Text>
+          <Text style={styles.rowChevron}>›</Text>
         </Pressable>
+
+        <View style={styles.rowDivider} />
+
         <Pressable style={styles.row} onPress={() => setPasswordVisible(true)}>
-          <Text style={styles.rowIcon}>🔒</Text>
-          <Text style={styles.rowLabel}>Change Password</Text>
-          <Text style={styles.rowArrow}>›</Text>
+          <View style={[styles.rowIconBox, { backgroundColor: '#FFF3E0' }]}>
+            <Text style={styles.rowIconText}>🔒</Text>
+          </View>
+          <Text style={styles.rowLabel}>{t('profile.changePassword')}</Text>
+          <Text style={styles.rowChevron}>›</Text>
         </Pressable>
+
+        <View style={styles.rowDivider} />
+
+        <View style={styles.row}>
+          <View style={[styles.rowIconBox, { backgroundColor: '#E8F5E9' }]}>
+            <Text style={styles.rowIconText}>🌐</Text>
+          </View>
+          <Text style={styles.rowLabel}>{t('profile.language')}</Text>
+          <LanguageSwitcher />
+        </View>
       </View>
 
-      {/* ── Sign Out ── */}
-      <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout} activeOpacity={0.7}>
-        <Text style={styles.logoutText}>Sign Out</Text>
+      {/* ── Sign out ── */}
+      <TouchableOpacity style={styles.signOutBtn} onPress={handleLogout} activeOpacity={0.75}>
+        <Text style={styles.signOutText}>{t('profile.signOut')}</Text>
       </TouchableOpacity>
 
-      {/* ── Delete Account (req 2.2.5) ── */}
+      {/* ── Delete account ── */}
       {!deleteConfirm ? (
-        <TouchableOpacity style={styles.deleteBtn} onPress={() => setDeleteConfirm(true)} activeOpacity={0.7}>
-          <Text style={styles.deleteText}>Delete Account</Text>
+        <TouchableOpacity style={styles.deleteLink} onPress={() => setDeleteConfirm(true)} activeOpacity={0.6}>
+          <Text style={styles.deleteLinkText}>{t('profile.deleteAccount')}</Text>
         </TouchableOpacity>
       ) : (
-        <View style={styles.deleteConfirmBox}>
-          <Text style={styles.deleteConfirmText}>Permanently delete your account?{'\n'}This cannot be undone.</Text>
-          <View style={styles.deleteConfirmRow}>
+        <View style={styles.deleteBox}>
+          <Text style={styles.deleteBoxText}>{t('profile.deleteConfirm.text')}</Text>
+          <View style={styles.deleteBoxRow}>
             <TouchableOpacity style={styles.deleteCancelBtn} onPress={() => setDeleteConfirm(false)}>
-              <Text style={styles.deleteCancelText}>Cancel</Text>
+              <Text style={styles.deleteCancelText}>{t('profile.deleteConfirm.cancel')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.deleteConfirmBtn} onPress={confirmDelete} disabled={deleteLoading}>
               {deleteLoading
                 ? <ActivityIndicator color="#fff" size="small" />
-                : <Text style={styles.deleteConfirmBtnText}>Yes, Delete</Text>}
+                : <Text style={styles.deleteConfirmText}>{t('profile.deleteConfirm.confirm')}</Text>}
             </TouchableOpacity>
           </View>
         </View>
       )}
 
-      {/* ── Modals ── */}
       <EditProfileModal
         visible={editVisible}
         onClose={() => setEditVisible(false)}
@@ -382,48 +404,193 @@ export default function ProfileScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f0f4ff' },
-  header: { backgroundColor: '#1a3a6b', paddingTop: 70, paddingBottom: 32, alignItems: 'center' },
-  avatarWrapper: { position: 'relative', marginBottom: 12 },
-  avatar: { width: 88, height: 88, borderRadius: 44, backgroundColor: '#a8c4e8', justifyContent: 'center', alignItems: 'center' },
-  avatarImage: { width: 88, height: 88, borderRadius: 44 },
-  avatarText: { fontSize: 30, fontWeight: '700', color: '#1a3a6b' },
-  avatarBadge: { position: 'absolute', bottom: 0, right: 0, backgroundColor: '#fff', borderRadius: 12, width: 26, height: 26, justifyContent: 'center', alignItems: 'center' },
-  avatarBadgeText: { fontSize: 14 },
-  name: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  email: { fontSize: 14, color: '#a8c4e8' },
-  removeAvatarBtn: { marginTop: 10 },
-  removeAvatarText: { color: '#ffaaaa', fontSize: 13 },
-  section: { backgroundColor: '#fff', borderRadius: 16, margin: 16, overflow: 'hidden' },
-  row: { flexDirection: 'row', alignItems: 'center', padding: 16, borderBottomWidth: 1, borderBottomColor: '#f0f4ff' },
-  rowIcon: { fontSize: 20, marginRight: 14 },
-  rowLabel: { flex: 1, fontSize: 16, color: '#1a1a2e' },
-  rowArrow: { fontSize: 20, color: '#bbb' },
-  logoutBtn: { marginHorizontal: 16, marginTop: 16, backgroundColor: '#fff', borderRadius: 12, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
-  logoutText: { color: '#e53935', fontSize: 16, fontWeight: '600' },
-  deleteBtn: { marginHorizontal: 16, marginTop: 8, marginBottom: 8, padding: 12, alignItems: 'center' },
-  deleteText: { color: '#bbb', fontSize: 13, textDecorationLine: 'underline' },
-  deleteConfirmBox: { margin: 16, backgroundColor: '#fff0f0', borderRadius: 12, padding: 16, borderWidth: 1, borderColor: '#ffcccc' },
-  deleteConfirmText: { fontSize: 14, color: '#c00', textAlign: 'center', marginBottom: 14, lineHeight: 20 },
-  deleteConfirmRow: { flexDirection: 'row', gap: 10 },
-  deleteCancelBtn: { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#f0f4ff', alignItems: 'center' },
-  deleteCancelText: { fontSize: 15, fontWeight: '600', color: '#1a3a6b' },
-  deleteConfirmBtn: { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#e53935', alignItems: 'center' },
-  deleteConfirmBtnText: { fontSize: 15, fontWeight: '600', color: '#fff' },
-  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  modalSheet: { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
-  modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
-  modalTitle: { fontSize: 20, fontWeight: '700', color: '#1a3a6b' },
-  modalClose: { fontSize: 18, color: '#999' },
-  inputLabel: { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6, marginTop: 4 },
-  input: { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, fontSize: 16, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0', color: '#1a1a2e' },
-  primaryBtn: { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
-  primaryBtnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
-  kashrutBadge: { marginTop: 8, backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 12, paddingHorizontal: 12, paddingVertical: 4 },
-  kashrutBadgeText: { color: '#fff', fontSize: 13, fontWeight: '600' },
-  kashrutRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 14 },
-  kashrutChip: { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 10, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  kashrutChipActive: { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  kashrutChipText: { fontSize: 13, color: '#555' },
-  kashrutChipTextActive: { color: '#fff', fontWeight: '600' },
+  container: { flex: 1, backgroundColor: '#F2F5FB' },
+
+  // ── Header ──
+  header: {
+    backgroundColor: '#0C2461',
+    paddingTop: 72,
+    paddingBottom: 36,
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  avatarWrapper: { position: 'relative', marginBottom: 14 },
+  avatarRing: {
+    width: 96,
+    height: 96,
+    borderRadius: 48,
+    borderWidth: 3,
+    borderColor: '#C9A84C',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  avatarInitialsRing: { backgroundColor: 'rgba(201,168,76,0.18)' },
+  avatarImage: { width: 90, height: 90, borderRadius: 45 },
+  avatarInitials: { fontSize: 32, fontWeight: '700', color: '#C9A84C' },
+  cameraPin: {
+    position: 'absolute',
+    bottom: 2,
+    right: 0,
+    backgroundColor: '#0C2461',
+    borderRadius: 13,
+    width: 26,
+    height: 26,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#C9A84C',
+  },
+  cameraPinText: { fontSize: 12 },
+  name: { fontSize: 22, fontWeight: '800', color: '#fff', marginBottom: 5, letterSpacing: 0.2 },
+  emailText: { fontSize: 13, color: 'rgba(255,255,255,0.52)' },
+  kashrutBadge: {
+    marginTop: 10,
+    backgroundColor: 'rgba(201,168,76,0.20)',
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 5,
+    borderWidth: 1,
+    borderColor: 'rgba(201,168,76,0.40)',
+  },
+  kashrutBadgeText: { color: '#C9A84C', fontSize: 12, fontWeight: '700' },
+  removePhotoBtn: { marginTop: 12 },
+  removePhotoText: { color: 'rgba(255,255,255,0.40)', fontSize: 12, textDecorationLine: 'underline' },
+
+  // ── Section ──
+  section: {
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    marginHorizontal: 16,
+    marginTop: 20,
+    shadowColor: '#0C2461',
+    shadowOpacity: 0.06,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 3,
+    overflow: 'hidden',
+  },
+  row: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 14 },
+  rowDivider: { height: 1, backgroundColor: '#F2F5FB', marginHorizontal: 18 },
+  rowIconBox: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14,
+  },
+  rowIconText: { fontSize: 18 },
+  rowLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: '#0C1A2E' },
+  rowChevron: { fontSize: 20, color: '#B0BAC8', fontWeight: '500' },
+
+  // ── Buttons ──
+  signOutBtn: {
+    marginHorizontal: 16,
+    marginTop: 16,
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    paddingVertical: 16,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: '#FFCDD2',
+    shadowColor: '#D93025',
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  signOutText: { color: '#D93025', fontSize: 15, fontWeight: '700' },
+
+  deleteLink: { alignItems: 'center', paddingVertical: 14, marginTop: 4 },
+  deleteLinkText: { color: '#B0BAC8', fontSize: 13, textDecorationLine: 'underline' },
+
+  deleteBox: {
+    margin: 16,
+    backgroundColor: '#FFF5F5',
+    borderRadius: 16,
+    padding: 18,
+    borderWidth: 1.5,
+    borderColor: '#FFCDD2',
+  },
+  deleteBoxText: { fontSize: 14, color: '#C62828', textAlign: 'center', marginBottom: 16, lineHeight: 21 },
+  deleteBoxRow: { flexDirection: 'row', gap: 10 },
+  deleteCancelBtn: { flex: 1, paddingVertical: 13, borderRadius: 12, backgroundColor: '#F2F5FB', alignItems: 'center' },
+  deleteCancelText: { fontSize: 14, fontWeight: '700', color: '#0C2461' },
+  deleteConfirmBtn: { flex: 1, paddingVertical: 13, borderRadius: 12, backgroundColor: '#D93025', alignItems: 'center' },
+  deleteConfirmText: { fontSize: 14, fontWeight: '700', color: '#fff' },
+
+  // ── Modals ──
+  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(12,36,97,0.45)' },
+  modalSheet: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    padding: 24,
+    paddingBottom: 44,
+  },
+  modalHandle: {
+    width: 36,
+    height: 4,
+    backgroundColor: '#DFE6F5',
+    borderRadius: 2,
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 },
+  modalTitle: { fontSize: 20, fontWeight: '800', color: '#0C1A2E' },
+  modalCloseBtn: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#F2F5FB',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalCloseText: { fontSize: 14, color: '#556080' },
+
+  inputLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#556080',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+    marginBottom: 8,
+  },
+  input: {
+    backgroundColor: '#F2F5FB',
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 15,
+    fontSize: 15,
+    color: '#0C1A2E',
+    marginBottom: 18,
+    borderWidth: 1.5,
+    borderColor: '#E1E8F5',
+  },
+  primaryBtn: {
+    backgroundColor: '#0C2461',
+    borderRadius: 14,
+    paddingVertical: 17,
+    alignItems: 'center',
+    marginTop: 4,
+    shadowColor: '#0C2461',
+    shadowOpacity: 0.28,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
+  },
+  primaryBtnText: { color: '#fff', fontSize: 16, fontWeight: '700', letterSpacing: 0.3 },
+
+  kashrutRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 18 },
+  kashrutChip: {
+    paddingHorizontal: 13,
+    paddingVertical: 8,
+    borderRadius: 10,
+    backgroundColor: '#F2F5FB',
+    borderWidth: 1.5,
+    borderColor: '#E1E8F5',
+  },
+  kashrutChipActive: { backgroundColor: '#0C2461', borderColor: '#0C2461' },
+  kashrutChipText: { fontSize: 13, color: '#556080', fontWeight: '500' },
+  kashrutChipTextActive: { color: '#fff', fontWeight: '700' },
 });

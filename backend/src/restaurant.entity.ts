@@ -54,6 +54,40 @@ export class Restaurant {
   @Column({ name: 'is_kosher', default: false })
   isKosher: boolean;
 
+  // ── Enrichment fields ──────────────────────────────────────────────────────
+
+  @Column({ name: 'website_url', type: 'varchar', nullable: true })
+  websiteUrl?: string;
+
+  @Column({ name: 'website_text', type: 'text', nullable: true })
+  websiteText?: string;
+
+  @Column({ name: 'website_opening_hours', type: 'text', nullable: true })
+  websiteOpeningHours?: string;
+
+  @Column({ name: 'website_last_fetched_at', type: 'timestamptz', nullable: true })
+  websiteLastFetchedAt?: Date;
+
+  @Column({ name: 'website_fetch_status', type: 'varchar', length: 32, nullable: true })
+  websiteFetchStatus?: string;
+
+  @Column({ name: 'enrichment_source_summary', type: 'text', nullable: true })
+  enrichmentSourceSummary?: string;
+
+  // ── Kosher validation (legacy columns — ikr.org.il data is pre-validated) ──
+
+  @Column({ name: 'kosher_validation_status', type: 'varchar', length: 32, nullable: true })
+  kosherValidationStatus?: string;
+
+  @Column({ name: 'kosher_validation_confidence', type: 'decimal', precision: 4, scale: 3, nullable: true })
+  kosherValidationConfidence?: number;
+
+  @Column({ name: 'kosher_validation_reason', type: 'text', nullable: true })
+  kosherValidationReason?: string;
+
+  @Column({ name: 'kosher_validated_at', type: 'timestamptz', nullable: true })
+  kosherValidatedAt?: Date;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
