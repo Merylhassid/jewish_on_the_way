@@ -84,7 +84,6 @@ export class PlacesService {
       const { elLat, elLng } = this.osmCoords(el);
       if (!elLat || !elLng) continue;
 
-      const externalId = `osm:${el.type}:${el.id}`;
       const name = el.tags?.name || el.tags?.['name:en'] || 'Synagogue';
 
       // Skip if it looks like a Chabad house
@@ -92,21 +91,12 @@ export class PlacesService {
         (el.tags?.operator ?? '').toLowerCase().includes('chabad');
       if (isChabad) continue;
 
-      const exists = await this.synagoguesRepo.findOne({ where: { externalId } });
+      const exists = await this.synagoguesRepo.findOne({ where: { name, destination: { id: destination.id } } });
       if (exists) continue;
-
-      const address = this.buildOsmAddress(el.tags);
-      const type = this.detectSynagogueType(el.tags);
 
       await this.synagoguesRepo.save(
         this.synagoguesRepo.create({
-          externalId,
           name,
-          type,
-          address,
-          openingHours: el.tags?.opening_hours,
-          phoneNumber: el.tags?.phone || el.tags?.['contact:phone'],
-          website: el.tags?.website || el.tags?.['contact:website'],
           location: { type: 'Point', coordinates: [elLng, elLat] },
           destination,
         }),
@@ -140,23 +130,14 @@ export class PlacesService {
       const { elLat, elLng } = this.osmCoords(el);
       if (!elLat || !elLng) continue;
 
-      const externalId = `osm:${el.type}:${el.id}`;
       const name = el.tags?.name || el.tags?.['name:en'] || 'Chabad House';
 
-      const exists = await this.synagoguesRepo.findOne({ where: { externalId } });
+      const exists = await this.synagoguesRepo.findOne({ where: { name, destination: { id: destination.id } } });
       if (exists) continue;
-
-      const address = this.buildOsmAddress(el.tags);
 
       await this.synagoguesRepo.save(
         this.synagoguesRepo.create({
-          externalId,
           name,
-          type: 'chabad',
-          address,
-          openingHours: el.tags?.opening_hours,
-          phoneNumber: el.tags?.phone || el.tags?.['contact:phone'],
-          website: el.tags?.website || el.tags?.['contact:website'],
           location: { type: 'Point', coordinates: [elLng, elLat] },
           destination,
         }),

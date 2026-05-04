@@ -36,8 +36,8 @@ export default function RegisterScreen() {
       await register(email.trim(), password, firstName.trim(), lastName.trim());
       router.replace('/(tabs)');
     } catch (e: any) {
-      const errorMessage = e?.message || e?.response?.data?.message || 'Registration failed';
-      Alert.alert('Registration Failed', errorMessage);
+      const msg = e?.message || e?.response?.data?.message || 'Registration failed';
+      Alert.alert('Registration Failed', msg);
     } finally {
       setLoading(false);
     }
@@ -45,63 +45,93 @@ export default function RegisterScreen() {
 
   return (
     <KeyboardAvoidingView
-      style={styles.container}
+      style={styles.root}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView contentContainerStyle={styles.inner} keyboardShouldPersistTaps="handled">
-        <Text style={styles.logo}>✡️</Text>
-        <Text style={styles.title}>Create Account</Text>
-        <Text style={styles.subtitle}>Join Jewish On The Way</Text>
-
-        <View style={styles.row}>
-          <TextInput
-            style={[styles.input, styles.half]}
-            placeholder="First name"
-            placeholderTextColor="#999"
-            value={firstName}
-            onChangeText={setFirstName}
-          />
-          <TextInput
-            style={[styles.input, styles.half]}
-            placeholder="Last name"
-            placeholderTextColor="#999"
-            value={lastName}
-            onChangeText={setLastName}
-          />
+      <ScrollView
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        {/* ── Hero ── */}
+        <View style={styles.hero}>
+          <View style={styles.logoRing}>
+            <Text style={styles.logoEmoji}>✡️</Text>
+          </View>
+          <Text style={styles.appName}>Jewish On The Way</Text>
+          <Text style={styles.appTagline}>Your Jewish travel companion</Text>
         </View>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#999"
-          value={email}
-          onChangeText={setEmail}
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password (min. 6 characters)"
-          placeholderTextColor="#999"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
 
-        <Pressable style={styles.button} onPress={handleRegister} disabled={loading}>
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <Text style={styles.buttonText}>Create Account</Text>
-          )}
-        </Pressable>
+        {/* ── Form sheet ── */}
+        <View style={styles.sheet}>
+          <Text style={styles.sheetTitle}>Create Account</Text>
+          <Text style={styles.sheetSub}>Join the community</Text>
 
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Already have an account? </Text>
-          <Link href="/(auth)/login" asChild>
-            <Pressable>
-              <Text style={styles.linkBold}>Sign In</Text>
-            </Pressable>
-          </Link>
+          <View style={styles.nameRow}>
+            <View style={styles.halfField}>
+              <Text style={styles.label}>FIRST NAME</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="First name"
+                placeholderTextColor="#9AA8C0"
+                value={firstName}
+                onChangeText={setFirstName}
+                autoCapitalize="words"
+              />
+            </View>
+            <View style={styles.halfField}>
+              <Text style={styles.label}>LAST NAME</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Last name"
+                placeholderTextColor="#9AA8C0"
+                value={lastName}
+                onChangeText={setLastName}
+                autoCapitalize="words"
+              />
+            </View>
+          </View>
+
+          <Text style={styles.label}>EMAIL</Text>
+          <TextInput
+            style={styles.inputFull}
+            placeholder="you@example.com"
+            placeholderTextColor="#9AA8C0"
+            value={email}
+            onChangeText={setEmail}
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
+
+          <Text style={styles.label}>PASSWORD</Text>
+          <TextInput
+            style={styles.inputFull}
+            placeholder="Min. 6 characters"
+            placeholderTextColor="#9AA8C0"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+
+          <Pressable
+            style={({ pressed }) => [styles.primaryBtn, pressed && { opacity: 0.88 }]}
+            onPress={handleRegister}
+            disabled={loading}
+          >
+            {loading
+              ? <ActivityIndicator color="#fff" />
+              : <Text style={styles.primaryBtnText}>Create Account</Text>}
+          </Pressable>
+
+          <View style={styles.footerRow}>
+            <Text style={styles.footerText}>Already have an account? </Text>
+            <Link href="/(auth)/login" asChild>
+              <Pressable>
+                <Text style={styles.footerLink}>Sign In</Text>
+              </Pressable>
+            </Link>
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -109,49 +139,90 @@ export default function RegisterScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f0f4ff' },
-  inner: {
-    flexGrow: 1,
+  root: { flex: 1, backgroundColor: '#0C2461' },
+
+  hero: {
+    paddingTop: 72,
+    paddingBottom: 38,
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  logoRing: {
+    width: 84,
+    height: 84,
+    borderRadius: 42,
+    backgroundColor: 'rgba(255,255,255,0.13)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(255,255,255,0.28)',
     justifyContent: 'center',
-    paddingHorizontal: 28,
-    paddingVertical: 60,
+    alignItems: 'center',
+    marginBottom: 18,
   },
-  logo: { fontSize: 56, textAlign: 'center', marginBottom: 12 },
-  title: {
-    fontSize: 26,
+  logoEmoji: { fontSize: 40 },
+  appName: { fontSize: 24, fontWeight: '800', color: '#fff', textAlign: 'center', letterSpacing: 0.2 },
+  appTagline: { fontSize: 13, color: 'rgba(255,255,255,0.52)', marginTop: 7 },
+
+  sheet: {
+    flex: 1,
+    backgroundColor: '#F2F5FB',
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
+    paddingHorizontal: 26,
+    paddingTop: 36,
+    paddingBottom: 60,
+  },
+  sheetTitle: { fontSize: 24, fontWeight: '800', color: '#0C1A2E', marginBottom: 4 },
+  sheetSub: { fontSize: 14, color: '#556080', marginBottom: 28 },
+
+  nameRow: { flexDirection: 'row', gap: 12 },
+  halfField: { flex: 1 },
+
+  label: {
+    fontSize: 11,
     fontWeight: '700',
-    color: '#1a3a6b',
-    textAlign: 'center',
-    marginBottom: 4,
+    color: '#556080',
+    letterSpacing: 0.9,
+    textTransform: 'uppercase',
+    marginBottom: 8,
   },
-  subtitle: {
-    fontSize: 15,
-    color: '#666',
-    textAlign: 'center',
-    marginBottom: 36,
-  },
-  row: { flexDirection: 'row', gap: 10 },
-  half: { flex: 1 },
   input: {
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    fontSize: 16,
-    marginBottom: 14,
-    borderWidth: 1,
-    borderColor: '#dde3f0',
-    color: '#1a1a2e',
-  },
-  button: {
-    backgroundColor: '#1a3a6b',
-    borderRadius: 12,
-    padding: 16,
-    alignItems: 'center',
-    marginTop: 6,
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 15,
+    fontSize: 15,
+    color: '#0C1A2E',
+    borderWidth: 1.5,
+    borderColor: '#E1E8F5',
     marginBottom: 20,
   },
-  buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
-  footer: { flexDirection: 'row', justifyContent: 'center' },
-  footerText: { color: '#666', fontSize: 14 },
-  linkBold: { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
+  inputFull: {
+    backgroundColor: '#fff',
+    borderRadius: 14,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    fontSize: 15,
+    color: '#0C1A2E',
+    borderWidth: 1.5,
+    borderColor: '#E1E8F5',
+    marginBottom: 22,
+  },
+
+  primaryBtn: {
+    backgroundColor: '#0C2461',
+    borderRadius: 14,
+    paddingVertical: 18,
+    alignItems: 'center',
+    marginBottom: 20,
+    shadowColor: '#0C2461',
+    shadowOpacity: 0.32,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 7,
+  },
+  primaryBtnText: { color: '#fff', fontSize: 16, fontWeight: '700', letterSpacing: 0.4 },
+
+  footerRow: { flexDirection: 'row', justifyContent: 'center' },
+  footerText: { color: '#556080', fontSize: 14 },
+  footerLink: { color: '#0C2461', fontWeight: '700', fontSize: 14 },
 });

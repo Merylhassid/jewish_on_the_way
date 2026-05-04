@@ -1,5 +1,6 @@
 import * as Location from 'expo-location';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Animated,
   StyleSheet,
@@ -7,13 +8,11 @@ import {
   View,
 } from 'react-native';
 
-// Fixed prayer target
 const JERUSALEM = { lat: 31.7767, lng: 35.2345 };
 
 const toRad = (d: number) => (d * Math.PI) / 180;
 const toDeg = (r: number) => (r * 180) / Math.PI;
 
-/** Great-circle bearing from (lat1,lng1) toward Jerusalem, 0–360° */
 function calcBearing(lat1: number, lng1: number): number {
   const dL = toRad(JERUSALEM.lng - lng1);
   const φ1 = toRad(lat1);
@@ -23,7 +22,6 @@ function calcBearing(lat1: number, lng1: number): number {
   return ((toDeg(Math.atan2(x, y)) + 360) % 360);
 }
 
-/** Haversine distance in km */
 function calcDistance(lat1: number, lng1: number): number {
   const R = 6371;
   const dLat = toRad(JERUSALEM.lat - lat1);
@@ -34,20 +32,17 @@ function calcDistance(lat1: number, lng1: number): number {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-/** Take the short path between two angles (avoids 359°→1° spinning backwards) */
 function shortestAngle(prev: number, next: number): number {
   let diff = ((next - prev) % 360 + 360) % 360;
   if (diff > 180) diff -= 360;
   return prev + diff;
 }
 
-// 16-point compass rose label
 const COMPASS_DIRS = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
 function headingLabel(deg: number) {
   return COMPASS_DIRS[Math.round(deg / 22.5) % 16];
 }
 
-// Cardinal and ordinal positions for the rotating disc
 const DISC_LABELS: { label: string; angle: number; isCardinal: boolean }[] = [
   { label: 'N', angle: 0,   isCardinal: true  },
   { label: 'NE', angle: 45,  isCardinal: false },
@@ -61,10 +56,11 @@ const DISC_LABELS: { label: string; angle: number; isCardinal: boolean }[] = [
 
 const DISC_SIZE   = 260;
 const DISC_RADIUS = DISC_SIZE / 2;
-const LABEL_RADIUS = DISC_RADIUS - 26; // how far labels sit from center
-const NEEDLE_LEN  = 88;                // half-length of needle (each tip)
+const LABEL_RADIUS = DISC_RADIUS - 26;
+const NEEDLE_LEN  = 88;
 
 export default function CompassScreen() {
+  const { t } = useTranslation();
   const [permStatus, setPermStatus]   = useState<'unknown' | 'denied' | 'granted'>('unknown');
   const [location, setLocation]       = useState<{ lat: number; lng: number } | null>(null);
   const [heading, setHeading]         = useState(0);
@@ -75,7 +71,6 @@ export default function CompassScreen() {
   const needleAnim = useRef(new Animated.Value(0)).current;
   const prevDisc   = useRef(0);
   const prevNeedle = useRef(0);
-
   const latestBearing = useRef<number | null>(null);
 
   useEffect(() => {
@@ -86,7 +81,6 @@ export default function CompassScreen() {
       if (status !== 'granted') { setPermStatus('denied'); return; }
       setPermStatus('granted');
 
-      // One-shot GPS
       const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
       const lat = pos.coords.latitude;
       const lng = pos.coords.longitude;
@@ -97,17 +91,14 @@ export default function CompassScreen() {
       setBearing(b);
       setDistance(calcDistance(lat, lng));
 
-      // Continuous heading
       sub = await Location.watchHeadingAsync((h) => {
-        const mag = h.magHeading ?? 0;
+        const mag = h.magHeading ?? h.trueHeading ?? 0;
         setHeading(mag);
 
-        // Disc rotates so N always points to actual magnetic north
         const nextDisc = shortestAngle(prevDisc.current, -mag);
         prevDisc.current = nextDisc;
         Animated.spring(discAnim, { toValue: nextDisc, speed: 20, bounciness: 2, useNativeDriver: true }).start();
 
-        // Needle points to Jerusalem
         const bear = latestBearing.current ?? 0;
         const nextNeedle = shortestAngle(prevNeedle.current, bear - mag);
         prevNeedle.current = nextNeedle;
@@ -119,7 +110,6 @@ export default function CompassScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Re-animate needle when bearing changes
   useEffect(() => {
     if (bearing === null) return;
     latestBearing.current = bearing;
@@ -129,55 +119,60 @@ export default function CompassScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bearing]);
 
-  const discRotate   = discAnim.interpolate({ inputRange: [-720, 720], outputRange: ['-720deg', '720deg'] });
-  const needleRotate = needleAnim.interpolate({ inputRange: [-720, 720], outputRange: ['-720deg', '720deg'] });
+  const discRotate   = discAnim.interpolate({ inputRange: [-36000, 36000], outputRange: ['-36000deg', '36000deg'] });
+  const needleRotate = needleAnim.interpolate({ inputRange: [-36000, 36000], outputRange: ['-36000deg', '36000deg'] });
 
-  // ── Permission denied ──────────────────────────────────────────────────────
+  // ── Permission denied ──
   if (permStatus === 'denied') {
     return (
-      <View style={[styles.container, styles.centered]}>
-        <Text style={styles.bigIcon}>📍</Text>
-        <Text style={styles.permTitle}>Location Required</Text>
-        <Text style={styles.permSub}>
-          Enable location permission in your device settings to use the prayer compass.
-        </Text>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerIcon}>✡</Text>
+          <Text style={styles.headerTitle}>{t('compass.title')}</Text>
+        </View>
+        <View style={styles.stateBox}>
+          <Text style={styles.stateEmoji}>📍</Text>
+          <Text style={styles.stateTitle}>{t('compass.permTitle')}</Text>
+          <Text style={styles.stateSub}>{t('compass.permSub')}</Text>
+        </View>
       </View>
     );
   }
 
-  // ── Loading / acquiring GPS ────────────────────────────────────────────────
+  // ── Loading ──
   if (permStatus === 'unknown' || !location) {
     return (
-      <View style={[styles.container, styles.centered]}>
-        <Text style={styles.bigIcon}>🧭</Text>
-        <Text style={styles.loadingText}>Acquiring GPS fix…</Text>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerIcon}>✡</Text>
+          <Text style={styles.headerTitle}>{t('compass.title')}</Text>
+        </View>
+        <View style={styles.stateBox}>
+          <Text style={styles.stateEmoji}>🧭</Text>
+          <Text style={styles.loadingText}>{t('compass.acquiring')}</Text>
+        </View>
       </View>
     );
   }
 
-  // ── Main compass UI ────────────────────────────────────────────────────────
+  // ── Main ──
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerIcon}>✡</Text>
-        <Text style={styles.headerTitle}>Prayer Direction</Text>
-        <Text style={styles.headerSub}>Compass pointing toward Jerusalem</Text>
+        <Text style={styles.headerTitle}>{t('compass.title')}</Text>
+        <Text style={styles.headerSub}>{t('compass.subtitle')}</Text>
       </View>
 
       {/* Compass */}
       <View style={styles.compassOuter}>
-        {/* Shadow / background disc */}
         <View style={styles.discBackground} />
 
-        {/* Rotating compass rose (N/E/S/W labels + tick ring) */}
         <Animated.View style={[styles.disc, { transform: [{ rotate: discRotate }] }]}>
-          {/* Outer tick ring */}
           <View style={styles.tickRing} />
-
-          {/* Cardinal & ordinal labels */}
           {DISC_LABELS.map(({ label, angle, isCardinal }) => {
-            const rad = toRad(angle - 90); // -90 so 0° is at top
+            const rad = toRad(angle - 90);
             return (
               <Text
                 key={label}
@@ -198,20 +193,15 @@ export default function CompassScreen() {
           })}
         </Animated.View>
 
-        {/* Jerusalem needle (animated) — star rides at the gold tip */}
         <Animated.View
           style={[styles.needleContainer, { transform: [{ rotate: needleRotate }] }]}
           pointerEvents="none"
         >
-          {/* Star of David sits above the gold triangle tip */}
           <Text style={styles.starIcon}>✡</Text>
-          {/* Gold tip → Jerusalem */}
           <View style={styles.tipJerusalem} />
-          {/* Grey tail */}
           <View style={styles.tipSouth} />
         </Animated.View>
 
-        {/* Centre pin */}
         <View style={styles.centerPin} />
       </View>
 
@@ -219,7 +209,7 @@ export default function CompassScreen() {
       <View style={styles.infoRow}>
         <View style={styles.infoCard}>
           <Text style={styles.infoVal}>{bearing !== null ? `${Math.round(bearing)}°` : '—'}</Text>
-          <Text style={styles.infoLbl}>Bearing</Text>
+          <Text style={styles.infoLbl}>{t('compass.bearing')}</Text>
         </View>
         <View style={styles.infoCard}>
           <Text style={styles.infoVal}>
@@ -229,7 +219,7 @@ export default function CompassScreen() {
                 : `${Math.round(distance)} km`
               : '—'}
           </Text>
-          <Text style={styles.infoLbl}>Distance</Text>
+          <Text style={styles.infoLbl}>{t('compass.distance')}</Text>
         </View>
         <View style={styles.infoCard}>
           <Text style={styles.infoVal}>{Math.round(heading)}°</Text>
@@ -237,34 +227,35 @@ export default function CompassScreen() {
         </View>
       </View>
 
-      {/* Footnote */}
+      {/* Footer */}
       <View style={styles.footer}>
-        <Text style={styles.footerLine}>🟡 Gold needle → Jerusalem</Text>
-        <Text style={styles.footerLine}>Disc rotates to show magnetic north</Text>
-        <Text style={styles.footerCoords}>Jerusalem · 31.7767°N, 35.2345°E</Text>
+        <Text style={styles.footerLine}>{t('compass.goldNeedle')}</Text>
+        <Text style={styles.footerLine}>{t('compass.discRotates')}</Text>
+        <Text style={styles.footerCoords}>{t('compass.coords')}</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:  { flex: 1, backgroundColor: '#f0f4ff' },
-  centered:   { justifyContent: 'center', alignItems: 'center', padding: 32 },
-
-  bigIcon:    { fontSize: 56, marginBottom: 16 },
-  permTitle:  { fontSize: 20, fontWeight: '700', color: '#1a3a6b', marginBottom: 8, textAlign: 'center' },
-  permSub:    { fontSize: 14, color: '#666', textAlign: 'center', lineHeight: 22 },
-  loadingText:{ fontSize: 16, color: '#1a3a6b', fontWeight: '500' },
+  container: { flex: 1, backgroundColor: '#F2F5FB' },
 
   header: {
-    backgroundColor: '#1a3a6b',
+    backgroundColor: '#0C2461',
     paddingTop: 64,
-    paddingBottom: 24,
+    paddingBottom: 26,
     alignItems: 'center',
+    paddingHorizontal: 24,
   },
-  headerIcon:  { fontSize: 30, marginBottom: 4 },
-  headerTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 2 },
-  headerSub:   { fontSize: 13, color: '#a8c4e8' },
+  headerIcon:  { fontSize: 26, color: '#C9A84C', marginBottom: 6 },
+  headerTitle: { fontSize: 22, fontWeight: '800', color: '#fff', marginBottom: 4, letterSpacing: 0.2 },
+  headerSub:   { fontSize: 13, color: 'rgba(255,255,255,0.52)' },
+
+  stateBox: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 36 },
+  stateEmoji: { fontSize: 52, marginBottom: 18 },
+  stateTitle: { fontSize: 20, fontWeight: '700', color: '#0C2461', marginBottom: 10, textAlign: 'center' },
+  stateSub:   { fontSize: 14, color: '#556080', textAlign: 'center', lineHeight: 22 },
+  loadingText:{ fontSize: 16, color: '#556080', fontWeight: '500' },
 
   compassOuter: {
     alignSelf: 'center',
@@ -280,10 +271,10 @@ const styles = StyleSheet.create({
     height: DISC_SIZE,
     borderRadius: DISC_RADIUS,
     backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOpacity: 0.12,
-    shadowRadius: 14,
-    elevation: 5,
+    shadowColor: '#0C2461',
+    shadowOpacity: 0.10,
+    shadowRadius: 18,
+    elevation: 6,
   },
   disc: {
     position: 'absolute',
@@ -298,16 +289,13 @@ const styles = StyleSheet.create({
     width: DISC_SIZE - 8,
     height: DISC_SIZE - 8,
     borderRadius: (DISC_SIZE - 8) / 2,
-    borderWidth: 2,
-    borderColor: '#d0daf0',
+    borderWidth: 1.5,
+    borderColor: '#DFE6F5',
   },
-  dirLabel: {
-    fontWeight: '700',
-    textAlign: 'center',
-  },
-  dirLabelCardinal: { fontSize: 15, color: '#4a6080', width: 16 },
-  dirLabelOrdinal:  { fontSize: 11, color: '#9aadc8', width: 20 },
-  dirLabelN:        { color: '#1a3a6b', fontSize: 17 },
+  dirLabel: { fontWeight: '700', textAlign: 'center' },
+  dirLabelCardinal: { fontSize: 15, color: '#4A5B7A', width: 16 },
+  dirLabelOrdinal:  { fontSize: 11, color: '#9AAAC0', width: 20 },
+  dirLabelN:        { color: '#0C2461', fontSize: 17 },
 
   needleContainer: {
     position: 'absolute',
@@ -315,7 +303,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 8,
   },
-  starIcon: { fontSize: 15, color: '#d4a017', marginBottom: 2 },
+  starIcon: { fontSize: 15, color: '#C9A84C', marginBottom: 2 },
   tipJerusalem: {
     width: 0,
     height: 0,
@@ -324,7 +312,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: NEEDLE_LEN,
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderBottomColor: '#d4a017',
+    borderBottomColor: '#C9A84C',
   },
   tipSouth: {
     width: 0,
@@ -334,41 +322,40 @@ const styles = StyleSheet.create({
     borderTopWidth: NEEDLE_LEN,
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
-    borderTopColor: '#a0b0c8',
+    borderTopColor: '#C0CCDE',
   },
-
   centerPin: {
     position: 'absolute',
     width: 14,
     height: 14,
     borderRadius: 7,
-    backgroundColor: '#1a3a6b',
-    borderWidth: 2,
+    backgroundColor: '#0C2461',
+    borderWidth: 2.5,
     borderColor: '#fff',
     zIndex: 10,
   },
 
   infoRow: {
     flexDirection: 'row',
-    marginHorizontal: 16,
+    marginHorizontal: 20,
     marginTop: 24,
     gap: 10,
   },
   infoCard: {
     flex: 1,
     backgroundColor: '#fff',
-    borderRadius: 14,
-    paddingVertical: 14,
+    borderRadius: 16,
+    paddingVertical: 16,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 1,
+    shadowColor: '#0C2461',
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 2,
   },
-  infoVal: { fontSize: 20, fontWeight: '700', color: '#1a3a6b', marginBottom: 2 },
-  infoLbl: { fontSize: 11, color: '#888', fontWeight: '500' },
+  infoVal: { fontSize: 20, fontWeight: '800', color: '#0C2461', marginBottom: 4 },
+  infoLbl: { fontSize: 11, color: '#8A96B0', fontWeight: '600', letterSpacing: 0.4 },
 
-  footer: { marginTop: 20, alignItems: 'center', paddingHorizontal: 24 },
-  footerLine:   { fontSize: 12, color: '#888', marginBottom: 2 },
-  footerCoords: { fontSize: 11, color: '#bbb', marginTop: 4 },
+  footer: { marginTop: 22, alignItems: 'center', paddingHorizontal: 24 },
+  footerLine:   { fontSize: 12, color: '#8A96B0', marginBottom: 3 },
+  footerCoords: { fontSize: 11, color: '#B0BAC8', marginTop: 4 },
 });
