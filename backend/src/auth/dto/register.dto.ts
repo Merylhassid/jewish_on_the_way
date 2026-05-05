@@ -5,7 +5,12 @@ export class RegisterDto {
   email: string;
 
   @IsString()
-  @MinLength(6)
+  @MinLength(8, {
+    message: 'Password must be at least 8 characters long',
+  })
+  @Matches(/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/, {
+    message: 'Password must contain only English letters and numbers, and include at least one letter and one number',
+  })
   password: string;
 
   @IsString()

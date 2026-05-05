@@ -143,22 +143,64 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
-  const reset = () => { setCurrentPassword(''); setNewPassword(''); setConfirmPassword(''); };
+  // Password validation regex: at least 8 chars, at least one letter and one number, English only
+  const PASSWORD_REGEX = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/;
+
+  const reset = () => {
+    setCurrentPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+    setErrorMsg('');
+    setSuccessMsg('');
+  };
 
   const handleSave = async () => {
-    if (!currentPassword) { Alert.alert(t('profile.alerts.error'), t('profile.errors.enterCurrentPassword')); return; }
-    if (newPassword.length < 6) { Alert.alert(t('profile.alerts.error'), t('profile.errors.passwordMinLength')); return; }
-    if (newPassword !== confirmPassword) { Alert.alert(t('profile.alerts.error'), t('profile.errors.passwordMismatch')); return; }
+    // Clear previous messages
+    setErrorMsg('');
+    setSuccessMsg('');
+
+    // Validation
+    if (!currentPassword) {
+      setErrorMsg(t('profile.errors.enterCurrentPassword'));
+      return;
+    }
+    if (!newPassword) {
+      setErrorMsg(t('profile.password.newRequired') || 'New password is required');
+      return;
+    }
+    if (!confirmPassword) {
+      setErrorMsg(t('profile.password.confirmRequired') || 'Confirm password is required');
+      return;
+    }
+    if (newPassword.length < 8) {
+      setErrorMsg('Password must be at least 8 characters long');
+      return;
+    }
+    if (!PASSWORD_REGEX.test(newPassword)) {
+      setErrorMsg('Password must contain only English letters and numbers, and include at least one letter and one number');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setErrorMsg(t('profile.errors.passwordMismatch'));
+      return;
+    }
+
     try {
       setLoading(true);
       await client.put('/users/me/password', { currentPassword, newPassword });
-      Alert.alert(t('profile.alerts.success'), t('profile.alerts.passwordUpdated'));
-      reset();
-      onClose();
+      setSuccessMsg(t('profile.alerts.passwordUpdated') || 'Password updated successfully');
+      
+      // Auto-close after 1.5 seconds
+      setTimeout(() => {
+        reset();
+        onClose();
+      }, 1500);
     } catch (err: any) {
       const msg = err?.response?.data?.message ?? t('profile.errors.failedChangePassword');
-      Alert.alert(t('profile.alerts.error'), Array.isArray(msg) ? msg.join('\n') : msg);
+      setErrorMsg(Array.isArray(msg) ? msg.join('\n') : msg);
     } finally {
       setLoading(false);
     }
@@ -180,18 +222,57 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
           </View>
 
           <Text style={styles.inputLabel}>{t('profile.password.current')}</Text>
-          <TextInput style={styles.input} value={currentPassword} onChangeText={setCurrentPassword}
-            placeholder={t('profile.password.currentPlaceholder')} placeholderTextColor="#9AA8C0" secureTextEntry />
+          <TextInput
+            style={styles.input}
+            value={currentPassword}
+            onChangeText={setCurrentPassword}
+            placeholder={t('profile.password.currentPlaceholder')}
+            placeholderTextColor="#9AA8C0"
+            secureTextEntry
+            editable={!loading}
+          />
 
           <Text style={styles.inputLabel}>{t('profile.password.new')}</Text>
-          <TextInput style={styles.input} value={newPassword} onChangeText={setNewPassword}
-            placeholder={t('profile.password.newPlaceholder')} placeholderTextColor="#9AA8C0" secureTextEntry />
+          <TextInput
+            style={styles.input}
+            value={newPassword}
+            onChangeText={setNewPassword}
+            placeholder={t('profile.password.newPlaceholder')}
+            placeholderTextColor="#9AA8C0"
+            secureTextEntry
+            editable={!loading}
+          />
 
           <Text style={styles.inputLabel}>{t('profile.password.confirm')}</Text>
-          <TextInput style={styles.input} value={confirmPassword} onChangeText={setConfirmPassword}
-            placeholder={t('profile.password.confirmPlaceholder')} placeholderTextColor="#9AA8C0" secureTextEntry />
+          <TextInput
+            style={styles.input}
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            placeholder={t('profile.password.confirmPlaceholder')}
+            placeholderTextColor="#9AA8C0"
+            secureTextEntry
+            editable={!loading}
+          />
 
-          <Pressable style={({ pressed }) => [styles.primaryBtn, pressed && { opacity: 0.88 }]} onPress={handleSave} disabled={loading}>
+          {/* Error message display */}
+          {errorMsg && (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>{errorMsg}</Text>
+            </View>
+          )}
+
+          {/* Success message display */}
+          {successMsg && (
+            <View style={styles.successContainer}>
+              <Text style={styles.successText}>✓ {successMsg}</Text>
+            </View>
+          )}
+
+          <Pressable
+            style={({ pressed }) => [styles.primaryBtn, pressed && !loading && { opacity: 0.88 }]}
+            onPress={handleSave}
+            disabled={loading || !!successMsg}
+          >
             {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryBtnText}>{t('profile.password.update')}</Text>}
           </Pressable>
         </View>
@@ -580,6 +661,34 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   primaryBtnText: { color: '#fff', fontSize: 16, fontWeight: '700', letterSpacing: 0.3 },
+
+  errorContainer: {
+    backgroundColor: '#FEE2E2',
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#FECACA',
+  },
+  errorText: {
+    color: '#DC2626',
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 20,
+  },
+  successContainer: {
+    backgroundColor: '#ECFDF5',
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#D1FAE5',
+  },
+  successText: {
+    color: '#059669',
+    fontSize: 14,
+    fontWeight: '600',
+  },
 
   kashrutRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 18 },
   kashrutChip: {

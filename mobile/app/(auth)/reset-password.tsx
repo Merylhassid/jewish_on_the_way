@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  View,
 } from 'react-native';
 import client from '@/src/api/client';
 
@@ -19,22 +20,40 @@ export default function ResetPasswordScreen() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  // Determine if token came from URL (and should not be editable)
+  const hasUrlToken = !!params.token;
 
   useEffect(() => {
     if (params.token) setToken(params.token);
   }, [params.token]);
 
+  // Auto-navigate to login after 2 seconds on success
+  useEffect(() => {
+    if (showSuccess) {
+      const timer = setTimeout(() => {
+        router.replace('/(auth)/login');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSuccess]);
+
   const handleSubmit = async () => {
+    // Clear any previous error
+    setErrorMsg('');
+
     if (!token.trim()) {
-      Alert.alert('Error', 'Please enter your reset token');
+      setErrorMsg('Please enter your reset token');
       return;
     }
     if (newPassword.length < 6) {
-      Alert.alert('Error', 'Password must be at least 6 characters');
+      setErrorMsg('Password must be at least 6 characters');
       return;
     }
     if (newPassword !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
+      setErrorMsg('Passwords do not match');
       return;
     }
     try {
@@ -43,12 +62,10 @@ export default function ResetPasswordScreen() {
         token: token.trim(),
         newPassword,
       });
-      Alert.alert('Success', 'Your password has been reset. You can now log in.', [
-        { text: 'Log In', onPress: () => router.replace('/(auth)/login') },
-      ]);
+      setShowSuccess(true);
     } catch (err: any) {
       const msg = err?.response?.data?.message ?? 'Invalid or expired token';
-      Alert.alert('Error', msg);
+      setErrorMsg(msg);
     } finally {
       setLoading(false);
     }
@@ -60,53 +77,82 @@ export default function ResetPasswordScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-        <Pressable style={styles.back} onPress={() => router.back()}>
-          <Text style={styles.backText}>← Back</Text>
-        </Pressable>
+        {showSuccess ? (
+          // Success Screen
+          <View style={styles.centerContainer}>
+            <Text style={styles.successIcon}>✓</Text>
+            <Text style={styles.successTitle}>Password Reset</Text>
+            <Text style={styles.successMessage}>Your password has been reset successfully.</Text>
+            <Text style={styles.successSubtitle}>Redirecting to login...</Text>
+          </View>
+        ) : (
+          <>
+            <Pressable style={styles.back} onPress={() => router.back()}>
+              <Text style={styles.backText}>← Back</Text>
+            </Pressable>
 
-        <Text style={styles.title}>New Password</Text>
-        <Text style={styles.subtitle}>
-          Enter the token from your email and choose a new password.
-        </Text>
+            <Text style={styles.title}>New Password</Text>
+            <Text style={styles.subtitle}>
+              {hasUrlToken
+                ? 'Choose a new password for your account.'
+                : 'Enter the token from your email and choose a new password.'}
+            </Text>
 
-        <Text style={styles.label}>Reset Token</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Paste token from email"
-          placeholderTextColor="#999"
-          value={token}
-          onChangeText={setToken}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+            {/* Token input only shown if no URL token (fallback mode) */}
+            {!hasUrlToken && (
+              <>
+                <Text style={styles.label}>Reset Token</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Paste token from email"
+                  placeholderTextColor="#999"
+                  value={token}
+                  onChangeText={setToken}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  editable={!loading}
+                />
+              </>
+            )}
 
-        <Text style={styles.label}>New Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="New password (min 6 characters)"
-          placeholderTextColor="#999"
-          value={newPassword}
-          onChangeText={setNewPassword}
-          secureTextEntry
-        />
+            <Text style={styles.label}>New Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="New password (min 6 characters)"
+              placeholderTextColor="#999"
+              value={newPassword}
+              onChangeText={setNewPassword}
+              secureTextEntry
+              editable={!loading}
+            />
 
-        <Text style={styles.label}>Confirm Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Repeat new password"
-          placeholderTextColor="#999"
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-          secureTextEntry
-        />
+            <Text style={styles.label}>Confirm Password</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Repeat new password"
+              placeholderTextColor="#999"
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              secureTextEntry
+              editable={!loading}
+            />
 
-        <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <Text style={styles.buttonText}>Reset Password</Text>
-          )}
-        </Pressable>
+            {/* Error message display */}
+            {errorMsg && (
+              <View style={styles.errorContainer}>
+                <Text style={styles.errorText}>{errorMsg}</Text>
+              </View>
+            )}
+
+            <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
+              {loading ? (
+                <ActivityIndicator color="#fff" />
+              ) : (
+                <Text style={styles.buttonText}>Reset Password</Text>
+              )}
+            </Pressable>
+          </>
+        )}
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -119,6 +165,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     paddingTop: 80,
     paddingBottom: 40,
+  },
+  centerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 28,
+  },
+  successIcon: {
+    fontSize: 56,
+    color: '#10b981',
+    marginBottom: 16,
+  },
+  successTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#1a3a6b',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  successMessage: {
+    fontSize: 16,
+    color: '#4b5563',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  successSubtitle: {
+    fontSize: 14,
+    color: '#999',
+    textAlign: 'center',
   },
   back: { marginBottom: 32 },
   backText: { color: '#1a3a6b', fontSize: 16 },
@@ -134,6 +209,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#dde3f0',
     color: '#1a1a2e',
+  },
+  errorContainer: {
+    backgroundColor: '#fee2e2',
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#fecaca',
+  },
+  errorText: {
+    color: '#dc2626',
+    fontSize: 14,
+    fontWeight: '500',
   },
   button: {
     backgroundColor: '#1a3a6b',

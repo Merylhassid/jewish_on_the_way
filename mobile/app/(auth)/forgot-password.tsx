@@ -2,7 +2,6 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import {
   ActivityIndicator,
-  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -15,20 +14,24 @@ import client from '@/src/api/client';
 export default function ForgotPasswordScreen() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async () => {
     if (!email) {
-      Alert.alert('Error', 'Please enter your email');
+      setError('Please enter your email');
       return;
     }
     try {
       setLoading(true);
+      setError('');
       await client.post('/auth/forgot-password', { email: email.trim() });
-      Alert.alert('Email sent', 'If this email exists, a reset link has been sent.', [
-        { text: 'OK', onPress: () => router.back() },
-      ]);
+      setMessage('If this email exists, a reset link has been sent.');
+      setSuccess(true);
+      setEmail('');
     } catch {
-      Alert.alert('Error', 'Something went wrong, please try again');
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -49,20 +52,33 @@ export default function ForgotPasswordScreen() {
       </Text>
 
       <TextInput
-        style={styles.input}
+        style={[styles.input, (loading || success) && styles.inputDisabled]}
         placeholder="Email"
         placeholderTextColor="#999"
         value={email}
-        onChangeText={setEmail}
+        onChangeText={(t) => {
+          setEmail(t);
+          if (success) setSuccess(false);
+          if (error) setError('');
+          if (message) setMessage('');
+        }}
         autoCapitalize="none"
         keyboardType="email-address"
+        editable={!loading && !success}
       />
 
-      <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
+      {message ? <Text style={styles.successText}>{message}</Text> : null}
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+
+      <Pressable
+        style={[styles.button, (loading || success) && styles.buttonDisabled]}
+        onPress={handleSubmit}
+        disabled={loading || success}
+      >
         {loading ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>Send Reset Link</Text>
+          <Text style={styles.buttonText}>{success ? 'Sent' : 'Send Reset Link'}</Text>
         )}
       </Pressable>
     </KeyboardAvoidingView>
@@ -90,11 +106,20 @@ const styles = StyleSheet.create({
     borderColor: '#dde3f0',
     color: '#1a1a2e',
   },
+  inputDisabled: {
+    backgroundColor: '#f5f7fb',
+  },
   button: {
     backgroundColor: '#1a3a6b',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
   },
+  buttonDisabled: {
+    opacity: 0.7,
+    backgroundColor: '#1a3a6b',
+  },
   buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  successText: { color: '#116530', marginBottom: 12 },
+  errorText: { color: '#a11', marginBottom: 12 },
 });

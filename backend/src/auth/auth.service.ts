@@ -97,7 +97,10 @@ export class AuthService {
     const rawToken = crypto.randomBytes(32).toString('hex');
     const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 
-    user.resetPasswordToken = rawToken;
+    // Hash token with SHA-256 before storing (not stored in plain text)
+    const tokenHash = crypto.createHash('sha256').update(rawToken).digest('hex');
+
+    user.resetPasswordToken = tokenHash;
     user.resetPasswordExpires = expires;
     await this.usersRepo.save(user);
     this.audit.log('PASSWORD_RESET_REQUESTED', user.id, { email });
@@ -121,8 +124,11 @@ export class AuthService {
   }
 
   async resetPassword(dto: ResetPasswordDto): Promise<void> {
+    // Hash provided token to match stored hash
+    const tokenHash = crypto.createHash('sha256').update(dto.token).digest('hex');
+
     const user = await this.usersRepo.findOne({
-      where: { resetPasswordToken: dto.token },
+      where: { resetPasswordToken: tokenHash },
     });
 
     if (!user || !user.resetPasswordExpires) {
