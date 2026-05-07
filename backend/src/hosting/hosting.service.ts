@@ -17,9 +17,12 @@ import { AuditService } from '../audit/audit.service';
 @Injectable()
 export class HostingService {
   constructor(
-    @InjectRepository(HostingOffer) private offersRepo: Repository<HostingOffer>,
-    @InjectRepository(HostingRequest) private requestsRepo: Repository<HostingRequest>,
-    @InjectRepository(Destination) private destinationsRepo: Repository<Destination>,
+    @InjectRepository(HostingOffer)
+    private offersRepo: Repository<HostingOffer>,
+    @InjectRepository(HostingRequest)
+    private requestsRepo: Repository<HostingRequest>,
+    @InjectRepository(Destination)
+    private destinationsRepo: Repository<Destination>,
     @InjectRepository(User) private usersRepo: Repository<User>,
     private audit: AuditService,
   ) {}
@@ -74,7 +77,8 @@ export class HostingService {
       relations: ['user'],
     });
     if (!offer) throw new NotFoundException('Offer not found');
-    if (offer.user.id !== userId) throw new ForbiddenException('Not your offer');
+    if (offer.user.id !== userId)
+      throw new ForbiddenException('Not your offer');
     offer.is_active = false;
     await this.offersRepo.save(offer);
     this.audit.log('HOSTING_OFFER_DEACTIVATED', userId, { offerId });
@@ -95,7 +99,9 @@ export class HostingService {
       .createQueryBuilder('o')
       .leftJoinAndSelect('o.user', 'u')
       .leftJoinAndSelect('o.destination', 'd')
-      .where('o.destination_id = :destinationId', { destinationId: filters.destinationId })
+      .where('o.destination_id = :destinationId', {
+        destinationId: filters.destinationId,
+      })
       .andWhere('o.is_active = true');
 
     if (filters.guestsCount) {
@@ -108,10 +114,14 @@ export class HostingService {
       qb.andWhere('o.allows_children = true');
     }
     if (filters.arrivalDate) {
-      qb.andWhere('o.available_from <= :arrival', { arrival: filters.arrivalDate });
+      qb.andWhere('o.available_from <= :arrival', {
+        arrival: filters.arrivalDate,
+      });
     }
     if (filters.departureDate) {
-      qb.andWhere('o.available_to >= :departure', { departure: filters.departureDate });
+      qb.andWhere('o.available_to >= :departure', {
+        departure: filters.departureDate,
+      });
     }
 
     const offers = await qb.orderBy('o.created_at', 'DESC').getMany();
@@ -133,7 +143,9 @@ export class HostingService {
     });
     if (!offer) throw new NotFoundException('Hosting offer not found');
 
-    const guest = await this.usersRepo.findOneOrFail({ where: { id: guestId } });
+    const guest = await this.usersRepo.findOneOrFail({
+      where: { id: guestId },
+    });
 
     // req 7.4.5 — guest cannot request their own offer
     if (offer.user.id === guestId) {
@@ -206,9 +218,11 @@ export class HostingService {
     }
 
     request.status = status;
-    const updated = (await this.requestsRepo.save(request)) as HostingRequest;
+    const updated = await this.requestsRepo.save(request);
     this.audit.log(
-      status === 'approved' ? 'HOSTING_REQUEST_APPROVED' : 'HOSTING_REQUEST_REJECTED',
+      status === 'approved'
+        ? 'HOSTING_REQUEST_APPROVED'
+        : 'HOSTING_REQUEST_REJECTED',
       hostId,
       { requestId: requestId },
     );
@@ -228,12 +242,14 @@ export class HostingService {
       kashrutLevel: o.kashrut_level,
       notes: o.notes,
       destination: o.destination
-        ? { id: o.destination.id, city: o.destination.city, country: o.destination.country }
+        ? {
+            id: o.destination.id,
+            city: o.destination.city,
+            country: o.destination.country,
+          }
         : null,
       // req 7.4.5 — only first name shown in search; full contact hidden
-      host: o.user
-        ? { id: o.user.id, firstName: o.user.firstName }
-        : null,
+      host: o.user ? { id: o.user.id, firstName: o.user.firstName } : null,
     };
   }
 

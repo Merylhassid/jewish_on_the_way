@@ -36,7 +36,10 @@ export class RestaurantsService {
   ) {}
 
   // req 4.1 — list restaurants with optional filters + distance
-  async findByDestination(destinationId: number, filters: RestaurantFilters = {}): Promise<Restaurant[]> {
+  async findByDestination(
+    destinationId: number,
+    filters: RestaurantFilters = {},
+  ): Promise<Restaurant[]> {
     const { type, kashrut, q, lat, lng } = filters;
 
     // With distance: use raw SQL so PostGIS can compute ST_Distance
@@ -62,9 +65,21 @@ export class RestaurantsService {
       const params: (string | number)[] = [lng, lat, destinationId];
       let idx = 4;
 
-      if (type)   { sql += ` AND r.restaurant_type = $${idx}`; params.push(type);       idx++; }
-      if (kashrut){ sql += ` AND r.kashrut_level   = $${idx}`; params.push(kashrut);    idx++; }
-      if (q)      { sql += ` AND r.name ILIKE $${idx}`;        params.push(`%${q}%`);   idx++; }
+      if (type) {
+        sql += ` AND r.restaurant_type = $${idx}`;
+        params.push(type);
+        idx++;
+      }
+      if (kashrut) {
+        sql += ` AND r.kashrut_level   = $${idx}`;
+        params.push(kashrut);
+        idx++;
+      }
+      if (q) {
+        sql += ` AND r.name ILIKE $${idx}`;
+        params.push(`%${q}%`);
+        idx++;
+      }
 
       sql += ' ORDER BY "distanceMeters" ASC';
       return this.restaurantsRepo.query(sql, params);
@@ -72,12 +87,20 @@ export class RestaurantsService {
 
     // Without distance: use find() with where object
     const where: any = { destination: { id: destinationId } };
-    if (type)    where.restaurantType = type;
-    if (kashrut) where.kashrutLevel   = kashrut;
+    if (type) where.restaurantType = type;
+    if (kashrut) where.kashrutLevel = kashrut;
 
     let results = await this.restaurantsRepo.find({
       where,
-      select: { id: true, name: true, restaurantType: true, kashrutLevel: true, address: true, openingHours: true, createdAt: true },
+      select: {
+        id: true,
+        name: true,
+        restaurantType: true,
+        kashrutLevel: true,
+        address: true,
+        openingHours: true,
+        createdAt: true,
+      },
       order: { name: 'ASC' },
     });
 
@@ -94,8 +117,13 @@ export class RestaurantsService {
     const restaurant = await this.restaurantsRepo
       .createQueryBuilder('r')
       .select([
-        'r.id', 'r.name', 'r.restaurantType', 'r.kashrutLevel',
-        'r.address', 'r.openingHours', 'r.createdAt',
+        'r.id',
+        'r.name',
+        'r.restaurantType',
+        'r.kashrutLevel',
+        'r.address',
+        'r.openingHours',
+        'r.createdAt',
       ])
       .leftJoinAndSelect('r.destination', 'destination')
       .where('r.id = :id', { id })
@@ -112,23 +140,28 @@ export class RestaurantsService {
     console.log('API Key present:', !!apiKey);
 
     if (!apiKey || apiKey === 'your_google_places_api_key') {
-      throw new Error('❌ GOOGLE_PLACES_API_KEY is not set or still has placeholder value in .env');
+      throw new Error(
+        '❌ GOOGLE_PLACES_API_KEY is not set or still has placeholder value in .env',
+      );
     }
 
     const destinations = await this.destinationsRepo.find();
-    console.log(`📍 Found ${destinations.length} destinations to process:\n`, destinations.map(d => d.name).join(', '));
+    console.log(
+      `📍 Found ${destinations.length} destinations to process:\n`,
+      destinations.map((d) => d.name).join(', '),
+    );
 
     let totalImported = 0;
     let totalFound = 0;
-    let destinationStats: { [key: string]: number } = {};
+    const destinationStats: { [key: string]: number } = {};
 
     for (const destination of destinations) {
       try {
         console.log(`\n⏳ Processing: ${destination.name}`);
-        
+
         const query = `kosher restaurant in ${destination.name}`;
         console.log(`   Query: "${query}"`);
-        
+
         let pageToken: string | undefined;
         let pageNumber = 1;
         let foundOnThisDestination = 0;
@@ -140,13 +173,15 @@ export class RestaurantsService {
 
           const response = await axios.get(url);
           const places = response.data.results || [];
-          
+
           if (places.length === 0) {
             console.log(`   ✓ Page ${pageNumber}: No more results`);
             break;
           }
 
-          console.log(`   ✓ Page ${pageNumber}: Found ${places.length} results`);
+          console.log(
+            `   ✓ Page ${pageNumber}: Found ${places.length} results`,
+          );
           foundOnThisDestination += places.length;
           totalFound += places.length;
 
@@ -157,12 +192,20 @@ export class RestaurantsService {
             });
 
             // Get detailed place information for better classification
-            const placeDetails = await this.getPlaceDetails(place.place_id, apiKey);
-            
+            const placeDetails = await this.getPlaceDetails(
+              place.place_id,
+              apiKey,
+            );
+
             // Classify restaurant type based on available data
-            const classification = this.classifyRestaurantType(place, placeDetails);
-            
-            console.log(`      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`);
+            const classification = this.classifyRestaurantType(
+              place,
+              placeDetails,
+            );
+
+            console.log(
+              `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
+            );
 
             if (existing) {
               // Update existing restaurant with new classification and data
@@ -173,15 +216,20 @@ export class RestaurantsService {
               existing.name = place.name;
               existing.location = {
                 type: 'Point',
-                coordinates: [place.geometry.location.lng, place.geometry.location.lat],
+                coordinates: [
+                  place.geometry.location.lng,
+                  place.geometry.location.lat,
+                ],
               };
               existing.isKosher = true;
 
               await this.restaurantsRepo.save(existing);
               totalImported++;
               destinationStats[destination.name]++;
-              
-              console.log(`      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`);
+
+              console.log(
+                `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
+              );
             } else {
               // Create new restaurant with proper PostGIS location format
               const restaurant = this.restaurantsRepo.create({
@@ -195,7 +243,10 @@ export class RestaurantsService {
                 kashrutLevel: 'unknown', // Will be updated manually later
                 location: {
                   type: 'Point',
-                  coordinates: [place.geometry.location.lng, place.geometry.location.lat],
+                  coordinates: [
+                    place.geometry.location.lng,
+                    place.geometry.location.lat,
+                  ],
                 },
                 destination,
               });
@@ -203,8 +254,10 @@ export class RestaurantsService {
               await this.restaurantsRepo.save(restaurant);
               totalImported++;
               destinationStats[destination.name]++;
-              
-              console.log(`      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`);
+
+              console.log(
+                `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
+              );
             }
           }
 
@@ -216,14 +269,19 @@ export class RestaurantsService {
 
           pageToken = response.data.next_page_token;
           pageNumber++;
-          
+
           // Google API requires a small delay between page requests
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          await new Promise((resolve) => setTimeout(resolve, 2000));
         }
 
-        console.log(`   Summary for ${destination.name}: ${destinationStats[destination.name]} restaurants processed (${foundOnThisDestination} total found)`);
+        console.log(
+          `   Summary for ${destination.name}: ${destinationStats[destination.name]} restaurants processed (${foundOnThisDestination} total found)`,
+        );
       } catch (error) {
-        console.error(`\n❌ Error importing for ${destination.name}:`, error.message);
+        console.error(
+          `\n❌ Error importing for ${destination.name}:`,
+          error.message,
+        );
         if (error.response?.data) {
           console.error(`   API Error: ${JSON.stringify(error.response.data)}`);
         }
@@ -251,7 +309,9 @@ export class RestaurantsService {
     const restaurants = await this.restaurantsRepo.find();
     let updatedCount = 0;
 
-    console.log(`🔄 Starting reclassification for ${restaurants.length} existing restaurants...`);
+    console.log(
+      `🔄 Starting reclassification for ${restaurants.length} existing restaurants...`,
+    );
 
     for (const restaurant of restaurants) {
       try {
@@ -261,16 +321,18 @@ export class RestaurantsService {
           types: [],
         };
 
-        const details = restaurant.googlePlaceId && apiKey
-          ? await this.getPlaceDetails(restaurant.googlePlaceId, apiKey)
-          : {};
+        const details =
+          restaurant.googlePlaceId && apiKey
+            ? await this.getPlaceDetails(restaurant.googlePlaceId, apiKey)
+            : {};
 
         const classification = this.classifyRestaurantType(place, details);
         const newType = classification.type ?? null;
         const newConfidence = classification.confidence;
 
-        const shouldUpdate = restaurant.restaurantType !== newType
-          || restaurant.restaurantTypeConfidence !== newConfidence;
+        const shouldUpdate =
+          restaurant.restaurantType !== newType ||
+          restaurant.restaurantTypeConfidence !== newConfidence;
 
         if (shouldUpdate) {
           restaurant.restaurantType = newType;
@@ -279,9 +341,14 @@ export class RestaurantsService {
           updatedCount++;
         }
 
-        console.log(`      🔄 Reclassified "${restaurant.name}": ${newType || 'unknown'} (confidence: ${newConfidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`);
+        console.log(
+          `      🔄 Reclassified "${restaurant.name}": ${newType || 'unknown'} (confidence: ${newConfidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
+        );
       } catch (error) {
-        console.error(`      ❌ Failed to reclassify "${restaurant.name}":`, error.message);
+        console.error(
+          `      ❌ Failed to reclassify "${restaurant.name}":`,
+          error.message,
+        );
       }
     }
 
@@ -302,37 +369,127 @@ export class RestaurantsService {
       const response = await axios.get(url);
       return response.data.result || {};
     } catch (error) {
-      console.warn(`   ⚠️  Failed to get details for place ${placeId}:`, error.message);
+      console.warn(
+        `   ⚠️  Failed to get details for place ${placeId}:`,
+        error.message,
+      );
       return {};
     }
   }
 
   // Classify restaurant type based on name, reviews, place details and metadata
-  private classifyRestaurantType(place: any, details: any): RestaurantClassificationResult {
+  private classifyRestaurantType(
+    place: any,
+    details: any,
+  ): RestaurantClassificationResult {
     const name = (place.name || '').toLowerCase();
     const address = (place.formatted_address || '').toLowerCase();
-    const editorialSummary = (details.editorial_summary?.overview || '').toLowerCase();
-    const reviewText = (details.reviews || []).map((r: any) => (r.text || '').toLowerCase()).join(' ');
-    const placeTypes = [
-      ...(place.types || []),
-      ...(details.types || []),
-    ].map((type: string) => type.toLowerCase()).join(' ');
+    const editorialSummary = (
+      details.editorial_summary?.overview || ''
+    ).toLowerCase();
+    const reviewText = (details.reviews || [])
+      .map((r: any) => (r.text || '').toLowerCase())
+      .join(' ');
+    const placeTypes = [...(place.types || []), ...(details.types || [])]
+      .map((type: string) => type.toLowerCase())
+      .join(' ');
 
-    const allText = [name, address, editorialSummary, reviewText, placeTypes].join(' ');
-    const normalizedText = allText.replace(/[^a-z0-9\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+    const allText = [
+      name,
+      address,
+      editorialSummary,
+      reviewText,
+      placeTypes,
+    ].join(' ');
+    const normalizedText = allText
+      .replace(/[^a-z0-9\s-]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
 
-    const strongMeatKeywords = ['steak', 'grill', 'bbq', 'burger', 'shawarma', 'kebab', 'butcher', 'smokehouse', 'meat restaurant', 'chicken restaurant', 'steakhouse', 'barbecue', 'ribs', 'rotisserie'];
-    const strongDairyKeywords = ['cafe', 'coffee', 'bakery', 'pizza', 'pasta', 'cheese', 'breakfast', 'brunch', 'patisserie', 'ice cream', 'gelato', 'creperie'];
-    const strongPareveKeywords = ['falafel', 'hummus', 'vegan', 'vegetarian', 'sushi', 'fish', 'salad', 'plant-based', 'poke', 'bowl'];
+    const strongMeatKeywords = [
+      'steak',
+      'grill',
+      'bbq',
+      'burger',
+      'shawarma',
+      'kebab',
+      'butcher',
+      'smokehouse',
+      'meat restaurant',
+      'chicken restaurant',
+      'steakhouse',
+      'barbecue',
+      'ribs',
+      'rotisserie',
+    ];
+    const strongDairyKeywords = [
+      'cafe',
+      'coffee',
+      'bakery',
+      'pizza',
+      'pasta',
+      'cheese',
+      'breakfast',
+      'brunch',
+      'patisserie',
+      'ice cream',
+      'gelato',
+      'creperie',
+    ];
+    const strongPareveKeywords = [
+      'falafel',
+      'hummus',
+      'vegan',
+      'vegetarian',
+      'sushi',
+      'fish',
+      'salad',
+      'plant-based',
+      'poke',
+      'bowl',
+    ];
 
-    const weakMeatKeywords = ['meat', 'grilled', 'hamburger', 'chicken', 'bbq', 'barbecue'];
-    const weakDairyKeywords = ['cheese', 'dairy', 'milk', 'yogurt', 'sandwich', 'bagel', 'croissant', 'dessert'];
-    const weakPareveKeywords = ['healthy', 'fresh', 'vegetarian', 'vegan', 'salad', 'grain', 'rice', 'falafel', 'hummus'];
+    const weakMeatKeywords = [
+      'meat',
+      'grilled',
+      'hamburger',
+      'chicken',
+      'bbq',
+      'barbecue',
+    ];
+    const weakDairyKeywords = [
+      'cheese',
+      'dairy',
+      'milk',
+      'yogurt',
+      'sandwich',
+      'bagel',
+      'croissant',
+      'dessert',
+    ];
+    const weakPareveKeywords = [
+      'healthy',
+      'fresh',
+      'vegetarian',
+      'vegan',
+      'salad',
+      'grain',
+      'rice',
+      'falafel',
+      'hummus',
+    ];
 
-    const findKeywords = (keywords: string[]) => keywords.filter((keyword) => normalizedText.includes(keyword));
-    const meatMatches = findKeywords([...new Set([...strongMeatKeywords, ...weakMeatKeywords])]);
-    const dairyMatches = findKeywords([...new Set([...strongDairyKeywords, ...weakDairyKeywords])]);
-    const pareveMatches = findKeywords([...new Set([...strongPareveKeywords, ...weakPareveKeywords])]);
+    const findKeywords = (keywords: string[]) =>
+      keywords.filter((keyword) => normalizedText.includes(keyword));
+    const meatMatches = findKeywords([
+      ...new Set([...strongMeatKeywords, ...weakMeatKeywords]),
+    ]);
+    const dairyMatches = findKeywords([
+      ...new Set([...strongDairyKeywords, ...weakDairyKeywords]),
+    ]);
+    const pareveMatches = findKeywords([
+      ...new Set([...strongPareveKeywords, ...weakPareveKeywords]),
+    ]);
 
     const strongMeatMatches = findKeywords(strongMeatKeywords);
     const strongDairyMatches = findKeywords(strongDairyKeywords);
@@ -342,32 +499,78 @@ export class RestaurantsService {
     const dairyTypes = ['bakery', 'cafe', 'meal_takeaway'];
     const pareveTypes = ['meal_takeaway', 'restaurant'];
 
-    const hasMeatType = (details.types || []).some((t: string) => meatTypes.includes(t.toLowerCase()))
-      || (place.types || []).some((t: string) => meatTypes.includes(t.toLowerCase()));
-    const hasDairyType = (details.types || []).some((t: string) => dairyTypes.includes(t.toLowerCase()))
-      || (place.types || []).some((t: string) => dairyTypes.includes(t.toLowerCase()));
-    const hasPareveType = (details.types || []).some((t: string) => pareveTypes.includes(t.toLowerCase()))
-      || (place.types || []).some((t: string) => pareveTypes.includes(t.toLowerCase()));
+    const hasMeatType =
+      (details.types || []).some((t: string) =>
+        meatTypes.includes(t.toLowerCase()),
+      ) ||
+      (place.types || []).some((t: string) =>
+        meatTypes.includes(t.toLowerCase()),
+      );
+    const hasDairyType =
+      (details.types || []).some((t: string) =>
+        dairyTypes.includes(t.toLowerCase()),
+      ) ||
+      (place.types || []).some((t: string) =>
+        dairyTypes.includes(t.toLowerCase()),
+      );
+    const hasPareveType =
+      (details.types || []).some((t: string) =>
+        pareveTypes.includes(t.toLowerCase()),
+      ) ||
+      (place.types || []).some((t: string) =>
+        pareveTypes.includes(t.toLowerCase()),
+      );
 
-    let meatScore = strongMeatMatches.length * 4 + (meatMatches.length - strongMeatMatches.length) * 1.5 + (hasMeatType ? 2 : 0);
-    let dairyScore = strongDairyMatches.length * 4 + (dairyMatches.length - strongDairyMatches.length) * 1.5 + (hasDairyType ? 2 : 0);
+    let meatScore =
+      strongMeatMatches.length * 4 +
+      (meatMatches.length - strongMeatMatches.length) * 1.5 +
+      (hasMeatType ? 2 : 0);
+    let dairyScore =
+      strongDairyMatches.length * 4 +
+      (dairyMatches.length - strongDairyMatches.length) * 1.5 +
+      (hasDairyType ? 2 : 0);
     let pareveScore = 0;
 
     if (!strongMeatMatches.length && !strongDairyMatches.length) {
-      pareveScore = strongPareveMatches.length * 4 + (pareveMatches.length - strongPareveMatches.length) * 1.5 + (hasPareveType ? 1 : 0);
+      pareveScore =
+        strongPareveMatches.length * 4 +
+        (pareveMatches.length - strongPareveMatches.length) * 1.5 +
+        (hasPareveType ? 1 : 0);
     }
 
-    if (name.includes('pizza') || name.includes('pasta') || name.includes('italian')) {
+    if (
+      name.includes('pizza') ||
+      name.includes('pasta') ||
+      name.includes('italian')
+    ) {
       dairyScore += 3;
     }
-    if (name.includes('burger') || name.includes('grill') || name.includes('steak') || name.includes('smokehouse') || name.includes('kebab') || name.includes('shawarma')) {
+    if (
+      name.includes('burger') ||
+      name.includes('grill') ||
+      name.includes('steak') ||
+      name.includes('smokehouse') ||
+      name.includes('kebab') ||
+      name.includes('shawarma')
+    ) {
       meatScore += 3;
     }
-    if (name.includes('falafel') || name.includes('hummus') || name.includes('vegan') || name.includes('vegetarian') || name.includes('sushi') || name.includes('fish') || name.includes('salad')) {
+    if (
+      name.includes('falafel') ||
+      name.includes('hummus') ||
+      name.includes('vegan') ||
+      name.includes('vegetarian') ||
+      name.includes('sushi') ||
+      name.includes('fish') ||
+      name.includes('salad')
+    ) {
       pareveScore += 3;
     }
 
-    const scores: Array<{ type: RestaurantClassificationResult['type']; score: number }> = [
+    const scores: Array<{
+      type: RestaurantClassificationResult['type'];
+      score: number;
+    }> = [
       { type: 'meat', score: meatScore },
       { type: 'dairy', score: dairyScore },
       { type: 'pareve', score: pareveScore },
@@ -383,29 +586,47 @@ export class RestaurantsService {
       return {
         type: null,
         confidence: 0,
-        keywords: { meat: meatMatches, dairy: dairyMatches, pareve: pareveMatches },
+        keywords: {
+          meat: meatMatches,
+          dairy: dairyMatches,
+          pareve: pareveMatches,
+        },
         strongMeat: strongMeatMatches.length > 0,
         strongDairy: strongDairyMatches.length > 0,
         strongPareve: strongPareveMatches.length > 0,
       };
     }
 
-    if (winner.type === 'pareve' && (strongMeatMatches.length > 0 || strongDairyMatches.length > 0)) {
+    if (
+      winner.type === 'pareve' &&
+      (strongMeatMatches.length > 0 || strongDairyMatches.length > 0)
+    ) {
       return {
         type: null,
         confidence: 0,
-        keywords: { meat: meatMatches, dairy: dairyMatches, pareve: pareveMatches },
+        keywords: {
+          meat: meatMatches,
+          dairy: dairyMatches,
+          pareve: pareveMatches,
+        },
         strongMeat: strongMeatMatches.length > 0,
         strongDairy: strongDairyMatches.length > 0,
         strongPareve: strongPareveMatches.length > 0,
       };
     }
 
-    if (runnerUp.score > 0 && winner.score / Math.max(runnerUp.score, 1) < 1.2) {
+    if (
+      runnerUp.score > 0 &&
+      winner.score / Math.max(runnerUp.score, 1) < 1.2
+    ) {
       return {
         type: null,
         confidence: 0,
-        keywords: { meat: meatMatches, dairy: dairyMatches, pareve: pareveMatches },
+        keywords: {
+          meat: meatMatches,
+          dairy: dairyMatches,
+          pareve: pareveMatches,
+        },
         strongMeat: strongMeatMatches.length > 0,
         strongDairy: strongDairyMatches.length > 0,
         strongPareve: strongPareveMatches.length > 0,
@@ -415,7 +636,11 @@ export class RestaurantsService {
     return {
       type: winner.type,
       confidence: Math.min(Math.round(confidence * 100) / 100, 1),
-      keywords: { meat: meatMatches, dairy: dairyMatches, pareve: pareveMatches },
+      keywords: {
+        meat: meatMatches,
+        dairy: dairyMatches,
+        pareve: pareveMatches,
+      },
       strongMeat: strongMeatMatches.length > 0,
       strongDairy: strongDairyMatches.length > 0,
       strongPareve: strongPareveMatches.length > 0,
@@ -429,7 +654,9 @@ export class RestaurantsService {
     console.log('API Key present:', !!apiKey);
 
     if (!apiKey || apiKey === 'your_google_places_api_key') {
-      throw new Error('❌ GOOGLE_PLACES_API_KEY is not set or still has placeholder value in .env');
+      throw new Error(
+        '❌ GOOGLE_PLACES_API_KEY is not set or still has placeholder value in .env',
+      );
     }
 
     // Fetch specified destinations
@@ -440,7 +667,10 @@ export class RestaurantsService {
       .take(limit)
       .getMany();
 
-    console.log(`📍 Processing ${destinations.length} destinations:`, destinations.map(d => `${d.name} (${d.city})`).join(', '));
+    console.log(
+      `📍 Processing ${destinations.length} destinations:`,
+      destinations.map((d) => `${d.name} (${d.city})`).join(', '),
+    );
 
     let totalImported = 0;
     let totalFound = 0;
@@ -454,7 +684,9 @@ export class RestaurantsService {
 
     for (const destination of destinations) {
       try {
-        console.log(`\n⏳ Processing: ${destination.name} (${destination.city})`);
+        console.log(
+          `\n⏳ Processing: ${destination.name} (${destination.city})`,
+        );
 
         const query = `kosher restaurant in ${destination.name}`;
         console.log(`   Query: "${query}"`);
@@ -476,7 +708,9 @@ export class RestaurantsService {
             break;
           }
 
-          console.log(`   ✓ Page ${pageNumber}: Found ${places.length} results`);
+          console.log(
+            `   ✓ Page ${pageNumber}: Found ${places.length} results`,
+          );
           foundOnThisDestination += places.length;
           totalFound += places.length;
 
@@ -487,12 +721,20 @@ export class RestaurantsService {
             });
 
             // Get detailed place information for better classification
-            const placeDetails = await this.getPlaceDetails(place.place_id, apiKey);
+            const placeDetails = await this.getPlaceDetails(
+              place.place_id,
+              apiKey,
+            );
 
             // Classify restaurant type based on available data
-            const classification = this.classifyRestaurantType(place, placeDetails);
+            const classification = this.classifyRestaurantType(
+              place,
+              placeDetails,
+            );
 
-            console.log(`      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`);
+            console.log(
+              `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
+            );
 
             if (existing) {
               // Update existing restaurant with new classification and data
@@ -503,7 +745,10 @@ export class RestaurantsService {
               existing.name = place.name;
               existing.location = {
                 type: 'Point',
-                coordinates: [place.geometry.location.lng, place.geometry.location.lat],
+                coordinates: [
+                  place.geometry.location.lng,
+                  place.geometry.location.lat,
+                ],
               };
               existing.isKosher = true;
 
@@ -511,7 +756,9 @@ export class RestaurantsService {
               totalImported++;
               importedOnThisDestination++;
 
-              console.log(`      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`);
+              console.log(
+                `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
+              );
             } else {
               // Create new restaurant with proper PostGIS location format
               const restaurant = this.restaurantsRepo.create({
@@ -525,7 +772,10 @@ export class RestaurantsService {
                 kashrutLevel: 'unknown', // Will be updated manually later
                 location: {
                   type: 'Point',
-                  coordinates: [place.geometry.location.lng, place.geometry.location.lat],
+                  coordinates: [
+                    place.geometry.location.lng,
+                    place.geometry.location.lat,
+                  ],
                 },
                 destination,
               });
@@ -534,7 +784,9 @@ export class RestaurantsService {
               totalImported++;
               importedOnThisDestination++;
 
-              console.log(`      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`);
+              console.log(
+                `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
+              );
             }
           }
 
@@ -548,10 +800,12 @@ export class RestaurantsService {
           pageNumber++;
 
           // Google API requires a small delay between page requests
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          await new Promise((resolve) => setTimeout(resolve, 2000));
         }
 
-        console.log(`   Summary for ${destination.name}: ${importedOnThisDestination} restaurants processed (${foundOnThisDestination} total found)`);
+        console.log(
+          `   Summary for ${destination.name}: ${importedOnThisDestination} restaurants processed (${foundOnThisDestination} total found)`,
+        );
 
         results.push({
           destination: destination.name,
@@ -561,9 +815,12 @@ export class RestaurantsService {
         });
 
         // Add delay between destinations (5 seconds)
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise((resolve) => setTimeout(resolve, 5000));
       } catch (error) {
-        console.error(`\n❌ Error importing for ${destination.name}:`, error.message);
+        console.error(
+          `\n❌ Error importing for ${destination.name}:`,
+          error.message,
+        );
         if (error.response?.data) {
           console.error(`   API Error: ${JSON.stringify(error.response.data)}`);
         }

@@ -12,14 +12,23 @@ export class DestinationsService {
 
   // req 3.1 — full list or child destinations when parentId is provided
   async findAll(parentId?: number) {
-    const where = parentId === undefined
-      ? { parent: IsNull() }
-      : { parent: { id: parentId } };
+    const where =
+      parentId === undefined
+        ? { parent: IsNull() }
+        : { parent: { id: parentId } };
 
     const destinations = await this.destinationsRepo.find({
       where,
       relations: ['children'],
-      select: ['id', 'name', 'city', 'country', 'countryCode', 'createdAt', 'description'],
+      select: [
+        'id',
+        'name',
+        'city',
+        'country',
+        'countryCode',
+        'createdAt',
+        'description',
+      ],
       order: { name: 'ASC' },
     });
 
@@ -31,14 +40,23 @@ export class DestinationsService {
 
   // req 3.2 + 3.2.1 — case-insensitive search by name
   async search(q: string, parentId?: number) {
-    const where = parentId === undefined
-      ? { name: ILike(`%${q}%`) }
-      : { name: ILike(`%${q}%`), parent: { id: parentId } };
+    const where =
+      parentId === undefined
+        ? { name: ILike(`%${q}%`) }
+        : { name: ILike(`%${q}%`), parent: { id: parentId } };
 
     const destinations = await this.destinationsRepo.find({
       where,
       relations: ['children'],
-      select: ['id', 'name', 'city', 'country', 'countryCode', 'createdAt', 'description'],
+      select: [
+        'id',
+        'name',
+        'city',
+        'country',
+        'countryCode',
+        'createdAt',
+        'description',
+      ],
       order: { name: 'ASC' },
     });
 
@@ -53,7 +71,15 @@ export class DestinationsService {
     const destination = await this.destinationsRepo.findOne({
       where: { id },
       relations: ['parent'],
-      select: ['id', 'name', 'city', 'country', 'countryCode', 'description', 'createdAt'],
+      select: [
+        'id',
+        'name',
+        'city',
+        'country',
+        'countryCode',
+        'description',
+        'createdAt',
+      ],
     });
 
     if (!destination) {

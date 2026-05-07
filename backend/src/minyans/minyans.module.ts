@@ -8,7 +8,9 @@ import { MinyansController } from './minyans.controller';
 import { MinyansService } from './minyans.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Minyan, MinyanRegistration, Destination, User])],
+  imports: [
+    TypeOrmModule.forFeature([Minyan, MinyanRegistration, Destination, User]),
+  ],
   controllers: [MinyansController],
   providers: [MinyansService],
 })

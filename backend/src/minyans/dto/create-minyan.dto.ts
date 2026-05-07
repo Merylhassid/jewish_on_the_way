@@ -1,4 +1,13 @@
-import { IsDateString, IsIn, IsInt, IsNumber, IsOptional, IsString, Length, Matches } from 'class-validator';
+import {
+  IsDateString,
+  IsIn,
+  IsInt,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Length,
+  Matches,
+} from 'class-validator';
 
 export class CreateMinyanDto {
   @IsIn(['shacharit', 'mincha', 'maariv', 'musaf', 'other'])

@@ -7,7 +7,9 @@ import { RestaurantsController } from './restaurants.controller';
 import { RestaurantsService } from './restaurants.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Restaurant, Destination, SearchFeedback])],
+  imports: [
+    TypeOrmModule.forFeature([Restaurant, Destination, SearchFeedback]),
+  ],
   controllers: [RestaurantsController],
   providers: [RestaurantsService],
 })

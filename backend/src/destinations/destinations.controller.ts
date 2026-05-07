@@ -22,10 +22,7 @@ export class DestinationsController {
   @UseInterceptors(CacheInterceptor)
   @CacheTTL(30_000)
   @Get()
-  findAll(
-    @Query('q') q?: string,
-    @Query('parentId') parentId?: string,
-  ) {
+  findAll(@Query('q') q?: string, @Query('parentId') parentId?: string) {
     const parentIdValue = parentId ? parseInt(parentId, 10) : undefined;
     if (q && q.trim()) {
       return this.destinationsService.search(q.trim(), parentIdValue);

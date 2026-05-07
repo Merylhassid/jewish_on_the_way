@@ -55,10 +55,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Post('me/avatar')
   @UseInterceptors(FileInterceptor('file', { storage: memoryStorage() }))
-  async uploadAvatar(
-    @Request() req,
-    @UploadedFile() file,
-  ) {
+  async uploadAvatar(@Request() req, @UploadedFile() file) {
     const imageUrl = await this.cloudinaryService.uploadImage(file);
     return this.usersService.updateAvatar(req.user.sub, imageUrl);
   }

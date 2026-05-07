@@ -29,7 +29,10 @@ export class HostingChatGateway implements OnGatewayConnection {
   server: Server;
 
   private readonly logger = new Logger(HostingChatGateway.name);
-  private readonly msgRateMap = new Map<number, { count: number; windowStart: number }>();
+  private readonly msgRateMap = new Map<
+    number,
+    { count: number; windowStart: number }
+  >();
 
   constructor(
     private jwtService: JwtService,
@@ -74,7 +77,8 @@ export class HostingChatGateway implements OnGatewayConnection {
 
     const isParticipant =
       request.user?.id === userId || request.offer?.user?.id === userId;
-    if (!isParticipant) throw new WsException('Not a participant of this request');
+    if (!isParticipant)
+      throw new WsException('Not a participant of this request');
 
     const room = `hosting-request:${data.requestId}`;
     await client.join(room);
@@ -86,7 +90,10 @@ export class HostingChatGateway implements OnGatewayConnection {
       take: 50,
     });
 
-    client.emit('hosting-chat:history', history.map((m) => this.fmt(m)));
+    client.emit(
+      'hosting-chat:history',
+      history.map((m) => this.fmt(m)),
+    );
     return { ok: true };
   }
 
@@ -107,7 +114,8 @@ export class HostingChatGateway implements OnGatewayConnection {
     }
     rate.count++;
     this.msgRateMap.set(userId, rate);
-    if (rate.count > RATE_LIMIT_MAX) throw new WsException('Too many messages — slow down');
+    if (rate.count > RATE_LIMIT_MAX)
+      throw new WsException('Too many messages — slow down');
 
     const content = (data.content ?? '').trim();
     if (!content || content.length > 500) {
@@ -118,7 +126,8 @@ export class HostingChatGateway implements OnGatewayConnection {
       where: { id: data.requestId },
       relations: ['user', 'offer', 'offer.user'],
     });
-    if (!request || request.status !== 'approved') throw new WsException('Chat unavailable');
+    if (!request || request.status !== 'approved')
+      throw new WsException('Chat unavailable');
 
     const isParticipant =
       request.user?.id === userId || request.offer?.user?.id === userId;
@@ -137,8 +146,13 @@ export class HostingChatGateway implements OnGatewayConnection {
     });
 
     const formatted = this.fmt(full!);
-    this.server.to(`hosting-request:${data.requestId}`).emit('hosting-chat:message', formatted);
-    this.audit.log('CHAT_MESSAGE_SENT', userId, { type: 'hosting', requestId: data.requestId });
+    this.server
+      .to(`hosting-request:${data.requestId}`)
+      .emit('hosting-chat:message', formatted);
+    this.audit.log('CHAT_MESSAGE_SENT', userId, {
+      type: 'hosting',
+      requestId: data.requestId,
+    });
 
     return formatted;
   }

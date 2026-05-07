@@ -4,6 +4,7 @@ import { MinyansModule } from './minyans/minyans.module';
 import { HostingModule } from './hosting/hosting.module';
 import { AuditModule } from './audit/audit.module';
 import { AiModule } from './ai/ai.module';
+import { SynagoguesModule } from './synagogues/synagogues.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -49,7 +50,10 @@ import { PlacesModule } from './places/places.module';
         username: config.get<string>('DB_USER'),
         password: config.get<string>('DB_PASS'),
         database: config.get<string>('DB_NAME'),
-        ssl: config.get<string>('DB_SSL') === 'true' ? { rejectUnauthorized: false } : false,
+        ssl:
+          config.get<string>('DB_SSL') === 'true'
+            ? { rejectUnauthorized: false }
+            : false,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,
         logging: true,
@@ -65,6 +69,8 @@ import { PlacesModule } from './places/places.module';
     DestinationsModule,
 
     RestaurantsModule,
+
+    SynagoguesModule,
 
     AdminModule,
 

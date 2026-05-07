@@ -79,12 +79,20 @@ export class HostingController {
   @Post('requests/:id/approve')
   @HttpCode(HttpStatus.OK)
   approve(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
-    return this.hostingService.updateRequestStatus(id, req.user.sub, 'approved');
+    return this.hostingService.updateRequestStatus(
+      id,
+      req.user.sub,
+      'approved',
+    );
   }
 
   @Post('requests/:id/reject')
   @HttpCode(HttpStatus.OK)
   reject(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
-    return this.hostingService.updateRequestStatus(id, req.user.sub, 'rejected');
+    return this.hostingService.updateRequestStatus(
+      id,
+      req.user.sub,
+      'rejected',
+    );
   }
 }

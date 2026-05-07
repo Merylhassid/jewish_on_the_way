@@ -10,9 +10,7 @@ import { User } from '../users/user.entity';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(
-    @InjectRepository(User) private usersRepo: Repository<User>,
-  ) {}
+  constructor(@InjectRepository(User) private usersRepo: Repository<User>) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();

@@ -5,6 +5,9 @@ import { Repository } from 'typeorm';
 import { Destination } from '../destination.entity';
 import { Restaurant } from '../restaurant.entity';
 import { Synagogue } from '../synagogue.entity';
+import { CandidateSynagogue } from '../candidate-synagogue.entity';
+import { parseOsmElement } from './osm-parser';
+import { WikidataService, WikidataEnrichment } from './wikidata.service';
 
 interface OsmElement {
   type: 'node' | 'way' | 'relation';
@@ -29,8 +32,12 @@ export class PlacesService {
 
   constructor(
     private config: ConfigService,
-    @InjectRepository(Restaurant) private restaurantsRepo: Repository<Restaurant>,
+    @InjectRepository(Restaurant)
+    private restaurantsRepo: Repository<Restaurant>,
     @InjectRepository(Synagogue) private synagoguesRepo: Repository<Synagogue>,
+    @InjectRepository(CandidateSynagogue)
+    private candidateSynagoguesRepo: Repository<CandidateSynagogue>,
+    private wikidataService: WikidataService,
   ) {}
 
   private sleep(ms: number) {
@@ -55,7 +62,12 @@ export class PlacesService {
     const apiKey = this.config.get<string>('GOOGLE_PLACES_API_KEY');
     let restaurants = 0;
     if (apiKey && apiKey !== 'your_google_places_api_key') {
-      restaurants = await this.syncRestaurantsFromGoogle(destination, lat, lng, apiKey);
+      restaurants = await this.syncRestaurantsFromGoogle(
+        destination,
+        lat,
+        lng,
+        apiKey,
+      );
     }
 
     return { restaurants, synagogues, chabad };
@@ -78,34 +90,91 @@ export class PlacesService {
     `;
 
     const elements = await this.overpassQuery(query);
-    let saved = 0;
+    let created = 0;
 
     for (const el of elements) {
-      const { elLat, elLng } = this.osmCoords(el);
-      if (!elLat || !elLng) continue;
+      // Parse OSM element into candidate
+      const parsed = parseOsmElement(el);
+      if (!parsed) {
+        this.logger.debug(`Skipped invalid OSM element: ${el.type}/${el.id}`);
+        continue;
+      }
 
-      const name = el.tags?.name || el.tags?.['name:en'] || 'Synagogue';
+      // Skip if it looks like a Chabad house (already handled separately)
+      if (parsed.name.toLowerCase().includes('chabad')) {
+        continue;
+      }
 
-      // Skip if it looks like a Chabad house
-      const isChabad = name.toLowerCase().includes('chabad') ||
-        (el.tags?.operator ?? '').toLowerCase().includes('chabad');
-      if (isChabad) continue;
+      // Enrich from Wikidata if we have a QID
+      let enrichment: WikidataEnrichment | null = null;
+      if (parsed.wikidata) {
+        enrichment = await this.wikidataService.enrichFromWikidata(
+          parsed.wikidata,
+        );
+      }
 
-      const exists = await this.synagoguesRepo.findOne({ where: { name, destination: { id: destination.id } } });
-      if (exists) continue;
+      // Merge enriched data into candidate
+      const candidateData = {
+        name: parsed.name,
+        normalizedName: parsed.normalizedName,
+        location: {
+          type: 'Point' as const,
+          coordinates: [parsed.coords.lon, parsed.coords.lat],
+        },
+        destination,
+        website: enrichment?.website || parsed.website,
+        phone: enrichment?.phone || parsed.phone,
+        openingHours: parsed.openingHours,
+        addrStreet: parsed.addrStreet,
+        addrHousenumber: parsed.addrHousenumber,
+        addrPostcode: parsed.addrPostcode,
+        addrCity: parsed.addrCity,
+        wikidata: parsed.wikidata,
+        wikipedia: enrichment?.wikipedia || parsed.wikipedia,
+        denomination: parsed.denomination,
+        operator: parsed.operator,
+        source: 'osm',
+        sourceId: parsed.osmId,
+        rawOsm: parsed.rawTags,
+        sourceConfidence: parsed.sourceConfidence,
+        validationReasons: parsed.validationReasons.join(','),
+        status: 'pending' as const,
+      };
 
-      await this.synagoguesRepo.save(
-        this.synagoguesRepo.create({
-          name,
-          location: { type: 'Point', coordinates: [elLng, elLat] },
-          destination,
-        }),
-      );
-      saved++;
+      // Upsert candidate (update if same sourceId + destination, else create)
+      try {
+        const existing = await this.candidateSynagoguesRepo.findOne({
+          where: {
+            sourceId: parsed.osmId,
+            destination: { id: destination.id },
+          },
+        });
+
+        if (existing) {
+          // Update existing candidate
+          await this.candidateSynagoguesRepo.update(existing.id, candidateData);
+          this.logger.debug(
+            `Updated candidate ${parsed.osmId} for ${destination.city}`,
+          );
+        } else {
+          // Create new candidate
+          await this.candidateSynagoguesRepo.save(
+            this.candidateSynagoguesRepo.create(candidateData),
+          );
+          created++;
+          this.logger.debug(
+            `Created candidate ${parsed.osmId} for ${destination.city}`,
+          );
+        }
+      } catch (err) {
+        this.logger.error(`Error saving candidate ${parsed.osmId}:`, err);
+      }
     }
 
-    this.logger.log(`Saved ${saved} new synagogues for ${destination.city}`);
-    return saved;
+    this.logger.log(
+      `Created/updated candidates for ${created} synagogues in ${destination.city}`,
+    );
+    return created;
   }
 
   private async syncChabadFromOSM(
@@ -124,29 +193,97 @@ export class PlacesService {
     `;
 
     const elements = await this.overpassQuery(query);
-    let saved = 0;
+    let created = 0;
 
     for (const el of elements) {
-      const { elLat, elLng } = this.osmCoords(el);
-      if (!elLat || !elLng) continue;
+      // Parse OSM element into candidate
+      const parsed = parseOsmElement(el);
+      if (!parsed) {
+        this.logger.debug(`Skipped invalid OSM element: ${el.type}/${el.id}`);
+        continue;
+      }
 
-      const name = el.tags?.name || el.tags?.['name:en'] || 'Chabad House';
+      // Ensure this is actually a Chabad house
+      if (
+        !parsed.name.toLowerCase().includes('chabad') &&
+        !parsed.operator?.toLowerCase().includes('chabad')
+      ) {
+        continue;
+      }
 
-      const exists = await this.synagoguesRepo.findOne({ where: { name, destination: { id: destination.id } } });
-      if (exists) continue;
+      // Enrich from Wikidata if we have a QID
+      let enrichment: WikidataEnrichment | null = null;
+      if (parsed.wikidata) {
+        enrichment = await this.wikidataService.enrichFromWikidata(
+          parsed.wikidata,
+        );
+      }
 
-      await this.synagoguesRepo.save(
-        this.synagoguesRepo.create({
-          name,
-          location: { type: 'Point', coordinates: [elLng, elLat] },
-          destination,
-        }),
-      );
-      saved++;
+      // Merge enriched data into candidate
+      const candidateData = {
+        name: parsed.name,
+        normalizedName: parsed.normalizedName,
+        location: {
+          type: 'Point' as const,
+          coordinates: [parsed.coords.lon, parsed.coords.lat],
+        },
+        destination,
+        website: enrichment?.website || parsed.website,
+        phone: enrichment?.phone || parsed.phone,
+        openingHours: parsed.openingHours,
+        addrStreet: parsed.addrStreet,
+        addrHousenumber: parsed.addrHousenumber,
+        addrPostcode: parsed.addrPostcode,
+        addrCity: parsed.addrCity,
+        wikidata: parsed.wikidata,
+        wikipedia: enrichment?.wikipedia || parsed.wikipedia,
+        denomination: 'Chabad',
+        operator: parsed.operator,
+        source: 'osm',
+        sourceId: parsed.osmId,
+        rawOsm: parsed.rawTags,
+        sourceConfidence: parsed.sourceConfidence,
+        validationReasons: parsed.validationReasons.join(','),
+        status: 'pending' as const,
+      };
+
+      // Upsert candidate (update if same sourceId + destination, else create)
+      try {
+        const existing = await this.candidateSynagoguesRepo.findOne({
+          where: {
+            sourceId: parsed.osmId,
+            destination: { id: destination.id },
+          },
+        });
+
+        if (existing) {
+          // Update existing candidate
+          await this.candidateSynagoguesRepo.update(existing.id, candidateData);
+          this.logger.debug(
+            `Updated Chabad candidate ${parsed.osmId} for ${destination.city}`,
+          );
+        } else {
+          // Create new candidate
+          await this.candidateSynagoguesRepo.save(
+            this.candidateSynagoguesRepo.create(candidateData),
+          );
+          created++;
+          this.logger.debug(
+            `Created Chabad candidate ${parsed.osmId} for ${destination.city}`,
+          );
+        }
+      } catch (err) {
+        this.logger.error(
+          `Error saving Chabad candidate ${parsed.osmId}:`,
+          err,
+        );
+      }
     }
 
-    this.logger.log(`Saved ${saved} new Chabad houses for ${destination.city}`);
-    return saved;
+    this.logger.log(
+      `Created/updated Chabad candidates for ${created} Chabad houses in ${destination.city}`,
+    );
+    return created;
   }
 
   private async overpassQuery(query: string): Promise<OsmElement[]> {
@@ -244,9 +381,15 @@ export class PlacesService {
   private detectSynagogueType(tags?: Record<string, string>): string {
     const name = (tags?.name ?? '').toLowerCase();
     const denomination = (tags?.denomination ?? '').toLowerCase();
-    if (name.includes('chabad') || denomination.includes('chabad')) return 'chabad';
-    if (denomination.includes('reform') || denomination.includes('liberal')) return 'reform';
-    if (denomination.includes('conservative') || denomination.includes('masorti')) return 'conservative';
+    if (name.includes('chabad') || denomination.includes('chabad'))
+      return 'chabad';
+    if (denomination.includes('reform') || denomination.includes('liberal'))
+      return 'reform';
+    if (
+      denomination.includes('conservative') ||
+      denomination.includes('masorti')
+    )
+      return 'conservative';
     return 'synagogue';
   }
 
