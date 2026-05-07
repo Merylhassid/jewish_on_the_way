@@ -20,11 +20,22 @@ export class Restaurant {
   name: string;
 
   // 'meat' | 'dairy' | 'pareve' — req 4.2
-  @Column({ name: 'restaurant_type', type: 'varchar', length: 32, nullable: true })
+  @Column({
+    name: 'restaurant_type',
+    type: 'varchar',
+    length: 32,
+    nullable: true,
+  })
   restaurantType: string | null;
 
   // Confidence score for restaurant type classification (0-1)
-  @Column({ name: 'restaurant_type_confidence', type: 'decimal', precision: 3, scale: 2, nullable: true })
+  @Column({
+    name: 'restaurant_type_confidence',
+    type: 'decimal',
+    precision: 3,
+    scale: 2,
+    nullable: true,
+  })
   restaurantTypeConfidence?: number;
 
   // 'rabbinate' | 'mehadrin' | 'badatz' — req 4.2.1
@@ -65,10 +76,19 @@ export class Restaurant {
   @Column({ name: 'website_opening_hours', type: 'text', nullable: true })
   websiteOpeningHours?: string;
 
-  @Column({ name: 'website_last_fetched_at', type: 'timestamptz', nullable: true })
+  @Column({
+    name: 'website_last_fetched_at',
+    type: 'timestamptz',
+    nullable: true,
+  })
   websiteLastFetchedAt?: Date;
 
-  @Column({ name: 'website_fetch_status', type: 'varchar', length: 32, nullable: true })
+  @Column({
+    name: 'website_fetch_status',
+    type: 'varchar',
+    length: 32,
+    nullable: true,
+  })
   websiteFetchStatus?: string;
 
   @Column({ name: 'enrichment_source_summary', type: 'text', nullable: true })
@@ -76,10 +96,21 @@ export class Restaurant {
 
   // ── Kosher validation (legacy columns — ikr.org.il data is pre-validated) ──
 
-  @Column({ name: 'kosher_validation_status', type: 'varchar', length: 32, nullable: true })
+  @Column({
+    name: 'kosher_validation_status',
+    type: 'varchar',
+    length: 32,
+    nullable: true,
+  })
   kosherValidationStatus?: string;
 
-  @Column({ name: 'kosher_validation_confidence', type: 'decimal', precision: 4, scale: 3, nullable: true })
+  @Column({
+    name: 'kosher_validation_confidence',
+    type: 'decimal',
+    precision: 4,
+    scale: 3,
+    nullable: true,
+  })
   kosherValidationConfidence?: number;
 
   @Column({ name: 'kosher_validation_reason', type: 'text', nullable: true })

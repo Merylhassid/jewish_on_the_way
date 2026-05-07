@@ -32,13 +32,18 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   private readonly logger = new Logger(ChatGateway.name);
   // userId → { count, windowStart }
-  private readonly msgRateMap = new Map<number, { count: number; windowStart: number }>();
+  private readonly msgRateMap = new Map<
+    number,
+    { count: number; windowStart: number }
+  >();
 
   constructor(
     private jwtService: JwtService,
-    @InjectRepository(ChatMessage) private messagesRepo: Repository<ChatMessage>,
+    @InjectRepository(ChatMessage)
+    private messagesRepo: Repository<ChatMessage>,
     @InjectRepository(User) private usersRepo: Repository<User>,
-    @InjectRepository(Destination) private destinationsRepo: Repository<Destination>,
+    @InjectRepository(Destination)
+    private destinationsRepo: Repository<Destination>,
     private audit: AuditService,
   ) {}
 
@@ -133,8 +138,12 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     const saved = await this.messagesRepo.save(message);
 
     const formatted = this.formatMessage(saved);
-    this.server.to(`destination:${data.destinationId}`).emit('chat:newMessage', formatted);
-    this.audit.log('CHAT_MESSAGE_SENT', userId, { destinationId: data.destinationId });
+    this.server
+      .to(`destination:${data.destinationId}`)
+      .emit('chat:newMessage', formatted);
+    this.audit.log('CHAT_MESSAGE_SENT', userId, {
+      destinationId: data.destinationId,
+    });
 
     return formatted;
   }

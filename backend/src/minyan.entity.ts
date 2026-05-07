@@ -47,7 +47,9 @@ export class Minyan {
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @ManyToOne(() => Destination, (destination) => destination.minyans, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Destination, (destination) => destination.minyans, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'destination_id' })
   destination: Destination;
 

@@ -33,9 +33,11 @@ export class AuthService {
     const email = dto.email.toLowerCase();
 
     const exists = await this.usersRepo.findOne({ where: { email } });
-    if (exists && exists.isActive) throw new BadRequestException('Email already exists');
+    if (exists && exists.isActive)
+      throw new BadRequestException('Email already exists');
     // If a soft-deleted account had this email, remove it so the new account can use it
-    if (exists && !exists.isActive) await this.usersRepo.delete({ id: exists.id });
+    if (exists && !exists.isActive)
+      await this.usersRepo.delete({ id: exists.id });
 
     const passwordHash = await bcrypt.hash(dto.password, 10);
 
@@ -98,7 +100,10 @@ export class AuthService {
     const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 
     // Hash token with SHA-256 before storing (not stored in plain text)
-    const tokenHash = crypto.createHash('sha256').update(rawToken).digest('hex');
+    const tokenHash = crypto
+      .createHash('sha256')
+      .update(rawToken)
+      .digest('hex');
 
     user.resetPasswordToken = tokenHash;
     user.resetPasswordExpires = expires;
@@ -119,13 +124,18 @@ export class AuthService {
       await this.mailService.sendPasswordReset(email, rawToken);
     } catch (err) {
       this.logger.error(`Failed to send reset email to ${email}: ${err}`);
-      this.logger.warn(`Email not sent — use the token printed above to reset manually.`);
+      this.logger.warn(
+        `Email not sent — use the token printed above to reset manually.`,
+      );
     }
   }
 
   async resetPassword(dto: ResetPasswordDto): Promise<void> {
     // Hash provided token to match stored hash
-    const tokenHash = crypto.createHash('sha256').update(dto.token).digest('hex');
+    const tokenHash = crypto
+      .createHash('sha256')
+      .update(dto.token)
+      .digest('hex');
 
     const user = await this.usersRepo.findOne({
       where: { resetPasswordToken: tokenHash },

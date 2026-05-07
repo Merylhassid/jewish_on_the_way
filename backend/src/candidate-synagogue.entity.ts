@@ -9,37 +9,42 @@ import {
 } from 'typeorm';
 import { Destination } from './destination.entity';
 
-@Entity('synagogues')
+export type CandidateStatus = 'pending' | 'approved' | 'rejected';
+
+@Entity('candidate_synagogues')
+@Index(['sourceId', 'destination'], { unique: true })
 @Index(['wikidata'])
-@Index(['destination'])
-@Index(['destination', 'normalizedName'])
-export class Synagogue {
+@Index(['status'])
+@Index(['destination', 'status'])
+export class CandidateSynagogue {
   @PrimaryGeneratedColumn()
   id: number;
 
+  // Candidate name from OSM
   @Column()
   name: string;
 
-  // Normalized name for deduplication and search
-  @Column({ nullable: true })
-  normalizedName?: string;
+  // Normalized name for deduplication
+  @Column()
+  normalizedName: string;
 
-  @Column({ type: 'text', nullable: true })
-  address?: string | null;
-
+  // Geographic location (Point geometry)
   @Column({
     type: 'geography',
     spatialFeatureType: 'Point',
     srid: 4326,
-    nullable: true,
   })
-  location: object | null;
+  location: object;
 
-  // Enriched fields from OSM and Wikidata
+  // Foreign key to destination context
+  @ManyToOne(() => Destination, { onDelete: 'CASCADE' })
+  destination: Destination;
+
+  // Enriched fields extracted from OSM or Wikidata
   @Column({ type: 'varchar', nullable: true, length: 500 })
   website?: string;
 
-  @Column({ type: 'varchar', nullable: true, length: 255 })
+  @Column({ type: 'varchar', nullable: true, length: 50 })
   phone?: string;
 
   @Column({ type: 'varchar', nullable: true, length: 500 })
@@ -73,39 +78,49 @@ export class Synagogue {
   @Column({ type: 'varchar', nullable: true, length: 200 })
   operator?: string;
 
-  // Source of data (e.g., "osm", "chabad", "manual")
+  // Source of data (e.g., "osm", "chabad")
   @Column({ default: 'osm' })
   source: string;
 
-  // Confidence score (0-1) from import, or null if manually verified
-  @Column({ type: 'decimal', precision: 3, scale: 2, nullable: true })
-  sourceConfidence?: number | null;
+  // OSM node/way ID or other source-specific identifier
+  @Column({ type: 'varchar', nullable: true, length: 50 })
+  sourceId?: string;
 
   // Full raw OSM tags for reference
   @Column({ type: 'jsonb', nullable: true })
-  rawOsm?: Record<string, any> | null;
+  rawOsm?: Record<string, any>;
 
-  // Manual verification flags
-  @Column({ default: false })
-  manuallyVerified: boolean;
+  // Confidence score (0-1) indicating data quality
+  @Column({ type: 'decimal', precision: 3, scale: 2, nullable: true })
+  sourceConfidence?: number;
 
-  @Column({ default: false })
-  needsLocationVerification: boolean;
-
-  // Who/what verified the data (e.g., "admin", "community", "official")
-  @Column({ type: 'varchar', nullable: true, length: 100 })
-  verificationSource?: string;
-
-  // Notes on verification or data quality
+  // Reasons for confidence rating (e.g., "missing website", "incomplete address")
   @Column({ type: 'text', nullable: true })
-  verificationNotes?: string;
+  validationReasons?: string;
+
+  // Status: pending review, approved, or rejected
+  @Column({
+    type: 'varchar',
+    enum: ['pending', 'approved', 'rejected'],
+    default: 'pending',
+  })
+  status: CandidateStatus;
+
+  // When this candidate was approved (mapped to Synagogue)
+  @Column({ type: 'timestamp', nullable: true })
+  approvedAt?: Date;
+
+  // When this candidate was rejected
+  @Column({ type: 'timestamp', nullable: true })
+  rejectedAt?: Date;
+
+  // Rejection reason
+  @Column({ type: 'text', nullable: true })
+  rejectionReason?: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt?: Date;
-
-  @ManyToOne(() => Destination, { onDelete: 'CASCADE' })
-  destination: Destination;
+  updatedAt: Date;
 }

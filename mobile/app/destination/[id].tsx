@@ -36,7 +36,7 @@ const SERVICES = [
   { key: 'chat',        icon: '💬',  label: 'Traveler Chat',      iconBg: '#E0F7FA', iconColor: '#00838F' },
 ];
 
-const ACTIVE_KEYS = ['restaurants', 'chat', 'minyans', 'hosting'];
+const ACTIVE_KEYS = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting'];
 
 export default function DestinationScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -97,6 +97,7 @@ export default function DestinationScreen() {
               onPress={() => {
                 if (!isActive) return;
                 if (service.key === 'restaurants') router.push(`/restaurants/${id}`);
+                else if (service.key === 'synagogues') router.push(`/synagogues/${id}`);
                 else if (service.key === 'chat') router.push(`/chat/${id}`);
                 else if (service.key === 'minyans') router.push(`/minyans/${id}`);
                 else if (service.key === 'hosting') router.push(`/hosting/${id}`);

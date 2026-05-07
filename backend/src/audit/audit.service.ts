@@ -25,7 +25,11 @@ export type AuditAction =
 export class AuditService {
   private readonly logger = new Logger('AUDIT');
 
-  log(action: AuditAction, userId: number | null, meta: Record<string, unknown> = {}) {
+  log(
+    action: AuditAction,
+    userId: number | null,
+    meta: Record<string, unknown> = {},
+  ) {
     this.logger.log(
       JSON.stringify({
         action,

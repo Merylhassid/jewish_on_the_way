@@ -28,7 +28,16 @@ const AppDataSource = new DataSource({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
   ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-  entities: [Destination, Restaurant, User, Minyan, MinyanRegistration, Synagogue, HostingOffer, HostingRequest],
+  entities: [
+    Destination,
+    Restaurant,
+    User,
+    Minyan,
+    MinyanRegistration,
+    Synagogue,
+    HostingOffer,
+    HostingRequest,
+  ],
   synchronize: true,
   logging: false,
 });
@@ -41,14 +50,47 @@ const DESTINATIONS = [
     city: 'Tel Aviv',
     country: 'Israel',
     countryCode: 'IL',
-    description: 'The White City — Israel\'s vibrant cultural capital on the Mediterranean.',
+    description:
+      "The White City — Israel's vibrant cultural capital on the Mediterranean.",
     lat: 32.0853,
     lng: 34.7818,
     restaurants: [
-      { name: 'HaBasta', type: 'meat', kashrut: 'mehadrin', address: 'Hacarmel Market, Tel Aviv', hours: 'Sun-Thu 12:00-23:00, Fri 10:00-14:00', lat: 32.0547, lng: 34.7665 },
-      { name: 'Miznon', type: 'meat', kashrut: 'rabbinate', address: '23 Ibn Gavirol St, Tel Aviv', hours: 'Sun-Thu 11:00-22:00', lat: 32.0866, lng: 34.7818 },
-      { name: 'Meshek Barzilay', type: 'parve', kashrut: 'mehadrin', address: '6 Ahad Ha\'am St, Tel Aviv', hours: 'Daily 8:00-22:00', lat: 32.0632, lng: 34.7739 },
-      { name: 'Port Said', type: 'dairy', kashrut: 'rabbinate', address: 'Bet Lessin Theatre, Tel Aviv', hours: 'Daily 12:00-00:00', lat: 32.0615, lng: 34.7751 },
+      {
+        name: 'HaBasta',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: 'Hacarmel Market, Tel Aviv',
+        hours: 'Sun-Thu 12:00-23:00, Fri 10:00-14:00',
+        lat: 32.0547,
+        lng: 34.7665,
+      },
+      {
+        name: 'Miznon',
+        type: 'meat',
+        kashrut: 'rabbinate',
+        address: '23 Ibn Gavirol St, Tel Aviv',
+        hours: 'Sun-Thu 11:00-22:00',
+        lat: 32.0866,
+        lng: 34.7818,
+      },
+      {
+        name: 'Meshek Barzilay',
+        type: 'parve',
+        kashrut: 'mehadrin',
+        address: "6 Ahad Ha'am St, Tel Aviv",
+        hours: 'Daily 8:00-22:00',
+        lat: 32.0632,
+        lng: 34.7739,
+      },
+      {
+        name: 'Port Said',
+        type: 'dairy',
+        kashrut: 'rabbinate',
+        address: 'Bet Lessin Theatre, Tel Aviv',
+        hours: 'Daily 12:00-00:00',
+        lat: 32.0615,
+        lng: 34.7751,
+      },
     ],
   },
   {
@@ -56,14 +98,47 @@ const DESTINATIONS = [
     city: 'Paris',
     country: 'France',
     countryCode: 'FR',
-    description: 'The City of Light, home to one of Europe\'s oldest and most vibrant Jewish communities.',
+    description:
+      "The City of Light, home to one of Europe's oldest and most vibrant Jewish communities.",
     lat: 48.8566,
     lng: 2.3522,
     restaurants: [
-      { name: 'L\'As du Fallafel', type: 'parve', kashrut: 'mehadrin', address: '34 Rue des Rosiers, Paris 4e', hours: 'Sun-Thu 12:00-23:00, Fri 12:00-17:00', lat: 48.8574, lng: 2.3561 },
-      { name: 'Florence Kahn', type: 'dairy', kashrut: 'mehadrin', address: '24 Rue des Écouffes, Paris 4e', hours: 'Mon-Thu 10:00-19:00, Fri 10:00-14:00', lat: 48.8572, lng: 2.3557 },
-      { name: 'Chez Marianne', type: 'meat', kashrut: 'mehadrin', address: '2 Rue des Hospitalières Saint-Gervais, Paris 4e', hours: 'Daily 11:00-23:00', lat: 48.8568, lng: 2.3548 },
-      { name: 'Café des Psaumes', type: 'meat', kashrut: 'badatz', address: '14-17 Rue des Rosiers, Paris 4e', hours: 'Sun-Thu 11:30-22:30, Fri 11:30-14:00', lat: 48.8576, lng: 2.3563 },
+      {
+        name: "L'As du Fallafel",
+        type: 'parve',
+        kashrut: 'mehadrin',
+        address: '34 Rue des Rosiers, Paris 4e',
+        hours: 'Sun-Thu 12:00-23:00, Fri 12:00-17:00',
+        lat: 48.8574,
+        lng: 2.3561,
+      },
+      {
+        name: 'Florence Kahn',
+        type: 'dairy',
+        kashrut: 'mehadrin',
+        address: '24 Rue des Écouffes, Paris 4e',
+        hours: 'Mon-Thu 10:00-19:00, Fri 10:00-14:00',
+        lat: 48.8572,
+        lng: 2.3557,
+      },
+      {
+        name: 'Chez Marianne',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '2 Rue des Hospitalières Saint-Gervais, Paris 4e',
+        hours: 'Daily 11:00-23:00',
+        lat: 48.8568,
+        lng: 2.3548,
+      },
+      {
+        name: 'Café des Psaumes',
+        type: 'meat',
+        kashrut: 'badatz',
+        address: '14-17 Rue des Rosiers, Paris 4e',
+        hours: 'Sun-Thu 11:30-22:30, Fri 11:30-14:00',
+        lat: 48.8576,
+        lng: 2.3563,
+      },
     ],
   },
   {
@@ -71,14 +146,47 @@ const DESTINATIONS = [
     city: 'New York',
     country: 'United States',
     countryCode: 'US',
-    description: 'Home to the largest Jewish population outside Israel, with endless kosher dining options.',
+    description:
+      'Home to the largest Jewish population outside Israel, with endless kosher dining options.',
     lat: 40.7128,
-    lng: -74.0060,
+    lng: -74.006,
     restaurants: [
-      { name: 'Katz\'s Delicatessen', type: 'meat', kashrut: 'rabbinate', address: '205 E Houston St, Manhattan', hours: 'Mon-Wed 8:00-22:30, Thu 8:00-02:30, Fri-Sun 24h', lat: 40.7223, lng: -73.9874 },
-      { name: 'Taam Tov', type: 'meat', kashrut: 'mehadrin', address: '41 W 47th St, Manhattan', hours: 'Sun-Thu 11:00-20:00, Fri 11:00-13:00', lat: 40.7579, lng: -73.9812 },
-      { name: 'Prime Grill', type: 'meat', kashrut: 'mehadrin', address: '60 E 49th St, Manhattan', hours: 'Sun-Thu 12:00-22:00, Fri 12:00-14:00', lat: 40.7563, lng: -73.9754 },
-      { name: 'Pardes', type: 'meat', kashrut: 'mehadrin', address: '15 Lafayette Ave, Brooklyn', hours: 'Sun-Thu 17:30-22:00', lat: 40.6868, lng: -73.9774 },
+      {
+        name: "Katz's Delicatessen",
+        type: 'meat',
+        kashrut: 'rabbinate',
+        address: '205 E Houston St, Manhattan',
+        hours: 'Mon-Wed 8:00-22:30, Thu 8:00-02:30, Fri-Sun 24h',
+        lat: 40.7223,
+        lng: -73.9874,
+      },
+      {
+        name: 'Taam Tov',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '41 W 47th St, Manhattan',
+        hours: 'Sun-Thu 11:00-20:00, Fri 11:00-13:00',
+        lat: 40.7579,
+        lng: -73.9812,
+      },
+      {
+        name: 'Prime Grill',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '60 E 49th St, Manhattan',
+        hours: 'Sun-Thu 12:00-22:00, Fri 12:00-14:00',
+        lat: 40.7563,
+        lng: -73.9754,
+      },
+      {
+        name: 'Pardes',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '15 Lafayette Ave, Brooklyn',
+        hours: 'Sun-Thu 17:30-22:00',
+        lat: 40.6868,
+        lng: -73.9774,
+      },
     ],
   },
   {
@@ -86,14 +194,48 @@ const DESTINATIONS = [
     city: 'London',
     country: 'United Kingdom',
     countryCode: 'GB',
-    description: 'A thriving Jewish community with excellent kosher options in Golders Green and Stamford Hill.',
+    description:
+      'A thriving Jewish community with excellent kosher options in Golders Green and Stamford Hill.',
     lat: 51.5074,
     lng: -0.1278,
     restaurants: [
-      { name: 'Reubens', type: 'meat', kashrut: 'mehadrin', address: '79 Baker St, London W1U 6RG', hours: 'Sun-Thu 12:00-21:30, Fri 12:00-14:00', lat: 51.5222, lng: -0.1573 },
-      { name: 'Moshikis', type: 'meat', kashrut: 'mehadrin', address: '46 Golders Green Rd, London NW11', hours: 'Sun-Thu 12:00-22:00', lat: 51.5719, lng: -0.1947 },
-      { name: 'Blooms', type: 'meat', kashrut: 'rabbinate', address: '130 Golders Green Rd, London NW11', hours: 'Mon-Thu 12:00-22:00, Fri 12:00-14:00, Sat night-Sun 12:00-22:00', lat: 51.5727, lng: -0.1961 },
-      { name: 'La Fiesta', type: 'meat', kashrut: 'mehadrin', address: '236 Golders Green Rd, London NW11', hours: 'Sun-Thu 12:00-22:30', lat: 51.5744, lng: -0.1985 },
+      {
+        name: 'Reubens',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '79 Baker St, London W1U 6RG',
+        hours: 'Sun-Thu 12:00-21:30, Fri 12:00-14:00',
+        lat: 51.5222,
+        lng: -0.1573,
+      },
+      {
+        name: 'Moshikis',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '46 Golders Green Rd, London NW11',
+        hours: 'Sun-Thu 12:00-22:00',
+        lat: 51.5719,
+        lng: -0.1947,
+      },
+      {
+        name: 'Blooms',
+        type: 'meat',
+        kashrut: 'rabbinate',
+        address: '130 Golders Green Rd, London NW11',
+        hours:
+          'Mon-Thu 12:00-22:00, Fri 12:00-14:00, Sat night-Sun 12:00-22:00',
+        lat: 51.5727,
+        lng: -0.1961,
+      },
+      {
+        name: 'La Fiesta',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '236 Golders Green Rd, London NW11',
+        hours: 'Sun-Thu 12:00-22:30',
+        lat: 51.5744,
+        lng: -0.1985,
+      },
     ],
   },
   {
@@ -101,13 +243,38 @@ const DESTINATIONS = [
     city: 'Buenos Aires',
     country: 'Argentina',
     countryCode: 'AR',
-    description: 'Latin America\'s largest Jewish community with a rich Ashkenazi heritage.',
+    description:
+      "Latin America's largest Jewish community with a rich Ashkenazi heritage.",
     lat: -34.6037,
     lng: -58.3816,
     restaurants: [
-      { name: 'El Galpon', type: 'meat', kashrut: 'mehadrin', address: 'Av. Corrientes 2900, Buenos Aires', hours: 'Sun-Thu 12:00-23:00', lat: -34.6046, lng: -58.4156 },
-      { name: 'La Berenjena', type: 'dairy', kashrut: 'rabbinate', address: 'Araoz 2260, Palermo', hours: 'Daily 12:00-23:00', lat: -34.5883, lng: -58.4213 },
-      { name: 'Mishná', type: 'meat', kashrut: 'badatz', address: 'Scalabrini Ortiz 2555, Palermo', hours: 'Sun-Thu 12:00-15:00, 20:00-23:00', lat: -34.5897, lng: -58.4241 },
+      {
+        name: 'El Galpon',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: 'Av. Corrientes 2900, Buenos Aires',
+        hours: 'Sun-Thu 12:00-23:00',
+        lat: -34.6046,
+        lng: -58.4156,
+      },
+      {
+        name: 'La Berenjena',
+        type: 'dairy',
+        kashrut: 'rabbinate',
+        address: 'Araoz 2260, Palermo',
+        hours: 'Daily 12:00-23:00',
+        lat: -34.5883,
+        lng: -58.4213,
+      },
+      {
+        name: 'Mishná',
+        type: 'meat',
+        kashrut: 'badatz',
+        address: 'Scalabrini Ortiz 2555, Palermo',
+        hours: 'Sun-Thu 12:00-15:00, 20:00-23:00',
+        lat: -34.5897,
+        lng: -58.4241,
+      },
     ],
   },
   {
@@ -115,13 +282,38 @@ const DESTINATIONS = [
     city: 'Montreal',
     country: 'Canada',
     countryCode: 'CA',
-    description: 'A historic Jewish community known for its legendary smoked meat and bagels.',
+    description:
+      'A historic Jewish community known for its legendary smoked meat and bagels.',
     lat: 45.5017,
     lng: -73.5673,
     restaurants: [
-      { name: 'Schwartz\'s Deli', type: 'meat', kashrut: 'rabbinate', address: '3895 Boul Saint-Laurent, Montreal', hours: 'Sun-Thu 8:00-00:30, Fri 8:00-01:30, Sat 8:00-01:30', lat: 45.5189, lng: -73.5842 },
-      { name: 'Beauty\'s Luncheonette', type: 'dairy', kashrut: 'rabbinate', address: '93 Mont-Royal Ave W, Montreal', hours: 'Mon-Fri 7:00-17:00, Sat-Sun 8:00-17:00', lat: 45.5215, lng: -73.5868 },
-      { name: 'Snowdon Deli', type: 'meat', kashrut: 'mehadrin', address: '5265 Décarie Blvd, Montreal', hours: 'Sun-Thu 7:00-21:00, Fri 7:00-14:00', lat: 45.4912, lng: -73.6389 },
+      {
+        name: "Schwartz's Deli",
+        type: 'meat',
+        kashrut: 'rabbinate',
+        address: '3895 Boul Saint-Laurent, Montreal',
+        hours: 'Sun-Thu 8:00-00:30, Fri 8:00-01:30, Sat 8:00-01:30',
+        lat: 45.5189,
+        lng: -73.5842,
+      },
+      {
+        name: "Beauty's Luncheonette",
+        type: 'dairy',
+        kashrut: 'rabbinate',
+        address: '93 Mont-Royal Ave W, Montreal',
+        hours: 'Mon-Fri 7:00-17:00, Sat-Sun 8:00-17:00',
+        lat: 45.5215,
+        lng: -73.5868,
+      },
+      {
+        name: 'Snowdon Deli',
+        type: 'meat',
+        kashrut: 'mehadrin',
+        address: '5265 Décarie Blvd, Montreal',
+        hours: 'Sun-Thu 7:00-21:00, Fri 7:00-14:00',
+        lat: 45.4912,
+        lng: -73.6389,
+      },
     ],
   },
 ];
@@ -139,10 +331,10 @@ async function main() {
   await AppDataSource.initialize();
   console.log('✅  Connected to DB');
 
-  const destRepo    = AppDataSource.getRepository(Destination);
-  const restRepo    = AppDataSource.getRepository(Restaurant);
-  const userRepo    = AppDataSource.getRepository(User);
-  const minyanRepo  = AppDataSource.getRepository(Minyan);
+  const destRepo = AppDataSource.getRepository(Destination);
+  const restRepo = AppDataSource.getRepository(Restaurant);
+  const userRepo = AppDataSource.getRepository(User);
+  const minyanRepo = AppDataSource.getRepository(Minyan);
 
   // ── Optional: set a user as admin ──
   const args = process.argv.slice(2);
@@ -163,7 +355,9 @@ async function main() {
   let newRest = 0;
 
   for (const data of DESTINATIONS) {
-    let dest = await destRepo.findOne({ where: { city: data.city, country: data.country } });
+    let dest = await destRepo.findOne({
+      where: { city: data.city, country: data.country },
+    });
 
     if (!dest) {
       dest = destRepo.create({
@@ -182,8 +376,13 @@ async function main() {
     }
 
     for (const r of data.restaurants) {
-      const exists = await restRepo.findOne({ where: { name: r.name, destination: { id: dest.id } } });
-      const coords = { type: 'Point', coordinates: [r.lng ?? data.lng, r.lat ?? data.lat] };
+      const exists = await restRepo.findOne({
+        where: { name: r.name, destination: { id: dest.id } },
+      });
+      const coords = {
+        type: 'Point',
+        coordinates: [r.lng ?? data.lng, r.lat ?? data.lat],
+      };
       if (!exists) {
         const rest = restRepo.create({
           name: r.name,
@@ -208,11 +407,38 @@ async function main() {
 
   // ── Seed sample minyans (first 3 destinations only) ──
   const MINYAN_SAMPLES = [
-    { prayerType: 'shacharit', dayOffset: 1, time: '08:00', locationText: 'Main synagogue, ground floor' },
-    { prayerType: 'mincha',    dayOffset: 1, time: '18:30', locationText: 'Hotel lobby minyan' },
-    { prayerType: 'maariv',    dayOffset: 2, time: '20:00', locationText: 'Chabad house' },
-    { prayerType: 'shacharit', dayOffset: 3, time: '07:30', locationText: 'Community centre, room 2', notes: 'Nusach Ashkenaz' },
-    { prayerType: 'musaf',     dayOffset: 5, time: '09:30', locationText: 'Great Synagogue', notes: 'Shabbat minyan — Nusach Sfarad' },
+    {
+      prayerType: 'shacharit',
+      dayOffset: 1,
+      time: '08:00',
+      locationText: 'Main synagogue, ground floor',
+    },
+    {
+      prayerType: 'mincha',
+      dayOffset: 1,
+      time: '18:30',
+      locationText: 'Hotel lobby minyan',
+    },
+    {
+      prayerType: 'maariv',
+      dayOffset: 2,
+      time: '20:00',
+      locationText: 'Chabad house',
+    },
+    {
+      prayerType: 'shacharit',
+      dayOffset: 3,
+      time: '07:30',
+      locationText: 'Community centre, room 2',
+      notes: 'Nusach Ashkenaz',
+    },
+    {
+      prayerType: 'musaf',
+      dayOffset: 5,
+      time: '09:30',
+      locationText: 'Great Synagogue',
+      notes: 'Shabbat minyan — Nusach Sfarad',
+    },
   ];
 
   let newMinyan = 0;
@@ -236,7 +462,9 @@ async function main() {
           destination: dest,
         });
         await minyanRepo.save(minyan);
-        console.log(`      ➕  Minyan: ${m.prayerType} @ ${cityName} on ${date}`);
+        console.log(
+          `      ➕  Minyan: ${m.prayerType} @ ${cityName} on ${date}`,
+        );
         newMinyan++;
       }
     }
@@ -248,16 +476,69 @@ async function main() {
 
   if (existingCount < TARGET_USERS) {
     const toCreate = TARGET_USERS - existingCount;
-    console.log(`\n👤  Creating ${toCreate} demo users (current: ${existingCount})…`);
+    console.log(
+      `\n👤  Creating ${toCreate} demo users (current: ${existingCount})…`,
+    );
 
-    const FIRST_NAMES = ['Aaron', 'Avraham', 'Benjamin', 'Daniel', 'David', 'Eliyahu', 'Ezra',
-      'Gideon', 'Hannah', 'Isaac', 'Jacob', 'Joshua', 'Leah', 'Levi', 'Miriam',
-      'Moshe', 'Naomi', 'Noah', 'Rachel', 'Rebecca', 'Ruth', 'Samuel', 'Sarah',
-      'Shimon', 'Shlomo', 'Tamar', 'Yosef', 'Yitzhak', 'Zahava', 'Ziva'];
-    const LAST_NAMES = ['Cohen', 'Levi', 'Katz', 'Shapiro', 'Goldstein', 'Friedman',
-      'Silverstein', 'Rosenberg', 'Blum', 'Klein', 'Weiss', 'Schwartz',
-      'Horowitz', 'Greenberg', 'Berkowitz', 'Stern', 'Feldman', 'Rubin',
-      'Kaufman', 'Adler', 'Bernstein', 'Marcus', 'Jacobs', 'Rosen', 'Gluck'];
+    const FIRST_NAMES = [
+      'Aaron',
+      'Avraham',
+      'Benjamin',
+      'Daniel',
+      'David',
+      'Eliyahu',
+      'Ezra',
+      'Gideon',
+      'Hannah',
+      'Isaac',
+      'Jacob',
+      'Joshua',
+      'Leah',
+      'Levi',
+      'Miriam',
+      'Moshe',
+      'Naomi',
+      'Noah',
+      'Rachel',
+      'Rebecca',
+      'Ruth',
+      'Samuel',
+      'Sarah',
+      'Shimon',
+      'Shlomo',
+      'Tamar',
+      'Yosef',
+      'Yitzhak',
+      'Zahava',
+      'Ziva',
+    ];
+    const LAST_NAMES = [
+      'Cohen',
+      'Levi',
+      'Katz',
+      'Shapiro',
+      'Goldstein',
+      'Friedman',
+      'Silverstein',
+      'Rosenberg',
+      'Blum',
+      'Klein',
+      'Weiss',
+      'Schwartz',
+      'Horowitz',
+      'Greenberg',
+      'Berkowitz',
+      'Stern',
+      'Feldman',
+      'Rubin',
+      'Kaufman',
+      'Adler',
+      'Bernstein',
+      'Marcus',
+      'Jacobs',
+      'Rosen',
+      'Gluck',
+    ];
 
     const passwordHash = await bcrypt.hash('Demo1234!', 10);
     const BATCH = 50;
@@ -284,10 +565,14 @@ async function main() {
     }
     console.log(`\n✅  ${created} demo users created`);
   } else {
-    console.log(`\n⏭️   Already have ${existingCount} users — skipping user seed`);
+    console.log(
+      `\n⏭️   Already have ${existingCount} users — skipping user seed`,
+    );
   }
 
-  console.log(`\n✅  Done — ${newDest} destinations, ${newRest} restaurants, ${newMinyan} minyans added`);
+  console.log(
+    `\n✅  Done — ${newDest} destinations, ${newRest} restaurants, ${newMinyan} minyans added`,
+  );
   await AppDataSource.destroy();
 }
 

@@ -23,7 +23,8 @@ export class MinyansService {
     @InjectRepository(Minyan) private minyansRepo: Repository<Minyan>,
     @InjectRepository(MinyanRegistration)
     private registrationsRepo: Repository<MinyanRegistration>,
-    @InjectRepository(Destination) private destinationsRepo: Repository<Destination>,
+    @InjectRepository(Destination)
+    private destinationsRepo: Repository<Destination>,
     @InjectRepository(User) private usersRepo: Repository<User>,
     private audit: AuditService,
   ) {}
@@ -82,8 +83,10 @@ export class MinyansService {
     return rows.map((row) => {
       const count = Number(row['participantsCount']);
       // Prefer minyan's own coordinates; fall back to destination centre
-      const mLat = row['lat'] !== null ? Number(row['lat']) : Number(row['destLat']);
-      const mLng = row['lng'] !== null ? Number(row['lng']) : Number(row['destLng']);
+      const mLat =
+        row['lat'] !== null ? Number(row['lat']) : Number(row['destLat']);
+      const mLng =
+        row['lng'] !== null ? Number(row['lng']) : Number(row['destLng']);
 
       const distanceMeters =
         filters.lat !== undefined &&
@@ -155,12 +158,16 @@ export class MinyansService {
   // req 6.3 + 6.3.1 — create minyan, auto-register creator
   async create(dto: CreateMinyanDto, creatorId: number) {
     const today = new Date().toISOString().split('T')[0];
-    if (dto.date < today) throw new BadRequestException('Date must be today or in the future');
+    if (dto.date < today)
+      throw new BadRequestException('Date must be today or in the future');
 
     const destination = await this.destinationsRepo.findOne({
       where: { id: dto.destinationId },
     });
-    if (!destination) throw new NotFoundException(`Destination #${dto.destinationId} not found`);
+    if (!destination)
+      throw new NotFoundException(
+        `Destination #${dto.destinationId} not found`,
+      );
 
     const creator = await this.usersRepo.findOneOrFail({
       where: { id: creatorId },
@@ -178,9 +185,8 @@ export class MinyansService {
         creator,
       }),
       {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         lat: typeof dto.lat === 'number' ? dto.lat : null,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
         lng: typeof dto.lng === 'number' ? dto.lng : null,
       },
     );
@@ -206,7 +212,8 @@ export class MinyansService {
     if (!minyan) throw new NotFoundException(`Minyan #${minyanId} not found`);
 
     const today = new Date().toISOString().split('T')[0];
-    if (minyan.date < today) throw new BadRequestException('Cannot register for a past minyan');
+    if (minyan.date < today)
+      throw new BadRequestException('Cannot register for a past minyan');
 
     const existing = await this.registrationsRepo
       .createQueryBuilder('r')
@@ -215,7 +222,8 @@ export class MinyansService {
         minyanId,
       })
       .getOne();
-    if (existing) throw new ConflictException('Already registered for this minyan');
+    if (existing)
+      throw new ConflictException('Already registered for this minyan');
 
     const user = await this.usersRepo.findOneOrFail({ where: { id: userId } });
 
