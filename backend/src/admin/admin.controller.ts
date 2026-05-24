@@ -105,6 +105,20 @@ export class AdminController {
     );
   }
 
+  // DELETE /admin/synagogues/:id
+  @Delete('synagogues/:id')
+  @HttpCode(HttpStatus.OK)
+  deleteSynagogue(@Param('id', ParseIntPipe) id: number) {
+    return this.adminService.deleteSynagogue(id);
+  }
+
+  // POST /admin/synagogues/regeocodeDestination/:destinationId
+  @Post('synagogues/regeocodeDestination/:destinationId')
+  @HttpCode(HttpStatus.OK)
+  regeocodeDestination(@Param('destinationId', ParseIntPipe) destinationId: number) {
+    return this.manualSynagogueImportService.regeocodeDestination(destinationId);
+  }
+
   // POST /admin/synagogues/bulk
   @Post('synagogues/bulk')
   @HttpCode(HttpStatus.OK)

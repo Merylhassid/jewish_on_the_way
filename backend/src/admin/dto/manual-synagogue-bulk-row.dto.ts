@@ -15,9 +15,9 @@ export class ManualSynagogueBulkRowDto {
   @IsNumber()
   destinationId: number;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
-  address: string;
+  address?: string;
 
   @IsOptional()
   @Type(() => Number)
@@ -40,6 +40,10 @@ export class ManualSynagogueBulkRowDto {
   @IsOptional()
   @IsString()
   denomination?: string;
+
+  @IsOptional()
+  @IsString()
+  description?: string;
 
   @IsOptional()
   @IsString()

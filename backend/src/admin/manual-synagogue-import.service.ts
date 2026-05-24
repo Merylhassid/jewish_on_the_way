@@ -48,6 +48,57 @@ export class ManualSynagogueImportService {
   private readonly nominatimCacheTtlMs = 5 * 60 * 1000;
   private readonly nominatimMinIntervalMs = 1100;
 
+  private readonly cityCenters: Record<string, { lat: number; lon: number }> = {
+    'גבעת שמואל': { lat: 32.0799, lon: 34.8432 },
+    'גבעתיים':    { lat: 32.0693, lon: 34.8117 },
+    'חדרה':       { lat: 32.4344, lon: 34.9197 },
+    'חיפה':       { lat: 32.7940, lon: 34.9896 },
+    'הוד השרון':  { lat: 32.1501, lon: 34.8885 },
+    'ירושלים':    { lat: 31.7683, lon: 35.2137 },
+    'קרית אתא':   { lat: 32.8134, lon: 35.1082 },
+    'קרית ביאליק': { lat: 32.8344, lon: 35.0731 },
+    'גדרה':       { lat: 31.8127, lon: 34.7757 },
+    'גן יבנה':    { lat: 31.7894, lon: 34.7068 },
+    'אילת':       { lat: 29.5581, lon: 34.3116 },
+    'דימונה':     { lat: 31.0642, lon: 34.7583 },
+    'קרית גת':     { lat: 31.6100, lon: 34.7642 },
+    'קריית מוצקין': { lat: 32.8363, lon: 35.0759 },
+    'קריית אונו':   { lat: 32.0602, lon: 34.8542 },
+    'קרית שמונה':  { lat: 33.2075, lon: 35.5710 },
+    'לוד':          { lat: 31.9516, lon: 34.8950 },
+    'מעלה אדומים':  { lat: 31.7770, lon: 35.2964 },
+    'מזכרת בתיה':   { lat: 31.8514, lon: 34.8412 },
+    'מבשרת ציון':   { lat: 31.8057, lon: 35.1527 },
+    'מגדל העמק':    { lat: 32.6766, lon: 35.2413 },
+    'מודיעין':      { lat: 31.9086, lon: 35.0069 },
+    'נהריה':        { lat: 33.0063, lon: 35.0946 },
+    'נס ציונה':     { lat: 31.9296, lon: 34.7991 },
+    'נתניה':        { lat: 32.3286, lon: 34.8566 },
+    'נתיבות':       { lat: 31.4229, lon: 34.5888 },
+    'אור יהודה':    { lat: 32.0330, lon: 34.8554 },
+    'פרדס חנה כרכור': { lat: 32.4721, lon: 34.9688 },
+    'פתח תקווה':      { lat: 32.0867, lon: 34.8858 },
+    'רעננה':          { lat: 32.1842, lon: 34.8706 },
+    'רמת גן':         { lat: 32.0680, lon: 34.8248 },
+    'רמת השרון':      { lat: 32.1465, lon: 34.8393 },
+    'רמלה':           { lat: 31.9267, lon: 34.8674 },
+    'רחובות':         { lat: 31.8939, lon: 34.8113 },
+    'ראשון לציון':    { lat: 31.9730, lon: 34.7897 },
+    'ראש העין':       { lat: 32.0956, lon: 34.9558 },
+    'ראש פינה':       { lat: 32.9613, lon: 35.5707 },
+    'סביון':          { lat: 32.0256, lon: 34.8636 },
+    'שדרות':          { lat: 31.5240, lon: 34.5986 },
+    'שוהם':           { lat: 31.9897, lon: 34.9406 },
+    'טבריה':          { lat: 32.7922, lon: 35.5312 },
+    'יבנה':           { lat: 31.8739, lon: 34.7408 },
+    'יהוד':           { lat: 32.0334, lon: 34.8883 },
+    'יקנעם':          { lat: 32.6592, lon: 35.1050 },
+    'זכרון יעקב':     { lat: 32.5689, lon: 34.9517 },
+    'קיסריה':         { lat: 32.5000, lon: 34.9060 },
+    'עפולה':          { lat: 32.6092, lon: 35.2886 },
+    'אשקלון':         { lat: 31.6688, lon: 34.5742 },
+  };
+
   constructor(
     @InjectRepository(Destination)
     private readonly destinationsRepo: Repository<Destination>,
@@ -110,7 +161,7 @@ export class ManualSynagogueImportService {
         const explicitLocation = this.toLocation(row.latitude, row.longitude);
         const resolvedLocation =
           explicitLocation ??
-          (await this.geocodeAddress(row.address, destination.countryCode));
+          (await this.geocodeAddress(row.address ?? '', destination.countryCode));
 
         preparedRows.push({
           index,
@@ -208,6 +259,7 @@ export class ManualSynagogueImportService {
     synagogue.name = item.row.name.trim();
     synagogue.normalizedName = item.normalizedName;
     synagogue.address = this.cleanText(item.row.address);
+    synagogue.description = this.cleanText(item.row.description);
     synagogue.location = item.location;
     synagogue.destination = item.destination;
     synagogue.phone = this.cleanText(item.row.phone);
@@ -240,6 +292,10 @@ export class ManualSynagogueImportService {
     existing.destination = item.destination;
     existing.phone = this.cleanText(item.row.phone) ?? existing.phone;
     existing.website = this.cleanText(item.row.website) ?? existing.website;
+    const description = this.cleanText(item.row.description);
+    if (description) {
+      existing.description = description;
+    }
     existing.denomination =
       this.cleanText(item.row.denomination) ?? existing.denomination;
     existing.source = 'manual';
@@ -384,18 +440,104 @@ export class ManualSynagogueImportService {
         : null;
     }
 
+    // Extract city name from address (last part after last comma)
+    const cityName = this.extractCityName(cleanedAddress);
+    const cityCenter = cityName ? this.cityCenters[cityName] : null;
+
+    // Try structured geocoding first
+    let result: { lat: number; lon: number; resultCity?: string } | null = null;
+    const commaIdx = cleanedAddress.lastIndexOf(', ');
+    if (commaIdx !== -1) {
+      const street = cleanedAddress.slice(0, commaIdx).trim();
+      const city = cleanedAddress.slice(commaIdx + 2).trim();
+      result = await this.nominatimFetch({ street, city }, countryCode);
+      if (result && this.isWithinIsrael(result) && this.isValidForCity(result, cityName, cityCenter)) {
+        this.geocodeCache.set(cacheKey, { location: result, timestamp: Date.now() });
+        return { type: 'Point', coordinates: [result.lon, result.lat] };
+      }
+      // If street has no house number, try appending "1" to anchor to start of street
+      if (!/\d/.test(street)) {
+        result = await this.nominatimFetch({ street: `${street} 1`, city }, countryCode);
+        if (result && this.isWithinIsrael(result) && this.isValidForCity(result, cityName, cityCenter)) {
+          this.geocodeCache.set(cacheKey, { location: result, timestamp: Date.now() });
+          return { type: 'Point', coordinates: [result.lon, result.lat] };
+        }
+      }
+    }
+
+    // Try free-text query
+    result = await this.nominatimFetch({ q: cleanedAddress }, countryCode);
+    if (result && this.isWithinIsrael(result) && this.isValidForCity(result, cityName, cityCenter)) {
+      this.geocodeCache.set(cacheKey, { location: result, timestamp: Date.now() });
+      return { type: 'Point', coordinates: [result.lon, result.lat] };
+    }
+
+    // Fallback: use city center
+    if (cityCenter) {
+      this.logger.warn(`Geocoding failed for "${cleanedAddress}", using city center: ${cityName}`);
+      this.geocodeCache.set(cacheKey, { location: cityCenter, timestamp: Date.now() });
+      return { type: 'Point', coordinates: [cityCenter.lon, cityCenter.lat] };
+    }
+
+    this.logger.warn(`Geocoding failed and no city center found for: ${cleanedAddress}`);
+    this.geocodeCache.set(cacheKey, { location: null, timestamp: Date.now() });
+    return null;
+  }
+
+  private extractCityName(address: string): string | null {
+    const commaIdx = address.lastIndexOf(', ');
+    if (commaIdx === -1) return null;
+    return address.slice(commaIdx + 2).trim();
+  }
+
+  private isValidForCity(
+    result: { lat: number; lon: number; resultCity?: string },
+    expectedCityName: string | null,
+    cityCenter: { lat: number; lon: number } | null,
+  ): boolean {
+    // If Nominatim told us the city name and we know the expected city,
+    // reject results from the wrong city (handles cities < 5km apart like Mazkeret Batya / Yavne)
+    if (expectedCityName && result.resultCity) {
+      // Normalize: collapse hyphens to spaces so "פרדס חנה-כרכור" matches "פרדס חנה כרכור"
+      const normalize = (s: string) => s.trim().replace(/-/g, ' ');
+      const expected = normalize(expectedCityName);
+      const returned = normalize(result.resultCity);
+      if (returned !== expected && !returned.includes(expected) && !expected.includes(returned)) {
+        return false;
+      }
+      return true;
+    }
+    return this.isNearCity(result, cityCenter);
+  }
+
+  private isNearCity(coord: { lat: number; lon: number }, cityCenter: { lat: number; lon: number } | null): boolean {
+    if (!cityCenter) return true;
+    // Within ~5km of city center (0.05 degrees ≈ 5.5km — tight enough to reject neighbouring cities)
+    const latDiff = Math.abs(coord.lat - cityCenter.lat);
+    const lonDiff = Math.abs(coord.lon - cityCenter.lon);
+    return latDiff < 0.05 && lonDiff < 0.05;
+  }
+
+  private async nominatimFetch(
+    params: { q: string } | { street: string; city: string },
+    countryCode?: string,
+  ): Promise<{ lat: number; lon: number; resultCity?: string } | null> {
     const timeSinceLastRequest = Date.now() - this.lastNominatimRequestAt;
     if (timeSinceLastRequest < this.nominatimMinIntervalMs) {
       await this.sleep(this.nominatimMinIntervalMs - timeSinceLastRequest);
     }
-
     this.lastNominatimRequestAt = Date.now();
 
     const url = new URL('https://nominatim.openstreetmap.org/search');
     url.searchParams.set('format', 'jsonv2');
     url.searchParams.set('limit', '1');
     url.searchParams.set('addressdetails', '1');
-    url.searchParams.set('q', cleanedAddress);
+    if ('q' in params) {
+      url.searchParams.set('q', params.q);
+    } else {
+      url.searchParams.set('street', params.street);
+      url.searchParams.set('city', params.city);
+    }
     if (countryCode) {
       url.searchParams.set('countrycodes', countryCode.toLowerCase());
     }
@@ -408,56 +550,89 @@ export class ManualSynagogueImportService {
         signal: controller.signal,
         headers: {
           Accept: 'application/json',
-          'Accept-Language': 'en',
+          'Accept-Language': 'he,en',
           'User-Agent': 'JewishOnTheWay/1.0 (manual synagogue import)',
         },
       });
 
       if (!response.ok) {
-        this.logger.warn(
-          `Nominatim returned status ${response.status} for address: ${cleanedAddress}`,
-        );
-        this.geocodeCache.set(cacheKey, { location: null, timestamp: Date.now() });
+        this.logger.warn(`Nominatim ${response.status} for: ${JSON.stringify(params)}`);
         return null;
       }
 
       const data = (await response.json()) as Array<{
         lat: string;
         lon: string;
+        address?: { city?: string; town?: string; village?: string; municipality?: string };
       }>;
+      const first = data?.[0];
+      if (!first) return null;
 
-      const firstResult = data?.[0];
-      if (!firstResult) {
-        this.geocodeCache.set(cacheKey, { location: null, timestamp: Date.now() });
-        return null;
-      }
+      const lat = Number(first.lat);
+      const lon = Number(first.lon);
+      if (Number.isNaN(lat) || Number.isNaN(lon)) return null;
 
-      const lat = Number(firstResult.lat);
-      const lon = Number(firstResult.lon);
-      if (Number.isNaN(lat) || Number.isNaN(lon)) {
-        this.geocodeCache.set(cacheKey, { location: null, timestamp: Date.now() });
-        return null;
-      }
+      const resultCity =
+        first.address?.city ??
+        first.address?.town ??
+        first.address?.village ??
+        first.address?.municipality;
 
-      const location = { lat, lon };
-      this.geocodeCache.set(cacheKey, {
-        location,
-        timestamp: Date.now(),
-      });
-
-      return {
-        type: 'Point',
-        coordinates: [lon, lat],
-      };
-    } catch (error) {
-      this.logger.warn(
-        `Nominatim geocoding failed for address: ${cleanedAddress}`,
-      );
-      this.geocodeCache.set(cacheKey, { location: null, timestamp: Date.now() });
+      return { lat, lon, resultCity };
+    } catch {
+      this.logger.warn(`Nominatim failed for: ${JSON.stringify(params)}`);
       return null;
     } finally {
       clearTimeout(timeoutId);
     }
+  }
+
+  async regeocodeDestination(destinationId: number): Promise<{ updated: number; failed: number; cityCenter: number }> {
+    const synagogues = await this.synagoguesRepo.find({
+      where: { destination: { id: destinationId } },
+      relations: ['destination'],
+    });
+
+    let updated = 0;
+    let failed = 0;
+    let cityCenter = 0;
+
+    for (const s of synagogues) {
+      if (!s.address) { failed++; continue; }
+
+      const countryCode = s.destination?.countryCode;
+      const newLocation = await this.geocodeAddress(s.address, countryCode);
+
+      if (!newLocation) { failed++; continue; }
+
+      const cityName = this.extractCityName(s.address);
+      const center = cityName ? this.cityCenters[cityName] : null;
+      const isFallback = !!(center &&
+        Math.abs(newLocation.coordinates[1] - center.lat) < 0.0001 &&
+        Math.abs(newLocation.coordinates[0] - center.lon) < 0.0001);
+
+      if (isFallback) {
+        cityCenter++;
+        // If geocoding only produced a city-center fallback, never overwrite
+        // real GPS coordinates that were already stored for this synagogue.
+        if (s.location) {
+          const existing = (s.location as any).coordinates as [number, number] | undefined;
+          const existingIsCityCenter = existing && center &&
+            Math.abs(existing[1] - center.lat) < 0.0001 &&
+            Math.abs(existing[0] - center.lon) < 0.0001;
+          if (!existingIsCityCenter) {
+            continue; // keep the real GPS coordinates untouched
+          }
+        }
+      }
+
+      s.location = newLocation;
+      s.needsLocationVerification = isFallback;
+      await this.synagoguesRepo.save(s);
+      updated++;
+    }
+
+    return { updated, failed, cityCenter };
   }
 
   private buildInputSignature(
@@ -472,8 +647,13 @@ export class ManualSynagogueImportService {
       row.longitude ?? '',
       this.cleanText(row.phone) ?? '',
       this.cleanText(row.website) ?? '',
+      this.cleanText(row.description) ?? '',
       this.cleanText(row.denomination) ?? '',
     ].join('|');
+  }
+
+  private isWithinIsrael(coord: { lat: number; lon: number }): boolean {
+    return coord.lat >= 29 && coord.lat <= 34 && coord.lon >= 34 && coord.lon <= 36;
   }
 
   private cleanText(value?: string | null): string | undefined {
