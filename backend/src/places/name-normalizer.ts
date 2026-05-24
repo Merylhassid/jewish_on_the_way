@@ -21,8 +21,8 @@ export function normalizeNameForDedup(name: string): string {
       .replace(/[\u0300-\u036f]/g, '')
       // Lowercase
       .toLowerCase()
-      // Remove punctuation including hyphens, but keep spaces and alphanumeric
-      .replace(/[^\w\s]/g, '')
+      // Remove punctuation including hyphens, but keep spaces and alphanumeric (Unicode-aware)
+      .replace(/[^\p{L}\p{N}\s]/gu, '')
       // Collapse multiple spaces
       .replace(/\s+/g, ' ')
       // Trim leading/trailing spaces

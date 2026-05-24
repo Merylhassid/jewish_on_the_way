@@ -15,6 +15,7 @@ interface Synagogue {
   id: number;
   name: string;
   address?: string;
+  description?: string;
   phone?: string;
   website?: string;
   denomination?: string;
@@ -69,6 +70,8 @@ export default function SynagogueDetailsScreen() {
     });
   };
 
+  const aboutText = synagogue?.description?.trim();
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -120,6 +123,14 @@ export default function SynagogueDetailsScreen() {
         {synagogue.denomination && (
           <View style={styles.denominationBadge}>
             <Text style={styles.denominationText}>{synagogue.denomination}</Text>
+          </View>
+        )}
+
+        {/* About */}
+        {aboutText && (
+          <View style={styles.section}>
+            <Text style={styles.sectionLabel}>About</Text>
+            <Text style={styles.sectionValue}>{aboutText}</Text>
           </View>
         )}
 

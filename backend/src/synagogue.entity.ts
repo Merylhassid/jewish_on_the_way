@@ -27,6 +27,9 @@ export class Synagogue {
   @Column({ type: 'text', nullable: true })
   address?: string | null;
 
+  @Column({ type: 'text', nullable: true })
+  description?: string | null;
+
   @Column({
     type: 'geography',
     spatialFeatureType: 'Point',

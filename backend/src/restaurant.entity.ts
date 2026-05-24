@@ -54,6 +54,7 @@ export class Restaurant {
     type: 'geography',
     spatialFeatureType: 'Point',
     srid: 4326,
+    nullable: true,
   })
   location: object;
 

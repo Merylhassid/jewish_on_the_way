@@ -12,7 +12,7 @@ export class SynagoguesService {
 
   /**
    * Find all synagogues by destination ID
-   * Returns basic fields: id, name, address, phone, website, location
+   * Returns basic fields: id, name, address, description, phone, website, location
    */
   async findByDestination(destinationId: number) {
     const synagogues = await this.synagoguesRepo.find({
@@ -23,6 +23,7 @@ export class SynagoguesService {
         'id',
         'name',
         'address',
+        'description',
         'phone',
         'website',
         'location',
