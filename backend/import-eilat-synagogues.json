@@ -1,0 +1,347 @@
+[
+  {
+    "name": "אוהל יצחק",
+    "destinationId": 399,
+    "address": "נווה מדבר, אילת",
+    "phone": "053-5550837",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: אבי סלע\n\nנגישות: לא נגיש",
+    "latitude": 29.5520,
+    "longitude": 34.3200
+  },
+  {
+    "name": "איילת השחר - ישיבת הסדר",
+    "destinationId": 399,
+    "address": "ששת הימים 180, אילת",
+    "phone": "052-7994784",
+    "description": "גבאי: עמיחי לביא\n\nנגישות: בית הכנסת נגיש במלואו\nעזרת נשים נגישה: כן",
+    "latitude": 29.5580,
+    "longitude": 34.3130
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 399,
+    "address": "שד׳ התמרים 237/2, אילת",
+    "phone": "050-7726584",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: דוד פרסט\n\nנגישות: בית הכנסת נגיש במלואו",
+    "latitude": 29.5590,
+    "longitude": 34.3100
+  },
+  {
+    "name": "ארבע אימהות",
+    "destinationId": 399,
+    "address": "בי״ס אלון, אילת",
+    "phone": "052-8449308",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: איז׳יק סלומון",
+    "latitude": 29.5610,
+    "longitude": 34.3090
+  },
+  {
+    "name": "בית מנחם",
+    "destinationId": 399,
+    "address": "רח׳ דפנה 13, אילת",
+    "phone": "054-2069845",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: דב ביסמוט\n\nנגישות: בית הכנסת נגיש במלואו",
+    "latitude": 29.5550,
+    "longitude": 34.3140
+  },
+  {
+    "name": "גאולי תימן",
+    "destinationId": 399,
+    "address": "שד׳ התמרים 85, אילת",
+    "phone": "053-8880328",
+    "denomination": "תימני שאמי",
+    "description": "גבאי: ידיד נהרי\n\nנגישות: לא נגיש",
+    "latitude": 29.5570,
+    "longitude": 34.3120
+  },
+  {
+    "name": "הליכות עולם",
+    "destinationId": 399,
+    "address": "ירושלים השלימה 4, אילת",
+    "phone": "052-6330889",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: מקסים ביטון",
+    "latitude": 29.5600,
+    "longitude": 34.3110
+  },
+  {
+    "name": "הרמב״ם",
+    "destinationId": 399,
+    "address": "משעול הפטל 1, אילת",
+    "phone": "050-3383386",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: יונתן ארוך\n\nנגישות: נגיש חלקית - עזרת נשים לא נגישה",
+    "latitude": 29.5565,
+    "longitude": 34.3150
+  },
+  {
+    "name": "היכל שלמה",
+    "destinationId": 399,
+    "address": "אסד 6, אילת",
+    "phone": "050-5341174",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: זינו שמואל",
+    "latitude": 29.5575,
+    "longitude": 34.3125
+  },
+  {
+    "name": "חזון עובדיה",
+    "destinationId": 399,
+    "address": "זהרון 13 מערב 7, אילת",
+    "phone": "052-5049955",
+    "description": "גבאי: רונן אבוטבול",
+    "latitude": 29.5585,
+    "longitude": 34.3140
+  },
+  {
+    "name": "חב״ד - דקל",
+    "destinationId": 399,
+    "address": "הורד 6, אילת",
+    "phone": "052-2887495",
+    "description": "גבאי: מנדי קליין",
+    "latitude": 29.5555,
+    "longitude": 34.3160
+  },
+  {
+    "name": "חב״ד - משכן משה",
+    "destinationId": 399,
+    "address": "נחל אמון 5 שחתמון, אילת",
+    "phone": "053-3387201",
+    "description": "גבאי: מיכאל אסייג",
+    "latitude": 29.5520,
+    "longitude": 34.3220
+  },
+  {
+    "name": "חב״ד שחתמון",
+    "destinationId": 399,
+    "address": "נחל חרמון 6 שחתמון, אילת",
+    "phone": "052-7203747",
+    "description": "רב: הרב לוי הכט",
+    "latitude": 29.5510,
+    "longitude": 34.3230
+  },
+  {
+    "name": "חסד לאברהם",
+    "destinationId": 399,
+    "address": "שיזף 18 שכונת אופיר, אילת",
+    "phone": "052-8708989",
+    "description": "גבאי: מיכאל אלקובי",
+    "latitude": 29.5530,
+    "longitude": 34.3180
+  },
+  {
+    "name": "ישיבה צביה אילת",
+    "destinationId": 399,
+    "address": "מלכת שבא 32, אילת",
+    "phone": "052-7204581",
+    "description": "גבאי: שמואל שפירא",
+    "latitude": 29.5605,
+    "longitude": 34.3100
+  },
+  {
+    "name": "יהל״ם",
+    "destinationId": 399,
+    "address": "נחשון 5 שני הדקל, אילת",
+    "phone": "052-5834454",
+    "description": "גבאי: בני אלון",
+    "latitude": 29.5540,
+    "longitude": 34.3170
+  },
+  {
+    "name": "לב לאחים",
+    "destinationId": 399,
+    "address": "שכונה א׳, אילת",
+    "phone": "050-8826060",
+    "description": "גבאי: אור מיימון",
+    "latitude": 29.5615,
+    "longitude": 34.3090
+  },
+  {
+    "name": "מאור החיים",
+    "destinationId": 399,
+    "address": "שד׳ התמרים 55 שכונה א׳, אילת",
+    "phone": "053-3198025",
+    "description": "גבאי: יוסף חיים חנו",
+    "latitude": 29.5620,
+    "longitude": 34.3080
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 399,
+    "address": "החורב 265 שכונה א׳, אילת",
+    "phone": "053-6206773",
+    "description": "גבאי: יהודה אלימלך",
+    "latitude": 29.5625,
+    "longitude": 34.3070
+  },
+  {
+    "name": "מרכז מנחם",
+    "destinationId": 399,
+    "address": "שד׳ התמרים 477 שני הדקל, אילת",
+    "phone": "054-9410310",
+    "description": "גבאי: חיים ינקוביץ",
+    "latitude": 29.5535,
+    "longitude": 34.3190
+  },
+  {
+    "name": "מתימן יבוא",
+    "destinationId": 399,
+    "address": "קדש 18 חפוז, אילת",
+    "phone": "053-4488403",
+    "denomination": "תימני בלדי",
+    "description": "גבאי: צבי צורבי\n\nנגישות: לא נגיש",
+    "latitude": 29.5500,
+    "longitude": 34.3240
+  },
+  {
+    "name": "נצח ישראל",
+    "destinationId": 399,
+    "address": "נבטים 24 שחתמון, אילת",
+    "phone": "053-7476985",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: פרדי בן ציון\n\nנגישות: נגיש חלקית - עזרת נשים לא נגישה",
+    "latitude": 29.5515,
+    "longitude": 34.3210
+  },
+  {
+    "name": "נר מאיר – רבי מאיר",
+    "destinationId": 399,
+    "address": "חטיבת הנגב 34, אילת",
+    "phone": "053-5558808",
+    "description": "גבאי: צורי יגדון",
+    "latitude": 29.5595,
+    "longitude": 34.3115
+  },
+  {
+    "name": "פחד יצחק",
+    "destinationId": 399,
+    "address": "נחל ערם 2, אילת",
+    "description": "גבאי: יהודה הדאיה",
+    "latitude": 29.5560,
+    "longitude": 34.3135
+  },
+  {
+    "name": "עץ החיים",
+    "destinationId": 399,
+    "address": "שכונה א׳, אילת",
+    "phone": "053-3929619",
+    "description": "גבאי: רפי דיין",
+    "latitude": 29.5630,
+    "longitude": 34.3060
+  },
+  {
+    "name": "צללים",
+    "destinationId": 399,
+    "address": "אבני החושן 29 - מערב 6, אילת",
+    "phone": "053-7338054",
+    "description": "גבאי: נחמיה פריאל\n\nפרטים: פעיל רק בימי שבת קודש",
+    "latitude": 29.5545,
+    "longitude": 34.3155
+  },
+  {
+    "name": "רשב״י",
+    "destinationId": 399,
+    "address": "רחוב האגם 49 שחתמון, אילת",
+    "phone": "053-2709660",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: איל אלולאי\n\nנגישות: בית הכנסת נגיש במלואו",
+    "latitude": 29.5525,
+    "longitude": 34.3200
+  },
+  {
+    "name": "שערי החיים",
+    "destinationId": 399,
+    "address": "רות המואביה 58 שחתמון, אילת",
+    "phone": "053-4554223",
+    "description": "גבאי: עמית נגון\n\nנגישות: בית הכנסת נגיש: כן\nעזרת נשים נגישה: כן",
+    "latitude": 29.5505,
+    "longitude": 34.3250
+  },
+  {
+    "name": "שערי הרפואה",
+    "destinationId": 399,
+    "address": "בי״ח יוספטל, אילת",
+    "phone": "053-7321545",
+    "description": "גבאי: אורן צדוק",
+    "latitude": 29.5575,
+    "longitude": 34.3145
+  },
+  {
+    "name": "שערי צדק",
+    "destinationId": 399,
+    "address": "רחוב שור 885, אילת",
+    "phone": "050-7495366",
+    "description": "גבאי: יהודה המלכה",
+    "latitude": 29.5565,
+    "longitude": 34.3160
+  },
+  {
+    "name": "שערי שלום",
+    "destinationId": 399,
+    "address": "נחושתן 12 שני הדקל, אילת",
+    "phone": "054-6935805",
+    "description": "גבאי: ניר דוד",
+    "latitude": 29.5550,
+    "longitude": 34.3175
+  },
+  {
+    "name": "שערי תפילה",
+    "destinationId": 399,
+    "address": "כיכר צרפת, אילת",
+    "phone": "053-5560001",
+    "description": "גבאי: רון גבאי\n\nפרטים: כל השבוע המקום פתוח כל היום ומשמש כבית מדרש",
+    "latitude": 29.5580,
+    "longitude": 34.3120
+  },
+  {
+    "name": "שבטי ישורון",
+    "destinationId": 399,
+    "address": "המלאכה 13 שכונה א׳, אילת",
+    "phone": "053-7574466",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: גואטה יעקב\n\nנגישות: נגיש חלקית - עזרת נשים לא נגישה",
+    "latitude": 29.5635,
+    "longitude": 34.3050
+  },
+  {
+    "name": "שובה ישראל",
+    "destinationId": 399,
+    "address": "שד׳ התמרים, אילת",
+    "phone": "052-6777329",
+    "description": "גבאי: ליזור גואטה",
+    "latitude": 29.5585,
+    "longitude": 34.3130
+  },
+  {
+    "name": "שובה ישראל - שחתמון",
+    "destinationId": 399,
+    "address": "הדואגים 12, אילת",
+    "phone": "052-8484920",
+    "denomination": "עדות המזרח",
+    "description": "גבאי: אור גואטה\n\nנגישות: בית הכנסת נגיש במלואו\n\nפרטים: המקום פתוח כל יום מהשעה 06:00 עד השעה 22:00 לקבלת הרחב. נמצאים שם תלמידים ואברכים ללימוד חברותא, הציבור מוזמן בשמחה ואהבה",
+    "latitude": 29.5495,
+    "longitude": 34.3260
+  },
+  {
+    "name": "שיח ישראל",
+    "destinationId": 399,
+    "address": "ששת הימים 180 מערב 1, אילת",
+    "phone": "052-3676762",
+    "description": "גבאי: בן סימון אלי",
+    "latitude": 29.5575,
+    "longitude": 34.3135
+  },
+  {
+    "name": "שמחת ישראל",
+    "destinationId": 399,
+    "address": "רחוב אשייל 610, אילת",
+    "phone": "053-7601088",
+    "description": "גבאי: אברהם ביטון",
+    "latitude": 29.5570,
+    "longitude": 34.3125
+  }
+]

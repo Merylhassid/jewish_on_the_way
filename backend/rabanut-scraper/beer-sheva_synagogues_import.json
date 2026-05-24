@@ -1,0 +1,1590 @@
+[
+  {
+    "name": "תפילת מרים",
+    "destinationId": 321,
+    "address": "מרדכי בן טוב 9, באר שבע",
+    "phone": "052-4320540",
+    "description": "Gabai: משעלי מאיר"
+  },
+  {
+    "name": "תקומת ישראל",
+    "destinationId": 321,
+    "address": "גיורא יוספטל 19 שכ' ד', באר שבע",
+    "phone": "052-2712362",
+    "description": "Gabai: ברוך ר' אשר"
+  },
+  {
+    "name": "מרדכי הצדיק",
+    "destinationId": 321,
+    "address": "משעול סוכות 2, באר שבע",
+    "phone": "054-6733004",
+    "description": "Gabai: ישראלי משה"
+  },
+  {
+    "name": "תפילת אבות",
+    "destinationId": 321,
+    "address": "אגן 1 קרית האבות, באר שבע",
+    "phone": "054-4644160",
+    "description": "Gabai: אמויאל אליהו"
+  },
+  {
+    "name": "תפילת חנה",
+    "destinationId": 321,
+    "address": "דה שליט 38, באר שבע",
+    "phone": "052-4710093",
+    "description": "Gabai: אוחיון חיים"
+  },
+  {
+    "name": "תורה וחיים",
+    "destinationId": 321,
+    "address": "העליה 42, באר שבע",
+    "phone": "054-6350593",
+    "description": "Gabai: סבג רפי"
+  },
+  {
+    "name": "תורה וחיים",
+    "destinationId": 321,
+    "address": "בצלאל 24, באר שבע",
+    "phone": "054-2888911",
+    "description": "Gabai: לוזון אבי"
+  },
+  {
+    "name": "תורת חסד",
+    "destinationId": 321,
+    "address": "במתנ\"ס החרדי קרית האבות, באר שבע",
+    "phone": "08-6105404",
+    "description": "Gabai: גבריאלי ר' דוד"
+  },
+  {
+    "name": "תורת משה",
+    "destinationId": 321,
+    "address": "נילי 3, באר שבע",
+    "phone": "052-2761978",
+    "description": "Gabai: בן דוד מנחם"
+  },
+  {
+    "name": "תלפיות חביבה",
+    "destinationId": 321,
+    "address": "אבנר 6, באר שבע",
+    "phone": "052-9552987",
+    "description": "Gabai: מלכה רפאל"
+  },
+  {
+    "name": "תפארת דוד ושלמה-אילוז",
+    "destinationId": 321,
+    "address": "רחבת ברוש מול בית 9, באר שבע",
+    "phone": "052-2626941",
+    "description": "Gabai: משה אילוז"
+  },
+  {
+    "name": "תפארת ישראל",
+    "destinationId": 321,
+    "address": "מכתשים 40, באר שבע",
+    "phone": "052-4489795",
+    "description": "Gabai: שוב מיכאל"
+  },
+  {
+    "name": "תפילה למשה",
+    "destinationId": 321,
+    "address": "הכתל המערבי 49, באר שבע",
+    "phone": "054-6612053",
+    "description": "Gabai: ששון יהודה"
+  },
+  {
+    "name": "שערי שמיים",
+    "destinationId": 321,
+    "address": "ז'בוטינסקי 2, באר שבע",
+    "phone": "050-9770241",
+    "description": "Gabai: דהאן יעקב"
+  },
+  {
+    "name": "שערי תפילה לחנה",
+    "destinationId": 321,
+    "address": "מרדכי מקלף 36, באר שבע",
+    "phone": "054-4833274",
+    "description": "Gabai: סגרון מרדכי"
+  },
+  {
+    "name": "שערי תשובה",
+    "destinationId": 321,
+    "address": "סטרומה 24, באר שבע",
+    "description": "Gabai: יוספי אבנר"
+  },
+  {
+    "name": "שערי תשובה ומגן דוד",
+    "destinationId": 321,
+    "address": "סנהדרין 30, באר שבע",
+    "phone": "050-5766537",
+    "description": "Gabai: מימון מצליח"
+  },
+  {
+    "name": "תהילה לדוד",
+    "destinationId": 321,
+    "address": "זלמן ארן 23, באר שבע",
+    "phone": "050-5385050",
+    "description": "Gabai: דלויה סמי"
+  },
+  {
+    "name": "שערי ציון",
+    "destinationId": 321,
+    "address": "תל חי 16, באר שבע",
+    "phone": "054-7239996",
+    "description": "Gabai: אבושדיד יוסף"
+  },
+  {
+    "name": "שערי רחמים",
+    "destinationId": 321,
+    "address": "בעלי מתוספות 6, באר שבע",
+    "description": "Gabai: פנקר ראובן"
+  },
+  {
+    "name": "שערי רחמים",
+    "destinationId": 321,
+    "address": "סטרומה 23, באר שבע",
+    "phone": "050-4241017",
+    "description": "Gabai: זגורי משה"
+  },
+  {
+    "name": "שערי שלום",
+    "destinationId": 321,
+    "address": "אברהם ברוור 109 מקלט 14, באר שבע",
+    "phone": "050-6775335",
+    "description": "Gabai: קסוקר אליהו"
+  },
+  {
+    "name": "שערי שלום",
+    "destinationId": 321,
+    "address": "התלמוד 7, באר שבע",
+    "phone": "052-4503427",
+    "description": "Gabai: בן זקן אליהו"
+  },
+  {
+    "name": "שירת הרמבם",
+    "destinationId": 321,
+    "address": "הנרי קנדל 12, באר שבע",
+    "phone": "052-5236725",
+    "description": "Gabai: זנו שמעון"
+  },
+  {
+    "name": "שנות חיים",
+    "destinationId": 321,
+    "address": "רבי עקיבא 78 ב' ילד בי\"ס חבד, באר שבע",
+    "phone": "052-7640807",
+    "description": "Gabai: דמרי הרב יוסף"
+  },
+  {
+    "name": "שערי אדגר",
+    "destinationId": 321,
+    "address": "המרד 29 רמות, באר שבע",
+    "phone": "052-6622710",
+    "description": "Gabai: שריקי משה"
+  },
+  {
+    "name": "שערי בנימין",
+    "destinationId": 321,
+    "address": "מקלט בזל 12, באר שבע",
+    "phone": "050-4001753",
+    "description": "Gabai: חניה אבנר"
+  },
+  {
+    "name": "שערי דמעה",
+    "destinationId": 321,
+    "description": "Gabai: ישראל"
+  },
+  {
+    "name": "שערי ניסים",
+    "destinationId": 321,
+    "address": "ח\"ן 2/4, באר שבע",
+    "phone": "050-9799978",
+    "description": "Gabai: בוגנים רונן"
+  },
+  {
+    "name": "שערי צדק",
+    "destinationId": 321,
+    "description": "Gabai: אביטן מיכאל"
+  },
+  {
+    "name": "שערי צדק לזכר חללי צהל",
+    "destinationId": 321,
+    "address": "במתחם בי\"ס נטעים שכ' ג', באר שבע",
+    "phone": "050-5325643",
+    "description": "Gabai: לנקרי יהושוע"
+  },
+  {
+    "name": "שושן עולי פרס",
+    "destinationId": 321,
+    "address": "בזל 51, באר שבע",
+    "phone": "052-8375837",
+    "description": "Gabai: תורתי דוד"
+  },
+  {
+    "name": "שיבת ציון",
+    "destinationId": 321,
+    "address": "המכבים 19, באר שבע",
+    "phone": "052-2881109",
+    "description": "Gabai: כהן מאיר"
+  },
+  {
+    "name": "שבת אחים נוה נוי",
+    "destinationId": 321,
+    "address": "אטד 56, באר שבע",
+    "phone": "054-4677196",
+    "description": "Gabai: סויסה אלברט"
+  },
+  {
+    "name": "רשב\"י",
+    "destinationId": 321,
+    "address": "יציאת אירופה 5, באר שבע",
+    "phone": "052-2760991",
+    "description": "Gabai: אשר ממן"
+  },
+  {
+    "name": "שארית הפליטה",
+    "destinationId": 321,
+    "address": "שרה 8, באר שבע",
+    "phone": "052-6017285",
+    "description": "Gabai: הרפנס שלמה"
+  },
+  {
+    "name": "שארית ישראל",
+    "destinationId": 321,
+    "address": "דן 1 שיכון דרום, באר שבע",
+    "phone": "054-8078960",
+    "description": "Gabai: זגורי מאיר"
+  },
+  {
+    "name": "שבו בנים",
+    "destinationId": 321,
+    "address": "שאול המלך פינת עובדה 53, באר שבע",
+    "phone": "054-6351021",
+    "description": "Gabai: מנגשה הרב אלעזר"
+  },
+  {
+    "name": "שבזי",
+    "destinationId": 321,
+    "address": "סימטת שבזי 9, באר שבע",
+    "description": "Gabai: אחרק ציון"
+  },
+  {
+    "name": "שבחי ירושלים",
+    "destinationId": 321,
+    "address": "חיבת ציון 37, באר שבע",
+    "phone": "054-4290770",
+    "description": "Gabai: בזק אהרון"
+  },
+  {
+    "name": "שבטי ישראל",
+    "destinationId": 321,
+    "address": "מקלט 12א' מול מוריה 11, באר שבע",
+    "phone": "052-8493322",
+    "description": "Gabai: עקירב אליהו עזרא"
+  },
+  {
+    "name": "שבטי ישראל",
+    "destinationId": 321,
+    "address": "ישראל רוקח 30, באר שבע",
+    "phone": "050-2231202",
+    "description": "Gabai: דמרי מאיר"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 321,
+    "address": "החידא 55, באר שבע",
+    "phone": "050-5426135",
+    "description": "Gabai: ממן שמואל"
+  },
+  {
+    "name": "רינת רחל",
+    "destinationId": 321,
+    "address": "נעמי 2, באר שבע",
+    "phone": "052-3313638",
+    "description": "Gabai: דהן שמעון"
+  },
+  {
+    "name": "רמב\"ם",
+    "destinationId": 321,
+    "address": "שאר ישוב ליד בי\"ס רמבם שכ' ה', באר שבע",
+    "phone": "052-8416488",
+    "description": "Gabai: נאמן מרדכי"
+  },
+  {
+    "name": "רמות אור",
+    "destinationId": 321,
+    "address": "הר תבור 32, באר שבע",
+    "phone": "054-4908950",
+    "description": "Gabai: אלימלך ויקטור"
+  },
+  {
+    "name": "רמות השלום",
+    "destinationId": 321,
+    "address": "יצחק מודעי 32 רמות, באר שבע",
+    "phone": "054-9933528",
+    "description": "Gabai: בן שטרית יצחק"
+  },
+  {
+    "name": "רפאל זדה",
+    "destinationId": 321,
+    "address": "יוחנן הורקנוס 5, באר שבע",
+    "phone": "052-2760955",
+    "description": "Gabai: קשני יצחק"
+  },
+  {
+    "name": "רש\"ל",
+    "destinationId": 321,
+    "address": "רחבת שטרית 18, באר שבע",
+    "phone": "054-7904497",
+    "description": "Gabai: ונונו דניאל"
+  },
+  {
+    "name": "רבי עמרם בן דיואן",
+    "destinationId": 321,
+    "address": "בר גיורא 18, באר שבע",
+    "phone": "054-5286899",
+    "description": "Gabai: חזות מישל"
+  },
+  {
+    "name": "רבי שמעון בר יוחאי ואלעזר בנו",
+    "destinationId": 321,
+    "address": "דוד פלוסר 31, באר שבע",
+    "phone": "052-9254224",
+    "description": "Gabai: וקנין מוטי"
+  },
+  {
+    "name": "רינת ירושלים",
+    "destinationId": 321,
+    "address": "הגלבוע 1, באר שבע",
+    "phone": "054-7351415",
+    "description": "Gabai: ניסים חי דדון"
+  },
+  {
+    "name": "רינת מרים",
+    "destinationId": 321,
+    "address": "נחמן אביגד 5, באר שבע",
+    "phone": "054-4348743",
+    "description": "Gabai: מלכה אברהם"
+  },
+  {
+    "name": "עטרת שלמה",
+    "destinationId": 321,
+    "address": "שמגר השופט 42, באר שבע",
+    "phone": "052-2764853",
+    "description": "Gabai: אוחיון אברהם"
+  },
+  {
+    "name": "עץ חיים",
+    "destinationId": 321,
+    "address": "שיזף 1, באר שבע",
+    "phone": "052-3966192",
+    "description": "Gabai: בורה יוסף"
+  },
+  {
+    "name": "קהילת נאות ספיר",
+    "destinationId": 321,
+    "address": "שד' ירושלים 2 נאות ספיר, באר שבע",
+    "phone": "054-4577109",
+    "description": "Gabai: יונה יהושוע"
+  },
+  {
+    "name": "קול ברמה",
+    "destinationId": 321,
+    "address": "מקלט דוד ילין 1 רמות, באר שבע",
+    "phone": "054-2434067",
+    "description": "Gabai: כהן יורם"
+  },
+  {
+    "name": "קול יהודה",
+    "destinationId": 321,
+    "address": "שד' הסופרים 6, באר שבע",
+    "phone": "050-6878611",
+    "description": "Gabai: דנינו משה"
+  },
+  {
+    "name": "קנאת פנחס אור מאיר",
+    "destinationId": 321,
+    "address": "כיכר רחבים 1, באר שבע",
+    "phone": "054-4348737",
+    "description": "Gabai: כהן יהושוע"
+  },
+  {
+    "name": "עזרא הסופר",
+    "destinationId": 321,
+    "address": "הכ\"ג 4, באר שבע",
+    "phone": "050-2512245",
+    "description": "Gabai: בודה מרדכי"
+  },
+  {
+    "name": "עזרת אחים בלדי",
+    "destinationId": 321,
+    "address": "השומר 9, באר שבע",
+    "phone": "053-8334527",
+    "description": "Gabai: הלל אבנר"
+  },
+  {
+    "name": "עטרת יצחק",
+    "destinationId": 321,
+    "address": "ארץ חמדה 18, באר שבע",
+    "phone": "052-9271433",
+    "description": "Gabai: דהן דוד"
+  },
+  {
+    "name": "עטרת כהנים",
+    "destinationId": 321,
+    "address": "אטד 2, באר שבע",
+    "phone": "050-5323812",
+    "description": "Gabai: כהן דוד"
+  },
+  {
+    "name": "עולי פרס ע\"ש ארץ קדושה",
+    "destinationId": 321,
+    "address": "סימטת שבזי 13, באר שבע",
+    "description": "Gabai: כהן אלעזר"
+  },
+  {
+    "name": "עולי קוסטין",
+    "destinationId": 321,
+    "address": "רזיאל 4 שכ' ג', באר שבע",
+    "phone": "054-5997006",
+    "description": "Gabai: אטלן אברהם"
+  },
+  {
+    "name": "עולי רוסיה",
+    "destinationId": 321,
+    "address": "אבן עזרא שכ' ד', באר שבע",
+    "phone": "08-6410162",
+    "description": "Gabai: מרקוביץ לודביג"
+  },
+  {
+    "name": "עזרא הסופר",
+    "destinationId": 321,
+    "address": "כיכר רחבים 2, באר שבע",
+    "phone": "052-3891890",
+    "description": "Gabai: אמונה אפרים"
+  },
+  {
+    "name": "ע\"ש רבי מסעוד אלקבץ",
+    "destinationId": 321,
+    "address": "משעול בר יוחאי 40, באר שבע",
+    "phone": "054-4460994",
+    "description": "Gabai: אבוחצירא שרלי"
+  },
+  {
+    "name": "ע\"ש שמעון שלום",
+    "destinationId": 321,
+    "address": "העליה 20, באר שבע",
+    "phone": "052-8340488",
+    "description": "Gabai: יהושוע חסין"
+  },
+  {
+    "name": "עוז ותעצומות",
+    "destinationId": 321,
+    "address": "שד' ירושלים 68, באר שבע",
+    "phone": "050-6014227",
+    "description": "Gabai: חסידיאן אליעזר"
+  },
+  {
+    "name": "עולי גרוזיה",
+    "destinationId": 321,
+    "phone": "052-7479408",
+    "description": "Gabai: צצאשוילי שבתאי"
+  },
+  {
+    "name": "עולי טורקיה",
+    "destinationId": 321,
+    "address": "סמילנסקי 27, באר שבע",
+    "phone": "08-6237501",
+    "description": "Gabai: כהן דוד"
+  },
+  {
+    "name": "ע\"ש רבי מאיר בעל הנס",
+    "destinationId": 321,
+    "address": "במתחם בית החולים סורוקה, באר שבע",
+    "phone": "08-6495925",
+    "description": "Gabai: רווח יוסף"
+  },
+  {
+    "name": "סוכת שלום",
+    "destinationId": 321,
+    "description": "Gabai: דיין יהודה"
+  },
+  {
+    "name": "סטרומה",
+    "destinationId": 321,
+    "address": "כיכר קפלן 6, באר שבע",
+    "phone": "052-5453971",
+    "description": "Gabai: שטינבוך יונה"
+  },
+  {
+    "name": "ע\"ש הלה בר יוסף",
+    "destinationId": 321,
+    "address": "השומר 7, באר שבע",
+    "phone": "050-7864879",
+    "description": "Gabai: בר יוסף ישראל"
+  },
+  {
+    "name": "ע\"ש קדושי אושויץ",
+    "destinationId": 321,
+    "address": "אברהם אבינו 4, באר שבע",
+    "phone": "054-2944875",
+    "description": "Gabai: בלילה אברהם"
+  },
+  {
+    "name": "נווה יוסף חיים",
+    "destinationId": 321,
+    "address": "יהודה דה בוטון 3, באר שבע",
+    "description": "Gabai: בוטבול יצחק"
+  },
+  {
+    "name": "נחל עדנים",
+    "destinationId": 321,
+    "address": "יוצאי סוריה 2/1, באר שבע",
+    "phone": "058-5456148",
+    "description": "Gabai: גבאי יוסף חיים"
+  },
+  {
+    "name": "נחלת יצחק - כיפה שכ' ד'",
+    "destinationId": 321,
+    "address": "רש\"י שכ' ד', באר שבע",
+    "phone": "054-5224291",
+    "description": "Gabai: לוי יצחק"
+  },
+  {
+    "name": "נצח ישראל",
+    "destinationId": 321,
+    "address": "סעדיה גאון 12, באר שבע",
+    "phone": "053-2225555",
+    "description": "Gabai: גלר יוסי"
+  },
+  {
+    "name": "נתיבות היושר",
+    "destinationId": 321,
+    "address": "רחבת הראש שכ' ביא', באר שבע",
+    "phone": "050-5547801",
+    "description": "Gabai: דהן אשר"
+  },
+  {
+    "name": "נתיבות שלום",
+    "destinationId": 321,
+    "address": "יהואש 28, באר שבע",
+    "phone": "052-6333833",
+    "description": "Gabai: מויאל מנשה"
+  },
+  {
+    "name": "משה שלום",
+    "destinationId": 321,
+    "address": "אלעזר בן יאיר 9, באר שבע",
+    "description": "Gabai: משה שלום"
+  },
+  {
+    "name": "משכן שמעון",
+    "destinationId": 321,
+    "address": "הרב פרנק 1, באר שבע",
+    "phone": "054-3063063",
+    "description": "Gabai: אוחיון שמעון"
+  },
+  {
+    "name": "מעיין",
+    "destinationId": 321,
+    "description": "Gabai: רוזנטל חיים"
+  },
+  {
+    "name": "מעיין חיים לעולי גרוזיה",
+    "destinationId": 321,
+    "address": "אבן עזרא 30, באר שבע",
+    "phone": "053-7955914",
+    "description": "Gabai: קיקישוילי אברהם"
+  },
+  {
+    "name": "מעיינות",
+    "destinationId": 321,
+    "address": "רבי טרפון 9, באר שבע",
+    "phone": "052-4708895",
+    "description": "Gabai: דרעי מרדכי"
+  },
+  {
+    "name": "מרדכי היהודי",
+    "destinationId": 321,
+    "address": "ציזלינג 1, באר שבע",
+    "description": "Gabai: אלקיים יצחק"
+  },
+  {
+    "name": "מרדכי ואסתר",
+    "destinationId": 321,
+    "address": "משעול סוכות 2, באר שבע",
+    "phone": "054-6733004",
+    "description": "Gabai: ישראלי משה"
+  },
+  {
+    "name": "מרום אל",
+    "destinationId": 321,
+    "address": "משה פריבס 6 רמות, באר שבע",
+    "phone": "053-3322254",
+    "description": "Gabai: חליוא קובי"
+  },
+  {
+    "name": "מרכז לשמירת מורשת יוצאי תוניס",
+    "destinationId": 321,
+    "address": "יהודה הלוי פינת בר גיורא, באר שבע",
+    "phone": "050-2700717",
+    "description": "Gabai: נעים ניסים"
+  },
+  {
+    "name": "משה כהן",
+    "destinationId": 321,
+    "description": "Gabai: כהן ראובן"
+  },
+  {
+    "name": "מגן דוד",
+    "destinationId": 321,
+    "address": "אברהם אבינו 42, באר שבע",
+    "phone": "050-4151614",
+    "description": "Gabai: לוי שלום"
+  },
+  {
+    "name": "מגן דוד",
+    "destinationId": 321,
+    "address": "מרדכי עליאש 3, באר שבע",
+    "phone": "052-2398751",
+    "description": "Gabai: שוקרי ר' מרדכי"
+  },
+  {
+    "name": "מגן חסידים",
+    "destinationId": 321,
+    "address": "סטרומה 43, באר שבע",
+    "phone": "052-8905885",
+    "description": "Gabai: טלקר פרסי"
+  },
+  {
+    "name": "מולדת (בית שמואל)",
+    "destinationId": 321,
+    "address": "שד' ירושלים 38, באר שבע",
+    "phone": "08-6410788",
+    "description": "Gabai: גולד הרולד"
+  },
+  {
+    "name": "מזרח שמש",
+    "destinationId": 321,
+    "address": "אפריים לוזון 3, באר שבע",
+    "description": "Gabai: בן שמחון אילן"
+  },
+  {
+    "name": "מחזיקי הדת",
+    "destinationId": 321,
+    "address": "רינגלבלום 52, באר שבע",
+    "phone": "052-6394100",
+    "description": "Gabai: חזני דוד"
+  },
+  {
+    "name": "מלון לאונרדו",
+    "destinationId": 321,
+    "address": "במתחם מלון לאונרדו, באר שבע",
+    "phone": "054-8015205",
+    "description": "Gabai: אוחנה רפאל"
+  },
+  {
+    "name": "מנחת יהודה",
+    "destinationId": 321,
+    "address": "ניב דוד 1 נווה זאב, באר שבע",
+    "description": "Gabai: אוחנה קובי"
+  },
+  {
+    "name": "מנחת יעקב",
+    "destinationId": 321,
+    "address": "סימטת ציקלג, באר שבע",
+    "phone": "050-3166670",
+    "description": "Gabai: בן אבו רפי"
+  },
+  {
+    "name": "מסילות אור",
+    "destinationId": 321,
+    "address": "רמח\"ל מקלט ב' 2, באר שבע",
+    "phone": "052-6772577",
+    "description": "Gabai: קרליץ נחום"
+  },
+  {
+    "name": "לב מלכים",
+    "destinationId": 321,
+    "address": "ביאליק 125, באר שבע",
+    "phone": "052-6722022",
+    "description": "Gabai: דהאן יצחק"
+  },
+  {
+    "name": "לגריבה",
+    "destinationId": 321,
+    "address": "החלוץ 4, באר שבע",
+    "phone": "050-4600446",
+    "description": "Gabai: מיכה"
+  },
+  {
+    "name": "למען שמו באהבה",
+    "destinationId": 321,
+    "address": "רח' רודנסקי מקלט 7, באר שבע",
+    "phone": "050-2024489",
+    "description": "Gabai: גבאי ימין"
+  },
+  {
+    "name": "לנוער באולפנה עמית",
+    "destinationId": 321,
+    "address": "במתחם אולפנה עמית שכ' ג', באר שבע",
+    "phone": "052-5531923",
+    "description": "Gabai: דדון הרצל"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 321,
+    "phone": "054-6480592",
+    "description": "Gabai: במלונקר שמואל"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 321,
+    "address": "גוש עציון 63, באר שבע",
+    "phone": "077-3006195",
+    "description": "Gabai: זוהר רפאל"
+  },
+  {
+    "name": "ישמח משה",
+    "destinationId": 321,
+    "address": "אברהם אבינו 48, באר שבע",
+    "phone": "050-3034676",
+    "description": "Gabai: לוי דוד"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "destinationId": 321,
+    "address": "שד' הסופרים 6, באר שבע",
+    "phone": "050-6264323",
+    "description": "Gabai: ד\"ר האוזמן"
+  },
+  {
+    "name": "כנסת ישראל",
+    "destinationId": 321,
+    "description": "Gabai: שוקרון בנימין"
+  },
+  {
+    "name": "כתר תורה",
+    "destinationId": 321,
+    "address": "ההגנה 1, באר שבע",
+    "phone": "054-4422535",
+    "description": "Gabai: ביטון שמעון"
+  },
+  {
+    "name": "ישיבת נתיב השבים",
+    "destinationId": 321,
+    "address": "סימטת שבזי 17, באר שבע",
+    "description": "Gabai: אמונה מרדכי"
+  },
+  {
+    "name": "ישיבת קרית האבות",
+    "destinationId": 321,
+    "address": "גלנטי 2, באר שבע",
+    "description": "Gabai: ספקטור יהודה"
+  },
+  {
+    "name": "ישמח משה",
+    "destinationId": 321,
+    "address": "חנה סנש 5, באר שבע",
+    "phone": "050-2209838",
+    "description": "Gabai: פרוספר שושני"
+  },
+  {
+    "name": "חסד ליעקב",
+    "destinationId": 321,
+    "address": "רמ\"א 1, באר שבע",
+    "description": "Gabai: סויסה יוסף"
+  },
+  {
+    "name": "טוב להודות לה'",
+    "destinationId": 321,
+    "description": "Gabai: עובדיה אוקון"
+  },
+  {
+    "name": "יגדיל תורה",
+    "destinationId": 321,
+    "address": "במקלט היכל שלמה קלאוזנר 15, באר שבע",
+    "description": "Gabai: שמשון יגאל"
+  },
+  {
+    "name": "יוסף חי",
+    "destinationId": 321,
+    "address": "כיכר בר אילן 4, באר שבע",
+    "phone": "052-5558625",
+    "description": "Gabai: דמרי יהושע"
+  },
+  {
+    "name": "יוסף חיים",
+    "destinationId": 321,
+    "address": "דוד אלרואי 1, באר שבע",
+    "phone": "054-6904314",
+    "description": "Gabai: הראל יהודה"
+  },
+  {
+    "name": "יחד שבטי ישראל",
+    "destinationId": 321,
+    "address": "יוהנה ז'בוטיסקי 58, באר שבע",
+    "phone": "052-3736309",
+    "description": "Gabai: יעקב יעקב"
+  },
+  {
+    "name": "יסודות מאיר",
+    "destinationId": 321,
+    "address": "בני אור במתחם בי\"ס יסודות, באר שבע",
+    "phone": "052-3635545",
+    "description": "Gabai: אלקובי מאיר"
+  },
+  {
+    "name": "חיבת ציון",
+    "destinationId": 321,
+    "address": "רמבן 72, באר שבע",
+    "phone": "052-3995403",
+    "description": "Gabai: דדון אברהם"
+  },
+  {
+    "name": "חללי צהל - קול יהודה",
+    "destinationId": 321,
+    "address": "הרב מנחם גבאי 33, באר שבע",
+    "phone": "050-8714486",
+    "description": "Gabai: חליווא עמרם"
+  },
+  {
+    "name": "חסד לאברהם",
+    "destinationId": 321,
+    "address": "בר ניסן 1, באר שבע",
+    "phone": "053-6232634",
+    "description": "Gabai: נאמן יורם"
+  },
+  {
+    "name": "זכור לאברהם",
+    "destinationId": 321,
+    "address": "שפרינצק 11, באר שבע",
+    "phone": "050-6558564",
+    "description": "Gabai: מלכה יעקב"
+  },
+  {
+    "name": "זכור לאברהם - אשכנזי",
+    "destinationId": 321,
+    "address": "התורה הגואלת 2, באר שבע",
+    "phone": "053-8913076",
+    "description": "Gabai: מיטלברג נדב"
+  },
+  {
+    "name": "זכור לאברהם - ספרדי",
+    "destinationId": 321,
+    "address": "התורה הגואלת 2, באר שבע",
+    "phone": "053-8913076",
+    "description": "Gabai: מיטלברג נדב"
+  },
+  {
+    "name": "חבד",
+    "destinationId": 321,
+    "address": "משה חובב 34, באר שבע",
+    "phone": "052-4891286",
+    "description": "Gabai: קריביצקי משה"
+  },
+  {
+    "name": "חברון",
+    "destinationId": 321,
+    "address": "ההגנה 10, באר שבע",
+    "phone": "050-8788827",
+    "description": "Gabai: בוקרה ציון"
+  },
+  {
+    "name": "חוני המעגל",
+    "destinationId": 321,
+    "address": "חיים שיבא 1, באר שבע",
+    "phone": "052-3219408",
+    "description": "Gabai: אבוטבול נפתלי"
+  },
+  {
+    "name": "חזון עובדיה",
+    "destinationId": 321,
+    "address": "גוש עציון 13, באר שבע",
+    "phone": "052-8990578",
+    "description": "Gabai: מרציאנו אהרון"
+  },
+  {
+    "name": "המרכזי פלח 7",
+    "destinationId": 321,
+    "address": "עיט 69 פלח 7, באר שבע",
+    "phone": "052-4708400",
+    "description": "Gabai: עמר שלומי"
+  },
+  {
+    "name": "העל עדתי [הכיפה]",
+    "destinationId": 321,
+    "address": "הצבי 22, באר שבע",
+    "phone": "050-6231035",
+    "description": "Gabai: לורבר יהודה"
+  },
+  {
+    "name": "וישכם אברהם",
+    "destinationId": 321,
+    "address": "חנה סנש 14, באר שבע",
+    "phone": "050-7613943",
+    "description": "Gabai: ברנס בכור"
+  },
+  {
+    "name": "זוהר הרקיע זכור לאברהם",
+    "destinationId": 321,
+    "address": "רנה קסן 65, באר שבע",
+    "phone": "050-8885016",
+    "description": "Gabai: דנינו יצחק"
+  },
+  {
+    "name": "המלאך רפאל",
+    "destinationId": 321,
+    "address": "אליהו הנביא 21, באר שבע",
+    "phone": "052-8340873",
+    "description": "Gabai: עמרוסי שלום"
+  },
+  {
+    "name": "המעיין",
+    "destinationId": 321,
+    "address": "שרה 8, באר שבע",
+    "phone": "077-2013375",
+    "description": "Gabai: אמור שמואל"
+  },
+  {
+    "name": "המרכז הרוחני אהבת ישראל",
+    "destinationId": 321,
+    "address": "משעול סנונית 1 מקלט ה' 4, באר שבע",
+    "description": "Gabai: ברביבאי אברהם"
+  },
+  {
+    "name": "המרכזי",
+    "destinationId": 321,
+    "address": "האבות 80, באר שבע",
+    "phone": "054-4348735",
+    "description": "Gabai: לורבר אברהם"
+  },
+  {
+    "name": "המרכזי לעולי בבל",
+    "destinationId": 321,
+    "address": "מונטיפיורי 5, באר שבע",
+    "phone": "050-8349453",
+    "description": "Gabai: דאלי אשר"
+  },
+  {
+    "name": "המרכזי מצדה",
+    "destinationId": 321,
+    "address": "דרך מצדה 196, באר שבע",
+    "phone": "050-3616800",
+    "description": "Gabai: הרשקוביץ יוסף"
+  },
+  {
+    "name": "היכל ר' דוד משה",
+    "destinationId": 321,
+    "address": "אהרון מסקין 24, באר שבע",
+    "phone": "053-8293843",
+    "description": "Gabai: אמזלג יעקב"
+  },
+  {
+    "name": "היכל שלמה - נזרית",
+    "destinationId": 321,
+    "address": "קלאוזנר 15, באר שבע",
+    "phone": "054-4380332",
+    "description": "Gabai: נזרית דוד"
+  },
+  {
+    "name": "הישועה",
+    "destinationId": 321,
+    "address": "אלפרד רוסו 2, באר שבע",
+    "phone": "050-3493418",
+    "description": "Gabai: גוילי ניסים"
+  },
+  {
+    "name": "האבות",
+    "destinationId": 321,
+    "address": "סימטת שבזי 5, באר שבע",
+    "phone": "050-5219845",
+    "description": "Gabai: נער ברוך"
+  },
+  {
+    "name": "הארי הקדוש",
+    "destinationId": 321,
+    "address": "אלברט פריץ 12 מקלט 1, באר שבע",
+    "phone": "050-9741741",
+    "description": "Gabai: רווח שאול"
+  },
+  {
+    "name": "הדיגת",
+    "destinationId": 321,
+    "address": "משעול נבטים 6/2, באר שבע",
+    "phone": "053-7000232",
+    "description": "Gabai: חכמון ניסים"
+  },
+  {
+    "name": "הדסה ע\"ש חללי הר הצופים",
+    "destinationId": 321,
+    "address": "גרשון 35, באר שבע",
+    "phone": "054-2341944",
+    "description": "Gabai: קופיקה נתן"
+  },
+  {
+    "name": "הודיה",
+    "destinationId": 321,
+    "address": "דודאים מקלט 1, באר שבע",
+    "phone": "052-3668262",
+    "description": "Gabai: סויסה משה"
+  },
+  {
+    "name": "היכל דוד",
+    "destinationId": 321,
+    "description": "Gabai: טרבלסי יצחק"
+  },
+  {
+    "name": "היכל קדושי ישראל",
+    "destinationId": 321,
+    "address": "בני אור 19, באר שבע",
+    "phone": "052-6056393",
+    "description": "Gabai: אלחדד שלום"
+  },
+  {
+    "name": "בני שלמה",
+    "destinationId": 321,
+    "address": "לוין קיפניס 1, באר שבע",
+    "phone": "050-4109603",
+    "description": "Gabai: אמסלם משה"
+  },
+  {
+    "name": "ברית אחים",
+    "destinationId": 321,
+    "address": "יוסף בן מתיתיהו שכ' ו' הישנה, באר שבע",
+    "description": "Gabai: בן עמי יוסף"
+  },
+  {
+    "name": "ברית שלום",
+    "destinationId": 321,
+    "address": "גיורא יוספטל 19 שכ' ד', באר שבע",
+    "phone": "054-4586152",
+    "description": "Gabai: טריקי הרב אברהם"
+  },
+  {
+    "name": "ברכת אהרון",
+    "destinationId": 321,
+    "address": "שרגא אברהמסון 6, באר שבע",
+    "phone": "050-2007115",
+    "description": "Gabai: גולן רומנו"
+  },
+  {
+    "name": "ברכת שלום",
+    "destinationId": 321,
+    "address": "הנרי קנדל 4, באר שבע",
+    "phone": "050-2029683",
+    "description": "Gabai: אלמסי פנחס"
+  },
+  {
+    "name": "גאולה",
+    "destinationId": 321,
+    "address": "שאר ישוב 7 ליד בי\"ס רמבם, באר שבע",
+    "phone": "050-6668046",
+    "description": "Gabai: שגב שלום"
+  },
+  {
+    "name": "גני יעלים",
+    "destinationId": 321,
+    "address": "העליה 1, באר שבע",
+    "phone": "052-3949340",
+    "description": "Gabai: רוטנשטרייך מנחם"
+  },
+  {
+    "name": "דרכי שאול עדות ביהוסף",
+    "destinationId": 321,
+    "address": "בצלאל 20 מקלט ב'1, באר שבע",
+    "phone": "054-2342663",
+    "description": "Gabai: סיידה אושר"
+  },
+  {
+    "name": "בית שלמה",
+    "destinationId": 321,
+    "description": "Gabai: אבקסיס מאיר"
+  },
+  {
+    "name": "בית שמואל",
+    "destinationId": 321,
+    "address": "הנדיב 11, באר שבע",
+    "phone": "050-6244066",
+    "description": "Gabai: חדד יצחק"
+  },
+  {
+    "name": "בית יצחק",
+    "destinationId": 321,
+    "address": "תל חי 6, באר שבע",
+    "phone": "050-4126674",
+    "description": "Gabai: פרוכטר יחיאל"
+  },
+  {
+    "name": "בית יצחק גבללי",
+    "destinationId": 321,
+    "address": "התלמוד 6, באר שבע",
+    "phone": "050-6239100",
+    "description": "Gabai: דורון חיון"
+  },
+  {
+    "name": "בית ישראל",
+    "destinationId": 321,
+    "address": "מנדלי מוכר ספרים 9, באר שבע",
+    "description": "Gabai: קדוש דניאל"
+  },
+  {
+    "name": "בית מדרש רמות מרים",
+    "destinationId": 321,
+    "address": "אברהם ברוור 55 רמות, באר שבע",
+    "phone": "052-4320540",
+    "description": "Gabai: משעלי מאיר"
+  },
+  {
+    "name": "בית מיכאל",
+    "destinationId": 321,
+    "address": "בלפור 48, באר שבע",
+    "phone": "050-7292161",
+    "description": "Gabai: סופר עופר"
+  },
+  {
+    "name": "בית מכתשים",
+    "destinationId": 321,
+    "address": "דרך חברון 60, באר שבע",
+    "phone": "052-6052287",
+    "description": "Gabai: סבג שרל שלום"
+  },
+  {
+    "name": "בית מרדכי אהל יעקב",
+    "destinationId": 321,
+    "address": "מבצע יואב 47, באר שבע",
+    "phone": "054-8475640",
+    "description": "Gabai: פרץ אברהם"
+  },
+  {
+    "name": "בית רבקה",
+    "destinationId": 321,
+    "description": "Gabai: מיטלברג גבריאל"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 321,
+    "address": "קלישר 40, באר שבע",
+    "phone": "052-2918668",
+    "description": "Gabai: עמר גמליאל"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 321,
+    "address": "קלישר 31, באר שבע",
+    "phone": "054-4700654",
+    "description": "Gabai: יפרח עמרם"
+  },
+  {
+    "name": "בית בנימין",
+    "destinationId": 321,
+    "address": "בני אור 43, באר שבע",
+    "phone": "052-4131903",
+    "description": "Gabai: חטיביאשוילי יעקב"
+  },
+  {
+    "name": "בית היאס",
+    "destinationId": 321,
+    "address": "במתחם אוניברסיטת בן גוריון, באר שבע",
+    "phone": "052-2767124",
+    "description": "Gabai: ברמי רחמים"
+  },
+  {
+    "name": "בית חב\"ד נאות לון",
+    "destinationId": 321,
+    "address": "הגאונים 17, באר שבע",
+    "phone": "054-6511770",
+    "description": "Gabai: רוט ר' משה אריאל הכהן"
+  },
+  {
+    "name": "בית חי",
+    "destinationId": 321,
+    "address": "גולומב שכ' ג', באר שבע",
+    "phone": "054-2434067",
+    "description": "Gabai: כהן יורם"
+  },
+  {
+    "name": "בית יאיר מזוז",
+    "destinationId": 321,
+    "address": "עכו 50, באר שבע",
+    "description": "Gabai: אפללו שלמה"
+  },
+  {
+    "name": "בית יונה",
+    "destinationId": 321,
+    "address": "יעקב דורי 2, באר שבע",
+    "phone": "052-5550200",
+    "description": "Gabai: אלי כהן"
+  },
+  {
+    "name": "בית יוסף ע\"ש הרב סוסו",
+    "destinationId": 321,
+    "address": "הרב סוסו הכהן שכ' ד', באר שבע",
+    "phone": "08-6204000",
+    "description": "Gabai: ברנס יעקב"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 321,
+    "address": "יצחק שיפר 14, באר שבע",
+    "phone": "08-6491240",
+    "description": "Gabai: אברהם איפרגן"
+  },
+  {
+    "name": "בית אל לעולי לוב",
+    "destinationId": 321,
+    "address": "הכ\"ג 2, באר שבע",
+    "phone": "050-8892139",
+    "description": "Gabai: טרבלסי מיכאל"
+  },
+  {
+    "name": "בית אליהו",
+    "destinationId": 321,
+    "address": "אוסבלדו ארניה 62, באר שבע",
+    "phone": "08-6491990",
+    "description": "Gabai: שמילה משה"
+  },
+  {
+    "name": "בית אבות",
+    "destinationId": 321,
+    "address": "דוד המלך 20, באר שבע",
+    "phone": "053-3321210",
+    "description": "Gabai: קוריאט יוסף"
+  },
+  {
+    "name": "בית אברהם",
+    "destinationId": 321,
+    "address": "שיזף 2, באר שבע",
+    "phone": "08-6272297",
+    "description": "Gabai: ליפשיץ ירמיהו"
+  },
+  {
+    "name": "בית אברהם",
+    "destinationId": 321,
+    "address": "בזל 52, באר שבע",
+    "phone": "052-8322020",
+    "description": "Gabai: קראדי איתן"
+  },
+  {
+    "name": "בית אהרון",
+    "destinationId": 321,
+    "address": "רחבת עוזיאל שכ' יא', באר שבע",
+    "phone": "050-7338220",
+    "description": "Gabai: חלימי שלמה"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 321,
+    "address": "אסף הרופא 6, באר שבע",
+    "phone": "054-4840227",
+    "description": "Gabai: מלכה מכלוף"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 321,
+    "address": "צבי בסקין 8, באר שבע",
+    "phone": "08-6273886",
+    "description": "Gabai: עודד ספורטס"
+  },
+  {
+    "name": "בית אל אהל משה",
+    "destinationId": 321,
+    "address": "שרה אהרונסון 8א, באר שבע",
+    "phone": "054-5601291",
+    "description": "Gabai: וודבקר אלקנה"
+  },
+  {
+    "name": "בבא סאלי",
+    "destinationId": 321,
+    "address": "אלכסנדר ינאי 16/2, באר שבע",
+    "phone": "052-5520775",
+    "description": "Gabai: כהן חיים"
+  },
+  {
+    "name": "בי\"ס קארו",
+    "destinationId": 321,
+    "address": "אברהם אבינו 15, באר שבע",
+    "phone": "050-4145172",
+    "description": "Gabai: לוי ר' אברהם"
+  },
+  {
+    "name": "בית חי טייב",
+    "destinationId": 321,
+    "address": "הורקנוס 18, באר שבע",
+    "phone": "052-8906091",
+    "description": "Gabai: אנקרי דניאל"
+  },
+  {
+    "name": "באש ובמים - ברסלב",
+    "destinationId": 321,
+    "address": "בורוכוב 20, באר שבע",
+    "phone": "050-4228589",
+    "description": "Gabai: גבאי שמעון"
+  },
+  {
+    "name": "אורח חיים",
+    "destinationId": 321,
+    "address": "הרב הרצוג 40, באר שבע",
+    "phone": "052-9466196",
+    "description": "Gabai: דדון גבריאל"
+  },
+  {
+    "name": "אח ורע",
+    "destinationId": 321,
+    "address": "הרב חיים רפאל שושנה 1, באר שבע",
+    "phone": "050-6244638",
+    "description": "Gabai: נגאוקר רונן"
+  },
+  {
+    "name": "אחדות ישראל",
+    "destinationId": 321,
+    "address": "התלמוד 64, באר שבע",
+    "phone": "050-7565492",
+    "description": "Gabai: אביסדריס ר' חיים"
+  },
+  {
+    "name": "אלי כהן",
+    "destinationId": 321,
+    "address": "בר גיורא מאחרי החנויות שכ' ד', באר שבע",
+    "phone": "050-6567769",
+    "description": "Gabai: אברג'ל שמעון"
+  },
+  {
+    "name": "אליהו הנביא זל\"ט",
+    "destinationId": 321,
+    "address": "כיכר בר אילן 5, באר שבע",
+    "phone": "08-6272697",
+    "description": "Gabai: בר יוסף ניסים"
+  },
+  {
+    "name": "אעלה בתמר",
+    "destinationId": 321,
+    "address": "יציאת אירופה 5, באר שבע",
+    "phone": "054-2015206",
+    "description": "Gabai: פרפרה אורלן"
+  },
+  {
+    "name": "אפיקי תימן",
+    "destinationId": 321,
+    "address": "גינזבורג 2 רמות, באר שבע",
+    "phone": "050-3605333",
+    "description": "Gabai: כהן שמואל"
+  },
+  {
+    "name": "אריאל",
+    "destinationId": 321,
+    "address": "שד' ירושלים 39, באר שבע",
+    "phone": "054-4672727",
+    "description": "Gabai: בכור יוסף"
+  },
+  {
+    "name": "באר מרים",
+    "destinationId": 321,
+    "address": "הכט 42 רמות, באר שבע",
+    "phone": "053-5217405",
+    "description": "Gabai: ביטון ניסים"
+  },
+  {
+    "name": "אור אבנר",
+    "destinationId": 321,
+    "address": "כיכר מעון 3, באר שבע",
+    "phone": "050-8538133",
+    "description": "Gabai: בדלביוב ציון"
+  },
+  {
+    "name": "אור הגנוז",
+    "destinationId": 321,
+    "address": "בושמת 44, באר שבע",
+    "phone": "052-3287102",
+    "description": "Gabai: תורג'מן ג'ורג'"
+  },
+  {
+    "name": "אור החיים",
+    "destinationId": 321,
+    "address": "האבות 67, באר שבע",
+    "phone": "052-8485352",
+    "description": "Gabai: קקון ניסים"
+  },
+  {
+    "name": "אור לדוד",
+    "destinationId": 321,
+    "address": "אברהם אמיר 32, באר שבע",
+    "phone": "052-3330167",
+    "description": "Gabai: בן דוד דניאל"
+  },
+  {
+    "name": "אור עמרם חיים",
+    "destinationId": 321,
+    "address": "יהודה דה בוטון 3/1, באר שבע",
+    "phone": "08-6432129",
+    "description": "Gabai: בוקובזה גדעון"
+  },
+  {
+    "name": "אור שמעון",
+    "destinationId": 321,
+    "address": "יהודה הלוי 8, באר שבע",
+    "phone": "050-6917575",
+    "description": "Gabai: לנגר אוראל"
+  },
+  {
+    "name": "אור תורה",
+    "destinationId": 321,
+    "address": "בן מתיתיהו במתחם בי\"ס עץ חיים, באר שבע",
+    "phone": "052-9468271",
+    "description": "Gabai: בוטבול רפאל"
+  },
+  {
+    "name": "אורות הזוהר",
+    "destinationId": 321,
+    "address": "חשין 13, באר שבע",
+    "phone": "052-2622622",
+    "description": "Gabai: טמסות יצחק"
+  },
+  {
+    "name": "אורות השלום",
+    "destinationId": 321,
+    "address": "השלום 46, באר שבע",
+    "phone": "050-7500179",
+    "description": "Gabai: עמר רועי"
+  },
+  {
+    "name": "אורות ישראל",
+    "destinationId": 321,
+    "description": "Gabai: דוד יעקב"
+  },
+  {
+    "name": "אהל אברהם",
+    "destinationId": 321,
+    "address": "קלישר 46, באר שבע",
+    "phone": "052-4330218",
+    "description": "Gabai: פהימה אהרון"
+  },
+  {
+    "name": "אהל שלמה-ישיבת בני עקיבא",
+    "destinationId": 321,
+    "address": "התלמוד 2, באר שבע",
+    "phone": "052-5665319",
+    "description": "Gabai: גבריאל שנקולבסקי"
+  },
+  {
+    "name": "אוהל אברהם",
+    "destinationId": 321,
+    "address": "רח' פז פלח 7, באר שבע",
+    "phone": "052-5562822",
+    "description": "Gabai: אביטן שלום"
+  },
+  {
+    "name": "אוהל יעקב",
+    "destinationId": 321,
+    "description": "Gabai: אסידון דוד"
+  },
+  {
+    "name": "אוהל יעקב יצחק",
+    "destinationId": 321,
+    "address": "שטרוק 6 שכ' ב', באר שבע",
+    "phone": "053-7904287",
+    "description": "Gabai: בואנו דוד"
+  },
+  {
+    "name": "אוהל משה ומצליח בידו",
+    "destinationId": 321,
+    "address": "הרב מנחם גבאי 1, באר שבע",
+    "phone": "054-4833274",
+    "description": "Gabai: כהן אברהם"
+  },
+  {
+    "name": "אוהל שרה",
+    "destinationId": 321,
+    "address": "מקלט 13 נחל בקע, באר שבע",
+    "phone": "052-2916783",
+    "description": "Gabai: אלייב בוריס"
+  },
+  {
+    "name": "אוהלי יעקב",
+    "destinationId": 321,
+    "address": "אבנר 6, באר שבע",
+    "phone": "054-4527624",
+    "description": "Gabai: גבאי יוסף"
+  },
+  {
+    "name": "אוהלי יעקב לעולי קווקז",
+    "destinationId": 321,
+    "address": "אבנר בן נר 6, באר שבע",
+    "phone": "052-8261418",
+    "description": "Gabai: רחמנוב שמאי"
+  },
+  {
+    "name": "אוצרות אשר עזרא",
+    "destinationId": 321,
+    "address": "מונטיפיורי 7, באר שבע",
+    "phone": "052-3269971",
+    "description": "Gabai: כהן פנחס"
+  },
+  {
+    "name": "אביר יעקב",
+    "destinationId": 321,
+    "address": "שמחה אסף - ו' הישנה, באר שבע",
+    "phone": "050-7559762",
+    "description": "Gabai: בן הרוש שלמה"
+  },
+  {
+    "name": "אברמוב דניאל",
+    "destinationId": 321,
+    "address": "מנחם גבאי 13, באר שבע",
+    "phone": "054-2236569",
+    "description": "Gabai: אברמוב דניאל"
+  },
+  {
+    "name": "אגודת אחים",
+    "destinationId": 321,
+    "address": "רבי טרפון 6, באר שבע",
+    "phone": "050-6334304",
+    "description": "Gabai: בן שימול עמרם"
+  },
+  {
+    "name": "אהבה ואחוה",
+    "destinationId": 321,
+    "address": "כיכר הקנזי 4, באר שבע",
+    "phone": "052-8344762",
+    "description": "Gabai: עציץ יצחק"
+  },
+  {
+    "name": "אהבת חסד",
+    "destinationId": 321,
+    "address": "השלום מקלט ג' 39, באר שבע",
+    "phone": "077-5060106",
+    "description": "Gabai: ודבקר ציון"
+  },
+  {
+    "name": "אהבת ישראל",
+    "destinationId": 321,
+    "address": "יוטבתא 3/1, באר שבע",
+    "phone": "050-2234740",
+    "description": "Gabai: אברהם אברג'ל"
+  },
+  {
+    "name": "אהבת ישראל (2)",
+    "destinationId": 321,
+    "address": "השלום 56, באר שבע",
+    "phone": "050-4524124",
+    "description": "Gabai: ג'נא אהרון"
+  },
+  {
+    "name": "אהבת שלום",
+    "destinationId": 321,
+    "address": "רש\"י 3, באר שבע",
+    "phone": "052-3910271",
+    "description": "Gabai: אטדגי יורם"
+  },
+  {
+    "name": "אהבת שלום (2)",
+    "destinationId": 321,
+    "address": "החיד\"א 55, באר שבע",
+    "phone": "054-8444124",
+    "description": "Gabai: צבחון מנחם"
+  },
+  {
+    "name": "אהבת תורה",
+    "destinationId": 321,
+    "address": "יעקב אבינו 12/4, באר שבע",
+    "phone": "08-6487178",
+    "description": "Gabai: יהודה אבנר"
+  }
+]

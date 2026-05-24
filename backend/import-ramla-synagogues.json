@@ -1,0 +1,740 @@
+[
+  {
+    "name": "אשל אברהם",
+    "address": "פנקס 8, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "054-5820220",
+    "description": "מרדכי לוי"
+  },
+  {
+    "name": "אבשלום",
+    "address": "דוד רזיאל 20, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "050-6663350",
+    "description": "יעקב חיימוב"
+  },
+  {
+    "name": "אור היהדות",
+    "address": "רמב\"ם 2, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "052-5618777",
+    "description": "שהרבני עזרא"
+  },
+  {
+    "name": "אור לאברהם אבינו",
+    "address": "אשכול, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "052-2959886",
+    "description": "נאמן שמואל לוי"
+  },
+  {
+    "name": "אור יוסף (קייקוב)",
+    "address": "א.ס.לוי 41, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "052-9211623",
+    "description": "כהן אהרן"
+  },
+  {
+    "name": "היכל הבנים",
+    "address": "שכונת גני דן, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "description": "חיים ארבלי"
+  },
+  {
+    "name": "איילת השחר",
+    "address": "רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "054-7660777",
+    "description": "עזרא ביג"
+  },
+  {
+    "name": "אהבת ישראל",
+    "address": "הצנחנים, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-9916616",
+    "description": "דרעי מיכאל"
+  },
+  {
+    "name": "אהל שרה",
+    "address": "ביאליק 28, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-4164746",
+    "description": "אברז'ל מאיר"
+  },
+  {
+    "name": "אוהל אהרון",
+    "address": "בילינסון 12, רמלה",
+    "destinationId": 379,
+    "denomination": "לוב",
+    "phone": "052-8510739",
+    "description": "רמי חלפון"
+  },
+  {
+    "name": "אוהל יוסף ועמ",
+    "address": "אברהם הלל, רמלה",
+    "destinationId": 379,
+    "denomination": "בבל",
+    "phone": "052-3696029",
+    "description": "יוסף עבדוש"
+  },
+  {
+    "name": "אוהל יעקב",
+    "address": "הלילך 18, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "052-5801037",
+    "description": "שלמה ברוך"
+  },
+  {
+    "name": "אוהל יצחק",
+    "address": "גבורי ישראל 11, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "description": "יצחק קמחי"
+  },
+  {
+    "name": "אוהל אברהם",
+    "address": "השיריון 10, רמלה",
+    "destinationId": 379,
+    "denomination": "אתיופים",
+    "phone": "054-2000731",
+    "description": "גדעון לאוטה"
+  },
+  {
+    "name": "אוהל אברהם חיים",
+    "address": "בן צבי 20, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "054-4893675",
+    "description": "שמחה דג'ורייב"
+  },
+  {
+    "name": "אוהב שלום ורודף",
+    "address": "וילנא, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-8697904",
+    "description": "דוד בן שימול"
+  },
+  {
+    "name": "אחדות ישראל",
+    "address": "ההגנה 20, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-5350816",
+    "description": "ברוך דוד"
+  },
+  {
+    "name": "אלקטר",
+    "address": "מרדכי היהודי 13, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "050-5401555",
+    "description": "ישראלוב שמשון"
+  },
+  {
+    "name": "אלגריבה",
+    "address": "ז'בוטינסקי 15, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "058-6009486",
+    "description": "עטיה אברהם"
+  },
+  {
+    "name": "בית יוסף מערבי",
+    "address": "מרים הנביאה 7, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "054-5980759",
+    "description": "נפתלי כהן"
+  },
+  {
+    "name": "בית יוסף קארו",
+    "address": "ביאליק 48, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "053-7346174",
+    "description": "יצחק סמך"
+  },
+  {
+    "name": "בית אל",
+    "address": "פינת קרן היסוד, רמלה",
+    "destinationId": 379,
+    "denomination": "הודו",
+    "phone": "050-5367308",
+    "description": "רונן פנקר"
+  },
+  {
+    "name": "בית ישראל",
+    "address": "הרצל 12, רמלה",
+    "destinationId": 379,
+    "denomination": "אשכנז",
+    "phone": "050-6676795",
+    "description": "שלמה האוזלמן"
+  },
+  {
+    "name": "גאולה",
+    "address": "הרצל 48, רמלה",
+    "destinationId": 379,
+    "denomination": "בבל",
+    "phone": "052-4416500",
+    "description": "יעקב שירזי"
+  },
+  {
+    "name": "גאולי תימן",
+    "address": "חגי 81, רמלה",
+    "destinationId": 379,
+    "denomination": "תימן",
+    "phone": "052-3678179",
+    "description": "טלבי ניסים"
+  },
+  {
+    "name": "גולני",
+    "address": "נוה הדרים, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "description": "שלמה סרור"
+  },
+  {
+    "name": "גני דן",
+    "address": "הפעמונית 1, רמלה",
+    "destinationId": 379,
+    "denomination": "ירושלמי",
+    "phone": "054-2090275",
+    "description": "דניאל אשר"
+  },
+  {
+    "name": "דברי חיים",
+    "address": "הרב קוק 5, רמלה",
+    "destinationId": 379,
+    "denomination": "אשכנז",
+    "phone": "050-5368098",
+    "description": "אהרון פרוס"
+  },
+  {
+    "name": "המרכז / איילת השחר",
+    "address": "רמלה",
+    "destinationId": 379,
+    "denomination": "אשכנז",
+    "phone": "052-7642102",
+    "description": "מרדכי זבולון"
+  },
+  {
+    "name": "היכל הבנים",
+    "address": "האלונים 11, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-9225555",
+    "description": "חיים ארבלי"
+  },
+  {
+    "name": "הנצחון",
+    "address": "יונה הנביא 2, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "description": "יהודה פרטוק"
+  },
+  {
+    "name": "השלום",
+    "address": "השריון 4, רמלה",
+    "destinationId": 379,
+    "denomination": "תורכים",
+    "phone": "050-5653535",
+    "description": "אברהם לופו"
+  },
+  {
+    "name": "השכונתי",
+    "address": "צאלח מנשה 16, רמלה",
+    "destinationId": 379,
+    "phone": "054-6450330",
+    "description": "מדויל אברהם"
+  },
+  {
+    "name": "זכור לאברהם",
+    "address": "מבצע קדש 6, רמלה",
+    "destinationId": 379,
+    "denomination": "בבל",
+    "phone": "052-8797898",
+    "description": "יהודה עובדיה"
+  },
+  {
+    "name": "זרע יצחק",
+    "address": "בר-אילן 37, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "054-3934898",
+    "description": "מרדכי אלמועלם"
+  },
+  {
+    "name": "חזון יחזקאל",
+    "address": "עוזי חיטמן 15, רמלה",
+    "destinationId": 379,
+    "denomination": "אומנים",
+    "phone": "054-6272058",
+    "description": "שלום בן עזרא"
+  },
+  {
+    "name": "חסד ואמת",
+    "address": "חניתה 7, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "050-6323391",
+    "description": "דמרי חיים"
+  },
+  {
+    "name": "יד הרמ\"א",
+    "address": "דוד רזיאל 28, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-4164746",
+    "description": "מאיר אברגל"
+  },
+  {
+    "name": "יד המאיר",
+    "address": "גיבורי ישראל, רמלה",
+    "destinationId": 379,
+    "denomination": "חדש",
+    "phone": "053-4301120",
+    "description": "משה אוחנה"
+  },
+  {
+    "name": "יוסף הצדיק",
+    "address": "בן גוריון 77, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "052-9460445",
+    "description": "אליאייב ירוסה"
+  },
+  {
+    "name": "כנסת ישראל",
+    "address": "ר\"ז 7, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "050-3616879",
+    "description": "כדורי"
+  },
+  {
+    "name": "כתר ראובן",
+    "address": "אבוחצירא, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "058-3260311",
+    "description": "שמעון בן שושן"
+  },
+  {
+    "name": "מרדכי הצדיק",
+    "address": "א.ס.לוי 28, רמלה",
+    "destinationId": 379,
+    "denomination": "פרס",
+    "phone": "050-2264604",
+    "description": "אליהו אלישייב"
+  },
+  {
+    "name": "הקייס וובה",
+    "address": "וילנא 8, רמלה",
+    "destinationId": 379,
+    "denomination": "אתיופי",
+    "phone": "054-7912364",
+    "description": "אברהם מקרו"
+  },
+  {
+    "name": "מגן שלום",
+    "address": "ההסתדרות 10, רמלה",
+    "destinationId": 379,
+    "denomination": "הודו",
+    "phone": "052-3324577",
+    "description": "טלקר פנחס"
+  },
+  {
+    "name": "מדרשיית גאולה",
+    "address": "הרצל, רמלה",
+    "destinationId": 379,
+    "description": "חזי סנדורי"
+  },
+  {
+    "name": "משכן שילה",
+    "address": "אחד העם 5, רמלה",
+    "destinationId": 379,
+    "denomination": "תימן",
+    "phone": "052-2800206",
+    "description": "יוסף פיומי"
+  },
+  {
+    "name": "משכן אבנר",
+    "address": "מרדכי שרעבי, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "054-9197643",
+    "description": "מרדכי שלום"
+  },
+  {
+    "name": "משכן ראובן",
+    "address": "בר אילן 37, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "058-3260311",
+    "description": "שמעון בן שושן"
+  },
+  {
+    "name": "מרעה דוד",
+    "address": "מקלט דוד, רמלה",
+    "destinationId": 379,
+    "description": "תומר"
+  },
+  {
+    "name": "נר יהודה",
+    "address": "אג\"ש, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "054-5769672",
+    "description": "דוד חמדי"
+  },
+  {
+    "name": "נחלת יצחק",
+    "address": "דני מס 4, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "054-6730186",
+    "description": "ציון בן יעיש"
+  },
+  {
+    "name": "נצח ישראל",
+    "address": "גולני 7, רמלה",
+    "destinationId": 379,
+    "denomination": "ברסלב"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "שכונת משכנות, רמלה",
+    "destinationId": 379,
+    "denomination": "תימן",
+    "phone": "050-9213220",
+    "description": "לוי רותם"
+  },
+  {
+    "name": "עבודת הלוי",
+    "address": "אשכול שפירא 245, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "054-7696120"
+  },
+  {
+    "name": "עמישב",
+    "address": "נחמיה 5, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "052-9451547",
+    "description": "מרודי מישאל"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "ז'בוטינסקי 3, רמלה",
+    "destinationId": 379,
+    "denomination": "תורכים",
+    "phone": "050-7266021",
+    "description": "דוד אוחנה"
+  },
+  {
+    "name": "עץ חיים הגבעה",
+    "address": "בורוכוב 22, רמלה",
+    "destinationId": 379,
+    "denomination": "תימן",
+    "phone": "052-8360580",
+    "description": "עוזרי שלום"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "אשכול 25, רמלה",
+    "destinationId": 379,
+    "denomination": "גרוזיה",
+    "phone": "052-2334175",
+    "description": "אהרון מיכלשוילי"
+  },
+  {
+    "name": "קדושי השואה",
+    "address": "רמב\"ם 1, רמלה",
+    "destinationId": 379,
+    "denomination": "אשכנז",
+    "phone": "052-3115972",
+    "description": "עמית טוראל"
+  },
+  {
+    "name": "קדושי סטרומה",
+    "address": "גיורא עמיחי 12, רמלה",
+    "destinationId": 379,
+    "denomination": "אשכנז",
+    "phone": "052-2781063",
+    "description": "ג'קי פרג'ון"
+  },
+  {
+    "name": "קהילות יעקב",
+    "address": "סמילנסקי 10, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "050-5349729",
+    "description": "אילוז אברהם"
+  },
+  {
+    "name": "ר' דוד אלאשקר",
+    "address": "נחמיה 9, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "052-9433022",
+    "description": "הראל שוהם"
+  },
+  {
+    "name": "ר' דוד ומשה",
+    "address": "קריתי 429, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "08-9243408",
+    "description": "שריקי יעקב"
+  },
+  {
+    "name": "ר' חי טייב לא מת",
+    "address": "סעדיה גאון 13, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "054-6916208",
+    "description": "אפרים גז"
+  },
+  {
+    "name": "ר' עמרם בן דיואן",
+    "address": "שכונת ויצמן, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "08-9254269",
+    "description": "אילן סבג"
+  },
+  {
+    "name": "רמב\"ה",
+    "address": "גיורא 365, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "054-9415000",
+    "description": "אילן שמעוני"
+  },
+  {
+    "name": "רמב\"ה",
+    "address": "השומר 8, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "050-9178074",
+    "description": "סבג גבריאל"
+  },
+  {
+    "name": "רשב\"י",
+    "address": "גיורא עמיחי 2, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-3290710",
+    "description": "בלחסן מישל"
+  },
+  {
+    "name": "רשב\"י",
+    "address": "ויצמן 35, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "050-8751958",
+    "description": "עוטר חיים"
+  },
+  {
+    "name": "רשב\"ם",
+    "address": "האילנות, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "054-9173280",
+    "description": "בנימין אסייג"
+  },
+  {
+    "name": "שארית הפליטה",
+    "address": "מוצקין 1, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרד",
+    "phone": "052-8956070",
+    "description": "מרציאנו יהודה"
+  },
+  {
+    "name": "שארית יצחק",
+    "address": "ויצמן, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "050-3002438",
+    "description": "יצחק בוקובזה"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "משה רבנו 48, רמלה",
+    "destinationId": 379,
+    "denomination": "תימן",
+    "phone": "052-2642129",
+    "description": "יהודה צפירה"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "יאיר שטרן 31, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "050-6781853",
+    "description": "אהרון אבקייב"
+  },
+  {
+    "name": "שומרי גחלת",
+    "address": "חיים שפירא 8, רמלה",
+    "destinationId": 379,
+    "denomination": "הודו",
+    "phone": "054-4896194",
+    "description": "בן ציון מזגאוקר"
+  },
+  {
+    "name": "ששון ושמחה",
+    "address": "קריתי 44, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "052-4672676",
+    "description": "אבנר דזורייב"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "בית ציונה, רמלה",
+    "destinationId": 379,
+    "denomination": "אתיופיה",
+    "phone": "052-3224600",
+    "description": "שמשון צגהון"
+  },
+  {
+    "name": "שער המלך",
+    "address": "אלמוג 12, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "052-7840630",
+    "description": "יניב אבולוף הכהן"
+  },
+  {
+    "name": "שערי צדק",
+    "address": "שלמה בן יוסף, רמלה",
+    "destinationId": 379,
+    "denomination": "בבל",
+    "phone": "052-2569585",
+    "description": "ליאור מרדכי"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "הדר 14, רמלה",
+    "destinationId": 379,
+    "denomination": "תימן",
+    "phone": "08-9225098",
+    "description": "יצחק שלום"
+  },
+  {
+    "name": "שערי רחמים",
+    "address": "השיריון, רמלה",
+    "destinationId": 379,
+    "denomination": "פרס",
+    "phone": "053-7317585",
+    "description": "יוסי זרדב"
+  },
+  {
+    "name": "שערי שלום",
+    "address": "אמיל זולא 32, רמלה",
+    "destinationId": 379,
+    "denomination": "טוניס",
+    "phone": "08-9232540",
+    "description": "סרוסי חנן"
+  },
+  {
+    "name": "שערי אריאל",
+    "address": "גטו ורשה 21, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "050-8122012",
+    "description": "אריאל מלאייב"
+  },
+  {
+    "name": "תהילה לדוד",
+    "address": "סמטת תוחלת 310, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "052-8489051",
+    "description": "סיסו שלמה"
+  },
+  {
+    "name": "תלמוד תורה",
+    "address": "השומר 21, רמלה",
+    "destinationId": 379,
+    "denomination": "מרוקו",
+    "phone": "052-5814535",
+    "description": "שלמה לוי"
+  },
+  {
+    "name": "תפארת מנחם",
+    "address": "ויצמן, רמלה",
+    "destinationId": 379,
+    "phone": "052-8621379",
+    "description": "כהן שאול"
+  },
+  {
+    "name": "תפארת מאיר",
+    "address": "צה\"ל קרן היסוד, רמלה",
+    "destinationId": 379,
+    "denomination": "פרס",
+    "phone": "052-6348634",
+    "description": "צדוק גזאל"
+  },
+  {
+    "name": "תפארת ציון",
+    "address": "יהושוע בן נון, רמלה",
+    "destinationId": 379,
+    "denomination": "תמני",
+    "phone": "054-5459926",
+    "description": "אשרף ברוך"
+  },
+  {
+    "name": "ברכת שרה",
+    "address": "צאלח מנשה 8, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "050-4155905",
+    "description": "הראל חיים"
+  },
+  {
+    "name": "ברכת נוריאל",
+    "address": "גפן 7, רמלה",
+    "destinationId": 379,
+    "denomination": "בוכרה",
+    "phone": "053-2777713",
+    "description": "משה פלאייב"
+  },
+  {
+    "name": "עזרא מחבש",
+    "address": "שמשון הגיבור 15, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "052-8510524",
+    "description": "יגאל שמש"
+  },
+  {
+    "name": "חללי צה\"ל",
+    "address": "שלמה המלך 15, רמלה",
+    "destinationId": 379,
+    "phone": "050-6685053",
+    "description": "אמיל אסרף"
+  },
+  {
+    "name": "חזון עובדיה",
+    "address": "ישראל פוליאקוב, רמלה",
+    "destinationId": 379,
+    "denomination": "ספרדי",
+    "phone": "052-4303434",
+    "description": "יצחק מרציאנו"
+  }
+]

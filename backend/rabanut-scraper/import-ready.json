@@ -1,0 +1,2610 @@
+[
+  {
+    "name": "אביב הנשמה",
+    "destinationId": 348,
+    "address": "חזנוביץ 1, תל אביב",
+    "phone": "054-6093153",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%91%d7%99%d7%91-%d7%94%d7%a0%d7%a9%d7%9e%d7%94/"
+  },
+  {
+    "name": "אביר יעקב – לזכר קדושי אנטופול",
+    "destinationId": 348,
+    "address": "אוליפנט 17, תל אביב",
+    "phone": "054-5734317",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%91%d7%99%d7%a8-%d7%99%d7%a2%d7%a7%d7%91-%d7%9c%d7%96%d7%9b%d7%a8-%d7%a7%d7%93%d7%95%d7%a9%d7%99-%d7%90%d7%a0%d7%98%d7%95%d7%a4%d7%95%d7%9c/"
+  },
+  {
+    "name": "אבשלום",
+    "destinationId": 348,
+    "address": "בוגרשוב 63, תל אביב",
+    "phone": "054-4302766",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%91%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "אגודת אחים",
+    "destinationId": 348,
+    "address": "אצ\"ל 48, תל אביב",
+    "phone": "052-2739912",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%92%d7%95%d7%93%d7%aa-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "אגודת אחים יד ושם",
+    "destinationId": 348,
+    "address": "בועז 21, תל אביב",
+    "phone": "050-7231625",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%92%d7%95%d7%93%d7%aa-%d7%90%d7%97%d7%99%d7%9d-%d7%99%d7%93-%d7%95%d7%a9%d7%9d/"
+  },
+  {
+    "name": "אגודת ישרים",
+    "destinationId": 348,
+    "address": "עבאס 4, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%92%d7%95%d7%93%d7%aa-%d7%99%d7%a9%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "אגודת שבת אחים",
+    "destinationId": 348,
+    "address": "תשרי 86, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%92%d7%95%d7%93%d7%aa-%d7%a9%d7%91%d7%aa-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "אהבה ואחוה – חזון נחום",
+    "destinationId": 348,
+    "address": "מגן אברהם 12, תל אביב",
+    "phone": "050-4132220",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%94-%d7%95%d7%90%d7%97%d7%95%d7%94-%d7%97%d7%96%d7%95%d7%9f-%d7%a0%d7%97%d7%95%d7%9d/"
+  },
+  {
+    "name": "אהבה ואחווה",
+    "destinationId": 348,
+    "address": "ראול ולנברג 39, תל אביב",
+    "phone": "050-4153540",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%94-%d7%95%d7%90%d7%97%d7%95%d7%95%d7%94/"
+  },
+  {
+    "name": "אהבה וחסד – מקלט",
+    "destinationId": 348,
+    "address": "הכינור 3, תל אביב",
+    "phone": "050-4179973",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%94-%d7%95%d7%97%d7%a1%d7%93-%d7%9e%d7%a7%d7%9c%d7%98/"
+  },
+  {
+    "name": "אהבת אחים",
+    "destinationId": 348,
+    "address": "ראול ולנברג 9, תל אביב",
+    "phone": "052-2686727",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%aa-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "אהבת אחים – מקלט",
+    "destinationId": 348,
+    "address": "קהילת ורשא 79, תל אביב",
+    "phone": "053-4309015",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%aa-%d7%90%d7%97%d7%99%d7%9d-%d7%9e%d7%a7%d7%9c%d7%98/"
+  },
+  {
+    "name": "אהבת חיים – התום",
+    "destinationId": 348,
+    "address": "מחנה יוסף 32, תל אביב",
+    "phone": "052-4766650",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%aa-%d7%97%d7%99%d7%99%d7%9d-%d7%94%d7%aa%d7%95%d7%9d/"
+  },
+  {
+    "name": "אהבת חסד",
+    "destinationId": 348,
+    "address": "אברבנאל 54, תל אביב",
+    "phone": "053-3065902",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%aa-%d7%97%d7%a1%d7%93/"
+  },
+  {
+    "name": "אהבת ציון",
+    "destinationId": 348,
+    "address": "בורמה 11, תל אביב",
+    "phone": "050-6806683",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%aa-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "אהבת ציון – הקטן",
+    "destinationId": 348,
+    "address": "מח\"ל 51, תל אביב",
+    "phone": "050-7662760",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%91%d7%aa-%d7%a6%d7%99%d7%95%d7%9f-%d7%94%d7%a7%d7%98%d7%9f/"
+  },
+  {
+    "name": "אהל חיים",
+    "destinationId": 348,
+    "address": "ששת הימים 16, תל אביב",
+    "phone": "054-7201770",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%9c-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "אהל יוסף ועמנואל",
+    "destinationId": 348,
+    "address": "דשבסקי 2, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%9c-%d7%99%d7%95%d7%a1%d7%a3-%d7%95%d7%a2%d7%9e%d7%a0%d7%95%d7%90%d7%9c/"
+  },
+  {
+    "name": "אהל יעקב",
+    "destinationId": 348,
+    "address": "צרעה 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%9c-%d7%99%d7%a2%d7%a7%d7%91/"
+  },
+  {
+    "name": "אהל תמר",
+    "destinationId": 348,
+    "address": "וילון 34, תל אביב",
+    "phone": "050-9338047",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%9c-%d7%aa%d7%9e%d7%a8/"
+  },
+  {
+    "name": "אהלי יעקב",
+    "destinationId": 348,
+    "address": "נחלת בנימין 104, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%9c%d7%99-%d7%99%d7%a2%d7%a7%d7%91/"
+  },
+  {
+    "name": "אהרונסון",
+    "destinationId": 348,
+    "address": "המגיד 4, תל אביב",
+    "phone": "050-5742475",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%94%d7%a8%d7%95%d7%a0%d7%a1%d7%95%d7%9f/"
+  },
+  {
+    "name": "אוהל אברהם",
+    "destinationId": 348,
+    "address": "בית קציר 10, תל אביב",
+    "phone": "052-2751007",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%90%d7%91%d7%a8%d7%94%d7%9d/"
+  },
+  {
+    "name": "אוהל אברהם שמואל – ישיבת בית יוסף",
+    "destinationId": 348,
+    "address": "אייזיק חריף 23, תל אביב",
+    "phone": "050-5760984",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%90%d7%91%d7%a8%d7%94%d7%9d-%d7%a9%d7%9e%d7%95%d7%90%d7%9c-%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%91%d7%99%d7%aa-%d7%99%d7%95%d7%a1%d7%a3/"
+  },
+  {
+    "name": "אוהל יוסף",
+    "destinationId": 348,
+    "address": "נ\"ו 20, תל אביב",
+    "phone": "050-7275677",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%95%d7%a1%d7%a3/"
+  },
+  {
+    "name": "אוהל יוסף – קוידינוב",
+    "destinationId": 348,
+    "address": "טשרנחובסקי 57, תל אביב",
+    "phone": "052-7645285",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%95%d7%a1%d7%a3-%d7%a7%d7%95%d7%99%d7%93%d7%99%d7%a0%d7%95%d7%91/"
+  },
+  {
+    "name": "אוהל יוסף – בית זכריה",
+    "destinationId": 348,
+    "address": "שד' החייל 33, תל אביב",
+    "phone": "054-4898684",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%95%d7%a1%d7%a3-%d7%91%d7%99%d7%aa-%d7%96%d7%9b%d7%a8%d7%99%d7%94/"
+  },
+  {
+    "name": "אוהל יוסף יצחק",
+    "destinationId": 348,
+    "address": "גן אוצר בשוויס זינגר 1, תל אביב",
+    "phone": "054-2035382",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%95%d7%a1%d7%a3-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "אוהל יעקב",
+    "destinationId": 348,
+    "address": "יחיעם 23, תל אביב",
+    "phone": "052-2726212",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%a2%d7%a7%d7%91/"
+  },
+  {
+    "name": "אוהל יצחק",
+    "destinationId": 348,
+    "address": "נמירובר 10, תל אביב",
+    "phone": "050-4202890",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "אוהל ישראל",
+    "destinationId": 348,
+    "address": "בן יהודה 159, תל אביב",
+    "phone": "054-5684598",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "אוהל לאה",
+    "destinationId": 348,
+    "address": "המשלטים 8, תל אביב",
+    "phone": "054-7478900",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%9c%d7%90%d7%94/"
+  },
+  {
+    "name": "אוהל מאיר",
+    "destinationId": 348,
+    "address": "אדירים 5, תל אביב",
+    "phone": "052-3408574",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%9e%d7%90%d7%99%d7%a8/"
+  },
+  {
+    "name": "429 Too Many Requests",
+    "destinationId": 348,
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%94%d7%9c-%d7%9e%d7%95%d7%a2%d7%93/"
+  },
+  {
+    "name": "אור מאיר",
+    "destinationId": 348,
+    "address": "אור החיים 38, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%95%d7%a8-%d7%9e%d7%90%d7%99%d7%a8/"
+  },
+  {
+    "name": "אחוה",
+    "destinationId": 348,
+    "address": "יעקב בן סירא 6, תל אביב",
+    "phone": "052-3992030",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%97%d7%95%d7%94/"
+  },
+  {
+    "name": "אחים – הבוכרים",
+    "destinationId": 348,
+    "address": "לפידות 25, תל אביב",
+    "phone": "050-6530066",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%97%d7%99%d7%9d-%d7%94%d7%91%d7%95%d7%9b%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "איחוד שיבת ציון – חוג הנוער הדתי",
+    "destinationId": 348,
+    "address": "בן יהודה 86, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%99%d7%97%d7%95%d7%93-%d7%a9%d7%99%d7%91%d7%aa-%d7%a6%d7%99%d7%95%d7%9f-%d7%97%d7%95%d7%92-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%94%d7%93%d7%aa%d7%99/"
+  },
+  {
+    "name": "איילון",
+    "destinationId": 348,
+    "address": "עמק איילון 14, תל אביב",
+    "phone": "052-5635842",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%99%d7%99%d7%9c%d7%95%d7%9f/"
+  },
+  {
+    "name": "אירגון חינוכי דתי – שבת אחים",
+    "destinationId": 348,
+    "address": "קלישר 5, תל אביב",
+    "phone": "052-2929232",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%99%d7%a8%d7%92%d7%95%d7%9f-%d7%97%d7%99%d7%a0%d7%95%d7%9b%d7%99-%d7%93%d7%aa%d7%99-%d7%a9%d7%91%d7%aa-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "אכסניית בני דן",
+    "destinationId": 348,
+    "address": "בני דן 36, תל אביב",
+    "phone": "054-3975639",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9b%d7%a1%d7%a0%d7%99%d7%99%d7%aa-%d7%91%d7%a0%d7%99-%d7%93%d7%9f/"
+  },
+  {
+    "name": "אל בית אל",
+    "destinationId": 348,
+    "address": "הרב עובדיה בידאני 23, תל אביב",
+    "phone": "052-2651713",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c-%d7%91%d7%99%d7%aa-%d7%90%d7%9c/"
+  },
+  {
+    "name": "אל ג'רבה",
+    "destinationId": 348,
+    "address": "משה בריל 13, תל אביב",
+    "phone": "054-8402508",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c-%d7%92%d7%a8%d7%91%d7%94/"
+  },
+  {
+    "name": "אלי בעזרי (קומה ב')",
+    "destinationId": 348,
+    "address": "צונץ 11, תל אביב",
+    "phone": "052-6809236",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%99-%d7%91%d7%a2%d7%96%d7%a8%d7%99-%d7%a7%d7%95%d7%9e%d7%94-%d7%91/"
+  },
+  {
+    "name": "אלי כהן",
+    "destinationId": 348,
+    "address": "מאיר גרוסמן 14, תל אביב",
+    "phone": "050-5317758",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%99-%d7%9b%d7%94%d7%9f/"
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 348,
+    "address": "שתולים 42, תל אביב",
+    "phone": "050-5989939",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%94%d7%a0%d7%91%d7%99%d7%90/"
+  },
+  {
+    "name": "אליהו הנביא ב'",
+    "destinationId": 348,
+    "address": "אבן גבירול 117, תל אביב",
+    "phone": "053-4303052",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%94%d7%a0%d7%91%d7%99%d7%90-%d7%91/"
+  },
+  {
+    "name": "אלמקלחי – חסד אברהם",
+    "destinationId": 348,
+    "address": "יקותיאל 44, תל אביב",
+    "phone": "054-8486466",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%9e%d7%a7%d7%9c%d7%97%d7%99-%d7%97%d7%a1%d7%93-%d7%90%d7%91%d7%a8%d7%94%d7%9d/"
+  },
+  {
+    "name": "אלקניאן",
+    "destinationId": 348,
+    "address": "ששת הימים 35, תל אביב",
+    "phone": "052-3411197",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%a7%d7%a0%d7%99%d7%90%d7%9f/"
+  },
+  {
+    "name": "אלשיך",
+    "destinationId": 348,
+    "address": "החרמון 26, תל אביב",
+    "phone": "054-9861005",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%9c%d7%a9%d7%99%d7%9a/"
+  },
+  {
+    "name": "אפקה",
+    "destinationId": 348,
+    "address": "חי\"ש 16, תל אביב",
+    "phone": "050-5234113",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%a4%d7%a7%d7%94/"
+  },
+  {
+    "name": "ארם נהריים",
+    "destinationId": 348,
+    "address": "נחלת בנימין 47, תל אביב",
+    "phone": "050-4245836",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%a8%d7%9d-%d7%a0%d7%94%d7%a8%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "ארם נהרים",
+    "destinationId": 348,
+    "address": "הרב גורן 10, תל אביב",
+    "phone": "052-8853713",
+    "website": "https://rabanut.co.il/synagogue/%d7%90%d7%a8%d7%9d-%d7%a0%d7%94%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "באר מים חיים",
+    "destinationId": 348,
+    "address": "שד' רוטשילד 112, תל אביב",
+    "phone": "052-7588710",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%90%d7%a8-%d7%9e%d7%99%d7%9d-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "בי\"ח איכילוב בנין סוראסקי",
+    "destinationId": 348,
+    "address": "ויצמן 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%97-%d7%90%d7%99%d7%9b%d7%99%d7%9c%d7%95%d7%91-%d7%91%d7%a0%d7%99%d7%9f-%d7%a1%d7%95%d7%a8%d7%90%d7%a1%d7%a7%d7%99/"
+  },
+  {
+    "name": "בי\"ח רעות",
+    "destinationId": 348,
+    "address": "שד' החייל 2, תל אביב",
+    "phone": "054-8598138",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%97-%d7%a8%d7%a2%d7%95%d7%aa/"
+  },
+  {
+    "name": "ביה\"ס מירון בני עקיבא",
+    "destinationId": 348,
+    "address": "שלומציון המלכה 65, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%94%d7%a1-%d7%9e%d7%99%d7%a8%d7%95%d7%9f-%d7%91%d7%a0%d7%99-%d7%a2%d7%a7%d7%99%d7%91%d7%90/"
+  },
+  {
+    "name": "ביה\"ס צייטלין",
+    "destinationId": 348,
+    "address": "צייטלין 22, תל אביב",
+    "phone": "050-7237544",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%94%d7%a1-%d7%a6%d7%99%d7%99%d7%98%d7%9c%d7%99%d7%9f/"
+  },
+  {
+    "name": "בילו",
+    "destinationId": 348,
+    "address": "שד' רוטשילד 124, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%9c%d7%95/"
+  },
+  {
+    "name": "בית אבות גני גילה ברויאר",
+    "destinationId": 348,
+    "address": "מרגולין 4, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%91%d7%95%d7%aa-%d7%92%d7%a0%d7%99-%d7%92%d7%99%d7%9c%d7%94-%d7%91%d7%a8%d7%95%d7%99%d7%90%d7%a8/"
+  },
+  {
+    "name": "בית אבות משען – דיור מוגן",
+    "destinationId": 348,
+    "address": "שלונסקי 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%91%d7%95%d7%aa-%d7%9e%d7%a9%d7%a2%d7%9f-%d7%93%d7%99%d7%95%d7%a8-%d7%9e%d7%95%d7%92%d7%9f/"
+  },
+  {
+    "name": "בית אבות שלום",
+    "destinationId": 348,
+    "address": "שיר 2, תל אביב",
+    "phone": "050-6316603",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%91%d7%95%d7%aa-%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "בית אברהם",
+    "destinationId": 348,
+    "address": "המשלטים 10, תל אביב",
+    "phone": "052-2803798",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%91%d7%a8%d7%94%d7%9d/"
+  },
+  {
+    "name": "בית אברהם – וואסלוי",
+    "destinationId": 348,
+    "address": "בן גוריון 71, תל אביב",
+    "phone": "054-8451505",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%91%d7%a8%d7%94%d7%9d-%d7%95%d7%95%d7%90%d7%a1%d7%9c%d7%95%d7%99/"
+  },
+  {
+    "name": "בית אהרון",
+    "destinationId": 348,
+    "address": "מאור הגולה 34, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%94%d7%a8%d7%95%d7%9f/"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 348,
+    "address": "זלמן שזר 42, תל אביב",
+    "phone": "052-3317392",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%9c/"
+  },
+  {
+    "name": "בית אליהו",
+    "destinationId": 348,
+    "address": "אלכסנדר זייד 23, תל אביב",
+    "phone": "054-7733206",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%9c%d7%99%d7%94%d7%95/"
+  },
+  {
+    "name": "בית אליהו – עולי לוב",
+    "destinationId": 348,
+    "address": "מרק יעקב 16, תל אביב",
+    "phone": "054-4976035",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%a2%d7%95%d7%9c%d7%99-%d7%9c%d7%95%d7%91/"
+  },
+  {
+    "name": "בית אליהו ודוד פירוב",
+    "destinationId": 348,
+    "address": "זלמן שזר 33, תל אביב",
+    "phone": "054-5842976",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%95%d7%93%d7%95%d7%93-%d7%a4%d7%99%d7%a8%d7%95%d7%91/"
+  },
+  {
+    "name": "בית אשר ומרדכי",
+    "destinationId": 348,
+    "address": "בורמה 11, תל אביב",
+    "phone": "054-6223770",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%90%d7%a9%d7%a8-%d7%95%d7%9e%d7%a8%d7%93%d7%9b%d7%99/"
+  },
+  {
+    "name": "בית גיל הזהב",
+    "destinationId": 348,
+    "address": "משה דיין 66, תל אביב",
+    "phone": "052-2583404",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%92%d7%99%d7%9c-%d7%94%d7%96%d7%94%d7%91/"
+  },
+  {
+    "name": "בית דוד",
+    "destinationId": 348,
+    "address": "אבן גבירול 190, תל אביב",
+    "phone": "050-4146347",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "בית דוד ציון",
+    "destinationId": 348,
+    "address": "ביכורי ציון 39, תל אביב",
+    "phone": "050-5641633",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%93%d7%95%d7%93-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "בית הלל ופנחס – ישיבה \"בית רבי\"",
+    "destinationId": 348,
+    "address": "דרך בר לב 122, תל אביב",
+    "phone": "050-7392524",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%94%d7%9c%d7%9c-%d7%95%d7%a4%d7%a0%d7%97%d7%a1-%d7%99%d7%a9%d7%99%d7%91%d7%94-%d7%91%d7%99%d7%aa-%d7%a8%d7%91%d7%99/"
+  },
+  {
+    "name": "בית המדרש רשב\"י",
+    "destinationId": 348,
+    "address": "נטעים 46, תל אביב",
+    "phone": "054-9333371",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%94%d7%9e%d7%93%d7%a8%d7%a9-%d7%a8%d7%a9%d7%91%d7%99/"
+  },
+  {
+    "name": "בית זילכה – בית מדרש",
+    "destinationId": 348,
+    "address": "לפידות 24, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%96%d7%99%d7%9c%d7%9b%d7%94-%d7%91%d7%99%d7%aa-%d7%9e%d7%93%d7%a8%d7%a9/"
+  },
+  {
+    "name": "בית חב\"ד",
+    "destinationId": 348,
+    "address": "ישראל גורי 34, תל אביב",
+    "phone": "050-6781833",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%97%d7%91%d7%93/"
+  },
+  {
+    "name": "בית חדש למדרש",
+    "destinationId": 348,
+    "address": "בן יהודה 93, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%97%d7%93%d7%a9-%d7%9c%d7%9e%d7%93%d7%a8%d7%a9/"
+  },
+  {
+    "name": "בית חולים אסותא",
+    "destinationId": 348,
+    "address": "הברזל 20, תל אביב",
+    "phone": "052-7662636",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%90%d7%a1%d7%95%d7%aa%d7%90/"
+  },
+  {
+    "name": "בית חסידים כללי – רשב\"י",
+    "destinationId": 348,
+    "address": "בן יהודה 155, תל אביב",
+    "phone": "052-6272626",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%97%d7%a1%d7%99%d7%93%d7%99%d7%9d-%d7%9b%d7%9c%d7%9c%d7%99-%d7%a8%d7%a9%d7%91%d7%99/"
+  },
+  {
+    "name": "בית יהודה",
+    "destinationId": 348,
+    "address": "רלב\"ג 20, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%94%d7%95%d7%93%d7%94/"
+  },
+  {
+    "name": "בית יוסף",
+    "destinationId": 348,
+    "address": "ל\"א 33, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%95%d7%a1%d7%a3/"
+  },
+  {
+    "name": "בית יינון",
+    "destinationId": 348,
+    "address": "הפלמ\"ח 10, תל אביב",
+    "phone": "050-6502995",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%99%d7%a0%d7%95%d7%9f/"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 348,
+    "address": "ורד 4, תל אביב",
+    "phone": "054-7705070",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a2%d7%a7%d7%91/"
+  },
+  {
+    "name": "בית יעקב אוהל רבקה",
+    "destinationId": 348,
+    "address": "יהושע בן נון 9, תל אביב",
+    "phone": "054-9221167",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a2%d7%a7%d7%91-%d7%90%d7%95%d7%94%d7%9c-%d7%a8%d7%91%d7%a7%d7%94/"
+  },
+  {
+    "name": "בית יעקב ואוהל רבקה -חסידי גור",
+    "destinationId": 348,
+    "address": "בר אילן 4, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a2%d7%a7%d7%91-%d7%95%d7%90%d7%95%d7%94%d7%9c-%d7%a8%d7%91%d7%a7%d7%94-%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%92%d7%95%d7%a8/"
+  },
+  {
+    "name": "בית יעקב יוסף",
+    "destinationId": 348,
+    "address": "פקיעין 12, תל אביב",
+    "phone": "052-7171780",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a2%d7%a7%d7%91-%d7%99%d7%95%d7%a1%d7%a3/"
+  },
+  {
+    "name": "בית יעקב לעולי דמשק",
+    "destinationId": 348,
+    "address": "ראש פינה 3, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a2%d7%a7%d7%91-%d7%9c%d7%a2%d7%95%d7%9c%d7%99-%d7%93%d7%9e%d7%a9%d7%a7/"
+  },
+  {
+    "name": "בית יצחק",
+    "destinationId": 348,
+    "address": "משה סנה 63, תל אביב",
+    "phone": "050-2697775",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "בית ישראל",
+    "destinationId": 348,
+    "address": "שד' הבעש\"ט 4, תל אביב",
+    "phone": "054-7649395",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "בית לוי – אוצרות חיים",
+    "destinationId": 348,
+    "address": "התקווה 73, תל אביב",
+    "phone": "052-2030800",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%9c%d7%95%d7%99-%d7%90%d7%95%d7%a6%d7%a8%d7%95%d7%aa-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "בית מתתיהו – נווה צה\"ל",
+    "destinationId": 348,
+    "address": "אלוף 19, תל אביב",
+    "phone": "052-7657898",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%9e%d7%aa%d7%aa%d7%99%d7%94%d7%95-%d7%a0%d7%95%d7%95%d7%94-%d7%a6%d7%94%d7%9c/"
+  },
+  {
+    "name": "בית שלמה",
+    "destinationId": 348,
+    "address": "יונה הנביא 27, תל אביב",
+    "phone": "050-8490979",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%a9%d7%9c%d7%9e%d7%94/"
+  },
+  {
+    "name": "בית תפילה",
+    "destinationId": 348,
+    "address": "מקור חיים 47, תל אביב",
+    "phone": "050-7692277",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%99%d7%aa-%d7%aa%d7%a4%d7%99%d7%9c%d7%94/"
+  },
+  {
+    "name": "בלדי",
+    "destinationId": 348,
+    "address": "יחיא קאפח 25, תל אביב",
+    "phone": "050-4996809",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%9c%d7%93%d7%99/"
+  },
+  {
+    "name": "בן פורת",
+    "destinationId": 348,
+    "address": "גליפולי 2, תל אביב",
+    "phone": "052-8656528",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%9f-%d7%a4%d7%95%d7%a8%d7%aa/"
+  },
+  {
+    "name": "בני בנימין",
+    "destinationId": 348,
+    "address": "החזיון 3, תל אביב",
+    "phone": "053-2503026",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99-%d7%91%d7%a0%d7%99%d7%9e%d7%99%d7%9f/"
+  },
+  {
+    "name": "בני דוד",
+    "destinationId": 348,
+    "address": "ידידיה פרנקל 66, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "בני יעקב וישראל",
+    "destinationId": 348,
+    "address": "שד' הר ציון 50, תל אביב",
+    "phone": "054-3977167",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99-%d7%99%d7%a2%d7%a7%d7%91-%d7%95%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "בני עקיבא – סניף יד אליהו",
+    "destinationId": 348,
+    "address": "עמישב 33, תל אביב",
+    "phone": "052-7995676",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99-%d7%a2%d7%a7%d7%99%d7%91%d7%90-%d7%a1%d7%a0%d7%99%d7%a3-%d7%99%d7%93-%d7%90%d7%9c%d7%99%d7%94%d7%95/"
+  },
+  {
+    "name": "בני ציון",
+    "destinationId": 348,
+    "address": "גרשון 23, תל אביב",
+    "phone": "050-6815883",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "בניין עזריאלי",
+    "destinationId": 348,
+    "address": "דרך מנחם בגין 102, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99%d7%99%d7%9f-%d7%a2%d7%96%d7%a8%d7%99%d7%90%d7%9c%d7%99/"
+  },
+  {
+    "name": "בנימין שמש",
+    "destinationId": 348,
+    "address": "שלמה המלך 45, תל אביב",
+    "phone": "054-4202715",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a0%d7%99%d7%9e%d7%99%d7%9f-%d7%a9%d7%9e%d7%a9/"
+  },
+  {
+    "name": "בר אילן – מרכז מגיד",
+    "destinationId": 348,
+    "address": "נורדאו 63, תל אביב",
+    "phone": "054-9929428",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a8-%d7%90%d7%99%d7%9c%d7%9f-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9e%d7%92%d7%99%d7%93/"
+  },
+  {
+    "name": "ברית אחים לעולי דמשק",
+    "destinationId": 348,
+    "address": "קלמן 4, תל אביב",
+    "phone": "052-8233860",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a8%d7%99%d7%aa-%d7%90%d7%97%d7%99%d7%9d-%d7%9c%d7%a2%d7%95%d7%9c%d7%99-%d7%93%d7%9e%d7%a9%d7%a7/"
+  },
+  {
+    "name": "ברית עולם",
+    "destinationId": 348,
+    "address": "מעפילי אגוז 74, תל אביב",
+    "phone": "052-2805548",
+    "website": "https://rabanut.co.il/synagogue/%d7%91%d7%a8%d7%99%d7%aa-%d7%a2%d7%95%d7%9c%d7%9d/"
+  },
+  {
+    "name": "גאולה",
+    "destinationId": 348,
+    "address": "טשרנחובסקי 17, תל אביב",
+    "phone": "054-4726736",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%90%d7%95%d7%9c%d7%94/"
+  },
+  {
+    "name": "גאולת ישראל",
+    "destinationId": 348,
+    "address": "שד' הותיקים 7, תל אביב",
+    "phone": "052-4259391",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%90%d7%95%d7%9c%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "גבורת אליהו",
+    "destinationId": 348,
+    "address": "עירית 6, תל אביב",
+    "phone": "050-2107179",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%91%d7%95%d7%a8%d7%aa-%d7%90%d7%9c%d7%99%d7%94%d7%95/"
+  },
+  {
+    "name": "גבורת ישראל – ראש יהודי",
+    "destinationId": 348,
+    "address": "בר כוכבא 54, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%91%d7%95%d7%a8%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c-%d7%a8%d7%90%d7%a9-%d7%99%d7%94%d7%95%d7%93%d7%99/"
+  },
+  {
+    "name": "גבורת ציון",
+    "destinationId": 348,
+    "address": "צייטלין 22, תל אביב",
+    "phone": "050-5235174",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%91%d7%95%d7%a8%d7%aa-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "גוש עציון",
+    "destinationId": 348,
+    "address": "אפלטון 10, תל אביב",
+    "phone": "054-5574138",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%95%d7%a9-%d7%a2%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "גיבורי ישראל",
+    "destinationId": 348,
+    "address": "המערכה 36, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%92%d7%99%d7%91%d7%95%d7%a8%d7%99-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "דרך השלום",
+    "destinationId": 348,
+    "address": "דרך הטייסים 14, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%93%d7%a8%d7%9a-%d7%94%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "דרך עץ החיים",
+    "destinationId": 348,
+    "address": "מסילת ישרים 82, תל אביב",
+    "phone": "050-4170870",
+    "website": "https://rabanut.co.il/synagogue/%d7%93%d7%a8%d7%9a-%d7%a2%d7%a5-%d7%94%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "הבאים ישרש – אוהל משה",
+    "destinationId": 348,
+    "address": "נתן החכם 10, תל אביב",
+    "phone": "053-7081268",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%91%d7%90%d7%99%d7%9d-%d7%99%d7%a9%d7%a8%d7%a9-%d7%90%d7%95%d7%94%d7%9c-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "הבנים – שושני סעדיה",
+    "destinationId": 348,
+    "address": "הט\"ז 8, תל אביב",
+    "phone": "077-2081399",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%91%d7%a0%d7%99%d7%9d-%d7%a9%d7%95%d7%a9%d7%a0%d7%99-%d7%a1%d7%a2%d7%93%d7%99%d7%94/"
+  },
+  {
+    "name": "הגדול",
+    "destinationId": 348,
+    "address": "אלנבי 103, תל אביב",
+    "phone": "050-9631111",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%92%d7%93%d7%95%d7%9c/"
+  },
+  {
+    "name": "הגדול בצפון",
+    "destinationId": 348,
+    "address": "דיזינגוף 312, תל אביב",
+    "phone": "050-3647763",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%92%d7%93%d7%95%d7%9c-%d7%91%d7%a6%d7%a4%d7%95%d7%9f/"
+  },
+  {
+    "name": "הגדול נחלת יצחק",
+    "destinationId": 348,
+    "address": "עמק ברכה 48, תל אביב",
+    "phone": "050-5281380",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%92%d7%93%d7%95%d7%9c-%d7%a0%d7%97%d7%9c%d7%aa-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "הגר\"א",
+    "destinationId": 348,
+    "address": "הירקון 42, תל אביב",
+    "phone": "052-2317717",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%92%d7%a8%d7%90/"
+  },
+  {
+    "name": "החשמונאים",
+    "destinationId": 348,
+    "address": "החשמונאים 74, תל אביב",
+    "phone": "050-4155526",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%97%d7%a9%d7%9e%d7%95%d7%a0%d7%90%d7%99%d7%9d/"
+  },
+  {
+    "name": "היכל אבי דוד",
+    "destinationId": 348,
+    "address": "יהושע בן נון 7, תל אביב",
+    "phone": "052-2244903",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%90%d7%91%d7%99-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "היכל אהרון",
+    "destinationId": 348,
+    "address": "זלמן שזר 42, תל אביב",
+    "phone": "054-5400900",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%90%d7%94%d7%a8%d7%95%d7%9f/"
+  },
+  {
+    "name": "היכל דוד",
+    "destinationId": 348,
+    "address": "שקד 44, תל אביב",
+    "phone": "058-3270294",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "היכל דוד-זכרון משה",
+    "destinationId": 348,
+    "address": "מרגולין 16, תל אביב",
+    "phone": "052-7671392",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%93%d7%95%d7%93-%d7%96%d7%9b%d7%a8%d7%95%d7%9f-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "היכל דרכי איש",
+    "destinationId": 348,
+    "address": "הדף היומי 9, תל אביב",
+    "phone": "050-4199739",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%93%d7%a8%d7%9b%d7%99-%d7%90%d7%99%d7%a9/"
+  },
+  {
+    "name": "היכל הכוהנים",
+    "destinationId": 348,
+    "address": "דוד ממזריץ 5, תל אביב",
+    "phone": "050-3551884",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%94%d7%9b%d7%95%d7%94%d7%a0%d7%99%d7%9d/"
+  },
+  {
+    "name": "היכל הסופר",
+    "destinationId": 348,
+    "address": "דיזינגוף 237, תל אביב",
+    "phone": "054-7637505",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%94%d7%a1%d7%95%d7%a4%d7%a8/"
+  },
+  {
+    "name": "היכל העם",
+    "destinationId": 348,
+    "address": "פעמונית 11, תל אביב",
+    "phone": "054-5360802",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%94%d7%a2%d7%9d/"
+  },
+  {
+    "name": "היכל התלמוד",
+    "destinationId": 348,
+    "address": "יהודה הלוי 13, תל אביב",
+    "phone": "052-7907056",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%94%d7%aa%d7%9c%d7%9e%d7%95%d7%93/"
+  },
+  {
+    "name": "היכל חיים",
+    "destinationId": 348,
+    "address": "אופנהיימר 5, תל אביב",
+    "phone": "053-5771011",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "היכל יהודה",
+    "destinationId": 348,
+    "address": "בן סרוק 13, תל אביב",
+    "phone": "050-5287185",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%99%d7%94%d7%95%d7%93%d7%94/"
+  },
+  {
+    "name": "היכל יעקב וחנה",
+    "destinationId": 348,
+    "address": "הכינור 2, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%99%d7%a2%d7%a7%d7%91-%d7%95%d7%97%d7%a0%d7%94/"
+  },
+  {
+    "name": "היכל יצחק",
+    "destinationId": 348,
+    "address": "סומקן 11, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "היכל יצחק – ישיבת אורות שאול",
+    "destinationId": 348,
+    "address": "ישראל מסלנט 24, תל אביב",
+    "phone": "050-7367480",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%99%d7%a6%d7%97%d7%a7-%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%90%d7%95%d7%a8%d7%95%d7%aa-%d7%a9%d7%90%d7%95%d7%9c/"
+  },
+  {
+    "name": "היכל מאיר",
+    "destinationId": 348,
+    "address": "מאנה 12, תל אביב",
+    "phone": "052-8334217",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%90%d7%99%d7%a8/"
+  },
+  {
+    "name": "היכל מיכאל – גבאי",
+    "destinationId": 348,
+    "address": "מסילת ישרים 36, תל אביב",
+    "phone": "054-4772248",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%92%d7%91%d7%90%d7%99/"
+  },
+  {
+    "name": "היכל מנחם",
+    "destinationId": 348,
+    "address": "אברבנאל 37, תל אביב",
+    "phone": "050-7820912",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%a0%d7%97%d7%9d/"
+  },
+  {
+    "name": "היכל מנחם שירת דבורה",
+    "destinationId": 348,
+    "address": "בן יהודה 87, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%a0%d7%97%d7%9d-%d7%a9%d7%99%d7%a8%d7%aa-%d7%93%d7%91%d7%95%d7%a8%d7%94/"
+  },
+  {
+    "name": "היכל משיח",
+    "destinationId": 348,
+    "address": "משה מוקדי 16, תל אביב",
+    "phone": "050-7443368",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%a9%d7%99%d7%97/"
+  },
+  {
+    "name": "היכל צבי – מרכז רוחני טוב החיים",
+    "destinationId": 348,
+    "address": "עצמון 9, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%a6%d7%91%d7%99-%d7%9e%d7%a8%d7%9b%d7%96-%d7%a8%d7%95%d7%97%d7%a0%d7%99-%d7%98%d7%95%d7%91-%d7%94%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "היכל שמואל – ישיבת הרמב\"ם",
+    "destinationId": 348,
+    "address": "מבצע קדש 40, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%a9%d7%9e%d7%95%d7%90%d7%9c-%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%94%d7%a8%d7%9e%d7%91%d7%9d/"
+  },
+  {
+    "name": "היכל שמחה",
+    "destinationId": 348,
+    "address": "תל חי 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%99%d7%9b%d7%9c-%d7%a9%d7%9e%d7%97%d7%94/"
+  },
+  {
+    "name": "הכהנים",
+    "destinationId": 348,
+    "address": "אלשיך 19, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9b%d7%94%d7%a0%d7%99%d7%9d/"
+  },
+  {
+    "name": "הכללי",
+    "destinationId": 348,
+    "address": "בוגרשוב 63, תל אביב",
+    "phone": "054-8430243",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9b%d7%9c%d7%9c%d7%99/"
+  },
+  {
+    "name": "הכללי ע\"ש מונטיפיורי",
+    "destinationId": 348,
+    "address": "דרך מנחם בגין 102, תל אביב",
+    "phone": "054-5950635",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9b%d7%9c%d7%9c%d7%99-%d7%a2%d7%a9-%d7%9e%d7%95%d7%a0%d7%98%d7%99%d7%a4%d7%99%d7%95%d7%a8%d7%99/"
+  },
+  {
+    "name": "המאור הרדמור מביטשקוב",
+    "destinationId": 348,
+    "address": "שד' ירושלים 38, תל אביב",
+    "phone": "050-2511578",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%90%d7%95%d7%a8-%d7%94%d7%a8%d7%93%d7%9e%d7%95%d7%a8-%d7%9e%d7%91%d7%99%d7%98%d7%a9%d7%a7%d7%95%d7%91/"
+  },
+  {
+    "name": "המזרח",
+    "destinationId": 348,
+    "address": "המשביר 21, תל אביב",
+    "phone": "052-2544369",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%96%d7%a8%d7%97/"
+  },
+  {
+    "name": "המקום",
+    "destinationId": 348,
+    "address": "ברנר 5, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a7%d7%95%d7%9d/"
+  },
+  {
+    "name": "המרכז ע\"ש הרב ח. דרעי",
+    "destinationId": 348,
+    "address": "סג'רה 9, תל אביב",
+    "phone": "054-2261095",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96-%d7%a2%d7%a9-%d7%94%d7%a8%d7%91-%d7%97-%d7%93%d7%a8%d7%a2%d7%99/"
+  },
+  {
+    "name": "המרכזי",
+    "destinationId": 348,
+    "address": "נח 20, תל אביב",
+    "phone": "054-7378611",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99/"
+  },
+  {
+    "name": "המרכזי – אור זרחיה",
+    "destinationId": 348,
+    "address": "מאירבר 6, תל אביב",
+    "phone": "052-6701010",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%90%d7%95%d7%a8-%d7%96%d7%a8%d7%97%d7%99%d7%94/"
+  },
+  {
+    "name": "המרכזי – היכל משה",
+    "destinationId": 348,
+    "address": "שד' סמאטס 22, תל אביב",
+    "phone": "054-2228551",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "המרכזי – תל ברוך",
+    "destinationId": 348,
+    "address": "קפריסין 18, תל אביב",
+    "phone": "052-6160500",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%aa%d7%9c-%d7%91%d7%a8%d7%95%d7%9a/"
+  },
+  {
+    "name": "המרכזי -האשכנזי",
+    "destinationId": 348,
+    "address": "מרגולין 10, תל אביב",
+    "phone": "054-4749640",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%94%d7%90%d7%a9%d7%9b%d7%a0%d7%96%d7%99/"
+  },
+  {
+    "name": "המרכזי לצפון",
+    "destinationId": 348,
+    "address": "בן יהודה 126, תל אביב",
+    "phone": "054-7443420",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%9c%d7%a6%d7%a4%d7%95%d7%9f/"
+  },
+  {
+    "name": "המרכזי רמת אביב ג'",
+    "destinationId": 348,
+    "address": "אבא אחימאיר 31, תל אביב",
+    "phone": "052-8456770",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%a8%d7%9e%d7%aa-%d7%90%d7%91%d7%99%d7%91-%d7%92/"
+  },
+  {
+    "name": "המרכזי- ליוצאי בוכרה",
+    "destinationId": 348,
+    "address": "אוריאל יעקובוב 4, תל אביב",
+    "phone": "050-8223378",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99-%d7%9c%d7%99%d7%95%d7%a6%d7%90%d7%99-%d7%91%d7%95%d7%9b%d7%a8%d7%94/"
+  },
+  {
+    "name": "הנביא יחזקאל",
+    "destinationId": 348,
+    "address": "דרך בן צבי 104, תל אביב",
+    "phone": "054-4228619",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%a0%d7%91%d7%99%d7%90-%d7%99%d7%97%d7%96%d7%a7%d7%90%d7%9c/"
+  },
+  {
+    "name": "הפועל המזרחי",
+    "destinationId": 348,
+    "address": "נהלל 22, תל אביב",
+    "phone": "054-2502960",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%94%d7%9e%d7%96%d7%a8%d7%97%d7%99/"
+  },
+  {
+    "name": "הרמב\"ם",
+    "destinationId": 348,
+    "address": "קם 65, תל אביב",
+    "phone": "052-5987078",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%a8%d7%9e%d7%91%d7%9d/"
+  },
+  {
+    "name": "הרש\"ש",
+    "destinationId": 348,
+    "address": "מטלון 91, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%a8%d7%a9%d7%a9/"
+  },
+  {
+    "name": "התאחדות עולי מצרים",
+    "destinationId": 348,
+    "address": "פינסקר 56, תל אביב",
+    "phone": "050-7859120",
+    "website": "https://rabanut.co.il/synagogue/%d7%94%d7%aa%d7%90%d7%97%d7%93%d7%95%d7%aa-%d7%a2%d7%95%d7%9c%d7%99-%d7%9e%d7%a6%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "וואהל",
+    "destinationId": 348,
+    "address": "בורלא 44, תל אביב",
+    "phone": "054-4244825",
+    "website": "https://rabanut.co.il/synagogue/%d7%95%d7%95%d7%90%d7%94%d7%9c/"
+  },
+  {
+    "name": "ויצו",
+    "destinationId": 348,
+    "address": "דוד המלך 40, תל אביב",
+    "phone": "054-4482348",
+    "website": "https://rabanut.co.il/synagogue/%d7%95%d7%99%d7%a6%d7%95/"
+  },
+  {
+    "name": "זכור לאברהם",
+    "destinationId": 348,
+    "address": "הכובשים 34, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%96%d7%9b%d7%95%d7%a8-%d7%9c%d7%90%d7%91%d7%a8%d7%94%d7%9d/"
+  },
+  {
+    "name": "זכרון ברוך",
+    "destinationId": 348,
+    "address": "ניצנה 11, תל אביב",
+    "phone": "052-3836171",
+    "website": "https://rabanut.co.il/synagogue/%d7%96%d7%9b%d7%a8%d7%95%d7%9f-%d7%91%d7%a8%d7%95%d7%9a/"
+  },
+  {
+    "name": "זכרון חיים",
+    "destinationId": 348,
+    "address": "הכרמל 23, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%96%d7%9b%d7%a8%d7%95%d7%9f-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "זכרון משה",
+    "destinationId": 348,
+    "address": "מיכלאנג'לו 31, תל אביב",
+    "phone": "054-3491814",
+    "website": "https://rabanut.co.il/synagogue/%d7%96%d7%9b%d7%a8%d7%95%d7%9f-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "זכרון קדושים",
+    "destinationId": 348,
+    "address": "יפת 254, תל אביב",
+    "phone": "054-6752230",
+    "website": "https://rabanut.co.il/synagogue/%d7%96%d7%9b%d7%a8%d7%95%d7%9f-%d7%a7%d7%93%d7%95%d7%a9%d7%99%d7%9d/"
+  },
+  {
+    "name": "זר יחזקאל אור החיים",
+    "destinationId": 348,
+    "address": "יונדב 5, תל אביב",
+    "phone": "050-7606327",
+    "website": "https://rabanut.co.il/synagogue/%d7%96%d7%a8-%d7%99%d7%97%d7%96%d7%a7%d7%90%d7%9c-%d7%90%d7%95%d7%a8-%d7%94%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "חבצל\"ת",
+    "destinationId": 348,
+    "address": "ותיק 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%91%d7%a6%d7%9c%d7%aa/"
+  },
+  {
+    "name": "חברת ש\"ס",
+    "destinationId": 348,
+    "address": "חברת ש\"ס 7, תל אביב",
+    "phone": "054-9953728",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%91%d7%a8%d7%aa-%d7%a9%d7%a1/"
+  },
+  {
+    "name": "חוג הנוער הדתי – איחוד עולם",
+    "destinationId": 348,
+    "address": "סמולנסקין 2, תל אביב",
+    "phone": "052-3614745",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%95%d7%92-%d7%94%d7%a0%d7%95%d7%a2%d7%a8-%d7%94%d7%93%d7%aa%d7%99-%d7%90%d7%99%d7%97%d7%95%d7%93-%d7%a2%d7%95%d7%9c%d7%9d/"
+  },
+  {
+    "name": "חוג חתם סופר – בית יואל",
+    "destinationId": 348,
+    "address": "בר כוכבא 18, תל אביב",
+    "phone": "054-8086420",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%95%d7%92-%d7%97%d7%aa%d7%9d-%d7%a1%d7%95%d7%a4%d7%a8-%d7%91%d7%99%d7%aa-%d7%99%d7%95%d7%90%d7%9c/"
+  },
+  {
+    "name": "חזון אליהו ישורון – ישיבת חב\"ד",
+    "destinationId": 348,
+    "address": "זמנהוף 37, תל אביב",
+    "phone": "054-4716468",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%96%d7%95%d7%9f-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%99%d7%a9%d7%95%d7%a8%d7%95%d7%9f-%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%97%d7%91%d7%93/"
+  },
+  {
+    "name": "חזון עובדיה בית אל",
+    "destinationId": 348,
+    "address": "צביה לובטקין 20, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%96%d7%95%d7%9f-%d7%a2%d7%95%d7%91%d7%93%d7%99%d7%94-%d7%91%d7%99%d7%aa-%d7%90%d7%9c/"
+  },
+  {
+    "name": "חיי אברהם",
+    "destinationId": 348,
+    "address": "דגניה 43, תל אביב",
+    "phone": "052-8979853",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%99%d7%99-%d7%90%d7%91%d7%a8%d7%94%d7%9d/"
+  },
+  {
+    "name": "חיי עולם – שרעב",
+    "destinationId": 348,
+    "address": "כנפי נשרים 3, תל אביב",
+    "phone": "050-6805067",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%99%d7%99-%d7%a2%d7%95%d7%9c%d7%9d-%d7%a9%d7%a8%d7%a2%d7%91/"
+  },
+  {
+    "name": "חיי שלום",
+    "destinationId": 348,
+    "address": "הגלבוע 20, תל אביב",
+    "phone": "054-4546675",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%99%d7%99-%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "חללי צור",
+    "destinationId": 348,
+    "address": "ישראל גורי 26, תל אביב",
+    "phone": "050-4203200",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%9c%d7%9c%d7%99-%d7%a6%d7%95%d7%a8/"
+  },
+  {
+    "name": "חסד ואמת",
+    "destinationId": 348,
+    "address": "רוני 22, תל אביב",
+    "phone": "052-2817977",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%93-%d7%95%d7%90%d7%9e%d7%aa/"
+  },
+  {
+    "name": "חסדי וישועת ה' ארמונות מזל",
+    "destinationId": 348,
+    "address": "גרינבויים 37, תל אביב",
+    "phone": "054-2525416",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%93%d7%99-%d7%95%d7%99%d7%a9%d7%95%d7%a2%d7%aa-%d7%94-%d7%90%d7%a8%d7%9e%d7%95%d7%a0%d7%95%d7%aa-%d7%9e%d7%96%d7%9c/"
+  },
+  {
+    "name": "חסדי יצחק",
+    "destinationId": 348,
+    "address": "חיל השיריון 83, תל אביב",
+    "phone": "052-2595033",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%93%d7%99-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "חסידי בעלזא",
+    "destinationId": 348,
+    "address": "אחד העם 63, תל אביב",
+    "phone": "054-3977075",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%91%d7%a2%d7%9c%d7%96%d7%90/"
+  },
+  {
+    "name": "חסידי גור",
+    "destinationId": 348,
+    "address": "פיירברג 17, תל אביב",
+    "phone": "053-3115749",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%92%d7%95%d7%a8/"
+  },
+  {
+    "name": "חסידי חב\"ד המרכזי",
+    "destinationId": 348,
+    "address": "נחלת בנימין 23, תל אביב",
+    "phone": "052-2234142",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%97%d7%91%d7%93-%d7%94%d7%9e%d7%a8%d7%9b%d7%96%d7%99/"
+  },
+  {
+    "name": "חסידי סוכטשוב שם משמואל",
+    "destinationId": 348,
+    "address": "רש\"י 20, תל אביב",
+    "phone": "055-9984504",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%a1%d7%95%d7%9b%d7%98%d7%a9%d7%95%d7%91-%d7%a9%d7%9d-%d7%9e%d7%a9%d7%9e%d7%95%d7%90%d7%9c/"
+  },
+  {
+    "name": "חסידי סקרנביץ",
+    "destinationId": 348,
+    "address": "העבודה 12, תל אביב",
+    "phone": "052-5341004",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%a1%d7%a7%d7%a8%d7%a0%d7%91%d7%99%d7%a5/"
+  },
+  {
+    "name": "חפיזוב",
+    "destinationId": 348,
+    "address": "זלמן שזר 27, תל אביב",
+    "phone": "052-7613715",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a4%d7%99%d7%96%d7%95%d7%91/"
+  },
+  {
+    "name": "חפץ חיים",
+    "destinationId": 348,
+    "address": "ברכיה 5, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a4%d7%a5-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "חקק בית יעקב",
+    "destinationId": 348,
+    "address": "רשפים 11, תל אביב",
+    "phone": "052-5507465",
+    "website": "https://rabanut.co.il/synagogue/%d7%97%d7%a7%d7%a7-%d7%91%d7%99%d7%aa-%d7%99%d7%a2%d7%a7%d7%91/"
+  },
+  {
+    "name": "יבנה חסידים – חב\"ד",
+    "destinationId": 348,
+    "address": "יבנה 10, תל אביב",
+    "phone": "054-7703629",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%91%d7%a0%d7%94-%d7%97%d7%a1%d7%99%d7%93%d7%99%d7%9d-%d7%97%d7%91%d7%93/"
+  },
+  {
+    "name": "יד לבנים זכרון שלום",
+    "destinationId": 348,
+    "address": "הפלמ\"ח 10, תל אביב",
+    "phone": "050-5711355",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%93-%d7%9c%d7%91%d7%a0%d7%99%d7%9d-%d7%96%d7%9b%d7%a8%d7%95%d7%9f-%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "יוסף הצדיק",
+    "destinationId": 348,
+    "address": "דרך בר לב 126, תל אביב",
+    "phone": "052-8676636",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%95%d7%a1%d7%a3-%d7%94%d7%a6%d7%93%d7%99%d7%a7/"
+  },
+  {
+    "name": "יוסף חיים",
+    "destinationId": 348,
+    "address": "ס\"א 5, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%95%d7%a1%d7%a3-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "יחד שבטי ישראל",
+    "destinationId": 348,
+    "address": "מרדכי מאיר 2, תל אביב",
+    "phone": "054-3975589",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%97%d7%93-%d7%a9%d7%91%d7%98%d7%99-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "יחזקאל",
+    "destinationId": 348,
+    "address": "ארנון 2, תל אביב",
+    "phone": "050-8228723",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%97%d7%96%d7%a7%d7%90%d7%9c/"
+  },
+  {
+    "name": "יסוד המעלה",
+    "destinationId": 348,
+    "address": "יסוד המעלה 13, תל אביב",
+    "phone": "052-7050712",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a1%d7%95%d7%93-%d7%94%d7%9e%d7%a2%d7%9c%d7%94/"
+  },
+  {
+    "name": "יסוד ציון – לעולי אפגניסטן",
+    "destinationId": 348,
+    "address": "מח\"ל 51, תל אביב",
+    "phone": "050-8870574",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a1%d7%95%d7%93-%d7%a6%d7%99%d7%95%d7%9f-%d7%9c%d7%a2%d7%95%d7%9c%d7%99-%d7%90%d7%a4%d7%92%d7%a0%d7%99%d7%a1%d7%98%d7%9f/"
+  },
+  {
+    "name": "יסודי התורה",
+    "destinationId": 348,
+    "address": "חדרה 2, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a1%d7%95%d7%93%d7%99-%d7%94%d7%aa%d7%95%d7%a8%d7%94/"
+  },
+  {
+    "name": "ירושלים",
+    "destinationId": 348,
+    "address": "גרוזנברג 21, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%99%d7%9d/"
+  },
+  {
+    "name": "ישועת ישראל",
+    "destinationId": 348,
+    "address": "שד' חכמי ישראל 90, תל אביב",
+    "phone": "052-7134589",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%95%d7%a2%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "ישורון",
+    "destinationId": 348,
+    "address": "הבושם 13, תל אביב",
+    "phone": "054-6695767",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%95%d7%a8%d7%95%d7%9f/"
+  },
+  {
+    "name": "ישורון – מנצור",
+    "destinationId": 348,
+    "address": "הבושם 17, תל אביב",
+    "phone": "050-8638752",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%95%d7%a8%d7%95%d7%9f-%d7%9e%d7%a0%d7%a6%d7%95%d7%a8/"
+  },
+  {
+    "name": "ישיבת \"עטרת נחמיה\"",
+    "destinationId": 348,
+    "address": "בנימיני 11, תל אביב",
+    "phone": "052-4372541",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%a2%d7%98%d7%a8%d7%aa-%d7%a0%d7%97%d7%9e%d7%99%d7%94/"
+  },
+  {
+    "name": "ישיבת חידושי הרי\"מ",
+    "destinationId": 348,
+    "address": "נמירובר 24, תל אביב",
+    "phone": "053-3120432",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%97%d7%99%d7%93%d7%95%d7%a9%d7%99-%d7%94%d7%a8%d7%99%d7%9e/"
+  },
+  {
+    "name": "ישיבת מעלה אליהו",
+    "destinationId": 348,
+    "address": "הנרייטה סולד 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%9e%d7%a2%d7%9c%d7%94-%d7%90%d7%9c%d7%99%d7%94%d7%95/"
+  },
+  {
+    "name": "ישיבת עמיאל – היישוב",
+    "destinationId": 348,
+    "address": "פומבדיתא 13, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%a2%d7%9e%d7%99%d7%90%d7%9c-%d7%94%d7%99%d7%99%d7%a9%d7%95%d7%91/"
+  },
+  {
+    "name": "ישיבת רבי שמעון בר יוחאי – רשב\"י",
+    "destinationId": 348,
+    "address": "דרך לח\"י 97, תל אביב",
+    "phone": "052-8092063",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%a8%d7%91%d7%99-%d7%a9%d7%9e%d7%a2%d7%95%d7%9f-%d7%91%d7%a8-%d7%99%d7%95%d7%97%d7%90%d7%99-%d7%a8%d7%a9%d7%91%d7%99/"
+  },
+  {
+    "name": "ישיבת שובה ישראל",
+    "destinationId": 348,
+    "address": "הירקון 8, תל אביב",
+    "phone": "050-3003002",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%a9%d7%95%d7%91%d7%94-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "ישיבת תורה והוראה",
+    "destinationId": 348,
+    "address": "הפלמ\"ח 10, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%99%d7%91%d7%aa-%d7%aa%d7%95%d7%a8%d7%94-%d7%95%d7%94%d7%95%d7%a8%d7%90%d7%94/"
+  },
+  {
+    "name": "ישמח בו",
+    "destinationId": 348,
+    "address": "משה בריל 15, תל אביב",
+    "phone": "054-8442866",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%9e%d7%97-%d7%91%d7%95/"
+  },
+  {
+    "name": "ישמח משה",
+    "destinationId": 348,
+    "address": "זרח 2, תל אביב",
+    "phone": "052-6256777",
+    "website": "https://rabanut.co.il/synagogue/%d7%99%d7%a9%d7%9e%d7%97-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "כוג'הינוף – היכל מהריך",
+    "destinationId": 348,
+    "address": "זבולון 21, תל אביב",
+    "phone": "052-4233592",
+    "website": "https://rabanut.co.il/synagogue/%d7%9b%d7%95%d7%92%d7%94%d7%99%d7%a0%d7%95%d7%a3-%d7%94%d7%99%d7%9b%d7%9c-%d7%9e%d7%94%d7%a8%d7%99%d7%9a/"
+  },
+  {
+    "name": "כוכב הצפון",
+    "destinationId": 348,
+    "address": "אבא קובנר 18, תל אביב",
+    "phone": "054-4750824",
+    "website": "https://rabanut.co.il/synagogue/%d7%9b%d7%95%d7%9b%d7%91-%d7%94%d7%a6%d7%a4%d7%95%d7%9f/"
+  },
+  {
+    "name": "כנסת ישראל",
+    "destinationId": 348,
+    "address": "שערי תשובה 19, תל אביב",
+    "phone": "052-7053687",
+    "website": "https://rabanut.co.il/synagogue/%d7%9b%d7%a0%d7%a1%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "כתר דוד",
+    "destinationId": 348,
+    "address": "מסילת ישרים 70, תל אביב",
+    "phone": "050-8558855",
+    "website": "https://rabanut.co.il/synagogue/%d7%9b%d7%aa%d7%a8-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "כתר תורה",
+    "destinationId": 348,
+    "address": "הונא 18, תל אביב",
+    "phone": "052-8939538",
+    "website": "https://rabanut.co.il/synagogue/%d7%9b%d7%aa%d7%a8-%d7%aa%d7%95%d7%a8%d7%94/"
+  },
+  {
+    "name": "כתר תורה עולי מצרים אולם שמחות",
+    "destinationId": 348,
+    "address": "ב' 19, תל אביב",
+    "phone": "052-5296701",
+    "website": "https://rabanut.co.il/synagogue/%d7%9b%d7%aa%d7%a8-%d7%aa%d7%95%d7%a8%d7%94-%d7%a2%d7%95%d7%9c%d7%99-%d7%9e%d7%a6%d7%a8%d7%99%d7%9d-%d7%90%d7%95%d7%9c%d7%9d-%d7%a9%d7%9e%d7%97%d7%95%d7%aa/"
+  },
+  {
+    "name": "לכלל ישראל",
+    "destinationId": 348,
+    "address": "אליהו חכים 5, תל אביב",
+    "phone": "054-5396503",
+    "website": "https://rabanut.co.il/synagogue/%d7%9c%d7%9b%d7%9c%d7%9c-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "לנוער \"מזרח\"",
+    "destinationId": 348,
+    "address": "הדף היומי 8, תל אביב",
+    "phone": "054-8448802",
+    "website": "https://rabanut.co.il/synagogue/%d7%9c%d7%a0%d7%95%d7%a2%d7%a8-%d7%9e%d7%96%d7%a8%d7%97/"
+  },
+  {
+    "name": "לעולי בבל ומרוקו",
+    "destinationId": 348,
+    "address": "המבשר 76, תל אביב",
+    "phone": "050-3556021",
+    "website": "https://rabanut.co.il/synagogue/%d7%9c%d7%a2%d7%95%d7%9c%d7%99-%d7%91%d7%91%d7%9c-%d7%95%d7%9e%d7%a8%d7%95%d7%a7%d7%95/"
+  },
+  {
+    "name": "מאור הגולה",
+    "destinationId": 348,
+    "address": "שד' הר ציון 117, תל אביב",
+    "phone": "052-7205050",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%90%d7%95%d7%a8-%d7%94%d7%92%d7%95%d7%9c%d7%94/"
+  },
+  {
+    "name": "מאור ישראל",
+    "destinationId": 348,
+    "address": "בת שבע כצנלסון 43, תל אביב",
+    "phone": "052-7117085",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%90%d7%95%d7%a8-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "מגדל עוז",
+    "destinationId": 348,
+    "address": "שביל החצב 4, תל אביב",
+    "phone": "050-7750789",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%93%d7%9c-%d7%a2%d7%95%d7%96/"
+  },
+  {
+    "name": "מגדל שלום מאיר",
+    "destinationId": 348,
+    "address": "אחד העם 9, תל אביב",
+    "phone": "050-2357376",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%93%d7%9c-%d7%a9%d7%9c%d7%95%d7%9d-%d7%9e%d7%90%d7%99%d7%a8/"
+  },
+  {
+    "name": "מגורים",
+    "destinationId": 348,
+    "address": "קליי 7, תל אביב",
+    "phone": "052-4559576",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%95%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "מגן אבות",
+    "destinationId": 348,
+    "address": "יעקב כץ 18, תל אביב",
+    "phone": "053-2503025",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%9f-%d7%90%d7%91%d7%95%d7%aa/"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 348,
+    "address": "באר שבע 3, תל אביב",
+    "phone": "054-2983904",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%9f-%d7%90%d7%91%d7%a8%d7%94%d7%9d/"
+  },
+  {
+    "name": "מגן דוד",
+    "destinationId": 348,
+    "address": "תרמ\"ב 31, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%9f-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "מגן דוד – קהילת עדן",
+    "destinationId": 348,
+    "address": "ביצרון 14, תל אביב",
+    "phone": "052-4218577",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%92%d7%9f-%d7%93%d7%95%d7%93-%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%a2%d7%93%d7%9f/"
+  },
+  {
+    "name": "מדרש שלמה",
+    "destinationId": 348,
+    "address": "המעון 27, תל אביב",
+    "phone": "050-8770280",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%93%d7%a8%d7%a9-%d7%a9%d7%9c%d7%9e%d7%94/"
+  },
+  {
+    "name": "מוריה – האדמו\"ר מביטשקוב",
+    "destinationId": 348,
+    "address": "משה הלוי 5, תל אביב",
+    "phone": "050-7777988",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%95%d7%a8%d7%99%d7%94-%d7%94%d7%90%d7%93%d7%9e%d7%95%d7%a8-%d7%9e%d7%91%d7%99%d7%98%d7%a9%d7%a7%d7%95%d7%91/"
+  },
+  {
+    "name": "מושב זקנים",
+    "destinationId": 348,
+    "address": "אלנבי 89, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%95%d7%a9%d7%91-%d7%96%d7%a7%d7%a0%d7%99%d7%9d/"
+  },
+  {
+    "name": "ממעל ממש",
+    "destinationId": 348,
+    "address": "קינג גורג 15, תל אביב",
+    "phone": "054-7708857",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%9e%d7%a2%d7%9c-%d7%9e%d7%9e%d7%a9/"
+  },
+  {
+    "name": "מניין צעירים",
+    "destinationId": 348,
+    "address": "מרגולין 10, תל אביב",
+    "phone": "052-2576078",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a0%d7%99%d7%99%d7%9f-%d7%a6%d7%a2%d7%99%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "מנין צעירים בני עקיבא",
+    "destinationId": 348,
+    "address": "אופנהיימר 13, תל אביב",
+    "phone": "054-5980002",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a0%d7%99%d7%9f-%d7%a6%d7%a2%d7%99%d7%a8%d7%99%d7%9d-%d7%91%d7%a0%d7%99-%d7%a2%d7%a7%d7%99%d7%91%d7%90/"
+  },
+  {
+    "name": "מערב – גולן מרכוס",
+    "destinationId": 348,
+    "address": "הדף היומי 8, תל אביב",
+    "phone": "054-8448810",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a2%d7%a8%d7%91-%d7%92%d7%95%d7%9c%d7%9f-%d7%9e%d7%a8%d7%9b%d7%95%d7%a1/"
+  },
+  {
+    "name": "מקדשי שביעי",
+    "destinationId": 348,
+    "address": "הקשת 28, תל אביב",
+    "phone": "050-5717970",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a7%d7%93%d7%a9%d7%99-%d7%a9%d7%91%d7%99%d7%a2%d7%99/"
+  },
+  {
+    "name": "מקור הברכה והשלום",
+    "destinationId": 348,
+    "address": "הבושם 9, תל אביב",
+    "phone": "054-8422225",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a7%d7%95%d7%a8-%d7%94%d7%91%d7%a8%d7%9b%d7%94-%d7%95%d7%94%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "מקור חיים",
+    "destinationId": 348,
+    "address": "ביכורי ציון 18, תל אביב",
+    "phone": "050-7605842",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a7%d7%95%d7%a8-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "מקור חיים – ג'ורג אצלן",
+    "destinationId": 348,
+    "address": "עמישב 25, תל אביב",
+    "phone": "052-6399345",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a7%d7%95%d7%a8-%d7%97%d7%99%d7%99%d7%9d-%d7%92%d7%95%d7%a8%d7%92-%d7%90%d7%a6%d7%9c%d7%9f/"
+  },
+  {
+    "name": "מקלט",
+    "destinationId": 348,
+    "address": "זלמן שזר 25, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a7%d7%9c%d7%98/"
+  },
+  {
+    "name": "מראות הסולם",
+    "destinationId": 348,
+    "address": "שמעון רוקח 20, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a8%d7%90%d7%95%d7%aa-%d7%94%d7%a1%d7%95%d7%9c%d7%9d/"
+  },
+  {
+    "name": "מרכז המאור",
+    "destinationId": 348,
+    "address": "בוגרשוב 63, תל אביב",
+    "phone": "050-4135676",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a8%d7%9b%d7%96-%d7%94%d7%9e%d7%90%d7%95%d7%a8/"
+  },
+  {
+    "name": "מרמורק",
+    "destinationId": 348,
+    "address": "מרמורק 20, תל אביב",
+    "phone": "054-7768989",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a8%d7%9e%d7%95%d7%a8%d7%a7/"
+  },
+  {
+    "name": "מרמורש",
+    "destinationId": 348,
+    "address": "הרב פרנקל 80, תל אביב",
+    "phone": "054-4947252",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a8%d7%9e%d7%95%d7%a8%d7%a9/"
+  },
+  {
+    "name": "משכן אחים",
+    "destinationId": 348,
+    "address": "ברודצקי 21, תל אביב",
+    "phone": "054-5461167",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a9%d7%9b%d7%9f-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "משכן הכהנים",
+    "destinationId": 348,
+    "address": "שד' הציונות 20, תל אביב",
+    "phone": "053-6964822",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a9%d7%9b%d7%9f-%d7%94%d7%9b%d7%94%d7%a0%d7%99%d7%9d/"
+  },
+  {
+    "name": "משכן זבולון",
+    "destinationId": 348,
+    "address": "אשרמן 3, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a9%d7%9b%d7%9f-%d7%96%d7%91%d7%95%d7%9c%d7%95%d7%9f/"
+  },
+  {
+    "name": "משכן טוב",
+    "destinationId": 348,
+    "address": "טבריה 5, תל אביב",
+    "phone": "054-8005717",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a9%d7%9b%d7%9f-%d7%98%d7%95%d7%91/"
+  },
+  {
+    "name": "משכן שמואל-הפועל המזרחי",
+    "destinationId": 348,
+    "address": "בת ציון 9, תל אביב",
+    "phone": "054-4714131",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a9%d7%9b%d7%9f-%d7%a9%d7%9e%d7%95%d7%90%d7%9c-%d7%94%d7%a4%d7%95%d7%a2%d7%9c-%d7%94%d7%9e%d7%96%d7%a8%d7%97%d7%99/"
+  },
+  {
+    "name": "משען נאות אביבים",
+    "destinationId": 348,
+    "address": "ברודצקי 68, תל אביב",
+    "phone": "054-7331770",
+    "website": "https://rabanut.co.il/synagogue/%d7%9e%d7%a9%d7%a2%d7%9f-%d7%a0%d7%90%d7%95%d7%aa-%d7%90%d7%91%d7%99%d7%91%d7%99%d7%9d/"
+  },
+  {
+    "name": "נאות התיכון – מרכז גריאטרי",
+    "destinationId": 348,
+    "address": "טולוז 8, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%90%d7%95%d7%aa-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9e%d7%a8%d7%9b%d7%96-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/"
+  },
+  {
+    "name": "נגבה",
+    "destinationId": 348,
+    "address": "נגבה 29, תל אביב",
+    "phone": "054-8422328",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%92%d7%91%d7%94/"
+  },
+  {
+    "name": "נהר שלום",
+    "destinationId": 348,
+    "address": "האקליפטוס 7, תל אביב",
+    "phone": "052-2939123",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%94%d7%a8-%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "נוה ירושלים",
+    "destinationId": 348,
+    "address": "סמטת הר ציון 22, תל אביב",
+    "phone": "052-7205050",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%95%d7%94-%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%99%d7%9d/"
+  },
+  {
+    "name": "נוה קודש",
+    "destinationId": 348,
+    "address": "אופנהיימר 5, תל אביב",
+    "phone": "052-8696606",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%95%d7%94-%d7%a7%d7%95%d7%93%d7%a9/"
+  },
+  {
+    "name": "נווה ישראל",
+    "destinationId": 348,
+    "address": "מסילת ישרים 82, תל אביב",
+    "phone": "052-6535578",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%95%d7%95%d7%94-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "נווה נתן",
+    "destinationId": 348,
+    "address": "שד' המעפילים 8, תל אביב",
+    "phone": "055-8856480",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%95%d7%95%d7%94-%d7%a0%d7%aa%d7%9f/"
+  },
+  {
+    "name": "נחום האלקושי",
+    "destinationId": 348,
+    "address": "ורדיאל 2, תל אביב",
+    "phone": "052-7117085",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%97%d7%95%d7%9d-%d7%94%d7%90%d7%9c%d7%a7%d7%95%d7%a9%d7%99/"
+  },
+  {
+    "name": "נחלת אבות",
+    "destinationId": 348,
+    "address": "בורוכוב 24, תל אביב",
+    "phone": "052-4226754",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%97%d7%9c%d7%aa-%d7%90%d7%91%d7%95%d7%aa/"
+  },
+  {
+    "name": "נחלת יהודה",
+    "destinationId": 348,
+    "address": "גוש עציון 46, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%97%d7%9c%d7%aa-%d7%99%d7%94%d7%95%d7%93%d7%94/"
+  },
+  {
+    "name": "נחלת יצחק",
+    "destinationId": 348,
+    "address": "טרומפלדור 28, תל אביב",
+    "phone": "054-5837987",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%97%d7%9c%d7%aa-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "נחלת שרה",
+    "destinationId": 348,
+    "address": "הרב עובדיה 14, תל אביב",
+    "phone": "052-7661899",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%97%d7%9c%d7%aa-%d7%a9%d7%a8%d7%94/"
+  },
+  {
+    "name": "נטיעות ישראל",
+    "destinationId": 348,
+    "address": "שטרן 5, תל אביב",
+    "phone": "052-4492280",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%98%d7%99%d7%a2%d7%95%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "נס ישראל",
+    "destinationId": 348,
+    "address": "באר שבע 64, תל אביב",
+    "phone": "052-2202840",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%a1-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "נפלאות ישראל – מקלט",
+    "destinationId": 348,
+    "address": "אלמגור 18, תל אביב",
+    "phone": "052-8905240",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%a4%d7%9c%d7%90%d7%95%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c-%d7%9e%d7%a7%d7%9c%d7%98/"
+  },
+  {
+    "name": "נצח ישראל",
+    "destinationId": 348,
+    "address": "וולפסון 86, תל אביב",
+    "phone": "050-9172005",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%a6%d7%97-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "נר מאיר",
+    "destinationId": 348,
+    "address": "ראב\"ד 42, תל אביב",
+    "phone": "052-3556005",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%a8-%d7%9e%d7%90%d7%99%d7%a8/"
+  },
+  {
+    "name": "נתן הנביא",
+    "destinationId": 348,
+    "address": "טשרנחובסקי 6, תל אביב",
+    "phone": "054-4726736",
+    "website": "https://rabanut.co.il/synagogue/%d7%a0%d7%aa%d7%9f-%d7%94%d7%a0%d7%91%d7%99%d7%90/"
+  },
+  {
+    "name": "סדיגורה",
+    "destinationId": 348,
+    "address": "פנקס 41, תל אביב",
+    "phone": "050-4102021",
+    "website": "https://rabanut.co.il/synagogue/%d7%a1%d7%93%d7%99%d7%92%d7%95%d7%a8%d7%94/"
+  },
+  {
+    "name": "סוכת דוד",
+    "destinationId": 348,
+    "address": "יחיעם 32, תל אביב",
+    "phone": "077-7887758",
+    "website": "https://rabanut.co.il/synagogue/%d7%a1%d7%95%d7%9b%d7%aa-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "סוכת שלום",
+    "destinationId": 348,
+    "address": "שמחה 56, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a1%d7%95%d7%9b%d7%aa-%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "סולם יעקב",
+    "destinationId": 348,
+    "address": "אבן גבירול 124, תל אביב",
+    "phone": "052-7681474",
+    "website": "https://rabanut.co.il/synagogue/%d7%a1%d7%95%d7%9c%d7%9d-%d7%99%d7%a2%d7%a7%d7%91/"
+  },
+  {
+    "name": "סי אנד סאן",
+    "destinationId": 348,
+    "address": "הרצל רוזנבלום 8, תל אביב",
+    "phone": "050-5258787",
+    "website": "https://rabanut.co.il/synagogue/%d7%a1%d7%99-%d7%90%d7%a0%d7%93-%d7%a1%d7%90%d7%9f/"
+  },
+  {
+    "name": "סיני לחללי צה\"ל",
+    "destinationId": 348,
+    "address": "היורה 3, תל אביב",
+    "phone": "050-5577983",
+    "website": "https://rabanut.co.il/synagogue/%d7%a1%d7%99%d7%a0%d7%99-%d7%9c%d7%97%d7%9c%d7%9c%d7%99-%d7%a6%d7%94%d7%9c/"
+  },
+  {
+    "name": "עבודת ישראל – קוז'ניץ",
+    "destinationId": 348,
+    "address": "ויצמן 71, תל אביב",
+    "phone": "052-2592500",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%91%d7%95%d7%93%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c-%d7%a7%d7%95%d7%96%d7%a0%d7%99%d7%a5/"
+  },
+  {
+    "name": "עולי בבל",
+    "destinationId": 348,
+    "address": "יהודה 1, תל אביב",
+    "phone": "052-2684162",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%91%d7%91%d7%9c/"
+  },
+  {
+    "name": "עולי בבל – תפארת יוסף",
+    "destinationId": 348,
+    "address": "הצנחנים 20, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%91%d7%91%d7%9c-%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%99%d7%95%d7%a1%d7%a3/"
+  },
+  {
+    "name": "עולי בנגזי ע\"ש ר' פאלח",
+    "destinationId": 348,
+    "address": "יפת 222, תל אביב",
+    "phone": "050-4512607",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%91%d7%a0%d7%92%d7%96%d7%99-%d7%a2%d7%a9-%d7%a8-%d7%a4%d7%90%d7%9c%d7%97/"
+  },
+  {
+    "name": "עולי לוב",
+    "destinationId": 348,
+    "address": "הצנחנים 30, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%9c%d7%95%d7%91/"
+  },
+  {
+    "name": "עולי משהד – איראן",
+    "destinationId": 348,
+    "address": "שבתאי 10, תל אביב",
+    "phone": "052-6330100",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%9e%d7%a9%d7%94%d7%93-%d7%90%d7%99%d7%a8%d7%90%d7%9f/"
+  },
+  {
+    "name": "עולי סין",
+    "destinationId": 348,
+    "address": "הגולן 31, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%a1%d7%99%d7%9f/"
+  },
+  {
+    "name": "עולי תורכיה",
+    "destinationId": 348,
+    "address": "דורון 9, תל אביב",
+    "phone": "054-6098989",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%95%d7%9c%d7%99-%d7%aa%d7%95%d7%a8%d7%9b%d7%99%d7%94/"
+  },
+  {
+    "name": "עזרה ותושיה",
+    "destinationId": 348,
+    "address": "שורשים 12, תל אביב",
+    "phone": "052-7661435",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%96%d7%a8%d7%94-%d7%95%d7%aa%d7%95%d7%a9%d7%99%d7%94/"
+  },
+  {
+    "name": "עזרת אחים",
+    "destinationId": 348,
+    "address": "זלמן שזר 42, תל אביב",
+    "phone": "050-8557540",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%96%d7%a8%d7%aa-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "עטרת ישראל",
+    "destinationId": 348,
+    "address": "תשרי 61, תל אביב",
+    "phone": "052-7661435",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%98%d7%a8%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "עטרת מרדכי",
+    "destinationId": 348,
+    "address": "בלוך 24, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%98%d7%a8%d7%aa-%d7%9e%d7%a8%d7%93%d7%9b%d7%99/"
+  },
+  {
+    "name": "עטרת צבי \"יקרי\"",
+    "destinationId": 348,
+    "address": "יריחו 5, תל אביב",
+    "phone": "052-3252599",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%98%d7%a8%d7%aa-%d7%a6%d7%91%d7%99-%d7%99%d7%a7%d7%a8%d7%99/"
+  },
+  {
+    "name": "עיריית תל אביב מלאכי השרת",
+    "destinationId": 348,
+    "address": "אבן גבירול 69, תל אביב",
+    "phone": "053-2503455",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%99%d7%a8%d7%99%d7%99%d7%aa-%d7%aa%d7%9c-%d7%90%d7%91%d7%99%d7%91-%d7%9e%d7%9c%d7%90%d7%9b%d7%99-%d7%94%d7%a9%d7%a8%d7%aa/"
+  },
+  {
+    "name": "עץ חיים",
+    "destinationId": 348,
+    "address": "נס לגויים 53, תל אביב",
+    "phone": "052-5773196",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%a5-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "עתירת יצחק",
+    "destinationId": 348,
+    "address": "יהונתן 17, תל אביב",
+    "phone": "050-5282946",
+    "website": "https://rabanut.co.il/synagogue/%d7%a2%d7%aa%d7%99%d7%a8%d7%aa-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "פוזיילוב",
+    "destinationId": 348,
+    "address": "סמטת רבי רפאל פוזיילוב 8, תל אביב",
+    "phone": "050-4081866",
+    "website": "https://rabanut.co.il/synagogue/%d7%a4%d7%95%d7%96%d7%99%d7%99%d7%9c%d7%95%d7%91/"
+  },
+  {
+    "name": "פועלי צדק",
+    "destinationId": 348,
+    "address": "צ'לנוב 31, תל אביב",
+    "phone": "058-3235357",
+    "website": "https://rabanut.co.il/synagogue/%d7%a4%d7%95%d7%a2%d7%9c%d7%99-%d7%a6%d7%93%d7%a7/"
+  },
+  {
+    "name": "פרדס רימונים",
+    "destinationId": 348,
+    "address": "שד' ירושלים 127, תל אביב",
+    "phone": "052-5673673",
+    "website": "https://rabanut.co.il/synagogue/%d7%a4%d7%a8%d7%93%d7%a1-%d7%a8%d7%99%d7%9e%d7%95%d7%a0%d7%99%d7%9d/"
+  },
+  {
+    "name": "צורי שדי-משכן משה",
+    "destinationId": 348,
+    "address": "סמטת רבי רפאל פוזיילוב 9, תל אביב",
+    "phone": "050-6449288",
+    "website": "https://rabanut.co.il/synagogue/%d7%a6%d7%95%d7%a8%d7%99-%d7%a9%d7%93%d7%99-%d7%9e%d7%a9%d7%9b%d7%9f-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "ציון – מרכז לב",
+    "destinationId": 348,
+    "address": "קלישר 27, תל אביב",
+    "phone": "058-7698388",
+    "website": "https://rabanut.co.il/synagogue/%d7%a6%d7%99%d7%95%d7%9f-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%91/"
+  },
+  {
+    "name": "צמח דוד",
+    "destinationId": 348,
+    "address": "מנחם מדמון 16, תל אביב",
+    "phone": "052-2567830",
+    "website": "https://rabanut.co.il/synagogue/%d7%a6%d7%9e%d7%97-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "צעירי בני בנימין",
+    "destinationId": 348,
+    "address": "החזיון 3, תל אביב",
+    "phone": "054-4830825",
+    "website": "https://rabanut.co.il/synagogue/%d7%a6%d7%a2%d7%99%d7%a8%d7%99-%d7%91%d7%a0%d7%99-%d7%91%d7%a0%d7%99%d7%9e%d7%99%d7%9f/"
+  },
+  {
+    "name": "צעירי דוב גרונר",
+    "destinationId": 348,
+    "address": "טובה סנהדראי 10, תל אביב",
+    "phone": "050-9081107",
+    "website": "https://rabanut.co.il/synagogue/%d7%a6%d7%a2%d7%99%d7%a8%d7%99-%d7%93%d7%95%d7%91-%d7%92%d7%a8%d7%95%d7%a0%d7%a8/"
+  },
+  {
+    "name": "צעירי המזרח",
+    "destinationId": 348,
+    "address": "נווה צדק 27, תל אביב",
+    "phone": "050-3839952",
+    "website": "https://rabanut.co.il/synagogue/%d7%a6%d7%a2%d7%99%d7%a8%d7%99-%d7%94%d7%9e%d7%96%d7%a8%d7%97/"
+  },
+  {
+    "name": "קהילת יעקב – קומת קרקע",
+    "destinationId": 348,
+    "address": "זכריה רצאבי 10, תל אביב",
+    "phone": "050-7500601",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%99%d7%a2%d7%a7%d7%91-%d7%a7%d7%95%d7%9e%d7%aa-%d7%a7%d7%a8%d7%a7%d7%a2/"
+  },
+  {
+    "name": "קהילת יעקב-לנוער",
+    "destinationId": 348,
+    "address": "מנחם מדמון 17, תל אביב",
+    "phone": "052-5350202",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%94%d7%99%d7%9c%d7%aa-%d7%99%d7%a2%d7%a7%d7%91-%d7%9c%d7%a0%d7%95%d7%a2%d7%a8/"
+  },
+  {
+    "name": "קהילתי – חב\"ד",
+    "destinationId": 348,
+    "address": "מאיר יערי 8, תל אביב",
+    "phone": "052-2739529",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%94%d7%99%d7%9c%d7%aa%d7%99-%d7%97%d7%91%d7%93/"
+  },
+  {
+    "name": "קול יהודה",
+    "destinationId": 348,
+    "address": "לילינבלום 5, תל אביב",
+    "phone": "050-8451991",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%95%d7%9c-%d7%99%d7%94%d7%95%d7%93%d7%94/"
+  },
+  {
+    "name": "קוממיות",
+    "destinationId": 348,
+    "address": "קם 87, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%95%d7%9e%d7%9e%d7%99%d7%95%d7%aa/"
+  },
+  {
+    "name": "קוממיות ע\"ש הרב גורן",
+    "destinationId": 348,
+    "address": "מודוליאני 20, תל אביב",
+    "phone": "054-6400448",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%95%d7%9e%d7%9e%d7%99%d7%95%d7%aa-%d7%a2%d7%a9-%d7%94%d7%a8%d7%91-%d7%92%d7%95%d7%a8%d7%9f/"
+  },
+  {
+    "name": "קיבוץ גלויות – מקלט",
+    "destinationId": 348,
+    "address": "כרם חמד 6, תל אביב",
+    "phone": "054-3925141",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%99%d7%91%d7%95%d7%a5-%d7%92%d7%9c%d7%95%d7%99%d7%95%d7%aa-%d7%9e%d7%a7%d7%9c%d7%98/"
+  },
+  {
+    "name": "קייקוב",
+    "destinationId": 348,
+    "address": "דבורה הנביאה 85, תל אביב",
+    "phone": "054-5901440",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%99%d7%99%d7%a7%d7%95%d7%91/"
+  },
+  {
+    "name": "קצמן",
+    "destinationId": 348,
+    "address": "הדר יוסף 8, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%a6%d7%9e%d7%9f/"
+  },
+  {
+    "name": "קרן דוד",
+    "destinationId": 348,
+    "address": "יחיעם 12, תל אביב",
+    "phone": "052-2726212",
+    "website": "https://rabanut.co.il/synagogue/%d7%a7%d7%a8%d7%9f-%d7%93%d7%95%d7%93/"
+  },
+  {
+    "name": "ר' חיים טייב – חלב חיטים",
+    "destinationId": 348,
+    "address": "למרטין 45, תל אביב",
+    "phone": "052-6373798",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8-%d7%97%d7%99%d7%99%d7%9d-%d7%98%d7%99%d7%99%d7%91-%d7%97%d7%9c%d7%91-%d7%97%d7%99%d7%98%d7%99%d7%9d/"
+  },
+  {
+    "name": "ר' מאיר בעל הנס",
+    "destinationId": 348,
+    "address": "דרך בר לב 125, תל אביב",
+    "phone": "054-4779446",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8-%d7%9e%d7%90%d7%99%d7%a8-%d7%91%d7%a2%d7%9c-%d7%94%d7%a0%d7%a1/"
+  },
+  {
+    "name": "רבי דוד משה",
+    "destinationId": 348,
+    "address": "הדרור 14, תל אביב",
+    "phone": "054-5516650",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%91%d7%99-%d7%93%d7%95%d7%93-%d7%9e%d7%a9%d7%94/"
+  },
+  {
+    "name": "רבי מאיר בעל הנס",
+    "destinationId": 348,
+    "address": "ציהתל\"י 24, תל אביב",
+    "phone": "054-4455451",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%91%d7%99-%d7%9e%d7%90%d7%99%d7%a8-%d7%91%d7%a2%d7%9c-%d7%94%d7%a0%d7%a1/"
+  },
+  {
+    "name": "רבי מאיר בעל הנס – הסלוניקאי",
+    "destinationId": 348,
+    "address": "יורדי הסירה 4, תל אביב",
+    "phone": "050-8281907",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%91%d7%99-%d7%9e%d7%90%d7%99%d7%a8-%d7%91%d7%a2%d7%9c-%d7%94%d7%a0%d7%a1-%d7%94%d7%a1%d7%9c%d7%95%d7%a0%d7%99%d7%a7%d7%90%d7%99/"
+  },
+  {
+    "name": "רבי מאיר בעל הנס – מגן אבות",
+    "destinationId": 348,
+    "address": "עירית 21, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%91%d7%99-%d7%9e%d7%90%d7%99%d7%a8-%d7%91%d7%a2%d7%9c-%d7%94%d7%a0%d7%a1-%d7%9e%d7%92%d7%9f-%d7%90%d7%91%d7%95%d7%aa/"
+  },
+  {
+    "name": "רבי שמעון בר יוחאי – רשב\"י",
+    "destinationId": 348,
+    "address": "שד' ירושלים 184, תל אביב",
+    "phone": "050-7854144",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%91%d7%99-%d7%a9%d7%9e%d7%a2%d7%95%d7%9f-%d7%91%d7%a8-%d7%99%d7%95%d7%97%d7%90%d7%99-%d7%a8%d7%a9%d7%91%d7%99/"
+  },
+  {
+    "name": "רבינו יוסף חיים",
+    "destinationId": 348,
+    "address": "נטעים 24, תל אביב",
+    "phone": "054-5957808",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%91%d7%99%d7%a0%d7%95-%d7%99%d7%95%d7%a1%d7%a3-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "רון ישרים",
+    "destinationId": 348,
+    "address": "שד' ושינגטון 23, תל אביב",
+    "phone": "050-5290895",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%95%d7%9f-%d7%99%d7%a9%d7%a8%d7%99%d7%9d/"
+  },
+  {
+    "name": "רחל נח",
+    "destinationId": 348,
+    "address": "התקווה 34, תל אביב",
+    "phone": "052-8665428",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%97%d7%9c-%d7%a0%d7%97/"
+  },
+  {
+    "name": "רחמי ציון",
+    "destinationId": 348,
+    "address": "צהלון הרופא 2, תל אביב",
+    "phone": "052-6715566",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%97%d7%9e%d7%99-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "רינת יצחק",
+    "destinationId": 348,
+    "address": "דבורה הנביאה 81, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%99%d7%a0%d7%aa-%d7%99%d7%a6%d7%97%d7%a7/"
+  },
+  {
+    "name": "רמב\"ם",
+    "destinationId": 348,
+    "address": "רמב\"ם 3, תל אביב",
+    "phone": "052-4147818",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%9e%d7%91%d7%9d/"
+  },
+  {
+    "name": "רמה",
+    "destinationId": 348,
+    "address": "בן יהודה 159, תל אביב",
+    "phone": "054-5962099",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%9e%d7%94/"
+  },
+  {
+    "name": "רש\"י",
+    "destinationId": 348,
+    "address": "רש\"י 63, תל אביב",
+    "phone": "050-5238457",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%a9%d7%99/"
+  },
+  {
+    "name": "רש\"י (קומה א')",
+    "destinationId": 348,
+    "address": "צונץ 11, תל אביב",
+    "phone": "054-3975925",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%a9%d7%99-%d7%a7%d7%95%d7%9e%d7%94-%d7%90/"
+  },
+  {
+    "name": "רשב\"י",
+    "destinationId": 348,
+    "address": "ר' חיים ויטל 19, תל אביב",
+    "phone": "053-8250530",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%a9%d7%91%d7%99/"
+  },
+  {
+    "name": "רשב\"י – שושני",
+    "destinationId": 348,
+    "address": "עברי 12, תל אביב",
+    "phone": "050-4105991",
+    "website": "https://rabanut.co.il/synagogue/%d7%a8%d7%a9%d7%91%d7%99-%d7%a9%d7%95%d7%a9%d7%a0%d7%99/"
+  },
+  {
+    "name": "שבזי",
+    "destinationId": 348,
+    "address": "ראול ולנברג 41, תל אביב",
+    "phone": "052-2937477",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%91%d7%96%d7%99/"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 348,
+    "address": "שביל החצב 6, תל אביב",
+    "phone": "052-4481480",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%91%d7%aa-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "שבת תחכמוני",
+    "destinationId": 348,
+    "address": "נתן הנביא 43, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%91%d7%aa-%d7%aa%d7%97%d7%9b%d7%9e%d7%95%d7%a0%d7%99/"
+  },
+  {
+    "name": "שובה ישראל",
+    "destinationId": 348,
+    "address": "משה דיין 131, תל אביב",
+    "phone": "052-8356166",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%95%d7%91%d7%94-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "שובו אחים",
+    "destinationId": 348,
+    "address": "תוצרת הארץ 7, תל אביב",
+    "phone": "054-3140951",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%95%d7%91%d7%95-%d7%90%d7%97%d7%99%d7%9d/"
+  },
+  {
+    "name": "שושן הבירה",
+    "destinationId": 348,
+    "address": "צרעה 3, תל אביב",
+    "phone": "054-6094193",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%95%d7%a9%d7%9f-%d7%94%d7%91%d7%99%d7%a8%d7%94/"
+  },
+  {
+    "name": "שיבת ציון",
+    "destinationId": 348,
+    "address": "ריש גלותא 3, תל אביב",
+    "phone": "052-2583758",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%99%d7%91%d7%aa-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "שיח יצחק שבת אחים ע\"ש הרב הרצוג",
+    "destinationId": 348,
+    "address": "קהילת קנדה 47, תל אביב",
+    "phone": "053-7347115",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%99%d7%97-%d7%99%d7%a6%d7%97%d7%a7-%d7%a9%d7%91%d7%aa-%d7%90%d7%97%d7%99%d7%9d-%d7%a2%d7%a9-%d7%94%d7%a8%d7%91-%d7%94%d7%a8%d7%a6%d7%95%d7%92/"
+  },
+  {
+    "name": "שלום",
+    "destinationId": 348,
+    "address": "יהושע בן נון 67, תל אביב",
+    "phone": "050-5940499",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "שלום הגואל",
+    "destinationId": 348,
+    "address": "עבאס 10, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%9d-%d7%94%d7%92%d7%95%d7%90%d7%9c/"
+  },
+  {
+    "name": "שלום וצדקה",
+    "destinationId": 348,
+    "address": "מרכולת 16, תל אביב",
+    "phone": "050-5366721",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%9d-%d7%95%d7%a6%d7%93%d7%a7%d7%94/"
+  },
+  {
+    "name": "שלום על ישראל",
+    "destinationId": 348,
+    "address": "נחליאל 24, תל אביב",
+    "phone": "058-4934141",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%9d-%d7%a2%d7%9c-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "שלום שבזי",
+    "destinationId": 348,
+    "address": "קהילת לודז' 62, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%9d-%d7%a9%d7%91%d7%96%d7%99/"
+  },
+  {
+    "name": "שלום-לעולי זקינטוס",
+    "destinationId": 348,
+    "address": "מנחם מדמון 33, תל אביב",
+    "phone": "052-2244497",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%9d-%d7%9c%d7%a2%d7%95%d7%9c%d7%99-%d7%96%d7%a7%d7%99%d7%a0%d7%98%d7%95%d7%a1/"
+  },
+  {
+    "name": "שלוסברג",
+    "destinationId": 348,
+    "address": "יהודה חסיד 8, תל אביב",
+    "phone": "050-7941347",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%a1%d7%91%d7%a8%d7%92/"
+  },
+  {
+    "name": "שלוש – מרכז רוחני מקדש מלך",
+    "destinationId": 348,
+    "address": "אמזלג 17, תל אביב",
+    "phone": "054-8483223",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9c%d7%95%d7%a9-%d7%9e%d7%a8%d7%9b%d7%96-%d7%a8%d7%95%d7%97%d7%a0%d7%99-%d7%9e%d7%a7%d7%93%d7%a9-%d7%9e%d7%9c%d7%9a/"
+  },
+  {
+    "name": "שמאי",
+    "destinationId": 348,
+    "address": "המבשר 12, תל אביב",
+    "phone": "050-7309911",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9e%d7%90%d7%99/"
+  },
+  {
+    "name": "שמחה הדר קודש",
+    "destinationId": 348,
+    "address": "ידידיה פרנקל 17, תל אביב",
+    "phone": "052-7624109",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%9e%d7%97%d7%94-%d7%94%d7%93%d7%a8-%d7%a7%d7%95%d7%93%d7%a9/"
+  },
+  {
+    "name": "שער הרחמים",
+    "destinationId": 348,
+    "address": "בר אלי 18, תל אביב",
+    "phone": "053-3135151",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8-%d7%94%d7%a8%d7%97%d7%9e%d7%99%d7%9d/"
+  },
+  {
+    "name": "שער ציון",
+    "destinationId": 348,
+    "address": "יוסף צובירי 2, תל אביב",
+    "phone": "052-2739563",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "שער שלום",
+    "destinationId": 348,
+    "address": "חובת הלבבות 10, תל אביב",
+    "phone": "050-2230045",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8-%d7%a9%d7%9c%d7%95%d7%9d/"
+  },
+  {
+    "name": "שערי אשר",
+    "destinationId": 348,
+    "address": "קיבוץ גלויות 118, תל אביב",
+    "phone": "050-2450684",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%90%d7%a9%d7%a8/"
+  },
+  {
+    "name": "שערי גאולה",
+    "destinationId": 348,
+    "address": "ששת הימים 31, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%92%d7%90%d7%95%d7%9c%d7%94/"
+  },
+  {
+    "name": "שערי צדק",
+    "destinationId": 348,
+    "address": "כנרת 7, תל אביב",
+    "phone": "050-7859120",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%a6%d7%93%d7%a7/"
+  },
+  {
+    "name": "שערי ציון",
+    "destinationId": 348,
+    "address": "החרמון 32, תל אביב",
+    "phone": "054-4578525",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%a6%d7%99%d7%95%d7%9f/"
+  },
+  {
+    "name": "שערי ציון עץ חיים",
+    "destinationId": 348,
+    "address": "יחיאלי 4, תל אביב",
+    "phone": "052-8888117",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%a6%d7%99%d7%95%d7%9f-%d7%a2%d7%a5-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "שערי רחמים",
+    "destinationId": 348,
+    "address": "רבי מאיר בעל הנס 33, תל אביב",
+    "phone": "050-4129461",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%a8%d7%97%d7%9e%d7%99%d7%9d/"
+  },
+  {
+    "name": "שערי רצון",
+    "destinationId": 348,
+    "address": "פרטיזן 19, תל אביב",
+    "phone": "050-6792323",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%a8%d7%a6%d7%95%d7%9f/"
+  },
+  {
+    "name": "שערי שמים",
+    "destinationId": 348,
+    "address": "שד' המעפילים 16, תל אביב",
+    "phone": "054-8007099",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%a9%d7%9e%d7%99%d7%9d/"
+  },
+  {
+    "name": "שערי תורה",
+    "destinationId": 348,
+    "address": "שמרלינג 10, תל אביב",
+    "phone": "054-9953728",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%aa%d7%95%d7%a8%d7%94/"
+  },
+  {
+    "name": "שערי תפילה",
+    "destinationId": 348,
+    "address": "צירלסון 10, תל אביב",
+    "phone": "052-7468596",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%aa%d7%a4%d7%99%d7%9c%d7%94/"
+  },
+  {
+    "name": "שערי תקוה",
+    "destinationId": 348,
+    "address": "ס\"א 30, תל אביב",
+    "phone": "050-6332934",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a2%d7%a8%d7%99-%d7%aa%d7%a7%d7%95%d7%94/"
+  },
+  {
+    "name": "שפרן – ביה\"ס אלומות",
+    "destinationId": 348,
+    "address": "רידינג 35, תל אביב",
+    "phone": "054-4711594",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a4%d7%a8%d7%9f-%d7%91%d7%99%d7%94%d7%a1-%d7%90%d7%9c%d7%95%d7%9e%d7%95%d7%aa/"
+  },
+  {
+    "name": "שרה ורחל מטלון",
+    "destinationId": 348,
+    "address": "מאיר בינט 6, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%a9%d7%a8%d7%94-%d7%95%d7%a8%d7%97%d7%9c-%d7%9e%d7%98%d7%9c%d7%95%d7%9f/"
+  },
+  {
+    "name": "תהילת אביב",
+    "destinationId": 348,
+    "address": "שרגא פרידמן 1, תל אביב",
+    "phone": "050-9880000",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%94%d7%99%d7%9c%d7%aa-%d7%90%d7%91%d7%99%d7%91/"
+  },
+  {
+    "name": "תומכי תמימים – בית חב\"ד",
+    "destinationId": 348,
+    "address": "טאגור 32, תל אביב",
+    "phone": "054-7331770",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%95%d7%9e%d7%9b%d7%99-%d7%aa%d7%9e%d7%99%d7%9e%d7%99%d7%9d-%d7%91%d7%99%d7%aa-%d7%97%d7%91%d7%93/"
+  },
+  {
+    "name": "תורה וחיים",
+    "destinationId": 348,
+    "address": "בית אל 45, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%95%d7%a8%d7%94-%d7%95%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "תורת משה חניכי הישיבות – מנין בני תורה",
+    "destinationId": 348,
+    "address": "הגולן 130, תל אביב",
+    "phone": "050-4112168",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%95%d7%a8%d7%aa-%d7%9e%d7%a9%d7%94-%d7%97%d7%a0%d7%99%d7%9b%d7%99-%d7%94%d7%99%d7%a9%d7%99%d7%91%d7%95%d7%aa-%d7%9e%d7%a0%d7%99%d7%9f-%d7%91%d7%a0%d7%99-%d7%aa%d7%95%d7%a8%d7%94/"
+  },
+  {
+    "name": "תל חיים",
+    "destinationId": 348,
+    "address": "דרך הטייסים 14, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%9c-%d7%97%d7%99%d7%99%d7%9d/"
+  },
+  {
+    "name": "תלפיות",
+    "destinationId": 348,
+    "address": "מלצ\"ט 29, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%9c%d7%a4%d7%99%d7%95%d7%aa/"
+  },
+  {
+    "name": "תפארת",
+    "destinationId": 348,
+    "address": "חכמי אתונה 2, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa/"
+  },
+  {
+    "name": "תפארת ישראל",
+    "destinationId": 348,
+    "address": "הבושם 16, תל אביב",
+    "phone": "050-7257724",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c/"
+  },
+  {
+    "name": "תפארת ישראל – מגדל עוז",
+    "destinationId": 348,
+    "address": "משה דיין 130, תל אביב",
+    "phone": "050-7618577",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%99%d7%a9%d7%a8%d7%90%d7%9c-%d7%9e%d7%92%d7%93%d7%9c-%d7%a2%d7%95%d7%96/"
+  },
+  {
+    "name": "תפארת נצח אליהו כהן",
+    "destinationId": 348,
+    "address": "קם 87, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%a0%d7%a6%d7%97-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%9b%d7%94%d7%9f/"
+  },
+  {
+    "name": "תפארת צבי",
+    "destinationId": 348,
+    "address": "הרמן כהן 9, תל אביב",
+    "phone": "052-7616425",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%a6%d7%91%d7%99/"
+  },
+  {
+    "name": "תפארת ראובן",
+    "destinationId": 348,
+    "address": "מרכז בעלי מלאכה 45, תל אביב",
+    "phone": "052-7604664",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%a8%d7%90%d7%95%d7%91%d7%9f/"
+  },
+  {
+    "name": "תפארת רפאל",
+    "destinationId": 348,
+    "address": "אהרונסון 4, תל אביב",
+    "phone": "054-4203636",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%a8%d7%a4%d7%90%d7%9c/"
+  },
+  {
+    "name": "תפארת שאול – חסידי מודזיץ",
+    "destinationId": 348,
+    "address": "דיזינגוף 36, תל אביב",
+    "phone": "052-8855074",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%a9%d7%90%d7%95%d7%9c-%d7%97%d7%a1%d7%99%d7%93%d7%99-%d7%9e%d7%95%d7%93%d7%96%d7%99%d7%a5/"
+  },
+  {
+    "name": "תפארת שלמה",
+    "destinationId": 348,
+    "address": "נתן הנביא 32, תל אביב",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%90%d7%a8%d7%aa-%d7%a9%d7%9c%d7%9e%d7%94/"
+  },
+  {
+    "name": "תפילה לדוד – היכל הנס",
+    "destinationId": 348,
+    "address": "דרך הטייסים 39, תל אביב",
+    "phone": "050-2526673",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%99%d7%9c%d7%94-%d7%9c%d7%93%d7%95%d7%93-%d7%94%d7%99%d7%9b%d7%9c-%d7%94%d7%a0%d7%a1/"
+  },
+  {
+    "name": "תפילת חנה ויוסף",
+    "destinationId": 348,
+    "address": "באר שבע 21, תל אביב",
+    "phone": "054-2983904",
+    "website": "https://rabanut.co.il/synagogue/%d7%aa%d7%a4%d7%99%d7%9c%d7%aa-%d7%97%d7%a0%d7%94-%d7%95%d7%99%d7%95%d7%a1%d7%a3/"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "name": "ארלוזרוב",
+    "destinationId": 320,
+    "address": "ארלוזרוב 14 א', גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הרמ\"ה",
+    "destinationId": 320,
+    "address": "גונן 3, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אהבת ציון",
+    "destinationId": 320,
+    "address": "גונן 5, גבעתיים",
+    "description": "נוסח: תימני"
+  },
+  {
+    "name": "אהל משה",
+    "destinationId": 320,
+    "address": "גורדון 6, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית יוסף",
+    "destinationId": 320,
+    "address": "גלבוע 11, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "המועצה הדתית",
+    "destinationId": 320,
+    "address": "טייבר 65, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "טור סיני",
+    "destinationId": 320,
+    "address": "הפועל הצעיר 12, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "בית רמב\"ם",
+    "destinationId": 320,
+    "address": "הפועל הצעיר 14, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "גבורת מרדכי",
+    "destinationId": 320,
+    "address": "הרצוג 32, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "גבעת רמב\"ם",
+    "destinationId": 320,
+    "address": "טייבר 25, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "היכל משה החדש",
+    "destinationId": 320,
+    "address": "טייבר 29, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 320,
+    "address": "טייבר 57, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "תפארת אבות",
+    "destinationId": 320,
+    "address": "כ\"ח 11, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אשכנזי",
+    "destinationId": 320,
+    "address": "ארלוזרוב 14 א', גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מרדכי הצדיק",
+    "destinationId": 320,
+    "address": "כצנלסון 30, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "ט\"ל",
+    "destinationId": 320,
+    "address": "כצנלסון 68, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "תפארת ישראל",
+    "destinationId": 320,
+    "address": "לכיש 7, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משען",
+    "destinationId": 320,
+    "address": "מצולות ים 11, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מקור חיים",
+    "destinationId": 320,
+    "address": "עמישב 25, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "אהל שם",
+    "destinationId": 320,
+    "address": "פועלי הרכבת 4, גבעתיים",
+    "description": "נוסח: ספרדי / אשכנז"
+  },
+  {
+    "name": "אמוני מרדכי",
+    "destinationId": 320,
+    "address": "צה\"ל 7, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "זכרון קדושים",
+    "destinationId": 320,
+    "address": "קיבוץ גלויות 10, גבעתיים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ר' מאיר בעל הנס",
+    "destinationId": 320,
+    "address": "קיבוץ גלויות 10, גבעתיים",
+    "description": "נוסח: ספרדי"
+  },
+  {
+    "name": "רמב\"ם בלאדי",
+    "destinationId": 320,
+    "address": "רותם 6, גבעתיים",
+    "description": "נוסח: תימני"
+  },
+  {
+    "name": "עין יעקב",
+    "destinationId": 320,
+    "address": "שנקין 43, גבעתיים",
+    "description": "נוסח: אשכנז"
+  }
+]

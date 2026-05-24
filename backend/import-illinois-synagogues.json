@@ -1,0 +1,211 @@
+[
+  {
+    "name": "BAY Shul / Bais Ahavas Yisroel",
+    "address": "314 N. McHenry Road, Buffalo Grove",
+    "phone": "(847) 947-4229",
+    "website": "https://www.bayshul.com",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Yerachmiel Pickholtz / מייל - bayshul@gmail.com",
+    "destinationId": 466
+  },
+  {
+    "name": "Chabad Jewish Center at the University of Chicago & Hyde Park",
+    "address": "1236 E. 57th St., Chicago",
+    "phone": "(773) 955-8672",
+    "website": "https://www.uchicagochabad.org",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Yossi Brakman",
+    "destinationId": 466
+  },
+  {
+    "name": "Chabad of Lakeview",
+    "address": "655 W. Irving Park Road, Chicago",
+    "phone": "(773) 743-5434",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Baruch Hertz / מייל - ablghs@sbcglobal.net",
+    "destinationId": 466
+  },
+  {
+    "name": "Chabad Jewish Center of Gurnee",
+    "address": "6268 Formoor Lane, Gurnee",
+    "phone": "(847) 782-1800",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Sholom Tenebaum",
+    "destinationId": 466
+  },
+  {
+    "name": "Chabad Jewish Center at UI & Champaign-Urbana",
+    "address": "509 S. Fourth St., Champaign",
+    "phone": "(217) 355-8672",
+    "website": "https://www.jewishillini.org",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Dovid Teichtel",
+    "destinationId": 466
+  },
+  {
+    "name": "Chabad Youth Center / MKAT",
+    "address": "2832 West Foster, Chicago",
+    "phone": "(773) 784-1010",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Zalmy Kudan / מייל - Cong.mkat@gmail.com",
+    "destinationId": 466
+  },
+  {
+    "name": "Congregation Bnei Ruven",
+    "address": "6350 N. Whipple Ave., Chicago",
+    "phone": "(773) 743-5434",
+    "website": "http://www.chabadatparkplace.org",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Baruch Hertz",
+    "destinationId": 466
+  },
+  {
+    "name": "F.R.E.E. of Illinois",
+    "address": "2935 West Devon Avenue, Chicago",
+    "phone": "(773) 274-5123",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Shmuel Notik",
+    "destinationId": 466
+  },
+  {
+    "name": "Heritage Russian Jewish Congregation",
+    "address": "2941 W. Touhy, Chicago",
+    "phone": "(773) 973-1800",
+    "website": "http://www.russianjews.org",
+    "denomination": "חב\"ד",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Buffalo Grove",
+    "address": "16296 W. Aptakisic Rd., Prairie View",
+    "phone": "(847) 808-7770",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Shmuel Katz",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Glenview",
+    "address": "2223 Cottonwood Drive, Glenview",
+    "phone": "(847) 998-9896",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Yishaya Benjaminson",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Naperville",
+    "address": "116 S. Birchwood Dr., Naperville",
+    "phone": "(630) 689-1387",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Mend Goldstein",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad and F.R.E.E. of Niles",
+    "address": "9401 N. Margail Ave., Des Plaines",
+    "phone": "(847) 296-1770",
+    "website": "http://www.chabadandfree.com",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Binyomin Scheiman / Rabbi Naftoly Hershkovich / מייל - chabad@chabadandfree.com",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad Regional Headquarters of Illinois",
+    "address": "2833 W. Howard St., Chicago",
+    "phone": "(773) 262-2770",
+    "website": "http://www.lubavitchchabad.org",
+    "denomination": "חב\"ד",
+    "description": "מייל - info@lubavitchchabad.org",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of the Loop, Gold Coast & Lincoln Park",
+    "address": "401 S. La Salle St., Chicago",
+    "phone": "(312) 427-7770",
+    "website": "http://www.centerforjewishlife.com",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Meir Chai Benhiyoun / מייל - chabad@centerforjewishlife.com",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Northbrook",
+    "address": "755 Huehl Road, Northbrook",
+    "phone": "(847) 564-8770",
+    "website": "http://www.chabadnorthbrook.com",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Daniel Moscowitz / מייל - info@chabadnorthbrok.com",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Peoria",
+    "address": "804 Country Meadows Lane, Peoria",
+    "phone": "(309) 692-2250",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Eli Langsam",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Quad Cities",
+    "address": "2233 E. 58th Street, Davenport",
+    "phone": "(563) 355-1065",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi and Mrs. Shneur Cadaner",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Wicker Park / Bucktown",
+    "address": "2134 Winchester, Chicago",
+    "phone": "(773) 851-5989",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Yosef Moscowitz",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Skokie",
+    "address": "4059 W. Dempster St., Skokie",
+    "phone": "(847) 677-1770",
+    "website": "https://www.skokiechabad.org",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Yosef Posner / מייל - rabbiposner@skokiechabad.org",
+    "destinationId": 466
+  },
+  {
+    "name": "Lubavitch Chabad of Wilmette",
+    "address": "2904 Old Glenview Road, Wilmette",
+    "phone": "(847) 251-7707",
+    "website": "http://www.chaicenter.com",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Dovid Flinkenstein / מייל - info@chaicenter.com",
+    "destinationId": 466
+  },
+  {
+    "name": "North Suburban Lubavitch Chabad Central Avenue Synagogue",
+    "address": "874 Central Ave., Highland Park",
+    "phone": "(847) 266-0770",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Yosef Schanowitz",
+    "destinationId": 466
+  },
+  {
+    "name": "Tannenbaum Chabad House / Northwestern Jewish Center",
+    "address": "2014 Orrington Ave., Evanston",
+    "phone": "(847) 869-8060",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Dov Hillel Klein / מייל - ravklein@northwestern.edu",
+    "destinationId": 466
+  },
+  {
+    "name": "Torah Learning Center",
+    "address": "2095 Landwehr, Northbrook",
+    "phone": "(847) 272-7255",
+    "denomination": "חב\"ד",
+    "destinationId": 466
+  },
+  {
+    "name": "Yeshiva Migdal Torah",
+    "address": "2728 W. Pratt, Chicago",
+    "phone": "(773) 465-7600",
+    "website": "http://www.migdaltora.org",
+    "denomination": "חב\"ד",
+    "destinationId": 466
+  }
+]

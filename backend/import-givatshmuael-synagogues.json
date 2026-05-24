@@ -1,0 +1,347 @@
+[
+  {
+    "name": "אחדות ישראל",
+    "destinationId": 327,
+    "address": "מול הזיתים 92 בגן, גבעת שמואל",
+    "phone": "053-9740780",
+    "denomination": "ספרדי",
+    "latitude": 32.1630,
+    "longitude": 34.8200
+  },
+  {
+    "name": "אהבה ואחווה",
+    "destinationId": 327,
+    "address": "פרץ 19, גבעת שמואל",
+    "phone": "052-6167337",
+    "denomination": "ספרדי",
+    "latitude": 32.1640,
+    "longitude": 34.8210
+  },
+  {
+    "name": "אהבת אחים",
+    "destinationId": 327,
+    "address": "נימרובר 2, גבעת שמואל",
+    "phone": "052-5939555",
+    "denomination": "ספרדי",
+    "latitude": 32.1650,
+    "longitude": 34.8220
+  },
+  {
+    "name": "אהבת איתן",
+    "destinationId": 327,
+    "address": "לוי אשכול, גבעת שמואל",
+    "phone": "050-7476952",
+    "denomination": "אשכנז",
+    "latitude": 32.1620,
+    "longitude": 34.8190
+  },
+  {
+    "name": "אוהל אליהו ומרדכי",
+    "destinationId": 327,
+    "address": "מול יצחק שמיר 15 בתוך חצר הגן, גבעת שמואל",
+    "phone": "050-8500041",
+    "denomination": "אשכנזי וספרדי",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "אוהל יצחק ואסתר",
+    "destinationId": 327,
+    "address": "זבולון המר 4, גבעת שמואל",
+    "phone": "052-2552158",
+    "denomination": "ספרדי - נוסח מרוקאי",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  },
+  {
+    "name": "אור חיים",
+    "destinationId": 327,
+    "address": "סמטת מגדל המים, גבעת שמואל",
+    "phone": "054-4972814",
+    "denomination": "תימן (שאמי-בלדי)",
+    "latitude": 32.1655,
+    "longitude": 34.8225
+  },
+  {
+    "name": "אור-ישראל",
+    "destinationId": 327,
+    "address": "הנשיא 6, גבעת שמואל",
+    "phone": "054-4559880",
+    "denomination": "ספרדי",
+    "latitude": 32.1625,
+    "longitude": 34.8195
+  },
+  {
+    "name": "בית המדרש הקהילתי",
+    "destinationId": 327,
+    "address": "עוזי חיטמן 5, גבעת שמואל",
+    "phone": "052-7203828",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "בית יוסף חיים",
+    "destinationId": 327,
+    "address": "הנשיא 17, גבעת שמואל",
+    "phone": "058-6416159",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  },
+  {
+    "name": "בית מתתיהו",
+    "destinationId": 327,
+    "address": "העבודה 1, גבעת שמואל",
+    "phone": "050-4074015",
+    "denomination": "אשכנזי",
+    "latitude": 32.1655,
+    "longitude": 34.8225
+  },
+  {
+    "name": "בית-אל",
+    "destinationId": 327,
+    "address": "הנשיא 12, גבעת שמואל",
+    "phone": "052-6881231",
+    "denomination": "ספרדי",
+    "latitude": 32.1630,
+    "longitude": 34.8200
+  },
+  {
+    "name": "היכל יהודה",
+    "destinationId": 327,
+    "address": "שד׳ העצמאות, גבעת שמואל",
+    "phone": "052-6017250",
+    "denomination": "אשכנזי",
+    "latitude": 32.1640,
+    "longitude": 34.8210
+  },
+  {
+    "name": "היכל רחמים",
+    "destinationId": 327,
+    "address": "שי עגנון 6, גבעת שמואל",
+    "phone": "050-2080049",
+    "denomination": "אשכנז",
+    "latitude": 32.1650,
+    "longitude": 34.8220
+  },
+  {
+    "name": "המרכזי",
+    "destinationId": 327,
+    "address": "בר-אילן 21, גבעת שמואל",
+    "phone": "050-5217699",
+    "denomination": "אשכנזי",
+    "latitude": 32.1620,
+    "longitude": 34.8190
+  },
+  {
+    "name": "הריף",
+    "destinationId": 327,
+    "address": "הרצל 2 (ליד המשמר האזרחי), גבעת שמואל",
+    "phone": "050-8501409",
+    "denomination": "ספרדי נוסח מרוקאי (צרפתים)",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "הקהילה הצעירים גבעת שמואל",
+    "destinationId": 327,
+    "address": "במכינה ז'בוטינסקי, גבעת שמואל",
+    "phone": "050-9331008",
+    "denomination": "אשכנז",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  },
+  {
+    "name": "קהילת אבני החושן - מרכז תורני פתאל",
+    "destinationId": 327,
+    "address": "נעמי שמר 2, גבעת שמואל",
+    "phone": "052-8902835",
+    "latitude": 32.1655,
+    "longitude": 34.8225
+  },
+  {
+    "name": "קהילת אהבת ישראל",
+    "destinationId": 327,
+    "address": "לוי אשכול 15/17, גבעת שמואל",
+    "phone": "054-9225218",
+    "denomination": "אשכנז",
+    "latitude": 32.1625,
+    "longitude": 34.8195
+  },
+  {
+    "name": "קהילת העולים",
+    "destinationId": 327,
+    "address": "מגרש הספורט בי״ס יגאל אלון, גבעת שמואל",
+    "phone": "054-9548839",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "קול אביתר",
+    "destinationId": 327,
+    "address": "בית ספר אמית ז'בוטינסקי 99, גבעת שמואל",
+    "phone": "054-5404000",
+    "denomination": "ספרדי",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  },
+  {
+    "name": "קרליבך \"לכו נרננה\"",
+    "destinationId": 327,
+    "address": "מנחם בגין פינת לנדאו, גבעת שמואל",
+    "phone": "054-3977657",
+    "denomination": "אשכנז",
+    "latitude": 32.1655,
+    "longitude": 34.8225
+  },
+  {
+    "name": "מנין צעירי הגבעה",
+    "destinationId": 327,
+    "address": "הנשיא 57, גבעת שמואל",
+    "phone": "054-6644660",
+    "denomination": "אשכנז",
+    "latitude": 32.1630,
+    "longitude": 34.8200
+  },
+  {
+    "name": "מניין סביוני אפריקה",
+    "destinationId": 327,
+    "address": "כניסה צפונית לפארק פינלס ירושלים 6-8, גבעת שמואל",
+    "phone": "052-9565330",
+    "denomination": "ספרד",
+    "latitude": 32.1640,
+    "longitude": 34.8210
+  },
+  {
+    "name": "משכן אברהם ויצחק",
+    "destinationId": 327,
+    "address": "הנשיא 10, גבעת שמואל",
+    "phone": "050-4185044",
+    "latitude": 32.1650,
+    "longitude": 34.8220
+  },
+  {
+    "name": "משכן שלמה ויוסף",
+    "destinationId": 327,
+    "address": "ביאליק 61, גבעת שמואל",
+    "phone": "055-6601422",
+    "denomination": "ספרדי",
+    "latitude": 32.1620,
+    "longitude": 34.8190
+  },
+  {
+    "name": "נאוה תהילה",
+    "destinationId": 327,
+    "address": "הרימון 1, גבעת שמואל",
+    "phone": "054-5552452",
+    "denomination": "אשכנז",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "נתיבי אמת",
+    "destinationId": 327,
+    "address": "הנשיא, גבעת שמואל",
+    "phone": "052-5784197",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  },
+  {
+    "name": "נווה שמואל / זכור לאברהם",
+    "destinationId": 327,
+    "address": "זבולון המר 4, גבעת שמואל",
+    "phone": "054-7679181",
+    "denomination": "אשכנז",
+    "latitude": 32.1655,
+    "longitude": 34.8225
+  },
+  {
+    "name": "צעירי הדר",
+    "destinationId": 327,
+    "address": "שמחה הולצברג, גבעת שמואל",
+    "phone": "050-5446399",
+    "denomination": "אשכנז",
+    "latitude": 32.1625,
+    "longitude": 34.8195
+  },
+  {
+    "name": "רינת הדר",
+    "destinationId": 327,
+    "address": "סמטת משה דיין 5, גבעת שמואל",
+    "phone": "052-3258181",
+    "denomination": "אשכנזי (נצר אחרון)",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "רינת ישראל",
+    "destinationId": 327,
+    "address": "שמחה הולצברג, גבעת שמואל",
+    "phone": "052-2932030",
+    "denomination": "ספרדי",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  },
+  {
+    "name": "רמת אילן",
+    "destinationId": 327,
+    "address": "רחבת אילן 2, גבעת שמואל",
+    "phone": "050-2272227",
+    "denomination": "אשכנז",
+    "latitude": 32.1655,
+    "longitude": 34.8225
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 327,
+    "address": "פרדס רוזנבלום 38, גבעת שמואל",
+    "phone": "050-5556323",
+    "denomination": "ספרדי",
+    "latitude": 32.1630,
+    "longitude": 34.8200
+  },
+  {
+    "name": "שלום ורעות",
+    "destinationId": 327,
+    "address": "פרדס רוזנבלום 1, גבעת שמואל",
+    "phone": "050-9222241",
+    "denomination": "ספרדי",
+    "latitude": 32.1640,
+    "longitude": 34.8210
+  },
+  {
+    "name": "שירת אהרון",
+    "destinationId": 327,
+    "address": "רח׳ ביאליק 46, גבעת שמואל",
+    "phone": "054-5597102",
+    "denomination": "אשכנזי נוסח ספרד",
+    "latitude": 32.1650,
+    "longitude": 34.8220
+  },
+  {
+    "name": "שפתי רננות",
+    "destinationId": 327,
+    "address": "אולם החטיבה הצעירה רחוב העבודה, גבעת שמואל",
+    "phone": "054-6742048",
+    "denomination": "ספרדי נוסח טוניס לוב",
+    "latitude": 32.1620,
+    "longitude": 34.8190
+  },
+  {
+    "name": "תפארת ישראל",
+    "destinationId": 327,
+    "address": "שד׳ הגיבורים 5, גבעת שמואל",
+    "phone": "054-6608770",
+    "denomination": "אשכנז חב״ד",
+    "latitude": 32.1635,
+    "longitude": 34.8205
+  },
+  {
+    "name": "תפילת אבות",
+    "destinationId": 327,
+    "address": "ליד רחוב יצחק שמיר 10, גבעת שמואל",
+    "phone": "050-8281709",
+    "denomination": "תימני בלאדי",
+    "latitude": 32.1645,
+    "longitude": 34.8215
+  }
+]

@@ -1,0 +1,439 @@
+[
+  {
+    "name": "אביר יעקב",
+    "destinationId": 454,
+    "address": "הנדיב 37, עכו",
+    "phone": "04-9812095",
+    "description": "Gabai: רונן סרי | Gabai phone: 054-2100934"
+  },
+  {
+    "name": "אברהם אבינו ר' דוד ומשה",
+    "destinationId": 454,
+    "address": "ז'בוטינסקי מקלט 6, עכו",
+    "phone": "04-9912074",
+    "description": "Gabai: רפאל אקסול | Gabai phone: 050-7116290"
+  },
+  {
+    "name": "אהבה ואחוה",
+    "destinationId": 454,
+    "address": "רמח\"ל​, עכו"
+  },
+  {
+    "name": "אהבת ישראל",
+    "destinationId": 454,
+    "address": "גבעת התמרים, עכו",
+    "phone": "04-9915791",
+    "description": "Gabai: גבי תורג'מן | Gabai phone: 052-2825515"
+  },
+  {
+    "name": "אוהל  ד'",
+    "destinationId": 454,
+    "address": "גולומב 35, עכו",
+    "phone": "04-9811070",
+    "description": "Gabai: יעקב בן שושן | Gabai phone: 054-9035819"
+  },
+  {
+    "name": "אור החיים הקדוש",
+    "destinationId": 454,
+    "address": "שביל האירוסים 10, עכו",
+    "phone": "04-9815633",
+    "description": "Gabai: לנקרי יהודה | Gabai phone: 052-8934032"
+  },
+  {
+    "name": "אור השלום",
+    "destinationId": 454,
+    "address": "העבודה 19, עכו",
+    "phone": "04-9558161",
+    "description": "Gabai: הר שמעון חזן | Gabai phone: 052-6870740"
+  },
+  {
+    "name": "אור יוסף-בי\"ס בית יעקב",
+    "destinationId": 454,
+    "address": "יאנוש קורצ'ק, עכו",
+    "phone": "04-9810148",
+    "description": "Gabai: יחיא אסייג | Gabai phone: 052-7647498"
+  },
+  {
+    "name": "אור מאיר להילה",
+    "destinationId": 454,
+    "address": "השושנים, עכו"
+  },
+  {
+    "name": "אור תורה",
+    "destinationId": 454,
+    "address": "קפלן 13, עכו",
+    "phone": "04-9915979",
+    "description": "Gabai: שמעון ביטון | Gabai phone: 052-5327800"
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 454,
+    "address": "יוסף גרשון 1 , עכו"
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 454,
+    "address": "אחד העם 9 , עכו"
+  },
+  {
+    "name": "בית אבות",
+    "destinationId": 454,
+    "address": "סמטת אבות ובנים, עכו",
+    "phone": "077-4563214",
+    "description": "Gabai: שחר עזרן | Gabai phone: 050-9913846"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 454,
+    "address": "בילו 5, עכו",
+    "phone": "04-9917291",
+    "description": "Gabai: דב נפתלי"
+  },
+  {
+    "name": "בית חב\"ד",
+    "destinationId": 454,
+    "address": "דרך ארבעה 41, עכו",
+    "phone": "04-9814061",
+    "description": "Gabai: הרב אברהם הרוש | Gabai phone: 050-5657674"
+  },
+  {
+    "name": "בית חנניה ומיכאל",
+    "destinationId": 454,
+    "address": "שכ' המדורגים בן עמי 61, עכו",
+    "phone": "077-9104548",
+    "description": "Gabai: אלי אלחרר | Gabai phone: 054-8062822"
+  },
+  {
+    "name": "בית יעקב - יסודי",
+    "destinationId": 454,
+    "address": "יאנוש קורצ'ק 16/2, עכו"
+  },
+  {
+    "name": "בית יעקב - שיכון",
+    "destinationId": 454,
+    "address": "העליה 2, עכו",
+    "phone": "04-9910783",
+    "description": "Gabai: שלמה רצון | Gabai phone: 052-2844924"
+  },
+  {
+    "name": "בית מדרש מחנה ישראל",
+    "destinationId": 454,
+    "address": "שיכון רסקו, עכו",
+    "phone": "04-9551414",
+    "description": "Gabai: ציון כהן | Gabai phone: 050-2418461"
+  },
+  {
+    "name": "ברוך מרדכי",
+    "destinationId": 454,
+    "address": "הס  2, עכו"
+  },
+  {
+    "name": "ברית שלום",
+    "destinationId": 454,
+    "address": "קדושי קהיר, עכו",
+    "phone": "04-9816751",
+    "description": "Gabai: מכאל דרעי | Gabai phone: 050-5768723"
+  },
+  {
+    "name": "גאולה וישועה",
+    "destinationId": 454,
+    "address": "הדס, עכו",
+    "phone": "04-9811678",
+    "description": "Gabai: בלישע דוד | Gabai phone: 052-3869508"
+  },
+  {
+    "name": "גרעין אומ\"ץ",
+    "destinationId": 454,
+    "address": "א. בן שושן 52, עכו",
+    "phone": "04-9551119",
+    "description": "Gabai: יריב פוטר | Gabai phone: 054-6208941"
+  },
+  {
+    "name": "דוד ומשה",
+    "destinationId": 454,
+    "address": "האורן 26, עכו",
+    "phone": "04-9817437",
+    "description": "Gabai: ניסים תמם"
+  },
+  {
+    "name": "המרכזי האשכנזי",
+    "destinationId": 454,
+    "address": "ז'בוטינסקי  26, עכו",
+    "phone": "04-9916869",
+    "description": "Gabai: אנשל וילדר | Gabai phone: 052-2828575"
+  },
+  {
+    "name": "המרכזי הספרדי",
+    "destinationId": 454,
+    "address": "משה שרת, עכו",
+    "phone": "04-9910796",
+    "description": "Gabai: מימון חזן | Gabai phone: 054-2639349"
+  },
+  {
+    "name": "הרמב\"ם",
+    "destinationId": 454,
+    "address": "גיבורי סיני 28, עכו",
+    "phone": "04-9814976",
+    "description": "Gabai: חנן פלס"
+  },
+  {
+    "name": "הרמח\"ל",
+    "destinationId": 454,
+    "address": "עכו העתיקה, עכו"
+  },
+  {
+    "name": "הרצוג  - בי\"ס",
+    "destinationId": 454,
+    "address": "משה שרת 5, עכו",
+    "phone": "04-9813993",
+    "description": "Gabai: יעקב הררי | Gabai phone: 052-2838911"
+  },
+  {
+    "name": "חיים וחסד",
+    "destinationId": 454,
+    "address": "גבורי סיני, עכו",
+    "phone": "04-9552588",
+    "description": "Gabai: אלברט בן שלוש | Gabai phone: 052-6189957"
+  },
+  {
+    "name": "אור החיים - יוצאי תורכיה",
+    "destinationId": 454,
+    "address": "קיבוץ גלויות 25 שיכון 3, עכו",
+    "phone": "04-9912005",
+    "description": "Gabai: מרדכי בוזנח | Gabai phone: 054-8445205"
+  },
+  {
+    "name": "ימין מקרבת",
+    "destinationId": 454,
+    "address": "בי\"ס אמית קנדי, עכו",
+    "phone": "04-9813191",
+    "description": "Gabai: הרב ישר יוסף | Gabai phone: 054-8190270"
+  },
+  {
+    "name": "ישיבת הסדר עכו",
+    "destinationId": 454,
+    "address": "סיר אייזיק, עכו",
+    "phone": "077-5350409",
+    "description": "Gabai: בועז אמיר | Gabai phone: 054-8049490"
+  },
+  {
+    "name": "ישמח משה",
+    "destinationId": 454,
+    "address": "חיים משה שפירא 41, עכו",
+    "phone": "04-9814914",
+    "description": "Gabai: חנינה ועקנין | Gabai phone: 052-2486126"
+  },
+  {
+    "name": "כולל \"אור לציון\"",
+    "destinationId": 454,
+    "address": "ירושלים 5, עכו",
+    "phone": "077-5518137",
+    "description": "Gabai: הרב אברהם הרוש | Gabai phone: 050-6557434"
+  },
+  {
+    "name": "כולל הזית",
+    "destinationId": 454,
+    "address": "הזית 3, עכו",
+    "phone": "04-9811229",
+    "description": "Gabai: דוד חזן | Gabai phone: 054-4487656"
+  },
+  {
+    "name": "מחזיקי הדת",
+    "destinationId": 454,
+    "address": "עציון 12, עכו",
+    "phone": "04-9911347",
+    "description": "Gabai: בן חיון ניסים | Gabai phone: 054-5708872"
+  },
+  {
+    "name": "מטה אהרון",
+    "destinationId": 454,
+    "address": "בורוכוב 18, עכו",
+    "phone": "04-9812459",
+    "description": "Gabai: דוד בן שושן | Gabai phone: 052-3230903"
+  },
+  {
+    "name": "מנורת המאור",
+    "destinationId": 454,
+    "address": "חטיבת גולני פינת הרצל, עכו",
+    "phone": "04-9817346",
+    "description": "Gabai: סבג ניסים"
+  },
+  {
+    "name": "מרדכי הצדיק- עולי פרס",
+    "destinationId": 454,
+    "address": "בורלא 41 שיכון עמידר, עכו",
+    "phone": "04-9812736",
+    "description": "Gabai: רחמים משיח"
+  },
+  {
+    "name": "מרום ציון",
+    "destinationId": 454,
+    "address": "אחד העם, עכו",
+    "phone": "04-9815748",
+    "description": "Gabai: רוני מיארה | Gabai phone: 057-7620702"
+  },
+  {
+    "name": "מאור יעקב",
+    "destinationId": 454,
+    "address": "עפרוני 8, עכו",
+    "phone": "04-9817550",
+    "description": "Gabai: רחמים הררי | Gabai phone: 052-3863892"
+  },
+  {
+    "name": "מנחת אלי הו",
+    "destinationId": 454,
+    "address": "אחד העם, עכו",
+    "phone": "04-9550486",
+    "description": "Gabai: אורן אבוטבול"
+  },
+  {
+    "name": "נחלת יעקב",
+    "destinationId": 454,
+    "address": "בוסתן 1, עכו",
+    "phone": "04-9912008",
+    "description": "Gabai: חיים חזן"
+  },
+  {
+    "name": "נעים זמירות",
+    "destinationId": 454,
+    "address": "דרך הארבעה 34, עכו",
+    "phone": "04-9913214",
+    "description": "Gabai: עמרם אסייג | Gabai phone: 052-8981481"
+  },
+  {
+    "name": "ע\"ש רבי חיים פינטו",
+    "destinationId": 454,
+    "address": "יאנוש קורצ'ק, עכו",
+    "phone": "04-9814805",
+    "description": "Gabai: אליהו שריקי"
+  },
+  {
+    "name": "ע\"ש שמעון לוזון ז\"ל",
+    "destinationId": 454,
+    "address": "יהודה הלוי בי\"ס רמב\"ם, עכו",
+    "phone": "04-9812997",
+    "description": "Gabai: עמוס לוזון | Gabai phone: 054-2020978"
+  },
+  {
+    "name": "עבודת ישראל",
+    "destinationId": 454,
+    "address": "הרב שלום לופס, עכו",
+    "phone": "04-9911227",
+    "description": "Gabai: יעקב סיטון"
+  },
+  {
+    "name": "עבודת ישראל/כולל",
+    "destinationId": 454,
+    "address": "משה שרת , עכו"
+  },
+  {
+    "name": "עולי גרוזי'ה",
+    "destinationId": 454,
+    "address": "האורן 26 , עכו"
+  },
+  {
+    "name": "עולי הגרדום",
+    "destinationId": 454,
+    "address": "בן-גוריון 246/1, עכו",
+    "phone": "04-9910313",
+    "description": "Gabai: יעקב סולטן | Gabai phone: 050-6313360"
+  },
+  {
+    "name": "בית הכנסת על יד ישיבת עכו",
+    "destinationId": 454,
+    "address": "משה שרת 14, עכו",
+    "phone": "04-9818060",
+    "description": "Gabai: הרב סנגרו"
+  },
+  {
+    "name": "עץ חיים",
+    "destinationId": 454,
+    "address": "הרצוג 8, עכו",
+    "phone": "04-9911918",
+    "description": "Gabai: מיכאל סיבוני"
+  },
+  {
+    "name": "רבי יהונתן בן עוזיאל",
+    "destinationId": 454,
+    "address": "דוד נוי 44, עכו",
+    "phone": "04-9914314",
+    "description": "Gabai: יוסף בליטי | Gabai phone: 052-3706283"
+  },
+  {
+    "name": "רבי יהודה הלוי",
+    "destinationId": 454,
+    "address": "הנדיב 1, עכו",
+    "phone": "04-9911725",
+    "description": "Gabai: אברהם אסייג | Gabai phone: 050-8690618"
+  },
+  {
+    "name": "רמב\"ם - יוצאי תוניסיה",
+    "destinationId": 454,
+    "address": "א. בן שושן 52, עכו",
+    "phone": "04-9914772",
+    "description": "Gabai: ציון אוזן | Gabai phone: 050-3393382"
+  },
+  {
+    "name": "רשב\"י",
+    "destinationId": 454,
+    "address": "יהודה הלוי ​, עכו",
+    "phone": "04-9811791",
+    "description": "Gabai: משה ימין | Gabai phone: 054-3026144"
+  },
+  {
+    "name": "רשב\"י - מזרע",
+    "destinationId": 454,
+    "address": "מעברת מזרע​, עכו",
+    "phone": "04-9813790",
+    "description": "Gabai: חזן שלמה | Gabai phone: 052-2812784"
+  },
+  {
+    "name": "שארית הפליטה",
+    "destinationId": 454,
+    "address": "שיכון רסקו, עכו",
+    "phone": "04-9816053",
+    "description": "Gabai: דוד דהן | Gabai phone: 050-2080034"
+  },
+  {
+    "name": "שבז\"י",
+    "destinationId": 454,
+    "address": "רמב\"ם 16, עכו",
+    "phone": "04-9911027",
+    "description": "Gabai: יואב עבדי | Gabai phone: 052-2827818"
+  },
+  {
+    "name": "שובו בנים",
+    "destinationId": 454,
+    "address": "ז'בוטינסקי מקלט 6, עכו",
+    "phone": "04-9551647",
+    "description": "Gabai: סמאג'ה אברהם"
+  },
+  {
+    "name": "שלום וצדקה",
+    "destinationId": 454,
+    "address": "לוחמי הגיטאות 33, עכו",
+    "phone": "04-9910320",
+    "description": "Gabai: ניסים מנדלאוי"
+  },
+  {
+    "name": "שערי שמיים",
+    "destinationId": 454,
+    "address": "מפרץ שלמה 6/1,  עכו",
+    "phone": "04-9818769",
+    "description": "Gabai: אליהו אביטן"
+  },
+  {
+    "name": "תפארת צבי",
+    "destinationId": 454,
+    "address": "דוד נוי 19 עכו",
+    "phone": "077-2030200",
+    "description": "Gabai: הרב שלמה פראנק | Gabai phone: 054-2100939"
+  },
+  {
+    "name": "תפילה לדוד",
+    "destinationId": 454,
+    "address": "גיבורי סיני, עכו",
+    "phone": "04-9813114",
+    "description": "Gabai: אשל משה"
+  }
+]

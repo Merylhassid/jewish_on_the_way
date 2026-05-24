@@ -1,0 +1,2552 @@
+[
+  {
+    "name": "אבא יוסף",
+    "address": "יונה גרין, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-6741504"
+  },
+  {
+    "name": "אבי עזרי",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8401749"
+  },
+  {
+    "name": "אבי עזרי",
+    "address": "דרך מנחם בגין 102, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4588492"
+  },
+  {
+    "name": "אברהם ושמואל",
+    "address": "הירקונים 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2514898"
+  },
+  {
+    "name": "אגודת אחים (שבזי)",
+    "address": "גוש עציון 9, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-2492409"
+  },
+  {
+    "name": "אגודת בני ישראל",
+    "address": "נחלת צבי 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "הודי",
+    "phone": "050-4432228"
+  },
+  {
+    "name": "אגודת חברת אחים",
+    "address": "הושע 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "050-5600551"
+  },
+  {
+    "name": "אגודת ישראל",
+    "address": "סביון 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2336680"
+  },
+  {
+    "name": "אגודת עולי הודו- שערי אחדות",
+    "address": "זמנהוף 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "הודי",
+    "phone": "053-7610073"
+  },
+  {
+    "name": "אגודת עזרא",
+    "address": "יוסף קארו 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-6790800"
+  },
+  {
+    "name": "אדמונד ספרא",
+    "address": "בן גוריון 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "052-5254881"
+  },
+  {
+    "name": "אור החיים",
+    "address": "מבצע דקל 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-7270072"
+  },
+  {
+    "name": "אהבת חיים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "052-5643697"
+  },
+  {
+    "name": "אוהל אברהם",
+    "address": "רבי יהודה הנשיא 43, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-7634702"
+  },
+  {
+    "name": "אהבת שלום",
+    "address": "ברנר 29, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "050-7390942"
+  },
+  {
+    "name": "אהבת תורה",
+    "address": "שלום צלח 33, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2869664"
+  },
+  {
+    "name": "אוהל אברהם",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4112797"
+  },
+  {
+    "name": "אוהל חיים",
+    "address": "בר כוכבא 22, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-8788358"
+  },
+  {
+    "name": "בית חב\"ד שוק",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חב\"ד",
+    "phone": "050-8861985"
+  },
+  {
+    "name": "אוהל יעקב",
+    "address": "רבי יהודה הנשיא 47, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-7634702"
+  },
+  {
+    "name": "אוהל יצחק",
+    "address": "הרב הרצוג 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "050-8436828"
+  },
+  {
+    "name": "אוהל יצחק (בניטה)",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-5665638"
+  },
+  {
+    "name": "אוהל ציון (ברהום)",
+    "address": "חכם יוסף חיים 6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בבלי",
+    "phone": "052-2594725"
+  },
+  {
+    "name": "אוהל שלום",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-7184971"
+  },
+  {
+    "name": "אהלו של רמבה\"נ",
+    "address": "יונה גרין 22, פתח תקווה",
+    "destinationId": 346,
+    "phone": "052-6736711"
+  },
+  {
+    "name": "אוצרות חיים",
+    "address": "רבי יהודה הנשיא 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "עירקי",
+    "phone": "050-5752262"
+  },
+  {
+    "name": "אור התפילה",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2547259"
+  },
+  {
+    "name": "אור ישראל-גדולה",
+    "address": "רוטשילד 85, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9222379"
+  },
+  {
+    "name": "אור ישראל-קטנה",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9222379"
+  },
+  {
+    "name": "אור ישראל",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-8589522"
+  },
+  {
+    "name": "אור ישרים (מישקולץ)",
+    "address": "שמואל סלנט 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8042679"
+  },
+  {
+    "name": "אור מאיר",
+    "address": "ביאליק 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-3404287"
+  },
+  {
+    "name": "אור מאיר",
+    "address": "רבי יהודה הנשיא 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "058-7332265"
+  },
+  {
+    "name": "אורים",
+    "address": "חיים ארלוזורוב 39, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-8757280"
+  },
+  {
+    "name": "אחוות אחים",
+    "address": "עקיבא ליברכט 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "054-5904030"
+  },
+  {
+    "name": "אחים ורעים",
+    "address": "המלכים, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "058-7741720"
+  },
+  {
+    "name": "אחים ורעים",
+    "address": "אוסישקין 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-8567891"
+  },
+  {
+    "name": "אחים ישראלית",
+    "address": "האחים ישראלית 45, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-6898991"
+  },
+  {
+    "name": "איחוד הספרדים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2581337"
+  },
+  {
+    "name": "אין עוד מלבדו",
+    "address": "שבט אשר 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-3273279"
+  },
+  {
+    "name": "אלי כהן",
+    "address": "דוד וולפסון 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בבלי",
+    "phone": "054-4972843"
+  },
+  {
+    "name": "תפארת אליהו הנביא",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "050-5752262"
+  },
+  {
+    "name": "אליהו הנביא",
+    "address": "אבי אורן 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "054-9002112"
+  },
+  {
+    "name": "אהבת ה",
+    "address": "יהושע חנקין 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "052-8335020"
+  },
+  {
+    "name": "אם המושבות",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2737242"
+  },
+  {
+    "name": "אמונים צעירים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-8478471"
+  },
+  {
+    "name": "אמרי יוסף",
+    "address": "דובנוב 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-4454292"
+  },
+  {
+    "name": "אקדמאים יוצאי בוכרה",
+    "address": "הראשונים 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בוכרי",
+    "phone": "052-3654558"
+  },
+  {
+    "name": "ארזי הלבנון",
+    "address": "אהרון כצנלסון 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז"
+  },
+  {
+    "name": "ארחות חיים",
+    "address": "זאב אורלוב 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "לובי",
+    "phone": "052-4818902"
+  },
+  {
+    "name": "אתיופים",
+    "address": "שלמה מילר 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "050-7838737"
+  },
+  {
+    "name": "בינה לעיתים",
+    "address": "חיים עוזר 30, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-7995490"
+  },
+  {
+    "name": "הספריה",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7966439"
+  },
+  {
+    "name": "בית אל",
+    "address": "יוסף שפרינצק 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-4470064"
+  },
+  {
+    "name": "בית אל",
+    "address": "אהבת ציון 9, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-4623954"
+  },
+  {
+    "name": "בית אל",
+    "address": "טבריה 26, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "050-2237051"
+  },
+  {
+    "name": "בית אל קרית יוספטל",
+    "address": "אסתר המלכה 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "050-8725975"
+  },
+  {
+    "name": "רקאנטי (בית אבות)",
+    "address": "אלברט איינשטיין 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-4140903"
+  },
+  {
+    "name": "בית אבות - נאות השרון",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-5211309"
+  },
+  {
+    "name": "בית הדקל בית אבות",
+    "address": "נצח 15, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "052-7650491"
+  },
+  {
+    "name": "בית אבות מונטפיורי",
+    "address": "מונטיפיורי 32, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2891676"
+  },
+  {
+    "name": "בית אברהם",
+    "address": "נחלת צבי 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "053-6227800"
+  },
+  {
+    "name": "בית אברהם -חניכי הישיבות",
+    "address": "רוטשילד 164, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8421904"
+  },
+  {
+    "name": "בית אהרן בעלז",
+    "address": "רוטשילד 108, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "052-2559202"
+  },
+  {
+    "name": "בית בלומה",
+    "address": "זאב ברנדה, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2316821"
+  },
+  {
+    "name": "בית רבקה (בית חולים)",
+    "address": "החמישה 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-8904325"
+  },
+  {
+    "name": "בית יוסף",
+    "address": "עמוס, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-8145090"
+  },
+  {
+    "name": "בית יוסף",
+    "address": "הירקונים 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-9789000"
+  },
+  {
+    "name": "בית יוסף",
+    "address": "רוטשילד 35, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בוכרי",
+    "phone": "052-7668634"
+  },
+  {
+    "name": "בית יוסף",
+    "address": "דרך מנחם בגין 50, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-4601616"
+  },
+  {
+    "name": "בית יעקב - הגדול",
+    "address": "חובבי ציון 35, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7977138"
+  },
+  {
+    "name": "בית יעקב",
+    "address": "הנביאים 66, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-8389031"
+  },
+  {
+    "name": "בית יעקב לומז'ה",
+    "address": "הרצל 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9313532"
+  },
+  {
+    "name": "ר' מאיר בעל הנס",
+    "address": "נחום גוטמן 13, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בוכרי",
+    "phone": "055-6681674"
+  },
+  {
+    "name": "בית יעקב שערי רחמים",
+    "address": "הרב מיימון 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-4360444"
+  },
+  {
+    "name": "בית ישראל",
+    "address": "קרן היסוד 6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3680024"
+  },
+  {
+    "name": "בית ישראל",
+    "address": "סוקולוב 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-4417053"
+  },
+  {
+    "name": "בית לחם יהודה",
+    "address": "הרב אונטרמן 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2571226"
+  },
+  {
+    "name": "בית מאיר",
+    "address": "שלמה מילר, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3713263"
+  },
+  {
+    "name": "בני הישיבות דגל ראובן",
+    "address": "רוטשילד 87, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7629305"
+  },
+  {
+    "name": "בעל שם טוב",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7624023"
+  },
+  {
+    "name": "ברית שלום",
+    "address": "סיגליות 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-5076598"
+  },
+  {
+    "name": "דביר יעקב",
+    "address": "הרב משה בלוי 39, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4488662"
+  },
+  {
+    "name": "בן איש חי",
+    "address": "שלום צלח 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-8760932"
+  },
+  {
+    "name": "דברי חיים",
+    "address": "היסמין, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "052-2523978"
+  },
+  {
+    "name": "דברי חיים צאנז",
+    "address": "ההגנה 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "058-5146579"
+  },
+  {
+    "name": "רבי דוד ומשה",
+    "address": "שלום צלח 26, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "9337312"
+  },
+  {
+    "name": "דוד ושלמה",
+    "address": "נורדאו 19, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-6442063"
+  },
+  {
+    "name": "בית לאה",
+    "address": "עמינח 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8884153"
+  },
+  {
+    "name": "הדר מנחם חב\"\"ד",
+    "address": "חנה רובינא 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חב\"ד",
+    "phone": "054-7770844"
+  },
+  {
+    "name": "היכל דוד ויזניץ",
+    "address": "דוד פרנקפורטר 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "050-4114597"
+  },
+  {
+    "name": "היכל חנה",
+    "address": "חייקה גרוסמן, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-6162226"
+  },
+  {
+    "name": "היכל יונה",
+    "address": "הרב גולד 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7512284"
+  },
+  {
+    "name": "היכל יעקב",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בבלי",
+    "phone": "052-4522552"
+  },
+  {
+    "name": "היכל מאיר",
+    "address": "טרומפלדור 37, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-5568399"
+  },
+  {
+    "name": "היכל משה",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-8847086"
+  },
+  {
+    "name": "הכהנים עולי פרס",
+    "address": "עזרא ונחמיה 29, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "054-5605721"
+  },
+  {
+    "name": "הראל",
+    "address": "קיבוץ גלויות 17, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "050-9334688"
+  },
+  {
+    "name": "רינת אשר",
+    "address": "אידלמן 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3171317"
+  },
+  {
+    "name": "השלום",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "052-3261178"
+  },
+  {
+    "name": "התקווה",
+    "address": "קיש 50, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "לובי",
+    "phone": "052-6553559"
+  },
+  {
+    "name": "ולאשר אמר",
+    "address": "רבי יהודה הנשיא 43, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-4134308"
+  },
+  {
+    "name": "זכור לאברהם",
+    "address": "השופטים 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-5319314"
+  },
+  {
+    "name": "זכר חיים",
+    "address": "חפץ חיים 6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9317888"
+  },
+  {
+    "name": "זכרון ברוך דינוביץ'",
+    "address": "חובבי ציון 37, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-3327253"
+  },
+  {
+    "name": "נווה גן",
+    "address": "גרינשפן 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "054-7785485"
+  },
+  {
+    "name": "חב\"ד צמח צדק",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חב\"ד",
+    "phone": "054-4500129"
+  },
+  {
+    "name": "חוג חתם סופר",
+    "address": "איכילוב 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "054-2295115"
+  },
+  {
+    "name": "החושן זכור לאברהם",
+    "address": "דרך מנחם בגין 71, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-6881692"
+  },
+  {
+    "name": "חזון עובדיה",
+    "address": "רבי יהודה הנשיא 47, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-4177553"
+  },
+  {
+    "name": "חי טייב עולי לוב וטוניס",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "לובי",
+    "phone": "050-8684600"
+  },
+  {
+    "name": "חיבת ישראל",
+    "address": "חפץ חיים 17, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-1493339"
+  },
+  {
+    "name": "חן הצפון",
+    "address": "שלומציון המלכה 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-6805678"
+  },
+  {
+    "name": "חניכי הישיבות",
+    "address": "מנחת שלמה 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-8442452"
+  },
+  {
+    "name": "חסד ואמת",
+    "address": "דוד רמז 54, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז"
+  },
+  {
+    "name": "חסד לאברהם",
+    "address": "ישראל ישעיהו 28, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2775006"
+  },
+  {
+    "name": "חסידי רדזין",
+    "address": "מונטיפיורי 48, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "052-6360148"
+  },
+  {
+    "name": "חפץ חיים",
+    "address": "ביאליק 36, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-8137616"
+  },
+  {
+    "name": "טרופ ישראל וסוניה",
+    "address": "החמישה 9, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-3321234"
+  },
+  {
+    "name": "יבנה - ביה\"ס",
+    "address": "זליג בס 17, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "0544394796"
+  },
+  {
+    "name": "יד דניאל",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-3214168"
+  },
+  {
+    "name": "יד הרמב\"ם",
+    "address": "מיכה 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-3553336"
+  },
+  {
+    "name": "יהודי הררי",
+    "address": "אשכנזי 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תוניסאי",
+    "phone": "052-6226577"
+  },
+  {
+    "name": "יוצאי חברון",
+    "address": "דרך מנחם בגין, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4975989"
+  },
+  {
+    "name": "יחזקאל בכור",
+    "address": "שלונסקי 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "052-2548199"
+  },
+  {
+    "name": "ישועת צדיקים",
+    "address": "כנסת 101, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-5353663"
+  },
+  {
+    "name": "ישורון",
+    "address": "חפץ חיים 15, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-4454647"
+  },
+  {
+    "name": "ישורון כפר גנים",
+    "address": "זליג בס 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3274544"
+  },
+  {
+    "name": "ישורון עמישב",
+    "address": "שבט אשר 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-5795272"
+  },
+  {
+    "name": "ישמח משה",
+    "address": "חנה רובינא 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "9323537"
+  },
+  {
+    "name": "ישמח משה",
+    "address": "המלכים, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-5656527"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "address": "קדיש לוז 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "054-7447578"
+  },
+  {
+    "name": "בית אבא",
+    "address": "התשעים ושלוש 38, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-8756920"
+  },
+  {
+    "name": "כולל ע\"ש הרב ישראל מאיר",
+    "address": "איכילוב 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7111472"
+  },
+  {
+    "name": "כולל רצון יהודה",
+    "address": "חנה רובינא 15, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "052-7111472"
+  },
+  {
+    "name": "כולל תורת ארץ ישראל",
+    "address": "מונטיפיורי 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4109129"
+  },
+  {
+    "name": "כל ישראל",
+    "address": "י\"ד הבנים 29, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-8947777"
+  },
+  {
+    "name": "כנסת ישראל",
+    "address": "בנימין מינץ 41, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-3292623"
+  },
+  {
+    "name": "בת גנים",
+    "address": "י\"ד הבנים 33, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-5346916"
+  },
+  {
+    "name": "שלהבת כפר גנים ג'",
+    "address": "מסקין אהרון 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3532811"
+  },
+  {
+    "name": "דה חסידים",
+    "address": "ויסוקר 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "050-5828833"
+  },
+  {
+    "name": "כפר מעש מזרח",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-2060522"
+  },
+  {
+    "name": "כפר מעש מערב",
+    "address": "השלושה 48, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-3641568"
+  },
+  {
+    "name": "כפר סירקין",
+    "address": "דרך אפק 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-4458911"
+  },
+  {
+    "name": "לוריא",
+    "address": "בן יהודה 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9225307"
+  },
+  {
+    "name": "מאור האבות",
+    "address": "צפת 29, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-4531522"
+  },
+  {
+    "name": "מגדל עוז",
+    "address": "אז\"ר 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "9321952"
+  },
+  {
+    "name": "מגן אברהם",
+    "address": "הרב ריינס 45, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-8880422"
+  },
+  {
+    "name": "מרכז הספורט אמסטרדם",
+    "address": "אמסטרדם 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-5605610"
+  },
+  {
+    "name": "דעת ותבונה",
+    "address": "חובבי ציון 29, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-4461030"
+  },
+  {
+    "name": "משכן שלום",
+    "address": "המלכים, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-7372532"
+  },
+  {
+    "name": "מוריה",
+    "address": "שלזינגר 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3975771"
+  },
+  {
+    "name": "מורשה",
+    "address": "חנה רובינא 13, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7489419"
+  },
+  {
+    "name": "מטה יהודה אפגניסטן",
+    "address": "הרב יחבוב 5, פתח תקווה",
+    "destinationId": 346,
+    "phone": "054-5480048"
+  },
+  {
+    "name": "מנחת יהודה",
+    "address": "רבי יהודה הנשיא 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-4111820"
+  },
+  {
+    "name": "מנין בוגרי בני\"ע רעות",
+    "address": "זאב ברנדה, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "9211577"
+  },
+  {
+    "name": "מעלות קדושים",
+    "address": "הרב אונטרמן 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-8607779"
+  },
+  {
+    "name": "משכן כדורי",
+    "address": "יעקב קרול, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-8155385"
+  },
+  {
+    "name": "מקדש משה",
+    "address": "אחד העם 35, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "054-3183411"
+  },
+  {
+    "name": "מקור חיים",
+    "address": "דוד פרנקפורטר 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7562515"
+  },
+  {
+    "name": "מרום ציון",
+    "address": "הנביאים 67, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-2557532"
+  },
+  {
+    "name": "משכן אליהו",
+    "address": "החמישה 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "052-3630209"
+  },
+  {
+    "name": "משכן שמעון",
+    "address": "הרב פינטו מסעוד אשר 9, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "052-5503212"
+  },
+  {
+    "name": "משכן גנים",
+    "address": "האילנות 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "050-9500801"
+  },
+  {
+    "name": "משכן יונה",
+    "address": "נחלת צבי 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-8620849"
+  },
+  {
+    "name": "משכן יוסף פא\"י",
+    "address": "איכילוב 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8406819"
+  },
+  {
+    "name": "משכן ישראל",
+    "address": "גליצנשטיין 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4214528"
+  },
+  {
+    "name": "משכן שלום",
+    "address": "מוסטובוי 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "058-7227234"
+  },
+  {
+    "name": "משכנות יעקב",
+    "address": "השופטים 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "עירקי",
+    "phone": "054-7997622"
+  },
+  {
+    "name": "משכנות ישרים",
+    "address": "שמואל הנגיד 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "050-8443052"
+  },
+  {
+    "name": "נאות דוד",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-5457193"
+  },
+  {
+    "name": "נוה חיים",
+    "address": "כנסת 24, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-2398813"
+  },
+  {
+    "name": "משכן יצחק",
+    "address": "אבי אורן 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8436069"
+  },
+  {
+    "name": "נוה קודשך",
+    "address": "הרצל 87, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "050-3620910"
+  },
+  {
+    "name": "נחלי יוסף",
+    "address": "מנחת שלמה 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4300616"
+  },
+  {
+    "name": "נחלי משה",
+    "address": "אריה בן אליעזר 27, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-6305756"
+  },
+  {
+    "name": "משכן שלמה",
+    "address": "השומר 34, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-7390942"
+  },
+  {
+    "name": "נחלת זאב",
+    "address": "דוד פרנקפורטר 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3656287"
+  },
+  {
+    "name": "נחלת ישראל",
+    "address": "חובבי ציון 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-6927542"
+  },
+  {
+    "name": "נחלת ראובן",
+    "address": "מונטיפיורי 46, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2200118"
+  },
+  {
+    "name": "נחלת רדבז",
+    "address": "אצ\"ל 37, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "050-6959034"
+  },
+  {
+    "name": "נעם אלימלך",
+    "address": "משה הס 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "050-4112660"
+  },
+  {
+    "name": "נעם",
+    "address": "סנדרוב 9, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-8351877"
+  },
+  {
+    "name": "מניין ותיקין",
+    "address": "חובבי ציון 29, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-4469030"
+  },
+  {
+    "name": "נצח שלמה",
+    "address": "הרב וולף, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2213736"
+  },
+  {
+    "name": "נר אברהם",
+    "address": "דרך מנחם בגין 84, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "054-8448950"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "חנה רובינא 13, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-6710667"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "קלישר\\u202C\\u200E 13, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-4450102"
+  },
+  {
+    "name": "עמי עולמי",
+    "address": "הרב אונטרמן 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-5889195"
+  },
+  {
+    "name": "על שם רשב\"\"י",
+    "address": "אסתר המלכה 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-2674135"
+  },
+  {
+    "name": "עדות לישראל",
+    "address": "קלישר\\u202C\\u200E 39, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-7315608"
+  },
+  {
+    "name": "עוד יוסף חי",
+    "address": "הושע 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "054-3975967"
+  },
+  {
+    "name": "עולי הודו",
+    "address": "שבט דן, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "הודי",
+    "phone": "054-4786412"
+  },
+  {
+    "name": "עולי רומניה",
+    "address": "גולדנהירש 17, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9300463"
+  },
+  {
+    "name": "עין גנים",
+    "address": "עין גנים 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "9302569"
+  },
+  {
+    "name": "עלומים",
+    "address": "רמח\"ל 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-2058088"
+  },
+  {
+    "name": "ענף החיים",
+    "address": "דוד רמז 52, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-5366436"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בבלי",
+    "phone": "050-6568756"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "פרומקין 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-4444125"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "יואל 6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-2435077"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "הרב מיימון 19, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "050-6568756"
+  },
+  {
+    "name": "קהילת תורת חיים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "054-5651204"
+  },
+  {
+    "name": "עץ חיים עולי אירן",
+    "address": "שבט יששכר 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "052-2727911"
+  },
+  {
+    "name": "עשהאל",
+    "address": "עובדיה 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-321422"
+  },
+  {
+    "name": "פאר הרש\"ש",
+    "address": "רבי עקיבא 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "054-7930821"
+  },
+  {
+    "name": "ישיבת פאר משה",
+    "address": "יעקב קרול, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-4151321"
+  },
+  {
+    "name": "פורת יוסף",
+    "address": "טרומפלדור 71, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-9932443"
+  },
+  {
+    "name": "פני דוד",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "050-7832336"
+  },
+  {
+    "name": "פנינת גנים",
+    "address": "שלמה מילר, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-6850497"
+  },
+  {
+    "name": "פנינת גנים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "053-7516300"
+  },
+  {
+    "name": "צא\"י",
+    "address": "איכילוב 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7650579"
+  },
+  {
+    "name": "צהלת חן",
+    "address": "החמישה 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-2118382"
+  },
+  {
+    "name": "צמח דוד",
+    "address": "חבקוק 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני"
+  },
+  {
+    "name": "צעירי הציונות הדתית",
+    "address": "דרך מנחם בגין 50, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-6312071"
+  },
+  {
+    "name": "צעירי פא\"י",
+    "address": "איכילוב 20, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "9311678"
+  },
+  {
+    "name": "צרור המור",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "9318294"
+  },
+  {
+    "name": "קהילות ישראל",
+    "address": "שלזינגר 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-8917595"
+  },
+  {
+    "name": "קהל חסידים",
+    "address": "אליעזר שטיינברג, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8413503"
+  },
+  {
+    "name": "קהל חסידים כפר גנים",
+    "address": "טרומפלדור 71, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "9223454"
+  },
+  {
+    "name": "קהל עדת יעקב",
+    "address": "מוסטובוי 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-7717561"
+  },
+  {
+    "name": "קיבוץ גלויות",
+    "address": "זאב אורלוב 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בבלי",
+    "phone": "052-2654322"
+  },
+  {
+    "name": "שירת הים",
+    "address": "אריה בן אליעזר 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-5665466"
+  },
+  {
+    "name": "רני ושמחי",
+    "address": "אורלנסקי 34, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "9308775"
+  },
+  {
+    "name": "רננים כפר גנים ג'",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-9778772"
+  },
+  {
+    "name": "רפאל המלאך",
+    "address": "יוסף פפר, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "054-7725094"
+  },
+  {
+    "name": "שארית ישראל",
+    "address": "שאול המלך 11, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-9413131"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "קרימינצקי 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3961081"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "אהבת ציון 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2655919"
+  },
+  {
+    "name": "רמב\"ם כפר אברהם",
+    "address": "הרב ריינס 13, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-5329218"
+  },
+  {
+    "name": "שוועת עניים",
+    "address": "האר\"י הקדוש 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "054-3033123"
+  },
+  {
+    "name": "שונה הלכות",
+    "address": "חובבי ציון 42, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7265738"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "054-7705313"
+  },
+  {
+    "name": "שירת מרים",
+    "address": "קהילות יעקב 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4112797"
+  },
+  {
+    "name": "שלום שבזי",
+    "address": "עזרא ונחמיה 60, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "9324113"
+  },
+  {
+    "name": "שערי צדק",
+    "address": "החמישה 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-6931119"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "חיים ארלוזורוב, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "052-4280758"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "כנסת 65, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-5773900"
+  },
+  {
+    "name": "שערי רחמים",
+    "address": "יעקב אחווה, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "פרסי",
+    "phone": "053-5522298"
+  },
+  {
+    "name": "שערי שלווה",
+    "address": "השומר 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-6491194"
+  },
+  {
+    "name": "שערי תורה",
+    "address": "החמישה 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-2118382"
+  },
+  {
+    "name": "שערי תפילה",
+    "address": "המעפילים 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-5382330"
+  },
+  {
+    "name": "עולי בבל",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-8217446"
+  },
+  {
+    "name": "שרש חיים",
+    "address": "דוד רמז 35, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-7908550"
+  },
+  {
+    "name": "שתילי זיתים",
+    "address": "רבי יהודה הנשיא 47, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "054-9843400"
+  },
+  {
+    "name": "תהילות ה'",
+    "address": "דרך מנחם בגין 24, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2572825"
+  },
+  {
+    "name": "תורה ועבודה המרכזי",
+    "address": "תורה ועבודה 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-5250473"
+  },
+  {
+    "name": "תפארה",
+    "address": "הרצל 59, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-9000113"
+  },
+  {
+    "name": "תפארת בנימין",
+    "address": "לוחמי הגטו 19, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-6615760"
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "שלום צלח 19, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בבלי",
+    "phone": "052-2534359"
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "מנחם רצון 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "052-7201730"
+  },
+  {
+    "name": "תפארת מרדכי (מועדון תורני)",
+    "address": "חנה רובינא 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-5561006"
+  },
+  {
+    "name": "תפארת צבי",
+    "address": "מנחם רצון 36, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-3572480"
+  },
+  {
+    "name": "תפארת צבי",
+    "address": "מונטיפיורי 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4109129"
+  },
+  {
+    "name": "תפארת שלום",
+    "address": "יונה, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "9320202"
+  },
+  {
+    "name": "תפארת שעריה",
+    "address": "קיש 44, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-5217273"
+  },
+  {
+    "name": "תשועת ישראל",
+    "address": "חגי 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "054-2404702"
+  },
+  {
+    "name": "נעם יצחק",
+    "address": "נורדאו 25, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7628238"
+  },
+  {
+    "name": "מניין ותיקין",
+    "address": "יוסף פלדמן 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "054-4655632"
+  },
+  {
+    "name": "מבראשית",
+    "address": "אלוף רחבעם זאבי 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "054-6683947"
+  },
+  {
+    "name": "אוהל דן",
+    "address": "הנרייטה סולד 44, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "0507876111"
+  },
+  {
+    "name": "מאור יהודה",
+    "address": "פרופ' קלויזנר 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-8282856"
+  },
+  {
+    "name": "ע\"ש ע\"ג הנופלים",
+    "address": "חנה רובינא 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8185050"
+  },
+  {
+    "name": "בינת נבונים (מונקאשט)",
+    "address": "הנשיאים 30, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "050-5386073"
+  },
+  {
+    "name": "בלינסון בית חולים",
+    "address": "רחוב זאב ז'בוטינסקי 39, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "050-4065111"
+  },
+  {
+    "name": "בית אל מחנה יהודה",
+    "address": "אורלנסקי 34, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-5953387"
+  },
+  {
+    "name": "בית אליהו",
+    "address": "מבצע יפתח 9, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2844883"
+  },
+  {
+    "name": "בית כנסת הפתוח חב\"ד",
+    "address": "חדרה 27, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חב\"ד",
+    "phone": "054-7770843"
+  },
+  {
+    "name": "בני תורה",
+    "address": "שבט בנימין 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "053-3124171"
+  },
+  {
+    "name": "גאולת ישראל השלימה",
+    "address": "המלכים, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תוניסאי",
+    "phone": "050-5430653"
+  },
+  {
+    "name": "היכל אברהם",
+    "address": "הראשונים 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בוכרי",
+    "phone": "052-3654558"
+  },
+  {
+    "name": "עטרת אליהו",
+    "address": "הרב מיימון 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-4360444"
+  },
+  {
+    "name": "הפועל המזרחי",
+    "address": "יהושע שטמפפר 41, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-6823949"
+  },
+  {
+    "name": "משכן משה",
+    "address": "יוכלמן 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2233250"
+  },
+  {
+    "name": "חסידי גור",
+    "address": "ההסתדרות 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "052-7613745"
+  },
+  {
+    "name": "אהבת דניאל",
+    "address": "שלומציון המלכה 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-5520170"
+  },
+  {
+    "name": "חתם סופר",
+    "address": "חיים ארלוזורוב 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חסידי",
+    "phone": "9232340"
+  },
+  {
+    "name": "כפר גנים - ישיבה",
+    "address": "י\"ד הבנים 30, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "050-4120487"
+  },
+  {
+    "name": "היכל שמיר",
+    "address": "רמח\"ל 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-6070209"
+  },
+  {
+    "name": "הישראלי",
+    "address": "רמ\"א, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "054-4446788"
+  },
+  {
+    "name": "השופר",
+    "address": "השופר 104, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-8348927"
+  },
+  {
+    "name": "חצרות גנים",
+    "address": "יבנה 15, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-9459338"
+  },
+  {
+    "name": "ירושלמי נחלים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "054-5399632"
+  },
+  {
+    "name": "קהילת יחדיו",
+    "address": "אריה בן אליעזר 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "050-3834691"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "address": "יוסף פלדמן 6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-5976863"
+  },
+  {
+    "name": "חסד לאברהם",
+    "address": "ישראל ישעיהו 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "הודי",
+    "phone": "052-3663507"
+  },
+  {
+    "name": "תפארת פסקל",
+    "address": "אסירי ציון 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-6651266"
+  },
+  {
+    "name": "צאנז",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2523978"
+  },
+  {
+    "name": "משכן מאיר",
+    "address": "גרינשפן 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "ניגוני חיים",
+    "address": "וייצמן 45, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-6456860"
+  },
+  {
+    "name": "אוהל יצחק (פנינת גנים)",
+    "address": "י\"ד הבנים 66, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-2554233"
+  },
+  {
+    "name": "עם כלביא יקום",
+    "address": "שלזינגר 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "לובי",
+    "phone": "052-4212525"
+  },
+  {
+    "name": "עמוד האש",
+    "address": "פנחס חגין 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-4014376"
+  },
+  {
+    "name": "צעירי כפר גנים ג",
+    "address": "שלזינגר 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7400366"
+  },
+  {
+    "name": "צעירי כפר גנים 2011",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4974942"
+  },
+  {
+    "name": "רננים כפר גנים ג",
+    "address": "הרב אורבך 1, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-9778772"
+  },
+  {
+    "name": "רשב\"י",
+    "address": "אסירי ציון 16, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-6776474"
+  },
+  {
+    "name": "שארית ישראל",
+    "address": "סביון 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-2044160"
+  },
+  {
+    "name": "שוהם",
+    "address": "שלזינגר 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7896696"
+  },
+  {
+    "name": "שמחת אהרון",
+    "address": "שרגא רפאלי 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-2806157"
+  },
+  {
+    "name": "תפארת רימון",
+    "address": "אסירי ציון 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4734121"
+  },
+  {
+    "name": "תפילה למשה",
+    "address": "פינס 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "0504434844"
+  },
+  {
+    "name": "תורת אבות",
+    "address": "זליג בס 17, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "054-5661409"
+  },
+  {
+    "name": "הר חסד א.כ.י.ר",
+    "address": "הסיבים 65, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-7251390"
+  },
+  {
+    "name": "קהל חסידים",
+    "address": "שלזינגר 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-3454437"
+  },
+  {
+    "name": "יד יוסף",
+    "address": "דרך מנחם בגין 85, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "053-7731329"
+  },
+  {
+    "name": "מצודת ציון",
+    "address": "הפלמ\"ח 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4744067"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "דוד טבצ'ניק, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-5250128"
+  },
+  {
+    "name": "בית כנסת ירושלמי",
+    "address": "חנה רובינא 23, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "054-3223009"
+  },
+  {
+    "name": "ספרדי דתי לאומי",
+    "address": "אריה בן אליעזר 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "052-5022205"
+  },
+  {
+    "name": "תוניס ג'רבה",
+    "address": "דרך מנחם בגין 50, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תוניסאי",
+    "phone": "050-8195234"
+  },
+  {
+    "name": "צעירי הדר גנים",
+    "address": "אריה בן אליעזר 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-8315376"
+  },
+  {
+    "name": "בראשית",
+    "address": "הרב ישעיהו משורר, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-5605580"
+  },
+  {
+    "name": "מעיין גנים (מעיין רבקה)",
+    "address": "אריה בן אליעזר 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4708457"
+  },
+  {
+    "name": "נווה עוז הירוקה",
+    "address": "שחם 64, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4331182"
+  },
+  {
+    "name": "ושבו בנים",
+    "address": "ד\"ר וייסבורג 5, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "058-7992017"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "המלך כורש 40, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "054-2338839"
+  },
+  {
+    "name": "משכן בית אל",
+    "address": "הקונגרס, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "054-8452462"
+  },
+  {
+    "name": "שערי ירושלים - מרכז רוחני",
+    "address": "עובדיה 14, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "050-2530902"
+  },
+  {
+    "name": "היכל יצחק",
+    "address": "סלומון 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "052-6817730"
+  },
+  {
+    "name": "קהילת עוז והדר",
+    "address": "הרב ישעיהו משורר, פתח תקווה",
+    "destinationId": 346,
+    "phone": "050-5666632"
+  },
+  {
+    "name": "דרכי אבות",
+    "address": "הרב ישעיהו משורר, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "054-4464833"
+  },
+  {
+    "name": "צעירי חברון הדר גנים",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "053-3381427"
+  },
+  {
+    "name": "קהילת קדם",
+    "address": "דרך מנחם בגין 50, פתח תקווה",
+    "destinationId": 346,
+    "phone": "054-5874604"
+  },
+  {
+    "name": "נווה אברהם",
+    "address": "הרב פינצי 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4413098"
+  },
+  {
+    "name": "טללי חיים ע\"ש החלבן",
+    "address": "דנמרק 80, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-3425650"
+  },
+  {
+    "name": "התקווה",
+    "address": "האר\"י הקדוש 8, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "מרוקאי",
+    "phone": "050-4048950"
+  },
+  {
+    "name": "היכל יוסף",
+    "address": "נורוק, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-2442421"
+  },
+  {
+    "name": "בית אבא",
+    "address": "סלומון 12, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-8304893"
+  },
+  {
+    "name": "שלום רעות ואחווה",
+    "address": "שלמה, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-2457155"
+  },
+  {
+    "name": "אמית בר אילן",
+    "address": "הגיתית 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-4564278"
+  },
+  {
+    "name": "היכל גבריאל",
+    "address": "יטקובסקי אחים 34, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-9000119"
+  },
+  {
+    "name": "היכל יחזקאל חברון - מרכז העיר",
+    "address": "טרומפלדור 64, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "050-4138846"
+  },
+  {
+    "name": "בחצרות קדשך",
+    "address": "עמינח 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בלדי",
+    "phone": "054-2876499"
+  },
+  {
+    "name": "עין גנים",
+    "address": "רחל המשוררת 6, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "053-4223717"
+  },
+  {
+    "name": "מגן אברהם",
+    "address": "שחם 64, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "053-3329077"
+  },
+  {
+    "name": "אחווה ורעות",
+    "address": "אבא ברדיצ'ב 1, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-7333331"
+  },
+  {
+    "name": "אהבת ישראל",
+    "address": "המלכים, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ירושלמי",
+    "phone": "050-5430653"
+  },
+  {
+    "name": "אורחות חיים",
+    "address": "זאב אורלוב 4, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-4818902"
+  },
+  {
+    "name": "אילת השחר",
+    "address": "שבט אשר 13, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7141764"
+  },
+  {
+    "name": "שוק עירוני",
+    "address": "זאב ליפקיס, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "050-8861985"
+  },
+  {
+    "name": "יוצאי חברון הספרדי",
+    "address": "פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-7258470"
+  },
+  {
+    "name": "בית הלל - מורשה הדר גנים",
+    "address": "חנה רובינא 13, פתח תקווה",
+    "destinationId": 346,
+    "phone": "050-6566533"
+  },
+  {
+    "name": "בית חולים השרון",
+    "address": "רוטשילד 158, פתח תקווה",
+    "destinationId": 346,
+    "phone": "052-6070665"
+  },
+  {
+    "name": "בית חנה",
+    "address": "הרב עוזיאל 20, פתח תקווה",
+    "destinationId": 346,
+    "phone": "052-3543679"
+  },
+  {
+    "name": "היכל שרה",
+    "address": "יוני נתניהו 7, פתח תקווה",
+    "destinationId": 346,
+    "phone": "050-2412434"
+  },
+  {
+    "name": "קהילת מרכז העיר, ברכת יעקב",
+    "address": "הרצל 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "052-7684538"
+  },
+  {
+    "name": "קהילת מרכז עמישב",
+    "address": "שלום צלח, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "053-7355003"
+  },
+  {
+    "name": "קהילת קודש תימן עמישב",
+    "address": "שבט אשר 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני",
+    "phone": "050-4182100"
+  },
+  {
+    "name": "שורש חיים",
+    "address": "רבי עקיבא 7, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "054-6114187"
+  },
+  {
+    "name": "שערי ציון נוסח שאמי תימני",
+    "address": "כנסת 65, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "052-5773900"
+  },
+  {
+    "name": "היכל השושנים",
+    "address": "אורלנסקי 34, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-7678471"
+  },
+  {
+    "name": "דרך עץ החיים",
+    "address": "האר\"י הקדוש 21, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "0545371718"
+  },
+  {
+    "name": "בסר סיטי",
+    "address": "תוצרת הארץ 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "050-4734121"
+  },
+  {
+    "name": "מניין בני תורה",
+    "address": "דרך מנחם בגין 123, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-שאמי",
+    "phone": "054-7705369"
+  },
+  {
+    "name": "קהילת קדש תימן",
+    "address": "שבט אשר 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "058-7150917"
+  },
+  {
+    "name": "בני הישיבות",
+    "address": "דרך מנחם בגין 125, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "055-9815077"
+  },
+  {
+    "name": "שער אחדות",
+    "address": "זמנהוף 10, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "052-3663507"
+  },
+  {
+    "name": "אהבת ציון",
+    "address": "זמנהוף 15, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "ספרדי",
+    "phone": "054-21551985"
+  },
+  {
+    "name": "קהילת ישי",
+    "address": "דרך מנחם בגין 50, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "כללי",
+    "phone": "050-4409010"
+  },
+  {
+    "name": "משכנות ישרים",
+    "address": "שמואל הנגיד 2, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "050-5344030"
+  },
+  {
+    "name": "חצרות השם",
+    "address": "הרב ישעיהו משורר, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "0523656809"
+  },
+  {
+    "name": "בראשית",
+    "address": "אלדד 3, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אשכנז",
+    "phone": "054-5629240"
+  },
+  {
+    "name": "בני הישיבות ק\"ק תימן",
+    "address": "הפורצים 18, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "תימני-בלדי",
+    "phone": "055-6692728"
+  },
+  {
+    "name": "ציון ישראל",
+    "address": "43, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "אתיופי",
+    "phone": "054-2532987"
+  },
+  {
+    "name": "אוהל יוסף",
+    "address": "דוד רמז 52, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "בלדי",
+    "phone": "050-8513135"
+  },
+  {
+    "name": "בית כנסת ע\"ש ר' יוסף יצחק שניארסון",
+    "address": "יעקב קרול 1, פתח תקווה",
+    "destinationId": 346,
+    "denomination": "חב\"ד",
+    "phone": "050-8861985"
+  }
+]
