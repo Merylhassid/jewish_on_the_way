@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(node --check \"c:/Users/User/jewish_on_the_way/backend/rabanut-scraper/scrape.js\")",
+      "Bash(node -e ' *)",
+      "WebFetch(domain:www.kiryatono.muni.il)"
     ]
   }
 }

@@ -1,0 +1,1067 @@
+[
+  {
+    "name": "אבני נחל",
+    "destinationId": 339,
+    "address": "סמטת חצור 4",
+    "phone": "050-6599148",
+    "description": "Gabai: שטרית יחיאל | Rabbi: הרב נהון מאיר"
+  },
+  {
+    "name": "אגודת נצח",
+    "destinationId": 339,
+    "address": "ויצמן 65",
+    "phone": "052-3679469",
+    "description": "Gabai: ושדי יצחק",
+    "notes": "Gabai address: הרב קוק 11"
+  },
+  {
+    "name": "אגודת נצח",
+    "destinationId": 339,
+    "address": "ויצמן 65",
+    "description": "Gabai: מורחי חיים"
+  },
+  {
+    "name": "אהבה ואחוה*",
+    "destinationId": 339,
+    "address": "ניצנה 16",
+    "phone": "050-4146405 5523802",
+    "description": "Gabai: ענתבי יוסף",
+    "notes": "Gabai address: שי עגנון 14"
+  },
+  {
+    "name": "אהבת מישרים",
+    "destinationId": 339,
+    "address": "העצמאות 66",
+    "phone": "052-8603292",
+    "description": "Gabai: רמי עובדיה",
+    "notes": "Gabai address: ויצמן 7א"
+  },
+  {
+    "name": "אהבת ציון (בית אבות)",
+    "destinationId": 339,
+    "address": "השומר 10",
+    "phone": "050-5990025",
+    "description": "Gabai: לביא בני"
+  },
+  {
+    "name": "אוהל אברהם*",
+    "destinationId": 339,
+    "address": "הצנחנים 9",
+    "phone": "050-4140707",
+    "description": "Gabai: קנזן דני | Rabbi: הרב אברהם ישראל",
+    "notes": "Gabai address: השלושה 20"
+  },
+  {
+    "name": "אוהל גד",
+    "destinationId": 339,
+    "address": "פנקס 2",
+    "phone": "050-9075593",
+    "description": "Gabai: הרב דוד רחימי"
+  },
+  {
+    "name": "אוהל גד",
+    "destinationId": 339,
+    "address": "פנקס 2",
+    "phone": "6594821,052-8081232",
+    "description": "Gabai: בן ברוך יחזקאל",
+    "notes": "Gabai address: הרצל 81"
+  },
+  {
+    "name": "אוהל מועד",
+    "destinationId": 339,
+    "address": "ניצנה 2",
+    "phone": "054-84389016587531",
+    "description": "Gabai: ברידס אברהם | Rabbi: הרב אברהם ברידס",
+    "notes": "Gabai address: המעפילים 24"
+  },
+  {
+    "name": "אוהל ששון",
+    "destinationId": 339,
+    "address": "כובשי החרמון 4"
+  },
+  {
+    "name": "אור הגאולה(פאר מנחם)",
+    "destinationId": 339,
+    "address": "קינמון 27",
+    "phone": "5078284,050-7540584",
+    "description": "Gabai: חכמיאן דוד"
+  },
+  {
+    "name": "אור החיים",
+    "destinationId": 339,
+    "address": "הפלמ\"ח 16",
+    "phone": "050-6552099",
+    "description": "Gabai: דוד שמואלי | Rabbi: הרב אליהו אוחנה",
+    "notes": "Gabai address: המעפילים 7"
+  },
+  {
+    "name": "אור החמה*",
+    "destinationId": 339,
+    "address": "הנביאים 50",
+    "phone": "052-7626942",
+    "description": "Gabai: סעדון גבריאל"
+  },
+  {
+    "name": "אור חדש",
+    "destinationId": 339,
+    "address": "אנה פרנק 20",
+    "phone": "5523360,050-7498039",
+    "description": "Gabai: כהן יוסף",
+    "notes": "Gabai address: הרב צבי יהודה 4"
+  },
+  {
+    "name": "אור ישראל",
+    "destinationId": 339,
+    "address": "גבעתי 6",
+    "phone": "054-4222209",
+    "description": "Gabai: טובול אליהו",
+    "notes": "Gabai address: הנביאים 10"
+  },
+  {
+    "name": "אור ישראל",
+    "destinationId": 339,
+    "address": "גבעתי 6",
+    "phone": "052-3333508",
+    "description": "Gabai: פרץ רפאל",
+    "notes": "Gabai address: הנביאים 41/5"
+  },
+  {
+    "name": "אורות התורה*",
+    "destinationId": 339,
+    "address": "מוהליבר 21",
+    "phone": "054-2165265,5510709",
+    "description": "Gabai: מיכאל דניאל",
+    "notes": "Gabai address: הרב צבי יהודה 6"
+  },
+  {
+    "name": "אורות התחיה",
+    "destinationId": 339,
+    "address": "בורוכוב 9",
+    "phone": "524417979",
+    "description": "Gabai: אלי אחואן | Rabbi: הרב איטח ניסים"
+  },
+  {
+    "name": "אחדות ישראל",
+    "destinationId": 339,
+    "address": "ירושלים 40"
+  },
+  {
+    "name": "אשרי העם (המר)",
+    "destinationId": 339,
+    "address": "בורוכוב 10"
+  },
+  {
+    "name": "ביכנ\"ס דניאל (בוכרים)",
+    "destinationId": 339,
+    "address": "רבינוביץ' 15",
+    "phone": "054-6669506",
+    "description": "Gabai: דוידוב יצחק",
+    "notes": "Gabai address: גבעתי 13/9"
+  },
+  {
+    "name": "ביכנ\"ס דניאל (בוכרים)",
+    "destinationId": 339,
+    "address": "הנביאים 4",
+    "description": "Gabai: מורדכיוב נריה"
+  },
+  {
+    "name": "בית אל ב'",
+    "destinationId": 339,
+    "address": "חביבה רייך 3",
+    "description": "Gabai: דוד שמואלי"
+  },
+  {
+    "name": "בית אל*",
+    "destinationId": 339,
+    "address": "בן ציון ישראל 15",
+    "phone": "054-7602001",
+    "description": "Gabai: זרוק יוסי"
+  },
+  {
+    "name": "בית יהושע",
+    "destinationId": 339,
+    "address": "אדמור מבאבוב 12",
+    "phone": "5516979,054-8440249",
+    "description": "Gabai: קורץ דוד",
+    "notes": "Gabai address: נסנבאום 50"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 339,
+    "address": "סמטת הכרמל 6",
+    "phone": "5517657,052-4313239",
+    "description": "Gabai: אשכנזי מאיר",
+    "notes": "Gabai address: התבור 1"
+  },
+  {
+    "name": "בית ישראל",
+    "destinationId": 339,
+    "address": "ניצנה 16",
+    "phone": "052-4666746",
+    "description": "Gabai: ג'אן מרדכי"
+  },
+  {
+    "name": "בית ישראל",
+    "destinationId": 339,
+    "address": "ניצנה 16",
+    "phone": "054-5505087,0779611582",
+    "description": "Gabai: סיטון אברהם",
+    "notes": "Gabai address: אורים 4 חולון"
+  },
+  {
+    "name": "בית ישראל (אתיופים)",
+    "destinationId": 339,
+    "address": "רבינוביץ' 15",
+    "phone": "054-5743030",
+    "description": "Gabai: מהרטו ווסה",
+    "notes": "Gabai address: משה שרת 19"
+  },
+  {
+    "name": "בית ישראל*",
+    "destinationId": 339,
+    "address": "ניצנה 16",
+    "phone": "054-4500015",
+    "description": "Gabai: נאורי יוסי",
+    "notes": "Gabai address: קדושי קהיר חולון"
+  },
+  {
+    "name": "בית עובדיה",
+    "destinationId": 339,
+    "address": "יוספטל 78",
+    "phone": "6580446,050-5600210",
+    "description": "Gabai: ג'דע יוסף",
+    "notes": "Gabai address: חשמונאים 40"
+  },
+  {
+    "name": "בית שלום סייאדה",
+    "destinationId": 339,
+    "address": "רוטשילד",
+    "description": "Gabai: סיאדה שלמה"
+  },
+  {
+    "name": "בני עקיבא מרכז",
+    "destinationId": 339,
+    "address": "הרצל 62",
+    "phone": "050-2022705",
+    "description": "Gabai: אוחנה אמיר",
+    "notes": "Gabai address: העצמאות 12"
+  },
+  {
+    "name": "בני עקיבא עמידר",
+    "destinationId": 339,
+    "address": "נגבה 16",
+    "phone": "052-8209209",
+    "description": "Gabai: דרין שלום",
+    "notes": "Gabai address: ויצמן 19"
+  },
+  {
+    "name": "בני עקיבא רמת הנשיא",
+    "destinationId": 339,
+    "address": "מוכרי הסגריות",
+    "phone": "5518355,050-6727523",
+    "description": "Gabai: אזרחי עמנואל",
+    "notes": "Gabai address: כ\"ט בנובמבר 29"
+  },
+  {
+    "name": "בת קול",
+    "destinationId": 339,
+    "address": "נסנבאום 66",
+    "phone": "5537159,052-8128811",
+    "description": "Gabai: סבח יהודה",
+    "notes": "Gabai address: כצנלסון 84"
+  },
+  {
+    "name": "גיבורי ישראל מנין הנץ",
+    "destinationId": 339,
+    "address": "הנביאים 52",
+    "phone": "054-6305054",
+    "description": "Gabai: יעקב לוי"
+  },
+  {
+    "name": "גיבורי ישראל מנין הנץ",
+    "destinationId": 339,
+    "address": "הנביאים 52",
+    "phone": "050-8870788",
+    "description": "Gabai: ארז יעקובי | Rabbi: הרב יוסף אלימלך"
+  },
+  {
+    "name": "גיבורי ישראל",
+    "destinationId": 339,
+    "address": "יצחק שדה 19",
+    "phone": "054-2413531",
+    "description": "Gabai: יפרח שמעון",
+    "notes": "Gabai address: שפירא 15/1"
+  },
+  {
+    "name": "גיבורי ישראל",
+    "destinationId": 339,
+    "address": "יצחק שדה 19",
+    "phone": "054-7002083",
+    "description": "Gabai: יעיש אוחיון",
+    "notes": "Gabai address: הנביאים 63"
+  },
+  {
+    "name": "הגדול האוהל רמת-יוסף*",
+    "destinationId": 339,
+    "address": "סמטת הוורדים 6",
+    "phone": "054-8181024",
+    "description": "Gabai: מושקוביץ' מיקי | Rabbi: הרב רוזין יעקב",
+    "notes": "Gabai address: יוספטל 103"
+  },
+  {
+    "name": "הגדול האוהל רמת-יוסף*",
+    "destinationId": 339,
+    "address": "סמטת הוורדים 6",
+    "phone": "052-4899978",
+    "description": "Gabai: דגן ארז",
+    "notes": "Gabai address: חשמונאים 9"
+  },
+  {
+    "name": "החיד\"א",
+    "destinationId": 339,
+    "address": "חביבה רייך 3",
+    "phone": "052-8581120",
+    "description": "Gabai: ג'רבי יצחק"
+  },
+  {
+    "name": "היושבת בגנים(מ.ש.מ.א.)",
+    "destinationId": 339,
+    "address": "ארלוזורוב 83",
+    "phone": "052-4497550",
+    "description": "Gabai: דניאל | Rabbi: הרב מרדכי דרעי"
+  },
+  {
+    "name": "היכל אליהו",
+    "destinationId": 339,
+    "address": "הנרייטה סולד 2",
+    "phone": "052-60186085532477",
+    "description": "Gabai: הרב חזן פנחס | Rabbi: הרב חזן פנחס",
+    "notes": "Gabai address: הרב מימון 21/28"
+  },
+  {
+    "name": "היכל יעקב*",
+    "destinationId": 339,
+    "address": "סוקולוב 5",
+    "phone": "5066567",
+    "description": "Gabai: פולק יעקב",
+    "notes": "Gabai address: בר שאול 6/2"
+  },
+  {
+    "name": "היכל צבי - אוהל אסתר",
+    "destinationId": 339,
+    "address": "סוקולוב 19",
+    "phone": "052-8904071",
+    "description": "Gabai: סעדון יצחק | Rabbi: הרב חגי לוי",
+    "notes": "Gabai address: חשמונאים 9"
+  },
+  {
+    "name": "המיישר - חיי נועם",
+    "destinationId": 339,
+    "address": "אורט ישראל 4",
+    "phone": "050-2689849",
+    "description": "Gabai: שמואל יעקב"
+  },
+  {
+    "name": "המרכזי נצח ישראל",
+    "destinationId": 339,
+    "address": "ירושלים 67",
+    "phone": "054-5470157",
+    "description": "Gabai: נתן לנציאנו",
+    "notes": "Gabai address: בית וגן 14"
+  },
+  {
+    "name": "המרכזי עמידר",
+    "destinationId": 339,
+    "address": "ויצמן 65",
+    "phone": "6589469",
+    "description": "Gabai: ישראל אליעזר"
+  },
+  {
+    "name": "הצעירים רמת-עופר",
+    "destinationId": 339,
+    "address": "קרן היסוד 1",
+    "phone": "050-6340858",
+    "description": "Gabai: ירונסקי משה",
+    "notes": "Gabai address: קרן היסוד 19"
+  },
+  {
+    "name": "הראל (בוכרים)",
+    "destinationId": 339,
+    "address": "סמטת החרמון 4",
+    "phone": "054-5714340,5534938",
+    "description": "Gabai: דניאל יהושע",
+    "notes": "Gabai address: כ\"ט בנובמבר 50"
+  },
+  {
+    "name": "ותיקים רמת-יוסף",
+    "destinationId": 339,
+    "address": "כצנלסון 39",
+    "description": "Gabai: מגר יצחק"
+  },
+  {
+    "name": "זכרון משה",
+    "destinationId": 339,
+    "address": "הגבול 28(הראשונים 11)",
+    "phone": "054-8113382",
+    "description": "Gabai: ינון שמעוני",
+    "notes": "Gabai address: כצנלסון 57"
+  },
+  {
+    "name": "זכרון משה",
+    "destinationId": 339,
+    "address": "הגבול 28(הראשונים 11)",
+    "phone": "509133136",
+    "description": "Gabai: חורמיאן נתנאל"
+  },
+  {
+    "name": "זכרון קדושים",
+    "destinationId": 339,
+    "address": "נחום ניר 25",
+    "phone": "052-2308153,9621997",
+    "description": "Gabai: שטרית יוסף",
+    "notes": "Gabai address: אדר 12 ראשל\"צ"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 339,
+    "address": "העצמאות 67",
+    "phone": "054-7826770",
+    "description": "Gabai: רווה מנחם",
+    "notes": "Gabai address: ת.ד. 3084"
+  },
+  {
+    "name": "חיי שלמה",
+    "destinationId": 339,
+    "address": "שאול המלך 4",
+    "phone": "054-2601414",
+    "description": "Gabai: בן דור חיים",
+    "notes": "Gabai address: נורדאו 4"
+  },
+  {
+    "name": "חיים שאל",
+    "destinationId": 339,
+    "address": "נסנבאום 25",
+    "phone": "052-7658888,5539319",
+    "description": "Gabai: הרב עמר אליהו",
+    "notes": "Gabai address: אדמור מבאבוב 10"
+  },
+  {
+    "name": "חיים שאל",
+    "destinationId": 339,
+    "address": "הרב צבי יהודה 9",
+    "phone": "052-3058128",
+    "description": "Gabai: חלפון ציון"
+  },
+  {
+    "name": "חסידי רדומסק",
+    "destinationId": 339,
+    "address": "בלפור 37",
+    "phone": "050-7325146,5077869",
+    "description": "Gabai: הגר דוד",
+    "notes": "Gabai address: ארלוזורוב 27"
+  },
+  {
+    "name": "יגודייב מאיר",
+    "destinationId": 339,
+    "address": "העצמאות 77",
+    "phone": "052-8559893",
+    "description": "Gabai: יצחקוב אליה",
+    "notes": "Gabai address: דניאל 88"
+  },
+  {
+    "name": "יד קדושים",
+    "destinationId": 339,
+    "address": "הפלמ\"ח 24",
+    "phone": "052-71611816582460",
+    "description": "Gabai: פדלון ראובן",
+    "notes": "Gabai address: הגבורים 6"
+  },
+  {
+    "name": "יוצאי טורקיה",
+    "destinationId": 339,
+    "address": "נגבה 10"
+  },
+  {
+    "name": "יצחק ירנן",
+    "destinationId": 339,
+    "address": "חביבה רייך 3",
+    "description": "Gabai: עובדיה זכריה"
+  },
+  {
+    "name": "למען שמו באהכה",
+    "destinationId": 339,
+    "address": "הרצל 55",
+    "phone": "054-8441711",
+    "description": "Gabai: וטורי רועי",
+    "notes": "Gabai address: ארלוזורוב 47"
+  },
+  {
+    "name": "מ\"ג",
+    "destinationId": 339,
+    "address": "הנביאים 56",
+    "phone": "5516346",
+    "description": "Gabai: רב מימון אבוטבול",
+    "notes": "Gabai address: האורגים 18"
+  },
+  {
+    "name": "מאור אל",
+    "destinationId": 339,
+    "address": "הפלמ\"ח 16",
+    "phone": "054-4721980,5063674",
+    "description": "Gabai: חלפי משה | Rabbi: שמואלי שמעון",
+    "notes": "Gabai address: העצמאות 25"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 339,
+    "address": "פרלשטיין 20",
+    "phone": "050-8621874,5062383",
+    "description": "Gabai: מטרי שלמה",
+    "notes": "Gabai address: קריתי 4"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 339,
+    "address": "עוזיאל 15",
+    "phone": "6584658",
+    "description": "Gabai: עוזרי שמעון"
+  },
+  {
+    "name": "מורשת אבות",
+    "destinationId": 339,
+    "address": "ליבורנו 14",
+    "phone": "050-8880481,5517344",
+    "description": "Gabai: הרב פרץ אשר",
+    "notes": "Gabai address: ליבורנו 7"
+  },
+  {
+    "name": "מורשת דורות",
+    "destinationId": 339,
+    "address": "רוטשילד 6",
+    "phone": "054-5714418,0773004089",
+    "description": "Gabai: אמסלם דוד",
+    "notes": "Gabai address: הלפר 24"
+  },
+  {
+    "name": "מחזיקי תורה",
+    "destinationId": 339,
+    "address": "העצמאות 23",
+    "phone": "050-8899511",
+    "description": "Gabai: יניאר חביב | Rabbi: הרב שאוליאן טל"
+  },
+  {
+    "name": "מחנה ישראל",
+    "destinationId": 339,
+    "address": "הנרייטה סולד 11",
+    "phone": "050-41317285528988",
+    "description": "Gabai: אוחיון דניאל",
+    "notes": "Gabai address: הרב צבי יהודה 6"
+  },
+  {
+    "name": "מנין הצעירים - בית וגן",
+    "destinationId": 339,
+    "address": "הרב קוק 17",
+    "phone": "054-4633684,5073916",
+    "description": "Gabai: הרב יוסף סלומון",
+    "notes": "Gabai address: הרצל 15 ת.ד.175"
+  },
+  {
+    "name": "מנין הצעירים -רמת הנשיא",
+    "destinationId": 339,
+    "address": "כובשי החרמון 4",
+    "phone": "5531379",
+    "description": "Gabai: סהר אריה",
+    "notes": "Gabai address: התנאים 4 א' חולון"
+  },
+  {
+    "name": "מעינות החיים",
+    "destinationId": 339,
+    "address": "השלושה 18",
+    "phone": "050-4103966",
+    "description": "Gabai: שמעוני גדעון | Rabbi: גדעון שמעוני",
+    "notes": "Gabai address: הגליל 7 ב'"
+  },
+  {
+    "name": "מעינות החיים",
+    "destinationId": 339,
+    "address": "השלושה 18",
+    "description": "Gabai: שקרזי אילן"
+  },
+  {
+    "name": "מקדש מלך",
+    "destinationId": 339,
+    "address": "חביבה רייך 3",
+    "phone": "052-6501213,5070734",
+    "description": "Gabai: אורבי אלי",
+    "notes": "Gabai address: חביבה רייך 14"
+  },
+  {
+    "name": "מרום ישראל*",
+    "destinationId": 339,
+    "address": "העצמאות 16",
+    "phone": "050-5287201",
+    "description": "Gabai: בן חמו אברהם | Rabbi: הרב אהרון אבוקסיס",
+    "notes": "Gabai address: סוקולוב 26"
+  },
+  {
+    "name": "משה ואהרון",
+    "destinationId": 339,
+    "address": "אהוד קנמון 15",
+    "phone": "050-4123796",
+    "description": "Gabai: ברוכים יואל | Rabbi: הרב ברוכים אלון",
+    "notes": "Gabai address: דגניה 6"
+  },
+  {
+    "name": "משכן ישראל",
+    "destinationId": 339,
+    "address": "מוכרי הסגריות 2",
+    "phone": "050-8760155,5512795",
+    "description": "Gabai: סמדג'ה דניאל",
+    "notes": "Gabai address: הרב צבי יהודה 5/6"
+  },
+  {
+    "name": "משכן נתן*",
+    "destinationId": 339,
+    "address": "אנה פרנק 38",
+    "phone": "052-7883582,5532945",
+    "description": "Gabai: הרב יעקב בסו | Rabbi: הרב יעקב באסו",
+    "notes": "Gabai address: הרב מימון 35/16"
+  },
+  {
+    "name": "נועם אלימלך ב'",
+    "destinationId": 339,
+    "address": "ויצמן 9",
+    "phone": "054-4357706,054-2165265",
+    "description": "Gabai: רחימי איציק"
+  },
+  {
+    "name": "נועם אלימלך חסידים",
+    "destinationId": 339,
+    "address": "הרב קוקיס 3",
+    "phone": "050-4081962",
+    "description": "Gabai: אופנהיימר יוסף",
+    "notes": "Gabai address: העצמאות 18 א'"
+  },
+  {
+    "name": "נזר יוסף",
+    "destinationId": 339,
+    "address": "הרב צבי יהודה 12",
+    "phone": "050-6229267,5514889",
+    "description": "Gabai: הרב סויסה מרדכי"
+  },
+  {
+    "name": "נחליאלי",
+    "destinationId": 339,
+    "address": "ארלוזורוב 77/2",
+    "phone": "050-6310707",
+    "description": "Gabai: פוקס יואל"
+  },
+  {
+    "name": "נחליאלי*",
+    "destinationId": 339,
+    "address": "פנקס 4",
+    "phone": "523536694",
+    "description": "Gabai: שבתאי רוזנצוויג"
+  },
+  {
+    "name": "ניסי ניסים",
+    "destinationId": 339,
+    "address": "יוספטל 76",
+    "description": "Gabai: הרב ניסים ארזי"
+  },
+  {
+    "name": "ניסי ניסים",
+    "destinationId": 339,
+    "address": "יוספטל 76",
+    "phone": "050-5355789",
+    "description": "Gabai: מורנו דוד"
+  },
+  {
+    "name": "נתיבות ישראל",
+    "destinationId": 339,
+    "address": "מוהליבר 19"
+  },
+  {
+    "name": "סוכת שלום",
+    "destinationId": 339,
+    "address": "ויצמן 65",
+    "phone": "052-3773427,5071735",
+    "description": "Gabai: משמור שמואל",
+    "notes": "Gabai address: ויצמן 70"
+  },
+  {
+    "name": "סיני",
+    "destinationId": 339,
+    "address": "חלוצים 7",
+    "phone": "050-8112029",
+    "description": "Gabai: רובין רחמים",
+    "notes": "Gabai address: הגפן 8"
+  },
+  {
+    "name": "עדת ישורון*",
+    "destinationId": 339,
+    "address": "כצנלסון 39",
+    "phone": "054-7970550",
+    "description": "Gabai: כהן עופר",
+    "notes": "Gabai address: הדדי 10"
+  },
+  {
+    "name": "עוז דוד",
+    "destinationId": 339,
+    "address": "פנקס 1",
+    "phone": "03-5069947",
+    "description": "Gabai: שמאי ראובן",
+    "notes": "Gabai address: ארלוזורוב 78"
+  },
+  {
+    "name": "עוז דוד",
+    "destinationId": 339,
+    "address": "פנקס 1",
+    "phone": "052-2504319",
+    "description": "Gabai: זלברשטיין ישראל",
+    "notes": "Gabai address: שאול המלך 7"
+  },
+  {
+    "name": "עוז דוד",
+    "destinationId": 339,
+    "address": "פנקס 1",
+    "phone": "054-7929868",
+    "description": "Gabai: רוקח שאול",
+    "notes": "Gabai address: הרב קוק 20"
+  },
+  {
+    "name": "עוז דוד",
+    "destinationId": 339,
+    "address": "פנקס 1",
+    "phone": "03-5079530",
+    "description": "Gabai: שניצר משה",
+    "notes": "Gabai address: זמנהוף 15"
+  },
+  {
+    "name": "עולי בבל",
+    "destinationId": 339,
+    "address": "הפלמ\"ח 22",
+    "phone": "054-5469946",
+    "description": "Gabai: עובדיה שלום"
+  },
+  {
+    "name": "עולי בבל",
+    "destinationId": 339,
+    "address": "הפלמ\"ח 22",
+    "phone": "052-4353533",
+    "description": "Gabai: ניסים יהודה"
+  },
+  {
+    "name": "עולי בבל",
+    "destinationId": 339,
+    "address": "הפלמ\"ח 22",
+    "phone": "053-7300911",
+    "description": "Gabai: דיין אלי",
+    "notes": "Gabai address: ת.ד.3359"
+  },
+  {
+    "name": "עולי טורקיה",
+    "destinationId": 339,
+    "address": "דניאל 67",
+    "phone": "052-4481058",
+    "description": "Gabai: בנזש יצחק | Rabbi: הרב ישראל דוגר",
+    "notes": "Gabai address: הנביאים 62"
+  },
+  {
+    "name": "עולי טורקיה",
+    "destinationId": 339,
+    "address": "דניאל 67",
+    "phone": "050-4080329,5522355",
+    "description": "Gabai: סרנגה שמעון",
+    "notes": "Gabai address: שי עגנון 56"
+  },
+  {
+    "name": "עולי טורקיה",
+    "destinationId": 339,
+    "address": "דניאל 67",
+    "phone": "054-4608852,6594033",
+    "description": "Gabai: ראובן שלמה",
+    "notes": "Gabai address: דנין 2"
+  },
+  {
+    "name": "עץ חיים",
+    "destinationId": 339,
+    "address": "ויצמן 65",
+    "phone": "054-5775031",
+    "description": "Gabai: שמאי יצחק",
+    "notes": "Gabai address: הגבורים 30"
+  },
+  {
+    "name": "פאר יפית*",
+    "destinationId": 339,
+    "address": "ליבורנו 36",
+    "phone": "054-6703670",
+    "description": "Gabai: בכור יוחאי"
+  },
+  {
+    "name": "פרדס רימונים",
+    "destinationId": 339,
+    "address": "השלושה 52",
+    "phone": "052-5673673",
+    "description": "Gabai: סויסה אברהם",
+    "notes": "Gabai address: קבוץ גלויות 2"
+  },
+  {
+    "name": "צאן קדושים",
+    "destinationId": 339,
+    "address": "הלויתן 4",
+    "phone": "050-4189588 0504144804",
+    "description": "Gabai: חג'בי גל | Rabbi: הרב חג'בי גל",
+    "notes": "Gabai address: ס. הצפורנים 9"
+  },
+  {
+    "name": "צור משה",
+    "destinationId": 339,
+    "address": "הנרייטה סולד 4",
+    "phone": "050-4143927",
+    "description": "Gabai: שטרן אפרים",
+    "notes": "Gabai address: ת.ד. 1356 חולון"
+  },
+  {
+    "name": "צור משה",
+    "destinationId": 339,
+    "address": "מבצע סיני 48",
+    "phone": "054-4864177",
+    "description": "Gabai: חנן עובדיה"
+  },
+  {
+    "name": "קדושי עם ישראל",
+    "destinationId": 339,
+    "address": "ליבורנו 18",
+    "phone": "052-2584222",
+    "description": "Gabai: רכט יוסף",
+    "notes": "Gabai address: כובשי החרמון 15/2"
+  },
+  {
+    "name": "ר' מאיר בעל הנס",
+    "destinationId": 339,
+    "address": "נגבה 11",
+    "phone": "052-2533359",
+    "description": "Gabai: כדורי דוד"
+  },
+  {
+    "name": "ר' מאיר בעל הנס*",
+    "destinationId": 339,
+    "address": "השלושה 8",
+    "phone": "050-5252425",
+    "description": "Gabai: כדורי אפרים | Rabbi: הרב מזרחי",
+    "notes": "Gabai address: השלושה 23"
+  },
+  {
+    "name": "רינת משה",
+    "destinationId": 339,
+    "address": "ויצמן 65",
+    "phone": "5074503",
+    "description": "Gabai: חסן שמעון",
+    "notes": "Gabai address: נגבה 3"
+  },
+  {
+    "name": "רמב\"ם",
+    "destinationId": 339,
+    "address": "יצחק שדה",
+    "phone": "5517456",
+    "description": "Gabai: מוסרי מרדכי",
+    "notes": "Gabai address: הנביאים 28"
+  },
+  {
+    "name": "רמות ים",
+    "destinationId": 339,
+    "address": "בר אילן 27",
+    "phone": "054-4723868",
+    "description": "Gabai: ארביב עמוס-נשיא",
+    "notes": "Gabai address: חשמונאים 83"
+  },
+  {
+    "name": "רמות ים",
+    "destinationId": 339,
+    "address": "בר אילן 27",
+    "phone": "054-4223868",
+    "description": "Gabai: אברג'יל יהודה",
+    "notes": "Gabai address: בר אילן 25"
+  },
+  {
+    "name": "רמות ים*",
+    "destinationId": 339,
+    "address": "בר אילן 27",
+    "phone": "052-8551399",
+    "description": "Gabai: חביב גריסרו",
+    "notes": "Gabai address: ברנר 6"
+  },
+  {
+    "name": "רשב\"י",
+    "destinationId": 339,
+    "address": "מעברה",
+    "description": "Gabai: דיין אברהם",
+    "notes": "Gabai address: הנביאים 5"
+  },
+  {
+    "name": "רשב\"י",
+    "destinationId": 339,
+    "address": "רוטשילד 18",
+    "phone": "6590448",
+    "description": "Gabai: הרב שוקרון דוד",
+    "notes": "Gabai address: רטשילד 22"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 339,
+    "address": "מחרוזת 38",
+    "phone": "050-7466311",
+    "description": "Gabai: צורי-שדי משיח | Rabbi: הרב ישי",
+    "notes": "Gabai address: יאנוש קורצ'אק 7"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 339,
+    "address": "הגבורים 20",
+    "phone": "050-4126566",
+    "description": "Gabai: הרב כהן מרדכי"
+  },
+  {
+    "name": "שבת אחים*",
+    "destinationId": 339,
+    "address": "בזל 5",
+    "phone": "052-2440875,5525723",
+    "description": "Gabai: הראל מאיר",
+    "notes": "Gabai address: אחד העם 3"
+  },
+  {
+    "name": "שיבת ציון",
+    "destinationId": 339,
+    "address": "פרלשטיין 29",
+    "phone": "052-2502335",
+    "description": "Gabai: כתריאל אריה | Rabbi: הרב שילו ענקי",
+    "notes": "Gabai address: דנין 11"
+  },
+  {
+    "name": "שירי דוד",
+    "destinationId": 339,
+    "address": "ויצמן 25",
+    "phone": "5082653",
+    "description": "Gabai: גוילי אליהו | Rabbi: הרב ליאון כהן",
+    "notes": "Gabai address: דניאל 54"
+  },
+  {
+    "name": "שלום ורעות",
+    "destinationId": 339,
+    "address": "העצמאות 17",
+    "phone": "054-8020039",
+    "description": "Gabai: יעקב רוקח - ז'ק | Rabbi: הרב אהרון בראם",
+    "notes": "Gabai address: המצות 18 ראשל\"צ"
+  },
+  {
+    "name": "שער ציון",
+    "destinationId": 339,
+    "address": "חשמונאים 27",
+    "phone": "052-76198135070392",
+    "description": "Gabai: דואני דניאל",
+    "notes": "Gabai address: משה שרת 24"
+  },
+  {
+    "name": "שערי צדק*",
+    "destinationId": 339,
+    "address": "מעבר ישי 6",
+    "phone": "054-6960950",
+    "description": "Gabai: ישי משה",
+    "notes": "Gabai address: דניאל 35"
+  },
+  {
+    "name": "שערי שמים",
+    "destinationId": 339,
+    "address": "סוקולוב 15",
+    "phone": "054-5498917",
+    "description": "Gabai: ג'ק אדרי",
+    "notes": "Gabai address: קוקיס 15"
+  },
+  {
+    "name": "שערי תקוה",
+    "destinationId": 339,
+    "address": "העצמאות 7/10",
+    "phone": "054-4425420",
+    "description": "Gabai: יהושע סייהו",
+    "notes": "Gabai address: אנה פרנק 26"
+  },
+  {
+    "name": "שרפי קודש",
+    "destinationId": 339,
+    "address": "העצמאות 61",
+    "phone": "055-8811306",
+    "description": "Gabai: הרב יצחק חן נעמן",
+    "notes": "Gabai address: ויצמן 41"
+  },
+  {
+    "name": "תורת ישרים",
+    "destinationId": 339,
+    "address": "עוזיאל 25",
+    "phone": "052-2926169",
+    "description": "Gabai: פרץ דניאל",
+    "notes": "Gabai address: עוזיאל 6"
+  },
+  {
+    "name": "תפארת בנים",
+    "destinationId": 339,
+    "address": "רבינוביץ' 15",
+    "phone": "052-2753772",
+    "description": "Gabai: עמר יצחק",
+    "notes": "Gabai address: בלפור 129"
+  },
+  {
+    "name": "תפארת בנים",
+    "destinationId": 339,
+    "address": "רבינוביץ' 15",
+    "phone": "5515090",
+    "description": "Gabai: פרץ יהודה"
+  },
+  {
+    "name": "תפארת יהדות בוכרה",
+    "destinationId": 339,
+    "address": "רבינוביץ' 15",
+    "phone": "054-8101049",
+    "description": "Gabai: בבאקוב ניסן | Rabbi: הרב ציונוב משה",
+    "notes": "Gabai address: הנביאים 49"
+  },
+  {
+    "name": "תפארת ציון",
+    "destinationId": 339,
+    "address": "הגבורים 1",
+    "phone": "052-8209209,5074126",
+    "description": "Gabai: דרין שלום",
+    "notes": "Gabai address: ויצמן 19"
+  },
+  {
+    "name": "תפארת שלום",
+    "destinationId": 339,
+    "address": "ישראליס 1",
+    "phone": "5074902",
+    "description": "Gabai: ערמי עוזיאל",
+    "notes": "Gabai address: יוספטל 101/32"
+  },
+  {
+    "name": "תפילת אחים",
+    "destinationId": 339,
+    "address": "גינוסר 26",
+    "phone": "054-7398287",
+    "description": "Gabai: חיים אקוקה"
+  },
+  {
+    "name": "תפילת אחים*",
+    "destinationId": 339,
+    "address": "הרצל(תחכמוני)",
+    "phone": "052-9458957,5065333",
+    "description": "Gabai: כרובי ראובן | Rabbi: הרב לוי מאיר",
+    "notes": "Gabai address: הרצל 82"
+  },
+  {
+    "name": "מרכז חבד לובביץ'",
+    "destinationId": 339,
+    "address": "קינמון 27",
+    "phone": "052-8858613",
+    "description": "Gabai: חיים הורביץ | Rabbi: הרב שמואל אניג'ר",
+    "notes": "Gabai address: השקמה"
+  }
+]

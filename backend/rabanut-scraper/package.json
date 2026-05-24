@@ -1,0 +1,15 @@
+{
+  "name": "rabanut-scraper",
+  "version": "1.0.0",
+  "description": "Playwright scraper for rabanut.co.il synagogue directory",
+  "main": "scrape.js",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "scrape:headed": "node scrape.js --headed",
+    "scrape:debug": "node scrape.js --debug"
+  },
+  "dependencies": {
+    "pg": "^8.20.0",
+    "playwright": "^1.44.0"
+  }
+}

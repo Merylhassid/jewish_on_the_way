@@ -1,0 +1,3092 @@
+[
+  {
+    "name": "אבוא ביתך",
+    "destinationId": 331,
+    "address": "זאב חקלאי 4, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית אהרון",
+    "destinationId": 331,
+    "address": "דרך החורש 90 רמות ב, בכניסה לגן קיפוד, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "\"אהבה ואחוה\"",
+    "destinationId": 331,
+    "address": "שאולזון 18, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "\"אשר\"",
+    "destinationId": 331,
+    "address": "יהודה {פינת פיר קניק 44, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "\"פאתי מזרח\"",
+    "destinationId": 331,
+    "address": "דוד פדרמן 14, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "׳הקהל׳ מניין שוויוני, בקעה",
+    "destinationId": 331,
+    "address": "יששכר 3, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "אביעזר",
+    "destinationId": 331,
+    "address": "הסנונית פינת שבו, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אביר יעקב",
+    "destinationId": 331,
+    "address": "שמואל נתן 4, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "אברהם",
+    "destinationId": 331,
+    "address": "גדעון.(?) בקעה גאולים, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אברהם אבינו",
+    "destinationId": 331,
+    "address": "קריית יובל, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אגודת אחים",
+    "destinationId": 331,
+    "address": "זולטי 6, ירושלים"
+  },
+  {
+    "name": "אדמון ספרא",
+    "destinationId": 331,
+    "address": "שמואל יפה 6, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אדר יהודה",
+    "destinationId": 331,
+    "address": "רינה ניקובה 5, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "אדרת אליהו",
+    "destinationId": 331,
+    "address": "התאנה 1, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אהבת ישראל",
+    "destinationId": 331,
+    "address": "כפר עציון 8, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "אהבת ישראל",
+    "destinationId": 331,
+    "address": "מעבר המתלה 5, ירושלים"
+  },
+  {
+    "name": "אהבת שלום",
+    "destinationId": 331,
+    "address": "מיצרי טירן, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אהל אבות",
+    "destinationId": 331,
+    "address": "אריה אלטמן פסגת זאב מרכז 1, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אהל אבשלום",
+    "destinationId": 331,
+    "address": "יצחק רובינשטיין, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "אהל אהרון",
+    "destinationId": 331,
+    "address": "חרל\"פ 29, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אהל דוד",
+    "destinationId": 331,
+    "address": "קוסובסקי 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אהל יצחק",
+    "destinationId": 331,
+    "address": "שמיר 35, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אהל יצחק",
+    "destinationId": 331,
+    "address": "סלומון נחלת שיבעה, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אהל מרים",
+    "destinationId": 331,
+    "address": "אגריפס 24, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "אהל רבקה",
+    "destinationId": 331,
+    "address": "חרלפ 15, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אהל רבקה",
+    "destinationId": 331,
+    "address": "חרל\"פ 15, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אהל רחל",
+    "destinationId": 331,
+    "address": "דוד ילין 36, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אהל רחל",
+    "destinationId": 331,
+    "address": "משה דיין 78, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אהל רחל דיין",
+    "destinationId": 331,
+    "address": "פולונסקי 16, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אהל שלמה",
+    "destinationId": 331,
+    "address": "עלי הכהן 6, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "אהל שמואל",
+    "destinationId": 331,
+    "address": "ההגנה 17, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אהליאב",
+    "destinationId": 331,
+    "address": "אגריפס 127, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אוהבי ציון",
+    "destinationId": 331,
+    "address": "שילה 23, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אוהל גבריאל ואברהם",
+    "destinationId": 331,
+    "address": "בצראווי בצלאל 27, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אוהל דוד",
+    "destinationId": 331,
+    "address": "קוברסקי, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אוהל חנה",
+    "destinationId": 331,
+    "address": "שלמה,פסגת זאב, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אוהל יוסף",
+    "destinationId": 331,
+    "address": "האר\"י 5, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אוהל יוסף",
+    "destinationId": 331,
+    "address": "משה שאולי 12, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אוהל יצחק",
+    "destinationId": 331,
+    "address": "וושינגטון 12, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "Home",
+    "destinationId": 331,
+    "address": "הזזת התצוגה שמאלה ב-75%, ירושלים"
+  },
+  {
+    "name": "End",
+    "destinationId": 331,
+    "address": "הזזת התצוגה ימינה ב-75%, ירושלים"
+  },
+  {
+    "name": "Page Up",
+    "destinationId": 331,
+    "address": "הזזת התצוגה למעלה ב-75%, ירושלים"
+  },
+  {
+    "name": "Page Down",
+    "destinationId": 331,
+    "address": "הזזת התצוגה למטה ב-75%, ירושלים"
+  },
+  {
+    "name": "אוהל יצחק",
+    "destinationId": 331,
+    "address": "הרב קוסובסקי 14, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אוהל ישראל",
+    "destinationId": 331,
+    "address": "ירמיהו 15, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "אוהל לאה",
+    "destinationId": 331,
+    "address": "נווה שאנן 11, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "אוהל משה",
+    "destinationId": 331,
+    "address": "שלמה המלך 10, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אוהל משה",
+    "destinationId": 331,
+    "address": "הסביון 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אוהל שלום",
+    "destinationId": 331,
+    "address": "גדעון 16, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אוהל שרה",
+    "destinationId": 331,
+    "address": "הממציא 9, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אוהל שרה",
+    "destinationId": 331,
+    "address": "דב סדן 15, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "אוהל-נחמה",
+    "destinationId": 331,
+    "address": "שופן 3, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אור החיים",
+    "destinationId": 331,
+    "address": "אור החיים 6, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אור החיים",
+    "destinationId": 331,
+    "address": "פסגת זאב מזרח, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "אור החיים מיסודו של הרב שמעון דריהם זצ\"ל",
+    "destinationId": 331,
+    "address": "אלעזר בן יאיר 11, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אור הצפון",
+    "destinationId": 331,
+    "address": "בר אילן, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אור השלום",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אור זרוע",
+    "destinationId": 331,
+    "address": "רפאלי 3, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "אור ישראל",
+    "destinationId": 331,
+    "address": "בן יהודה 5, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אור פני יהושע",
+    "destinationId": 331,
+    "address": "בית ישראל, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אור שרה",
+    "destinationId": 331,
+    "address": "צאלים 8, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אורות החומה",
+    "destinationId": 331,
+    "address": "הרב יצחק ניסים 76, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אורח חיים",
+    "destinationId": 331,
+    "address": "דן פאגיס פסגת זאב מזרח, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "אורפלים",
+    "destinationId": 331,
+    "address": "בצלאל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "איטלקי",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "איש מצליח",
+    "destinationId": 331,
+    "address": "אריה בן אליעזר 62, ירושלים",
+    "description": "נוסח: תוניס"
+  },
+  {
+    "name": "אל רם ונישא",
+    "destinationId": 331,
+    "address": "אדם 24, ירושלים, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אלומים",
+    "destinationId": 331,
+    "address": "פארן 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אלומים הקטן",
+    "destinationId": 331,
+    "address": "נחליאל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אלי כהן",
+    "destinationId": 331,
+    "address": "הסביון, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 331,
+    "address": "פתח תקוה 1, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אלפי מנשה",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "אמונה שלמה",
+    "destinationId": 331,
+    "address": "רבקה 9א, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "אמרי שפר הר נוף",
+    "destinationId": 331,
+    "address": "קצנלבוגן 1, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אסירי המחתרות - אחדות ישראל",
+    "destinationId": 331,
+    "address": "משיח בורכוף (ליד מרכז כלל), ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "אפרתה",
+    "destinationId": 331,
+    "address": "השיש, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ארנונים",
+    "destinationId": 331,
+    "address": "ליב יפה, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ארץ הצבי",
+    "destinationId": 331,
+    "address": "נזר דוד 22, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "את יוסף",
+    "destinationId": 331,
+    "address": "שחל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "באזל",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בי כנסת אבי דוד",
+    "destinationId": 331,
+    "address": "אבן ספיר 5, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "בי\"ח שערי צדק",
+    "destinationId": 331,
+    "address": "בייט, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "ביאלה",
+    "destinationId": 331,
+    "address": "יעקובזון 1, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "ביה\"כ ע\"ש הרב שפרן",
+    "destinationId": 331,
+    "address": "הרב שפרן 1, מגדל אשר (מגדל המים), ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "ביהכ\"ס האשכנזי ליד בית ספר גונן ח ט",
+    "destinationId": 331,
+    "address": "השומר (גונן ח וט), ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "בית אבות בית באייר",
+    "destinationId": 331,
+    "address": "ים סוף 33, ירושלים"
+  },
+  {
+    "name": "בית אהרון",
+    "destinationId": 331,
+    "address": "חיים עוזר; בבית ישראל, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית אריאל",
+    "destinationId": 331,
+    "address": "הפסגה 5, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית הכנסת בני עקיבא",
+    "destinationId": 331,
+    "address": "מאיר בלבן 6, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית הכנסת האשכנזי רמת בית הכרם",
+    "destinationId": 331,
+    "address": "שלמה תוסיה כהן, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית הכנסת היכל פרשבורג",
+    "destinationId": 331,
+    "address": "גבעת שאול 5, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית הכנסת המרכזי בית הכרם",
+    "destinationId": 331,
+    "address": "בית הכרם 17, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "בית הכנסת המרכזי ישרון (ישורון)",
+    "destinationId": 331,
+    "address": "המלך ג'ורג' 44, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית הכנסת המרכזי פורת יוסף",
+    "destinationId": 331,
+    "address": "מחלקי המים 11, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית הכנסת הנשיא",
+    "destinationId": 331,
+    "address": "אוסישקין 24, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית הכנסת הספרדי ״ביתי יבנה״",
+    "destinationId": 331,
+    "address": "לייב יפה 11, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "בית הכנסת הספרדי הגדול",
+    "destinationId": 331,
+    "address": "סמדר 3, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית הכנסת הענק",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "בית הכנסת זכור לאברהם",
+    "destinationId": 331,
+    "address": "הנחש 3 מלחה, ירושלים"
+  },
+  {
+    "name": "בית הכנסת ע\"ש הרב משאש",
+    "destinationId": 331,
+    "address": "איתמר בן-אב\"י 5, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "בית הכנסת ע\"ש שי עגנון",
+    "destinationId": 331,
+    "address": "לייב יפה 11, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית המיון",
+    "destinationId": 331,
+    "address": "שטנר 5 גבעת שאול, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית חב\"ד רחביה",
+    "destinationId": 331,
+    "address": "אבן עזרא 2, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "בית חב״ד - מרכז משיח וגאולה",
+    "destinationId": 331,
+    "address": "יעבץ 8, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "בית חולים אלין",
+    "destinationId": 331,
+    "address": "אולסוונגר, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "בית חינוך עוורים",
+    "destinationId": 331,
+    "address": "דגל ראובן 1, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית יהודה",
+    "destinationId": 331,
+    "address": "אבישר 7, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית יהודה",
+    "destinationId": 331,
+    "address": "שושנה 18, ירושלים",
+    "description": "נוסח: צפון אפריקה"
+  },
+  {
+    "name": "בית יהודה",
+    "destinationId": 331,
+    "address": "מיכלין 29, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית יהודה",
+    "destinationId": 331,
+    "address": "נתאי הארבלי 38, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "בית יהודה",
+    "destinationId": 331,
+    "address": "הדף היומי, רמות א´ 610, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית יהודה - מוסד הרב קוק",
+    "destinationId": 331,
+    "address": "הרב מימון 2, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית יהודה ב\"בית בלב\"",
+    "destinationId": 331,
+    "address": "שדרות בן צבי 35, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית יוסף",
+    "destinationId": 331,
+    "address": "שמעוני 17, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית יוסף",
+    "destinationId": 331,
+    "address": "מקור חיים 142, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית יוסף (לרזה)",
+    "destinationId": 331,
+    "address": "אנטיגנוס 33, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית יוסף מוסיוף",
+    "destinationId": 331,
+    "address": "יעבץ 3 מאחורי תחנת רכבת הקלה יפו מרכז, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 331,
+    "address": "רח הבשם 2, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 331,
+    "address": "שירת ירושלמי, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית יעקב",
+    "destinationId": 331,
+    "address": "פארן, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית יעקב המרכזי",
+    "destinationId": 331,
+    "address": "סיירת גולני 7, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית יצחק",
+    "destinationId": 331,
+    "address": "משה גבירצמן 5, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית יצחק",
+    "destinationId": 331,
+    "address": "עובדיה סומך 11, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית ישראל",
+    "destinationId": 331,
+    "address": "אריה בן אליעזר 82, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "בית ישראל",
+    "destinationId": 331,
+    "address": "פלא יועץ 2, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית כנסת",
+    "destinationId": 331,
+    "address": "משטרת היישובים, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בית כנסת בראשי",
+    "destinationId": 331,
+    "address": "הרב יצחק בראשי 25, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית לוי",
+    "destinationId": 331,
+    "address": "יוסף חכמי, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "בית מדרש",
+    "destinationId": 331,
+    "address": "ברוריה 2, ירושלים"
+  },
+  {
+    "name": "בית מדרש תכלת מרדכי",
+    "destinationId": 331,
+    "address": "בעל השאילתות 30, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית מנחם",
+    "destinationId": 331,
+    "address": "אבן שפרוט 6, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "בית מנחם מענדל",
+    "destinationId": 331,
+    "address": "זווין 26, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "בית ציון",
+    "destinationId": 331,
+    "address": "מעגלות הרב פרדס, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בית שלמה",
+    "destinationId": 331,
+    "address": "אלפאדארי 10, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "בית שלמה",
+    "destinationId": 331,
+    "address": "דרך בית לחם 120, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית שלמה",
+    "destinationId": 331,
+    "address": "ורבורג 5, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית שלמה ומיכל",
+    "destinationId": 331,
+    "address": "השיש 7 גילה 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בית שמואל",
+    "destinationId": 331,
+    "address": "ארץ חפץ 113, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "בנ\"ע קרית משה",
+    "destinationId": 331,
+    "address": "בן ציון 7, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בני הרמה",
+    "destinationId": 331,
+    "address": "ישראל זרחי 22, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "בני יששכר ודברי חיים",
+    "destinationId": 331,
+    "address": "דרך חברון 110, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "בני ציון יגילו במלכם",
+    "destinationId": 331,
+    "address": "העירית 1, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "בניין בזק",
+    "destinationId": 331,
+    "address": "הצבי 15, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בעלזא",
+    "destinationId": 331,
+    "address": "דובר שלום 10, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "ברכת אברהם",
+    "destinationId": 331,
+    "address": "מלחה רח. ערד 5, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ברכת חיים",
+    "destinationId": 331,
+    "address": "יפו 212, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "בת עמי",
+    "destinationId": 331,
+    "address": "תחנה המרכזית ירושלים, קומה 3, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "ג´רמוקלים",
+    "destinationId": 331,
+    "address": "בצלאל, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "גאולים",
+    "destinationId": 331,
+    "address": "דרך בית לחם 81, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "גבעת פנחס בוסטון",
+    "destinationId": 331,
+    "address": "האדמו\"ר מרוז´ין 15, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "גיבורי ישראל",
+    "destinationId": 331,
+    "address": "מרגולין 3, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "דוד המלך",
+    "destinationId": 331,
+    "address": "הפורצים 13, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "דוד משה לוי",
+    "destinationId": 331,
+    "address": "לינקולן 8, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "דרך החיים",
+    "destinationId": 331,
+    "address": "אגסי 28, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "האגודה לתורה ולתפילה",
+    "destinationId": 331,
+    "address": "התומר - יפה נוף 5, ירושלים"
+  },
+  {
+    "name": "האשכנזי גילה ה",
+    "destinationId": 331,
+    "address": "תירוש, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "הגדול",
+    "destinationId": 331,
+    "address": "קינג גורג, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הגדול",
+    "destinationId": 331,
+    "address": "המלך ג'ורג, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "הגורל",
+    "destinationId": 331,
+    "address": "שכונת משכנות, אבולעפיה 31, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "הדתי לאומי הר נוף",
+    "destinationId": 331,
+    "address": "חי טייב 22, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "החורבה",
+    "destinationId": 331,
+    "address": "רובע יהודי, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "החורבה - בית יעקב",
+    "destinationId": 331,
+    "address": "היהודים, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "החורשה",
+    "destinationId": 331,
+    "address": "גן החורשה, ארנונה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "החיד\"א עיני",
+    "destinationId": 331,
+    "address": "בית וגן 44 44, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "היכל אברהם",
+    "destinationId": 331,
+    "address": "שמעון 4, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "היכל אריאל",
+    "destinationId": 331,
+    "address": "הרצוג ב\"ס אולינה, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "היכל דוד",
+    "destinationId": 331,
+    "address": "ברל לוקר 27, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "היכל יוסף",
+    "destinationId": 331,
+    "address": "הס 4, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "היכל יעקב",
+    "destinationId": 331,
+    "address": "ריינס 17, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "היכל נסים",
+    "destinationId": 331,
+    "address": "זווין, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "היכל רמות",
+    "destinationId": 331,
+    "address": "צונדק 6, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "הכללי- ותיקין",
+    "destinationId": 331,
+    "address": "חזקיהו המלך, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "המגדל",
+    "destinationId": 331,
+    "address": "הפסגה בית וגן 19, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "המנין של גבי שיינין",
+    "destinationId": 331,
+    "address": "הכתל המערבי, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "המרכזי -זכור לאברהם",
+    "destinationId": 331,
+    "address": "מן 10, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הנביא יחזקאל",
+    "destinationId": 331,
+    "address": "בראשי, ירושלים"
+  },
+  {
+    "name": "הנצו רימונים",
+    "destinationId": 331,
+    "address": "בן ציון 7, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "הספרדי בהר ציון - ע\"י קבר דוד המלך",
+    "destinationId": 331,
+    "address": "הר ציון, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "הספרדי הגדול",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "הספריה הלאומית",
+    "destinationId": 331,
+    "address": "אליעזר קפלן 1, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "הצבי ישראל",
+    "destinationId": 331,
+    "address": "חובבי ציון 14, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הקהילה החדשה בתלפיות - בית בויאר",
+    "destinationId": 331,
+    "address": "אפרתה 35, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הר חורב",
+    "destinationId": 331,
+    "address": "כ\"ט בנובמבר, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הר רפאים - אבו-טור",
+    "destinationId": 331,
+    "address": "נחשון 14, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "הראל",
+    "destinationId": 331,
+    "address": "השיירות 4, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "הרמב\"ן",
+    "destinationId": 331,
+    "address": "היהודים, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "ואני תפילה",
+    "destinationId": 331,
+    "address": "אושיסקין, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ויצו",
+    "destinationId": 331,
+    "address": "יגאל ידין, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "זהרי חמה",
+    "destinationId": 331,
+    "address": "יפו 92, ירושלים"
+  },
+  {
+    "name": "זוהר מיכל",
+    "destinationId": 331,
+    "address": "זאב פלק הר חומה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "זופניק",
+    "destinationId": 331,
+    "address": "גבעת שאול 7, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "זיו הפסגה",
+    "destinationId": 331,
+    "address": "מאיר גרשון 17, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "זיכרון משה",
+    "destinationId": 331,
+    "address": "הרב ש. שאולזון 51, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "זכור לאברהם",
+    "destinationId": 331,
+    "address": "מזל טלה 1, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "זכור לאברהם",
+    "destinationId": 331,
+    "address": "גבעת משואה, יצחק שליו 1, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "זכור לאברהם תפארת מלחה",
+    "destinationId": 331,
+    "address": "הנמר, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "זכור לאברהם, מרכזי גבעת מרדכי",
+    "destinationId": 331,
+    "address": "רחוב מן, גבעת מרדכי, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "זכות אבות",
+    "destinationId": 331,
+    "address": "זילברשטיין 1, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "זכות אבות",
+    "destinationId": 331,
+    "address": "פרץ ברנשטיין 3, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "זכרון אברהם",
+    "destinationId": 331,
+    "address": "רקנטי פינת גרינברג, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "זכרון יוסף",
+    "destinationId": 331,
+    "address": "אגסי 10, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "זכרון יעקב",
+    "destinationId": 331,
+    "address": "הגליל 7, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "זכרון מנחם",
+    "destinationId": 331,
+    "address": "ליאו ויסמן 5, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "זכרון קדושים",
+    "destinationId": 331,
+    "address": "מרקו ברוך -בקריית יובל- סמטה מאחורי \"מאפה קפה 14, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "זרח ברנט",
+    "destinationId": 331,
+    "address": "זרח ברנט 16, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "חאג´י יחזקאל",
+    "destinationId": 331,
+    "address": "אדוניהו הכהן 28, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 331,
+    "address": "צונדק, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 331,
+    "address": "אמצי´ה 2, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 331,
+    "address": "רמת שלמה, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חב\"ד גבעת מרדכי - היכל אבינעם",
+    "destinationId": 331,
+    "address": "גולד 4, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חב\"ד הר חוצבים",
+    "destinationId": 331,
+    "address": "קרית המדע 3, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חב\"ד תלפ\"ז",
+    "destinationId": 331,
+    "address": "שלמה בן יוסף 207, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חבד",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "חבד קרית יובל",
+    "destinationId": 331,
+    "address": "אורוגוואי 1, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "חברת אחים",
+    "destinationId": 331,
+    "address": "ר´ יוסף קארו 25, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "חברת משניות שיף שול",
+    "destinationId": 331,
+    "address": "אביעד 10, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "חומת רחל",
+    "destinationId": 331,
+    "address": "ברש רועי 15, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "חומת שלם",
+    "destinationId": 331,
+    "address": "שאול אביגור הר חומה 9, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "חומת שמואל",
+    "destinationId": 331,
+    "address": "הרב יצחק ניסים 48, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "חורב",
+    "destinationId": 331,
+    "address": "אבן גבירול 20, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "חזון יחזקאל",
+    "destinationId": 331,
+    "address": "המשוריינים פינת פלמ\"ח, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "חזון יחזקאל",
+    "destinationId": 331,
+    "address": "הגיא (בעיר העתיקה ) 68, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "חזון נחום",
+    "destinationId": 331,
+    "address": "המור 3, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "חי טייב",
+    "destinationId": 331,
+    "address": "הרקפת 9, ירושלים"
+  },
+  {
+    "name": "חיבת ציון וירושלים",
+    "destinationId": 331,
+    "address": "אבא הלל סילבר 16, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "חיבת רמות",
+    "destinationId": 331,
+    "address": "צונדק 1- רמות ב, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "חלונות שאגאל",
+    "destinationId": 331,
+    "address": "הדסה עין כרם, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "חנה ומשיח כהן",
+    "destinationId": 331,
+    "address": "שמואל תמיר 63, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "חניכי הישיבות",
+    "destinationId": 331,
+    "address": "רובין 33, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "חניכי הישיבות",
+    "destinationId": 331,
+    "address": "הלר 10, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "חסד ורחמים",
+    "destinationId": 331,
+    "address": "אהל משה, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "חסד לאברהם",
+    "destinationId": 331,
+    "address": "יהושע ברוכי 22, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "חסד לאברהם",
+    "destinationId": 331,
+    "address": "סן מרטין21, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "חסד לאברהם",
+    "destinationId": 331,
+    "address": "שמואל תמיר, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "חסידי גרוזיסק",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "טוביה",
+    "destinationId": 331,
+    "address": "זכרון טוביה 14, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "טילר",
+    "destinationId": 331,
+    "address": "אברהם שטרן 30, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "יביע אומר",
+    "destinationId": 331,
+    "address": "שרירא גאון 19, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "יגיע כפים",
+    "destinationId": 331,
+    "address": "מיכל פינס 18, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "יגל עקב של עולי מונסטיר",
+    "destinationId": 331,
+    "address": "אלפנדרי 28, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "יד אבי",
+    "destinationId": 331,
+    "address": "בורכוב 63, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "יד יוסף",
+    "destinationId": 331,
+    "address": "קלינמן 3, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "יד משה",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "יד שלום",
+    "destinationId": 331,
+    "address": "מעלות דפנה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "יד שלמה",
+    "destinationId": 331,
+    "address": "יונתן בן עוזיאל 4, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "יד שמעון",
+    "destinationId": 331,
+    "address": "פנינה 1, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "יד שרה",
+    "destinationId": 331,
+    "address": "שדרות הרצל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "יד תמר",
+    "destinationId": 331,
+    "address": "האר\"י 5, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ידידיה",
+    "destinationId": 331,
+    "address": "ליפשיץ, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "יוחנן בן זכאי",
+    "destinationId": 331,
+    "address": "משמרות הכהונה, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "יוסף חי",
+    "destinationId": 331,
+    "address": "מניה שוחט 2, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "יחי ראובן",
+    "destinationId": 331,
+    "address": "קהתי 19, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "יעקב חמווי",
+    "destinationId": 331,
+    "address": "בן אליעזר פינת יוסטן, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "יקר",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ירושלים השלימה",
+    "destinationId": 331,
+    "address": "ליפתא תחתית- מי נפתוח 128, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "יש למחוק - יש במאגר גרסה מדויקת יותר",
+    "destinationId": 331,
+    "address": "אין, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ישא ברכה",
+    "destinationId": 331,
+    "address": "ז´בוטינסקי 31, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "ישיבת איתרי",
+    "destinationId": 331,
+    "address": "משה ברעם 1 בית צפפה, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ישיבת הכותל",
+    "destinationId": 331,
+    "address": "תפארת ישראל, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "ישיבת חברון",
+    "destinationId": 331,
+    "address": "חגי 24, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ישיבת חברון",
+    "destinationId": 331,
+    "address": "הרב סרנא 4, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ישמח ישראל",
+    "destinationId": 331,
+    "address": "הגדנ\"ע 1, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "ישמח ישראל",
+    "destinationId": 331,
+    "address": "הגדנ''ע 1, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "ישמח משה",
+    "destinationId": 331,
+    "address": "מזכרת משה 15, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "ישראל",
+    "destinationId": 331,
+    "address": "קוסטה-ריקה 10, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "destinationId": 331,
+    "address": "בן - ציון 28, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "destinationId": 331,
+    "address": "רקנטי רמות ג, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "destinationId": 331,
+    "address": "מאיר נקר 3, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "כולל אורות המערב",
+    "destinationId": 331,
+    "address": "יעקב אליאב 5, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "כותל המזרח",
+    "destinationId": 331,
+    "address": "אליהו מרידור 5, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "ככר ספרא",
+    "destinationId": 331,
+    "address": "ככר ספרא 3, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "כלאתי",
+    "destinationId": 331,
+    "address": "פארן 17, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "כרם שלמה",
+    "destinationId": 331,
+    "address": "יצחק רפאל 7, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "כרם שלמה",
+    "destinationId": 331,
+    "address": "ג´רמי ציון 4, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "כתמר יפרח",
+    "destinationId": 331,
+    "address": "אורוגוואי 29, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "כתר אליהו",
+    "destinationId": 331,
+    "address": "הגננת 238, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "כתר אליהו ע\"ש הרב מרדכי אליהו זצ\"ל",
+    "destinationId": 331,
+    "address": "הרב פינחס קהתי 21, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "כתר תורה",
+    "destinationId": 331,
+    "address": "אלעזר בן יאיר 28, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "לב רמות",
+    "destinationId": 331,
+    "address": "שכטמן 101, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "לבקר בהיכלה",
+    "destinationId": 331,
+    "address": "קרית משה 1, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "למד דעת",
+    "destinationId": 331,
+    "address": "קאסוטו 5, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מאורות החומה",
+    "destinationId": 331,
+    "address": "הרב יצחק ניסים 65, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מאורות משה",
+    "destinationId": 331,
+    "address": "רקנטי אברהם 60, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מאיר ע\"ש ששת המיליונים",
+    "destinationId": 331,
+    "address": "אלכסנדריון 19, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מאיר עיני ישראל",
+    "destinationId": 331,
+    "address": "משגב לדך 28, ירושלים"
+  },
+  {
+    "name": "מגדל דוד",
+    "destinationId": 331,
+    "address": "ברניקי קטמון 26, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מגדל השושנים - פינסקר",
+    "destinationId": 331,
+    "address": "פינסקר 22, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מגדל עוז",
+    "destinationId": 331,
+    "address": "אליעזר הגדול 6, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "מגדל עוז דוד",
+    "destinationId": 331,
+    "address": "הסנונית 3, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 331,
+    "address": "נטרונאי גאון 13, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "מגן ישראל",
+    "destinationId": 331,
+    "address": "ע\"ח 4, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מדרש מטלון",
+    "destinationId": 331,
+    "address": "אלפנדרי 21, ירושלים"
+  },
+  {
+    "name": "מדרש משה",
+    "destinationId": 331,
+    "address": "קוסובסקי 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מדרש ספרדי",
+    "destinationId": 331,
+    "address": "גלעד, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "מוזס",
+    "destinationId": 331,
+    "address": "דוד מרץ 41, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מחנה ישראל",
+    "destinationId": 331,
+    "address": "הראובני 9, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "מישכן אהרון",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: תימן שאמי"
+  },
+  {
+    "name": "מכון מאיר",
+    "destinationId": 331,
+    "address": "שדרות המאירי 2, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מכללת הדסה",
+    "destinationId": 331,
+    "address": "החבצלת 8, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "מנורת המאור",
+    "destinationId": 331,
+    "address": "זוין 30 2, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מנחם ציון",
+    "destinationId": 331,
+    "address": "היהודים, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מנחת תלפיות",
+    "destinationId": 331,
+    "address": "בעלי המלאכה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מניין הורים",
+    "destinationId": 331,
+    "address": "בן ציון 7, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מניין קרליבך גבעת שאול",
+    "destinationId": 331,
+    "address": "רחוב נג'ארה 12, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "מניין רחוב דגל ראובן",
+    "destinationId": 331,
+    "address": "דגל ראובן 12, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מנין הורים-מימון",
+    "destinationId": 331,
+    "address": "בן ציון 7, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מנין פלך",
+    "destinationId": 331,
+    "address": "יהודה 31, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מנין קרליבך קמ\"ש",
+    "destinationId": 331,
+    "address": "בן ציון קומה 3 7, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מסורת שלום - אהל דאר",
+    "destinationId": 331,
+    "address": "גדליה בובליק 1, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "מסילת דוד המלך",
+    "destinationId": 331,
+    "address": "תחנת רכבת יצחק נבון, שדרות שז\"ר 6, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "מספר הסופר טעמעשוואר",
+    "destinationId": 331,
+    "address": "מעלות דפנה 128, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "מעיינות",
+    "destinationId": 331,
+    "address": "נרקיס 26, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "מעלה הזיתים",
+    "destinationId": 331,
+    "address": "מעלה הזיתים, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "מעלה הזיתים",
+    "destinationId": 331,
+    "address": "שכונת מעלה הזיתים, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "מעשה ניסים",
+    "destinationId": 331,
+    "address": "הרצל 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מעתוק",
+    "destinationId": 331,
+    "address": "אלישיב 2, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מצפה אריה",
+    "destinationId": 331,
+    "address": "אהרון אשכולי 110, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מצפה רמות",
+    "destinationId": 331,
+    "address": "אבן שמואל 3, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "מקדש אליהו",
+    "destinationId": 331,
+    "address": "רמת דניה, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מקור ברוך - סערט ויזניץ",
+    "destinationId": 331,
+    "address": "גרוסברג, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מקור חיים",
+    "destinationId": 331,
+    "address": "מקור חיים 42, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "מרכז הרב",
+    "destinationId": 331,
+    "address": "הרב צבי יהודה 12, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "מרכז שירות לב גן",
+    "destinationId": 331,
+    "address": "בית היוצר 9, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "משגב לדך",
+    "destinationId": 331,
+    "address": "חזקיהו המלך, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "משה ושלה ספרא",
+    "destinationId": 331,
+    "address": "משה אהרון טוב 8, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משה\"ב טנא, האשכנזי",
+    "destinationId": 331,
+    "address": "תירוש, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משואת שלום - גבעת משואה",
+    "destinationId": 331,
+    "address": "דולצ´ין, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "משכן מאיר",
+    "destinationId": 331,
+    "address": "אשכולי 110 רמות ב, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "משכן אברהם",
+    "destinationId": 331,
+    "address": "אליהו מרידור 9, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "משכן אריאל",
+    "destinationId": 331,
+    "address": "משה אהרן טוב 11, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "משכן אריאל",
+    "destinationId": 331,
+    "address": "התאנה 1, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "משכן באב\"ד",
+    "destinationId": 331,
+    "address": "בעל השאילתות, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "משכן גבריאל ובניו",
+    "destinationId": 331,
+    "address": "תירוש גילה ה´, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "משכן דוד",
+    "destinationId": 331,
+    "address": "תרשיש, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "משכן הלל",
+    "destinationId": 331,
+    "address": "שמחה הולצברג, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "משכן הלל",
+    "destinationId": 331,
+    "address": "הולצברג שמחה 12, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "משכן יעקב",
+    "destinationId": 331,
+    "address": "אלעזר בן יאיר 13, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "משכן יעקב",
+    "destinationId": 331,
+    "address": "חיל הקשר פסגת זאב מרכז, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משכן יעקב וישראל",
+    "destinationId": 331,
+    "address": "ראשית חכמה 11, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משכן יצחק (נחלת אמת",
+    "destinationId": 331,
+    "address": "פ\"ז הגדוד החמישי 3, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "משכן ראובן",
+    "destinationId": 331,
+    "address": "פינת אליהו חכים-אליעזר קשאני, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "משכן שלמה",
+    "destinationId": 331,
+    "address": "בר יוחאי 103, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "משכן שמואל",
+    "destinationId": 331,
+    "address": "רועי ברש 13, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משכן שמעון",
+    "destinationId": 331,
+    "address": "בן ציון 16, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "משכן שרגא",
+    "destinationId": 331,
+    "address": "שיבת ציון 10, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משכנות ארנונה",
+    "destinationId": 331,
+    "address": "פרימו לוי 8, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "משרד המשפטים חשבות ורכש",
+    "destinationId": 331,
+    "address": "המלך דוד 20, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "נדבורנה באניא",
+    "destinationId": 331,
+    "address": "דוד [הבוכרים] 21, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "נוה אברהם",
+    "destinationId": 331,
+    "address": "רמות ג´, רקנטיי, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "נוה אורות",
+    "destinationId": 331,
+    "address": "נרות שבת, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "נוה דוד",
+    "destinationId": 331,
+    "address": "ההגנה 13, גבעה צרפתית, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "נווה אורות",
+    "destinationId": 331,
+    "address": "הדף היומי רמות א´, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "נווה נוף",
+    "destinationId": 331,
+    "address": "פרנס 10, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "נווה נוף",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "נועם ספרדי",
+    "destinationId": 331,
+    "address": "חיים ויטל 32, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "נועם פת",
+    "destinationId": 331,
+    "address": "ברל לוקר 24, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "נוף ציון",
+    "destinationId": 331,
+    "address": "חיים קוברסקי בין 3 ל 4, נוף ציון, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "נזר אהרן",
+    "destinationId": 331,
+    "address": "העבודה, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "נחל אשכול",
+    "destinationId": 331,
+    "address": "זלמן ארן, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "נחלת גאולים",
+    "destinationId": 331,
+    "address": "פלורנטין, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "נחלת עזריאל יהודה",
+    "destinationId": 331,
+    "address": "זריצקי 1, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ניסים איובי",
+    "destinationId": 331,
+    "address": "דגן 68, ירושלים"
+  },
+  {
+    "name": "ניצנים",
+    "destinationId": 331,
+    "address": "אשר 3, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "נעם שיח",
+    "destinationId": 331,
+    "address": "שאול אביגור 11, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "נעם שיח, פסגת זאב",
+    "destinationId": 331,
+    "address": "רינה ניקובה 40, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "נץ החמה",
+    "destinationId": 331,
+    "address": "הארבעה, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "נצח ישראל (ריימעלס)",
+    "destinationId": 331,
+    "address": "רמב\"ן פינת אבן עזרא, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "נצחון ישראל",
+    "destinationId": 331,
+    "address": "חומת הצלפים, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "נתיבות ישראל",
+    "destinationId": 331,
+    "address": "רחוב נחמה (סוף הרחוב), ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "סאטמאר",
+    "destinationId": 331,
+    "address": "אבן האזל 24, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "סעאת",
+    "destinationId": 331,
+    "address": "א.מ. ברכיהו 13, ירושלים, ישראל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "ספינקא",
+    "destinationId": 331,
+    "address": "הרב סלנט 5, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "ע\"ש חזו דהן",
+    "destinationId": 331,
+    "address": "שמואל הנביא 106, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "ע\"ש טיילור",
+    "destinationId": 331,
+    "address": "שטרן 30, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "ע\"ש רבנו יוסף חיים ע\"ה",
+    "destinationId": 331,
+    "address": "דוב הוז 8, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "ע\"ש רייך",
+    "destinationId": 331,
+    "address": "מפרץ שלמה 10 גבעת המבתר, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "עבודת ישראל -קוזניץ",
+    "destinationId": 331,
+    "address": "שירת הים 10, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "עדס",
+    "destinationId": 331,
+    "address": "באר שבע 1, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "עוזר דלים",
+    "destinationId": 331,
+    "address": "השיירות 18, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "עזרא הר נוף",
+    "destinationId": 331,
+    "address": "חיי טייב, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "עזרת ישראל",
+    "destinationId": 331,
+    "address": "עזריאל הילדסהיימר 17, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "עטרת גילה ירושלים",
+    "destinationId": 331,
+    "address": "הסנונית 3, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "עטרת הפיסגה",
+    "destinationId": 331,
+    "address": "שמואל יפה 6, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "עטרת יצחק יוסף",
+    "destinationId": 331,
+    "address": "קצנלבוגן 44, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "עטרת מורדכי",
+    "destinationId": 331,
+    "address": "אבשלום חביב, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "עטרת נוף",
+    "destinationId": 331,
+    "address": "בראנד 15, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "עטרת נחמיה",
+    "destinationId": 331,
+    "address": "רש״י 101, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "עטרת ציון",
+    "destinationId": 331,
+    "address": "דרך החורש פינת אבן שמואל 98, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "עיר דוד",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "עיר דוד-טירה",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "עלי שיח",
+    "destinationId": 331,
+    "address": "יפו 208, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "עמליה",
+    "destinationId": 331,
+    "address": "הלר 29, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "עמק רפאים",
+    "destinationId": 331,
+    "address": "יעל 4, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "עץ החיים",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "עץ חיים",
+    "destinationId": 331,
+    "address": "שכונת עץ חיים ליד גשר המיתרים,ליד הורביץ מכוניות., ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "עתריד",
+    "destinationId": 331,
+    "address": "יצחק בן דור 15, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "פאר ירושלים",
+    "destinationId": 331,
+    "address": "אמציה 2, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "פאר ישראל",
+    "destinationId": 331,
+    "address": "הפורצים 13, ירושלים"
+  },
+  {
+    "name": "פיסגת תימן",
+    "destinationId": 331,
+    "address": "חיל הקשר 1, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "פני שמואל",
+    "destinationId": 331,
+    "address": "משקלוב 7, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "פני שמואל",
+    "destinationId": 331,
+    "address": "זאב חקלאי 4, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "פנים מאירות",
+    "destinationId": 331,
+    "address": "שאול אביגור, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "פסגת מוריה",
+    "destinationId": 331,
+    "address": "יחזקאל גויטן 12, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "פקודת אלעזר",
+    "destinationId": 331,
+    "address": "הנביאים 53, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "צא\"י",
+    "destinationId": 331,
+    "address": "חזקיהו שבתאי 18, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "צדק ורחמים",
+    "destinationId": 331,
+    "address": "יפו, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "צוף דבש",
+    "destinationId": 331,
+    "address": "פלוגת הכותל, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "צלחה ומזל",
+    "destinationId": 331,
+    "address": "שבזי 21, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "צמח צדק- חב\"ד",
+    "destinationId": 331,
+    "address": "חב\"ד 31, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "צמרת ארנונה",
+    "destinationId": 331,
+    "address": "השופט חיים כהן 13 (בתוך בית הספר), ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "צעירי מנחם",
+    "destinationId": 331,
+    "address": "ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "צעירי עיר גנים",
+    "destinationId": 331,
+    "address": "קוסטה ריקה 2, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "צעירי פרס",
+    "destinationId": 331,
+    "address": "אגריפס 127, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "צעירי קטמון",
+    "destinationId": 331,
+    "address": "חיל נשים 6, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "צעקת הדל",
+    "destinationId": 331,
+    "address": "השיירות 14, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "קאמארנא",
+    "destinationId": 331,
+    "address": "ארזי הבירה 48, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "קדושת לוי",
+    "destinationId": 331,
+    "address": "דרך החורש 92, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "קהילת \"באורך\" מקור חיים",
+    "destinationId": 331,
+    "address": "בן דב 3, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קהילת \"חבת ירושלים\"",
+    "destinationId": 331,
+    "address": "אליעזר קשאני 26, פינת אליהו חכים, ארמון הנציב, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קהילת בני תורה",
+    "destinationId": 331,
+    "address": "אגסי 5, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קהילת ידידיה",
+    "destinationId": 331,
+    "address": "נחום ליפשיץ 12, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קהילת יעקב",
+    "destinationId": 331,
+    "address": "יהודה 2, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "קהילת נעם - מנין הורים",
+    "destinationId": 331,
+    "address": "חיים ויטאל, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "קהילת צד\"ק",
+    "destinationId": 331,
+    "address": "ניקנור 26, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "קהילת קול צופייך",
+    "destinationId": 331,
+    "address": "מבוא מידב, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "קהילת רננים",
+    "destinationId": 331,
+    "address": "קינג גורג 58, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קהילת שלם",
+    "destinationId": 331,
+    "address": "הורקניה 17, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "קהילת-יעקב",
+    "destinationId": 331,
+    "address": "יהודה 2, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "קהל ישראל",
+    "destinationId": 331,
+    "address": "שמעון 13, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "קהל עדת ישורון",
+    "destinationId": 331,
+    "address": "נוף רמות 73, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קול דודי",
+    "destinationId": 331,
+    "address": "ישראל אהרוני, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "קול צופייך",
+    "destinationId": 331,
+    "address": "רח שי עגנון 22, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "קול ששון",
+    "destinationId": 331,
+    "address": "הרב יצחק ניסים, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "קול ששון",
+    "destinationId": 331,
+    "address": "נחום ליפשיץ, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "קרלין סטולין היכל רבינו יוחנן",
+    "destinationId": 331,
+    "address": "אבינועם ילין 11, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "קרן אור",
+    "destinationId": 331,
+    "address": "אבא הלל סילבר 3, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "קשת",
+    "destinationId": 331,
+    "address": "אלכסנדריון, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "ראו עמי",
+    "destinationId": 331,
+    "address": "יוסף שכטמן, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "ראשית",
+    "destinationId": 331,
+    "address": "קוסטה-ריקה 2, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "רבי דוד בן ברוך",
+    "destinationId": 331,
+    "address": "עיר גנים, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "רדליך",
+    "destinationId": 331,
+    "address": "נאג'רה 34, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "רוני קרה",
+    "destinationId": 331,
+    "address": "הרצל 6, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "רחביה",
+    "destinationId": 331,
+    "address": "אוסישקין, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "רחובות רשב\"י",
+    "destinationId": 331,
+    "address": "שפעים 7, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "רחמים מלמד הכהן",
+    "destinationId": 331,
+    "address": "שילה 20, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "רינת גבריאל",
+    "destinationId": 331,
+    "address": "אלמושננו פינת פאטל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "רמב\"ם",
+    "destinationId": 331,
+    "address": "קנאי הגליל, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "רמב\"ן",
+    "destinationId": 331,
+    "address": "אמציה 4, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "רמת בית הכרם",
+    "destinationId": 331,
+    "address": "אביזוהר 5, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "רמת מוצא",
+    "destinationId": 331,
+    "address": "רמת מוצא 24, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "רמת שלמה ע\"ש אדמונד ספרא",
+    "destinationId": 331,
+    "address": "קלכהיים 6, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "רמת שרת",
+    "destinationId": 331,
+    "address": "קדיש לוז 22, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "רמתיים צופים",
+    "destinationId": 331,
+    "address": "משעול הקורנית- רמות, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "רננים",
+    "destinationId": 331,
+    "address": "המלך גורג 58, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "רעות",
+    "destinationId": 331,
+    "address": "אליעזר הגדול 4, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "שארית יוסף",
+    "destinationId": 331,
+    "address": "סורצקין, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שבט אחים",
+    "destinationId": 331,
+    "address": "גואטמלה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 331,
+    "address": "הרקפת, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 331,
+    "address": "סולם יעקב, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "שבת אחים ליהדות מרוקו",
+    "destinationId": 331,
+    "address": "פלורנטין 4, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "שבת אחים ליוצאי מרוקו",
+    "destinationId": 331,
+    "address": "פלורנטין 4, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "שובה ישראל",
+    "destinationId": 331,
+    "address": "דוד המלך 6, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שטיבל גבעת המבתר",
+    "destinationId": 331,
+    "address": "מדבר סיני 45, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שטיבלך קטמון",
+    "destinationId": 331,
+    "address": "החי\"ש 18, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "שיח יצחק",
+    "destinationId": 331,
+    "address": "אלעזר המודעי 17, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "שיר חדש",
+    "destinationId": 331,
+    "address": "שופן 3, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "שירה חדשה",
+    "destinationId": 331,
+    "address": "עמק רפאים 12, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "שירת גנים (הרומנים)",
+    "destinationId": 331,
+    "address": "הרקפת, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שכון קרית משה - הבית הלבן",
+    "destinationId": 331,
+    "address": "גת 9, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שכונת שמעון הצדיק",
+    "destinationId": 331,
+    "address": "דרך הר הזיתים 14, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "של האדמו\"ר מסטריקוב",
+    "destinationId": 331,
+    "address": "צפניה 24, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שלום ורעות",
+    "destinationId": 331,
+    "address": "מן 8, ירושלים",
+    "description": "נוסח: תימן"
+  },
+  {
+    "name": "שלום ורעות",
+    "destinationId": 331,
+    "address": "אביגיל אבו טור 1, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שלמי חיים",
+    "destinationId": 331,
+    "address": "חייל הנשים 6, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שמואל הצעיר - הר חומה",
+    "destinationId": 331,
+    "address": "אליהו קורן 18, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "שמואל מאיר",
+    "destinationId": 331,
+    "address": "כיכר ספרא, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "שמחת שמואל",
+    "destinationId": 331,
+    "address": "דב גרונר, ירושלים",
+    "description": "נוסח: חב\"ד"
+  },
+  {
+    "name": "שמעון הצדיק",
+    "destinationId": 331,
+    "address": "בן בבא 4, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שער דרום",
+    "destinationId": 331,
+    "address": "אלי תבין, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שער השמיים",
+    "destinationId": 331,
+    "address": "רינגלבלום 10, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שער השמיים",
+    "destinationId": 331,
+    "address": "יאנוש קורצאק, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שער השמים",
+    "destinationId": 331,
+    "address": "הרכבת 53, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "שער שמים חסידים",
+    "destinationId": 331,
+    "address": "אמציה 12, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "שערי אליהו",
+    "destinationId": 331,
+    "address": "גדעון האוזנר 24, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שערי דוד",
+    "destinationId": 331,
+    "address": "אגרות משה, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שערי החומה",
+    "destinationId": 331,
+    "address": "ליכטנשטיין 25, ירושלים, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שערי חמה",
+    "destinationId": 331,
+    "address": "יפו, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שערי חסד",
+    "destinationId": 331,
+    "address": "אגר, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "שערי עזרא",
+    "destinationId": 331,
+    "address": "דוד רזיאל פינת רב החובל, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שערי ציון",
+    "destinationId": 331,
+    "address": "שכונת גילה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שערי ציון",
+    "destinationId": 331,
+    "address": "מעלות נחלת שבעה 10, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "שערי רחמים ושמחה",
+    "destinationId": 331,
+    "address": "רח´החי\"ל 45, קרוב למלון דן, ירושלים",
+    "description": "נוסח: אחיד"
+  },
+  {
+    "name": "ת\"ת מורשה",
+    "destinationId": 331,
+    "address": "רבי שלמה אלקבץ 52, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "תולדות יצחק",
+    "destinationId": 331,
+    "address": "הקבלן 18, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "תולדות שמואל",
+    "destinationId": 331,
+    "address": "גבעת שאול 25, ירושלים",
+    "description": "נוסח: אשכנז"
+  },
+  {
+    "name": "תפארת בנימי",
+    "destinationId": 331,
+    "address": "הרב כלפון משה הכהן 4, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "תפארת יוסף",
+    "destinationId": 331,
+    "address": "קוטשר 13, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "תפארת ירושלים- יזדים",
+    "destinationId": 331,
+    "address": "אדניהו הכהן 26, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "תפארת ישראל",
+    "destinationId": 331,
+    "address": "ר´ ישראל נאג´רה 39, ירושלים",
+    "description": "נוסח: תימן בלדי"
+  },
+  {
+    "name": "תפארת ישראל",
+    "destinationId": 331,
+    "address": "כורזין 5, ירושלים",
+    "description": "נוסח: לפי החזן"
+  },
+  {
+    "name": "תפארת ישרים",
+    "destinationId": 331,
+    "address": "גוואטמלה 14, ירושלים"
+  },
+  {
+    "name": "תפארת מנשה",
+    "destinationId": 331,
+    "address": "הר חומה, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "תפארת מנשה ובנימין",
+    "destinationId": 331,
+    "address": "הרב כלפון משה הכהן 4, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "תפארת משה",
+    "destinationId": 331,
+    "address": "עולי הגרדום 118, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "תפארת משה ורחל",
+    "destinationId": 331,
+    "address": "קדושי בבל 7, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "תפארת פז",
+    "destinationId": 331,
+    "address": "בצלאל בצראווי 24, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "תפארת ציון ושרה",
+    "destinationId": 331,
+    "address": "הרב מן ההר 20, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "תפארת רמות",
+    "destinationId": 331,
+    "address": "עלית הנוער 20, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "תפילה לדוד (אלמליח)",
+    "destinationId": 331,
+    "address": "עיר גנים הנורית, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "תפילה למשה",
+    "destinationId": 331,
+    "address": "דרך בית לחם 123, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "תפילה למשה",
+    "destinationId": 331,
+    "address": "עין כרם, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "תפילה למשה",
+    "destinationId": 331,
+    "address": "הרצל פינת הברון הירש 50, ירושלים",
+    "description": "נוסח: ספרד"
+  },
+  {
+    "name": "תפילת חנה (וינדיש)",
+    "destinationId": 331,
+    "address": "האדמו\"ר מרוז´ין 35, ירושלים",
+    "description": "נוסח: חסידי"
+  },
+  {
+    "name": "תפילת ישראל",
+    "destinationId": 331,
+    "address": "הממציא, ירושלים",
+    "description": "נוסח: ירושלמי"
+  },
+  {
+    "name": "תפילת ישראל",
+    "destinationId": 331,
+    "address": "תירוש, ירושלים",
+    "description": "נוסח: עדות המזרח"
+  },
+  {
+    "name": "תפילת ישראל שכונת גילה משה\"ב",
+    "destinationId": 331,
+    "address": "כניסה עם רכב אפשרית מול רחוב מרווה,שכונת גילה י-ם, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "תקוותינו",
+    "destinationId": 331,
+    "address": "זרובבל 7, ירושלים",
+    "description": "נוסח: מרוקו"
+  },
+  {
+    "name": "תקוותנו",
+    "destinationId": 331,
+    "address": "דרך האחיות, ירושלים",
+    "description": "נוסח: אשכנז"
+  }
+]

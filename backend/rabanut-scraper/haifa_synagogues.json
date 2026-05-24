@@ -1,0 +1,917 @@
+[
+  {
+    "name": "אגודת ישראל",
+    "destinationId": 395,
+    "address": "ארלוזורוב 10, חיפה"
+  },
+  {
+    "name": "אהבת חסד",
+    "destinationId": 395,
+    "address": "בצלאל 5 (בית יעקב), חיפה"
+  },
+  {
+    "name": "אהבת תורה- דחסידי ויז'ניץ",
+    "destinationId": 395,
+    "address": "מיכאל 1, חיפה"
+  },
+  {
+    "name": "אהל יעקב בישיבת בעלז",
+    "destinationId": 395,
+    "address": "התשעה 27, חיפה"
+  },
+  {
+    "name": "אהל יעקב",
+    "destinationId": 395,
+    "address": "נפתלי אימבר 17, חיפה"
+  },
+  {
+    "name": "אהל משה,שאץ-ויזניץ",
+    "destinationId": 395,
+    "address": "הרצל 60, חיפה"
+  },
+  {
+    "name": "אהל נחמן",
+    "destinationId": 395,
+    "address": "נתיב אליעזר 5 ויזני'ץ, חיפה"
+  },
+  {
+    "name": "אהב ישראל",
+    "destinationId": 395,
+    "address": "עבאס 14, חיפה"
+  },
+  {
+    "name": "אוהל יצחק (במתיבתא)",
+    "destinationId": 395,
+    "address": "מיכאל 20, חיפה"
+  },
+  {
+    "name": "אור התורה",
+    "destinationId": 395,
+    "address": "ארלוזורוב 10, חיפה"
+  },
+  {
+    "name": "אחוה - עדת הכורדים",
+    "destinationId": 395,
+    "address": "ברזילי 5, חיפה"
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 395,
+    "address": "גוש חלב 5, חיפה"
+  },
+  {
+    "name": "ארם צובא",
+    "destinationId": 395,
+    "address": "סירקין 29, חיפה"
+  },
+  {
+    "name": "דעת יואל",
+    "destinationId": 395,
+    "address": "ארלוזרוב 19, חיפה"
+  },
+  {
+    "name": "היכל אברהם משה",
+    "destinationId": 395,
+    "address": "אלנבי 10 (פינת הבנקים'המגינים 33)ת.ד 5198, חיפה"
+  },
+  {
+    "name": "היכל רגינה",
+    "destinationId": 395,
+    "address": "חסן שוקרי 4, חיפה"
+  },
+  {
+    "name": "המרכזי ובימ\"ד",
+    "destinationId": 395,
+    "address": "הרצל 60, חיפה"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 395,
+    "address": "הרצל 56, חיפה"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 395,
+    "address": "פרישמן 1, חיפה"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 395,
+    "address": "ארלוזרוב 6, חיפה"
+  },
+  {
+    "name": "חב\"ד לעולים",
+    "destinationId": 395,
+    "address": "הרצוג 3, חיפה"
+  },
+  {
+    "name": "חניכי ישיבות",
+    "destinationId": 395,
+    "address": "צפורה זיי'ד 3 (הפועל), חיפה"
+  },
+  {
+    "name": "חסידי ביאלא (פא\"י)",
+    "destinationId": 395,
+    "address": "מיכאל 1, חיפה"
+  },
+  {
+    "name": "חסידי בעלז",
+    "destinationId": 395,
+    "address": "חרמון 3, חיפה"
+  },
+  {
+    "name": "חסידי צאנז",
+    "destinationId": 395,
+    "address": "מיכאל 32א, חיפה"
+  },
+  {
+    "name": "חסידי קרלין סטולין",
+    "destinationId": 395,
+    "address": "יוסף 12, חיפה"
+  },
+  {
+    "name": "חסידי ראדזין",
+    "destinationId": 395,
+    "address": "גאולה 22, חיפה"
+  },
+  {
+    "name": "חתם סופר",
+    "destinationId": 395,
+    "address": "יל\"ג 11, חיפה"
+  },
+  {
+    "name": "יגל יעקב",
+    "destinationId": 395,
+    "address": "אבן עזרא 14, חיפה"
+  },
+  {
+    "name": "מאור ושמש",
+    "destinationId": 395,
+    "address": "לוד 2, חיפה"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 395,
+    "address": "מסדה 8 (בבי\"ס בסמ\"ת), חיפה"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 395,
+    "address": "השלוח 6, חיפה"
+  },
+  {
+    "name": "מגן אברהם",
+    "destinationId": 395,
+    "address": "הרצל 80, חיפה"
+  },
+  {
+    "name": "מורשה",
+    "destinationId": 395,
+    "address": "השילוח 6, חיפה"
+  },
+  {
+    "name": "מעונות גאולה",
+    "destinationId": 395,
+    "address": "סניף \"עזרא\", סוף רח' השלוח, חיפה"
+  },
+  {
+    "name": "עדת ישראל גאולה",
+    "destinationId": 395,
+    "address": "ארלוזרוב 19 בכולל דעת יואל, חיפה"
+  },
+  {
+    "name": "עולי סוריה ולבנון",
+    "destinationId": 395,
+    "address": "נפתלי אימבר 17א, חיפה"
+  },
+  {
+    "name": "פא\"'",
+    "destinationId": 395,
+    "address": "מיכאל 1, חיפה"
+  },
+  {
+    "name": "צעירי אגודת ישראל",
+    "destinationId": 395,
+    "address": "ביתר 1, חיפה"
+  },
+  {
+    "name": "קופרשטוק ע\"ש הרב",
+    "destinationId": 395,
+    "address": "צפת 5, חיפה"
+  },
+  {
+    "name": "רמבעה\"נ ע\"ש",
+    "destinationId": 395,
+    "address": "צידון 3, חיפה"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 395,
+    "address": "ביתר 2, חיפה"
+  },
+  {
+    "name": "שטרית בית יעקב",
+    "destinationId": 395,
+    "address": "הרב מרכוס 3, חיפה"
+  },
+  {
+    "name": "שער השמים",
+    "destinationId": 395,
+    "address": "ביאליק 8, חיפה"
+  },
+  {
+    "name": "שערי צדק הגליל",
+    "destinationId": 395,
+    "address": "חסן שוקרי 18, חיפה"
+  },
+  {
+    "name": "שערי רחמים (חאלב)",
+    "destinationId": 395,
+    "address": "השומר 13, חיפה"
+  },
+  {
+    "name": "תורת אמת",
+    "destinationId": 395,
+    "address": "בן-בבא 4 (בביה\"ס), חיפה"
+  },
+  {
+    "name": "תורת אמת - לצעירים",
+    "destinationId": 395,
+    "address": "בן-בבא 4 (בביה\"ס), חיפה"
+  },
+  {
+    "name": "תפארת ישראל (א)",
+    "destinationId": 395,
+    "address": "גאולה 1, חיפה"
+  },
+  {
+    "name": "תפארת צבי",
+    "destinationId": 395,
+    "address": "לבונטין 20, חיפה"
+  },
+  {
+    "name": "תעשיה צבאית",
+    "destinationId": 395,
+    "address": "תע\"ש, חוף הכרמל, חיפה"
+  },
+  {
+    "name": "התשבי - אהל יצחק",
+    "destinationId": 395,
+    "address": "בית אל 17, חיפה"
+  },
+  {
+    "name": "רמבעה\"נ ע\"ש",
+    "destinationId": 395,
+    "address": "נמל, חיפה"
+  },
+  {
+    "name": "בבי\"ח \"פלימן\"",
+    "destinationId": 395,
+    "address": "רח' זלמן שניאור, חיפה"
+  },
+  {
+    "name": "הגדול ברמות רמז",
+    "destinationId": 395,
+    "address": "בורוכוב 34, חיפה"
+  },
+  {
+    "name": "חב\"ד",
+    "destinationId": 395,
+    "address": "פינסקר 79, חיפה"
+  },
+  {
+    "name": "לעדה האשכנזית",
+    "destinationId": 395,
+    "address": "ברנר 15, חיפה"
+  },
+  {
+    "name": "לעדות המרח",
+    "destinationId": 395,
+    "address": "ברנר 15 ת\"ד 8345, חיפה"
+  },
+  {
+    "name": "המרכזי ורדיה",
+    "destinationId": 395,
+    "address": "ורדיה 24, חיפה"
+  },
+  {
+    "name": "היכל אליהו (ע\"ש החייל אליהו לחם)",
+    "destinationId": 395,
+    "address": "התמר 8, חיפה"
+  },
+  {
+    "name": "היכל שלמה (תפילה למשה)",
+    "destinationId": 395,
+    "address": "דרך הים 179, חיפה"
+  },
+  {
+    "name": "כרמל מערבי",
+    "destinationId": 395,
+    "address": "אילנות 18, חיפה"
+  },
+  {
+    "name": "מספנות ישראל",
+    "destinationId": 395,
+    "address": "במספנות ישראל, חיפה"
+  },
+  {
+    "name": "היכל קדושים",
+    "destinationId": 395,
+    "address": "ההגה 7, חיפה"
+  },
+  {
+    "name": "היכל קדושים",
+    "destinationId": 395,
+    "address": "העוגן 25, חיפה"
+  },
+  {
+    "name": "אהל אהרון",
+    "destinationId": 395,
+    "address": "קרית הטכניון, חיפה"
+  },
+  {
+    "name": "אהל ברכה",
+    "destinationId": 395,
+    "address": "שימקין 17, חיפה"
+  },
+  {
+    "name": "בבית אבות כרמל",
+    "destinationId": 395,
+    "address": "אידר 12, חיפה"
+  },
+  {
+    "name": "הספרדי באחוזה",
+    "destinationId": 395,
+    "address": "אידר 25 ת\"ד 7176, חיפה"
+  },
+  {
+    "name": "עוד יוסף חי /רמב\"ם",
+    "destinationId": 395,
+    "address": "הרב דוד אסף 3-5, חיפה"
+  },
+  {
+    "name": "היכל אבנר",
+    "destinationId": 395,
+    "address": "רח' שארית הפליטה 91, חיפה"
+  },
+  {
+    "name": "הוד הכרמל - ‎היכל שושנה",
+    "destinationId": 395,
+    "address": "רח' חוף השנהב 43, חיפה"
+  },
+  {
+    "name": "אבות ובנים בית ישראל",
+    "destinationId": 395,
+    "address": "קלר 6, חיפה"
+  },
+  {
+    "name": "המרכזי בהר הכרמל",
+    "destinationId": 395,
+    "address": "דרך הים 12 ת.ד 6057, חיפה"
+  },
+  {
+    "name": "מגדלי אלישע (מר שמואל סלומון)",
+    "destinationId": 395,
+    "address": "יאיר כץ 12, חיפה"
+  },
+  {
+    "name": "רוטנברג ע\"ש",
+    "destinationId": 395,
+    "address": "שדרות הנשיא 77 א', חיפה"
+  },
+  {
+    "name": "נצח ישראל",
+    "destinationId": 395,
+    "address": "שד' בן-גוריון 57, חיפה"
+  },
+  {
+    "name": "כל ישראל",
+    "destinationId": 395,
+    "address": "מצדה, מימון (בבי\"ס עירוני ג'), חיפה"
+  },
+  {
+    "name": "עקידת יצחק",
+    "destinationId": 395,
+    "address": "ש\"י עגנון 21 (בגן הילדים), חיפה"
+  },
+  {
+    "name": "פא\"י",
+    "destinationId": 395,
+    "address": "צה\"ל 69, חיפה"
+  },
+  {
+    "name": "היכל אליהו הנביא (אשכנזי)",
+    "destinationId": 395,
+    "address": "סטרומה 5, חיפה"
+  },
+  {
+    "name": "היכל אליהו הנביא (ספרדי)",
+    "destinationId": 395,
+    "address": "סטרומה, חיפה"
+  },
+  {
+    "name": "אבוחצירא ר' יעקב",
+    "destinationId": 395,
+    "address": "סעדיה גאון 25, חיפה"
+  },
+  {
+    "name": "רמת אשכול (ספרדי)",
+    "destinationId": 395,
+    "address": "ראול ולנברג 11, חיפה"
+  },
+  {
+    "name": "רמת אשכול (אשכנזי)",
+    "destinationId": 395,
+    "address": "ראול ולנברג 11, חיפה"
+  },
+  {
+    "name": "היכל חנה",
+    "destinationId": 395,
+    "address": "דרך צרפת 79 קומה ב', חיפה"
+  },
+  {
+    "name": "היכל חנניה",
+    "destinationId": 395,
+    "address": "דרך צרפת 79 קומה א', חיפה"
+  },
+  {
+    "name": "שערי תשובה",
+    "destinationId": 395,
+    "address": "אדמונד פלג 60, חיפה"
+  },
+  {
+    "name": "ביקור חולים",
+    "destinationId": 395,
+    "address": "בי\"ח רמב\"ם, ת\"ד 9602, חיפה"
+  },
+  {
+    "name": "בבי\"ח \"בני ציון\"",
+    "destinationId": 395,
+    "address": "גולומב 47, חיפה"
+  },
+  {
+    "name": "היכל זוהרה",
+    "destinationId": 395,
+    "address": "חנה סנש 23, חיפה"
+  },
+  {
+    "name": "יבנה - נצח ישראל",
+    "destinationId": 395,
+    "address": "ר' עקיבא 40 (בביה\"ס), חיפה"
+  },
+  {
+    "name": "כנסת ישראל",
+    "destinationId": 395,
+    "address": "רש\"י 1, חיפה"
+  },
+  {
+    "name": "תפארת מנשה",
+    "destinationId": 395,
+    "address": "בר גיורא 10, חיפה"
+  },
+  {
+    "name": "פאר ישראל",
+    "destinationId": 395,
+    "address": "קליבנוב 27, חיפה"
+  },
+  {
+    "name": "כרמליה",
+    "destinationId": 395,
+    "address": "רח' לאה 11 ת\"ד 6066, חיפה"
+  },
+  {
+    "name": "אביר יעקב",
+    "destinationId": 395,
+    "address": "ערד 35, חיפה"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 395,
+    "address": "התשעה, בלוק 3, חיפה"
+  },
+  {
+    "name": "היכל שמואל",
+    "destinationId": 395,
+    "address": "דרך יד לבנים 97 (בבי\"ס), חיפה"
+  },
+  {
+    "name": "המרכזי קריית אליהו",
+    "destinationId": 395,
+    "address": "רח' תל אביב 37-39, חיפה"
+  },
+  {
+    "name": "תפילה לדוד",
+    "destinationId": 395,
+    "address": "אל-אדריסי 12 (בבי\"ס סיני), חיפה"
+  },
+  {
+    "name": "אליקים ‎(בבי\"ס) ע\"י חנוך בן חיים",
+    "destinationId": 395,
+    "address": "שד' וורבורג 64, חיפה"
+  },
+  {
+    "name": "אמונה",
+    "destinationId": 395,
+    "address": "שביל האמונה, חיפה"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 395,
+    "address": "רח' משה חיים שפירא 16, חיפה"
+  },
+  {
+    "name": "בית תפילה",
+    "destinationId": 395,
+    "address": "שביל האמונה 3, חיפה"
+  },
+  {
+    "name": "היכל דוד בית יוסף עטרת יצחק",
+    "destinationId": 395,
+    "address": "רח' מולדת 10 ק. שמואל, חיפה"
+  },
+  {
+    "name": "היכל שלמה",
+    "destinationId": 395,
+    "address": "תורה ועבודה 9 ק' שמואל, חיפה"
+  },
+  {
+    "name": "המרכזי קרית שמואל",
+    "destinationId": 395,
+    "address": "תורה ועבודה 14, חיפה"
+  },
+  {
+    "name": "המשמרת הצעירה",
+    "destinationId": 395,
+    "address": "רח' משה חיים שפירא 20, חיפה"
+  },
+  {
+    "name": "הפוהמ\"ז (א)",
+    "destinationId": 395,
+    "address": "משה חיים שפירא 20, חיפה"
+  },
+  {
+    "name": "הרמה",
+    "destinationId": 395,
+    "address": "קדושי השואה 13, חיפה"
+  },
+  {
+    "name": "הרשב\"י",
+    "destinationId": 395,
+    "address": "מ\"ח שפירא 20, חיפה"
+  },
+  {
+    "name": "משכן משה",
+    "destinationId": 395,
+    "address": "ריינס 18 , ק' שמואל, חיפה"
+  },
+  {
+    "name": "משכנות גבורה",
+    "destinationId": 395,
+    "address": "שטרן 9, חיפה"
+  },
+  {
+    "name": "משכנות תפילה",
+    "destinationId": 395,
+    "address": "שטרן 7, חיפה"
+  },
+  {
+    "name": "נחלת בנימין",
+    "destinationId": 395,
+    "address": "שטרן 3, חיפה"
+  },
+  {
+    "name": "נפש חיה – חב\"ד",
+    "destinationId": 395,
+    "address": "בר אילן 29, חיפה"
+  },
+  {
+    "name": "פרחי אהרון בישיבה",
+    "destinationId": 395,
+    "address": "רח' הים התיון, חיפה"
+  },
+  {
+    "name": "מ\"ח שפירא",
+    "destinationId": 395,
+    "address": "קרית שמואל ב', חיפה"
+  },
+  {
+    "name": "שערי ישועה ע\"ש ר' ישעה בסיס",
+    "destinationId": 395,
+    "address": "נתיב בעל התניא, חיפה"
+  },
+  {
+    "name": "מאור יהודה",
+    "destinationId": 395,
+    "address": "בליטנטל 13, חיפה"
+  },
+  {
+    "name": "משכן יעקב\" בישיבה",
+    "destinationId": 395,
+    "address": "בליטנטל 41, חיפה"
+  },
+  {
+    "name": "אהל שם",
+    "destinationId": 395,
+    "address": "ככר היינה 20, חיפה"
+  },
+  {
+    "name": "אליהו הנביא",
+    "destinationId": 395,
+    "address": "שד' סיני 16, חיפה"
+  },
+  {
+    "name": "אריאל חורב",
+    "destinationId": 395,
+    "address": "חורב 26, חיפה"
+  },
+  {
+    "name": "בי\"ח כרמל",
+    "destinationId": 395,
+    "address": "רחוב הרופא 30, חיפה"
+  },
+  {
+    "name": "בית רבנו",
+    "destinationId": 395,
+    "address": "פיק\"א 8, חיפה"
+  },
+  {
+    "name": "ישראל יאיר",
+    "destinationId": 395,
+    "address": "אהוד 18, חיפה"
+  },
+  {
+    "name": "עדת ישראל",
+    "destinationId": 395,
+    "address": "מאפו 6, חיפה"
+  },
+  {
+    "name": "קהילת יעקוב",
+    "destinationId": 395,
+    "address": "חורב 20/22 בבית אבות בני ברית, חיפה"
+  },
+  {
+    "name": "אור ישראל",
+    "destinationId": 395,
+    "address": "קבוץ גלויות 28, חיפה"
+  },
+  {
+    "name": "יבנה (בביה\"ס)",
+    "destinationId": 395,
+    "address": "אליעזר אלתר 34, חיפה"
+  },
+  {
+    "name": "רמת הדר",
+    "destinationId": 395,
+    "address": "לאון בלום 2, חיפה"
+  },
+  {
+    "name": "יחד שבטי ישראל",
+    "destinationId": 395,
+    "address": "חטיבת כרמלי 46 א', חיפה"
+  },
+  {
+    "name": "יחד שבטי ישראל - ע\"ש אלי כהן",
+    "destinationId": 395,
+    "address": "ד' יד לבנים 57 (במדרגות), חיפה"
+  },
+  {
+    "name": "מוריה",
+    "destinationId": 395,
+    "address": "הירדן 52, חיפה"
+  },
+  {
+    "name": "פאר ישראל",
+    "destinationId": 395,
+    "address": "הירדן 52, חיפה"
+  },
+  {
+    "name": "ר' יהודה מעטי",
+    "destinationId": 395,
+    "address": "הירדן 26, חיפה"
+  },
+  {
+    "name": "המרכזי הגדול",
+    "destinationId": 395,
+    "address": "הרב הרצוג 5, חיפה"
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 395,
+    "address": "הגבורים 71, חיפה"
+  },
+  {
+    "name": "שערי תורה",
+    "destinationId": 395,
+    "address": "הגבורים 29 (בבית הנג'אדה), חיפה"
+  },
+  {
+    "name": "מר בבר אזולאי עבור: ביכנ\"ס ר' ישראל אבוחצירא",
+    "destinationId": 395,
+    "address": "דרך יד לבנים 210/28, חיפה"
+  },
+  {
+    "name": "אהל משה",
+    "destinationId": 395,
+    "address": "גדליהו 1 (רח' נחמיאס), חיפה"
+  },
+  {
+    "name": "בית אבות ספרדי",
+    "destinationId": 395,
+    "address": "גדליהו 1, חיפה"
+  },
+  {
+    "name": "היכל אוהבי תורתך",
+    "destinationId": 395,
+    "address": "דולצ'ין 3, חיפה"
+  },
+  {
+    "name": "היכל בנימין (אור וישועה)",
+    "destinationId": 395,
+    "address": "חניתה 96 (פינת טרומפלדור), חיפה"
+  },
+  {
+    "name": "היכל רפאל הלפרין",
+    "destinationId": 395,
+    "address": "ברל 41, חיפה"
+  },
+  {
+    "name": "היכל שמשון",
+    "destinationId": 395,
+    "address": "נתיב חן 27, חיפה"
+  },
+  {
+    "name": "זיו התורה",
+    "destinationId": 395,
+    "address": "הגליל 52, חיפה"
+  },
+  {
+    "name": "זיו ישראל",
+    "destinationId": 395,
+    "address": "רחבת בן ארצי 27, חיפה"
+  },
+  {
+    "name": "חסד לאברהם",
+    "destinationId": 395,
+    "address": "קליבנוב 27, חיפה"
+  },
+  {
+    "name": "מאור שאנן",
+    "destinationId": 395,
+    "address": "התיכון 39 (מעל א' הספורט), חיפה"
+  },
+  {
+    "name": "מנין נוער",
+    "destinationId": 395,
+    "address": "התיכון 39 (מרכז ת' דתי), חיפה"
+  },
+  {
+    "name": "מקור חיים (בביה\"ס)",
+    "destinationId": 395,
+    "address": "התיכון 39, חיפה"
+  },
+  {
+    "name": "משכן שאנן",
+    "destinationId": 395,
+    "address": "התיכון 39, חיפה"
+  },
+  {
+    "name": "נוה תפילה",
+    "destinationId": 395,
+    "address": "התיכון 39 (במרכז ת' דתי), חיפה"
+  },
+  {
+    "name": "נחלת הלויים",
+    "destinationId": 395,
+    "address": "רחבת בן ארצי 27, חיפה"
+  },
+  {
+    "name": "פאר ירושלים",
+    "destinationId": 395,
+    "address": "גורדון 1, חיפה"
+  },
+  {
+    "name": "שארית ישראל",
+    "destinationId": 395,
+    "address": "אילת 4, חיפה"
+  },
+  {
+    "name": "שוחרי תפילה",
+    "destinationId": 395,
+    "address": "התיכון 39 (בבי\"ס רמב\"ם), חיפה"
+  },
+  {
+    "name": "שער רחמים",
+    "destinationId": 395,
+    "address": "דרך יד לבנים 110/1, חיפה"
+  },
+  {
+    "name": "תפארת שאנן",
+    "destinationId": 395,
+    "address": "השל 2, חיפה"
+  },
+  {
+    "name": "עבור ביכנ\"ס ר' ישראל אבוחצירא",
+    "destinationId": 395,
+    "address": "דרך יד לבנים 210/28, חיפה"
+  },
+  {
+    "name": "גרצוולף -ביכנ\"ס מאור שאנן",
+    "destinationId": 395,
+    "address": "הגליל 19, חיפה"
+  },
+  {
+    "name": "פאר ישראל (בבי\"ס)",
+    "destinationId": 395,
+    "address": "צ'רניחובסקי 20, חיפה"
+  },
+  {
+    "name": "צ'רניחובסקי בבי\"ס",
+    "destinationId": 395,
+    "address": "צ'רניחובסקי, חיפה"
+  },
+  {
+    "name": "הרב יוסף חיים",
+    "destinationId": 395,
+    "address": "המלך דוד 22, חיפה"
+  },
+  {
+    "name": "הרב צירלזון",
+    "destinationId": 395,
+    "address": "המלך דוד 22, חיפה"
+  },
+  {
+    "name": "חכם אברהם",
+    "destinationId": 395,
+    "address": "המלך עוזיהו 6, חיפה"
+  },
+  {
+    "name": "נצח ישראל (רמבה\"נ)",
+    "destinationId": 395,
+    "address": "המלך דוד 4, חיפה"
+  },
+  {
+    "name": "רשב\"י",
+    "destinationId": 395,
+    "address": "המלך עוזיהו 6, חיפה"
+  },
+  {
+    "name": "תורת חיים",
+    "destinationId": 395,
+    "address": "המלך דוד 4, חיפה"
+  },
+  {
+    "name": "אברבנאל",
+    "destinationId": 395,
+    "address": "אברבנאל 13, חיפה"
+  },
+  {
+    "name": "אורח חיים",
+    "destinationId": 395,
+    "address": "צייטלין 45, חיפה"
+  },
+  {
+    "name": "בית אברהם",
+    "destinationId": 395,
+    "address": "אברבנאל 54, חיפה"
+  },
+  {
+    "name": "בית אל",
+    "destinationId": 395,
+    "address": "הראשונים 108, חיפה"
+  },
+  {
+    "name": "בית יצחק - אהל חדוה/לידי סולומון יעקב",
+    "destinationId": 395,
+    "address": "שד' דגניה 69/3, חיפה"
+  },
+  {
+    "name": "המרכזי ק' חיים",
+    "destinationId": 395,
+    "address": "הראשונים 55, חיפה"
+  },
+  {
+    "name": "ישורון",
+    "destinationId": 395,
+    "address": "חפציבה 28, חיפה"
+  },
+  {
+    "name": "שערי תפילה",
+    "destinationId": 395,
+    "address": "יבניאלי 14, חיפה"
+  },
+  {
+    "name": "ישראל הצעיר",
+    "destinationId": 395,
+    "address": "אורן 50, חיפה"
+  },
+  {
+    "name": "היכל השרון",
+    "destinationId": 395,
+    "address": "אנקוה 3, חיפה"
+  },
+  {
+    "name": "שער הרחמים",
+    "destinationId": 395,
+    "address": "סעדיה פז 36, חיפה"
+  }
+]

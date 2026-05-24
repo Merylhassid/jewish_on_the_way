@@ -1,0 +1,915 @@
+[
+  {
+    "name": "אביר יעקב",
+    "address": "סיני 17, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - בן טובים משה"
+  },
+  {
+    "name": "אבן העזר",
+    "address": "מבצע דני, ראש העין",
+    "destinationId": 326,
+    "denomination": "ספרדי",
+    "description": "שם גבאי - אליאסי ראובן"
+  },
+  {
+    "name": "אדמונד ספרא",
+    "address": "גון קנדי 28, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - ברזילי בני"
+  },
+  {
+    "name": "אהבת אחים - פסגות",
+    "address": "שבזי 180, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - גהסי שי"
+  },
+  {
+    "name": "אהבת חינם",
+    "address": "פול סמוליאן 2, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - נגר דביר"
+  },
+  {
+    "name": "אהבת ישראל",
+    "address": "יגאל אלון 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "ספרדי",
+    "description": "שם גבאי - יוסף אייל"
+  },
+  {
+    "name": "אהבת שלום",
+    "address": "יוסף מלאכי 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - חמרי עובדיה"
+  },
+  {
+    "name": "אוהל אברהם",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - בן טובים יעקב"
+  },
+  {
+    "name": "אוהל מועד",
+    "address": "הרצל 4, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - אחרק קובי"
+  },
+  {
+    "name": "אוהל משה",
+    "address": "מלכי ישראל 40, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - עזרא רצון"
+  },
+  {
+    "name": "אוהל משה ועמנואל",
+    "address": "המלך דוד 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - אלוני יהודה"
+  },
+  {
+    "name": "אוהל צדוק",
+    "address": "מהריץ 14, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - חבורה מאיר"
+  },
+  {
+    "name": "אור אברהם",
+    "address": "חותמי המגילה 12, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - יובל פדלד"
+  },
+  {
+    "name": "אור זרוע",
+    "address": "חזון איש 9, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - בשארי יאיר"
+  },
+  {
+    "name": "אחוות אחים",
+    "address": "הרש״ש 34, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - והב אוריאל"
+  },
+  {
+    "name": "אחים ורעים",
+    "address": "צה״ל 108, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - מנגדי יוסף"
+  },
+  {
+    "name": "אלבום",
+    "address": "רמב״ם 11, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - קרואני יחיאל"
+  },
+  {
+    "name": "אליעזר",
+    "address": "אבן גבירול 44, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - מעודה דניאל"
+  },
+  {
+    "name": "אמרי יוסף",
+    "address": "תורי זהב 1, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - אדלר ישראל"
+  },
+  {
+    "name": "אפיקי מים",
+    "address": "בזק 4, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - צארום עוזי"
+  },
+  {
+    "name": "אפיקי תימן",
+    "address": "גבעת הסלעים 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - מדוואל שמואל"
+  },
+  {
+    "name": "אפריון שלמה - ספרדי",
+    "address": "יונה 3, ראש העין",
+    "destinationId": 326,
+    "denomination": "תימני / ספרדי",
+    "description": "שם גבאי - הנדי יחיאל"
+  },
+  {
+    "name": "אפריון שלמה - תימני",
+    "address": "יונה 3, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי /שאמי",
+    "description": "שם גבאי - משרקי שמעון"
+  },
+  {
+    "name": "בי״ס צומח",
+    "address": "שי עגנון 1, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - כהן שניאור"
+  },
+  {
+    "name": "בית אהרון ושמואל",
+    "address": "יורם חתוכה 39, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - דוד נחמיה"
+  },
+  {
+    "name": "בית אל",
+    "address": "רש״י 79, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - יניב יעקב"
+  },
+  {
+    "name": "בית חב\"ד ראש העין",
+    "address": "יהודה הלוי 41, ראש העין",
+    "destinationId": 326,
+    "denomination": "חב\"ד",
+    "description": "שם גבאי - עקיבא בנימין"
+  },
+  {
+    "name": "בית חבד צעירים",
+    "address": "בזק 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "חב\"ד",
+    "description": "שם גבאי - כהן נחום"
+  },
+  {
+    "name": "בית יהודה",
+    "address": "יהדה הלוי 98, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - משפחת עמרם"
+  },
+  {
+    "name": "בית יעקב",
+    "address": "סנהדרין 6, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - פדל שלום"
+  },
+  {
+    "name": "בית יעקב נחלת יוסף",
+    "address": "צה״ל 93, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - דניאל לוי"
+  },
+  {
+    "name": "בית יעקב ע״ש מוסא יהודה",
+    "address": "אפק 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - צברי אבנר"
+  },
+  {
+    "name": "בית כנסת הספרדי",
+    "address": "ברקן 2, ראש העין",
+    "destinationId": 326,
+    "denomination": "ספרדי",
+    "description": "שם גבאי - יעקב בנימין"
+  },
+  {
+    "name": "בית כנסת חדש",
+    "address": "צהל 55, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - אשואל שמואל"
+  },
+  {
+    "name": "בית מנחם",
+    "address": "צה״ל 3, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - עמרני מנשה"
+  },
+  {
+    "name": "בית רפאל ברסלב",
+    "address": "שלום מנצורה 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "ברסלב",
+    "description": "שם גבאי - אלמגור אביחיל"
+  },
+  {
+    "name": "בית תפילה",
+    "address": "חזון איש 33, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - אחרק הראל"
+  },
+  {
+    "name": "בני עקיבא",
+    "address": "גון קנדי 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי"
+  },
+  {
+    "name": "ברהו סרקה",
+    "address": "גון קנדי 39, ראש העין",
+    "destinationId": 326,
+    "denomination": "ספרדי",
+    "description": "שם גבאי - מוגס סיום"
+  },
+  {
+    "name": "גבעת טל",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - ויזל יצחק"
+  },
+  {
+    "name": "דברי קהלת",
+    "address": "אפק 35, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - קהלת שלמה"
+  },
+  {
+    "name": "היכל דוד",
+    "address": "אבן גבירול 10, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - חג'בי אשר"
+  },
+  {
+    "name": "היכל הקודש",
+    "address": "שבזי 97, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - דוד גיא שיאחי"
+  },
+  {
+    "name": "היכל יד ושם",
+    "address": "גלוסקא 2, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - מג'הז יואל"
+  },
+  {
+    "name": "היכל מאיר ניסים",
+    "address": "עופרה חזה 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - חריר אסף"
+  },
+  {
+    "name": "היכל נוריאל",
+    "address": "מלכי ישראל 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - משפחת מלאכי"
+  },
+  {
+    "name": "היכל צדוק דעוס",
+    "address": "צהל 13, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - דעוס דורון"
+  },
+  {
+    "name": "היכל קדושים",
+    "address": "אבן גבירול 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - יצחק מתניה"
+  },
+  {
+    "name": "היכל שילה",
+    "address": "הדרור 25, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - הורביץ מנחם"
+  },
+  {
+    "name": "היכל שלום",
+    "address": "יהודה הלוי 47, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - צפר צוריאל"
+  },
+  {
+    "name": "היכל שלמה",
+    "address": "סנהדרין 50, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - דהרי שלומי"
+  },
+  {
+    "name": "המרכז הרוחני ליהדות תימן",
+    "address": "שילה 60, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - עטר עמוס"
+  },
+  {
+    "name": "המרכזי",
+    "address": "אפיקים 74, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - שני מאיר"
+  },
+  {
+    "name": "הספרדי מצפה אפק",
+    "address": "רמת הגולן 87, ראש העין",
+    "destinationId": 326,
+    "denomination": "ירושלמי",
+    "description": "שם גבאי - קורלי אייזיק"
+  },
+  {
+    "name": "הספרדי פסגות אפק (מאור ישראל)",
+    "address": "שבזי 182, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - סביליה רונן"
+  },
+  {
+    "name": "זכור לאברהם",
+    "address": "הרצל 4, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - מזרחי ראובן"
+  },
+  {
+    "name": "חזון עובדיה",
+    "address": "חזון איש 14, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - עובדיה יעקב"
+  },
+  {
+    "name": "חמדת הימים",
+    "address": "הרש״ש 39, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - קרני אבנר"
+  },
+  {
+    "name": "חסד לאברהם",
+    "address": "נתן שאול 7, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - דניאל ראדעי"
+  },
+  {
+    "name": "חסדי אברהם",
+    "address": "שבזי 97, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - אייל אדרי"
+  },
+  {
+    "name": "חפץ חיים",
+    "address": "גון קנדי פינת מלכי ישראל, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - אשואל אילן"
+  },
+  {
+    "name": "חפץ חיים",
+    "address": "רש״י 20, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - חג'בי שמעון"
+  },
+  {
+    "name": "יד הרמב\"ם",
+    "address": "אבן גבירול 3, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - עטרי עזרא"
+  },
+  {
+    "name": "יד לחללי צה\"ל",
+    "address": "המיילדת 15, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - נגר רביב"
+  },
+  {
+    "name": "יד רמה",
+    "address": "גרטרוד עליון 16, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - דריימן יהודה"
+  },
+  {
+    "name": "יד שמואל מקייטן",
+    "address": "אבן עזרא 21, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - מקייטן זכריה"
+  },
+  {
+    "name": "ימין משה",
+    "address": "שבזי 99, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - בהגלי אבנר"
+  },
+  {
+    "name": "יריעות שלמה",
+    "address": "יריעות שלמה 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - קוממי צביקה"
+  },
+  {
+    "name": "ישורון",
+    "address": "הבנים 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - פנחס משה"
+  },
+  {
+    "name": "ישורון",
+    "address": "גון קנדי 72, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - קוממי רז"
+  },
+  {
+    "name": "ישיבת אחים",
+    "address": "וולפסון 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - עטרי אבי"
+  },
+  {
+    "name": "ישיבת צדק ושלום",
+    "address": "חפץ חיים 6, ראש העין",
+    "destinationId": 326,
+    "denomination": "ירושלמי",
+    "description": "שם גבאי - נגר אליהו"
+  },
+  {
+    "name": "כנפי יונה",
+    "address": "חזון איש 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - משפחת זביב"
+  },
+  {
+    "name": "מגדל עוז",
+    "address": "הרצל 30, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - לוי מרדכי"
+  },
+  {
+    "name": "מגן אברהם",
+    "address": "הרב שלום שבזי 3, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - משפחת צומעי"
+  },
+  {
+    "name": "מגן דוד",
+    "address": "יצחק הלוי 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - מעודה יחיאל"
+  },
+  {
+    "name": "מדרש יחיאל",
+    "address": "מלכי ישראל 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - נגר אלעד"
+  },
+  {
+    "name": "מניין אברכים ובני תורה",
+    "address": "יהודה הלוי 130, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - מדמון יאיר"
+  },
+  {
+    "name": "מקלט",
+    "address": "חרמון 32, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - נהרי שלמה"
+  },
+  {
+    "name": "מרום ציון",
+    "address": "יהודה הלוי 43, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - דנוך עזריאל"
+  },
+  {
+    "name": "מרכז רוחני משכן משה",
+    "address": "מהריקא 10, ראש העין",
+    "destinationId": 326,
+    "denomination": "תמני /ספרדי",
+    "description": "שם גבאי - מעודה יחיעם"
+  },
+  {
+    "name": "מרכזי נווה אפק",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - שני מאיר"
+  },
+  {
+    "name": "משאת בנימין",
+    "address": "הנבאים 39, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - אחרק רחמים"
+  },
+  {
+    "name": "משכן אפק",
+    "address": "קרל לינדנשטיינר 6, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - כחול יואל"
+  },
+  {
+    "name": "משכן דוד",
+    "address": "הירקון 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - דורני שמשון"
+  },
+  {
+    "name": "משכן שמעון",
+    "address": "רש״י 94, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - פנחס גביר"
+  },
+  {
+    "name": "משכנות אחים",
+    "address": "הבנים 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - עובד יואב"
+  },
+  {
+    "name": "נביאי תימן",
+    "address": "אליהו הנביא 45, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - שרין נוני"
+  },
+  {
+    "name": "נוה אפיריון",
+    "address": "מהרי״ץ 13, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - עודד שמריהו"
+  },
+  {
+    "name": "נוה אפריון",
+    "address": "מהריץ 11, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - שמריה מרדכי"
+  },
+  {
+    "name": "נוה צדק",
+    "address": "שי עגנון 5, ראש העין",
+    "destinationId": 326,
+    "denomination": "אשכנזי",
+    "description": "שם גבאי - טוביה גולפור"
+  },
+  {
+    "name": "נוה קודש",
+    "address": "צה״ל 62, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - בשארי אליהו"
+  },
+  {
+    "name": "נווה צדק (ביה\"ס צומח)",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - רום ישי"
+  },
+  {
+    "name": "נווה שלום",
+    "address": "יבניאלי 10, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - מרחום יוסף"
+  },
+  {
+    "name": "נופרים",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - מאור אילן"
+  },
+  {
+    "name": "נחלת אחים",
+    "address": "סנהדרין 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - חריר אבנר"
+  },
+  {
+    "name": "נחלת יוסף",
+    "address": "שלום זכריה 11, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - גיבלי משה"
+  },
+  {
+    "name": "נחלת ישורון",
+    "address": "נביאים 12, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאבי / בלאדי",
+    "description": "שם גבאי - עטרי עמרם"
+  },
+  {
+    "name": "נחלת עמרם",
+    "address": "יהודה הלוי 125, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - עטרי רון"
+  },
+  {
+    "name": "נחלת ששון",
+    "address": "הבנים 2, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - ארקש עובדיה"
+  },
+  {
+    "name": "נצח ישראל",
+    "address": "צהל 29, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - מעדני עזרי"
+  },
+  {
+    "name": "נצח ישראל",
+    "address": "הירקון, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - כבל עזרא"
+  },
+  {
+    "name": "נתן אברהם (שוקר)",
+    "address": "צהל 99, ראש העין",
+    "destinationId": 326,
+    "denomination": "שרעבי",
+    "description": "שם גבאי - שוקר ישי"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "צה״ל 66, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - רצון יאיר"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "סנהדרין 75, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - הראל סולימן"
+  },
+  {
+    "name": "סוכת שלום שרעבי",
+    "address": "מלכי ישראל, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - משפחת שרעבי"
+  },
+  {
+    "name": "ע\"ש מארי סלימן",
+    "address": "קוממיות 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - גיאת אברהם"
+  },
+  {
+    "name": "ע\"ש פרחי יחיא",
+    "address": "הלחי 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - פרחי דניאל"
+  },
+  {
+    "name": "ע״ש אמנון בן יחיא",
+    "address": "רמב״ם 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - משפחת פדל"
+  },
+  {
+    "name": "עוד יוסף חי",
+    "address": "שלום מנצורה 2, ראש העין",
+    "destinationId": 326,
+    "denomination": "ספרדי",
+    "description": "שם גבאי - הכהן יצחק שלמה"
+  },
+  {
+    "name": "עמוד האש",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - בצלאלי ליאור"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "שבזי 52, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - ערמי אביהו"
+  },
+  {
+    "name": "פסגות אפק A (ביה\"ס צומח)",
+    "address": "שבזי 156, ראש העין",
+    "destinationId": 326,
+    "denomination": "ספרדי",
+    "description": "שם גבאי - אברבנאל גיל"
+  },
+  {
+    "name": "פסגות אפק- שערי שמים",
+    "address": "אלתרמן פינת עפרה חזה, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - מיכאל טולדנו"
+  },
+  {
+    "name": "צעירי פסגות אפק",
+    "address": "עופרה חזה 5, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - זונטג יוני"
+  },
+  {
+    "name": "קהילות יעקב",
+    "address": "ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - אברהם ישעיהו פנחס"
+  },
+  {
+    "name": "קהילת מתפללי מצפה אפק",
+    "address": "רמת הגולן, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - ישראל סיאני"
+  },
+  {
+    "name": "רמב\"ם - לב אחים",
+    "address": "גון קנדי 13, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - מליחי זמיר"
+  },
+  {
+    "name": "שארית הפליטה",
+    "address": "צה״ל 87, ראש העין",
+    "destinationId": 326,
+    "description": "שם גבאי - איתמר עוז"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "אלתרמן פינת עפרה חזה, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - שרון לוי"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "דקר 12, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - אחרק מיכאל"
+  },
+  {
+    "name": "שועת עניים",
+    "address": "אבן גבירול 26, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - אברהם חזי"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "גון קנדי, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - הנדי יוסף"
+  },
+  {
+    "name": "שם ועבר",
+    "address": "מנצורה 40, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - זכריה מרדכי"
+  },
+  {
+    "name": "שער השמים",
+    "address": "צה״ל 101, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - ראובן שוקר"
+  },
+  {
+    "name": "שערי צדק",
+    "address": "קהילת בני ישראל 3, ראש העין",
+    "destinationId": 326,
+    "denomination": "הודי",
+    "description": "שם גבאי - סגווקר שלום"
+  },
+  {
+    "name": "שערי רחמים",
+    "address": "שבזי 104, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - ערסי מיכאל"
+  },
+  {
+    "name": "שערי רחמים וג'ימה",
+    "address": "עליזה בגין 39, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - יצחק אורן"
+  },
+  {
+    "name": "שערי שמים",
+    "address": "העצמאות 5, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - קוממי גילי"
+  },
+  {
+    "name": "תורת חיים",
+    "address": "עמוסי 1, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלדי",
+    "description": "שם גבאי - אשרף נחמיה"
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "ששת הימים 4, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - משפחת עוקבי"
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "סעדיה גאון 21, ראש העין",
+    "destinationId": 326,
+    "denomination": "בלאדי",
+    "description": "שם גבאי - עוקשי יחיאל"
+  },
+  {
+    "name": "תפארת נתן שאול",
+    "address": "צה״ל 82, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - מיכאל יצחק"
+  },
+  {
+    "name": "תפארת עמרם",
+    "address": "גון קנדי, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - עמרם נעמי עבור אביצור"
+  },
+  {
+    "name": "תפארת שלום",
+    "address": "יצחק הלוי 15, ראש העין",
+    "destinationId": 326,
+    "denomination": "שאמי",
+    "description": "שם גבאי - תעיזי יואב"
+  }
+]

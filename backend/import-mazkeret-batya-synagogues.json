@@ -1,0 +1,17 @@
+[
+  {"name": "אביר יעקב", "address": "גן יואב, שד' אליהו 34, מזכרת בתיה", "denomination": "עדות המזרח - מרוקו", "phone": "058-7798273", "destinationId": 290},
+  {"name": "ארז", "address": "גן ארז, הרשקוביץ 9, מזכרת בתיה", "denomination": "משולב", "phone": "052-7703406", "destinationId": 290},
+  {"name": "אשירה", "address": "שד' מוטה גור 2, מזכרת בתיה", "denomination": "משולב", "phone": "052-3296923", "destinationId": 290},
+  {"name": "בית הכנסת הגדול", "address": "הרב מוהליבר 2, מזכרת בתיה", "denomination": "אשכנז", "phone": "050-3810068", "destinationId": 290},
+  {"name": "בר לב", "address": "מזכרת בתיה", "denomination": "אשכנז", "phone": "052-6903618", "destinationId": 290},
+  {"name": "החורשה", "address": "שקולניק 12, מזכרת בתיה", "denomination": "משולב", "phone": "054-3055055", "destinationId": 290},
+  {"name": "חב\"ד", "address": "נתיב השיירות 46, מזכרת בתיה", "denomination": "חב\"ד", "phone": "054-7926770", "destinationId": 290},
+  {"name": "ידיד נפש", "address": "אנה טיכו, מזכרת בתיה", "denomination": "אשכנז", "phone": "052-2942363", "destinationId": 290},
+  {"name": "ישי", "address": "שקולניק 17, מזכרת בתיה", "denomination": "דתי לאומי מעורב", "phone": "052-5546911", "destinationId": 290},
+  {"name": "מנייניטו", "address": "מזכרת בתיה", "denomination": "משולב", "phone": "052-8994985", "destinationId": 290},
+  {"name": "מניינמט", "address": "נורית 6א, מזכרת בתיה", "denomination": "אשכנז", "phone": "054-5321597", "destinationId": 290},
+  {"name": "שוויוני", "address": "הגורן 13, מזכרת בתיה", "denomination": "קונסרבטיבי", "phone": "054-5711370", "destinationId": 290},
+  {"name": "שיבת ציון יוצאי תימן", "address": "גן יואב, שד' אליהו 34, מזכרת בתיה", "denomination": "תימן", "phone": "054-4935991", "destinationId": 290},
+  {"name": "תורת משה", "address": "גן יואב, שד' אליהו 34, מזכרת בתיה", "denomination": "אתיופי", "phone": "052-3380930", "destinationId": 290},
+  {"name": "תפארת ישראל עולי לוב", "address": "גן יואב, שד' אליהו 34, מזכרת בתיה", "denomination": "עדות המזרח", "phone": "053-2239838", "destinationId": 290}
+]
