@@ -88,7 +88,7 @@ $token = (Invoke-RestMethod -Uri "http://localhost:3001/auth/login" `
   -Method Post -ContentType "application/json" `
   -Body '{"email":"daniyehudai@gmail.com","password":"daniel2109"}').access_token
 
-$data = Get-Content "backend/import-CITYNAME-synagogues.json" -Raw -Encoding UTF8
+$data = Get-Content "backend/imports/import-CITYNAME-synagogues.json" -Raw -Encoding UTF8
 
 $result = Invoke-RestMethod -Uri "http://localhost:3001/admin/synagogues/bulk" `
   -Method Post -ContentType "application/json; charset=utf-8" `
