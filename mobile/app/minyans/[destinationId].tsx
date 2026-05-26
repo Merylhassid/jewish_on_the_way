@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
   headerCenter:       { flex: 1 },
   headerTitle:        { fontSize: 20, fontWeight: '700', color: '#fff' },
   headerSub:          { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
-  addBtn:             { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7 },
+  addBtn:             { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7, marginRight: 44 },
   addBtnText:         { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
   filterRow:          { maxHeight: 48, backgroundColor: '#fff' },
   filterContent:      { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
