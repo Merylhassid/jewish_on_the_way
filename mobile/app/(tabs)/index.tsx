@@ -49,26 +49,14 @@ export default function DestinationsScreen() {
     if (!text) return;
     try {
       setSmartBusy(true);
+      // הבקאנד מטפל בהכל — מסווג קטגוריה + מחפש עיר ב-DB
+      const res = await client.post('/search', { text });
+      const { route, category, emoji, detectedCity } = res.data;
 
-      // מחפשים שם עיר בתוך הטקסט — מהרשימה הטעונה
-      const lower = text.toLowerCase();
-      const matched = allDestinations.find((d) =>
-        lower.includes(d.city.toLowerCase()) ||
-        lower.includes((d.name ?? '').toLowerCase())
-      );
-
-      const res = await client.post('/search', {
-        text,
-        destinationId: matched?.id,
-      });
-
-      const { route, category, emoji } = res.data;
-
-      if (!matched) {
-        // לא מצאנו עיר — שואלים את המשתמש
+      if (!detectedCity) {
         Alert.alert(
           `${emoji} זיהינו: ${category}`,
-          'לא זיהינו עיר ספציפית. בחר יעד מהרשימה ונסה שוב.',
+          'לא זיהינו עיר ספציפית בטקסט.\nנסה לכתוב למשל: "מסעדה כשרה בתל אביב"',
         );
         return;
       }
