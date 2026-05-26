@@ -25,4 +25,16 @@ client.interceptors.request.use(async (config) => {
   return config;
 });
 
+// Auto-logout on 401 (token expired)
+client.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      await AsyncStorage.removeItem('token');
+      // Trigger re-render by clearing storage — AuthProvider will detect and redirect to login
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default client;
