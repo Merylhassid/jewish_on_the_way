@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -33,15 +35,59 @@ function flagEmoji(countryCode: string) {
 export default function DestinationsScreen() {
   const { t } = useTranslation();
   const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [allDestinations, setAllDestinations] = useState<Destination[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  // ── חיפוש חכם ──────────────────────────────────────────────
+  const [smartText, setSmartText]   = useState('');
+  const [smartBusy, setSmartBusy]   = useState(false);
+
+  const handleSmartSearch = async () => {
+    const text = smartText.trim();
+    if (!text) return;
+    try {
+      setSmartBusy(true);
+
+      // מחפשים שם עיר בתוך הטקסט — מהרשימה הטעונה
+      const lower = text.toLowerCase();
+      const matched = allDestinations.find((d) =>
+        lower.includes(d.city.toLowerCase()) ||
+        lower.includes((d.name ?? '').toLowerCase())
+      );
+
+      const res = await client.post('/search', {
+        text,
+        destinationId: matched?.id,
+      });
+
+      const { route, category, emoji } = res.data;
+
+      if (!matched) {
+        // לא מצאנו עיר — שואלים את המשתמש
+        Alert.alert(
+          `${emoji} זיהינו: ${category}`,
+          'לא זיהינו עיר ספציפית. בחר יעד מהרשימה ונסה שוב.',
+        );
+        return;
+      }
+
+      router.push(route as any);
+    } catch {
+      Alert.alert('שגיאה', 'לא ניתן לחפש כרגע, נסה שוב');
+    } finally {
+      setSmartBusy(false);
+    }
+  };
 
   const fetchDestinations = async (q?: string) => {
     try {
       setError(false);
       const res = await client.get('/destinations', { params: q ? { q } : {} });
       setDestinations(res.data);
+      // שומרים את כל היעדים (ללא פילטר) לזיהוי עיר בחיפוש חכם
+      if (!q) setAllDestinations(res.data);
     } catch {
       setError(true);
     } finally {
@@ -76,6 +122,33 @@ export default function DestinationsScreen() {
             value={search}
             onChangeText={onSearch}
           />
+        </View>
+      </View>
+
+      {/* ── Smart Search Card ── */}
+      <View style={styles.smartCard}>
+        <Text style={styles.smartTitle}>✨ חיפוש חכם</Text>
+        <Text style={styles.smartSub}>כתוב בשפה חופשית מה אתה מחפש ואיפה</Text>
+        <View style={styles.smartRow}>
+          <TextInput
+            style={styles.smartInput}
+            placeholder={'למשל: "מסעדה כשרה בתל אביב"'}
+            placeholderTextColor="#8A96B0"
+            value={smartText}
+            onChangeText={setSmartText}
+            onSubmitEditing={handleSmartSearch}
+            returnKeyType="search"
+          />
+          <TouchableOpacity
+            style={[styles.smartBtn, (!smartText.trim() || smartBusy) && styles.smartBtnOff]}
+            onPress={handleSmartSearch}
+            disabled={!smartText.trim() || smartBusy}
+          >
+            {smartBusy
+              ? <ActivityIndicator color="#fff" size="small" />
+              : <Text style={styles.smartBtnText}>→</Text>
+            }
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -188,6 +261,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   chevronText: { fontSize: 18, color: '#0C2461', fontWeight: '700', lineHeight: 22 },
+
+  // Smart Search
+  smartCard:    { backgroundColor: '#fff', margin: 16, marginBottom: 8, borderRadius: 18, padding: 16, shadowColor: '#0C2461', shadowOpacity: 0.08, shadowRadius: 10, elevation: 3 },
+  smartTitle:   { fontSize: 16, fontWeight: '800', color: '#0C2461', marginBottom: 2 },
+  smartSub:     { fontSize: 12, color: '#8A96B0', marginBottom: 12 },
+  smartRow:     { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  smartInput:   { flex: 1, backgroundColor: '#F2F5FB', borderRadius: 12, paddingHorizontal: 14, paddingVertical: 11, fontSize: 14, color: '#0C1A2E', borderWidth: 1, borderColor: '#E0E6F0' },
+  smartBtn:     { backgroundColor: '#0C2461', borderRadius: 12, width: 44, height: 44, justifyContent: 'center', alignItems: 'center' },
+  smartBtnOff:  { backgroundColor: '#B0BAC8' },
+  smartBtnText: { color: '#fff', fontSize: 20, fontWeight: '700' },
 
   emptyBox: { alignItems: 'center', paddingTop: 64 },
   emptyIcon: { fontSize: 36, marginBottom: 12 },

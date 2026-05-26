@@ -9,10 +9,15 @@
  */
 
 import { Body, Controller, Post } from '@nestjs/common';
+import { IsString, IsOptional, IsNumber } from 'class-validator';
 import { ClassifierService } from './classifier.service';
 
 class SearchDto {
+  @IsString()
   text: string;
+
+  @IsOptional()
+  @IsNumber()
   destinationId?: number;
 }
 
