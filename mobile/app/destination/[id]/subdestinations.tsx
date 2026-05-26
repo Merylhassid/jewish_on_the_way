@@ -80,13 +80,16 @@ export default function SubdestinationsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
+        <Pressable style={styles.backBtn} onPress={() => router.back()} hitSlop={12}>
+          <Text style={styles.backText}>‹</Text>
         </Pressable>
+        <Text style={styles.flag}>{parent ? flagEmoji(parent.countryCode) : ''}</Text>
         <Text style={styles.headerTitle}>{parent?.city || 'Choose destination'}</Text>
-        <Text style={styles.headerSub}>
-          {parent?.country ? `Locations in ${parent.country}` : 'Choose a sub-destination'}
-        </Text>
+        <View style={styles.countryBadge}>
+          <Text style={styles.headerSub}>
+            {parent?.country ? `Locations in ${parent.country}` : 'Choose a sub-destination'}
+          </Text>
+        </View>
       </View>
 
       <View style={styles.searchWrapper}>
@@ -129,15 +132,23 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f0f4ff' },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   header: {
-    backgroundColor: '#1a3a6b',
-    paddingTop: 60,
-    paddingBottom: 24,
-    paddingHorizontal: 20,
+    backgroundColor: '#0C2461',
+    paddingTop: 64,
+    paddingBottom: 32,
+    paddingHorizontal: 24,
+    alignItems: 'center',
   },
-  backBtn: { position: 'absolute', top: 60, left: 20 },
-  backText: { fontSize: 24, color: '#fff' },
-  headerTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  headerSub: { fontSize: 14, color: '#a8c4e8' },
+  backBtn: { position: 'absolute', top: 62, left: 20 },
+  backText: { fontSize: 30, color: 'rgba(255,255,255,0.85)', lineHeight: 34 },
+  flag: { fontSize: 58, marginBottom: 12 },
+  headerTitle: { fontSize: 28, fontWeight: '800', color: '#fff', marginBottom: 8, letterSpacing: 0.2 },
+  countryBadge: {
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 4,
+  },
+  headerSub: { fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: '500' },
   searchWrapper: { paddingHorizontal: 16, paddingVertical: 12, backgroundColor: '#fff' },
   search: {
     backgroundColor: '#f0f4ff',
