@@ -22,6 +22,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -323,6 +324,7 @@ export default function HostingScreen() {
         <Pressable style={styles.backBtn} onPress={() => (mode === 'choose' ? router.back() : setMode('choose'))}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerTitle}>🏠 Shabbat Hosting</Text>
       </View>
 

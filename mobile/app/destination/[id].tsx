@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Destination {
   id: number;
@@ -68,6 +69,7 @@ export default function DestinationScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()} hitSlop={12}>
           <Text style={styles.backText}>‹</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.flag}>{flagEmoji(destination.countryCode)}</Text>
         <Text style={styles.city}>{destination.city}</Text>
         <View style={styles.countryBadge}>

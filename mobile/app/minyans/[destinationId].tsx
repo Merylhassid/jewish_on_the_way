@@ -17,6 +17,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Minyan {
   id: number;
@@ -196,6 +197,7 @@ export default function MinyansScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle}>🤝 Minyans</Text>
           <Text style={styles.headerSub}>

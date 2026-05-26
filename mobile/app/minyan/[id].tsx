@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import client from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
+import HomeButton from '@/src/components/HomeButton';
 
 interface MinyanDetail {
   id: number;
@@ -108,6 +109,7 @@ export default function MinyanDetailScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerEmoji}>{PRAYER_EMOJI[minyan.prayerType] ?? '🙏'}</Text>
         <Text style={styles.headerTitle}>{PRAYER_LABEL[minyan.prayerType]}</Text>
         {minyan.destination && (

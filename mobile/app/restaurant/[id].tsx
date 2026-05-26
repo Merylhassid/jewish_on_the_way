@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Restaurant {
   id: number;
@@ -78,6 +79,7 @@ export default function RestaurantDetailScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerEmoji}>{emoji}</Text>
         <Text style={styles.headerName}>{restaurant.name}</Text>
         {restaurant.destination && (
