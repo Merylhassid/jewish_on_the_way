@@ -1,4 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
+import HomeButton from '@/src/components/HomeButton';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -83,6 +84,7 @@ export default function SubdestinationsScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()} hitSlop={12}>
           <Text style={styles.backText}>‹</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.flag}>{parent ? flagEmoji(parent.countryCode) : ''}</Text>
         <Text style={styles.headerTitle}>{parent?.city || 'Choose destination'}</Text>
         <View style={styles.countryBadge}>
@@ -112,7 +114,7 @@ export default function SubdestinationsScreen() {
             style={styles.card}
             onPress={() => router.push(`/destination/${item.id}`)}
           >
-            <Text style={styles.flag}>{flagEmoji(item.countryCode)}</Text>
+            <Text style={styles.cardFlag}>{flagEmoji(item.countryCode)}</Text>
             <View style={styles.cardInfo}>
               <Text style={styles.cardCity}>{item.city}</Text>
               <Text style={styles.cardCountry}>{item.country}</Text>
@@ -171,7 +173,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     elevation: 2,
   },
-  flag: { fontSize: 36, marginRight: 14 },
+  cardFlag: { fontSize: 36, marginRight: 14 },
   cardInfo: { flex: 1 },
   cardCity: { fontSize: 17, fontWeight: '600', color: '#1a1a2e' },
   cardCountry: { fontSize: 13, color: '#888', marginTop: 2 },

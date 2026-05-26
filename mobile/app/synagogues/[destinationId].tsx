@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 import {
   calculateHaversineDistance,
   formatDistance,
@@ -129,6 +130,7 @@ export default function SynagoguesScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerTitle}>🕍 Synagogues</Text>
         <Text style={styles.headerSub}>
           {loading

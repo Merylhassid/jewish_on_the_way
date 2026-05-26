@@ -13,6 +13,7 @@ import {
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HomeButton from '@/src/components/HomeButton';
 import { io, Socket } from 'socket.io-client';
 import { useAuth } from '@/src/store/auth';
 import { API_URL } from '@/src/api/client';
@@ -160,6 +161,7 @@ export default function ChatScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle}>💬 Traveler Chat</Text>
           <View style={styles.statusDot}>

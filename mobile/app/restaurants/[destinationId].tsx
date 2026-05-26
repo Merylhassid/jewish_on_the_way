@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Restaurant {
   id: number;
@@ -121,6 +122,7 @@ export default function RestaurantsScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerTitle}>🍽️ Kosher Restaurants</Text>
         <Text style={styles.headerSub}>
           {loading ? 'Loading…' : `${restaurants.length} restaurant${restaurants.length !== 1 ? 's' : ''} found`}

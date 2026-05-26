@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface HostingOffer {
   id: number;
@@ -69,6 +70,7 @@ export default function MyOffersScreen() {
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerTitle}>🏠 My Hosting Offers</Text>
       </View>
 

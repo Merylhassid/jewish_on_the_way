@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Synagogue {
   id: number;
@@ -111,6 +112,7 @@ export default function SynagogueDetailsScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerTitle}>🕍 Synagogue</Text>
       </View>
 

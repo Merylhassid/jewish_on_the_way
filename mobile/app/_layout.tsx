@@ -18,6 +18,8 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="destination/[id]" options={{ headerShown: false }} />
           <Stack.Screen name="destination/[id]/subdestinations" options={{ headerShown: false }} />
+          <Stack.Screen name="synagogues/[destinationId]" options={{ headerShown: false }} />
+          <Stack.Screen name="synagogue/[id]" options={{ headerShown: false }} />
           <Stack.Screen name="restaurants/[destinationId]" options={{ headerShown: false }} />
           <Stack.Screen name="restaurant/[id]" options={{ headerShown: false }} />
           <Stack.Screen name="chat/[destinationId]" options={{ headerShown: false }} />
