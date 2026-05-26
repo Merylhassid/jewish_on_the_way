@@ -35,13 +35,15 @@ export default function DestinationsScreen() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchDestinations = async (q?: string) => {
     try {
+      setError(false);
       const res = await client.get('/destinations', { params: q ? { q } : {} });
       setDestinations(res.data);
     } catch {
-      // silent
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -80,6 +82,14 @@ export default function DestinationsScreen() {
       {loading ? (
         <View style={styles.center}>
           <ActivityIndicator size="large" color="#0C2461" />
+        </View>
+      ) : error ? (
+        <View style={styles.center}>
+          <Text style={styles.emptyIcon}>⚠️</Text>
+          <Text style={styles.emptyText}>שגיאה בטעינת היעדים</Text>
+          <Pressable onPress={() => { setLoading(true); fetchDestinations(); }} style={styles.retryBtn}>
+            <Text style={styles.retryText}>נסה שוב</Text>
+          </Pressable>
         </View>
       ) : (
         <FlatList
@@ -181,5 +191,7 @@ const styles = StyleSheet.create({
 
   emptyBox: { alignItems: 'center', paddingTop: 64 },
   emptyIcon: { fontSize: 36, marginBottom: 12 },
-  emptyText: { fontSize: 15, color: '#8A96B0' },
+  emptyText: { fontSize: 15, color: '#8A96B0', marginBottom: 16 },
+  retryBtn: { backgroundColor: '#0C2461', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 },
+  retryText: { color: '#fff', fontWeight: '700', fontSize: 15 },
 });
