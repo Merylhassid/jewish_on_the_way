@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Image,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -57,7 +58,7 @@ export default function RegisterScreen() {
         {/* ── Hero ── */}
         <View style={styles.hero}>
           <View style={styles.logoRing}>
-            <Text style={styles.logoEmoji}>✡️</Text>
+            <Image source={require('@/assets/images/logo.jpeg')} style={styles.logo} />
           </View>
           <Text style={styles.appName}>Jewish On The Way</Text>
           <Text style={styles.appTagline}>Your Jewish travel companion</Text>
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 18,
   },
-  logoEmoji: { fontSize: 40 },
+  logo: { width: 58, height: 58, resizeMode: 'contain' },
   appName: { fontSize: 24, fontWeight: '800', color: '#fff', textAlign: 'center', letterSpacing: 0.2 },
   appTagline: { fontSize: 13, color: 'rgba(255,255,255,0.52)', marginTop: 7 },
 
