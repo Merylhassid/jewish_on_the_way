@@ -4,6 +4,7 @@ import {
   ActivityIndicator, Platform, Pressable,
   StyleSheet, Text, View,
 } from 'react-native';
+import { WebView } from 'react-native-webview';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
@@ -122,41 +123,17 @@ export default function MapScreen() {
           <ActivityIndicator size="large" color={C.gold} />
         </View>
       ) : Platform.OS === 'web' ? (
-        // Web: render iframe directly
         <View style={{ flex: 1 }}>
           {/* @ts-ignore */}
-          <iframe
-            srcDoc={html}
-            style={{ flex: 1, border: 'none', width: '100%', height: '100%' }}
-            title="map"
-          />
+          <iframe srcDoc={html} style={{ flex: 1, border: 'none', width: '100%', height: '100%' }} title="map" />
         </View>
       ) : (
-        // Native (Expo Go): use WebView-like approach via react-native WebView
-        <NativeMap html={html} />
+        <WebView source={{ html }} style={{ flex: 1 }} />
       )}
     </View>
   );
 }
 
-// Lazy-load WebView only on native to avoid web crash
-function NativeMap({ html }: { html: string }) {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { WebView } = require('react-native-webview');
-    return <WebView source={{ html }} style={{ flex: 1 }} />;
-  } catch {
-    return (
-      <View style={s.center}>
-        <MaterialIcons name="map" size={48} color={C.textMuted} />
-        <Text style={s.fallbackText}>
-          המפה זמינה רק ב-development build.{'\n'}
-          להצגת מפה מלאה יש לבצע: expo run:android
-        </Text>
-      </View>
-    );
-  }
-}
 
 const s = StyleSheet.create({
   root:   { flex: 1, backgroundColor: C.cream },
