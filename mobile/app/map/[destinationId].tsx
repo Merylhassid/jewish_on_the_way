@@ -5,20 +5,15 @@ import {
   StyleSheet, Text, View,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 
 interface Place {
   id: number; name: string; address?: string;
-  lat: number; lng: number; type: 'restaurant' | 'synagogue';
+  lat: number; lng: number;
 }
-type Pending = { id: number; name: string; address: string; type: 'restaurant' | 'synagogue' };
-type LayerFilter = 'all' | 'restaurants' | 'synagogues';
-type GeoCache = Record<string, { lat: number; lng: number }>;
 
-// ── WKB parser ───────────────────────────────────────────────────────────────
 function parseWKB(hex: any): { lat: number; lng: number } | null {
   if (!hex || typeof hex !== 'string' || hex.length < 42) return null;
   try {
@@ -37,7 +32,6 @@ function parseWKB(hex: any): { lat: number; lng: number } | null {
   } catch { return null; }
 }
 
-// ── Nominatim (called from RN) ───────────────────────────────────────────────
 async function nominatim(q: string): Promise<{ lat: number; lng: number } | null> {
   try {
     const res = await fetch(
@@ -50,28 +44,9 @@ async function nominatim(q: string): Promise<{ lat: number; lng: number } | null
   return null;
 }
 
-// ── Geocode cache (AsyncStorage) — makes repeat visits instant ───────────────
-const GEO_CACHE_KEY = '@geo_cache_v1';
-
-async function loadGeoCache(): Promise<GeoCache> {
-  try {
-    const raw = await AsyncStorage.getItem(GEO_CACHE_KEY);
-    return raw ? JSON.parse(raw) : {};
-  } catch { return {}; }
-}
-
-async function updateGeoCache(entries: GeoCache) {
-  try {
-    const raw = await AsyncStorage.getItem(GEO_CACHE_KEY);
-    const existing: GeoCache = raw ? JSON.parse(raw) : {};
-    await AsyncStorage.setItem(GEO_CACHE_KEY, JSON.stringify({ ...existing, ...entries }));
-  } catch {}
-}
-
-// ── Leaflet HTML ─────────────────────────────────────────────────────────────
 function buildLeafletHtml(places: Place[], cLat: number, cLng: number) {
   const markersJs = places.map(p =>
-    `addM(${p.lat},${p.lng},${JSON.stringify(p.type === 'synagogue' ? '#7C3AED' : '#C9A84C')},${JSON.stringify(p.name)},${JSON.stringify(p.address ?? '')},${JSON.stringify(p.type)});`
+    `addM(${p.lat},${p.lng},${JSON.stringify(p.name)},${JSON.stringify(p.address ?? '')});`
   ).join('\n');
 
   return `<!DOCTYPE html><html><head>
@@ -82,131 +57,54 @@ function buildLeafletHtml(places: Place[], cLat: number, cLng: number) {
 </head><body><div id="map"></div><script>
 var map=L.map('map').setView([${cLat},${cLng}],13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'©OpenStreetMap'}).addTo(map);
-var RL=L.layerGroup().addTo(map),SL=L.layerGroup().addTo(map);
-function addM(lat,lng,color,name,addr,type){
-  var g=type==='synagogue'?SL:RL;
-  L.circleMarker([lat,lng],{radius:8,color:color,fillColor:color,fillOpacity:.85,weight:2})
-   .bindPopup('<b>'+name+'</b><br><small>'+addr+'</small>').addTo(g);
+function addM(lat,lng,name,addr){
+  L.circleMarker([lat,lng],{radius:8,color:'#7C3AED',fillColor:'#7C3AED',fillOpacity:.85,weight:2})
+   .bindPopup('<b>'+name+'</b><br><small>'+addr+'</small>').addTo(map);
 }
-function showLayer(l){
-  if(l==='all'){map.addLayer(RL);map.addLayer(SL);}
-  else if(l==='restaurants'){map.addLayer(RL);map.removeLayer(SL);}
-  else{map.removeLayer(RL);map.addLayer(SL);}
-}
-window.addEventListener('message',function(e){if(e.data)showLayer(e.data);});
-document.addEventListener('message',function(e){if(e.data)showLayer(e.data);});
 ${markersJs}
 </script></body></html>`;
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
 export default function MapScreen() {
   const { destinationId, name } = useLocalSearchParams<{ destinationId: string; name?: string }>();
   const webViewRef = useRef<any>(null);
-  const pendingRef = useRef<Pending[]>([]);
-  const centerRef  = useRef({ lat: 31.7767, lng: 35.2345 });
 
   const [places,  setPlaces]  = useState<Place[]>([]);
   const [loading, setLoading] = useState(true);
   const [html,    setHtml]    = useState('');
-  const [layer,   setLayer]   = useState<LayerFilter>('all');
 
   useEffect(() => {
     (async () => {
       const cityName = name ? decodeURIComponent(name) : '';
-
-      // Load geocode cache + city center in parallel
-      const [geo, cache] = await Promise.all([
-        cityName ? nominatim(cityName) : Promise.resolve(null),
-        loadGeoCache(),
-      ]);
+      const geo  = cityName ? await nominatim(cityName) : null;
       const cLat = geo?.lat ?? 31.7767;
       const cLng = geo?.lng ?? 35.2345;
-      centerRef.current = { lat: cLat, lng: cLng };
 
-      const [rRes, sRes] = await Promise.allSettled([
-        client.get('/restaurants', { params: { destinationId } }),
-        client.get('/synagogues',  { params: { destinationId } }),
-      ]);
+      try {
+        const { data } = await client.get('/synagogues', { params: { destinationId } });
+        const known: Place[] = [];
 
-      const known: Place[]   = [];
-      const pending: Pending[] = [];
-
-      if (rRes.status === 'fulfilled') {
-        for (const r of rRes.value.data) {
-          let c: { lat: number; lng: number } | null = null;
-          if (r.lat && r.lng)    c = { lat: +r.lat, lng: +r.lng };
-          else if (r.location)   c = parseWKB(r.location);
-          else if (r.address && cache[r.address]) c = cache[r.address]; // from cache!
-
-          if (c && isFinite(c.lat) && isFinite(c.lng)) {
-            known.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', ...c });
-          } else if (r.address) {
-            pending.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant' });
-          }
-        }
-      }
-
-      if (sRes.status === 'fulfilled') {
-        for (const s of sRes.value.data) {
+        for (const s of data) {
           let c: { lat: number; lng: number } | null = null;
           if (s.location?.coordinates) { const [ln, la] = s.location.coordinates; c = { lat: la, lng: ln }; }
           else if (typeof s.location === 'string') c = parseWKB(s.location);
           else if (s.lat && s.lng) c = { lat: +s.lat, lng: +s.lng };
-          else if (s.address && cache[s.address]) c = cache[s.address];
 
           if (c && isFinite(c.lat) && isFinite(c.lng)) {
-            known.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue', ...c });
-          } else if (s.address) {
-            pending.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue' });
+            known.push({ id: s.id, name: s.name, address: s.address, ...c });
           }
         }
-      }
 
-      pendingRef.current = pending;
-      setPlaces(known);
-      setHtml(buildLeafletHtml(known, cLat, cLng));
+        setPlaces(known);
+        setHtml(buildLeafletHtml(known, cLat, cLng));
+      } catch {}
+
       setLoading(false);
     })();
   }, [destinationId]);
 
-  // After WebView loads: geocode uncached places silently, save to cache
-  const onMapLoad = () => {
-    const batch = pendingRef.current.slice(0, 30);
-    if (batch.length === 0) return;
-
-    (async () => {
-      const newCacheEntries: GeoCache = {};
-      for (let i = 0; i < batch.length; i++) {
-        const p = batch[i];
-        const c = await nominatim(p.address);
-        if (c && isFinite(c.lat) && isFinite(c.lng)) {
-          newCacheEntries[p.address] = c;
-          const color = p.type === 'synagogue' ? '#7C3AED' : '#C9A84C';
-          webViewRef.current?.injectJavaScript(
-            `addM(${c.lat},${c.lng},${JSON.stringify(color)},${JSON.stringify(p.name)},${JSON.stringify(p.address)},${JSON.stringify(p.type)}); true;`
-          );
-          setPlaces(prev => [...prev, { ...p, ...c }]);
-        }
-        if (i < batch.length - 1) await new Promise<void>(r => setTimeout(r, 1100));
-      }
-      if (Object.keys(newCacheEntries).length > 0) {
-        updateGeoCache(newCacheEntries); // save for next time
-      }
-    })();
-  };
-
-  const changeLayer = (l: LayerFilter) => {
-    setLayer(l);
-    webViewRef.current?.injectJavaScript(`showLayer(${JSON.stringify(l)}); true;`);
-  };
-
-  const visible = places.filter(p =>
-    layer === 'all' ? true : layer === 'restaurants' ? p.type === 'restaurant' : p.type === 'synagogue'
-  );
-
   const webHtml = !loading
-    ? buildLeafletHtml(visible, centerRef.current.lat, centerRef.current.lng)
+    ? buildLeafletHtml(places, 31.7767, 35.2345)
     : '';
 
   return (
@@ -216,17 +114,7 @@ export default function MapScreen() {
           <MaterialIcons name="arrow-back" size={22} color="#fff" />
         </Pressable>
         <Text style={s.headerTitle}>{decodeURIComponent(name ?? 'Map')}</Text>
-        <Text style={s.headerCount}>{loading ? '…' : `${visible.length} places`}</Text>
-      </View>
-
-      <View style={s.filters}>
-        {(['all', 'restaurants', 'synagogues'] as LayerFilter[]).map(f => (
-          <Pressable key={f} style={[s.chip, layer === f && s.chipActive]} onPress={() => changeLayer(f)}>
-            <Text style={[s.chipText, layer === f && s.chipTextActive]}>
-              {f === 'all' ? 'All' : f === 'restaurants' ? '🍽️ Restaurants' : '🕍 Synagogues'}
-            </Text>
-          </Pressable>
-        ))}
+        <Text style={s.headerCount}>{loading ? '…' : `${places.length} בתי כנסת`}</Text>
       </View>
 
       {loading ? (
@@ -236,7 +124,7 @@ export default function MapScreen() {
       ) : Platform.OS === 'web' ? (
         <View style={{ flex: 1 }}>
           {/* @ts-ignore */}
-          <iframe key={layer} srcDoc={webHtml} style={{ flex: 1, border: 'none', width: '100%', height: '100%' }} title="map" />
+          <iframe srcDoc={webHtml} style={{ flex: 1, border: 'none', width: '100%', height: '100%' }} title="map" />
         </View>
       ) : (
         <WebView
@@ -245,7 +133,6 @@ export default function MapScreen() {
           style={{ flex: 1 }}
           javaScriptEnabled
           domStorageEnabled
-          onLoad={onMapLoad}
           startInLoadingState
           renderLoading={() => <ActivityIndicator style={{ flex: 1 }} color={C.gold} />}
         />
@@ -263,12 +150,4 @@ const s = StyleSheet.create({
   },
   headerTitle: { flex: 1, fontSize: 18, fontWeight: '800', color: '#fff' },
   headerCount: { fontSize: 12, color: 'rgba(255,255,255,0.65)' },
-  filters: {
-    flexDirection: 'row', gap: 8, padding: 12,
-    backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#E5DCC8',
-  },
-  chip:           { borderWidth: 1.5, borderColor: '#D1C4A0', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 6 },
-  chipActive:     { borderColor: C.navy, backgroundColor: 'rgba(10,35,66,0.08)' },
-  chipText:       { fontSize: 13, color: C.textSecondary, fontWeight: '600' },
-  chipTextActive: { color: C.navy, fontWeight: '800' },
 });
