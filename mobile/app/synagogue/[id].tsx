@@ -15,6 +15,7 @@ import HomeButton from '@/src/components/HomeButton';
 import ReviewSection from '@/src/components/ReviewSection';
 import ReportModal from '@/src/components/ReportModal';
 import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
+import FavoriteButton from '@/src/components/FavoriteButton';
 
 const DENOM_DISPLAY: Record<string, { label: string; emoji: string; color: string }> = {
   ashkenaz: { label: 'אשכנז', emoji: '🎩', color: '#3949AB' },
@@ -147,8 +148,11 @@ export default function SynagogueDetailsScreen() {
 
       {/* Content */}
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Name */}
-        <Text style={styles.name}>{synagogue.name}</Text>
+        {/* Name + Favorite */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Text style={[styles.name, { flex: 1 }]}>{synagogue.name}</Text>
+          <FavoriteButton entityType="synagogue" entityId={synagogue.id} size={26} />
+        </View>
 
         {/* Denomination */}
         {(() => {
