@@ -101,26 +101,21 @@ export class DestinationsService {
     return destinations.map((d) => ({ ...d, hasChildren: d.children?.length > 0 }));
   }
 
-  // req 3.3 — single destination detail
+  // req 3.3 — single destination detail (includes lat/lng for map)
   async findOne(id: number) {
-    const destination = await this.destinationsRepo.findOne({
-      where: { id },
-      relations: ['parent'],
-      select: [
-        'id',
-        'name',
-        'city',
-        'country',
-        'countryCode',
-        'description',
-        'createdAt',
-      ],
-    });
+    const rows = await this.destinationsRepo.query(
+      `SELECT d.id, d.name, d.city, d.country,
+        d.country_code AS "countryCode", d.description,
+        ST_Y(d.location::geometry) AS lat,
+        ST_X(d.location::geometry) AS lng
+       FROM destinations d WHERE d.id = $1`,
+      [id],
+    );
 
-    if (!destination) {
+    if (!rows.length) {
       throw new NotFoundException(`Destination #${id} not found`);
     }
 
-    return destination;
+    return rows[0];
   }
 }

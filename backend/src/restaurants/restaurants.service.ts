@@ -75,6 +75,8 @@ export class RestaurantsService {
           r.address,
           r.opening_hours     AS "openingHours",
           r.created_at        AS "createdAt",
+          ST_Y(r.location::geometry) AS lat,
+          ST_X(r.location::geometry) AS lng,
           ROUND(
             ST_Distance(
               r.location::geography,
