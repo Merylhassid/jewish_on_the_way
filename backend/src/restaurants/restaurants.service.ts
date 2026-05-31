@@ -156,9 +156,21 @@ export class RestaurantsService {
       `;
       const params: (string | number)[] = [lng, lat, parentId];
       let idx = 4;
-      if (type)    { sql += ` AND r.restaurant_type = $${idx}`; params.push(type);       idx++; }
-      if (kashrut) { sql += ` AND r.kashrut_level   = $${idx}`; params.push(kashrut);    idx++; }
-      if (q)       { sql += ` AND r.name ILIKE $${idx}`;        params.push(`%${q}%`);   idx++; }
+      if (type) {
+        sql += ` AND r.restaurant_type = $${idx}`;
+        params.push(type);
+        idx++;
+      }
+      if (kashrut) {
+        sql += ` AND r.kashrut_level = $${idx}`;
+        params.push(kashrut);
+        idx++;
+      }
+      if (q) {
+        sql += ` AND r.name ILIKE $${idx}`;
+        params.push(`%${q}%`);
+        idx++;
+      }
       sql += ' ORDER BY "distanceMeters" ASC';
       return this.restaurantsRepo.query(sql, params);
     }
@@ -206,6 +218,37 @@ export class RestaurantsService {
 
     if (!restaurant) throw new NotFoundException(`Restaurant #${id} not found`);
     return restaurant;
+  }
+
+  async findNearby(
+    lat: number,
+    lng: number,
+    limit = 10,
+    kashrut?: string,
+  ): Promise<any[]> {
+    let sql = `
+      SELECT
+        r.id, r.name,
+        r.restaurant_type   AS "restaurantType",
+        r.kashrut_level     AS "kashrutLevel",
+        r.address,
+        ROUND(ST_Distance(
+          r.location::geography,
+          ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography
+        )::numeric) AS "distanceMeters",
+        d.id AS "destId", d.city, d.country
+      FROM restaurants r
+      LEFT JOIN destinations d ON d.id = r."destinationId"
+      WHERE r.location IS NOT NULL
+    `;
+    const params: any[] = [lat, lng];
+    if (kashrut) {
+      params.push(kashrut);
+      sql += ` AND r.kashrut_level = $${params.length}`;
+    }
+    params.push(limit);
+    sql += ` ORDER BY r.location::geography <-> ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography LIMIT $${params.length}`;
+    return this.restaurantsRepo.query(sql, params) as Promise<any[]>;
   }
 
   /**

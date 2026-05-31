@@ -55,6 +55,24 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="nearby"
+        options={{
+          title: 'Near Me',
+          tabBarIcon: ({ color, size }) => (
+            <IconSymbol size={size ?? 24} name="location.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="shabbat"
+        options={{
+          title: 'שבת',
+          tabBarIcon: ({ color, size }) => (
+            <IconSymbol size={size ?? 24} name="flame.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: t('tabs.profile'),

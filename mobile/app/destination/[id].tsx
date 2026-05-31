@@ -25,9 +25,10 @@ interface Destination {
   country: string;
   countryCode: string;
   description?: string;
+  location?: { coordinates: [number, number] };
 }
 
-type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'hosting' | 'chat';
+type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'hosting' | 'chat' | 'map';
 
 interface Service {
   key: ServiceKey;
@@ -79,9 +80,17 @@ const SERVICES: Service[] = [
     color: '#0891B2',
     bg:    'rgba(8,145,178,0.10)',
   },
+  {
+    key:   'map',
+    label: 'Map',
+    sub:   'See all places on map',
+    icon:  'map',
+    color: '#0F766E',
+    bg:    'rgba(15,118,110,0.10)',
+  },
 ];
 
-const ACTIVE: ServiceKey[] = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting'];
+const ACTIVE: ServiceKey[] = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting', 'map'];
 
 export default function DestinationScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -234,6 +243,11 @@ export default function DestinationScreen() {
                 else if (svc.key === 'chat') router.push(`/chat/${id}?city=${city}`);
                 else if (svc.key === 'minyans') router.push(`/minyans/${id}?city=${city}`);
                 else if (svc.key === 'hosting') router.push(`/hosting/${id}?city=${city}`);
+                else if (svc.key === 'map') {
+                  const latP = destination.location?.coordinates?.[1] ?? '';
+                  const lngP = destination.location?.coordinates?.[0] ?? '';
+                  router.push(`/map/${id}?lat=${latP}&lng=${lngP}&name=${city}` as any);
+                }
               }}
             />
           );
