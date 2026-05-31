@@ -23,6 +23,7 @@ interface Restaurant {
   address?: string;
   openingHours?: string;
   distanceMeters?: number;
+  destinationCity?: string;
 }
 
 const TYPE_EMOJI: Record<string, string> = { meat: '🥩', dairy: '🧀', parve: '🥗', pareve: '🥗', unknown: '🍽️' };
@@ -48,13 +49,15 @@ function formatLabel(value: string | null | undefined) {
 }
 
 export default function RestaurantsScreen() {
-  const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
+  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent } =
+    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string }>();
+  const isCountryMode = fromParent === 'true';
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [loading, setLoading]   = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError]       = useState(false);
-  const [typeFilter, setTypeFilter]       = useState('all');
-  const [kashrutFilter, setKashrutFilter] = useState('all');
+  const [typeFilter, setTypeFilter]       = useState(typeParam && TYPE_FILTERS.includes(typeParam) ? typeParam : 'all');
+  const [kashrutFilter, setKashrutFilter] = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
   const [search, setSearch] = useState('');
   const [aiMode, setAiMode] = useState(false);
   const [lastAiQuery, setLastAiQuery] = useState('');
@@ -78,7 +81,9 @@ export default function RestaurantsScreen() {
     searchTimeout.current = setTimeout(async () => {
       try {
         setLoading(true);
-        const params: Record<string, string> = { destinationId };
+        const params: Record<string, string> = isCountryMode
+          ? { parentDestinationId: destinationId }
+          : { destinationId };
         if (userLocation?.lat) params.lat = String(userLocation.lat);
         if (userLocation?.lng) params.lng = String(userLocation.lng);
 
@@ -250,6 +255,7 @@ export default function RestaurantsScreen() {
                     )}
                   </View>
                 </View>
+                {item.destinationCity && <Text style={styles.cityTag}>🏙️ {item.destinationCity}</Text>}
                 {item.address     && <Text style={styles.meta}>📍 {item.address}</Text>}
                 {item.openingHours && <Text style={styles.meta}>🕐 {item.openingHours}</Text>}
               </Pressable>
@@ -301,6 +307,7 @@ const styles = StyleSheet.create({
   badgeText:   { color: '#fff', fontSize: 11, fontWeight: '600' },
   distance:    { fontSize: 12, color: '#555', fontWeight: '500' },
   meta:        { fontSize: 13, color: '#555', marginBottom: 2 },
+  cityTag:     { fontSize: 12, color: '#1a3a6b', fontWeight: '600', marginBottom: 3 },
   empty:       { alignItems: 'center', marginTop: 60 },
   emptyIcon:   { fontSize: 48, marginBottom: 12 },
   emptyText:   { fontSize: 15, color: '#888', textAlign: 'center' },

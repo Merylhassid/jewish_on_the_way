@@ -4,6 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AuthController } from './auth.controller';
+import { ResetPasswordPageController } from './reset-password-page.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './guards/jwt.strategy';
 import { User } from '../users/user.entity';
@@ -25,7 +26,7 @@ import { MailModule } from '../mail/mail.module';
       }),
     }),
   ],
-  controllers: [AuthController],
+  controllers: [AuthController, ResetPasswordPageController],
   providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}
