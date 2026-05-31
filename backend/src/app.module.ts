@@ -1,3 +1,4 @@
+import { ReviewsModule } from './reviews/reviews.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { ChatModule } from './chat/chat.module';
 import { MinyansModule } from './minyans/minyans.module';
@@ -98,6 +99,8 @@ import { PlacesModule } from './places/places.module';
     AuditModule,
 
     AiModule,
+
+    ReviewsModule,
   ],
   controllers: [AppController],
   providers: [

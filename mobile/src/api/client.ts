@@ -1,19 +1,11 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Constants from 'expo-constants';
 
 // Production server
 const PRODUCTION_URL = 'http://49.12.189.108:3000';
 
 const getBaseUrl = (): string => {
-  if (__DEV__) {
-    const hostUri = Constants.expoConfig?.hostUri;
-    if (hostUri) {
-      const host = hostUri.split(':')[0];
-      return `http://${host}:3500`;
-    }
-  }
-  return 'http://localhost:3500';
+  return PRODUCTION_URL;
 };
 
 export const API_URL = getBaseUrl();
