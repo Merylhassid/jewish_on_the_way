@@ -4,9 +4,26 @@ import {
   ActivityIndicator, Pressable, ScrollView,
   StyleSheet, Text, View,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
+
+const STORAGE_KEY = 'user_favorites_local';
+
+async function loadLocalFavoriteIds(): Promise<{ restaurants: number[]; synagogues: number[] }> {
+  try {
+    const raw = await AsyncStorage.getItem(STORAGE_KEY);
+    const favs: Record<string, boolean> = raw ? JSON.parse(raw) : {};
+    const restaurants = Object.keys(favs)
+      .filter(k => k.startsWith('restaurant:') && favs[k])
+      .map(k => parseInt(k.split(':')[1]));
+    const synagogues = Object.keys(favs)
+      .filter(k => k.startsWith('synagogue:') && favs[k])
+      .map(k => parseInt(k.split(':')[1]));
+    return { restaurants, synagogues };
+  } catch { return { restaurants: [], synagogues: [] }; }
+}
 
 interface SavedRestaurant {
   id: number; name: string; address?: string;
@@ -27,9 +44,19 @@ export default function SavedScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // מנסה מהשרת קודם; אם נכשל, טוען מ-AsyncStorage + מביא פרטים מה-API
     client.get('/favorites')
       .then(r => { setRestaurants(r.data.restaurants); setSynagogues(r.data.synagogues); })
-      .catch(() => {})
+      .catch(async () => {
+        // Fallback: קורא IDs מ-AsyncStorage ומביא פרטים בנפרד
+        const { restaurants: restIds, synagogues: synIds } = await loadLocalFavoriteIds();
+        const [restResults, synResults] = await Promise.allSettled([
+          restIds.length ? Promise.all(restIds.map(id => client.get(`/restaurants/${id}`).then(r => r.data))) : Promise.resolve([]),
+          synIds.length  ? Promise.all(synIds.map(id => client.get(`/synagogues/${id}`).then(r => r.data)))  : Promise.resolve([]),
+        ]);
+        setRestaurants(restResults.status === 'fulfilled' ? restResults.value : []);
+        setSynagogues(synResults.status === 'fulfilled'  ? synResults.value  : []);
+      })
       .finally(() => setLoading(false));
   }, []);
 
