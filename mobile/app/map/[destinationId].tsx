@@ -36,27 +36,70 @@ function parseWKB(hex: any): { lat: number; lng: number } | null {
   } catch { return null; }
 }
 
+interface RawPlace {
+  id: number; name: string; address?: string; type: 'restaurant' | 'synagogue';
+  lat?: number; lng?: number; kashrutLevel?: string; location?: any;
+}
+
 // ── Leaflet HTML builder ─────────────────────────────────────────────────────
-function buildLeafletHtml(places: Place[], centerLat: number, centerLng: number) {
-  const markers = places.map(p => {
+function buildLeafletHtml(known: Place[], toGeocode: RawPlace[], centerLat: number, centerLng: number) {
+  const knownMarkers = known.map(p => {
     const color = p.type === 'synagogue' ? '#7C3AED' : '#C9A84C';
-    const label = p.name.replace(/['"\\]/g, ' ');
-    const sub   = (p.address ?? '').replace(/['"\\]/g, ' ');
-    return `L.circleMarker([${p.lat},${p.lng}],{radius:8,color:'${color}',fillColor:'${color}',fillOpacity:0.85,weight:2}).bindPopup('<b>${label}</b><br><small>${sub}</small>').addTo(map);`;
+    const label = p.name.replace(/['"\\<>]/g, ' ');
+    const sub   = (p.address ?? '').replace(/['"\\<>]/g, ' ');
+    return `addMarker(${p.lat},${p.lng},'${color}','${label}','${sub}');`;
   }).join('\n');
+
+  const geocodeList = JSON.stringify(toGeocode.slice(0, 30).map(p => ({
+    name: p.name.replace(/['"\\]/g, ' '),
+    address: (p.address ?? '').replace(/['"\\]/g, ' '),
+    color: p.type === 'synagogue' ? '#7C3AED' : '#C9A84C',
+  })));
 
   return `<!DOCTYPE html>
 <html><head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>html,body,#map{margin:0;padding:0;width:100%;height:100vh;}</style>
+<style>
+html,body,#map{margin:0;padding:0;width:100%;height:100vh;}
+#status{position:absolute;bottom:8px;left:8px;z-index:999;background:rgba(255,255,255,0.85);
+  padding:4px 10px;border-radius:12px;font-size:12px;font-family:sans-serif;}
+</style>
 </head><body>
 <div id="map"></div>
+<div id="status"></div>
 <script>
 var map=L.map('map').setView([${centerLat},${centerLng}],13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);
-${markers}
+
+function addMarker(lat,lng,color,name,addr){
+  L.circleMarker([lat,lng],{radius:8,color:color,fillColor:color,fillOpacity:0.85,weight:2})
+   .bindPopup('<b>'+name+'</b><br><small>'+addr+'</small>').addTo(map);
+}
+
+// מקומות עם קורדינטות ידועות
+${knownMarkers}
+
+// גיאוקוד מקומות ללא קורדינטות
+var toGeocode = ${geocodeList};
+var status = document.getElementById('status');
+(async function(){
+  for(var i=0;i<toGeocode.length;i++){
+    var p = toGeocode[i];
+    if(!p.address) continue;
+    try{
+      status.textContent = 'Loading ' + (i+1) + '/' + toGeocode.length + '…';
+      var r = await fetch('https://nominatim.openstreetmap.org/search?q='+encodeURIComponent(p.address)+'&format=json&limit=1',
+        {headers:{'User-Agent':'JewishOnTheWay/1.0'}});
+      var d = await r.json();
+      if(d&&d[0]) addMarker(parseFloat(d[0].lat),parseFloat(d[0].lon),p.color,p.name,p.address);
+    }catch(e){}
+    await new Promise(function(res){setTimeout(res,1100);});
+  }
+  status.textContent = toGeocode.length > 0 ? 'Done ✓' : '';
+  setTimeout(function(){ status.style.display='none'; }, 2000);
+})();
 </script>
 </body></html>`;
 }
@@ -80,10 +123,11 @@ export default function MapScreen() {
     destinationId: string; name?: string;
   }>();
 
-  const [allPlaces, setAllPlaces] = useState<Place[]>([]);
-  const [center,    setCenter]    = useState<{ lat: number; lng: number } | null>(null);
-  const [loading,   setLoading]   = useState(true);
-  const [layer,     setLayer]     = useState<LayerFilter>('all');
+  const [knownPlaces,   setKnownPlaces]   = useState<Place[]>([]);
+  const [unknownPlaces, setUnknownPlaces] = useState<RawPlace[]>([]);
+  const [center,        setCenter]        = useState<{ lat: number; lng: number } | null>(null);
+  const [loading,       setLoading]       = useState(true);
+  const [layer,         setLayer]         = useState<LayerFilter>('all');
 
   useEffect(() => {
     (async () => {
@@ -101,19 +145,19 @@ export default function MapScreen() {
         client.get('/synagogues',  { params: { destinationId } }),
       ]);
 
-      const all: Place[] = [];
+      const known:   Place[]    = [];
+      const unknown: RawPlace[] = [];
 
       if (rRes.status === 'fulfilled') {
         for (const r of rRes.value.data) {
-          // נסה lat/lng ישיר, אחר כך WKB
           let coords: { lat: number; lng: number } | null = null;
-          if (r.lat && r.lng) {
-            coords = { lat: parseFloat(r.lat), lng: parseFloat(r.lng) };
-          } else if (r.location) {
-            coords = parseWKB(r.location);
-          }
+          if (r.lat && r.lng) coords = { lat: parseFloat(r.lat), lng: parseFloat(r.lng) };
+          else if (r.location) coords = parseWKB(r.location);
+
           if (coords && isFinite(coords.lat) && isFinite(coords.lng)) {
-            all.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', ...coords, kashrutLevel: r.kashrutLevel });
+            known.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', ...coords, kashrutLevel: r.kashrutLevel });
+          } else {
+            unknown.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant' });
           }
         }
       }
@@ -121,33 +165,36 @@ export default function MapScreen() {
       if (sRes.status === 'fulfilled') {
         for (const s of sRes.value.data) {
           let coords: { lat: number; lng: number } | null = null;
-          if (s.location?.coordinates) {
-            const [sLng, sLat] = s.location.coordinates;
-            coords = { lat: sLat, lng: sLng };
-          } else if (s.location && typeof s.location === 'string') {
-            coords = parseWKB(s.location);
-          } else if (s.lat && s.lng) {
-            coords = { lat: parseFloat(s.lat), lng: parseFloat(s.lng) };
-          }
+          if (s.location?.coordinates) { const [sLng, sLat] = s.location.coordinates; coords = { lat: sLat, lng: sLng }; }
+          else if (s.location && typeof s.location === 'string') coords = parseWKB(s.location);
+          else if (s.lat && s.lng) coords = { lat: parseFloat(s.lat), lng: parseFloat(s.lng) };
+
           if (coords && isFinite(coords.lat) && isFinite(coords.lng)) {
-            all.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue', ...coords });
+            known.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue', ...coords });
+          } else {
+            unknown.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue' });
           }
         }
       }
 
-      setAllPlaces(all);
+      setKnownPlaces(known);
+      setUnknownPlaces(unknown);
       setLoading(false);
     })();
   }, [destinationId]);
 
-  const visible = allPlaces.filter(p =>
-    layer === 'all' ? true :
-    layer === 'restaurants' ? p.type === 'restaurant' : p.type === 'synagogue',
-  );
-
   const cLat = center?.lat ?? 31.7767;
   const cLng = center?.lng ?? 35.2345;
-  const html = buildLeafletHtml(visible, cLat, cLng);
+
+  const visibleKnown = knownPlaces.filter(p =>
+    layer === 'all' ? true : layer === 'restaurants' ? p.type === 'restaurant' : p.type === 'synagogue',
+  );
+  const visibleUnknown = unknownPlaces.filter(p =>
+    layer === 'all' ? true : layer === 'restaurants' ? p.type === 'restaurant' : p.type === 'synagogue',
+  );
+
+  const total = visibleKnown.length + visibleUnknown.length;
+  const html  = buildLeafletHtml(visibleKnown, visibleUnknown, cLat, cLng);
 
   return (
     <View style={s.root}>
@@ -156,7 +203,7 @@ export default function MapScreen() {
           <MaterialIcons name="arrow-back" size={22} color="#fff" />
         </Pressable>
         <Text style={s.headerTitle}>{decodeURIComponent(name ?? 'Map')}</Text>
-        <Text style={s.headerCount}>{loading ? '…' : `${visible.length} places`}</Text>
+        <Text style={s.headerCount}>{loading ? '…' : `${total} places`}</Text>
       </View>
 
       <View style={s.filters}>
