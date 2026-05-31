@@ -5,6 +5,7 @@ import {
   StyleSheet, Text, View,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
@@ -15,7 +16,9 @@ interface Place {
 }
 type Pending = { id: number; name: string; address: string; type: 'restaurant' | 'synagogue' };
 type LayerFilter = 'all' | 'restaurants' | 'synagogues';
+type GeoCache = Record<string, { lat: number; lng: number }>;
 
+// ── WKB parser ───────────────────────────────────────────────────────────────
 function parseWKB(hex: any): { lat: number; lng: number } | null {
   if (!hex || typeof hex !== 'string' || hex.length < 42) return null;
   try {
@@ -34,6 +37,7 @@ function parseWKB(hex: any): { lat: number; lng: number } | null {
   } catch { return null; }
 }
 
+// ── Nominatim (called from RN) ───────────────────────────────────────────────
 async function nominatim(q: string): Promise<{ lat: number; lng: number } | null> {
   try {
     const res = await fetch(
@@ -46,6 +50,25 @@ async function nominatim(q: string): Promise<{ lat: number; lng: number } | null
   return null;
 }
 
+// ── Geocode cache (AsyncStorage) — makes repeat visits instant ───────────────
+const GEO_CACHE_KEY = '@geo_cache_v1';
+
+async function loadGeoCache(): Promise<GeoCache> {
+  try {
+    const raw = await AsyncStorage.getItem(GEO_CACHE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+async function updateGeoCache(entries: GeoCache) {
+  try {
+    const raw = await AsyncStorage.getItem(GEO_CACHE_KEY);
+    const existing: GeoCache = raw ? JSON.parse(raw) : {};
+    await AsyncStorage.setItem(GEO_CACHE_KEY, JSON.stringify({ ...existing, ...entries }));
+  } catch {}
+}
+
+// ── Leaflet HTML ─────────────────────────────────────────────────────────────
 function buildLeafletHtml(places: Place[], cLat: number, cLng: number) {
   const markersJs = places.map(p =>
     `addM(${p.lat},${p.lng},${JSON.stringify(p.type === 'synagogue' ? '#7C3AED' : '#C9A84C')},${JSON.stringify(p.name)},${JSON.stringify(p.address ?? '')},${JSON.stringify(p.type)});`
@@ -76,22 +99,27 @@ ${markersJs}
 </script></body></html>`;
 }
 
+// ── Main component ────────────────────────────────────────────────────────────
 export default function MapScreen() {
   const { destinationId, name } = useLocalSearchParams<{ destinationId: string; name?: string }>();
-  const webViewRef  = useRef<any>(null);
-  const pendingRef  = useRef<Pending[]>([]);
-  const centerRef   = useRef({ lat: 31.7767, lng: 35.2345 });
+  const webViewRef = useRef<any>(null);
+  const pendingRef = useRef<Pending[]>([]);
+  const centerRef  = useRef({ lat: 31.7767, lng: 35.2345 });
 
   const [places,  setPlaces]  = useState<Place[]>([]);
   const [loading, setLoading] = useState(true);
   const [html,    setHtml]    = useState('');
   const [layer,   setLayer]   = useState<LayerFilter>('all');
 
-  // ── 1. Fetch data, show map immediately with whatever has coords ────────────
   useEffect(() => {
     (async () => {
       const cityName = name ? decodeURIComponent(name) : '';
-      const geo  = cityName ? await nominatim(cityName) : null;
+
+      // Load geocode cache + city center in parallel
+      const [geo, cache] = await Promise.all([
+        cityName ? nominatim(cityName) : Promise.resolve(null),
+        loadGeoCache(),
+      ]);
       const cLat = geo?.lat ?? 31.7767;
       const cLng = geo?.lng ?? 35.2345;
       centerRef.current = { lat: cLat, lng: cLng };
@@ -107,8 +135,10 @@ export default function MapScreen() {
       if (rRes.status === 'fulfilled') {
         for (const r of rRes.value.data) {
           let c: { lat: number; lng: number } | null = null;
-          if (r.lat && r.lng) c = { lat: +r.lat, lng: +r.lng };
-          else if (r.location) c = parseWKB(r.location);
+          if (r.lat && r.lng)    c = { lat: +r.lat, lng: +r.lng };
+          else if (r.location)   c = parseWKB(r.location);
+          else if (r.address && cache[r.address]) c = cache[r.address]; // from cache!
+
           if (c && isFinite(c.lat) && isFinite(c.lng)) {
             known.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', ...c });
           } else if (r.address) {
@@ -123,6 +153,8 @@ export default function MapScreen() {
           if (s.location?.coordinates) { const [ln, la] = s.location.coordinates; c = { lat: la, lng: ln }; }
           else if (typeof s.location === 'string') c = parseWKB(s.location);
           else if (s.lat && s.lng) c = { lat: +s.lat, lng: +s.lng };
+          else if (s.address && cache[s.address]) c = cache[s.address];
+
           if (c && isFinite(c.lat) && isFinite(c.lng)) {
             known.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue', ...c });
           } else if (s.address) {
@@ -138,16 +170,18 @@ export default function MapScreen() {
     })();
   }, [destinationId]);
 
-  // ── 2. After WebView loads, geocode remaining silently in background ────────
+  // After WebView loads: geocode uncached places silently, save to cache
   const onMapLoad = () => {
-    const batch = pendingRef.current.slice(0, 20);
+    const batch = pendingRef.current.slice(0, 30);
     if (batch.length === 0) return;
 
     (async () => {
+      const newCacheEntries: GeoCache = {};
       for (let i = 0; i < batch.length; i++) {
         const p = batch[i];
         const c = await nominatim(p.address);
         if (c && isFinite(c.lat) && isFinite(c.lng)) {
+          newCacheEntries[p.address] = c;
           const color = p.type === 'synagogue' ? '#7C3AED' : '#C9A84C';
           webViewRef.current?.injectJavaScript(
             `addM(${c.lat},${c.lng},${JSON.stringify(color)},${JSON.stringify(p.name)},${JSON.stringify(p.address)},${JSON.stringify(p.type)}); true;`
@@ -155,6 +189,9 @@ export default function MapScreen() {
           setPlaces(prev => [...prev, { ...p, ...c }]);
         }
         if (i < batch.length - 1) await new Promise<void>(r => setTimeout(r, 1100));
+      }
+      if (Object.keys(newCacheEntries).length > 0) {
+        updateGeoCache(newCacheEntries); // save for next time
       }
     })();
   };
