@@ -339,7 +339,7 @@ function HostView({ destinationId }: { destinationId: number }) {
         notes: notes.trim() || undefined,
       });
       Alert.alert('Offer Created! 🏠', 'Your hosting offer is now visible to travelers.');
-      setAvailableFrom(''); setAvailableTo(''); setNotes(''); setKashrut('');
+      setNotes(''); setKashrut(''); setMaxGuests('2');
     } catch (err: any) {
       Alert.alert('Error', err?.response?.data?.message ?? 'Failed to create offer');
     } finally {

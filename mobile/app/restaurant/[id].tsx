@@ -13,6 +13,9 @@ import {
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
+import ReviewSection from '@/src/components/ReviewSection';
+import ReportModal from '@/src/components/ReportModal';
+import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
 
 interface Restaurant {
   id: number;
@@ -72,6 +75,8 @@ export default function RestaurantDetailScreen() {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [reportVisible, setReportVisible] = useState(false);
+  const [suggestVisible, setSuggestVisible] = useState(false);
 
   useEffect(() => {
     client
@@ -206,6 +211,10 @@ export default function RestaurantDetailScreen() {
           </View>
         )}
 
+        {/* ── Reviews ── */}
+        <Text style={s.sectionTitle}>Reviews</Text>
+        <ReviewSection entityType="restaurant" entityId={Number(id)} />
+
         {/* ── Action buttons ── */}
         {(hasPhone || hasLocation || hasAddress) && (
           <View style={s.actions}>
@@ -250,7 +259,37 @@ export default function RestaurantDetailScreen() {
             )}
           </View>
         )}
+        {/* ── Report + Suggest ── */}
+        <View style={s.bottomActions}>
+          <Pressable style={s.ghostBtn} onPress={() => setReportVisible(true)}>
+            <MaterialIcons name="flag" size={16} color="#DC2626" />
+            <Text style={[s.ghostBtnText, { color: '#DC2626' }]}>Report issue</Text>
+          </Pressable>
+          <Pressable style={s.ghostBtn} onPress={() => setSuggestVisible(true)}>
+            <MaterialIcons name="add-circle-outline" size={16} color={C.navy} />
+            <Text style={[s.ghostBtnText, { color: C.navy }]}>Suggest a place</Text>
+          </Pressable>
+        </View>
       </ScrollView>
+
+      {restaurant && (
+        <>
+          <ReportModal
+            visible={reportVisible}
+            onClose={() => setReportVisible(false)}
+            entityType="restaurant"
+            entityId={restaurant.id}
+            entityName={restaurant.name}
+          />
+          <SuggestPlaceModal
+            visible={suggestVisible}
+            onClose={() => setSuggestVisible(false)}
+            entityType="restaurant"
+            destinationId={restaurant.destination?.id ?? 0}
+            destinationName={restaurant.destination?.city ?? ''}
+          />
+        </>
+      )}
     </View>
   );
 }
@@ -356,6 +395,19 @@ const s = StyleSheet.create({
     marginBottom: 4,
   },
   infoValue: { fontSize: 15, color: C.textPrimary, lineHeight: 22 },
+
+  sectionTitle: {
+    fontSize: 14, fontWeight: '800', color: C.textSecondary,
+    letterSpacing: 0.5, marginBottom: 2,
+  },
+
+  bottomActions: { flexDirection: 'row', gap: 10, paddingTop: 4 },
+  ghostBtn: {
+    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 6, borderWidth: 1.5, borderRadius: 12, paddingVertical: 12,
+    borderColor: 'rgba(0,0,0,0.10)', backgroundColor: C.card,
+  },
+  ghostBtnText: { fontSize: 13, fontWeight: '700' },
 
   // Action buttons
   actions: { gap: 10 },
