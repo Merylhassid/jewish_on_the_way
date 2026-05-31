@@ -60,45 +60,54 @@ export default function MapScreen() {
   const [loading, setLoading]     = useState(true);
   const [layer,   setLayer]       = useState<LayerFilter>('all');
 
-  const centerLat = lat ? parseFloat(lat) : 31.7767;
-  const centerLng = lng ? parseFloat(lng) : 35.2345;
+  const [centerLat, setCenterLat] = useState(lat ? parseFloat(lat) : 31.7767);
+  const [centerLng, setCenterLng] = useState(lng ? parseFloat(lng) : 35.2345);
 
   useEffect(() => {
     (async () => {
-      // nearby מחזיר lat/lng ישירות מ-PostGIS — limit גדול כדי לכסות את כל היעד
+      // 1. קבל קורדינטות מרכז היעד מה-API
+      let cLat = lat ? parseFloat(lat) : 31.7767;
+      let cLng = lng ? parseFloat(lng) : 35.2345;
+      try {
+        const destRes = await client.get(`/destinations/${destinationId}`);
+        if (destRes.data.lat && destRes.data.lng) {
+          cLat = parseFloat(destRes.data.lat);
+          cLng = parseFloat(destRes.data.lng);
+          setCenterLat(cLat);
+          setCenterLng(cLng);
+        }
+      } catch {}
+
+      // 2. טען מסעדות ובתי כנסת לפי destinationId + קורדינטות לחישוב מרחק
       const [rRes, sRes] = await Promise.allSettled([
-        client.get('/restaurants/nearby', { params: { lat: centerLat, lng: centerLng, limit: 200 } }),
-        client.get('/synagogues/nearby',  { params: { lat: centerLat, lng: centerLng, limit: 200 } }),
+        client.get('/restaurants', { params: { destinationId, lat: cLat, lng: cLng } }),
+        client.get('/synagogues',  { params: { destinationId } }),
       ]);
       const all: Place[] = [];
+
       if (rRes.status === 'fulfilled') {
         rRes.value.data.forEach((r: any) => {
-          const rLat = parseFloat(r.lat ?? r.latitude ?? '');
-          const rLng = parseFloat(r.lng ?? r.longitude ?? '');
+          const rLat = parseFloat(r.lat);
+          const rLng = parseFloat(r.lng);
           if (!isNaN(rLat) && !isNaN(rLng)) {
             all.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', lat: rLat, lng: rLng, kashrutLevel: r.kashrutLevel });
           }
         });
       }
+
       if (sRes.status === 'fulfilled') {
         sRes.value.data.forEach((s: any) => {
-          // nearby synagogues מחזיר location כ-GeoJSON או WKB — ננסה שניהם
-          let sLat: number | null = null;
-          let sLng: number | null = null;
           if (s.location?.coordinates) {
-            [sLng, sLat] = s.location.coordinates;
-          } else if (s.lat && s.lng) {
-            sLat = parseFloat(s.lat); sLng = parseFloat(s.lng);
-          }
-          if (sLat && sLng) {
+            const [sLng, sLat] = s.location.coordinates;
             all.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue', lat: sLat, lng: sLng });
           }
         });
       }
+
       setAllPlaces(all);
       setLoading(false);
     })();
-  }, [destinationId, centerLat, centerLng]);
+  }, [destinationId]);
 
   const visible = allPlaces.filter(p =>
     layer === 'all' ? true :
