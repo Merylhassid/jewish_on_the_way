@@ -7,6 +7,7 @@ import {
   FlatList,
   Platform,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -14,9 +15,30 @@ import {
   View,
 } from 'react-native';
 import { Image } from 'expo-image';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl } from '@/constants/theme';
+
+const RECENT_KEY = 'recent_destinations';
+
+async function addRecentDestination(dest: Destination) {
+  try {
+    const raw = await AsyncStorage.getItem(RECENT_KEY);
+    const list: Destination[] = raw ? JSON.parse(raw) : [];
+    const filtered = list.filter(d => d.id !== dest.id);
+    filtered.unshift(dest);
+    await AsyncStorage.setItem(RECENT_KEY, JSON.stringify(filtered.slice(0, 6)));
+  } catch {}
+}
+
+async function loadRecentDestinations(): Promise<Destination[]> {
+  try {
+    const raw = await AsyncStorage.getItem(RECENT_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch { return []; }
+}
 
 interface Destination {
   id: number;
@@ -48,6 +70,8 @@ export default function DestinationsScreen() {
   const [smartBusy, setSmartBusy] = useState(false);
   const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [gpsReady, setGpsReady] = useState(false);
+
+  const [recentDests, setRecentDests] = useState<Destination[]>([]);
 
   // live classification chip
   const [liveChip, setLiveChip] = useState<{ category: string; emoji: string; denomination: string | null; denomEmoji: string; denomLabel: string } | null>(null);
@@ -126,9 +150,10 @@ export default function DestinationsScreen() {
     }
   };
 
-  // Initial fetch
+  // Initial fetch + load recent
   useEffect(() => {
     fetchDestinations();
+    loadRecentDestinations().then(setRecentDests);
   }, []);
 
   return (
@@ -136,6 +161,10 @@ export default function DestinationsScreen() {
 
       {/* ── Header ── */}
       <View style={s.header}>
+        <Pressable style={s.savedBtn} onPress={() => router.push('/saved' as any)}>
+          <MaterialIcons name="favorite" size={18} color={C.gold} />
+          <Text style={s.savedBtnText}>Saved</Text>
+        </Pressable>
         <Text style={s.eyebrow}>JEWISH ON THE WAY</Text>
         <Text style={s.title}>{t('home.title')}</Text>
         <Text style={s.subtitle}>{t('home.subtitle')}</Text>
@@ -192,6 +221,28 @@ export default function DestinationsScreen() {
         )}
       </View>
 
+      {/* ── Recent destinations ── */}
+      {recentDests.length > 0 && !search && (
+        <View style={s.recentSection}>
+          <Text style={s.recentLabel}>Recent</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
+            {recentDests.map(d => (
+              <Pressable
+                key={d.id}
+                style={s.recentChip}
+                onPress={() => {
+                  const path = d.hasChildren ? `/destination/${d.id}/subdestinations` : `/destination/${d.id}`;
+                  router.push(path as any);
+                }}
+              >
+                <MaterialIcons name="history" size={13} color={C.gold} />
+                <Text style={s.recentChipText}>{d.city || d.name}</Text>
+              </Pressable>
+            ))}
+          </ScrollView>
+        </View>
+      )}
+
       {loading ? (
         <View style={s.center}>
           <ActivityIndicator size="large" color={C.gold} />
@@ -214,10 +265,12 @@ export default function DestinationsScreen() {
             <DestinationCard
               item={item}
               onPress={() => {
+                addRecentDestination(item);
+                setRecentDests(prev => [item, ...prev.filter(d => d.id !== item.id)].slice(0, 6));
                 const path = item.hasChildren
                   ? `/destination/${item.id}/subdestinations`
                   : `/destination/${item.id}`;
-                router.push(path);
+                router.push(path as any);
               }}
             />
           )}
@@ -297,6 +350,30 @@ function DestinationCard({
 const s = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F2F5FB' },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+
+  // ── Saved button ─────────────────────────────────────────────────────────
+  savedBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    alignSelf: 'flex-end', marginBottom: 8,
+    backgroundColor: 'rgba(201,168,76,0.15)', borderRadius: 20,
+    paddingHorizontal: 12, paddingVertical: 6,
+    borderWidth: 1, borderColor: 'rgba(201,168,76,0.30)',
+  },
+  savedBtnText: { fontSize: 12, fontWeight: '700', color: C.gold },
+
+  // ── Recent destinations ────────────────────────────────────────────────
+  recentSection: { paddingHorizontal: 18, paddingTop: 14, paddingBottom: 4 },
+  recentLabel:   { fontSize: 11, fontWeight: '800', color: C.textMuted, letterSpacing: 1, marginBottom: 8 },
+  recentRow:     { gap: 8 },
+  recentChip: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    backgroundColor: C.card, borderRadius: 20,
+    paddingHorizontal: 12, paddingVertical: 7,
+    borderWidth: 1, borderColor: '#E5DCC8',
+    shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 4,
+    shadowOffset: { width: 0, height: 1 }, elevation: 1,
+  },
+  recentChipText: { fontSize: 13, fontWeight: '600', color: C.textPrimary },
 
   // ── Header ────────────────────────────────────────────────────────────────
   header: {

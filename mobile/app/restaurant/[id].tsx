@@ -16,6 +16,7 @@ import { C } from '@/constants/theme';
 import ReviewSection from '@/src/components/ReviewSection';
 import ReportModal from '@/src/components/ReportModal';
 import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
+import FavoriteButton from '@/src/components/FavoriteButton';
 
 interface Restaurant {
   id: number;
@@ -152,6 +153,9 @@ export default function RestaurantDetailScreen() {
         </View>
 
         <Text style={s.headerName}>{restaurant.name}</Text>
+        <View style={s.favRow}>
+          <FavoriteButton entityType="restaurant" entityId={restaurant.id} size={26} color="#fff" />
+        </View>
 
         {restaurant.destination && (
           <Text style={s.headerSub}>
@@ -396,6 +400,7 @@ const s = StyleSheet.create({
   },
   infoValue: { fontSize: 15, color: C.textPrimary, lineHeight: 22 },
 
+  favRow: { marginTop: 8 },
   sectionTitle: {
     fontSize: 14, fontWeight: '800', color: C.textSecondary,
     letterSpacing: 0.5, marginBottom: 2,
