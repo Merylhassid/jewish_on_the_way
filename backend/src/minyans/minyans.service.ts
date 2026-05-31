@@ -136,6 +136,45 @@ export class MinyansService {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
 
+  // מניינים שהמשתמש יצר או נרשם אליהם
+  async findMine(userId: number) {
+    const rows = await this.minyansRepo.query(
+      `SELECT DISTINCT
+         m.id, m.prayer_type AS "prayerType", m.date, m.time,
+         m.location_text AS "locationText", m.notes,
+         m.participants_count AS "participantsCount",
+         m.creator_id AS "creatorId",
+         u.first_name AS "creatorFirstName", u.last_name AS "creatorLastName",
+         d.city AS "destinationCity", d.id AS "destinationId",
+         CASE WHEN m.creator_id = $1 THEN true ELSE false END AS "isCreator"
+       FROM minyans m
+       LEFT JOIN users u ON u.id = m.creator_id
+       JOIN destinations d ON d.id = m.destination_id
+       LEFT JOIN minyan_registrations r ON r.minyan_id = m.id AND r.user_id = $1
+       WHERE m.creator_id = $1 OR r.user_id = $1
+       ORDER BY m.date ASC, m.time ASC`,
+      [userId],
+    );
+
+    return rows.map((row: any) => {
+      const count = Number(row.participantsCount);
+      return {
+        id: Number(row.id),
+        prayerType: row.prayerType,
+        date: row.date,
+        time: row.time,
+        locationText: row.locationText,
+        notes: row.notes ?? null,
+        participantsCount: count,
+        almostFull: count >= ALMOST_FULL_THRESHOLD && count < MINYAN_FULL,
+        isFull: count >= MINYAN_FULL,
+        isCreator: row.isCreator,
+        destination: { id: Number(row.destinationId), city: row.destinationCity },
+        creator: row.creatorId ? { id: Number(row.creatorId), firstName: row.creatorFirstName, lastName: row.creatorLastName } : null,
+      };
+    });
+  }
+
   // req 6.1 — single minyan + registration status
   async findOne(id: number, userId: number) {
     const minyan = await this.minyansRepo.findOne({
@@ -271,6 +310,22 @@ export class MinyansService {
       registered: false,
       participantsCount: Math.max(0, minyan.participantsCount - 1),
     };
+  }
+
+  // מחיקת מניין על ידי היוצר בלבד
+  async deleteMinyan(id: number, userId: number) {
+    const minyan = await this.minyansRepo.findOne({
+      where: { id },
+      relations: ['creator'],
+    });
+    if (!minyan) throw new NotFoundException(`Minyan #${id} not found`);
+    if (minyan.creator?.id !== userId)
+      throw new ForbiddenException('Only the creator can cancel this minyan');
+
+    await this.registrationsRepo.delete({ minyan: { id } });
+    await this.minyansRepo.remove(minyan);
+    this.audit.log('MINYAN_DELETED', userId, { minyanId: id });
+    return { deleted: true };
   }
 
   private format(m: Minyan) {

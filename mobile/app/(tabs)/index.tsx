@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Location from 'expo-location';
+import { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -41,27 +41,67 @@ export default function DestinationsScreen() {
   const [error, setError] = useState(false);
 
   // ── חיפוש חכם ──────────────────────────────────────────────
-  const [smartText, setSmartText]   = useState('');
-  const [smartBusy, setSmartBusy]   = useState(false);
+  const [smartText, setSmartText] = useState('');
+  const [smartBusy, setSmartBusy] = useState(false);
+  const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [gpsReady, setGpsReady] = useState(false);
+
+  // live classification chip
+  const [liveChip, setLiveChip] = useState<{ category: string; emoji: string; denomination: string | null; denomEmoji: string; denomLabel: string } | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // בקשת GPS ברקע בטעינת הדף
+  useEffect(() => {
+    (async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') return;
+      try {
+        const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
+        setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setGpsReady(true);
+      } catch { /* silent */ }
+    })();
+  }, []);
+
+  const onSmartTextChange = (val: string) => {
+    setSmartText(val);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    if (!val.trim()) { setLiveChip(null); return; }
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const res = await client.get('/search/classify', { params: { text: val.trim() } });
+        setLiveChip(res.data.category ? res.data : null);
+      } catch { /* silent */ }
+    }, 400);
+  };
 
   const handleSmartSearch = async () => {
     const text = smartText.trim();
     if (!text) return;
+    setLiveChip(null);
     try {
       setSmartBusy(true);
-      // הבקאנד מטפל בהכל — מסווג קטגוריה + מחפש עיר ב-DB
-      const res = await client.post('/search', { text });
-      const { route, category, emoji, detectedCity } = res.data;
+      const body: Record<string, any> = { text };
+      if (userCoords) { body.lat = userCoords.lat; body.lng = userCoords.lng; }
+
+      const res = await client.post('/search', body);
+      const { route, category, emoji, detectedCity, error } = res.data;
+
+      if (error === 'low_confidence') {
+        Alert.alert('לא הבנתי 🤔', 'נסה לכתוב בצורה ברורה יותר.\nלמשל: "מסעדה כשרה בתל אביב" או "מניין בירושלים"');
+        return;
+      }
 
       if (!detectedCity) {
         Alert.alert(
           `${emoji} זיהינו: ${category}`,
-          'לא זיהינו עיר ספציפית בטקסט.\nנסה לכתוב למשל: "מסעדה כשרה בתל אביב"',
+          'לא זיהינו עיר ספציפית.\nנסה לכתוב למשל: "מסעדה כשרה בתל אביב"',
         );
         return;
       }
 
-      router.push(route as any);
+      const cityParam = detectedCity ? `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}` : '';
+      router.push((route + cityParam) as any);
     } catch {
       Alert.alert('שגיאה', 'לא ניתן לחפש כרגע, נסה שוב');
     } finally {
@@ -85,9 +125,6 @@ export default function DestinationsScreen() {
 
   useEffect(() => {
     fetchDestinations();
-    AsyncStorage.getItem('lastDestinationId').then((id) => {
-      if (id) router.push(`/destination/${id}`);
-    });
   }, []);
 
   const onSearch = (text: string) => {
@@ -116,14 +153,16 @@ export default function DestinationsScreen() {
       {/* ── Smart Search Card ── */}
       <View style={styles.smartCard}>
         <Text style={styles.smartTitle}>✨ חיפוש חכם</Text>
-        <Text style={styles.smartSub}>כתוב בשפה חופשית מה אתה מחפש ואיפה</Text>
+        <Text style={styles.smartSub}>
+          כתוב בשפה חופשית מה אתה מחפש ואיפה{gpsReady ? '  •  📍 GPS מוכן' : ''}
+        </Text>
         <View style={styles.smartRow}>
           <TextInput
             style={styles.smartInput}
             placeholder={'למשל: "מסעדה כשרה בתל אביב"'}
             placeholderTextColor="#8A96B0"
             value={smartText}
-            onChangeText={setSmartText}
+            onChangeText={onSmartTextChange}
             onSubmitEditing={handleSmartSearch}
             returnKeyType="search"
           />
@@ -138,6 +177,14 @@ export default function DestinationsScreen() {
             }
           </TouchableOpacity>
         </View>
+        {liveChip && (
+          <View style={styles.liveChip}>
+            <Text style={styles.liveChipText}>
+              {liveChip.emoji} {liveChip.category}
+              {liveChip.denomination ? `  •  ${liveChip.denomEmoji} ${liveChip.denomLabel}` : ''}
+            </Text>
+          </View>
+        )}
       </View>
 
       {loading ? (
@@ -162,7 +209,6 @@ export default function DestinationsScreen() {
             <Pressable
               style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
               onPress={() => {
-                AsyncStorage.setItem('lastDestinationId', String(item.id));
                 const path = item.hasChildren
                   ? `/destination/${item.id}/subdestinations`
                   : `/destination/${item.id}`;
@@ -259,6 +305,8 @@ const styles = StyleSheet.create({
   smartBtn:     { backgroundColor: '#0C2461', borderRadius: 12, width: 44, height: 44, justifyContent: 'center', alignItems: 'center' },
   smartBtnOff:  { backgroundColor: '#B0BAC8' },
   smartBtnText: { color: '#fff', fontSize: 20, fontWeight: '700' },
+  liveChip:     { marginTop: 10, alignSelf: 'flex-start', backgroundColor: '#EDE7F6', borderRadius: 20, paddingHorizontal: 12, paddingVertical: 5 },
+  liveChipText: { fontSize: 13, color: '#5E35B1', fontWeight: '600' },
 
   emptyBox: { alignItems: 'center', paddingTop: 64 },
   emptyIcon: { fontSize: 36, marginBottom: 12 },

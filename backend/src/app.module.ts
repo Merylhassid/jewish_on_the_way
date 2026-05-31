@@ -55,7 +55,7 @@ import { PlacesModule } from './places/places.module';
             ? { rejectUnauthorized: false }
             : false,
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true,
+        synchronize: false,
         logging: true,
       }),
     }),
