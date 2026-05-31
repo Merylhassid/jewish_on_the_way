@@ -40,6 +40,14 @@ async function loadRecentDestinations(): Promise<Destination[]> {
   } catch { return []; }
 }
 
+async function removeRecentDestination(id: number) {
+  try {
+    const raw = await AsyncStorage.getItem(RECENT_KEY);
+    const list: Destination[] = raw ? JSON.parse(raw) : [];
+    await AsyncStorage.setItem(RECENT_KEY, JSON.stringify(list.filter(d => d.id !== id)));
+  } catch {}
+}
+
 interface Destination {
   id: number;
   name: string;
@@ -227,17 +235,27 @@ export default function DestinationsScreen() {
           <Text style={s.recentLabel}>Recent</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
             {recentDests.map(d => (
-              <Pressable
-                key={d.id}
-                style={s.recentChip}
-                onPress={() => {
-                  const path = d.hasChildren ? `/destination/${d.id}/subdestinations` : `/destination/${d.id}`;
-                  router.push(path as any);
-                }}
-              >
-                <MaterialIcons name="history" size={13} color={C.gold} />
-                <Text style={s.recentChipText}>{d.city || d.name}</Text>
-              </Pressable>
+              <View key={d.id} style={s.recentChip}>
+                <Pressable
+                  style={s.recentChipPress}
+                  onPress={() => {
+                    const path = d.hasChildren ? `/destination/${d.id}/subdestinations` : `/destination/${d.id}`;
+                    router.push(path as any);
+                  }}
+                >
+                  <MaterialIcons name="history" size={13} color={C.gold} />
+                  <Text style={s.recentChipText}>{d.city || d.name}</Text>
+                </Pressable>
+                <Pressable
+                  hitSlop={6}
+                  onPress={() => {
+                    removeRecentDestination(d.id);
+                    setRecentDests(prev => prev.filter(r => r.id !== d.id));
+                  }}
+                >
+                  <MaterialIcons name="close" size={14} color="#999" />
+                </Pressable>
+              </View>
             ))}
           </ScrollView>
         </View>
@@ -366,13 +384,14 @@ const s = StyleSheet.create({
   recentLabel:   { fontSize: 11, fontWeight: '800', color: C.textMuted, letterSpacing: 1, marginBottom: 8 },
   recentRow:     { gap: 8 },
   recentChip: {
-    flexDirection: 'row', alignItems: 'center', gap: 5,
+    flexDirection: 'row', alignItems: 'center', gap: 6,
     backgroundColor: C.card, borderRadius: 20,
-    paddingHorizontal: 12, paddingVertical: 7,
+    paddingLeft: 10, paddingRight: 8, paddingVertical: 7,
     borderWidth: 1, borderColor: '#E5DCC8',
     shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 4,
     shadowOffset: { width: 0, height: 1 }, elevation: 1,
   },
+  recentChipPress: { flexDirection: 'row', alignItems: 'center', gap: 5 },
   recentChipText: { fontSize: 13, fontWeight: '600', color: C.textPrimary },
 
   // ── Header ────────────────────────────────────────────────────────────────
