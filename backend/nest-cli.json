@@ -4,7 +4,7 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": ["ai/model.json"],
+    "assets": ["ai/model.json", "ai/denomination_model.json"],
     "watchAssets": true
   }
 }

@@ -21,6 +21,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import client from '@/src/api/client';
 import HomeButton from '@/src/components/HomeButton';
 
@@ -41,14 +42,19 @@ interface Offer {
 // ─── Guest search form + results ─────────────────────────────────────────────
 
 function GuestView({ destinationId }: { destinationId: number }) {
-  const [arrivalDate, setArrivalDate]     = useState('');
-  const [departureDate, setDepartureDate] = useState('');
+  const [arrivalObj, setArrivalObj]       = useState(new Date());
+  const [departureObj, setDepartureObj]   = useState(() => { const d = new Date(); d.setDate(d.getDate() + 1); return d; });
+  const [showArrival, setShowArrival]     = useState(false);
+  const [showDeparture, setShowDeparture] = useState(false);
   const [guestsCount, setGuestsCount]     = useState('1');
   const [forShabbat, setForShabbat]       = useState(false);
   const [withChildren, setWithChildren]   = useState(false);
   const [offers, setOffers]               = useState<Offer[] | null>(null);
   const [loading, setLoading]             = useState(false);
   const [requestOffer, setRequestOffer]   = useState<Offer | null>(null);
+
+  const arrivalDate   = arrivalObj.toISOString().split('T')[0];
+  const departureDate = departureObj.toISOString().split('T')[0];
 
   const search = async () => {
     try {
@@ -72,13 +78,47 @@ function GuestView({ destinationId }: { destinationId: number }) {
     <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
       <Text style={styles.sectionTitle}>Find a Host Family</Text>
 
-      <Text style={styles.label}>Arrival Date (YYYY-MM-DD)</Text>
-      <TextInput style={styles.input} value={arrivalDate} onChangeText={setArrivalDate}
-        placeholder="e.g. 2026-05-15" placeholderTextColor="#999" />
+      <Text style={styles.label}>Arrival Date</Text>
+      {Platform.OS === 'web' ? (
+        // @ts-ignore
+        <View style={styles.pickerBtn} lang="en" dir="ltr">
+          {/* @ts-ignore */}
+          <input type="date" value={arrivalDate} min={new Date().toISOString().split('T')[0]}
+            onChange={(e: any) => { if (e.target.value) setArrivalObj(new Date(e.target.value)); }}
+            style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+        </View>
+      ) : (
+        <>
+          <Pressable style={styles.pickerBtn} onPress={() => setShowArrival(true)}>
+            <Text style={styles.pickerBtnText}>📅  {arrivalDate}</Text>
+          </Pressable>
+          {showArrival && (
+            <DateTimePicker value={arrivalObj} mode="date" minimumDate={new Date()}
+              onChange={(_, d) => { setShowArrival(false); if (d) setArrivalObj(d); }} />
+          )}
+        </>
+      )}
 
-      <Text style={styles.label}>Departure Date (YYYY-MM-DD)</Text>
-      <TextInput style={styles.input} value={departureDate} onChangeText={setDepartureDate}
-        placeholder="e.g. 2026-05-18" placeholderTextColor="#999" />
+      <Text style={styles.label}>Departure Date</Text>
+      {Platform.OS === 'web' ? (
+        // @ts-ignore
+        <View style={styles.pickerBtn} lang="en" dir="ltr">
+          {/* @ts-ignore */}
+          <input type="date" value={departureDate} min={arrivalDate}
+            onChange={(e: any) => { if (e.target.value) setDepartureObj(new Date(e.target.value)); }}
+            style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+        </View>
+      ) : (
+        <>
+          <Pressable style={styles.pickerBtn} onPress={() => setShowDeparture(true)}>
+            <Text style={styles.pickerBtnText}>📅  {departureDate}</Text>
+          </Pressable>
+          {showDeparture && (
+            <DateTimePicker value={departureObj} mode="date" minimumDate={arrivalObj}
+              onChange={(_, d) => { setShowDeparture(false); if (d) setDepartureObj(d); }} />
+          )}
+        </>
+      )}
 
       <Text style={styles.label}>Number of Guests</Text>
       <TextInput style={styles.input} value={guestsCount} onChangeText={setGuestsCount}
@@ -157,13 +197,18 @@ function SendRequestModal({
   defaultArrival: string; defaultDeparture: string;
   defaultGuests: string; defaultShabbat: boolean; defaultChildren: boolean;
 }) {
-  const [arrival, setArrival]       = useState(defaultArrival);
-  const [departure, setDeparture]   = useState(defaultDeparture);
-  const [guests, setGuests]         = useState(defaultGuests);
-  const [shabbat, setShabbat]       = useState(defaultShabbat);
-  const [children, setChildren]     = useState(defaultChildren);
-  const [notes, setNotes]           = useState('');
-  const [loading, setLoading]       = useState(false);
+  const [arrivalObj, setArrivalObj]   = useState(() => defaultArrival ? new Date(defaultArrival) : new Date());
+  const [departObj, setDepartObj]     = useState(() => defaultDeparture ? new Date(defaultDeparture) : new Date());
+  const [showArr, setShowArr]         = useState(false);
+  const [showDep, setShowDep]         = useState(false);
+  const [guests, setGuests]           = useState(defaultGuests);
+  const [shabbat, setShabbat]         = useState(defaultShabbat);
+  const [children, setChildren]       = useState(defaultChildren);
+  const [notes, setNotes]             = useState('');
+  const [loading, setLoading]         = useState(false);
+
+  const arrival   = arrivalObj.toISOString().split('T')[0];
+  const departure = departObj.toISOString().split('T')[0];
 
   const send = async () => {
     if (!arrival || !departure) { Alert.alert('Error', 'Please enter arrival and departure dates'); return; }
@@ -198,10 +243,44 @@ function SendRequestModal({
           <Text style={styles.offerHostLabel}>Host: {offer.host?.firstName}</Text>
 
           <Text style={styles.label}>Arrival Date</Text>
-          <TextInput style={styles.input} value={arrival} onChangeText={setArrival} placeholder="YYYY-MM-DD" placeholderTextColor="#999" />
+          {Platform.OS === 'web' ? (
+            <View style={styles.pickerBtn}>
+              {/* @ts-ignore */}
+              <input type="date" lang="en" value={arrival} min={new Date().toISOString().split('T')[0]}
+                onChange={(e: any) => { if (e.target.value) setArrivalObj(new Date(e.target.value)); }}
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+            </View>
+          ) : (
+            <>
+              <Pressable style={styles.pickerBtn} onPress={() => setShowArr(true)}>
+                <Text style={styles.pickerBtnText}>📅  {arrival}</Text>
+              </Pressable>
+              {showArr && (
+                <DateTimePicker value={arrivalObj} mode="date" minimumDate={new Date()}
+                  onChange={(_, d) => { setShowArr(false); if (d) setArrivalObj(d); }} />
+              )}
+            </>
+          )}
 
           <Text style={styles.label}>Departure Date</Text>
-          <TextInput style={styles.input} value={departure} onChangeText={setDeparture} placeholder="YYYY-MM-DD" placeholderTextColor="#999" />
+          {Platform.OS === 'web' ? (
+            <View style={styles.pickerBtn}>
+              {/* @ts-ignore */}
+              <input type="date" lang="en" value={departure} min={arrival}
+                onChange={(e: any) => { if (e.target.value) setDepartObj(new Date(e.target.value)); }}
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+            </View>
+          ) : (
+            <>
+              <Pressable style={styles.pickerBtn} onPress={() => setShowDep(true)}>
+                <Text style={styles.pickerBtnText}>📅  {departure}</Text>
+              </Pressable>
+              {showDep && (
+                <DateTimePicker value={departObj} mode="date" minimumDate={arrivalObj}
+                  onChange={(_, d) => { setShowDep(false); if (d) setDepartObj(d); }} />
+              )}
+            </>
+          )}
 
           <Text style={styles.label}>Number of Guests</Text>
           <TextInput style={styles.input} value={guests} onChangeText={setGuests} keyboardType="number-pad" />
@@ -231,9 +310,14 @@ function SendRequestModal({
 // ─── Host view — create offer + see requests ──────────────────────────────────
 
 function HostView({ destinationId }: { destinationId: number }) {
-  const [availableFrom, setAvailableFrom]   = useState('');
-  const [availableTo, setAvailableTo]       = useState('');
+  const [fromObj, setFromObj]               = useState(new Date());
+  const [toObj, setToObj]                   = useState(() => { const d = new Date(); d.setDate(d.getDate() + 7); return d; });
+  const [showFrom, setShowFrom]             = useState(false);
+  const [showTo, setShowTo]                 = useState(false);
   const [maxGuests, setMaxGuests]           = useState('2');
+
+  const availableFrom = fromObj.toISOString().split('T')[0];
+  const availableTo   = toObj.toISOString().split('T')[0];
   const [allowsShabbat, setAllowsShabbat]   = useState(false);
   const [allowsChildren, setAllowsChildren] = useState(false);
   const [kashrut, setKashrut]               = useState('');
@@ -267,13 +351,47 @@ function HostView({ destinationId }: { destinationId: number }) {
     <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
       <Text style={styles.sectionTitle}>Create a Hosting Offer</Text>
 
-      <Text style={styles.label}>Available From (YYYY-MM-DD)</Text>
-      <TextInput style={styles.input} value={availableFrom} onChangeText={setAvailableFrom}
-        placeholder="e.g. 2026-05-10" placeholderTextColor="#999" />
+      <Text style={styles.label}>Available From</Text>
+      {Platform.OS === 'web' ? (
+        // @ts-ignore
+        <View style={styles.pickerBtn} lang="en" dir="ltr">
+          {/* @ts-ignore */}
+          <input type="date" value={availableFrom} min={new Date().toISOString().split('T')[0]}
+            onChange={(e: any) => { if (e.target.value) setFromObj(new Date(e.target.value)); }}
+            style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+        </View>
+      ) : (
+        <>
+          <Pressable style={styles.pickerBtn} onPress={() => setShowFrom(true)}>
+            <Text style={styles.pickerBtnText}>📅  {availableFrom}</Text>
+          </Pressable>
+          {showFrom && (
+            <DateTimePicker value={fromObj} mode="date" minimumDate={new Date()}
+              onChange={(_, d) => { setShowFrom(false); if (d) setFromObj(d); }} />
+          )}
+        </>
+      )}
 
-      <Text style={styles.label}>Available Until (YYYY-MM-DD)</Text>
-      <TextInput style={styles.input} value={availableTo} onChangeText={setAvailableTo}
-        placeholder="e.g. 2026-05-20" placeholderTextColor="#999" />
+      <Text style={styles.label}>Available Until</Text>
+      {Platform.OS === 'web' ? (
+        // @ts-ignore
+        <View style={styles.pickerBtn} lang="en" dir="ltr">
+          {/* @ts-ignore */}
+          <input type="date" value={availableTo} min={availableFrom}
+            onChange={(e: any) => { if (e.target.value) setToObj(new Date(e.target.value)); }}
+            style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+        </View>
+      ) : (
+        <>
+          <Pressable style={styles.pickerBtn} onPress={() => setShowTo(true)}>
+            <Text style={styles.pickerBtnText}>📅  {availableTo}</Text>
+          </Pressable>
+          {showTo && (
+            <DateTimePicker value={toObj} mode="date" minimumDate={fromObj}
+              onChange={(_, d) => { setShowTo(false); if (d) setToObj(d); }} />
+          )}
+        </>
+      )}
 
       <Text style={styles.label}>Max Guests</Text>
       <TextInput style={styles.input} value={maxGuests} onChangeText={setMaxGuests}
@@ -315,7 +433,7 @@ function Tag({ text }: { text: string }) {
 // ─── Main screen ─────────────────────────────────────────────────────────────
 
 export default function HostingScreen() {
-  const { destinationId } = useLocalSearchParams<{ destinationId: string }>();
+  const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
   const [mode, setMode] = useState<'choose' | 'guest' | 'host'>('choose');
 
   return (
@@ -325,7 +443,7 @@ export default function HostingScreen() {
           <Text style={styles.backText}>←</Text>
         </Pressable>
         <HomeButton />
-        <Text style={styles.headerTitle}>🏠 Shabbat Hosting</Text>
+        <Text style={styles.headerTitle}>🏠 Shabbat Hosting{city ? ` — ${city}` : ''}</Text>
       </View>
 
       {mode === 'choose' && (
@@ -391,6 +509,8 @@ const styles = StyleSheet.create({
   requestBtnText: { color: '#fff', fontWeight: '700', fontSize: 14 },
   tag:            { backgroundColor: '#e8eef8', borderRadius: 12, paddingHorizontal: 10, paddingVertical: 4 },
   tagText:        { fontSize: 12, color: '#1a3a6b', fontWeight: '500' },
+  pickerBtn:      { backgroundColor: '#fff', borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#dde3f0', marginBottom: 4 },
+  pickerBtnText:  { fontSize: 15, color: '#1a1a2e', fontWeight: '500' },
   empty:          { alignItems: 'center', paddingTop: 40 },
   emptyIcon:      { fontSize: 48, marginBottom: 12 },
   emptyText:      { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },

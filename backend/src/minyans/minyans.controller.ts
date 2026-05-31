@@ -21,6 +21,12 @@ import { CreateMinyanDto } from './dto/create-minyan.dto';
 export class MinyansController {
   constructor(private readonly minyansService: MinyansService) {}
 
+  // GET /minyans/mine — המניינים של המשתמש
+  @Get('mine')
+  findMine(@Req() req: any) {
+    return this.minyansService.findMine(req.user.sub);
+  }
+
   // GET /minyans?destinationId=1&prayerType=shacharit&date=2026-04-20&lat=48.8&lng=2.3
   @Get()
   findAll(
@@ -62,5 +68,12 @@ export class MinyansController {
   @HttpCode(HttpStatus.OK)
   unregister(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
     return this.minyansService.unregister(id, req.user.sub);
+  }
+
+  // DELETE /minyans/:id  — יוצר בלבד
+  @Delete(':id')
+  @HttpCode(HttpStatus.OK)
+  deleteMinyan(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.minyansService.deleteMinyan(id, req.user.sub);
   }
 }

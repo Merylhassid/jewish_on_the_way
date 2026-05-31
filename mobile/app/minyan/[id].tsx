@@ -91,6 +91,27 @@ export default function MinyanDetailScreen() {
     }
   };
 
+  const handleDeleteMinyan = () => {
+    Alert.alert('Cancel Minyan', 'Are you sure you want to cancel this minyan? All participants will be removed.', [
+      { text: 'Keep', style: 'cancel' },
+      {
+        text: 'Cancel Minyan', style: 'destructive',
+        onPress: async () => {
+          try {
+            setActionLoading(true);
+            await client.delete(`/minyans/${id}`);
+            Alert.alert('Minyan Cancelled', 'The minyan has been removed.');
+            router.back();
+          } catch (err: any) {
+            Alert.alert('Error', err?.response?.data?.message ?? 'Failed to cancel minyan');
+          } finally {
+            setActionLoading(false);
+          }
+        },
+      },
+    ]);
+  };
+
   if (loading) {
     return <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>;
   }
@@ -196,8 +217,15 @@ export default function MinyanDetailScreen() {
         )}
 
         {isCreator && (
-          <View style={styles.creatorNote}>
-            <Text style={styles.creatorNoteText}>⭐ You created this minyan</Text>
+          <View style={{ gap: 10 }}>
+            <View style={styles.creatorNote}>
+              <Text style={styles.creatorNoteText}>⭐ You created this minyan</Text>
+            </View>
+            <TouchableOpacity style={styles.deleteBtn} onPress={handleDeleteMinyan} disabled={actionLoading}>
+              {actionLoading
+                ? <ActivityIndicator color="#e53935" size="small" />
+                : <Text style={styles.deleteBtnText}>Cancel This Minyan</Text>}
+            </TouchableOpacity>
           </View>
         )}
       </ScrollView>
@@ -255,4 +283,6 @@ const styles = StyleSheet.create({
   confirmCancelText:{ fontSize: 15, fontWeight: '600', color: '#fff' },
   creatorNote:    { backgroundColor: '#e8eef8', borderRadius: 14, padding: 16, alignItems: 'center' },
   creatorNoteText:{ color: '#1a3a6b', fontSize: 14, fontWeight: '600' },
+  deleteBtn:      { backgroundColor: '#fff', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
+  deleteBtnText:  { color: '#e53935', fontSize: 15, fontWeight: '600' },
 });

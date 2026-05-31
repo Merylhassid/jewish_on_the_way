@@ -12,6 +12,28 @@ import {
 import client from '@/src/api/client';
 import HomeButton from '@/src/components/HomeButton';
 
+const DENOM_DISPLAY: Record<string, { label: string; emoji: string; color: string }> = {
+  ashkenaz: { label: 'אשכנז', emoji: '🎩', color: '#3949AB' },
+  sfarad:   { label: 'ספרד',  emoji: '🌙', color: '#00897B' },
+  chabad:   { label: 'חב"ד', emoji: '🕎', color: '#E65100' },
+  teimanim: { label: 'תימן',  emoji: '🌿', color: '#558B2F' },
+};
+
+const ASHKENAZ_VALS = ['אשכנז', 'אשכנזי', 'ליטאי', 'ליטאית', 'ashkenaz', 'ashkenazi', 'orthodox'];
+const SFARAD_VALS   = ['ספרד', 'ספרדי', 'ספרדית', 'עדות המזרח', 'מרוקאי', 'מרוקאית', 'הודי', 'בוכרה', 'אתיופי', 'טוניסאי', 'לובי', 'עיראקי', 'פרסי', 'sfarad', 'mizrahi'];
+const CHABAD_VALS   = ['חב"ד', 'חבד', 'חסידי', 'חסידית', 'chabad', 'hasidic'];
+const TEIMANIM_VALS = ['תימן', 'תימני', 'תימנית', 'שאמי', 'בלאדי', 'ירושלמי', 'teimanim', 'yemenite'];
+
+function getDenomKey(denomination?: string | null): string | null {
+  if (!denomination) return null;
+  const d = denomination.toLowerCase();
+  if (ASHKENAZ_VALS.some(v  => d.includes(v.toLowerCase()))) return 'ashkenaz';
+  if (SFARAD_VALS.some(v    => d.includes(v.toLowerCase()))) return 'sfarad';
+  if (CHABAD_VALS.some(v    => d.includes(v.toLowerCase()))) return 'chabad';
+  if (TEIMANIM_VALS.some(v  => d.includes(v.toLowerCase()))) return 'teimanim';
+  return null;
+}
+
 interface Synagogue {
   id: number;
   name: string;
@@ -122,11 +144,18 @@ export default function SynagogueDetailsScreen() {
         <Text style={styles.name}>{synagogue.name}</Text>
 
         {/* Denomination */}
-        {synagogue.denomination && (
-          <View style={styles.denominationBadge}>
-            <Text style={styles.denominationText}>{synagogue.denomination}</Text>
-          </View>
-        )}
+        {(() => {
+          const key = getDenomKey(synagogue.denomination);
+          const d = key ? DENOM_DISPLAY[key] : null;
+          if (!synagogue.denomination) return null;
+          return (
+            <View style={[styles.denominationBadge, d ? { backgroundColor: d.color } : {}]}>
+              <Text style={styles.denominationText}>
+                {d ? `${d.emoji}  נוסח ${d.label}` : synagogue.denomination}
+              </Text>
+            </View>
+          );
+        })()}
 
         {/* About */}
         {aboutText && (

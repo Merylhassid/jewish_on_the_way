@@ -154,11 +154,12 @@ export default function DestinationScreen() {
               ]}
               onPress={() => {
                 if (!isActive) return;
-                if (service.key === 'restaurants') router.push(`/restaurants/${id}`);
-                else if (service.key === 'synagogues') router.push(`/synagogues/${id}`);
-                else if (service.key === 'chat') router.push(`/chat/${id}`);
-                else if (service.key === 'minyans') router.push(`/minyans/${id}`);
-                else if (service.key === 'hosting') router.push(`/hosting/${id}`);
+                const city = encodeURIComponent(destination.city);
+                if (service.key === 'restaurants') router.push(`/restaurants/${id}?city=${city}`);
+                else if (service.key === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
+                else if (service.key === 'chat') router.push(`/chat/${id}?city=${city}`);
+                else if (service.key === 'minyans') router.push(`/minyans/${id}?city=${city}`);
+                else if (service.key === 'hosting') router.push(`/hosting/${id}?city=${city}`);
               }}
             >
               <View style={[styles.iconCircle, { backgroundColor: service.iconBg }]}>
