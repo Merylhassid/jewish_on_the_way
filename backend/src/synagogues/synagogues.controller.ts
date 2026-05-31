@@ -27,6 +27,22 @@ export class SynagoguesController {
   }
 
   /**
+   * GET /synagogues/nearby?lat=X&lng=Y&limit=10
+   */
+  @Get('nearby')
+  async findNearby(
+    @Query('lat') lat: string,
+    @Query('lng') lng: string,
+    @Query('limit') limit?: string,
+  ) {
+    if (!lat || !lng) throw new BadRequestException('lat and lng are required');
+    return this.synagoguesService.findNearby(
+      parseFloat(lat), parseFloat(lng),
+      limit ? parseInt(limit) : 10,
+    );
+  }
+
+  /**
    * GET /synagogues/:id
    * Returns full details of a single synagogue
    */

@@ -22,7 +22,8 @@
           "locationWhenInUsePermission": "Allow Jewish On The Way to show distances to nearby restaurants and minyans."
         }
       ],
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "react-native-maps"
     ]
   }
 }

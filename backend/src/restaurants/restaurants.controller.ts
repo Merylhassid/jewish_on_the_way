@@ -133,6 +133,23 @@ export class RestaurantsController {
     return { ok: true };
   }
 
+  // GET /restaurants/nearby?lat=X&lng=Y&limit=10&kashrut=mehadrin
+  @UseGuards(JwtAuthGuard)
+  @Get('nearby')
+  findNearby(
+    @Query('lat') lat: string,
+    @Query('lng') lng: string,
+    @Query('limit') limit?: string,
+    @Query('kashrut') kashrut?: string,
+  ) {
+    if (!lat || !lng) throw new BadRequestException('lat and lng are required');
+    return this.restaurantsService.findNearby(
+      parseFloat(lat), parseFloat(lng),
+      limit ? parseInt(limit) : 10,
+      kashrut,
+    );
+  }
+
   // GET /restaurants/:id
   @UseGuards(JwtAuthGuard)
   @Get(':id')
