@@ -70,10 +70,10 @@ export default function ShabbatScreen() {
     })();
   }, []);
 
-  const candles  = data?.items.find(i => i.category === 'candles');
-  const havdalah = data?.items.find(i => i.category === 'havdalah');
-  const parasha  = data?.items.find(i => i.category === 'parashat');
-  const holiday  = data?.items.find(i => i.category === 'holiday' || i.category === 'roshHashana');
+  const candles  = data?.items?.find(i => i.category === 'candles');
+  const havdalah = data?.items?.find(i => i.category === 'havdalah');
+  const parasha  = data?.items?.find(i => i.category === 'parashat');
+  const holiday  = data?.items?.find(i => i.category === 'holiday' || i.category === 'roshHashana');
 
   if (loading) return (
     <View style={s.center}>
