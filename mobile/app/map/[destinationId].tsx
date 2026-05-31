@@ -65,31 +65,40 @@ export default function MapScreen() {
 
   useEffect(() => {
     (async () => {
+      // nearby מחזיר lat/lng ישירות מ-PostGIS — limit גדול כדי לכסות את כל היעד
       const [rRes, sRes] = await Promise.allSettled([
-        client.get('/restaurants', { params: { destinationId } }),
-        client.get('/synagogues',  { params: { destinationId } }),
+        client.get('/restaurants/nearby', { params: { lat: centerLat, lng: centerLng, limit: 200 } }),
+        client.get('/synagogues/nearby',  { params: { lat: centerLat, lng: centerLng, limit: 200 } }),
       ]);
       const all: Place[] = [];
       if (rRes.status === 'fulfilled') {
-        rRes.value.data
-          .filter((r: any) => r.lat && r.lng)
-          .forEach((r: any) => all.push({
-            id: r.id, name: r.name, address: r.address, type: 'restaurant',
-            lat: r.lat, lng: r.lng, kashrutLevel: r.kashrutLevel,
-          }));
+        rRes.value.data.forEach((r: any) => {
+          const rLat = parseFloat(r.lat ?? r.latitude ?? '');
+          const rLng = parseFloat(r.lng ?? r.longitude ?? '');
+          if (!isNaN(rLat) && !isNaN(rLng)) {
+            all.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', lat: rLat, lng: rLng, kashrutLevel: r.kashrutLevel });
+          }
+        });
       }
       if (sRes.status === 'fulfilled') {
-        sRes.value.data
-          .filter((s: any) => s.location?.coordinates)
-          .forEach((s: any) => {
-            const [sLng, sLat] = s.location.coordinates;
+        sRes.value.data.forEach((s: any) => {
+          // nearby synagogues מחזיר location כ-GeoJSON או WKB — ננסה שניהם
+          let sLat: number | null = null;
+          let sLng: number | null = null;
+          if (s.location?.coordinates) {
+            [sLng, sLat] = s.location.coordinates;
+          } else if (s.lat && s.lng) {
+            sLat = parseFloat(s.lat); sLng = parseFloat(s.lng);
+          }
+          if (sLat && sLng) {
             all.push({ id: s.id, name: s.name, address: s.address, type: 'synagogue', lat: sLat, lng: sLng });
-          });
+          }
+        });
       }
       setAllPlaces(all);
       setLoading(false);
     })();
-  }, [destinationId]);
+  }, [destinationId, centerLat, centerLng]);
 
   const visible = allPlaces.filter(p =>
     layer === 'all' ? true :
