@@ -110,7 +110,7 @@ describe('ManualSynagogueImportService', () => {
   });
 
   it('keeps the row when geocoding fails and marks it for verification', async () => {
-    (global.fetch as jest.Mock).mockImplementationOnce(async () => {
+    (global.fetch as jest.Mock).mockImplementation(async () => {
       return {
         ok: true,
         json: async () => [],
@@ -352,7 +352,7 @@ describe('ManualSynagogueImportService', () => {
   });
 
   it('does not update existing synagogue when incoming record has no coordinates', async () => {
-    (global.fetch as jest.Mock).mockImplementationOnce(async () => {
+    (global.fetch as jest.Mock).mockImplementation(async () => {
       return {
         ok: true,
         json: async () => [],
