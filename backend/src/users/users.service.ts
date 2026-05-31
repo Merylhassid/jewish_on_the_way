@@ -17,6 +17,19 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
+  private toSafeUser(user: User) {
+    const {
+      passwordHash,
+      resetPasswordToken,
+      resetPasswordExpires,
+      role,
+      isActive,
+      deletedAt,
+      ...safeUser
+    } = user;
+    return safeUser;
+  }
+
   async getCurrentUser(userId: number) {
     const user = await this.usersRepository.findOne({
       where: { id: userId },
@@ -26,8 +39,7 @@ export class UsersService {
       throw new NotFoundException('User not found');
     }
 
-    const { passwordHash, ...safeUser } = user;
-    return safeUser;
+    return this.toSafeUser(user);
   }
 
   async updateCurrentUser(userId: number, updateUserDto: UpdateUserDto) {
@@ -43,8 +55,7 @@ export class UsersService {
 
     const updatedUser = await this.usersRepository.save(user);
 
-    const { passwordHash, ...safeUser } = updatedUser;
-    return safeUser;
+    return this.toSafeUser(updatedUser);
   }
 
   async changePassword(userId: number, changePasswordDto: ChangePasswordDto) {
@@ -99,9 +110,7 @@ export class UsersService {
 
     const updatedUser = await this.usersRepository.save(user);
 
-    const safeUser = { ...updatedUser };
-
-    return safeUser;
+    return this.toSafeUser(updatedUser);
   }
   async removeAvatar(userId: number) {
     const user = await this.usersRepository.findOne({
@@ -116,7 +125,6 @@ export class UsersService {
 
     const updatedUser = await this.usersRepository.save(user);
 
-    const { passwordHash, ...safeUser } = updatedUser;
-    return safeUser;
+    return this.toSafeUser(updatedUser);
   }
 }
