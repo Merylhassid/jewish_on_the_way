@@ -21,6 +21,10 @@ export class MailService {
 
   async sendPasswordReset(toEmail: string, resetToken: string): Promise<void> {
     const appUrl = this.config.get<string>('APP_URL')?.replace(/\/$/, '');
+    if (!appUrl) {
+      throw new Error('APP_URL is not configured');
+    }
+
     const resetLink = `${appUrl}/reset-password?token=${encodeURIComponent(resetToken)}`;
 
     await this.transporter.sendMail({

@@ -43,21 +43,32 @@ import { PlacesModule } from './places/places.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        host: config.get<string>('DB_HOST'),
-        port: Number(config.get<string>('DB_PORT')),
-        username: config.get<string>('DB_USER'),
-        password: config.get<string>('DB_PASS'),
-        database: config.get<string>('DB_NAME'),
-        ssl:
-          config.get<string>('DB_SSL') === 'true'
-            ? { rejectUnauthorized: false }
-            : false,
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: false,
-        logging: true,
-      }),
+      useFactory: (config: ConfigService) => {
+        const rejectUnauthorized = config.get<string>(
+          'DB_SSL_REJECT_UNAUTHORIZED',
+        );
+
+        return {
+          type: 'postgres',
+          host: config.get<string>('DB_HOST'),
+          port: Number(config.get<string>('DB_PORT')),
+          username: config.get<string>('DB_USER'),
+          password: config.get<string>('DB_PASS'),
+          database: config.get<string>('DB_NAME'),
+          ssl:
+            config.get<string>('DB_SSL') === 'true'
+              ? {
+                  rejectUnauthorized:
+                    rejectUnauthorized === undefined
+                      ? false
+                      : rejectUnauthorized === 'true',
+                }
+              : false,
+          entities: [__dirname + '/**/*.entity{.ts,.js}'],
+          synchronize: false,
+          logging: config.get<string>('NODE_ENV') !== 'production',
+        };
+      },
     }),
 
     HealthModule,
