@@ -5,12 +5,13 @@ import { Destination } from '../destination.entity';
 import { SearchFeedback } from '../ai/search-feedback.entity';
 import { RestaurantsController } from './restaurants.controller';
 import { RestaurantsService } from './restaurants.service';
+import { GeocodingService } from '../geocoding/geocoding.service';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Restaurant, Destination, SearchFeedback]),
   ],
   controllers: [RestaurantsController],
-  providers: [RestaurantsService],
+  providers: [RestaurantsService, GeocodingService],
 })
 export class RestaurantsModule {}

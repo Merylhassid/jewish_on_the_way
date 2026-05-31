@@ -5,9 +5,9 @@ export default {
     profile: 'Profile',
   },
   home: {
-    title: '✡️ Jewish On The Way',
+    title: 'Jewish On The Way',
     subtitle: 'Where are you traveling?',
-    searchPlaceholder: '🔍  Search a city...',
+    searchPlaceholder: '  Search a city...',
     noResults: 'No destinations found',
   },
   compass: {
@@ -18,7 +18,7 @@ export default {
     acquiring: 'Acquiring GPS fix…',
     bearing: 'Bearing',
     distance: 'Distance',
-    goldNeedle: '🟡 Gold needle → Jerusalem',
+    goldNeedle: '  Gold needle → Jerusalem',
     discRotates: 'Disc rotates to show magnetic north',
     coords: 'Jerusalem · 31.7767°N, 35.2345°E',
   },

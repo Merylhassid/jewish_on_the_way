@@ -116,7 +116,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
                 <View style={styles.offerTags}>
                   {offer.allowsShabbat  && <Tag text="🕍 Shabbat" />}
                   {offer.allowsChildren && <Tag text="👨‍👩‍👧 Children OK" />}
-                  {offer.kashrutLevel   && <Tag text={`✡️ ${offer.kashrutLevel}`} />}
+                  {offer.kashrutLevel   && <Tag text={offer.kashrutLevel} />}
                 </View>
                 {offer.notes && <Text style={styles.offerNotes}>{offer.notes}</Text>}
                 <Text style={styles.offerDates}>

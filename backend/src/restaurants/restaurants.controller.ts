@@ -11,7 +11,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { RestaurantsService, RestaurantFilters } from './restaurants.service';
+import { RestaurantsService, RestaurantFilters, ImportRestaurantDto } from './restaurants.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { SearchClassifierService } from '../ai/search-classifier.service';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -134,6 +134,21 @@ export class RestaurantsController {
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<Restaurant> {
     return this.restaurantsService.findOne(id);
+  }
+
+  /**
+   * POST /restaurants/import-json
+   * Body: { restaurants: ImportRestaurantDto[] }
+   *
+   * Geocodes each restaurant via Nominatim (free), saves lat/lng + PostGIS point.
+   * Use this for CSV-to-DB imports. Rate-limited to 1 req/sec internally.
+   */
+  @Post('import-json')
+  async importFromJson(@Body() body: { restaurants: ImportRestaurantDto[] }) {
+    if (!body.restaurants?.length) {
+      throw new BadRequestException('restaurants array is required');
+    }
+    return this.restaurantsService.importFromData(body.restaurants);
   }
 
   // POST /restaurants/import-google — import kosher restaurants from Google Places

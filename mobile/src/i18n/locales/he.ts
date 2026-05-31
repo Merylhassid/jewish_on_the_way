@@ -5,7 +5,7 @@ export default {
     profile: 'פרופיל',
   },
   home: {
-    title: '✡️ Jewish On The Way',
+    title: 'Jewish On The Way',
     subtitle: 'לאן אתה נוסע?',
     searchPlaceholder: '🔍  חפש עיר...',
     noResults: 'לא נמצאו יעדים',
