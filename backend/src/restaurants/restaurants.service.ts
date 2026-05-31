@@ -232,6 +232,8 @@ export class RestaurantsService {
         r.restaurant_type   AS "restaurantType",
         r.kashrut_level     AS "kashrutLevel",
         r.address,
+        ST_Y(r.location::geometry) AS lat,
+        ST_X(r.location::geometry) AS lng,
         ROUND(ST_Distance(
           r.location::geography,
           ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography

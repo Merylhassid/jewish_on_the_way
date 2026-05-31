@@ -70,6 +70,8 @@ export class SynagoguesService {
     const sql = `
       SELECT
         s.id, s.name, s.address, s.denomination, s.phone,
+        ST_Y(s.location::geometry) AS lat,
+        ST_X(s.location::geometry) AS lng,
         ROUND(ST_Distance(
           s.location::geography,
           ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography
