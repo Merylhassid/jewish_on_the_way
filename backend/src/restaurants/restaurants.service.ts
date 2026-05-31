@@ -124,6 +124,7 @@ export class RestaurantsService {
         address: true,
         openingHours: true,
         createdAt: true,
+        location: true,
       },
       order: { name: 'ASC' },
     });
