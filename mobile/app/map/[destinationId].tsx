@@ -12,12 +12,10 @@ import { C } from '@/constants/theme';
 interface Place {
   id: number; name: string; address?: string;
   lat: number; lng: number; type: 'restaurant' | 'synagogue';
-  kashrutLevel?: string;
 }
-
+type Pending = { id: number; name: string; address: string; type: 'restaurant' | 'synagogue' };
 type LayerFilter = 'all' | 'restaurants' | 'synagogues';
 
-// ── WKB parser (PostGIS hex → lat/lng) ──────────────────────────────────────
 function parseWKB(hex: any): { lat: number; lng: number } | null {
   if (!hex || typeof hex !== 'string' || hex.length < 42) return null;
   try {
@@ -36,7 +34,6 @@ function parseWKB(hex: any): { lat: number; lng: number } | null {
   } catch { return null; }
 }
 
-// ── Nominatim geocoding (called from RN, not WebView) ───────────────────────
 async function nominatim(q: string): Promise<{ lat: number; lng: number } | null> {
   try {
     const res = await fetch(
@@ -49,7 +46,6 @@ async function nominatim(q: string): Promise<{ lat: number; lng: number } | null
   return null;
 }
 
-// ── Leaflet HTML — all places in layer groups, filtering via injectJavaScript ─
 function buildLeafletHtml(places: Place[], cLat: number, cLng: number) {
   const markersJs = places.map(p =>
     `addM(${p.lat},${p.lng},${JSON.stringify(p.type === 'synagogue' ? '#7C3AED' : '#C9A84C')},${JSON.stringify(p.name)},${JSON.stringify(p.address ?? '')},${JSON.stringify(p.type)});`
@@ -80,38 +76,32 @@ ${markersJs}
 </script></body></html>`;
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
 export default function MapScreen() {
   const { destinationId, name } = useLocalSearchParams<{ destinationId: string; name?: string }>();
-  const webViewRef = useRef<any>(null);
+  const webViewRef  = useRef<any>(null);
+  const pendingRef  = useRef<Pending[]>([]);
+  const centerRef   = useRef({ lat: 31.7767, lng: 35.2345 });
 
   const [places,  setPlaces]  = useState<Place[]>([]);
-  const [center,  setCenter]  = useState({ lat: 31.7767, lng: 35.2345 });
   const [loading, setLoading] = useState(true);
-  const [status,  setStatus]  = useState('');
   const [html,    setHtml]    = useState('');
   const [layer,   setLayer]   = useState<LayerFilter>('all');
 
+  // ── 1. Fetch data, show map immediately with whatever has coords ────────────
   useEffect(() => {
     (async () => {
       const cityName = name ? decodeURIComponent(name) : '';
-
-      // 1. City center via Nominatim (in RN)
-      setStatus('מאתר מיקום…');
       const geo  = cityName ? await nominatim(cityName) : null;
       const cLat = geo?.lat ?? 31.7767;
       const cLng = geo?.lng ?? 35.2345;
-      setCenter({ lat: cLat, lng: cLng });
+      centerRef.current = { lat: cLat, lng: cLng };
 
-      // 2. Fetch restaurants + synagogues
-      setStatus('טוען מקומות…');
       const [rRes, sRes] = await Promise.allSettled([
         client.get('/restaurants', { params: { destinationId } }),
         client.get('/synagogues',  { params: { destinationId } }),
       ]);
 
-      const known: Place[] = [];
-      type Pending = { id: number; name: string; address: string; type: 'restaurant' | 'synagogue'; kashrutLevel?: string };
+      const known: Place[]   = [];
       const pending: Pending[] = [];
 
       if (rRes.status === 'fulfilled') {
@@ -120,9 +110,9 @@ export default function MapScreen() {
           if (r.lat && r.lng) c = { lat: +r.lat, lng: +r.lng };
           else if (r.location) c = parseWKB(r.location);
           if (c && isFinite(c.lat) && isFinite(c.lng)) {
-            known.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', ...c, kashrutLevel: r.kashrutLevel });
+            known.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', ...c });
           } else if (r.address) {
-            pending.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant', kashrutLevel: r.kashrutLevel });
+            pending.push({ id: r.id, name: r.name, address: r.address, type: 'restaurant' });
           }
         }
       }
@@ -141,26 +131,36 @@ export default function MapScreen() {
         }
       }
 
-      // 3. Geocode up to 20 places without coords — in RN (reliable)
-      const batch = pending.slice(0, 20);
-      for (let i = 0; i < batch.length; i++) {
-        setStatus(`מגיאוקד ${i + 1}/${batch.length}…`);
-        const c = await nominatim(batch[i].address);
-        if (c && isFinite(c.lat) && isFinite(c.lng)) {
-          known.push({ ...batch[i], ...c });
-        }
-        if (i < batch.length - 1) await new Promise<void>(resolve => setTimeout(resolve, 1100));
-      }
-
+      pendingRef.current = pending;
       setPlaces(known);
       setHtml(buildLeafletHtml(known, cLat, cLng));
       setLoading(false);
     })();
   }, [destinationId]);
 
+  // ── 2. After WebView loads, geocode remaining silently in background ────────
+  const onMapLoad = () => {
+    const batch = pendingRef.current.slice(0, 20);
+    if (batch.length === 0) return;
+
+    (async () => {
+      for (let i = 0; i < batch.length; i++) {
+        const p = batch[i];
+        const c = await nominatim(p.address);
+        if (c && isFinite(c.lat) && isFinite(c.lng)) {
+          const color = p.type === 'synagogue' ? '#7C3AED' : '#C9A84C';
+          webViewRef.current?.injectJavaScript(
+            `addM(${c.lat},${c.lng},${JSON.stringify(color)},${JSON.stringify(p.name)},${JSON.stringify(p.address)},${JSON.stringify(p.type)}); true;`
+          );
+          setPlaces(prev => [...prev, { ...p, ...c }]);
+        }
+        if (i < batch.length - 1) await new Promise<void>(r => setTimeout(r, 1100));
+      }
+    })();
+  };
+
   const changeLayer = (l: LayerFilter) => {
     setLayer(l);
-    // Native: inject JS to show/hide layer groups (no WebView reload)
     webViewRef.current?.injectJavaScript(`showLayer(${JSON.stringify(l)}); true;`);
   };
 
@@ -168,9 +168,8 @@ export default function MapScreen() {
     layer === 'all' ? true : layer === 'restaurants' ? p.type === 'restaurant' : p.type === 'synagogue'
   );
 
-  // Web (iframe): rebuild filtered HTML; native: use full HTML + injectJavaScript
   const webHtml = !loading
-    ? buildLeafletHtml(visible, center.lat, center.lng)
+    ? buildLeafletHtml(visible, centerRef.current.lat, centerRef.current.lng)
     : '';
 
   return (
@@ -196,7 +195,6 @@ export default function MapScreen() {
       {loading ? (
         <View style={s.center}>
           <ActivityIndicator size="large" color={C.gold} />
-          <Text style={{ color: C.textMuted, fontSize: 13 }}>{status}</Text>
         </View>
       ) : Platform.OS === 'web' ? (
         <View style={{ flex: 1 }}>
@@ -210,6 +208,7 @@ export default function MapScreen() {
           style={{ flex: 1 }}
           javaScriptEnabled
           domStorageEnabled
+          onLoad={onMapLoad}
           startInLoadingState
           renderLoading={() => <ActivityIndicator style={{ flex: 1 }} color={C.gold} />}
         />
@@ -220,7 +219,7 @@ export default function MapScreen() {
 
 const s = StyleSheet.create({
   root:   { flex: 1, backgroundColor: C.cream },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   header: {
     flexDirection: 'row', alignItems: 'center', gap: 12,
     backgroundColor: C.navy, paddingTop: 56, paddingBottom: 16, paddingHorizontal: 20,
