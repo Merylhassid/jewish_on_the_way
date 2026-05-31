@@ -70,11 +70,6 @@ export default function ShabbatScreen() {
     })();
   }, []);
 
-  const candles  = data?.items?.find(i => i.category === 'candles');
-  const havdalah = data?.items?.find(i => i.category === 'havdalah');
-  const parasha  = data?.items?.find(i => i.category === 'parashat');
-  const holiday  = data?.items?.find(i => i.category === 'holiday' || i.category === 'roshHashana');
-
   if (loading) return (
     <View style={s.center}>
       <ActivityIndicator size="large" color={C.gold} />
@@ -88,6 +83,12 @@ export default function ShabbatScreen() {
       <Text style={s.subText}>{error}</Text>
     </View>
   );
+
+  const items    = Array.isArray(data?.items) ? data!.items : [];
+  const candles  = items.find(i => i.category === 'candles');
+  const havdalah = items.find(i => i.category === 'havdalah');
+  const parasha  = items.find(i => i.category === 'parashat');
+  const holiday  = items.find(i => i.category === 'holiday' || i.category === 'roshHashana');
 
   return (
     <View style={s.root}>
