@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Controller,
   Get,
   Put,
@@ -17,6 +18,12 @@ import { ChangePasswordDto } from './dto/change-password.dto';
 import { CloudinaryService } from '../cloudinary/cloudinary.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
+
+const ALLOWED_AVATAR_MIME_TYPES = new Set([
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+]);
 
 @Controller('users')
 export class UsersController {
@@ -54,8 +61,27 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @Post('me/avatar')
-  @UseInterceptors(FileInterceptor('file', { storage: memoryStorage() }))
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: memoryStorage(),
+      limits: { fileSize: 5 * 1024 * 1024 },
+      fileFilter: (_req, file, callback) => {
+        if (!ALLOWED_AVATAR_MIME_TYPES.has(file.mimetype)) {
+          return callback(
+            new BadRequestException(
+              'Avatar must be a JPEG, PNG, or WebP image',
+            ),
+            false,
+          );
+        }
+        callback(null, true);
+      },
+    }),
+  )
   async uploadAvatar(@Request() req, @UploadedFile() file) {
+    if (!file) {
+      throw new BadRequestException('Avatar image file is required');
+    }
     const imageUrl = await this.cloudinaryService.uploadImage(file);
     return this.usersService.updateAvatar(req.user.sub, imageUrl);
   }
