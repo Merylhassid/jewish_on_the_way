@@ -3,6 +3,12 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import * as express from 'express';
 
+const parseCorsOrigins = () =>
+  (process.env.CORS_ORIGINS ?? '')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -32,8 +38,10 @@ async function bootstrap() {
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
+  const isProduction = process.env.NODE_ENV === 'production';
+
   app.enableCors({
-    origin: '*', // Allow all origins for development
+    origin: isProduction ? parseCorsOrigins() : '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });

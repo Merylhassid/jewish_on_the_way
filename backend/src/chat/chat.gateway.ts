@@ -21,9 +21,16 @@ import { AuditService } from '../audit/audit.service';
 // req 5.4 — max 5 messages per 10 seconds per user
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10_000;
+const CORS_ORIGIN =
+  process.env.NODE_ENV === 'production'
+    ? (process.env.CORS_ORIGINS ?? '')
+        .split(',')
+        .map((origin) => origin.trim())
+        .filter(Boolean)
+    : '*';
 
 @WebSocketGateway({
-  cors: { origin: '*' },
+  cors: { origin: CORS_ORIGIN },
   namespace: '/chat',
 })
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
