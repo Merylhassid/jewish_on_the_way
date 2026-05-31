@@ -4,6 +4,8 @@ import { config } from 'dotenv';
 
 config({ path: __dirname + '/../.env' });
 
+const sslRejectUnauthorized = process.env.DB_SSL_REJECT_UNAUTHORIZED;
+
 const AppDataSource = new DataSource({
   type: 'postgres',
   host: process.env.DB_HOST,
@@ -11,12 +13,20 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+  ssl:
+    process.env.DB_SSL === 'true'
+      ? {
+          rejectUnauthorized:
+            sslRejectUnauthorized === undefined
+              ? false
+              : sslRejectUnauthorized === 'true',
+        }
+      : false,
 
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/*{.ts,.js}'],
   synchronize: false, // Back to false after schema updates
-  logging: true,
+  logging: process.env.NODE_ENV !== 'production',
 });
 
 export default AppDataSource;

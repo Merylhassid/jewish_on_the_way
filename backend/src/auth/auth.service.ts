@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  InternalServerErrorException,
   Logger,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -124,8 +125,18 @@ export class AuthService {
       await this.mailService.sendPasswordReset(email, rawToken);
     } catch (err) {
       this.logger.error(`Failed to send reset email to ${email}: ${err}`);
-      this.logger.warn(
-        `Email not sent — use the token printed above to reset manually.`,
+      user.resetPasswordToken = null;
+      user.resetPasswordExpires = null;
+      await this.usersRepo.save(user);
+
+      if (process.env.NODE_ENV !== 'production') {
+        this.logger.warn(
+          'Email not sent; reset token was invalidated. Check SMTP/APP_URL configuration.',
+        );
+      }
+
+      throw new InternalServerErrorException(
+        'Unable to send password reset email. Please try again later.',
       );
     }
   }

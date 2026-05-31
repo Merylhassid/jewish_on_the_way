@@ -170,6 +170,54 @@ const CITY_TRANSLATE: Record<string, string> = {
   'קזבלנקה': 'Casablanca',
 };
 
+// מילון תרגום שמות מדינות עברית → אנגלית (לפי עמודת country בDB)
+const COUNTRY_TRANSLATE: Record<string, string> = {
+  'תאילנד':'Thailand','צרפת':'France','גרמניה':'Germany','ספרד':'Spain',
+  'איטליה':'Italy','יוון':'Greece','יפן':'Japan','סין':'China','הודו':'India',
+  'טורקיה':'Turkey','אנגליה':'United Kingdom','בריטניה':'United Kingdom',
+  'פולין':'Poland','הונגריה':'Hungary','אוסטריה':'Austria','שוויץ':'Switzerland',
+  'בלגיה':'Belgium','הולנד':'Netherlands','פורטוגל':'Portugal','רוסיה':'Russia',
+  'מרוקו':'Morocco','ברזיל':'Brazil','ארגנטינה':'Argentina','קנדה':'Canada',
+  'אוסטרליה':'Australia','מקסיקו':'Mexico','ארצות הברית':'United States',
+  'אמריקה':'United States','שוודיה':'Sweden','נורווגיה':'Norway',
+  'דנמרק':'Denmark','פינלנד':'Finland','רומניה':'Romania','בולגריה':'Bulgaria',
+  'קרואטיה':'Croatia','אוקראינה':'Ukraine','דרום אפריקה':'South Africa',
+  'ישראל':'Israel',
+};
+
+// מילות מפתח לסוג מסעדה וכשרות
+const RESTAURANT_TYPE_KEYWORDS: Record<string, string> = {
+  'בשרי':'meat','בשרית':'meat','בשר':'meat','meat':'meat',
+  'חלבי':'dairy','חלבית':'dairy','חלב':'dairy','dairy':'dairy','milky':'dairy',
+  'פרווה':'parve','פרוה':'parve','parve':'parve','pareve':'parve',
+};
+const KASHRUT_KEYWORDS: Record<string, string> = {
+  'מהדרין':'mehadrin','mehadrin':'mehadrin',
+  'בדץ':'badatz','badatz':'badatz',
+  'רבנות':'rabbinate','rabbinate':'rabbinate',
+};
+
+function extractRestaurantFilters(text: string): { type: string | null; kashrut: string | null } {
+  const lower = text.toLowerCase();
+  let type: string | null = null;
+  let kashrut: string | null = null;
+  for (const [kw, val] of Object.entries(RESTAURANT_TYPE_KEYWORDS)) {
+    if (lower.includes(kw)) { type = val; break; }
+  }
+  for (const [kw, val] of Object.entries(KASHRUT_KEYWORDS)) {
+    if (lower.includes(kw)) { kashrut = val; break; }
+  }
+  return { type, kashrut };
+}
+
+function detectCountryInText(text: string): string | null {
+  const lower = text.toLowerCase();
+  for (const [heb, eng] of Object.entries(COUNTRY_TRANSLATE)) {
+    if (lower.includes(heb.toLowerCase())) return eng;
+  }
+  return null;
+}
+
 @Controller('search')
 export class SearchController {
   constructor(
@@ -222,36 +270,74 @@ export class SearchController {
       }
     }
 
-    // ── שלב 3: חיפוש עיר ──────────────────────────────
+    // ── שלב 3: חילוץ פילטרים למסעדות ─────────────────
+    const { type: restaurantType, kashrut: restaurantKashrut } =
+      result.category === 'restaurant' ? extractRestaurantFilters(text) : { type: null, kashrut: null };
+
+    // ── שלב 4: חיפוש עיר ──────────────────────────────
     if (destinationId) {
       return {
         ...result,
-        route: this.getRoute(result.category, destinationId, denomination),
+        route: this.getRoute(result.category, destinationId, denomination, restaurantType, restaurantKashrut),
         destinationId,
         denomination,
         denomEmoji,
         denomLabel,
+        restaurantType,
+        restaurantKashrut,
       };
     }
 
     let foundDest = await this.findDestinationInText(text);
     let gpsUsed = false;
 
-    if (!foundDest && dto.lat != null && dto.lng != null) {
-      foundDest = await this.findNearestDestination(dto.lat, dto.lng);
-      if (foundDest) gpsUsed = true;
+    if (!foundDest) {
+      // בדוק אם הוזכרה מדינה → חפש parent destination לפי country
+      const countryEng = detectCountryInText(text);
+      if (countryEng) {
+        const parentDest = await this.findParentDestinationByCountry(countryEng);
+        if (parentDest) {
+          const route = this.getCountryRoute(result.category, parentDest.id, restaurantType, restaurantKashrut);
+          return {
+            ...result,
+            route,
+            destinationId: parentDest.id,
+            detectedCity:  parentDest.city ?? parentDest.country,
+            gpsUsed:       false,
+            denomination, denomEmoji, denomLabel,
+            restaurantType, restaurantKashrut,
+          };
+        }
+        // מדינה הוזכרה אבל אין בDB — לא מפעילים GPS
+      } else if (dto.lat != null && dto.lng != null) {
+        // אין עיר, אין מדינה — נסה GPS
+        foundDest = await this.findNearestDestination(dto.lat, dto.lng);
+        if (foundDest) gpsUsed = true;
+      }
     }
 
     return {
       ...result,
-      route:         this.getRoute(result.category, foundDest?.id, denomination),
+      route:         this.getRoute(result.category, foundDest?.id, denomination, restaurantType, restaurantKashrut),
       destinationId: foundDest?.id,
       detectedCity:  foundDest?.city ?? null,
       gpsUsed,
       denomination,
       denomEmoji,
       denomLabel,
+      restaurantType,
+      restaurantKashrut,
     };
+  }
+
+  // ── חיפוש parent destination לפי שם מדינה ──────────
+  private async findParentDestinationByCountry(countryEng: string): Promise<Destination | null> {
+    const rows = await this.destRepo.query(
+      `SELECT id, city, country FROM destinations WHERE country ILIKE $1 AND parent_id IS NULL LIMIT 1`,
+      [`%${countryEng}%`],
+    );
+    if (!rows.length) return null;
+    return this.destRepo.findOne({ where: { id: rows[0].id } });
   }
 
   // ── חיפוש עיר בתוך הטקסט ──────────────────────────
@@ -289,14 +375,38 @@ export class SearchController {
     return this.destRepo.findOne({ where: { id: rows[0].id } });
   }
 
+  // ── נתיב ברמת מדינה ────────────────────────────────
+  private getCountryRoute(category: string, parentId: number, restaurantType?: string | null, restaurantKashrut?: string | null): string {
+    switch (category) {
+      case 'restaurant': {
+        const params = new URLSearchParams({ fromParent: 'true' });
+        if (restaurantType)    params.set('type',    restaurantType);
+        if (restaurantKashrut) params.set('kashrut', restaurantKashrut);
+        return `/restaurants/${parentId}?${params.toString()}`;
+      }
+      case 'synagogue':
+      case 'minyan':
+      case 'hosting':
+        return `/destination/${parentId}/subdestinations`;
+      default:
+        return `/destination/${parentId}/subdestinations`;
+    }
+  }
+
   // ── בניית נתיב ניווט ───────────────────────────────
-  private getRoute(category: string, destinationId?: number, denomination?: string | null): string {
+  private getRoute(category: string, destinationId?: number, denomination?: string | null, restaurantType?: string | null, restaurantKashrut?: string | null): string {
     if (!destinationId) return `/${category}s`;
 
     const denomParam = denomination ? `?denomination=${denomination}` : '';
 
     switch (category) {
-      case 'restaurant': return `/restaurants/${destinationId}`;
+      case 'restaurant': {
+        const params = new URLSearchParams();
+        if (restaurantType)    params.set('type',    restaurantType);
+        if (restaurantKashrut) params.set('kashrut', restaurantKashrut);
+        const qs = params.toString();
+        return `/restaurants/${destinationId}${qs ? `?${qs}` : ''}`;
+      }
       case 'synagogue':  return `/synagogues/${destinationId}${denomParam}`;
       case 'minyan':     return `/minyans/${destinationId}${denomParam}`;
       case 'hosting':    return `/hosting/${destinationId}`;

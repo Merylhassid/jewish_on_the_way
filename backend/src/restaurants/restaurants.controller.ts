@@ -40,19 +40,18 @@ export class RestaurantsController {
   ) {}
 
   // GET /restaurants?destinationId=1&type=meat&kashrut=mehadrin&q=pizza&lat=48.8&lng=2.3
-  // req 11.1 — cache filtered list for 30 s
+  // GET /restaurants?parentDestinationId=282&type=meat  ← כל מסעדות המדינה
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(CacheInterceptor)
-  @CacheTTL(30_000)
   @Get()
   findAll(
-    @Query('destinationId', ParseIntPipe) destinationId: number,
+    @Query('destinationId') destinationId?: string,
+    @Query('parentDestinationId') parentDestinationId?: string,
     @Query('type') type?: string,
     @Query('kashrut') kashrut?: string,
     @Query('q') q?: string,
     @Query('lat') lat?: string,
     @Query('lng') lng?: string,
-  ): Promise<Restaurant[]> {
+  ) {
     const filters: RestaurantFilters = {
       type,
       kashrut,
@@ -60,7 +59,11 @@ export class RestaurantsController {
       lat: lat ? parseFloat(lat) : undefined,
       lng: lng ? parseFloat(lng) : undefined,
     };
-    return this.restaurantsService.findByDestination(destinationId, filters);
+    if (parentDestinationId) {
+      return this.restaurantsService.findByParentDestination(parseInt(parentDestinationId, 10), filters);
+    }
+    if (!destinationId) throw new BadRequestException('destinationId is required');
+    return this.restaurantsService.findByDestination(parseInt(destinationId, 10), filters);
   }
 
   // GET /restaurants/search?destinationId=1&q=I+want+a+badatz+steak+place
