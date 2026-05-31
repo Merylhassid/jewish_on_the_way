@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { RestaurantsService, RestaurantFilters, ImportRestaurantDto } from './restaurants.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { AdminGuard } from '../admin/admin.guard';
 import { SearchClassifierService } from '../ai/search-classifier.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IsNull, Repository } from 'typeorm';
@@ -152,18 +153,21 @@ export class RestaurantsController {
   }
 
   // POST /restaurants/import-google — import kosher restaurants from Google Places
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Post('import-google')
   async importFromGoogle() {
     return this.restaurantsService.importKosherRestaurantsFromGoogle();
   }
 
   // POST /restaurants/reclassify — reprocess existing restaurants and update classification
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Post('reclassify')
   async reclassifyExisting() {
     return this.restaurantsService.reclassifyExistingRestaurants();
   }
 
   // POST /restaurants/import-batch — batch import restaurants for specified destinations
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Post('import-batch')
   async importBatch(
     @Body() body: { destinationIds: number[]; limit?: number },

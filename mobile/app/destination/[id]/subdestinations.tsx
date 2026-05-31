@@ -1,4 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
+import HomeButton from '@/src/components/HomeButton';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -80,13 +81,17 @@ export default function SubdestinationsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
+        <Pressable style={styles.backBtn} onPress={() => router.back()} hitSlop={12}>
+          <Text style={styles.backText}>‹</Text>
         </Pressable>
+        <HomeButton />
+        <Text style={styles.flag}>{parent ? flagEmoji(parent.countryCode) : ''}</Text>
         <Text style={styles.headerTitle}>{parent?.city || 'Choose destination'}</Text>
-        <Text style={styles.headerSub}>
-          {parent?.country ? `Locations in ${parent.country}` : 'Choose a sub-destination'}
-        </Text>
+        <View style={styles.countryBadge}>
+          <Text style={styles.headerSub}>
+            {parent?.country ? `Locations in ${parent.country}` : 'Choose a sub-destination'}
+          </Text>
+        </View>
       </View>
 
       <View style={styles.searchWrapper}>
@@ -109,7 +114,7 @@ export default function SubdestinationsScreen() {
             style={styles.card}
             onPress={() => router.push(`/destination/${item.id}`)}
           >
-            <Text style={styles.flag}>{flagEmoji(item.countryCode)}</Text>
+            <Text style={styles.cardFlag}>{flagEmoji(item.countryCode)}</Text>
             <View style={styles.cardInfo}>
               <Text style={styles.cardCity}>{item.city}</Text>
               <Text style={styles.cardCountry}>{item.country}</Text>
@@ -129,15 +134,23 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f0f4ff' },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   header: {
-    backgroundColor: '#1a3a6b',
-    paddingTop: 60,
-    paddingBottom: 24,
-    paddingHorizontal: 20,
+    backgroundColor: '#0C2461',
+    paddingTop: 64,
+    paddingBottom: 32,
+    paddingHorizontal: 24,
+    alignItems: 'center',
   },
-  backBtn: { position: 'absolute', top: 60, left: 20 },
-  backText: { fontSize: 24, color: '#fff' },
-  headerTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  headerSub: { fontSize: 14, color: '#a8c4e8' },
+  backBtn: { position: 'absolute', top: 62, left: 20 },
+  backText: { fontSize: 30, color: 'rgba(255,255,255,0.85)', lineHeight: 34 },
+  flag: { fontSize: 58, marginBottom: 12 },
+  headerTitle: { fontSize: 28, fontWeight: '800', color: '#fff', marginBottom: 8, letterSpacing: 0.2 },
+  countryBadge: {
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 4,
+  },
+  headerSub: { fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: '500' },
   searchWrapper: { paddingHorizontal: 16, paddingVertical: 12, backgroundColor: '#fff' },
   search: {
     backgroundColor: '#f0f4ff',
@@ -160,7 +173,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     elevation: 2,
   },
-  flag: { fontSize: 36, marginRight: 14 },
+  cardFlag: { fontSize: 36, marginRight: 14 },
   cardInfo: { flex: 1 },
   cardCity: { fontSize: 17, fontWeight: '600', color: '#1a1a2e' },
   cardCountry: { fontSize: 13, color: '#888', marginTop: 2 },

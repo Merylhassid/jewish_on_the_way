@@ -1,0 +1,763 @@
+[
+  {
+    "name": "תפארת ישראל",
+    "address": "1 י\"א חללי מינכן, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-6963235"
+  },
+  {
+    "name": "תפארת מיכאל",
+    "address": "שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-8318753"
+  },
+  {
+    "name": "תפילה למשה",
+    "address": "נאות יצחק 2 , לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-9485099"
+  },
+  {
+    "name": "תפארת אהרון",
+    "address": "22 אלי כהן, לוד",
+    "destinationId": 289,
+    "denomination": "גרוזיני",
+    "phone": "050-6229261"
+  },
+  {
+    "name": "תפארת יצחק",
+    "address": "2 רקפות, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-5379466"
+  },
+  {
+    "name": "שעריי עלייה",
+    "address": "9 חכם רפאל, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד, רוסי",
+    "phone": "052-3905681"
+  },
+  {
+    "name": "תורה לי אור",
+    "address": "גן ילדים ספיר, לוד",
+    "destinationId": 289,
+    "denomination": "הודי",
+    "phone": "050-4191817"
+  },
+  {
+    "name": "שערי שלום",
+    "address": "נווה זית 2, לוד",
+    "destinationId": 289,
+    "denomination": "הודי",
+    "phone": "054-7875666"
+  },
+  {
+    "name": "שערי שלום",
+    "address": "שכונת שרת 2, לוד",
+    "destinationId": 289,
+    "denomination": "הודי",
+    "phone": "054-5487897"
+  },
+  {
+    "name": "שערי השמיים",
+    "address": "2 החשמונאים, לוד",
+    "destinationId": 289,
+    "denomination": "גרוזיני",
+    "phone": "052-6093265"
+  },
+  {
+    "name": "שומר ישראל",
+    "address": "רמת אשכול 2, לוד",
+    "destinationId": 289,
+    "denomination": "בוכרי",
+    "phone": "077-3234457"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "11 י\"א חללי מינכן, לוד",
+    "destinationId": 289,
+    "denomination": "אתיופי",
+    "phone": "054-8135165"
+  },
+  {
+    "name": "שובה ישראל",
+    "address": "8 אלפעל, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-3999698"
+  },
+  {
+    "name": "שובה ישראל",
+    "address": "9 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "052-4480704"
+  },
+  {
+    "name": "רשב\"י",
+    "address": "7 החלוץ, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "050-4243148"
+  },
+  {
+    "name": "שאגת אריה",
+    "address": "29 שדרות שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "050-5991390"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "3 כליל החורש, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-4643708"
+  },
+  {
+    "name": "ר' יעקב סלמה",
+    "address": "3 שדרות דוד המלך, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "050-7772075"
+  },
+  {
+    "name": "רבי אליעזר הגדול",
+    "address": "16 דוד רמז, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "050-9437261"
+  },
+  {
+    "name": "צעירי לוד",
+    "address": "1 הצנחנים, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "052-7707292"
+  },
+  {
+    "name": "פרושים",
+    "address": "8 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "חסידי",
+    "phone": "052-7161194"
+  },
+  {
+    "name": "ע\"ש שי בלקר",
+    "address": "שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "הודי",
+    "phone": "052-5121492"
+  },
+  {
+    "name": "עוד יוסף חי",
+    "address": "1 בן שמן, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-3335544"
+  },
+  {
+    "name": "ניסן",
+    "address": "3 אלפעל, לוד",
+    "destinationId": 289,
+    "phone": "052-2220406"
+  },
+  {
+    "name": "סדנא רבה",
+    "address": "7 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "ליטאי",
+    "phone": "052-7645104"
+  },
+  {
+    "name": "ע\"ש גדעון מולטו",
+    "address": "2 שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "אתיופי",
+    "phone": "058-4373166"
+  },
+  {
+    "name": "משה מנחם",
+    "address": "6 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "תימני",
+    "phone": "054-8447734"
+  },
+  {
+    "name": "משכנות ישראל",
+    "address": "10 ברק, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-8906775"
+  },
+  {
+    "name": "מרכזי",
+    "address": "6 הרצל, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי",
+    "phone": "054-6300924"
+  },
+  {
+    "name": "מקור חכמה",
+    "address": "2 גושן, לוד",
+    "destinationId": 289,
+    "denomination": "ברסלב",
+    "phone": "054-4822298"
+  },
+  {
+    "name": "מכינת מעוז",
+    "address": "2 אקסודוס, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "050-7407820"
+  },
+  {
+    "name": "מצמחי ישועה",
+    "address": "2 דוד רמז, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-3393601"
+  },
+  {
+    "name": "מקור לחיים",
+    "address": "3 כלניות, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-8635801"
+  },
+  {
+    "name": "מושיע ישראל (יוסף כהן)",
+    "address": "מכבי אש, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "050-7223964"
+  },
+  {
+    "name": "מחזקי דעת",
+    "address": "הורדים 2, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי",
+    "phone": "054-6761168"
+  },
+  {
+    "name": "כתר תורה",
+    "address": "5 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "ליטאי",
+    "phone": "054-9140352"
+  },
+  {
+    "name": "מגן אברהם",
+    "address": "קריית בתי הכנסת 2, לוד",
+    "destinationId": 289,
+    "denomination": "עדנים",
+    "phone": "050-5525698"
+  },
+  {
+    "name": "מגן דוד",
+    "address": "8 אלי כהן, לוד",
+    "destinationId": 289,
+    "denomination": "בולגרי",
+    "phone": "054-7644219"
+  },
+  {
+    "name": "כולל לוד של חסד",
+    "address": "72 ד'יזראלי, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-7239347"
+  },
+  {
+    "name": "ישורון",
+    "address": "127 שדרות שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-8340177"
+  },
+  {
+    "name": "ישועה בקרוב",
+    "address": "15 גלעד, לוד",
+    "destinationId": 289,
+    "denomination": "בוכרי",
+    "phone": "052-9271480"
+  },
+  {
+    "name": "ישועת ה'",
+    "address": "6 החלוץ, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-2537945"
+  },
+  {
+    "name": "יחזקאל כהן",
+    "address": "4 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "ליטאי",
+    "phone": "054-8451211"
+  },
+  {
+    "name": "יפה נוף",
+    "address": "הרוגי לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-3579120"
+  },
+  {
+    "name": "חסדי יהושוע",
+    "address": "10 חיים ארלוזורוב, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "050-7271108"
+  },
+  {
+    "name": "חסדי משה",
+    "address": "4 משה מרזוק, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-4597264"
+  },
+  {
+    "name": "יחווה דעת",
+    "address": "1 מאיר ספרן, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "050-2949394"
+  },
+  {
+    "name": "חסדי דוד",
+    "address": "1 רחל אלתר, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-5320490"
+  },
+  {
+    "name": "חסדי דוד",
+    "address": "1 רחל אלתר, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "052-7686854"
+  },
+  {
+    "name": "חי טייב לא מת",
+    "address": "4 רקפות, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "050-8575804"
+  },
+  {
+    "name": "חטב",
+    "address": "6 שדרות חטיבת יפתח, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "052-7691521"
+  },
+  {
+    "name": "חזון זכריה",
+    "address": "5 צמח צדק, לוד",
+    "destinationId": 289,
+    "denomination": "תימני",
+    "phone": "052-6797979"
+  },
+  {
+    "name": "חזון יהודה",
+    "address": "7 גלעד, לוד",
+    "destinationId": 289,
+    "denomination": "עדות המזרח",
+    "phone": "052-3411090"
+  },
+  {
+    "name": "חזון עובדיה",
+    "address": "5 ז'בוטינסקי, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-3561792"
+  },
+  {
+    "name": "זכות רפאל חסד אברהם",
+    "address": "41 ההסתדרות, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "050-6221602"
+  },
+  {
+    "name": "חב''ד",
+    "address": "3 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "phone": "054-2988771"
+  },
+  {
+    "name": "הרמב\"ם",
+    "address": "התקווה 1, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "054-2400108"
+  },
+  {
+    "name": "הרמא",
+    "address": "1 סמטת שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-3317479"
+  },
+  {
+    "name": "הרי\"פ",
+    "address": "שרת 110, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "08-9220949"
+  },
+  {
+    "name": "הרב אלימלך",
+    "address": "הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-8439707"
+  },
+  {
+    "name": "המלאך מיכאל",
+    "address": "14 שדרות ירושלים, לוד",
+    "destinationId": 289,
+    "denomination": "ירושלמי",
+    "phone": "054-6778463"
+  },
+  {
+    "name": "המרכזי -הרב שבח רוזנבלט",
+    "address": "2 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "ליטאי",
+    "phone": "053-3111118"
+  },
+  {
+    "name": "הספרדי המרכזי גני איילון",
+    "address": "חניון B, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-7146660"
+  },
+  {
+    "name": "היכל יונתן",
+    "address": "8 תלמים, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-2720678"
+  },
+  {
+    "name": "היכל יעקב - בוקובזה",
+    "address": "114 הנרייטה סולד, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי, כללי",
+    "phone": "052-8139975"
+  },
+  {
+    "name": "היכל הקודש",
+    "address": "קריית בתי הכנסת 1, לוד",
+    "destinationId": 289,
+    "denomination": "עממי",
+    "phone": "054-6224363"
+  },
+  {
+    "name": "היכל יונתן",
+    "address": "8 תלמים, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "054-6877089"
+  },
+  {
+    "name": "ההוסטל",
+    "address": "שפירא 25 הוסטל, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "052-2537855"
+  },
+  {
+    "name": "היכל ברוך",
+    "address": "9 הבשור, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-6818653"
+  },
+  {
+    "name": "דתי לאומי נווה נוף",
+    "address": "שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי",
+    "phone": "054-4424462"
+  },
+  {
+    "name": "דת משה וישראל",
+    "address": "18 יוספטל, לוד",
+    "destinationId": 289,
+    "denomination": "כללי",
+    "phone": "053-8303653"
+  },
+  {
+    "name": "גאולה",
+    "address": "14 י\"א חללי מינכן, לוד",
+    "destinationId": 289,
+    "denomination": "גרוזיני",
+    "phone": "050-7578572"
+  },
+  {
+    "name": "גבריאל",
+    "address": "56 אלברט איינשטיין, לוד",
+    "destinationId": 289,
+    "denomination": "בוכרי",
+    "phone": "052-3778982"
+  },
+  {
+    "name": "דרכי שמואל",
+    "address": "1 הרב אלישיב, לוד",
+    "destinationId": 289,
+    "denomination": "ליטאי",
+    "phone": "053-3120425"
+  },
+  {
+    "name": "בני שושן",
+    "address": "שלמה המלך, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-4943745"
+  },
+  {
+    "name": "בת קול",
+    "address": "1 כליל החורש, לוד",
+    "destinationId": 289,
+    "denomination": "גרוזיני",
+    "phone": "054-8192242"
+  },
+  {
+    "name": "בית עובדיה",
+    "address": "איילון 6, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-2260582"
+  },
+  {
+    "name": "בית עמוס",
+    "address": "16 דוד רמז, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "050-8883252"
+  },
+  {
+    "name": "בית מושיע ישראל",
+    "address": "הרמא פינת בן אליעזר, לוד",
+    "destinationId": 289,
+    "denomination": "עדות המזרח",
+    "phone": "050-7223964"
+  },
+  {
+    "name": "בית מדרש כלנית",
+    "address": "2 כלניות, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי",
+    "phone": "052-6071637"
+  },
+  {
+    "name": "בית התפילה",
+    "address": "10 י\"א חללי מינכן, לוד",
+    "destinationId": 289,
+    "denomination": "הודי",
+    "phone": "052-5009555"
+  },
+  {
+    "name": "בית יוסף- ע\"ש פרטוק",
+    "address": "1 בן שמן, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "050-2121346"
+  },
+  {
+    "name": "בית ישראל",
+    "address": "4 זלמן שניאור, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-7756319"
+  },
+  {
+    "name": "בית דוד רפאל",
+    "address": "שיכון חבד, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "052-8492081"
+  },
+  {
+    "name": "בית הישועה",
+    "address": "1 רימון, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "050-8780050"
+  },
+  {
+    "name": "בית ברוך טריגאלו",
+    "address": "5 ז'בוטינסקי, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "053-2234085"
+  },
+  {
+    "name": "בית דוד ורפאל",
+    "address": "4 צמח צדק, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "052-3464858"
+  },
+  {
+    "name": "בית אריה",
+    "address": "צמח צדק, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "054-5679939"
+  },
+  {
+    "name": "בית ברוך",
+    "address": "1 דוד ברוך, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-4391992"
+  },
+  {
+    "name": "בית אליהו",
+    "address": "1 בר אילן, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "054-4405460"
+  },
+  {
+    "name": "בית אל לעולי לוב",
+    "address": "ד'יזראלי, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "052-8907157"
+  },
+  {
+    "name": "בית אל נחלת לוי",
+    "address": "אלי כהן, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "054-8050623"
+  },
+  {
+    "name": "אנשי לובביץ'",
+    "address": "הוורדים 1, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "054-2489766"
+  },
+  {
+    "name": "בית אהרון",
+    "address": "3 אלפעל, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "050-9756317"
+  },
+  {
+    "name": "אלי כהן",
+    "address": "הרכבת 4, לוד",
+    "destinationId": 289,
+    "denomination": "עדות המזרח",
+    "phone": "050-4500767"
+  },
+  {
+    "name": "אליהו הנביא",
+    "address": "בן חקון, לוד",
+    "destinationId": 289,
+    "denomination": "טורקי",
+    "phone": "050-4448118"
+  },
+  {
+    "name": "אור המזרח עולי הודו",
+    "address": "רמת אשכול 2, לוד",
+    "destinationId": 289,
+    "denomination": "הודי",
+    "phone": "054-5334764"
+  },
+  {
+    "name": "אלגריבה",
+    "address": "קריית בתי הכנסת 2, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי תוניס",
+    "phone": "054-3300871"
+  },
+  {
+    "name": "אור החיים",
+    "address": "קריית בתי הכנסת 2, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "050-6887544"
+  },
+  {
+    "name": "אולפנת צביה",
+    "address": "אולפנה 2, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי",
+    "phone": "052-3662718"
+  },
+  {
+    "name": "אוהל משה",
+    "address": "קריית בתי הכנסת 2, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-6543772"
+  },
+  {
+    "name": "אוהל יוסף יצחק",
+    "address": "שיכון חב\"ד 2, לוד",
+    "destinationId": 289,
+    "denomination": "חב\"ד",
+    "phone": "050-5643440"
+  },
+  {
+    "name": "אוהל יצחק",
+    "address": "שיכון חב\"ד 2, לוד",
+    "destinationId": 289,
+    "denomination": "מרוקאי",
+    "phone": "052-4440745"
+  },
+  {
+    "name": "אוהל אבנר",
+    "address": "גני אביב 2, לוד",
+    "destinationId": 289,
+    "denomination": "בוכרי",
+    "phone": "052-5688913"
+  },
+  {
+    "name": "אוהל אברהם",
+    "address": "קריית בתי הכנסת 2, לוד",
+    "destinationId": 289,
+    "denomination": "אשכנזי",
+    "phone": "052-4698300"
+  },
+  {
+    "name": "אהבת חינם",
+    "address": "2 שדרות דוד המלך, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-7669353"
+  },
+  {
+    "name": "אוהב שלום ורודף שלום",
+    "address": "14 שדרות ירושלים, לוד",
+    "destinationId": 289,
+    "denomination": "טורקי",
+    "phone": "050-8589874"
+  },
+  {
+    "name": "אביר יעקב",
+    "address": "הרצוג תחנה מרכזית, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "054-7381431"
+  },
+  {
+    "name": "אדרת אליהו",
+    "address": "שדרות דוד המלך, לוד",
+    "destinationId": 289,
+    "denomination": "ספרדי",
+    "phone": "052-7691521"
+  }
+]

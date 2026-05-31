@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Shuva Israel / Young Israel Aish of Las Vegas",
+    "address": "9510 West Sahara Ave, Las Vegas",
+    "phone": "702-360-8909",
+    "denomination": "אורתודוקסי",
+    "description": "רב - הרב ינון ויין / מרכז קהילתי ובית כנסת אורתודוקסי פעיל לקהילה הישראלית והיהודית בלאס וגאס",
+    "latitude": 36.1444938,
+    "longitude": -115.3024188,
+    "destinationId": 468
+  },
+  {
+    "name": "Or Bamidbar - Chabad East Las Vegas",
+    "address": "2991 Emerson Ave, Las Vegas",
+    "phone": "702-334-5463",
+    "website": "https://www.chabad.vegas",
+    "denomination": "חב\"ד",
+    "description": "רב - הרב יוסי שוחאט / בית חב\"ד ספרדי עם מניינים, שבתות, חגים, סעודות שבת ומקווה",
+    "latitude": 36.1259544,
+    "longitude": -115.1105208,
+    "destinationId": 468
+  },
+  {
+    "name": "Chabad of Southern Nevada",
+    "address": "1261 S. Arville Street, Las Vegas",
+    "phone": "702-259-0770",
+    "website": "https://www.chabadlv.org",
+    "denomination": "חב\"ד",
+    "description": "רב - Rabbi Shea Harlig / המרכז הראשי של חב\"ד בלאס וגאס עם בית כנסת, שיעורים, אירוח ותוכניות לקהילה ולתיירים",
+    "latitude": 36.1575584,
+    "longitude": -115.1996703,
+    "destinationId": 468
+  },
+  {
+    "name": "Chabad of Summerlin Desert Shores",
+    "address": "2620 Regatta Drive, Las Vegas",
+    "phone": "702-242-0015",
+    "website": "https://www.chabadofsummerlin.com",
+    "denomination": "חב\"ד",
+    "description": "בית חב\"ד באזור Summerlin עם תפילות, אירוח, שיעורים ופעילות לקהילה המקומית",
+    "latitude": 36.2066376,
+    "longitude": -115.2685379,
+    "destinationId": 468
+  }
+]

@@ -1,0 +1,377 @@
+[
+  {
+    "name": "ישיבת \"היכל אליהו\"",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "רב העיר",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "ישיבת \"לב לדעת\"",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "ישיבת \"אפיקי דעת\"",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "ישיבת 'שדרות'",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "ישיבת 'חפץ חיים'",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "ע\"ש לישע חנן והלנה",
+    "address": "אילן רמון 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יפת חג'בי"
+  },
+  {
+    "name": "ע\"ש עמית-בן יגאל",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אריאל לוי"
+  },
+  {
+    "name": "קול צופייך",
+    "address": "אהוד מנור 79, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "אהבת ישראל",
+    "address": "הרב שלום משאש 5, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - איציק שטרית"
+  },
+  {
+    "name": "היכל רבינו יורם",
+    "address": "נחל דולב 6, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - משה וקנין"
+  },
+  {
+    "name": "מראש שניר",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "קווקזים - \"טפיו\"",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אסי בדש"
+  },
+  {
+    "name": "ניצוצי ישראל - דרך חיים",
+    "address": "משה שרת 10, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - דוד קון"
+  },
+  {
+    "name": "חמודות דניאל",
+    "address": "בלפור 6, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אילן פרג'ב"
+  },
+  {
+    "name": "בן איש חי",
+    "address": "ברנר 1, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "אהבת שמעון",
+    "address": "ירושלים 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - רפי כהן"
+  },
+  {
+    "name": "שערי אברהם",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אריה דוידוב"
+  },
+  {
+    "name": "בוכרים",
+    "address": "אבן גבירול 5, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "תפארת יצחק",
+    "address": "יהדות איטליה 5, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - ישראל אבו"
+  },
+  {
+    "name": "מסילת ישרים",
+    "address": "ברית ערים 12, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "ברכת יצחק",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "השלום",
+    "address": "יהודה הלוי 32, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אלישיב מזרחי"
+  },
+  {
+    "name": "יד אמיתי",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "רשב\"י",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - סלומון כהן"
+  },
+  {
+    "name": "חניכי הישיבות",
+    "address": "השיטה 10, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אבשלום שאובי"
+  },
+  {
+    "name": "שבזי תימנים",
+    "address": "השיטה 9, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - נפתלי מדמוני"
+  },
+  {
+    "name": "שארית ישראל",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - מנשה קורצברג"
+  },
+  {
+    "name": "נר הרשב\"י",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יוסי בללטי"
+  },
+  {
+    "name": "ישורון - כורדים",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - צורי חן"
+  },
+  {
+    "name": "בית אל",
+    "address": "יצחק בן צבי 23, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אשר מנדל"
+  },
+  {
+    "name": "ע\"ש חללי צה\"ל - פרסים",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יוסי נעמת"
+  },
+  {
+    "name": "זכרון יצחק - משכן דוד",
+    "address": "שמחה מויאל 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יוסף חזן"
+  },
+  {
+    "name": "דוד ומשה",
+    "address": "מבצע סיני 39, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - דוד שניאור"
+  },
+  {
+    "name": "תורה וחיים",
+    "address": "אהבת ישראל 6, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "אוהל יצחק",
+    "address": "מבצע סיני 35, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יעקב דהן"
+  },
+  {
+    "name": "אור החיים",
+    "address": "חטיבת גבעתי 13, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - מוטי מלכה"
+  },
+  {
+    "name": "בית חבד",
+    "address": "חטיבת גבעתי 11, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יעקב פישר"
+  },
+  {
+    "name": "אלפי מנשה",
+    "address": "נתן אלבז 23, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אנוש להאובום"
+  },
+  {
+    "name": "המערבי",
+    "address": "נתן אלבז 34, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - מוטי לישע"
+  },
+  {
+    "name": "שערי שמים",
+    "address": "נתן אלבז 23, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - שלומי גרמא"
+  },
+  {
+    "name": "מדרשייה",
+    "address": "נתן אלבז 36, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - נתן בר-יוחאי"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "הנביאים",
+    "address": "יחזקאל 1, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "משה רבינו –יוסף חי",
+    "address": "שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יוסף יוספוב"
+  },
+  {
+    "name": "ברית שלום",
+    "address": "משעול יצחק 3, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אשר טמסית"
+  },
+  {
+    "name": "שמואל הנביא",
+    "address": "משה רבנו 117, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אהרון בוחבוט"
+  },
+  {
+    "name": "אשכנזי חדש",
+    "address": "המגינים 17, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - עודד מכמן"
+  },
+  {
+    "name": "דרכי נועם",
+    "address": "בורוכוב 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אלי זקזק"
+  },
+  {
+    "name": "הארי הקדוש",
+    "address": "קק\"ל 31, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "התוניסאי",
+    "address": "בר לב 6, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - שי סופר"
+  },
+  {
+    "name": "משכן אשר - ק. הבעש\"ט",
+    "address": "הבעש\"ט 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - חיים בוחבוט"
+  },
+  {
+    "name": "משכן יוסף",
+    "address": "המגינים 17, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אבי ביטון"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "בר לב 6, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - דביר לוי"
+  },
+  {
+    "name": "עוד יוסף חי",
+    "address": "משעול יציאת אירופה 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - סעדיה גמליאל"
+  },
+  {
+    "name": "משכן שלום",
+    "address": "אלנבי 13, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - קובי אסולין"
+  },
+  {
+    "name": "דורש טוב",
+    "address": "החלוץ 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - שלום אאידה"
+  },
+  {
+    "name": "מגן אברהם",
+    "address": "רון שוקרון 3, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "לב ברסלב",
+    "address": "הוורד שמחה מויאל 3, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אביאל דהן"
+  },
+  {
+    "name": "ישמח משה",
+    "address": "משה זרח 7, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "גדולת מרדכי",
+    "address": "רון שוקרון 7, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "מורשת",
+    "address": "הרצל 34, שדרות",
+    "destinationId": 369
+  },
+  {
+    "name": "בן צבי",
+    "address": "ניצן 5, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - אברהם אסולין"
+  },
+  {
+    "name": "ע\"ש חללי דקר",
+    "address": "משעול הפעמונית 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - חיים תורג'מן"
+  },
+  {
+    "name": "ברית יעקב - צעירים",
+    "address": "הרב בן נון 1, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - יוסי חכמון"
+  },
+  {
+    "name": "חסדי אבות",
+    "address": "מבצע קדש 5, שדרות",
+    "destinationId": 369,
+    "description": "שם גבאי - דוד אברג'ל"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "name": "אורות אריאל",
+    "destinationId": 357,
+    "address": "הערבה 30 אריאל",
+    "denomination": "ספרד",
+    "phone": "054-6686172",
+    "description": "Gabai: אורי בן יעקב | Gabai phone: 054-6686172"
+  },
+  {
+    "name": "ישיבת ההסדר \"נצר מטעי\"",
+    "destinationId": 357,
+    "address": "דרך רמת הגולן אריאל",
+    "phone": "050-2244737",
+    "description": "Gabai: נפתלי דודלקס | Gabai phone: 050-2244737"
+  },
+  {
+    "name": "שבות אריאל",
+    "destinationId": 357,
+    "address": "צה\"ל 30 אריאל",
+    "denomination": "אשכנזים אחיד",
+    "phone": "054-3568638",
+    "description": "Gabai: עלי הוכאוזר | Gabai phone: 054-3568638"
+  },
+  {
+    "name": "נצר אריאל",
+    "destinationId": 357,
+    "address": "נווה שאנן אריאל",
+    "denomination": "נוסח ספרדי",
+    "phone": "0506274773",
+    "description": "Gabai: יוסי אמגר | Gabai phone: 0506274773"
+  },
+  {
+    "name": "מוריה",
+    "destinationId": 357,
+    "address": "עיר היונה 10 אריאל",
+    "denomination": "ספרדים וע\"מ",
+    "phone": "054-5691211",
+    "description": "Gabai: ברוך אנגל | Gabai phone: 054-5691211"
+  },
+  {
+    "name": "מגן דוד",
+    "destinationId": 357,
+    "address": "אשקובית 36 אריאל",
+    "phone": "050-6565139",
+    "description": "Gabai: יעקב בלחסן | Gabai phone: 050-6565139"
+  },
+  {
+    "name": "יהושע בן-נון",
+    "destinationId": 357,
+    "address": "צה\"ל 30 אריאל",
+    "denomination": "ספרדים וע\"מ",
+    "phone": "052-2514116",
+    "description": "Gabai: אריה גרין | Gabai phone: 052-2514116"
+  },
+  {
+    "name": "חכם יוסף חיים",
+    "destinationId": 357,
+    "address": "שומרון 1 אריאל",
+    "denomination": "ספרדים (בבלי)",
+    "phone": "054-8487186",
+    "description": "Gabai: ר' יעקב איבגי | Gabai phone: 054-8487186"
+  },
+  {
+    "name": "היכל יוסף",
+    "destinationId": 357,
+    "address": "הפסגה 10 אריאל",
+    "denomination": "ספרדים וע\"מ",
+    "phone": "050-7686950",
+    "description": "Gabai: אביב פינטו | Gabai phone: 050-7686950"
+  },
+  {
+    "name": "אחוות אחים",
+    "destinationId": 357,
+    "address": "הפסגה 10 אריאל",
+    "denomination": "תימן (שאמי)",
+    "phone": "050-2212342",
+    "description": "Gabai: רועי כהן | Gabai phone: 050-2212342"
+  },
+  {
+    "name": "אוהל חנה",
+    "destinationId": 357,
+    "address": "ברק 18 אריאל",
+    "denomination": "תימן (בלדי)",
+    "phone": "052-3993353",
+    "description": "Gabai: נריה קתוע | Gabai phone: 052-3993353"
+  },
+  {
+    "name": "אוהל אפרים",
+    "destinationId": 357,
+    "address": "משעול ו' אשקובית 37 אריאל",
+    "denomination": "אשכנזים אחיד",
+    "phone": "052-6883339",
+    "description": "Gabai: אבנר סימון | Gabai phone: 052-6883339"
+  },
+  {
+    "name": "אביר יעקב",
+    "destinationId": 357,
+    "address": "יודפת 10 אריאל",
+    "denomination": "ספרדים וע\"מ",
+    "phone": "054-5601134",
+    "description": "Gabai: ראובן אשטמקר | Gabai phone: 054-5601134"
+  },
+  {
+    "name": "תפארת אריאל",
+    "destinationId": 357,
+    "address": "השומרון 1 אריאל",
+    "denomination": "תימן (בלדי)",
+    "phone": "052-5773541",
+    "description": "Gabai: עמוס ערמי | Gabai phone: 052-5773541"
+  },
+  {
+    "name": "בית חב\"ד",
+    "destinationId": 357,
+    "address": "דרך הציונות אריאל",
+    "denomination": "חב\"ד",
+    "phone": "054-6467702",
+    "description": "Gabai: הרב אהרון מושקוביץ | Gabai phone: 054-6467702"
+  },
+  {
+    "name": "המהרי\"ץ",
+    "destinationId": 357,
+    "address": "הגלבוע 15 אריאל",
+    "denomination": "תימן (בלדי)",
+    "phone": "054-3088050",
+    "description": "Gabai: יעקב נחמני | Gabai phone: 054-3088050"
+  },
+  {
+    "name": "בית שלום",
+    "destinationId": 357,
+    "address": "המרכז האוניברסיטאי אריאל",
+    "denomination": "נוסח אחיד",
+    "phone": "050-3005305",
+    "description": "Gabai: הרב אביב זגלמן | Gabai phone: 050-3005305"
+  },
+  {
+    "name": "גפן אריאל",
+    "destinationId": 357,
+    "address": "הנגב 61 אריאל",
+    "denomination": "אשכנזים אחיד",
+    "phone": "050-2283324",
+    "description": "Gabai: שאול ולקין | Gabai phone: 050-2283324"
+  },
+  {
+    "name": "נחלת אבות",
+    "destinationId": 357,
+    "address": "צה\"ל 30 אריאל",
+    "denomination": "ספרדים וע\"מ",
+    "phone": "050-7504452",
+    "description": "Gabai: אלברט אדרי | Gabai phone: 050-7504452"
+  }
+]

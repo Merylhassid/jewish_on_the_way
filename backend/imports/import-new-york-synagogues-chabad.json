@@ -1,0 +1,150 @@
+[
+  {
+    "name": "Chabad Lubavitch World HQ",
+    "address": "770 Eastern Pkwy, Brooklyn",
+    "phone": "+1-718-774-4000",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabad.org/centers/default_cdo/jewish/Chabad-Lubavitch-World-Headquarters.htm",
+    "description": "המרכז העולמי של חב\"ד בברוקלין",
+    "latitude": 40.6689619,
+    "longitude": -73.9427981
+  },
+  {
+    "name": "Chabad of Tribeca / Soho Jewish Center",
+    "address": "341 Canal St, New York",
+    "phone": "+1-212-566-6764",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadtribeca.com",
+    "latitude": 40.720744,
+    "longitude": -74.0036163
+  },
+  {
+    "name": "Chabad of Battery Park City",
+    "address": "365 South End Ave, New York",
+    "phone": "+1-646-770-3636",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.jewishbatterypark.com",
+    "latitude": 40.7107053,
+    "longitude": -74.0174998
+  },
+  {
+    "name": "Chabad of the Lower East Side",
+    "address": "37 Essex St, New York",
+    "phone": "+1-212-473-0770",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadles.org",
+    "latitude": 40.7161152,
+    "longitude": -73.9896274
+  },
+  {
+    "name": "Chabad House Bowery",
+    "address": "353 Bowery, New York",
+    "phone": "+1-212-674-1950",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadbowery.com",
+    "latitude": 40.7266158,
+    "longitude": -73.9914533
+  },
+  {
+    "name": "Chabad Loft at The Kavanah Space",
+    "address": "10 E 8th St, New York",
+    "phone": "+1-917-613-1678",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "latitude": 40.7317609,
+    "longitude": -73.9957287
+  },
+  {
+    "name": "Chabad West Village",
+    "address": "12 Grove St, New York",
+    "phone": "+1-212-518-3122",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadwestvillage.com",
+    "latitude": 40.732241,
+    "longitude": -74.0057014
+  },
+  {
+    "name": "Chabad of Gramercy Park",
+    "address": "342 E 20th St, New York",
+    "phone": "+1-212-228-7808",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.gramercychabad.org",
+    "latitude": 40.7351678,
+    "longitude": -73.9806987
+  },
+  {
+    "name": "Chabad Lubavitch of Midtown Manhattan",
+    "address": "509 5th Ave, New York",
+    "phone": "+1-212-972-0770",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadmidtown.com",
+    "latitude": 40.7537189,
+    "longitude": -73.9801966
+  },
+  {
+    "name": "Chabad of the Diamond District",
+    "address": "30 W 47th St, New York",
+    "phone": "+1-347-770-1441",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "latitude": 40.7571737,
+    "longitude": -73.9800527
+  },
+  {
+    "name": "Chabad of the Plaza District",
+    "address": "3 W 57th St, New York",
+    "phone": "+1-212-972-0770",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "latitude": 40.7634486,
+    "longitude": -73.9744448
+  },
+  {
+    "name": "Chabad of the Upper East Side",
+    "address": "419 E 77th St, New York",
+    "phone": "+1-212-717-4613",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabaduppereastside.com",
+    "latitude": 40.7708976,
+    "longitude": -73.9527814
+  },
+  {
+    "name": "Chabad of the West Sixties",
+    "address": "310 W 71st St, New York",
+    "phone": "+1-212-706-7708",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadwestsixties.com",
+    "latitude": 40.7791775,
+    "longitude": -73.9856656
+  },
+  {
+    "name": "Chabad Israel Center of the Upper East Side",
+    "address": "1766 2nd Ave, New York",
+    "phone": "+1-212-831-2770",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadicenter.com",
+    "latitude": 40.7817257,
+    "longitude": -73.9487064
+  },
+  {
+    "name": "Chabad of the West Side",
+    "address": "170 W 97th St, New York",
+    "phone": "+1-212-864-5010",
+    "denomination": "חב\"ד",
+    "destinationId": 463,
+    "website": "https://www.chabadwestside.org",
+    "latitude": 40.794578,
+    "longitude": -73.9697154
+  }
+]

@@ -12,6 +12,7 @@ export class SynagoguesController {
   @Get()
   async findByDestination(
     @Query('destinationId') destinationIdStr: string,
+    @Query('denomination')  denomination?: string,
   ) {
     if (!destinationIdStr) {
       throw new BadRequestException('destinationId query parameter is required');
@@ -22,7 +23,7 @@ export class SynagoguesController {
       throw new BadRequestException('destinationId must be a valid integer');
     }
 
-    return this.synagoguesService.findByDestination(destinationId);
+    return this.synagoguesService.findByDestination(destinationId, denomination);
   }
 
   /**

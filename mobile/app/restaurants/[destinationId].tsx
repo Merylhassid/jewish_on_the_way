@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   FlatList,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,6 +13,7 @@ import {
   View,
 } from 'react-native';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Restaurant {
   id: number;
@@ -46,9 +48,11 @@ function formatLabel(value: string | null | undefined) {
 }
 
 export default function RestaurantsScreen() {
-  const { destinationId } = useLocalSearchParams<{ destinationId: string }>();
+  const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading]   = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [error, setError]       = useState(false);
   const [typeFilter, setTypeFilter]       = useState('all');
   const [kashrutFilter, setKashrutFilter] = useState('all');
   const [search, setSearch] = useState('');
@@ -93,9 +97,10 @@ export default function RestaurantsScreen() {
         const res = await client.get(endpoint, { params });
         setRestaurants(res.data);
       } catch {
-        // silent
+        setError(true);
       } finally {
         setLoading(false);
+        setRefreshing(false);
       }
     }, 300);
     return () => { if (searchTimeout.current) clearTimeout(searchTimeout.current); };
@@ -121,7 +126,8 @@ export default function RestaurantsScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
-        <Text style={styles.headerTitle}>🍽️ Kosher Restaurants</Text>
+        <HomeButton />
+        <Text style={styles.headerTitle}>🍽️ Kosher Restaurants{city ? ` — ${city}` : ''}</Text>
         <Text style={styles.headerSub}>
           {loading ? 'Loading…' : `${restaurants.length} restaurant${restaurants.length !== 1 ? 's' : ''} found`}
           {userLocation ? '  •  📍 sorted by distance' : ''}
@@ -189,12 +195,31 @@ export default function RestaurantsScreen() {
       {/* List */}
       {loading ? (
         <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
+      ) : error ? (
+        <View style={styles.center}>
+          <Text style={{ fontSize: 36, marginBottom: 12 }}>⚠️</Text>
+          <Text style={{ fontSize: 15, color: '#888', marginBottom: 16 }}>שגיאה בטעינת הנתונים</Text>
+          <Pressable
+            style={{ backgroundColor: '#1a3a6b', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 }}
+            onPress={() => { setError(false); setLoading(true); }}
+          >
+            <Text style={{ color: '#fff', fontWeight: '700' }}>🔄 נסה שוב</Text>
+          </Pressable>
+        </View>
       ) : (
         <FlatList
           data={restaurants}
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={styles.list}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => { setRefreshing(true); setError(false); }}
+              colors={['#1a3a6b']}
+              tintColor="#1a3a6b"
+            />
+          }
           renderItem={({ item }) => {
             const badge   = KASHRUT_BADGE[item.kashrutLevel] ?? KASHRUT_BADGE.unknown;
             const bgColor = TYPE_COLOR[item.restaurantType]  ?? TYPE_COLOR.unknown;

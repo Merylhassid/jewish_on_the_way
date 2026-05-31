@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Wall Street Synagogue",
+    "denomination": "אורתודוקסי",
+    "address": "47 Beekman Street, New York",
+    "phone": "212-227-7542",
+    "website": "https://wallstreetsynagogue.org/",
+    "latitude": 40.709982,
+    "longitude": -74.0054807,
+    "destinationId": 463
+  },
+  {
+    "name": "Manhattan Sephardic Congregation",
+    "denomination": "אורתודוקסי",
+    "address": "8 West 70th Street, New York",
+    "phone": "212-988-6085",
+    "website": "https://www.sepharad.org/",
+    "latitude": 40.7749997,
+    "longitude": -73.9775725,
+    "destinationId": 463
+  },
+  {
+    "name": "Fifth Avenue Synagogue",
+    "denomination": "אורתודוקסי",
+    "address": "5 East 62nd Street, New York",
+    "website": "https://www.5as.org/",
+    "latitude": 40.7660234,
+    "longitude": -73.9708121,
+    "destinationId": 463
+  },
+  {
+    "name": "Edmond J. Safra Synagogue",
+    "denomination": "אורתודוקסי",
+    "address": "17 East 69th Street, New York",
+    "phone": "212-754-9555",
+    "website": "https://www.ejsny.org/",
+    "latitude": 40.769979,
+    "longitude": -73.966937,
+    "destinationId": 463
+  },
+  {
+    "name": "The Stanton Street Shul",
+    "denomination": "אורתודוקסי",
+    "address": "180 Stanton Street, New York",
+    "website": "https://www.stantonstshul.com/",
+    "latitude": 40.7202506,
+    "longitude": -73.9838671,
+    "destinationId": 463
+  },
+  {
+    "name": "Tribeca Synagogue",
+    "denomination": "אורתודוקסי",
+    "address": "49 White Street, New York",
+    "phone": "+1-212-966-7141",
+    "website": "https://www.tribecasynagogue.org/",
+    "latitude": 40.7183969,
+    "longitude": -74.0041959,
+    "destinationId": 463
+  },
+  {
+    "name": "The Chelsea Shul",
+    "denomination": "חב\"ד",
+    "address": "130 West 26th Street, New York",
+    "website": "https://www.jgradsnyc.org/",
+    "latitude": 40.745188,
+    "longitude": -73.9928424,
+    "destinationId": 463
+  },
+  {
+    "name": "Congregation Shearith Israel",
+    "denomination": "אורתודוקסי",
+    "address": "2 West 70th Street, New York",
+    "phone": "212-873-0300",
+    "website": "https://www.shearithisrael.org/",
+    "latitude": 40.7749687,
+    "longitude": -73.9772878,
+    "destinationId": 463
+  },
+  {
+    "name": "Hudson Yards Synagogue",
+    "denomination": "אורתודוקסי",
+    "address": "455 W 37th Street, New York",
+    "website": "https://www.hudsonyardssynagogue.nyc/",
+    "latitude": 40.7565185,
+    "longitude": -73.9974491,
+    "destinationId": 463
+  },
+  {
+    "name": "Congregation Talmud Torah Adereth El",
+    "denomination": "אורתודוקסי",
+    "address": "135 East 29th Street, New York",
+    "phone": "(212) 685-0241",
+    "website": "https://www.aderethel.org/",
+    "latitude": 40.7432177,
+    "longitude": -73.9813203,
+    "destinationId": 463
+  }
+]

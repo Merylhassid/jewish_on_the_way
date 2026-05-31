@@ -1,0 +1,557 @@
+[
+  {
+    "name": "היכל אברהם",
+    "address": "אורנים 43, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "נועם שיח",
+    "address": "כרכום, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "תפארת שרון",
+    "address": "קוממיות 14, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "חזון אלימלך",
+    "address": "פרדה יזזאו אקלום, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל משה",
+    "address": "שלדג 16, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "מנין אברכים",
+    "address": "נתן אלבז 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "המרכז התורני",
+    "address": "הנרייטה סולד 18, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אלי כהן",
+    "address": "יאנוש קורצ'אק 27, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שבת אחים",
+    "address": "חלמונית 10, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "רשב\"י עץ החיים",
+    "address": "הרוגי מלכות 21, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "רבי דוד בן ברוך",
+    "address": "עליית הנוער 7, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "קדושי בבל",
+    "address": "שפינוזה 4, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית אבות משל\"ב - ע\"ש אלי דרור",
+    "address": "ז'בוטינסקי 6, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "רמב\"ם",
+    "address": "אבן גבירול 127, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "גור אריה יהודה",
+    "address": "הבריגדה היהודית 27, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית מדרש ע\"ש יוסף חיים",
+    "address": "הנרייטה סולד, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "היכל יוסף-בית מדרש חדש",
+    "address": "הנרייטה סולד 26, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית יעקב",
+    "address": "יצחק בן צבי 12, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית אליהו דוד",
+    "address": "הנרייטה סולד 4, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית אל",
+    "address": "אבן גבירול 11, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אור החיים",
+    "address": "אברהם מאפו 11, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל שלמה",
+    "address": "ראסל 27, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל יעקב",
+    "address": "אבן גבירול 43, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אהבת ישראל",
+    "address": "פעמונית 5, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אהבה של תורה",
+    "address": "אברהם מאפו 17, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "מור שלמה",
+    "address": "האלה 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית אברהם",
+    "address": "קייס מולוגטה אדיסו טסמה 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "כצנלסון 25, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שערי צדק",
+    "address": "הרב ניסים אהרון 33, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שערי אחוה",
+    "address": "יצחק שדה 19, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שאר ישוב",
+    "address": "יגאל ידין 27, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "רבי דוד ומשה הכהן",
+    "address": "טרומפלדור 6, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "עץ חיים",
+    "address": "דולב 15, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "הישיבה הגדולה",
+    "address": "צבי פנקס 26, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "עפולה הצעירה",
+    "address": "הורד 14, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "עטרת יצחק לעולי בבל",
+    "address": "צנחנים 8, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "נצח ישראל",
+    "address": "צבי פנקס 8, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "מגן דוד",
+    "address": "צבי פנקס 16, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "היכל אליהו",
+    "address": "הרצל 25, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "ישורון",
+    "address": "פרג 14, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "זוהר שלמה",
+    "address": "יצחק שדה 63, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "כפר הילדים המרכז להכשרת ילדי ישראל",
+    "address": "חיננית 20, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "היכל השבעה",
+    "address": "האלה 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "גאולי ה'",
+    "address": "הרב רצון דוד 4, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית הכנסת המרכזי",
+    "address": "פרדה יזזאו אקלום, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית מדרש אדמוני",
+    "address": "כצנלסון 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בני ירושלים",
+    "address": "יצחק שדה 40, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית רבקה ומאיר",
+    "address": "הרצל 14, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית ארגמן",
+    "address": "רמז 19, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אליהו הנביא",
+    "address": "כצנלסון 25, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אור לאברהם",
+    "address": "הגודד 15, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אחות אחים",
+    "address": "יצחק שדה 62, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אור יצחק",
+    "address": "רש\"י 27, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אהבת תורה",
+    "address": "עפולה עילית, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהלו",
+    "address": "הרב ניסים אהרון 30, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "חב\"ד לצעירים",
+    "address": "הרב קירשטיין 29, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "משכן הכהנים",
+    "address": "עירית 6, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שערי יצחק",
+    "address": "דרור 25, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "משכן משה וישראל",
+    "address": "חטיבת כפיר 17, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "משכן קדוש יעקב",
+    "address": "כיכר העצמאות 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בני ידידיה",
+    "address": "וולפסון 26, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "תהילה לדוד",
+    "address": "קרן היסוד 22, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "חניכי הישיבות",
+    "address": "יצחק שדה 44, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "ברכת יוסף",
+    "address": "ירושלים 34, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית מדרש \"מעיין שלום\"",
+    "address": "קישון, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית כנסת עירוני",
+    "address": "חטיבה תשע 5, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "מדרשת מל\"י",
+    "address": "צפצפות 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "מרכז הילדים והנוער אמונה",
+    "address": "יהושע חנקין 50, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "ירושלים 55, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "תהילה לדוד - המועצה הדתית",
+    "address": "שדרות ארלוזורוב 32, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שרבט",
+    "address": "מנחם אוסישקין 29, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שערי רחמים",
+    "address": "הרב נחום לוין 10, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "שערי אורה",
+    "address": "מרכז רפואי העמק, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "רבי דוד ומשה",
+    "address": "הרב פרץ ציוני 27, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "משכן חנניה",
+    "address": "עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "קול יעקב",
+    "address": "הולנד 17, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "משכן שלמה יצחק",
+    "address": "כיכר עצמאות 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "משכן יחיא",
+    "address": "עלייה 35, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית המדרש \"מלכות דוד\"",
+    "address": "הנשיא וייצמן 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "מאורות ניסים",
+    "address": "יהושע חנקין 20, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "לב העמק",
+    "address": "דפנה 6, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "כתר דוד יוסף",
+    "address": "חיבת ציון 89, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "ישיבת ההסדר עפולה",
+    "address": "יהושע חנקין 20, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "יחד שבטי ישראל",
+    "address": "יהושע חנקין 20, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "יובל לישראל",
+    "address": "השומר 6, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "חיים מאיר",
+    "address": "הבוכרים 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "היכל שלמה",
+    "address": "הגן 13, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "היכל חביב",
+    "address": "לוטם 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "פנינת אברהם",
+    "address": "בעל שם טוב 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "דרכי מאיר",
+    "address": "הולנד 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "ברכת יוסף מנחם ציון",
+    "address": "וולפסון 31, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בעלי מלאכה - חב\"ד",
+    "address": "שדרות ארלוזורוב 31, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית מאיר",
+    "address": "הבנים 5, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית ישראל",
+    "address": "הסוכנות היהודית 24, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית יעקב",
+    "address": "קישון 7, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית מעשים טובים",
+    "address": "שדרות יצחק רבין 18, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית אל",
+    "address": "וולפסון 41, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אליהו הנביא",
+    "address": "עומר 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אחוות עם עוזרי",
+    "address": "השומר 10, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אתחלתא",
+    "address": "קרן היסוד 20, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אחוות אחים",
+    "address": "קישון 11, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אחוות הכבאי",
+    "address": "האגס 1, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אולמי פאר",
+    "address": "קהילת ציון 12, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל שרה",
+    "address": "משה שרת 10, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל רשב\"י",
+    "address": "עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל ציון",
+    "address": "הבוכרים 8, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית הכנסת לצעירים",
+    "address": "קרן היסוד 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית הכנסת הפתוח",
+    "address": "יפה ירקוני, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אוהל יוסף",
+    "address": "בציר 3, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "אהבת ישראל",
+    "address": "שוהם 10, עפולה",
+    "destinationId": 430
+  },
+  {
+    "name": "בית הכנסת הגדול - בית שלום",
+    "address": "יהושע חנקין 48, עפולה",
+    "destinationId": 430
+  }
+]

@@ -1,0 +1,507 @@
+[
+  {
+    "name": "ברכת יצחק",
+    "address": "אבן גבירול 20, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "היכל לי-אור",
+    "address": "עלי מוהר 5, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "הפועל המזרחי",
+    "address": "ברנדייס 18, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "שבטי ישראל",
+    "address": "הר סיני 17, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אור שלום",
+    "address": "אליעזר יפה 6, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "פא\"י",
+    "address": "ארלוזורוב 7, רעננה",
+    "destinationId": 309,
+    "denomination": "לרוב ספרדי (אשכנזי)"
+  },
+  {
+    "name": "עציון",
+    "address": "עציון 5, רעננה",
+    "destinationId": 309,
+    "denomination": "רינת ישראל - ספרד"
+  },
+  {
+    "name": "נווה זמר",
+    "address": "סשה ארגוב 13, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אור ציון",
+    "address": "מבצע קדש, רעננה",
+    "destinationId": 309,
+    "denomination": "תימני שאמי"
+  },
+  {
+    "name": "אחוות רעים אדמונד ספרא",
+    "address": "הסייפן 10, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אהבת ציון בית כנסת ובית מדרש",
+    "address": "הפלמ\"ח 15, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "קליוולנד",
+    "address": "הר סיני 11, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי, חסידי"
+  },
+  {
+    "name": "ישועת ישראל",
+    "address": "התקווה 23, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "רענן (הקהילה הרפורמית)",
+    "address": "פרדס משותף 94, רעננה",
+    "destinationId": 309,
+    "denomination": "רפורמי"
+  },
+  {
+    "name": "בר יוחאי",
+    "address": "התחייה 41, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "קהילת יד מרדכי",
+    "address": "שברץ 1, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "יד בנימין השטיבל",
+    "address": "העבודה 1, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "היכל ציון",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אחים",
+    "address": "קרן היסוד 49, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "שמע קולי זכור לאברהם",
+    "address": "הפרחים 9, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אוהל אר\"י",
+    "address": "רבוצקי 98, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "מגדל צדק",
+    "address": "רעננה",
+    "destinationId": 309,
+    "denomination": "תימני בלדי"
+  },
+  {
+    "name": "צור ישראל",
+    "address": "ברנר 11, רעננה",
+    "destinationId": 309,
+    "denomination": "אשכנזי ספרד"
+  },
+  {
+    "name": "עמיתי (הקהילה המסורתית)",
+    "address": "בורוכוב 8, רעננה",
+    "destinationId": 309,
+    "denomination": "מסורתי"
+  },
+  {
+    "name": "מוריה",
+    "address": "אחוזה 186, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "עולי בבל",
+    "address": "מגדל 19, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "ישורון",
+    "address": "ברנדייס 40, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "יבנה",
+    "address": "חפץ חיים 3, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "יגדיל תורה",
+    "address": "תל חי 4, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי, מגורשי ספרד, מרוקו הספרדית, לאדינו וחכיתייה"
+  },
+  {
+    "name": "אל-עולם",
+    "address": "רבוצקי 56, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בית הכנסת הגדול",
+    "address": "אחוזה 101, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אחוה",
+    "address": "הפרחים 1, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "ימין משה",
+    "address": "הפלמ\"ח 15, רעננה",
+    "destinationId": 309,
+    "denomination": "תימנית- שאמי"
+  },
+  {
+    "name": "המניין הספרדי",
+    "address": "חנקין 5, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי ירושלים"
+  },
+  {
+    "name": "כינור דוד (בית הנוער)",
+    "address": "אחוזה 157, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "עלומים (בי\"ס דקל)",
+    "address": "שברץ 24, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "אור החיים",
+    "address": "התחייה 40, רעננה",
+    "destinationId": 309,
+    "denomination": "פרסי מסורתי"
+  },
+  {
+    "name": "תפארת בחורים",
+    "address": "רעננה",
+    "destinationId": 309,
+    "denomination": "בלאדי"
+  },
+  {
+    "name": "בית יעקב",
+    "address": "רמח\"ל 7, רעננה",
+    "destinationId": 309,
+    "denomination": "תימנית, שאמי"
+  },
+  {
+    "name": "בית ישראל",
+    "address": "השרון 13, רעננה",
+    "destinationId": 309,
+    "denomination": "מזרחי, צפון אפריקה, טוניסאי"
+  },
+  {
+    "name": "משכן מיכאל (עדת בנ\"י) ובית מדרש",
+    "address": "אברבנאל 7, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "יוסף שלום- עולי לוב",
+    "address": "התחייה 40, רעננה",
+    "destinationId": 309,
+    "denomination": "פרסי מסורתי"
+  },
+  {
+    "name": "תורה וחיים",
+    "address": "חפץ חיים 3, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "אור ישראל",
+    "address": "ז'בוטנסקי 3, רעננה",
+    "destinationId": 309,
+    "denomination": "אשכנזי, עולי ברזיל, פורטוגזית"
+  },
+  {
+    "name": "מקדש מלך היכל אוריאל",
+    "address": "שברץ 10, רעננה",
+    "destinationId": 309,
+    "denomination": "ירושלמי"
+  },
+  {
+    "name": "עוז והדר",
+    "address": "רעננה",
+    "destinationId": 309,
+    "denomination": "ירושלמי ספרדי"
+  },
+  {
+    "name": "גיבורי ישראל יגדיל תורה",
+    "address": "תל חי 4, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי, מגורשי ספרד, מרוקו הספרדית, לאדינו וחכיתייה"
+  },
+  {
+    "name": "רעות- משכן אורי",
+    "address": "ביל\"ו 15, רעננה",
+    "destinationId": 309,
+    "denomination": "אשכנז"
+  },
+  {
+    "name": "בית אבות- palace",
+    "address": "אחוזה 269, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "אוהל שלום",
+    "address": "סעדיה גאון 1, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אהל מועד",
+    "address": "רמח\"ל 10, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "עדת ישראל",
+    "address": "ביאליק 3, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "נתיבות - האוניברסיטה הפתוחה",
+    "address": "דרך האוניברסיטה 1, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בית אל (בית פישר)",
+    "address": "קלאוזנר 5, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "עץ חיים",
+    "address": "שמואל הנגיד 45, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "שבזי",
+    "address": "רחוב ברל כצנלסון 62, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "גן עליה",
+    "address": "דב גרונר, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בני אהרן",
+    "address": "תל חי 4, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "היכל בנימין (קצין)",
+    "address": "קצין 42, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "צעירי רעננה מרכז אליאב",
+    "address": "אחוזה 68, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "מגן דויד",
+    "address": "ברל כצנלסון 61, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אריאל",
+    "address": "ששת הימים 33, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "נצח ישראל",
+    "address": "שמואל הנגיד 42, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "מורשת אבות",
+    "address": "שברץ 12, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אוהל מרדכי",
+    "address": "אחוזה 80, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "תולדות יצחק",
+    "address": "אליעזר יפה 6, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "שובה",
+    "address": "תל חי 4, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בילו",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "לאה ורחל",
+    "address": "שבזי 14, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בית אהרון",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "נחלת אחים",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "נחלת אחים",
+    "address": "דב הוז 22, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בית ארי",
+    "address": "הרצל 4, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אוהל יונתן",
+    "address": "הגדוד העברי 9, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "קול החיים",
+    "address": "אחוזה 98, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "קרן בני הישיבות",
+    "address": "תל חי 4, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "חב\"ד אחוזה 117",
+    "address": "אחוזה 119, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "מנין הכולל הקהילתי",
+    "address": "אליעזר יפה 6, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "הכולל הקהילתי",
+    "address": "אחוזה 198, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "קלויז חסידי ברסלב",
+    "address": "ארלוזורוב 7, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בצוותא",
+    "address": "חפץ חיים 3, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בריתי שלום",
+    "address": "הנגב 16, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "חב\"ד ליובוויטש ברנר 1",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "מקור חיים",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "קרן חסדי אברהם ושמחה- חב\"ד",
+    "address": "הנשיאים 47, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "שער הרחמים",
+    "address": "הסדנא 15, רעננה",
+    "destinationId": 309,
+    "denomination": "ספרד (אשכנז)"
+  },
+  {
+    "name": "משכן יהושע",
+    "address": "הפלמ\"ח 15, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "בית כנסת חב\"ד קניון רננים",
+    "address": "המלאכה 2, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "חב\"ד ליובוויטש ההסתדרות 44",
+    "address": "ההסתדרות 44, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "ערשנו רעננה",
+    "address": "הרב אפרים 31, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "יחד אחים",
+    "address": "רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "לכו נרננה",
+    "address": "הרצל 5, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "אוהל משה",
+    "address": "אליעזר יפה 5, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "חב\"ד הנשיאים",
+    "address": "הנשיאים 2, רעננה",
+    "destinationId": 309
+  },
+  {
+    "name": "שבת אחים",
+    "address": "החלוץ 219, רעננה",
+    "destinationId": 309
+  }
+]

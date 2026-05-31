@@ -1,0 +1,1 @@
+        m = [f for f in ["phone", "denomination", "description"] if not r.get(f)]

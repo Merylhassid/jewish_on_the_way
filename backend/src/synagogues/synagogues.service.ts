@@ -12,27 +12,45 @@ export class SynagoguesService {
 
   /**
    * Find all synagogues by destination ID
-   * Returns basic fields: id, name, address, phone, website, location
+   * Returns basic fields: id, name, address, description, phone, website, location
    */
-  async findByDestination(destinationId: number) {
-    const synagogues = await this.synagoguesRepo.find({
+  // מיפוי denomination (מהמודל) → ערכי DB אפשריים
+  private readonly DENOM_MAP: Record<string, string[]> = {
+    ashkenaz:  ['אשכנז', 'אשכנזי', 'ליטאי', 'Ashkenazi', 'Orthodox'],
+    sfarad:    ['ספרדי', 'ספרד', 'עדות המזרח', 'מרוקאי', 'הודי', 'בוכרה', 'אתיופי'],
+    chabad:    ['חב"ד', 'חסידי', 'Chabad'],
+    teimanim:  ['תימני', 'תימן', 'שאמי', 'בלאדי', 'ירושלמי'],
+  };
+
+  async findByDestination(destinationId: number, denomination?: string) {
+    // ── ללא פילטר נוסח — כולם ──────────────────────────
+    if (!denomination) {
+      return this.synagoguesRepo.find({
+        where: { destination: { id: destinationId } },
+        select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
+        order: { name: 'ASC' },
+      });
+    }
+
+    // ── עם פילטר נוסח — OR על כל הערכים האפשריים ───────
+    const dbValues = this.DENOM_MAP[denomination] ?? [];
+    if (dbValues.length === 0) {
+      return this.synagoguesRepo.find({
+        where: { destination: { id: destinationId } },
+        select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
+        order: { name: 'ASC' },
+      });
+    }
+
+    const { In } = await import('typeorm');
+    return this.synagoguesRepo.find({
       where: {
         destination: { id: destinationId },
+        denomination: In(dbValues),
       },
-      select: [
-        'id',
-        'name',
-        'address',
-        'phone',
-        'website',
-        'location',
-      ],
-      order: {
-        name: 'ASC',
-      },
+      select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
+      order: { name: 'ASC' },
     });
-
-    return synagogues;
   }
 
   /**
