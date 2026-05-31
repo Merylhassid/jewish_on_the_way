@@ -38,10 +38,31 @@ const KASHRUT_COLOR: Record<string, string> = {
   rabbinate: '#6B7280', mehadrin: '#2563EB', badatz: '#059669', unknown: '#6B7280',
 };
 
+async function removeLocalFavorite(entityType: string, entityId: number) {
+  try {
+    const raw = await AsyncStorage.getItem(STORAGE_KEY);
+    const favs: Record<string, boolean> = raw ? JSON.parse(raw) : {};
+    delete favs[`${entityType}:${entityId}`];
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(favs));
+  } catch {}
+}
+
 export default function SavedScreen() {
   const [restaurants, setRestaurants] = useState<SavedRestaurant[]>([]);
   const [synagogues, setSynagogues] = useState<SavedSynagogue[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const removeRestaurant = (id: number) => {
+    setRestaurants(prev => prev.filter(r => r.id !== id));
+    removeLocalFavorite('restaurant', id);
+    client.post(`/favorites/restaurant/${id}`).catch(() => {});
+  };
+
+  const removeSynagogue = (id: number) => {
+    setSynagogues(prev => prev.filter(s => s.id !== id));
+    removeLocalFavorite('synagogue', id);
+    client.post(`/favorites/synagogue/${id}`).catch(() => {});
+  };
 
   useEffect(() => {
     // מנסה מהשרת קודם; אם נכשל, טוען מ-AsyncStorage + מביא פרטים מה-API
@@ -100,6 +121,9 @@ export default function SavedScreen() {
                   <View style={[s.badge, { backgroundColor: KASHRUT_COLOR[r.kashrutLevel] ?? '#6B7280' }]}>
                     <Text style={s.badgeText}>{r.kashrutLevel}</Text>
                   </View>
+                  <Pressable onPress={() => removeRestaurant(r.id)} hitSlop={8} style={s.deleteBtn}>
+                    <MaterialIcons name="close" size={18} color={C.textMuted} />
+                  </Pressable>
                 </Pressable>
               ))}
             </>
@@ -123,6 +147,9 @@ export default function SavedScreen() {
                     <Text style={s.cardName}>{s2.name}</Text>
                     {s2.address && <Text style={s.cardSub} numberOfLines={1}>{s2.address}</Text>}
                   </View>
+                  <Pressable onPress={() => removeSynagogue(s2.id)} hitSlop={8} style={s.deleteBtn}>
+                    <MaterialIcons name="close" size={18} color={C.textMuted} />
+                  </Pressable>
                 </Pressable>
               ))}
             </>
@@ -164,4 +191,5 @@ const s = StyleSheet.create({
   cardSub:  { fontSize: 12, color: C.textMuted, marginTop: 2 },
   badge: { borderRadius: 8, paddingHorizontal: 8, paddingVertical: 4 },
   badgeText: { fontSize: 10, fontWeight: '700', color: '#fff', textTransform: 'capitalize' },
+  deleteBtn: { padding: 4, marginLeft: 4 },
 });
