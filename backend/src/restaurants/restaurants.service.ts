@@ -134,6 +134,55 @@ export class RestaurantsService {
     return results;
   }
 
+  // כל המסעדות מכל ערי מדינה אחת, ממויינות לפי מרחק
+  async findByParentDestination(parentId: number, filters: RestaurantFilters = {}): Promise<any[]> {
+    const { type, kashrut, q, lat, lng } = filters;
+
+    if (lat !== undefined && lng !== undefined) {
+      let sql = `
+        SELECT r.id, r.name,
+               r.restaurant_type AS "restaurantType",
+               r.kashrut_level   AS "kashrutLevel",
+               r.address, r.opening_hours AS "openingHours",
+               r.created_at AS "createdAt",
+               d.city AS "destinationCity",
+               ROUND(ST_Distance(
+                 r.location::geography,
+                 ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography
+               )::numeric) AS "distanceMeters"
+        FROM restaurants r
+        JOIN destinations d ON r."destinationId" = d.id
+        WHERE d.parent_id = $3
+      `;
+      const params: (string | number)[] = [lng, lat, parentId];
+      let idx = 4;
+      if (type)    { sql += ` AND r.restaurant_type = $${idx}`; params.push(type);       idx++; }
+      if (kashrut) { sql += ` AND r.kashrut_level   = $${idx}`; params.push(kashrut);    idx++; }
+      if (q)       { sql += ` AND r.name ILIKE $${idx}`;        params.push(`%${q}%`);   idx++; }
+      sql += ' ORDER BY "distanceMeters" ASC';
+      return this.restaurantsRepo.query(sql, params);
+    }
+
+    let sql = `
+      SELECT r.id, r.name,
+             r.restaurant_type AS "restaurantType",
+             r.kashrut_level   AS "kashrutLevel",
+             r.address, r.opening_hours AS "openingHours",
+             r.created_at AS "createdAt",
+             d.city AS "destinationCity"
+      FROM restaurants r
+      JOIN destinations d ON r."destinationId" = d.id
+      WHERE d.parent_id = $1
+    `;
+    const params: (string | number)[] = [parentId];
+    let idx = 2;
+    if (type)    { sql += ` AND r.restaurant_type = $${idx}`; params.push(type);     idx++; }
+    if (kashrut) { sql += ` AND r.kashrut_level   = $${idx}`; params.push(kashrut);  idx++; }
+    if (q)       { sql += ` AND r.name ILIKE $${idx}`;        params.push(`%${q}%`); idx++; }
+    sql += ' ORDER BY d.city ASC, r.name ASC';
+    return this.restaurantsRepo.query(sql, params);
+  }
+
   // req 4.4 — single restaurant details
   async findOne(id: number) {
     const restaurant = await this.restaurantsRepo
