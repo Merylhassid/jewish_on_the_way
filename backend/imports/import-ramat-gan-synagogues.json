@@ -1,0 +1,802 @@
+[
+  {
+    "name": "אגודת אחים רמב\"ם",
+    "address": "סיירת דוכיפת 10, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "050-6221213"
+  },
+  {
+    "name": "אגודת אלימלך",
+    "address": "אלימלך 7, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "054-3090292"
+  },
+  {
+    "name": "אגודת בית כנסת רמת חן",
+    "address": "רמת חן 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "054-2430225"
+  },
+  {
+    "name": "אדמו\"ר ממאנסטריץ",
+    "address": "קלאוזנר 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "052-7179115"
+  },
+  {
+    "name": "אהבה ואחוה",
+    "address": "מלכי צדק 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-2220464"
+  },
+  {
+    "name": "אהבת אחים",
+    "address": "באר אורה 15, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-3413055"
+  },
+  {
+    "name": "אהל יוסף (אשכנזים)",
+    "address": "המלך יוסף 19, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "053-3409935"
+  },
+  {
+    "name": "אהל יעקב",
+    "address": "אהוד 8, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-7431894"
+  },
+  {
+    "name": "אהל מרדכי (אהבת הזולת)",
+    "address": "עזריאל 28, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח"
+  },
+  {
+    "name": "אהל רחל",
+    "address": "תלפיות 19, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "058-7644137"
+  },
+  {
+    "name": "אוהל שמעון",
+    "address": "הבילויים 44, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-8814534"
+  },
+  {
+    "name": "אור ישרים",
+    "address": "האם 14, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-8370229"
+  },
+  {
+    "name": "אחוה ורעות",
+    "address": "המעפיל 12, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-5111551"
+  },
+  {
+    "name": "אחוה נ. שאמי",
+    "address": "הרא\"ה 251, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "052-2943496"
+  },
+  {
+    "name": "אחוות אחים",
+    "address": "אריה בן אליעזר 13, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-3436823"
+  },
+  {
+    "name": "אחוות אחים נוסח בלאדי",
+    "address": "חד נס 25, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "052-8905350"
+  },
+  {
+    "name": "אליהו הנביא בנוסח יהדות מרוקו",
+    "address": "ראש פינה 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-4833114"
+  },
+  {
+    "name": "אריאל",
+    "address": "המחתרת 18, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "050-6372139"
+  },
+  {
+    "name": "אשל אברהם",
+    "address": "אצ\"ל 14, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-7682926"
+  },
+  {
+    "name": "בית אבות עירוני",
+    "address": "שד' הילד 10, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-6840426"
+  },
+  {
+    "name": "בית אל- גאולה",
+    "address": "המלך יוסף 21, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-6909200"
+  },
+  {
+    "name": "בית יוסף אור שרגא",
+    "address": "השר משה 32, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-3977111"
+  },
+  {
+    "name": "בית יעקב ג' גאולה",
+    "address": "גבעת גאולה, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-4578624"
+  },
+  {
+    "name": "ביכ\"נ שע\"י תיכון דתי",
+    "address": "גולומב 6, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "052-5554034054-3974549"
+  },
+  {
+    "name": "בני ציון",
+    "address": "קריניצי 4, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-8449989052-3258902"
+  },
+  {
+    "name": "בצלאל - נהורא",
+    "address": "ביאליק 37, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-7586054"
+  },
+  {
+    "name": "גאולי ישראל לעולי בבל",
+    "address": "עזריאל 4, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-52761300505295949"
+  },
+  {
+    "name": "גלעד- תל השומר",
+    "address": "רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-8354350"
+  },
+  {
+    "name": "דובב עוז",
+    "address": "הבילויים 15, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-5214151"
+  },
+  {
+    "name": "דעת מנחם – חב\"ד",
+    "address": "ז'בוטינסקי 108, רמת גן",
+    "destinationId": 370,
+    "denomination": "חבד",
+    "phone": "054-6333931"
+  },
+  {
+    "name": "הגדול רמת גן",
+    "address": "הרצל 47, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-7200282"
+  },
+  {
+    "name": "הגדול רמת יצחק",
+    "address": "שד' ירושלים 38, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "054-2392800"
+  },
+  {
+    "name": "הדר קודש",
+    "address": "נוה יהושע 53, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-6717824052-3526357"
+  },
+  {
+    "name": "היכל מרדכי - חב\"ד",
+    "address": "עוזיאל 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "חבד",
+    "phone": "052-5514110"
+  },
+  {
+    "name": "היכל משה אביב",
+    "address": "ז'בוטינסקי 7, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-3219533"
+  },
+  {
+    "name": "היכל משה ע\"ש משה מגן דוד",
+    "address": "אריה בן אליעזר 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-8781784"
+  },
+  {
+    "name": "היכל שלמה",
+    "address": "המחתרת 8, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-4739746"
+  },
+  {
+    "name": "המרכזי לאשכנזים",
+    "address": "אצ\"ל 39, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-3974348"
+  },
+  {
+    "name": "המרכזי לספרדים",
+    "address": "הנגיד 3, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-6234673"
+  },
+  {
+    "name": "השלום",
+    "address": "בן אליעזר 15, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-2507212"
+  },
+  {
+    "name": "התחייה",
+    "address": "שד' נחמה, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "050-9638235"
+  },
+  {
+    "name": "זוהר הרקיע",
+    "address": "חביבה רייק 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-2453351"
+  },
+  {
+    "name": "זכרון קדושים",
+    "address": "חביבה רייק 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-6815406"
+  },
+  {
+    "name": "זיכרון קדושים - השקמה",
+    "address": "אחד העם 57, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-4778120"
+  },
+  {
+    "name": "חזון למועד",
+    "address": "הגלגל 46, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-7682605"
+  },
+  {
+    "name": "חמד בחורים",
+    "address": "אצ\"ל 36, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "050-7773722"
+  },
+  {
+    "name": "יד הגיבורים",
+    "address": "נגבה 16, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-3999555"
+  },
+  {
+    "name": "יהדות בחוויה ר\"ג (ע\"ר) (סוכת שלום-חב\"ד לשעבר)",
+    "address": "הרא\"ה 24, רמת גן",
+    "destinationId": 370,
+    "denomination": "חבד"
+  },
+  {
+    "name": "יוצאי ליפקני-אהל גבריאל",
+    "address": "בניהו 29, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "053-2865357"
+  },
+  {
+    "name": "יחזקאל",
+    "address": "מנחם יצחק 3, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח"
+  },
+  {
+    "name": "ימין משה",
+    "address": "אלוף דוד 187, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "050-5430275"
+  },
+  {
+    "name": "ישורון",
+    "address": "אלוף דוד 187, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "053-9866993"
+  },
+  {
+    "name": "ישראל הצעיר ק. קריניצי",
+    "address": "המשורר יעקב כהן 27, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-3336363"
+  },
+  {
+    "name": "ישרים",
+    "address": "ד\"ר כהן 13, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-3222259"
+  },
+  {
+    "name": "לוית חן (יד מנחם ושרה)",
+    "address": "אחד העם 59, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-8496542"
+  },
+  {
+    "name": "למען שמו באהבה",
+    "address": "גילדסגיים 12, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-3663639"
+  },
+  {
+    "name": "מודעות בעידן הגאולה",
+    "address": "הרא\"ה פינת חיבת ציון 106    44, רמת גן",
+    "destinationId": 370,
+    "denomination": "חבד",
+    "phone": "052-7073314"
+  },
+  {
+    "name": "מנחת חובב",
+    "address": "השר משה 32, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-2477477"
+  },
+  {
+    "name": "מנין לצעירים בי\"ס הלל",
+    "address": "הגלגל 44, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-6800906"
+  },
+  {
+    "name": "מנין לצעירים בי\"ס הרא\"ה",
+    "address": "הרא\"ה 212, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "053-2503512"
+  },
+  {
+    "name": "מקור חיים",
+    "address": "סוקולוב 18, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "052-6206265"
+  },
+  {
+    "name": "מרום נוה",
+    "address": "יוחנן בדר 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-6717829"
+  },
+  {
+    "name": "משכן הראל",
+    "address": "החוגה 2, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-8436269"
+  },
+  {
+    "name": "משכנות יעקב",
+    "address": "ארנון 13, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-5770682"
+  },
+  {
+    "name": "משכנות ישראל",
+    "address": "ברודצקי 8, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "052-6071091"
+  },
+  {
+    "name": "משכנות ישראל–מנין לצעירים",
+    "address": "ברודצקי 8, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-7554556"
+  },
+  {
+    "name": "נאוה תהילה",
+    "address": "הגלגל 46, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-6239672"
+  },
+  {
+    "name": "נוה אפעל -בית אבות",
+    "address": "שד' הארזים 2, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-4412707"
+  },
+  {
+    "name": "נוה שלום הכהן",
+    "address": "סיירת דוכיפת 11, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "052-2805369"
+  },
+  {
+    "name": "נווה יהושע",
+    "address": "החולה 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "052-6546378"
+  },
+  {
+    "name": "נוסח אשכנז-רמת יצחק",
+    "address": "ההלכה 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "053-4202663"
+  },
+  {
+    "name": "נחלת אפרים- מרום נוה",
+    "address": "חזון איש 90, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-7157363"
+  },
+  {
+    "name": "נצח ישראל - עמידר",
+    "address": "המחתרת 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "052-3352474"
+  },
+  {
+    "name": "נצח ישראל - קפלן",
+    "address": "קפלן 6, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "050-6395955"
+  },
+  {
+    "name": "סיני",
+    "address": "לאן 27, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "053-5217895"
+  },
+  {
+    "name": "על שם כדורי מועלם",
+    "address": "השר משה, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-7433439"
+  },
+  {
+    "name": "על שם ספוז'ניקוב יצחק",
+    "address": "בן גוריון 129, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-4753644052-3011122"
+  },
+  {
+    "name": "עובדיה מברטנורה",
+    "address": "שד' נחמה, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-3641748"
+  },
+  {
+    "name": "עולי יוון וארצות הבלקן",
+    "address": "אורה 6, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "058-6653564"
+  },
+  {
+    "name": "עולי פרס",
+    "address": "מלכי צדק 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח"
+  },
+  {
+    "name": "עטרת שלום נוסח בלאדי",
+    "address": "הרא\"ה 259, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "054-4373369"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "ז'בוטינבקי 123, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "054-4724387"
+  },
+  {
+    "name": "עץ חיים עמידר",
+    "address": "המחתרת 18א, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "052-8613881"
+  },
+  {
+    "name": "ציון עולי בבל",
+    "address": "מלכי צדק 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-6094151"
+  },
+  {
+    "name": "רב ברכות",
+    "address": "הגלגל 42, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-2322672"
+  },
+  {
+    "name": "רינת ישרים",
+    "address": "באר אורה 15, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-5922757"
+  },
+  {
+    "name": "שארית ישראל",
+    "address": "שדרות העם הצרפתי 34, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "052-8869444"
+  },
+  {
+    "name": "שבזי - רמת השקמה",
+    "address": "אחד העם 10, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-7454930"
+  },
+  {
+    "name": "שבזי לצעירים - עמידר",
+    "address": "המחתרת 9, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "050-2319609"
+  },
+  {
+    "name": "שבטי ישראל - טריפולי",
+    "address": "פומפדיתא 3, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-3919350"
+  },
+  {
+    "name": "שבטי ישראל - אשכנזים",
+    "address": "בן גוריון 243, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "052-2529487"
+  },
+  {
+    "name": "שבטי ישראל - עדנים",
+    "address": "בן גוריון 243, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-7110201"
+  },
+  {
+    "name": "שבטי ישראל - תימנים",
+    "address": "בן גוריון 243, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "052-9249348"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "העמל 26, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-9264352"
+  },
+  {
+    "name": "שכון מזרחי- נוסח אשכנז",
+    "address": "הראב\"ע 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "050-7827875"
+  },
+  {
+    "name": "שכון מזרחי- נוסח ספרד",
+    "address": "הראב\"ע 2, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "050-6714661"
+  },
+  {
+    "name": "שלום שבזי- תל יהודה",
+    "address": "יד שלום 27, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "052-3204578"
+  },
+  {
+    "name": "שער האריות- יבנה",
+    "address": "השורה 11, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "052-6362693"
+  },
+  {
+    "name": "שערי ניסים - עמותת צח\"י",
+    "address": "באר אורה 17, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-4191508"
+  },
+  {
+    "name": "שערי יצחק (ראחוב)",
+    "address": "ברקאי 20, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "053-3151251"
+  },
+  {
+    "name": "שערי צדק על שם הרב סעדיה חוזה",
+    "address": "ישורון 15, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-6865155"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "נווה יהושע 53, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "054-2026359"
+  },
+  {
+    "name": "ששון שמואל",
+    "address": "הרכסים 55, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-2536848"
+  },
+  {
+    "name": "ששון שמואל- עמותת ידי חיים",
+    "address": "הרכסים 55, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "052-3293919"
+  },
+  {
+    "name": "תהילות ישראל",
+    "address": "נרדימון 3, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד"
+  },
+  {
+    "name": "תל גנים",
+    "address": "גדעון 24, רמת גן",
+    "destinationId": 370,
+    "denomination": "אשכנז",
+    "phone": "052-3402862"
+  },
+  {
+    "name": "תפארת בחורים",
+    "address": "ז'בוטינסקי 68, רמת גן",
+    "destinationId": 370,
+    "denomination": "ספרד",
+    "phone": "052-3362842"
+  },
+  {
+    "name": "תפארת בחורים - ביאליק",
+    "address": "ביאליק 69, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-8712181"
+  },
+  {
+    "name": "תפארת ישראל - עמידר",
+    "address": "ההגנה 34, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ב",
+    "phone": "054-2201064"
+  },
+  {
+    "name": "תפארת ישראל גבעת גאולה",
+    "address": "גבעת גאולה 133, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "052-2783353"
+  },
+  {
+    "name": "תפארת ישראל יעקב",
+    "address": "נרדימון 3, רמת גן",
+    "destinationId": 370,
+    "denomination": "תימנים ש",
+    "phone": "052-9468815"
+  },
+  {
+    "name": "תפארת משה",
+    "address": "עזריאל 2, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "050-6303090"
+  },
+  {
+    "name": "תפארת שלמה",
+    "address": "סוקולוב 14, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-3596693"
+  },
+  {
+    "name": "תפארת שמעון",
+    "address": "עזריאל 28, רמת גן",
+    "destinationId": 370,
+    "denomination": "עדות המזרח",
+    "phone": "054-7420003"
+  },
+  {
+    "name": "בית חב״ד הראשונים",
+    "address": "שפירא 5, רמת גן",
+    "destinationId": 370,
+    "denomination": "חבד",
+    "phone": "054-7708980"
+  }
+]

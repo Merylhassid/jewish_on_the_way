@@ -1,0 +1,6 @@
+[
+  {"name": "בית כנסת בציפורים - אשכנזי", "address": "שלדג 3, מודיעין", "denomination": "אשכנז", "phone": "050-7337766", "destinationId": 345},
+  {"name": "צעירי הגבעה", "address": "יער חצרים 2, מודיעין", "phone": "052-5284204", "destinationId": 345},
+  {"name": "אודיה זכור לאברהם - ספרד", "address": "נהר הירדן פינת נחל זוהר, מודיעין", "denomination": "ספרד", "phone": "050-3800088", "destinationId": 345},
+  {"name": "משכן אליעזר - עדות המזרח", "address": "תכלת 11, מודיעין", "denomination": "עדות המזרח", "phone": "052-3398987", "destinationId": 345}
+]

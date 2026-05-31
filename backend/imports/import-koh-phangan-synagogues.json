@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Chabad House Koh Phangan",
+    "address": "20/18, Tambon Ko Pha-ngan, Koh Phangan",
+    "phone": "+66 65 547 7933",
+    "denomination": "חב\"ד",
+    "description": "זמני תפילה - חול: שחרית 09:15, מנחה וערבית ~10 דק' לפני שקיעה | שבת: מנחה וקבלת שבת - כניסת שבת, שחרית 10:00, מנחה - לאחר סעודת שבת, ערבית והבדלה - צאת שבת",
+    "latitude": 9.75606,
+    "longitude": 99.96631,
+    "destinationId": 476
+  },
+  {
+    "name": "הבית הישראלי קופנגן / בית הכנסת בראשית",
+    "address": "143/2 Haad Rin, Ko Phangan, Ban Tai, Ko Pha-ngan District",
+    "phone": "+66 96 961 3818",
+    "description": "זמני תפילה - שחרית 09:00, מנחה 18:00, ערבית 19:00",
+    "destinationId": 476
+  }
+]

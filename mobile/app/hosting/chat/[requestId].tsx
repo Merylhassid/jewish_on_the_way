@@ -16,6 +16,7 @@ import { io, Socket } from 'socket.io-client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
+import HomeButton from '@/src/components/HomeButton';
 
 interface ChatMsg {
   id: number;
@@ -98,6 +99,7 @@ export default function HostingChatScreen() {
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <Text style={styles.headerTitle}>🏠 Hosting Chat</Text>
         <View style={[styles.dot, { backgroundColor: connected ? '#4caf50' : '#ccc' }]} />
       </View>

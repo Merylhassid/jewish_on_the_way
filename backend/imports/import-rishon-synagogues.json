@@ -1,0 +1,1257 @@
+[
+  {
+    "name": "בית ניסים",
+    "address": "קק\"ל 35, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - אברמוביץ"
+  },
+  {
+    "name": "מעיין חיים",
+    "address": "הנחשול 28, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה ים"
+  },
+  {
+    "name": "המרכזי",
+    "address": "הבנים 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "מנוחה ונחלה",
+    "address": "לוז 30, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "מנין ראשון",
+    "address": "הבנים 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "מאיר בעל הנס",
+    "address": "התפוז 14, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "כולל",
+    "address": "התמר, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "ישורון",
+    "address": "קיבוץ גלויות 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "גאולת ישראל",
+    "address": "גיבורי ישראל 9, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "אליהו הנביא",
+    "address": "השניים 15, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "נוה ים",
+    "address": "האלמוגים 22, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה ים"
+  },
+  {
+    "name": "עץ החיים",
+    "address": "לוז 17, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "נווה חוף",
+    "address": "בי\"ס נווה חוף, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה חוף"
+  },
+  {
+    "name": "י\"ב שבטי ישראל",
+    "address": "זלמן שזר 36, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה חוף"
+  },
+  {
+    "name": "בית יעקב",
+    "address": "הארגמן 13, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה חוף"
+  },
+  {
+    "name": "תורה מציון",
+    "address": "ירושלים 102, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - נווה הדרים"
+  },
+  {
+    "name": "זיכרון הדרים",
+    "address": "החוחית 35, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה הדרים"
+  },
+  {
+    "name": "אדמונד ספרא - נווה דקלים",
+    "address": "נווה דקלים 22, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה דקלים"
+  },
+  {
+    "name": "גאולי תימן",
+    "address": "שלמה נתן 36, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "תפילה למשה",
+    "address": "זלמן שניאור 51, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "תפארת ישראל",
+    "address": "דוד המלך 29, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "אור זרוע לצדיק",
+    "address": "סאלח 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נחלת יהודה"
+  },
+  {
+    "name": "אשכנזי",
+    "address": "סול בלו, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - פרס נובל"
+  },
+  {
+    "name": "שלום שבזי",
+    "address": "שמואל הנביא 2, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "אחדות ישראל",
+    "address": "חי\"ש 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "אהל יעקב",
+    "address": "חפץ חיים 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "אהל אברהם ורחל",
+    "address": "רמב\"ם 24, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "אברהם אבינו",
+    "address": "נחמה 17, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "תורת חיים",
+    "address": "שרירא 50, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "קאליב",
+    "address": "קרית קאליב, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "נוה זאב",
+    "address": "ככר מודיעין 3, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "בית שלמה",
+    "address": "נהריים 16, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "בית יצחק",
+    "address": "נהריים 15, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "אחדות ראשונים",
+    "address": "שרירא 23, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - רביבים"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "סמילנסקי 18, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - ראשונים"
+  },
+  {
+    "name": "ספרדי",
+    "address": "סול בלו, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - פרס נובל"
+  },
+  {
+    "name": "נחלת יצחק",
+    "address": "הבעש\"ט 9, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - ראשונים"
+  },
+  {
+    "name": "אור החיים",
+    "address": "סמילנסקי 36, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - ראשונים"
+  },
+  {
+    "name": "אהל רחל ויששכר",
+    "address": "ריינס 8, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - קריית ראשון"
+  },
+  {
+    "name": "תולדות יצחק ויהודה",
+    "address": "בי\"ס מקיף ה', ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - קריית ראשון"
+  },
+  {
+    "name": "קרן אור",
+    "address": "החלמונית 23, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - קריית ראשון"
+  },
+  {
+    "name": "נוסח האר\"י",
+    "address": "החלמונית 14, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "האר\"י",
+    "description": "שכונה - קריית ראשון"
+  },
+  {
+    "name": "כל ישראל חברים",
+    "address": "הרותם 4 א, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - קריית ראשון"
+  },
+  {
+    "name": "קריית גנים",
+    "address": "שדה נחום14/10, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - קריית גנים"
+  },
+  {
+    "name": "ישועת ישראל",
+    "address": "פופל, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - קדמת ראשון"
+  },
+  {
+    "name": "שערי צדק",
+    "address": "שמואל הנביא 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "שלום אש 9, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "באבא סאלי",
+    "address": "יהודה הלוי 8, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "איחוד שיבת ציון",
+    "address": "ז'בוטינסקי 65, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - כצנלסון"
+  },
+  {
+    "name": "מרכז חב\"ד",
+    "address": "מורשת ישראל 15, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "האר\"י",
+    "description": "שכונה - נאות שקמה"
+  },
+  {
+    "name": "נאות אשלים",
+    "address": "התזמורת 51, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נאות אשלים"
+  },
+  {
+    "name": "הגאון מוילנא",
+    "address": "התזמורת 51, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - נאות אשלים"
+  },
+  {
+    "name": "באבא סאלי",
+    "address": "הרבי מלובביץ', ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - משהב"
+  },
+  {
+    "name": "כרמי ישראל - כרמים",
+    "address": "השריג 31/6, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - כרמים"
+  },
+  {
+    "name": "המרכזי",
+    "address": "היוגבים 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - כרמים"
+  },
+  {
+    "name": "נווה שמואל",
+    "address": "קפלן 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - כצנלסון"
+  },
+  {
+    "name": "חיי טייב אוזן",
+    "address": "ז'בוטינסקי 49, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - כצנלסון"
+  },
+  {
+    "name": "בית אל",
+    "address": "ש. בן ציון 10, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - כצנלסון"
+  },
+  {
+    "name": "תפארת בקר",
+    "address": "שיבת ציון 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - השומר"
+  },
+  {
+    "name": "בן איש חי - נאות שקמה",
+    "address": "בן סרוק, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נאות שקמה"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "שיבת ציון, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - השומר"
+  },
+  {
+    "name": "שבזי",
+    "address": "מאירוביץ 40, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - השומר"
+  },
+  {
+    "name": "מעוז שלום",
+    "address": "ביל\"ו 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - השומר"
+  },
+  {
+    "name": "יד דוד",
+    "address": "נורדאו 55, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - השומר"
+  },
+  {
+    "name": "הפועל המזרחי",
+    "address": "נורדאו 101, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - השומר"
+  },
+  {
+    "name": "קבוץ גלויות",
+    "address": "האחים זייגר 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - אברמוביץ"
+  },
+  {
+    "name": "משכן דוד",
+    "address": "האחים זייגר 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - אברמוביץ"
+  },
+  {
+    "name": "מצאנו מים",
+    "address": "רוטשילד 38, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - אברמוביץ"
+  },
+  {
+    "name": "זיכרון עולם",
+    "address": "הרצל 50, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - אברמוביץ"
+  },
+  {
+    "name": "משכנות ישראל",
+    "address": "בעל הטורים 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - נאות שקמה"
+  },
+  {
+    "name": "תולדות יצחק ויהודה",
+    "address": "בי\"ס זבולון המר, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נאות שקמה"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "שמואל הנביא 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "הרשב\"י",
+    "address": "ש\"י עגנון 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "שארית הפליטה",
+    "address": "ספינת השלושה 16, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "קול יעקב",
+    "address": "אבוחצירא, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "שלום אש 18, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "עדת ישרים",
+    "address": "מנחם, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "שלמה המלך 2, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "מעוז ציון",
+    "address": "חנה סנש 2, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "מגן אברהם",
+    "address": "שלום אש 44, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "יד אליהו",
+    "address": "שי עגנון 8, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "חב\"ד - רמת אליהו",
+    "address": "זלמן שניאור 18, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "חב\"ד",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "הכותל המערבי",
+    "address": "אנילביץ 34, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "אהל יצחק ורבקה",
+    "address": "שי עגנון 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "היכל ניסים",
+    "address": "ספינת השלושה 15, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "דגל יעקב",
+    "address": "תורה ועבודה 40, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "גאולי תימן",
+    "address": "שלום אש 53/4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "בית מרדכי",
+    "address": "אבא הלל, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "בית יוסף",
+    "address": "שלום אש 63/2, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "בית אליהו",
+    "address": "שלום אש 6, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "בית אל",
+    "address": "זלמן שניאור 27, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "אור זרוע",
+    "address": "יעקב כהן 15, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "אור החיים",
+    "address": "שאול המלך 6, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - נווה אליהו"
+  },
+  {
+    "name": "ארץ חמדה",
+    "address": "צ\"ג בנות 29, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "בית יעקב",
+    "address": "יהודה לייב 38, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "ירושלמי",
+    "address": "ויניק 27, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "שומרי תורה",
+    "address": "הרקפת 53, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "משכן דוד",
+    "address": "עזרא 28, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "מגדל עוז",
+    "address": "נחמיה 38, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שערי שמים",
+    "address": "זרובבל 7, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שערי רחמים",
+    "address": "עזרא 2, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "שבטי ישראל, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שערי גאולה",
+    "address": "רד\"ק 11, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שלום שבזי",
+    "address": "האגוז 20, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שלום שבזי",
+    "address": "שמואל הנביא 12, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "צעירי ישראל",
+    "address": "האורן34 (הנוטרים), ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אגודת אחים",
+    "address": "נחמיה 9, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "עץ חיים-גורדון",
+    "address": "גדעון 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "מורדי הגיטאות, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "ע\"ש הרב בן לולו",
+    "address": "הרקפת 89, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "סוכת שלום",
+    "address": "החבצלת 23, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "סוכת דוד",
+    "address": "אסירי ציון 8, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "משכן שלום",
+    "address": "הפרח 118, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "משכן צדוק",
+    "address": "נחמיה 78, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "משכן יעקב",
+    "address": "מאיר אבנר 7, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "משכן בצלאל",
+    "address": "כפר אריה סעדיה גאון, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "שערי ישועה",
+    "address": "טביב 29, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "זכרון נתנאל",
+    "address": "גורדון, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "מרום ציון",
+    "address": "דניאל 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "פתחי עולם (מלוב)",
+    "address": "חב\"ד 7, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "ע\"ש רבי שמעון",
+    "address": "צלליכין 23, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "נווה מרדכי",
+    "address": "האורן 12, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "אחוות אחים",
+    "address": "ביה\"ס ידלין, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "מדרש רחל",
+    "address": "אלקלעי 15, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "ע\"ש רב יגאלי",
+    "address": "ירושלים1, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "נווה ציון",
+    "address": "נווה ציון 3, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "הקהילה האתיופית",
+    "address": "הכובש פ.מרגולין, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "נר מחר-שאגת",
+    "address": ", ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "כנסת מאור",
+    "address": ", ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "צעירי ישראל",
+    "address": "הנוטרים 34, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "ישועת ישראל",
+    "address": ", ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "אור הללויה",
+    "address": ", ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "שערי ירושלים",
+    "address": "הגליל 15, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "דקל נוב",
+    "address": "החלוצים 45, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - נווה דקלים"
+  },
+  {
+    "name": "נחלת יצחק",
+    "address": "הבעל\"ט 9, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - ראשונים"
+  },
+  {
+    "name": "משכן רחמים",
+    "address": "איש מצליח, ראשון לציון",
+    "destinationId": 367
+  },
+  {
+    "name": "הרמב\"ם עץ יוסף",
+    "address": "נחמה 3, ראשון לציון",
+    "destinationId": 367,
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "מרכז עץ חיים",
+    "address": "עזרא 43, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "מקדש מעט",
+    "address": "יוסף הנשיא 6, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "הגדול",
+    "address": "ככר המייסדים, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "שושן הבירה",
+    "address": "נחמה 8, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "פרס",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "עולי בבל",
+    "address": "הרצל 132, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "בבל",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "ניצנים",
+    "address": "בי\"ס ניצנים, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "זכור לאברהם",
+    "address": "הירשפלד 22, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "הראל",
+    "address": "רמז 11, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "הר המוריה",
+    "address": "רמז 11, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "גיבורי מערכות ישראל",
+    "address": "הירשפלד 22, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "בר יוחאי",
+    "address": "שכונת בוקבינה, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "מעלות שלמה",
+    "address": "דוד אלרואי, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "שער אפרים (פא\"י)",
+    "address": "הרב קוק 3, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "נחמה 12, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "עץ חיים-הראל",
+    "address": "רמז 11, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "פריימן",
+    "address": "דרור 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "נצח ישראל (שרף יהודה)",
+    "address": "דגניה 9, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "מקור חיים",
+    "address": "מולכו 3, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "יחיאל",
+    "address": "יהודה לייב 5, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אחיד",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "יגיע כפים",
+    "address": "בלפור 22, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "חב\"ד",
+    "address": "הכרמל 6, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "חב\"ד",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "הרמב\"ם",
+    "address": "נחמה 22, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "הפועלים",
+    "address": "נחמה 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "המרכזי",
+    "address": "הרב הרצוג 3, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "אשכנז",
+    "description": "שכונה - רמב\"ם"
+  },
+  {
+    "name": "עולי בוקובינה",
+    "address": "הגלעד 7, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - רמז"
+  },
+  {
+    "name": "מילבי-אור חדש",
+    "address": "רד\"ק 18, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "בלב אחד",
+    "address": "ירמיהו 11 בי\"ס ישורון, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "מגן דוד",
+    "address": "הרקפת 53, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "מאיר בעל הנס",
+    "address": "נחמיה 74, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "כתר תורה",
+    "address": "שבטי ישראל 47, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "פרס",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "חיים יוסף",
+    "address": "שבטי ישראל 41, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "בבל",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "היכל הברכה",
+    "address": "כפר אריה סעדיה גאון 1, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "היכל דוד (מבשרת י-ם)",
+    "address": "עזרא 30, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "הבאר נווה ציון",
+    "address": "החורש 2, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "דרכי נועם",
+    "address": "מורדי הגטאות, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "הודו",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "גבורת ישראל",
+    "address": "כפר אריה בן זכאי, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "בית ישראל",
+    "address": "שדרות יעקב 6, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "טורקיה",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אהבת ציון",
+    "address": "הנוטרים 17, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימני",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "בית יעקב",
+    "address": "זרובבל 7, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "בית הלוי",
+    "address": "האתרוג 13, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אמוני ישורון",
+    "address": "שבטי ישראל 45, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אחדות",
+    "address": "מורדי הגטאות, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "טורקיה",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אורח חיים",
+    "address": "נחמיה 11, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אור מציון",
+    "address": "שבטי ישראל 49, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן שאמי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אור המזרח",
+    "address": "חבצלת 19, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "פרס",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אהל יששכר",
+    "address": "יחזקאל 3, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "תימן בלדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "אהבת תורה",
+    "address": "הנביאים 4, ראשון לציון",
+    "destinationId": 367,
+    "denomination": "ספרדי",
+    "description": "שכונה - שיכוני המזרח"
+  },
+  {
+    "name": "רשב\"י",
+    "address": "נורדאו 59, ראשון לציון",
+    "destinationId": 367
+  }
+]

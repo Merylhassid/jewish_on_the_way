@@ -1,0 +1,290 @@
+[
+  {
+    "name": "אהל שלום",
+    "address": "שבי ציון 57, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5492096",
+    "description": "יהודה בצלאלי"
+  },
+  {
+    "name": "אוהל יעקב",
+    "address": "הרב קוק 45, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "053-4564397",
+    "description": "סימון סימן טוב"
+  },
+  {
+    "name": "אוהל מנשה",
+    "address": "יצחק שדה 28, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5494570",
+    "description": "זכריה יצחק"
+  },
+  {
+    "name": "אוהל תורה",
+    "address": "יצחק שדה 38, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5400272",
+    "description": "הרב שלום זכריה"
+  },
+  {
+    "name": "בית אל",
+    "address": "אלחריזי 7, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "052-4687654",
+    "description": "יואב בן אהרון"
+  },
+  {
+    "name": "בית הכנסת היכל מהור\"ן",
+    "address": "הרב קוק 25, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "052-3989817",
+    "description": "דוד ולנשטיין"
+  },
+  {
+    "name": "בית כנסת חב\"ד",
+    "address": "בית הלל 4, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנזי",
+    "phone": "052-8968770",
+    "description": "אברהם מיש זהב"
+  },
+  {
+    "name": "בית יוסף תפארת בחורים",
+    "address": "הרב קוק 26, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5492808",
+    "description": "יוסי שרעבי, יהודה שרעבי, מיכאל"
+  },
+  {
+    "name": "בר יוחאי",
+    "address": "בית גוברין 3, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "5492456",
+    "description": "שלמה לוי"
+  },
+  {
+    "name": "גאולת ישראל",
+    "address": "רבינו תם 4, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז",
+    "phone": "050-4154552",
+    "description": "יחזקאל גוטמן"
+  },
+  {
+    "name": "זכרון קדושים",
+    "address": "בי\"ס עימאל קרית הצעירים, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "052-4864632",
+    "description": "נפתלי טייר"
+  },
+  {
+    "name": "חיי עולם",
+    "address": "נהרדעא 26, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימני",
+    "phone": "5400977",
+    "description": "בצלאלי חיים"
+  },
+  {
+    "name": "כולל תרחם ציון",
+    "address": "נהרדעא 26, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5491357",
+    "description": "הרב שלום בצלאלי"
+  },
+  {
+    "name": "קדושי לינטא",
+    "address": "יצחק אלחנן, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז",
+    "phone": "5491702",
+    "description": "פלוטל אליעזר מן מרדכי"
+  },
+  {
+    "name": "קדושי נובעליץ",
+    "address": "המרי שבנו פקר, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז – ספרד",
+    "phone": "050-655231",
+    "description": "משה קראם דניאל ביטון"
+  },
+  {
+    "name": "מאור חזקיהו",
+    "address": "המלכים 80, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5409921",
+    "description": "אשר מלאכי"
+  },
+  {
+    "name": "מאור רחמים",
+    "address": "תחכמוני 3, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "052-3626619",
+    "description": "יוסי יצחקי"
+  },
+  {
+    "name": "מנין ישראל",
+    "address": "בי\"ס גולן רח' הבנים, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז",
+    "phone": "050-5408212",
+    "description": "אלון שנקמן"
+  },
+  {
+    "name": "מורשת אבות",
+    "address": "תחכמוני 1, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז-ספרד",
+    "phone": "5472786",
+    "description": "אברהם עזרן"
+  },
+  {
+    "name": "משכן שלום",
+    "address": "בי\"ס אלי כהן מורשה, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן-שאמי",
+    "phone": "5408507",
+    "description": "עמרם יפת"
+  },
+  {
+    "name": "משכן שלום (גאולת עולם)",
+    "address": "הרב קוק 39, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן שאמי",
+    "phone": "5494502",
+    "description": "שמריהו יפת נתן טשאט"
+  },
+  {
+    "name": "נצח ישראל",
+    "address": "נהרדעא 24, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "5496780",
+    "description": "עובדיה שמו"
+  },
+  {
+    "name": "נר מצוה",
+    "address": "ריינס 5, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן – שאמי",
+    "phone": "5495805",
+    "description": "הרב מלאכי משה"
+  },
+  {
+    "name": "סגולה",
+    "address": "סמטת הבעל\"ש, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימני-שאמי",
+    "phone": "5493451",
+    "description": "אברהם חיים"
+  },
+  {
+    "name": "סוכת שאול",
+    "address": "רבינו תם 4 ב', רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "054-3972391",
+    "description": "משה כהן אלמני אלי"
+  },
+  {
+    "name": "עץ חיים",
+    "address": "סמטת הדסים 1, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן-בלדי",
+    "phone": "5490534",
+    "description": "יועש זכריה גרשי שלום"
+  },
+  {
+    "name": "ענג שבת",
+    "address": "השפלה 8, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז",
+    "phone": "052-8550770",
+    "description": "גיא ליבשיץ"
+  },
+  {
+    "name": "ר' מאיר בעל הנס",
+    "address": "הרב קוק 25, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "054-9579262",
+    "description": "פרץ יעקב"
+  },
+  {
+    "name": "שבי",
+    "address": "סמטת הבעל\"ש, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן שאמי",
+    "phone": "050-2924627",
+    "description": "יפת טובים חממי ראובן"
+  },
+  {
+    "name": "שבי ציון",
+    "address": "סמטת הרקפת, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "5494307",
+    "description": "רחמים בן שלום משה חיימי"
+  },
+  {
+    "name": "שבת אחים",
+    "address": "סמטת הדסים 2, רמת השרון",
+    "destinationId": 362,
+    "denomination": "תימן שאמי",
+    "phone": "5495031",
+    "description": "שלום תמרי שמריהו יוסף"
+  },
+  {
+    "name": "שבת אחים – נווה דסקו",
+    "address": "סמטת תרבות, רמת השרון",
+    "destinationId": 362,
+    "denomination": "אשכנז – ספרד",
+    "phone": "052-4438124",
+    "description": "צבי רון מגנזי יעקב"
+  },
+  {
+    "name": "שער שמים",
+    "address": "אלחריזי 3, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "052-2588449",
+    "description": "חיים גוואטה"
+  },
+  {
+    "name": "שערי ציון",
+    "address": "הרצוג 11, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "5472610",
+    "description": "אביעד"
+  },
+  {
+    "name": "שעת נצחון",
+    "address": "ריינס 9, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "5495993",
+    "description": "ניחתאני אהרון"
+  },
+  {
+    "name": "תפארת ציון",
+    "address": "נהרדעא 24, רמת השרון",
+    "destinationId": 362,
+    "denomination": "ספרדי",
+    "phone": "050-5925124",
+    "description": "ישראל חזק"
+  }
+]

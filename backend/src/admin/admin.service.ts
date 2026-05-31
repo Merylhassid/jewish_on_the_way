@@ -111,6 +111,13 @@ export class AdminService {
     return { message: `Message #${id} deleted` };
   }
 
+  async deleteSynagogue(id: number) {
+    const synagogue = await this.synagoguesRepo.findOne({ where: { id } });
+    if (!synagogue) throw new NotFoundException(`Synagogue #${id} not found`);
+    await this.synagoguesRepo.remove(synagogue);
+    return { message: `Synagogue #${id} deleted` };
+  }
+
   // Fetch real places from Google Places API for a destination
   async syncDestination(id: number) {
     const destination = await this.destinationsRepo.findOne({ where: { id } });

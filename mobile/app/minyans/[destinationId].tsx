@@ -9,6 +9,7 @@ import {
   Modal,
   Platform,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,7 +17,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import client from '@/src/api/client';
+import HomeButton from '@/src/components/HomeButton';
 
 interface Minyan {
   id: number;
@@ -62,30 +65,32 @@ function CreateMinyanModal({
   userLocation: { lat: number; lng: number } | null;
 }) {
   const [prayerType, setPrayerType] = useState('shacharit');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [dateObj, setDateObj] = useState(new Date());
+  const [timeObj, setTimeObj] = useState(() => { const d = new Date(); d.setMinutes(0, 0, 0); return d; });
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
   const [locationText, setLocationText] = useState('');
   const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const dateStr = dateObj.toISOString().split('T')[0];
+  const timeStr = `${String(timeObj.getHours()).padStart(2, '0')}:${String(timeObj.getMinutes()).padStart(2, '0')}`;
+
   const handleCreate = async () => {
-    if (!date.match(/^\d{4}-\d{2}-\d{2}$/)) { Alert.alert('Error', 'Date must be YYYY-MM-DD'); return; }
-    if (!time.match(/^\d{2}:\d{2}$/))         { Alert.alert('Error', 'Time must be HH:MM');       return; }
-    if (!locationText.trim())                  { Alert.alert('Error', 'Location is required');      return; }
+    if (!locationText.trim()) { Alert.alert('Error', 'Location is required'); return; }
     try {
       setLoading(true);
       await client.post('/minyans', {
-        prayerType, date, time,
+        prayerType, date: dateStr, time: timeStr,
         locationText: locationText.trim(),
         notes: notes.trim() || undefined,
         destinationId,
-        // req 8.2 — attach user coordinates so distance can be shown in the list
         lat: userLocation?.lat,
         lng: userLocation?.lng,
       });
       onCreated();
       onClose();
-      setDate(''); setTime(''); setLocationText(''); setNotes(''); setPrayerType('shacharit');
+      setDateObj(new Date()); setTimeObj(new Date()); setLocationText(''); setNotes(''); setPrayerType('shacharit');
       Alert.alert('Minyan Created! 🙏', 'You have been registered as the first participant.');
     } catch (err: any) {
       const msg = err?.response?.data?.message ?? 'Failed to create minyan';
@@ -117,13 +122,47 @@ function CreateMinyanModal({
             </View>
           </ScrollView>
 
-          <Text style={styles.label}>Date (YYYY-MM-DD)</Text>
-          <TextInput style={styles.input} value={date} onChangeText={setDate}
-            placeholder="e.g. 2026-04-25" placeholderTextColor="#999" />
+          <Text style={styles.label}>Date</Text>
+          {Platform.OS === 'web' ? (
+            // @ts-ignore
+            <View style={styles.pickerBtn} lang="en" dir="ltr">
+              {/* @ts-ignore */}
+              <input type="date" value={dateStr} min={new Date().toISOString().split('T')[0]}
+                onChange={(e: any) => { if (e.target.value) setDateObj(new Date(e.target.value)); }}
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', fontWeight: '500', outline: 'none', width: '100%', cursor: 'pointer' }} />
+            </View>
+          ) : (
+            <>
+              <Pressable style={styles.pickerBtn} onPress={() => setShowDatePicker(true)}>
+                <Text style={styles.pickerBtnText}>📅  {dateStr}</Text>
+              </Pressable>
+              {showDatePicker && (
+                <DateTimePicker value={dateObj} mode="date" minimumDate={new Date()}
+                  onChange={(_, d) => { setShowDatePicker(false); if (d) setDateObj(d); }} />
+              )}
+            </>
+          )}
 
-          <Text style={styles.label}>Time (HH:MM)</Text>
-          <TextInput style={styles.input} value={time} onChangeText={setTime}
-            placeholder="e.g. 08:00" placeholderTextColor="#999" />
+          <Text style={styles.label}>Time</Text>
+          {Platform.OS === 'web' ? (
+            // @ts-ignore
+            <View style={styles.pickerBtn} lang="en" dir="ltr">
+              {/* @ts-ignore */}
+              <input type="time" value={timeStr}
+                onChange={(e: any) => { if (e.target.value) { const [h, m] = e.target.value.split(':'); const t = new Date(); t.setHours(+h, +m, 0, 0); setTimeObj(t); } }}
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', fontWeight: '500', outline: 'none', width: '100%', cursor: 'pointer' }} />
+            </View>
+          ) : (
+            <>
+              <Pressable style={styles.pickerBtn} onPress={() => setShowTimePicker(true)}>
+                <Text style={styles.pickerBtnText}>🕐  {timeStr}</Text>
+              </Pressable>
+              {showTimePicker && (
+                <DateTimePicker value={timeObj} mode="time" is24Hour
+                  onChange={(_, t) => { setShowTimePicker(false); if (t) setTimeObj(t); }} />
+              )}
+            </>
+          )}
 
           <Text style={styles.label}>Location</Text>
           <TextInput style={styles.input} value={locationText} onChangeText={setLocationText}
@@ -148,9 +187,11 @@ function CreateMinyanModal({
 
 // ─── Main Screen ──────────────────────────────────────────────────────────────
 export default function MinyansScreen() {
-  const { destinationId } = useLocalSearchParams<{ destinationId: string }>();
+  const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
   const [minyans, setMinyans] = useState<Minyan[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading]     = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
   const [typeFilter, setTypeFilter] = useState('all');
   const [createVisible, setCreateVisible] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
@@ -178,10 +219,12 @@ export default function MinyansScreen() {
       }
       const res = await client.get('/minyans', { params });
       setMinyans(res.data);
+      setFetchError(false);
     } catch {
-      // silent
+      setFetchError(true);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
   };
 
@@ -196,12 +239,16 @@ export default function MinyansScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>🤝 Minyans</Text>
+          <Text style={styles.headerTitle}>🤝 Minyans{city ? ` — ${city}` : ''}</Text>
           <Text style={styles.headerSub}>
             {minyans.length} upcoming{hasSomeDistance ? '  •  📍 distance shown' : ''}
           </Text>
         </View>
+        <TouchableOpacity style={styles.myBtn} onPress={() => router.push('/minyans/my-minyans')}>
+          <Text style={styles.myBtnText}>My</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.addBtn} onPress={() => setCreateVisible(true)}>
           <Text style={styles.addBtnText}>+ New</Text>
         </TouchableOpacity>
@@ -220,12 +267,31 @@ export default function MinyansScreen() {
 
       {loading ? (
         <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
+      ) : fetchError ? (
+        <View style={styles.center}>
+          <Text style={{ fontSize: 36, marginBottom: 12 }}>⚠️</Text>
+          <Text style={{ fontSize: 15, color: '#888', marginBottom: 16 }}>שגיאה בטעינת הנתונים</Text>
+          <Pressable
+            style={{ backgroundColor: '#1a3a6b', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 }}
+            onPress={() => fetchMinyans(typeFilter)}
+          >
+            <Text style={{ color: '#fff', fontWeight: '700' }}>🔄 נסה שוב</Text>
+          </Pressable>
+        </View>
       ) : (
         <FlatList
           data={minyans}
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={styles.list}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => { setRefreshing(true); fetchMinyans(typeFilter); }}
+              colors={['#1a3a6b']}
+              tintColor="#1a3a6b"
+            />
+          }
           renderItem={({ item }) => (
             <Pressable style={styles.card} onPress={() => router.push(`/minyan/${item.id}`)}>
               <View style={styles.cardLeft}>
@@ -278,7 +344,9 @@ const styles = StyleSheet.create({
   headerCenter:       { flex: 1 },
   headerTitle:        { fontSize: 20, fontWeight: '700', color: '#fff' },
   headerSub:          { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
-  addBtn:             { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7 },
+  myBtn:              { backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 20, paddingHorizontal: 12, paddingVertical: 7, marginRight: 8 },
+  myBtnText:          { color: '#fff', fontWeight: '600', fontSize: 13 },
+  addBtn:             { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7, marginRight: 44 },
   addBtnText:         { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
   filterRow:          { maxHeight: 48, backgroundColor: '#fff' },
   filterContent:      { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
@@ -317,6 +385,8 @@ const styles = StyleSheet.create({
   typeChipText:       { fontSize: 13, color: '#555', fontWeight: '500' },
   typeChipTextActive: { color: '#fff' },
   locationNote:       { fontSize: 12, color: '#888', fontStyle: 'italic', marginBottom: 12 },
+  pickerBtn:          { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0' },
+  pickerBtnText:      { fontSize: 15, color: '#1a1a2e', fontWeight: '500' },
   submitBtn:          { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
   submitText:         { color: '#fff', fontSize: 16, fontWeight: '600' },
 });

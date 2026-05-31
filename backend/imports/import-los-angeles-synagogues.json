@@ -1,0 +1,1266 @@
+[
+  {
+    "destinationId": 465,
+    "latitude": 34.0805174,
+    "description": "רב - Rabbi Yitzchok Arnold",
+    "name": "Kolel Tiferet Zkanim Levi Yitzchok",
+    "denomination": "חב\"ד",
+    "phone": "323-935-9068",
+    "longitude": -118.3472251
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofBelAir.org",
+    "latitude": 34.0549076,
+    "description": "רב - Rabbi Chaim Mentz",
+    "name": "Chabad of Bel Air",
+    "denomination": "חב\"ד",
+    "phone": "310-475-5311",
+    "longitude": -118.242643,
+    "address": "2934 1/2 N Beverly Glen Circle, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofBeverlyHills.com",
+    "latitude": 34.0672168,
+    "description": "רב - Rabbi Yosef Shusterman",
+    "name": "Chabad of Beverly Hills",
+    "denomination": "חב\"ד",
+    "phone": "310-859-3948",
+    "longitude": -118.3912636
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadoftheValley.com",
+    "latitude": 34.1726417,
+    "description": "רב - Rabbi Josh Gordon",
+    "name": "Chabad of the Valley Headquarters",
+    "denomination": "חב\"ד",
+    "phone": "818-758-1818",
+    "longitude": -118.5288405
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadHB.com",
+    "latitude": 33.7150908,
+    "description": "רב - Rabbi Aron Berkowitz",
+    "name": "Chabad of West Orange County",
+    "denomination": "חב\"ד",
+    "phone": "714-846-2285",
+    "longitude": -118.0403837
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSB.org",
+    "latitude": 33.803698,
+    "description": "רב - Rabbi Eli Hecht",
+    "name": "Chabad of South Bay",
+    "denomination": "חב\"ד",
+    "phone": "310-326-8234",
+    "longitude": -118.3195515
+  },
+  {
+    "destinationId": 465,
+    "website": "https://HACDS.org",
+    "latitude": 33.7527487,
+    "description": "רב - Rabbi Yitzchok Newman",
+    "name": "The Hebrew Academy",
+    "denomination": "חב\"ד",
+    "phone": "714-898-0051",
+    "longitude": -118.0197066
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadLosAl.com",
+    "latitude": 33.7825351,
+    "description": "רב - Rabbi Shmuel Marcus",
+    "name": "Chabad of Los Alamitos & Cypress",
+    "denomination": "חב\"ד",
+    "phone": "714-828-1851",
+    "longitude": -118.0716182
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadLA.org",
+    "latitude": 34.0514558,
+    "description": "רב - Rabbi Amitai Yemini",
+    "name": "Chabad Israel Center",
+    "denomination": "חב\"ד",
+    "phone": "310-271-6193",
+    "longitude": -118.3840441
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabad.com",
+    "latitude": 34.0645107,
+    "description": "רב - Rabbi Boruch S. Cunin",
+    "name": "Chabad West Coast Headquarters",
+    "denomination": "חב\"ד",
+    "phone": "310-208-7511",
+    "longitude": -118.4484743
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadBW.com",
+    "latitude": 34.0528677,
+    "description": "רב - Rabbi Baruch Y. Hecht",
+    "name": "Chabad of Brentwood",
+    "denomination": "חב\"ד",
+    "phone": "310-826-4453",
+    "longitude": -118.4744836,
+    "address": "P.O. Box 492479, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.yoec.edu",
+    "latitude": 34.0854664,
+    "description": "רב - Rabbi Ezra Schochet",
+    "name": "Yeshiva Ohr Elchonon Chabad",
+    "denomination": "חב\"ד",
+    "phone": "323-937-3763",
+    "longitude": -118.3466297
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadRussian.com",
+    "latitude": 34.0904915,
+    "description": "רב - Rabbi Naftali Estulin",
+    "name": "Chabad Russian Immigrant Program & Synagogue",
+    "denomination": "חב\"ד",
+    "phone": "323-848-2999",
+    "longitude": -118.3561773
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofLA.com",
+    "latitude": 34.0778654,
+    "description": "רב - Rabbi Shimon Raichik",
+    "name": "Congregation Levi Yitzchok",
+    "denomination": "חב\"ד",
+    "phone": "323-930-2759",
+    "longitude": -118.3438816,
+    "address": "P.O. Box 481255, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0780508,
+    "description": "רב - Rabbi Yosef Mishulovin",
+    "name": "Chabad Mid City Center",
+    "denomination": "חב\"ד",
+    "phone": "323-655-9282",
+    "longitude": -118.3619305
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadNorthridge.com",
+    "latitude": 34.2572906,
+    "description": "רב - Rabbi Eli Rivkin",
+    "name": "Chabad of Northridge",
+    "denomination": "חב\"ד",
+    "phone": "818-368-3937",
+    "longitude": -118.5069736
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadPalisades.com",
+    "latitude": 34.0414015,
+    "description": "רב - Rabbi Zushe Cunin",
+    "name": "Chabad of Pacific Palisades",
+    "denomination": "חב\"ד",
+    "phone": "310-454-7783",
+    "longitude": -118.5540358
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishPV.com",
+    "latitude": 33.7795659,
+    "description": "רב - Rabbi Yitzie Magalnic",
+    "name": "Chabad of Palos Verdes",
+    "denomination": "חב\"ד",
+    "phone": "310-544-5544",
+    "longitude": -118.391034
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishSMonica.com",
+    "latitude": 34.025547,
+    "description": "רב - Rabbi Isaac Levitansky",
+    "name": "Chabad in Simcha Monica",
+    "denomination": "חב\"ד",
+    "phone": "310-829-5620",
+    "longitude": -118.4824399
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSO.com",
+    "latitude": 34.1524648,
+    "description": "רב - Rabbi Moshe Weiss",
+    "name": "Chabad of Sherman Oaks",
+    "denomination": "חב\"ד",
+    "phone": "818-789-0850",
+    "longitude": -118.4595924
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadNorthHollywood.org",
+    "latitude": 34.1687441,
+    "description": "רב - Rabbi Aharon Abend",
+    "name": "Chabad of North Hollywood",
+    "denomination": "חב\"ד",
+    "phone": "818-989-9539",
+    "longitude": -118.417908
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofCheviotHills.com",
+    "latitude": 34.0315464,
+    "description": "רב - Rabbi Aron Begun",
+    "name": "Chabad of Cheviot Hills",
+    "denomination": "חב\"ד",
+    "phone": "310-220-0514",
+    "longitude": -118.4114049
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.1726729,
+    "description": "רב - Rabbi Mordechai Einbinder",
+    "name": "Blauner Youth Center",
+    "denomination": "חב\"ד",
+    "phone": "818-758-1818",
+    "longitude": -118.529254
+  },
+  {
+    "destinationId": 465,
+    "website": "https://LivingTorahCenter.com",
+    "latitude": 34.0208938,
+    "description": "רב - Rabbi Boruch Rabinowitz",
+    "name": "Living Torah Center Chabad",
+    "denomination": "חב\"ד",
+    "phone": "310-394-5699",
+    "longitude": -118.4907073
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadPasadena.com",
+    "latitude": 34.149514,
+    "description": "רב - Rabbi Chaim Hanoka",
+    "name": "Chabad of Pasadena",
+    "denomination": "חב\"ד",
+    "phone": "626-564-8820",
+    "longitude": -118.1276747
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JCCMB.com",
+    "latitude": 33.8744389,
+    "description": "רב - Rabbi Yossi Mintz",
+    "name": "Chabad of the Beach Cities",
+    "denomination": "חב\"ד",
+    "phone": "310-214-4999",
+    "longitude": -118.3692736
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0139899,
+    "description": "רב - Rabbi Aron Begun",
+    "name": "Bais Chana High School",
+    "denomination": "חב\"ד",
+    "phone": "310-220-0514",
+    "longitude": -118.4377835
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishMalibu.com",
+    "latitude": 34.0381226,
+    "description": "רב - Rabbi Levi Cunin",
+    "name": "Chabad of Malibu",
+    "denomination": "חב\"ד",
+    "phone": "310-456-6588",
+    "longitude": -118.676099
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadLosFeliz.org",
+    "latitude": 34.1000649,
+    "description": "רב - Rabbi Leibel Korf",
+    "name": "Chabad of Greater Los Feliz",
+    "denomination": "חב\"ד",
+    "phone": "323-660-5177",
+    "longitude": -118.2905291
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSCV.com",
+    "latitude": 34.3777168,
+    "description": "רב - Rabbi Choni Marozov",
+    "name": "Chabad of SCV",
+    "denomination": "חב\"ד",
+    "phone": "661-254-3434",
+    "longitude": -118.5411241
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadMtOlympus.com",
+    "latitude": 34.1122368,
+    "description": "רב - Rabbi Sholom Rodal",
+    "name": "Chabad of Mt. Olympus",
+    "denomination": "חב\"ד",
+    "phone": "323-650-1444",
+    "longitude": -118.3714417
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadBurbank.com",
+    "latitude": 34.172402,
+    "description": "רב - Rabbi Shmuel Kornfeld",
+    "name": "Chabad of Burbank",
+    "denomination": "חב\"ד",
+    "phone": "818-954-0070",
+    "longitude": -118.3343691
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSC.com",
+    "latitude": 34.1401378,
+    "description": "רב - Rabbi Yosef Y. Baitelman",
+    "name": "Chabad of Studio City",
+    "denomination": "חב\"ד",
+    "phone": "818-508-6633",
+    "longitude": -118.3938264
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadCenter.org",
+    "latitude": 34.172079,
+    "description": "רב - Rabbi Simcha Backman",
+    "name": "Chabad of Glendale and the Foothill Communities",
+    "denomination": "חב\"ד",
+    "phone": "818-240-2750",
+    "longitude": -118.2784638
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadofencino.com",
+    "latitude": 34.1600388,
+    "description": "רב - Rabbi Josh Gordon",
+    "name": "Chabad of Encino",
+    "denomination": "חב\"ד",
+    "phone": "818-784-9986",
+    "longitude": -118.4929473
+  },
+  {
+    "destinationId": 465,
+    "website": "https://LongBeachShul.com",
+    "latitude": 33.8307084,
+    "description": "רב - Rabbi Yitzchok Newman",
+    "name": "Congregation Lubavitch",
+    "denomination": "חב\"ד",
+    "phone": "562-596-1681",
+    "longitude": -118.185481,
+    "address": "14401 Willow Lane, Huntington Beach"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://WHChabad.com",
+    "latitude": 34.165565,
+    "description": "רב - Rabbi Yossi Gordon",
+    "name": "Chabad of Woodland Hills & Warner Center",
+    "denomination": "חב\"ד",
+    "phone": "818-348-5898",
+    "longitude": -118.5856586
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishCenturyCity.org",
+    "latitude": 34.060986,
+    "description": "רב - Rabbi Tzemach Cunin",
+    "name": "Chabad of Century City",
+    "denomination": "חב\"ד",
+    "phone": "818-770-0347",
+    "longitude": -118.4131381,
+    "address": "1135 S Crest Drive, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadusc.com",
+    "latitude": 34.0290869,
+    "description": "רב - Rabbi Dov Wagner",
+    "name": "Chabad Jewish Student Center at USC",
+    "denomination": "חב\"ד",
+    "phone": "310-801-3142",
+    "longitude": -118.2820698
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.jewishcc.com",
+    "latitude": 33.9830631,
+    "description": "רב - Rabbi Yossi Greisman",
+    "name": "Chabad JCC - Playa Vista",
+    "denomination": "חב\"ד",
+    "phone": "310-417-8500",
+    "longitude": -118.4068461
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.wisdomcirclela.org",
+    "latitude": 34.0811997,
+    "description": "רב - Rabbi Yossi Cunin",
+    "name": "Chabad in the Hills - Beverly Hills",
+    "denomination": "חב\"ד",
+    "phone": "310-273-4657",
+    "longitude": -118.4142109
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.shulbytheshore.org",
+    "latitude": 33.7560134,
+    "description": "רב - Rabbi Abba Perelmuter",
+    "name": "Chabad of Belmont Shore",
+    "denomination": "חב\"ד",
+    "phone": "562-621-9828",
+    "longitude": -118.1195507
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofBeverlywood.com",
+    "latitude": 34.0429756,
+    "description": "רב - Rabbi Dov Newman",
+    "name": "Chabad of Beverlywood",
+    "denomination": "חב\"ד",
+    "phone": "310-836-6770",
+    "longitude": -118.3869751
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofMarinaDelRey.com",
+    "latitude": 33.9886771,
+    "description": "רב - Rabbi Danny Yiftach-Hashem",
+    "name": "Chabad of Marina Del Rey",
+    "denomination": "חב\"ד",
+    "phone": "310-301-9770",
+    "longitude": -118.4506972
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.ChabadOfLarchmont.com",
+    "latitude": 34.0622434,
+    "description": "רב - Rabbi Menachem Mendel Cunin",
+    "name": "Chabad of Larchmont Village",
+    "denomination": "חב\"ד",
+    "phone": "323-863-6335",
+    "longitude": -118.3208622
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadUCLA.com",
+    "latitude": 34.0645107,
+    "description": "רב - Rabbi Dovid Gurevich",
+    "name": "Chabad House at UCLA",
+    "denomination": "חב\"ד",
+    "phone": "310-709-3942",
+    "longitude": -118.4484743,
+    "address": "612 1/2 Midvale Avenue, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofCalabasas.com",
+    "latitude": 34.13764,
+    "description": "רב - Rabbi Eli Friedman",
+    "name": "Chabad of Calabasas",
+    "denomination": "חב\"ד",
+    "phone": "818-222-3838",
+    "longitude": -118.6310486
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofTopanga.com",
+    "latitude": 34.1090037,
+    "description": "רב - Rabbi Dovid Weiss",
+    "name": "Chabad of Topanga",
+    "denomination": "חב\"ד",
+    "phone": "310-455-1597",
+    "longitude": -118.6295828
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadChatsworth.com",
+    "latitude": 34.2575764,
+    "description": "רב - Rabbi Yossi Spritzer",
+    "name": "Chabad of Chatsworth",
+    "denomination": "חב\"ד",
+    "phone": "818-718-0777",
+    "longitude": -118.5856946
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.westcoastrabbinical.com",
+    "latitude": 34.0854664,
+    "description": "רב - Rabbi Dovid Schmukler",
+    "name": "Kollel Tiferet Menachem - West Coast Rabbinical Seminary",
+    "denomination": "חב\"ד",
+    "phone": "323-906-7709",
+    "longitude": -118.3466297
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0859128,
+    "name": "Mivtzoim",
+    "denomination": "חב\"ד",
+    "phone": "213-937-3763",
+    "longitude": -118.3465898
+  },
+  {
+    "destinationId": 465,
+    "website": "https://lamikvah.org",
+    "latitude": 34.0550074,
+    "name": "Mikvah Esther",
+    "denomination": "חב\"ד",
+    "phone": "310-550-4511",
+    "longitude": -118.3970109
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadoftheValley.com/CHS",
+    "latitude": 34.1726729,
+    "description": "רב - Rabbi Yanky Kahn",
+    "name": "The Ryzman Family Hebrew School",
+    "denomination": "חב\"ד",
+    "phone": "818-758-1818",
+    "longitude": -118.529254
+  },
+  {
+    "destinationId": 465,
+    "website": "https://GanChabadPreschool.org",
+    "latitude": 34.0512496,
+    "description": "רב - Rabbi Amitai Yemini",
+    "name": "Gan Chabad Preschool Early Childhood Campus",
+    "denomination": "חב\"ד",
+    "phone": "310-859-1758",
+    "longitude": -118.3840909
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.ganchaya.com",
+    "latitude": 34.0530498,
+    "description": "רב - Mrs. Channa Hecht",
+    "name": "Gan Chaya Jewish Early Childhood Center",
+    "denomination": "חב\"ד",
+    "phone": "310-826-4453",
+    "longitude": -118.4736452
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.ChabadLA.org",
+    "latitude": 34.0512496,
+    "description": "רב - Rabbi Amitai Yemini",
+    "name": "Westside Hebrew School",
+    "denomination": "חב\"ד",
+    "phone": "310-859-1758",
+    "longitude": -118.3840909
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0554965,
+    "description": "רב - Rabbi Boruch S. Cunin",
+    "name": "The Garden School-Chabad Preschools",
+    "denomination": "חב\"ד",
+    "phone": "310-288-5920",
+    "longitude": -118.3893357
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadMM.com",
+    "latitude": 34.07639,
+    "description": "רב - Rabbi Chaim Fischer",
+    "name": "Chabad of the Miracle Mile Area",
+    "denomination": "חב\"ד",
+    "phone": "323-852-6907",
+    "longitude": -118.3644189
+  },
+  {
+    "destinationId": 465,
+    "website": "https://CPYCenter.org",
+    "latitude": 34.0549949,
+    "description": "רב - Rabbi Hertzel Peer",
+    "name": "Chabad Persian Youth Center",
+    "denomination": "חב\"ד",
+    "phone": "310-777-0358",
+    "longitude": -118.3884085
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChederMenachem.com",
+    "latitude": 34.0487549,
+    "description": "רב - Rabbi Menachem M. Greenbaum",
+    "name": "Cheder Menachem",
+    "denomination": "חב\"ד",
+    "phone": "310-623-1470",
+    "longitude": -118.3759174
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadCSUN.com",
+    "latitude": 34.2393289,
+    "description": "רב - Rabbi Chaim Shaul Brook",
+    "name": "Chabad @ CSUN",
+    "denomination": "חב\"ד",
+    "phone": "818-885-5770",
+    "longitude": -118.5229267
+  },
+  {
+    "destinationId": 465,
+    "website": "https://BCMLA.org",
+    "latitude": 34.0554965,
+    "description": "רב - Rabbi Menachem M. Greenbaum",
+    "name": "Bais Chaya Mushka",
+    "denomination": "חב\"ד",
+    "phone": "310-859-8840",
+    "longitude": -118.3893357
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofWestHills.com",
+    "latitude": 34.1956758,
+    "description": "רב - Rabbi Avi Rabin",
+    "name": "Chabad of West Hills",
+    "denomination": "חב\"ד",
+    "phone": "818-337-4544",
+    "longitude": -118.656551
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadNorthofMontana.com",
+    "latitude": 34.0300984,
+    "description": "רב - Rabbi Chaim Teleshevsky",
+    "name": "Chabad on Montana",
+    "denomination": "חב\"ד",
+    "phone": "310-280-6598",
+    "longitude": -118.4975504
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadinWestLA.com",
+    "latitude": 34.0405189,
+    "description": "רב - Rabbi Mordechai Zaetz",
+    "name": "Chabad of Brentwood South",
+    "denomination": "חב\"ד",
+    "phone": "424-652-8742",
+    "longitude": -118.4623132
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSoLA.com",
+    "latitude": 34.0481968,
+    "description": "רב - Rabbi Avraham Zajac",
+    "name": "Chabad-Lubavitch of South La Cienega ",
+    "denomination": "חב\"ד",
+    "phone": "424-288-4633",
+    "longitude": -118.3764625,
+    "address": "1744 S Holt Avenue, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadPorterRanch.org",
+    "latitude": 34.2757269,
+    "description": "רב - Rabbi Yochonon Baitelman",
+    "name": "Chabad at Porter Ranch",
+    "denomination": "חב\"ד",
+    "phone": "818-802-8555",
+    "longitude": -118.5465321
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0382058,
+    "description": "רב - Mrs. Sarah Cunin",
+    "name": "Gan Malibu Preschool",
+    "denomination": "חב\"ד",
+    "phone": "310-456-6573",
+    "longitude": -118.6758086
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0904915,
+    "description": "רב - Rabbi Sholom Rodal",
+    "name": "Hebrew School",
+    "denomination": "חב\"ד",
+    "phone": "323-650-1444",
+    "longitude": -118.3561773
+  },
+  {
+    "destinationId": 465,
+    "website": "https://DowntownJCC.com",
+    "latitude": 34.0416375,
+    "description": "רב - Rabbi Moshe Greenwald",
+    "name": "Chabad of Downtown Los Angeles",
+    "denomination": "חב\"ד",
+    "phone": "213-488-1543",
+    "longitude": -118.2606794
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadsmc.com",
+    "latitude": 34.0211619,
+    "description": "רב - Rabbi Eli Moshe Levitansky",
+    "name": "Chabad of SMC",
+    "denomination": "חב\"ד",
+    "phone": "310-310-4217",
+    "longitude": -118.4864647
+  },
+  {
+    "destinationId": 465,
+    "website": "https://chabadrehab.com",
+    "latitude": 34.0576768,
+    "description": "רב - Rabbi Yossi Cunin",
+    "name": "Chabad Residential Treatment Center",
+    "denomination": "חב\"ד",
+    "phone": "323-965-1372",
+    "longitude": -118.3531803
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofLakeEncino.com",
+    "latitude": 34.1472843,
+    "description": "רב - Rabbi Yochanan Manssouri",
+    "name": "Chabad of Lake Encino",
+    "denomination": "חב\"ד",
+    "phone": "818-909-8043",
+    "longitude": -118.5288918
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadonTampa.com",
+    "latitude": 34.1907469,
+    "description": "רב - Rabbi Hershy Spritzer",
+    "name": "Chabad on Tampa",
+    "denomination": "חב\"ד",
+    "phone": "818-881-1033",
+    "longitude": -118.5531707
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.Chabadoftolucalake.com",
+    "latitude": 34.1544463,
+    "description": "רב - Rabbi Moishe Carlebach",
+    "name": "Chabad of Toluca Lake",
+    "denomination": "חב\"ד",
+    "phone": "818-308-4118",
+    "longitude": -118.3628818
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadDowntownLA.com",
+    "latitude": 34.0283674,
+    "description": "רב - Rabbi Moshe Levin",
+    "name": "Chabad of Downtown East",
+    "denomination": "חב\"ד",
+    "phone": "323-252-3159",
+    "longitude": -118.2505618
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishHP.org",
+    "latitude": 34.0778654,
+    "description": "רב - Rabbi Shmuel Gurary",
+    "name": "Chabad Jewish Center of Hancock Park",
+    "denomination": "חב\"ד",
+    "phone": "323-939-5138",
+    "longitude": -118.3438816,
+    "address": "821 N Formosa Avenue, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.maayonyisroel.com",
+    "latitude": 34.0747858,
+    "description": "רב - Rabbi Reuven Wolf",
+    "name": "Maayon Yisroel",
+    "denomination": "חב\"ד",
+    "phone": "323-638-5678",
+    "longitude": -118.3437079
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadofGranadaHills.com",
+    "latitude": 34.2875438,
+    "description": "רב - Rabbi Meir Rivkin",
+    "name": "Chabad-Lubavitch of Granada Hills",
+    "denomination": "חב\"ד",
+    "phone": "818-493-9250",
+    "longitude": -118.502475
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.baisbezalel.org",
+    "latitude": 34.0547498,
+    "description": "רב - Rabbi Moshe Levin",
+    "name": "Bais Bezalel Chabad",
+    "denomination": "חב\"ד",
+    "phone": "310-385-2222",
+    "longitude": -118.384986
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadWestwood.com",
+    "latitude": 34.0613839,
+    "description": "רב - Rabbi Shalom Dovber Cunin",
+    "name": "Chabad of Westwood - Holmby",
+    "denomination": "חב\"ד",
+    "phone": "310-709-1556",
+    "longitude": -118.4405935
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishCarthay.com",
+    "latitude": 34.0628899,
+    "description": "רב - Rabbi Moshe Hildeshaim",
+    "name": "Chabad of Carthay Circle",
+    "denomination": "חב\"ד",
+    "phone": "310-845-6814",
+    "longitude": -118.3647114
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSCP.com",
+    "latitude": 34.138436,
+    "description": "רב - Rabbi Hershy Stolik",
+    "name": "Chabad at Caltech",
+    "denomination": "חב\"ד",
+    "phone": "626-486-2200",
+    "longitude": -118.1209823
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.jewisharcadia.com",
+    "latitude": 34.1176226,
+    "description": "רב - Rabbi Sholom Stiefel",
+    "name": "Chabad of Arcadia",
+    "denomination": "חב\"ד",
+    "phone": "626-539-4578",
+    "longitude": -118.0517418
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadatpierce.com",
+    "latitude": 34.189013,
+    "description": "רב - Rabbi Isser Kluwgant",
+    "name": "Chabad at Pierce",
+    "denomination": "חב\"ד",
+    "phone": "818-213-9848",
+    "longitude": -118.5794904
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.2575365,
+    "description": "רב - Mrs. Nechama Dina Spritzer",
+    "name": "Chai Tots PreSchool",
+    "denomination": "חב\"ד",
+    "phone": "818-718-0777",
+    "longitude": -118.5853853,
+    "address": "20735 Devonshire Street, Chatsworth"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://TheShulBH.org",
+    "latitude": 34.0605886,
+    "name": "LAvate",
+    "denomination": "חב\"ד",
+    "phone": "310-734-9079",
+    "longitude": -118.3651244
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.nelachabad.com",
+    "latitude": 34.0796167,
+    "description": "רב - Rabbi Aryeh Perlstein",
+    "name": "Chabad of Eagle Rock and Echo Park",
+    "denomination": "חב\"ד",
+    "phone": "323-325-1770",
+    "longitude": -118.2585096
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishMarVista.com",
+    "latitude": 34.0044,
+    "description": "רב - Rabbi Shimon Simpson",
+    "name": "Chabad of Mar Vista",
+    "denomination": "חב\"ד",
+    "phone": "310-361-6838",
+    "longitude": -118.4303053,
+    "address": "P.O. Box #661187, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.1679994,
+    "description": "רב - Mrs. Elkie Abend",
+    "name": "The Teichman Mikvah",
+    "denomination": "חב\"ד",
+    "phone": "818-760-4567",
+    "longitude": -118.4116788
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.jewishsmonica.com",
+    "latitude": 34.0211619,
+    "description": "רב - Rabbi Menachem Mendel Levitansky",
+    "name": "CTeen S. Monica",
+    "denomination": "חב\"ד",
+    "phone": "310-994-3532",
+    "longitude": -118.4864647
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.beverlyhillsjc.org",
+    "latitude": 34.0811997,
+    "description": "רב - Rabbi Yossi Cunin",
+    "name": "Beverly Hills Hotel Shabbat Services",
+    "denomination": "חב\"ד",
+    "phone": "310-273-4657",
+    "longitude": -118.4142109
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadmelrose.com",
+    "latitude": 34.0833294,
+    "description": "רב - Rabbi Yosef Fine",
+    "name": "Chabad of Melrose",
+    "denomination": "חב\"ד",
+    "phone": "323-251-3552",
+    "longitude": -118.3525728
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadHollywoodWest.com",
+    "latitude": 34.088094,
+    "description": "רב - Rabbi Yossi Dalfin",
+    "name": "Chabad of Hollywood West",
+    "denomination": "חב\"ד",
+    "phone": "310-594-9441",
+    "longitude": -118.3662064
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.1978429,
+    "description": "רב - Rabbi Eliezer Gurary",
+    "name": "Chabad of Lake Balboa ",
+    "denomination": "חב\"ד",
+    "phone": "818-208-3857?",
+    "longitude": -118.5095826
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.149514,
+    "description": "רב - Rabbi Zushi Rivkin",
+    "name": "Pasadena Jewish Academy ",
+    "denomination": "חב\"ד",
+    "phone": "718-812-1292",
+    "longitude": -118.1276747
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishCulverCity.com",
+    "latitude": 34.0204862,
+    "description": "רב - Rabbi Levi Begun",
+    "name": "Chabad of Culver City",
+    "denomination": "חב\"ד",
+    "phone": "310-845-6434",
+    "longitude": -118.3967423,
+    "address": "P.O. Box 1157, Culver City"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.jewishsunsetstrip.com",
+    "latitude": 34.0897342,
+    "description": "רב - Rabbi Mordechai Kirschenbaum",
+    "name": "Chabad Sunset Strip",
+    "denomination": "חב\"ד",
+    "phone": "310-691-9988",
+    "longitude": -118.391921
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadVenice.com",
+    "latitude": 33.994091,
+    "description": "רב - Rabbi Menachem Yiftach Hashem",
+    "name": "Chabad of Venice",
+    "denomination": "חב\"ד",
+    "longitude": -118.4527302
+  },
+  {
+    "destinationId": 465,
+    "website": "https://BaisNochum.org",
+    "latitude": 34.0721777,
+    "description": "רב - Rabbi Eliezer Labkowsky",
+    "name": "Bais Nochum",
+    "denomination": "חב\"ד",
+    "phone": "323-939-2690",
+    "longitude": -118.3453732
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadSouthWestwood.com",
+    "latitude": 34.0511394,
+    "description": "רב - Rabbi Chaim Yoseph Dovid Liberow",
+    "name": "Chabad in South Westwood",
+    "denomination": "חב\"ד",
+    "phone": "424-261-8770",
+    "longitude": -118.4295209
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadHollywood.org",
+    "latitude": 34.1019383,
+    "description": "רב - Rabbi Zalman Partouche",
+    "name": "Chabad of Hollywood - Jewish Community Center ",
+    "denomination": "חב\"ד",
+    "phone": "818-964-9428",
+    "longitude": -118.344999
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.WisdomCircleLA.org",
+    "latitude": 34.0729248,
+    "description": "רב - Rabbi Mendy Begun",
+    "name": "Chabad of Beverly Grove",
+    "denomination": "חב\"ד",
+    "phone": "323-366-0180",
+    "longitude": -118.3891988
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadbrookside.com",
+    "latitude": 34.0573983,
+    "description": "רב - Rabbi Aba Raichik",
+    "name": "Chabad of Brookside",
+    "denomination": "חב\"ד",
+    "phone": "323-545-7642",
+    "longitude": -118.3452577
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.JewishBH.com",
+    "latitude": 34.0624397,
+    "description": "רב - Rabbi Dovid Begun",
+    "name": "Chabad of Southwest Beverly Hills",
+    "denomination": "חב\"ד",
+    "phone": "310-818-3218",
+    "longitude": -118.3993854
+  },
+  {
+    "destinationId": 465,
+    "website": "https://CVChabad.org",
+    "latitude": 34.21,
+    "description": "רב - Rabbi Mendy Grossbaum",
+    "name": "Chabad of La Canada - La Crescenta",
+    "denomination": "חב\"ד",
+    "phone": "323-308-5727",
+    "longitude": -118.22
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.chabadatwatervillage.com",
+    "latitude": 34.1171329,
+    "description": "רב - Rabbi Yaakov Yehuda Carlebach",
+    "name": "Chabad of Atwater Village",
+    "denomination": "חב\"ד",
+    "phone": "213-666-2125",
+    "longitude": -118.2580729
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishCanogaPark.com",
+    "latitude": 34.1922306,
+    "description": "רב - Rabbi Mendy Sputz",
+    "name": "Chabad Canoga Park",
+    "denomination": "חב\"ד",
+    "phone": "818-477-4185",
+    "longitude": -118.6355184,
+    "address": "P.O. Box 2845, Winnetka"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.jewishplayadelrey.com",
+    "latitude": 33.957639,
+    "description": "רב - Rabbi Aron Teleshevsky",
+    "name": "Chabad of Playa del Rey",
+    "denomination": "חב\"ד",
+    "phone": "424-248-8770",
+    "longitude": -118.4456846
+  },
+  {
+    "destinationId": 465,
+    "website": "https://JewishUniversal.com",
+    "latitude": 34.1385967,
+    "description": "רב - Rabbi Mendel Baitelman",
+    "name": "Chabad of Universal City",
+    "denomination": "חב\"ד",
+    "phone": "818-299-7562",
+    "longitude": -118.3677667,
+    "address": "11054 Ventura Blvd, Studio City"
+  },
+  {
+    "destinationId": 465,
+    "latitude": 33.8493162,
+    "description": "רב - Rabbi Mendel Lehrer",
+    "name": "Chabad of Gateway Cities",
+    "denomination": "חב\"ד",
+    "phone": "917-717-8704",
+    "longitude": -118.153228
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.silverlakechabad.com",
+    "latitude": 34.0829621,
+    "description": "רב - Rabbi Mendy Ceitlin",
+    "name": "Silverlake Chabad",
+    "denomination": "חב\"ד",
+    "phone": "3237844330",
+    "longitude": -118.2606566,
+    "address": "1525 N Alvarado St, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadBG.com",
+    "latitude": 34.0695573,
+    "description": "רב - Rabbi Sruly Blotner",
+    "name": "Chabad of Brentwood Glen",
+    "denomination": "חב\"ד",
+    "phone": "347-772-6371",
+    "longitude": -118.4646244
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadGRP.com",
+    "latitude": 34.0522311,
+    "description": "רב - Rabbi Yigal Begun",
+    "name": "Chabad on the Westside at Beverly Glen",
+    "denomination": "חב\"ד",
+    "phone": "747-333-6578",
+    "longitude": -118.4290083
+  },
+  {
+    "destinationId": 465,
+    "website": "https://jewishpedro.org",
+    "latitude": 33.7359141,
+    "description": "רב - Rabbi Yisroel Shuchat",
+    "name": "Chabad S. Pedro Jewish Center",
+    "denomination": "חב\"ד",
+    "phone": "310-935-5236",
+    "longitude": -118.2949435,
+    "address": "1536 W 25th St, San Pedro"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://Jewishsouthpasadena.com",
+    "latitude": 34.1129725,
+    "description": "רב - Rabbi Dovid Harlig",
+    "name": "Chabad of South Pasadena and El Sereno",
+    "denomination": "חב\"ד",
+    "phone": "626-921-6256",
+    "longitude": -118.1501314
+  },
+  {
+    "destinationId": 465,
+    "website": "https://chabadofpicfairvillage.com",
+    "latitude": 34.0511464,
+    "description": "רב - Rabbi Eli Muchnik",
+    "name": "Chabad of Picfair Village",
+    "denomination": "חב\"ד",
+    "phone": "310-503-0060",
+    "longitude": -118.3638378,
+    "address": "1656 S Ogden Dr, Los Angeles"
+  },
+  {
+    "destinationId": 465,
+    "website": "https://highlandparkchabad.com",
+    "latitude": 34.1138799,
+    "description": "רב - Rabbi Mendel Korf",
+    "name": "Chabad of Highland Park",
+    "denomination": "חב\"ד",
+    "phone": "323-872-4876",
+    "longitude": -118.208141
+  },
+  {
+    "destinationId": 465,
+    "latitude": 33.9622011,
+    "description": "רב - Rabbi Ari Liberow",
+    "name": "Chabad of Westchester",
+    "denomination": "חב\"ד",
+    "phone": "310-817-0205",
+    "longitude": -118.4058776
+  },
+  {
+    "destinationId": 465,
+    "latitude": 33.8322129,
+    "description": "רב - Rabbi Mendel Mintz",
+    "name": "Chabad of Hermosa and South Redondo",
+    "denomination": "חב\"ד",
+    "phone": "424-212-1288",
+    "longitude": -118.3870991
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0488481,
+    "description": "רב - Rabbi Avi Cunin",
+    "name": "Chabad of the Palisades Village ",
+    "denomination": "חב\"ד",
+    "phone": "310-428-5178",
+    "longitude": -118.5287727
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.jewishkidsla.com",
+    "latitude": 34.0645107,
+    "description": "רב - Rabbi Zalman Goodman",
+    "name": "Chabad Youth Los Angeles",
+    "denomination": "חב\"ד",
+    "phone": "646-770-2160",
+    "longitude": -118.4484743
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.fcla.org",
+    "latitude": 34.0429756,
+    "description": "רב - Rabbi Michy Rav-Noy",
+    "name": "Friendship Circle of Los Angeles",
+    "denomination": "חב\"ד",
+    "phone": "310-280-0954",
+    "longitude": -118.3869751
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.ChabadWilshireCorridor.com",
+    "latitude": 34.0633071,
+    "description": "רב - Rabbi Menachem Cunin",
+    "name": "Chabad Wilshire Corridor",
+    "denomination": "חב\"ד",
+    "phone": "323-613-3663",
+    "longitude": -118.4404129
+  },
+  {
+    "destinationId": 465,
+    "latitude": 34.0255188,
+    "description": "רב - Rabbi Michoel Zajac",
+    "name": "Chabad of West Adams",
+    "denomination": "חב\"ד",
+    "phone": "917-689-9629",
+    "longitude": -118.3520389
+  },
+  {
+    "destinationId": 465,
+    "website": "https://ChabadWestPico.com",
+    "latitude": 34.0549076,
+    "description": "רב - Rabbi Menachem Mendel Deutsch",
+    "name": "Chabad of West Pico",
+    "denomination": "חב\"ד",
+    "longitude": -118.242643
+  },
+  {
+    "destinationId": 465,
+    "website": "https://www.lajcp.com",
+    "latitude": 34.0655944,
+    "description": "רב - Mrs. Mushkie Bitton",
+    "name": "Jewish Creative Preschool",
+    "denomination": "חב\"ד",
+    "phone": "424-278-0480",
+    "longitude": -118.3935389
+  }
+]

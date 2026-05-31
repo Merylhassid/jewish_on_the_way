@@ -13,6 +13,7 @@ import {
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HomeButton from '@/src/components/HomeButton';
 import { io, Socket } from 'socket.io-client';
 import { useAuth } from '@/src/store/auth';
 import { API_URL } from '@/src/api/client';
@@ -30,7 +31,7 @@ interface ChatMsg {
 }
 
 export default function ChatScreen() {
-  const { destinationId } = useLocalSearchParams<{ destinationId: string }>();
+  const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
   const { user } = useAuth();
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [text, setText] = useState('');
@@ -160,8 +161,9 @@ export default function ChatScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
+        <HomeButton />
         <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>💬 Traveler Chat</Text>
+          <Text style={styles.headerTitle}>💬 Traveler Chat{city ? ` — ${city}` : ''}</Text>
           <View style={styles.statusDot}>
             <View style={[styles.dot, { backgroundColor: connected ? '#4caf50' : '#f44336' }]} />
             <Text style={styles.statusText}>{connected ? 'Live' : 'Connecting…'}</Text>

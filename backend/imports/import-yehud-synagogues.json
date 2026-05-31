@@ -1,0 +1,134 @@
+[
+  {
+    "name": "בית כנסת ביאליסטוק",
+    "address": "יהוד",
+    "destinationId": 317,
+    "denomination": "אשכנזי"
+  },
+  {
+    "name": "בית כנסת שארית הפליטה",
+    "address": "יהוד",
+    "destinationId": 317,
+    "denomination": "חב\"ד"
+  },
+  {
+    "name": "בית כנסת בית יוסף",
+    "address": "בייקובסקי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "מרוקאי"
+  },
+  {
+    "name": "בית כנסת בית מאיר",
+    "address": "ביל\"ו 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת מאיר",
+    "address": "בן צבי ישי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "תימני"
+  },
+  {
+    "name": "בית כנסת עולי בוכרה",
+    "address": "בן צבי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת שערי אלקנה יהדות הודו",
+    "address": "בן צבי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת אוהל חנה",
+    "address": "המעפילים 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת בית הלוי",
+    "address": "הרצל 1, יהוד",
+    "destinationId": 317,
+    "denomination": "תימני"
+  },
+  {
+    "name": "בית כנסת בית הלוי שאמי",
+    "address": "הרצל 1, יהוד",
+    "destinationId": 317,
+    "denomination": "תימני שאמי"
+  },
+  {
+    "name": "בית כנסת בית אל",
+    "address": "הרצל 23, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת וינס",
+    "address": "וינס 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת אור לשבים",
+    "address": "ויצמן 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת עץ חיים",
+    "address": "חתוכה 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת היכל אלעזר",
+    "address": "יהודה לוי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת אור לשבים מוהליבר",
+    "address": "מוהליבר 140, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת אור אבנר",
+    "address": "משה דיין 11, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת הראל",
+    "address": "נורדאו 9, יהוד",
+    "destinationId": 317,
+    "denomination": "תימני"
+  },
+  {
+    "name": "בית כנסת עץ חיים צבי ישי",
+    "address": "צבי ישי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת בית ישראל",
+    "address": "צבי ישי 1, יהוד",
+    "destinationId": 317,
+    "denomination": "ספרדי"
+  },
+  {
+    "name": "בית כנסת ישורון",
+    "address": "קדושי מצרים 17, יהוד",
+    "destinationId": 317,
+    "denomination": "תימני"
+  },
+  {
+    "name": "בית כנסת שבת אחים",
+    "address": "שפירא 1, יהוד",
+    "destinationId": 317,
+    "denomination": "תימני בלדי"
+  }
+]

@@ -1,0 +1,282 @@
+[
+  {
+    "name": "אביר יעקב",
+    "destinationId": 413,
+    "address": "כובשי אילת 15, דימונה",
+    "latitude": 31.0620,
+    "longitude": 34.7560
+  },
+  {
+    "name": "אהבת אליהו",
+    "destinationId": 413,
+    "address": "מלכי ישראל, דימונה",
+    "latitude": 31.0630,
+    "longitude": 34.7570
+  },
+  {
+    "name": "אהבת דוד",
+    "destinationId": 413,
+    "address": "המעלה 3, דימונה",
+    "latitude": 31.0640,
+    "longitude": 34.7580
+  },
+  {
+    "name": "אהבת שלום",
+    "destinationId": 413,
+    "address": "מצדה 9, דימונה",
+    "latitude": 31.0650,
+    "longitude": 34.7590
+  },
+  {
+    "name": "אוהל אברהם",
+    "destinationId": 413,
+    "address": "שיקמה 20, דימונה",
+    "latitude": 31.0615,
+    "longitude": 34.7575
+  },
+  {
+    "name": "אוהל ישראל",
+    "destinationId": 413,
+    "address": "בבא סאלי 79, דימונה",
+    "latitude": 31.0625,
+    "longitude": 34.7585
+  },
+  {
+    "name": "אוהל זאב",
+    "destinationId": 413,
+    "address": "בר כוכבא 210, דימונה",
+    "latitude": 31.0635,
+    "longitude": 34.7595
+  },
+  {
+    "name": "אוהל משה",
+    "destinationId": 413,
+    "address": "נתיב הל״ה 1, דימונה",
+    "latitude": 31.0645,
+    "longitude": 34.7605
+  },
+  {
+    "name": "אוזר לאברהם",
+    "destinationId": 413,
+    "address": "היורה 6, דימונה",
+    "latitude": 31.0655,
+    "longitude": 34.7615
+  },
+  {
+    "name": "איילת השחר",
+    "destinationId": 413,
+    "address": "הרב אלעזר אבוחצירה, דימונה",
+    "latitude": 31.0610,
+    "longitude": 34.7550
+  },
+  {
+    "name": "אור דוד",
+    "destinationId": 413,
+    "address": "מצדה, דימונה",
+    "latitude": 31.0620,
+    "longitude": 34.7560
+  },
+  {
+    "name": "אור הנגוז",
+    "destinationId": 413,
+    "address": "רחבת שאול מלך, דימונה",
+    "latitude": 31.0630,
+    "longitude": 34.7570
+  },
+  {
+    "name": "איירה שחר",
+    "destinationId": 413,
+    "address": "רבי נתן מאומן 9, דימונה",
+    "latitude": 31.0640,
+    "longitude": 34.7580
+  },
+  {
+    "name": "בית אברהם",
+    "destinationId": 413,
+    "address": "שדרות הרצל, דימונה",
+    "latitude": 31.0650,
+    "longitude": 34.7590
+  },
+  {
+    "name": "בית דוד",
+    "destinationId": 413,
+    "address": "רחבת ההגנה, דימונה",
+    "latitude": 31.0615,
+    "longitude": 34.7575
+  },
+  {
+    "name": "בית החסידים דגור",
+    "destinationId": 413,
+    "address": "רחבת שאול המלך, דימונה",
+    "latitude": 31.0625,
+    "longitude": 34.7585
+  },
+  {
+    "name": "בית יהושע",
+    "destinationId": 413,
+    "address": "שדרות יגאל אלון 112, דימונה",
+    "latitude": 31.0635,
+    "longitude": 34.7595
+  },
+  {
+    "name": "בית מאיר",
+    "destinationId": 413,
+    "address": "נווה מדבר 25, דימונה",
+    "latitude": 31.0645,
+    "longitude": 34.7605
+  },
+  {
+    "name": "ברכת יצחק",
+    "destinationId": 413,
+    "address": "שדרות הנשיא 24, דימונה",
+    "latitude": 31.0655,
+    "longitude": 34.7615
+  },
+  {
+    "name": "השלום בנה",
+    "destinationId": 413,
+    "address": "הר גבים 1, דימונה",
+    "latitude": 31.0610,
+    "longitude": 34.7550
+  },
+  {
+    "name": "הרמב״ם",
+    "destinationId": 413,
+    "address": "השיבולים 27, דימונה",
+    "latitude": 31.0620,
+    "longitude": 34.7560
+  },
+  {
+    "name": "זכור לאברהם",
+    "destinationId": 413,
+    "address": "היורה 6, דימונה",
+    "latitude": 31.0630,
+    "longitude": 34.7570
+  },
+  {
+    "name": "חזון עובדיה",
+    "destinationId": 413,
+    "address": "שכונה לדוגמה, דימונה",
+    "latitude": 31.0640,
+    "longitude": 34.7580
+  },
+  {
+    "name": "ישיבת ציון",
+    "destinationId": 413,
+    "address": "רחבת הפלמ״ח, דימונה",
+    "latitude": 31.0650,
+    "longitude": 34.7590
+  },
+  {
+    "name": "קוממיות",
+    "destinationId": 413,
+    "address": "השיבולים 26, דימונה",
+    "latitude": 31.0615,
+    "longitude": 34.7575
+  },
+  {
+    "name": "מאור ישראל",
+    "destinationId": 413,
+    "address": "רחבת דוד המלך, דימונה",
+    "latitude": 31.0625,
+    "longitude": 34.7585
+  },
+  {
+    "name": "מרכז משיח",
+    "destinationId": 413,
+    "address": "דרך ברלב 55, דימונה",
+    "latitude": 31.0635,
+    "longitude": 34.7595
+  },
+  {
+    "name": "מקדשי שמך",
+    "destinationId": 413,
+    "address": "הרב מלובאוויטש 14, דימונה",
+    "latitude": 31.0645,
+    "longitude": 34.7605
+  },
+  {
+    "name": "משכן יוסף",
+    "destinationId": 413,
+    "address": "שדרות הרצל 8, דימונה",
+    "latitude": 31.0655,
+    "longitude": 34.7615
+  },
+  {
+    "name": "נצח ישראל",
+    "destinationId": 413,
+    "address": "הגן 26, דימונה",
+    "latitude": 31.0610,
+    "longitude": 34.7550
+  },
+  {
+    "name": "סיני",
+    "destinationId": 413,
+    "address": "מ״ד המעפילים, דימונה",
+    "latitude": 31.0620,
+    "longitude": 34.7560
+  },
+  {
+    "name": "סניף בני עקיבא",
+    "destinationId": 413,
+    "address": "רחבת הפלמ״ח, דימונה",
+    "latitude": 31.0630,
+    "longitude": 34.7570
+  },
+  {
+    "name": "עץ החיים",
+    "destinationId": 413,
+    "address": "שדרות הרצל, דימונה",
+    "latitude": 31.0640,
+    "longitude": 34.7580
+  },
+  {
+    "name": "רבי חיים בן עטר",
+    "destinationId": 413,
+    "address": "רחבת שאול מלך, דימונה",
+    "latitude": 31.0650,
+    "longitude": 34.7590
+  },
+  {
+    "name": "רבי חי טייב לא מת",
+    "destinationId": 413,
+    "address": "בית משפט השלום - מחוז הדרום, דימונה",
+    "latitude": 31.0615,
+    "longitude": 34.7575
+  },
+  {
+    "name": "שבת אחים",
+    "destinationId": 413,
+    "address": "קציעות 4, דימונה",
+    "latitude": 31.0625,
+    "longitude": 34.7585
+  },
+  {
+    "name": "שלום המלכה",
+    "destinationId": 413,
+    "address": "נצרים 2, דימונה",
+    "latitude": 31.0635,
+    "longitude": 34.7595
+  },
+  {
+    "name": "שערי שמים",
+    "destinationId": 413,
+    "address": "מרחבים 1332, דימונה",
+    "latitude": 31.0645,
+    "longitude": 34.7605
+  },
+  {
+    "name": "שערי תפילה",
+    "destinationId": 413,
+    "address": "השיבולים, דימונה",
+    "latitude": 31.0655,
+    "longitude": 34.7615
+  },
+  {
+    "name": "תפארת בני ישראל",
+    "destinationId": 413,
+    "address": "כטורה 67, דימונה",
+    "latitude": 31.0610,
+    "longitude": 34.7550
+  }
+]

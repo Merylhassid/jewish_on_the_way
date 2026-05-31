@@ -2,11 +2,14 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { Image } from 'expo-image';
@@ -85,6 +88,31 @@ export default function DestinationScreen() {
   const [destination, setDestination] = useState<Destination | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // ── חיפוש חכם ──────────────────────────────────────────────
+  const [searchText, setSearchText]     = useState('');
+  const [searching, setSearching]       = useState(false);
+  const [lastResult, setLastResult]     = useState<string | null>(null);
+
+  // שולח את הטקסט למודל ה-AI ומנווט לדף הנכון
+  const handleSmartSearch = async () => {
+    if (!searchText.trim()) return;
+    try {
+      setSearching(true);
+      setLastResult(null);
+      const res = await client.post('/search', {
+        text: searchText.trim(),
+        destinationId: Number(id),
+      });
+      const { route, category, emoji } = res.data;
+      setLastResult(`${emoji} ${category}`);
+      router.push(route as any);
+    } catch {
+      Alert.alert('שגיאה', 'לא ניתן לחפש כרגע, נסה שוב');
+    } finally {
+      setSearching(false);
+    }
+  };
+
   useEffect(() => {
     client.get(`/destinations/${id}`)
       .then((res) => setDestination(res.data))
@@ -155,6 +183,34 @@ export default function DestinationScreen() {
         </View>
       </View>
 
+      {/* ── Smart Search ── */}
+      <View style={s.searchBox}>
+        <TextInput
+          style={s.searchInput}
+          placeholder="מה אתה מחפש? (כשר, מניין, אירוח...)"
+          placeholderTextColor="#8A96B0"
+          value={searchText}
+          onChangeText={setSearchText}
+          onSubmitEditing={handleSmartSearch}
+          returnKeyType="search"
+        />
+        <TouchableOpacity
+          style={[s.searchBtn, searching && s.searchBtnDisabled]}
+          onPress={handleSmartSearch}
+          disabled={searching || !searchText.trim()}
+        >
+          {searching
+            ? <ActivityIndicator color="#fff" size="small" />
+            : <Text style={s.searchBtnText}>🔍</Text>
+          }
+        </TouchableOpacity>
+      </View>
+      {lastResult && (
+        <View style={s.resultHint}>
+          <Text style={s.resultHintText}>✨ המודל זיהה: {lastResult}</Text>
+        </View>
+      )}
+
       {/* ── Services ── */}
       <ScrollView
         style={s.scroll}
@@ -172,11 +228,12 @@ export default function DestinationScreen() {
               active={active}
               onPress={() => {
                 if (!active) return;
-                if (svc.key === 'restaurants') router.push(`/restaurants/${id}`);
-                else if (svc.key === 'synagogues') router.push(`/synagogues/${id}`);
-                else if (svc.key === 'chat')       router.push(`/chat/${id}`);
-                else if (svc.key === 'minyans')    router.push(`/minyans/${id}`);
-                else if (svc.key === 'hosting')    router.push(`/hosting/${id}`);
+                const city = encodeURIComponent(destination.city);
+                if (svc.key === 'restaurants') router.push(`/restaurants/${id}?city=${city}`);
+                else if (svc.key === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
+                else if (svc.key === 'chat') router.push(`/chat/${id}?city=${city}`);
+                else if (svc.key === 'minyans') router.push(`/minyans/${id}?city=${city}`);
+                else if (svc.key === 'hosting') router.push(`/hosting/${id}?city=${city}`);
               }}
             />
           );
@@ -386,4 +443,14 @@ const s = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  arrowText: { fontSize: 18, color: '#0C2461', fontWeight: '700', lineHeight: 22 },
+
+  // Smart Search
+  searchBox:        { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', margin: 16, marginBottom: 0, borderRadius: 16, paddingHorizontal: 14, paddingVertical: 6, shadowColor: '#0C2461', shadowOpacity: 0.08, shadowRadius: 8, elevation: 3 },
+  searchInput:      { flex: 1, fontSize: 15, color: '#0C1A2E', paddingVertical: 10 },
+  searchBtn:        { backgroundColor: '#0C2461', borderRadius: 12, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', marginLeft: 8 },
+  searchBtnDisabled:{ backgroundColor: '#B0BAC8' },
+  searchBtnText:    { fontSize: 18 },
+  resultHint:       { marginHorizontal: 16, marginTop: 8, backgroundColor: '#EDE7F6', borderRadius: 10, paddingHorizontal: 14, paddingVertical: 8 },
+  resultHintText:   { fontSize: 13, color: '#5E35B1', fontWeight: '600' },
 });

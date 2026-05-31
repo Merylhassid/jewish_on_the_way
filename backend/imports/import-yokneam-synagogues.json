@@ -1,0 +1,170 @@
+[
+  {
+    "name": "אור אלעזר",
+    "address": "גלעד 18, יקנעם",
+    "destinationId": 409,
+    "phone": "050-9893616",
+    "description": "שם גבאי - שמעון כהן"
+  },
+  {
+    "name": "אור תורה",
+    "address": "בי\"ס אורנים, יקנעם",
+    "destinationId": 409,
+    "phone": "050-7915235",
+    "description": "שם גבאי - מאיר מזרחי"
+  },
+  {
+    "name": "אחדות",
+    "address": "התבור 10, יקנעם",
+    "destinationId": 409,
+    "phone": "050-9893616",
+    "description": "שם גבאי - דובי זיטלבך"
+  },
+  {
+    "name": "אחוות אחים",
+    "address": "מיצר 1, יקנעם",
+    "destinationId": 409,
+    "phone": "050-9893616",
+    "description": "שם גבאי - אבנר דוד"
+  },
+  {
+    "name": "אלי כהן",
+    "address": "יפה נוף 1, יקנעם",
+    "destinationId": 409,
+    "phone": "052-8520347",
+    "description": "שם גבאי - איציק יפרח"
+  },
+  {
+    "name": "אליהו הנביא",
+    "address": "התאנה 1, יקנעם",
+    "destinationId": 409,
+    "phone": "050-9893616",
+    "description": "שם גבאי - בלילה יוסף"
+  },
+  {
+    "name": "ביהכ\"נ הכללי",
+    "address": "התמר 18, יקנעם",
+    "destinationId": 409,
+    "phone": "052-4472383",
+    "description": "שם גבאי - אבגי אברהם"
+  },
+  {
+    "name": "בית חב\"ד",
+    "address": "אלונים 1, יקנעם",
+    "destinationId": 409,
+    "phone": "054-8049770",
+    "description": "שם גבאי - הרב נעם דקל"
+  },
+  {
+    "name": "היכל ישראל",
+    "address": "ירדן 31, יקנעם",
+    "destinationId": 409,
+    "phone": "052-3354699",
+    "description": "שם גבאי - גינו שלום"
+  },
+  {
+    "name": "השלום",
+    "address": "האלה 1, יקנעם",
+    "destinationId": 409,
+    "phone": "052-4030310",
+    "description": "שם גבאי - אברהם לוי"
+  },
+  {
+    "name": "יחד שבטי ישראל",
+    "address": "יער האודם, יקנעם",
+    "destinationId": 409,
+    "phone": "057-8153643",
+    "description": "שם גבאי - יצחק רסד, בני חדד"
+  },
+  {
+    "name": "מורשת אבות",
+    "address": "צאלים 1, יקנעם",
+    "destinationId": 409,
+    "phone": "052-3354374",
+    "description": "שם גבאי - דני ערוסי"
+  },
+  {
+    "name": "מנין צעירים",
+    "address": "בניין טיפת חלב, יקנעם",
+    "destinationId": 409,
+    "phone": "054-4882137",
+    "description": "שם גבאי - ירדן ובר"
+  },
+  {
+    "name": "מרכזי הצריף",
+    "address": "יפה נוף 1, יקנעם",
+    "destinationId": 409,
+    "phone": "054-7824445",
+    "description": "שם גבאי - בני חסן"
+  },
+  {
+    "name": "נחלי חיים",
+    "address": "מרגנית 1, יקנעם",
+    "destinationId": 409,
+    "phone": "050-5353035",
+    "description": "שם גבאי - פנחס שטרלינג"
+  },
+  {
+    "name": "פאר ישראל",
+    "address": "הנרקיסים 1, יקנעם",
+    "destinationId": 409,
+    "phone": "054-6708452",
+    "description": "שם גבאי - אבגי יצחק"
+  },
+  {
+    "name": "פעולת צדיק",
+    "address": "אלונים 1, יקנעם",
+    "destinationId": 409,
+    "phone": "050-9893616",
+    "description": "שם גבאי - זהבי אהרון"
+  },
+  {
+    "name": "ר' דוד בן ברוך",
+    "address": "התאנה 9, יקנעם",
+    "destinationId": 409,
+    "phone": "04-9894793",
+    "description": "שם גבאי - שמעון בן-יאיר"
+  },
+  {
+    "name": "ר' מאיר בעל הנס",
+    "address": "אורנים 1, יקנעם",
+    "destinationId": 409,
+    "phone": "052-6502095",
+    "description": "שם גבאי - אלי בן-חמו"
+  },
+  {
+    "name": "שובו אלי דומיניץ",
+    "address": "יבית אלכנסדר, יקנעם",
+    "destinationId": 409,
+    "phone": "054-8467858",
+    "description": "שם גבאי - ר' שמעון אלון"
+  },
+  {
+    "name": "שיבת ציון",
+    "address": "היסמין 1, יקנעם",
+    "destinationId": 409,
+    "phone": "050-5694451",
+    "description": "שם גבאי - כוכבי זכריה"
+  },
+  {
+    "name": "שערי אבות",
+    "address": "הורדים 1, יקנעם",
+    "destinationId": 409,
+    "phone": "052-8261880",
+    "description": "שם גבאי - יהודה מיכאלי"
+  },
+  {
+    "name": "שערי רחמים",
+    "address": "סיגליות 1, יקנעם",
+    "destinationId": 409,
+    "phone": "052-4501073",
+    "description": "שם גבאי - יחזקאל שלום"
+  },
+  {
+    "name": "תפארת בחורים",
+    "address": "מרגנית 36 ב, יקנעם",
+    "destinationId": 409,
+    "phone": "052-2412836",
+    "description": "שם גבאי - אריאל ג'הסי"
+  }
+]

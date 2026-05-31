@@ -1,0 +1,17 @@
+[
+  {
+    "name": "היכל נעמי (בית הכנסת הדרומי)",
+    "address": "השמש 1, קיסריה",
+    "destinationId": 434,
+    "denomination": "צפון אפריקה",
+    "latitude": 32.48627,
+    "longitude": 34.91070
+  },
+  {
+    "name": "בית כנסת המרכזי",
+    "address": "רוטשילד 101, קיסריה",
+    "destinationId": 434,
+    "latitude": 32.51252,
+    "longitude": 34.90654
+  }
+]

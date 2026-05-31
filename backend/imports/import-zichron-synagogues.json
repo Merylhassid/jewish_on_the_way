@@ -1,0 +1,121 @@
+[
+  {
+    "name": "אהבת שלום",
+    "address": "סמטת הבאר 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "055-2374088",
+    "description": "שם גבאי - פרץ יוסי"
+  },
+  {
+    "name": "אהל חנה",
+    "address": "הלל יפה 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6398289",
+    "description": "שם גבאי - וענונו ויקטור"
+  },
+  {
+    "name": "אהל רחל",
+    "address": "העליה 9, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6396160",
+    "description": "שם גבאי - ר' אלקובי יוסף"
+  },
+  {
+    "name": "אהל יעקב",
+    "address": "הנדיב 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "050-6776610",
+    "description": "שם גבאי - שבתאי אבנר"
+  },
+  {
+    "name": "בית אל",
+    "address": "העליה 7, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "054-6090056",
+    "description": "שם גבאי - גלילה יונה"
+  },
+  {
+    "name": "בית שם",
+    "address": "תרע\"ב 16, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6399898",
+    "description": "שם גבאי - צעירי עמנואל"
+  },
+  {
+    "name": "דברי שלום ושלמה",
+    "address": "הלל יפה 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6390583",
+    "description": "שם גבאי - גמליאל אבי"
+  },
+  {
+    "name": "החורש",
+    "address": "ביה\"ס החורש, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "052-2459082",
+    "description": "שם גבאי - אסלין מאיר"
+  },
+  {
+    "name": "היכל רפאל",
+    "address": "הנדיב 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6390441",
+    "description": "שם גבאי - גבסו כלפו"
+  },
+  {
+    "name": "חלומות",
+    "address": "חלומות זכרון, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "052-9463812",
+    "description": "שם גבאי - אלעזר בן שטרית"
+  },
+  {
+    "name": "מגדל דוד",
+    "address": "העבודה 5, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "054-6458832",
+    "description": "שם גבאי - פרץ אברהם"
+  },
+  {
+    "name": "מול היקב",
+    "address": "העליה 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6292198",
+    "description": "שם גבאי - פרידמן צבי"
+  },
+  {
+    "name": "מחנה ישראל",
+    "address": "תרע\"ב 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "054-4983101",
+    "description": "שם גבאי - לוי יואב"
+  },
+  {
+    "name": "נווה הברון",
+    "address": "ראובן 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "050-8362603",
+    "description": "שם גבאי - הרב אבו שלמה"
+  },
+  {
+    "name": "עקידת יצחק",
+    "address": "גאולים 35, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6398376",
+    "description": "שם גבאי - שבתאי יצחק"
+  },
+  {
+    "name": "רבי מאיר בעל הנס",
+    "address": "שבי ציון 1, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "050-8843416",
+    "description": "שם גבאי - אלקיים יעקב"
+  },
+  {
+    "name": "רמז",
+    "address": "טרומפלדור 29, זכרון יעקב",
+    "destinationId": 406,
+    "phone": "04-6390451",
+    "description": "שם גבאי - נוטקביץ בנצי"
+  }
+]
