@@ -275,7 +275,7 @@ export class RestaurantsService {
       try {
         // Duplicate check: same name + same city is almost certainly the same place
         const existing = await this.restaurantsRepo.findOne({
-          where: { name: item.name, city: item.city },
+          where: { name: item.name, city: item.city } as any,
         });
         if (existing) {
           this.logger.log(`Skipping duplicate: ${item.name} in ${item.city}`);
@@ -313,10 +313,8 @@ export class RestaurantsService {
           lat: coords.lat,
           lng: coords.lng,
           geocodedAt: new Date(),
-          // GeoJSON format: coordinates are [longitude, latitude]
-          location: { type: 'Point', coordinates: [coords.lng, coords.lat] },
           destination,
-        });
+        } as any);
 
         await this.restaurantsRepo.save(restaurant);
         imported++;
@@ -497,7 +495,7 @@ export class RestaurantsService {
       },
     };
 
-    console.log('\n📊 Final Summary:', summary);
+    this.logger.log('Final Summary: ' + JSON.stringify(summary));
     return summary;
   }
 
@@ -556,7 +554,7 @@ export class RestaurantsService {
       updated: updatedCount,
     };
 
-    console.log('\n📊 Reclassification Summary:', summary);
+    this.logger.log('Reclassification Summary: ' + JSON.stringify(summary));
     return summary;
   }
 
@@ -1041,7 +1039,7 @@ export class RestaurantsService {
       },
     };
 
-    console.log('\n📊 Batch Import Summary:', summary);
+    this.logger.log('Batch Import Summary: ' + JSON.stringify(summary));
     return summary;
   }
 }
