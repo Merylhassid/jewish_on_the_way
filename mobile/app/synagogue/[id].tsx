@@ -9,8 +9,13 @@ import {
   Text,
   View,
 } from 'react-native';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import HomeButton from '@/src/components/HomeButton';
+import ReviewSection from '@/src/components/ReviewSection';
+import ReportModal from '@/src/components/ReportModal';
+import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
+import FavoriteButton from '@/src/components/FavoriteButton';
 
 const DENOM_DISPLAY: Record<string, { label: string; emoji: string; color: string }> = {
   ashkenaz: { label: 'אשכנז', emoji: '🎩', color: '#3949AB' },
@@ -45,12 +50,15 @@ interface Synagogue {
   openingHours?: string;
   operator?: string;
   location?: { coordinates: [number, number] };
+  destination?: { id: number; name: string };
 }
 
 export default function SynagogueDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [synagogue, setSynagogue] = useState<Synagogue | null>(null);
   const [loading, setLoading] = useState(true);
+  const [reportVisible, setReportVisible] = useState(false);
+  const [suggestVisible, setSuggestVisible] = useState(false);
 
   useEffect(() => {
     const fetchSynagogue = async () => {
@@ -140,8 +148,11 @@ export default function SynagogueDetailsScreen() {
 
       {/* Content */}
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Name */}
-        <Text style={styles.name}>{synagogue.name}</Text>
+        {/* Name + Favorite */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Text style={[styles.name, { flex: 1 }]}>{synagogue.name}</Text>
+          <FavoriteButton entityType="synagogue" entityId={synagogue.id} size={26} />
+        </View>
 
         {/* Denomination */}
         {(() => {
@@ -234,7 +245,40 @@ export default function SynagogueDetailsScreen() {
             </Pressable>
           </View>
         )}
+
+        {/* ── Reviews ── */}
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>Reviews</Text>
+          <ReviewSection entityType="synagogue" entityId={Number(id)} />
+        </View>
+
+        {/* ── Report + Suggest ── */}
+        <View style={styles.bottomActions}>
+          <Pressable style={styles.ghostBtn} onPress={() => setReportVisible(true)}>
+            <MaterialIcons name="flag" size={16} color="#DC2626" />
+            <Text style={[styles.ghostBtnText, { color: '#DC2626' }]}>Report issue</Text>
+          </Pressable>
+          <Pressable style={styles.ghostBtn} onPress={() => setSuggestVisible(true)}>
+            <MaterialIcons name="add-circle-outline" size={16} color="#5E35B1" />
+            <Text style={[styles.ghostBtnText, { color: '#5E35B1' }]}>Suggest a place</Text>
+          </Pressable>
+        </View>
       </ScrollView>
+
+      <ReportModal
+        visible={reportVisible}
+        onClose={() => setReportVisible(false)}
+        entityType="synagogue"
+        entityId={synagogue.id}
+        entityName={synagogue.name}
+      />
+      <SuggestPlaceModal
+        visible={suggestVisible}
+        onClose={() => setSuggestVisible(false)}
+        entityType="synagogue"
+        destinationId={synagogue.destination?.id ?? 0}
+        destinationName={synagogue.destination?.name ?? ''}
+      />
     </View>
   );
 }
@@ -318,4 +362,12 @@ const styles = StyleSheet.create({
   },
   mapButtonIcon: { fontSize: 20 },
   mapButtonText: { fontSize: 15, fontWeight: '600', color: '#fff' },
+
+  bottomActions: { flexDirection: 'row', gap: 10, marginTop: 8, marginBottom: 8 },
+  ghostBtn: {
+    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 6, borderWidth: 1.5, borderRadius: 12, paddingVertical: 12,
+    borderColor: 'rgba(0,0,0,0.10)', backgroundColor: '#fff',
+  },
+  ghostBtnText: { fontSize: 13, fontWeight: '700' },
 });

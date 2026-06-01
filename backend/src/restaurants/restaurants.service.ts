@@ -1,8 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Restaurant } from '../restaurant.entity';
 import { Destination } from '../destination.entity';
+import { GeocodingService } from '../geocoding/geocoding.service';
 import axios from 'axios';
 
 export interface RestaurantFilters {
@@ -11,6 +12,24 @@ export interface RestaurantFilters {
   q?: string;
   lat?: number;
   lng?: number;
+}
+
+export interface ImportRestaurantDto {
+  name: string;
+  address: string;
+  city: string;
+  country: string;
+  kashrutLevel: string;
+  restaurantType?: string;
+  phone?: string;
+  destinationId: number;
+}
+
+export interface ImportResult {
+  imported: number;
+  skipped: number;
+  failed: number;
+  errors: string[];
 }
 
 interface RestaurantClassificationResult {
@@ -28,11 +47,14 @@ interface RestaurantClassificationResult {
 
 @Injectable()
 export class RestaurantsService {
+  private readonly logger = new Logger(RestaurantsService.name);
+
   constructor(
     @InjectRepository(Restaurant)
     private restaurantsRepo: Repository<Restaurant>,
     @InjectRepository(Destination)
     private destinationsRepo: Repository<Destination>,
+    private readonly geocodingService: GeocodingService,
   ) {}
 
   // req 4.1 — list restaurants with optional filters + distance
@@ -53,6 +75,8 @@ export class RestaurantsService {
           r.address,
           r.opening_hours     AS "openingHours",
           r.created_at        AS "createdAt",
+          ST_Y(r.location::geometry) AS lat,
+          ST_X(r.location::geometry) AS lng,
           ROUND(
             ST_Distance(
               r.location::geography,
@@ -100,6 +124,7 @@ export class RestaurantsService {
         address: true,
         openingHours: true,
         createdAt: true,
+        location: true,
       },
       order: { name: 'ASC' },
     });
@@ -134,9 +159,21 @@ export class RestaurantsService {
       `;
       const params: (string | number)[] = [lng, lat, parentId];
       let idx = 4;
-      if (type)    { sql += ` AND r.restaurant_type = $${idx}`; params.push(type);       idx++; }
-      if (kashrut) { sql += ` AND r.kashrut_level   = $${idx}`; params.push(kashrut);    idx++; }
-      if (q)       { sql += ` AND r.name ILIKE $${idx}`;        params.push(`%${q}%`);   idx++; }
+      if (type) {
+        sql += ` AND r.restaurant_type = $${idx}`;
+        params.push(type);
+        idx++;
+      }
+      if (kashrut) {
+        sql += ` AND r.kashrut_level = $${idx}`;
+        params.push(kashrut);
+        idx++;
+      }
+      if (q) {
+        sql += ` AND r.name ILIKE $${idx}`;
+        params.push(`%${q}%`);
+        idx++;
+      }
       sql += ' ORDER BY "distanceMeters" ASC';
       return this.restaurantsRepo.query(sql, params);
     }
@@ -171,7 +208,11 @@ export class RestaurantsService {
         'r.restaurantType',
         'r.kashrutLevel',
         'r.address',
+        'r.phone',
+        'r.category',
         'r.openingHours',
+        'r.lat',
+        'r.lng',
         'r.createdAt',
       ])
       .leftJoinAndSelect('r.destination', 'destination')
@@ -180,6 +221,114 @@ export class RestaurantsService {
 
     if (!restaurant) throw new NotFoundException(`Restaurant #${id} not found`);
     return restaurant;
+  }
+
+  async findNearby(
+    lat: number,
+    lng: number,
+    limit = 10,
+    kashrut?: string,
+  ): Promise<any[]> {
+    let sql = `
+      SELECT
+        r.id, r.name,
+        r.restaurant_type   AS "restaurantType",
+        r.kashrut_level     AS "kashrutLevel",
+        r.address,
+        ST_Y(r.location::geometry) AS lat,
+        ST_X(r.location::geometry) AS lng,
+        ROUND(ST_Distance(
+          r.location::geography,
+          ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography
+        )::numeric) AS "distanceMeters",
+        d.id AS "destId", d.city, d.country
+      FROM restaurants r
+      LEFT JOIN destinations d ON d.id = r."destinationId"
+      WHERE r.location IS NOT NULL
+    `;
+    const params: any[] = [lat, lng];
+    if (kashrut) {
+      params.push(kashrut);
+      sql += ` AND r.kashrut_level = $${params.length}`;
+    }
+    params.push(limit);
+    sql += ` ORDER BY r.location::geography <-> ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography LIMIT $${params.length}`;
+    return this.restaurantsRepo.query(sql, params) as Promise<any[]>;
+  }
+
+  /**
+   * Import restaurants from a JSON array (produced by a CSV import script or admin UI).
+   *
+   * For each row:
+   *  - Skip if a restaurant with the same name already exists in the same city
+   *  - Geocode address with Nominatim (free, 1 req/sec)
+   *  - Skip rows where geocoding returns null and record the failure
+   *  - Save lat/lng + PostGIS geography point in one DB write
+   */
+  async importFromData(items: ImportRestaurantDto[]): Promise<ImportResult> {
+    let imported = 0;
+    let skipped = 0;
+    let failed = 0;
+    const errors: string[] = [];
+
+    for (const item of items) {
+      try {
+        // Duplicate check: same name + same city is almost certainly the same place
+        const existing = await this.restaurantsRepo.findOne({
+          where: { name: item.name, city: item.city },
+        });
+        if (existing) {
+          this.logger.log(`Skipping duplicate: ${item.name} in ${item.city}`);
+          skipped++;
+          continue;
+        }
+
+        const destination = await this.destinationsRepo.findOne({
+          where: { id: item.destinationId },
+        });
+        if (!destination) {
+          failed++;
+          errors.push(`Destination ${item.destinationId} not found for: ${item.name}`);
+          continue;
+        }
+
+        // Geocode once — result is stored permanently, never re-geocoded
+        const coords = await this.geocodingService.geocode(item.address, item.city, item.country);
+        if (!coords) {
+          failed++;
+          errors.push(`No coordinates for: ${item.name} — ${item.address}, ${item.city}, ${item.country}`);
+          this.logger.warn(`Geocoding failed for "${item.name}" — skipping`);
+          continue;
+        }
+
+        const restaurant = this.restaurantsRepo.create({
+          name: item.name,
+          address: item.address,
+          city: item.city,
+          country: item.country,
+          phone: item.phone,
+          kashrutLevel: item.kashrutLevel,
+          restaurantType: item.restaurantType ?? null,
+          isKosher: true,
+          lat: coords.lat,
+          lng: coords.lng,
+          geocodedAt: new Date(),
+          // GeoJSON format: coordinates are [longitude, latitude]
+          location: { type: 'Point', coordinates: [coords.lng, coords.lat] },
+          destination,
+        });
+
+        await this.restaurantsRepo.save(restaurant);
+        imported++;
+        this.logger.log(`Imported: ${item.name} → (${coords.lat}, ${coords.lng})`);
+      } catch (err) {
+        failed++;
+        errors.push(`Error for "${item.name}": ${err.message}`);
+        this.logger.error(`Import error for "${item.name}": ${err.message}`);
+      }
+    }
+
+    return { imported, skipped, failed, errors };
   }
 
   // Import kosher restaurants from Google Places API for all destinations

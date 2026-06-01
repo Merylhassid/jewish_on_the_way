@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -11,9 +12,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { Image } from 'expo-image';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import client from '@/src/api/client';
-import HomeButton from '@/src/components/HomeButton';
+import { C, getDestinationImageUrl } from '@/constants/theme';
 
 interface Destination {
   id: number;
@@ -22,25 +25,72 @@ interface Destination {
   country: string;
   countryCode: string;
   description?: string;
+  location?: { coordinates: [number, number] };
 }
 
-function flagEmoji(countryCode: string) {
-  return countryCode
-    .toUpperCase()
-    .split('')
-    .map((c) => String.fromCodePoint(0x1f1e6 - 65 + c.charCodeAt(0)))
-    .join('');
+type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'hosting' | 'chat' | 'map';
+
+interface Service {
+  key: ServiceKey;
+  label: string;
+  sub: string;
+  icon: React.ComponentProps<typeof MaterialIcons>['name'];
+  color: string;
+  bg: string;
 }
 
-const SERVICES = [
-  { key: 'restaurants', icon: '🍽️', label: 'Kosher Restaurants', iconBg: '#E8F5E9', iconColor: '#388E3C' },
-  { key: 'synagogues',  icon: '🕍',  label: 'Synagogues',         iconBg: '#EDE7F6', iconColor: '#5E35B1' },
-  { key: 'minyans',     icon: '🤝',  label: 'Minyans',            iconBg: '#FFF3E0', iconColor: '#E65100' },
-  { key: 'hosting',     icon: '🏠',  label: 'Shabbat Hosting',    iconBg: '#FCE4EC', iconColor: '#C2185B' },
-  { key: 'chat',        icon: '💬',  label: 'Traveler Chat',      iconBg: '#E0F7FA', iconColor: '#00838F' },
+const SERVICES: Service[] = [
+  {
+    key:   'restaurants',
+    label: 'Kosher Restaurants',
+    sub:   'Certified kosher dining',
+    icon:  'restaurant',
+    color: '#059669',
+    bg:    'rgba(5,150,105,0.10)',
+  },
+  {
+    key:   'synagogues',
+    label: 'Synagogues',
+    sub:   'Shul finder & times',
+    icon:  'account-balance',
+    color: '#7C3AED',
+    bg:    'rgba(124,58,237,0.10)',
+  },
+  {
+    key:   'minyans',
+    label: 'Minyans',
+    sub:   'Prayer group schedules',
+    icon:  'groups',
+    color: C.gold,
+    bg:    C.goldFaint,
+  },
+  {
+    key:   'hosting',
+    label: 'Shabbat Hosting',
+    sub:   'Find a Shabbat table',
+    icon:  'home',
+    color: '#DB2777',
+    bg:    'rgba(219,39,119,0.10)',
+  },
+  {
+    key:   'chat',
+    label: 'Traveler Chat',
+    sub:   'Connect with travelers',
+    icon:  'chat',
+    color: '#0891B2',
+    bg:    'rgba(8,145,178,0.10)',
+  },
+  {
+    key:   'map',
+    label: 'Map',
+    sub:   'See all places on map',
+    icon:  'map',
+    color: '#0F766E',
+    bg:    'rgba(15,118,110,0.10)',
+  },
 ];
 
-const ACTIVE_KEYS = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting'];
+const ACTIVE: ServiceKey[] = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting', 'map'];
 
 export default function DestinationScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -83,37 +133,69 @@ export default function DestinationScreen() {
   }, [id]);
 
   if (loading) {
-    return <View style={styles.center}><ActivityIndicator size="large" color="#0C2461" /></View>;
+    return (
+      <View style={s.center}>
+        <ActivityIndicator size="large" color={C.gold} />
+      </View>
+    );
   }
 
   if (!destination) {
-    return <View style={styles.center}><Text style={styles.notFound}>Destination not found</Text></View>;
+    return (
+      <View style={s.center}>
+        <Text style={s.notFound}>Destination not found</Text>
+      </View>
+    );
   }
 
+  const imageUrl = getDestinationImageUrl(destination.city, destination.countryCode);
+
   return (
-    <View style={styles.container}>
-      {/* ── Header ── */}
-      <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => router.back()} hitSlop={12}>
-          <Text style={styles.backText}>‹</Text>
+    <View style={s.root}>
+
+      {/* ── Hero ── */}
+      <View style={s.hero}>
+        <Image
+          source={{ uri: imageUrl }}
+          style={StyleSheet.absoluteFillObject}
+          contentFit="cover"
+          transition={600}
+        />
+
+        {/* Multi-layer overlay for cinematic depth */}
+        <View style={s.heroOverlay1} />
+        <View style={s.heroOverlay2} />
+
+        {/* Back button */}
+        <Pressable style={s.backBtn} onPress={() => router.back()} hitSlop={14}>
+          <View style={s.backBtnCircle}>
+            <MaterialIcons name="arrow-back" size={20} color="#fff" />
+          </View>
         </Pressable>
-        <HomeButton />
-        <Text style={styles.flag}>{flagEmoji(destination.countryCode)}</Text>
-        <Text style={styles.city}>{destination.city}</Text>
-        <View style={styles.countryBadge}>
-          <Text style={styles.countryText}>{destination.country}</Text>
+
+        {/* Country code badge — top right */}
+        <View style={s.codeBadge}>
+          <Text style={s.codeText}>{destination.countryCode}</Text>
         </View>
-        {destination.description ? (
-          <Text style={styles.description} numberOfLines={2}>
-            {destination.description}
-          </Text>
-        ) : null}
+
+        {/* Hero text — bottom */}
+        <View style={s.heroBottom}>
+          <Text style={s.heroCity}>{destination.city}</Text>
+          <View style={s.countryPill}>
+            <Text style={s.countryPillText}>{destination.country.toUpperCase()}</Text>
+          </View>
+          {destination.description ? (
+            <Text style={s.heroDesc} numberOfLines={2}>
+              {destination.description}
+            </Text>
+          ) : null}
+        </View>
       </View>
 
       {/* ── Smart Search ── */}
-      <View style={styles.searchBox}>
+      <View style={s.searchBox}>
         <TextInput
-          style={styles.searchInput}
+          style={s.searchInput}
           placeholder="מה אתה מחפש? (כשר, מניין, אירוח...)"
           placeholderTextColor="#8A96B0"
           value={searchText}
@@ -122,143 +204,256 @@ export default function DestinationScreen() {
           returnKeyType="search"
         />
         <TouchableOpacity
-          style={[styles.searchBtn, searching && styles.searchBtnDisabled]}
+          style={[s.searchBtn, searching && s.searchBtnDisabled]}
           onPress={handleSmartSearch}
           disabled={searching || !searchText.trim()}
         >
           {searching
             ? <ActivityIndicator color="#fff" size="small" />
-            : <Text style={styles.searchBtnText}>🔍</Text>
+            : <Text style={s.searchBtnText}>🔍</Text>
           }
         </TouchableOpacity>
       </View>
       {lastResult && (
-        <View style={styles.resultHint}>
-          <Text style={styles.resultHintText}>✨ המודל זיהה: {lastResult}</Text>
+        <View style={s.resultHint}>
+          <Text style={s.resultHintText}>✨ המודל זיהה: {lastResult}</Text>
         </View>
       )}
 
       {/* ── Services ── */}
-      <ScrollView contentContainerStyle={styles.services} showsVerticalScrollIndicator={false}>
-        <Text style={styles.sectionTitle}>What are you looking for?</Text>
+      <ScrollView
+        style={s.scroll}
+        contentContainerStyle={s.services}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={s.sectionLabel}>EXPLORE</Text>
 
-        {SERVICES.map((service) => {
-          const isActive = ACTIVE_KEYS.includes(service.key);
+        {SERVICES.map((svc) => {
+          const active = ACTIVE.includes(svc.key);
           return (
-            <Pressable
-              key={service.key}
-              style={({ pressed }) => [
-                styles.serviceCard,
-                !isActive && styles.serviceCardDimmed,
-                pressed && isActive && styles.serviceCardPressed,
-              ]}
+            <ServiceCard
+              key={svc.key}
+              svc={svc}
+              active={active}
               onPress={() => {
-                if (!isActive) return;
+                if (!active) return;
                 const city = encodeURIComponent(destination.city);
-                if (service.key === 'restaurants') router.push(`/restaurants/${id}?city=${city}`);
-                else if (service.key === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
-                else if (service.key === 'chat') router.push(`/chat/${id}?city=${city}`);
-                else if (service.key === 'minyans') router.push(`/minyans/${id}?city=${city}`);
-                else if (service.key === 'hosting') router.push(`/hosting/${id}?city=${city}`);
+                if (svc.key === 'restaurants') router.push(`/restaurants/${id}?city=${city}`);
+                else if (svc.key === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
+                else if (svc.key === 'chat') router.push(`/chat/${id}?city=${city}`);
+                else if (svc.key === 'minyans') router.push(`/minyans/${id}?city=${city}`);
+                else if (svc.key === 'hosting') router.push(`/hosting/${id}?city=${city}`);
+                else if (svc.key === 'map') {
+                  const latP = destination.location?.coordinates?.[1] ?? '';
+                  const lngP = destination.location?.coordinates?.[0] ?? '';
+                  router.push(`/map/${id}?lat=${latP}&lng=${lngP}&name=${city}` as any);
+                }
               }}
-            >
-              <View style={[styles.iconCircle, { backgroundColor: service.iconBg }]}>
-                <Text style={styles.serviceIcon}>{service.icon}</Text>
-              </View>
-              <View style={styles.serviceInfo}>
-                <Text style={[styles.serviceLabel, !isActive && styles.serviceLabelDimmed]}>
-                  {service.label}
-                </Text>
-                {!isActive && <Text style={styles.comingSoon}>Coming soon</Text>}
-              </View>
-              {isActive && (
-                <View style={styles.arrowBadge}>
-                  <Text style={styles.arrowText}>›</Text>
-                </View>
-              )}
-            </Pressable>
+            />
           );
         })}
+
+        <View style={{ height: 32 }} />
       </ScrollView>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F2F5FB' },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  notFound: { fontSize: 15, color: '#8A96B0' },
+// ─────────────────────────────────────────────────────────────────────────────
 
-  header: {
-    backgroundColor: '#0C2461',
-    paddingTop: 64,
-    paddingBottom: 32,
-    paddingHorizontal: 24,
+function ServiceCard({
+  svc,
+  active,
+  onPress,
+}: {
+  svc: Service;
+  active: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        s.card,
+        !active && s.cardDimmed,
+        pressed && active && s.cardPressed,
+      ]}
+      onPress={onPress}
+    >
+      {/* Colored left accent bar */}
+      <View style={[s.cardBar, { backgroundColor: active ? svc.color : '#D1D5DB' }]} />
+
+      {/* Icon circle */}
+      <View style={[s.iconCircle, { backgroundColor: active ? svc.bg : 'rgba(0,0,0,0.04)' }]}>
+        <MaterialIcons
+          name={svc.icon}
+          size={24}
+          color={active ? svc.color : '#9CA3AF'}
+        />
+      </View>
+
+      {/* Labels */}
+      <View style={s.cardText}>
+        <Text style={[s.cardLabel, !active && s.cardLabelDim]}>{svc.label}</Text>
+        <Text style={[s.cardSub,   !active && s.cardSubDim]}>
+          {active ? svc.sub : 'Coming soon'}
+        </Text>
+      </View>
+
+      {/* Arrow */}
+      {active ? (
+        <View style={s.arrow}>
+          <MaterialIcons name="chevron-right" size={20} color={C.gold} />
+        </View>
+      ) : null}
+    </Pressable>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+const s = StyleSheet.create({
+  root:     { flex: 1, backgroundColor: C.cream },
+  center:   { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: C.cream },
+  notFound: { fontSize: 15, color: C.textMuted },
+
+  // ── Hero ────────────────────────────────────────────────────────────────────
+  hero: { height: 320, justifyContent: 'flex-end' },
+
+  heroOverlay1: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(5, 13, 36, 0.40)',
+  },
+  heroOverlay2: {
+    position: 'absolute',
+    left: 0, right: 0, bottom: 0,
+    height: 160,
+    backgroundColor: 'rgba(5, 13, 36, 0.70)',
+  },
+
+  backBtn: { position: 'absolute', top: Platform.OS === 'ios' ? 58 : 40, left: 18, zIndex: 10 },
+  backBtnCircle: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: 'rgba(0,0,0,0.40)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.18)',
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  backBtn: { position: 'absolute', top: 62, left: 20 },
-  backText: { fontSize: 30, color: 'rgba(255,255,255,0.85)', lineHeight: 34 },
-  flag: { fontSize: 58, marginBottom: 12 },
-  city: { fontSize: 30, fontWeight: '800', color: '#fff', marginBottom: 8, letterSpacing: 0.2 },
-  countryBadge: {
-    backgroundColor: 'rgba(255,255,255,0.15)',
+
+  codeBadge: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 58 : 40,
+    right: 18,
+    backgroundColor: 'rgba(0,0,0,0.40)',
+    borderWidth: 1,
+    borderColor: C.goldBorder,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  codeText: { fontSize: 11, fontWeight: '800', color: C.goldBright, letterSpacing: 1.5 },
+
+  heroBottom: {
+    paddingHorizontal: 22,
+    paddingBottom: 26,
+  },
+  heroCity: {
+    fontSize: 34,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    letterSpacing: 0.2,
+    marginBottom: 10,
+    textShadowColor: 'rgba(0,0,0,0.5)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 10,
+    ...(Platform.OS === 'ios' ? { fontFamily: 'Georgia' } : {}),
+  },
+  countryPill: {
+    alignSelf: 'flex-start',
+    backgroundColor: C.goldFaint,
+    borderWidth: 1,
+    borderColor: C.goldBorder,
     borderRadius: 20,
     paddingHorizontal: 14,
-    paddingVertical: 4,
+    paddingVertical: 5,
     marginBottom: 10,
   },
-  countryText: { fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: '500' },
-  description: { fontSize: 13, color: 'rgba(255,255,255,0.55)', textAlign: 'center', lineHeight: 19 },
-
-  services: { padding: 20, gap: 12 },
-  sectionTitle: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: '#8A96B0',
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
-    marginBottom: 4,
-    marginLeft: 2,
+  countryPillText: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: C.goldBright,
+    letterSpacing: 1.8,
   },
-  serviceCard: {
-    backgroundColor: '#fff',
-    borderRadius: 18,
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+  heroDesc: {
+    fontSize: 13,
+    color: 'rgba(255,255,255,0.60)',
+    lineHeight: 20,
+  },
+
+  // ── Services ────────────────────────────────────────────────────────────────
+  scroll: { flex: 1, backgroundColor: C.cream },
+  services: { paddingHorizontal: 18, paddingTop: 22, gap: 12 },
+
+  sectionLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: C.gold,
+    letterSpacing: 3,
+    marginBottom: 6,
+    marginLeft: 6,
+  },
+
+  card: {
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#0C2461',
-    shadowOpacity: 0.07,
-    shadowRadius: 10,
+    backgroundColor: C.card,
+    borderRadius: 18,
+    overflow: 'hidden',
+    paddingVertical: 15,
+    paddingRight: 14,
+    shadowColor: C.navy,
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
     shadowOffset: { width: 0, height: 3 },
-    elevation: 3,
+    elevation: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.04)',
   },
-  serviceCardDimmed: { opacity: 0.55 },
-  serviceCardPressed: { opacity: 0.85, transform: [{ scale: 0.99 }] },
+  cardDimmed: { opacity: 0.40 },
+  cardPressed: { opacity: 0.82, transform: [{ scale: 0.984 }] },
+
+  cardBar: {
+    width: 4,
+    alignSelf: 'stretch',
+    marginRight: 14,
+    borderTopLeftRadius: 18,
+    borderBottomLeftRadius: 18,
+  },
+
   iconCircle: {
-    width: 46,
-    height: 46,
+    width: 50,
+    height: 50,
     borderRadius: 14,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 14,
   },
-  serviceIcon: { fontSize: 22 },
-  serviceInfo: { flex: 1 },
-  serviceLabel: { fontSize: 16, fontWeight: '700', color: '#0C1A2E' },
-  serviceLabelDimmed: { color: '#8A96B0' },
-  comingSoon: {
-    fontSize: 11,
-    color: '#B0BAC8',
-    marginTop: 2,
-    fontWeight: '500',
-    letterSpacing: 0.3,
-  },
-  arrowBadge: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: '#F2F5FB',
+
+  cardText:    { flex: 1 },
+  cardLabel:   { fontSize: 16, fontWeight: '700', color: C.textPrimary, letterSpacing: 0.1 },
+  cardLabelDim:{ color: C.textMuted },
+  cardSub:     { fontSize: 12, color: C.textSecondary, marginTop: 2 },
+  cardSubDim:  { color: C.textMuted },
+
+  arrow: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: C.goldFaint,
+    borderWidth: 1,
+    borderColor: C.goldBorder,
     justifyContent: 'center',
     alignItems: 'center',
   },

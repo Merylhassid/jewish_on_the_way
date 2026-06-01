@@ -45,18 +45,42 @@ export class Restaurant {
   @Column({ type: 'text', nullable: true })
   address?: string;
 
+  @Column({ type: 'varchar', length: 128, nullable: true })
+  city?: string;
+
+  @Column({ type: 'varchar', length: 128, nullable: true })
+  country?: string;
+
+  @Column({ type: 'varchar', length: 32, nullable: true })
+  phone?: string;
+
+  // e.g. "French", "Italian", "Sushi", "Middle Eastern"
+  @Column({ type: 'varchar', length: 128, nullable: true })
+  category?: string;
+
   // Free text, e.g. "Sun-Thu 12:00-22:00, Fri 12:00-14:00" — req 4.1.1
   @Column({ name: 'opening_hours', type: 'text', nullable: true })
   openingHours?: string;
 
-  // PostGIS location (lat/lng) — req 4.1.1
+  // Raw coordinates stored for reference — set once during geocoding, never updated
+  @Column({ type: 'double precision', nullable: true })
+  lat?: number;
+
+  @Column({ type: 'double precision', nullable: true })
+  lng?: number;
+
+  // Timestamp of last successful geocoding — null means not yet geocoded
+  @Column({ name: 'geocoded_at', type: 'timestamptz', nullable: true })
+  geocodedAt?: Date;
+
+  // PostGIS location — filled by geocoding backfill script, nullable until then
   @Column({
     type: 'geography',
     spatialFeatureType: 'Point',
     srid: 4326,
     nullable: true,
   })
-  location: object;
+  location: object | null;
 
   // Google Places rating (0-5)
   @Column({ type: 'decimal', precision: 2, scale: 1, nullable: true })

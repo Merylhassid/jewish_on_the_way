@@ -65,4 +65,22 @@ export class SynagoguesService {
 
     return synagogue;
   }
+
+  async findNearby(lat: number, lng: number, limit = 10): Promise<any[]> {
+    const sql = `
+      SELECT
+        s.id, s.name, s.address, s.denomination, s.phone,
+        ST_Y(s.location::geometry) AS lat,
+        ST_X(s.location::geometry) AS lng,
+        ROUND(ST_Distance(
+          s.location::geography,
+          ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography
+        )::numeric) AS "distanceMeters"
+      FROM synagogues s
+      WHERE s.location IS NOT NULL
+      ORDER BY s.location::geography <-> ST_SetSRID(ST_MakePoint($2, $1), 4326)::geography
+      LIMIT $3
+    `;
+    return this.synagoguesRepo.query(sql, [lat, lng, limit]);
+  }
 }

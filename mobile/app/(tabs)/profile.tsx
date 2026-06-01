@@ -1,3 +1,4 @@
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
@@ -379,6 +380,7 @@ export default function ProfileScreen() {
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
       {/* ── Header ── */}
       <View style={styles.header}>
+        <Text style={styles.headerEyebrow}>YOUR ACCOUNT</Text>
         <Pressable style={styles.avatarWrapper} onPress={handleChangeAvatar} disabled={avatarLoading}>
           {avatarLoading ? (
             <View style={styles.avatarRing}><ActivityIndicator color="#C9A84C" /></View>
@@ -392,7 +394,7 @@ export default function ProfileScreen() {
             </View>
           )}
           <View style={styles.cameraPin}>
-            <Text style={styles.cameraPinText}>📷</Text>
+            <MaterialIcons name="photo-camera" size={13} color="#C9A84C" />
           </View>
         </Pressable>
 
@@ -402,7 +404,7 @@ export default function ProfileScreen() {
         {user?.kashrutLevel && user.kashrutLevel !== 'none' && (
           <View style={styles.kashrutBadge}>
             <Text style={styles.kashrutBadgeText}>
-              🍽️ {user.kashrutLevel.charAt(0).toUpperCase() + user.kashrutLevel.slice(1)}
+              {user.kashrutLevel.charAt(0).toUpperCase() + user.kashrutLevel.slice(1)}
             </Text>
           </View>
         )}
@@ -417,28 +419,28 @@ export default function ProfileScreen() {
       {/* ── Menu section ── */}
       <View style={styles.section}>
         <Pressable style={styles.row} onPress={() => setEditVisible(true)}>
-          <View style={[styles.rowIconBox, { backgroundColor: '#EEF2FF' }]}>
-            <Text style={styles.rowIconText}>👤</Text>
+          <View style={[styles.rowIconBox, { backgroundColor: 'rgba(91,123,192,0.15)' }]}>
+            <MaterialIcons name="person" size={20} color="#7B97D8" />
           </View>
           <Text style={styles.rowLabel}>{t('profile.editProfile')}</Text>
-          <Text style={styles.rowChevron}>›</Text>
+          <MaterialIcons name="chevron-right" size={22} color="#4A5568" />
         </Pressable>
 
         <View style={styles.rowDivider} />
 
         <Pressable style={styles.row} onPress={() => setPasswordVisible(true)}>
-          <View style={[styles.rowIconBox, { backgroundColor: '#FFF3E0' }]}>
-            <Text style={styles.rowIconText}>🔒</Text>
+          <View style={[styles.rowIconBox, { backgroundColor: 'rgba(201,168,76,0.12)' }]}>
+            <MaterialIcons name="lock" size={20} color="#C9A84C" />
           </View>
           <Text style={styles.rowLabel}>{t('profile.changePassword')}</Text>
-          <Text style={styles.rowChevron}>›</Text>
+          <MaterialIcons name="chevron-right" size={22} color="#4A5568" />
         </Pressable>
 
         <View style={styles.rowDivider} />
 
         <View style={styles.row}>
-          <View style={[styles.rowIconBox, { backgroundColor: '#E8F5E9' }]}>
-            <Text style={styles.rowIconText}>🌐</Text>
+          <View style={[styles.rowIconBox, { backgroundColor: 'rgba(74,158,108,0.12)' }]}>
+            <MaterialIcons name="language" size={20} color="#4A9E6C" />
           </View>
           <Text style={styles.rowLabel}>{t('profile.language')}</Text>
           <LanguageSwitcher />
@@ -495,6 +497,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 24,
   },
+  headerEyebrow: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#C9A84C',
+    letterSpacing: 2.8,
+    marginBottom: 18,
+    textTransform: 'uppercase',
+  },
   avatarWrapper: { position: 'relative', marginBottom: 14 },
   avatarRing: {
     width: 96,
@@ -522,7 +532,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#C9A84C',
   },
-  cameraPinText: { fontSize: 12 },
   name: { fontSize: 22, fontWeight: '800', color: '#fff', marginBottom: 5, letterSpacing: 0.2 },
   emailText: { fontSize: 13, color: 'rgba(255,255,255,0.52)' },
   kashrutBadge: {
@@ -545,30 +554,28 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 20,
     shadowColor: '#0C2461',
-    shadowOpacity: 0.06,
-    shadowRadius: 12,
+    shadowOpacity: 0.07,
+    shadowRadius: 14,
     shadowOffset: { width: 0, height: 3 },
-    elevation: 3,
+    elevation: 4,
     overflow: 'hidden',
   },
-  row: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 14 },
+  row: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 16 },
   rowDivider: { height: 1, backgroundColor: '#F2F5FB', marginHorizontal: 18 },
   rowIconBox: {
-    width: 36,
-    height: 36,
-    borderRadius: 10,
+    width: 38,
+    height: 38,
+    borderRadius: 11,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 14,
   },
-  rowIconText: { fontSize: 18 },
   rowLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: '#0C1A2E' },
-  rowChevron: { fontSize: 20, color: '#B0BAC8', fontWeight: '500' },
 
   // ── Buttons ──
   signOutBtn: {
     marginHorizontal: 16,
-    marginTop: 16,
+    marginTop: 14,
     backgroundColor: '#fff',
     borderRadius: 16,
     paddingVertical: 16,

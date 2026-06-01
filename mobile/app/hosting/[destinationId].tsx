@@ -157,7 +157,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
                 <View style={styles.offerTags}>
                   {offer.allowsShabbat  && <Tag text="🕍 Shabbat" />}
                   {offer.allowsChildren && <Tag text="👨‍👩‍👧 Children OK" />}
-                  {offer.kashrutLevel   && <Tag text={`✡️ ${offer.kashrutLevel}`} />}
+                  {offer.kashrutLevel   && <Tag text={offer.kashrutLevel} />}
                 </View>
                 {offer.notes && <Text style={styles.offerNotes}>{offer.notes}</Text>}
                 <Text style={styles.offerDates}>
@@ -339,7 +339,7 @@ function HostView({ destinationId }: { destinationId: number }) {
         notes: notes.trim() || undefined,
       });
       Alert.alert('Offer Created! 🏠', 'Your hosting offer is now visible to travelers.');
-      setAvailableFrom(''); setAvailableTo(''); setNotes(''); setKashrut('');
+      setNotes(''); setKashrut(''); setMaxGuests('2');
     } catch (err: any) {
       Alert.alert('Error', err?.response?.data?.message ?? 'Failed to create offer');
     } finally {
