@@ -164,6 +164,7 @@ export class RestaurantsController {
    * Geocodes each restaurant via Nominatim (free), saves lat/lng + PostGIS point.
    * Use this for CSV-to-DB imports. Rate-limited to 1 req/sec internally.
    */
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Post('import-json')
   async importFromJson(@Body() body: { restaurants: ImportRestaurantDto[] }) {
     if (!body.restaurants?.length) {
