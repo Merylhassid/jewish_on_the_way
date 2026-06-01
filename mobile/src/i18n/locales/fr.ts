@@ -5,7 +5,7 @@ export default {
     profile: 'Profil',
   },
   home: {
-    title: '✡️ Jewish On The Way',
+    title: 'Jewish On The Way',
     subtitle: 'Où voyagez-vous ?',
     searchPlaceholder: '🔍  Rechercher une ville...',
     noResults: 'Aucune destination trouvée',

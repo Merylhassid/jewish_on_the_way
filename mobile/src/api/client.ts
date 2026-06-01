@@ -1,6 +1,5 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Constants from 'expo-constants';
 
 // Production server
 const PRODUCTION_URL = 'http://49.12.189.108:3000';

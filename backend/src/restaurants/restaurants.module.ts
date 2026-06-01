@@ -6,6 +6,7 @@ import { SearchFeedback } from '../ai/search-feedback.entity';
 import { User } from '../users/user.entity';
 import { RestaurantsController } from './restaurants.controller';
 import { RestaurantsService } from './restaurants.service';
+import { GeocodingService } from '../geocoding/geocoding.service';
 import { AdminGuard } from '../admin/admin.guard';
 
 @Module({
@@ -13,6 +14,6 @@ import { AdminGuard } from '../admin/admin.guard';
     TypeOrmModule.forFeature([Restaurant, Destination, SearchFeedback, User]),
   ],
   controllers: [RestaurantsController],
-  providers: [RestaurantsService, AdminGuard],
+  providers: [RestaurantsService, GeocodingService, AdminGuard],
 })
 export class RestaurantsModule {}

@@ -226,9 +226,9 @@ export default function RestaurantsScreen() {
             />
           }
           renderItem={({ item }) => {
-            const badge   = KASHRUT_BADGE[item.kashrutLevel] ?? KASHRUT_BADGE.unknown;
-            const bgColor = TYPE_COLOR[item.restaurantType]  ?? TYPE_COLOR.unknown;
-            const emoji   = TYPE_EMOJI[item.restaurantType]  ?? TYPE_EMOJI.unknown;
+            const badge   = KASHRUT_BADGE[item.kashrutLevel ?? 'unknown'] ?? KASHRUT_BADGE.unknown;
+            const bgColor = TYPE_COLOR[item.restaurantType ?? 'unknown']  ?? TYPE_COLOR.unknown;
+            const emoji   = TYPE_EMOJI[item.restaurantType ?? 'unknown']  ?? TYPE_EMOJI.unknown;
             return (
               <Pressable
                 style={[styles.card, { backgroundColor: bgColor }]}

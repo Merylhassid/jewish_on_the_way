@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Image,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -57,7 +58,7 @@ export default function LoginScreen() {
         {/* ── Hero ── */}
         <View style={styles.hero}>
           <View style={styles.logoRing}>
-            <Text style={styles.logoEmoji}>✡️</Text>
+            <Image source={require('@/assets/images/logo.jpeg')} style={styles.logo} />
           </View>
           <Text style={styles.appName}>Jewish On The Way</Text>
           <Text style={styles.appTagline}>Your Jewish travel companion</Text>
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  logoEmoji: { fontSize: 42 },
+  logo: { width: 60, height: 60, resizeMode: 'contain' },
   appName: { fontSize: 26, fontWeight: '800', color: '#fff', textAlign: 'center', letterSpacing: 0.2 },
   appTagline: { fontSize: 13, color: 'rgba(255,255,255,0.52)', marginTop: 7 },
 
