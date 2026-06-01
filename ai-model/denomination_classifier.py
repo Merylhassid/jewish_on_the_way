@@ -25,7 +25,8 @@ def load_data(path):
 # 2. Tokenizer — תומך עברית + אנגלית
 # ────────────────────────────────────────────────────────
 def tokenize(text):
-    return re.findall(r'[א-ת"]+|[a-z]+', text.lower())
+    text = re.sub(r'חב["״]?ד', 'חב"ד', text.lower())
+    return re.findall(r'[א-ת"]+|[a-z]+', text)
 
 # ────────────────────────────────────────────────────────
 # 3. TF-IDF מאפס

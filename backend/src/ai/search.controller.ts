@@ -12,7 +12,7 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { IsString, IsOptional, IsNumber } from 'class-validator';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, ILike } from 'typeorm';
+import { Repository } from 'typeorm';
 import { ClassifierService } from './classifier.service';
 import { DenominationClassifierService } from './denomination-classifier.service';
 import { Destination } from '../destination.entity';
@@ -185,6 +185,60 @@ const COUNTRY_TRANSLATE: Record<string, string> = {
   'ישראל':'Israel',
 };
 
+// Extra aliases for destinations that are present in the DB but are not covered by CITY_TRANSLATE.
+// This remains code-only intentionally: no migration/table is required before submission.
+const DESTINATION_ALIASES: Record<string, string[]> = {
+  Porto: ['פורטו'],
+  Cannes: ['קאן'],
+  Nice: ['ניס', 'ניצה'],
+  Cyprus: ['קפריסין'],
+  Larnaca: ['לרנקה'],
+  Limassol: ['לימסול'],
+  Paphos: ['פאפוס', 'פפוס'],
+  Marrakech: ['מרקש', 'מרקאש'],
+  'Czech Republic': ['צכיה', 'צ׳כיה', "צ'כיה"],
+  Dallas: ['דאלאס', 'דלס'],
+  'Las Vegas': ['לאס וגאס', 'וגאס'],
+  'Chiang Mai': ['צאנג מאי', 'צ׳אנג מאי', "צ'אנג מאי"],
+  'Ko Samui': ['קוסמוי', 'קו סמוי'],
+  'Koh Phangan': ['קופנגן', 'קו פנגן'],
+  Pai: ['פאי'],
+  Akko: ['עכו'],
+  "Be'er Yaakov": ['באר יעקב'],
+  "Beit She'an": ['בית שאן'],
+  Binyamina: ['בנימינה'],
+  Holon: ['חולון'],
+  Karmiel: ['כרמיאל'],
+  Katzrin: ['קצרין'],
+  "Ma'alot": ['מעלות', 'מעלות תרשיחא'],
+  Nesher: ['נשר'],
+  'Ness Ziona': ['נס ציונה'],
+  Ofakim: ['אופקים'],
+  Modiin: ['מודיעין'],
+  Safed: ['צפת'],
+  Savion: ['סביון'],
+  'Tel Mond': ['תל מונד'],
+  Ireland: ['אירלנד'],
+  UAE: ['איחוד האמירויות', 'האמירויות', 'אמירויות'],
+  // Harmless if Rhodes is not currently in the DB; useful if it is added later.
+  Rhodes: ['רודוס', 'rodos'],
+};
+
+const DESTINATION_STOP_WORDS = new Set([
+  'בית', 'כנסת', 'בית כנסת', 'מסעדה', 'מסעדת', 'כשר', 'כשרה', 'כשרים',
+  'אוכל', 'לאכול', 'ארוחה', 'מניין', 'מנין', 'שחרית', 'מנחה', 'מעריב',
+  'תפילה', 'תפילת', 'אירוח', 'שבת', 'משפחה', 'מחפש', 'מחפשת', 'צריך',
+  'צריכה', 'איפה', 'אפשר', 'קרוב', 'קרובה', 'אליי', 'לידי', 'באזור',
+  'נוסח', 'קהילה', 'יהודית',
+  'synagogue', 'restaurant', 'kosher', 'minyan', 'hosting', 'host',
+  'near', 'nearby', 'me', 'in', 'at', 'the',
+]);
+
+interface DestinationResolution {
+  destination: Destination | null;
+  explicitMention: boolean;
+}
+
 // מילות מפתח לסוג מסעדה וכשרות
 const RESTAURANT_TYPE_KEYWORDS: Record<string, string> = {
   'בשרי':'meat','בשרית':'meat','בשר':'meat','meat':'meat',
@@ -210,10 +264,112 @@ function extractRestaurantFilters(text: string): { type: string | null; kashrut:
   return { type, kashrut };
 }
 
-function detectCountryInText(text: string): string | null {
+const SFARAD_DENOMINATION_PATTERNS = [
+  /(?:^|[\s,.;:!?])נוסח\s+ספרד(?:$|[\s,.;:!?])/,
+  /(?:^|[\s,.;:!?])ספרדי(?:$|[\s,.;:!?])/,
+  /(?:^|[\s,.;:!?])ספרדית(?:$|[\s,.;:!?])/,
+  /(?:^|[\s,.;:!?])ספרדים(?:$|[\s,.;:!?])/,
+  /(?:^|[\s,.;:!?])ספרדיות(?:$|[\s,.;:!?])/,
+];
+
+function hasSfaradDenominationSignal(text: string): boolean {
+  return SFARAD_DENOMINATION_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function hasExplicitSpainLocation(text: string): boolean {
+  return /(?:^|[\s,.;:!?])(?:ב|ל)ספרד(?:$|[\s,.;:!?])/.test(text);
+}
+
+function hasHebrewCountryToken(text: string, countryHeb: string): boolean {
+  const escaped = countryHeb.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?:^|[\\s,.;:!?])${escaped}(?:$|[\\s,.;:!?])`).test(text);
+}
+
+export function normalizeDestinationText(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[׳']/g, '')
+    .replace(/[״"]/g, '')
+    .replace(/[-_]/g, ' ')
+    .replace(/[.,;:!?()[\]{}]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function hasHebrewLetters(text: string): boolean {
+  return /[א-ת]/.test(text);
+}
+
+function addHebrewPrefixVariants(token: string): string[] {
+  const variants = [token];
+  if (/^[בלמ][א-ת]{3,}$/.test(token)) {
+    variants.push(token.slice(1));
+  }
+  return variants;
+}
+
+function isSfaradDenominationCandidate(candidate: string): boolean {
+  return candidate === 'ספרדי' || candidate === 'ספרדית' || candidate === 'נוסח ספרד';
+}
+
+function isExplicitDestinationCandidate(candidate: string): boolean {
+  if (!candidate || DESTINATION_STOP_WORDS.has(candidate) || isSfaradDenominationCandidate(candidate)) {
+    return false;
+  }
+  if (hasHebrewLetters(candidate)) {
+    return candidate.replace(/\s/g, '').length >= 4;
+  }
+  return candidate.length >= 4;
+}
+
+export function buildDestinationCandidates(text: string): string[] {
+  const normalized = normalizeDestinationText(text);
+  if (!normalized) return [];
+
+  const candidates: string[] = [];
+  const seen = new Set<string>();
+  const addCandidate = (candidate: string) => {
+    const normalizedCandidate = normalizeDestinationText(candidate);
+    if (!normalizedCandidate || seen.has(normalizedCandidate)) return;
+    seen.add(normalizedCandidate);
+    candidates.push(normalizedCandidate);
+  };
+
+  const words = normalized.split(/\s+/).filter(Boolean);
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    if (!DESTINATION_STOP_WORDS.has(word)) {
+      for (const variant of addHebrewPrefixVariants(word)) {
+        addCandidate(variant);
+      }
+    }
+
+    if (i < words.length - 1) {
+      const nextWord = words[i + 1];
+      const pair = `${word} ${words[i + 1]}`;
+      if (!DESTINATION_STOP_WORDS.has(pair) && !DESTINATION_STOP_WORDS.has(word) && !DESTINATION_STOP_WORDS.has(nextWord)) {
+        addCandidate(pair);
+      }
+    }
+  }
+
+  return candidates;
+}
+
+export function detectCountryInText(text: string): string | null {
   const lower = text.toLowerCase();
   for (const [heb, eng] of Object.entries(COUNTRY_TRANSLATE)) {
-    if (lower.includes(heb.toLowerCase())) return eng;
+    const countryHeb = heb.toLowerCase();
+    if (countryHeb === 'ספרד') {
+      if (hasSfaradDenominationSignal(lower) && !hasExplicitSpainLocation(lower)) {
+        continue;
+      }
+      if (hasExplicitSpainLocation(lower) || hasHebrewCountryToken(lower, countryHeb)) {
+        return eng;
+      }
+      continue;
+    }
+    if (lower.includes(countryHeb)) return eng;
   }
   return null;
 }
@@ -288,7 +444,8 @@ export class SearchController {
       };
     }
 
-    let foundDest = await this.findDestinationInText(text);
+    const destinationResolution = await this.resolveDestinationFromText(text);
+    let foundDest = destinationResolution.destination;
     let gpsUsed = false;
 
     if (!foundDest) {
@@ -309,8 +466,8 @@ export class SearchController {
           };
         }
         // מדינה הוזכרה אבל אין בDB — לא מפעילים GPS
-      } else if (dto.lat != null && dto.lng != null) {
-        // אין עיר, אין מדינה — נסה GPS
+      } else if (!destinationResolution.explicitMention && dto.lat != null && dto.lng != null) {
+        // אין עיר, אין מדינה ואין יעד מפורש שלא נפתר — נסה GPS
         foundDest = await this.findNearestDestination(dto.lat, dto.lng);
         if (foundDest) gpsUsed = true;
       }
@@ -340,24 +497,71 @@ export class SearchController {
     return this.destRepo.findOne({ where: { id: rows[0].id } });
   }
 
-  // ── חיפוש עיר בתוך הטקסט ──────────────────────────
-  private async findDestinationInText(text: string): Promise<Destination | null> {
-    const lower = text.toLowerCase();
+  // ── חיפוש יעד בתוך הטקסט מתוך אינדקס שמות/כינויים ─────────
+  private async resolveDestinationFromText(text: string): Promise<DestinationResolution> {
+    const candidates = buildDestinationCandidates(text);
+    const destinations = await this.loadDestinationsForSearch();
+    const aliasIndex = this.buildDestinationAliasIndex(destinations);
 
-    for (const [heb, eng] of Object.entries(CITY_TRANSLATE)) {
-      if (lower.includes(heb.toLowerCase())) {
-        const dest = await this.destRepo.findOne({ where: { city: ILike(`%${eng}%`) } });
-        if (dest) return dest;
+    for (const candidate of candidates) {
+      if (candidate === 'ספרד' && hasSfaradDenominationSignal(text.toLowerCase()) && !hasExplicitSpainLocation(text.toLowerCase())) {
+        continue;
+      }
+      const destination = aliasIndex.get(candidate);
+      if (destination) {
+        return { destination, explicitMention: true };
       }
     }
 
-    const words = text.split(/[\s,]+/).filter((w) => w.length > 3);
-    for (const word of words) {
-      const dest = await this.destRepo.findOne({ where: { city: ILike(`%${word}%`) } });
-      if (dest) return dest;
+    return {
+      destination: null,
+      explicitMention: candidates.some(isExplicitDestinationCandidate),
+    };
+  }
+
+  private async loadDestinationsForSearch(): Promise<Destination[]> {
+    return this.destRepo.find({ select: ['id', 'name', 'city', 'country'] });
+  }
+
+  private buildDestinationAliasIndex(destinations: Destination[]): Map<string, Destination> {
+    const index = new Map<string, Destination>();
+    const canonicalIndex = new Map<string, Destination>();
+
+    const add = (alias: string | null | undefined, destination: Destination, target = index) => {
+      const normalized = normalizeDestinationText(alias ?? '');
+      if (!normalized || target.has(normalized)) return;
+      target.set(normalized, destination);
+    };
+
+    for (const destination of destinations) {
+      add(destination.city, destination);
+      add(destination.name, destination);
+      add(destination.city, destination, canonicalIndex);
+      add(destination.name, destination, canonicalIndex);
     }
 
-    return null;
+    const findCanonical = (canonical: string): Destination | undefined =>
+      canonicalIndex.get(normalizeDestinationText(canonical));
+
+    for (const [hebrewCity, englishCity] of Object.entries(CITY_TRANSLATE)) {
+      const destination = findCanonical(englishCity);
+      if (destination) add(hebrewCity, destination);
+    }
+
+    for (const [hebrewCountry, englishCountry] of Object.entries(COUNTRY_TRANSLATE)) {
+      const destination = findCanonical(englishCountry);
+      if (destination) add(hebrewCountry, destination);
+    }
+
+    for (const [canonicalName, aliases] of Object.entries(DESTINATION_ALIASES)) {
+      const destination = findCanonical(canonicalName);
+      if (!destination) continue;
+      for (const alias of aliases) {
+        add(alias, destination);
+      }
+    }
+
+    return index;
   }
 
   // ── חיפוש destination הכי קרוב לפי GPS ────────────
