@@ -51,9 +51,24 @@ def load_data(filepath):
 
 def tokenize(text):
     text = text.lower()
+    text = re.sub(r'חב["״]?ד', 'חבד', text)
     # [א-ת]+ = מילים בעברית  |  [a-z]+ = מילים באנגלית
     tokens = re.findall(r'[א-ת]+|[a-z]+', text)
     return tokens
+
+
+BIGRAM_SEPARATOR = '__'
+MIN_BIGRAM_DF = 3
+
+
+def generate_features(text):
+    """Creates unigram + adjacent-bigram features from the token stream."""
+    tokens = tokenize(text)
+    bigrams = [
+        f"{tokens[i]}{BIGRAM_SEPARATOR}{tokens[i + 1]}"
+        for i in range(len(tokens) - 1)
+    ]
+    return tokens + bigrams
 
 
 # ══════════════════════════════════════════════════════════════
@@ -83,12 +98,18 @@ class TFIDF:
 
         for text in texts:
             # set() — כדי לא לספור מילה פעמיים באותו משפט
-            tokens = set(tokenize(text))
-            for token in tokens:
-                doc_freq[token] += 1  # עוד מסמך אחד שמכיל את המילה הזאת
+            features = set(generate_features(text))
+            for feature in features:
+                doc_freq[feature] += 1  # עוד מסמך אחד שמכיל את הפיצ'ר הזה
 
-        # בונה את הvocabulary ומחשב IDF לכל מילה
-        for i, (word, df) in enumerate(doc_freq.items()):
+        # בונה את הvocabulary ומחשב IDF לכל פיצ'ר.
+        # Unigrams נשמרים תמיד; bigrams נדירים מסוננים כדי לצמצם overfitting.
+        kept_features = [
+            (feature, df)
+            for feature, df in doc_freq.items()
+            if BIGRAM_SEPARATOR not in feature or df >= MIN_BIGRAM_DF
+        ]
+        for i, (word, df) in enumerate(kept_features):
             self.vocab[word] = i
             # IDF = log(סה"כ מסמכים ÷ מסמכים שמכילים את המילה)
             # ככל שהמילה נדירה יותר — IDF גבוה יותר — המילה "חזקה" יותר
@@ -100,22 +121,22 @@ class TFIDF:
         for text in texts:
             # וקטור של אפסים בגודל המילון
             vector = [0.0] * len(self.vocab)
-            tokens = tokenize(text)
+            features = generate_features(text)
 
-            if len(tokens) == 0:
+            if len(features) == 0:
                 matrix.append(vector)
                 continue
 
-            # TF = ספירת מילים מנורמלת לפי אורך המשפט
+            # TF = ספירת פיצ'רים מנורמלת לפי מספר הפיצ'רים במשפט
             tf = defaultdict(float)
-            for token in tokens:
-                tf[token] += 1.0 / len(tokens)
+            for feature in features:
+                tf[feature] += 1.0 / len(features)
 
             # TF-IDF = TF × IDF — שמים את הערך בוקטור
-            for token, tf_val in tf.items():
-                if token in self.vocab:
-                    idx = self.vocab[token]
-                    vector[idx] = tf_val * self.idf[token]
+            for feature, tf_val in tf.items():
+                if feature in self.vocab:
+                    idx = self.vocab[feature]
+                    vector[idx] = tf_val * self.idf[feature]
 
             matrix.append(vector)
         return matrix

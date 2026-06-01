@@ -19,6 +19,22 @@ describe('DenominationClassifierService', () => {
       expect(result.emoji).toBe('🕎');
     });
 
+    it('normalizes Hebrew gershayim in Chabad text', () => {
+      const result = service.classify('חב״ד');
+
+      expect(result.denomination).toBe('chabad');
+      expect(result.confidence).toBeGreaterThan(0.45);
+      expect(result.emoji).toBe('🕎');
+    });
+
+    it('normalizes Chabad text without quote marks', () => {
+      const result = service.classify('חבד');
+
+      expect(result.denomination).toBe('chabad');
+      expect(result.confidence).toBeGreaterThan(0.45);
+      expect(result.emoji).toBe('🕎');
+    });
+
     it('identifies Sfarad from unambiguous Hebrew text', () => {
       const result = service.classify('ספרדי');
 

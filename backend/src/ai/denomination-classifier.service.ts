@@ -66,7 +66,10 @@ export class DenominationClassifierService implements OnModuleInit {
 
   // ── Tokenizer (עברית + אנגלית) ─────────────────────
   private tokenize(text: string): string[] {
-    return (text.toLowerCase().match(/[א-ת"]+|[a-z]+/g) ?? []);
+    const normalized = text
+      .toLowerCase()
+      .replace(/חב["״]?ד/g, 'חב"ד');
+    return (normalized.match(/[א-ת"]+|[a-z]+/g) ?? []);
   }
 
   // ── TF-IDF transform ───────────────────────────────

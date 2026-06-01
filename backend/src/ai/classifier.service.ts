@@ -34,6 +34,8 @@ const EMOJI: Record<string, string> = {
   hosting:    '🏠',
 };
 
+const BIGRAM_SEPARATOR = '__';
+
 @Injectable()
 export class ClassifierService implements OnModuleInit {
   private model: ModelData;
@@ -54,7 +56,19 @@ export class ClassifierService implements OnModuleInit {
   // בדיוק אותה פונקציה כמו ב-Python:
   // שוברת משפט למילים, מסירה פיסוק, מורידה לקטנות
   private tokenize(text: string): string[] {
-    return (text.toLowerCase().match(/[א-ת]+|[a-z]+/g) ?? []);
+    const normalized = text
+      .toLowerCase()
+      .replace(/חב["״]?ד/g, 'חבד');
+    return (normalized.match(/[א-ת]+|[a-z]+/g) ?? []);
+  }
+
+  private generateFeatures(text: string): string[] {
+    const tokens = this.tokenize(text);
+    const bigrams: string[] = [];
+    for (let i = 0; i < tokens.length - 1; i++) {
+      bigrams.push(`${tokens[i]}${BIGRAM_SEPARATOR}${tokens[i + 1]}`);
+    }
+    return [...tokens, ...bigrams];
   }
 
   // ── TF-IDF Transform ──────────────────────────────────────
@@ -62,20 +76,20 @@ export class ClassifierService implements OnModuleInit {
   private transform(text: string): number[] {
     const { vocab, idf } = this.model;
     const vector = new Array(Object.keys(vocab).length).fill(0);
-    const tokens = this.tokenize(text);
+    const features = this.generateFeatures(text);
 
-    if (tokens.length === 0) return vector;
+    if (features.length === 0) return vector;
 
-    // TF = כמה פעמים המילה מופיעה / סה"כ מילים במשפט
+    // TF = כמה פעמים הפיצ'ר מופיע / סה"כ פיצ'רים במשפט
     const tf: Record<string, number> = {};
-    for (const token of tokens) {
-      tf[token] = (tf[token] ?? 0) + 1 / tokens.length;
+    for (const feature of features) {
+      tf[feature] = (tf[feature] ?? 0) + 1 / features.length;
     }
 
     // TF-IDF = TF × IDF
-    for (const [token, tfVal] of Object.entries(tf)) {
-      if (vocab[token] !== undefined && idf[token] !== undefined) {
-        vector[vocab[token]] = tfVal * idf[token];
+    for (const [feature, tfVal] of Object.entries(tf)) {
+      if (vocab[feature] !== undefined && idf[feature] !== undefined) {
+        vector[vocab[feature]] = tfVal * idf[feature];
       }
     }
 

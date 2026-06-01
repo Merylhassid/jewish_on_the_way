@@ -15,7 +15,8 @@ def load_data(path):
     return rows
 
 def tokenize(text):
-    return re.findall(r'[א-ת"]+|[a-z]+', text.lower())
+    text = re.sub(r'חב["״]?ד', 'חב"ד', text.lower())
+    return re.findall(r'[א-ת"]+|[a-z]+', text)
 
 class TFIDF:
     def __init__(self):
