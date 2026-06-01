@@ -73,7 +73,7 @@ export default function ReportModal({ visible, onClose, entityType, entityId, en
           </Text>
 
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Text style={s.sectionLabel}>What's the problem?</Text>
+            <Text style={s.sectionLabel}>What&apos;s the problem?</Text>
             {types.map(t => (
               <Pressable
                 key={t.key}

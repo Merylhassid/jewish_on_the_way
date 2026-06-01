@@ -452,7 +452,7 @@ export default function HostingScreen() {
 
           <TouchableOpacity style={styles.modeCard} onPress={() => setMode('guest')}>
             <Text style={styles.modeEmoji}>🧳</Text>
-            <Text style={styles.modeLabel}>I'm looking for hosting</Text>
+            <Text style={styles.modeLabel}>I&apos;m looking for hosting</Text>
             <Text style={styles.modeSub}>Find a Jewish family to stay with</Text>
           </TouchableOpacity>
 

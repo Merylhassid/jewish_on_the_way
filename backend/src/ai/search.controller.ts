@@ -10,7 +10,7 @@
  */
 
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
-import { IsString, IsOptional, IsNumber } from 'class-validator';
+import { IsString, IsOptional, IsNumber, MaxLength, MinLength } from 'class-validator';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ClassifierService } from './classifier.service';
@@ -19,6 +19,8 @@ import { Destination } from '../destination.entity';
 
 class SearchDto {
   @IsString()
+  @MinLength(1)
+  @MaxLength(200)
   text!: string;
 
   @IsOptional()
@@ -302,7 +304,7 @@ function hasHebrewLetters(text: string): boolean {
 
 function addHebrewPrefixVariants(token: string): string[] {
   const variants = [token];
-  if (/^[בלמ][א-ת]{3,}$/.test(token)) {
+  if (/^[בלמ][א-ת]{2,}$/.test(token)) {
     variants.push(token.slice(1));
   }
   return variants;
@@ -346,9 +348,17 @@ export function buildDestinationCandidates(text: string): string[] {
 
     if (i < words.length - 1) {
       const nextWord = words[i + 1];
-      const pair = `${word} ${words[i + 1]}`;
+      const pair = `${word} ${nextWord}`;
       if (!DESTINATION_STOP_WORDS.has(pair) && !DESTINATION_STOP_WORDS.has(word) && !DESTINATION_STOP_WORDS.has(nextWord)) {
         addCandidate(pair);
+      }
+      // גם זוג עם מילה ראשונה ללא קידומת עברית (בזכרון יעקב → זכרון יעקב)
+      const wordVariants = addHebrewPrefixVariants(word);
+      if (wordVariants.length > 1 && !DESTINATION_STOP_WORDS.has(word)) {
+        const strippedPair = `${wordVariants[1]} ${nextWord}`;
+        if (!DESTINATION_STOP_WORDS.has(strippedPair) && !DESTINATION_STOP_WORDS.has(wordVariants[1])) {
+          addCandidate(strippedPair);
+        }
       }
     }
   }

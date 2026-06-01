@@ -148,7 +148,7 @@ export default function SynagoguesScreen() {
       {denomInfo && (
         <View style={[styles.denomBanner, { backgroundColor: denomInfo.color }]}>
           <Text style={styles.denomBannerText}>
-            {denomInfo.emoji}  מציג: נוסח {denomInfo.label} בלבד  •  זוהה ע"י AI
+            {denomInfo.emoji}  מציג: נוסח {denomInfo.label} בלבד  •  זוהה ע&quot;י AI
           </Text>
           <Pressable onPress={clearFilter} style={styles.clearBtn}>
             <Text style={styles.clearBtnText}>✕ כל הנוסחים</Text>

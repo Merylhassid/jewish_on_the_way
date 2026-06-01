@@ -153,7 +153,7 @@ export default function MinyanDetailScreen() {
           )}
           {minyan.isRegistered && (
             <View style={[styles.badge, { backgroundColor: '#1a3a6b' }]}>
-              <Text style={styles.badgeText}>✓ You're registered</Text>
+              <Text style={styles.badgeText}>✓ You&apos;re registered</Text>
             </View>
           )}
         </View>
