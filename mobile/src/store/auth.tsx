@@ -1,6 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Platform } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import client from '../api/client';
+
+const storage = {
+  get:    (k: string) => Platform.OS === 'web' ? AsyncStorage.getItem(k)    : SecureStore.getItemAsync(k),
+  set:    (k: string, v: string) => Platform.OS === 'web' ? AsyncStorage.setItem(k, v)    : SecureStore.setItemAsync(k, v),
+  remove: (k: string) => Platform.OS === 'web' ? AsyncStorage.removeItem(k) : SecureStore.deleteItemAsync(k),
+};
 
 export interface User {
   id: number;
@@ -31,11 +39,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Restore session on app start
-    AsyncStorage.getItem('token').then((stored) => {
+    storage.get('token').then((stored) => {
       if (stored) {
         setToken(stored);
         client.get('/users/me').then((res) => setUser(res.data)).catch(() => {
-          AsyncStorage.removeItem('token');
+          storage.remove('token');
         });
       }
       setLoading(false);
@@ -46,7 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const res = await client.post('/auth/login', { email, password });
       const { access_token, user: userData } = res.data;
-      await AsyncStorage.setItem('token', access_token);
+      await storage.set('token', access_token);
       setToken(access_token);
       setUser(userData);
     } catch (e: any) {
@@ -72,7 +80,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = async () => {
-    await AsyncStorage.removeItem('token');
+    await storage.remove('token');
     setToken(null);
     setUser(null);
   };

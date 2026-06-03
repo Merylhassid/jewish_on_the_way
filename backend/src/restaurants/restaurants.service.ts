@@ -105,7 +105,7 @@ export class RestaurantsService {
         idx++;
       }
 
-      sql += ' ORDER BY "distanceMeters" ASC';
+      sql += ' ORDER BY "distanceMeters" ASC LIMIT 50';
       return this.restaurantsRepo.query(sql, params);
     }
 
@@ -127,6 +127,7 @@ export class RestaurantsService {
         location: true,
       },
       order: { name: 'ASC' },
+      take: 50,
     });
 
     if (q) {
@@ -332,8 +333,8 @@ export class RestaurantsService {
   // Import kosher restaurants from Google Places API for all destinations
   async importKosherRestaurantsFromGoogle() {
     const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-    console.log('🔍 Starting restaurant import...');
-    console.log('API Key present:', !!apiKey);
+    this.logger.log('🔍 Starting restaurant import...');
+    this.logger.log('API Key present:', !!apiKey);
 
     if (!apiKey || apiKey === 'your_google_places_api_key') {
       throw new Error(
@@ -342,7 +343,7 @@ export class RestaurantsService {
     }
 
     const destinations = await this.destinationsRepo.find();
-    console.log(
+    this.logger.log(
       `📍 Found ${destinations.length} destinations to process:\n`,
       destinations.map((d) => d.name).join(', '),
     );
@@ -353,10 +354,10 @@ export class RestaurantsService {
 
     for (const destination of destinations) {
       try {
-        console.log(`\n⏳ Processing: ${destination.name}`);
+        this.logger.log(`\n⏳ Processing: ${destination.name}`);
 
         const query = `kosher restaurant in ${destination.name}`;
-        console.log(`   Query: "${query}"`);
+        this.logger.log(`   Query: "${query}"`);
 
         let pageToken: string | undefined;
         let pageNumber = 1;
@@ -371,11 +372,11 @@ export class RestaurantsService {
           const places = response.data.results || [];
 
           if (places.length === 0) {
-            console.log(`   ✓ Page ${pageNumber}: No more results`);
+            this.logger.log(`   ✓ Page ${pageNumber}: No more results`);
             break;
           }
 
-          console.log(
+          this.logger.log(
             `   ✓ Page ${pageNumber}: Found ${places.length} results`,
           );
           foundOnThisDestination += places.length;
@@ -399,7 +400,7 @@ export class RestaurantsService {
               placeDetails,
             );
 
-            console.log(
+            this.logger.log(
               `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
             );
 
@@ -423,7 +424,7 @@ export class RestaurantsService {
               totalImported++;
               destinationStats[destination.name]++;
 
-              console.log(
+              this.logger.log(
                 `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
               );
             } else {
@@ -451,7 +452,7 @@ export class RestaurantsService {
               totalImported++;
               destinationStats[destination.name]++;
 
-              console.log(
+              this.logger.log(
                 `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
               );
             }
@@ -459,7 +460,7 @@ export class RestaurantsService {
 
           // Check if there's a next page token
           if (!response.data.next_page_token) {
-            console.log(`   ✓ No more pages available`);
+            this.logger.log(`   ✓ No more pages available`);
             break;
           }
 
@@ -470,16 +471,16 @@ export class RestaurantsService {
           await new Promise((resolve) => setTimeout(resolve, 2000));
         }
 
-        console.log(
+        this.logger.log(
           `   Summary for ${destination.name}: ${destinationStats[destination.name]} restaurants processed (${foundOnThisDestination} total found)`,
         );
       } catch (error) {
-        console.error(
+        this.logger.error(
           `\n❌ Error importing for ${destination.name}:`,
           error.message,
         );
         if (error.response?.data) {
-          console.error(`   API Error: ${JSON.stringify(error.response.data)}`);
+          this.logger.error(`   API Error: ${JSON.stringify(error.response.data)}`);
         }
         // Continue with next destination
       }
@@ -505,7 +506,7 @@ export class RestaurantsService {
     const restaurants = await this.restaurantsRepo.find();
     let updatedCount = 0;
 
-    console.log(
+    this.logger.log(
       `🔄 Starting reclassification for ${restaurants.length} existing restaurants...`,
     );
 
@@ -537,11 +538,11 @@ export class RestaurantsService {
           updatedCount++;
         }
 
-        console.log(
+        this.logger.log(
           `      🔄 Reclassified "${restaurant.name}": ${newType || 'unknown'} (confidence: ${newConfidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
         );
       } catch (error) {
-        console.error(
+        this.logger.error(
           `      ❌ Failed to reclassify "${restaurant.name}":`,
           error.message,
         );
@@ -565,7 +566,7 @@ export class RestaurantsService {
       const response = await axios.get(url);
       return response.data.result || {};
     } catch (error) {
-      console.warn(
+      this.logger.warn(
         `   ⚠️  Failed to get details for place ${placeId}:`,
         error.message,
       );
@@ -846,8 +847,8 @@ export class RestaurantsService {
   // Batch import restaurants for specified destinations
   async importBatch(destinationIds: number[], limit: number) {
     const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-    console.log('🔍 Starting batch restaurant import...');
-    console.log('API Key present:', !!apiKey);
+    this.logger.log('🔍 Starting batch restaurant import...');
+    this.logger.log('API Key present:', !!apiKey);
 
     if (!apiKey || apiKey === 'your_google_places_api_key') {
       throw new Error(
@@ -863,7 +864,7 @@ export class RestaurantsService {
       .take(limit)
       .getMany();
 
-    console.log(
+    this.logger.log(
       `📍 Processing ${destinations.length} destinations:`,
       destinations.map((d) => `${d.name} (${d.city})`).join(', '),
     );
@@ -880,12 +881,12 @@ export class RestaurantsService {
 
     for (const destination of destinations) {
       try {
-        console.log(
+        this.logger.log(
           `\n⏳ Processing: ${destination.name} (${destination.city})`,
         );
 
         const query = `kosher restaurant in ${destination.name}`;
-        console.log(`   Query: "${query}"`);
+        this.logger.log(`   Query: "${query}"`);
 
         let pageToken: string | undefined;
         let pageNumber = 1;
@@ -900,11 +901,11 @@ export class RestaurantsService {
           const places = response.data.results || [];
 
           if (places.length === 0) {
-            console.log(`   ✓ Page ${pageNumber}: No more results`);
+            this.logger.log(`   ✓ Page ${pageNumber}: No more results`);
             break;
           }
 
-          console.log(
+          this.logger.log(
             `   ✓ Page ${pageNumber}: Found ${places.length} results`,
           );
           foundOnThisDestination += places.length;
@@ -928,7 +929,7 @@ export class RestaurantsService {
               placeDetails,
             );
 
-            console.log(
+            this.logger.log(
               `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
             );
 
@@ -952,7 +953,7 @@ export class RestaurantsService {
               totalImported++;
               importedOnThisDestination++;
 
-              console.log(
+              this.logger.log(
                 `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
               );
             } else {
@@ -980,7 +981,7 @@ export class RestaurantsService {
               totalImported++;
               importedOnThisDestination++;
 
-              console.log(
+              this.logger.log(
                 `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
               );
             }
@@ -988,7 +989,7 @@ export class RestaurantsService {
 
           // Check if there's a next page token
           if (!response.data.next_page_token) {
-            console.log(`   ✓ No more pages available`);
+            this.logger.log(`   ✓ No more pages available`);
             break;
           }
 
@@ -999,7 +1000,7 @@ export class RestaurantsService {
           await new Promise((resolve) => setTimeout(resolve, 2000));
         }
 
-        console.log(
+        this.logger.log(
           `   Summary for ${destination.name}: ${importedOnThisDestination} restaurants processed (${foundOnThisDestination} total found)`,
         );
 
@@ -1013,12 +1014,12 @@ export class RestaurantsService {
         // Add delay between destinations (5 seconds)
         await new Promise((resolve) => setTimeout(resolve, 5000));
       } catch (error) {
-        console.error(
+        this.logger.error(
           `\n❌ Error importing for ${destination.name}:`,
           error.message,
         );
         if (error.response?.data) {
-          console.error(`   API Error: ${JSON.stringify(error.response.data)}`);
+          this.logger.error(`   API Error: ${JSON.stringify(error.response.data)}`);
         }
         results.push({
           destination: destination.name,

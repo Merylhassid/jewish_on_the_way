@@ -2,6 +2,7 @@ import {
   ConnectedSocket,
   MessageBody,
   OnGatewayConnection,
+  OnGatewayDisconnect,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
@@ -31,7 +32,7 @@ const CORS_ORIGIN =
   cors: { origin: CORS_ORIGIN },
   namespace: '/hosting-chat',
 })
-export class HostingChatGateway implements OnGatewayConnection {
+export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;
 
@@ -61,6 +62,11 @@ export class HostingChatGateway implements OnGatewayConnection {
     } catch {
       client.disconnect();
     }
+  }
+
+  handleDisconnect(client: Socket) {
+    const userId = (client as any).userId;
+    if (userId) this.msgRateMap.delete(userId);
   }
 
   // Join a hosting request room — req 7.4.4

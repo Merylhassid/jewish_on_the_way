@@ -1,7 +1,8 @@
 import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
 import {
-  ActivityIndicator, ScrollView, StyleSheet, Text, View,
+  ActivityIndicator, ScrollView, StyleSheet, Text, TextInput,
+  TouchableOpacity, View, Keyboard,
 } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { C } from '@/constants/theme';
@@ -43,15 +44,19 @@ const LABEL: Record<string, string> = {
 };
 
 export default function ShabbatScreen() {
-  const [data,    setData]    = useState<ShabbatData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error,   setError]   = useState('');
+  const [data,        setData]        = useState<ShabbatData | null>(null);
+  const [loading,     setLoading]     = useState(true);
+  const [error,       setError]       = useState('');
+  const [gpsDenied,   setGpsDenied]   = useState(false);
+  const [cityInput,   setCityInput]   = useState('');
+  const [cityLoading, setCityLoading] = useState(false);
+  const [cityError,   setCityError]   = useState('');
 
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
-        setError('נדרשת הרשאת מיקום');
+        setGpsDenied(true);
         setLoading(false);
         return;
       }
@@ -70,10 +75,65 @@ export default function ShabbatScreen() {
     })();
   }, []);
 
+  const fetchByCity = async () => {
+    const city = cityInput.trim();
+    if (!city) return;
+    Keyboard.dismiss();
+    setCityLoading(true);
+    setCityError('');
+    try {
+      const url = `https://www.hebcal.com/shabbat?cfg=json&city=${encodeURIComponent(city)}&M=on&b=18`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('not found');
+      const json = await res.json();
+      if (!json?.items?.length) throw new Error('no data');
+      setData(json);
+      setGpsDenied(false);
+    } catch {
+      setCityError('לא נמצאה עיר — נסה שם אחר');
+    } finally {
+      setCityLoading(false);
+    }
+  };
+
   if (loading) return (
     <View style={s.center}>
       <ActivityIndicator size="large" color={C.gold} />
       <Text style={s.subText}>מחשב זמנים לפי מיקומך…</Text>
+    </View>
+  );
+
+  if (gpsDenied) return (
+    <View style={s.center}>
+      <MaterialIcons name="location-off" size={48} color={C.textMuted} />
+      <Text style={s.deniedTitle}>גישה למיקום נדחתה</Text>
+      <Text style={s.subText}>הזן שם עיר לקבלת זמני שבת</Text>
+
+      <View style={s.cityRow}>
+        <TextInput
+          style={s.cityInput}
+          placeholder="לדוגמה: Jerusalem, תל אביב"
+          placeholderTextColor={C.textMuted}
+          value={cityInput}
+          onChangeText={setCityInput}
+          onSubmitEditing={fetchByCity}
+          returnKeyType="search"
+          autoCapitalize="words"
+        />
+        <TouchableOpacity
+          style={[s.cityBtn, (!cityInput.trim() || cityLoading) && s.cityBtnDisabled]}
+          onPress={fetchByCity}
+          disabled={!cityInput.trim() || cityLoading}
+          activeOpacity={0.8}
+        >
+          {cityLoading
+            ? <ActivityIndicator size="small" color="#fff" />
+            : <MaterialIcons name="search" size={22} color="#fff" />
+          }
+        </TouchableOpacity>
+      </View>
+
+      {cityError ? <Text style={s.cityError}>{cityError}</Text> : null}
     </View>
   );
 
@@ -154,8 +214,25 @@ export default function ShabbatScreen() {
 
 const s = StyleSheet.create({
   root:   { flex: 1, backgroundColor: C.cream },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 14 },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 14, paddingHorizontal: 28 },
   subText:{ fontSize: 14, color: C.textMuted, textAlign: 'center' },
+
+  deniedTitle: { fontSize: 18, fontWeight: '700', color: C.textPrimary, textAlign: 'center' },
+
+  cityRow: { flexDirection: 'row', gap: 10, width: '100%', marginTop: 6 },
+  cityInput: {
+    flex: 1, backgroundColor: C.card, borderRadius: 12,
+    paddingHorizontal: 16, paddingVertical: 12,
+    fontSize: 15, color: C.textPrimary,
+    borderWidth: 1, borderColor: 'rgba(10,35,66,0.12)',
+    textAlign: 'right',
+  },
+  cityBtn: {
+    backgroundColor: C.navy, borderRadius: 12,
+    width: 48, alignItems: 'center', justifyContent: 'center',
+  },
+  cityBtnDisabled: { opacity: 0.45 },
+  cityError: { fontSize: 13, color: '#DC2626', textAlign: 'center' },
 
   header: {
     flexDirection: 'row', alignItems: 'center', gap: 14,

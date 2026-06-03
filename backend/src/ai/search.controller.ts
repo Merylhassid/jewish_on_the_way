@@ -16,6 +16,7 @@ import { Repository } from 'typeorm';
 import { ClassifierService } from './classifier.service';
 import { DenominationClassifierService } from './denomination-classifier.service';
 import { Destination } from '../destination.entity';
+import { SearchFeedback } from './search-feedback.entity';
 
 class SearchDto {
   @IsString()
@@ -391,6 +392,8 @@ export class SearchController {
     private readonly denomClassifier: DenominationClassifierService,
     @InjectRepository(Destination)
     private readonly destRepo: Repository<Destination>,
+    @InjectRepository(SearchFeedback)
+    private readonly feedbackRepo: Repository<SearchFeedback>,
   ) {}
 
   @Get('classify')
@@ -442,6 +445,7 @@ export class SearchController {
 
     // ── שלב 4: חיפוש עיר ──────────────────────────────
     if (destinationId) {
+      void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
       return {
         ...result,
         route: this.getRoute(result.category, destinationId, denomination, restaurantType, restaurantKashrut),
@@ -464,6 +468,7 @@ export class SearchController {
       if (countryEng) {
         const parentDest = await this.findParentDestinationByCountry(countryEng);
         if (parentDest) {
+          void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
           const route = this.getCountryRoute(result.category, parentDest.id, restaurantType, restaurantKashrut);
           return {
             ...result,
@@ -483,6 +488,7 @@ export class SearchController {
       }
     }
 
+    if (foundDest) void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
     return {
       ...result,
       route:         this.getRoute(result.category, foundDest?.id, denomination, restaurantType, restaurantKashrut),

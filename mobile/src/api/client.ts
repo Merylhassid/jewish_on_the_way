@@ -1,5 +1,10 @@
 import axios from 'axios';
+import { Platform } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const getToken  = () => Platform.OS === 'web' ? AsyncStorage.getItem('token')    : SecureStore.getItemAsync('token');
+const clearToken = () => Platform.OS === 'web' ? AsyncStorage.removeItem('token') : SecureStore.deleteItemAsync('token');
 
 // Production server
 const PRODUCTION_URL = 'http://49.12.189.108:3000';
@@ -17,7 +22,7 @@ const client = axios.create({
 
 // Attach JWT token to every request
 client.interceptors.request.use(async (config) => {
-  const token = await AsyncStorage.getItem('token');
+  const token = await getToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -29,7 +34,7 @@ client.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
-      await AsyncStorage.removeItem('token');
+      await clearToken();
       // Trigger re-render by clearing storage — AuthProvider will detect and redirect to login
     }
     return Promise.reject(error);

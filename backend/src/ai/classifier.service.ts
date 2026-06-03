@@ -7,7 +7,7 @@
  * כלומר: ה"מוח" נשאר אותו דבר, רק השפה השתנתה.
  */
 
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit, ServiceUnavailableException } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -38,18 +38,22 @@ const BIGRAM_SEPARATOR = '__';
 
 @Injectable()
 export class ClassifierService implements OnModuleInit {
-  private model: ModelData;
+  private readonly logger = new Logger(ClassifierService.name);
+  private model: ModelData | null = null;
 
-  // ── טעינת המודל בעת הפעלת השרת ───────────────────────────
-  // OnModuleInit = פועל אוטומטית כשה-module עולה
   onModuleInit() {
     const modelPath = path.join(__dirname, 'model.json');
-    const raw = fs.readFileSync(modelPath, 'utf-8');
-    this.model = JSON.parse(raw);
-    console.log(
-      `🧠 AI Classifier loaded — vocab: ${Object.keys(this.model.vocab).length} words, ` +
-      `categories: ${this.model.classes.join(', ')}`
-    );
+    try {
+      const raw = fs.readFileSync(modelPath, 'utf-8');
+      this.model = JSON.parse(raw);
+      this.logger.log(
+        `AI Classifier loaded — vocab: ${Object.keys(this.model!.vocab).length} words, ` +
+        `categories: ${this.model!.classes.join(', ')}`
+      );
+    } catch (e) {
+      this.logger.error(`Failed to load AI classifier model from ${modelPath}: ${(e as Error).message}`);
+      this.model = null;
+    }
   }
 
   // ── Tokenization ──────────────────────────────────────────
@@ -74,7 +78,7 @@ export class ClassifierService implements OnModuleInit {
   // ── TF-IDF Transform ──────────────────────────────────────
   // הופכת משפט לוקטור מספרי (TF × IDF לכל מילה)
   private transform(text: string): number[] {
-    const { vocab, idf } = this.model;
+    const { vocab, idf } = this.model!;
     const vector = new Array(Object.keys(vocab).length).fill(0);
     const features = this.generateFeatures(text);
 
@@ -99,6 +103,7 @@ export class ClassifierService implements OnModuleInit {
   // ── Naive Bayes Predict ───────────────────────────────────
   // בוחר את הקטגוריה עם הציון הגבוה ביותר
   classify(text: string): ClassifyResult {
+    if (!this.model) throw new ServiceUnavailableException('AI model not loaded');
     const { classes, class_probs, feature_probs } = this.model;
     const vector = this.transform(text);
 

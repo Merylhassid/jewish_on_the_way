@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Post, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { FavoritesService } from './favorites.service';
 
@@ -10,7 +10,7 @@ export class FavoritesController {
   // GET /favorites — all saved items for current user
   @Get()
   getAll(@Request() req: any) {
-    return this.service.getAll(req.user.userId);
+    return this.service.getAll(req.user.sub);
   }
 
   // GET /favorites/:type/:id — check if saved
@@ -20,7 +20,7 @@ export class FavoritesController {
     @Param('type') type: string,
     @Param('id', ParseIntPipe) id: number,
   ) {
-    return this.service.isSaved(req.user.userId, type, id);
+    return this.service.isSaved(req.user.sub, type, id);
   }
 
   // POST /favorites/:type/:id — toggle save/unsave
@@ -30,6 +30,6 @@ export class FavoritesController {
     @Param('type') type: string,
     @Param('id', ParseIntPipe) id: number,
   ) {
-    return this.service.toggle(req.user.userId, type, id);
+    return this.service.toggle(req.user.sub, type, id);
   }
 }

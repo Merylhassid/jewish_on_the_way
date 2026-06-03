@@ -29,6 +29,7 @@ export class SynagoguesService {
         where: { destination: { id: destinationId } },
         select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
         order: { name: 'ASC' },
+        take: 50,
       });
     }
 
@@ -39,6 +40,7 @@ export class SynagoguesService {
         where: { destination: { id: destinationId } },
         select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
         order: { name: 'ASC' },
+        take: 50,
       });
     }
 
@@ -50,6 +52,7 @@ export class SynagoguesService {
       },
       select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
       order: { name: 'ASC' },
+      take: 50,
     });
   }
 

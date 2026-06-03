@@ -4,6 +4,7 @@ import {
   Body,
   Controller,
   Get,
+  Logger,
   Param,
   ParseIntPipe,
   Post,
@@ -32,6 +33,8 @@ class RecordFeedbackDto {
 
 @Controller('restaurants')
 export class RestaurantsController {
+  private readonly logger = new Logger(RestaurantsController.name);
+
   constructor(
     private readonly restaurantsService: RestaurantsService,
     private readonly classifier: SearchClassifierService,
@@ -85,7 +88,9 @@ export class RestaurantsController {
       detectedKashrut: kashrut ?? null,
       detectedKeyword: keyword ?? null,
     });
-    void this.feedbackRepo.save(feedback);
+    void this.feedbackRepo.save(feedback).catch(err =>
+      this.logger.error('Failed to save search feedback', err),
+    );
 
     const filters: RestaurantFilters = {
       q: keyword,
