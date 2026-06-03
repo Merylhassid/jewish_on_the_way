@@ -11,7 +11,8 @@
       "Bash(curl -s \"https://kosher-traveling.co.il/food/paris/il-conte/\")",
       "WebFetch(domain:www.alloj.com)",
       "WebFetch(domain:www.kiryatono.muni.il)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npm run *)"
     ]
   }
 }

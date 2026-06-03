@@ -28,7 +28,7 @@ export class ReviewsController {
     @Param('id', ParseIntPipe) id: number,
     @Body() body: { stars: number; comment?: string },
   ) {
-    return this.service.upsertReview(req.user.userId, type, id, body.stars, body.comment);
+    return this.service.upsertReview(req.user.sub, type, id, body.stars, body.comment);
   }
 
   // DELETE /reviews/:type/:id  → remove own review
@@ -38,7 +38,7 @@ export class ReviewsController {
     @Param('type') type: string,
     @Param('id', ParseIntPipe) id: number,
   ) {
-    return this.service.deleteReview(req.user.userId, type, id);
+    return this.service.deleteReview(req.user.sub, type, id);
   }
 
   // POST /reviews/:type/:id/report  → report a place
@@ -49,7 +49,7 @@ export class ReviewsController {
     @Param('id', ParseIntPipe) id: number,
     @Body() body: { reportType: string; description?: string },
   ) {
-    return this.service.createReport(req.user.userId, type, id, body.reportType, body.description);
+    return this.service.createReport(req.user.sub, type, id, body.reportType, body.description);
   }
 
   // POST /reviews/requests  → suggest a new place
@@ -70,7 +70,7 @@ export class ReviewsController {
       denomination?: string;
     },
   ) {
-    return this.service.createRequest(req.user.userId, body);
+    return this.service.createRequest(req.user.sub, body);
   }
 
   // ── Admin endpoints ────────────────────────────────────────────────────────

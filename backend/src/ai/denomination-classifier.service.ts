@@ -9,7 +9,7 @@
  * קטגוריות: ashkenaz | sfarad | chabad | teimanim
  */
 
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit, ServiceUnavailableException } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -56,12 +56,19 @@ const MIN_CONFIDENCE = 0.45;
 
 @Injectable()
 export class DenominationClassifierService implements OnModuleInit {
-  private model: DenominationModelData;
+  private readonly logger = new Logger(DenominationClassifierService.name);
+  private model: DenominationModelData | null = null;
 
   onModuleInit() {
     const modelPath = path.join(__dirname, 'denomination_model.json');
-    const raw = fs.readFileSync(modelPath, 'utf-8');
-    this.model = JSON.parse(raw);
+    try {
+      const raw = fs.readFileSync(modelPath, 'utf-8');
+      this.model = JSON.parse(raw);
+      this.logger.log('Denomination classifier loaded');
+    } catch (e) {
+      this.logger.error(`Failed to load denomination classifier model from ${modelPath}: ${(e as Error).message}`);
+      this.model = null;
+    }
   }
 
   // ── Tokenizer (עברית + אנגלית) ─────────────────────
@@ -80,8 +87,8 @@ export class DenominationClassifierService implements OnModuleInit {
     for (const w of words) tf[w] = (tf[w] ?? 0) + 1 / n;
 
     const vec: Record<string, number> = {};
-    for (const w of this.model.vocab) {
-      if (tf[w] !== undefined) vec[w] = tf[w] * this.model.idf[w];
+    for (const w of this.model!.vocab) {
+      if (tf[w] !== undefined) vec[w] = tf[w] * this.model!.idf[w];
     }
     return vec;
   }
@@ -103,14 +110,15 @@ export class DenominationClassifierService implements OnModuleInit {
 
   // ── classify ───────────────────────────────────────
   classify(text: string): DenominationResult {
+    if (!this.model) throw new ServiceUnavailableException('AI model not loaded');
     const vec    = this.tfidfTransform(text);
     const scores: Record<string, number> = {};
 
-    for (const cls of this.model.classes) {
-      let score = this.model.class_probs[cls];
+    for (const cls of this.model!.classes) {
+      let score = this.model!.class_probs[cls];
       for (const [word, tfidf] of Object.entries(vec)) {
-        if (this.model.feature_probs[cls][word] !== undefined) {
-          score += tfidf * this.model.feature_probs[cls][word];
+        if (this.model!.feature_probs[cls][word] !== undefined) {
+          score += tfidf * this.model!.feature_probs[cls][word];
         }
       }
       scores[cls] = score;

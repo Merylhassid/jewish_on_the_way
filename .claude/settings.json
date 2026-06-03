@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s *)",
+      "Bash(until curl -sf *)",
+      "Bash(node --check *)"
+    ]
+  }
+}

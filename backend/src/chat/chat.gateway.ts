@@ -73,6 +73,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   handleDisconnect(client: Socket) {
+    const userId = (client as any).userId;
+    if (userId) this.msgRateMap.delete(userId);
     this.logger.log(`Client disconnected: ${client.id}`);
   }
 

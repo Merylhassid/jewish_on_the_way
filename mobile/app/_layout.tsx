@@ -3,16 +3,34 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 import '@/src/i18n';
+import { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+import NetInfo from '@react-native-community/netinfo';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { AuthProvider } from '@/src/store/auth';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setIsOffline(!state.isConnected);
+    });
+    return unsubscribe;
+  }, []);
 
   return (
     <AuthProvider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        {isOffline && (
+          <View style={{ backgroundColor: '#e74c3c', padding: 8, alignItems: 'center' }}>
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>
+              No internet connection
+            </Text>
+          </View>
+        )}
         <Stack>
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

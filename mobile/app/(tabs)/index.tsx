@@ -7,6 +7,7 @@ import {
   FlatList,
   Platform,
   Pressable,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -70,8 +71,9 @@ export default function DestinationsScreen() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [allDestinations, setAllDestinations] = useState<Destination[]>([]);
   const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [loading,    setLoading]    = useState(true);
+  const [error,      setError]      = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   // ── חיפוש חכם ──────────────────────────────────────────────
   const [smartText, setSmartText] = useState('');
@@ -96,6 +98,13 @@ export default function DestinationsScreen() {
         setGpsReady(true);
       } catch { /* silent */ }
     })();
+  }, []);
+
+  // cleanup debounce timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
   }, []);
 
   const onSmartTextChange = (val: string) => {
@@ -156,6 +165,12 @@ export default function DestinationsScreen() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await fetchDestinations(search || undefined);
+    setRefreshing(false);
   };
 
   // Initial fetch + load recent
@@ -279,6 +294,9 @@ export default function DestinationsScreen() {
           keyExtractor={(item) => String(item.id)}
           contentContainerStyle={s.list}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.gold} colors={[C.navy]} />
+          }
           renderItem={({ item }) => (
             <DestinationCard
               item={item}

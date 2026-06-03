@@ -1,5 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { ThrottlerGuard } from '@nestjs/throttler';
 import request from 'supertest';
 import { AppModule } from '../src/app.module';
 
@@ -7,6 +8,9 @@ describe('Auth Register (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
+    // Disable rate-limiting so e2e tests don't hit the 5-req/60s auth limit
+    jest.spyOn(ThrottlerGuard.prototype, 'canActivate').mockResolvedValue(true);
+
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -33,7 +37,7 @@ describe('Auth Register (e2e)', () => {
       .post('/auth/register')
       .send({
         email: 'badmail',
-        password: '123456',
+        password: 'Test1234',
         firstName: 'Meryl',
         lastName: 'Hassid',
       })
@@ -57,7 +61,7 @@ describe('Auth Register (e2e)', () => {
       .post('/auth/register')
       .send({
         email: 'test_name@mail.com',
-        password: '123456',
+        password: 'Test1234',
         firstName: 'Mer1l',
         lastName: 'Hassid',
       })
@@ -71,7 +75,7 @@ describe('Auth Register (e2e)', () => {
       .post('/auth/register')
       .send({
         email,
-        password: '123456',
+        password: 'Test1234',
         firstName: 'Meryl',
         lastName: 'Hassid',
       })
@@ -90,7 +94,7 @@ describe('Auth Register (e2e)', () => {
       .post('/auth/register')
       .send({
         email,
-        password: '123456',
+        password: 'Test1234',
         firstName: 'Meryl',
         lastName: 'Hassid',
       })
@@ -100,7 +104,7 @@ describe('Auth Register (e2e)', () => {
       .post('/auth/register')
       .send({
         email,
-        password: '123456',
+        password: 'Test1234',
         firstName: 'Meryl',
         lastName: 'Hassid',
       })
