@@ -201,27 +201,48 @@ export class RestaurantsService {
 
   // req 4.4 — single restaurant details
   async findOne(id: number) {
-    const restaurant = await this.restaurantsRepo
-      .createQueryBuilder('r')
-      .select([
-        'r.id',
-        'r.name',
-        'r.restaurantType',
-        'r.kashrutLevel',
-        'r.address',
-        'r.phone',
-        'r.category',
-        'r.openingHours',
-        'r.lat',
-        'r.lng',
-        'r.createdAt',
-      ])
-      .leftJoinAndSelect('r.destination', 'destination')
-      .where('r.id = :id', { id })
-      .getOne();
-
-    if (!restaurant) throw new NotFoundException(`Restaurant #${id} not found`);
-    return restaurant;
+    type Row = {
+      id: number;
+      name: string;
+      restaurantType: string | null;
+      kashrutLevel: string;
+      address: string | null;
+      phone: string | null;
+      openingHours: string | null;
+      createdAt: string;
+      destId: number | null;
+      city: string | null;
+      country: string | null;
+    };
+    const rows = (await this.restaurantsRepo.query(
+      `SELECT r.id, r.name,
+        r.restaurant_type  AS "restaurantType",
+        r.kashrut_level    AS "kashrutLevel",
+        r.address, r.phone,
+        r.opening_hours    AS "openingHours",
+        r.created_at       AS "createdAt",
+        d.id               AS "destId",
+        d.city, d.country
+       FROM restaurants r
+       LEFT JOIN destinations d ON d.id = r."destinationId"
+       WHERE r.id = $1`,
+      [id],
+    )) as Row[];
+    if (!rows.length) throw new NotFoundException(`Restaurant #${id} not found`);
+    const r = rows[0];
+    return {
+      id: r.id,
+      name: r.name,
+      restaurantType: r.restaurantType,
+      kashrutLevel: r.kashrutLevel,
+      address: r.address,
+      phone: r.phone,
+      openingHours: r.openingHours,
+      createdAt: r.createdAt,
+      destination: r.destId
+        ? { id: r.destId, city: r.city, country: r.country }
+        : null,
+    };
   }
 
   async findNearby(
