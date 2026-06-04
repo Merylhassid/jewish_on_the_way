@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Dimensions,
   FlatList,
   Platform,
   Pressable,
   RefreshControl,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -16,79 +18,55 @@ import {
 } from 'react-native';
 import { Image } from 'expo-image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Bookmark, ChevronRight, Clock, MapPin, Navigation, Search, Sparkles, X } from 'lucide-react-native';
+import { Bookmark, ChevronRight, Clock, Navigation, Search, Sparkles, Star, X } from 'lucide-react-native';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl } from '@/constants/theme';
 
-// ── Recent destinations storage ──────────────────────────────────────────────
-const RECENT_KEY = 'recent_destinations';
+const { width: W } = Dimensions.get('window');
+const CARD_W = (W - 52) / 2;   // two-column grid
+const HERO_H = W * 0.62;        // featured hero height
 
-async function addRecentDestination(dest: Destination) {
+const RECENT_KEY = 'recent_destinations';
+async function addRecent(dest: Dest) {
   try {
     const raw = await AsyncStorage.getItem(RECENT_KEY);
-    const list: Destination[] = raw ? JSON.parse(raw) : [];
-    const filtered = list.filter(d => d.id !== dest.id);
-    filtered.unshift(dest);
-    await AsyncStorage.setItem(RECENT_KEY, JSON.stringify(filtered.slice(0, 8)));
+    const list: Dest[] = raw ? JSON.parse(raw) : [];
+    await AsyncStorage.setItem(RECENT_KEY, JSON.stringify([dest, ...list.filter(d => d.id !== dest.id)].slice(0, 8)));
   } catch {}
 }
-async function loadRecentDestinations(): Promise<Destination[]> {
-  try {
-    const raw = await AsyncStorage.getItem(RECENT_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch { return []; }
+async function loadRecent(): Promise<Dest[]> {
+  try { const r = await AsyncStorage.getItem(RECENT_KEY); return r ? JSON.parse(r) : []; } catch { return []; }
 }
-async function removeRecentDestination(id: number) {
+async function removeRecent(id: number) {
   try {
     const raw = await AsyncStorage.getItem(RECENT_KEY);
-    const list: Destination[] = raw ? JSON.parse(raw) : [];
+    const list: Dest[] = raw ? JSON.parse(raw) : [];
     await AsyncStorage.setItem(RECENT_KEY, JSON.stringify(list.filter(d => d.id !== id)));
   } catch {}
 }
 
-interface Destination {
-  id: number;
-  name: string;
-  city: string;
-  country: string;
-  countryCode: string;
-  hasChildren?: boolean;
-  distanceMeters?: number;
+interface Dest {
+  id: number; name: string; city: string;
+  country: string; countryCode: string;
+  hasChildren?: boolean; distanceMeters?: number;
 }
 
-function formatDistance(meters: number): string {
-  const km = meters / 1000;
-  if (km < 1) return `${Math.round(meters)}m`;
-  if (km < 100) return `${km.toFixed(1)}km`;
-  return `${Math.round(km).toLocaleString()}km`;
-}
+const fmt = (m: number) => m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixed(1)}km`;
 
-function navigate(item: Destination) {
-  const path = item.hasChildren
-    ? `/destination/${item.id}/subdestinations`
-    : `/destination/${item.id}`;
-  router.push(path as any);
-}
+const FEATURED = ['Tel Aviv', 'Paris', 'New York', 'London', 'Dubai', 'Barcelona'];
 
-// ── Main screen ───────────────────────────────────────────────────────────────
-export default function DestinationsScreen() {
-  const [destinations, setDestinations] = useState<Destination[]>([]);
-  const [search, setSearch]             = useState('');
-  const [loading, setLoading]           = useState(true);
-  const [error, setError]               = useState(false);
-  const [refreshing, setRefreshing]     = useState(false);
-  const [recentDests, setRecentDests]   = useState<Destination[]>([]);
-
-  // AI search
-  const [smartText, setSmartText] = useState('');
-  const [smartBusy, setSmartBusy] = useState(false);
+export default function HomeScreen() {
+  const [dests, setDests]         = useState<Dest[]>([]);
+  const [search, setSearch]       = useState('');
+  const [loading, setLoading]     = useState(true);
+  const [refreshing, setRef]      = useState(false);
+  const [recent, setRecent]       = useState<Dest[]>([]);
   const [aiMode, setAiMode]       = useState(false);
-  const [liveChip, setLiveChip]   = useState<{ category: string; emoji: string; denomination: string | null; denomEmoji: string; denomLabel: string } | null>(null);
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // GPS
-  const [userCoords, setUserCoords] = useState<{ lat: number; lng: number } | null>(null);
-  const [gpsReady, setGpsReady]     = useState(false);
+  const [aiText, setAiText]       = useState('');
+  const [aiBusy, setAiBusy]       = useState(false);
+  const [chip, setChip]           = useState<any>(null);
+  const [gps, setGps]             = useState<{ lat: number; lng: number } | null>(null);
+  const debRef = useRef<any>(null);
 
   useEffect(() => {
     (async () => {
@@ -96,108 +74,96 @@ export default function DestinationsScreen() {
       if (status !== 'granted') return;
       try {
         const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
-        setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        setGpsReady(true);
+        setGps({ lat: pos.coords.latitude, lng: pos.coords.longitude });
       } catch {}
     })();
   }, []);
 
-  useEffect(() => () => { if (debounceRef.current) clearTimeout(debounceRef.current); }, []);
+  const fetchDests = async (q?: string) => {
+    try {
+      const params: any = q ? { q } : gps ? { lat: gps.lat, lng: gps.lng } : {};
+      const res = await client.get('/destinations', { params });
+      setDests(res.data);
+    } catch {} finally { setLoading(false); }
+  };
 
-  const onSmartTextChange = (val: string) => {
-    setSmartText(val);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    if (!val.trim()) { setLiveChip(null); return; }
-    debounceRef.current = setTimeout(async () => {
-      try {
-        const res = await client.get('/search/classify', { params: { text: val.trim() } });
-        setLiveChip(res.data.category ? res.data : null);
-      } catch {}
+  useEffect(() => { fetchDests(); loadRecent().then(setRecent); }, []);
+  useEffect(() => () => { if (debRef.current) clearTimeout(debRef.current); }, []);
+
+  const onAiChange = (v: string) => {
+    setAiText(v);
+    if (debRef.current) clearTimeout(debRef.current);
+    if (!v.trim()) { setChip(null); return; }
+    debRef.current = setTimeout(async () => {
+      try { const r = await client.get('/search/classify', { params: { text: v.trim() } }); setChip(r.data.category ? r.data : null); } catch {}
     }, 400);
   };
 
-  const handleSmartSearch = async () => {
-    const text = smartText.trim();
-    if (!text) return;
-    setLiveChip(null);
+  const doAiSearch = async () => {
+    const text = aiText.trim(); if (!text) return;
+    setChip(null);
     try {
-      setSmartBusy(true);
-      const body: Record<string, any> = { text };
-      if (userCoords) { body.lat = userCoords.lat; body.lng = userCoords.lng; }
+      setAiBusy(true);
+      const body: any = { text };
+      if (gps) { body.lat = gps.lat; body.lng = gps.lng; }
       const res = await client.post('/search', body);
-      const { route, category, emoji, detectedCity, error: err } = res.data;
-      if (err === 'low_confidence') {
-        Alert.alert('Not sure what you mean', 'Try writing: "kosher restaurant in Tel Aviv"');
-        return;
-      }
-      if (!detectedCity) {
-        Alert.alert(`${emoji} Found: ${category}`, 'No city detected. Try: "kosher restaurant in Tel Aviv"');
-        return;
-      }
-      const cityParam = `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}`;
-      router.push((route + cityParam) as any);
-    } catch {
-      Alert.alert('Error', 'Search is unavailable, try again');
-    } finally {
-      setSmartBusy(false);
-    }
+      const { route, detectedCity, error: e } = res.data;
+      if (e === 'low_confidence') { Alert.alert('Not sure', 'Try: "kosher restaurant in Tel Aviv"'); return; }
+      if (!detectedCity) { Alert.alert('No city detected', 'Try: "kosher restaurant in Tel Aviv"'); return; }
+      router.push((route + `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}`) as any);
+    } catch { Alert.alert('Error', 'Try again'); } finally { setAiBusy(false); }
   };
 
-  const fetchDestinations = async (q?: string) => {
-    try {
-      setError(false);
-      const params: any = {};
-      if (q) params.q = q;
-      if (userCoords && !q) { params.lat = userCoords.lat; params.lng = userCoords.lng; }
-      const res = await client.get('/destinations', { params });
-      setDestinations(res.data);
-    } catch {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
+  const go = (item: Dest) => {
+    addRecent(item);
+    setRecent(prev => [item, ...prev.filter(d => d.id !== item.id)].slice(0, 8));
+    router.push((item.hasChildren ? `/destination/${item.id}/subdestinations` : `/destination/${item.id}`) as any);
   };
 
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await fetchDestinations(search || undefined);
-    setRefreshing(false);
-  };
+  // featured = dests filtered to known cities, or first 6
+  const featured = dests.filter(d => FEATURED.some(f => d.city.toLowerCase().includes(f.toLowerCase()))).slice(0, 6);
+  const hero = featured[0] || dests[0];
 
-  useEffect(() => {
-    fetchDestinations();
-    loadRecentDestinations().then(setRecentDests);
-  }, []);
-
-  const handleDestPress = (item: Destination) => {
-    addRecentDestination(item);
-    setRecentDests(prev => [item, ...prev.filter(d => d.id !== item.id)].slice(0, 8));
-    navigate(item);
-  };
-
-  // ── Render ────────────────────────────────────────────────────────────────
-
-  const ListHeader = (
+  const Header = (
     <View>
-      {/* ── Recents ── */}
-      {recentDests.length > 0 && !search && !aiMode && (
-        <View style={s.section}>
-          <Text style={s.sectionLabel}>RECENTLY VISITED</Text>
+      {/* ── Hero card ── */}
+      {!search && !aiMode && hero && (
+        <Pressable style={s.hero} onPress={() => go(hero)}>
+          <Image source={{ uri: getDestinationImageUrl(hero.city, hero.countryCode) }}
+            style={StyleSheet.absoluteFillObject} contentFit="cover" transition={600} />
+          <View style={s.heroOverlay} />
+          <View style={s.heroContent}>
+            <View style={s.heroTopRow}>
+              <View style={s.featuredPill}>
+                <Star size={10} color={C.gold} strokeWidth={2.5} fill={C.gold} />
+                <Text style={s.featuredText}>Featured</Text>
+              </View>
+            </View>
+            <Text style={s.heroCity}>{hero.city}</Text>
+            <Text style={s.heroCountry}>{hero.country}</Text>
+            <View style={s.heroExplore}>
+              <Text style={s.heroExploreText}>Explore</Text>
+              <ChevronRight size={14} color={C.gold} strokeWidth={2.5} />
+            </View>
+          </View>
+        </Pressable>
+      )}
+
+      {/* ── Recent ── */}
+      {recent.length > 0 && !search && !aiMode && (
+        <View style={{ marginBottom: 6 }}>
+          <View style={s.rowHeader}>
+            <Text style={s.rowLabel}>RECENTLY VISITED</Text>
+          </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
-            {recentDests.map(d => (
+            {recent.map(d => (
               <View key={d.id} style={s.recentChip}>
-                <Pressable style={s.recentChipInner} onPress={() => { navigate(d); }}>
-                  <Clock size={12} color={C.gold} strokeWidth={2.5} />
-                  <Text style={s.recentChipText} numberOfLines={1}>{d.city || d.name}</Text>
+                <Pressable style={s.recentInner} onPress={() => go(d)}>
+                  <Clock size={11} color={C.gold} strokeWidth={2.5} />
+                  <Text style={s.recentText} numberOfLines={1}>{d.city}</Text>
                 </Pressable>
-                <Pressable
-                  hitSlop={8}
-                  onPress={() => {
-                    removeRecentDestination(d.id);
-                    setRecentDests(prev => prev.filter(r => r.id !== d.id));
-                  }}
-                >
-                  <X size={13} color="#BBC3D4" strokeWidth={2.5} />
+                <Pressable hitSlop={8} onPress={() => { removeRecent(d.id); setRecent(p => p.filter(r => r.id !== d.id)); }}>
+                  <X size={12} color="#C4CBD8" strokeWidth={2.5} />
                 </Pressable>
               </View>
             ))}
@@ -205,15 +171,13 @@ export default function DestinationsScreen() {
         </View>
       )}
 
-      {/* ── Section label ── */}
-      <View style={s.sectionHeader}>
-        <Text style={s.sectionLabel}>
-          {search ? `RESULTS FOR "${search.toUpperCase()}"` : 'ALL DESTINATIONS'}
-        </Text>
-        {gpsReady && !search && (
-          <View style={s.gpsBadge}>
+      {/* ── Grid label ── */}
+      <View style={s.rowHeader}>
+        <Text style={s.rowLabel}>{search ? `"${search.toUpperCase()}"` : 'ALL DESTINATIONS'}</Text>
+        {gps && !search && (
+          <View style={s.gpsPill}>
             <Navigation size={10} color={C.gold} strokeWidth={2.5} />
-            <Text style={s.gpsBadgeText}>Near you</Text>
+            <Text style={s.gpsText}>Sorted by distance</Text>
           </View>
         )}
       </View>
@@ -222,150 +186,112 @@ export default function DestinationsScreen() {
 
   return (
     <View style={s.root}>
+      <StatusBar barStyle="dark-content" />
 
-      {/* ── Sticky top bar ── */}
-      <View style={s.topBar}>
-        <View style={s.topBarRow}>
-          <Text style={s.brand}>Jewish on the Way</Text>
-          <Pressable style={s.savedBtn} onPress={() => router.push('/saved' as any)}>
-            <Bookmark size={16} color={C.navy} strokeWidth={2} />
-          </Pressable>
+      {/* ── Top nav ── */}
+      <View style={s.nav}>
+        <View>
+          <Text style={s.navEyebrow}>JEWISH ON THE WAY</Text>
+          <Text style={s.navTitle}>Discover</Text>
         </View>
-        <Text style={s.heroTitle}>Discover Jewish Life{'\n'}Anywhere in the World</Text>
+        <Pressable style={s.savedBtn} onPress={() => router.push('/saved' as any)}>
+          <Bookmark size={18} color={C.navy} strokeWidth={2} />
+        </Pressable>
+      </View>
 
-        {/* Search / AI toggle */}
-        <View style={s.searchWrap}>
-          {!aiMode ? (
-            <View style={s.searchBar}>
-              <Search size={17} color="#9CA3AF" strokeWidth={2} />
-              <TextInput
-                style={s.searchInput}
-                placeholder="Search destinations…"
-                placeholderTextColor="#BBC3D4"
-                value={search}
-                onChangeText={text => { setSearch(text); fetchDestinations(text || undefined); }}
-                returnKeyType="search"
-              />
-              {search.length > 0 && (
-                <Pressable onPress={() => { setSearch(''); fetchDestinations(); }} hitSlop={8}>
-                  <X size={16} color="#BBC3D4" strokeWidth={2} />
-                </Pressable>
-              )}
-              <View style={s.searchDivider} />
-              <Pressable style={s.aiToggle} onPress={() => { setSearch(''); setAiMode(true); }}>
-                <Sparkles size={16} color={C.gold} strokeWidth={2} />
-                <Text style={s.aiToggleText}>AI</Text>
+      {/* ── Search bar ── */}
+      <View style={s.searchWrap}>
+        {!aiMode ? (
+          <View style={s.searchBar}>
+            <Search size={16} color="#9CA3AF" strokeWidth={2} />
+            <TextInput
+              style={s.searchInput}
+              placeholder="Search destinations…"
+              placeholderTextColor="#C4CBD8"
+              value={search}
+              onChangeText={t => { setSearch(t); fetchDests(t || undefined); }}
+            />
+            {search ? (
+              <Pressable onPress={() => { setSearch(''); fetchDests(); }} hitSlop={8}>
+                <X size={15} color="#C4CBD8" strokeWidth={2} />
               </Pressable>
-            </View>
-          ) : (
-            <View style={s.aiBar}>
-              <Sparkles size={17} color={C.gold} strokeWidth={2} />
-              <TextInput
-                style={s.aiInput}
-                placeholder='e.g. "Kosher restaurant in Tel Aviv"'
-                placeholderTextColor="#BBC3D4"
-                value={smartText}
-                onChangeText={onSmartTextChange}
-                onSubmitEditing={handleSmartSearch}
-                returnKeyType="search"
-                autoFocus
-              />
-              {smartBusy
-                ? <ActivityIndicator size="small" color={C.navy} />
-                : smartText.trim()
-                  ? (
-                    <Pressable style={s.aiGoBtn} onPress={handleSmartSearch}>
-                      <ChevronRight size={18} color="#fff" strokeWidth={2.5} />
-                    </Pressable>
-                  )
-                  : (
-                    <Pressable hitSlop={8} onPress={() => { setAiMode(false); setSmartText(''); setLiveChip(null); }}>
-                      <X size={16} color="#BBC3D4" strokeWidth={2} />
-                    </Pressable>
-                  )
-              }
-            </View>
-          )}
-        </View>
-
-        {/* AI live chip */}
-        {liveChip && (
-          <View style={s.liveChip}>
-            <Text style={s.liveChipText}>
-              {liveChip.emoji} {liveChip.category}
-              {liveChip.denomination ? `  ·  ${liveChip.denomEmoji} ${liveChip.denomLabel}` : ''}
-            </Text>
+            ) : (
+              <Pressable style={s.aiPill} onPress={() => setAiMode(true)}>
+                <Sparkles size={12} color="#fff" strokeWidth={2} />
+                <Text style={s.aiPillText}>AI</Text>
+              </Pressable>
+            )}
+          </View>
+        ) : (
+          <View style={s.aiBar}>
+            <Sparkles size={15} color={C.gold} strokeWidth={2} />
+            <TextInput
+              style={s.searchInput}
+              placeholder='"Kosher restaurant in Tel Aviv…"'
+              placeholderTextColor="#C4CBD8"
+              value={aiText}
+              onChangeText={onAiChange}
+              onSubmitEditing={doAiSearch}
+              returnKeyType="search"
+              autoFocus
+            />
+            {aiBusy ? (
+              <ActivityIndicator size="small" color={C.navy} />
+            ) : aiText ? (
+              <Pressable style={s.sendBtn} onPress={doAiSearch}>
+                <ChevronRight size={16} color="#fff" strokeWidth={2.5} />
+              </Pressable>
+            ) : (
+              <Pressable hitSlop={8} onPress={() => { setAiMode(false); setAiText(''); setChip(null); }}>
+                <X size={15} color="#C4CBD8" strokeWidth={2} />
+              </Pressable>
+            )}
+          </View>
+        )}
+        {chip && (
+          <View style={s.chip}>
+            <Text style={s.chipText}>{chip.emoji}  {chip.category}{chip.denomination ? `  ·  ${chip.denomEmoji} ${chip.denomLabel}` : ''}</Text>
           </View>
         )}
       </View>
 
       {/* ── Content ── */}
       {loading ? (
-        <View style={s.center}>
-          <ActivityIndicator size="large" color={C.gold} />
-        </View>
-      ) : error ? (
-        <View style={s.center}>
-          <MapPin size={40} color="#E5E7EB" strokeWidth={1.5} />
-          <Text style={s.errorText}>Could not load destinations</Text>
-          <Pressable style={s.retryBtn} onPress={() => { setLoading(true); fetchDestinations(); }}>
-            <Text style={s.retryText}>Try again</Text>
-          </Pressable>
-        </View>
+        <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>
       ) : (
         <FlatList
-          data={destinations}
-          keyExtractor={item => String(item.id)}
-          contentContainerStyle={s.list}
+          data={dests}
+          keyExtractor={i => String(i.id)}
+          numColumns={2}
+          columnWrapperStyle={s.row}
+          contentContainerStyle={s.grid}
           showsVerticalScrollIndicator={false}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.gold} />}
-          ListHeaderComponent={ListHeader}
-          renderItem={({ item }) => (
-            <DestinationCard item={item} onPress={() => handleDestPress(item)} />
-          )}
-          ListEmptyComponent={
-            <View style={s.empty}>
-              <MapPin size={32} color="#E5E7EB" strokeWidth={1.5} />
-              <Text style={s.emptyText}>No destinations found</Text>
-            </View>
-          }
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRef(true); await fetchDests(search || undefined); setRef(false); }} tintColor={C.gold} />}
+          ListHeaderComponent={Header}
+          renderItem={({ item }) => <GridCard item={item} onPress={() => go(item)} />}
+          ListEmptyComponent={<View style={s.center}><Text style={s.muted}>No destinations found</Text></View>}
         />
       )}
     </View>
   );
 }
 
-// ── Destination card ──────────────────────────────────────────────────────────
-function DestinationCard({ item, onPress }: { item: Destination; onPress: () => void }) {
-  const imageUrl = getDestinationImageUrl(item.city, item.countryCode);
-
+// ── Grid card ─────────────────────────────────────────────────────────────────
+function GridCard({ item, onPress }: { item: Dest; onPress: () => void }) {
   return (
-    <Pressable style={({ pressed }) => [s.card, pressed && s.cardPressed]} onPress={onPress}>
-      <Image source={{ uri: imageUrl }} style={StyleSheet.absoluteFillObject} contentFit="cover" transition={400} />
-      {/* gradient */}
-      <View style={s.cardGradientTop} />
-      <View style={s.cardGradientBottom} />
-
-      {/* country badge */}
-      <View style={s.countryBadge}>
-        <Text style={s.countryBadgeText}>{item.countryCode}</Text>
-      </View>
-
-      {/* text */}
-      <View style={s.cardContent}>
-        <Text style={s.cardCity} numberOfLines={1}>{item.city}</Text>
-        <Text style={s.cardCountry}>{item.country}</Text>
+    <Pressable style={({ pressed }) => [s.gridCard, pressed && { opacity: 0.88, transform: [{ scale: 0.97 }] }]} onPress={onPress}>
+      <Image source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
+        style={StyleSheet.absoluteFillObject} contentFit="cover" transition={400} />
+      <View style={s.gridOverlay} />
+      <View style={s.gridBadge}><Text style={s.gridBadgeText}>{item.countryCode}</Text></View>
+      <View style={s.gridContent}>
+        <Text style={s.gridCity} numberOfLines={1}>{item.city}</Text>
         {item.distanceMeters !== undefined && (
-          <View style={s.distRow}>
-            <Navigation size={11} color={C.goldBright} strokeWidth={2} />
-            <Text style={s.distText}>{formatDistance(Number(item.distanceMeters))}</Text>
+          <View style={s.gridDist}>
+            <Navigation size={9} color={C.goldBright} strokeWidth={2.5} />
+            <Text style={s.gridDistText}>{fmt(Number(item.distanceMeters))}</Text>
           </View>
         )}
-      </View>
-
-      {/* arrow */}
-      <View style={s.cardArrow}>
-        <ChevronRight size={20} color="rgba(255,255,255,0.9)" strokeWidth={2.5} />
       </View>
     </Pressable>
   );
@@ -373,132 +299,123 @@ function DestinationCard({ item, onPress }: { item: Destination; onPress: () => 
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 const s = StyleSheet.create({
-  root:   { flex: 1, backgroundColor: C.cream },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
+  root: { flex: 1, backgroundColor: '#F7F5F0' },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 60 },
+  muted: { fontSize: 14, color: '#BBC3D4' },
 
-  // Top bar
-  topBar: {
-    backgroundColor: C.navy,
-    paddingTop: Platform.OS === 'ios' ? 56 : 36,
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+  // Nav
+  nav: {
+    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start',
+    paddingTop: Platform.OS === 'ios' ? 58 : 38,
+    paddingHorizontal: 20, paddingBottom: 14,
+    backgroundColor: '#F7F5F0',
   },
-  topBarRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 },
-  brand:    { fontSize: 11, fontWeight: '700', color: C.gold, letterSpacing: 2 },
+  navEyebrow: { fontSize: 10, fontWeight: '700', color: C.gold, letterSpacing: 2.5, marginBottom: 2 },
+  navTitle:   { fontSize: 30, fontWeight: '800', color: C.navy, letterSpacing: -0.8 },
   savedBtn: {
-    width: 36, height: 36, borderRadius: 18,
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    justifyContent: 'center', alignItems: 'center',
-  },
-  heroTitle: {
-    fontSize: 26, fontWeight: '800', color: '#fff',
-    lineHeight: 32, marginBottom: 18, letterSpacing: -0.3,
+    width: 42, height: 42, borderRadius: 21,
+    backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center',
+    shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 3,
   },
 
   // Search
-  searchWrap: { gap: 8 },
+  searchWrap: { paddingHorizontal: 20, paddingBottom: 16, gap: 8 },
   searchBar: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: '#fff', borderRadius: 16,
-    paddingHorizontal: 16, paddingVertical: 12,
+    backgroundColor: '#fff', borderRadius: 18,
+    paddingHorizontal: 16, paddingVertical: Platform.OS === 'ios' ? 14 : 11,
+    shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 10, shadowOffset: { width: 0, height: 2 }, elevation: 3,
   },
-  searchInput: {
-    flex: 1, fontSize: 15, color: C.textPrimary,
-    padding: 0,
-  },
-  searchDivider: { width: 1, height: 18, backgroundColor: '#E5E7EB' },
-  aiToggle: { flexDirection: 'row', alignItems: 'center', gap: 5, paddingLeft: 4 },
-  aiToggleText: { fontSize: 12, fontWeight: '800', color: C.gold, letterSpacing: 0.5 },
-
   aiBar: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: '#fff', borderRadius: 16,
-    paddingHorizontal: 16, paddingVertical: 12,
-    borderWidth: 2, borderColor: C.gold,
+    backgroundColor: '#fff', borderRadius: 18,
+    paddingHorizontal: 16, paddingVertical: Platform.OS === 'ios' ? 14 : 11,
+    borderWidth: 1.5, borderColor: C.gold,
+    shadowColor: C.gold, shadowOpacity: 0.15, shadowRadius: 10, shadowOffset: { width: 0, height: 2 }, elevation: 3,
   },
-  aiInput: { flex: 1, fontSize: 15, color: C.textPrimary, padding: 0 },
-  aiGoBtn: {
-    width: 30, height: 30, borderRadius: 15,
+  searchInput: { flex: 1, fontSize: 15, color: C.textPrimary, padding: 0 },
+  aiPill: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
+    backgroundColor: C.navy, borderRadius: 12,
+    paddingHorizontal: 10, paddingVertical: 5,
+  },
+  aiPillText: { fontSize: 11, fontWeight: '800', color: '#fff', letterSpacing: 0.5 },
+  sendBtn: {
+    width: 28, height: 28, borderRadius: 14,
     backgroundColor: C.navy, justifyContent: 'center', alignItems: 'center',
   },
-
-  liveChip: {
-    marginTop: 8, alignSelf: 'flex-start',
-    backgroundColor: 'rgba(201,168,76,0.18)',
-    borderWidth: 1, borderColor: 'rgba(201,168,76,0.35)',
-    borderRadius: 20, paddingHorizontal: 12, paddingVertical: 5,
+  chip: {
+    alignSelf: 'flex-start', backgroundColor: 'rgba(201,168,76,0.12)',
+    borderWidth: 1, borderColor: 'rgba(201,168,76,0.3)',
+    borderRadius: 20, paddingHorizontal: 12, paddingVertical: 6,
   },
-  liveChipText: { fontSize: 12, fontWeight: '700', color: C.goldBright },
+  chipText: { fontSize: 12, fontWeight: '700', color: C.gold },
 
-  // List
-  list: { paddingBottom: 32 },
+  // Hero
+  hero: {
+    marginHorizontal: 20, marginBottom: 20,
+    height: HERO_H, borderRadius: 24, overflow: 'hidden',
+    backgroundColor: C.navy,
+    shadowColor: '#000', shadowOpacity: 0.18, shadowRadius: 20, shadowOffset: { width: 0, height: 8 }, elevation: 10,
+  },
+  heroOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(5,10,30,0.42)' },
+  heroContent: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 22 },
+  heroTopRow:  { marginBottom: 'auto' as any, position: 'absolute', top: 18, left: 22 },
+  featuredPill: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    borderWidth: 1, borderColor: 'rgba(201,168,76,0.4)',
+    borderRadius: 20, paddingHorizontal: 10, paddingVertical: 5,
+  },
+  featuredText: { fontSize: 11, fontWeight: '700', color: C.goldBright, letterSpacing: 0.5 },
+  heroCity:    { fontSize: 36, fontWeight: '900', color: '#fff', letterSpacing: -0.8, lineHeight: 40 },
+  heroCountry: { fontSize: 14, color: 'rgba(255,255,255,0.65)', marginBottom: 14, fontWeight: '500' },
+  heroExplore: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  heroExploreText: { fontSize: 13, fontWeight: '700', color: C.gold, letterSpacing: 0.3 },
 
   // Recents
-  section: { paddingTop: 20, paddingHorizontal: 20 },
-  recentRow: { paddingTop: 10, gap: 8, paddingBottom: 4 },
+  recentRow: { paddingHorizontal: 20, gap: 8 },
   recentChip: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    backgroundColor: '#fff', borderRadius: 20,
+    backgroundColor: '#fff', borderRadius: 22,
     paddingLeft: 10, paddingRight: 8, paddingVertical: 7,
-    borderWidth: 1, borderColor: '#EDE8DC',
-    shadowColor: C.navy, shadowOpacity: 0.04, shadowRadius: 4,
-    shadowOffset: { width: 0, height: 1 }, elevation: 1,
+    shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 4, shadowOffset: { width: 0, height: 1 }, elevation: 1,
   },
-  recentChipInner: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  recentChipText: { fontSize: 13, fontWeight: '600', color: C.textPrimary, maxWidth: 100 },
+  recentInner: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  recentText:  { fontSize: 13, fontWeight: '600', color: C.textPrimary, maxWidth: 90 },
 
-  // Section header
-  sectionHeader: {
+  // Row headers
+  rowHeader: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 20, paddingTop: 20, paddingBottom: 12,
+    paddingHorizontal: 20, paddingTop: 18, paddingBottom: 12,
   },
-  sectionLabel: { fontSize: 11, fontWeight: '800', color: '#BBC3D4', letterSpacing: 1.5 },
-  gpsBadge: {
+  rowLabel: { fontSize: 11, fontWeight: '800', color: '#BBC3D4', letterSpacing: 1.8 },
+  gpsPill: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: 'rgba(201,168,76,0.12)',
+    backgroundColor: 'rgba(201,168,76,0.10)',
     borderRadius: 12, paddingHorizontal: 8, paddingVertical: 4,
   },
-  gpsBadgeText: { fontSize: 10, fontWeight: '700', color: C.gold },
+  gpsText: { fontSize: 10, fontWeight: '700', color: C.gold },
 
-  // Destination card
-  card: {
-    marginHorizontal: 20, marginBottom: 14,
-    height: 180, borderRadius: 20, overflow: 'hidden',
+  // Grid
+  grid: { paddingBottom: 40 },
+  row:  { paddingHorizontal: 20, gap: 12, marginBottom: 12 },
+  gridCard: {
+    width: CARD_W, height: CARD_W * 1.15,
+    borderRadius: 20, overflow: 'hidden',
     backgroundColor: C.navy,
-    shadowColor: '#000', shadowOpacity: 0.14,
-    shadowRadius: 16, shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
+    shadowColor: '#000', shadowOpacity: 0.10, shadowRadius: 10, shadowOffset: { width: 0, height: 4 }, elevation: 4,
   },
-  cardPressed:  { opacity: 0.92, transform: [{ scale: 0.985 }] },
-  cardGradientTop: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.10)',
+  gridOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(5,10,30,0.50)' },
+  gridBadge: {
+    position: 'absolute', top: 10, right: 10,
+    backgroundColor: 'rgba(0,0,0,0.40)',
+    borderRadius: 7, paddingHorizontal: 7, paddingVertical: 3,
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)',
   },
-  cardGradientBottom: {
-    position: 'absolute', bottom: 0, left: 0, right: 0, height: 100,
-    backgroundColor: 'rgba(5,10,30,0.72)',
-  },
-  countryBadge: {
-    position: 'absolute', top: 14, right: 14,
-    backgroundColor: 'rgba(0,0,0,0.45)',
-    borderRadius: 8, paddingHorizontal: 8, paddingVertical: 4,
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
-  },
-  countryBadgeText: { fontSize: 11, fontWeight: '800', color: '#fff', letterSpacing: 1 },
-  cardContent: { position: 'absolute', bottom: 16, left: 18 },
-  cardCity:    { fontSize: 22, fontWeight: '800', color: '#fff', letterSpacing: -0.2 },
-  cardCountry: { fontSize: 13, color: 'rgba(255,255,255,0.65)', marginTop: 1, fontWeight: '500' },
-  distRow:     { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 5 },
-  distText:    { fontSize: 12, color: C.goldBright, fontWeight: '600' },
-  cardArrow:   { position: 'absolute', bottom: 20, right: 18 },
-
-  // Empty / error
-  empty: { alignItems: 'center', paddingTop: 60, gap: 10 },
-  emptyText: { fontSize: 14, color: C.textMuted },
-  errorText: { fontSize: 14, color: C.textMuted },
-  retryBtn: {
-    marginTop: 4, backgroundColor: C.navy, borderRadius: 12,
-    paddingHorizontal: 24, paddingVertical: 12,
-  },
-  retryText: { fontSize: 14, fontWeight: '700', color: '#fff' },
+  gridBadgeText: { fontSize: 10, fontWeight: '800', color: '#fff', letterSpacing: 0.8 },
+  gridContent:   { position: 'absolute', bottom: 12, left: 12, right: 12 },
+  gridCity:      { fontSize: 17, fontWeight: '800', color: '#fff', letterSpacing: -0.2 },
+  gridDist:      { flexDirection: 'row', alignItems: 'center', gap: 3, marginTop: 4 },
+  gridDistText:  { fontSize: 11, color: C.goldBright, fontWeight: '600' },
 });
