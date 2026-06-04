@@ -59,8 +59,11 @@ export default function DestinationScreen() {
           client.get('/restaurants', { params: { destinationId: id } }),
           client.get('/synagogues',  { params: { destinationId: id } }),
         ]).then(([rRes, sRes]) => {
-          const rCount = rRes.status === 'fulfilled' ? (rRes.value.data?.total ?? rRes.value.data?.data?.length ?? rRes.value.data?.length ?? 0) : 0;
-          const sCount = sRes.status === 'fulfilled' ? (Array.isArray(sRes.value.data) ? sRes.value.data.length : 0) : 0;
+          const rData = rRes.status === 'fulfilled' ? rRes.value.data : null;
+          const sData = sRes.status === 'fulfilled' ? sRes.value.data : null;
+          // Handle both { total, data: [] } and plain array responses
+          const rCount = rData?.total ?? rData?.data?.length ?? (Array.isArray(rData) ? rData.length : 0);
+          const sCount = sData?.total ?? sData?.data?.length ?? (Array.isArray(sData) ? sData.length : 0);
           setCounts({ restaurants: rCount, synagogues: sCount });
         });
       })
