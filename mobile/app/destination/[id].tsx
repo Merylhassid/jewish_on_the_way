@@ -144,35 +144,30 @@ export default function DestinationScreen() {
         </View>
       </View>
 
-      {/* ── Service tiles ── */}
+      {/* ── Service cards ── */}
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={s.body}>
         <Text style={s.sectionLabel}>EXPLORE</Text>
 
-        <View style={s.grid}>
+        <View style={s.cardList}>
           {SERVICES.map(svc => {
             const active = ACTIVE.includes(svc.key);
             return (
               <Pressable
                 key={svc.key}
-                style={({ pressed }) => [
-                  s.tile,
-                  { backgroundColor: active ? svc.bg : '#F9F9F9' },
-                  !active && s.tileDim,
-                  pressed && active && s.tilePressed,
-                ]}
+                style={({ pressed }) => [s.card, !active && s.cardDim, pressed && active && s.cardPressed]}
                 onPress={() => active && nav(svc.key)}
               >
-                <View style={[s.tileIcon, { backgroundColor: active ? svc.color + '18' : '#E5E7EB' }]}>
-                  <svc.Icon size={26} color={active ? svc.color : '#BBC3D4'} strokeWidth={1.8} />
+                <View style={[s.iconBox, { backgroundColor: active ? svc.color + '15' : '#F3F4F6' }]}>
+                  <svc.Icon size={22} color={active ? svc.color : '#D1D5DB'} strokeWidth={2} />
                 </View>
-                <Text style={[s.tileLabel, !active && s.tileLabelDim]}>{svc.label}</Text>
-                <Text style={[s.tileSub, !active && s.tileSubDim]}>
-                  {active ? svc.sub : 'Coming soon'}
-                </Text>
+                <View style={s.cardText}>
+                  <Text style={[s.cardLabel, !active && s.cardLabelDim]}>{svc.label}</Text>
+                  <Text style={[s.cardSub,   !active && s.cardSubDim]}>
+                    {active ? svc.sub : 'Coming soon'}
+                  </Text>
+                </View>
                 {active && (
-                  <View style={[s.tileArrow, { backgroundColor: svc.color + '15' }]}>
-                    <ChevronRight size={14} color={svc.color} strokeWidth={2.5} />
-                  </View>
+                  <ChevronRight size={18} color="#D1D5DB" strokeWidth={2.5} />
                 )}
               </Pressable>
             );
@@ -236,32 +231,27 @@ const s = StyleSheet.create({
   },
   searchBtnOff: { backgroundColor: '#E5E7EB' },
 
-  // Grid
-  body:         { paddingHorizontal: 20, paddingBottom: 20 },
-  sectionLabel: { fontSize: 11, fontWeight: '800', color: '#BBC3D4', letterSpacing: 2, marginBottom: 14 },
-  grid:         { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  // Cards
+  body:         { paddingHorizontal: 20, paddingTop: 4, paddingBottom: 20 },
+  sectionLabel: { fontSize: 11, fontWeight: '800', color: '#BBC3D4', letterSpacing: 2, marginBottom: 12 },
+  cardList:     { gap: 10 },
 
-  tile: {
-    width: TILE_W, borderRadius: 20, padding: 18,
-    shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 }, elevation: 3,
-    minHeight: 150,
+  card: {
+    flexDirection: 'row', alignItems: 'center', gap: 14,
+    backgroundColor: '#fff', borderRadius: 16, padding: 14,
+    shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 }, elevation: 2,
   },
-  tileDim:     { opacity: 0.5 },
-  tilePressed: { opacity: 0.85, transform: [{ scale: 0.97 }] },
+  cardDim:     { opacity: 0.45 },
+  cardPressed: { opacity: 0.82, transform: [{ scale: 0.985 }] },
 
-  tileIcon: {
-    width: 50, height: 50, borderRadius: 14,
+  iconBox: {
+    width: 46, height: 46, borderRadius: 13,
     justifyContent: 'center', alignItems: 'center',
-    marginBottom: 14,
   },
-  tileLabel:    { fontSize: 15, fontWeight: '800', color: C.textPrimary, marginBottom: 3 },
-  tileLabelDim: { color: '#BBC3D4' },
-  tileSub:      { fontSize: 12, color: C.textSecondary, lineHeight: 17, flex: 1 },
-  tileSubDim:   { color: '#D1D5DB' },
-  tileArrow: {
-    width: 26, height: 26, borderRadius: 13,
-    justifyContent: 'center', alignItems: 'center',
-    alignSelf: 'flex-end', marginTop: 10,
-  },
+  cardText:     { flex: 1 },
+  cardLabel:    { fontSize: 15, fontWeight: '700', color: C.textPrimary },
+  cardLabelDim: { color: '#BBC3D4' },
+  cardSub:      { fontSize: 12, color: C.textSecondary, marginTop: 2 },
+  cardSubDim:   { color: '#D1D5DB' },
 });
