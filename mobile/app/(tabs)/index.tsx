@@ -401,10 +401,10 @@ const s = StyleSheet.create({
   grid: { paddingBottom: 40 },
   row:  { paddingHorizontal: 20, gap: 12, marginBottom: 12 },
   gridCard: {
-    width: CARD_W, height: CARD_W * 1.15,
-    borderRadius: 20, overflow: 'hidden',
+    width: CARD_W, height: CARD_W * 1.25,
+    borderRadius: 22, overflow: 'hidden',
     backgroundColor: C.navy,
-    shadowColor: '#000', shadowOpacity: 0.10, shadowRadius: 10, shadowOffset: { width: 0, height: 4 }, elevation: 4,
+    shadowColor: '#000', shadowOpacity: 0.12, shadowRadius: 14, shadowOffset: { width: 0, height: 5 }, elevation: 5,
   },
   gridOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(5,10,30,0.50)' },
   gridBadge: {

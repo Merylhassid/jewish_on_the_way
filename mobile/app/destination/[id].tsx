@@ -15,14 +15,13 @@ import {
 import { Image } from 'expo-image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-  ArrowLeft, ChevronRight, Coffee, Globe, Home,
-  Map, MessageCircle, Search, Sparkles, Users, Utensils,
+  ArrowLeft, Globe, Home, Map,
+  MessageCircle, Search, Sparkles, Users, Utensils,
 } from 'lucide-react-native';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl } from '@/constants/theme';
 
 const { width: W } = Dimensions.get('window');
-const TILE_W = (W - 52) / 2;
 
 interface Destination {
   id: number; name: string; city: string;
@@ -31,19 +30,6 @@ interface Destination {
 }
 
 type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'hosting' | 'chat' | 'map';
-
-const SERVICES: {
-  key: ServiceKey; label: string; sub: string;
-  Icon: any; color: string; bg: string;
-}[] = [
-  { key: 'restaurants', label: 'Restaurants', sub: 'Kosher dining',       Icon: Utensils,       color: '#059669', bg: '#F0FDF4' },
-  { key: 'synagogues',  label: 'Synagogues',  sub: 'Shuls & times',      Icon: Globe,           color: '#7C3AED', bg: '#F5F3FF' },
-  { key: 'minyans',     label: 'Minyans',     sub: 'Prayer groups',       Icon: Users,           color: '#D97706', bg: '#FFFBEB' },
-  { key: 'hosting',     label: 'Hosting',     sub: 'Shabbat tables',      Icon: Home,            color: '#DB2777', bg: '#FDF2F8' },
-  { key: 'chat',        label: 'Chat',        sub: 'Traveler community',  Icon: MessageCircle,   color: '#0891B2', bg: '#F0F9FF' },
-  { key: 'map',         label: 'Map',         sub: 'All places',          Icon: Map,             color: '#0F766E', bg: '#F0FDFA' },
-];
-
 const ACTIVE: ServiceKey[] = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting', 'map'];
 
 export default function DestinationScreen() {
@@ -55,35 +41,35 @@ export default function DestinationScreen() {
 
   useEffect(() => {
     client.get(`/destinations/${id}`)
-      .then(res => setDestination(res.data))
+      .then(r => setDestination(r.data))
       .catch(() => { AsyncStorage.removeItem('lastDestinationId'); router.replace('/(tabs)'); })
       .finally(() => setLoading(false));
   }, [id]);
 
-  const handleSearch = async () => {
+  const doSearch = async () => {
     if (!searchText.trim()) return;
     try {
       setSearching(true);
       const res = await client.post('/search', { text: searchText.trim(), destinationId: Number(id) });
-      const { route } = res.data;
-      router.push(route as any);
-    } catch { Alert.alert('Error', 'Search unavailable, try again'); }
+      router.push(res.data.route as any);
+    } catch { Alert.alert('Error', 'Search unavailable'); }
     finally { setSearching(false); }
   };
 
   if (loading) return <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>;
   if (!destination) return <View style={s.center}><Text style={s.muted}>Not found</Text></View>;
 
-  const imageUrl = getDestinationImageUrl(destination.city, destination.countryCode);
+  const img = getDestinationImageUrl(destination.city, destination.countryCode);
+  const city = encodeURIComponent(destination.city);
 
-  const nav = (svc: ServiceKey) => {
-    const city = encodeURIComponent(destination.city);
-    if (svc === 'restaurants') router.push(`/restaurants/${id}?city=${city}`);
-    else if (svc === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
-    else if (svc === 'chat')       router.push(`/chat/${id}?city=${city}`);
-    else if (svc === 'minyans')    router.push(`/minyans/${id}?city=${city}`);
-    else if (svc === 'hosting')    router.push(`/hosting/${id}?city=${city}`);
-    else if (svc === 'map') {
+  const go = (key: ServiceKey) => {
+    if (!ACTIVE.includes(key)) return;
+    if (key === 'restaurants') router.push(`/restaurants/${id}?city=${city}`);
+    else if (key === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
+    else if (key === 'chat')       router.push(`/chat/${id}?city=${city}`);
+    else if (key === 'minyans')    router.push(`/minyans/${id}?city=${city}`);
+    else if (key === 'hosting')    router.push(`/hosting/${id}?city=${city}`);
+    else if (key === 'map') {
       const la = destination.location?.coordinates?.[1] ?? '';
       const lo = destination.location?.coordinates?.[0] ?? '';
       router.push(`/map/${id}?lat=${la}&lng=${lo}&name=${city}` as any);
@@ -91,132 +77,193 @@ export default function DestinationScreen() {
   };
 
   return (
-    <View style={s.root}>
+    <ScrollView style={s.root} showsVerticalScrollIndicator={false} bounces>
 
       {/* ── Hero ── */}
       <View style={s.hero}>
-        <Image source={{ uri: imageUrl }} style={StyleSheet.absoluteFillObject} contentFit="cover" transition={600} />
-        <View style={s.heroGradient} />
+        <Image source={{ uri: img }} style={StyleSheet.absoluteFillObject} contentFit="cover" transition={500} />
+        <View style={s.heroScrim} />
 
-        {/* Back */}
-        <Pressable style={s.backBtn} onPress={() => router.back()} hitSlop={12}>
-          <ArrowLeft size={20} color="#fff" strokeWidth={2.5} />
+        <Pressable style={s.back} onPress={() => router.back()} hitSlop={12}>
+          <ArrowLeft size={19} color="#fff" strokeWidth={2.5} />
         </Pressable>
 
-        {/* Country badge */}
-        <View style={s.ccBadge}>
-          <Text style={s.ccText}>{destination.countryCode}</Text>
+        <View style={s.heroBadge}>
+          <Text style={s.heroBadgeText}>{destination.countryCode}</Text>
         </View>
 
-        {/* City info */}
-        <View style={s.heroContent}>
+        <View style={s.heroText}>
           <Text style={s.heroCity}>{destination.city}</Text>
           <Text style={s.heroCountry}>{destination.country}</Text>
-          {destination.description ? (
-            <Text style={s.heroDesc} numberOfLines={2}>{destination.description}</Text>
-          ) : null}
         </View>
       </View>
 
-      {/* ── Search ── */}
+      {/* ── AI search ── */}
       <View style={s.searchWrap}>
         <View style={s.searchBar}>
-          <Sparkles size={16} color={C.gold} strokeWidth={2} />
+          <Sparkles size={15} color={C.gold} strokeWidth={2} />
           <TextInput
             style={s.searchInput}
-            placeholder="Ask AI anything about this city…"
+            placeholder="Ask anything about this city…"
             placeholderTextColor="#BBC3D4"
             value={searchText}
             onChangeText={setSearchText}
-            onSubmitEditing={handleSearch}
+            onSubmitEditing={doSearch}
             returnKeyType="search"
           />
           <Pressable
-            style={[s.searchBtn, (!searchText.trim() || searching) && s.searchBtnOff]}
-            onPress={handleSearch}
+            style={[s.searchGo, (!searchText.trim() || searching) && { backgroundColor: '#E5E7EB' }]}
+            onPress={doSearch}
             disabled={!searchText.trim() || searching}
           >
             {searching
               ? <ActivityIndicator size="small" color="#fff" />
-              : <Search size={16} color="#fff" strokeWidth={2.5} />
+              : <Search size={15} color="#fff" strokeWidth={2.5} />
             }
           </Pressable>
         </View>
       </View>
 
-      {/* ── Service cards ── */}
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={s.body}>
-        <Text style={s.sectionLabel}>EXPLORE</Text>
+      {/* ── Bento grid ── */}
+      <View style={s.bento}>
 
-        <View style={s.cardList}>
-          {SERVICES.map(svc => {
-            const active = ACTIVE.includes(svc.key);
-            return (
-              <Pressable
-                key={svc.key}
-                style={({ pressed }) => [s.card, !active && s.cardDim, pressed && active && s.cardPressed]}
-                onPress={() => active && nav(svc.key)}
-              >
-                <View style={[s.iconBox, { backgroundColor: active ? svc.color + '15' : '#F3F4F6' }]}>
-                  <svc.Icon size={22} color={active ? svc.color : '#D1D5DB'} strokeWidth={2} />
-                </View>
-                <View style={s.cardText}>
-                  <Text style={[s.cardLabel, !active && s.cardLabelDim]}>{svc.label}</Text>
-                  <Text style={[s.cardSub,   !active && s.cardSubDim]}>
-                    {active ? svc.sub : 'Coming soon'}
-                  </Text>
-                </View>
-                {active && (
-                  <ChevronRight size={18} color="#D1D5DB" strokeWidth={2.5} />
-                )}
-              </Pressable>
-            );
-          })}
+        {/* Row 1: Restaurants (large) + Synagogues (large) */}
+        <View style={s.bentoRow}>
+          <BentoCard
+            label="Restaurants"
+            sub="Kosher dining"
+            Icon={Utensils}
+            color="#fff"
+            bg="#0C1E45"
+            size="large"
+            onPress={() => go('restaurants')}
+          />
+          <BentoCard
+            label="Synagogues"
+            sub="Shuls & times"
+            Icon={Globe}
+            color="#fff"
+            bg="#7C3AED"
+            size="large"
+            onPress={() => go('synagogues')}
+          />
         </View>
 
-        <View style={{ height: 40 }} />
-      </ScrollView>
-    </View>
+        {/* Row 2: three compact */}
+        <View style={s.bentoRow}>
+          <BentoCard
+            label="Minyans"
+            sub="Prayer groups"
+            Icon={Users}
+            color={C.navy}
+            bg="#FEF3C7"
+            size="small"
+            onPress={() => go('minyans')}
+          />
+          <BentoCard
+            label="Hosting"
+            sub="Shabbat tables"
+            Icon={Home}
+            color="#fff"
+            bg="#DB2777"
+            size="small"
+            onPress={() => go('hosting')}
+          />
+          <BentoCard
+            label="Chat"
+            sub="Community"
+            Icon={MessageCircle}
+            color="#fff"
+            bg="#0891B2"
+            size="small"
+            onPress={() => go('chat')}
+          />
+        </View>
+
+        {/* Row 3: Map (full width) */}
+        <Pressable
+          style={({ pressed }) => [s.mapCard, pressed && { opacity: 0.88 }]}
+          onPress={() => go('map')}
+        >
+          <View style={s.mapIconWrap}>
+            <Map size={22} color="#fff" strokeWidth={2} />
+          </View>
+          <View>
+            <Text style={s.mapLabel}>Interactive Map</Text>
+            <Text style={s.mapSub}>See all synagogues on the map</Text>
+          </View>
+          <View style={{ flex: 1 }} />
+          <View style={s.mapArrow}>
+            <Text style={s.mapArrowText}>→</Text>
+          </View>
+        </Pressable>
+
+      </View>
+
+      <View style={{ height: 40 }} />
+    </ScrollView>
   );
 }
 
+// ── Bento card component ──────────────────────────────────────────────────────
+function BentoCard({
+  label, sub, Icon, color, bg, size, onPress,
+}: {
+  label: string; sub: string; Icon: any;
+  color: string; bg: string;
+  size: 'large' | 'small';
+  onPress: () => void;
+}) {
+  const isLarge = size === 'large';
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        s.bentoCard,
+        isLarge ? s.bentoLarge : s.bentoSmall,
+        { backgroundColor: bg },
+        pressed && { opacity: 0.85, transform: [{ scale: 0.97 }] },
+      ]}
+      onPress={onPress}
+    >
+      <View style={[s.bentoIconWrap, { backgroundColor: 'rgba(255,255,255,0.15)' }]}>
+        <Icon size={isLarge ? 22 : 18} color={color} strokeWidth={2} />
+      </View>
+      <Text style={[s.bentoLabel, { color, fontSize: isLarge ? 15 : 13 }]}>{label}</Text>
+      <Text style={[s.bentoSub, { color: color + 'AA', fontSize: isLarge ? 11 : 10 }]}>{sub}</Text>
+    </Pressable>
+  );
+}
+
+// ── Styles ────────────────────────────────────────────────────────────────────
 const s = StyleSheet.create({
   root:   { flex: 1, backgroundColor: '#F7F5F0' },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   muted:  { fontSize: 14, color: C.textMuted },
 
-  // Hero
-  hero: { height: 300, justifyContent: 'flex-end' },
-  heroGradient: {
+  hero:     { height: 280 },
+  heroScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'transparent',
-    // Simulated gradient via multiple overlays
+    backgroundColor: 'rgba(5,10,30,0.40)',
   },
-  backBtn: {
+  back: {
     position: 'absolute', top: Platform.OS === 'ios' ? 58 : 40, left: 18,
-    width: 40, height: 40, borderRadius: 20,
-    backgroundColor: 'rgba(0,0,0,0.35)',
+    width: 38, height: 38, borderRadius: 19,
+    backgroundColor: 'rgba(0,0,0,0.30)',
     borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center', alignItems: 'center',
   },
-  ccBadge: {
+  heroBadge: {
     position: 'absolute', top: Platform.OS === 'ios' ? 62 : 44, right: 18,
-    backgroundColor: 'rgba(0,0,0,0.35)',
-    borderWidth: 1, borderColor: 'rgba(201,168,76,0.4)',
-    borderRadius: 8, paddingHorizontal: 10, paddingVertical: 5,
+    backgroundColor: 'rgba(0,0,0,0.30)',
+    borderWidth: 1, borderColor: 'rgba(201,168,76,0.5)',
+    borderRadius: 8, paddingHorizontal: 10, paddingVertical: 4,
   },
-  ccText:   { fontSize: 11, fontWeight: '800', color: C.goldBright, letterSpacing: 1.5 },
-  heroContent: {
-    position: 'absolute', bottom: 0, left: 0, right: 0,
-    paddingHorizontal: 22, paddingBottom: 28,
-    backgroundColor: 'rgba(5,10,30,0.55)',
-  },
-  heroCity:    { fontSize: 34, fontWeight: '900', color: '#fff', letterSpacing: -0.5, marginBottom: 4 },
-  heroCountry: { fontSize: 14, color: 'rgba(255,255,255,0.60)', fontWeight: '500', marginBottom: 6 },
-  heroDesc:    { fontSize: 13, color: 'rgba(255,255,255,0.50)', lineHeight: 19 },
+  heroBadgeText: { fontSize: 11, fontWeight: '800', color: C.goldBright, letterSpacing: 1.5 },
+  heroText:    { position: 'absolute', bottom: 24, left: 22 },
+  heroCity:    { fontSize: 36, fontWeight: '900', color: '#fff', letterSpacing: -0.5 },
+  heroCountry: { fontSize: 14, color: 'rgba(255,255,255,0.60)', marginTop: 3, fontWeight: '500' },
 
-  // Search
-  searchWrap: { paddingHorizontal: 20, paddingVertical: 14, backgroundColor: '#F7F5F0' },
+  searchWrap: { paddingHorizontal: 16, paddingVertical: 14 },
   searchBar: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
     backgroundColor: '#fff', borderRadius: 16,
@@ -225,33 +272,45 @@ const s = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 }, elevation: 3,
   },
   searchInput: { flex: 1, fontSize: 14, color: C.textPrimary, padding: 0 },
-  searchBtn: {
-    width: 34, height: 34, borderRadius: 12,
+  searchGo: {
+    width: 32, height: 32, borderRadius: 10,
     backgroundColor: C.navy, justifyContent: 'center', alignItems: 'center',
   },
-  searchBtnOff: { backgroundColor: '#E5E7EB' },
 
-  // Cards
-  body:         { paddingHorizontal: 20, paddingTop: 4, paddingBottom: 20 },
-  sectionLabel: { fontSize: 11, fontWeight: '800', color: '#BBC3D4', letterSpacing: 2, marginBottom: 12 },
-  cardList:     { gap: 10 },
+  // Bento
+  bento:    { paddingHorizontal: 16, gap: 10 },
+  bentoRow: { flexDirection: 'row', gap: 10 },
 
-  card: {
-    flexDirection: 'row', alignItems: 'center', gap: 14,
-    backgroundColor: '#fff', borderRadius: 16, padding: 14,
-    shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 }, elevation: 2,
+  bentoCard: {
+    borderRadius: 20, padding: 16, justifyContent: 'flex-end',
+    shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 }, elevation: 4,
   },
-  cardDim:     { opacity: 0.45 },
-  cardPressed: { opacity: 0.82, transform: [{ scale: 0.985 }] },
+  bentoLarge: { flex: 1, minHeight: 140 },
+  bentoSmall: { flex: 1, minHeight: 110 },
 
-  iconBox: {
-    width: 46, height: 46, borderRadius: 13,
+  bentoIconWrap: {
+    width: 40, height: 40, borderRadius: 12,
+    justifyContent: 'center', alignItems: 'center',
+    marginBottom: 12,
+  },
+  bentoLabel: { fontWeight: '800', letterSpacing: -0.2, marginBottom: 2 },
+  bentoSub:   { fontWeight: '500' },
+
+  // Map full-width card
+  mapCard: {
+    flexDirection: 'row', alignItems: 'center', gap: 14,
+    backgroundColor: '#0F766E', borderRadius: 20, padding: 18,
+    shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 }, elevation: 4,
+  },
+  mapIconWrap: {
+    width: 44, height: 44, borderRadius: 12,
+    backgroundColor: 'rgba(255,255,255,0.15)',
     justifyContent: 'center', alignItems: 'center',
   },
-  cardText:     { flex: 1 },
-  cardLabel:    { fontSize: 15, fontWeight: '700', color: C.textPrimary },
-  cardLabelDim: { color: '#BBC3D4' },
-  cardSub:      { fontSize: 12, color: C.textSecondary, marginTop: 2 },
-  cardSubDim:   { color: '#D1D5DB' },
+  mapLabel:    { fontSize: 15, fontWeight: '800', color: '#fff' },
+  mapSub:      { fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 2 },
+  mapArrow:    { width: 32, height: 32, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center' },
+  mapArrowText:{ fontSize: 18, color: '#fff', fontWeight: '700' },
 });
