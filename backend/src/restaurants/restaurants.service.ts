@@ -12,6 +12,7 @@ export interface RestaurantFilters {
   q?: string;
   lat?: number;
   lng?: number;
+  offset?: number;
 }
 
 export interface ImportRestaurantDto {
@@ -61,88 +62,83 @@ export class RestaurantsService {
   async findByDestination(
     destinationId: number,
     filters: RestaurantFilters = {},
-  ): Promise<Restaurant[]> {
-    const { type, kashrut, q, lat, lng } = filters;
+  ): Promise<{ data: any[]; total: number }> {
+    const { type, kashrut, q, lat, lng, offset = 0 } = filters;
 
-    // With distance: use raw SQL so PostGIS can compute ST_Distance
+    // With distance: raw SQL so PostGIS computes ST_Distance
     if (lat !== undefined && lng !== undefined) {
-      let sql = `
-        SELECT
-          r.id,
-          r.name,
-          r.restaurant_type   AS "restaurantType",
-          r.kashrut_level     AS "kashrutLevel",
-          r.address,
-          r.opening_hours     AS "openingHours",
-          r.created_at        AS "createdAt",
-          ST_Y(r.location::geometry) AS lat,
-          ST_X(r.location::geometry) AS lng,
-          ROUND(
-            ST_Distance(
-              r.location::geography,
-              ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography
-            )::numeric
-          ) AS "distanceMeters"
-        FROM restaurants r
-        WHERE r."destinationId" = $3
-      `;
-      const params: (string | number)[] = [lng, lat, destinationId];
-      let idx = 4;
+      // Build WHERE twice: once for count (no GPS params), once for data (GPS params)
+      const countParams: any[] = [destinationId];
+      let countWhere = `r."destinationId" = $1`;
+      const gpsParams: any[] = [lng, lat, destinationId];
+      let gpsWhere = `r."destinationId" = $3`;
+      let cIdx = 2;
+      let gIdx = 4;
 
       if (type) {
-        sql += ` AND r.restaurant_type = $${idx}`;
-        params.push(type);
-        idx++;
+        countWhere += ` AND r.restaurant_type = $${cIdx++}`; countParams.push(type);
+        gpsWhere   += ` AND r.restaurant_type = $${gIdx++}`; gpsParams.push(type);
       }
       if (kashrut) {
-        sql += ` AND r.kashrut_level   = $${idx}`;
-        params.push(kashrut);
-        idx++;
+        countWhere += ` AND r.kashrut_level = $${cIdx++}`; countParams.push(kashrut);
+        gpsWhere   += ` AND r.kashrut_level = $${gIdx++}`; gpsParams.push(kashrut);
       }
       if (q) {
-        sql += ` AND r.name ILIKE $${idx}`;
-        params.push(`%${q}%`);
-        idx++;
+        countWhere += ` AND r.name ILIKE $${cIdx++}`; countParams.push(`%${q}%`);
+        gpsWhere   += ` AND r.name ILIKE $${gIdx++}`; gpsParams.push(`%${q}%`);
       }
 
-      sql += ' ORDER BY "distanceMeters" ASC LIMIT 50';
-      return this.restaurantsRepo.query(sql, params);
+      const countResult = await this.restaurantsRepo.query(
+        `SELECT COUNT(*) FROM restaurants r WHERE ${countWhere}`, countParams,
+      );
+      const total = parseInt(countResult[0].count, 10);
+
+      gpsParams.push(offset);
+      const data = await this.restaurantsRepo.query(
+        `SELECT r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
+                r.address, r.opening_hours AS "openingHours", r.created_at AS "createdAt",
+                ST_Y(r.location::geometry) AS lat, ST_X(r.location::geometry) AS lng,
+                ROUND(ST_Distance(r.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
+         FROM restaurants r
+         WHERE ${gpsWhere}
+         ORDER BY "distanceMeters" ASC
+         LIMIT 50 OFFSET $${gIdx}`,
+        gpsParams,
+      );
+      return { data, total };
     }
 
-    // Without distance: use find() with where object
+    // Without distance: findAndCount (q filter server-side via ILike)
+    const { ILike } = await import('typeorm');
     const where: any = { destination: { id: destinationId } };
     if (type) where.restaurantType = type;
     if (kashrut) where.kashrutLevel = kashrut;
+    if (q) where.name = ILike(`%${q}%`);
 
-    let results = await this.restaurantsRepo.find({
+    const [data, total] = await this.restaurantsRepo.findAndCount({
       where,
-      select: {
-        id: true,
-        name: true,
-        restaurantType: true,
-        kashrutLevel: true,
-        address: true,
-        openingHours: true,
-        createdAt: true,
-        location: true,
-      },
+      select: { id: true, name: true, restaurantType: true, kashrutLevel: true, address: true, openingHours: true, createdAt: true, location: true },
       order: { name: 'ASC' },
       take: 50,
+      skip: offset,
     });
-
-    if (q) {
-      const lq = q.toLowerCase();
-      results = results.filter((r) => r.name.toLowerCase().includes(lq));
-    }
-
-    return results;
+    return { data, total };
   }
 
   // כל המסעדות מכל ערי מדינה אחת, ממויינות לפי מרחק
-  async findByParentDestination(parentId: number, filters: RestaurantFilters = {}): Promise<any[]> {
-    const { type, kashrut, q, lat, lng } = filters;
+  async findByParentDestination(parentId: number, filters: RestaurantFilters = {}): Promise<{ data: any[]; total: number }> {
+    const { type, kashrut, q, lat, lng, offset = 0 } = filters;
 
     if (lat !== undefined && lng !== undefined) {
+      const countParams: (string | number)[] = [parentId];
+      let countSql = `
+        SELECT COUNT(*)
+        FROM restaurants r
+        JOIN destinations d ON r."destinationId" = d.id
+        WHERE d.parent_id = $1
+      `;
+      let countIdx = 2;
+
       let sql = `
         SELECT r.id, r.name,
                r.restaurant_type AS "restaurantType",
@@ -161,23 +157,45 @@ export class RestaurantsService {
       const params: (string | number)[] = [lng, lat, parentId];
       let idx = 4;
       if (type) {
+        countSql += ` AND r.restaurant_type = $${countIdx}`;
+        countParams.push(type);
+        countIdx++;
         sql += ` AND r.restaurant_type = $${idx}`;
         params.push(type);
         idx++;
       }
       if (kashrut) {
+        countSql += ` AND r.kashrut_level = $${countIdx}`;
+        countParams.push(kashrut);
+        countIdx++;
         sql += ` AND r.kashrut_level = $${idx}`;
         params.push(kashrut);
         idx++;
       }
       if (q) {
+        countSql += ` AND r.name ILIKE $${countIdx}`;
+        countParams.push(`%${q}%`);
         sql += ` AND r.name ILIKE $${idx}`;
         params.push(`%${q}%`);
         idx++;
       }
-      sql += ' ORDER BY "distanceMeters" ASC';
-      return this.restaurantsRepo.query(sql, params);
+
+      const countResult = await this.restaurantsRepo.query(countSql, countParams);
+      const total = parseInt(countResult[0].count, 10);
+
+      params.push(offset);
+      sql += ` ORDER BY "distanceMeters" ASC LIMIT 50 OFFSET $${idx}`;
+      const data = await this.restaurantsRepo.query(sql, params);
+      return { data, total };
     }
+
+    const countParams: (string | number)[] = [parentId];
+    let countSql = `
+      SELECT COUNT(*)
+      FROM restaurants r
+      JOIN destinations d ON r."destinationId" = d.id
+      WHERE d.parent_id = $1
+    `;
 
     let sql = `
       SELECT r.id, r.name,
@@ -192,36 +210,87 @@ export class RestaurantsService {
     `;
     const params: (string | number)[] = [parentId];
     let idx = 2;
-    if (type)    { sql += ` AND r.restaurant_type = $${idx}`; params.push(type);     idx++; }
-    if (kashrut) { sql += ` AND r.kashrut_level   = $${idx}`; params.push(kashrut);  idx++; }
-    if (q)       { sql += ` AND r.name ILIKE $${idx}`;        params.push(`%${q}%`); idx++; }
-    sql += ' ORDER BY d.city ASC, r.name ASC';
-    return this.restaurantsRepo.query(sql, params);
+    let countIdx = 2;
+    if (type) {
+      countSql += ` AND r.restaurant_type = $${countIdx}`;
+      countParams.push(type);
+      countIdx++;
+      sql += ` AND r.restaurant_type = $${idx}`;
+      params.push(type);
+      idx++;
+    }
+    if (kashrut) {
+      countSql += ` AND r.kashrut_level = $${countIdx}`;
+      countParams.push(kashrut);
+      countIdx++;
+      sql += ` AND r.kashrut_level = $${idx}`;
+      params.push(kashrut);
+      idx++;
+    }
+    if (q) {
+      countSql += ` AND r.name ILIKE $${countIdx}`;
+      countParams.push(`%${q}%`);
+      sql += ` AND r.name ILIKE $${idx}`;
+      params.push(`%${q}%`);
+      idx++;
+    }
+
+    const countResult = await this.restaurantsRepo.query(countSql, countParams);
+    const total = parseInt(countResult[0].count, 10);
+
+    params.push(offset);
+    sql += ` ORDER BY d.city ASC, r.name ASC LIMIT 50 OFFSET $${idx}`;
+    const data = await this.restaurantsRepo.query(sql, params);
+    return { data, total };
   }
 
   // req 4.4 — single restaurant details
   async findOne(id: number) {
-    const restaurant = await this.restaurantsRepo
-      .createQueryBuilder('r')
-      .select([
-        'r.id',
-        'r.name',
-        'r.restaurantType',
-        'r.kashrutLevel',
-        'r.address',
-        'r.phone',
-        'r.category',
-        'r.openingHours',
-        'r.lat',
-        'r.lng',
-        'r.createdAt',
-      ])
-      .leftJoinAndSelect('r.destination', 'destination')
-      .where('r.id = :id', { id })
-      .getOne();
+    const rows = await this.restaurantsRepo.query(
+      `SELECT
+         r.id,
+         r.name,
+         r.restaurant_type   AS "restaurantType",
+         r.kashrut_level     AS "kashrutLevel",
+         r.is_kosher         AS "isKosher",
+         r.address,
+         r.phone,
+         r.category,
+         r.opening_hours     AS "openingHours",
+         r.created_at        AS "createdAt",
+         ST_Y(r.location::geometry) AS lat,
+         ST_X(r.location::geometry) AS lng,
+         d.id                AS "destId",
+         d.name              AS "destName",
+         d.city              AS "destCity",
+         d.country           AS "destCountry"
+       FROM restaurants r
+       LEFT JOIN destinations d ON d.id = r."destinationId"
+       WHERE r.id = $1`,
+      [id],
+    );
 
-    if (!restaurant) throw new NotFoundException(`Restaurant #${id} not found`);
-    return restaurant;
+    if (!rows.length) throw new NotFoundException(`Restaurant #${id} not found`);
+
+    const r = rows[0];
+    return {
+      id: r.id,
+      name: r.name,
+      restaurantType: r.restaurantType,
+      kashrutLevel: r.kashrutLevel,
+      isKosher: r.isKosher,
+      address: r.address,
+      phone: r.phone,
+      category: r.category,
+      openingHours: r.openingHours,
+      createdAt: r.createdAt,
+      lat: r.lat,
+      lng: r.lng,
+      location: null,
+      destination: r.destId
+        ? { id: r.destId, name: r.destName, city: r.destCity, country: r.destCountry }
+        : null,
+    } as any;
   }
 
   async findNearby(

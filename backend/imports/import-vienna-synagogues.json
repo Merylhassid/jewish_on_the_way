@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Stadttempel",
+    "address": "Seitenstettengasse 4, Vienna",
+    "phone": "0043-1-531-04",
+    "denomination": "אורתודוקסי",
+    "description": "בית הכנסת הגדול של וינה. תיירים נדרשים לתעודת זהות. מתקיימים סיורים מודרכים.",
+    "destinationId": 484
+  },
+  {
+    "name": "Agudas Yisroel",
+    "address": "Grünangergasse 1, Vienna",
+    "phone": "0043-1-212-00-94",
+    "denomination": "אורתודוקסי",
+    "description": "רב - דוד גרונפלד | [email protected]",
+    "destinationId": 484
+  },
+  {
+    "name": "Mizrahi",
+    "address": "Judenplatz 8, Vienna",
+    "phone": "0043-1-535-64-60",
+    "denomination": "ציונות דתית",
+    "description": "רב - יוסף פרדס | [email protected]",
+    "destinationId": 484
+  },
+  {
+    "name": "בית הכנסת הרוסי",
+    "address": "Tegetthoffstraße 3a, Vienna",
+    "phone": "0043-676-4501430",
+    "denomination": "אורתודוקסי",
+    "description": "קהילה דוברת רוסית | [email protected] | jrcvienna.com",
+    "destinationId": 484
+  },
+  {
+    "name": "Chabad Vienna",
+    "address": "Taborstraße 20a, Vienna",
+    "phone": "0043-676-83181771",
+    "denomination": "חב\"ד",
+    "description": "רב - אבי בידרמן | [email protected] | chabadvienna.com | תפילות, ארוחות שבת וחגים",
+    "destinationId": 484
+  },
+  {
+    "name": "בית הכנסת הקווקזי הספרדי",
+    "address": "Novaragasse 7, Vienna",
+    "phone": "0043-1-4923136",
+    "denomination": "ספרדי",
+    "description": "קהילה קווקזית ספרדית | [email protected]",
+    "destinationId": 484
+  },
+  {
+    "name": "Machzikey Hadas",
+    "address": "Große Mohrengasse 19, Vienna",
+    "phone": "0043-1-214-13-47",
+    "denomination": "חסידי",
+    "description": "רב - וויס | [email protected]",
+    "destinationId": 484
+  },
+  {
+    "name": "Kahal Chassidim",
+    "address": "Große Schiffgasse 8, Vienna",
+    "phone": "0043-1-216-36-95",
+    "denomination": "חסידי",
+    "description": "רב - אברהם שוורץ | [email protected]",
+    "destinationId": 484
+  },
+  {
+    "name": "Bet Halevi",
+    "address": "Rabbiner-Schneerson-Platz 2, Vienna",
+    "phone": "0043-650-49-55-770",
+    "denomination": "ספרדי",
+    "description": "קהילה בוכרית | רב - ישראל נתנאלוב | [email protected] | bethalevi.org",
+    "destinationId": 484
+  },
+  {
+    "name": "Ohel Avraham",
+    "address": "Hofzeile 18, Vienna",
+    "phone": "0043-676-831-81-600",
+    "denomination": "חב\"ד",
+    "description": "רב - שעיה בועז | [email protected] | synagogedoebling.at | קמפוס Lauder Business School",
+    "destinationId": 484
+  }
+]

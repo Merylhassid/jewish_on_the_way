@@ -53,6 +53,9 @@ export default function RestaurantsScreen() {
     useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string }>();
   const isCountryMode = fromParent === 'true';
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [total, setTotal]             = useState(0);
+  const [offset, setOffset]           = useState(0);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [loading, setLoading]   = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError]       = useState(false);
@@ -75,32 +78,36 @@ export default function RestaurantsScreen() {
     })();
   }, []);
 
-  // Re-fetch whenever filters, AI mode, or location change
+  // Re-fetch (page 0) whenever filters, AI mode, or location change
   useEffect(() => {
     if (searchTimeout.current) clearTimeout(searchTimeout.current);
     searchTimeout.current = setTimeout(async () => {
       try {
         setLoading(true);
+        setOffset(0);
         const params: Record<string, string> = isCountryMode
-          ? { parentDestinationId: destinationId }
-          : { destinationId };
+          ? { parentDestinationId: destinationId, offset: '0' }
+          : { destinationId, offset: '0' };
         if (userLocation?.lat) params.lat = String(userLocation.lat);
         if (userLocation?.lng) params.lng = String(userLocation.lng);
 
         let endpoint = '/restaurants';
         if (aiMode && search.trim()) {
-          // req 4.3.1 — AI classifier endpoint: extracts type/kashrut from free text
           endpoint = '/restaurants/search';
           params.q = search.trim();
           setLastAiQuery(search.trim());
+          const res = await client.get(endpoint, { params });
+          setRestaurants(Array.isArray(res.data) ? res.data : []);
+          setTotal(0); // AI search — אין total
         } else {
           if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
           if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
           if (search) params.q = search;
+          const res = await client.get(endpoint, { params });
+          const { data, total: t } = res.data;
+          setRestaurants(Array.isArray(data) ? data : []);
+          setTotal(t ?? 0);
         }
-
-        const res = await client.get(endpoint, { params });
-        setRestaurants(res.data);
       } catch {
         setError(true);
       } finally {
@@ -110,6 +117,30 @@ export default function RestaurantsScreen() {
     }, 300);
     return () => { if (searchTimeout.current) clearTimeout(searchTimeout.current); };
   }, [typeFilter, kashrutFilter, search, aiMode, userLocation, destinationId]);
+
+  // טעינת עמוד נוסף
+  const loadMore = async () => {
+    if (loadingMore || aiMode) return;
+    const nextOffset = offset + 50;
+    try {
+      setLoadingMore(true);
+      const params: Record<string, string> = isCountryMode
+        ? { parentDestinationId: destinationId, offset: String(nextOffset) }
+        : { destinationId, offset: String(nextOffset) };
+      if (userLocation?.lat) params.lat = String(userLocation.lat);
+      if (userLocation?.lng) params.lng = String(userLocation.lng);
+      if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
+      if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
+      if (search) params.q = search;
+
+      const res = await client.get('/restaurants', { params });
+      const { data } = res.data;
+      setRestaurants((prev) => [...prev, ...(Array.isArray(data) ? data : [])]);
+      setOffset(nextOffset);
+    } catch { /* silent */ } finally {
+      setLoadingMore(false);
+    }
+  };
 
   // When user taps a restaurant in AI mode, record the click so Claude can learn
   const sendAiFeedback = (item: Restaurant) => {
@@ -134,8 +165,9 @@ export default function RestaurantsScreen() {
         <HomeButton />
         <Text style={styles.headerTitle}>🍽️ Kosher Restaurants{city ? ` — ${city}` : ''}</Text>
         <Text style={styles.headerSub}>
-          {loading ? 'Loading…' : `${restaurants.length} restaurant${restaurants.length !== 1 ? 's' : ''} found`}
-          {userLocation ? '  •  📍 sorted by distance' : ''}
+          {loading
+            ? 'Loading…'
+            : `${total || restaurants.length} restaurant${(total || restaurants.length) !== 1 ? 's' : ''}${total > restaurants.length ? `  •  showing ${restaurants.length}` : ''}${userLocation ? '  •  📍 sorted by distance' : ''}`}
         </Text>
       </View>
 
@@ -225,6 +257,15 @@ export default function RestaurantsScreen() {
               tintColor="#1a3a6b"
             />
           }
+          ListFooterComponent={
+            !aiMode && restaurants.length < total ? (
+              <Pressable style={styles.loadMoreBtn} onPress={loadMore} disabled={loadingMore}>
+                {loadingMore
+                  ? <ActivityIndicator color="#1a3a6b" />
+                  : <Text style={styles.loadMoreText}>טען עוד ({total - restaurants.length} נותרו)</Text>}
+              </Pressable>
+            ) : null
+          }
           renderItem={({ item }) => {
             const badge   = KASHRUT_BADGE[item.kashrutLevel ?? 'unknown'] ?? KASHRUT_BADGE.unknown;
             const bgColor = TYPE_COLOR[item.restaurantType ?? 'unknown']  ?? TYPE_COLOR.unknown;
@@ -308,7 +349,9 @@ const styles = StyleSheet.create({
   distance:    { fontSize: 12, color: '#555', fontWeight: '500' },
   meta:        { fontSize: 13, color: '#555', marginBottom: 2 },
   cityTag:     { fontSize: 12, color: '#1a3a6b', fontWeight: '600', marginBottom: 3 },
-  empty:       { alignItems: 'center', marginTop: 60 },
-  emptyIcon:   { fontSize: 48, marginBottom: 12 },
-  emptyText:   { fontSize: 15, color: '#888', textAlign: 'center' },
+  empty:        { alignItems: 'center', marginTop: 60 },
+  emptyIcon:    { fontSize: 48, marginBottom: 12 },
+  emptyText:    { fontSize: 15, color: '#888', textAlign: 'center' },
+  loadMoreBtn:  { margin: 16, padding: 14, backgroundColor: '#e8eef8', borderRadius: 12, alignItems: 'center' },
+  loadMoreText: { color: '#1a3a6b', fontWeight: '700', fontSize: 15 },
 });
