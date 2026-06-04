@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
+  Platform,
   Pressable,
   RefreshControl,
   ScrollView,
@@ -12,8 +13,12 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import {
+  ArrowLeft, ChevronRight, Clock, MapPin,
+  Navigation, Search, Sparkles, Utensils, X,
+} from 'lucide-react-native';
 import client from '@/src/api/client';
-import HomeButton from '@/src/components/HomeButton';
+import { C } from '@/constants/theme';
 
 interface Restaurant {
   id: number;
@@ -26,286 +31,222 @@ interface Restaurant {
   destinationCity?: string;
 }
 
-const TYPE_EMOJI: Record<string, string> = { meat: '🥩', dairy: '🧀', parve: '🥗', pareve: '🥗', unknown: '🍽️' };
-const TYPE_COLOR: Record<string, string> = { meat: '#fdecea', dairy: '#e3f2fd', parve: '#e8f5e9', pareve: '#e8f5e9', unknown: '#f5f5f5' };
-const KASHRUT_BADGE: Record<string, { label: string; color: string }> = {
-  rabbinate: { label: 'Rabbinate', color: '#9e9e9e' },
-  mehadrin:  { label: 'Mehadrin',  color: '#2196f3' },
-  badatz:    { label: 'Badatz',    color: '#4caf50' },
-  unknown:   { label: 'Kosher',    color: '#9e9e9e' },
+// ── Design tokens ─────────────────────────────────────────────────────────────
+const TYPE_COLOR: Record<string, string> = {
+  meat:    '#DC2626',
+  dairy:   '#2563EB',
+  parve:   '#059669',
+  pareve:  '#059669',
+  unknown: '#9CA3AF',
+};
+const TYPE_LABEL: Record<string, string> = {
+  meat: 'Meat', dairy: 'Dairy', parve: 'Pareve', pareve: 'Pareve', unknown: 'Kosher',
+};
+const KASHRUT: Record<string, { label: string; color: string; bg: string }> = {
+  rabbinate: { label: 'Rabbinate', color: '#6B7280', bg: '#F3F4F6' },
+  mehadrin:  { label: 'Mehadrin',  color: '#2563EB', bg: '#EFF6FF' },
+  badatz:    { label: 'Badatz',    color: '#059669', bg: '#F0FDF4' },
+  unknown:   { label: 'Kosher',    color: '#9CA3AF', bg: '#F9FAFB' },
 };
 
-const TYPE_FILTERS   = ['all', 'meat', 'dairy', 'parve'];
+const TYPE_FILTERS    = ['all', 'meat', 'dairy', 'parve'];
 const KASHRUT_FILTERS = ['all', 'rabbinate', 'mehadrin', 'badatz'];
 
-function formatDistance(meters: number): string {
-  if (meters < 1000) return `${Math.round(meters)} m`;
-  return `${(meters / 1000).toFixed(1)} km`;
-}
-
-function formatLabel(value: string | null | undefined) {
-  if (!value) return 'Unknown';
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
+const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
+const cap = (s: string | null | undefined) => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Unknown';
 
 export default function RestaurantsScreen() {
   const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent } =
     useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string }>();
   const isCountryMode = fromParent === 'true';
+
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [total, setTotal]             = useState(0);
   const [offset, setOffset]           = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [loading, setLoading]   = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-  const [error, setError]       = useState(false);
-  const [typeFilter, setTypeFilter]       = useState(typeParam && TYPE_FILTERS.includes(typeParam) ? typeParam : 'all');
-  const [kashrutFilter, setKashrutFilter] = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
-  const [search, setSearch] = useState('');
-  const [aiMode, setAiMode] = useState(false);
+  const [loading, setLoading]         = useState(true);
+  const [refreshing, setRefreshing]   = useState(false);
+  const [typeFilter, setTypeFilter]   = useState(typeParam && TYPE_FILTERS.includes(typeParam) ? typeParam : 'all');
+  const [kFilter, setKFilter]         = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
+  const [search, setSearch]           = useState('');
+  const [aiMode, setAiMode]           = useState(false);
   const [lastAiQuery, setLastAiQuery] = useState('');
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const searchTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [gps, setGps]                 = useState<{ lat: number; lng: number } | null>(null);
+  const timeoutRef = useRef<any>(null);
+  const cityLabel = city ? decodeURIComponent(city) : '';
 
-  // Request location once on mount
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === 'granted') {
         const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
-        setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setGps({ lat: pos.coords.latitude, lng: pos.coords.longitude });
       }
     })();
   }, []);
 
-  // Re-fetch (page 0) whenever filters, AI mode, or location change
   useEffect(() => {
-    if (searchTimeout.current) clearTimeout(searchTimeout.current);
-    searchTimeout.current = setTimeout(async () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(async () => {
       try {
-        setLoading(true);
-        setOffset(0);
+        setLoading(true); setOffset(0);
         const params: Record<string, string> = isCountryMode
           ? { parentDestinationId: destinationId, offset: '0' }
           : { destinationId, offset: '0' };
-        if (userLocation?.lat) params.lat = String(userLocation.lat);
-        if (userLocation?.lng) params.lng = String(userLocation.lng);
+        if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
 
-        let endpoint = '/restaurants';
         if (aiMode && search.trim()) {
-          endpoint = '/restaurants/search';
           params.q = search.trim();
           setLastAiQuery(search.trim());
-          const res = await client.get(endpoint, { params });
+          const res = await client.get('/restaurants/search', { params });
           setRestaurants(Array.isArray(res.data) ? res.data : []);
-          setTotal(0); // AI search — אין total
+          setTotal(0);
         } else {
-          if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
-          if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
-          if (search) params.q = search;
-          const res = await client.get(endpoint, { params });
+          if (typeFilter !== 'all') params.type = typeFilter;
+          if (kFilter !== 'all')    params.kashrut = kFilter;
+          if (search)               params.q = search;
+          const res = await client.get('/restaurants', { params });
           const { data, total: t } = res.data;
           setRestaurants(Array.isArray(data) ? data : []);
           setTotal(t ?? 0);
         }
-      } catch {
-        setError(true);
-      } finally {
-        setLoading(false);
-        setRefreshing(false);
-      }
+      } catch {} finally { setLoading(false); setRefreshing(false); }
     }, 300);
-    return () => { if (searchTimeout.current) clearTimeout(searchTimeout.current); };
-  }, [typeFilter, kashrutFilter, search, aiMode, userLocation, destinationId]);
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, [typeFilter, kFilter, search, aiMode, gps, destinationId]);
 
-  // טעינת עמוד נוסף
   const loadMore = async () => {
     if (loadingMore || aiMode) return;
-    const nextOffset = offset + 50;
+    const next = offset + 50;
     try {
       setLoadingMore(true);
       const params: Record<string, string> = isCountryMode
-        ? { parentDestinationId: destinationId, offset: String(nextOffset) }
-        : { destinationId, offset: String(nextOffset) };
-      if (userLocation?.lat) params.lat = String(userLocation.lat);
-      if (userLocation?.lng) params.lng = String(userLocation.lng);
-      if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
-      if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
-      if (search) params.q = search;
-
+        ? { parentDestinationId: destinationId, offset: String(next) }
+        : { destinationId, offset: String(next) };
+      if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+      if (typeFilter !== 'all') params.type = typeFilter;
+      if (kFilter !== 'all')    params.kashrut = kFilter;
+      if (search)               params.q = search;
       const res = await client.get('/restaurants', { params });
-      const { data } = res.data;
-      setRestaurants((prev) => [...prev, ...(Array.isArray(data) ? data : [])]);
-      setOffset(nextOffset);
-    } catch { /* silent */ } finally {
-      setLoadingMore(false);
-    }
+      setRestaurants(p => [...p, ...(Array.isArray(res.data.data) ? res.data.data : [])]);
+      setOffset(next);
+    } catch {} finally { setLoadingMore(false); }
   };
 
-  // When user taps a restaurant in AI mode, record the click so Claude can learn
-  const sendAiFeedback = (item: Restaurant) => {
+  const sendFeedback = (item: Restaurant) => {
     if (!aiMode || !lastAiQuery) return;
-    client
-      .post('/restaurants/search/feedback', {
-        query: lastAiQuery,
-        clickedRestaurantName: item.name,
-        clickedRestaurantType: item.restaurantType,
-        clickedRestaurantKashrut: item.kashrutLevel,
-      })
-      .catch(() => {/* silent — feedback is best-effort */});
+    client.post('/restaurants/search/feedback', {
+      query: lastAiQuery,
+      clickedRestaurantName: item.name,
+      clickedRestaurantType: item.restaurantType,
+      clickedRestaurantKashrut: item.kashrutLevel,
+    }).catch(() => {});
   };
+
+  const openDetail = (item: Restaurant) => {
+    sendFeedback(item);
+    router.push({
+      pathname: `/restaurant/${item.id}` as any,
+      params: {
+        distance: item.distanceMeters ?? '',
+        name: item.name,
+        restaurantType: item.restaurantType ?? '',
+        kashrutLevel: item.kashrutLevel ?? '',
+        address: item.address ?? '',
+        openingHours: item.openingHours ?? '',
+      },
+    });
+  };
+
+  const count = total || restaurants.length;
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
-        </Pressable>
-        <HomeButton />
-        <Text style={styles.headerTitle}>🍽️ Kosher Restaurants{city ? ` — ${city}` : ''}</Text>
-        <Text style={styles.headerSub}>
-          {loading
-            ? 'Loading…'
-            : `${total || restaurants.length} restaurant${(total || restaurants.length) !== 1 ? 's' : ''}${total > restaurants.length ? `  •  showing ${restaurants.length}` : ''}${userLocation ? '  •  📍 sorted by distance' : ''}`}
-        </Text>
-      </View>
+    <View style={s.root}>
 
-      {/* Search + AI toggle */}
-      <View style={styles.searchWrapper}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder={aiMode ? '✨  e.g. "badatz steak place" or "dairy near me"…' : '🔍  Search restaurants…'}
-          placeholderTextColor="#999"
-          value={search}
-          onChangeText={setSearch}
-        />
-        <Pressable
-          style={[styles.aiToggle, aiMode && styles.aiToggleActive]}
-          onPress={() => { setAiMode((v) => !v); setSearch(''); }}
-        >
-          <Text style={[styles.aiToggleText, aiMode && styles.aiToggleTextActive]}>
-            ✨ AI
-          </Text>
-        </Pressable>
-      </View>
-
-      {/* Filters — hidden in AI mode (AI extracts them from text) */}
-      {!aiMode && (
-        <>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow} contentContainerStyle={styles.filterContent}>
-            {TYPE_FILTERS.map((f) => (
-              <Pressable
-                key={f}
-                style={[styles.chip, typeFilter === f && styles.chipActive]}
-                onPress={() => setTypeFilter(f)}
-              >
-                <Text style={[styles.chipText, typeFilter === f && styles.chipTextActive]}>
-                  {f === 'all' ? 'All types' : `${TYPE_EMOJI[f]} ${formatLabel(f)}`}
-                </Text>
-              </Pressable>
-            ))}
-          </ScrollView>
-
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow} contentContainerStyle={styles.filterContent}>
-            {KASHRUT_FILTERS.map((f) => (
-              <Pressable
-                key={f}
-                style={[styles.chip, kashrutFilter === f && styles.chipActive]}
-                onPress={() => setKashrutFilter(f)}
-              >
-                <Text style={[styles.chipText, kashrutFilter === f && styles.chipTextActive]}>
-                  {f === 'all' ? 'All kashrut' : formatLabel(f)}
-                </Text>
-              </Pressable>
-            ))}
-          </ScrollView>
-        </>
-      )}
-
-      {aiMode && search.trim().length > 0 && (
-        <View style={styles.aiHint}>
-          <Text style={styles.aiHintText}>✨ AI is detecting type, kashrut & keywords from your text</Text>
+      {/* ── Header ── */}
+      <View style={s.header}>
+        <View style={s.headerRow}>
+          <Pressable style={s.backBtn} onPress={() => router.back()} hitSlop={12}>
+            <ArrowLeft size={20} color="#fff" strokeWidth={2.5} />
+          </Pressable>
+          <View style={{ flex: 1 }}>
+            <Text style={s.headerTitle} numberOfLines={1}>
+              {cityLabel ? cityLabel : 'Restaurants'}
+            </Text>
+            <Text style={s.headerSub}>
+              {loading ? 'Loading…' : `${count} kosher restaurant${count !== 1 ? 's' : ''}${gps ? '  ·  sorted by distance' : ''}`}
+            </Text>
+          </View>
         </View>
-      )}
 
-      {/* List */}
-      {loading ? (
-        <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
-      ) : error ? (
-        <View style={styles.center}>
-          <Text style={{ fontSize: 36, marginBottom: 12 }}>⚠️</Text>
-          <Text style={{ fontSize: 15, color: '#888', marginBottom: 16 }}>שגיאה בטעינת הנתונים</Text>
-          <Pressable
-            style={{ backgroundColor: '#1a3a6b', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 }}
-            onPress={() => { setError(false); setLoading(true); }}
-          >
-            <Text style={{ color: '#fff', fontWeight: '700' }}>🔄 נסה שוב</Text>
+        {/* Search bar */}
+        <View style={[s.searchBar, aiMode && s.searchBarAi]}>
+          {aiMode
+            ? <Sparkles size={16} color={C.gold} strokeWidth={2} />
+            : <Search size={16} color="rgba(255,255,255,0.5)" strokeWidth={2} />
+          }
+          <TextInput
+            style={s.searchInput}
+            placeholder={aiMode ? '"Badatz steak" or "dairy near me"…' : 'Search restaurants…'}
+            placeholderTextColor="rgba(255,255,255,0.35)"
+            value={search}
+            onChangeText={setSearch}
+          />
+          {search.length > 0 && (
+            <Pressable hitSlop={8} onPress={() => setSearch('')}>
+              <X size={15} color="rgba(255,255,255,0.5)" strokeWidth={2} />
+            </Pressable>
+          )}
+          <View style={s.searchDivider} />
+          <Pressable style={[s.aiPill, aiMode && s.aiPillOn]} onPress={() => { setAiMode(v => !v); setSearch(''); }}>
+            <Sparkles size={12} color={aiMode ? C.navy : '#fff'} strokeWidth={2} />
+            <Text style={[s.aiPillText, aiMode && { color: C.navy }]}>AI</Text>
           </Pressable>
         </View>
+      </View>
+
+      {/* ── Filters ── */}
+      {!aiMode && (
+        <View style={s.filtersWrap}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.filterRow}>
+            {TYPE_FILTERS.map(f => (
+              <Pressable key={f} style={[s.chip, typeFilter === f && s.chipOn]} onPress={() => setTypeFilter(f)}>
+                <Text style={[s.chipText, typeFilter === f && s.chipTextOn]}>
+                  {f === 'all' ? 'All types' : cap(f)}
+                </Text>
+              </Pressable>
+            ))}
+          </ScrollView>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.filterRow}>
+            {KASHRUT_FILTERS.map(f => (
+              <Pressable key={f} style={[s.chip, kFilter === f && s.chipOn]} onPress={() => setKFilter(f)}>
+                <Text style={[s.chipText, kFilter === f && s.chipTextOn]}>
+                  {f === 'all' ? 'All kashrut' : cap(f)}
+                </Text>
+              </Pressable>
+            ))}
+          </ScrollView>
+        </View>
+      )}
+
+      {/* ── List ── */}
+      {loading ? (
+        <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>
       ) : (
         <FlatList
           data={restaurants}
-          keyExtractor={(item) => String(item.id)}
-          contentContainerStyle={styles.list}
+          keyExtractor={i => String(i.id)}
+          contentContainerStyle={s.list}
           showsVerticalScrollIndicator={false}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={() => { setRefreshing(true); setError(false); }}
-              colors={['#1a3a6b']}
-              tintColor="#1a3a6b"
-            />
-          }
-          ListFooterComponent={
-            !aiMode && restaurants.length < total ? (
-              <Pressable style={styles.loadMoreBtn} onPress={loadMore} disabled={loadingMore}>
-                {loadingMore
-                  ? <ActivityIndicator color="#1a3a6b" />
-                  : <Text style={styles.loadMoreText}>טען עוד ({total - restaurants.length} נותרו)</Text>}
-              </Pressable>
-            ) : null
-          }
-          renderItem={({ item }) => {
-            const badge   = KASHRUT_BADGE[item.kashrutLevel ?? 'unknown'] ?? KASHRUT_BADGE.unknown;
-            const bgColor = TYPE_COLOR[item.restaurantType ?? 'unknown']  ?? TYPE_COLOR.unknown;
-            const emoji   = TYPE_EMOJI[item.restaurantType ?? 'unknown']  ?? TYPE_EMOJI.unknown;
-            return (
-              <Pressable
-                style={[styles.card, { backgroundColor: bgColor }]}
-                onPress={() => {
-                  sendAiFeedback(item);
-                  const dist = item.distanceMeters !== undefined ? `?distance=${item.distanceMeters}` : '';
-                  router.push(`/restaurant/${item.id}${dist}`);
-                }}
-              >
-                <View style={styles.cardTop}>
-                  <Text style={styles.emoji}>{emoji}</Text>
-                  <View style={styles.cardInfo}>
-                    <Text style={styles.cardName}>{item.name}</Text>
-                    <Text style={styles.cardType}>
-                      {formatLabel(item.restaurantType)}
-                    </Text>
-                  </View>
-                  <View style={styles.rightCol}>
-                    <View style={[styles.badge, { backgroundColor: badge.color }]}>
-                      <Text style={styles.badgeText}>{badge.label}</Text>
-                    </View>
-                    {item.distanceMeters !== undefined && (
-                      <Text style={styles.distance}>{formatDistance(Number(item.distanceMeters))}</Text>
-                    )}
-                  </View>
-                </View>
-                {item.destinationCity && <Text style={styles.cityTag}>🏙️ {item.destinationCity}</Text>}
-                {item.address     && <Text style={styles.meta}>📍 {item.address}</Text>}
-                {item.openingHours && <Text style={styles.meta}>🕐 {item.openingHours}</Text>}
-              </Pressable>
-            );
-          }}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); }} tintColor={C.gold} />}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.3}
+          ListFooterComponent={loadingMore ? <ActivityIndicator color={C.gold} style={{ margin: 20 }} /> : null}
+          renderItem={({ item }) => <RestaurantCard item={item} onPress={() => openDetail(item)} />}
           ListEmptyComponent={
-            <View style={styles.empty}>
-              <Text style={styles.emptyIcon}>🍽️</Text>
-              <Text style={styles.emptyText}>No restaurants match your filters</Text>
+            <View style={s.empty}>
+              <Utensils size={36} color="#E5E7EB" strokeWidth={1.5} />
+              <Text style={s.emptyText}>No restaurants found</Text>
             </View>
           }
         />
@@ -314,44 +255,155 @@ export default function RestaurantsScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container:   { flex: 1, backgroundColor: '#f0f4ff' },
-  center:      { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 60 },
-  header:      { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20 },
-  backBtn:     { marginBottom: 10 },
-  backText:    { fontSize: 24, color: '#fff' },
-  headerTitle: { fontSize: 20, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  headerSub:   { fontSize: 13, color: '#a8c4e8' },
-  searchWrapper: { backgroundColor: '#fff', paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#eee', flexDirection: 'row', alignItems: 'center', gap: 8 },
-  searchInput: { flex: 1, backgroundColor: '#f0f4ff', borderRadius: 12, paddingHorizontal: 16, paddingVertical: 10, fontSize: 15, color: '#1a1a2e' },
-  aiToggle: { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 12, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  aiToggleActive: { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  aiToggleText: { fontSize: 13, fontWeight: '700', color: '#555' },
-  aiToggleTextActive: { color: '#fff' },
-  aiHint: { backgroundColor: '#e8f4fd', paddingHorizontal: 16, paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#bee3f8' },
-  aiHintText: { fontSize: 12, color: '#0277bd', fontStyle: 'italic' },
-  filterRow:   { maxHeight: 48, backgroundColor: '#fff' },
-  filterContent: { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
-  chip:        { paddingHorizontal: 14, paddingVertical: 6, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  chipActive:  { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  chipText:    { fontSize: 13, color: '#555', fontWeight: '500' },
-  chipTextActive: { color: '#fff' },
-  list:        { padding: 16, gap: 12 },
-  card:        { borderRadius: 14, padding: 16, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
-  cardTop:     { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  emoji:       { fontSize: 28, marginRight: 12 },
-  cardInfo:    { flex: 1 },
-  cardName:    { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
-  cardType:    { fontSize: 13, color: '#666', marginTop: 2 },
-  rightCol:    { alignItems: 'flex-end', gap: 4 },
-  badge:       { paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8 },
-  badgeText:   { color: '#fff', fontSize: 11, fontWeight: '600' },
-  distance:    { fontSize: 12, color: '#555', fontWeight: '500' },
-  meta:        { fontSize: 13, color: '#555', marginBottom: 2 },
-  cityTag:     { fontSize: 12, color: '#1a3a6b', fontWeight: '600', marginBottom: 3 },
-  empty:        { alignItems: 'center', marginTop: 60 },
-  emptyIcon:    { fontSize: 48, marginBottom: 12 },
-  emptyText:    { fontSize: 15, color: '#888', textAlign: 'center' },
-  loadMoreBtn:  { margin: 16, padding: 14, backgroundColor: '#e8eef8', borderRadius: 12, alignItems: 'center' },
-  loadMoreText: { color: '#1a3a6b', fontWeight: '700', fontSize: 15 },
+// ── Restaurant card ───────────────────────────────────────────────────────────
+function RestaurantCard({ item, onPress }: { item: Restaurant; onPress: () => void }) {
+  const typeColor = TYPE_COLOR[item.restaurantType ?? 'unknown'] ?? TYPE_COLOR.unknown;
+  const typeLabel = TYPE_LABEL[item.restaurantType ?? 'unknown'] ?? 'Kosher';
+  const kashrut   = KASHRUT[item.kashrutLevel] ?? KASHRUT.unknown;
+
+  return (
+    <Pressable
+      style={({ pressed }) => [s.card, pressed && s.cardPressed]}
+      onPress={onPress}
+    >
+      {/* Left accent */}
+      <View style={[s.cardAccent, { backgroundColor: typeColor }]} />
+
+      <View style={s.cardBody}>
+        {/* Top row */}
+        <View style={s.cardTop}>
+          <View style={[s.typeIcon, { backgroundColor: typeColor + '15' }]}>
+            <Utensils size={16} color={typeColor} strokeWidth={2} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={s.cardName} numberOfLines={1}>{item.name}</Text>
+            <Text style={[s.cardType, { color: typeColor }]}>{typeLabel}</Text>
+          </View>
+          <View style={[s.kashrutBadge, { backgroundColor: kashrut.bg }]}>
+            <Text style={[s.kashrutText, { color: kashrut.color }]}>{kashrut.label}</Text>
+          </View>
+        </View>
+
+        {/* Meta */}
+        <View style={s.cardMeta}>
+          {item.address && (
+            <View style={s.metaRow}>
+              <MapPin size={12} color="#9CA3AF" strokeWidth={2} />
+              <Text style={s.metaText} numberOfLines={1}>{item.address}</Text>
+            </View>
+          )}
+          {item.openingHours && (
+            <View style={s.metaRow}>
+              <Clock size={12} color="#9CA3AF" strokeWidth={2} />
+              <Text style={s.metaText} numberOfLines={1}>{item.openingHours}</Text>
+            </View>
+          )}
+          {item.destinationCity && (
+            <View style={s.metaRow}>
+              <Navigation size={12} color="#9CA3AF" strokeWidth={2} />
+              <Text style={s.metaText}>{item.destinationCity}</Text>
+            </View>
+          )}
+        </View>
+
+        {/* Distance + arrow */}
+        <View style={s.cardBottom}>
+          {item.distanceMeters !== undefined && (
+            <View style={s.distPill}>
+              <Navigation size={10} color={C.gold} strokeWidth={2.5} />
+              <Text style={s.distText}>{fmt(Number(item.distanceMeters))}</Text>
+            </View>
+          )}
+          <View style={{ flex: 1 }} />
+          <ChevronRight size={16} color="#E5E7EB" strokeWidth={2.5} />
+        </View>
+      </View>
+    </Pressable>
+  );
+}
+
+// ── Styles ────────────────────────────────────────────────────────────────────
+const s = StyleSheet.create({
+  root:   { flex: 1, backgroundColor: '#F7F5F0' },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 60 },
+
+  // Header
+  header: {
+    backgroundColor: C.navy,
+    paddingTop: Platform.OS === 'ios' ? 58 : 38,
+    paddingHorizontal: 20, paddingBottom: 16,
+    gap: 14,
+  },
+  headerRow:  { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  backBtn: {
+    width: 38, height: 38, borderRadius: 19,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    justifyContent: 'center', alignItems: 'center',
+  },
+  headerTitle: { fontSize: 20, fontWeight: '800', color: '#fff', letterSpacing: -0.3 },
+  headerSub:   { fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 2, fontWeight: '500' },
+
+  searchBar: {
+    flexDirection: 'row', alignItems: 'center', gap: 10,
+    backgroundColor: 'rgba(255,255,255,0.10)',
+    borderRadius: 14, paddingHorizontal: 14, paddingVertical: 11,
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)',
+  },
+  searchBarAi: { borderColor: C.gold + '60', backgroundColor: 'rgba(201,168,76,0.08)' },
+  searchInput: { flex: 1, fontSize: 14, color: '#fff', padding: 0 },
+  searchDivider: { width: 1, height: 16, backgroundColor: 'rgba(255,255,255,0.15)' },
+  aiPill: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
+    paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+  },
+  aiPillOn: { backgroundColor: C.gold },
+  aiPillText: { fontSize: 11, fontWeight: '800', color: '#fff', letterSpacing: 0.5 },
+
+  // Filters
+  filtersWrap: { backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#F0EDE6' },
+  filterRow:   { paddingHorizontal: 16, paddingVertical: 10, gap: 8 },
+  chip: {
+    paddingHorizontal: 14, paddingVertical: 7, borderRadius: 20,
+    borderWidth: 1.5, borderColor: '#E5E7EB', backgroundColor: '#fff',
+  },
+  chipOn:      { borderColor: C.navy, backgroundColor: C.navy },
+  chipText:    { fontSize: 13, fontWeight: '600', color: C.textSecondary },
+  chipTextOn:  { color: '#fff' },
+
+  // List
+  list: { padding: 16, gap: 10, paddingBottom: 40 },
+
+  // Card
+  card: {
+    flexDirection: 'row', backgroundColor: '#fff', borderRadius: 18, overflow: 'hidden',
+    shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 10,
+    shadowOffset: { width: 0, height: 3 }, elevation: 3,
+  },
+  cardPressed: { opacity: 0.88, transform: [{ scale: 0.985 }] },
+  cardAccent:  { width: 4 },
+  cardBody:    { flex: 1, padding: 14, gap: 10 },
+
+  cardTop:  { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  typeIcon: { width: 36, height: 36, borderRadius: 10, justifyContent: 'center', alignItems: 'center' },
+  cardName: { fontSize: 15, fontWeight: '700', color: C.textPrimary, letterSpacing: -0.1 },
+  cardType: { fontSize: 12, fontWeight: '600', marginTop: 1 },
+  kashrutBadge: { paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8 },
+  kashrutText:  { fontSize: 11, fontWeight: '700' },
+
+  cardMeta: { gap: 5 },
+  metaRow:  { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  metaText: { fontSize: 12, color: '#9CA3AF', flex: 1 },
+
+  cardBottom: { flexDirection: 'row', alignItems: 'center' },
+  distPill: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
+    backgroundColor: 'rgba(201,168,76,0.10)',
+    borderRadius: 10, paddingHorizontal: 8, paddingVertical: 4,
+  },
+  distText: { fontSize: 11, fontWeight: '700', color: C.gold },
+
+  // Empty
+  empty:     { alignItems: 'center', paddingTop: 60, gap: 10 },
+  emptyText: { fontSize: 14, color: '#BBC3D4' },
 });
