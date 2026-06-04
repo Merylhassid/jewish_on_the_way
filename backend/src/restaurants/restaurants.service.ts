@@ -246,7 +246,26 @@ export class RestaurantsService {
 
   // req 4.4 — single restaurant details
   async findOne(id: number) {
-    const rows = await this.restaurantsRepo.query(
+    type Row = {
+      id: number;
+      name: string;
+      restaurantType: string | null;
+      kashrutLevel: string;
+      isKosher: boolean | null;
+      address: string | null;
+      phone: string | null;
+      category: string | null;
+      openingHours: string | null;
+      createdAt: string;
+      lat: number | null;
+      lng: number | null;
+      destId: number | null;
+      destName: string | null;
+      destCity: string | null;
+      destCountry: string | null;
+    };
+
+    const rows = (await this.restaurantsRepo.query(
       `SELECT
          r.id,
          r.name,
@@ -268,10 +287,8 @@ export class RestaurantsService {
        LEFT JOIN destinations d ON d.id = r."destinationId"
        WHERE r.id = $1`,
       [id],
-    );
-
+    )) as Row[];
     if (!rows.length) throw new NotFoundException(`Restaurant #${id} not found`);
-
     const r = rows[0];
     return {
       id: r.id,
