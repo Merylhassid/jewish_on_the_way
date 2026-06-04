@@ -5,7 +5,6 @@ import {
   ActivityIndicator,
   Alert,
   Dimensions,
-  FlatList,
   Platform,
   Pressable,
   RefreshControl,
@@ -18,12 +17,14 @@ import {
 } from 'react-native';
 import { Image } from 'expo-image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Bookmark, Clock, Navigation, Search, Sparkles, X } from 'lucide-react-native';
+import { Bookmark, ChevronRight, Clock, Navigation, Search, Sparkles, X } from 'lucide-react-native';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl } from '@/constants/theme';
 
-const { width: W } = Dimensions.get('window');
-const CARD_W = W * 0.62;
+const { width: W, height: H } = Dimensions.get('window');
+const HERO_H = H * 0.52;
+const POP_W  = W * 0.54;
+
 const RECENT_KEY = 'recent_destinations';
 
 interface Dest {
@@ -52,16 +53,19 @@ async function removeRecent(id: number) {
 
 const fmt = (m: number) => m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixed(1)}km`;
 
+// Popular destinations to feature at top
+const POPULAR_CITIES = ['Tel Aviv', 'Paris', 'New York', 'London', 'Buenos Aires', 'Amsterdam', 'Berlin', 'Miami'];
+
 export default function HomeScreen() {
   const [dests, setDests]       = useState<Dest[]>([]);
-  const [search, setSearch]     = useState('');
   const [loading, setLoading]   = useState(true);
   const [refreshing, setRef]    = useState(false);
   const [recent, setRecent]     = useState<Dest[]>([]);
-  const [aiMode, setAiMode]     = useState(false);
+  const [search, setSearch]     = useState('');
   const [aiText, setAiText]     = useState('');
   const [aiBusy, setAiBusy]     = useState(false);
   const [chip, setChip]         = useState<any>(null);
+  const [searchMode, setSearchMode] = useState<'none' | 'text' | 'ai'>('none');
   const [gps, setGps]           = useState<{ lat: number; lng: number } | null>(null);
   const debRef = useRef<any>(null);
 
@@ -106,7 +110,7 @@ export default function HomeScreen() {
       const res = await client.post('/search', body);
       const { route, detectedCity, error: e } = res.data;
       if (e === 'low_confidence') { Alert.alert('Not sure', 'Try: "kosher restaurant in Tel Aviv"'); return; }
-      if (!detectedCity) { Alert.alert('No city', 'Try: "kosher restaurant in Tel Aviv"'); return; }
+      if (!detectedCity) { Alert.alert('No city detected', 'Try: "kosher restaurant in Tel Aviv"'); return; }
       router.push((route + `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}`) as any);
     } catch { Alert.alert('Error', 'Try again'); } finally { setAiBusy(false); }
   };
@@ -117,268 +121,359 @@ export default function HomeScreen() {
     router.push((item.hasChildren ? `/destination/${item.id}/subdestinations` : `/destination/${item.id}`) as any);
   };
 
-  const Header = (
-    <View>
-      {/* Recent */}
-      {recent.length > 0 && !search && !aiMode && (
-        <View style={s.section}>
-          <Text style={s.sectionLabel}>RECENTLY VISITED</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
-            {recent.map(d => (
-              <View key={d.id} style={s.chip}>
-                <Pressable style={s.chipInner} onPress={() => go(d)}>
-                  <Clock size={11} color={C.gold} strokeWidth={2.5} />
-                  <Text style={s.chipText} numberOfLines={1}>{d.city}</Text>
-                </Pressable>
-                <Pressable hitSlop={8} onPress={() => { removeRecent(d.id); setRecent(p => p.filter(r => r.id !== d.id)); }}>
-                  <X size={12} color="#C4CBD8" strokeWidth={2.5} />
-                </Pressable>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
-      )}
-
-      <View style={s.listHeader}>
-        <Text style={s.listLabel}>{search ? `"${search}"` : 'Destinations'}</Text>
-        {gps && !search && (
-          <View style={s.nearPill}>
-            <Navigation size={10} color={C.gold} strokeWidth={2.5} />
-            <Text style={s.nearText}>Nearest first</Text>
-          </View>
-        )}
-      </View>
-    </View>
-  );
+  const popular = dests.filter(d => POPULAR_CITIES.some(c => d.city.toLowerCase().includes(c.toLowerCase())));
+  const hero = popular[0] || dests[0];
+  const filteredDests = search
+    ? dests.filter(d => d.city.toLowerCase().includes(search.toLowerCase()) || d.country.toLowerCase().includes(search.toLowerCase()))
+    : dests;
 
   return (
     <View style={s.root}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
 
-      {/* ── Top ── */}
-      <View style={s.top}>
-        <View style={s.topRow}>
-          <View>
-            <Text style={s.eyebrow}>JEWISH ON THE WAY</Text>
-            <Text style={s.title}>Discover</Text>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRef(true); await fetchDests(); setRef(false); }} tintColor={C.gold} />}
+      >
+
+        {/* ── HERO ── */}
+        {hero && (
+          <View style={s.hero}>
+            <Image
+              source={{ uri: getDestinationImageUrl(hero.city, hero.countryCode) }}
+              style={StyleSheet.absoluteFillObject}
+              contentFit="cover"
+              transition={800}
+            />
+
+            {/* Gradient overlays */}
+            <View style={s.heroGradTop} />
+            <View style={s.heroGradBottom} />
+
+            {/* Top nav */}
+            <View style={s.heroNav}>
+              <View>
+                <Text style={s.heroBrand}>JEWISH ON THE WAY</Text>
+              </View>
+              <Pressable style={s.savedBtn} onPress={() => router.push('/saved' as any)}>
+                <Bookmark size={17} color="#fff" strokeWidth={2} />
+              </Pressable>
+            </View>
+
+            {/* Hero text */}
+            <View style={s.heroContent}>
+              <Text style={s.heroTagline}>Discover Jewish Life</Text>
+              <Text style={s.heroTagline2}>Anywhere</Text>
+              <Text style={s.heroSub}>Kosher food · Synagogues · Community</Text>
+
+              {/* Search bar — glassmorphism */}
+              {searchMode === 'none' && (
+                <View style={s.heroSearch}>
+                  <Pressable style={s.heroSearchInner} onPress={() => setSearchMode('text')}>
+                    <Search size={16} color="rgba(255,255,255,0.7)" strokeWidth={2} />
+                    <Text style={s.heroSearchPlaceholder}>Search destinations…</Text>
+                  </Pressable>
+                  <Pressable style={s.heroAiBtn} onPress={() => setSearchMode('ai')}>
+                    <Sparkles size={14} color={C.gold} strokeWidth={2} />
+                    <Text style={s.heroAiBtnText}>AI</Text>
+                  </Pressable>
+                </View>
+              )}
+
+              {searchMode === 'text' && (
+                <View style={s.heroSearchActive}>
+                  <Search size={16} color={C.navy} strokeWidth={2} />
+                  <TextInput
+                    style={s.heroSearchInput}
+                    placeholder="Search destinations…"
+                    placeholderTextColor="#9CA3AF"
+                    value={search}
+                    onChangeText={setSearch}
+                    autoFocus
+                    returnKeyType="search"
+                  />
+                  <Pressable hitSlop={8} onPress={() => { setSearch(''); setSearchMode('none'); }}>
+                    <X size={16} color="#9CA3AF" strokeWidth={2} />
+                  </Pressable>
+                </View>
+              )}
+
+              {searchMode === 'ai' && (
+                <View style={s.heroSearchActive}>
+                  <Sparkles size={16} color={C.gold} strokeWidth={2} />
+                  <TextInput
+                    style={s.heroSearchInput}
+                    placeholder='"Kosher restaurant in Paris…"'
+                    placeholderTextColor="#9CA3AF"
+                    value={aiText}
+                    onChangeText={onAiChange}
+                    onSubmitEditing={doAi}
+                    returnKeyType="search"
+                    autoFocus
+                  />
+                  {aiBusy
+                    ? <ActivityIndicator size="small" color={C.navy} />
+                    : aiText
+                      ? <Pressable style={s.aiGo} onPress={doAi}><Text style={s.aiGoText}>→</Text></Pressable>
+                      : <Pressable hitSlop={8} onPress={() => { setAiText(''); setSearchMode('none'); setChip(null); }}><X size={16} color="#9CA3AF" strokeWidth={2} /></Pressable>
+                  }
+                </View>
+              )}
+
+              {chip && (
+                <View style={s.chipResult}>
+                  <Text style={s.chipResultText}>{chip.emoji}  {chip.category}</Text>
+                </View>
+              )}
+            </View>
           </View>
-          <Pressable style={s.savedBtn} onPress={() => router.push('/saved' as any)}>
-            <Bookmark size={17} color={C.navy} strokeWidth={2} />
-          </Pressable>
+        )}
+
+        <View style={s.body}>
+
+          {/* ── POPULAR DESTINATIONS ── */}
+          {!search && popular.length > 0 && (
+            <View style={s.section}>
+              <View style={s.sectionHead}>
+                <Text style={s.sectionTitle}>Popular Destinations</Text>
+                <Pressable style={s.seeAll} onPress={() => {}}>
+                  <Text style={s.seeAllText}>See all</Text>
+                  <ChevronRight size={14} color={C.navy} strokeWidth={2.5} />
+                </Pressable>
+              </View>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.popRow}>
+                {popular.slice(0, 6).map(item => (
+                  <PopularCard key={item.id} item={item} onPress={() => go(item)} />
+                ))}
+              </ScrollView>
+            </View>
+          )}
+
+          {/* ── RECENTLY VISITED ── */}
+          {!search && recent.length > 0 && (
+            <View style={s.section}>
+              <Text style={s.sectionTitle}>Recently Visited</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
+                {recent.map(d => (
+                  <View key={d.id} style={s.recentChip}>
+                    <Pressable style={s.recentInner} onPress={() => go(d)}>
+                      <Clock size={11} color={C.gold} strokeWidth={2.5} />
+                      <Text style={s.recentText} numberOfLines={1}>{d.city}</Text>
+                    </Pressable>
+                    <Pressable hitSlop={8} onPress={() => { removeRecent(d.id); setRecent(p => p.filter(r => r.id !== d.id)); }}>
+                      <X size={11} color="#D1D5DB" strokeWidth={2.5} />
+                    </Pressable>
+                  </View>
+                ))}
+              </ScrollView>
+            </View>
+          )}
+
+          {/* ── ALL / SEARCH RESULTS ── */}
+          <View style={s.section}>
+            <View style={s.sectionHead}>
+              <Text style={s.sectionTitle}>
+                {search ? `Results for "${search}"` : 'All Destinations'}
+              </Text>
+              {gps && !search && (
+                <View style={s.gpsPill}>
+                  <Navigation size={10} color={C.gold} strokeWidth={2.5} />
+                  <Text style={s.gpsPillText}>Near you</Text>
+                </View>
+              )}
+            </View>
+
+            {loading ? (
+              <View style={s.loadingWrap}><ActivityIndicator color={C.gold} /></View>
+            ) : (
+              <View style={s.destGrid}>
+                {filteredDests.map(item => (
+                  <DestCard key={item.id} item={item} onPress={() => go(item)} />
+                ))}
+                {filteredDests.length === 0 && (
+                  <Text style={s.empty}>No destinations found</Text>
+                )}
+              </View>
+            )}
+          </View>
+
         </View>
-
-        {/* Search */}
-        {!aiMode ? (
-          <Pressable style={s.searchBar} onPress={() => {}}>
-            <Search size={16} color="#9CA3AF" strokeWidth={2} />
-            <TextInput
-              style={s.searchInput}
-              placeholder="Search destinations…"
-              placeholderTextColor="#C4CBD8"
-              value={search}
-              onChangeText={t => { setSearch(t); fetchDests(t || undefined); }}
-            />
-            {search ? (
-              <Pressable hitSlop={8} onPress={() => { setSearch(''); fetchDests(); }}>
-                <X size={15} color="#C4CBD8" strokeWidth={2} />
-              </Pressable>
-            ) : (
-              <Pressable style={s.aiBtn} onPress={() => setAiMode(true)}>
-                <Sparkles size={12} color="#fff" strokeWidth={2} />
-                <Text style={s.aiBtnText}>AI</Text>
-              </Pressable>
-            )}
-          </Pressable>
-        ) : (
-          <View style={s.aiBar}>
-            <Sparkles size={15} color={C.gold} strokeWidth={2} />
-            <TextInput
-              style={s.searchInput}
-              placeholder='"Kosher restaurant in Paris…"'
-              placeholderTextColor="#C4CBD8"
-              value={aiText}
-              onChangeText={onAiChange}
-              onSubmitEditing={doAi}
-              returnKeyType="search"
-              autoFocus
-            />
-            {aiBusy ? (
-              <ActivityIndicator size="small" color={C.navy} />
-            ) : aiText ? (
-              <Pressable style={s.sendBtn} onPress={doAi}>
-                <Text style={s.sendBtnText}>→</Text>
-              </Pressable>
-            ) : (
-              <Pressable hitSlop={8} onPress={() => { setAiMode(false); setAiText(''); setChip(null); }}>
-                <X size={15} color="#C4CBD8" strokeWidth={2} />
-              </Pressable>
-            )}
-          </View>
-        )}
-
-        {chip && (
-          <View style={s.chipResult}>
-            <Text style={s.chipResultText}>{chip.emoji}  {chip.category}{chip.denomination ? `  ·  ${chip.denomEmoji} ${chip.denomLabel}` : ''}</Text>
-          </View>
-        )}
-      </View>
-
-      {loading ? (
-        <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>
-      ) : (
-        <FlatList
-          data={dests}
-          keyExtractor={i => String(i.id)}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={s.list}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRef(true); await fetchDests(search || undefined); setRef(false); }} tintColor={C.gold} />}
-          ListHeaderComponent={Header}
-          renderItem={({ item }) => <DestCard item={item} onPress={() => go(item)} />}
-          ListEmptyComponent={<View style={s.center}><Text style={s.muted}>No destinations found</Text></View>}
-        />
-      )}
+      </ScrollView>
     </View>
   );
 }
 
-function DestCard({ item, onPress }: { item: Dest; onPress: () => void }) {
+// ── Popular card (horizontal scroll) ─────────────────────────────────────────
+function PopularCard({ item, onPress }: { item: Dest; onPress: () => void }) {
   return (
     <Pressable
-      style={({ pressed }) => [s.card, pressed && { opacity: 0.9, transform: [{ scale: 0.986 }] }]}
+      style={({ pressed }) => [s.popCard, pressed && { opacity: 0.88, transform: [{ scale: 0.97 }] }]}
       onPress={onPress}
     >
-      <Image
-        source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
-        style={StyleSheet.absoluteFillObject}
-        contentFit="cover"
-        transition={400}
-      />
-      {/* gradient */}
-      <View style={s.cardGrad} />
-
-      <View style={s.cardContent}>
-        <View style={s.cardTop}>
-          <View style={s.ccBadge}><Text style={s.ccText}>{item.countryCode}</Text></View>
-        </View>
-        <View style={s.cardBottom}>
-          <View>
-            <Text style={s.cardCity}>{item.city}</Text>
-            <Text style={s.cardCountry}>{item.country}</Text>
-          </View>
-          {item.distanceMeters !== undefined && (
-            <View style={s.distBadge}>
-              <Navigation size={10} color={C.goldBright} strokeWidth={2.5} />
-              <Text style={s.distText}>{fmt(Number(item.distanceMeters))}</Text>
-            </View>
-          )}
-        </View>
+      <Image source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
+        style={StyleSheet.absoluteFillObject} contentFit="cover" transition={400} />
+      <View style={s.popGrad} />
+      <View style={s.popContent}>
+        <Text style={s.popCity}>{item.city}</Text>
+        <Text style={s.popCountry}>{item.country}</Text>
       </View>
     </Pressable>
   );
 }
 
-const s = StyleSheet.create({
-  root:   { flex: 1, backgroundColor: '#fff' },
-  center: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 60 },
-  muted:  { fontFamily: 'Inter-Regular', fontSize: 14, color: '#BBC3D4' },
-  list:   { paddingBottom: 40 },
+// ── Destination card (2-col grid) ─────────────────────────────────────────────
+function DestCard({ item, onPress }: { item: Dest; onPress: () => void }) {
+  const W2 = (Dimensions.get('window').width - 52) / 2;
+  return (
+    <Pressable
+      style={({ pressed }) => [s.destCard, { width: W2 }, pressed && { opacity: 0.88, transform: [{ scale: 0.97 }] }]}
+      onPress={onPress}
+    >
+      <Image source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
+        style={StyleSheet.absoluteFillObject} contentFit="cover" transition={300} />
+      <View style={s.destGrad} />
+      <View style={s.destBadge}><Text style={s.destBadgeText}>{item.countryCode}</Text></View>
+      <View style={s.destContent}>
+        <Text style={s.destCity} numberOfLines={1}>{item.city}</Text>
+        {item.distanceMeters !== undefined && (
+          <View style={s.destDist}>
+            <Navigation size={9} color={C.goldBright} strokeWidth={2.5} />
+            <Text style={s.destDistText}>{fmt(Number(item.distanceMeters))}</Text>
+          </View>
+        )}
+      </View>
+    </Pressable>
+  );
+}
 
-  // Top
-  top: {
-    paddingTop: Platform.OS === 'ios' ? 60 : 40,
-    paddingHorizontal: 20, paddingBottom: 18,
-    backgroundColor: '#fff', gap: 14,
-    borderBottomWidth: 1, borderBottomColor: '#F3F4F6',
+// ── Styles ────────────────────────────────────────────────────────────────────
+const s = StyleSheet.create({
+  root: { flex: 1, backgroundColor: C.bg },
+
+  // Hero
+  hero: { height: HERO_H, justifyContent: 'flex-end' },
+  heroGradTop: {
+    position: 'absolute', top: 0, left: 0, right: 0, height: 160,
+    backgroundColor: 'rgba(5,10,30,0.50)',
   },
-  topRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
-  eyebrow: { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5, marginBottom: 3 },
-  title:   { fontFamily: 'Inter-Black', fontSize: 38, color: '#0A0E1A', letterSpacing: -1.5, lineHeight: 40 },
+  heroGradBottom: {
+    position: 'absolute', bottom: 0, left: 0, right: 0, height: 220,
+    backgroundColor: 'rgba(5,10,30,0.75)',
+  },
+
+  heroNav: {
+    position: 'absolute', top: Platform.OS === 'ios' ? 58 : 38,
+    left: 20, right: 20,
+    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
+  },
+  heroBrand: { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5 },
   savedBtn: {
-    width: 44, height: 44, borderRadius: 22,
-    backgroundColor: '#F9FAFB', borderWidth: 1, borderColor: '#F3F4F6',
+    width: 38, height: 38, borderRadius: 19,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center', alignItems: 'center',
   },
 
-  searchBar: {
-    flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: '#F9FAFB', borderRadius: 14,
-    paddingHorizontal: 14, paddingVertical: Platform.OS === 'ios' ? 13 : 11,
-    borderWidth: 1, borderColor: '#F3F4F6',
-  },
-  aiBar: {
-    flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: '#F9FAFB', borderRadius: 14,
-    paddingHorizontal: 14, paddingVertical: Platform.OS === 'ios' ? 13 : 11,
-    borderWidth: 1.5, borderColor: C.gold + '60',
-  },
-  searchInput: { flex: 1, fontFamily: 'Inter-Regular', fontSize: 15, color: '#0A0E1A', padding: 0 },
-  aiBtn: {
-    flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: '#0A0E1A', borderRadius: 10,
-    paddingHorizontal: 10, paddingVertical: 5,
-  },
-  aiBtnText: { fontFamily: 'Inter-Bold', fontSize: 11, color: '#fff', letterSpacing: 0.5 },
-  sendBtn:   { width: 30, height: 30, borderRadius: 15, backgroundColor: '#0A0E1A', justifyContent: 'center', alignItems: 'center' },
-  sendBtnText: { fontFamily: 'Inter-Bold', fontSize: 16, color: '#fff' },
+  heroContent: { paddingHorizontal: 22, paddingBottom: 28, gap: 4 },
+  heroTagline:  { fontFamily: 'Inter-Black', fontSize: 36, color: '#fff', letterSpacing: -1, lineHeight: 40 },
+  heroTagline2: { fontFamily: 'Inter-Black', fontSize: 36, color: C.gold, letterSpacing: -1, lineHeight: 40, marginBottom: 8 },
+  heroSub:      { fontFamily: 'Inter-Medium', fontSize: 13, color: 'rgba(255,255,255,0.65)', marginBottom: 18 },
 
+  // Glassmorphism search
+  heroSearch: {
+    flexDirection: 'row', alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 16, borderWidth: 1, borderColor: 'rgba(255,255,255,0.20)',
+    overflow: 'hidden',
+  },
+  heroSearchInner: {
+    flex: 1, flexDirection: 'row', alignItems: 'center', gap: 10,
+    paddingHorizontal: 16, paddingVertical: 14,
+  },
+  heroSearchPlaceholder: { fontFamily: 'Inter-Regular', fontSize: 14, color: 'rgba(255,255,255,0.65)' },
+  heroAiBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    paddingHorizontal: 14, paddingVertical: 14,
+    borderLeftWidth: 1, borderLeftColor: 'rgba(255,255,255,0.15)',
+  },
+  heroAiBtnText: { fontFamily: 'Inter-Bold', fontSize: 12, color: C.gold },
+
+  heroSearchActive: {
+    flexDirection: 'row', alignItems: 'center', gap: 10,
+    backgroundColor: '#fff', borderRadius: 16,
+    paddingHorizontal: 16, paddingVertical: 13,
+  },
+  heroSearchInput: { flex: 1, fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary, padding: 0 },
+  aiGo: { width: 30, height: 30, borderRadius: 15, backgroundColor: C.navy, justifyContent: 'center', alignItems: 'center' },
+  aiGoText: { fontFamily: 'Inter-Bold', fontSize: 16, color: '#fff' },
   chipResult: {
-    alignSelf: 'flex-start', backgroundColor: '#FEF9EC',
-    borderRadius: 20, paddingHorizontal: 12, paddingVertical: 6,
-    borderWidth: 1, borderColor: '#FDE68A',
+    alignSelf: 'flex-start', backgroundColor: 'rgba(212,175,55,0.15)',
+    borderWidth: 1, borderColor: 'rgba(212,175,55,0.35)',
+    borderRadius: 20, paddingHorizontal: 12, paddingVertical: 5, marginTop: 6,
   },
-  chipResultText: { fontFamily: 'Inter-SemiBold', fontSize: 12, color: '#92400E' },
+  chipResultText: { fontFamily: 'Inter-SemiBold', fontSize: 12, color: C.goldBright },
 
-  // Recent
-  section:    { paddingTop: 24, paddingHorizontal: 20 },
-  sectionLabel: { fontFamily: 'Inter-Bold', fontSize: 10, color: '#D1D5DB', letterSpacing: 2, marginBottom: 10 },
-  recentRow:  { gap: 8 },
-  chip: {
+  // Body
+  body: { backgroundColor: C.bg, paddingBottom: 20 },
+
+  // Section
+  section:    { paddingTop: 28, paddingHorizontal: 20 },
+  sectionHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
+  sectionTitle: { fontFamily: 'Inter-ExtraBold', fontSize: 20, color: C.textPrimary, letterSpacing: -0.4 },
+  seeAll: { flexDirection: 'row', alignItems: 'center', gap: 2 },
+  seeAllText: { fontFamily: 'Inter-SemiBold', fontSize: 13, color: C.navy },
+  gpsPill: {
+    flexDirection: 'row', alignItems: 'center', gap: 4,
+    backgroundColor: C.goldFaint, borderRadius: 12, paddingHorizontal: 8, paddingVertical: 4,
+  },
+  gpsPillText: { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold },
+  loadingWrap: { height: 100, justifyContent: 'center', alignItems: 'center' },
+  empty: { fontFamily: 'Inter-Regular', fontSize: 14, color: C.textMuted, textAlign: 'center', paddingVertical: 30 },
+
+  // Popular horizontal cards
+  popRow: { gap: 12, paddingRight: 4 },
+  popCard: {
+    width: POP_W, height: POP_W * 1.2,
+    borderRadius: 20, overflow: 'hidden', backgroundColor: C.navy,
+    shadowColor: '#000', shadowOpacity: 0.14, shadowRadius: 16, shadowOffset: { width: 0, height: 6 }, elevation: 6,
+  },
+  popGrad: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(5,10,30,0.45)',
+  },
+  popContent: { position: 'absolute', bottom: 18, left: 16 },
+  popCity:    { fontFamily: 'Inter-Black', fontSize: 20, color: '#fff', letterSpacing: -0.4 },
+  popCountry: { fontFamily: 'Inter-Medium', fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 2 },
+
+  // Recent chips
+  recentRow: { gap: 8, paddingTop: 4 },
+  recentChip: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    backgroundColor: '#F9FAFB', borderRadius: 20,
+    backgroundColor: '#fff', borderRadius: 22,
     paddingLeft: 10, paddingRight: 8, paddingVertical: 7,
     borderWidth: 1, borderColor: '#F3F4F6',
+    shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 4, shadowOffset: { width: 0, height: 1 }, elevation: 1,
   },
-  chipInner: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  chipText:  { fontFamily: 'Inter-SemiBold', fontSize: 13, color: '#374151', maxWidth: 90 },
+  recentInner: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  recentText:  { fontFamily: 'Inter-SemiBold', fontSize: 13, color: C.textPrimary, maxWidth: 90 },
 
-  // List header
-  listHeader: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-    paddingHorizontal: 20, paddingTop: 24, paddingBottom: 14,
+  // Dest grid
+  destGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  destCard: {
+    height: 160, borderRadius: 20, overflow: 'hidden', backgroundColor: C.navy,
+    shadowColor: '#000', shadowOpacity: 0.10, shadowRadius: 12, shadowOffset: { width: 0, height: 4 }, elevation: 4,
   },
-  listLabel: { fontFamily: 'Inter-ExtraBold', fontSize: 20, color: '#0A0E1A', letterSpacing: -0.5 },
-  nearPill: {
-    flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: '#FEF9EC', borderRadius: 12,
-    paddingHorizontal: 8, paddingVertical: 5,
+  destGrad: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(5,10,30,0.42)' },
+  destBadge: {
+    position: 'absolute', top: 10, right: 10,
+    backgroundColor: 'rgba(0,0,0,0.40)', borderRadius: 6,
+    paddingHorizontal: 6, paddingVertical: 3,
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)',
   },
-  nearText: { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold },
-
-  // Destination card
-  card: {
-    marginHorizontal: 20, marginBottom: 14,
-    height: 200, borderRadius: 24, overflow: 'hidden',
-    backgroundColor: '#0A0E1A',
-  },
-  cardGrad: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(5,8,20,0.35)',
-  },
-  cardContent: { ...StyleSheet.absoluteFillObject, padding: 18, justifyContent: 'space-between' },
-  cardTop:   { flexDirection: 'row', justifyContent: 'flex-end' },
-  ccBadge: {
-    backgroundColor: 'rgba(0,0,0,0.45)',
-    borderRadius: 7, paddingHorizontal: 8, paddingVertical: 4,
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)',
-  },
-  ccText:    { fontFamily: 'Inter-Bold', fontSize: 10, color: '#fff', letterSpacing: 1 },
-  cardBottom: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' },
-  cardCity:    { fontFamily: 'Inter-Black', fontSize: 26, color: '#fff', letterSpacing: -0.8 },
-  cardCountry: { fontFamily: 'Inter-Medium', fontSize: 13, color: 'rgba(255,255,255,0.60)', marginTop: 2 },
-  distBadge: {
-    flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: 'rgba(0,0,0,0.40)',
-    borderRadius: 10, paddingHorizontal: 8, paddingVertical: 5,
-  },
-  distText: { fontFamily: 'Inter-Bold', fontSize: 11, color: C.goldBright },
+  destBadgeText: { fontFamily: 'Inter-Bold', fontSize: 9, color: '#fff', letterSpacing: 0.8 },
+  destContent:   { position: 'absolute', bottom: 12, left: 12, right: 12 },
+  destCity:      { fontFamily: 'Inter-ExtraBold', fontSize: 16, color: '#fff', letterSpacing: -0.2 },
+  destDist:      { flexDirection: 'row', alignItems: 'center', gap: 3, marginTop: 3 },
+  destDistText:  { fontFamily: 'Inter-Bold', fontSize: 10, color: C.goldBright },
 });

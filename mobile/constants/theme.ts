@@ -3,31 +3,42 @@ import { Platform } from 'react-native';
 // ── Luxury design tokens ──────────────────────────────────────────────────────
 
 export const C = {
-  midnight:      '#0A0E1A',
-  navy:          '#0C1E45',
-  navyDeep:      '#050D24',
+  // ── Brand ───────────────────────────────────────────────────────────────────
+  navy:          '#0B1736',
+  navyDeep:      '#060E24',
+  navyLight:     '#1A2D5A',
 
-  gold:          '#C9A84C',
-  goldBright:    '#E5C96A',
-  goldMuted:     '#A07830',
-  goldFaint:     'rgba(201,168,76,0.10)',
-  goldBorder:    'rgba(201,168,76,0.22)',
+  gold:          '#D4AF37',
+  goldBright:    '#E8C84A',
+  goldMuted:     '#A8882A',
+  goldFaint:     'rgba(212,175,55,0.10)',
+  goldBorder:    'rgba(212,175,55,0.25)',
 
-  cream:         '#F8F6F0',
-  creamDark:     '#EEEBe3',
-
+  // ── Backgrounds ─────────────────────────────────────────────────────────────
+  bg:            '#FAF8F3',
+  cream:         '#FAF8F3',
   card:          '#FFFFFF',
-  cardShadow:    '#0C1E45',
+  surface:       '#F7F5F0',
 
-  textPrimary:   '#14162A',
-  textSecondary: '#4A5568',
+  // ── Text ────────────────────────────────────────────────────────────────────
+  textPrimary:   '#111827',
+  textSecondary: '#6B7280',
   textMuted:     '#9CA3AF',
+  textLight:     '#D1D5DB',
   onDark:        '#FFFFFF',
-  onDarkMuted:   'rgba(255,255,255,0.55)',
-  onDarkSub:     'rgba(255,255,255,0.32)',
+  onDarkMuted:   'rgba(255,255,255,0.60)',
+  onDarkSub:     'rgba(255,255,255,0.35)',
 
-  success:       '#059669',
-  error:         '#DC2626',
+  // ── Semantic ─────────────────────────────────────────────────────────────────
+  success:       '#22C55E',
+  error:         '#EF4444',
+  warning:       '#F59E0B',
+
+  // ── Aliases (backwards compat) ───────────────────────────────────────────────
+  midnight:      '#060E24',
+  navyDeepAlias: '#060E24',
+  creamDark:     '#EEE9E0',
+  cardShadow:    '#0B1736',
 };
 
 // ── Destination landmark images ───────────────────────────────────────────────
