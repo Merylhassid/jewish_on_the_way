@@ -22,38 +22,64 @@ export class SynagoguesService {
     teimanim:  ['תימני', 'תימן', 'שאמי', 'בלאדי', 'ירושלמי'],
   };
 
-  async findByDestination(destinationId: number, denomination?: string) {
-    // ── ללא פילטר נוסח — כולם ──────────────────────────
-    if (!denomination) {
-      return this.synagoguesRepo.find({
-        where: { destination: { id: destinationId } },
-        select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
-        order: { name: 'ASC' },
-        take: 50,
-      });
+  async findByDestination(
+    destinationId: number,
+    denomination?: string,
+    offset = 0,
+    lat?: number,
+    lng?: number,
+  ): Promise<{ data: any[]; total: number }> {
+    const denomValues = denomination ? (this.DENOM_MAP[denomination] ?? []) : [];
+
+    // ── GPS mode: raw SQL with distance ordering ─────────
+    if (lat !== undefined && lng !== undefined) {
+      // Build WHERE + params separately (count query doesn't need lat/lng)
+      const countParams: any[] = [destinationId];
+      let countWhere = `s."destinationId" = $1`;
+      const gpsParams: any[] = [lng, lat, destinationId];
+      let gpsWhere = `s."destinationId" = $3`;
+      let cIdx = 2;
+      let gIdx = 4;
+
+      if (denomValues.length > 0) {
+        countWhere += ` AND s.denomination = ANY($${cIdx++})`;
+        countParams.push(denomValues);
+        gpsWhere  += ` AND s.denomination = ANY($${gIdx++})`;
+        gpsParams.push(denomValues);
+      }
+
+      const countResult = await this.synagoguesRepo.query(
+        `SELECT COUNT(*) FROM synagogues s WHERE ${countWhere}`,
+        countParams,
+      );
+      const total = parseInt(countResult[0].count, 10);
+
+      gpsParams.push(offset);
+      const data = await this.synagoguesRepo.query(
+        `SELECT s.id, s.name, s.address, s.description, s.phone, s.website, s.denomination, s.location,
+                ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
+         FROM synagogues s
+         WHERE ${gpsWhere}
+         ORDER BY s.location::geography <-> ST_SetSRID(ST_MakePoint($1,$2),4326)::geography
+         LIMIT 50 OFFSET $${gIdx}`,
+        gpsParams,
+      );
+      return { data, total };
     }
 
-    // ── עם פילטר נוסח — OR על כל הערכים האפשריים ───────
-    const dbValues = this.DENOM_MAP[denomination] ?? [];
-    if (dbValues.length === 0) {
-      return this.synagoguesRepo.find({
-        where: { destination: { id: destinationId } },
-        select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
-        order: { name: 'ASC' },
-        take: 50,
-      });
-    }
-
+    // ── No GPS: findAndCount sorted by name ──────────────
     const { In } = await import('typeorm');
-    return this.synagoguesRepo.find({
-      where: {
-        destination: { id: destinationId },
-        denomination: In(dbValues),
-      },
+    const where: any = { destination: { id: destinationId } };
+    if (denomValues.length > 0) where.denomination = In(denomValues);
+
+    const [data, total] = await this.synagoguesRepo.findAndCount({
+      where,
       select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
       order: { name: 'ASC' },
       take: 50,
+      skip: offset,
     });
+    return { data, total };
   }
 
   /**

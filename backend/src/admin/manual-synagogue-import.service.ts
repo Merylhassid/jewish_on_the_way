@@ -49,6 +49,7 @@ export class ManualSynagogueImportService {
   private readonly nominatimMinIntervalMs = 1100;
 
   private readonly cityCenters: Record<string, { lat: number; lon: number }> = {
+    'Vienna':      { lat: 48.2092, lon: 16.3728 },
     'גבעת שמואל': { lat: 32.0799, lon: 34.8432 },
     'גבעתיים':    { lat: 32.0693, lon: 34.8117 },
     'חדרה':       { lat: 32.4344, lon: 34.9197 },

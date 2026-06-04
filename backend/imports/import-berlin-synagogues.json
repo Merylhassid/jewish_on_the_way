@@ -1,0 +1,43 @@
+[
+  {
+    "name": "תפארת ישראל",
+    "address": "Passauer Strasse 4, Berlin",
+    "denomination": "ספרדי",
+    "description": "המניין הספרדי היחיד בברלין",
+    "website": "http://synagogetiferetisrael.wordpress.com",
+    "destinationId": 483,
+    "latitude": 52.5013806,
+    "longitude": 13.3397155
+  },
+  {
+    "name": "חב\"ד ברלין",
+    "address": "Münstersche Str. 6, Berlin",
+    "denomination": "חב\"ד",
+    "description": "מסעדה ומקווה בהנהלה",
+    "website": "https://chabadberlin.de",
+    "destinationId": 483,
+    "latitude": 52.4941656,
+    "longitude": 13.3075417
+  },
+  {
+    "name": "בית ציון - עדס ישרואל",
+    "address": "Brunnenstrasse 33, Berlin",
+    "phone": "(49) 30 281-3135",
+    "denomination": "אורתודוקסי",
+    "description": "דרוש הרשמה מראש 7 ימים לפני הביקור",
+    "website": "https://kaj-berlin.de",
+    "destinationId": 483,
+    "latitude": 52.5353404,
+    "longitude": 13.3981832
+  },
+  {
+    "name": "בית הכנסת האורתודוקסי המרכזי",
+    "address": "Joachimstaler Strasse 13, Berlin",
+    "denomination": "אורתודוקסי",
+    "description": "מקווה בהנהלה, אירועים לסטודנטים יהודים",
+    "website": "https://berlinsynagoge.com",
+    "destinationId": 483,
+    "latitude": 52.5023450,
+    "longitude": 13.3302642
+  }
+]

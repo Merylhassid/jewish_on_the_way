@@ -117,6 +117,12 @@ const CITY_TRANSLATE: Record<string, string> = {
   'פתח': 'Petah Tikva',
   'מבשרת': 'Mevaseret Zion',
   'מעלה': 'Maale Adumim',
+  // כינויים קצרים לערים בינלאומיות
+  'לוס': 'Los Angeles',
+  'ניו': 'New York',
+  'סאו': 'Sao Paulo',
+  'הונג': 'Hong Kong',
+  'בואנוס': 'Buenos Aires',
   // אירופה
   'לונדון': 'London',
   'פריז': 'Paris',
@@ -320,9 +326,9 @@ function isExplicitDestinationCandidate(candidate: string): boolean {
     return false;
   }
   if (hasHebrewLetters(candidate)) {
-    return candidate.replace(/\s/g, '').length >= 4;
+    return candidate.replace(/\s/g, '').length >= 3;
   }
-  return candidate.length >= 4;
+  return candidate.length >= 3;
 }
 
 export function buildDestinationCandidates(text: string): string[] {
@@ -575,6 +581,17 @@ export class SearchController {
       for (const alias of aliases) {
         add(alias, destination);
       }
+    }
+
+    // Auto-derive first-word aliases from all multi-word entries already in index.
+    // Lets "לאס" find "לאס וגאס", "ראשון" find "ראשון לציון", etc., without manual entries.
+    // Skips if first word already mapped (explicit aliases take priority).
+    for (const [key, destination] of Array.from(index.entries())) {
+      const words = key.split(/\s+/);
+      if (words.length < 2) continue;
+      const firstWord = words[0];
+      if (firstWord.length < 3 || DESTINATION_STOP_WORDS.has(firstWord)) continue;
+      if (!index.has(firstWord)) index.set(firstWord, destination);
     }
 
     return index;

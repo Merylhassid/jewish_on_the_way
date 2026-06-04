@@ -13,6 +13,9 @@ export class SynagoguesController {
   async findByDestination(
     @Query('destinationId') destinationIdStr: string,
     @Query('denomination')  denomination?: string,
+    @Query('offset') offsetStr?: string,
+    @Query('lat') latStr?: string,
+    @Query('lng') lngStr?: string,
   ) {
     if (!destinationIdStr) {
       throw new BadRequestException('destinationId query parameter is required');
@@ -23,7 +26,11 @@ export class SynagoguesController {
       throw new BadRequestException('destinationId must be a valid integer');
     }
 
-    return this.synagoguesService.findByDestination(destinationId, denomination);
+    const offset = offsetStr ? parseInt(offsetStr, 10) : 0;
+    const lat = latStr ? parseFloat(latStr) : undefined;
+    const lng = lngStr ? parseFloat(lngStr) : undefined;
+
+    return this.synagoguesService.findByDestination(destinationId, denomination, offset, lat, lng);
   }
 
   /**

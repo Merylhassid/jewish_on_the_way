@@ -57,6 +57,9 @@ export default function SynagoguesScreen() {
     useLocalSearchParams<{ destinationId: string; denomination?: string; city?: string }>();
 
   const [synagogues, setSynagogues]     = useState<Synagogue[]>([]);
+  const [total, setTotal]               = useState(0);
+  const [offset, setOffset]             = useState(0);
+  const [loadingMore, setLoadingMore]   = useState(false);
   const [loading, setLoading]           = useState(true);
   const [refreshing, setRefreshing]     = useState(false);
   const [error, setError]               = useState(false);
@@ -78,34 +81,24 @@ export default function SynagoguesScreen() {
     })();
   }, []);
 
-  // טעינת בתי כנסת
+  // טעינת בתי כנסת (עמוד ראשון — מאפס בכל שינוי פילטר/מיקום)
   useEffect(() => {
     if (!destinationId) return;
+    setOffset(0);
 
-    const fetch = async () => {
+    const doFetch = async () => {
       try {
         setError(false);
         if (!refreshing) setLoading(true);
 
-        const params: Record<string, string> = { destinationId };
+        const params: Record<string, string> = { destinationId, offset: '0' };
         if (denomination) params.denomination = denomination;
+        if (userLocation) { params.lat = String(userLocation.lat); params.lng = String(userLocation.lng); }
 
         const res = await client.get('/synagogues', { params });
-        let data: Synagogue[] = Array.isArray(res.data) ? res.data : [];
-
-        if (userLocation) {
-          data = data.map((s) => {
-            const coords = extractCoordinates(s.location);
-            if (coords) {
-              const [lat2, lon2] = coords;
-              return { ...s, distanceMeters: calculateHaversineDistance(userLocation.lat, userLocation.lng, lat2, lon2) };
-            }
-            return s;
-          });
-          data.sort((a, b) => (a.distanceMeters ?? Infinity) - (b.distanceMeters ?? Infinity));
-        }
-
-        setSynagogues(data);
+        const { data, total: t } = res.data;
+        setSynagogues(Array.isArray(data) ? data : []);
+        setTotal(t ?? 0);
       } catch {
         setError(true);
       } finally {
@@ -114,8 +107,27 @@ export default function SynagoguesScreen() {
       }
     };
 
-    fetch();
+    doFetch();
   }, [destinationId, denomination, userLocation, trigger]);
+
+  // טעינת עמוד נוסף
+  const loadMore = async () => {
+    if (loadingMore) return;
+    const nextOffset = offset + 50;
+    try {
+      setLoadingMore(true);
+      const params: Record<string, string> = { destinationId, offset: String(nextOffset) };
+      if (denomination) params.denomination = denomination;
+      if (userLocation) { params.lat = String(userLocation.lat); params.lng = String(userLocation.lng); }
+
+      const res = await client.get('/synagogues', { params });
+      const { data } = res.data;
+      setSynagogues((prev) => [...prev, ...(Array.isArray(data) ? data : [])]);
+      setOffset(nextOffset);
+    } catch { /* silent */ } finally {
+      setLoadingMore(false);
+    }
+  };
 
   const handleCall    = (phone: string) => Linking.openURL(`tel:${phone}`).catch(() => {});
   const handleWebsite = (url: string)   => {
@@ -140,7 +152,7 @@ export default function SynagoguesScreen() {
         <Text style={styles.headerSub}>
           {loading
             ? 'Loading…'
-            : `${synagogues.length} synagogue${synagogues.length !== 1 ? 's' : ''} found${hasSomeDistance ? '  •  📍 sorted by distance' : ''}`}
+            : `${total || synagogues.length} synagogue${(total || synagogues.length) !== 1 ? 's' : ''}${total > synagogues.length ? `  •  showing ${synagogues.length}` : ''}${hasSomeDistance ? '  •  📍 sorted by distance' : ''}`}
         </Text>
       </View>
 
@@ -181,6 +193,15 @@ export default function SynagoguesScreen() {
               colors={['#5E35B1']}
               tintColor="#5E35B1"
             />
+          }
+          ListFooterComponent={
+            synagogues.length < total ? (
+              <Pressable style={styles.loadMoreBtn} onPress={loadMore} disabled={loadingMore}>
+                {loadingMore
+                  ? <ActivityIndicator color="#5E35B1" />
+                  : <Text style={styles.loadMoreText}>טען עוד ({total - synagogues.length} נותרו)</Text>}
+              </Pressable>
+            ) : null
           }
           renderItem={({ item }) => {
             const denomKey = getDenomKey(item.denomination);
@@ -269,6 +290,8 @@ const styles = StyleSheet.create({
   empty:     { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 80 },
   emptyIcon: { fontSize: 56, marginBottom: 12 },
   emptyText: { fontSize: 15, color: '#999', marginBottom: 16, textAlign: 'center' },
-  retryBtn:  { backgroundColor: '#5E35B1', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 10 },
-  retryText: { color: '#fff', fontWeight: '700' },
+  retryBtn:      { backgroundColor: '#5E35B1', paddingHorizontal: 20, paddingVertical: 10, borderRadius: 10 },
+  retryText:     { color: '#fff', fontWeight: '700' },
+  loadMoreBtn:   { margin: 16, padding: 14, backgroundColor: '#EDE7F6', borderRadius: 12, alignItems: 'center' },
+  loadMoreText:  { color: '#5E35B1', fontWeight: '700', fontSize: 15 },
 });

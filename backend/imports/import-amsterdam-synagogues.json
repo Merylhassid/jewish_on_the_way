@@ -1,0 +1,124 @@
+[
+  {
+    "name": "בית הכנסת הפורטוגזי",
+    "address": "Mr. Visserplein 3, Amsterdam",
+    "phone": "020-6245351",
+    "denomination": "ספרדי",
+    "description": "בית כנסת היסטורי של יוצאי ספרד ופורטוגל, נבנה לפני למעלה מ-300 שנה. כניסה למוזיאון: €6.50. תפילות: שבת, ראשון, שלישי, חמישי",
+    "website": "http://esnoga.com",
+    "destinationId": 482,
+    "latitude": 52.3676180,
+    "longitude": 4.9051203
+  },
+  {
+    "name": "Gerard Dou Synagogue - תשועת ישראל",
+    "address": "Gerard Doustraat 238, Amsterdam",
+    "phone": "+31 20 675 0932",
+    "denomination": "אורתודוקסי",
+    "description": "פתוח לשחרית בשבתות וחגים. שחרית: 9:30. קרוב לשוק אלברט קויפ",
+    "website": "http://www.gerard-dou.nl",
+    "destinationId": 482,
+    "latitude": 52.3570574,
+    "longitude": 4.8978616
+  },
+  {
+    "name": "בית הכנסת לעקסטראט",
+    "address": "Lekstraat 61, Amsterdam",
+    "phone": "+31 20 421 2770",
+    "denomination": "חב\"ד",
+    "description": "פתוח לתפילה כל ימות השבוע. שחרית: 7:00, מעריב: 19:30",
+    "destinationId": 482,
+    "latitude": 52.3442706,
+    "longitude": 4.9030559
+  },
+  {
+    "name": "בית המדרש עץ חיים",
+    "address": "Merckenburg 3, Amsterdam",
+    "phone": "+31 654 781 641",
+    "denomination": "חב\"ד",
+    "description": "בית מדרש ובית כנסת. מקווה לגברים ולנשים. שחרית: 7:00 / 8:15, מנחה: 13:30",
+    "destinationId": 482,
+    "latitude": 52.3254711,
+    "longitude": 4.8711015
+  },
+  {
+    "name": "קהל חסידים",
+    "address": "Merckenburg 1, Amsterdam",
+    "phone": "+31 20 421 2770",
+    "denomination": "חב\"ד",
+    "description": "שחרית: 7:20 / 8:40 בימי חול. כניסה דרך החצר",
+    "destinationId": 482,
+    "latitude": 52.3254716,
+    "longitude": 4.8712041
+  },
+  {
+    "name": "AMOS - בית כנסת אורתודוקסי מודרני",
+    "address": "Kalfjeslaan 376, Amsterdam",
+    "phone": "+31 20 421 2770",
+    "denomination": "אורתודוקסי",
+    "description": "קהילה אורתודוקסית צעירה ומודרנית. שחרית: 8:30, שבת: 9:30",
+    "destinationId": 482,
+    "latitude": 52.3220859,
+    "longitude": 4.8595973
+  },
+  {
+    "name": "Bendigamos",
+    "address": "Amsterdam",
+    "phone": "+31 20 421 2770",
+    "denomination": "אורתודוקסי",
+    "description": "שחרית אחת לשבועיים בשעה 9:30. נא לשלוח מייל מראש לקבלת הכתובת המדויקת",
+    "destinationId": 482
+  },
+  {
+    "name": "נדחי ישראל יכנס",
+    "address": "Nieuwe Kerkstraat 149, Amsterdam",
+    "phone": "+31 20 671 2345",
+    "denomination": "אשכנזי נוסח ספרד",
+    "description": "פתוח לשחרית בשבתות וחגים. שחרית: 9:30. קידוש רבה לאחר התפילה",
+    "destinationId": 482,
+    "latitude": 52.3648801,
+    "longitude": 4.9089920
+  },
+  {
+    "name": "בית הכנסת ר' אהרן שוסטר - Obrecht",
+    "address": "Heinzestraat 3, Amsterdam",
+    "phone": "+31 20 671 9383",
+    "denomination": "אורתודוקסי",
+    "description": "פתוח לתפילות בשבתות וחגים. שחרית: 9:00, ראשון: 8:30. 15 דקות הליכה מרובע המוזיאונים",
+    "website": "https://www.rassjoel.nl",
+    "destinationId": 482,
+    "latitude": 52.3526589,
+    "longitude": 4.8772583
+  },
+  {
+    "name": "בית הכנסת באמסטלויין",
+    "address": "Max Havelaarlaan 435, Amstelveen",
+    "phone": "+31 20 421 2770",
+    "denomination": "אורתודוקסי",
+    "description": "שחרית: 8:15, שבת: 9:00",
+    "website": "https://www.sjoelamstelveen.nl",
+    "destinationId": 482,
+    "latitude": 52.3066996,
+    "longitude": 4.8745042
+  },
+  {
+    "name": "Shul West",
+    "address": "Willem Schoutenstraat 8, Amsterdam",
+    "phone": "+31 623 951 524",
+    "denomination": "אורתודוקסי",
+    "description": "שחרית אחת לשבועיים בשעה 9:30. קידוש וארוחה לאחר התפילה",
+    "destinationId": 482,
+    "latitude": 52.3676408,
+    "longitude": 4.8546507
+  },
+  {
+    "name": "בית הכנסת הפורטוגזי הקטן",
+    "address": "Texelstraat 82, Amstelveen",
+    "phone": "+31 20 421 2770",
+    "denomination": "ספרדי",
+    "description": "שחרית: 8:15, שבת: 9:00",
+    "destinationId": 482,
+    "latitude": 52.3154479,
+    "longitude": 4.8626498
+  }
+]

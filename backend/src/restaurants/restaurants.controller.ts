@@ -54,6 +54,7 @@ export class RestaurantsController {
     @Query('q') q?: string,
     @Query('lat') lat?: string,
     @Query('lng') lng?: string,
+    @Query('offset') offsetStr?: string,
   ) {
     const filters: RestaurantFilters = {
       type,
@@ -61,6 +62,7 @@ export class RestaurantsController {
       q,
       lat: lat ? parseFloat(lat) : undefined,
       lng: lng ? parseFloat(lng) : undefined,
+      offset: offsetStr ? parseInt(offsetStr, 10) : 0,
     };
     if (parentDestinationId) {
       return this.restaurantsService.findByParentDestination(parseInt(parentDestinationId, 10), filters);
@@ -99,7 +101,8 @@ export class RestaurantsController {
       lat: lat ? parseFloat(lat) : undefined,
       lng: lng ? parseFloat(lng) : undefined,
     };
-    return this.restaurantsService.findByDestination(destinationId, filters);
+    const result = await this.restaurantsService.findByDestination(destinationId, filters);
+    return result.data;
   }
 
   // POST /restaurants/search/feedback
