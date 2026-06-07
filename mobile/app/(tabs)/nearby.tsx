@@ -1,10 +1,10 @@
 import { router } from 'expo-router';
-import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator, Platform, Pressable,
   ScrollView, StyleSheet, Text, View,
 } from 'react-native';
+import { useLocation } from '@/src/hooks/useLocation';
 import { ChevronRight, Globe, MapPin, Navigation, Utensils } from 'lucide-react-native';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
@@ -22,18 +22,16 @@ const KASHRUT: Record<string, { color: string; bg: string }> = {
 const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
 
 export default function NearbyScreen() {
+  const { status: locStatus, coords, openSettings } = useLocation(true);
   const [restaurants, setRestaurants] = useState<NearbyRestaurant[]>([]);
   const [synagogues,  setSynagogues]  = useState<NearbySynagogue[]>([]);
   const [loading,     setLoading]     = useState(true);
-  const [locError,    setLocError]    = useState(false);
 
   useEffect(() => {
+    if (!coords) return;
+    const { lat, lng } = coords;
     (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') { setLocError(true); setLoading(false); return; }
       try {
-        const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
-        const { latitude: lat, longitude: lng } = pos.coords;
         const [r, s] = await Promise.allSettled([
           client.get('/restaurants/nearby', { params: { lat, lng, limit: 8 } }),
           client.get('/synagogues/nearby',  { params: { lat, lng, limit: 5 } }),
@@ -42,20 +40,23 @@ export default function NearbyScreen() {
         if (s.status === 'fulfilled') setSynagogues(s.value.data);
       } catch {} finally { setLoading(false); }
     })();
-  }, []);
+  }, [coords]);
 
-  if (loading) return (
+  if (locStatus === 'requesting' || (locStatus === 'idle' && loading)) return (
     <View style={s.center}>
       <ActivityIndicator size="large" color={C.gold} />
       <Text style={s.centreText}>Finding places near you…</Text>
     </View>
   );
 
-  if (locError) return (
+  if (locStatus === 'denied') return (
     <View style={s.center}>
       <Navigation size={48} color="#E5E7EB" strokeWidth={1.5} />
       <Text style={s.centreText}>Location permission required</Text>
       <Text style={s.centreSub}>Enable location to find nearby places</Text>
+      <Pressable style={s.settingsBtn} onPress={openSettings}>
+        <Text style={s.settingsBtnText}>Open Settings</Text>
+      </Pressable>
     </View>
   );
 
@@ -159,6 +160,11 @@ const s = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
   centreText: { fontFamily: 'Inter-SemiBold', fontSize: 16, color: C.textSecondary },
   centreSub:  { fontFamily: 'Inter-Regular',  fontSize: 13, color: C.textMuted },
+  settingsBtn: {
+    marginTop: 8, backgroundColor: C.navy, borderRadius: 12,
+    paddingHorizontal: 24, paddingVertical: 12,
+  },
+  settingsBtnText: { fontFamily: 'Inter-SemiBold', color: '#fff', fontSize: 14 },
 
   header: {
     flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between',

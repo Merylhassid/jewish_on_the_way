@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import {
-  ActivityIndicator, Alert, Modal, Pressable,
+  ActivityIndicator, Alert, Pressable,
   ScrollView, StyleSheet, Text, TextInput, View,
 } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
+import SwipeableSheet from './SwipeableSheet';
 
 interface Props {
   visible: boolean;
   onClose: () => void;
   entityType: 'restaurant' | 'synagogue';
-  destinationId: number;
-  destinationName: string;
+  destinationId?: number;
+  destinationName?: string;
 }
 
 const KASHRUT_OPTIONS = ['rabbinate', 'mehadrin', 'badatz'];
@@ -24,6 +25,9 @@ export default function SuggestPlaceModal({
 }: Props) {
   const isRest = entityType === 'restaurant';
 
+  const needsCity = !destinationId;
+
+  const [city,          setCity]          = useState('');
   const [name,          setName]          = useState('');
   const [address,       setAddress]       = useState('');
   const [phone,         setPhone]         = useState('');
@@ -35,22 +39,26 @@ export default function SuggestPlaceModal({
   const [submitting,    setSubmitting]    = useState(false);
 
   const reset = () => {
-    setName(''); setAddress(''); setPhone(''); setWebsiteUrl('');
+    setCity(''); setName(''); setAddress(''); setPhone(''); setWebsiteUrl('');
     setNotes(''); setKashrutLevel(''); setRestaurantType(''); setNusach('');
   };
 
   const submit = async () => {
     if (!name.trim()) { Alert.alert('Name required', 'Please enter the place name.'); return; }
+    if (needsCity && !city.trim()) { Alert.alert('City required', 'Please enter the city.'); return; }
     setSubmitting(true);
+    const fullNotes = needsCity && city.trim()
+      ? `[City: ${city.trim()}]${notes.trim() ? '\n' + notes.trim() : ''}`
+      : notes.trim() || undefined;
     try {
       await client.post('/reviews/requests', {
         entityType,
-        destinationId,
+        ...(destinationId ? { destinationId } : {}),
         name: name.trim(),
         address: address.trim() || undefined,
         phone: phone.trim() || undefined,
         websiteUrl: websiteUrl.trim() || undefined,
-        notes: notes.trim() || undefined,
+        notes: fullNotes,
         kashrutLevel: kashrutLevel || undefined,
         restaurantType: restaurantType || undefined,
         nusach: nusach || undefined,
@@ -65,21 +73,25 @@ export default function SuggestPlaceModal({
     }
   };
 
-  return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <View style={s.overlay}>
-        <View style={s.sheet}>
-          <View style={s.header}>
-            <Text style={s.title}>
-              Suggest a {isRest ? 'Restaurant' : 'Synagogue'}
-            </Text>
-            <Pressable onPress={() => { reset(); onClose(); }} hitSlop={10}>
-              <MaterialIcons name="close" size={22} color={C.textMuted} />
-            </Pressable>
-          </View>
-          <Text style={s.subtitle}>{destinationName}</Text>
+  const handleClose = () => { reset(); onClose(); };
 
-          <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+  return (
+    <SwipeableSheet visible={visible} onClose={handleClose}>
+      <View style={s.inner}>
+        <View style={s.header}>
+          <Text style={s.title}>
+            Suggest a {isRest ? 'Restaurant' : 'Synagogue'}
+          </Text>
+          <Pressable onPress={handleClose} hitSlop={10}>
+            <MaterialIcons name="close" size={22} color={C.textMuted} />
+          </Pressable>
+        </View>
+        {destinationName ? <Text style={s.subtitle}>{destinationName}</Text> : null}
+
+        <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
+            {needsCity && (
+              <Field label="City *" value={city} onChange={setCity} placeholder="e.g. Paris, Tel Aviv…" />
+            )}
             <Field label="Name *" value={name} onChange={setName} placeholder={isRest ? 'Restaurant name' : 'Synagogue name'} />
             <Field label="Address" value={address} onChange={setAddress} placeholder="Street address" />
             <Field label="Phone" value={phone} onChange={setPhone} placeholder="+1 555 000 0000" keyboardType="phone-pad" />
@@ -153,10 +165,9 @@ export default function SuggestPlaceModal({
                 ? <ActivityIndicator size="small" color="#fff" />
                 : <Text style={s.submitText}>Submit Suggestion</Text>}
             </Pressable>
-          </ScrollView>
-        </View>
+        </ScrollView>
       </View>
-    </Modal>
+    </SwipeableSheet>
   );
 }
 
@@ -194,11 +205,7 @@ const f = StyleSheet.create({
 });
 
 const s = StyleSheet.create({
-  overlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  sheet: {
-    backgroundColor: C.cream, borderTopLeftRadius: 24, borderTopRightRadius: 24,
-    padding: 20, paddingBottom: 36, maxHeight: '92%',
-  },
+  inner: { paddingHorizontal: 20 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 },
   title:    { fontSize: 18, fontWeight: '800', color: C.textPrimary },
   subtitle: { fontSize: 13, color: C.textMuted, marginBottom: 16 },

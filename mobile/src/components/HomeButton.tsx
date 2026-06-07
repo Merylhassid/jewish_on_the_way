@@ -1,25 +1,38 @@
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Home } from 'lucide-react-native';
+import { C } from '@/constants/theme';
 
-interface Props {
-  color?: string;
-}
-
-export default function HomeButton({ color = 'rgba(255,255,255,0.85)' }: Props) {
+export default function HomeButton() {
   const goHome = async () => {
     await AsyncStorage.removeItem('lastDestinationId');
     router.replace('/(tabs)');
   };
 
   return (
-    <Pressable style={styles.btn} onPress={goHome} hitSlop={12}>
-      <Text style={[styles.icon, { color }]}>🏠</Text>
+    <Pressable
+      style={({ pressed }) => [s.btn, pressed && { opacity: 0.75 }]}
+      onPress={goHome}
+      hitSlop={10}
+    >
+      <Home size={18} color={C.gold} strokeWidth={2} />
     </Pressable>
   );
 }
 
-const styles = StyleSheet.create({
-  btn: { position: 'absolute', top: 62, right: 20 },
-  icon: { fontSize: 22 },
+const s = StyleSheet.create({
+  btn: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 58 : 38,
+    right: 18,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(212,175,55,0.45)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

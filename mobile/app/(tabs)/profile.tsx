@@ -7,7 +7,6 @@ import {
   ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
-  Modal,
   Platform,
   Pressable,
   ScrollView,
@@ -20,8 +19,11 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import client, { API_URL } from '@/src/api/client';
+import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
+import SwipeableSheet from '@/src/components/SwipeableSheet';
 import { useAuth } from '@/src/store/auth';
 import { LanguageSwitcher } from '@/components/language-switcher';
+import { C } from '@/constants/theme';
 
 const KASHRUT_VALUES = ['none', 'rabbinate', 'mehadrin', 'badatz'] as const;
 type KashrutValue = typeof KASHRUT_VALUES[number];
@@ -78,13 +80,9 @@ function EditProfileModal({
   };
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <KeyboardAvoidingView
-        style={styles.modalOverlay}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <View style={styles.modalSheet}>
-          <View style={styles.modalHandle} />
+    <SwipeableSheet visible={visible} onClose={onClose}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={styles.sheetInner}>
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{t('profile.edit.title')}</Text>
             <Pressable onPress={onClose} hitSlop={12} style={styles.modalCloseBtn}>
@@ -132,7 +130,7 @@ function EditProfileModal({
           </Pressable>
         </View>
       </KeyboardAvoidingView>
-    </Modal>
+    </SwipeableSheet>
   );
 }
 
@@ -208,13 +206,9 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
   };
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <KeyboardAvoidingView
-        style={styles.modalOverlay}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <View style={styles.modalSheet}>
-          <View style={styles.modalHandle} />
+    <SwipeableSheet visible={visible} onClose={onClose}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={styles.sheetInner}>
           <View style={styles.modalHeader}>
             <Text style={styles.modalTitle}>{t('profile.password.title')}</Text>
             <Pressable onPress={onClose} hitSlop={12} style={styles.modalCloseBtn}>
@@ -255,19 +249,17 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
             editable={!loading}
           />
 
-          {/* Error message display */}
-          {errorMsg && (
+          {errorMsg ? (
             <View style={styles.errorContainer}>
               <Text style={styles.errorText}>{errorMsg}</Text>
             </View>
-          )}
+          ) : null}
 
-          {/* Success message display */}
-          {successMsg && (
+          {successMsg ? (
             <View style={styles.successContainer}>
               <Text style={styles.successText}>✓ {successMsg}</Text>
             </View>
-          )}
+          ) : null}
 
           <Pressable
             style={({ pressed }) => [styles.primaryBtn, pressed && !loading && { opacity: 0.88 }]}
@@ -278,7 +270,7 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
           </Pressable>
         </View>
       </KeyboardAvoidingView>
-    </Modal>
+    </SwipeableSheet>
   );
 }
 
@@ -287,11 +279,13 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
 export default function ProfileScreen() {
   const { t } = useTranslation();
   const { user, logout, updateUser } = useAuth();
-  const [editVisible, setEditVisible] = useState(false);
+  const [editVisible, setEditVisible]       = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [avatarLoading, setAvatarLoading] = useState(false);
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [avatarLoading, setAvatarLoading]   = useState(false);
+  const [deleteConfirm, setDeleteConfirm]   = useState(false);
+  const [deleteLoading, setDeleteLoading]   = useState(false);
+  const [suggestType, setSuggestType]       = useState<'restaurant' | 'synagogue'>('restaurant');
+  const [suggestVisible, setSuggestVisible] = useState(false);
 
   const handleLogout = async () => { await logout(); };
 
@@ -377,34 +371,35 @@ export default function ProfileScreen() {
   const initials = `${user?.firstName?.[0] ?? ''}${user?.lastName?.[0] ?? ''}`.toUpperCase();
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 52 }} showsVerticalScrollIndicator={false}>
+
       {/* ── Header ── */}
       <View style={styles.header}>
-        <Text style={styles.headerEyebrow}>YOUR ACCOUNT</Text>
+        {/* Avatar */}
         <Pressable style={styles.avatarWrapper} onPress={handleChangeAvatar} disabled={avatarLoading}>
           {avatarLoading ? (
-            <View style={styles.avatarRing}><ActivityIndicator color="#C9A84C" /></View>
+            <View style={styles.avatarRing}><ActivityIndicator color={GOLD} /></View>
           ) : user?.profileImageUrl ? (
             <View style={styles.avatarRing}>
               <Image source={{ uri: user.profileImageUrl }} style={styles.avatarImage} contentFit="cover" />
             </View>
           ) : (
-            <View style={[styles.avatarRing, styles.avatarInitialsRing]}>
+            <View style={[styles.avatarRing, styles.avatarFallback]}>
               <Text style={styles.avatarInitials}>{initials}</Text>
             </View>
           )}
           <View style={styles.cameraPin}>
-            <MaterialIcons name="photo-camera" size={13} color="#C9A84C" />
+            <MaterialIcons name="photo-camera" size={12} color={GOLD} />
           </View>
         </Pressable>
 
         <Text style={styles.name}>{user?.firstName} {user?.lastName}</Text>
-        <Text style={styles.emailText}>{user?.email}</Text>
+        <Text style={styles.email}>{user?.email}</Text>
 
         {user?.kashrutLevel && user.kashrutLevel !== 'none' && (
           <View style={styles.kashrutBadge}>
             <Text style={styles.kashrutBadgeText}>
-              {user.kashrutLevel.charAt(0).toUpperCase() + user.kashrutLevel.slice(1)}
+              {t(`profile.kashrut.${user.kashrutLevel}` as any)}
             </Text>
           </View>
         )}
@@ -416,35 +411,58 @@ export default function ProfileScreen() {
         )}
       </View>
 
-      {/* ── Menu section ── */}
-      <View style={styles.section}>
+      {/* ── Account section ── */}
+      <Text style={styles.sectionEyebrow}>ACCOUNT</Text>
+      <View style={styles.card}>
         <Pressable style={styles.row} onPress={() => setEditVisible(true)}>
-          <View style={[styles.rowIconBox, { backgroundColor: 'rgba(91,123,192,0.15)' }]}>
-            <MaterialIcons name="person" size={20} color="#7B97D8" />
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(11,23,54,0.08)' }]}>
+            <MaterialIcons name="person-outline" size={20} color={NAVY} />
           </View>
           <Text style={styles.rowLabel}>{t('profile.editProfile')}</Text>
-          <MaterialIcons name="chevron-right" size={22} color="#4A5568" />
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
         </Pressable>
 
-        <View style={styles.rowDivider} />
+        <View style={styles.divider} />
 
         <Pressable style={styles.row} onPress={() => setPasswordVisible(true)}>
-          <View style={[styles.rowIconBox, { backgroundColor: 'rgba(201,168,76,0.12)' }]}>
-            <MaterialIcons name="lock" size={20} color="#C9A84C" />
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(212,175,55,0.12)' }]}>
+            <MaterialIcons name="lock-outline" size={20} color={GOLD} />
           </View>
           <Text style={styles.rowLabel}>{t('profile.changePassword')}</Text>
-          <MaterialIcons name="chevron-right" size={22} color="#4A5568" />
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
         </Pressable>
 
-        <View style={styles.rowDivider} />
+        <View style={styles.divider} />
 
         <View style={styles.row}>
-          <View style={[styles.rowIconBox, { backgroundColor: 'rgba(74,158,108,0.12)' }]}>
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(74,158,108,0.12)' }]}>
             <MaterialIcons name="language" size={20} color="#4A9E6C" />
           </View>
           <Text style={styles.rowLabel}>{t('profile.language')}</Text>
           <LanguageSwitcher />
         </View>
+      </View>
+
+      {/* ── Contribute section ── */}
+      <Text style={styles.sectionEyebrow}>CONTRIBUTE</Text>
+      <View style={styles.card}>
+        <Pressable style={styles.row} onPress={() => { setSuggestType('restaurant'); setSuggestVisible(true); }}>
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(22,163,74,0.10)' }]}>
+            <MaterialIcons name="restaurant" size={20} color="#16A34A" />
+          </View>
+          <Text style={styles.rowLabel}>{t('destination.suggestRestaurant')}</Text>
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+        </Pressable>
+
+        <View style={styles.divider} />
+
+        <Pressable style={styles.row} onPress={() => { setSuggestType('synagogue'); setSuggestVisible(true); }}>
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(124,58,237,0.10)' }]}>
+            <MaterialIcons name="place" size={20} color="#7C3AED" />
+          </View>
+          <Text style={styles.rowLabel}>{t('destination.suggestSynagogue')}</Text>
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+        </Pressable>
       </View>
 
       {/* ── Sign out ── */}
@@ -473,6 +491,12 @@ export default function ProfileScreen() {
         </View>
       )}
 
+      <SuggestPlaceModal
+        visible={suggestVisible}
+        onClose={() => setSuggestVisible(false)}
+        entityType={suggestType}
+      />
+
       <EditProfileModal
         visible={editVisible}
         onClose={() => setEditVisible(false)}
@@ -486,144 +510,122 @@ export default function ProfileScreen() {
   );
 }
 
+const GOLD = C.gold;
+const NAVY = C.navy;
+
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F2F5FB' },
+  container: { flex: 1, backgroundColor: '#F4F6FC' },
 
   // ── Header ──
   header: {
-    backgroundColor: '#0C2461',
-    paddingTop: 72,
-    paddingBottom: 36,
+    backgroundColor: NAVY,
+    paddingTop: Platform.OS === 'ios' ? 70 : 50,
+    paddingBottom: 32,
     alignItems: 'center',
     paddingHorizontal: 24,
   },
-  headerEyebrow: {
-    fontSize: 10,
-    fontWeight: '700',
-    color: '#C9A84C',
-    letterSpacing: 2.8,
-    marginBottom: 18,
-    textTransform: 'uppercase',
-  },
-  avatarWrapper: { position: 'relative', marginBottom: 14 },
+  avatarWrapper: { position: 'relative', marginBottom: 16 },
   avatarRing: {
-    width: 96,
-    height: 96,
-    borderRadius: 48,
-    borderWidth: 3,
-    borderColor: '#C9A84C',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
+    width: 100, height: 100, borderRadius: 50,
+    borderWidth: 2.5, borderColor: GOLD,
+    justifyContent: 'center', alignItems: 'center', overflow: 'hidden',
   },
-  avatarInitialsRing: { backgroundColor: 'rgba(201,168,76,0.18)' },
-  avatarImage: { width: 90, height: 90, borderRadius: 45 },
-  avatarInitials: { fontSize: 32, fontWeight: '700', color: '#C9A84C' },
+  avatarFallback: { backgroundColor: 'rgba(212,175,55,0.15)' },
+  avatarImage:    { width: 95, height: 95, borderRadius: 47.5 },
+  avatarInitials: {
+    fontFamily: 'Inter-Bold', fontSize: 34, color: GOLD,
+  },
   cameraPin: {
-    position: 'absolute',
-    bottom: 2,
-    right: 0,
-    backgroundColor: '#0C2461',
-    borderRadius: 13,
-    width: 26,
-    height: 26,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#C9A84C',
+    position: 'absolute', bottom: 2, right: 2,
+    backgroundColor: NAVY, borderRadius: 14,
+    width: 28, height: 28,
+    justifyContent: 'center', alignItems: 'center',
+    borderWidth: 2, borderColor: GOLD,
   },
-  name: { fontSize: 22, fontWeight: '800', color: '#fff', marginBottom: 5, letterSpacing: 0.2 },
-  emailText: { fontSize: 13, color: 'rgba(255,255,255,0.52)' },
+  name: {
+    fontFamily: 'Inter-ExtraBold',
+    fontSize: 22, color: '#fff', marginBottom: 4, letterSpacing: -0.3,
+  },
+  email: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 13, color: 'rgba(255,255,255,0.45)',
+  },
   kashrutBadge: {
-    marginTop: 10,
-    backgroundColor: 'rgba(201,168,76,0.20)',
-    borderRadius: 20,
-    paddingHorizontal: 14,
-    paddingVertical: 5,
-    borderWidth: 1,
-    borderColor: 'rgba(201,168,76,0.40)',
+    marginTop: 12,
+    backgroundColor: 'rgba(212,175,55,0.18)',
+    borderRadius: 20, paddingHorizontal: 14, paddingVertical: 5,
+    borderWidth: 1, borderColor: 'rgba(212,175,55,0.35)',
   },
-  kashrutBadgeText: { color: '#C9A84C', fontSize: 12, fontWeight: '700' },
-  removePhotoBtn: { marginTop: 12 },
-  removePhotoText: { color: 'rgba(255,255,255,0.40)', fontSize: 12, textDecorationLine: 'underline' },
+  kashrutBadgeText: {
+    fontFamily: 'Inter-SemiBold',
+    color: GOLD, fontSize: 12, letterSpacing: 0.5,
+  },
+  removePhotoBtn: { marginTop: 10 },
+  removePhotoText: {
+    fontFamily: 'Inter-Regular',
+    color: 'rgba(255,255,255,0.35)', fontSize: 12, textDecorationLine: 'underline',
+  },
 
-  // ── Section ──
-  section: {
+  // ── Sections ──
+  sectionEyebrow: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 10, color: '#BBC3D4',
+    letterSpacing: 1.8, marginLeft: 20, marginTop: 24, marginBottom: 8,
+  },
+  card: {
     backgroundColor: '#fff',
-    borderRadius: 20,
-    marginHorizontal: 16,
-    marginTop: 20,
-    shadowColor: '#0C2461',
-    shadowOpacity: 0.07,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 3 },
-    elevation: 4,
+    borderRadius: 20, marginHorizontal: 16,
+    shadowColor: NAVY, shadowOpacity: 0.06,
+    shadowRadius: 14, shadowOffset: { width: 0, height: 3 }, elevation: 3,
     overflow: 'hidden',
   },
   row: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 16 },
-  rowDivider: { height: 1, backgroundColor: '#F2F5FB', marginHorizontal: 18 },
-  rowIconBox: {
-    width: 38,
-    height: 38,
-    borderRadius: 11,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 14,
+  divider: { height: 1, backgroundColor: '#F4F6FC', marginHorizontal: 18 },
+  iconBox: {
+    width: 38, height: 38, borderRadius: 11,
+    justifyContent: 'center', alignItems: 'center', marginRight: 14,
   },
-  rowLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: '#0C1A2E' },
+  rowLabel: {
+    flex: 1,
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 15, color: '#111827',
+  },
 
   // ── Buttons ──
   signOutBtn: {
-    marginHorizontal: 16,
-    marginTop: 14,
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    paddingVertical: 16,
-    alignItems: 'center',
-    borderWidth: 1.5,
-    borderColor: '#FFCDD2',
-    shadowColor: '#D93025',
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    elevation: 2,
+    marginHorizontal: 16, marginTop: 20,
+    backgroundColor: '#fff', borderRadius: 16,
+    paddingVertical: 16, alignItems: 'center',
+    borderWidth: 1.5, borderColor: '#FFCDD2',
   },
-  signOutText: { color: '#D93025', fontSize: 15, fontWeight: '700' },
+  signOutText: {
+    fontFamily: 'Inter-Bold',
+    color: '#D93025', fontSize: 15,
+  },
 
   deleteLink: { alignItems: 'center', paddingVertical: 14, marginTop: 4 },
-  deleteLinkText: { color: '#B0BAC8', fontSize: 13, textDecorationLine: 'underline' },
+  deleteLinkText: {
+    fontFamily: 'Inter-Regular',
+    color: '#BBC3D4', fontSize: 13, textDecorationLine: 'underline',
+  },
 
   deleteBox: {
-    margin: 16,
-    backgroundColor: '#FFF5F5',
-    borderRadius: 16,
-    padding: 18,
-    borderWidth: 1.5,
-    borderColor: '#FFCDD2',
+    margin: 16, backgroundColor: '#FFF5F5',
+    borderRadius: 16, padding: 18,
+    borderWidth: 1.5, borderColor: '#FFCDD2',
   },
-  deleteBoxText: { fontSize: 14, color: '#C62828', textAlign: 'center', marginBottom: 16, lineHeight: 21 },
+  deleteBoxText: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 14, color: '#C62828', textAlign: 'center', marginBottom: 16, lineHeight: 21,
+  },
   deleteBoxRow: { flexDirection: 'row', gap: 10 },
-  deleteCancelBtn: { flex: 1, paddingVertical: 13, borderRadius: 12, backgroundColor: '#F2F5FB', alignItems: 'center' },
-  deleteCancelText: { fontSize: 14, fontWeight: '700', color: '#0C2461' },
+  deleteCancelBtn: { flex: 1, paddingVertical: 13, borderRadius: 12, backgroundColor: '#F4F6FC', alignItems: 'center' },
+  deleteCancelText: { fontFamily: 'Inter-Bold', fontSize: 14, color: NAVY },
   deleteConfirmBtn: { flex: 1, paddingVertical: 13, borderRadius: 12, backgroundColor: '#D93025', alignItems: 'center' },
-  deleteConfirmText: { fontSize: 14, fontWeight: '700', color: '#fff' },
+  deleteConfirmText: { fontFamily: 'Inter-Bold', fontSize: 14, color: '#fff' },
 
   // ── Modals ──
-  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(12,36,97,0.45)' },
-  modalSheet: {
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
-    padding: 24,
-    paddingBottom: 44,
-  },
-  modalHandle: {
-    width: 36,
-    height: 4,
-    backgroundColor: '#DFE6F5',
-    borderRadius: 2,
-    alignSelf: 'center',
-    marginBottom: 20,
-  },
+  sheetInner: { paddingHorizontal: 24, paddingBottom: 44 },
   modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 },
   modalTitle: { fontSize: 20, fontWeight: '800', color: '#0C1A2E' },
   modalCloseBtn: {

@@ -1,6 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Location from 'expo-location';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -18,8 +18,9 @@ import {
   View,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
-import HomeButton from '@/src/components/HomeButton';
+import SwipeableSheet from '@/src/components/SwipeableSheet';
 
 interface Minyan {
   id: number;
@@ -39,9 +40,7 @@ const PRAYER_TYPES = ['shacharit', 'mincha', 'maariv', 'musaf', 'other'];
 const PRAYER_EMOJI: Record<string, string> = {
   shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
 };
-const PRAYER_LABEL: Record<string, string> = {
-  shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
-};
+// Labels resolved via useTranslation inside components
 
 function formatDate(iso: string) {
   const [y, m, d] = iso.split('-');
@@ -64,6 +63,11 @@ function CreateMinyanModal({
   onCreated: () => void;
   userLocation: { lat: number; lng: number } | null;
 }) {
+  const { t } = useTranslation();
+  const PRAYER_LABEL: Record<string, string> = {
+    shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
+    maariv: t('minyans.maariv'), musaf: t('minyans.musaf'), other: t('minyans.other'),
+  };
   const [prayerType, setPrayerType] = useState('shacharit');
   const [dateObj, setDateObj] = useState(new Date());
   const [timeObj, setTimeObj] = useState(() => { const d = new Date(); d.setMinutes(0, 0, 0); return d; });
@@ -77,7 +81,7 @@ function CreateMinyanModal({
   const timeStr = `${String(timeObj.getHours()).padStart(2, '0')}:${String(timeObj.getMinutes()).padStart(2, '0')}`;
 
   const handleCreate = async () => {
-    if (!locationText.trim()) { Alert.alert('Error', 'Location is required'); return; }
+    if (!locationText.trim()) { Alert.alert(t('common.error'), t('minyans.location')); return; }
     try {
       setLoading(true);
       await client.post('/minyans', {
@@ -91,7 +95,7 @@ function CreateMinyanModal({
       onCreated();
       onClose();
       setDateObj(new Date()); setTimeObj(new Date()); setLocationText(''); setNotes(''); setPrayerType('shacharit');
-      Alert.alert('Minyan Created! 🙏', 'You have been registered as the first participant.');
+      Alert.alert(t('minyans.minyanCreated'), t('minyans.firstParticipant'));
     } catch (err: any) {
       const msg = err?.response?.data?.message ?? 'Failed to create minyan';
       Alert.alert('Error', Array.isArray(msg) ? msg.join('\n') : msg);
@@ -101,15 +105,15 @@ function CreateMinyanModal({
   };
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <KeyboardAvoidingView style={styles.overlay} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <SwipeableSheet visible={visible} onClose={onClose}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.sheet}>
           <View style={styles.sheetHeader}>
-            <Text style={styles.sheetTitle}>Create a Minyan</Text>
+            <Text style={styles.sheetTitle}>{t('minyans.createTitle')}</Text>
             <Pressable onPress={onClose} hitSlop={12}><Text style={styles.closeBtn}>✕</Text></Pressable>
           </View>
 
-          <Text style={styles.label}>Prayer Type</Text>
+          <Text style={styles.label}>{t('minyans.prayerType')}</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 14 }}>
             <View style={{ flexDirection: 'row', gap: 8 }}>
               {PRAYER_TYPES.map((p) => (
@@ -122,7 +126,7 @@ function CreateMinyanModal({
             </View>
           </ScrollView>
 
-          <Text style={styles.label}>Date</Text>
+          <Text style={styles.label}>{t('minyans.date')}</Text>
           {Platform.OS === 'web' ? (
             // @ts-ignore
             <View style={styles.pickerBtn} lang="en" dir="ltr">
@@ -143,7 +147,7 @@ function CreateMinyanModal({
             </>
           )}
 
-          <Text style={styles.label}>Time</Text>
+          <Text style={styles.label}>{t('minyans.time')}</Text>
           {Platform.OS === 'web' ? (
             // @ts-ignore
             <View style={styles.pickerBtn} lang="en" dir="ltr">
@@ -164,11 +168,11 @@ function CreateMinyanModal({
             </>
           )}
 
-          <Text style={styles.label}>Location</Text>
+          <Text style={styles.label}>{t('minyans.location')}</Text>
           <TextInput style={styles.input} value={locationText} onChangeText={setLocationText}
             placeholder="e.g. Great Synagogue, 2nd floor" placeholderTextColor="#999" />
 
-          <Text style={styles.label}>Notes (optional)</Text>
+          <Text style={styles.label}>{t('minyans.notesOptional')}</Text>
           <TextInput style={[styles.input, { height: 70 }]} value={notes} onChangeText={setNotes}
             placeholder="Any special instructions…" placeholderTextColor="#999" multiline />
 
@@ -177,17 +181,23 @@ function CreateMinyanModal({
           )}
 
           <TouchableOpacity style={styles.submitBtn} onPress={handleCreate} disabled={loading}>
-            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitText}>Create Minyan</Text>}
+            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitText}>{t('minyans.createBtn')}</Text>}
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-    </Modal>
+    </SwipeableSheet>
   );
 }
 
 // ─── Main Screen ──────────────────────────────────────────────────────────────
 export default function MinyansScreen() {
   const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
+  const { t } = useTranslation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- stable
+  const PRAYER_LABEL: Record<string, string> = {
+    shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
+    maariv: t('minyans.maariv'), musaf: t('minyans.musaf'), other: t('minyans.other'),
+  };
   const [minyans, setMinyans] = useState<Minyan[]>([]);
   const [loading, setLoading]     = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -239,15 +249,14 @@ export default function MinyansScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
-        <HomeButton />
         <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>🤝 Minyans{city ? ` — ${city}` : ''}</Text>
+          <Text style={styles.headerTitle}>🤝 {t('minyans.title')}{city ? ` — ${city}` : ''}</Text>
           <Text style={styles.headerSub}>
-            {minyans.length} upcoming{hasSomeDistance ? '  •  📍 distance shown' : ''}
+            {minyans.length} {t('minyans.upcoming')}
           </Text>
         </View>
         <TouchableOpacity style={styles.myBtn} onPress={() => router.push('/minyans/my-minyans')}>
-          <Text style={styles.myBtnText}>My</Text>
+          <Text style={styles.myBtnText}>{t('minyans.my')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.addBtn} onPress={() => setCreateVisible(true)}>
           <Text style={styles.addBtnText}>+ New</Text>
@@ -259,7 +268,7 @@ export default function MinyansScreen() {
         {['all', ...PRAYER_TYPES].map((f) => (
           <Pressable key={f} style={[styles.chip, typeFilter === f && styles.chipActive]} onPress={() => setTypeFilter(f)}>
             <Text style={[styles.chipText, typeFilter === f && styles.chipTextActive]}>
-              {f === 'all' ? 'All' : `${PRAYER_EMOJI[f]} ${PRAYER_LABEL[f]}`}
+              {f === 'all' ? t('minyans.all') : `${PRAYER_EMOJI[f]} ${PRAYER_LABEL[f]}`}
             </Text>
           </Pressable>
         ))}
@@ -300,8 +309,8 @@ export default function MinyansScreen() {
               <View style={styles.cardBody}>
                 <View style={styles.cardTopRow}>
                   <Text style={styles.cardPrayer}>{PRAYER_LABEL[item.prayerType]}</Text>
-                  {item.isFull && <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>Full ✓</Text></View>}
-                  {item.almostFull && !item.isFull && <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>Almost full!</Text></View>}
+                  {item.isFull && <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>{t('minyans.full')}</Text></View>}
+                  {item.almostFull && !item.isFull && <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>{t('minyans.almostFull')}</Text></View>}
                 </View>
                 <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
                 <Text style={styles.cardLocation} numberOfLines={1}>📍 {item.locationText}</Text>
@@ -318,7 +327,7 @@ export default function MinyansScreen() {
           ListEmptyComponent={
             <View style={styles.empty}>
               <Text style={styles.emptyIcon}>🤝</Text>
-              <Text style={styles.emptyText}>No upcoming minyans.{'\n'}Be the first to create one!</Text>
+              <Text style={styles.emptyText}>{t('minyans.noMinyans')}{'\n'}{t('minyans.noMinyansCreate')}</Text>
             </View>
           }
         />

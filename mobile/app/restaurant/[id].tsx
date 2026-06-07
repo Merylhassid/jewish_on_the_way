@@ -11,11 +11,11 @@ import {
   View,
 } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 import ReviewSection from '@/src/components/ReviewSection';
 import ReportModal from '@/src/components/ReportModal';
-import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
 import FavoriteButton from '@/src/components/FavoriteButton';
 
 interface Restaurant {
@@ -40,9 +40,6 @@ const TYPE_COLOR: Record<string, string> = {
   parve:   '#F0FFF4',
   unknown: '#F8F9FF',
 };
-const TYPE_LABEL: Record<string, string> = {
-  meat: 'Meat', dairy: 'Dairy', pareve: 'Pareve', parve: 'Pareve', unknown: 'Unknown',
-};
 const TYPE_ICON: Record<string, React.ComponentProps<typeof MaterialIcons>['name']> = {
   meat:    'restaurant',
   dairy:   'local-cafe',
@@ -58,32 +55,65 @@ const TYPE_TINT: Record<string, string> = {
   unknown: C.navy,
 };
 
-const KASHRUT: Record<string, { label: string; color: string; desc: string }> = {
-  rabbinate: { label: 'Rabbinate', color: '#6B7280', desc: 'Certified by the local rabbinate' },
-  mehadrin:  { label: 'Mehadrin',  color: '#2563EB', desc: 'Higher standard of kashrut supervision' },
-  badatz:    { label: 'Badatz',    color: '#059669', desc: 'Strictest kashrut certification' },
-  unknown:   { label: 'Kosher',    color: '#6B7280', desc: 'Kosher certified' },
-};
-
-function formatDistance(meters: number): string {
-  if (meters < 1000) return `${Math.round(meters)} m away`;
-  return `${(meters / 1000).toFixed(1)} km away`;
-}
-
 export default function RestaurantDetailScreen() {
-  const { id, distance } = useLocalSearchParams<{ id: string; distance?: string }>();
+  const { t } = useTranslation();
+
+  const TYPE_LABEL: Record<string, string> = {
+    meat:    t('restaurants.meat'),
+    dairy:   t('restaurants.dairy'),
+    pareve:  t('restaurants.pareve'),
+    parve:   t('restaurants.pareve'),
+    unknown: t('restaurants.unknownType'),
+  };
+
+  const KASHRUT: Record<string, { label: string; color: string; desc: string }> = {
+    rabbinate: { label: t('restaurants.rabbinate'), color: '#6B7280', desc: t('restaurants.rabbinateDesc') },
+    mehadrin:  { label: t('restaurants.mehadrin'),  color: '#2563EB', desc: t('restaurants.mehadrinDesc') },
+    badatz:    { label: t('restaurants.badatz'),    color: '#059669', desc: t('restaurants.badatzDesc') },
+    unknown:   { label: t('restaurants.kosher'),    color: '#6B7280', desc: t('restaurants.kosherDesc') },
+  };
+
+  const formatDistance = (meters: number) =>
+    meters < 1000
+      ? `${Math.round(meters)} ${t('restaurants.distanceM')}`
+      : `${(meters / 1000).toFixed(1)} ${t('restaurants.distanceKm')}`;
+
+  const {
+    id, distance,
+    name: nameParam, restaurantType: typeParam,
+    kashrutLevel: kashrutParam, address: addressParam,
+    openingHours: hoursParam,
+  } = useLocalSearchParams<{
+    id: string; distance?: string;
+    name?: string; restaurantType?: string;
+    kashrutLevel?: string; address?: string; openingHours?: string;
+  }>();
   const distanceMeters = distance ? parseInt(distance, 10) : undefined;
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [reportVisible, setReportVisible] = useState(false);
-  const [suggestVisible, setSuggestVisible] = useState(false);
 
   useEffect(() => {
     client
       .get(`/restaurants/${id}`)
       .then((res) => setRestaurant(res.data))
-      .catch(() => setError(true))
+      .catch(() => {
+        // API failed — use data passed from list screen as fallback
+        if (nameParam) {
+          setRestaurant({
+            id: Number(id),
+            name: nameParam,
+            restaurantType: typeParam || null,
+            kashrutLevel: kashrutParam || 'unknown',
+            address: addressParam || undefined,
+            openingHours: hoursParam || undefined,
+            createdAt: '',
+          });
+        } else {
+          setError(true);
+        }
+      })
       .finally(() => setLoading(false));
   }, [id]);
 
@@ -118,9 +148,9 @@ export default function RestaurantDetailScreen() {
   if (error || !restaurant) {
     return (
       <View style={s.center}>
-        <Text style={s.errorText}>Restaurant not found</Text>
+        <Text style={s.errorText}>{t('restaurants.notFound')}</Text>
         <Pressable onPress={() => router.back()} style={s.backLink}>
-          <Text style={s.backLinkText}>← Go back</Text>
+          <Text style={s.backLinkText}>{t('restaurants.goBack')}</Text>
         </Pressable>
       </View>
     );
@@ -130,7 +160,7 @@ export default function RestaurantDetailScreen() {
   const kashrut   = KASHRUT[restaurant.kashrutLevel] ?? KASHRUT.unknown;
   const typeTint  = TYPE_TINT[type]  ?? C.navy;
   const typeBg    = TYPE_COLOR[type] ?? TYPE_COLOR.unknown;
-  const typeLabel = TYPE_LABEL[type] ?? 'Unknown';
+  const typeLabel = TYPE_LABEL[type] ?? t('restaurants.unknownType');
   const typeIcon  = TYPE_ICON[type]  ?? 'restaurant-menu';
 
   const hasLocation = restaurant.lat != null && restaurant.lng != null;
@@ -199,7 +229,7 @@ export default function RestaurantDetailScreen() {
           <View style={s.infoCard}>
             <MaterialIcons name="location-on" size={18} color={C.gold} style={s.infoIcon} />
             <View style={s.infoText}>
-              <Text style={s.infoLabel}>ADDRESS</Text>
+              <Text style={s.infoLabel}>{t('restaurants.address')}</Text>
               <Text style={s.infoValue}>{restaurant.address}</Text>
             </View>
           </View>
@@ -209,14 +239,14 @@ export default function RestaurantDetailScreen() {
           <View style={s.infoCard}>
             <MaterialIcons name="schedule" size={18} color={C.gold} style={s.infoIcon} />
             <View style={s.infoText}>
-              <Text style={s.infoLabel}>HOURS</Text>
+              <Text style={s.infoLabel}>{t('restaurants.hours')}</Text>
               <Text style={s.infoValue}>{restaurant.openingHours}</Text>
             </View>
           </View>
         )}
 
         {/* ── Reviews ── */}
-        <Text style={s.sectionTitle}>Reviews</Text>
+        <Text style={s.sectionTitle}>{t('restaurants.reviews')}</Text>
         <ReviewSection entityType="restaurant" entityId={Number(id)} />
 
         {/* ── Action buttons ── */}
@@ -231,7 +261,7 @@ export default function RestaurantDetailScreen() {
                   <MaterialIcons name="call" size={22} color="#059669" />
                 </View>
                 <View style={s.actionContent}>
-                  <Text style={s.actionTitle}>Call</Text>
+                  <Text style={s.actionTitle}>{t('restaurants.call')}</Text>
                   <Text style={s.actionSub}>{restaurant.phone}</Text>
                 </View>
                 <MaterialIcons name="chevron-right" size={20} color={C.textMuted} />
@@ -253,9 +283,9 @@ export default function RestaurantDetailScreen() {
                   <MaterialIcons name="map" size={22} color="#2563EB" />
                 </View>
                 <View style={s.actionContent}>
-                  <Text style={s.actionTitle}>View on Map</Text>
+                  <Text style={s.actionTitle}>{t('restaurants.viewOnMap')}</Text>
                   <Text style={s.actionSub}>
-                    {hasLocation ? 'Open in Maps app' : restaurant.address}
+                    {hasLocation ? t('restaurants.openInMaps') : restaurant.address}
                   </Text>
                 </View>
                 <MaterialIcons name="chevron-right" size={20} color={C.textMuted} />
@@ -263,15 +293,11 @@ export default function RestaurantDetailScreen() {
             )}
           </View>
         )}
-        {/* ── Report + Suggest ── */}
+        {/* ── Report ── */}
         <View style={s.bottomActions}>
           <Pressable style={s.ghostBtn} onPress={() => setReportVisible(true)}>
             <MaterialIcons name="flag" size={16} color="#DC2626" />
-            <Text style={[s.ghostBtnText, { color: '#DC2626' }]}>Report issue</Text>
-          </Pressable>
-          <Pressable style={s.ghostBtn} onPress={() => setSuggestVisible(true)}>
-            <MaterialIcons name="add-circle-outline" size={16} color={C.navy} />
-            <Text style={[s.ghostBtnText, { color: C.navy }]}>Suggest a place</Text>
+            <Text style={[s.ghostBtnText, { color: '#DC2626' }]}>{t('restaurants.report')}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -284,13 +310,6 @@ export default function RestaurantDetailScreen() {
             entityType="restaurant"
             entityId={restaurant.id}
             entityName={restaurant.name}
-          />
-          <SuggestPlaceModal
-            visible={suggestVisible}
-            onClose={() => setSuggestVisible(false)}
-            entityType="restaurant"
-            destinationId={restaurant.destination?.id ?? 0}
-            destinationName={restaurant.destination?.city ?? ''}
           />
         </>
       )}

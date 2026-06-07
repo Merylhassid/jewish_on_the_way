@@ -1,4 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from 'expo-location';
+import { Linking, Pressable } from 'react-native';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator, Platform, ScrollView,
@@ -13,21 +15,32 @@ interface ShabbatData { location: { city: string; country: string }; items: Shab
 const toTime = (d: string) => new Date(d).toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit', hour12: false });
 const toDate = (d: string) => new Date(d).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 
+const CACHE_KEY = 'shabbat_cache_v2';
+
 export default function ShabbatScreen() {
   const [data,    setData]    = useState<ShabbatData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error,   setError]   = useState('');
+  const [denied,  setDenied]  = useState(false);
 
   useEffect(() => {
     (async () => {
+      // Show cached data immediately
+      try {
+        const cached = await AsyncStorage.getItem(CACHE_KEY);
+        if (cached) { setData(JSON.parse(cached)); setLoading(false); }
+      } catch {}
+
       const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') { setError('Location permission required'); setLoading(false); return; }
+      if (status !== 'granted') { setDenied(true); setLoading(false); return; }
       try {
         const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
         const { latitude, longitude } = pos.coords;
         const res = await fetch(`https://www.hebcal.com/shabbat?cfg=json&latitude=${latitude}&longitude=${longitude}&tzid=AUTO&M=on&b=18`);
-        setData(await res.json());
-      } catch { setError('Could not load Shabbat times'); }
+        const json = await res.json();
+        setData(json);
+        await AsyncStorage.setItem(CACHE_KEY, JSON.stringify(json)).catch(() => {});
+      } catch { if (!data) setError('Could not load Shabbat times'); }
       finally { setLoading(false); }
     })();
   }, []);
@@ -39,7 +52,18 @@ export default function ShabbatScreen() {
     </View>
   );
 
-  if (error) return (
+  if (denied) return (
+    <View style={s.center}>
+      <Flame size={44} color="#E5E7EB" strokeWidth={1.5} />
+      <Text style={s.centreText}>Location permission required</Text>
+      <Text style={s.centreSub}>Enable location for Shabbat times</Text>
+      <Pressable style={s.settingsBtn} onPress={() => Linking.openSettings().catch(() => {})}>
+        <Text style={s.settingsBtnText}>Open Settings</Text>
+      </Pressable>
+    </View>
+  );
+
+  if (error && !data) return (
     <View style={s.center}>
       <Flame size={44} color="#E5E7EB" strokeWidth={1.5} />
       <Text style={s.centreText}>{error}</Text>
@@ -124,6 +148,9 @@ const s = StyleSheet.create({
   root:   { flex: 1, backgroundColor: C.bg },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
   centreText: { fontFamily: 'Inter-SemiBold', fontSize: 15, color: C.textSecondary, textAlign: 'center' },
+  centreSub:  { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, textAlign: 'center' },
+  settingsBtn: { marginTop: 8, backgroundColor: C.navy, borderRadius: 12, paddingHorizontal: 24, paddingVertical: 12 },
+  settingsBtnText: { fontFamily: 'Inter-SemiBold', color: '#fff', fontSize: 14 },
 
   header: {
     flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between',
