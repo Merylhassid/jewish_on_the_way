@@ -17,8 +17,10 @@ import {
   ArrowLeft, Globe, Home, Map,
   MessageCircle, Search, Sparkles, Users, Utensils,
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl } from '@/constants/theme';
+import { translateCity, translateCountry } from '@/src/i18n/geo';
 
 
 interface Destination {
@@ -30,24 +32,23 @@ interface Destination {
 type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'hosting' | 'chat' | 'map';
 const ACTIVE: ServiceKey[] = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting', 'map'];
 
-const SERVICES: {
-  key: ServiceKey; label: string; Icon: any;
-  color: string; bg: string;
-}[] = [
-  { key: 'restaurants', label: 'Restaurants', Icon: Utensils,       color: '#16A34A', bg: '#F0FDF4' },
-  { key: 'synagogues',  label: 'Synagogues',  Icon: Globe,          color: '#7C3AED', bg: '#F5F3FF' },
-  { key: 'minyans',     label: 'Minyans',     Icon: Users,          color: '#D97706', bg: '#FFFBEB' },
-  { key: 'hosting',     label: 'Hosting',     Icon: Home,           color: '#DB2777', bg: '#FDF2F8' },
-  { key: 'chat',        label: 'Community',   Icon: MessageCircle,  color: '#0891B2', bg: '#F0F9FF' },
-  { key: 'map',         label: 'Map',         Icon: Map,            color: '#0F766E', bg: '#F0FDFA' },
+const SERVICE_DEFS: { key: ServiceKey; tKey: string; subTKey: string; Icon: any; color: string; bg: string; }[] = [
+  { key: 'restaurants', tKey: 'restaurants', subTKey: 'restaurantsSub', Icon: Utensils,      color: '#16A34A', bg: '#F0FDF4' },
+  { key: 'synagogues',  tKey: 'synagogues',  subTKey: 'synagoguesSub',  Icon: Globe,         color: '#7C3AED', bg: '#F5F3FF' },
+  { key: 'minyans',     tKey: 'minyans',     subTKey: 'minyansSub',     Icon: Users,         color: '#D97706', bg: '#FFFBEB' },
+  { key: 'hosting',     tKey: 'hosting',     subTKey: 'hostingSub',     Icon: Home,          color: '#DB2777', bg: '#FDF2F8' },
+  { key: 'chat',        tKey: 'chat',        subTKey: 'chatSub',        Icon: MessageCircle, color: '#0891B2', bg: '#F0F9FF' },
+  { key: 'map',         tKey: 'map',         subTKey: 'mapSub',         Icon: Map,           color: '#0F766E', bg: '#F0FDFA' },
 ];
 
 export default function DestinationScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const [dest, setDest]         = useState<Destination | null>(null);
   const [loading, setLoading]   = useState(true);
   const [counts, setCounts]     = useState<{ restaurants: number; synagogues: number } | null>(null);
-  const [searchText, setSearch] = useState('');
+  const [searchText, setSearch]   = useState('');
   const [searching, setSearching] = useState(false);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export default function DestinationScreen() {
   };
 
   if (loading) return <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>;
-  if (!dest)   return <View style={s.center}><Text style={s.muted}>Not found</Text></View>;
+  if (!dest)   return <View style={s.center}><Text style={s.muted}>{t('common.notFound')}</Text></View>;
 
   const img  = getDestinationImageUrl(dest.city, dest.countryCode);
   const city = encodeURIComponent(dest.city);
@@ -105,7 +106,7 @@ export default function DestinationScreen() {
     <View style={s.root}>
       {/* ── Hero ── */}
       <View style={s.hero}>
-        <Image source={{ uri: img }} style={StyleSheet.absoluteFillObject} contentFit="cover" transition={600} />
+        <Image source={img} style={StyleSheet.absoluteFillObject} contentFit="cover" transition={600} />
         <View style={s.heroScrimTop} />
         <View style={s.heroScrimBottom} />
 
@@ -118,8 +119,8 @@ export default function DestinationScreen() {
         </View>
 
         <View style={s.heroText}>
-          <Text style={s.heroCity}>{dest.city}</Text>
-          <Text style={s.heroCountry}>{dest.country}</Text>
+          <Text style={s.heroCity}>{translateCity(dest.city, lang)}</Text>
+          <Text style={s.heroCountry}>{translateCountry(dest.countryCode, lang)}</Text>
         </View>
       </View>
 
@@ -128,8 +129,8 @@ export default function DestinationScreen() {
         {/* ── Stats row ── */}
         {counts !== null && (
           <View style={s.stats}>
-            <StatPill label="Restaurants" value={counts.restaurants} color="#16A34A" />
-            <StatPill label="Synagogues"  value={counts.synagogues}  color="#7C3AED" />
+            <StatPill label={t('restaurants.title')} value={counts.restaurants} color="#16A34A" />
+            <StatPill label={t('synagogues.title')}  value={counts.synagogues}  color="#7C3AED" />
           </View>
         )}
 
@@ -138,7 +139,7 @@ export default function DestinationScreen() {
           <Sparkles size={15} color={C.gold} strokeWidth={2} />
           <TextInput
             style={s.searchInput}
-            placeholder="Ask anything about this city…"
+            placeholder={t('destination.askCity')}
             placeholderTextColor="#BBC3D4"
             value={searchText}
             onChangeText={setSearch}
@@ -158,11 +159,11 @@ export default function DestinationScreen() {
         </View>
 
         {/* ── Services label ── */}
-        <Text style={s.exploreLabel}>EXPLORE</Text>
+        <Text style={s.exploreLabel}>{t('destination.explore')}</Text>
 
         {/* ── Service cards ── */}
         <View style={s.services}>
-          {SERVICES.map(svc => {
+          {SERVICE_DEFS.map(svc => {
             const active = ACTIVE.includes(svc.key);
             return (
               <Pressable
@@ -173,8 +174,11 @@ export default function DestinationScreen() {
                 <View style={[s.svcIcon, { backgroundColor: active ? svc.bg : '#F9FAFB' }]}>
                   <svc.Icon size={22} color={active ? svc.color : '#D1D5DB'} strokeWidth={2} />
                 </View>
-                <Text style={[s.svcLabel, !active && s.svcLabelOff]}>{svc.label}</Text>
-                {!active && <Text style={s.svcSoon}>Soon</Text>}
+                <View style={s.svcText}>
+                  <Text style={[s.svcLabel, !active && s.svcLabelOff]}>{t(`destination.${svc.tKey}`)}</Text>
+                  <Text style={s.svcSub}>{t(`destination.${svc.subTKey}`)}</Text>
+                </View>
+                {!active && <Text style={s.svcSoon}>{t('destination.comingSoon')}</Text>}
               </Pressable>
             );
           })}
@@ -278,8 +282,10 @@ const s = StyleSheet.create({
   svcOff:     { opacity: 0.45 },
   svcPressed: { opacity: 0.82, transform: [{ scale: 0.986 }] },
   svcIcon:    { width: 46, height: 46, borderRadius: 13, justifyContent: 'center', alignItems: 'center' },
-  svcLabel:   { flex: 1, fontFamily: 'Inter-SemiBold', fontSize: 15, color: C.textPrimary },
+  svcText:    { flex: 1 },
+  svcLabel:   { fontFamily: 'Inter-SemiBold', fontSize: 15, color: C.textPrimary },
   svcLabelOff:{ color: '#D1D5DB' },
+  svcSub:     { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textMuted, marginTop: 1 },
   svcSoon:    { fontFamily: 'Inter-Medium', fontSize: 11, color: '#BBC3D4' },
 
   // Description
@@ -289,4 +295,21 @@ const s = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 }, elevation: 2,
   },
   descText: { fontFamily: 'Inter-Regular', fontSize: 14, color: C.textSecondary, lineHeight: 22 },
+
+  // Suggest a place
+  suggestSection: { marginTop: 24 },
+  suggestTitle: {
+    fontFamily: 'Inter-Bold', fontSize: 11, color: '#D1D5DB',
+    letterSpacing: 2, marginBottom: 10,
+  },
+  suggestRow: { flexDirection: 'row', gap: 10 },
+  suggestBtn: {
+    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 7, backgroundColor: '#fff', borderRadius: 14, paddingVertical: 13,
+    borderWidth: 1.5, borderColor: '#E5E7EB',
+    shadowColor: '#000', shadowOpacity: 0.03, shadowRadius: 6,
+    shadowOffset: { width: 0, height: 1 }, elevation: 1,
+  },
+  suggestBtnPressed: { opacity: 0.75, transform: [{ scale: 0.97 }] },
+  suggestBtnText: { fontFamily: 'Inter-SemiBold', fontSize: 14 },
 });

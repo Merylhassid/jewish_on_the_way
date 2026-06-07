@@ -1,11 +1,14 @@
 import { Redirect, Tabs } from 'expo-router';
 import { Platform, View } from 'react-native';
-import { Compass, Flame, MapPin, Navigation, User } from 'lucide-react-native';
+import { Compass, MapPin, Navigation, User } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
+import * as Haptics from 'expo-haptics';
 import { useAuth } from '@/src/store/auth';
 import { C } from '@/constants/theme';
 
 export default function TabLayout() {
   const { token, loading } = useAuth();
+  const { t } = useTranslation();
 
   if (loading) return <View style={{ flex: 1, backgroundColor: C.cream }} />;
   if (!token) return <Redirect href="/(auth)/login" />;
@@ -31,46 +34,64 @@ export default function TabLayout() {
         },
         tabBarLabelStyle: {
           fontSize: 10,
-          fontWeight: '600',
+          fontFamily: 'Inter-SemiBold',
           letterSpacing: 0.3,
           marginTop: 3,
+        },
+        tabBarButton: (props) => {
+          const { onPress, children, style, accessibilityState } = props as any;
+          return (
+            <View
+              style={[style, { flex: 1, alignItems: 'center', justifyContent: 'center' }]}
+              accessible
+              accessibilityRole="button"
+              accessibilityState={accessibilityState}
+              onTouchEnd={() => {
+                Haptics.selectionAsync().catch(() => {});
+                onPress?.();
+              }}
+            >
+              {children}
+            </View>
+          );
         },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Explore',
+          title: t('tabs.explore'),
           tabBarIcon: ({ color, size }) => <MapPin size={size ?? 22} color={color} strokeWidth={2} />,
         }}
       />
       <Tabs.Screen
         name="compass"
         options={{
-          title: 'Qibla',
+          title: t('tabs.compass'),
           tabBarIcon: ({ color, size }) => <Compass size={size ?? 22} color={color} strokeWidth={2} />,
         }}
       />
       <Tabs.Screen
         name="nearby"
         options={{
-          title: 'Near Me',
+          title: t('tabs.nearby'),
           tabBarIcon: ({ color, size }) => <Navigation size={size ?? 22} color={color} strokeWidth={2} />,
         }}
       />
       <Tabs.Screen
         name="shabbat"
-        options={{
-          title: 'Shabbat',
-          tabBarIcon: ({ color, size }) => <Flame size={size ?? 22} color={color} strokeWidth={2} />,
-        }}
+        options={{ href: null }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: t('tabs.profile'),
           tabBarIcon: ({ color, size }) => <User size={size ?? 22} color={color} strokeWidth={2} />,
         }}
+      />
+      <Tabs.Screen
+        name="explore"
+        options={{ href: null }}
       />
     </Tabs>
   );

@@ -1,4 +1,3 @@
-import { CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
 import {
   Controller,
   Get,
@@ -6,7 +5,6 @@ import {
   ParseIntPipe,
   Query,
   UseGuards,
-  UseInterceptors,
 } from '@nestjs/common';
 import { DestinationsService } from './destinations.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -18,9 +16,6 @@ export class DestinationsController {
 
   // GET /destinations          — req 3.1
   // GET /destinations?q=paris  — req 3.2, 3.2.1
-  // req 11.1 — cache full list for 30 s (changes infrequently)
-  @UseInterceptors(CacheInterceptor)
-  @CacheTTL(30_000)
   @Get()
   findAll(
     @Query('q') q?: string,
