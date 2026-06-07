@@ -2,7 +2,6 @@ import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
-  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -13,42 +12,45 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import * as Haptics from 'expo-haptics';
 import { useAuth } from '@/src/store/auth';
+import { isValidEmail, formatApiError } from '@/src/utils/validation';
+
+import { C } from '@/constants/theme';
+const GOLD = C.gold;
+const NAVY = C.navy;
 
 export default function LoginScreen() {
+  const { t } = useTranslation();
   const { login, token, loading: authLoading } = useAuth();
-  const [email, setEmail] = useState('');
+  const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading]   = useState(false);
+  const [error, setError]       = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading && token) router.replace('/(tabs)');
   }, [token, authLoading]);
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
-      return;
-    }
+    if (!email.trim() || !password) { setError(t('auth.errFillAll')); return; }
+    if (!isValidEmail(email)) { setError(t('auth.errValidEmail')); return; }
     try {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {});
       setError(null);
       setLoading(true);
       await login(email.trim(), password);
       router.replace('/(tabs)');
-    } catch (e: any) {
-      const msg = e?.message || e?.response?.data?.message || 'Invalid email or password';
-      setError(msg);
+    } catch (e) {
+      setError(formatApiError(e));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.root}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
+    <KeyboardAvoidingView style={s.root} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView
         bounces={false}
         showsVerticalScrollIndicator={false}
@@ -56,68 +58,70 @@ export default function LoginScreen() {
         contentContainerStyle={{ flexGrow: 1 }}
       >
         {/* ── Hero ── */}
-        <View style={styles.hero}>
-          <View style={styles.logoRing}>
-            <Image source={require('@/assets/images/logo.jpeg')} style={styles.logo} />
+        <View style={s.hero}>
+          <View style={s.logoWrap}>
+            <Image source={require('@/assets/images/logo.jpeg')} style={s.logo} />
           </View>
-          <Text style={styles.appName}>Jewish On The Way</Text>
-          <Text style={styles.appTagline}>Your Jewish travel companion</Text>
+          <Text style={s.brand}>JEWISH ON THE WAY</Text>
+          <Text style={s.tagline}>Your Jewish travel companion</Text>
         </View>
 
-        {/* ── Form sheet ── */}
-        <View style={styles.sheet}>
-          <Text style={styles.sheetTitle}>Welcome back</Text>
-          <Text style={styles.sheetSub}>Sign in to continue</Text>
+        {/* ── Form ── */}
+        <View style={s.sheet}>
+          <Text style={s.title}>{t('auth.welcomeBack')}</Text>
+          <Text style={s.sub}>{t('auth.signInContinue')}</Text>
 
-          <Text style={styles.label}>EMAIL</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="you@example.com"
-            placeholderTextColor="#9AA8C0"
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-            keyboardType="email-address"
-          />
+          <View style={s.field}>
+            <Text style={s.label}>{t('auth.email')}</Text>
+            <TextInput
+              style={s.input}
+              placeholder={t('auth.emailPlaceholder')}
+              placeholderTextColor="#9AA8C0"
+              value={email}
+              onChangeText={t => { setEmail(t); setError(null); }}
+              autoCapitalize="none"
+              keyboardType="email-address"
+            />
+          </View>
 
-          <Text style={styles.label}>PASSWORD</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Your password"
-            placeholderTextColor="#9AA8C0"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
+          <View style={s.field}>
+            <Text style={s.label}>{t('auth.password')}</Text>
+            <TextInput
+              style={s.input}
+              placeholder={t('auth.passwordPlaceholder')}
+              placeholderTextColor="#9AA8C0"
+              value={password}
+              onChangeText={t => { setPassword(t); setError(null); }}
+              secureTextEntry
+            />
+          </View>
 
           {error ? (
-            <View style={styles.errorBox}>
-              <Text style={styles.errorText}>{error}</Text>
+            <View style={s.errorBox}>
+              <Text style={s.errorText}>{error}</Text>
             </View>
           ) : null}
 
           <Pressable
-            style={({ pressed }) => [styles.primaryBtn, pressed && { opacity: 0.88 }]}
+            style={({ pressed }) => [s.btn, pressed && { opacity: 0.88 }]}
             onPress={handleLogin}
             disabled={loading}
           >
             {loading
               ? <ActivityIndicator color="#fff" />
-              : <Text style={styles.primaryBtnText}>Sign In</Text>}
+              : <Text style={s.btnText}>{t('auth.signIn')}</Text>}
           </Pressable>
 
           <Link href="/(auth)/forgot-password" asChild>
-            <Pressable style={styles.forgotRow}>
-              <Text style={styles.forgotText}>Forgot password?</Text>
+            <Pressable style={s.forgotRow}>
+              <Text style={s.forgotText}>{t('auth.forgotPassword')}</Text>
             </Pressable>
           </Link>
 
-          <View style={styles.footerRow}>
-            <Text style={styles.footerText}>Don&apos;t have an account? </Text>
+          <View style={s.footerRow}>
+            <Text style={s.footerText}>{t('auth.noAccount')}  </Text>
             <Link href="/(auth)/register" asChild>
-              <Pressable>
-                <Text style={styles.footerLink}>Register</Text>
-              </Pressable>
+              <Pressable><Text style={s.footerLink}>{t('auth.register')}</Text></Pressable>
             </Link>
           </View>
         </View>
@@ -126,90 +130,103 @@ export default function LoginScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: '#0C2461' },
+const s = StyleSheet.create({
+  root: { flex: 1, backgroundColor: NAVY },
 
+  // ── Hero ──
   hero: {
-    paddingTop: 88,
-    paddingBottom: 44,
+    paddingTop: Platform.OS === 'ios' ? 90 : 70,
+    paddingBottom: 42,
     alignItems: 'center',
-    paddingHorizontal: 24,
   },
-  logoRing: {
-    width: 90,
-    height: 90,
-    borderRadius: 45,
-    backgroundColor: 'rgba(255,255,255,0.13)',
-    borderWidth: 1.5,
-    borderColor: 'rgba(255,255,255,0.28)',
-    justifyContent: 'center',
-    alignItems: 'center',
+  logoWrap: {
+    width: 88, height: 88, borderRadius: 44,
+    backgroundColor: 'rgba(212,175,55,0.15)',
+    borderWidth: 1.5, borderColor: 'rgba(212,175,55,0.35)',
+    justifyContent: 'center', alignItems: 'center',
     marginBottom: 20,
   },
-  logo: { width: 60, height: 60, resizeMode: 'contain' },
-  appName: { fontSize: 26, fontWeight: '800', color: '#fff', textAlign: 'center', letterSpacing: 0.2 },
-  appTagline: { fontSize: 13, color: 'rgba(255,255,255,0.52)', marginTop: 7 },
+  logo: { width: 62, height: 62, borderRadius: 31 },
+  brand: {
+    fontFamily: 'Inter-Black',
+    fontSize: 15, color: GOLD,
+    letterSpacing: 3, textAlign: 'center',
+  },
+  tagline: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 13, color: 'rgba(255,255,255,0.45)',
+    marginTop: 8,
+  },
 
+  // ── Sheet ──
   sheet: {
     flex: 1,
-    backgroundColor: '#F2F5FB',
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
+    backgroundColor: '#F4F6FC',
+    borderTopLeftRadius: 34,
+    borderTopRightRadius: 34,
     paddingHorizontal: 26,
-    paddingTop: 38,
+    paddingTop: 36,
     paddingBottom: 60,
   },
-  sheetTitle: { fontSize: 26, fontWeight: '800', color: '#0C1A2E', marginBottom: 4 },
-  sheetSub: { fontSize: 14, color: '#556080', marginBottom: 30 },
+  title: {
+    fontFamily: 'Inter-ExtraBold',
+    fontSize: 28, color: '#0B1736',
+    marginBottom: 4,
+  },
+  sub: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 14, color: '#6B7280',
+    marginBottom: 32,
+  },
 
+  // ── Inputs ──
+  field:  { marginBottom: 20 },
   label: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#556080',
-    letterSpacing: 0.9,
-    textTransform: 'uppercase',
-    marginBottom: 8,
+    fontFamily: 'Inter-Bold',
+    fontSize: 10, color: '#9CA3AF',
+    letterSpacing: 1.2, marginBottom: 8,
   },
   input: {
+    fontFamily: 'Inter-Regular',
     backgroundColor: '#fff',
     borderRadius: 14,
-    paddingHorizontal: 18,
-    paddingVertical: 16,
-    fontSize: 15,
-    color: '#0C1A2E',
-    borderWidth: 1.5,
-    borderColor: '#E1E8F5',
-    marginBottom: 22,
+    paddingHorizontal: 18, paddingVertical: 16,
+    fontSize: 15, color: '#0B1736',
+    borderWidth: 1.5, borderColor: '#E5EAF5',
   },
 
   errorBox: {
     backgroundColor: '#FFF0F0',
-    borderRadius: 12,
-    padding: 14,
+    borderRadius: 12, padding: 14,
     marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#FFCDD2',
+    borderWidth: 1, borderColor: '#FFCDD2',
   },
-  errorText: { color: '#D93025', fontSize: 13, textAlign: 'center' },
-
-  primaryBtn: {
-    backgroundColor: '#0C2461',
-    borderRadius: 14,
-    paddingVertical: 18,
-    alignItems: 'center',
-    marginBottom: 16,
-    shadowColor: '#0C2461',
-    shadowOpacity: 0.32,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 5 },
-    elevation: 7,
+  errorText: {
+    fontFamily: 'Inter-Medium',
+    color: '#D93025', fontSize: 13, textAlign: 'center',
   },
-  primaryBtnText: { color: '#fff', fontSize: 16, fontWeight: '700', letterSpacing: 0.4 },
 
-  forgotRow: { alignItems: 'center', paddingVertical: 10, marginBottom: 20 },
-  forgotText: { color: '#0C2461', fontSize: 14, fontWeight: '600' },
+  // ── Button ──
+  btn: {
+    backgroundColor: NAVY,
+    borderRadius: 14, paddingVertical: 18,
+    alignItems: 'center', marginBottom: 16,
+    borderWidth: 1.5, borderColor: 'rgba(212,175,55,0.40)',
+    shadowColor: NAVY, shadowOpacity: 0.28,
+    shadowRadius: 12, shadowOffset: { width: 0, height: 5 }, elevation: 7,
+  },
+  btnText: {
+    fontFamily: 'Inter-Bold',
+    color: '#fff', fontSize: 16, letterSpacing: 0.4,
+  },
+
+  forgotRow: { alignItems: 'center', paddingVertical: 12, marginBottom: 16 },
+  forgotText: {
+    fontFamily: 'Inter-SemiBold',
+    color: NAVY, fontSize: 14,
+  },
 
   footerRow: { flexDirection: 'row', justifyContent: 'center' },
-  footerText: { color: '#556080', fontSize: 14 },
-  footerLink: { color: '#0C2461', fontWeight: '700', fontSize: 14 },
+  footerText: { fontFamily: 'Inter-Regular', color: '#6B7280', fontSize: 14 },
+  footerLink: { fontFamily: 'Inter-Bold', color: NAVY, fontSize: 14 },
 });

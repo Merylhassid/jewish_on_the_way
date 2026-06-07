@@ -22,8 +22,9 @@ import {
   View,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
-import HomeButton from '@/src/components/HomeButton';
+import SwipeableSheet from '@/src/components/SwipeableSheet';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -42,6 +43,7 @@ interface Offer {
 // ─── Guest search form + results ─────────────────────────────────────────────
 
 function GuestView({ destinationId }: { destinationId: number }) {
+  const { t } = useTranslation();
   const [arrivalObj, setArrivalObj]       = useState(new Date());
   const [departureObj, setDepartureObj]   = useState(() => { const d = new Date(); d.setDate(d.getDate() + 1); return d; });
   const [showArrival, setShowArrival]     = useState(false);
@@ -68,7 +70,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
       const res = await client.get('/hosting/offers/search', { params });
       setOffers(res.data);
     } catch {
-      Alert.alert('Error', 'Search failed');
+      Alert.alert(t('common.error'), t('common.retry'));
     } finally {
       setLoading(false);
     }
@@ -76,9 +78,9 @@ function GuestView({ destinationId }: { destinationId: number }) {
 
   return (
     <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-      <Text style={styles.sectionTitle}>Find a Host Family</Text>
+      <Text style={styles.sectionTitle}>{t('hosting.searchTitle')}</Text>
 
-      <Text style={styles.label}>Arrival Date</Text>
+      <Text style={styles.label}>{t('hosting.arrivalDate')}</Text>
       {Platform.OS === 'web' ? (
         // @ts-ignore
         <View style={styles.pickerBtn} lang="en" dir="ltr">
@@ -99,7 +101,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
         </>
       )}
 
-      <Text style={styles.label}>Departure Date</Text>
+      <Text style={styles.label}>{t('hosting.departureDate')}</Text>
       {Platform.OS === 'web' ? (
         // @ts-ignore
         <View style={styles.pickerBtn} lang="en" dir="ltr">
@@ -120,43 +122,43 @@ function GuestView({ destinationId }: { destinationId: number }) {
         </>
       )}
 
-      <Text style={styles.label}>Number of Guests</Text>
+      <Text style={styles.label}>{t('hosting.numberOfGuests')}</Text>
       <TextInput style={styles.input} value={guestsCount} onChangeText={setGuestsCount}
         keyboardType="number-pad" placeholder="1" placeholderTextColor="#999" />
 
       <View style={styles.toggleRow}>
-        <Text style={styles.toggleLabel}>🕍 Shabbat hosting</Text>
+        <Text style={styles.toggleLabel}>{t('hosting.shabbatToggle')}</Text>
         <Switch value={forShabbat} onValueChange={setForShabbat} trackColor={{ true: '#1a3a6b' }} />
       </View>
       <View style={styles.toggleRow}>
-        <Text style={styles.toggleLabel}>👨‍👩‍👧 With children</Text>
+        <Text style={styles.toggleLabel}>{t('hosting.withChildren')}</Text>
         <Switch value={withChildren} onValueChange={setWithChildren} trackColor={{ true: '#1a3a6b' }} />
       </View>
 
       <TouchableOpacity style={styles.searchBtn} onPress={search} disabled={loading}>
-        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>Search Hosts</Text>}
+        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>{t('hosting.searchBtn')}</Text>}
       </TouchableOpacity>
 
       {offers !== null && (
         <>
           <Text style={styles.resultsTitle}>
-            {offers.length} host{offers.length !== 1 ? 's' : ''} available
+            {offers.length} {offers.length !== 1 ? t('hosting.hostsAvailable') : t('hosting.hostAvailable')}
           </Text>
           {offers.length === 0 ? (
             <View style={styles.empty}>
               <Text style={styles.emptyIcon}>🏠</Text>
-              <Text style={styles.emptyText}>No hosts match your criteria.{'\n'}Try adjusting your filters.</Text>
+              <Text style={styles.emptyText}>{t('hosting.noHosts')}</Text>
             </View>
           ) : (
             offers.map((offer) => (
               <View key={offer.id} style={styles.offerCard}>
                 <View style={styles.offerTop}>
-                  <Text style={styles.offerHost}>🏠 {offer.host?.firstName ?? 'Host'}</Text>
-                  <Text style={styles.offerGuests}>up to {offer.maxGuests} guests</Text>
+                  <Text style={styles.offerHost}>🏠 {offer.host?.firstName ?? t('hosting.hostLabel')}</Text>
+                  <Text style={styles.offerGuests}>{t('hosting.upToGuests')} {offer.maxGuests} {t('hosting.guests')}</Text>
                 </View>
                 <View style={styles.offerTags}>
-                  {offer.allowsShabbat  && <Tag text="🕍 Shabbat" />}
-                  {offer.allowsChildren && <Tag text="👨‍👩‍👧 Children OK" />}
+                  {offer.allowsShabbat  && <Tag text={t('hosting.shabbatTag')} />}
+                  {offer.allowsChildren && <Tag text={t('hosting.childrenOk')} />}
                   {offer.kashrutLevel   && <Tag text={offer.kashrutLevel} />}
                 </View>
                 {offer.notes && <Text style={styles.offerNotes}>{offer.notes}</Text>}
@@ -164,7 +166,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
                   📅 {offer.availableFrom} → {offer.availableTo}
                 </Text>
                 <TouchableOpacity style={styles.requestBtn} onPress={() => setRequestOffer(offer)}>
-                  <Text style={styles.requestBtnText}>Send Request</Text>
+                  <Text style={styles.requestBtnText}>{t('hosting.sendRequest')}</Text>
                 </TouchableOpacity>
               </View>
             ))
@@ -206,12 +208,13 @@ function SendRequestModal({
   const [children, setChildren]       = useState(defaultChildren);
   const [notes, setNotes]             = useState('');
   const [loading, setLoading]         = useState(false);
+  const { t } = useTranslation();
 
   const arrival   = arrivalObj.toISOString().split('T')[0];
   const departure = departObj.toISOString().split('T')[0];
 
   const send = async () => {
-    if (!arrival || !departure) { Alert.alert('Error', 'Please enter arrival and departure dates'); return; }
+    if (!arrival || !departure) { Alert.alert(t('common.error'), t('hosting.arrivalDate')); return; }
     try {
       setLoading(true);
       await client.post('/hosting/requests', {
@@ -223,7 +226,7 @@ function SendRequestModal({
         forShabbat: shabbat,
         specialRequests: notes.trim() || undefined,
       });
-      Alert.alert('Request Sent! 🎉', 'Your hosting request has been sent. You\'ll be notified when the host responds.');
+      Alert.alert(t('hosting.requestSentTitle'), t('hosting.requestSentMsg'));
       onClose();
     } catch (err: any) {
       Alert.alert('Error', err?.response?.data?.message ?? 'Failed to send request');
@@ -233,16 +236,16 @@ function SendRequestModal({
   };
 
   return (
-    <Modal visible animationType="slide" transparent onRequestClose={onClose}>
-      <KeyboardAvoidingView style={styles.overlay} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <SwipeableSheet visible onClose={onClose}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.sheet}>
           <View style={styles.sheetHeader}>
-            <Text style={styles.sheetTitle}>Request Hosting</Text>
+            <Text style={styles.sheetTitle}>{t('hosting.requestTitle')}</Text>
             <Pressable onPress={onClose} hitSlop={12}><Text style={styles.closeBtn}>✕</Text></Pressable>
           </View>
-          <Text style={styles.offerHostLabel}>Host: {offer.host?.firstName}</Text>
+          <Text style={styles.offerHostLabel}>{t('hosting.hostLabel')}: {offer.host?.firstName}</Text>
 
-          <Text style={styles.label}>Arrival Date</Text>
+          <Text style={styles.label}>{t('hosting.arrivalDate')}</Text>
           {Platform.OS === 'web' ? (
             <View style={styles.pickerBtn}>
               {/* @ts-ignore */}
@@ -262,7 +265,7 @@ function SendRequestModal({
             </>
           )}
 
-          <Text style={styles.label}>Departure Date</Text>
+          <Text style={styles.label}>{t('hosting.departureDate')}</Text>
           {Platform.OS === 'web' ? (
             <View style={styles.pickerBtn}>
               {/* @ts-ignore */}
@@ -282,34 +285,35 @@ function SendRequestModal({
             </>
           )}
 
-          <Text style={styles.label}>Number of Guests</Text>
+          <Text style={styles.label}>{t('hosting.numberOfGuests')}</Text>
           <TextInput style={styles.input} value={guests} onChangeText={setGuests} keyboardType="number-pad" />
 
           <View style={styles.toggleRow}>
-            <Text style={styles.toggleLabel}>🕍 For Shabbat</Text>
+            <Text style={styles.toggleLabel}>{t('hosting.forShabbat')}</Text>
             <Switch value={shabbat} onValueChange={setShabbat} trackColor={{ true: '#1a3a6b' }} />
           </View>
           <View style={styles.toggleRow}>
-            <Text style={styles.toggleLabel}>👨‍👩‍👧 With children</Text>
+            <Text style={styles.toggleLabel}>{t('hosting.withChildren')}</Text>
             <Switch value={children} onValueChange={setChildren} trackColor={{ true: '#1a3a6b' }} />
           </View>
 
-          <Text style={styles.label}>Special requests (optional)</Text>
+          <Text style={styles.label}>{t('hosting.specialRequests')}</Text>
           <TextInput style={[styles.input, { height: 70 }]} value={notes} onChangeText={setNotes}
-            placeholder="Dietary needs, accessibility, etc." placeholderTextColor="#999" multiline />
+            placeholder="" placeholderTextColor="#999" multiline />
 
           <TouchableOpacity style={styles.searchBtn} onPress={send} disabled={loading}>
-            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>Send Request</Text>}
+            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>{t('hosting.sendRequest')}</Text>}
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-    </Modal>
+    </SwipeableSheet>
   );
 }
 
 // ─── Host view — create offer + see requests ──────────────────────────────────
 
 function HostView({ destinationId }: { destinationId: number }) {
+  const { t } = useTranslation();
   const [fromObj, setFromObj]               = useState(new Date());
   const [toObj, setToObj]                   = useState(() => { const d = new Date(); d.setDate(d.getDate() + 7); return d; });
   const [showFrom, setShowFrom]             = useState(false);
@@ -325,7 +329,7 @@ function HostView({ destinationId }: { destinationId: number }) {
   const [loading, setLoading]               = useState(false);
 
   const createOffer = async () => {
-    if (!availableFrom || !availableTo) { Alert.alert('Error', 'Please enter your availability dates'); return; }
+    if (!availableFrom || !availableTo) { Alert.alert(t('common.error'), t('hosting.availableFrom')); return; }
     try {
       setLoading(true);
       await client.post('/hosting/offers', {
@@ -338,7 +342,7 @@ function HostView({ destinationId }: { destinationId: number }) {
         kashrutLevel: kashrut.trim() || undefined,
         notes: notes.trim() || undefined,
       });
-      Alert.alert('Offer Created! 🏠', 'Your hosting offer is now visible to travelers.');
+      Alert.alert(t('hosting.offerCreatedTitle'), t('hosting.offerCreatedMsg'));
       setNotes(''); setKashrut(''); setMaxGuests('2');
     } catch (err: any) {
       Alert.alert('Error', err?.response?.data?.message ?? 'Failed to create offer');
@@ -349,9 +353,9 @@ function HostView({ destinationId }: { destinationId: number }) {
 
   return (
     <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-      <Text style={styles.sectionTitle}>Create a Hosting Offer</Text>
+      <Text style={styles.sectionTitle}>{t('hosting.createOfferTitle')}</Text>
 
-      <Text style={styles.label}>Available From</Text>
+      <Text style={styles.label}>{t('hosting.availableFrom')}</Text>
       {Platform.OS === 'web' ? (
         // @ts-ignore
         <View style={styles.pickerBtn} lang="en" dir="ltr">
@@ -372,7 +376,7 @@ function HostView({ destinationId }: { destinationId: number }) {
         </>
       )}
 
-      <Text style={styles.label}>Available Until</Text>
+      <Text style={styles.label}>{t('hosting.availableUntil')}</Text>
       {Platform.OS === 'web' ? (
         // @ts-ignore
         <View style={styles.pickerBtn} lang="en" dir="ltr">
@@ -393,33 +397,33 @@ function HostView({ destinationId }: { destinationId: number }) {
         </>
       )}
 
-      <Text style={styles.label}>Max Guests</Text>
+      <Text style={styles.label}>{t('hosting.maxGuests')}</Text>
       <TextInput style={styles.input} value={maxGuests} onChangeText={setMaxGuests}
         keyboardType="number-pad" placeholder="2" placeholderTextColor="#999" />
 
       <View style={styles.toggleRow}>
-        <Text style={styles.toggleLabel}>🕍 Shabbat hosting</Text>
+        <Text style={styles.toggleLabel}>{t('hosting.shabbatToggle')}</Text>
         <Switch value={allowsShabbat} onValueChange={setAllowsShabbat} trackColor={{ true: '#1a3a6b' }} />
       </View>
       <View style={styles.toggleRow}>
-        <Text style={styles.toggleLabel}>👨‍👩‍👧 Children welcome</Text>
+        <Text style={styles.toggleLabel}>{t('hosting.childrenWelcome')}</Text>
         <Switch value={allowsChildren} onValueChange={setAllowsChildren} trackColor={{ true: '#1a3a6b' }} />
       </View>
 
-      <Text style={styles.label}>Kashrut level (optional)</Text>
+      <Text style={styles.label}>{t('hosting.kashrutOptional')}</Text>
       <TextInput style={styles.input} value={kashrut} onChangeText={setKashrut}
-        placeholder="e.g. mehadrin, badatz" placeholderTextColor="#999" />
+        placeholder="" placeholderTextColor="#999" />
 
-      <Text style={styles.label}>Notes (optional)</Text>
+      <Text style={styles.label}>{t('hosting.notesOptional')}</Text>
       <TextInput style={[styles.input, { height: 70 }]} value={notes} onChangeText={setNotes}
-        placeholder="Room type, house rules, etc." placeholderTextColor="#999" multiline />
+        placeholder="" placeholderTextColor="#999" multiline />
 
       <TouchableOpacity style={styles.searchBtn} onPress={createOffer} disabled={loading}>
-        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>Publish Offer</Text>}
+        {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>{t('hosting.publishOffer')}</Text>}
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.outlineBtn} onPress={() => router.push('/hosting/my-requests')}>
-        <Text style={styles.outlineBtnText}>View Received Requests →</Text>
+        <Text style={styles.outlineBtnText}>{t('hosting.viewRequests')}</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -434,6 +438,7 @@ function Tag({ text }: { text: string }) {
 
 export default function HostingScreen() {
   const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
+  const { t } = useTranslation();
   const [mode, setMode] = useState<'choose' | 'guest' | 'host'>('choose');
 
   return (
@@ -442,28 +447,27 @@ export default function HostingScreen() {
         <Pressable style={styles.backBtn} onPress={() => (mode === 'choose' ? router.back() : setMode('choose'))}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
-        <HomeButton />
-        <Text style={styles.headerTitle}>🏠 Shabbat Hosting{city ? ` — ${city}` : ''}</Text>
+        <Text style={styles.headerTitle}>🏠 {t('hosting.title')}{city ? ` — ${city}` : ''}</Text>
       </View>
 
       {mode === 'choose' && (
         <View style={styles.chooseBody}>
-          <Text style={styles.chooseTitle}>What are you looking for?</Text>
+          <Text style={styles.chooseTitle}>{t('hosting.chooseTitle')}</Text>
 
           <TouchableOpacity style={styles.modeCard} onPress={() => setMode('guest')}>
             <Text style={styles.modeEmoji}>🧳</Text>
-            <Text style={styles.modeLabel}>I&apos;m looking for hosting</Text>
-            <Text style={styles.modeSub}>Find a Jewish family to stay with</Text>
+            <Text style={styles.modeLabel}>{t('hosting.lookingTitle')}</Text>
+            <Text style={styles.modeSub}>{t('hosting.lookingDesc')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.modeCard, styles.modeCardAlt]} onPress={() => setMode('host')}>
             <Text style={styles.modeEmoji}>🏠</Text>
-            <Text style={styles.modeLabel}>I want to host</Text>
-            <Text style={styles.modeSub}>Welcome travelers into your home</Text>
+            <Text style={styles.modeLabel}>{t('hosting.hostTitle')}</Text>
+            <Text style={styles.modeSub}>{t('hosting.hostDesc')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.outlineBtn} onPress={() => router.push('/hosting/my-requests')}>
-            <Text style={styles.outlineBtnText}>My Requests →</Text>
+            <Text style={styles.outlineBtnText}>{t('hosting.myRequests')} →</Text>
           </TouchableOpacity>
         </View>
       )}

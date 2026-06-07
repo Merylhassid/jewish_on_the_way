@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ArrowLeft, Bookmark, Globe, Utensils, X } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 
@@ -42,6 +43,7 @@ const KASHRUT_COLOR: Record<string, { color: string; bg: string }> = {
 };
 
 export default function SavedScreen() {
+  const { t } = useTranslation();
   const [restaurants, setRestaurants] = useState<SavedRestaurant[]>([]);
   const [synagogues, setSynagogues]   = useState<SavedSynagogue[]>([]);
   const [loading, setLoading]         = useState(true);
@@ -73,8 +75,8 @@ export default function SavedScreen() {
           <ArrowLeft size={20} color="#fff" strokeWidth={2.5} />
         </Pressable>
         <View style={{ flex: 1 }}>
-          <Text style={s.headerTitle}>Saved Places</Text>
-          {!loading && <Text style={s.headerSub}>{total} saved place{total !== 1 ? 's' : ''}</Text>}
+          <Text style={s.headerTitle}>{t('saved.title')}</Text>
+          {!loading && <Text style={s.headerSub}>{total} {total !== 1 ? t('saved.savedCountPlural') : t('saved.savedCount')}</Text>}
         </View>
         <View style={s.headerIcon}>
           <Bookmark size={18} color={C.gold} strokeWidth={2} fill={C.gold} />
@@ -86,15 +88,15 @@ export default function SavedScreen() {
       ) : total === 0 ? (
         <View style={s.center}>
           <Bookmark size={48} color="#E5E7EB" strokeWidth={1.5} />
-          <Text style={s.emptyTitle}>No saved places yet</Text>
-          <Text style={s.emptySub}>Tap the bookmark on any restaurant or synagogue</Text>
+          <Text style={s.emptyTitle}>{t('saved.empty')}</Text>
+          <Text style={s.emptySub}>{t('saved.emptySub')}</Text>
         </View>
       ) : (
         <ScrollView contentContainerStyle={s.body} showsVerticalScrollIndicator={false}>
 
           {restaurants.length > 0 && (
             <View style={s.section}>
-              <Text style={s.sectionLabel}>RESTAURANTS  ·  {restaurants.length}</Text>
+              <Text style={s.sectionLabel}>{t('saved.restaurants')}  ·  {restaurants.length}</Text>
               <View style={s.cards}>
                 {restaurants.map(r => {
                   const k = KASHRUT_COLOR[r.kashrutLevel] ?? KASHRUT_COLOR.unknown;
@@ -122,7 +124,7 @@ export default function SavedScreen() {
 
           {synagogues.length > 0 && (
             <View style={s.section}>
-              <Text style={s.sectionLabel}>SYNAGOGUES  ·  {synagogues.length}</Text>
+              <Text style={s.sectionLabel}>{t('saved.synagogues')}  ·  {synagogues.length}</Text>
               <View style={s.cards}>
                 {synagogues.map(sg => (
                   <Pressable key={sg.id} style={s.card} onPress={() => router.push(`/synagogue/${sg.id}` as any)}>

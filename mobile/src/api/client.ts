@@ -29,13 +29,12 @@ client.interceptors.request.use(async (config) => {
   return config;
 });
 
-// Auto-logout on 401 (token expired)
+// On 401: clear token — AuthProvider watches token state and redirects to login
 client.interceptors.response.use(
   (response) => response,
   async (error) => {
     if (error.response?.status === 401) {
       await clearToken();
-      // Trigger re-render by clearing storage — AuthProvider will detect and redirect to login
     }
     return Promise.reject(error);
   }

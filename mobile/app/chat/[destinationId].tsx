@@ -12,8 +12,6 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import HomeButton from '@/src/components/HomeButton';
 import { io, Socket } from 'socket.io-client';
 import { useAuth } from '@/src/store/auth';
 import { API_URL } from '@/src/api/client';
@@ -32,7 +30,7 @@ interface ChatMsg {
 
 export default function ChatScreen() {
   const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [text, setText] = useState('');
   const [connected, setConnected] = useState(false);
@@ -43,9 +41,8 @@ export default function ChatScreen() {
   useEffect(() => {
     let socket: Socket;
 
-    const connect = async () => {
-      const token = await AsyncStorage.getItem('token');
-      if (!token) return;
+    const connect = () => {
+      if (!token) { setLoading(false); return; }
 
       socket = io(`${API_URL}/chat`, {
         auth: { token },
@@ -74,13 +71,13 @@ export default function ChatScreen() {
         setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 50);
       });
 
-      socket.on('connect_error', (err) => {
-        console.warn('Chat connection error:', err.message);
+      socket.on('connect_error', () => {
         setLoading(false);
       });
     };
 
-    connect();
+    if (token !== null) connect();
+    else setLoading(false);
 
     return () => {
       if (socketRef.current) {
@@ -88,7 +85,7 @@ export default function ChatScreen() {
         socketRef.current.disconnect();
       }
     };
-  }, [destinationId]);
+  }, [destinationId, token]);
 
   const sendMessage = () => {
     const content = text.trim();
@@ -161,7 +158,6 @@ export default function ChatScreen() {
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Text style={styles.backText}>←</Text>
         </Pressable>
-        <HomeButton />
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle}>💬 Traveler Chat{city ? ` — ${city}` : ''}</Text>
           <View style={styles.statusDot}>

@@ -1,234 +1,178 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
+  ActivityIndicator, KeyboardAvoidingView,
+  Platform, Pressable, ScrollView,
+  StyleSheet, Text, TextInput, View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
+import { C } from '@/constants/theme';
+import { formatApiError } from '@/src/utils/validation';
 
 export default function ResetPasswordScreen() {
+  const { t } = useTranslation();
   const params = useLocalSearchParams<{ token?: string }>();
-  const [token, setToken] = useState(params.token ?? '');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  // Determine if token came from URL (and should not be editable)
+  const [token, setToken]               = useState(params.token ?? '');
+  const [newPassword, setNewPassword]   = useState('');
+  const [confirmPassword, setConfirm]   = useState('');
+  const [loading, setLoading]           = useState(false);
+  const [errorMsg, setErrorMsg]         = useState('');
+  const [showSuccess, setShowSuccess]   = useState(false);
   const hasUrlToken = !!params.token;
 
-  useEffect(() => {
-    if (params.token) setToken(params.token);
-  }, [params.token]);
-
-  // Auto-navigate to login after 2 seconds on success
+  useEffect(() => { if (params.token) setToken(params.token); }, [params.token]);
   useEffect(() => {
     if (showSuccess) {
-      const timer = setTimeout(() => {
-        router.replace('/(auth)/login');
-      }, 2000);
+      const timer = setTimeout(() => router.replace('/(auth)/login'), 2500);
       return () => clearTimeout(timer);
     }
   }, [showSuccess]);
 
   const handleSubmit = async () => {
-    // Clear any previous error
     setErrorMsg('');
-
-    if (!token.trim()) {
-      setErrorMsg('Please enter your reset token');
-      return;
-    }
-    if (newPassword.length < 6) {
-      setErrorMsg('Password must be at least 6 characters');
-      return;
-    }
-    if (newPassword !== confirmPassword) {
-      setErrorMsg('Passwords do not match');
-      return;
-    }
+    if (!token.trim()) { setErrorMsg(t('auth.errFillAll')); return; }
+    if (newPassword.length < 6) { setErrorMsg(t('auth.errMinPassword')); return; }
+    if (newPassword !== confirmPassword) { setErrorMsg(t('auth.errNoMatch')); return; }
     try {
       setLoading(true);
-      await client.post('/auth/reset-password', {
-        token: token.trim(),
-        newPassword,
-      });
+      await client.post('/auth/reset-password', { token: token.trim(), newPassword });
       setShowSuccess(true);
-    } catch (err: any) {
-      const msg = err?.response?.data?.message ?? 'Invalid or expired token';
-      setErrorMsg(msg);
+    } catch (e) {
+      setErrorMsg(formatApiError(e));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
-      <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-        {showSuccess ? (
-          // Success Screen
-          <View style={styles.centerContainer}>
-            <Text style={styles.successIcon}>✓</Text>
-            <Text style={styles.successTitle}>Password Reset</Text>
-            <Text style={styles.successMessage}>Your password has been reset successfully.</Text>
-            <Text style={styles.successSubtitle}>Redirecting to login...</Text>
-          </View>
-        ) : (
-          <>
-            <Pressable style={styles.back} onPress={() => router.back()}>
-              <Text style={styles.backText}>← Back</Text>
-            </Pressable>
+    <KeyboardAvoidingView style={s.root} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView bounces={false} contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+        <View style={s.hero}>
+          <Pressable style={s.backBtn} onPress={() => router.back()}>
+            <Text style={s.backText}>{t('auth.back')}</Text>
+          </Pressable>
+          <Text style={s.brand}>JEWISH ON THE WAY</Text>
+        </View>
 
-            <Text style={styles.title}>New Password</Text>
-            <Text style={styles.subtitle}>
-              {hasUrlToken
-                ? 'Choose a new password for your account.'
-                : 'Enter the token from your email and choose a new password.'}
-            </Text>
+        <View style={s.sheet}>
+          {showSuccess ? (
+            <View style={s.successScreen}>
+              <View style={s.checkCircle}><Text style={s.checkIcon}>✓</Text></View>
+              <Text style={s.successTitle}>{t('auth.passwordReset')}</Text>
+              <Text style={s.successMsg}>{t('auth.resetSuccess')}</Text>
+              <Text style={s.redirecting}>{t('auth.redirecting')}</Text>
+            </View>
+          ) : (
+            <>
+              <Text style={s.title}>{t('auth.newPasswordTitle')}</Text>
+              <Text style={s.sub}>
+                {hasUrlToken ? t('auth.newPasswordSub') : t('auth.newPasswordToken')}
+              </Text>
 
-            {/* Token input only shown if no URL token (fallback mode) */}
-            {!hasUrlToken && (
-              <>
-                <Text style={styles.label}>Reset Token</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Paste token from email"
-                  placeholderTextColor="#999"
-                  value={token}
-                  onChangeText={setToken}
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  editable={!loading}
-                />
-              </>
-            )}
-
-            <Text style={styles.label}>New Password</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="New password (min 6 characters)"
-              placeholderTextColor="#999"
-              value={newPassword}
-              onChangeText={setNewPassword}
-              secureTextEntry
-              editable={!loading}
-            />
-
-            <Text style={styles.label}>Confirm Password</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Repeat new password"
-              placeholderTextColor="#999"
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
-              secureTextEntry
-              editable={!loading}
-            />
-
-            {/* Error message display */}
-            {errorMsg && (
-              <View style={styles.errorContainer}>
-                <Text style={styles.errorText}>{errorMsg}</Text>
-              </View>
-            )}
-
-            <Pressable style={styles.button} onPress={handleSubmit} disabled={loading}>
-              {loading ? (
-                <ActivityIndicator color="#fff" />
-              ) : (
-                <Text style={styles.buttonText}>Reset Password</Text>
+              {!hasUrlToken && (
+                <>
+                  <Text style={s.label}>{t('auth.resetToken')}</Text>
+                  <TextInput
+                    style={s.input}
+                    placeholder="Paste token from email"
+                    placeholderTextColor="#9AA8C0"
+                    value={token}
+                    onChangeText={setToken}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    editable={!loading}
+                  />
+                </>
               )}
-            </Pressable>
-          </>
-        )}
+
+              <Text style={s.label}>{t('auth.newPassword')}</Text>
+              <TextInput
+                style={s.input}
+                placeholder={t('auth.minChars')}
+                placeholderTextColor="#9AA8C0"
+                value={newPassword}
+                onChangeText={v => { setNewPassword(v); setErrorMsg(''); }}
+                secureTextEntry
+                editable={!loading}
+              />
+
+              <Text style={s.label}>{t('auth.confirmPassword')}</Text>
+              <TextInput
+                style={s.input}
+                placeholder={t('auth.minChars')}
+                placeholderTextColor="#9AA8C0"
+                value={confirmPassword}
+                onChangeText={v => { setConfirm(v); setErrorMsg(''); }}
+                secureTextEntry
+                editable={!loading}
+              />
+
+              {errorMsg ? (
+                <View style={s.errorBox}>
+                  <Text style={s.errorText}>{errorMsg}</Text>
+                </View>
+              ) : null}
+
+              <Pressable style={s.btn} onPress={handleSubmit} disabled={loading}>
+                {loading
+                  ? <ActivityIndicator color="#fff" />
+                  : <Text style={s.btnText}>{t('auth.resetBtn')}</Text>}
+              </Pressable>
+            </>
+          )}
+        </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    backgroundColor: '#f0f4ff',
-    paddingHorizontal: 28,
-    paddingTop: 80,
-    paddingBottom: 40,
+const s = StyleSheet.create({
+  root: { flex: 1, backgroundColor: C.navy },
+  hero: {
+    paddingTop: Platform.OS === 'ios' ? 70 : 50,
+    paddingBottom: 36, paddingHorizontal: 24,
   },
-  centerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 28,
+  backBtn: { marginBottom: 24 },
+  backText: { fontFamily: 'Inter-SemiBold', fontSize: 14, color: 'rgba(255,255,255,0.6)' },
+  brand:    { fontFamily: 'Inter-Black', fontSize: 13, color: C.gold, letterSpacing: 3 },
+  sheet: {
+    flex: 1, backgroundColor: '#F4F6FC',
+    borderTopLeftRadius: 34, borderTopRightRadius: 34,
+    paddingHorizontal: 26, paddingTop: 36, paddingBottom: 60,
   },
-  successIcon: {
-    fontSize: 56,
-    color: '#10b981',
-    marginBottom: 16,
+  successScreen: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: 40 },
+  checkCircle: {
+    width: 80, height: 80, borderRadius: 40,
+    backgroundColor: '#ECFDF5', justifyContent: 'center', alignItems: 'center',
+    marginBottom: 24, borderWidth: 2, borderColor: '#10B981',
   },
-  successTitle: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#1a3a6b',
-    marginBottom: 12,
-    textAlign: 'center',
+  checkIcon:    { fontSize: 36, color: '#10B981' },
+  successTitle: { fontFamily: 'Inter-ExtraBold', fontSize: 24, color: C.navy, marginBottom: 10, textAlign: 'center' },
+  successMsg:   { fontFamily: 'Inter-Regular', fontSize: 15, color: '#6B7280', textAlign: 'center', marginBottom: 8 },
+  redirecting:  { fontFamily: 'Inter-Regular', fontSize: 13, color: '#9CA3AF', textAlign: 'center' },
+  title:  { fontFamily: 'Inter-ExtraBold', fontSize: 26, color: C.navy, marginBottom: 6 },
+  sub:    { fontFamily: 'Inter-Regular', fontSize: 14, color: '#6B7280', marginBottom: 28 },
+  label:  { fontFamily: 'Inter-Bold', fontSize: 10, color: '#9CA3AF', letterSpacing: 1.2, marginBottom: 8 },
+  input:  {
+    fontFamily: 'Inter-Regular',
+    backgroundColor: '#fff', borderRadius: 14,
+    paddingHorizontal: 18, paddingVertical: 16,
+    fontSize: 15, color: C.navy,
+    borderWidth: 1.5, borderColor: '#E5EAF5', marginBottom: 16,
   },
-  successMessage: {
-    fontSize: 16,
-    color: '#4b5563',
-    marginBottom: 8,
-    textAlign: 'center',
+  errorBox: {
+    backgroundColor: '#FEF2F2', borderRadius: 12,
+    padding: 14, marginBottom: 16,
+    borderWidth: 1, borderColor: '#FECACA',
   },
-  successSubtitle: {
-    fontSize: 14,
-    color: '#999',
-    textAlign: 'center',
+  errorText: { fontFamily: 'Inter-Medium', color: C.error, fontSize: 13 },
+  btn: {
+    backgroundColor: C.navy, borderRadius: 14, paddingVertical: 18,
+    alignItems: 'center', marginTop: 8,
+    borderWidth: 1.5, borderColor: 'rgba(212,175,55,0.40)',
+    shadowColor: C.navy, shadowOpacity: 0.28, shadowRadius: 12,
+    shadowOffset: { width: 0, height: 5 }, elevation: 7,
   },
-  back: { marginBottom: 32 },
-  backText: { color: '#1a3a6b', fontSize: 16 },
-  title: { fontSize: 26, fontWeight: '700', color: '#1a3a6b', marginBottom: 8 },
-  subtitle: { fontSize: 15, color: '#666', marginBottom: 28 },
-  label: { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6, marginTop: 4 },
-  input: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    fontSize: 16,
-    marginBottom: 14,
-    borderWidth: 1,
-    borderColor: '#dde3f0',
-    color: '#1a1a2e',
-  },
-  errorContainer: {
-    backgroundColor: '#fee2e2',
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 16,
-    borderWidth: 1,
-    borderColor: '#fecaca',
-  },
-  errorText: {
-    color: '#dc2626',
-    fontSize: 14,
-    fontWeight: '500',
-  },
-  button: {
-    backgroundColor: '#1a3a6b',
-    borderRadius: 12,
-    padding: 16,
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  btnText: { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 16, letterSpacing: 0.4 },
 });

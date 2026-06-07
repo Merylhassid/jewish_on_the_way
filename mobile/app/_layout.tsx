@@ -1,12 +1,14 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
+import { router, Stack, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 import '@/src/i18n';
 import { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import * as SplashScreen from 'expo-splash-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Home } from 'lucide-react-native';
 import {
   useFonts,
   Inter_400Regular,
@@ -19,8 +21,36 @@ import {
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { AuthProvider } from '@/src/store/auth';
+import ErrorBoundary from '@/src/components/ErrorBoundary';
+import { C } from '@/constants/theme';
 
 SplashScreen.preventAutoHideAsync();
+
+// Screens where HomeButton should NOT appear
+const NO_HOME_PATHS = new Set([
+  '/', '/compass', '/nearby', '/shabbat', '/profile',
+  '/login', '/register', '/forgot-password', '/reset-password', '/onboarding',
+]);
+
+function FloatingHomeButton() {
+  const pathname = usePathname();
+  if (NO_HOME_PATHS.has(pathname)) return null;
+
+  const goHome = async () => {
+    await AsyncStorage.removeItem('lastDestinationId');
+    router.replace('/(tabs)');
+  };
+
+  return (
+    <Pressable
+      style={({ pressed }) => [s.homeBtn, pressed && { opacity: 0.72 }]}
+      onPress={goHome}
+      hitSlop={10}
+    >
+      <Home size={18} color={C.gold} strokeWidth={2} />
+    </Pressable>
+  );
+}
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -47,36 +77,68 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
-    <AuthProvider>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        {isOffline && (
-          <View style={{ backgroundColor: '#EF4444', padding: 8, alignItems: 'center' }}>
-            <Text style={{ color: '#fff', fontWeight: '600', fontFamily: 'Inter-SemiBold' }}>
-              No internet connection
-            </Text>
+    <ErrorBoundary>
+      <AuthProvider>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <View style={{ flex: 1 }}>
+            {isOffline && (
+              <View style={s.offlineBanner}>
+                <Text style={s.offlineText}>No internet connection</Text>
+              </View>
+            )}
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                gestureEnabled: true,
+                fullScreenGestureEnabled: true,
+                gestureDirection: 'horizontal',
+              }}
+            >
+              <Stack.Screen name="(auth)"                         options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)"                         options={{ headerShown: false, gestureEnabled: false }} />
+              <Stack.Screen name="destination/[id]"              options={{ headerShown: false }} />
+              <Stack.Screen name="destination/[id]/subdestinations" options={{ headerShown: false }} />
+              <Stack.Screen name="synagogues/[destinationId]"    options={{ headerShown: false }} />
+              <Stack.Screen name="synagogue/[id]"                options={{ headerShown: false }} />
+              <Stack.Screen name="restaurants/[destinationId]"   options={{ headerShown: false }} />
+              <Stack.Screen name="restaurant/[id]"               options={{ headerShown: false }} />
+              <Stack.Screen name="chat/[destinationId]"          options={{ headerShown: false }} />
+              <Stack.Screen name="minyans/[destinationId]"       options={{ headerShown: false }} />
+              <Stack.Screen name="minyan/[id]"                   options={{ headerShown: false }} />
+              <Stack.Screen name="hosting/[destinationId]"       options={{ headerShown: false }} />
+              <Stack.Screen name="hosting/my-requests"           options={{ headerShown: false }} />
+              <Stack.Screen name="hosting/my-offers"             options={{ headerShown: false }} />
+              <Stack.Screen name="hosting/chat/[requestId]"      options={{ headerShown: false }} />
+              <Stack.Screen name="saved"                          options={{ headerShown: false }} />
+              <Stack.Screen name="map/[destinationId]"           options={{ headerShown: false }} />
+            </Stack>
+
+            {/* Floating home button — visible on all non-tab / non-auth screens */}
+            <FloatingHomeButton />
+            <StatusBar style="auto" />
           </View>
-        )}
-        <Stack>
-          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="destination/[id]" options={{ headerShown: false }} />
-          <Stack.Screen name="destination/[id]/subdestinations" options={{ headerShown: false }} />
-          <Stack.Screen name="synagogues/[destinationId]" options={{ headerShown: false }} />
-          <Stack.Screen name="synagogue/[id]" options={{ headerShown: false }} />
-          <Stack.Screen name="restaurants/[destinationId]" options={{ headerShown: false }} />
-          <Stack.Screen name="restaurant/[id]" options={{ headerShown: false }} />
-          <Stack.Screen name="chat/[destinationId]" options={{ headerShown: false }} />
-          <Stack.Screen name="minyans/[destinationId]" options={{ headerShown: false }} />
-          <Stack.Screen name="minyan/[id]" options={{ headerShown: false }} />
-          <Stack.Screen name="hosting/[destinationId]" options={{ headerShown: false }} />
-          <Stack.Screen name="hosting/my-requests" options={{ headerShown: false }} />
-          <Stack.Screen name="hosting/my-offers" options={{ headerShown: false }} />
-          <Stack.Screen name="hosting/chat/[requestId]" options={{ headerShown: false }} />
-          <Stack.Screen name="saved" options={{ headerShown: false }} />
-          <Stack.Screen name="map/[destinationId]" options={{ headerShown: false }} />
-        </Stack>
-        <StatusBar style="auto" />
-      </ThemeProvider>
-    </AuthProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
+
+const s = StyleSheet.create({
+  offlineBanner: { backgroundColor: '#EF4444', padding: 8, alignItems: 'center' },
+  offlineText:   { color: '#fff', fontWeight: '600', fontFamily: 'Inter-SemiBold' },
+  homeBtn: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 58 : 38,
+    right: 18,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(212,175,55,0.50)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 999,
+    elevation: 20,
+  },
+});
