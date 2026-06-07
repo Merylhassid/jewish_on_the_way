@@ -49,7 +49,7 @@ export default function SubdestinationsScreen() {
       {parent && (
         <View style={s.hero}>
           <Image
-            source={{ uri: getDestinationImageUrl(parent.city, parent.countryCode) }}
+            source={getDestinationImageUrl(parent.city, parent.countryCode)}
             style={StyleSheet.absoluteFillObject}
             contentFit="cover"
             transition={500}
@@ -98,7 +98,7 @@ export default function SubdestinationsScreen() {
           >
             <View style={s.cardImg}>
               <Image
-                source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
+                source={getDestinationImageUrl(item.city, item.countryCode)}
                 style={StyleSheet.absoluteFillObject}
                 contentFit="cover"
                 transition={300}

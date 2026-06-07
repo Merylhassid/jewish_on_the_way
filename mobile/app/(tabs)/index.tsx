@@ -18,8 +18,10 @@ import {
 import { Image } from 'expo-image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Bookmark, ChevronRight, Clock, Navigation, Search, Sparkles, X } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
-import { C, getDestinationImageUrl } from '@/constants/theme';
+import { C, getDestinationImageUrl, HERO_IMAGES } from '@/constants/theme';
+import { translateCity, translateCountry } from '@/src/i18n/geo';
 
 const { width: W, height: H } = Dimensions.get('window');
 const HERO_H = H * 0.52;
@@ -57,6 +59,8 @@ const fmt = (m: number) => m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixe
 const POPULAR_CITIES = ['Tel Aviv', 'Paris', 'New York', 'London', 'Buenos Aires', 'Amsterdam', 'Berlin', 'Miami'];
 
 export default function HomeScreen() {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const [dests, setDests]       = useState<Dest[]>([]);
   const [loading, setLoading]   = useState(true);
   const [refreshing, setRef]    = useState(false);
@@ -67,29 +71,49 @@ export default function HomeScreen() {
   const [chip, setChip]         = useState<any>(null);
   const [searchMode, setSearchMode] = useState<'none' | 'text' | 'ai'>('none');
   const [gps, setGps]           = useState<{ lat: number; lng: number } | null>(null);
+  const [heroIdx, setHeroIdx]   = useState(0);
   const debRef = useRef<any>(null);
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') return;
-      try {
-        const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
-        setGps({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-      } catch {}
-    })();
-  }, []);
-
-  const fetchDests = async (q?: string) => {
+  const fetchDests = async (q?: string, coords?: { lat: number; lng: number }) => {
     try {
-      const params: any = q ? { q } : gps ? { lat: gps.lat, lng: gps.lng } : {};
+      const loc = coords ?? gps;
+      const params: any = q ? { q } : loc ? { lat: loc.lat, lng: loc.lng } : {};
       const res = await client.get('/destinations', { params });
       setDests(res.data);
     } catch {} finally { setLoading(false); }
   };
 
   useEffect(() => { fetchDests(); loadRecent().then(setRecent); }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') return;
+        let coords: { lat: number; lng: number } | null = null;
+        try {
+          // Accuracy.Low = cell-tower triangulation: fast, works indoors, good enough for country-level sorting
+          const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Low });
+          coords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        } catch {
+          // Accept a cached position up to 30 minutes old
+          const last = await Location.getLastKnownPositionAsync({ maxAge: 30 * 60 * 1000 });
+          if (last) coords = { lat: last.coords.latitude, lng: last.coords.longitude };
+        }
+        if (coords) {
+          setGps(coords);
+          fetchDests(undefined, coords); // pass directly — no closure/timing issue
+        }
+      } catch {}
+    })();
+  }, []);
+
   useEffect(() => () => { if (debRef.current) clearTimeout(debRef.current); }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => setHeroIdx(i => (i + 1) % HERO_IMAGES.length), 4000);
+    return () => clearInterval(id);
+  }, []);
 
   const onAiChange = (v: string) => {
     setAiText(v);
@@ -140,10 +164,10 @@ export default function HomeScreen() {
         {hero && (
           <View style={s.hero}>
             <Image
-              source={{ uri: getDestinationImageUrl(hero.city, hero.countryCode) }}
+              source={HERO_IMAGES[heroIdx]}
               style={StyleSheet.absoluteFillObject}
               contentFit="cover"
-              transition={800}
+              transition={1000}
             />
 
             {/* Gradient overlays */}
@@ -160,18 +184,25 @@ export default function HomeScreen() {
               </Pressable>
             </View>
 
+            {/* Carousel dots */}
+            <View style={s.heroDots}>
+              {HERO_IMAGES.map((_, i) => (
+                <View key={i} style={[s.heroDot, i === heroIdx && s.heroDotActive]} />
+              ))}
+            </View>
+
             {/* Hero text */}
             <View style={s.heroContent}>
-              <Text style={s.heroTagline}>Discover Jewish Life</Text>
-              <Text style={s.heroTagline2}>Anywhere</Text>
-              <Text style={s.heroSub}>Kosher food · Synagogues · Community</Text>
+              <Text style={s.heroTagline}>{t('home.headline1')}</Text>
+              <Text style={s.heroTagline2}>{t('home.headline2')}</Text>
+              <Text style={s.heroSub}>{t('home.tagline')}</Text>
 
               {/* Search bar — glassmorphism */}
               {searchMode === 'none' && (
                 <View style={s.heroSearch}>
                   <Pressable style={s.heroSearchInner} onPress={() => setSearchMode('text')}>
                     <Search size={16} color="rgba(255,255,255,0.7)" strokeWidth={2} />
-                    <Text style={s.heroSearchPlaceholder}>Search destinations…</Text>
+                    <Text style={s.heroSearchPlaceholder}>{t('home.searchPlaceholder')}</Text>
                   </Pressable>
                   <Pressable style={s.heroAiBtn} onPress={() => setSearchMode('ai')}>
                     <Sparkles size={14} color={C.gold} strokeWidth={2} />
@@ -185,7 +216,7 @@ export default function HomeScreen() {
                   <Search size={16} color={C.navy} strokeWidth={2} />
                   <TextInput
                     style={s.heroSearchInput}
-                    placeholder="Search destinations…"
+                    placeholder={t('home.searchPlaceholder')}
                     placeholderTextColor="#9CA3AF"
                     value={search}
                     onChangeText={setSearch}
@@ -203,7 +234,7 @@ export default function HomeScreen() {
                   <Sparkles size={16} color={C.gold} strokeWidth={2} />
                   <TextInput
                     style={s.heroSearchInput}
-                    placeholder='"Kosher restaurant in Paris…"'
+                    placeholder={t('home.aiPlaceholder')}
                     placeholderTextColor="#9CA3AF"
                     value={aiText}
                     onChangeText={onAiChange}
@@ -235,15 +266,15 @@ export default function HomeScreen() {
           {!search && popular.length > 0 && (
             <View style={s.section}>
               <View style={s.sectionHead}>
-                <Text style={s.sectionTitle}>Popular Destinations</Text>
+                <Text style={s.sectionTitle}>{t('home.popular')}</Text>
                 <Pressable style={s.seeAll} onPress={() => {}}>
-                  <Text style={s.seeAllText}>See all</Text>
+                  <Text style={s.seeAllText}>{t('home.seeAll')}</Text>
                   <ChevronRight size={14} color={C.navy} strokeWidth={2.5} />
                 </Pressable>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.popRow}>
                 {popular.slice(0, 6).map(item => (
-                  <PopularCard key={item.id} item={item} onPress={() => go(item)} />
+                  <PopularCard key={item.id} item={item} lang={lang} onPress={() => go(item)} />
                 ))}
               </ScrollView>
             </View>
@@ -252,13 +283,13 @@ export default function HomeScreen() {
           {/* ── RECENTLY VISITED ── */}
           {!search && recent.length > 0 && (
             <View style={s.section}>
-              <Text style={s.sectionTitle}>Recently Visited</Text>
+              <Text style={s.sectionTitle}>{t('home.recentlyVisited')}</Text>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
                 {recent.map(d => (
                   <View key={d.id} style={s.recentChip}>
                     <Pressable style={s.recentInner} onPress={() => go(d)}>
                       <Clock size={11} color={C.gold} strokeWidth={2.5} />
-                      <Text style={s.recentText} numberOfLines={1}>{d.city}</Text>
+                      <Text style={s.recentText} numberOfLines={1}>{translateCity(d.city, lang)}</Text>
                     </Pressable>
                     <Pressable hitSlop={8} onPress={() => { removeRecent(d.id); setRecent(p => p.filter(r => r.id !== d.id)); }}>
                       <X size={11} color="#D1D5DB" strokeWidth={2.5} />
@@ -273,12 +304,12 @@ export default function HomeScreen() {
           <View style={s.section}>
             <View style={s.sectionHead}>
               <Text style={s.sectionTitle}>
-                {search ? `Results for "${search}"` : 'All Destinations'}
+                {search ? `${t('home.resultsFor')} "${search}"` : t('home.allDestinations')}
               </Text>
               {gps && !search && (
                 <View style={s.gpsPill}>
                   <Navigation size={10} color={C.gold} strokeWidth={2.5} />
-                  <Text style={s.gpsPillText}>Near you</Text>
+                  <Text style={s.gpsPillText}>{t('home.nearestFirst')}</Text>
                 </View>
               )}
             </View>
@@ -288,10 +319,10 @@ export default function HomeScreen() {
             ) : (
               <View style={s.destGrid}>
                 {filteredDests.map(item => (
-                  <DestCard key={item.id} item={item} onPress={() => go(item)} />
+                  <DestCard key={item.id} item={item} lang={lang} onPress={() => go(item)} />
                 ))}
                 {filteredDests.length === 0 && (
-                  <Text style={s.empty}>No destinations found</Text>
+                  <Text style={s.empty}>{t('home.noResults')}</Text>
                 )}
               </View>
             )}
@@ -304,37 +335,37 @@ export default function HomeScreen() {
 }
 
 // ── Popular card (horizontal scroll) ─────────────────────────────────────────
-function PopularCard({ item, onPress }: { item: Dest; onPress: () => void }) {
+function PopularCard({ item, lang, onPress }: { item: Dest; lang: string; onPress: () => void }) {
   return (
     <Pressable
       style={({ pressed }) => [s.popCard, pressed && { opacity: 0.88, transform: [{ scale: 0.97 }] }]}
       onPress={onPress}
     >
-      <Image source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
+      <Image source={getDestinationImageUrl(item.city, item.countryCode)}
         style={StyleSheet.absoluteFillObject} contentFit="cover" transition={400} />
       <View style={s.popGrad} />
       <View style={s.popContent}>
-        <Text style={s.popCity}>{item.city}</Text>
-        <Text style={s.popCountry}>{item.country}</Text>
+        <Text style={s.popCity}>{translateCity(item.city, lang)}</Text>
+        <Text style={s.popCountry}>{translateCountry(item.countryCode, lang)}</Text>
       </View>
     </Pressable>
   );
 }
 
 // ── Destination card (2-col grid) ─────────────────────────────────────────────
-function DestCard({ item, onPress }: { item: Dest; onPress: () => void }) {
+function DestCard({ item, lang, onPress }: { item: Dest; lang: string; onPress: () => void }) {
   const W2 = (Dimensions.get('window').width - 52) / 2;
   return (
     <Pressable
       style={({ pressed }) => [s.destCard, { width: W2 }, pressed && { opacity: 0.88, transform: [{ scale: 0.97 }] }]}
       onPress={onPress}
     >
-      <Image source={{ uri: getDestinationImageUrl(item.city, item.countryCode) }}
+      <Image source={getDestinationImageUrl(item.city, item.countryCode)}
         style={StyleSheet.absoluteFillObject} contentFit="cover" transition={300} />
       <View style={s.destGrad} />
       <View style={s.destBadge}><Text style={s.destBadgeText}>{item.countryCode}</Text></View>
       <View style={s.destContent}>
-        <Text style={s.destCity} numberOfLines={1}>{item.city}</Text>
+        <Text style={s.destCity} numberOfLines={1}>{translateCity(item.city, lang)}</Text>
         {item.distanceMeters !== undefined && (
           <View style={s.destDist}>
             <Navigation size={9} color={C.goldBright} strokeWidth={2.5} />
@@ -372,6 +403,18 @@ const s = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.15)',
     borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)',
     justifyContent: 'center', alignItems: 'center',
+  },
+
+  heroDots: {
+    flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
+    gap: 6, paddingBottom: 12,
+  },
+  heroDot: {
+    width: 6, height: 6, borderRadius: 3,
+    backgroundColor: 'rgba(255,255,255,0.40)',
+  },
+  heroDotActive: {
+    width: 20, backgroundColor: C.gold,
   },
 
   heroContent: { paddingHorizontal: 22, paddingBottom: 28, gap: 4 },
