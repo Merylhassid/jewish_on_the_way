@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { AuthService } from './auth.service';
@@ -16,6 +17,7 @@ jest.mock('bcrypt', () => ({
 describe('AuthService', () => {
   let service: AuthService;
   let usersRepo: { findOne: jest.Mock; save: jest.Mock; create: jest.Mock; delete: jest.Mock };
+  let dataSource: { transaction: jest.Mock };
   let jwtService: { signAsync: jest.Mock };
   let mailService: { sendPasswordReset: jest.Mock };
   let audit: { log: jest.Mock };
@@ -44,6 +46,16 @@ describe('AuthService', () => {
       create: jest.fn(),
       delete: jest.fn(),
     };
+    // Mock manager strips the Entity-class first arg so repo mock assertions keep working
+    const mockManager = {
+      findOne: (_Entity: any, opts: any) => usersRepo.findOne(opts),
+      save:    (entity: any)             => usersRepo.save(entity),
+      create:  (_Entity: any, data: any) => usersRepo.create(data),
+      delete:  (_Entity: any, opts: any) => usersRepo.delete(opts),
+    };
+    dataSource = {
+      transaction: jest.fn().mockImplementation((cb: any) => cb(mockManager)),
+    };
     jwtService = { signAsync: jest.fn() };
     mailService = { sendPasswordReset: jest.fn() };
     audit = { log: jest.fn() };
@@ -52,9 +64,10 @@ describe('AuthService', () => {
       providers: [
         AuthService,
         { provide: getRepositoryToken(User), useValue: usersRepo },
-        { provide: JwtService, useValue: jwtService },
-        { provide: MailService, useValue: mailService },
-        { provide: AuditService, useValue: audit },
+        { provide: DataSource,               useValue: dataSource },
+        { provide: JwtService,               useValue: jwtService },
+        { provide: MailService,              useValue: mailService },
+        { provide: AuditService,             useValue: audit },
       ],
     }).compile();
 

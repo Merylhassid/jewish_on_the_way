@@ -1,41 +1,49 @@
 import {
-  Body, Controller, Delete, Get, Param, ParseIntPipe,
-  Post, Query, UseGuards, Request,
+  Body, Controller, Delete, Get, Param, ParseEnumPipe,
+  ParseIntPipe, Post, Query, UseGuards, Request,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { AdminGuard } from '../admin/admin.guard';
 import { ReviewsService } from './reviews.service';
+import { EntityType } from '../common/enums/entity-type.enum';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
+import { UpsertReviewDto } from './dto/upsert-review.dto';
+import { CreateReportDto } from './dto/create-report.dto';
+import { CreateRequestDto } from './dto/create-request.dto';
+import { ResolveReportDto } from './dto/resolve-report.dto';
+import { ResolveRequestDto } from './dto/resolve-request.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('reviews')
 export class ReviewsController {
   constructor(private readonly service: ReviewsService) {}
 
-  // GET /reviews/:type/:id  → average stars + list
+  // GET /reviews/:type/:id?limit=20&offset=0  → average stars + list
   @Get(':type/:id')
   getReviews(
-    @Param('type') type: string,
+    @Param('type', new ParseEnumPipe(EntityType)) type: EntityType,
     @Param('id', ParseIntPipe) id: number,
+    @Query() pagination: PaginationQueryDto,
   ) {
-    return this.service.getReviews(type, id);
+    return this.service.getReviews(type, id, pagination.limit ?? 20, pagination.offset ?? 0);
   }
 
   // POST /reviews/:type/:id  → add or update own review
   @Post(':type/:id')
   upsertReview(
     @Request() req: any,
-    @Param('type') type: string,
+    @Param('type', new ParseEnumPipe(EntityType)) type: EntityType,
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: { stars: number; comment?: string },
+    @Body() dto: UpsertReviewDto,
   ) {
-    return this.service.upsertReview(req.user.sub, type, id, body.stars, body.comment);
+    return this.service.upsertReview(req.user.sub, type, id, dto.stars, dto.comment);
   }
 
   // DELETE /reviews/:type/:id  → remove own review
   @Delete(':type/:id')
   deleteReview(
     @Request() req: any,
-    @Param('type') type: string,
+    @Param('type', new ParseEnumPipe(EntityType)) type: EntityType,
     @Param('id', ParseIntPipe) id: number,
   ) {
     return this.service.deleteReview(req.user.sub, type, id);
@@ -45,32 +53,20 @@ export class ReviewsController {
   @Post(':type/:id/report')
   createReport(
     @Request() req: any,
-    @Param('type') type: string,
+    @Param('type', new ParseEnumPipe(EntityType)) type: EntityType,
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: { reportType: string; description?: string },
+    @Body() dto: CreateReportDto,
   ) {
-    return this.service.createReport(req.user.sub, type, id, body.reportType, body.description);
+    return this.service.createReport(req.user.sub, type, id, dto.reportType, dto.description);
   }
 
   // POST /reviews/requests  → suggest a new place
   @Post('requests')
   createRequest(
     @Request() req: any,
-    @Body() body: {
-      entityType: string;
-      destinationId: number;
-      name: string;
-      address?: string;
-      phone?: string;
-      websiteUrl?: string;
-      notes?: string;
-      kashrutLevel?: string;
-      restaurantType?: string;
-      nusach?: string;
-      denomination?: string;
-    },
+    @Body() dto: CreateRequestDto,
   ) {
-    return this.service.createRequest(req.user.sub, body);
+    return this.service.createRequest(req.user.sub, dto);
   }
 
   // ── Admin endpoints ────────────────────────────────────────────────────────
@@ -85,9 +81,9 @@ export class ReviewsController {
   @Post('admin/reports/:id/resolve')
   resolveReport(
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: { status: string; adminNote?: string },
+    @Body() dto: ResolveReportDto,
   ) {
-    return this.service.resolveReport(id, body.status, body.adminNote);
+    return this.service.resolveReport(id, dto.status, dto.adminNote);
   }
 
   @UseGuards(AdminGuard)
@@ -100,8 +96,8 @@ export class ReviewsController {
   @Post('admin/requests/:id/resolve')
   resolveRequest(
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: { status: string; adminNote?: string },
+    @Body() dto: ResolveRequestDto,
   ) {
-    return this.service.resolveRequest(id, body.status, body.adminNote);
+    return this.service.resolveRequest(id, dto.status, dto.adminNote);
   }
 }

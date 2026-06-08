@@ -30,7 +30,7 @@ interface ChatMsg {
 
 export default function ChatScreen() {
   const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
-  const { user, token } = useAuth();
+  const { user, getValidToken } = useAuth();
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [text, setText] = useState('');
   const [connected, setConnected] = useState(false);
@@ -40,9 +40,11 @@ export default function ChatScreen() {
 
   useEffect(() => {
     let socket: Socket;
+    let authRetried = false;
 
-    const connect = () => {
-      if (!token) { setLoading(false); return; }
+    const connect = async () => {
+      const token = await getValidToken();
+      if (!token) return;
 
       socket = io(`${API_URL}/chat`, {
         auth: { token },
@@ -71,13 +73,31 @@ export default function ChatScreen() {
         setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 50);
       });
 
-      socket.on('connect_error', () => {
+      socket.on('connect_error', async (err) => {
+        const msg = (err.message ?? '').toLowerCase();
+        const isAuthErr =
+          msg.includes('unauthorized') ||
+          msg.includes('forbidden') ||
+          msg.includes('401') ||
+          (err as any).data?.statusCode === 401;
+
+        if (isAuthErr && !authRetried) {
+          authRetried = true;
+          const freshToken = await getValidToken();
+          if (freshToken) {
+            socket.auth = { token: freshToken };
+            socket.disconnect();
+            socket.connect();
+            return;
+          }
+        }
+
+        console.warn('Chat connection error:', err.message);
         setLoading(false);
       });
     };
 
-    if (token !== null) connect();
-    else setLoading(false);
+    connect();
 
     return () => {
       if (socketRef.current) {
@@ -85,7 +105,7 @@ export default function ChatScreen() {
         socketRef.current.disconnect();
       }
     };
-  }, [destinationId, token]);
+  }, [destinationId]);
 
   const sendMessage = () => {
     const content = text.trim();

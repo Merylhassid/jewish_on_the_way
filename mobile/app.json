@@ -23,7 +23,15 @@
         }
       ],
       "@react-native-community/datetimepicker",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#1a3a6b",
+          "sounds": []
+        }
+      ]
     ]
   }
 }

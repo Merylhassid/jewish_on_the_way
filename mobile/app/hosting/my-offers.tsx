@@ -1,17 +1,12 @@
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
-  Alert,
-  FlatList,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+  ActivityIndicator, Alert, FlatList,
+  Platform, Pressable, StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
+import { Calendar, ChevronRight, Home, Users, X } from 'lucide-react-native';
 import client from '@/src/api/client';
-import HomeButton from '@/src/components/HomeButton';
+import { C } from '@/constants/theme';
 
 interface HostingOffer {
   id: number;
@@ -22,8 +17,16 @@ interface HostingOffer {
   allowsShabbat: boolean;
   kashrutLevel: string | null;
   notes: string | null;
-  is_active: boolean;
+  isActive: boolean;
   destination: { id: number; city: string; country: string } | null;
+}
+
+function Tag({ text, color = C.navy }: { text: string; color?: string }) {
+  return (
+    <View style={[s.tag, { borderColor: color + '30', backgroundColor: color + '10' }]}>
+      <Text style={[s.tagText, { color }]}>{text}</Text>
+    </View>
+  );
 }
 
 export default function MyOffersScreen() {
@@ -42,16 +45,13 @@ export default function MyOffersScreen() {
     }
   };
 
-  useEffect(() => {
-    loadOffers();
-  }, []);
+  useEffect(() => { loadOffers(); }, []);
 
   const handleDeactivate = (id: number) => {
     Alert.alert('Deactivate Offer', 'Are you sure you want to deactivate this offer?', [
       { text: 'Cancel', style: 'cancel' },
       {
-        text: 'Deactivate',
-        style: 'destructive',
+        text: 'Deactivate', style: 'destructive',
         onPress: async () => {
           try {
             await client.post(`/hosting/offers/${id}/deactivate`);
@@ -65,75 +65,70 @@ export default function MyOffersScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Pressable onPress={() => router.back()} style={styles.backBtn}>
-          <Text style={styles.backText}>←</Text>
+    <View style={s.root}>
+      <View style={s.header}>
+        <Pressable onPress={() => router.back()} style={s.backBtn} hitSlop={12}>
+          <ChevronRight size={20} color="#fff" strokeWidth={2.5} style={{ transform: [{ rotate: '180deg' }] }} />
         </Pressable>
-        <HomeButton />
-        <Text style={styles.headerTitle}>🏠 My Hosting Offers</Text>
+        <View>
+          <Text style={s.eyebrow}>HOSTING</Text>
+          <Text style={s.headerTitle}>My Offers</Text>
+        </View>
       </View>
 
       {loading ? (
-        <View style={styles.center}>
-          <ActivityIndicator size="large" color="#1a3a6b" />
-        </View>
+        <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>
       ) : (
         <FlatList
           data={offers}
           keyExtractor={(item) => String(item.id)}
-          contentContainerStyle={styles.list}
+          contentContainerStyle={s.list}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
-            <View style={[styles.card, !item.is_active && styles.cardInactive]}>
-              <View style={styles.cardTop}>
-                <Text style={styles.cardCity}>
-                  📍 {item.destination?.city ?? '—'},{' '}
-                  {item.destination?.country ?? ''}
-                </Text>
-                <View
-                  style={[
-                    styles.statusBadge,
-                    { backgroundColor: item.is_active ? '#4caf50' : '#9e9e9e' },
-                  ]}
-                >
-                  <Text style={styles.statusText}>
-                    {item.is_active ? '✅ Active' : '⛔ Inactive'}
+            <View style={[s.card, !item.isActive && s.cardInactive]}>
+              <View style={s.cardTop}>
+                <View style={s.cityRow}>
+                  <Home size={16} color={C.gold} strokeWidth={2} />
+                  <Text style={s.cardCity}>{item.destination?.city ?? '—'}</Text>
+                </View>
+                <View style={[s.statusPill, { backgroundColor: item.isActive ? '#F0FDF4' : '#F3F4F6' }]}>
+                  <Text style={[s.statusText, { color: item.isActive ? '#16A34A' : '#6B7280' }]}>
+                    {item.isActive ? 'Active' : 'Inactive'}
                   </Text>
                 </View>
               </View>
 
-              <Text style={styles.cardDates}>
-                📅 {item.availableFrom} → {item.availableTo}
-              </Text>
+              <View style={s.dateRow}>
+                <Calendar size={13} color={C.textMuted} strokeWidth={2} />
+                <Text style={s.dateText}>{item.availableFrom} → {item.availableTo}</Text>
+              </View>
 
-              <Text style={styles.cardMeta}>
-                👥 Up to {item.maxGuests} guest{item.maxGuests !== 1 ? 's' : ''}
-                {item.allowsShabbat ? '  •  🕍 Shabbat' : ''}
-                {item.allowsChildren ? '  •  👨‍👩‍👧 Children' : ''}
-                {item.kashrutLevel ? `  •  🍽️ ${item.kashrutLevel}` : ''}
-              </Text>
+              <View style={s.dateRow}>
+                <Users size={13} color={C.textMuted} strokeWidth={2} />
+                <Text style={s.dateText}>Up to {item.maxGuests} guest{item.maxGuests !== 1 ? 's' : ''}</Text>
+              </View>
 
-              {item.notes ? (
-                <Text style={styles.cardNotes}>📝 {item.notes}</Text>
-              ) : null}
+              <View style={s.tags}>
+                {item.allowsShabbat   && <Tag text="Shabbat" color="#7C3AED" />}
+                {item.allowsChildren  && <Tag text="Children OK" color="#0891B2" />}
+                {item.kashrutLevel    && <Tag text={item.kashrutLevel} color={C.gold} />}
+              </View>
 
-              {item.is_active ? (
-                <TouchableOpacity
-                  style={styles.deactivateBtn}
-                  onPress={() => handleDeactivate(item.id)}
-                >
-                  <Text style={styles.deactivateBtnText}>⛔ Deactivate</Text>
+              {item.notes ? <Text style={s.notes}>{item.notes}</Text> : null}
+
+              {item.isActive && (
+                <TouchableOpacity style={s.deactivateBtn} onPress={() => handleDeactivate(item.id)}>
+                  <X size={14} color={C.error} strokeWidth={2.5} />
+                  <Text style={s.deactivateBtnText}>Deactivate</Text>
                 </TouchableOpacity>
-              ) : null}
+              )}
             </View>
           )}
           ListEmptyComponent={
-            <View style={styles.empty}>
-              <Text style={styles.emptyIcon}>🏠</Text>
-              <Text style={styles.emptyText}>
-                {'No hosting offers yet.\nCreate one to start hosting travelers!'}
-              </Text>
+            <View style={s.empty}>
+              <Home size={48} color="#E5E7EB" strokeWidth={1.5} />
+              <Text style={s.emptyTitle}>No offers yet</Text>
+              <Text style={s.emptySub}>Create a hosting offer to start welcoming travelers</Text>
             </View>
           }
         />
@@ -142,54 +137,58 @@ export default function MyOffersScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f0f4ff' },
+const s = StyleSheet.create({
+  root:   { flex: 1, backgroundColor: C.bg },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+
   header: {
-    backgroundColor: '#1a3a6b',
-    paddingTop: 60,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: C.navy,
+    paddingTop: Platform.OS === 'ios' ? 56 : 38,
+    paddingBottom: 20, paddingHorizontal: 20,
+    flexDirection: 'row', alignItems: 'flex-end', gap: 16,
   },
-  backBtn: { marginRight: 12 },
-  backText: { fontSize: 24, color: '#fff' },
-  headerTitle: { fontSize: 20, fontWeight: '700', color: '#fff' },
+  backBtn: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+    justifyContent: 'center', alignItems: 'center', marginBottom: 2,
+  },
+  eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5, marginBottom: 2 },
+  headerTitle: { fontFamily: 'Inter-Black', fontSize: 26, color: '#fff', letterSpacing: -0.5 },
+
   list: { padding: 16, gap: 12 },
+
   card: {
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    padding: 16,
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-    elevation: 1,
+    backgroundColor: '#fff', borderRadius: 18, padding: 16,
+    shadowColor: C.navy, shadowOpacity: 0.06, shadowRadius: 10,
+    shadowOffset: { width: 0, height: 3 }, elevation: 3,
   },
-  cardInactive: { opacity: 0.6 },
-  cardTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  cardCity: { fontSize: 16, fontWeight: '700', color: '#1a1a2e', flex: 1 },
-  statusBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
-  statusText: { color: '#fff', fontSize: 12, fontWeight: '700' },
-  cardDates: { fontSize: 13, color: '#555', marginBottom: 4 },
-  cardMeta: { fontSize: 13, color: '#777', marginBottom: 8 },
-  cardNotes: { fontSize: 13, color: '#555', fontStyle: 'italic', marginBottom: 8 },
+  cardInactive: { opacity: 0.55 },
+  cardTop:  { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
+  cityRow:  { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  cardCity: { fontFamily: 'Inter-Bold', fontSize: 16, color: C.textPrimary },
+
+  statusPill: { borderRadius: 10, paddingHorizontal: 10, paddingVertical: 4 },
+  statusText: { fontFamily: 'Inter-SemiBold', fontSize: 12 },
+
+  dateRow:  { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 },
+  dateText: { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textSecondary },
+
+  tags: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
+  tag:  { borderRadius: 8, borderWidth: 1, paddingHorizontal: 9, paddingVertical: 3 },
+  tagText: { fontFamily: 'Inter-SemiBold', fontSize: 11 },
+
+  notes: { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, fontStyle: 'italic', marginTop: 8 },
+
   deactivateBtn: {
-    marginTop: 8,
-    padding: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ffcccc',
-    backgroundColor: '#fff5f5',
-    alignItems: 'center',
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    marginTop: 12, paddingVertical: 10, paddingHorizontal: 14,
+    borderRadius: 10, borderWidth: 1, borderColor: '#FECACA',
+    backgroundColor: '#FFF5F5', alignSelf: 'flex-start',
   },
-  deactivateBtnText: { fontWeight: '700', fontSize: 14, color: '#f44336' },
-  empty: { alignItems: 'center', paddingTop: 60 },
-  emptyIcon: { fontSize: 48, marginBottom: 12 },
-  emptyText: { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
+  deactivateBtnText: { fontFamily: 'Inter-SemiBold', fontSize: 13, color: C.error },
+
+  empty:     { alignItems: 'center', paddingTop: 80, gap: 10 },
+  emptyTitle: { fontFamily: 'Inter-SemiBold', fontSize: 16, color: C.textSecondary },
+  emptySub:  { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, textAlign: 'center', paddingHorizontal: 40 },
 });

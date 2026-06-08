@@ -2,15 +2,18 @@ import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator, Platform, Pressable,
-  ScrollView, StyleSheet, Text, View,
+  RefreshControl, ScrollView, StyleSheet, Text, View,
 } from 'react-native';
 import { useLocation } from '@/src/hooks/useLocation';
 import { ChevronRight, Globe, MapPin, Navigation, Utensils } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
+import ErrorState from '@/src/components/ErrorState';
 
 interface NearbyRestaurant { id: number; name: string; address?: string; kashrutLevel: string; restaurantType: string | null; distanceMeters: number; city?: string; }
 interface NearbySynagogue  { id: number; name: string; address?: string; denomination?: string; distanceMeters: number; }
+interface NearbyMinyan     { id: number; prayerType: string; date: string; time: string; locationText: string; participantsCount: number; almostFull: boolean; isFull: boolean; distanceMeters: number; destination: { id: number; city: string } | null; }
 
 const KASHRUT: Record<string, { color: string; bg: string }> = {
   rabbinate: { color: '#6B7280', bg: '#F3F4F6' },
@@ -19,74 +22,118 @@ const KASHRUT: Record<string, { color: string; bg: string }> = {
   unknown:   { color: '#9CA3AF', bg: '#F9FAFB' },
 };
 
+const PRAYER_EMOJI: Record<string, string> = { shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏' };
+
+function fmtDate(iso: string) {
+  const [y, m, d] = String(iso).slice(0, 10).split('-');
+  return new Date(Number(y), Number(m) - 1, Number(d))
+    .toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+}
+
 const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
 
 export default function NearbyScreen() {
+  const { t } = useTranslation();
+  const PRAYER_LABEL: Record<string, string> = {
+    shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
+    maariv: t('minyans.maariv'), musaf: t('minyans.musaf'), other: t('minyans.other'),
+  };
   const { status: locStatus, coords, openSettings } = useLocation(true);
   const [restaurants, setRestaurants] = useState<NearbyRestaurant[]>([]);
   const [synagogues,  setSynagogues]  = useState<NearbySynagogue[]>([]);
+  const [minyans,     setMinyans]     = useState<NearbyMinyan[]>([]);
   const [loading,     setLoading]     = useState(true);
+  const [refreshing,  setRefreshing]  = useState(false);
+  const [error,       setError]       = useState(false);
+  const [retryKey,    setRetryKey]    = useState(0);
 
   useEffect(() => {
     if (!coords) return;
+    setError(false);
+    if (!refreshing) setLoading(true);
     const { lat, lng } = coords;
     (async () => {
       try {
-        const [r, s] = await Promise.allSettled([
+        const [r, s, mn] = await Promise.allSettled([
           client.get('/restaurants/nearby', { params: { lat, lng, limit: 8 } }),
           client.get('/synagogues/nearby',  { params: { lat, lng, limit: 5 } }),
+          client.get('/minyans/nearby',     { params: { lat, lng, radius: 5 } }),
         ]);
         if (r.status === 'fulfilled') setRestaurants(r.value.data);
         if (s.status === 'fulfilled') setSynagogues(s.value.data);
-      } catch {} finally { setLoading(false); }
+        if (mn.status === 'fulfilled') setMinyans(mn.value.data);
+        if (r.status === 'rejected' && s.status === 'rejected' && mn.status === 'rejected') setError(true);
+      } catch { setError(true); } finally { setLoading(false); setRefreshing(false); }
     })();
-  }, [coords]);
+  }, [coords, retryKey]);
 
   if (locStatus === 'requesting' || (locStatus === 'idle' && loading)) return (
     <View style={s.center}>
       <ActivityIndicator size="large" color={C.gold} />
-      <Text style={s.centreText}>Finding places near you…</Text>
+      <Text style={s.centreText}>{t('nearby.finding')}</Text>
     </View>
   );
 
-  if (locStatus === 'denied') return (
-    <View style={s.center}>
-      <Navigation size={48} color="#E5E7EB" strokeWidth={1.5} />
-      <Text style={s.centreText}>Location permission required</Text>
-      <Text style={s.centreSub}>Enable location to find nearby places</Text>
-      <Pressable style={s.settingsBtn} onPress={openSettings}>
-        <Text style={s.settingsBtnText}>Open Settings</Text>
-      </Pressable>
-    </View>
-  );
-
-  const total = restaurants.length + synagogues.length;
-
-  return (
+  if (!loading && error) return (
     <View style={s.root}>
       <View style={s.header}>
         <View>
           <Text style={s.eyebrow}>NEAR ME</Text>
           <Text style={s.title}>Nearby</Text>
         </View>
+      </View>
+      <ErrorState onRetry={() => setRetryKey(k => k + 1)} />
+    </View>
+  );
+
+  if (locStatus === 'denied') return (
+    <View style={s.center}>
+      <Navigation size={48} color="#E5E7EB" strokeWidth={1.5} />
+      <Text style={s.centreText}>{t('nearby.permRequired')}</Text>
+      <Text style={s.centreSub}>{t('nearby.permSub')}</Text>
+      <Pressable style={s.settingsBtn} onPress={openSettings}>
+        <Text style={s.settingsBtnText}>{t('nearby.openSettings')}</Text>
+      </Pressable>
+    </View>
+  );
+
+  const total = restaurants.length + synagogues.length + minyans.length;
+
+  return (
+    <View style={s.root}>
+      <View style={s.header}>
+        <View>
+          <Text style={s.eyebrow}>{t('nearby.eyebrow')}</Text>
+          <Text style={s.title}>{t('nearby.title')}</Text>
+        </View>
         <View style={s.gpsPill}>
           <MapPin size={12} color={C.gold} strokeWidth={2.5} />
-          <Text style={s.gpsPillText}>GPS active</Text>
+          <Text style={s.gpsPillText}>{t('nearby.gpsActive')}</Text>
         </View>
       </View>
 
       {total === 0 ? (
         <View style={s.center}>
           <Navigation size={44} color="#E5E7EB" strokeWidth={1.5} />
-          <Text style={s.centreText}>No places nearby</Text>
-          <Text style={s.centreSub}>Try exploring destinations instead</Text>
+          <Text style={s.centreText}>{t('nearby.noPlaces')}</Text>
+          <Text style={s.centreSub}>{t('nearby.noPlacesSub')}</Text>
         </View>
       ) : (
-        <ScrollView contentContainerStyle={s.body} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={s.body}
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => { setRefreshing(true); setRetryKey(k => k + 1); }}
+              tintColor={C.gold}
+            />
+          }
+        >
 
           {restaurants.length > 0 && (
             <View style={s.section}>
-              <Text style={s.sectionLabel}>KOSHER RESTAURANTS  ·  {restaurants.length}</Text>
+              <Text style={s.sectionLabel}>{t('nearby.restaurants')}  ·  {restaurants.length}</Text>
               <View style={s.cards}>
                 {restaurants.map(r => {
                   const k = KASHRUT[r.kashrutLevel] ?? KASHRUT.unknown;
@@ -122,7 +169,7 @@ export default function NearbyScreen() {
 
           {synagogues.length > 0 && (
             <View style={s.section}>
-              <Text style={s.sectionLabel}>SYNAGOGUES  ·  {synagogues.length}</Text>
+              <Text style={s.sectionLabel}>{t('nearby.synagogues')}  ·  {synagogues.length}</Text>
               <View style={s.cards}>
                 {synagogues.map(sg => (
                   <Pressable
@@ -140,6 +187,46 @@ export default function NearbyScreen() {
                     <View style={s.distPill}>
                       <Navigation size={10} color={C.gold} strokeWidth={2.5} />
                       <Text style={s.distText}>{fmt(sg.distanceMeters)}</Text>
+                    </View>
+                    <ChevronRight size={16} color="#E5E7EB" strokeWidth={2.5} />
+                  </Pressable>
+                ))}
+              </View>
+            </View>
+          )}
+
+          {minyans.length > 0 && (
+            <View style={s.section}>
+              <Text style={s.sectionLabel}>{t('nearby.minyans')}  ·  {minyans.length}</Text>
+              <View style={s.cards}>
+                {minyans.map(mn => (
+                  <Pressable
+                    key={mn.id}
+                    style={({ pressed }) => [s.card, pressed && { opacity: 0.85, transform: [{ scale: 0.985 }] }]}
+                    onPress={() => router.push(`/minyan/${mn.id}` as any)}
+                  >
+                    <View style={[s.cardIcon, { backgroundColor: '#EEF2FF' }]}>
+                      <Text style={{ fontSize: 20 }}>{PRAYER_EMOJI[mn.prayerType] ?? '🙏'}</Text>
+                    </View>
+                    <View style={s.cardBody}>
+                      <Text style={s.cardName} numberOfLines={1}>{PRAYER_LABEL[mn.prayerType] ?? mn.prayerType}</Text>
+                      <Text style={s.cardSub} numberOfLines={1}>{fmtDate(mn.date)} · {mn.time}{mn.destination ? `  ·  ${mn.destination.city}` : ''}</Text>
+                    </View>
+                    <View style={s.cardRight}>
+                      {mn.isFull && (
+                        <View style={[s.badge, { backgroundColor: '#F0FDF4' }]}>
+                          <Text style={[s.badgeText, { color: '#15803D' }]}>{t('minyans.full')}</Text>
+                        </View>
+                      )}
+                      {mn.almostFull && !mn.isFull && (
+                        <View style={[s.badge, { backgroundColor: '#FFF7ED' }]}>
+                          <Text style={[s.badgeText, { color: '#C2410C' }]}>{'🔥'}</Text>
+                        </View>
+                      )}
+                      <View style={s.distPill}>
+                        <Navigation size={10} color={C.gold} strokeWidth={2.5} />
+                        <Text style={s.distText}>{fmt(mn.distanceMeters)}</Text>
+                      </View>
                     </View>
                     <ChevronRight size={16} color="#E5E7EB" strokeWidth={2.5} />
                   </Pressable>

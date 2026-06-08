@@ -144,6 +144,10 @@ export class Restaurant {
   @Column({ name: 'kosher_validated_at', type: 'timestamptz', nullable: true })
   kosherValidatedAt?: Date;
 
+  // Food-concept tags derived from name + category — used for tiered smart search
+  @Column({ type: 'text', array: true, default: '{}' })
+  tags: string[];
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 

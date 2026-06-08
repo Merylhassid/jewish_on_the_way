@@ -21,6 +21,8 @@ import { Bookmark, ChevronRight, Clock, Navigation, Search, Sparkles, X } from '
 import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl, HERO_IMAGES } from '@/constants/theme';
+import ErrorState from '@/src/components/ErrorState';
+import { DestinationCardSkeleton } from '@/src/components/Skeleton';
 import { translateCity, translateCountry } from '@/src/i18n/geo';
 
 const { width: W, height: H } = Dimensions.get('window');
@@ -63,6 +65,7 @@ export default function HomeScreen() {
   const lang = i18n.language;
   const [dests, setDests]       = useState<Dest[]>([]);
   const [loading, setLoading]   = useState(true);
+  const [error, setError]       = useState(false);
   const [refreshing, setRef]    = useState(false);
   const [recent, setRecent]     = useState<Dest[]>([]);
   const [search, setSearch]     = useState('');
@@ -71,16 +74,18 @@ export default function HomeScreen() {
   const [chip, setChip]         = useState<any>(null);
   const [searchMode, setSearchMode] = useState<'none' | 'text' | 'ai'>('none');
   const [gps, setGps]           = useState<{ lat: number; lng: number } | null>(null);
+  const [userCountry, setUserCountry] = useState<string | null>(null);
   const [heroIdx, setHeroIdx]   = useState(0);
   const debRef = useRef<any>(null);
 
   const fetchDests = async (q?: string, coords?: { lat: number; lng: number }) => {
+    setError(false);
     try {
       const loc = coords ?? gps;
       const params: any = q ? { q } : loc ? { lat: loc.lat, lng: loc.lng } : {};
       const res = await client.get('/destinations', { params });
       setDests(res.data);
-    } catch {} finally { setLoading(false); }
+    } catch { setError(true); } finally { setLoading(false); }
   };
 
   useEffect(() => { fetchDests(); loadRecent().then(setRecent); }, []);
@@ -102,7 +107,15 @@ export default function HomeScreen() {
         }
         if (coords) {
           setGps(coords);
-          fetchDests(undefined, coords); // pass directly — no closure/timing issue
+          fetchDests(undefined, coords);
+          // Reverse geocode to know which country the user is currently in
+          try {
+            const [place] = await Location.reverseGeocodeAsync(
+              { latitude: coords.lat, longitude: coords.lng },
+              { useGoogleMaps: false },
+            );
+            if (place?.isoCountryCode) setUserCountry(place.isoCountryCode.toUpperCase());
+          } catch {}
         }
       } catch {}
     })();
@@ -125,18 +138,39 @@ export default function HomeScreen() {
   };
 
   const doAi = async () => {
-    const t = aiText.trim(); if (!t) return;
+    const query = aiText.trim(); if (!query) return;
     setChip(null);
     try {
       setAiBusy(true);
-      const body: any = { text: t };
+      const body: any = { text: query };
       if (gps) { body.lat = gps.lat; body.lng = gps.lng; }
       const res = await client.post('/search', body);
-      const { route, detectedCity, error: e } = res.data;
-      if (e === 'low_confidence') { Alert.alert('Not sure', 'Try: "kosher restaurant in Tel Aviv"'); return; }
-      if (!detectedCity) { Alert.alert('No city detected', 'Try: "kosher restaurant in Tel Aviv"'); return; }
-      router.push((route + `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}`) as any);
-    } catch { Alert.alert('Error', 'Try again'); } finally { setAiBusy(false); }
+      const { route, category, emoji, detectedCity, error } = res.data;
+
+      if (error === 'low_confidence') {
+        Alert.alert('לא הבנתי 🤔', 'נסה לכתוב בצורה ברורה יותר.\nלמשל: "מסעדה כשרה בתל אביב" או "מניין בירושלים"');
+        return;
+      }
+
+      if (!route) {
+        Alert.alert(
+          `${emoji} זיהינו: ${category}`,
+          'לא מצאנו יעד מתאים.\nנסה לכתוב למשל: "מסעדה כשרה בתל אביב"',
+        );
+        return;
+      }
+
+      const cityParam = detectedCity ? `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}` : '';
+      const fullRoute = route + cityParam;
+      const qParam = category === 'restaurant' && query
+        ? `${fullRoute.includes('?') ? '&' : '?'}q=${encodeURIComponent(query)}`
+        : '';
+      router.push((fullRoute + qParam) as any);
+    } catch {
+      Alert.alert('שגיאה', 'לא ניתן לחפש כרגע, נסה שוב');
+    } finally {
+      setAiBusy(false);
+    }
   };
 
   const go = (item: Dest) => {
@@ -315,11 +349,17 @@ export default function HomeScreen() {
             </View>
 
             {loading ? (
-              <View style={s.loadingWrap}><ActivityIndicator color={C.gold} /></View>
+              <View style={s.destGrid}>
+                {[0,1,2,3,4,5].map(i => (
+                  <DestinationCardSkeleton key={i} width={(W - 52) / 2} />
+                ))}
+              </View>
+            ) : error ? (
+              <ErrorState onRetry={() => fetchDests(search || undefined, gps ?? undefined)} />
             ) : (
               <View style={s.destGrid}>
                 {filteredDests.map(item => (
-                  <DestCard key={item.id} item={item} lang={lang} onPress={() => go(item)} />
+                  <DestCard key={item.id} item={item} lang={lang} userCountry={userCountry} onPress={() => go(item)} />
                 ))}
                 {filteredDests.length === 0 && (
                   <Text style={s.empty}>{t('home.noResults')}</Text>
@@ -353,8 +393,12 @@ function PopularCard({ item, lang, onPress }: { item: Dest; lang: string; onPres
 }
 
 // ── Destination card (2-col grid) ─────────────────────────────────────────────
-function DestCard({ item, lang, onPress }: { item: Dest; lang: string; onPress: () => void }) {
+function DestCard({ item, lang, userCountry, onPress }: { item: Dest; lang: string; userCountry: string | null; onPress: () => void }) {
   const W2 = (Dimensions.get('window').width - 52) / 2;
+  const isHere = userCountry
+    ? item.countryCode?.toUpperCase() === userCountry
+    : item.distanceMeters !== undefined && Number(item.distanceMeters) < 50000;
+
   return (
     <Pressable
       style={({ pressed }) => [s.destCard, { width: W2 }, pressed && { opacity: 0.88, transform: [{ scale: 0.97 }] }]}
@@ -366,7 +410,12 @@ function DestCard({ item, lang, onPress }: { item: Dest; lang: string; onPress: 
       <View style={s.destBadge}><Text style={s.destBadgeText}>{item.countryCode}</Text></View>
       <View style={s.destContent}>
         <Text style={s.destCity} numberOfLines={1}>{translateCity(item.city, lang)}</Text>
-        {item.distanceMeters !== undefined && (
+        {isHere ? (
+          <View style={s.destDist}>
+            <Navigation size={9} color={C.goldBright} strokeWidth={2.5} />
+            <Text style={s.destDistText}>מיקומך</Text>
+          </View>
+        ) : item.distanceMeters !== undefined && (
           <View style={s.destDist}>
             <Navigation size={9} color={C.goldBright} strokeWidth={2.5} />
             <Text style={s.destDistText}>{fmt(Number(item.distanceMeters))}</Text>

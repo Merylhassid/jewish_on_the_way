@@ -4,7 +4,7 @@
  * Host: create offer + manage received requests
  */
 import { router, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -23,10 +23,24 @@ import {
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useTranslation } from 'react-i18next';
+import { Calendar, ChevronRight, Home, Users, Search, MessageCircle } from 'lucide-react-native';
 import client from '@/src/api/client';
 import SwipeableSheet from '@/src/components/SwipeableSheet';
+import { C } from '@/constants/theme';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+
+interface Need {
+  id: number;
+  arrivalDate: string;
+  departureDate: string;
+  guestsCount: number;
+  withChildren: boolean;
+  forShabbat: boolean;
+  notes: string | null;
+  isOpen: boolean;
+  guest: { id: number; firstName: string } | null;
+}
 
 interface Offer {
   id: number;
@@ -38,6 +52,118 @@ interface Offer {
   kashrutLevel: string | null;
   notes: string | null;
   host: { id: number; firstName: string } | null;
+}
+
+// ─── Post a Need Modal ────────────────────────────────────────────────────────
+
+function PostNeedModal({ destinationId, onClose, onPosted }: { destinationId: number; onClose: () => void; onPosted: () => void }) {
+  const { t } = useTranslation();
+  const [arrivalObj, setArrivalObj]     = useState(new Date());
+  const [departureObj, setDepartureObj] = useState(() => { const d = new Date(); d.setDate(d.getDate() + 1); return d; });
+  const [showArr, setShowArr]           = useState(false);
+  const [showDep, setShowDep]           = useState(false);
+  const [guests, setGuests]             = useState('1');
+  const [shabbat, setShabbat]           = useState(false);
+  const [children, setChildren]         = useState(false);
+  const [notes, setNotes]               = useState('');
+  const [loading, setLoading]           = useState(false);
+
+  const arrival   = arrivalObj.toISOString().split('T')[0];
+  const departure = departureObj.toISOString().split('T')[0];
+
+  const submit = async () => {
+    try {
+      setLoading(true);
+      await client.post('/hosting/needs', {
+        destinationId,
+        arrivalDate: arrival,
+        departureDate: departure,
+        guestsCount: parseInt(guests, 10) || 1,
+        forShabbat: shabbat,
+        withChildren: children,
+        notes: notes.trim() || undefined,
+      });
+      Alert.alert('Posted!', 'Your hosting request is visible to all hosts. You\'ll be notified when someone responds.');
+      onPosted();
+      onClose();
+    } catch (err: any) {
+      Alert.alert('Error', err?.response?.data?.message ?? 'Failed to post');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <SwipeableSheet visible onClose={onClose}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={styles.sheet}>
+          <View style={styles.sheetHeader}>
+            <Text style={styles.sheetTitle}>🙋 Post a Hosting Need</Text>
+            <Pressable onPress={onClose} hitSlop={12}><Text style={styles.closeBtn}>✕</Text></Pressable>
+          </View>
+          <Text style={{ fontSize: 13, color: '#666', marginBottom: 16 }}>
+            No available hosts? Post your need and hosts will reach out to you.
+          </Text>
+
+          <Text style={styles.label}>{t('hosting.arrivalDate')}</Text>
+          {Platform.OS === 'web' ? (
+            <View style={styles.pickerBtn}>
+              {/* @ts-ignore */}
+              <input type="date" lang="en" value={arrival} min={new Date().toISOString().split('T')[0]}
+                onChange={(e: any) => { if (e.target.value) setArrivalObj(new Date(e.target.value)); }}
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+            </View>
+          ) : (
+            <>
+              <Pressable style={styles.pickerBtn} onPress={() => setShowArr(true)}>
+                <Text style={styles.pickerBtnText}>📅  {arrival}</Text>
+              </Pressable>
+              {showArr && <DateTimePicker value={arrivalObj} mode="date" minimumDate={new Date()}
+                onChange={(_, d) => { setShowArr(false); if (d) setArrivalObj(d); }} />}
+            </>
+          )}
+
+          <Text style={styles.label}>{t('hosting.departureDate')}</Text>
+          {Platform.OS === 'web' ? (
+            <View style={styles.pickerBtn}>
+              {/* @ts-ignore */}
+              <input type="date" lang="en" value={departure} min={arrival}
+                onChange={(e: any) => { if (e.target.value) setDepartureObj(new Date(e.target.value)); }}
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', outline: 'none', width: '100%', cursor: 'pointer' }} />
+            </View>
+          ) : (
+            <>
+              <Pressable style={styles.pickerBtn} onPress={() => setShowDep(true)}>
+                <Text style={styles.pickerBtnText}>📅  {departure}</Text>
+              </Pressable>
+              {showDep && <DateTimePicker value={departureObj} mode="date" minimumDate={arrivalObj}
+                onChange={(_, d) => { setShowDep(false); if (d) setDepartureObj(d); }} />}
+            </>
+          )}
+
+          <Text style={styles.label}>{t('hosting.numberOfGuests')}</Text>
+          <TextInput style={styles.input} value={guests} onChangeText={setGuests} keyboardType="number-pad" />
+
+          <View style={styles.toggleRow}>
+            <Text style={styles.toggleLabel}>{t('hosting.forShabbat')}</Text>
+            <Switch value={shabbat} onValueChange={setShabbat} trackColor={{ true: C.navy }} />
+          </View>
+          <View style={styles.toggleRow}>
+            <Text style={styles.toggleLabel}>{t('hosting.withChildren')}</Text>
+            <Switch value={children} onValueChange={setChildren} trackColor={{ true: C.navy }} />
+          </View>
+
+          <Text style={styles.label}>Notes (optional)</Text>
+          <TextInput style={[styles.input, { height: 60 }]} value={notes} onChangeText={setNotes}
+            placeholder="Any special requirements..." placeholderTextColor="#999" multiline />
+
+          <TouchableOpacity style={styles.searchBtn} onPress={submit} disabled={loading}>
+            {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.searchBtnText}>Post Request</Text>}
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </SwipeableSheet>
+  );
 }
 
 // ─── Guest search form + results ─────────────────────────────────────────────
@@ -54,6 +180,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
   const [offers, setOffers]               = useState<Offer[] | null>(null);
   const [loading, setLoading]             = useState(false);
   const [requestOffer, setRequestOffer]   = useState<Offer | null>(null);
+  const [postNeedVisible, setPostNeedVisible] = useState(false);
 
   const arrivalDate   = arrivalObj.toISOString().split('T')[0];
   const departureDate = departureObj.toISOString().split('T')[0];
@@ -128,11 +255,11 @@ function GuestView({ destinationId }: { destinationId: number }) {
 
       <View style={styles.toggleRow}>
         <Text style={styles.toggleLabel}>{t('hosting.shabbatToggle')}</Text>
-        <Switch value={forShabbat} onValueChange={setForShabbat} trackColor={{ true: '#1a3a6b' }} />
+        <Switch value={forShabbat} onValueChange={setForShabbat} trackColor={{ true: C.navy }} />
       </View>
       <View style={styles.toggleRow}>
         <Text style={styles.toggleLabel}>{t('hosting.withChildren')}</Text>
-        <Switch value={withChildren} onValueChange={setWithChildren} trackColor={{ true: '#1a3a6b' }} />
+        <Switch value={withChildren} onValueChange={setWithChildren} trackColor={{ true: C.navy }} />
       </View>
 
       <TouchableOpacity style={styles.searchBtn} onPress={search} disabled={loading}>
@@ -144,12 +271,7 @@ function GuestView({ destinationId }: { destinationId: number }) {
           <Text style={styles.resultsTitle}>
             {offers.length} {offers.length !== 1 ? t('hosting.hostsAvailable') : t('hosting.hostAvailable')}
           </Text>
-          {offers.length === 0 ? (
-            <View style={styles.empty}>
-              <Text style={styles.emptyIcon}>🏠</Text>
-              <Text style={styles.emptyText}>{t('hosting.noHosts')}</Text>
-            </View>
-          ) : (
+          {offers.length === 0 ? null : (
             offers.map((offer) => (
               <View key={offer.id} style={styles.offerCard}>
                 <View style={styles.offerTop}>
@@ -174,6 +296,24 @@ function GuestView({ destinationId }: { destinationId: number }) {
         </>
       )}
 
+      {/* No results — offer to post a need */}
+      {offers !== null && offers.length === 0 && (
+        <View style={styles.empty}>
+          <Text style={styles.emptyIcon}>🏠</Text>
+          <Text style={styles.emptyText}>{t('hosting.noHosts')}</Text>
+          <TouchableOpacity style={[styles.searchBtn, { marginTop: 16 }]} onPress={() => setPostNeedVisible(true)}>
+            <Text style={styles.searchBtnText}>🙋 Post a Hosting Request</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* Always show "post a need" option after results */}
+      {offers !== null && offers.length > 0 && (
+        <TouchableOpacity style={styles.outlineBtn} onPress={() => setPostNeedVisible(true)}>
+          <Text style={styles.outlineBtnText}>{"🙋 Don't see a match? Post a request →"}</Text>
+        </TouchableOpacity>
+      )}
+
       {requestOffer && (
         <SendRequestModal
           offer={requestOffer}
@@ -183,6 +323,14 @@ function GuestView({ destinationId }: { destinationId: number }) {
           defaultGuests={guestsCount}
           defaultShabbat={forShabbat}
           defaultChildren={withChildren}
+        />
+      )}
+
+      {postNeedVisible && (
+        <PostNeedModal
+          destinationId={destinationId}
+          onClose={() => setPostNeedVisible(false)}
+          onPosted={() => {}}
         />
       )}
     </ScrollView>
@@ -290,11 +438,11 @@ function SendRequestModal({
 
           <View style={styles.toggleRow}>
             <Text style={styles.toggleLabel}>{t('hosting.forShabbat')}</Text>
-            <Switch value={shabbat} onValueChange={setShabbat} trackColor={{ true: '#1a3a6b' }} />
+            <Switch value={shabbat} onValueChange={setShabbat} trackColor={{ true: C.navy }} />
           </View>
           <View style={styles.toggleRow}>
             <Text style={styles.toggleLabel}>{t('hosting.withChildren')}</Text>
-            <Switch value={children} onValueChange={setChildren} trackColor={{ true: '#1a3a6b' }} />
+            <Switch value={children} onValueChange={setChildren} trackColor={{ true: C.navy }} />
           </View>
 
           <Text style={styles.label}>{t('hosting.specialRequests')}</Text>
@@ -314,6 +462,8 @@ function SendRequestModal({
 
 function HostView({ destinationId }: { destinationId: number }) {
   const { t } = useTranslation();
+  const [needs, setNeeds]                   = useState<Need[]>([]);
+  const [needsLoading, setNeedsLoading]     = useState(true);
   const [fromObj, setFromObj]               = useState(new Date());
   const [toObj, setToObj]                   = useState(() => { const d = new Date(); d.setDate(d.getDate() + 7); return d; });
   const [showFrom, setShowFrom]             = useState(false);
@@ -327,6 +477,39 @@ function HostView({ destinationId }: { destinationId: number }) {
   const [kashrut, setKashrut]               = useState('');
   const [notes, setNotes]                   = useState('');
   const [loading, setLoading]               = useState(false);
+
+  useEffect(() => {
+    setNeedsLoading(true);
+    client.get('/hosting/needs', { params: { destinationId } })
+      .then(res => setNeeds(res.data))
+      .catch(() => Alert.alert(t('common.error'), t('common.retry')))
+      .finally(() => setNeedsLoading(false));
+  }, [destinationId]);
+
+  const respondToNeed = (needId: number) => {
+    Alert.alert(
+      'Confirm hosting',
+      'You are about to commit to hosting these guests. Are you sure?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Yes, I can host',
+          onPress: async () => {
+            try {
+              const res = await client.post(`/hosting/needs/${needId}/respond`);
+              Alert.alert('Great!', 'The guest has been notified. You can now chat!', [
+                { text: 'Open Chat', onPress: () => router.push(`/hosting/chat/${res.data.id}` as any) },
+                { text: 'Later', style: 'cancel' },
+              ]);
+              setNeeds(prev => prev.filter(n => n.id !== needId));
+            } catch (err: any) {
+              Alert.alert('Error', err?.response?.data?.message ?? 'Failed to respond');
+            }
+          },
+        },
+      ],
+    );
+  };
 
   const createOffer = async () => {
     if (!availableFrom || !availableTo) { Alert.alert(t('common.error'), t('hosting.availableFrom')); return; }
@@ -353,6 +536,38 @@ function HostView({ destinationId }: { destinationId: number }) {
 
   return (
     <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
+
+      {/* Open guest needs for this destination */}
+      {needsLoading ? (
+        <ActivityIndicator size="small" color={C.gold} style={{ marginBottom: 24 }} />
+      ) : needs.length > 0 && (
+        <View style={{ marginBottom: 24 }}>
+          <Text style={styles.sectionTitle}>🙋 Guests Looking for Hosting ({needs.length})</Text>
+          {needs.map(n => (
+            <View key={n.id} style={styles.offerCard}>
+              <View style={styles.offerTop}>
+                <Text style={styles.offerHost}>👤 {n.guest?.firstName ?? 'Guest'}</Text>
+                <Text style={styles.offerGuests}>{n.guestsCount} {n.guestsCount !== 1 ? 'guests' : 'guest'}</Text>
+              </View>
+              <View style={styles.offerTags}>
+                {n.forShabbat  && <Tag text={t('hosting.shabbatTag')} />}
+                {n.withChildren && <Tag text={t('hosting.childrenOk')} />}
+              </View>
+              {n.notes && <Text style={styles.offerNotes}>{n.notes}</Text>}
+              <Text style={styles.offerDates}>📅 {n.arrivalDate} → {n.departureDate}</Text>
+              <TouchableOpacity style={styles.requestBtn} onPress={() => respondToNeed(n.id)}>
+                <Text style={styles.requestBtnText}>🏠 I can host them</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
+          <View style={styles.offerCard}>
+            <Text style={{ fontSize: 13, color: '#888', textAlign: 'center' }}>
+              Want to host more travelers? Create an offer below.
+            </Text>
+          </View>
+        </View>
+      )}
+
       <Text style={styles.sectionTitle}>{t('hosting.createOfferTitle')}</Text>
 
       <Text style={styles.label}>{t('hosting.availableFrom')}</Text>
@@ -403,11 +618,11 @@ function HostView({ destinationId }: { destinationId: number }) {
 
       <View style={styles.toggleRow}>
         <Text style={styles.toggleLabel}>{t('hosting.shabbatToggle')}</Text>
-        <Switch value={allowsShabbat} onValueChange={setAllowsShabbat} trackColor={{ true: '#1a3a6b' }} />
+        <Switch value={allowsShabbat} onValueChange={setAllowsShabbat} trackColor={{ true: C.navy }} />
       </View>
       <View style={styles.toggleRow}>
         <Text style={styles.toggleLabel}>{t('hosting.childrenWelcome')}</Text>
-        <Switch value={allowsChildren} onValueChange={setAllowsChildren} trackColor={{ true: '#1a3a6b' }} />
+        <Switch value={allowsChildren} onValueChange={setAllowsChildren} trackColor={{ true: C.navy }} />
       </View>
 
       <Text style={styles.label}>{t('hosting.kashrutOptional')}</Text>
@@ -431,7 +646,11 @@ function HostView({ destinationId }: { destinationId: number }) {
 
 // ─── Tag pill ─────────────────────────────────────────────────────────────────
 function Tag({ text }: { text: string }) {
-  return <View style={styles.tag}><Text style={styles.tagText}>{text}</Text></View>;
+  return (
+    <View style={styles.tag}>
+      <Text style={styles.tagText}>{text}</Text>
+    </View>
+  );
 }
 
 // ─── Main screen ─────────────────────────────────────────────────────────────
@@ -440,34 +659,53 @@ export default function HostingScreen() {
   const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
   const { t } = useTranslation();
   const [mode, setMode] = useState<'choose' | 'guest' | 'host'>('choose');
+  const cityName = city ? decodeURIComponent(city) : '';
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => (mode === 'choose' ? router.back() : setMode('choose'))}>
-          <Text style={styles.backText}>←</Text>
+        <Pressable
+          style={styles.backBtn}
+          onPress={() => (mode === 'choose' ? router.back() : setMode('choose'))}
+          hitSlop={12}
+        >
+          <ChevronRight size={20} color="#fff" strokeWidth={2.5} style={{ transform: [{ rotate: '180deg' }] }} />
         </Pressable>
-        <Text style={styles.headerTitle}>🏠 {t('hosting.title')}{city ? ` — ${city}` : ''}</Text>
+        <View>
+          <Text style={styles.eyebrow}>HOSTING</Text>
+          <Text style={styles.headerTitle}>{cityName || t('hosting.title')}</Text>
+        </View>
       </View>
 
       {mode === 'choose' && (
         <View style={styles.chooseBody}>
           <Text style={styles.chooseTitle}>{t('hosting.chooseTitle')}</Text>
 
-          <TouchableOpacity style={styles.modeCard} onPress={() => setMode('guest')}>
-            <Text style={styles.modeEmoji}>🧳</Text>
+          <TouchableOpacity style={styles.modeCard} onPress={() => setMode('guest')} activeOpacity={0.82}>
+            <View style={[styles.modeIconBox, { backgroundColor: C.goldFaint }]}>
+              <Search size={28} color={C.gold} strokeWidth={2} />
+            </View>
             <Text style={styles.modeLabel}>{t('hosting.lookingTitle')}</Text>
             <Text style={styles.modeSub}>{t('hosting.lookingDesc')}</Text>
+            <View style={styles.modeArrow}>
+              <ChevronRight size={18} color={C.textMuted} strokeWidth={2} />
+            </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.modeCard, styles.modeCardAlt]} onPress={() => setMode('host')}>
-            <Text style={styles.modeEmoji}>🏠</Text>
+          <TouchableOpacity style={styles.modeCard} onPress={() => setMode('host')} activeOpacity={0.82}>
+            <View style={[styles.modeIconBox, { backgroundColor: 'rgba(22,163,74,0.10)' }]}>
+              <Home size={28} color="#16A34A" strokeWidth={2} />
+            </View>
             <Text style={styles.modeLabel}>{t('hosting.hostTitle')}</Text>
             <Text style={styles.modeSub}>{t('hosting.hostDesc')}</Text>
+            <View style={styles.modeArrow}>
+              <ChevronRight size={18} color={C.textMuted} strokeWidth={2} />
+            </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.outlineBtn} onPress={() => router.push('/hosting/my-requests')}>
-            <Text style={styles.outlineBtnText}>{t('hosting.myRequests')} →</Text>
+          <TouchableOpacity style={styles.outlineBtn} onPress={() => router.push('/hosting/my-requests' as any)}>
+            <MessageCircle size={16} color={C.navy} strokeWidth={2} />
+            <Text style={styles.outlineBtnText}>{t('hosting.myRequests')}</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -479,49 +717,90 @@ export default function HostingScreen() {
 }
 
 const styles = StyleSheet.create({
-  container:      { flex: 1, backgroundColor: '#f0f4ff' },
-  header:         { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
-  backBtn:        { marginRight: 12 },
-  backText:       { fontSize: 24, color: '#fff' },
-  headerTitle:    { fontSize: 20, fontWeight: '700', color: '#fff' },
-  chooseBody:     { flex: 1, padding: 24, gap: 16 },
-  chooseTitle:    { fontSize: 18, fontWeight: '700', color: '#1a1a2e', marginBottom: 8 },
-  modeCard:       { backgroundColor: '#fff', borderRadius: 18, padding: 24, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 8, elevation: 2 },
-  modeCardAlt:    { backgroundColor: '#e8f4e8' },
-  modeEmoji:      { fontSize: 40, marginBottom: 8 },
-  modeLabel:      { fontSize: 18, fontWeight: '700', color: '#1a1a2e', marginBottom: 4 },
-  modeSub:        { fontSize: 14, color: '#666' },
-  body:           { padding: 20, gap: 4 },
-  sectionTitle:   { fontSize: 18, fontWeight: '700', color: '#1a3a6b', marginBottom: 16 },
-  label:          { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6, marginTop: 8 },
-  input:          { backgroundColor: '#fff', borderRadius: 12, padding: 14, fontSize: 15, borderWidth: 1, borderColor: '#dde3f0', color: '#1a1a2e', marginBottom: 4 },
-  toggleRow:      { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#f0f4ff' },
-  toggleLabel:    { fontSize: 15, color: '#333' },
-  searchBtn:      { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 20 },
-  searchBtnText:  { color: '#fff', fontSize: 16, fontWeight: '700' },
-  outlineBtn:     { borderRadius: 12, padding: 14, alignItems: 'center', marginTop: 10, borderWidth: 1, borderColor: '#1a3a6b' },
-  outlineBtnText: { color: '#1a3a6b', fontSize: 15, fontWeight: '600' },
-  resultsTitle:   { fontSize: 16, fontWeight: '700', color: '#1a1a2e', marginTop: 24, marginBottom: 12 },
-  offerCard:      { backgroundColor: '#fff', borderRadius: 16, padding: 16, marginBottom: 12, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
-  offerTop:       { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
-  offerHost:      { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
-  offerGuests:    { fontSize: 13, color: '#666' },
-  offerTags:      { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 8 },
-  offerNotes:     { fontSize: 13, color: '#555', marginBottom: 6, fontStyle: 'italic' },
-  offerDates:     { fontSize: 13, color: '#888', marginBottom: 10 },
-  requestBtn:     { backgroundColor: '#1a3a6b', borderRadius: 10, padding: 12, alignItems: 'center' },
-  requestBtnText: { color: '#fff', fontWeight: '700', fontSize: 14 },
-  tag:            { backgroundColor: '#e8eef8', borderRadius: 12, paddingHorizontal: 10, paddingVertical: 4 },
-  tagText:        { fontSize: 12, color: '#1a3a6b', fontWeight: '500' },
-  pickerBtn:      { backgroundColor: '#fff', borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#dde3f0', marginBottom: 4 },
-  pickerBtnText:  { fontSize: 15, color: '#1a1a2e', fontWeight: '500' },
-  empty:          { alignItems: 'center', paddingTop: 40 },
-  emptyIcon:      { fontSize: 48, marginBottom: 12 },
-  emptyText:      { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
-  overlay:        { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  sheet:          { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
-  sheetHeader:    { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-  sheetTitle:     { fontSize: 20, fontWeight: '700', color: '#1a3a6b' },
-  closeBtn:       { fontSize: 18, color: '#999' },
-  offerHostLabel: { fontSize: 15, color: '#555', marginBottom: 16 },
+  container:    { flex: 1, backgroundColor: C.bg },
+
+  header: {
+    backgroundColor: C.navy,
+    paddingTop: Platform.OS === 'ios' ? 56 : 38,
+    paddingBottom: 20, paddingHorizontal: 20,
+    flexDirection: 'row', alignItems: 'flex-end', gap: 16,
+  },
+  backBtn: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+    justifyContent: 'center', alignItems: 'center', marginBottom: 2,
+  },
+  eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5, marginBottom: 2 },
+  headerTitle: { fontFamily: 'Inter-Black', fontSize: 26, color: '#fff', letterSpacing: -0.5 },
+
+  // ── Choose screen ──
+  chooseBody:  { flex: 1, padding: 20, gap: 14, paddingTop: 28 },
+  chooseTitle: { fontFamily: 'Inter-Bold', fontSize: 14, color: C.textMuted, letterSpacing: 1.5, textTransform: 'uppercase', marginBottom: 4 },
+
+  modeCard: {
+    backgroundColor: '#fff', borderRadius: 20, padding: 20,
+    shadowColor: C.navy, shadowOpacity: 0.06, shadowRadius: 12,
+    shadowOffset: { width: 0, height: 3 }, elevation: 3,
+  },
+  modeIconBox:  { width: 52, height: 52, borderRadius: 14, justifyContent: 'center', alignItems: 'center', marginBottom: 14 },
+  modeLabel:    { fontFamily: 'Inter-Bold', fontSize: 18, color: C.textPrimary, marginBottom: 4 },
+  modeSub:      { fontFamily: 'Inter-Regular', fontSize: 14, color: C.textSecondary, lineHeight: 20 },
+  modeArrow:    { position: 'absolute', top: 20, right: 16 },
+
+  outlineBtn: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+    borderRadius: 14, paddingVertical: 14,
+    borderWidth: 1.5, borderColor: C.navy + '30', backgroundColor: '#fff',
+  },
+  outlineBtnText: { fontFamily: 'Inter-SemiBold', color: C.navy, fontSize: 15 },
+
+  // ── Shared form styles ──
+  body:         { padding: 20, gap: 4 },
+  sectionTitle: { fontFamily: 'Inter-Bold', fontSize: 16, color: C.textPrimary, marginBottom: 16 },
+  label:        { fontFamily: 'Inter-SemiBold', fontSize: 12, color: C.textSecondary, letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 6, marginTop: 10 },
+  input: {
+    backgroundColor: '#fff', borderRadius: 12, padding: 14,
+    fontFamily: 'Inter-Regular', fontSize: 15, borderWidth: 1.5,
+    borderColor: '#E5E7EB', color: C.textPrimary, marginBottom: 4,
+  },
+  toggleRow:   { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#F3F4F6' },
+  toggleLabel: { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary },
+
+  searchBtn:     { backgroundColor: C.navy, borderRadius: 14, padding: 16, alignItems: 'center', marginTop: 20 },
+  searchBtnText: { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 16 },
+
+  resultsTitle: { fontFamily: 'Inter-Bold', fontSize: 15, color: C.textPrimary, marginTop: 24, marginBottom: 12 },
+
+  // ── Offer cards ──
+  offerCard: {
+    backgroundColor: '#fff', borderRadius: 16, padding: 16, marginBottom: 12,
+    shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 }, elevation: 2,
+  },
+  offerTop:    { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8, alignItems: 'center' },
+  offerHost:   { fontFamily: 'Inter-Bold', fontSize: 15, color: C.textPrimary },
+  offerGuests: { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textSecondary },
+  offerTags:   { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 8 },
+  offerNotes:  { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, marginBottom: 6, fontStyle: 'italic' },
+  offerDates:  { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, marginBottom: 10 },
+
+  requestBtn:     { backgroundColor: C.navy, borderRadius: 10, padding: 12, alignItems: 'center' },
+  requestBtnText: { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 14 },
+
+  tag:     { backgroundColor: C.goldFaint, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 4, borderWidth: 1, borderColor: C.goldBorder },
+  tagText: { fontFamily: 'Inter-SemiBold', fontSize: 11, color: C.gold },
+
+  pickerBtn:     { backgroundColor: '#fff', borderRadius: 12, padding: 14, borderWidth: 1.5, borderColor: '#E5E7EB', marginBottom: 4 },
+  pickerBtnText: { fontFamily: 'Inter-Medium', fontSize: 15, color: C.textPrimary },
+
+  empty:     { alignItems: 'center', paddingTop: 40, gap: 10 },
+  emptyIcon: { fontSize: 48, marginBottom: 4 },
+  emptyText: { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textMuted, textAlign: 'center', lineHeight: 22, paddingHorizontal: 32 },
+
+  sheet:       { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
+  sheetHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
+  sheetTitle:  { fontFamily: 'Inter-Bold', fontSize: 20, color: C.textPrimary },
+  closeBtn:    { fontFamily: 'Inter-Regular', fontSize: 18, color: C.textMuted },
+  offerHostLabel: { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textSecondary, marginBottom: 16 },
 });

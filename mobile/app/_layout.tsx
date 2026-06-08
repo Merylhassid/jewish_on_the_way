@@ -5,6 +5,7 @@ import 'react-native-reanimated';
 import '@/src/i18n';
 import { useEffect, useState } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import * as Notifications from 'expo-notifications';
 import NetInfo from '@react-native-community/netinfo';
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -72,6 +73,17 @@ export default function RootLayout() {
   useEffect(() => {
     const unsub = NetInfo.addEventListener(state => setIsOffline(!state.isConnected));
     return unsub;
+  }, []);
+
+  useEffect(() => {
+    if (Platform.OS === 'web') return;
+    const sub = Notifications.addNotificationResponseReceivedListener(response => {
+      const data = response.notification.request.content.data as any;
+      if (data?.requestId) {
+        router.push('/hosting/my-requests');
+      }
+    });
+    return () => sub.remove();
   }, []);
 
   if (!fontsLoaded) return null;

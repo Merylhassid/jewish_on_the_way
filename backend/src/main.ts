@@ -56,15 +56,16 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  // Swagger API docs — http://host:port/api
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle('Jewish On The Way — API')
-    .setDescription('Backend API for kosher restaurants, synagogues, minyans and Shabbat hosting worldwide')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, document);
+  if (!isProduction) {
+    const swaggerConfig = new DocumentBuilder()
+      .setTitle('Jewish On The Way — API')
+      .setDescription('Backend API for kosher restaurants, synagogues, minyans and Shabbat hosting worldwide')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
+    SwaggerModule.setup('api', app, document);
+  }
 
   const port = Number(process.env.PORT) || 3001;
   await app.listen(port, '0.0.0.0');

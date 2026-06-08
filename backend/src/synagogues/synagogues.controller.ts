@@ -11,25 +11,30 @@ export class SynagoguesController {
    */
   @Get()
   async findByDestination(
-    @Query('destinationId') destinationIdStr: string,
-    @Query('denomination')  denomination?: string,
-    @Query('offset') offsetStr?: string,
-    @Query('lat') latStr?: string,
-    @Query('lng') lngStr?: string,
+    @Query('destinationId')       destinationIdStr?: string,
+    @Query('parentDestinationId') parentDestinationIdStr?: string,
+    @Query('denomination')        denomination?: string,
+    @Query('offset')              offsetStr?: string,
+    @Query('lat')                 latStr?: string,
+    @Query('lng')                 lngStr?: string,
   ) {
-    if (!destinationIdStr) {
-      throw new BadRequestException('destinationId query parameter is required');
+    const offset = offsetStr ? parseInt(offsetStr, 10) : 0;
+    const lat    = latStr ? parseFloat(latStr)  : undefined;
+    const lng    = lngStr ? parseFloat(lngStr)  : undefined;
+
+    if (parentDestinationIdStr) {
+      const parentId = parseInt(parentDestinationIdStr, 10);
+      if (isNaN(parentId)) throw new BadRequestException('parentDestinationId must be a valid integer');
+      return this.synagoguesService.findByParentDestination(parentId, denomination, offset, lat, lng);
     }
 
+    if (!destinationIdStr) {
+      throw new BadRequestException('destinationId or parentDestinationId is required');
+    }
     const destinationId = parseInt(destinationIdStr, 10);
     if (isNaN(destinationId)) {
       throw new BadRequestException('destinationId must be a valid integer');
     }
-
-    const offset = offsetStr ? parseInt(offsetStr, 10) : 0;
-    const lat = latStr ? parseFloat(latStr) : undefined;
-    const lng = lngStr ? parseFloat(lngStr) : undefined;
-
     return this.synagoguesService.findByDestination(destinationId, denomination, offset, lat, lng);
   }
 

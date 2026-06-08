@@ -112,6 +112,11 @@ export class UsersService {
 
     return this.toSafeUser(updatedUser);
   }
+  async savePushToken(userId: number, token: string) {
+    await this.usersRepository.update({ id: userId }, { pushToken: token });
+    return { ok: true };
+  }
+
   async removeAvatar(userId: number) {
     const user = await this.usersRepository.findOne({
       where: { id: userId },

@@ -12,7 +12,7 @@ import { Server, Socket } from 'socket.io';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Logger } from '@nestjs/common';
+import { Logger, OnModuleDestroy } from '@nestjs/common';
 import { HostingChatMessage } from './entities/hosting-chat-message.entity';
 import { HostingRequest } from './entities/hosting-request.entity';
 import { AuditService } from '../audit/audit.service';
@@ -20,6 +20,8 @@ import { AuditService } from '../audit/audit.service';
 // req 5.4 extended to hosting chat — 5 msg / 10 s per user
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10_000;
+const RATE_LIMIT_STALE_MS = RATE_LIMIT_WINDOW_MS * 2;
+const CLEANUP_INTERVAL_MS = 5 * 60_000;
 const CORS_ORIGIN =
   process.env.NODE_ENV === 'production'
     ? (process.env.CORS_ORIGINS ?? '')
@@ -32,15 +34,16 @@ const CORS_ORIGIN =
   cors: { origin: CORS_ORIGIN },
   namespace: '/hosting-chat',
 })
-export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
+export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconnect, OnModuleDestroy {
   @WebSocketServer()
   server: Server;
 
   private readonly logger = new Logger(HostingChatGateway.name);
   private readonly msgRateMap = new Map<
     number,
-    { count: number; windowStart: number }
+    { count: number; windowStart: number; lastSeen: number }
   >();
+  private cleanupInterval: ReturnType<typeof setInterval>;
 
   constructor(
     private jwtService: JwtService,
@@ -49,7 +52,18 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     @InjectRepository(HostingRequest)
     private requestsRepo: Repository<HostingRequest>,
     private audit: AuditService,
-  ) {}
+  ) {
+    this.cleanupInterval = setInterval(() => {
+      const cutoff = Date.now() - RATE_LIMIT_STALE_MS;
+      for (const [userId, entry] of this.msgRateMap) {
+        if (entry.lastSeen < cutoff) this.msgRateMap.delete(userId);
+      }
+    }, CLEANUP_INTERVAL_MS);
+  }
+
+  onModuleDestroy() {
+    clearInterval(this.cleanupInterval);
+  }
 
   async handleConnection(client: Socket) {
     try {
@@ -89,7 +103,9 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     }
 
     const isParticipant =
-      request.user?.id === userId || request.offer?.user?.id === userId;
+      request.user?.id === userId ||
+      request.offer?.user?.id === userId ||
+      request.host_id === userId;
     if (!isParticipant)
       throw new WsException('Not a participant of this request');
 
@@ -99,6 +115,7 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     // Send last 50 messages as history
     const history = await this.messagesRepo.find({
       where: { request: { id: data.requestId } },
+      relations: ['user'],
       order: { createdAt: 'ASC' },
       take: 50,
     });
@@ -120,12 +137,13 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
 
     // Rate limit
     const now = Date.now();
-    const rate = this.msgRateMap.get(userId) ?? { count: 0, windowStart: now };
+    const rate = this.msgRateMap.get(userId) ?? { count: 0, windowStart: now, lastSeen: now };
     if (now - rate.windowStart > RATE_LIMIT_WINDOW_MS) {
       rate.count = 0;
       rate.windowStart = now;
     }
     rate.count++;
+    rate.lastSeen = now;
     this.msgRateMap.set(userId, rate);
     if (rate.count > RATE_LIMIT_MAX)
       throw new WsException('Too many messages — slow down');
@@ -143,7 +161,9 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
       throw new WsException('Chat unavailable');
 
     const isParticipant =
-      request.user?.id === userId || request.offer?.user?.id === userId;
+      request.user?.id === userId ||
+      request.offer?.user?.id === userId ||
+      request.host_id === userId;
     if (!isParticipant) throw new WsException('Not a participant');
 
     const msg = this.messagesRepo.create({
@@ -156,6 +176,7 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     // Reload to get user relation
     const full = await this.messagesRepo.findOne({
       where: { id: saved.id },
+      relations: ['user'],
     });
 
     const formatted = this.fmt(full!);

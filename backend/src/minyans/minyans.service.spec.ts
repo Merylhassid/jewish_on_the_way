@@ -12,6 +12,7 @@ import { MinyanRegistration } from '../minyan-registration.entity';
 import { Destination } from '../destination.entity';
 import { User } from '../users/user.entity';
 import { AuditService } from '../audit/audit.service';
+import { NotificationsService } from '../notifications/notifications.service';
 
 describe('MinyansService', () => {
   let service: MinyansService;
@@ -33,8 +34,9 @@ describe('MinyansService', () => {
     delete: jest.Mock;
   };
   let destinationsRepo: { findOne: jest.Mock };
-  let usersRepo: { findOneOrFail: jest.Mock };
+  let usersRepo: { findOneOrFail: jest.Mock; findOne: jest.Mock };
   let audit: { log: jest.Mock };
+  let notifications: { sendPush: jest.Mock };
 
   const FUTURE_DATE = '2099-12-31';
   const PAST_DATE = '2000-01-01';
@@ -92,8 +94,9 @@ describe('MinyansService', () => {
       delete: jest.fn().mockResolvedValue(undefined),
     };
     destinationsRepo = { findOne: jest.fn() };
-    usersRepo = { findOneOrFail: jest.fn() };
+    usersRepo = { findOneOrFail: jest.fn(), findOne: jest.fn().mockResolvedValue(null) };
     audit = { log: jest.fn() };
+    notifications = { sendPush: jest.fn().mockResolvedValue(undefined) };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -103,6 +106,7 @@ describe('MinyansService', () => {
         { provide: getRepositoryToken(Destination), useValue: destinationsRepo },
         { provide: getRepositoryToken(User), useValue: usersRepo },
         { provide: AuditService, useValue: audit },
+        { provide: NotificationsService, useValue: notifications },
       ],
     }).compile();
 

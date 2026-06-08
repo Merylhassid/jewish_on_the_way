@@ -90,4 +90,10 @@ export class UsersController {
   async deleteAvatar(@Request() req) {
     return this.usersService.removeAvatar(req.user.sub);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Put('me/push-token')
+  async savePushToken(@Request() req, @Body() body: { token: string }) {
+    return this.usersService.savePushToken(req.user.sub, body.token);
+  }
 }

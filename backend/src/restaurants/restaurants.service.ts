@@ -1,10 +1,12 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { Restaurant } from '../restaurant.entity';
 import { Destination } from '../destination.entity';
 import { GeocodingService } from '../geocoding/geocoding.service';
 import axios from 'axios';
+import { FOOD_RELATIONS, NAME_TO_TAG, lookupFoodRelation } from './food-relations';
+import { CITY_TRANSLATE, DESTINATION_ALIASES } from '../ai/destination-index.service';
 
 export interface RestaurantFilters {
   type?: string;
@@ -44,6 +46,73 @@ interface RestaurantClassificationResult {
   strongMeat: boolean;
   strongDairy: boolean;
   strongPareve: boolean;
+}
+
+function normalizeRestaurantSearchText(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[׳']/g, '')
+    .replace(/[״"]/g, '')
+    .replace(/[-_]/g, ' ')
+    .replace(/[.,;:!?()[\]{}]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function addHebrewPrefixVariants(term: string): string[] {
+  if (!/[א-ת]/.test(term)) return [term];
+  return [term, `ב${term}`, `ל${term}`, `מ${term}`];
+}
+
+function buildDestinationSearchTerms(destination?: Destination | null): string[] {
+  if (!destination) return [];
+
+  const canonical = new Set<string>();
+  for (const value of [destination.city, destination.name, destination.country]) {
+    const normalized = normalizeRestaurantSearchText(value ?? '');
+    if (normalized.length >= 3) canonical.add(normalized);
+  }
+
+  const terms = new Set<string>(canonical);
+
+  for (const [hebrew, english] of Object.entries(CITY_TRANSLATE)) {
+    if (canonical.has(normalizeRestaurantSearchText(english))) {
+      for (const variant of addHebrewPrefixVariants(normalizeRestaurantSearchText(hebrew))) {
+        terms.add(variant);
+      }
+    }
+  }
+
+  for (const [english, aliases] of Object.entries(DESTINATION_ALIASES)) {
+    if (canonical.has(normalizeRestaurantSearchText(english))) {
+      for (const alias of aliases) {
+        for (const variant of addHebrewPrefixVariants(normalizeRestaurantSearchText(alias))) {
+          terms.add(variant);
+        }
+      }
+    }
+  }
+
+  return [...terms].sort((a, b) => b.length - a.length);
+}
+
+function stripDestinationTerms(keyword: string | undefined, destination?: Destination | null): string | undefined {
+  if (!keyword) return undefined;
+
+  let cleaned = normalizeRestaurantSearchText(keyword);
+  for (const term of buildDestinationSearchTerms(destination)) {
+    cleaned = cleaned.replace(new RegExp(`(^|\\s)${escapeRegExp(term)}(?=\\s|$)`, 'g'), ' ');
+  }
+
+  cleaned = cleaned
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return cleaned.length > 1 ? cleaned : undefined;
 }
 
 @Injectable()
@@ -109,7 +178,6 @@ export class RestaurantsService {
     }
 
     // Without distance: findAndCount (q filter server-side via ILike)
-    const { ILike } = await import('typeorm');
     const where: any = { destination: { id: destinationId } };
     if (type) where.restaurantType = type;
     if (kashrut) where.kashrutLevel = kashrut;
@@ -589,55 +657,63 @@ export class RestaurantsService {
   // Reclassify all existing restaurants in the database
   async reclassifyExistingRestaurants() {
     const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-    const restaurants = await this.restaurantsRepo.find();
+    const BATCH_SIZE = 100;
+    let skip = 0;
     let updatedCount = 0;
+    let totalProcessed = 0;
 
-    this.logger.log(
-      `🔄 Starting reclassification for ${restaurants.length} existing restaurants...`,
-    );
+    this.logger.log('🔄 Starting reclassification (batched)...');
 
-    for (const restaurant of restaurants) {
-      try {
-        const place = {
-          name: restaurant.name,
-          formatted_address: restaurant.address,
-          types: [],
-        };
+    while (true) {
+      const batch = await this.restaurantsRepo.find({ take: BATCH_SIZE, skip });
+      if (batch.length === 0) break;
 
-        const details =
-          restaurant.googlePlaceId && apiKey
-            ? await this.getPlaceDetails(restaurant.googlePlaceId, apiKey)
-            : {};
+      for (const restaurant of batch) {
+        try {
+          const place = {
+            name: restaurant.name,
+            formatted_address: restaurant.address,
+            types: [],
+          };
 
-        const classification = this.classifyRestaurantType(place, details);
-        const newType = classification.type ?? null;
-        const newConfidence = classification.confidence;
+          const details =
+            restaurant.googlePlaceId && apiKey
+              ? await this.getPlaceDetails(restaurant.googlePlaceId, apiKey)
+              : {};
 
-        const shouldUpdate =
-          restaurant.restaurantType !== newType ||
-          restaurant.restaurantTypeConfidence !== newConfidence;
+          const classification = this.classifyRestaurantType(place, details);
+          const newType = classification.type ?? null;
+          const newConfidence = classification.confidence;
 
-        if (shouldUpdate) {
-          restaurant.restaurantType = newType;
-          restaurant.restaurantTypeConfidence = newConfidence;
-          await this.restaurantsRepo.save(restaurant);
-          updatedCount++;
+          const shouldUpdate =
+            restaurant.restaurantType !== newType ||
+            restaurant.restaurantTypeConfidence !== newConfidence;
+
+          if (shouldUpdate) {
+            restaurant.restaurantType = newType;
+            restaurant.restaurantTypeConfidence = newConfidence;
+            await this.restaurantsRepo.save(restaurant);
+            updatedCount++;
+          }
+
+          this.logger.log(
+            `      🔄 Reclassified "${restaurant.name}": ${newType || 'unknown'} (confidence: ${newConfidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
+          );
+        } catch (error) {
+          this.logger.error(
+            `      ❌ Failed to reclassify "${restaurant.name}":`,
+            error.message,
+          );
         }
-
-        this.logger.log(
-          `      🔄 Reclassified "${restaurant.name}": ${newType || 'unknown'} (confidence: ${newConfidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
-        );
-      } catch (error) {
-        this.logger.error(
-          `      ❌ Failed to reclassify "${restaurant.name}":`,
-          error.message,
-        );
       }
+
+      totalProcessed += batch.length;
+      skip += BATCH_SIZE;
     }
 
     const summary = {
-      message: `✅ Reclassification complete: ${updatedCount} restaurants updated out of ${restaurants.length}`,
-      totalRestaurants: restaurants.length,
+      message: `✅ Reclassification complete: ${updatedCount} restaurants updated out of ${totalProcessed}`,
+      totalRestaurants: totalProcessed,
       updated: updatedCount,
     };
 
@@ -928,6 +1004,182 @@ export class RestaurantsService {
       strongDairy: strongDairyMatches.length > 0,
       strongPareve: strongPareveMatches.length > 0,
     };
+  }
+
+  // ── Smart search — tiered (tag → ILIKE → broad fallback) ──────────────────
+
+  async smartSearch(
+    keyword: string | undefined,
+    classifierType: string | undefined,
+    kashrut: string | undefined,
+    destinationId: number,
+    lat?: number,
+    lng?: number,
+    originalQuery?: string,
+  ): Promise<{
+    data: any[];
+    total: number;
+    matchTier: 1 | 2 | 3 | 4;
+    matchedVia: string[];
+    message: string | null;
+  }> {
+    const destination = await this.destinationsRepo.findOne({
+      where: { id: destinationId },
+      select: ['id', 'name', 'city', 'country'],
+    });
+    const cleanedKeyword = stripDestinationTerms(keyword, destination);
+
+    // Use keyword first; fall back to original query so Hebrew food terms like "פיצה"
+    // still hit the food-relations table even when the classifier strips the keyword
+    const lookupTerm = cleanedKeyword ?? stripDestinationTerms(originalQuery, destination);
+    const relation = lookupTerm ? lookupFoodRelation(lookupTerm) : undefined;
+    const searchTags = relation?.searchTags ?? [];
+    const fallbackType = relation?.fallbackType;
+
+    // Tier 1: restaurant tags overlap with food-relation tags
+    if (searchTags.length > 0) {
+      const result = await this.searchByTags(searchTags, kashrut, destinationId, lat, lng);
+      if (result.data.length > 0) {
+        const tagDisplay = searchTags.slice(0, 2).join('/');
+        // Show "No X found" banner only for partial/unusual food terms (not exact FOOD_RELATIONS keys)
+        const kwLower = cleanedKeyword?.toLowerCase().trim() ?? '';
+        const exactRelation = kwLower ? FOOD_RELATIONS[kwLower] !== undefined : false;
+        const tagMatch = searchTags.some(t => t === kwLower || kwLower.includes(t));
+        const isDirectMatch = !cleanedKeyword || exactRelation || tagMatch;
+        return {
+          ...result,
+          matchTier: 1,
+          matchedVia: searchTags,
+          message: isDirectMatch ? null : `No "${cleanedKeyword}" restaurants found — showing ${tagDisplay} options`,
+        };
+      }
+    }
+
+    // Tier 2: name ILIKE on keyword
+    if (cleanedKeyword) {
+      const result = await this.findByDestination(destinationId, { q: cleanedKeyword, kashrut, lat, lng });
+      if (result.data.length > 0) {
+        return {
+          ...result,
+          matchTier: 2,
+          matchedVia: [cleanedKeyword],
+          message: `Restaurants matching "${cleanedKeyword}"`,
+        };
+      }
+    }
+
+    // Tier 3: drop keyword — use classifier type or fallback type + kashrut
+    const effectiveType = classifierType ?? fallbackType;
+    const result3 = await this.findByDestination(destinationId, { type: effectiveType, kashrut, lat, lng });
+    if (result3.data.length > 0) {
+      const typeLabel = effectiveType ?? (kashrut ? `${kashrut} kosher` : 'kosher');
+      return {
+        ...result3,
+        matchTier: 3,
+        matchedVia: [],
+        message: cleanedKeyword
+          ? `No "${cleanedKeyword}" restaurants found — showing ${typeLabel} options`
+          : null,
+      };
+    }
+
+    // Tier 4: nothing
+    return {
+      data: [],
+      total: 0,
+      matchTier: 4,
+      matchedVia: [],
+      message: cleanedKeyword
+        ? `No results for "${cleanedKeyword}". Try a different search.`
+        : 'No restaurants found.',
+    };
+  }
+
+  private async searchByTags(
+    tags: string[],
+    kashrut: string | undefined,
+    destinationId: number,
+    lat?: number,
+    lng?: number,
+  ): Promise<{ data: any[]; total: number }> {
+    // Count (no GPS needed)
+    const cParams: any[] = [destinationId, tags];
+    let cWhere = `r."destinationId" = $1 AND r.tags && $2::text[]`;
+    if (kashrut) { cParams.push(kashrut); cWhere += ` AND r.kashrut_level = $${cParams.length}`; }
+
+    const countResult = await this.restaurantsRepo.query(
+      `SELECT COUNT(*) FROM restaurants r WHERE ${cWhere}`, cParams,
+    );
+    const total = parseInt(countResult[0].count, 10);
+    if (total === 0) return { data: [], total: 0 };
+
+    // Data with optional GPS ordering
+    if (lat !== undefined && lng !== undefined) {
+      const dParams: any[] = [lng, lat, destinationId, tags];
+      let dWhere = `r."destinationId" = $3 AND r.tags && $4::text[]`;
+      if (kashrut) { dParams.push(kashrut); dWhere += ` AND r.kashrut_level = $${dParams.length}`; }
+
+      const data = await this.restaurantsRepo.query(
+        `SELECT r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
+                r.address, r.opening_hours AS "openingHours",
+                ST_Y(r.location::geometry) AS lat, ST_X(r.location::geometry) AS lng,
+                ROUND(ST_Distance(r.location::geography,
+                  ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
+         FROM restaurants r WHERE ${dWhere}
+         ORDER BY "distanceMeters" ASC LIMIT 50`,
+        dParams,
+      );
+      return { data, total };
+    }
+
+    const dParams: any[] = [destinationId, tags];
+    let dWhere = `r."destinationId" = $1 AND r.tags && $2::text[]`;
+    if (kashrut) { dParams.push(kashrut); dWhere += ` AND r.kashrut_level = $${dParams.length}`; }
+
+    const data = await this.restaurantsRepo.query(
+      `SELECT r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
+              r.address, r.opening_hours AS "openingHours"
+       FROM restaurants r WHERE ${dWhere}
+       ORDER BY r.name ASC LIMIT 50`,
+      dParams,
+    );
+    return { data, total };
+  }
+
+  // One-time admin operation: derive tags from restaurant name + category
+  async seedTags(): Promise<{ updated: number; total: number }> {
+    const BATCH = 100;
+    let skip = 0, updated = 0, total = 0;
+
+    while (true) {
+      const batch = await this.restaurantsRepo.find({
+        select: { id: true, name: true, category: true, tags: true },
+        take: BATCH,
+        skip,
+      });
+      if (!batch.length) break;
+
+      for (const r of batch) {
+        const text = `${r.name ?? ''} ${r.category ?? ''}`;
+        const existingTags = Array.isArray((r as any).tags) ? (r as any).tags : [];
+        const tags = new Set<string>(existingTags);
+        const before = [...tags].sort().join('|');
+        for (const [regex, tag] of NAME_TO_TAG) {
+          if (regex.test(text)) tags.add(tag);
+        }
+        const nextTags = [...tags].sort();
+        if (nextTags.length > 0 && nextTags.join('|') !== before) {
+          await this.restaurantsRepo.update(r.id, { tags: nextTags } as any);
+          updated++;
+        }
+      }
+
+      total += batch.length;
+      skip += BATCH;
+    }
+
+    this.logger.log(`seedTags: ${updated} updated out of ${total}`);
+    return { updated, total };
   }
 
   // Batch import restaurants for specified destinations

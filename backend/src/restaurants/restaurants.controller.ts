@@ -20,16 +20,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { IsNull, Repository } from 'typeorm';
 import { SearchFeedback } from '../ai/search-feedback.entity';
 import { Restaurant } from '../restaurant.entity';
-
-class RecordFeedbackDto {
-  query!: string;
-  detectedType?: string;
-  detectedKashrut?: string;
-  detectedKeyword?: string;
-  clickedRestaurantName!: string;
-  clickedRestaurantType?: string;
-  clickedRestaurantKashrut?: string;
-}
+import { RecordFeedbackDto } from './dto/record-feedback.dto';
 
 @Controller('restaurants')
 export class RestaurantsController {
@@ -80,7 +71,7 @@ export class RestaurantsController {
     @Query('q') q: string,
     @Query('lat') lat?: string,
     @Query('lng') lng?: string,
-  ): Promise<Restaurant[]> {
+  ) {
     const { keyword, type, kashrut } = await this.classifier.classify(q ?? '');
 
     // Persist this search so future Claude calls can learn from it
@@ -94,15 +85,15 @@ export class RestaurantsController {
       this.logger.error('Failed to save search feedback', err),
     );
 
-    const filters: RestaurantFilters = {
-      q: keyword,
+    return this.restaurantsService.smartSearch(
+      keyword,
       type,
       kashrut,
-      lat: lat ? parseFloat(lat) : undefined,
-      lng: lng ? parseFloat(lng) : undefined,
-    };
-    const result = await this.restaurantsService.findByDestination(destinationId, filters);
-    return result.data;
+      destinationId,
+      lat ? parseFloat(lat) : undefined,
+      lng ? parseFloat(lng) : undefined,
+      q,
+    );
   }
 
   // POST /restaurants/search/feedback
@@ -193,6 +184,13 @@ export class RestaurantsController {
   @Post('reclassify')
   async reclassifyExisting() {
     return this.restaurantsService.reclassifyExistingRestaurants();
+  }
+
+  // POST /restaurants/seed-tags — one-time: derive tags from restaurant name + category
+  @UseGuards(JwtAuthGuard, AdminGuard)
+  @Post('seed-tags')
+  async seedTags() {
+    return this.restaurantsService.seedTags();
   }
 
   // POST /restaurants/import-batch — batch import restaurants for specified destinations

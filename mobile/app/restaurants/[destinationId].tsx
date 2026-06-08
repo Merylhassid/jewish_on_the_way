@@ -17,8 +17,11 @@ import {
   ArrowLeft, ChevronRight, Clock, MapPin,
   Navigation, Search, Sparkles, Utensils, X,
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
+import ErrorState from '@/src/components/ErrorState';
+import { RestaurantCardSkeleton } from '@/src/components/Skeleton';
 
 interface Restaurant {
   id: number;
@@ -56,23 +59,30 @@ const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFix
 const cap = (s: string | null | undefined) => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Unknown';
 
 export default function RestaurantsScreen() {
-  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent } =
-    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string }>();
+  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam } =
+    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string }>();
   const isCountryMode = fromParent === 'true';
+  const { t } = useTranslation();
 
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [total, setTotal]             = useState(0);
   const [offset, setOffset]           = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [loading, setLoading]         = useState(true);
-  const [refreshing, setRefreshing]   = useState(false);
-  const [typeFilter, setTypeFilter]   = useState(typeParam && TYPE_FILTERS.includes(typeParam) ? typeParam : 'all');
-  const [kFilter, setKFilter]         = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
-  const [search, setSearch]           = useState('');
-  const [aiMode, setAiMode]           = useState(false);
+  const [loading, setLoading]   = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [error, setError]       = useState(false);
+  const [typeFilter, setTypeFilter]       = useState(typeParam && TYPE_FILTERS.includes(typeParam) ? typeParam : 'all');
+  const [kashrutFilter, setKashrutFilter] = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
+  const [search, setSearch] = useState(qParam ?? '');
+  const [trigger, setTrigger] = useState(0);
+  const [aiMode, setAiMode] = useState(!!qParam);
+  const [aiMeta, setAiMeta] = useState<{ matchTier: number; message: string | null } | null>(null);
   const [lastAiQuery, setLastAiQuery] = useState('');
   const [gps, setGps]                 = useState<{ lat: number; lng: number } | null>(null);
-  const timeoutRef = useRef<any>(null);
+  const [aiChip, setAiChip]           = useState<{ category: string; emoji: string } | null>(null);
+  const timeoutRef    = useRef<any>(null);
+  const chipRef       = useRef<any>(null);
+  const initialSearch = useRef(true);
   const cityLabel = city ? decodeURIComponent(city) : '';
 
   useEffect(() => {
@@ -85,7 +95,15 @@ export default function RestaurantsScreen() {
     })();
   }, []);
 
+  // In AI mode with text, search is triggered explicitly via doAiSearch (not auto-debounce).
+  // Exception: the very first load (qParam on mount) still runs to show initial results.
+  // We capture isFirst in the cleanup closure so the GPS arrival doesn't cancel the initial timeout.
   useEffect(() => {
+    const isFirst = initialSearch.current;
+    if (isFirst) initialSearch.current = false;
+
+    if (aiMode && search.trim() && !isFirst) return;
+
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(async () => {
       try {
@@ -95,56 +113,117 @@ export default function RestaurantsScreen() {
           : { destinationId, offset: '0' };
         if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
 
-        if (aiMode && search.trim()) {
+        let endpoint = '/restaurants';
+        if (search.trim()) {
+          endpoint = '/restaurants/search';
           params.q = search.trim();
           setLastAiQuery(search.trim());
-          const res = await client.get('/restaurants/search', { params });
-          setRestaurants(Array.isArray(res.data) ? res.data : []);
-          setTotal(0);
+          const res = await client.get(endpoint, { params });
+          const { data: aiData, matchTier, message, total: aiTotal } = res.data;
+          setRestaurants(Array.isArray(aiData) ? aiData : []);
+          setAiMeta({ matchTier, message });
+          setTotal(aiTotal ?? 0);
         } else {
-          if (typeFilter !== 'all') params.type = typeFilter;
-          if (kFilter !== 'all')    params.kashrut = kFilter;
-          if (search)               params.q = search;
-          const res = await client.get('/restaurants', { params });
+          setAiMeta(null);
+          if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
+          if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
+          const res = await client.get(endpoint, { params });
           const { data, total: t } = res.data;
           setRestaurants(Array.isArray(data) ? data : []);
           setTotal(t ?? 0);
         }
-      } catch {} finally { setLoading(false); setRefreshing(false); }
+      } catch { setError(true); } finally { setLoading(false); setRefreshing(false); }
     }, 300);
-    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
-  }, [typeFilter, kFilter, search, aiMode, gps, destinationId]);
+    // Don't cancel the initial timeout on cleanup — GPS arriving would wipe it
+    return () => { if (!isFirst && timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, [typeFilter, kashrutFilter, search, aiMode, gps, destinationId, trigger]);
+
+  const onSearchChange = (v: string) => {
+    setSearch(v);
+    if (!aiMode) return;
+    setAiChip(null);
+    if (chipRef.current) clearTimeout(chipRef.current);
+    if (!v.trim()) return;
+    chipRef.current = setTimeout(async () => {
+      try {
+        const r = await client.get('/search/classify', { params: { text: v.trim() } });
+        if (r.data.category) setAiChip(r.data);
+      } catch {}
+    }, 400);
+  };
+
+  const doAiSearch = async () => {
+    const q = search.trim();
+    if (!q) return;
+    setAiChip(null);
+    try {
+      setLoading(true);
+      const body: any = { text: q };
+      if (gps) { body.lat = gps.lat; body.lng = gps.lng; }
+      const res = await client.post('/search', body);
+      const { route, detectedCity, error } = res.data;
+
+      // Navigate if: different category (synagogues etc.) OR same category but different city
+      if (!error && route) {
+        const isRestaurantRoute = route.includes('/restaurants/');
+        const routeDestId = route.match(/\/restaurants\/(\d+)/)?.[1];
+        const differentDest = routeDestId && routeDestId !== destinationId;
+
+        if (!isRestaurantRoute || differentDest) {
+          const sep = route.includes('?') ? '&' : '?';
+          const cityPart = detectedCity ? `city=${encodeURIComponent(detectedCity)}&` : '';
+          router.push(`${route}${sep}${cityPart}q=${encodeURIComponent(q)}` as any);
+          return;
+        }
+      }
+
+      // Same city or no city detected → search within current destination
+      const params: Record<string, string> = isCountryMode
+        ? { parentDestinationId: destinationId, offset: '0' }
+        : { destinationId, offset: '0' };
+      if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+      params.q = q;
+      setLastAiQuery(q);
+      const searchRes = await client.get('/restaurants/search', { params });
+      const { data: aiData, matchTier, message, total: aiTotal } = searchRes.data;
+      setRestaurants(Array.isArray(aiData) ? aiData : []);
+      setAiMeta({ matchTier, message });
+      setTotal(aiTotal ?? 0);
+      setOffset(0);
+    } catch {} finally { setLoading(false); }
+  };
 
   const loadMore = async () => {
-    if (loadingMore || aiMode) return;
-    const next = offset + 50;
+    if (loadingMore || search.trim()) return;
+    const nextOffset = offset + 50;
     try {
       setLoadingMore(true);
       const params: Record<string, string> = isCountryMode
-        ? { parentDestinationId: destinationId, offset: String(next) }
-        : { destinationId, offset: String(next) };
+        ? { parentDestinationId: destinationId, offset: String(nextOffset) }
+        : { destinationId, offset: String(nextOffset) };
       if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
-      if (typeFilter !== 'all') params.type = typeFilter;
-      if (kFilter !== 'all')    params.kashrut = kFilter;
-      if (search)               params.q = search;
+      if (typeFilter    !== 'all') params.type    = typeFilter;
+      if (kashrutFilter !== 'all') params.kashrut = kashrutFilter;
       const res = await client.get('/restaurants', { params });
       setRestaurants(p => [...p, ...(Array.isArray(res.data.data) ? res.data.data : [])]);
-      setOffset(next);
+      setOffset(nextOffset);
     } catch {} finally { setLoadingMore(false); }
   };
 
-  const sendFeedback = (item: Restaurant) => {
-    if (!aiMode || !lastAiQuery) return;
-    client.post('/restaurants/search/feedback', {
-      query: lastAiQuery,
-      clickedRestaurantName: item.name,
-      clickedRestaurantType: item.restaurantType,
-      clickedRestaurantKashrut: item.kashrutLevel,
-    }).catch(() => {});
+  const sendAiFeedback = (item: Restaurant) => {
+    if (!lastAiQuery) return;
+    client
+      .post('/restaurants/search/feedback', {
+        query: lastAiQuery,
+        clickedRestaurantName: item.name,
+        clickedRestaurantType: item.restaurantType,
+        clickedRestaurantKashrut: item.kashrutLevel,
+      })
+      .catch(() => {});
   };
 
   const openDetail = (item: Restaurant) => {
-    sendFeedback(item);
+    sendAiFeedback(item);
     router.push({
       pathname: `/restaurant/${item.id}` as any,
       params: {
@@ -174,7 +253,7 @@ export default function RestaurantsScreen() {
               {cityLabel ? cityLabel : 'Restaurants'}
             </Text>
             <Text style={s.headerSub}>
-              {loading ? 'Loading…' : `${count} kosher restaurant${count !== 1 ? 's' : ''}${gps ? '  ·  sorted by distance' : ''}`}
+              {loading ? t('restaurants.loading') : `${count} ${t('restaurants.title')}${gps ? `  ·  ${t('restaurants.sortedByDist')}` : ''}`}
             </Text>
           </View>
         </View>
@@ -187,10 +266,12 @@ export default function RestaurantsScreen() {
           }
           <TextInput
             style={s.searchInput}
-            placeholder={aiMode ? '"Badatz steak" or "dairy near me"…' : 'Search restaurants…'}
+            placeholder={aiMode ? 'מה תרצה לאכול? באיזו עיר?' : 'Search restaurants…'}
             placeholderTextColor="rgba(255,255,255,0.35)"
             value={search}
-            onChangeText={setSearch}
+            onChangeText={onSearchChange}
+            onSubmitEditing={aiMode ? doAiSearch : undefined}
+            returnKeyType={aiMode ? 'search' : 'done'}
           />
           {search.length > 0 && (
             <Pressable hitSlop={8} onPress={() => setSearch('')}>
@@ -198,12 +279,38 @@ export default function RestaurantsScreen() {
             </Pressable>
           )}
           <View style={s.searchDivider} />
-          <Pressable style={[s.aiPill, aiMode && s.aiPillOn]} onPress={() => { setAiMode(v => !v); setSearch(''); }}>
+          <Pressable style={[s.aiPill, aiMode && s.aiPillOn]} onPress={() => { setAiMode(v => !v); setSearch(''); setAiMeta(null); }}>
             <Sparkles size={12} color={aiMode ? C.navy : '#fff'} strokeWidth={2} />
             <Text style={[s.aiPillText, aiMode && { color: C.navy }]}>AI</Text>
           </Pressable>
         </View>
       </View>
+
+      {/* AI mode chip hint + search button */}
+      {aiMode && (aiChip || search.trim()) && (
+        <View style={s.aiBar}>
+          {aiChip && (
+            <View style={s.chipHint}>
+              <Sparkles size={12} color={C.gold} strokeWidth={2} />
+              <Text style={s.chipHintText}>{aiChip.emoji} {aiChip.category}</Text>
+            </View>
+          )}
+          <View style={{ flex: 1 }} />
+          <Pressable style={s.searchBtn} onPress={doAiSearch}>
+            <Search size={14} color="#fff" strokeWidth={2.5} />
+            <Text style={s.searchBtnText}>חפש</Text>
+          </Pressable>
+        </View>
+      )}
+
+      {/* AI result quality banner */}
+      {aiMeta?.message && (
+        <View style={[s.metaBanner, aiMeta.matchTier >= 3 ? s.metaBannerWarn : s.metaBannerInfo]}>
+          <Text style={s.metaBannerText}>
+            {aiMeta.matchTier >= 3 ? '⚠️  ' : 'ℹ️  '}{aiMeta.message}
+          </Text>
+        </View>
+      )}
 
       {/* ── Filters ── */}
       {!aiMode && (
@@ -212,16 +319,16 @@ export default function RestaurantsScreen() {
             {TYPE_FILTERS.map(f => (
               <Pressable key={f} style={[s.chip, typeFilter === f && s.chipOn]} onPress={() => setTypeFilter(f)}>
                 <Text style={[s.chipText, typeFilter === f && s.chipTextOn]}>
-                  {f === 'all' ? 'All types' : cap(f)}
+                  {f === 'all' ? t('restaurants.allTypes') : t(`restaurants.${f === 'parve' ? 'pareve' : f}`)}
                 </Text>
               </Pressable>
             ))}
           </ScrollView>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.filterRow}>
             {KASHRUT_FILTERS.map(f => (
-              <Pressable key={f} style={[s.chip, kFilter === f && s.chipOn]} onPress={() => setKFilter(f)}>
-                <Text style={[s.chipText, kFilter === f && s.chipTextOn]}>
-                  {f === 'all' ? 'All kashrut' : cap(f)}
+              <Pressable key={f} style={[s.chip, kashrutFilter === f && s.chipOn]} onPress={() => setKashrutFilter(f)}>
+                <Text style={[s.chipText, kashrutFilter === f && s.chipTextOn]}>
+                  {f === 'all' ? t('restaurants.allKashrut') : t(`restaurants.${f}`)}
                 </Text>
               </Pressable>
             ))}
@@ -231,14 +338,18 @@ export default function RestaurantsScreen() {
 
       {/* ── List ── */}
       {loading ? (
-        <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>
+        <View style={{ padding: 16, gap: 10 }}>
+          {[0,1,2,3,4].map(i => <RestaurantCardSkeleton key={i} />)}
+        </View>
+      ) : error ? (
+        <ErrorState onRetry={() => { setError(false); setTrigger(t => t + 1); }} />
       ) : (
         <FlatList
           data={restaurants}
           keyExtractor={i => String(i.id)}
           contentContainerStyle={s.list}
           showsVerticalScrollIndicator={false}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); }} tintColor={C.gold} />}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); setError(false); setTrigger(t => t + 1); }} tintColor={C.gold} />}
           onEndReached={loadMore}
           onEndReachedThreshold={0.3}
           ListFooterComponent={loadingMore ? <ActivityIndicator color={C.gold} style={{ margin: 20 }} /> : null}
@@ -246,7 +357,7 @@ export default function RestaurantsScreen() {
           ListEmptyComponent={
             <View style={s.empty}>
               <Utensils size={36} color="#E5E7EB" strokeWidth={1.5} />
-              <Text style={s.emptyText}>No restaurants found</Text>
+              <Text style={s.emptyText}>{t('restaurants.noResults')}</Text>
             </View>
           }
         />
@@ -266,11 +377,9 @@ function RestaurantCard({ item, onPress }: { item: Restaurant; onPress: () => vo
       style={({ pressed }) => [s.card, pressed && s.cardPressed]}
       onPress={onPress}
     >
-      {/* Left accent */}
       <View style={[s.cardAccent, { backgroundColor: typeColor }]} />
 
       <View style={s.cardBody}>
-        {/* Top row */}
         <View style={s.cardTop}>
           <View style={[s.typeIcon, { backgroundColor: typeColor + '15' }]}>
             <Utensils size={16} color={typeColor} strokeWidth={2} />
@@ -284,7 +393,6 @@ function RestaurantCard({ item, onPress }: { item: Restaurant; onPress: () => vo
           </View>
         </View>
 
-        {/* Meta */}
         <View style={s.cardMeta}>
           {item.address && (
             <View style={s.metaRow}>
@@ -306,7 +414,6 @@ function RestaurantCard({ item, onPress }: { item: Restaurant; onPress: () => vo
           )}
         </View>
 
-        {/* Distance + arrow */}
         <View style={s.cardBottom}>
           {item.distanceMeters !== undefined && (
             <View style={s.distPill}>
@@ -327,7 +434,6 @@ const s = StyleSheet.create({
   root:   { flex: 1, backgroundColor: '#F7F5F0' },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 60 },
 
-  // Header
   header: {
     backgroundColor: C.navy,
     paddingTop: Platform.OS === 'ios' ? 58 : 38,
@@ -357,24 +463,45 @@ const s = StyleSheet.create({
     paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10,
     backgroundColor: 'rgba(255,255,255,0.12)',
   },
-  aiPillOn: { backgroundColor: C.gold },
+  aiPillOn:   { backgroundColor: C.gold },
   aiPillText: { fontSize: 11, fontWeight: '800', color: '#fff', letterSpacing: 0.5 },
 
-  // Filters
+  aiBar: {
+    flexDirection: 'row', alignItems: 'center',
+    backgroundColor: 'rgba(212,175,55,0.07)',
+    paddingHorizontal: 16, paddingVertical: 8, gap: 8,
+    borderBottomWidth: 1, borderBottomColor: 'rgba(212,175,55,0.15)',
+  },
+  chipHint: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    backgroundColor: C.goldFaint, borderRadius: 10,
+    paddingHorizontal: 10, paddingVertical: 5,
+  },
+  chipHintText: { fontSize: 12, fontWeight: '700', color: C.gold },
+  searchBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    backgroundColor: C.navy, borderRadius: 10,
+    paddingHorizontal: 14, paddingVertical: 7,
+  },
+  searchBtnText: { fontSize: 13, fontWeight: '700', color: '#fff' },
+
+  metaBanner:     { paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: 1 },
+  metaBannerInfo: { backgroundColor: '#e8f4fd', borderBottomColor: '#bee3f8' },
+  metaBannerWarn: { backgroundColor: '#fff8e1', borderBottomColor: '#ffe082' },
+  metaBannerText: { fontSize: 13, color: '#555' },
+
   filtersWrap: { backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#F0EDE6' },
   filterRow:   { paddingHorizontal: 16, paddingVertical: 10, gap: 8 },
   chip: {
     paddingHorizontal: 14, paddingVertical: 7, borderRadius: 20,
     borderWidth: 1.5, borderColor: '#E5E7EB', backgroundColor: '#fff',
   },
-  chipOn:      { borderColor: C.navy, backgroundColor: C.navy },
-  chipText:    { fontSize: 13, fontWeight: '600', color: C.textSecondary },
-  chipTextOn:  { color: '#fff' },
+  chipOn:     { borderColor: C.navy, backgroundColor: C.navy },
+  chipText:   { fontSize: 13, fontWeight: '600', color: C.textSecondary },
+  chipTextOn: { color: '#fff' },
 
-  // List
   list: { padding: 16, gap: 10, paddingBottom: 40 },
 
-  // Card
   card: {
     flexDirection: 'row', backgroundColor: '#fff', borderRadius: 18, overflow: 'hidden',
     shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 10,
@@ -391,9 +518,9 @@ const s = StyleSheet.create({
   kashrutBadge: { paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8 },
   kashrutText:  { fontSize: 11, fontWeight: '700' },
 
-  cardMeta: { gap: 5 },
-  metaRow:  { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  metaText: { fontSize: 12, color: '#9CA3AF', flex: 1 },
+  cardMeta:   { gap: 5 },
+  metaRow:    { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  metaText:   { fontSize: 12, color: '#9CA3AF', flex: 1 },
 
   cardBottom: { flexDirection: 'row', alignItems: 'center' },
   distPill: {
@@ -403,7 +530,6 @@ const s = StyleSheet.create({
   },
   distText: { fontSize: 11, fontWeight: '700', color: C.gold },
 
-  // Empty
   empty:     { alignItems: 'center', paddingTop: 60, gap: 10 },
   emptyText: { fontSize: 14, color: '#BBC3D4' },
 });

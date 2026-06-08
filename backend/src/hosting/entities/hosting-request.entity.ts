@@ -53,6 +53,10 @@ export class HostingRequest {
   @Column({ default: true })
   is_active: boolean;
 
+  // Explicit host reference — used when request originates from a need (offer=null)
+  @Column({ type: 'int', nullable: true, name: 'host_id' })
+  host_id: number | null;
+
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;
 }

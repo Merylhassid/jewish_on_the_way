@@ -4,7 +4,12 @@ Export Denomination Model → denomination_model.json
 מאמן על כל הדאטה ומייצא לקובץ JSON שה-TypeScript יטען.
 """
 
+import sys
 import csv, math, random, json, os, re
+from datetime import date
+
+sys.stdout.reconfigure(encoding='utf-8')
+
 
 def load_data(path):
     rows = []
@@ -14,9 +19,11 @@ def load_data(path):
             rows.append((row['text'].strip(), row['label'].strip()))
     return rows
 
+
 def tokenize(text):
     text = re.sub(r'חב["״]?ד', 'חב"ד', text.lower())
     return re.findall(r'[א-ת"]+|[a-z]+', text)
+
 
 class TFIDF:
     def __init__(self):
@@ -43,6 +50,7 @@ class TFIDF:
             if w in tf:
                 vec[w] = tf[w] * self.idf[w]
         return vec
+
 
 class NaiveBayes:
     def __init__(self):
@@ -72,12 +80,49 @@ class NaiveBayes:
                 for word in set(w for vec in X_vecs for w in vec)
             }
 
+    def predict_one(self, vec):
+        best_cls   = None
+        best_score = float('-inf')
+        for c in self.classes:
+            score = self.class_probs[c]
+            for word, tfidf_val in vec.items():
+                if word in self.feature_probs[c]:
+                    score += tfidf_val * self.feature_probs[c][word]
+            if score > best_score:
+                best_score = score
+                best_cls   = c
+        return best_cls
+
+
 if __name__ == '__main__':
-    base  = os.path.dirname(__file__)
-    data  = load_data(os.path.join(base, 'data_denomination.csv'))
+    base = os.path.dirname(__file__)
+    data = load_data(os.path.join(base, 'data_denomination.csv'))
+    dataset_size = len(data)
 
-    print(f"מאמן על כל {len(data)} משפטים...")
+    print(f"מאמן על כל {dataset_size} משפטים...")
 
+    # ── הערכת דיוק על holdout 20% ─────────────────────
+    combined = list(data)
+    random.seed(42)
+    random.shuffle(combined)
+    split = int(len(combined) * 0.8)
+    train_pairs = combined[:split]
+    test_pairs  = combined[split:]
+    train_t, train_l = zip(*train_pairs)
+    test_t,  test_l  = zip(*test_pairs)
+
+    tfidf_eval = TFIDF()
+    tfidf_eval.fit(list(train_t))
+    X_train_eval = [tfidf_eval.transform(t) for t in train_t]
+    X_test_eval  = [tfidf_eval.transform(t) for t in test_t]
+    model_eval   = NaiveBayes()
+    model_eval.fit(X_train_eval, list(train_l))
+    preds   = [model_eval.predict_one(v) for v in X_test_eval]
+    correct = sum(1 for t, p in zip(test_l, preds) if t == p)
+    test_accuracy = round(correct / len(test_l), 4)
+    print(f"✅ Test accuracy: {test_accuracy:.1%} ({correct}/{len(test_l)})")
+
+    # ── אימון על כל הדאטה ────────────────────────────
     tfidf = TFIDF()
     tfidf.fit([t for t, _ in data])
 
@@ -88,6 +133,14 @@ if __name__ == '__main__':
     model.fit(X, y)
 
     out = {
+        "metadata": {
+            "version":           "1.0.0",
+            "created_at":        date.today().isoformat(),
+            "dataset_size":      dataset_size,
+            "test_accuracy":     test_accuracy,
+            "feature_mode":      "tfidf_unigram",
+            "tokenizer_version": "1.0",
+        },
         "vocab":         tfidf.vocab,
         "idf":           tfidf.idf,
         "classes":       model.classes,
@@ -102,3 +155,4 @@ if __name__ == '__main__':
     print(f"✅ נשמר ב: {os.path.abspath(out_path)}")
     print(f"   אוצר מילים: {len(tfidf.vocab)}")
     print(f"   קטגוריות:   {model.classes}")
+    print(f"   🎯 test_accuracy: {test_accuracy:.1%}")

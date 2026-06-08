@@ -9,6 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import HomeButton from '@/src/components/HomeButton';
 
@@ -29,12 +30,9 @@ interface MyMinyan {
 const PRAYER_EMOJI: Record<string, string> = {
   shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
 };
-const PRAYER_LABEL: Record<string, string> = {
-  shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
-};
 
 function formatDate(iso: string) {
-  const [y, m, d] = iso.split('-');
+  const [y, m, d] = String(iso).slice(0, 10).split('-');
   return new Date(Number(y), Number(m) - 1, Number(d))
     .toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
@@ -42,6 +40,11 @@ function formatDate(iso: string) {
 const today = new Date().toISOString().split('T')[0];
 
 export default function MyMinyansScreen() {
+  const { t } = useTranslation();
+  const PRAYER_LABEL: Record<string, string> = {
+    shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
+    maariv: t('minyans.maariv'), musaf: t('minyans.musaf'), other: t('minyans.other'),
+  };
   const [minyans, setMinyans]     = useState<MyMinyan[]>([]);
   const [loading, setLoading]     = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -75,13 +78,13 @@ export default function MyMinyansScreen() {
         <View style={styles.cardTop}>
           <Text style={styles.cardPrayer}>{PRAYER_LABEL[item.prayerType]}</Text>
           {item.isCreator && (
-            <View style={styles.creatorBadge}><Text style={styles.creatorBadgeText}>⭐ Creator</Text></View>
+            <View style={styles.creatorBadge}><Text style={styles.creatorBadgeText}>⭐ {t('minyans.creator')}</Text></View>
           )}
           {item.isFull && !item.isCreator && (
-            <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>Full ✓</Text></View>
+            <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>{t('minyans.full')}</Text></View>
           )}
           {item.almostFull && !item.isFull && (
-            <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>Almost full</Text></View>
+            <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>{t('minyans.almostFull')}</Text></View>
           )}
         </View>
         <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
@@ -99,8 +102,8 @@ export default function MyMinyansScreen() {
           <Text style={styles.backText}>←</Text>
         </Pressable>
         <HomeButton />
-        <Text style={styles.headerTitle}>🤝 My Minyans</Text>
-        <Text style={styles.headerSub}>{minyans.length} total</Text>
+        <Text style={styles.headerTitle}>🤝 {t('minyans.title')}</Text>
+        <Text style={styles.headerSub}>{minyans.length} {t('minyans.title').toLowerCase()}</Text>
       </View>
 
       {loading ? (
@@ -108,15 +111,15 @@ export default function MyMinyansScreen() {
       ) : error ? (
         <View style={styles.center}>
           <Text style={styles.emptyIcon}>⚠️</Text>
-          <Text style={styles.emptyText}>Could not load minyans</Text>
+          <Text style={styles.emptyText}>{t('minyans.couldNotLoad')}</Text>
           <Pressable style={styles.retryBtn} onPress={() => { setLoading(true); fetch(); }}>
-            <Text style={styles.retryText}>Try Again</Text>
+            <Text style={styles.retryText}>{t('minyans.tryAgain')}</Text>
           </Pressable>
         </View>
       ) : minyans.length === 0 ? (
         <View style={styles.center}>
           <Text style={styles.emptyIcon}>🤝</Text>
-          <Text style={styles.emptyText}>No minyans yet.{'\n'}Create or join one!</Text>
+          <Text style={styles.emptyText}>{t('minyans.noMinyansYet')}</Text>
         </View>
       ) : (
         <FlatList
@@ -130,7 +133,7 @@ export default function MyMinyansScreen() {
           }
           ListHeaderComponent={
             upcoming.length > 0 && past.length > 0 ? (
-              <Text style={styles.sectionHeader}>Upcoming ({upcoming.length})</Text>
+              <Text style={styles.sectionHeader}>{t('minyans.upcomingSection')} ({upcoming.length})</Text>
             ) : null
           }
           renderItem={({ item, index }) => {
@@ -139,7 +142,7 @@ export default function MyMinyansScreen() {
             return (
               <>
                 {isFirstPast && (
-                  <Text style={styles.sectionHeader}>Past ({past.length})</Text>
+                  <Text style={styles.sectionHeader}>{t('minyans.pastSection')} ({past.length})</Text>
                 )}
                 {renderItem({ item, isPast })}
               </>

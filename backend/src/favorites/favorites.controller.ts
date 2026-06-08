@@ -1,6 +1,9 @@
-import { Controller, Get, Param, ParseIntPipe, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Controller, Get, Param, ParseEnumPipe, ParseIntPipe, Post, Request, UseGuards,
+} from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { FavoritesService } from './favorites.service';
+import { EntityType } from '../common/enums/entity-type.enum';
 
 @UseGuards(JwtAuthGuard)
 @Controller('favorites')
@@ -17,7 +20,7 @@ export class FavoritesController {
   @Get(':type/:id')
   isSaved(
     @Request() req: any,
-    @Param('type') type: string,
+    @Param('type', new ParseEnumPipe(EntityType)) type: EntityType,
     @Param('id', ParseIntPipe) id: number,
   ) {
     return this.service.isSaved(req.user.sub, type, id);
@@ -27,7 +30,7 @@ export class FavoritesController {
   @Post(':type/:id')
   toggle(
     @Request() req: any,
-    @Param('type') type: string,
+    @Param('type', new ParseEnumPipe(EntityType)) type: EntityType,
     @Param('id', ParseIntPipe) id: number,
   ) {
     return this.service.toggle(req.user.sub, type, id);

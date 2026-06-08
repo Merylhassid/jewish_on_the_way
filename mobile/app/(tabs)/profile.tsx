@@ -2,7 +2,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -27,6 +27,30 @@ import { C } from '@/constants/theme';
 
 const KASHRUT_VALUES = ['none', 'rabbinate', 'mehadrin', 'badatz'] as const;
 type KashrutValue = typeof KASHRUT_VALUES[number];
+
+interface MyMinyan {
+  id: number;
+  prayerType: string;
+  date: string;
+  time: string;
+  locationText: string;
+  participantsCount: number;
+  isFull: boolean;
+  almostFull: boolean;
+  isCreator: boolean;
+  destination: { id: number; city: string } | null;
+}
+const PRAYER_EMOJI: Record<string, string> = {
+  shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
+};
+const PRAYER_LABEL: Record<string, string> = {
+  shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
+};
+function fmtMinyanDate(iso: string) {
+  const [y, m, d] = String(iso).slice(0, 10).split('-');
+  return new Date(Number(y), Number(m) - 1, Number(d))
+    .toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+}
 
 // ─── Edit Profile Modal ───────────────────────────────────────────────────────
 
@@ -286,6 +310,17 @@ export default function ProfileScreen() {
   const [deleteLoading, setDeleteLoading]   = useState(false);
   const [suggestType, setSuggestType]       = useState<'restaurant' | 'synagogue'>('restaurant');
   const [suggestVisible, setSuggestVisible] = useState(false);
+  const [myMinyans,       setMyMinyans]       = useState<MyMinyan[]>([]);
+  const [myOffers,        setMyOffers]        = useState<number>(0);
+  const [myHostRequests,  setMyHostRequests]  = useState<number>(0);
+  const [myNeeds,         setMyNeeds]         = useState<number>(0);
+
+  useEffect(() => {
+    client.get('/minyans/mine').then((res) => setMyMinyans(res.data)).catch(() => {});
+    client.get('/hosting/offers/mine').then((res) => setMyOffers(Array.isArray(res.data) ? res.data.length : 0)).catch(() => {});
+    client.get('/hosting/requests/mine').then((res) => setMyHostRequests(Array.isArray(res.data) ? res.data.length : 0)).catch(() => {});
+    client.get('/hosting/needs/mine').then((res) => setMyNeeds(Array.isArray(res.data) ? res.data.length : 0)).catch(() => {});
+  }, []);
 
   const handleLogout = async () => { await logout(); };
 
@@ -465,6 +500,96 @@ export default function ProfileScreen() {
         </Pressable>
       </View>
 
+      {/* ── My Minyans (hidden if user never created one) ── */}
+      {myMinyans.length > 0 && (
+        <>
+          <Text style={styles.sectionEyebrow}>MY MINYANS</Text>
+          <View style={styles.card}>
+            {myMinyans.slice(0, 3).map((m, index) => (
+              <View key={m.id}>
+                {index > 0 && <View style={styles.divider} />}
+                <Pressable style={styles.row} onPress={() => router.push(`/minyan/${m.id}` as any)}>
+                  <View style={[styles.iconBox, { backgroundColor: 'rgba(79,70,229,0.10)' }]}>
+                    <Text style={styles.minyanEmoji}>{PRAYER_EMOJI[m.prayerType] ?? '🙏'}</Text>
+                  </View>
+                  <View style={styles.rowBody}>
+                    <Text style={styles.minyanLabel}>{PRAYER_LABEL[m.prayerType] ?? m.prayerType}</Text>
+                    <Text style={styles.rowSub}>
+                      {fmtMinyanDate(m.date)} · {m.time}{m.destination ? ` · ${m.destination.city}` : ''}
+                    </Text>
+                  </View>
+                  <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+                </Pressable>
+              </View>
+            ))}
+            <View style={styles.divider} />
+            <Pressable style={styles.row} onPress={() => router.push('/minyans/my-minyans' as any)}>
+              <View style={[styles.iconBox, { backgroundColor: 'rgba(79,70,229,0.08)' }]}>
+                <MaterialIcons name="groups" size={20} color="#4F46E5" />
+              </View>
+              <Text style={[styles.rowLabel, { color: '#4F46E5' }]}>
+                {t('minyans.seeAll')} ({myMinyans.length})
+              </Text>
+              <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+            </Pressable>
+          </View>
+        </>
+      )}
+
+      {/* ── My Hosting (hidden if no activity) ── */}
+      {(myOffers > 0 || myHostRequests > 0 || myNeeds > 0) && (
+        <>
+          <Text style={styles.sectionEyebrow}>HOSTING</Text>
+          <View style={styles.card}>
+            {myOffers > 0 && (
+              <>
+                <Pressable style={styles.row} onPress={() => router.push('/hosting/my-offers' as any)}>
+                  <View style={[styles.iconBox, { backgroundColor: 'rgba(22,163,74,0.10)' }]}>
+                    <MaterialIcons name="home" size={20} color="#16A34A" />
+                  </View>
+                  <View style={styles.rowBody}>
+                    <Text style={styles.rowLabel}>My Offers</Text>
+                    <Text style={styles.rowSub}>{myOffers} active offer{myOffers !== 1 ? 's' : ''}</Text>
+                  </View>
+                  <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+                </Pressable>
+                {myHostRequests > 0 && <View style={styles.divider} />}
+              </>
+            )}
+            {myHostRequests > 0 && (
+              <>
+                {(myNeeds > 0) && <View style={styles.divider} />}
+                <Pressable style={styles.row} onPress={() => router.push('/hosting/my-requests' as any)}>
+                  <View style={[styles.iconBox, { backgroundColor: 'rgba(212,175,55,0.12)' }]}>
+                    <MaterialIcons name="swap-horiz" size={20} color={GOLD} />
+                  </View>
+                  <View style={styles.rowBody}>
+                    <Text style={styles.rowLabel}>My Requests</Text>
+                    <Text style={styles.rowSub}>{myHostRequests} request{myHostRequests !== 1 ? 's' : ''}</Text>
+                  </View>
+                  <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+                </Pressable>
+              </>
+            )}
+            {myNeeds > 0 && (
+              <>
+                {(myOffers > 0 || myHostRequests > 0) && <View style={styles.divider} />}
+                <Pressable style={styles.row} onPress={() => router.push('/hosting/my-requests' as any)}>
+                  <View style={[styles.iconBox, { backgroundColor: 'rgba(124,58,237,0.10)' }]}>
+                    <MaterialIcons name="people-outline" size={20} color="#7C3AED" />
+                  </View>
+                  <View style={styles.rowBody}>
+                    <Text style={styles.rowLabel}>My Posted Needs</Text>
+                    <Text style={styles.rowSub}>{myNeeds} open request{myNeeds !== 1 ? 's' : ''}</Text>
+                  </View>
+                  <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+                </Pressable>
+              </>
+            )}
+          </View>
+        </>
+      )}
+
       {/* ── Sign out ── */}
       <TouchableOpacity style={styles.signOutBtn} onPress={handleLogout} activeOpacity={0.75}>
         <Text style={styles.signOutText}>{t('profile.signOut')}</Text>
@@ -590,6 +715,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-SemiBold',
     fontSize: 15, color: '#111827',
   },
+  rowBody:      { flex: 1 },
+  rowSub:       { fontFamily: 'Inter-Regular', fontSize: 12, color: '#8A96B0', marginTop: 1 },
+  minyanLabel:  { fontFamily: 'Inter-SemiBold', fontSize: 15, color: '#111827' },
+  minyanEmoji:  { fontSize: 20 },
 
   // ── Buttons ──
   signOutBtn: {
