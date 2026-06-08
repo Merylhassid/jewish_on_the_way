@@ -61,7 +61,7 @@ export default function OnboardingScreen() {
         <>
           <Text style={s.brand}>JEWISH ON THE WAY</Text>
           <Text style={s.title}>{t('profile.edit.kashrutLevel')}</Text>
-          <Text style={s.sub}>We'll use this to personalize your experience</Text>
+          <Text style={s.sub}>{"We'll use this to personalize your experience"}</Text>
           <View style={s.chips}>
             {KASHRUT_OPTIONS.map(k => (
               <Pressable

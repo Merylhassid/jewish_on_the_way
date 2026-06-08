@@ -38,7 +38,7 @@ import { PlacesModule } from './places/places.module';
     ThrottlerModule.forRoot([
       {
         ttl: 60_000,
-        limit: 100,
+        limit: 500,
       },
     ]),
 
@@ -46,9 +46,12 @@ import { PlacesModule } from './places/places.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
-        const rejectUnauthorized = config.get<string>(
-          'DB_SSL_REJECT_UNAUTHORIZED',
-        );
+        const isProduction = config.get<string>('NODE_ENV') === 'production';
+        const rejectUnauthorizedEnv = config.get<string>('DB_SSL_REJECT_UNAUTHORIZED');
+        const rejectUnauthorized =
+          rejectUnauthorizedEnv !== undefined
+            ? rejectUnauthorizedEnv === 'true'
+            : isProduction;
 
         return {
           type: 'postgres',
@@ -59,12 +62,7 @@ import { PlacesModule } from './places/places.module';
           database: config.get<string>('DB_NAME'),
           ssl:
             config.get<string>('DB_SSL') === 'true'
-              ? {
-                  rejectUnauthorized:
-                    rejectUnauthorized === undefined
-                      ? false
-                      : rejectUnauthorized === 'true',
-                }
+              ? { rejectUnauthorized }
               : false,
           entities: [__dirname + '/**/*.entity{.ts,.js}'],
           synchronize: false,

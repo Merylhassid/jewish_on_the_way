@@ -11,6 +11,7 @@ import { PlacesService } from '../places/places.service';
 import { CandidateMapperService } from '../places/candidate-mapper';
 import { CreateDestinationDto } from './dto/create-destination.dto';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
+import { DestinationIndexService } from '../ai/destination-index.service';
 
 @Injectable()
 export class AdminService {
@@ -29,6 +30,7 @@ export class AdminService {
     private messagesRepo: Repository<ChatMessage>,
     private placesService: PlacesService,
     private candidateMapper: CandidateMapperService,
+    private destinationIndexService: DestinationIndexService,
   ) {}
 
   async createDestination(dto: CreateDestinationDto) {
@@ -53,7 +55,9 @@ export class AdminService {
       location: { type: 'Point', coordinates: [dto.lng, dto.lat] },
       parent: parent ?? undefined,
     });
-    return this.destinationsRepo.save(destination);
+    const saved = await this.destinationsRepo.save(destination);
+    void this.destinationIndexService.rebuildIndex();
+    return saved;
   }
 
   async deleteDestination(id: number) {

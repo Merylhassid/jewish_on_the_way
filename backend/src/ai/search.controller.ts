@@ -17,6 +17,20 @@ import { ClassifierService } from './classifier.service';
 import { DenominationClassifierService } from './denomination-classifier.service';
 import { Destination } from '../destination.entity';
 import { SearchFeedback } from './search-feedback.entity';
+import { DestinationIndexService } from './destination-index.service';
+
+// Re-export pure helpers so existing imports (e.g. in tests) continue to work
+export {
+  normalizeDestinationText,
+  buildDestinationCandidates,
+  detectCountryInText,
+} from './destination-index.service';
+
+import {
+  buildDestinationCandidates,
+  detectCountryInText,
+  DESTINATION_STOP_WORDS,
+} from './destination-index.service';
 
 class SearchDto {
   @IsString()
@@ -37,223 +51,63 @@ class SearchDto {
   lng?: number;
 }
 
-// מילון תרגום ערים נפוצות עברית → אנגלית
-const CITY_TRANSLATE: Record<string, string> = {
-  // ישראל — שמות מלאים
-  'תל אביב': 'Tel Aviv',
-  'ירושלים': 'Jerusalem',
-  'חיפה': 'Haifa',
-  'אשקלון': 'Ashkelon',
-  'אשדוד': 'Ashdod',
-  'נתניה': 'Netanya',
-  'ראשון לציון': 'Rishon LeZion',
-  'פתח תקווה': 'Petah Tikva',
-  'פתח תקוה': 'Petah Tikva',
-  'רמת גן': 'Ramat Gan',
-  'באר שבע': 'Beer Sheva',
-  'רחובות': 'Rehovot',
-  'בת ים': 'Bat Yam',
-  'הרצליה': 'Herzliya',
-  'רעננה': 'Raanana',
-  'ראש העין': 'Rosh HaAyin',
-  'מודיעין': 'Modi\'in',
-  'רמלה': 'Ramla',
-  'לוד': 'Lod',
-  'אילת': 'Eilat',
-  'יבנה': 'Yavne',
-  'נס ציונה': 'Nes Ziona',
-  'הוד השרון': 'Hod HaSharon',
-  'כפר סבא': 'Kfar Saba',
-  'רמת השרון': 'Ramat HaSharon',
-  'יהוד': 'Yehud',
-  'עפולה': 'Afula',
-  'טבריה': 'Tiberias',
-  'נהריה': 'Nahariya',
-  'קריית שמונה': 'Kiryat Shmona',
-  'קרית שמונה': 'Kiryat Shmona',
-  'דימונה': 'Dimona',
-  'שדרות': 'Sderot',
-  'נתיבות': 'Netivot',
-  'בני ברק': 'Bnei Brak',
-  'גבעתיים': 'Givatayim',
-  'גבעת שמואל': 'Givat Shmuel',
-  'חדרה': 'Hadera',
-  'קרית אתא': 'Kiryat Ata',
-  'קריית אתא': 'Kiryat Ata',
-  'קרית ביאליק': 'Kiryat Bialik',
-  'קריית ביאליק': 'Kiryat Bialik',
-  'קרית מוצקין': 'Kiryat Motzkin',
-  'קריית מוצקין': 'Kiryat Motzkin',
-  'קרית גת': 'Kiryat Gat',
-  'קריית גת': 'Kiryat Gat',
-  'קרית אונו': 'Kiryat Ono',
-  'קריית אונו': 'Kiryat Ono',
-  'גדרה': 'Gedera',
-  'גן יבנה': 'Gan Yavne',
-  'מעלה אדומים': 'Maale Adumim',
-  'מזכרת בתיה': 'Mazkeret Batya',
-  'מבשרת ציון': 'Mevaseret Zion',
-  'מגדל העמק': 'Migdal HaEmek',
-  'אור יהודה': 'Or Yehuda',
-  'פרדס חנה': 'Pardes Hanna',
-  'פרדס חנה כרכור': 'Pardes Hanna',
-  'ראש פינה': 'Rosh Pina',
-  'זכרון יעקב': 'Zichron Yaakov',
-  'יקנעם': 'Yokneam',
-  'קיסריה': 'Caesarea',
-  'שוהם': 'Shoham',
-  'סביון': 'Savyon',
-  'אור עקיבא': 'Or Akiva',
-  'טירת כרמל': 'Tirat Carmel',
-  'עכו': 'Acre',
-  'נצרת עילית': 'Nof HaGalil',
-  'נוף הגליל': 'Nof HaGalil',
-  'אריאל': 'Ariel',
-  'מודיעין עילית': 'Modi\'in Illit',
-  'ביתר עילית': 'Beitar Illit',
-  'בית שמש': 'Beit Shemesh',
-  // ישראל — כינויים קצרים
-  'ראשון': 'Rishon LeZion',
-  'פתח': 'Petah Tikva',
-  'מבשרת': 'Mevaseret Zion',
-  'מעלה': 'Maale Adumim',
-  // כינויים קצרים לערים בינלאומיות
-  'לוס': 'Los Angeles',
-  'ניו': 'New York',
-  'סאו': 'Sao Paulo',
-  'הונג': 'Hong Kong',
-  'בואנוס': 'Buenos Aires',
-  // אירופה
-  'לונדון': 'London',
-  'פריז': 'Paris',
-  'ברלין': 'Berlin',
-  'אמסטרדם': 'Amsterdam',
-  'רומא': 'Rome',
-  'ברצלונה': 'Barcelona',
-  'מדריד': 'Madrid',
-  'וינה': 'Vienna',
-  'וורשה': 'Warsaw',
-  'קרקוב': 'Krakow',
-  'בודפשט': 'Budapest',
-  'פראג': 'Prague',
-  'בריסל': 'Brussels',
-  'ציריך': 'Zurich',
-  'ז\'נבה': 'Geneva',
-  'קופנהגן': 'Copenhagen',
-  'סטוקהולם': 'Stockholm',
-  'אוסלו': 'Oslo',
-  'הלסינקי': 'Helsinki',
-  'ליסבון': 'Lisbon',
-  'בוקרשט': 'Bucharest',
-  'זגרב': 'Zagreb',
-  'סלוניקי': 'Thessaloniki',
-  'אתונה': 'Athens',
-  'דובלין': 'Dublin',
-  'מנצ\'סטר': 'Manchester',
-  // אמריקה
-  'ניו יורק': 'New York',
-  'מיאמי': 'Miami',
-  'לוס אנג\'לס': 'Los Angeles',
-  'שיקגו': 'Chicago',
-  'בוסטון': 'Boston',
-  'טורונטו': 'Toronto',
-  'מונטריאול': 'Montreal',
-  'סאו פאולו': 'Sao Paulo',
-  'ריו': 'Rio de Janeiro',
-  'בואנוס איירס': 'Buenos Aires',
-  // אסיה ואוקיאניה
-  'בנגקוק': 'Bangkok',
-  'פוקט': 'Phuket',
-  'קוסמוי': 'Koh Samui',
-  'טוקיו': 'Tokyo',
-  'סינגפור': 'Singapore',
-  'הונג קונג': 'Hong Kong',
-  'דובאי': 'Dubai',
-  'סידני': 'Sydney',
-  'מלבורן': 'Melbourne',
-  'מומבאי': 'Mumbai',
-  'ניו דלהי': 'New Delhi',
-  // אפריקה
-  'יוהנסבורג': 'Johannesburg',
-  'קייפטאון': 'Cape Town',
-  'קזבלנקה': 'Casablanca',
-};
-
-// מילון תרגום שמות מדינות עברית → אנגלית (לפי עמודת country בDB)
-const COUNTRY_TRANSLATE: Record<string, string> = {
-  'תאילנד':'Thailand','צרפת':'France','גרמניה':'Germany','ספרד':'Spain',
-  'איטליה':'Italy','יוון':'Greece','יפן':'Japan','סין':'China','הודו':'India',
-  'טורקיה':'Turkey','אנגליה':'United Kingdom','בריטניה':'United Kingdom',
-  'פולין':'Poland','הונגריה':'Hungary','אוסטריה':'Austria','שוויץ':'Switzerland',
-  'בלגיה':'Belgium','הולנד':'Netherlands','פורטוגל':'Portugal','רוסיה':'Russia',
-  'מרוקו':'Morocco','ברזיל':'Brazil','ארגנטינה':'Argentina','קנדה':'Canada',
-  'אוסטרליה':'Australia','מקסיקו':'Mexico','ארצות הברית':'United States',
-  'אמריקה':'United States','שוודיה':'Sweden','נורווגיה':'Norway',
-  'דנמרק':'Denmark','פינלנד':'Finland','רומניה':'Romania','בולגריה':'Bulgaria',
-  'קרואטיה':'Croatia','אוקראינה':'Ukraine','דרום אפריקה':'South Africa',
-  'ישראל':'Israel',
-};
-
-// Extra aliases for destinations that are present in the DB but are not covered by CITY_TRANSLATE.
-// This remains code-only intentionally: no migration/table is required before submission.
-const DESTINATION_ALIASES: Record<string, string[]> = {
-  Porto: ['פורטו'],
-  Cannes: ['קאן'],
-  Nice: ['ניס', 'ניצה'],
-  Cyprus: ['קפריסין'],
-  Larnaca: ['לרנקה'],
-  Limassol: ['לימסול'],
-  Paphos: ['פאפוס', 'פפוס'],
-  Marrakech: ['מרקש', 'מרקאש'],
-  'Czech Republic': ['צכיה', 'צ׳כיה', "צ'כיה"],
-  Dallas: ['דאלאס', 'דלס'],
-  'Las Vegas': ['לאס וגאס', 'וגאס'],
-  'Chiang Mai': ['צאנג מאי', 'צ׳אנג מאי', "צ'אנג מאי"],
-  'Ko Samui': ['קוסמוי', 'קו סמוי'],
-  'Koh Phangan': ['קופנגן', 'קו פנגן'],
-  Pai: ['פאי'],
-  Akko: ['עכו'],
-  "Be'er Yaakov": ['באר יעקב'],
-  "Beit She'an": ['בית שאן'],
-  Binyamina: ['בנימינה'],
-  Holon: ['חולון'],
-  Karmiel: ['כרמיאל'],
-  Katzrin: ['קצרין'],
-  "Ma'alot": ['מעלות', 'מעלות תרשיחא'],
-  Nesher: ['נשר'],
-  'Ness Ziona': ['נס ציונה'],
-  Ofakim: ['אופקים'],
-  Modiin: ['מודיעין'],
-  Safed: ['צפת'],
-  Savion: ['סביון'],
-  'Tel Mond': ['תל מונד'],
-  Ireland: ['אירלנד'],
-  UAE: ['איחוד האמירויות', 'האמירויות', 'אמירויות'],
-  // Harmless if Rhodes is not currently in the DB; useful if it is added later.
-  Rhodes: ['רודוס', 'rodos'],
-};
-
-const DESTINATION_STOP_WORDS = new Set([
-  'בית', 'כנסת', 'בית כנסת', 'מסעדה', 'מסעדת', 'כשר', 'כשרה', 'כשרים',
-  'אוכל', 'לאכול', 'ארוחה', 'מניין', 'מנין', 'שחרית', 'מנחה', 'מעריב',
-  'תפילה', 'תפילת', 'אירוח', 'שבת', 'משפחה', 'מחפש', 'מחפשת', 'צריך',
-  'צריכה', 'איפה', 'אפשר', 'קרוב', 'קרובה', 'אליי', 'לידי', 'באזור',
-  'נוסח', 'קהילה', 'יהודית',
-  'synagogue', 'restaurant', 'kosher', 'minyan', 'hosting', 'host',
-  'near', 'nearby', 'me', 'in', 'at', 'the',
-]);
-
-interface DestinationResolution {
-  destination: Destination | null;
-  explicitMention: boolean;
-}
-
 // מילות מפתח לסוג מסעדה וכשרות
 const RESTAURANT_TYPE_KEYWORDS: Record<string, string> = {
   'בשרי':'meat','בשרית':'meat','בשר':'meat','meat':'meat',
   'חלבי':'dairy','חלבית':'dairy','חלב':'dairy','dairy':'dairy','milky':'dairy',
   'פרווה':'parve','פרוה':'parve','parve':'parve','pareve':'parve',
+  // Hebrew food terms → type
+  'המבורגר':'meat','בורגר':'meat','שווארמה':'meat','סטייק':'meat',
+  'שניצל':'meat','קבב':'meat','אסאדו':'meat','עוף':'meat','מנגל':'meat',
+  'פיצה':'dairy','פסטה':'dairy','קפה':'dairy','גלידה':'dairy',
+  'סושי':'parve','דגים':'parve','פלאפל':'parve','חומוס':'parve','טבעוני':'parve',
+  // English food terms → type
+  'burger':'meat','hamburger':'meat','steak':'meat','grill':'meat','shawarma':'meat','chicken':'meat',
+  'pizza':'dairy','pasta':'dairy','cafe':'dairy','coffee':'dairy',
+  'sushi':'parve','fish':'parve','falafel':'parve','hummus':'parve','vegan':'parve',
 };
+
+// Hebrew terms that must route to restaurant — food items + explicit category words
+// (ML model misclassifies "מסעדה ב[city with בית]" as synagogue because of the "בית" prefix)
+const HEBREW_FOOD_TERMS = new Set([
+  // Specific food items
+  'פיצה','המבורגר','בורגר','שווארמה','סושי','קפה','גלידה',
+  'פלאפל','חומוס','סטייק','שניצל','דגים','פסטה','קבב','אסאדו',
+  'בורקס','וופל','לאזניה','עוף','מנגל',
+  'שוקולד','ממתקים','מתוקים','עוגיות','מאפה','מאפים','קרואסון','בייגל','סנדוויץ','נודלס',
+  'חלה','פיתה','לחם','גבינה','יוגורט','שקשוקה','חביתה','אומלט',
+  'ריזוטו','ניוקי','קארי','ראמן','פוקה','טאקו','בוריטו','נאן',
+  'מרק','תבשיל','אורז','קינוח','קינוחים','מנה','מנות','ארוחות',
+  // Generic food/meal words
+  'בשר','סלט','עוגה','אוכל','ארוחה','ארוחת','מטבח',
+  // Dietary types
+  'טבעוני','טבעונית','צמחוני','צמחונית','גלוטן',
+  // Restaurant type keywords
+  'בשרי','בשרית','חלבי','חלבית','פרווה','פרוה',
+  // Restaurant category words
+  'מסעדה','מסעדת','מסעדות',
+  // Common typos / informal variants
+  'פיצריה','שוארמה','המברגר','שניצלון','בורגרים','פלאפלים','סטייקהאוס','שינצל',
+]);
+
+// English food/restaurant terms the ML model may misclassify
+const ENGLISH_FOOD_TERMS = new Set([
+  'burger','hamburger','steak','pizza','sushi','grill','bbq','shawarma','kebab',
+  'falafel','hummus','chicken','pasta','cafe','coffee','bakery','fish','vegan',
+  'salad','restaurant','food','dairy','meat','pareve',
+  'eat','dinner','breakfast','lunch','brunch','vegetarian','schnitzel','waffle',
+  'kosher','ice','seafood','noodles','spaghetti','lasagna','risotto',
+  'bagel','sandwich','dessert','cookie','croissant','donut','taco','burrito',
+  'ramen','curry','soup','sushi','chocolate','cake','asian','italian','chinese',
+  'thai','indian','japanese','mediterranean','gourmet','bistro','deli',
+]);
+
+function containsFoodTerm(text: string): boolean {
+  const lower = text.toLowerCase();
+  if ((lower.match(/[א-ת]+/g) ?? []).some((w: string) => HEBREW_FOOD_TERMS.has(w))) return true;
+  if ((lower.match(/[a-z]+/g) ?? []).some((w: string) => ENGLISH_FOOD_TERMS.has(w))) return true;
+  return false;
+}
 const KASHRUT_KEYWORDS: Record<string, string> = {
   'מהדרין':'mehadrin','mehadrin':'mehadrin',
   'בדץ':'badatz','badatz':'badatz',
@@ -289,106 +143,24 @@ function hasExplicitSpainLocation(text: string): boolean {
   return /(?:^|[\s,.;:!?])(?:ב|ל)ספרד(?:$|[\s,.;:!?])/.test(text);
 }
 
-function hasHebrewCountryToken(text: string, countryHeb: string): boolean {
-  const escaped = countryHeb.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  return new RegExp(`(?:^|[\\s,.;:!?])${escaped}(?:$|[\\s,.;:!?])`).test(text);
-}
-
-export function normalizeDestinationText(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[׳']/g, '')
-    .replace(/[״"]/g, '')
-    .replace(/[-_]/g, ' ')
-    .replace(/[.,;:!?()[\]{}]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function hasHebrewLetters(text: string): boolean {
-  return /[א-ת]/.test(text);
-}
-
-function addHebrewPrefixVariants(token: string): string[] {
-  const variants = [token];
-  if (/^[בלמ][א-ת]{2,}$/.test(token)) {
-    variants.push(token.slice(1));
-  }
-  return variants;
-}
-
 function isSfaradDenominationCandidate(candidate: string): boolean {
   return candidate === 'ספרדי' || candidate === 'ספרדית' || candidate === 'נוסח ספרד';
 }
 
 function isExplicitDestinationCandidate(candidate: string): boolean {
-  if (!candidate || DESTINATION_STOP_WORDS.has(candidate) || isSfaradDenominationCandidate(candidate)) {
-    return false;
+  if (!candidate || DESTINATION_STOP_WORDS.has(candidate) || isSfaradDenominationCandidate(candidate)) return false;
+  if (candidate.includes(' ')) {
+    const words = candidate.split(' ');
+    if (words.some(isSfaradDenominationCandidate)) return false;
+    if (words.every(w => DESTINATION_STOP_WORDS.has(w))) return false;
   }
-  if (hasHebrewLetters(candidate)) {
-    return candidate.replace(/\s/g, '').length >= 3;
-  }
+  if (/[א-ת]/.test(candidate)) return candidate.replace(/\s/g, '').length >= 3;
   return candidate.length >= 3;
 }
 
-export function buildDestinationCandidates(text: string): string[] {
-  const normalized = normalizeDestinationText(text);
-  if (!normalized) return [];
-
-  const candidates: string[] = [];
-  const seen = new Set<string>();
-  const addCandidate = (candidate: string) => {
-    const normalizedCandidate = normalizeDestinationText(candidate);
-    if (!normalizedCandidate || seen.has(normalizedCandidate)) return;
-    seen.add(normalizedCandidate);
-    candidates.push(normalizedCandidate);
-  };
-
-  const words = normalized.split(/\s+/).filter(Boolean);
-  for (let i = 0; i < words.length; i++) {
-    const word = words[i];
-    if (!DESTINATION_STOP_WORDS.has(word)) {
-      for (const variant of addHebrewPrefixVariants(word)) {
-        addCandidate(variant);
-      }
-    }
-
-    if (i < words.length - 1) {
-      const nextWord = words[i + 1];
-      const pair = `${word} ${nextWord}`;
-      if (!DESTINATION_STOP_WORDS.has(pair) && !DESTINATION_STOP_WORDS.has(word) && !DESTINATION_STOP_WORDS.has(nextWord)) {
-        addCandidate(pair);
-      }
-      // גם זוג עם מילה ראשונה ללא קידומת עברית (בזכרון יעקב → זכרון יעקב)
-      const wordVariants = addHebrewPrefixVariants(word);
-      if (wordVariants.length > 1 && !DESTINATION_STOP_WORDS.has(word)) {
-        const strippedPair = `${wordVariants[1]} ${nextWord}`;
-        if (!DESTINATION_STOP_WORDS.has(strippedPair) && !DESTINATION_STOP_WORDS.has(wordVariants[1])) {
-          addCandidate(strippedPair);
-        }
-      }
-    }
-  }
-
-  return candidates;
-}
-
-export function detectCountryInText(text: string): string | null {
-  const lower = text.toLowerCase();
-  for (const [heb, eng] of Object.entries(COUNTRY_TRANSLATE)) {
-    const countryHeb = heb.toLowerCase();
-    if (countryHeb === 'ספרד') {
-      if (hasSfaradDenominationSignal(lower) && !hasExplicitSpainLocation(lower)) {
-        continue;
-      }
-      if (hasExplicitSpainLocation(lower) || hasHebrewCountryToken(lower, countryHeb)) {
-        return eng;
-      }
-      continue;
-    }
-    if (lower.includes(countryHeb)) return eng;
-  }
-  return null;
+interface DestinationResolution {
+  destination: Destination | null;
+  explicitMention: boolean;
 }
 
 @Controller('search')
@@ -396,6 +168,7 @@ export class SearchController {
   constructor(
     private readonly classifier: ClassifierService,
     private readonly denomClassifier: DenominationClassifierService,
+    private readonly indexService: DestinationIndexService,
     @InjectRepository(Destination)
     private readonly destRepo: Repository<Destination>,
     @InjectRepository(SearchFeedback)
@@ -405,8 +178,18 @@ export class SearchController {
   @Get('classify')
   classifyText(@Query('text') text: string) {
     if (!text?.trim()) return { category: null, emoji: null, denomination: null, confidence: 0 };
-    const result = this.classifier.classify(text);
-    if (result.confidence < 0.45) return { category: null, emoji: null, denomination: null, confidence: result.confidence };
+    const mlResult = this.classifier.classify(text);
+    const foodOverride = containsFoodTerm(text);
+    const lower = text.toLowerCase();
+    const hostingOverride = !foodOverride && /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
+    const result = foodOverride
+      ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
+      : hostingOverride
+      ? { ...mlResult, category: 'hosting', emoji: '🏠' }
+      : mlResult;
+    if (!foodOverride && !hostingOverride && result.confidence < 0.45) {
+      return { category: null, emoji: null, denomination: null, confidence: result.confidence };
+    }
     let denomination: string | null = null;
     let denomEmoji: string = '';
     let denomLabel: string = '';
@@ -426,8 +209,21 @@ export class SearchController {
     const { text, destinationId } = dto;
 
     // ── שלב 1: Model 1 — סיווג קטגוריה ────────────────
-    const result = this.classifier.classify(text);
-    if (result.confidence < 0.45) {
+    const mlResult = this.classifier.classify(text);
+
+    // Override ML when food/restaurant terms are present — prevents "בית" in city
+    // names (בית שמש, בית שאן) from biasing the ML toward synagogue
+    const hebrewFoodOverride = containsFoodTerm(text);
+    const lower = text.toLowerCase();
+    const hebrewHostingOverride = !hebrewFoodOverride &&
+      /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
+    const result = hebrewFoodOverride
+      ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
+      : hebrewHostingOverride
+      ? { ...mlResult, category: 'hosting', emoji: '🏠' }
+      : mlResult;
+
+    if (!hebrewFoodOverride && !hebrewHostingOverride && result.confidence < 0.45) {
       return { error: 'low_confidence', message: 'לא הצלחתי להבין מה אתה מחפש. נסה לכתוב למשל: "מסעדה כשרה בתל אביב"', confidence: result.confidence };
     }
 
@@ -469,13 +265,12 @@ export class SearchController {
     let gpsUsed = false;
 
     if (!foundDest) {
-      // בדוק אם הוזכרה מדינה → חפש parent destination לפי country
       const countryEng = detectCountryInText(text);
       if (countryEng) {
         const parentDest = await this.findParentDestinationByCountry(countryEng);
         if (parentDest) {
           void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
-          const route = this.getCountryRoute(result.category, parentDest.id, restaurantType, restaurantKashrut);
+          const route = this.getCountryRoute(result.category, parentDest.id, denomination, restaurantType, restaurantKashrut);
           return {
             ...result,
             route,
@@ -486,11 +281,12 @@ export class SearchController {
             restaurantType, restaurantKashrut,
           };
         }
-        // מדינה הוזכרה אבל אין בDB — לא מפעילים GPS
-      } else if (!destinationResolution.explicitMention && dto.lat != null && dto.lng != null) {
-        // אין עיר, אין מדינה ואין יעד מפורש שלא נפתר — נסה GPS
-        foundDest = await this.findNearestDestination(dto.lat, dto.lng);
-        if (foundDest) gpsUsed = true;
+      } else {
+        foundDest = this.indexService.fuzzyMatch(buildDestinationCandidates(text));
+        if (!foundDest && !destinationResolution.explicitMention && dto.lat != null && dto.lng != null) {
+          foundDest = await this.findNearestDestination(dto.lat, dto.lng);
+          if (foundDest) gpsUsed = true;
+        }
       }
     }
 
@@ -519,13 +315,14 @@ export class SearchController {
     return this.destRepo.findOne({ where: { id: rows[0].id } });
   }
 
-  // ── חיפוש יעד בתוך הטקסט מתוך אינדקס שמות/כינויים ─────────
-  private async resolveDestinationFromText(text: string): Promise<DestinationResolution> {
+  // ── חיפוש יעד בתוך הטקסט — משתמש באינדקס השמור במטמון ─
+  private resolveDestinationFromText(text: string): DestinationResolution {
     const candidates = buildDestinationCandidates(text);
-    const destinations = await this.loadDestinationsForSearch();
-    const aliasIndex = this.buildDestinationAliasIndex(destinations);
+    const aliasIndex = this.indexService.getIndex();
 
-    for (const candidate of candidates) {
+    // Try longer candidates first so "קריית גת" wins over "קריית"
+    const sorted = [...candidates].sort((a, b) => b.length - a.length);
+    for (const candidate of sorted) {
       if (candidate === 'ספרד' && hasSfaradDenominationSignal(text.toLowerCase()) && !hasExplicitSpainLocation(text.toLowerCase())) {
         continue;
       }
@@ -541,65 +338,9 @@ export class SearchController {
     };
   }
 
-  private async loadDestinationsForSearch(): Promise<Destination[]> {
-    return this.destRepo.find({ select: ['id', 'name', 'city', 'country'] });
-  }
-
-  private buildDestinationAliasIndex(destinations: Destination[]): Map<string, Destination> {
-    const index = new Map<string, Destination>();
-    const canonicalIndex = new Map<string, Destination>();
-
-    const add = (alias: string | null | undefined, destination: Destination, target = index) => {
-      const normalized = normalizeDestinationText(alias ?? '');
-      if (!normalized || target.has(normalized)) return;
-      target.set(normalized, destination);
-    };
-
-    for (const destination of destinations) {
-      add(destination.city, destination);
-      add(destination.name, destination);
-      add(destination.city, destination, canonicalIndex);
-      add(destination.name, destination, canonicalIndex);
-    }
-
-    const findCanonical = (canonical: string): Destination | undefined =>
-      canonicalIndex.get(normalizeDestinationText(canonical));
-
-    for (const [hebrewCity, englishCity] of Object.entries(CITY_TRANSLATE)) {
-      const destination = findCanonical(englishCity);
-      if (destination) add(hebrewCity, destination);
-    }
-
-    for (const [hebrewCountry, englishCountry] of Object.entries(COUNTRY_TRANSLATE)) {
-      const destination = findCanonical(englishCountry);
-      if (destination) add(hebrewCountry, destination);
-    }
-
-    for (const [canonicalName, aliases] of Object.entries(DESTINATION_ALIASES)) {
-      const destination = findCanonical(canonicalName);
-      if (!destination) continue;
-      for (const alias of aliases) {
-        add(alias, destination);
-      }
-    }
-
-    // Auto-derive first-word aliases from all multi-word entries already in index.
-    // Lets "לאס" find "לאס וגאס", "ראשון" find "ראשון לציון", etc., without manual entries.
-    // Skips if first word already mapped (explicit aliases take priority).
-    for (const [key, destination] of Array.from(index.entries())) {
-      const words = key.split(/\s+/);
-      if (words.length < 2) continue;
-      const firstWord = words[0];
-      if (firstWord.length < 3 || DESTINATION_STOP_WORDS.has(firstWord)) continue;
-      if (!index.has(firstWord)) index.set(firstWord, destination);
-    }
-
-    return index;
-  }
-
   // ── חיפוש destination הכי קרוב לפי GPS ────────────
   private async findNearestDestination(lat: number, lng: number): Promise<Destination | null> {
-    const MAX_METERS = 100_000; // 100 ק"מ
+    const MAX_METERS = 100_000;
     const rows = await this.destRepo.query(
       `SELECT id FROM destinations
        WHERE parent_id IS NOT NULL
@@ -613,7 +354,7 @@ export class SearchController {
   }
 
   // ── נתיב ברמת מדינה ────────────────────────────────
-  private getCountryRoute(category: string, parentId: number, restaurantType?: string | null, restaurantKashrut?: string | null): string {
+  private getCountryRoute(category: string, parentId: number, denomination?: string | null, restaurantType?: string | null, restaurantKashrut?: string | null): string {
     switch (category) {
       case 'restaurant': {
         const params = new URLSearchParams({ fromParent: 'true' });
@@ -622,7 +363,11 @@ export class SearchController {
         return `/restaurants/${parentId}?${params.toString()}`;
       }
       case 'synagogue':
-      case 'minyan':
+      case 'minyan': {
+        const params = new URLSearchParams({ fromParent: 'true' });
+        if (denomination) params.set('denomination', denomination);
+        return `/synagogues/${parentId}?${params.toString()}`;
+      }
       case 'hosting':
         return `/destination/${parentId}/subdestinations`;
       default:

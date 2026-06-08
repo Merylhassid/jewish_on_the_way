@@ -6,6 +6,11 @@ import { Repository } from 'typeorm';
 import { PlaceReview } from './place-review.entity';
 import { PlaceReport } from './place-report.entity';
 import { PlaceRequest } from './place-request.entity';
+import { EntityType } from '../common/enums/entity-type.enum';
+import { CreateRequestDto } from './dto/create-request.dto';
+import { ReportType } from './dto/create-report.dto';
+import { ReportStatus } from './dto/resolve-report.dto';
+import { RequestStatus } from './dto/resolve-request.dto';
 
 @Injectable()
 export class ReviewsService {
@@ -17,20 +22,32 @@ export class ReviewsService {
 
   // ── Reviews ────────────────────────────────────────────────────────────────
 
-  async getReviews(entityType: string, entityId: number) {
-    const rows = await this.reviewRepo.find({
-      where: { entityType: entityType as any, entityId },
-      relations: ['user'],
-      order: { createdAt: 'DESC' },
-    });
+  async getReviews(entityType: EntityType, entityId: number, limit = 20, offset = 0) {
+    const safeLimit = Math.min(limit, 50);
 
-    const avg = rows.length
-      ? rows.reduce((s, r) => s + r.stars, 0) / rows.length
-      : null;
+    const [rows, agg] = await Promise.all([
+      this.reviewRepo.find({
+        where: { entityType, entityId },
+        relations: ['user'],
+        order: { createdAt: 'DESC' },
+        take: safeLimit,
+        skip: offset,
+      }),
+      this.reviewRepo
+        .createQueryBuilder('r')
+        .select('COUNT(*)', 'totalCount')
+        .addSelect('AVG(r.stars)', 'avgStars')
+        .where('r.entity_type = :entityType AND r.entity_id = :entityId', { entityType, entityId })
+        .getRawOne<{ totalCount: string; avgStars: string | null }>(),
+    ]);
+
+    const totalCount = parseInt(agg?.totalCount ?? '0', 10);
+    const avgRaw = agg?.avgStars ? parseFloat(agg.avgStars) : null;
+    const averageStars = avgRaw !== null ? Math.round(avgRaw * 10) / 10 : null;
 
     return {
-      average: avg ? Math.round(avg * 10) / 10 : null,
-      count: rows.length,
+      averageStars,
+      totalCount,
       reviews: rows.map(r => ({
         id: r.id,
         stars: r.stars,
@@ -43,7 +60,7 @@ export class ReviewsService {
 
   async upsertReview(
     userId: number,
-    entityType: string,
+    entityType: EntityType,
     entityId: number,
     stars: number,
     comment?: string,
@@ -51,7 +68,7 @@ export class ReviewsService {
     if (stars < 1 || stars > 5) throw new BadRequestException('stars must be 1–5');
 
     let review = await this.reviewRepo.findOne({
-      where: { userId, entityType: entityType as any, entityId },
+      where: { userId, entityType, entityId },
     });
 
     if (review) {
@@ -59,15 +76,15 @@ export class ReviewsService {
       review.comment = comment ?? null;
     } else {
       review = this.reviewRepo.create({
-        userId, entityType: entityType as any, entityId, stars, comment: comment ?? null,
+        userId, entityType, entityId, stars, comment: comment ?? null,
       });
     }
     return this.reviewRepo.save(review);
   }
 
-  async deleteReview(userId: number, entityType: string, entityId: number) {
+  async deleteReview(userId: number, entityType: EntityType, entityId: number) {
     const review = await this.reviewRepo.findOne({
-      where: { userId, entityType: entityType as any, entityId },
+      where: { userId, entityType, entityId },
     });
     if (!review) throw new NotFoundException('Review not found');
     await this.reviewRepo.remove(review);
@@ -78,13 +95,13 @@ export class ReviewsService {
 
   async createReport(
     userId: number,
-    entityType: string,
+    entityType: EntityType,
     entityId: number,
-    reportType: string,
+    reportType: ReportType,
     description?: string,
   ) {
     const report = this.reportRepo.create({
-      userId, entityType: entityType as any, entityId, reportType,
+      userId, entityType, entityId, reportType,
       description: description ?? null, status: 'pending',
     });
     return this.reportRepo.save(report);
@@ -92,7 +109,7 @@ export class ReviewsService {
 
   // ── Place Requests ─────────────────────────────────────────────────────────
 
-  async createRequest(userId: number, dto: Partial<PlaceRequest>) {
+  async createRequest(userId: number, dto: CreateRequestDto) {
     if (!dto.name || !dto.destinationId || !dto.entityType) {
       throw new BadRequestException('name, destinationId and entityType are required');
     }
@@ -111,7 +128,7 @@ export class ReviewsService {
     });
   }
 
-  async resolveReport(id: number, status: string, adminNote?: string) {
+  async resolveReport(id: number, status: ReportStatus, adminNote?: string) {
     const report = await this.reportRepo.findOne({ where: { id } });
     if (!report) throw new NotFoundException('Report not found');
     report.status = status;
@@ -128,7 +145,7 @@ export class ReviewsService {
     });
   }
 
-  async resolveRequest(id: number, status: string, adminNote?: string) {
+  async resolveRequest(id: number, status: RequestStatus, adminNote?: string) {
     const req = await this.requestRepo.findOne({ where: { id } });
     if (!req) throw new NotFoundException('Request not found');
     req.status = status;
@@ -136,9 +153,9 @@ export class ReviewsService {
     return this.requestRepo.save(req);
   }
 
-  async getReportCountByEntity(entityType: string, entityId: number) {
+  async getReportCountByEntity(entityType: EntityType, entityId: number) {
     return this.reportRepo.count({
-      where: { entityType: entityType as any, entityId, status: 'pending' },
+      where: { entityType, entityId, status: 'pending' },
     });
   }
 }

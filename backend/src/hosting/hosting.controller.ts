@@ -15,6 +15,8 @@ import { HostingService } from './hosting.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { CreateNeedDto } from './dto/create-need.dto';
+import { SearchOffersQueryDto } from './dto/search-offers-query.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('hosting')
@@ -39,23 +41,18 @@ export class HostingController {
     return this.hostingService.deactivateOffer(id, req.user.sub);
   }
 
-  // GET /hosting/offers/search?destinationId=1&guestsCount=2&forShabbat=true&arrivalDate=2026-05-01
+  // GET /hosting/offers/search?destinationId=1&guestsCount=2&forShabbat=true&arrivalDate=2026-05-01&limit=20&offset=0
   @Get('offers/search')
-  searchOffers(
-    @Query('destinationId', ParseIntPipe) destinationId: number,
-    @Query('arrivalDate') arrivalDate?: string,
-    @Query('departureDate') departureDate?: string,
-    @Query('guestsCount') guestsCount?: string,
-    @Query('forShabbat') forShabbat?: string,
-    @Query('withChildren') withChildren?: string,
-  ) {
+  searchOffers(@Query() dto: SearchOffersQueryDto) {
     return this.hostingService.searchOffers({
-      destinationId,
-      arrivalDate,
-      departureDate,
-      guestsCount: guestsCount ? parseInt(guestsCount, 10) : undefined,
-      forShabbat: forShabbat === 'true',
-      withChildren: withChildren === 'true',
+      destinationId: dto.destinationId,
+      arrivalDate: dto.arrivalDate,
+      departureDate: dto.departureDate,
+      guestsCount: dto.guestsCount,
+      forShabbat: dto.forShabbat ?? false,
+      withChildren: dto.withChildren ?? false,
+      limit: dto.limit ?? 20,
+      offset: dto.offset ?? 0,
     });
   }
 
@@ -89,10 +86,29 @@ export class HostingController {
   @Post('requests/:id/reject')
   @HttpCode(HttpStatus.OK)
   reject(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
-    return this.hostingService.updateRequestStatus(
-      id,
-      req.user.sub,
-      'rejected',
-    );
+    return this.hostingService.updateRequestStatus(id, req.user.sub, 'rejected');
+  }
+
+  // ── Needs ───────────────────────────────────────────────────────────────────
+
+  @Post('needs')
+  createNeed(@Body() dto: CreateNeedDto, @Req() req: any) {
+    return this.hostingService.createNeed(dto, req.user.sub);
+  }
+
+  @Get('needs')
+  listNeeds(@Query('destinationId') destinationId?: string) {
+    return this.hostingService.listNeeds(destinationId ? parseInt(destinationId, 10) : undefined);
+  }
+
+  @Get('needs/mine')
+  myNeeds(@Req() req: any) {
+    return this.hostingService.myNeeds(req.user.sub);
+  }
+
+  @Post('needs/:id/respond')
+  @HttpCode(HttpStatus.OK)
+  respondToNeed(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.respondToNeed(id, req.user.sub);
   }
 }

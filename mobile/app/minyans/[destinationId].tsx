@@ -43,9 +43,9 @@ const PRAYER_EMOJI: Record<string, string> = {
 // Labels resolved via useTranslation inside components
 
 function formatDate(iso: string) {
-  const [y, m, d] = iso.split('-');
-  const date = new Date(Number(y), Number(m) - 1, Number(d));
-  return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const [y, m, d] = String(iso).slice(0, 10).split('-');
+  return new Date(Number(y), Number(m) - 1, Number(d))
+    .toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
 
 function formatDistance(meters: number): string {
@@ -170,14 +170,14 @@ function CreateMinyanModal({
 
           <Text style={styles.label}>{t('minyans.location')}</Text>
           <TextInput style={styles.input} value={locationText} onChangeText={setLocationText}
-            placeholder="e.g. Great Synagogue, 2nd floor" placeholderTextColor="#999" />
+            placeholder={t('minyans.locationPlaceholder')} placeholderTextColor="#999" />
 
           <Text style={styles.label}>{t('minyans.notesOptional')}</Text>
           <TextInput style={[styles.input, { height: 70 }]} value={notes} onChangeText={setNotes}
-            placeholder="Any special instructions…" placeholderTextColor="#999" multiline />
+            placeholder={t('minyans.notesPlaceholder')} placeholderTextColor="#999" multiline />
 
           {userLocation && (
-            <Text style={styles.locationNote}>📍 Your location will be attached to help others see distance</Text>
+            <Text style={styles.locationNote}>{t('minyans.locationNote')}</Text>
           )}
 
           <TouchableOpacity style={styles.submitBtn} onPress={handleCreate} disabled={loading}>
@@ -259,7 +259,7 @@ export default function MinyansScreen() {
           <Text style={styles.myBtnText}>{t('minyans.my')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.addBtn} onPress={() => setCreateVisible(true)}>
-          <Text style={styles.addBtnText}>+ New</Text>
+          <Text style={styles.addBtnText}>{t('minyans.newBtn')}</Text>
         </TouchableOpacity>
       </View>
 

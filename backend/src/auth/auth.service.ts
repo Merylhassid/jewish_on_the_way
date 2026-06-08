@@ -1,12 +1,13 @@
 import {
   BadRequestException,
+  ConflictException,
   Injectable,
   InternalServerErrorException,
   Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { JwtService } from '@nestjs/jwt';
@@ -19,12 +20,15 @@ import { ResetPasswordDto } from './dto/reset-password.dto';
 import { MailService } from '../mail/mail.service';
 import { AuditService } from '../audit/audit.service';
 
+const REFRESH_TOKEN_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
 @Injectable()
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
 
   constructor(
     @InjectRepository(User) private usersRepo: Repository<User>,
+    private dataSource: DataSource,
     private jwtService: JwtService,
     private mailService: MailService,
     private audit: AuditService,
@@ -33,31 +37,35 @@ export class AuthService {
   async register(dto: RegisterDto) {
     const email = dto.email.toLowerCase();
 
-    const exists = await this.usersRepo.findOne({ where: { email } });
-    if (exists && exists.isActive)
-      throw new BadRequestException('Email already exists');
-    // If a soft-deleted account had this email, remove it so the new account can use it
-    if (exists && !exists.isActive)
-      await this.usersRepo.delete({ id: exists.id });
+    try {
+      const saved = await this.dataSource.transaction(async (manager) => {
+        const exists = await manager.findOne(User, { where: { email } });
+        if (exists && exists.isActive)
+          throw new BadRequestException('Email already exists');
+        if (exists && !exists.isActive)
+          await manager.delete(User, { id: exists.id });
 
-    const passwordHash = await bcrypt.hash(dto.password, 10);
+        const passwordHash = await bcrypt.hash(dto.password, 10);
+        const user = manager.create(User, {
+          email,
+          passwordHash,
+          firstName: dto.firstName,
+          lastName: dto.lastName,
+        });
+        return manager.save(user);
+      });
 
-    const user = this.usersRepo.create({
-      email,
-      passwordHash,
-      firstName: dto.firstName,
-      lastName: dto.lastName,
-    });
-
-    const saved = await this.usersRepo.save(user);
-    this.audit.log('USER_REGISTERED', saved.id, { email: saved.email });
-
-    return {
-      id: saved.id,
-      email: saved.email,
-      firstName: saved.firstName,
-      lastName: saved.lastName,
-    };
+      this.audit.log('USER_REGISTERED', saved.id, { email: saved.email });
+      return {
+        id: saved.id,
+        email: saved.email,
+        firstName: saved.firstName,
+        lastName: saved.lastName,
+      };
+    } catch (err: any) {
+      if (err?.code === '23505') throw new ConflictException('Email already exists');
+      throw err;
+    }
   }
 
   async login(dto: LoginDto) {
@@ -77,10 +85,19 @@ export class AuthService {
 
     const payload = { sub: user.id, email: user.email };
     const access_token = await this.jwtService.signAsync(payload);
+
+    const rawRefreshToken = crypto.randomBytes(64).toString('hex');
+    const refreshTokenHash = crypto.createHash('sha256').update(rawRefreshToken).digest('hex');
+
+    user.refreshToken = refreshTokenHash;
+    user.refreshTokenExpiresAt = new Date(Date.now() + REFRESH_TOKEN_TTL_MS);
+    await this.usersRepo.save(user);
+
     this.audit.log('USER_LOGIN', user.id, { email: user.email });
 
     return {
       access_token,
+      refresh_token: rawRefreshToken,
       user: {
         id: user.id,
         email: user.email,
@@ -90,17 +107,43 @@ export class AuthService {
     };
   }
 
+  async refresh(rawRefreshToken: string) {
+    const tokenHash = crypto.createHash('sha256').update(rawRefreshToken).digest('hex');
+
+    const user = await this.usersRepo.findOne({ where: { refreshToken: tokenHash } });
+
+    if (
+      !user ||
+      !user.isActive ||
+      !user.refreshTokenExpiresAt ||
+      user.refreshTokenExpiresAt < new Date()
+    ) {
+      throw new UnauthorizedException('Invalid or expired refresh token');
+    }
+
+    const payload = { sub: user.id, email: user.email };
+    const access_token = await this.jwtService.signAsync(payload);
+
+    return { access_token };
+  }
+
+  async logout(userId: number): Promise<void> {
+    await this.usersRepo.update(userId, {
+      refreshToken: null,
+      refreshTokenExpiresAt: null,
+    });
+    this.audit.log('USER_LOGOUT', userId, {});
+  }
+
   async forgotPassword(dto: ForgotPasswordDto): Promise<void> {
     const email = dto.email.toLowerCase();
     const user = await this.usersRepo.findOne({ where: { email } });
 
-    // Always return success to avoid leaking whether email exists
     if (!user) return;
 
     const rawToken = crypto.randomBytes(32).toString('hex');
-    const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    const expires = new Date(Date.now() + 60 * 60 * 1000);
 
-    // Hash token with SHA-256 before storing (not stored in plain text)
     const tokenHash = crypto
       .createHash('sha256')
       .update(rawToken)
@@ -111,7 +154,6 @@ export class AuthService {
     await this.usersRepo.save(user);
     this.audit.log('PASSWORD_RESET_REQUESTED', user.id, { email });
 
-    // In dev, always print the token so you can test without SMTP configured
     if (process.env.NODE_ENV !== 'production') {
       this.logger.warn(`\n========================================`);
       this.logger.warn(`  PASSWORD RESET TOKEN (dev only)`);
@@ -142,7 +184,6 @@ export class AuthService {
   }
 
   async resetPassword(dto: ResetPasswordDto): Promise<void> {
-    // Hash provided token to match stored hash
     const tokenHash = crypto
       .createHash('sha256')
       .update(dto.token)

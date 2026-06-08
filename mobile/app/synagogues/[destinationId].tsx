@@ -1,6 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Location from 'expo-location';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator, FlatList, Linking, Platform,
   Pressable, RefreshControl, StyleSheet, Text, View,
@@ -9,6 +10,8 @@ import { ArrowLeft, ChevronRight, Globe, MapPin, Navigation, Phone } from 'lucid
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 import { calculateHaversineDistance, formatDistance } from '@/src/utils/distance';
+import ErrorState from '@/src/components/ErrorState';
+import { SynagogueCardSkeleton } from '@/src/components/Skeleton';
 
 interface Synagogue {
   id: number; name: string; address?: string;
@@ -40,8 +43,10 @@ function getDenomKey(d?: string | null) {
 }
 
 export default function SynagoguesScreen() {
-  const { destinationId, denomination, city } =
-    useLocalSearchParams<{ destinationId: string; denomination?: string; city?: string }>();
+  const { destinationId, denomination, city, fromParent } =
+    useLocalSearchParams<{ destinationId: string; denomination?: string; city?: string; fromParent?: string }>();
+  const isCountryMode = fromParent === 'true';
+  const { t } = useTranslation();
 
   const [synagogues, setSynagogues] = useState<Synagogue[]>([]);
   const [total, setTotal]           = useState(0);
@@ -49,6 +54,7 @@ export default function SynagoguesScreen() {
   const [loading, setLoading]       = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [error, setError]           = useState(false);
   const [trigger, setTrigger]       = useState(0);
   const [gps, setGps]               = useState<{ lat: number; lng: number } | null>(null);
   const cityLabel = city ? decodeURIComponent(city) : '';
@@ -70,7 +76,11 @@ export default function SynagoguesScreen() {
     (async () => {
       try {
         if (!refreshing) setLoading(true);
-        const params: any = { destinationId, offset: '0' };
+
+        const params: Record<string, string> = {
+          [isCountryMode ? 'parentDestinationId' : 'destinationId']: destinationId,
+          offset: '0',
+        };
         if (denomination) params.denomination = denomination;
         if (gps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
         const res = await client.get('/synagogues', { params });
@@ -78,7 +88,7 @@ export default function SynagoguesScreen() {
         const list = Array.isArray(raw) ? raw : (raw?.data ?? []);
         setSynagogues(list);
         setTotal(raw?.total ?? list.length);
-      } catch {} finally { setLoading(false); setRefreshing(false); }
+      } catch { setError(true); } finally { setLoading(false); setRefreshing(false); }
     })();
   }, [destinationId, denomination, gps, trigger]);
 
@@ -87,7 +97,10 @@ export default function SynagoguesScreen() {
     const next = offset + 50;
     try {
       setLoadingMore(true);
-      const params: any = { destinationId, offset: String(next) };
+      const params: Record<string, string> = {
+        [isCountryMode ? 'parentDestinationId' : 'destinationId']: destinationId,
+        offset: String(next),
+      };
       if (denomination) params.denomination = denomination;
       if (gps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
       const res = await client.get('/synagogues', { params });
@@ -98,6 +111,18 @@ export default function SynagoguesScreen() {
     } catch {} finally { setLoadingMore(false); }
   };
 
+  const handleCall    = (phone: string) => Linking.openURL(`tel:${phone}`).catch(() => {});
+  const handleWebsite = (url: string)   => {
+    if (!url.startsWith('http')) url = 'https://' + url;
+    Linking.openURL(url).catch(() => {});
+  };
+  const retry     = () => { setError(false); setTrigger(t => t + 1); };
+  const onRefresh = () => { setError(false); setRefreshing(true); setTrigger(t => t + 1); };
+  const clearFilter = () => router.replace(
+    (`/synagogues/${destinationId}` + (isCountryMode ? '?fromParent=true' : '')) as any
+  );
+
+  const hasSomeDistance = synagogues.some((s) => s.distanceMeters !== undefined);
   const count = total || synagogues.length;
 
   return (
@@ -110,7 +135,7 @@ export default function SynagoguesScreen() {
           <View style={{ flex: 1 }}>
             <Text style={s.headerTitle} numberOfLines={1}>{cityLabel || 'Synagogues'}</Text>
             <Text style={s.headerSub}>
-              {loading ? 'Loading…' : `${count} synagogue${count !== 1 ? 's' : ''}${gps ? '  ·  sorted by distance' : ''}`}
+              {loading ? t('synagogues.loading') : `${count} ${t('synagogues.title')}${gps ? `  ·  ${t('synagogues.sortedByDist')}` : ''}`}
             </Text>
           </View>
         </View>
@@ -121,21 +146,25 @@ export default function SynagoguesScreen() {
             onPress={() => router.replace(`/synagogues/${destinationId}` as any)}
           >
             <Text style={[s.denomLabel, { color: DENOM[denomination].color }]}>
-              {DENOM[denomination].label} · Tap to clear filter
+              {t(`synagogues.denominations.${denomination}`)} · {t('synagogues.tapToClear')}
             </Text>
           </Pressable>
         )}
       </View>
 
       {loading ? (
-        <View style={s.center}><ActivityIndicator size="large" color={C.gold} /></View>
+        <View style={{ padding: 16, gap: 10 }}>
+          {[0,1,2,3,4].map(i => <SynagogueCardSkeleton key={i} />)}
+        </View>
+      ) : error ? (
+        <ErrorState onRetry={retry} />
       ) : (
         <FlatList
           data={synagogues}
           keyExtractor={i => String(i.id)}
           contentContainerStyle={s.list}
           showsVerticalScrollIndicator={false}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); setTrigger(t => t + 1); }} tintColor={C.gold} />}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.gold} />}
           onEndReached={loadMore}
           onEndReachedThreshold={0.3}
           ListFooterComponent={loadingMore ? <ActivityIndicator color={C.gold} style={{ margin: 20 }} /> : null}
@@ -143,7 +172,7 @@ export default function SynagoguesScreen() {
           ListEmptyComponent={
             <View style={s.empty}>
               <Globe size={36} color="#E5E7EB" strokeWidth={1.5} />
-              <Text style={s.emptyText}>No synagogues found</Text>
+              <Text style={s.emptyText}>{t('synagogues.noResults')}</Text>
             </View>
           }
         />

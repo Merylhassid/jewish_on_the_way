@@ -1,5 +1,5 @@
 import { Redirect, Tabs } from 'expo-router';
-import { Platform, View } from 'react-native';
+import { Platform, Pressable, View } from 'react-native';
 import { Compass, MapPin, Navigation, User } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
@@ -41,18 +41,17 @@ export default function TabLayout() {
         tabBarButton: (props) => {
           const { onPress, children, style, accessibilityState } = props as any;
           return (
-            <View
+            <Pressable
               style={[style, { flex: 1, alignItems: 'center', justifyContent: 'center' }]}
-              accessible
               accessibilityRole="button"
               accessibilityState={accessibilityState}
-              onTouchEnd={() => {
+              onPress={() => {
                 Haptics.selectionAsync().catch(() => {});
                 onPress?.();
               }}
             >
               {children}
-            </View>
+            </Pressable>
           );
         },
       }}

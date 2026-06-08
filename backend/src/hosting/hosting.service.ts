@@ -8,11 +8,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { HostingOffer } from './entities/hosting-offer.entity';
 import { HostingRequest } from './entities/hosting-request.entity';
+import { HostingNeed } from './entities/hosting-need.entity';
 import { Destination } from '../destination.entity';
 import { User } from '../users/user.entity';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { CreateNeedDto } from './dto/create-need.dto';
 import { AuditService } from '../audit/audit.service';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable()
 export class HostingService {
@@ -21,10 +24,13 @@ export class HostingService {
     private offersRepo: Repository<HostingOffer>,
     @InjectRepository(HostingRequest)
     private requestsRepo: Repository<HostingRequest>,
+    @InjectRepository(HostingNeed)
+    private needsRepo: Repository<HostingNeed>,
     @InjectRepository(Destination)
     private destinationsRepo: Repository<Destination>,
     @InjectRepository(User) private usersRepo: Repository<User>,
     private audit: AuditService,
+    private notifications: NotificationsService,
   ) {}
 
   // ── Host: create offer ──────────────────────────────────────────────────────
@@ -94,7 +100,12 @@ export class HostingService {
     guestsCount?: number;
     forShabbat?: boolean;
     withChildren?: boolean;
+    limit?: number;
+    offset?: number;
   }) {
+    const safeLimit = Math.min(filters.limit ?? 20, 50);
+    const offset    = filters.offset ?? 0;
+
     const qb = this.offersRepo
       .createQueryBuilder('o')
       .leftJoinAndSelect('o.user', 'u')
@@ -124,7 +135,11 @@ export class HostingService {
       });
     }
 
-    const offers = await qb.orderBy('o.created_at', 'DESC').getMany();
+    const offers = await qb
+      .orderBy('o.created_at', 'DESC')
+      .take(safeLimit)
+      .skip(offset)
+      .getMany();
 
     // req 7.4.5 — never expose contact details in search results
     return offers.map(this.formatOffer);
@@ -133,7 +148,7 @@ export class HostingService {
   // ── Guest: send request — req 7.2.7 ────────────────────────────────────────
 
   async createRequest(dto: CreateRequestDto, guestId: number) {
-    if (dto.arrivalDate >= dto.departureDate) {
+    if (new Date(dto.arrivalDate) >= new Date(dto.departureDate)) {
       throw new BadRequestException('Departure must be after arrival');
     }
 
@@ -150,6 +165,23 @@ export class HostingService {
     // req 7.4.5 — guest cannot request their own offer
     if (offer.user.id === guestId) {
       throw new BadRequestException('Cannot request your own hosting offer');
+    }
+
+    // Validate request against offer conditions
+    if (dto.arrivalDate < String(offer.available_from).slice(0, 10)) {
+      throw new BadRequestException('Arrival date is before the offer availability');
+    }
+    if (dto.departureDate > String(offer.available_to).slice(0, 10)) {
+      throw new BadRequestException('Departure date is after the offer availability');
+    }
+    if (dto.guestsCount > offer.max_guests) {
+      throw new BadRequestException(`This offer allows up to ${offer.max_guests} guests`);
+    }
+    if (dto.withChildren && !offer.allows_children) {
+      throw new BadRequestException('This offer does not allow children');
+    }
+    if (dto.forShabbat && !offer.allows_shabbat) {
+      throw new BadRequestException('This offer does not include Shabbat hosting');
     }
 
     const request = Object.assign(this.requestsRepo.create(), {
@@ -171,6 +203,19 @@ export class HostingService {
       offerId: dto.offerId,
       destinationId: offer.destination.id,
     });
+
+    // Notify the host that someone requested their offer
+    const host = await this.usersRepo.findOne({ where: { id: offer.user.id } });
+    if (host?.pushToken) {
+      const guestName = `${guest.firstName}`.trim() || 'Someone';
+      void this.notifications.sendPush(
+        host.pushToken,
+        '🏠 New hosting request!',
+        `${guestName} wants to stay with you in ${offer.destination.city}`,
+        { requestId: saved.id },
+      );
+    }
+
     return this.formatRequest(saved, guestId);
   }
 
@@ -193,7 +238,8 @@ export class HostingService {
       .leftJoinAndSelect('r.user', 'guest')
       .leftJoinAndSelect('r.destination', 'd')
       .leftJoinAndSelect('r.offer', 'o')
-      .where('o.user_id = :hostId', { hostId })
+      .leftJoinAndSelect('o.user', 'offerUser')
+      .where('o.user_id = :hostId OR r.host_id = :hostId', { hostId })
       .orderBy('r.created_at', 'DESC')
       .getMany();
 
@@ -210,7 +256,7 @@ export class HostingService {
   ) {
     const request = await this.requestsRepo.findOne({
       where: { id: requestId },
-      relations: ['offer', 'offer.user'],
+      relations: ['offer', 'offer.user', 'user'],
     });
     if (!request) throw new NotFoundException('Request not found');
     if (request.offer?.user?.id !== hostId) {
@@ -226,10 +272,136 @@ export class HostingService {
       hostId,
       { requestId: requestId },
     );
+
+    // Notify the guest about the host's decision
+    const guest = await this.usersRepo.findOne({ where: { id: request.user?.id } });
+    if (guest?.pushToken) {
+      const title = status === 'approved' ? '🏠 Hosting request approved!' : 'Hosting request declined';
+      const body  = status === 'approved'
+        ? 'Your Shabbat hosting request has been approved. Check the app for details.'
+        : 'Your hosting request was not approved this time.';
+      void this.notifications.sendPush(guest.pushToken, title, body, { requestId });
+    }
+
     return this.formatRequest(updated, hostId);
   }
 
+  // ── Guest: post a hosting need ──────────────────────────────────────────────
+
+  async createNeed(dto: CreateNeedDto, userId: number) {
+    if (new Date(dto.arrivalDate) >= new Date(dto.departureDate)) {
+      throw new BadRequestException('Departure must be after arrival');
+    }
+    const destination = await this.destinationsRepo.findOne({ where: { id: dto.destinationId } });
+    if (!destination) throw new NotFoundException('Destination not found');
+    const user = await this.usersRepo.findOneOrFail({ where: { id: userId } });
+
+    const need = Object.assign(this.needsRepo.create(), {
+      user,
+      destination,
+      arrival_date: dto.arrivalDate,
+      departure_date: dto.departureDate,
+      guests_count: dto.guestsCount,
+      with_children: dto.withChildren ?? false,
+      for_shabbat: dto.forShabbat ?? false,
+      notes: dto.notes ?? null,
+      is_open: true,
+    });
+    const saved = await this.needsRepo.save(need);
+    this.audit.log('HOSTING_NEED_CREATED', userId, { needId: saved.id, destinationId: dto.destinationId });
+    return this.formatNeed(saved);
+  }
+
+  // ── List open needs (all, or filtered by destination) ───────────────────────
+
+  async listNeeds(destinationId?: number) {
+    const today = new Date().toISOString().split('T')[0];
+    const qb = this.needsRepo
+      .createQueryBuilder('n')
+      .leftJoinAndSelect('n.user', 'u')
+      .leftJoinAndSelect('n.destination', 'd')
+      .where('n.is_open = true')
+      .andWhere('n.departure_date >= :today', { today });
+    if (destinationId) qb.andWhere('n.destination_id = :destinationId', { destinationId });
+    const needs = await qb.orderBy('n.created_at', 'DESC').take(50).getMany();
+    return needs.map(this.formatNeed);
+  }
+
+  // ── My posted needs ──────────────────────────────────────────────────────────
+
+  async myNeeds(userId: number) {
+    const needs = await this.needsRepo.find({
+      where: { user: { id: userId } },
+      relations: ['destination'],
+      order: { created_at: 'DESC' },
+    });
+    return needs.map(this.formatNeed);
+  }
+
+  // ── Host responds to a need → creates an approved request + notifies guest ──
+
+  async respondToNeed(needId: number, hostId: number) {
+    const need = await this.needsRepo.findOne({
+      where: { id: needId, is_open: true },
+      relations: ['user', 'destination'],
+    });
+    if (!need) throw new NotFoundException('Hosting need not found or already closed');
+    if (need.user.id === hostId) throw new BadRequestException('Cannot respond to your own need');
+
+    const destination = need.destination;
+
+    const request = Object.assign(this.requestsRepo.create(), {
+      user: need.user,
+      destination,
+      offer: null,
+      host_id: hostId,
+      arrival_date: need.arrival_date,
+      departure_date: need.departure_date,
+      guests_count: need.guests_count,
+      with_children: need.with_children,
+      for_shabbat: need.for_shabbat,
+      special_requests: need.notes,
+      status: 'approved' as const,
+    });
+    const saved = await this.requestsRepo.save(request);
+
+    // Close the need
+    need.is_open = false;
+    await this.needsRepo.save(need);
+
+    this.audit.log('HOSTING_NEED_RESPONDED', hostId, { needId, requestId: saved.id });
+
+    // Notify the guest
+    const guest = await this.usersRepo.findOne({ where: { id: need.user.id } });
+    if (guest?.pushToken) {
+      void this.notifications.sendPush(
+        guest.pushToken,
+        '🏠 Someone wants to host you!',
+        `A host is available in ${destination.city} for your dates`,
+        { requestId: saved.id },
+      );
+    }
+
+    return this.formatRequest(saved, hostId);
+  }
+
   // ── Formatters ──────────────────────────────────────────────────────────────
+
+  private formatNeed(n: HostingNeed) {
+    return {
+      id: n.id,
+      arrivalDate: n.arrival_date,
+      departureDate: n.departure_date,
+      guestsCount: n.guests_count,
+      withChildren: n.with_children,
+      forShabbat: n.for_shabbat,
+      notes: n.notes,
+      isOpen: n.is_open,
+      createdAt: n.created_at,
+      destination: n.destination ? { id: n.destination.id, city: n.destination.city, country: n.destination.country } : null,
+      guest: n.user ? { id: n.user.id, firstName: n.user.firstName } : null,
+    };
+  }
 
   private formatOffer(o: HostingOffer) {
     return {
@@ -250,12 +422,13 @@ export class HostingService {
         : null,
       // req 7.4.5 — only first name shown in search; full contact hidden
       host: o.user ? { id: o.user.id, firstName: o.user.firstName } : null,
+      isActive: o.is_active,
     };
   }
 
   private formatRequest(r: HostingRequest, viewerId: number) {
     const isApproved = r.status === 'approved';
-    const isHost = r.offer?.user?.id === viewerId;
+    const isHost = r.offer?.user?.id === viewerId || r.host_id === viewerId;
 
     return {
       id: r.id,

@@ -4,6 +4,7 @@ import {
   ForbiddenException,
   Injectable,
   NotFoundException,
+  Optional,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -12,7 +13,10 @@ import { MinyanRegistration } from '../minyan-registration.entity';
 import { Destination } from '../destination.entity';
 import { User } from '../users/user.entity';
 import { CreateMinyanDto } from './dto/create-minyan.dto';
+import { UpdateMinyanDto } from './dto/update-minyan.dto';
 import { AuditService } from '../audit/audit.service';
+import { MinyanGateway } from './minyan.gateway';
+import { NotificationsService } from '../notifications/notifications.service';
 
 const ALMOST_FULL_THRESHOLD = 8;
 const MINYAN_FULL = 10;
@@ -27,6 +31,8 @@ export class MinyansService {
     private destinationsRepo: Repository<Destination>,
     @InjectRepository(User) private usersRepo: Repository<User>,
     private audit: AuditService,
+    @Optional() private gateway: MinyanGateway,
+    private notifications: NotificationsService,
   ) {}
 
   // req 6.1 + 6.1.2 — upcoming minyans, no past events
@@ -36,8 +42,6 @@ export class MinyansService {
     destinationId: number,
     filters: { date?: string; prayerType?: string; lat?: number; lng?: number },
   ) {
-    const today = new Date().toISOString().split('T')[0];
-
     // Raw SQL so we can pull destination lat/lng from PostGIS in one query
     let sql = `
       SELECT
@@ -59,10 +63,12 @@ export class MinyansService {
       FROM minyans m
       LEFT JOIN users u ON u.id = m.creator_id
       JOIN destinations d ON d.id = m.destination_id
-      WHERE m.destination_id = $1 AND m.date >= $2
+      WHERE m.destination_id = $1
+        AND (m.date || ' ' || m.time)::timestamp
+            > (NOW() AT TIME ZONE 'Asia/Jerusalem') - INTERVAL '3 hours'
     `;
-    const params: (string | number)[] = [destinationId, today];
-    let idx = 3;
+    const params: (string | number)[] = [destinationId];
+    let idx = 2;
 
     if (filters.prayerType) {
       sql += ` AND m.prayer_type = $${idx}`;
@@ -273,10 +279,28 @@ export class MinyansService {
     await this.minyansRepo.increment({ id: minyanId }, 'participantsCount', 1);
     this.audit.log('MINYAN_REGISTERED', userId, { minyanId });
 
-    return {
-      registered: true,
-      participantsCount: minyan.participantsCount + 1,
-    };
+    const count = minyan.participantsCount + 1;
+    this.gateway?.emitUpdate(minyanId, {
+      participantsCount: count,
+      almostFull: count >= ALMOST_FULL_THRESHOLD && count < MINYAN_FULL,
+      isFull: count >= MINYAN_FULL,
+    });
+
+    // Notify creator (if different from the user registering)
+    if (minyan.creator?.id && minyan.creator.id !== userId) {
+      const creator = await this.usersRepo.findOne({ where: { id: minyan.creator.id } });
+      const joiner = await this.usersRepo.findOne({ where: { id: userId } });
+      if (creator?.pushToken && joiner) {
+        const prayerLabel = minyan.prayerType.charAt(0).toUpperCase() + minyan.prayerType.slice(1);
+        const title = count >= MINYAN_FULL ? '🙏 Your minyan is full!' : '👋 New participant';
+        const body = count >= MINYAN_FULL
+          ? `Your ${prayerLabel} minyan is now full (${count}/10)`
+          : `${joiner.firstName} ${joiner.lastName} joined your ${prayerLabel} minyan (${count}/10)`;
+        void this.notifications.sendPush(creator.pushToken, title, body, { minyanId });
+      }
+    }
+
+    return { registered: true, participantsCount: count };
   }
 
   // req 6.4.2 — cancel registration
@@ -306,10 +330,105 @@ export class MinyansService {
     await this.minyansRepo.decrement({ id: minyanId }, 'participantsCount', 1);
     this.audit.log('MINYAN_UNREGISTERED', userId, { minyanId });
 
-    return {
-      registered: false,
-      participantsCount: Math.max(0, minyan.participantsCount - 1),
-    };
+    const count = Math.max(0, minyan.participantsCount - 1);
+    this.gateway?.emitUpdate(minyanId, {
+      participantsCount: count,
+      almostFull: count >= ALMOST_FULL_THRESHOLD && count < MINYAN_FULL,
+      isFull: count >= MINYAN_FULL,
+    });
+
+    return { registered: false, participantsCount: count };
+  }
+
+  // עריכת מניין על ידי היוצר בלבד
+  async update(id: number, dto: UpdateMinyanDto, userId: number) {
+    const minyan = await this.minyansRepo.findOne({
+      where: { id },
+      relations: ['creator', 'destination'],
+    });
+    if (!minyan) throw new NotFoundException(`Minyan #${id} not found`);
+    if (minyan.creator?.id !== userId)
+      throw new ForbiddenException('Only the creator can edit this minyan');
+
+    if (dto.date) {
+      const today = new Date().toISOString().split('T')[0];
+      if (dto.date < today)
+        throw new BadRequestException('Date must be today or in the future');
+      minyan.date = dto.date;
+    }
+    if (dto.prayerType) minyan.prayerType = dto.prayerType;
+    if (dto.time) minyan.time = dto.time;
+    if (dto.locationText) minyan.locationText = dto.locationText;
+    if (dto.notes !== undefined) minyan.notes = dto.notes || undefined;
+
+    const saved = await this.minyansRepo.save(minyan);
+    this.audit.log('MINYAN_UPDATED', userId, { minyanId: id });
+    return this.format(saved);
+  }
+
+  // מניינים בטווח גיאוגרפי (ללא קשר ליעד)
+  async findNearby(lat: number, lng: number, radiusKm: number) {
+    const rows: Record<string, unknown>[] = await this.minyansRepo.query(
+      `SELECT
+         m.id, m.prayer_type AS "prayerType", m.date, m.time,
+         m.location_text AS "locationText", m.notes,
+         m.participants_count AS "participantsCount",
+         u.id AS "creatorId", u.first_name AS "creatorFirstName", u.last_name AS "creatorLastName",
+         d.city AS "destinationCity", d.id AS "destinationId",
+         COALESCE(m.lat, ST_Y(d.location::geometry)) AS "mLat",
+         COALESCE(m.lng, ST_X(d.location::geometry)) AS "mLng"
+       FROM minyans m
+       LEFT JOIN users u ON u.id = m.creator_id
+       JOIN destinations d ON d.id = m.destination_id
+       WHERE (m.date || ' ' || m.time)::timestamp
+             > (NOW() AT TIME ZONE 'Asia/Jerusalem') - INTERVAL '3 hours'
+       ORDER BY m.date ASC, m.time ASC`,
+      [],
+    );
+
+    return rows
+      .map((row) => ({
+        ...row,
+        _dist: this.haversine(lat, lng, Number(row['mLat']), Number(row['mLng'])),
+      }))
+      .filter((r) => r._dist <= radiusKm * 1000)
+      .sort((a, b) => a._dist - b._dist)
+      .map((row) => {
+        const count = Number(row['participantsCount']);
+        return {
+          id: Number(row['id']),
+          prayerType: row['prayerType'],
+          date: row['date'],
+          time: row['time'],
+          locationText: row['locationText'],
+          notes: row['notes'] ?? null,
+          participantsCount: count,
+          almostFull: count >= ALMOST_FULL_THRESHOLD && count < MINYAN_FULL,
+          isFull: count >= MINYAN_FULL,
+          distanceMeters: Math.round(row['_dist'] as number),
+          destination: { id: Number(row['destinationId']), city: row['destinationCity'] },
+          creator: row['creatorId']
+            ? { id: Number(row['creatorId']), firstName: row['creatorFirstName'], lastName: row['creatorLastName'] }
+            : null,
+        };
+      });
+  }
+
+  // רשימת משתתפים של מניין
+  async getParticipants(minyanId: number) {
+    const minyan = await this.minyansRepo.findOne({ where: { id: minyanId } });
+    if (!minyan) throw new NotFoundException(`Minyan #${minyanId} not found`);
+
+    const rows: Array<{ id: number; firstName: string; lastName: string }> =
+      await this.registrationsRepo.query(
+        `SELECT u.id, u.first_name AS "firstName", u.last_name AS "lastName"
+         FROM minyan_registrations r
+         JOIN users u ON u.id = r.user_id
+         WHERE r.minyan_id = $1
+         ORDER BY r.registered_at ASC`,
+        [minyanId],
+      );
+    return rows;
   }
 
   // מחיקת מניין על ידי היוצר בלבד

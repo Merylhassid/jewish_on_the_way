@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Query,
   Req,
@@ -15,6 +16,7 @@ import {
 import { MinyansService } from './minyans.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateMinyanDto } from './dto/create-minyan.dto';
+import { UpdateMinyanDto } from './dto/update-minyan.dto';
 
 @UseGuards(JwtAuthGuard)
 @Controller('minyans')
@@ -25,6 +27,20 @@ export class MinyansController {
   @Get('mine')
   findMine(@Req() req: any) {
     return this.minyansService.findMine(req.user.sub);
+  }
+
+  // GET /minyans/nearby?lat=48.8&lng=2.3&radius=5
+  @Get('nearby')
+  findNearby(
+    @Query('lat') lat: string,
+    @Query('lng') lng: string,
+    @Query('radius') radius?: string,
+  ) {
+    return this.minyansService.findNearby(
+      parseFloat(lat),
+      parseFloat(lng),
+      radius ? parseFloat(radius) : 10,
+    );
   }
 
   // GET /minyans?destinationId=1&prayerType=shacharit&date=2026-04-20&lat=48.8&lng=2.3
@@ -50,10 +66,26 @@ export class MinyansController {
     return this.minyansService.findOne(id, req.user.sub);
   }
 
+  // GET /minyans/:id/participants
+  @Get(':id/participants')
+  getParticipants(@Param('id', ParseIntPipe) id: number) {
+    return this.minyansService.getParticipants(id);
+  }
+
   // POST /minyans
   @Post()
   create(@Body() dto: CreateMinyanDto, @Req() req: any) {
     return this.minyansService.create(dto, req.user.sub);
+  }
+
+  // PATCH /minyans/:id — יוצר בלבד
+  @Patch(':id')
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateMinyanDto,
+    @Req() req: any,
+  ) {
+    return this.minyansService.update(id, dto, req.user.sub);
   }
 
   // POST /minyans/:id/register

@@ -1,4 +1,5 @@
 import { buildDestinationCandidates, detectCountryInText, SearchController } from './search.controller';
+import { buildDestinationAliasIndex } from './destination-index.service';
 
 describe('detectCountryInText', () => {
   it('does not treat Sephardi denomination words as Spain', () => {
@@ -36,45 +37,46 @@ describe('SearchController destination resolver', () => {
   ];
 
   function createController() {
-    const destRepo = {
-      find: jest.fn().mockResolvedValue(destinations),
-    };
+    const aliasIndex = buildDestinationAliasIndex(destinations as any);
+    const indexService = { getIndex: () => aliasIndex };
     const controller = new SearchController(
       {} as any,
       {} as any,
-      destRepo as any,
+      indexService as any,
+      {} as any,
+      {} as any,
     );
     return controller as any;
   }
 
-  it('resolves Hebrew aliases and prefixed aliases against DB destinations', async () => {
+  it('resolves Hebrew aliases and prefixed aliases against DB destinations', () => {
     const controller = createController();
 
-    await expect(controller.resolveDestinationFromText('בית כנסת בלימסול')).resolves.toMatchObject({
+    expect(controller.resolveDestinationFromText('בית כנסת בלימסול')).toMatchObject({
       destination: expect.objectContaining({ city: 'Limassol' }),
       explicitMention: true,
     });
-    await expect(controller.resolveDestinationFromText('בית כנסת בפאפוס')).resolves.toMatchObject({
+    expect(controller.resolveDestinationFromText('בית כנסת בפאפוס')).toMatchObject({
       destination: expect.objectContaining({ city: 'Paphos' }),
       explicitMention: true,
     });
-    await expect(controller.resolveDestinationFromText('בית כנסת ברומא')).resolves.toMatchObject({
+    expect(controller.resolveDestinationFromText('בית כנסת ברומא')).toMatchObject({
       destination: expect.objectContaining({ city: 'Rome' }),
       explicitMention: true,
     });
   });
 
-  it('does not resolve Sephardi/Sfarad denomination text as Spain', async () => {
+  it('does not resolve Sephardi/Sfarad denomination text as Spain', () => {
     const controller = createController();
 
-    await expect(controller.resolveDestinationFromText('בית כנסת ספרדי')).resolves.toMatchObject({
+    expect(controller.resolveDestinationFromText('בית כנסת ספרדי')).toMatchObject({
       destination: null,
       explicitMention: false,
     });
-    await expect(controller.resolveDestinationFromText('נוסח ספרד')).resolves.toMatchObject({
+    expect(controller.resolveDestinationFromText('נוסח ספרד')).toMatchObject({
       destination: null,
     });
-    await expect(controller.resolveDestinationFromText('בית כנסת בספרד')).resolves.toMatchObject({
+    expect(controller.resolveDestinationFromText('בית כנסת בספרד')).toMatchObject({
       destination: expect.objectContaining({ city: 'Spain' }),
       explicitMention: true,
     });

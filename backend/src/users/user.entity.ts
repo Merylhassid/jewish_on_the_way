@@ -36,8 +36,17 @@ export class User {
   @Column({ name: 'kashrut_level', type: 'varchar', nullable: true })
   kashrutLevel: string | null;
 
+  @Column({ name: 'refresh_token', type: 'varchar', length: 64, nullable: true })
+  refreshToken: string | null;
+
+  @Column({ name: 'refresh_token_expires_at', type: 'timestamptz', nullable: true })
+  refreshTokenExpiresAt: Date | null;
+
   @Column({ name: 'reset_password_token', type: 'varchar', nullable: true })
   resetPasswordToken: string | null;
+
+  @Column({ name: 'push_token', type: 'varchar', length: 512, nullable: true })
+  pushToken: string | null;
 
   @Column({
     name: 'reset_password_expires',
