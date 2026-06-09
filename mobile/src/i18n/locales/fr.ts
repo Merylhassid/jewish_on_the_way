@@ -376,6 +376,19 @@ export default {
     chatTooLong:        'Message trop long',
     chatTooLongMsg:     'Les messages doivent faire moins de 500 caractères.',
   },
+  about: {
+    title:       'À propos',
+    description: 'Jewish On The Way aide les voyageurs juifs à trouver des restaurants kasher et des synagogues dans les villes du monde entier.',
+    faqTitle:    'FAQ',
+    version:     'Version',
+    faqs: [
+      { q: 'Comment trouver un restaurant ou une synagogue à proximité ?', a: 'Appuyez sur une destination depuis l\'écran d\'accueil, puis choisissez Restaurants ou Synagogues. Vous pouvez aussi utiliser la recherche intelligente.' },
+      { q: 'Comment signaler une information incorrecte ?', a: 'Ouvrez la page du restaurant ou de la synagogue et appuyez sur le bouton de signalement en bas de la page.' },
+      { q: 'Comment suggérer un nouveau lieu ?', a: 'Profil → CONTRIBUTE → Suggérer un restaurant ou Suggérer une synagogue.' },
+      { q: 'L\'application est-elle gratuite ?', a: 'Oui, entièrement gratuite.' },
+      { q: 'À quelle fréquence les données sont-elles mises à jour ?', a: 'Nous mettons à jour régulièrement en fonction des signalements des utilisateurs et des contributions de la communauté.' },
+    ],
+  },
   contact: {
     section:             'SUPPORT',
     title:               'Nous contacter',

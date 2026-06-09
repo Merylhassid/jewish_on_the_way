@@ -376,6 +376,19 @@ export default {
     chatTooLong:        'Too long',
     chatTooLongMsg:     'Messages must be under 500 characters.',
   },
+  about: {
+    title:       'About',
+    description: 'Jewish On The Way helps Jewish travelers find kosher restaurants and synagogues in cities around the world.',
+    faqTitle:    'FAQ',
+    version:     'Version',
+    faqs: [
+      { q: 'How do I find a nearby restaurant or synagogue?', a: 'Tap on a destination from the home screen, then choose Restaurants or Synagogues. You can also use the smart search.' },
+      { q: 'How do I report incorrect information?', a: 'Open any restaurant or synagogue page and tap the report button at the bottom.' },
+      { q: 'How can I suggest a new place?', a: 'Go to Profile → CONTRIBUTE → Suggest a Restaurant or Suggest a Synagogue.' },
+      { q: 'Is the app free?', a: 'Yes, completely free.' },
+      { q: 'How often is the data updated?', a: 'We update regularly based on user reports and community contributions.' },
+    ],
+  },
   contact: {
     section:             'SUPPORT',
     title:               'Contact Us',

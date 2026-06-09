@@ -723,6 +723,16 @@ export default function ProfileScreen() {
           <Text style={styles.rowLabel}>{t('contact.title')}</Text>
           <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
         </Pressable>
+
+        <View style={styles.divider} />
+
+        <Pressable style={styles.row} onPress={() => router.push('/about' as any)}>
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(212,175,55,0.12)' }]}>
+            <MaterialIcons name="info-outline" size={20} color={GOLD} />
+          </View>
+          <Text style={styles.rowLabel}>{t('about.title')}</Text>
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+        </Pressable>
       </View>
 
       {/* ── Sign out ── */}
