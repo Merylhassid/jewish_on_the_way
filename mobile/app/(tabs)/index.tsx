@@ -68,11 +68,10 @@ export default function HomeScreen() {
   const [error, setError]       = useState(false);
   const [refreshing, setRef]    = useState(false);
   const [recent, setRecent]     = useState<Dest[]>([]);
-  const [search, setSearch]     = useState('');
   const [aiText, setAiText]     = useState('');
   const [aiBusy, setAiBusy]     = useState(false);
   const [chip, setChip]         = useState<any>(null);
-  const [searchMode, setSearchMode] = useState<'none' | 'text' | 'ai'>('none');
+  const [searchMode, setSearchMode] = useState<'none' | 'ai'>('none');
   const [gps, setGps]           = useState<{ lat: number; lng: number } | null>(null);
   const [userCountry, setUserCountry] = useState<string | null>(null);
   const [heroIdx, setHeroIdx]   = useState(0);
@@ -180,15 +179,15 @@ export default function HomeScreen() {
     router.push((item.hasChildren ? `/destination/${item.id}/subdestinations` : `/destination/${item.id}`) as any);
   };
 
-  // Debounced API search — fires when text search changes
+  // Debounced destination search as user types in the unified search bar
   useEffect(() => {
     if (debRef.current) clearTimeout(debRef.current);
-    if (searchMode !== 'text') return;
+    if (searchMode !== 'ai') return;
     debRef.current = setTimeout(() => {
-      fetchDests(search.trim() || undefined, search.trim() ? undefined : gps ?? undefined);
+      fetchDests(aiText.trim() || undefined, aiText.trim() ? undefined : gps ?? undefined);
     }, 300);
     return () => { if (debRef.current) clearTimeout(debRef.current); };
-  }, [search, searchMode]);
+  }, [aiText, searchMode]);
 
   const popular = dests.filter(d => POPULAR_CITIES.some(c => d.city.toLowerCase().includes(c.toLowerCase())));
   const hero = popular[0] || dests[0];
@@ -198,22 +197,28 @@ export default function HomeScreen() {
     <View style={s.root}>
       <StatusBar barStyle="light-content" />
 
-      {/* Sticky search bar — only shown when in text mode so it stays visible while scrolling */}
-      {searchMode === 'text' && (
+      {/* Sticky AI search bar — stays visible while scrolling */}
+      {searchMode === 'ai' && (
         <View style={s.stickySearchBar}>
-          <Search size={16} color={C.navy} strokeWidth={2} />
+          <Sparkles size={16} color={C.gold} strokeWidth={2} />
           <TextInput
             style={s.heroSearchInput}
-            placeholder={t('home.searchPlaceholder')}
+            placeholder={t('home.aiPlaceholder')}
             placeholderTextColor="#9CA3AF"
-            value={search}
-            onChangeText={setSearch}
-            autoFocus
+            value={aiText}
+            onChangeText={onAiChange}
+            onSubmitEditing={doAi}
             returnKeyType="search"
+            autoFocus
           />
-          <Pressable hitSlop={12} onPress={() => { setSearch(''); setSearchMode('none'); fetchDests(undefined, gps ?? undefined); }}>
-            <X size={18} color="#6B7280" strokeWidth={2} />
-          </Pressable>
+          {aiBusy
+            ? <ActivityIndicator size="small" color={C.navy} />
+            : aiText
+              ? <Pressable style={s.aiGo} onPress={doAi}><Text style={s.aiGoText}>→</Text></Pressable>
+              : <Pressable hitSlop={12} onPress={() => { setAiText(''); setSearchMode('none'); setChip(null); fetchDests(undefined, gps ?? undefined); }}>
+                  <X size={18} color="#6B7280" strokeWidth={2} />
+                </Pressable>
+          }
         </View>
       )}
 
@@ -259,21 +264,16 @@ export default function HomeScreen() {
               <Text style={s.heroTagline2}>{t('home.headline2')}</Text>
               <Text style={s.heroSub}>{t('home.tagline')}</Text>
 
-              {/* Search bar — glassmorphism */}
+              {/* Unified AI search bar */}
               {searchMode === 'none' && (
-                <View style={s.heroSearch}>
-                  <Pressable style={s.heroSearchInner} onPress={() => setSearchMode('text')}>
-                    <Search size={16} color="rgba(255,255,255,0.7)" strokeWidth={2} />
-                    <Text style={s.heroSearchPlaceholder}>{t('home.searchPlaceholder')}</Text>
-                  </Pressable>
-                  <Pressable style={s.heroAiBtn} onPress={() => setSearchMode('ai')}>
-                    <Sparkles size={14} color={C.gold} strokeWidth={2} />
+                <Pressable style={s.heroSearch} onPress={() => setSearchMode('ai')}>
+                  <Sparkles size={14} color={C.gold} strokeWidth={2} />
+                  <Text style={s.heroSearchPlaceholder}>{t('home.aiPlaceholder')}</Text>
+                  <View style={s.heroAiBtn}>
                     <Text style={s.heroAiBtnText}>AI</Text>
-                  </Pressable>
-                </View>
+                  </View>
+                </Pressable>
               )}
-
-              {/* search bar in hero is hidden in text mode — sticky bar above handles it */}
 
               {searchMode === 'ai' && (
                 <View style={s.heroSearchActive}>
@@ -292,7 +292,7 @@ export default function HomeScreen() {
                     ? <ActivityIndicator size="small" color={C.navy} />
                     : aiText
                       ? <Pressable style={s.aiGo} onPress={doAi}><Text style={s.aiGoText}>→</Text></Pressable>
-                      : <Pressable hitSlop={8} onPress={() => { setAiText(''); setSearchMode('none'); setChip(null); }}><X size={16} color="#9CA3AF" strokeWidth={2} /></Pressable>
+                      : <Pressable hitSlop={8} onPress={() => { setAiText(''); setSearchMode('none'); setChip(null); fetchDests(undefined, gps ?? undefined); }}><X size={16} color="#9CA3AF" strokeWidth={2} /></Pressable>
                   }
                 </View>
               )}
@@ -309,7 +309,7 @@ export default function HomeScreen() {
         <View style={s.body}>
 
           {/* ── POPULAR DESTINATIONS ── */}
-          {!search && popular.length > 0 && (
+          {!aiText && popular.length > 0 && (
             <View style={s.section}>
               <View style={s.sectionHead}>
                 <Text style={s.sectionTitle}>{t('home.popular')}</Text>
@@ -327,7 +327,7 @@ export default function HomeScreen() {
           )}
 
           {/* ── RECENTLY VISITED ── */}
-          {!search && recent.length > 0 && (
+          {!aiText && recent.length > 0 && (
             <View style={s.section}>
               <Text style={s.sectionTitle}>{t('home.recentlyVisited')}</Text>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.recentRow}>
@@ -350,9 +350,9 @@ export default function HomeScreen() {
           <View style={s.section}>
             <View style={s.sectionHead}>
               <Text style={s.sectionTitle}>
-                {search ? `${t('home.resultsFor')} "${search}"` : t('home.allDestinations')}
+                {aiText ? `${t('home.resultsFor')} "${aiText}"` : t('home.allDestinations')}
               </Text>
-              {gps && !search && (
+              {gps && !aiText && (
                 <View style={s.gpsPill}>
                   <Navigation size={10} color={C.gold} strokeWidth={2.5} />
                   <Text style={s.gpsPillText}>{t('home.nearestFirst')}</Text>
@@ -367,7 +367,7 @@ export default function HomeScreen() {
                 ))}
               </View>
             ) : error ? (
-              <ErrorState onRetry={() => fetchDests(search || undefined, gps ?? undefined)} />
+              <ErrorState onRetry={() => fetchDests(aiText || undefined, gps ?? undefined)} />
             ) : (
               <View style={s.destGrid}>
                 {filteredDests.map(item => (
