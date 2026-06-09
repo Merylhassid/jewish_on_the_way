@@ -1,0 +1,106 @@
+[
+  {
+    "name": "בית כנסת אור יצחק",
+    "address": "נשר",
+    "phone": null,
+    "latitude": 32.768079,
+    "longitude": 35.034747,
+    "destinationId": 506
+  },
+  {
+    "name": "בית הכנסת הגדול - נשר",
+    "address": "1, החלוצים, נשר",
+    "phone": null,
+    "latitude": 32.7614826,
+    "longitude": 35.0459097,
+    "destinationId": 506
+  },
+  {
+    "name": "בית כנסת גבעת נשר",
+    "address": "החלוצים 1, נשר",
+    "phone": null,
+    "latitude": 32.762123,
+    "longitude": 35.047091,
+    "destinationId": 506
+  },
+  {
+    "name": "בית כנסת הנוריות נשר",
+    "address": "הנוריות 13, נשר",
+    "phone": null,
+    "latitude": 32.7686404,
+    "longitude": 35.0388802,
+    "destinationId": 506
+  },
+  {
+    "name": "בית הכנסת הנוריות",
+    "address": "נשר",
+    "phone": null,
+    "latitude": 32.768678,
+    "longitude": 35.038224,
+    "destinationId": 506
+  },
+  {
+    "name": "בית כנסת תהילה לדוד",
+    "address": "עמוס 22, נשר",
+    "phone": "054-609-2300",
+    "latitude": 32.7755073,
+    "longitude": 35.0311126,
+    "destinationId": 506
+  },
+  {
+    "name": "בית כנסת אוהל יצחק",
+    "address": "נשר",
+    "phone": null,
+    "latitude": 32.770375,
+    "longitude": 35.045314,
+    "destinationId": 506
+  },
+  {
+    "name": "בית הכנסת משה וישראל",
+    "address": "נשר",
+    "phone": null,
+    "latitude": 32.765857,
+    "longitude": 35.049906,
+    "destinationId": 506
+  },
+  {
+    "name": "בית חב\"ד נשר",
+    "address": "הורדים 23, נשר",
+    "phone": null,
+    "latitude": 32.7694694,
+    "longitude": 35.0386072,
+    "destinationId": 506
+  },
+  {
+    "name": "בית כנסת התאנה",
+    "address": "התאנה 5, נשר",
+    "phone": null,
+    "latitude": 32.7671873,
+    "longitude": 35.0161388,
+    "destinationId": 506
+  },
+  {
+    "name": "בית כנסת המרכזי אשכנזי בן דור",
+    "address": "המתמיד 15, נשר",
+    "phone": "054-745-6632",
+    "latitude": 32.7746914,
+    "longitude": 35.0337214,
+    "destinationId": 506
+  },
+  {
+    "name": "בית הכנסת אוהל קדושים",
+    "address": "מרדכי בר מוחא, 14נשר",
+    "phone": null,
+    "latitude": 32.7694123,
+    "longitude": 35.0466289,
+    "destinationId": 506
+  },
+  {
+    "name": "Синогога שערי תפילה",
+    "address": "נשר",
+    "phone": null,
+    "latitude": 32.7692998,
+    "longitude": 35.0450875,
+    "destinationId": 506
+  }
+]

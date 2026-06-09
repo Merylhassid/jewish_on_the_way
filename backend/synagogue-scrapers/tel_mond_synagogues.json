@@ -1,0 +1,50 @@
+[
+  {
+    "name": "בית כנסת שערי שלום",
+    "address": "תל מונד",
+    "phone": null,
+    "latitude": 32.2572582,
+    "longitude": 34.9170209,
+    "destinationId": 536
+  },
+  {
+    "name": "בית כנסת תפארת ישראל",
+    "address": "מצדה 12, תל מונד",
+    "phone": "052-946-1552",
+    "latitude": 32.2543954,
+    "longitude": 34.9161518,
+    "destinationId": 536
+  },
+  {
+    "name": "בית כנסת מבשר ציון",
+    "address": "תל מונד",
+    "phone": null,
+    "latitude": 32.2495652,
+    "longitude": 34.9225582,
+    "destinationId": 536
+  },
+  {
+    "name": "Chabad Lev Hasharon Tel Mond",
+    "address": "תל מונד",
+    "phone": null,
+    "latitude": 32.2537369,
+    "longitude": 34.918592,
+    "destinationId": 536
+  },
+  {
+    "name": "בית כנסת עמנואל",
+    "address": "תל מונד",
+    "phone": null,
+    "latitude": 32.259811,
+    "longitude": 34.918099,
+    "destinationId": 536
+  },
+  {
+    "name": "בית הכנסת שערי צדק",
+    "address": "האלון, תל מונד",
+    "phone": null,
+    "latitude": 32.2594565,
+    "longitude": 34.919434,
+    "destinationId": 536
+  }
+]

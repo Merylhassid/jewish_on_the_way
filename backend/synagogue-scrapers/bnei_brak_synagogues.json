@@ -1,0 +1,962 @@
+[
+  {
+    "name": "בית כנסת איצקוביץ",
+    "address": "הרב ש\"ך 4, בני ברק",
+    "phone": null,
+    "latitude": 32.0859852,
+    "longitude": 34.8355715,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת אוהל אברהם",
+    "address": "הרב אברהם יצחק הכהן קוק, בני ברק",
+    "phone": null,
+    "latitude": 32.0856778,
+    "longitude": 34.8242087,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת המרכזי בית א-ל",
+    "address": "בני ברק",
+    "phone": "054-831-4014",
+    "latitude": 32.0955485,
+    "longitude": 34.8337741,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת לדרמן",
+    "address": "רשב\"ם 19, בני ברק",
+    "phone": null,
+    "latitude": 32.0786579,
+    "longitude": 34.8365789,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ישורון",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.094187,
+    "longitude": 34.830737,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת אליהו הנביא",
+    "address": "הרב עוזיאל 42-46, בני ברק",
+    "phone": "050-569-4694",
+    "latitude": 32.0733539,
+    "longitude": 34.8398707,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת יוסף חיים",
+    "address": "נורדאו 27, בני ברק",
+    "phone": null,
+    "latitude": 32.0940311,
+    "longitude": 34.8350944,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת המרכזי שיכון ו'",
+    "address": "רימון 1, בני ברק",
+    "phone": "053-638-0000",
+    "latitude": 32.0714458,
+    "longitude": 34.8382672,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת המרכזי שיכון ה'",
+    "address": "שדרות זבולון המר 16-18, בני ברק",
+    "phone": null,
+    "latitude": 32.0905362,
+    "longitude": 34.8431846,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת הגדול",
+    "address": "13,, קליש 1, בני ברק",
+    "phone": null,
+    "latitude": 32.0876773,
+    "longitude": 34.8291231,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת אוהל אברהם",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.0906254,
+    "longitude": 34.8355808,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת לובלין",
+    "address": "2, אלישע 6, בני ברק",
+    "phone": null,
+    "latitude": 32.0844486,
+    "longitude": 34.8387423,
+    "destinationId": 334
+  },
+  {
+    "name": "אורייתא",
+    "address": "מנחם 25, בני ברק",
+    "phone": null,
+    "latitude": 32.0886422,
+    "longitude": 34.8236996,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת משכנות יעקב",
+    "address": "אברהם בן דוד 33, בני ברק",
+    "phone": null,
+    "latitude": 32.0763839,
+    "longitude": 34.839886,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חוג חתם סופר",
+    "address": "בית יוסף 11, בני ברק",
+    "phone": null,
+    "latitude": 32.0911148,
+    "longitude": 34.8403451,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דברי שיר",
+    "address": "זכריה 4, בני ברק",
+    "phone": "03-619-4741",
+    "latitude": 32.0859229,
+    "longitude": 34.8361545,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת הליגמ",
+    "address": "רבי עקיבא 97, בני ברק",
+    "phone": null,
+    "latitude": 32.0860071,
+    "longitude": 34.8330345,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת חמדת שמעון",
+    "address": "קהילות יעקב 72, בני ברק",
+    "phone": null,
+    "latitude": 32.0710233,
+    "longitude": 34.8382901,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת סיני",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.07734,
+    "longitude": 34.830114,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת",
+    "address": "הרב מוהליבר 8, בני ברק",
+    "phone": null,
+    "latitude": 32.0798578,
+    "longitude": 34.8280313,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת אהל יעקב ולאה",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.085507,
+    "longitude": 34.84473,
+    "destinationId": 334
+  },
+  {
+    "name": "ישראל הצעיר",
+    "address": "הרב אברהם יצחק הכהן קוק 31, בני ברק",
+    "phone": null,
+    "latitude": 32.0854192,
+    "longitude": 34.825421,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת קהל חסידים",
+    "address": "חולדה הנביאה 10, בני ברק",
+    "phone": null,
+    "latitude": 32.0781428,
+    "longitude": 34.8297768,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת תימני",
+    "address": "רבי, יהודה הלוי 17, בני ברק",
+    "phone": null,
+    "latitude": 32.0869628,
+    "longitude": 34.8313996,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת 'היכל ישראל מרדכי' דחסידי ראחמיסטריווקא - בני ברק",
+    "address": "יעל 3, בני ברק, 5152813",
+    "phone": null,
+    "latitude": 32.077946,
+    "longitude": 34.8315,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת וישיבת אור אברהם",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.0803326,
+    "longitude": 34.8323749,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת הראשונים",
+    "address": "רבי עקיבא 15, בני ברק",
+    "phone": null,
+    "latitude": 32.0898867,
+    "longitude": 34.8261102,
+    "destinationId": 334
+  },
+  {
+    "name": "בית השם",
+    "address": "אלחריזי 3, בני ברק",
+    "phone": null,
+    "latitude": 32.0889462,
+    "longitude": 34.8336377,
+    "destinationId": 334
+  },
+  {
+    "name": "היכל שמואל",
+    "address": "הרב נויפלד 10, בני ברק",
+    "phone": "052-480-0202",
+    "latitude": 32.0972217,
+    "longitude": 34.8414195,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת היכל שלמה",
+    "address": "3,, תרפ\"ד 1, בני ברק",
+    "phone": null,
+    "latitude": 32.0919156,
+    "longitude": 34.8311089,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת שלום ורעות",
+    "address": "קהילות יעקב 63, בני ברק",
+    "phone": null,
+    "latitude": 32.0717521,
+    "longitude": 34.8387221,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דרכי אי''ש",
+    "address": "האדמו\"ר מגור 16, בני ברק",
+    "phone": null,
+    "latitude": 32.0831374,
+    "longitude": 34.8379287,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת חסדא (פא\"י)",
+    "address": "הרב דסלר 22, בני ברק",
+    "phone": null,
+    "latitude": 32.0818576,
+    "longitude": 34.83379,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת בעלזא",
+    "address": "הרב בן יעקב 7, בני ברק",
+    "phone": null,
+    "latitude": 32.0782023,
+    "longitude": 34.8388535,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ע\"ש רשב\"י",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.090316,
+    "longitude": 34.824705,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חב\"ד",
+    "address": "רבי אליעזר 2, בני ברק",
+    "phone": null,
+    "latitude": 32.0870858,
+    "longitude": 34.8269814,
+    "destinationId": 334
+  },
+  {
+    "name": "ביהמ\"ד דחסידי וואסלוי בני ברק",
+    "address": "הרב סורוצקין 2, בני ברק",
+    "phone": null,
+    "latitude": 32.0852792,
+    "longitude": 34.8413,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת תפארת ישראל",
+    "address": "שדרות הרב יוסף חיים, בני ברק",
+    "phone": "054-841-0214",
+    "latitude": 32.0934287,
+    "longitude": 34.8295355,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת דרכי אב",
+    "address": "אונקלוס 5, בני ברק",
+    "phone": null,
+    "latitude": 32.0881359,
+    "longitude": 34.840679,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דרך אמונה - הרב גליק",
+    "address": "אברבנאל 109, בני ברק",
+    "phone": "052-760-7908",
+    "latitude": 32.096321,
+    "longitude": 34.8345323,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חסידי ראדזין",
+    "address": "הרב הרצוג 18, בני ברק, 5127319",
+    "phone": null,
+    "latitude": 32.0885841,
+    "longitude": 34.8251237,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת סלונים",
+    "address": "דונולו 5, בני ברק",
+    "phone": "052-765-1044",
+    "latitude": 32.0867645,
+    "longitude": 34.8345453,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת \"בית אל\"",
+    "address": "מנחם 22, בני ברק",
+    "phone": "03-579-7491",
+    "latitude": 32.0887102,
+    "longitude": 34.8244878,
+    "destinationId": 334
+  },
+  {
+    "name": "היכל זאב",
+    "address": "מנחם 25, בני ברק",
+    "phone": null,
+    "latitude": 32.0886422,
+    "longitude": 34.8236996,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת אנטר",
+    "address": "השומר, בני ברק",
+    "phone": "03-618-9932",
+    "latitude": 32.0914516,
+    "longitude": 34.8390807,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דברי חיים",
+    "address": "חולדה הנביאה 10, בני ברק, 5158328",
+    "phone": "052-767-2580",
+    "latitude": 32.0781428,
+    "longitude": 34.8297768,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ישועה ליהודה",
+    "address": "יואל 16, בני ברק",
+    "phone": null,
+    "latitude": 32.0902226,
+    "longitude": 34.8366281,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת בית השם",
+    "address": "אצ\"ל, בני ברק",
+    "phone": null,
+    "latitude": 32.0938844,
+    "longitude": 34.8274689,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת ושטיבלאך 'זיו יהודה'",
+    "address": "שדרות אריה לוין, בני ברק",
+    "phone": "054-772-4027",
+    "latitude": 32.0972611,
+    "longitude": 34.8379637,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת המרכזי פרדס כץ",
+    "address": "טרומפלדור 36, בני ברק",
+    "phone": null,
+    "latitude": 32.0953047,
+    "longitude": 34.8369769,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש דחסידי לעלוב -בני ברק",
+    "address": "רבי עקיבא 65, בני ברק",
+    "phone": null,
+    "latitude": 32.086637,
+    "longitude": 34.82982,
+    "destinationId": 334
+  },
+  {
+    "name": "''מרכז לתורה וחסידות בני שילשים קוסון''",
+    "address": "בן פתחיה 19, בני ברק",
+    "phone": null,
+    "latitude": 32.0900443,
+    "longitude": 34.8292199,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת אור ישראל",
+    "address": "יהושע בן נון 17, בני ברק",
+    "phone": "052-442-0237",
+    "latitude": 32.0927467,
+    "longitude": 34.8225755,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ברסלב",
+    "address": "אדמו\"רי אלכסנדר 20, בני ברק",
+    "phone": null,
+    "latitude": 32.0876928,
+    "longitude": 34.8299212,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת בית תפילה",
+    "address": "הרב נויפלד 8-10, בני ברק",
+    "phone": null,
+    "latitude": 32.0969647,
+    "longitude": 34.8414405,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת ליוצאי משהד ב\"ב",
+    "address": "קליש 11, בני ברק",
+    "phone": "052-577-3573",
+    "latitude": 32.087708,
+    "longitude": 34.8294176,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת שונה הלכות",
+    "address": "הרב הרצוג 9, בני ברק",
+    "phone": null,
+    "latitude": 32.0901754,
+    "longitude": 34.8246331,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת אהל תמר",
+    "address": "יונה הנביא 2, בני ברק",
+    "phone": null,
+    "latitude": 32.084371,
+    "longitude": 34.837877,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת שחף",
+    "address": "הרב נויפלד 10, בני ברק",
+    "phone": "052-803-0868",
+    "latitude": 32.0972214,
+    "longitude": 34.84142,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת \"בית אריה\"",
+    "address": "צבי שרגא גרוסברד 5, בני ברק",
+    "phone": "02-372-4664",
+    "latitude": 32.0779284,
+    "longitude": 34.8327015,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת מיאלען ב\"ב",
+    "address": "רח’ 600, בני ברק",
+    "phone": null,
+    "latitude": 32.1049262,
+    "longitude": 34.8441847,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת ודברת בם (קאשי)",
+    "address": "בנימין מינץ 24, כניסה, בני ברק",
+    "phone": null,
+    "latitude": 32.0899122,
+    "longitude": 34.8266823,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת בארדיטשוב",
+    "address": "חלודה הנביאה 2, בני ברק",
+    "phone": "053-412-7474",
+    "latitude": 32.0780713,
+    "longitude": 34.8289883,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת נדבורנא פ\"ת",
+    "address": "פינת, סוקולוב פינת הרב קוטלר, בני ברק",
+    "phone": null,
+    "latitude": 32.0864799,
+    "longitude": 34.8337441,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דברי שלום",
+    "address": "מהרש\"ל 11, בני ברק",
+    "phone": null,
+    "latitude": 32.0850151,
+    "longitude": 34.8336519,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת התאחדות אברכים",
+    "address": "מנחם בגין 54, בני ברק",
+    "phone": null,
+    "latitude": 32.0927246,
+    "longitude": 34.8322141,
+    "destinationId": 334
+  },
+  {
+    "name": "כתר תורה",
+    "address": "הרב דנגור 12, בני ברק",
+    "phone": null,
+    "latitude": 32.0962623,
+    "longitude": 34.831661,
+    "destinationId": 334
+  },
+  {
+    "name": "בית מדרש תפארת נחמן",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.0905584,
+    "longitude": 34.8328416,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש הגדול ויואל משה דחסידי סאטמאר",
+    "address": "קדושת יום טוב 7, בני ברק",
+    "phone": null,
+    "latitude": 32.0812532,
+    "longitude": 34.8379992,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת אחדות",
+    "address": "רבי טרפון 3, בני ברק",
+    "phone": null,
+    "latitude": 32.0867926,
+    "longitude": 34.8285549,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש יביע אומר",
+    "address": "הרב עוזיאל 44, בני ברק, 5164353",
+    "phone": "03-800-0770",
+    "latitude": 32.0733466,
+    "longitude": 34.8398383,
+    "destinationId": 334
+  },
+  {
+    "name": "עמדה של קול הלשון",
+    "address": "סירוקה 6, בני ברק",
+    "phone": null,
+    "latitude": 32.084932,
+    "longitude": 34.835226,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חניכי ישיבת עטרת ישראל",
+    "address": "קומה, יהודה הלוי 7, בני ברק",
+    "phone": null,
+    "latitude": 32.0870536,
+    "longitude": 34.8309386,
+    "destinationId": 334
+  },
+  {
+    "name": "בית רפאל",
+    "address": "בעל התניא 10 כניסה עם רכב מרחוב, הרב יעקב לנדא 12, בני ברק",
+    "phone": "03-674-2335",
+    "latitude": 32.0790345,
+    "longitude": 34.832761,
+    "destinationId": 334
+  },
+  {
+    "name": "הקהילה הספרדית \"היכל מרן\" ע\"ש רבנו יוסף קארו זיע\"א",
+    "address": "שדרות שמעון סירוקה 6, בני ברק, 5156230",
+    "phone": "03-771-4577",
+    "latitude": 32.0833998,
+    "longitude": 34.8430512,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת אילת השחר פרדס כץ",
+    "address": "אוסישקין 21, בני ברק",
+    "phone": null,
+    "latitude": 32.0946893,
+    "longitude": 34.8387235,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ביסטריץ",
+    "address": "1, הרב שאול חדד 5, בני ברק",
+    "phone": null,
+    "latitude": 32.0938237,
+    "longitude": 34.8430626,
+    "destinationId": 334
+  },
+  {
+    "name": "בעלזא שיכון ה",
+    "address": "הרב צירלסון 29, בני ברק",
+    "phone": null,
+    "latitude": 32.0917043,
+    "longitude": 34.8440232,
+    "destinationId": 334
+  },
+  {
+    "name": "מרכז מוסדות ביאלא בני ברק",
+    "address": "רחוב ירושלים 34, בני ברק",
+    "phone": "03-619-6555",
+    "latitude": 32.0844994,
+    "longitude": 34.8297812,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש באבוב 45 בני ברק",
+    "address": "הרב מלצר 32, בני ברק",
+    "phone": "052-761-3214",
+    "latitude": 32.0821599,
+    "longitude": 34.8401698,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת עץ חיים, תימני בלדי",
+    "address": "רבי ישראל אבוחצירא, בני ברק",
+    "phone": null,
+    "latitude": 32.0920516,
+    "longitude": 34.8413691,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת שערי קדושה",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.0959649,
+    "longitude": 34.8436144,
+    "destinationId": 334
+  },
+  {
+    "name": "אילת השחר",
+    "address": "רח’ 600, בני ברק",
+    "phone": null,
+    "latitude": 32.1047007,
+    "longitude": 34.8435594,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת חניכי הישיבות \"כתר משה\" הרב משה זאבי",
+    "address": "שדרות אריה לוין, בני ברק",
+    "phone": "054-840-6591",
+    "latitude": 32.0978557,
+    "longitude": 34.837738,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת מניין הצעירים",
+    "address": "חולדה הנביאה 21, בני ברק",
+    "phone": null,
+    "latitude": 32.0781744,
+    "longitude": 34.8298674,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דחסידי צאנז",
+    "address": "יהודה הלוי 22, בני ברק",
+    "phone": null,
+    "latitude": 32.0864339,
+    "longitude": 34.8324048,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חיי אברהם",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.096276,
+    "longitude": 34.834316,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת מעלות ישראל",
+    "address": "מימון 31, בני ברק",
+    "phone": "052-717-8669",
+    "latitude": 32.0885841,
+    "longitude": 34.8310736,
+    "destinationId": 334
+  },
+  {
+    "name": "מרכז חסידי פרמישלאן",
+    "address": "אברבנאל 6, בני ברק",
+    "phone": "02-374-3031",
+    "latitude": 32.0940766,
+    "longitude": 34.844175,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת המרכזי מנין ותיקין נווה יצחק",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.0775101,
+    "longitude": 34.8351341,
+    "destinationId": 334
+  },
+  {
+    "name": "אוהל קדושים",
+    "address": ",ישראל, ראב\"ד, בני ברק",
+    "phone": "03-618-3111",
+    "latitude": 32.0833458,
+    "longitude": 34.8321883,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ציונוב",
+    "address": "בן זומא, 19בני ברק",
+    "phone": null,
+    "latitude": 32.087985,
+    "longitude": 34.8430643,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת בית יהודה",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.090054,
+    "longitude": 34.835472,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת ״ישיבת בנימין-\"אהבה ואחווה״לעולי מצרים",
+    "address": "המכבים 62, בני ברק",
+    "phone": "050-512-1111",
+    "latitude": 32.0943772,
+    "longitude": 34.833103,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חניכי הישיבות מערב בני ברק - אשכנזי",
+    "address": "הרב אברהם יצחק הכהן קוק 2, בני ברק",
+    "phone": null,
+    "latitude": 32.0877349,
+    "longitude": 34.82723,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש \"אור ישראל\"",
+    "address": "חבקוק 27, בני ברק",
+    "phone": "054-840-9371",
+    "latitude": 32.0873699,
+    "longitude": 34.8379767,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת באבוב",
+    "address": "חזון אי\"ש 16, בני ברק",
+    "phone": "03-616-0298",
+    "latitude": 32.0837137,
+    "longitude": 34.835841,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת היכל הקודש בני ברק",
+    "address": "מהרי\"ץ 9, בני ברק",
+    "phone": null,
+    "latitude": 32.0721831,
+    "longitude": 34.8424973,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת טאלנא",
+    "address": "רימון 32, בני ברק",
+    "phone": null,
+    "latitude": 32.0716572,
+    "longitude": 34.8360284,
+    "destinationId": 334
+  },
+  {
+    "name": "מקווה שכון ה' בני ברק",
+    "address": "שח\"ל 24, בני ברק",
+    "phone": null,
+    "latitude": 32.0912542,
+    "longitude": 34.8423963,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת החיד\"א",
+    "address": "דון יוסף נשיא 7, בני ברק",
+    "phone": null,
+    "latitude": 32.0812483,
+    "longitude": 34.8393214,
+    "destinationId": 334
+  },
+  {
+    "name": "מוסדות יביע אומר קריית הרצוג בני ברק",
+    "address": "הגליל 10, בני ברק",
+    "phone": null,
+    "latitude": 32.0938136,
+    "longitude": 34.8426203,
+    "destinationId": 334
+  },
+  {
+    "name": "לינסק",
+    "address": "הרב כהנמן 155, בני ברק",
+    "phone": null,
+    "latitude": 32.0740805,
+    "longitude": 34.8422572,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת אור יעקב",
+    "address": "בני ברק",
+    "phone": null,
+    "latitude": 32.097099,
+    "longitude": 34.829624,
+    "destinationId": 334
+  },
+  {
+    "name": "חבד לובאוויטש בית מנחם",
+    "address": "רש\"י 26, בני ברק",
+    "phone": null,
+    "latitude": 32.08338,
+    "longitude": 34.834898,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת בעלזא",
+    "address": "הרב עוזיאל 41, בני ברק",
+    "phone": null,
+    "latitude": 32.0730884,
+    "longitude": 34.83992,
+    "destinationId": 334
+  },
+  {
+    "name": "רבי שמריהו יוסף חיים קניבסקי שליט\"א",
+    "address": "רשב\"ם 23, בני ברק",
+    "phone": "050-412-1518",
+    "latitude": 32.0784792,
+    "longitude": 34.8369097,
+    "destinationId": 334
+  },
+  {
+    "name": "מוסדות בוהוש",
+    "address": "חגי 16, בני ברק",
+    "phone": "03-633-9972",
+    "latitude": 32.0878322,
+    "longitude": 34.8369748,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת הספרדי",
+    "address": "יצחק שדה 2, בני ברק",
+    "phone": null,
+    "latitude": 32.0763142,
+    "longitude": 34.8290585,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת חניכי הישיבות",
+    "address": "רבי שלמה יוסף גניחובסקי 5, בני ברק",
+    "phone": null,
+    "latitude": 32.0987459,
+    "longitude": 34.8428127,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש נאות יוסף",
+    "address": "יואל 16, בני ברק",
+    "phone": null,
+    "latitude": 32.0901985,
+    "longitude": 34.8366309,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת גור",
+    "address": "אברבנאל, בני ברק",
+    "phone": null,
+    "latitude": 32.0963562,
+    "longitude": 34.8349375,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת דרכי נועם",
+    "address": "רבי ישראל אבוחצירא, בני ברק",
+    "phone": null,
+    "latitude": 32.0922658,
+    "longitude": 34.8414276,
+    "destinationId": 334
+  },
+  {
+    "name": "בית המדרש הגדול מכנובקא בעלזא",
+    "address": "האדמו\"ר מגור 45, בני ברק",
+    "phone": null,
+    "latitude": 32.0828586,
+    "longitude": 34.8362454,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת קופלוביץ",
+    "address": "העלייה השנייה 9, בני ברק",
+    "phone": null,
+    "latitude": 32.0898831,
+    "longitude": 34.834937,
+    "destinationId": 334
+  },
+  {
+    "name": "מוסדות אור יוחנן ע\"ש כ\"ק האדמו\"ר רבי יוחנן מטאלנא זי\"ע",
+    "address": "רמון 18 אצל הרב אלעזר קלי, בני ברק",
+    "phone": "052-228-0007",
+    "latitude": 32.084932,
+    "longitude": 34.835226,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת אשי ישראל",
+    "address": "קהילות יעקב 41, בני ברק",
+    "phone": null,
+    "latitude": 32.073312,
+    "longitude": 34.8392284,
+    "destinationId": 334
+  },
+  {
+    "name": "משכן יחזקאל",
+    "address": "חברון 25, בני ברק",
+    "phone": null,
+    "latitude": 32.0853091,
+    "longitude": 34.8259656,
+    "destinationId": 334
+  },
+  {
+    "name": "בית כנסת \"בית שלום\" (על אולם הספורט)",
+    "address": "הרב מוהליבר 12, בני ברק",
+    "phone": null,
+    "latitude": 32.0793599,
+    "longitude": 34.8281187,
+    "destinationId": 334
+  },
+  {
+    "name": "בית הכנסת אשי ישראל",
+    "address": "רבי שלמה יוסף גניחובסקי 7, בני ברק",
+    "phone": null,
+    "latitude": 32.0988117,
+    "longitude": 34.8426725,
+    "destinationId": 334
+  }
+]

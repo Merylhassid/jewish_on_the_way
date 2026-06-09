@@ -1,0 +1,60 @@
+{
+  "results": [
+    {
+      "name": "בית כנסת שערי שלום",
+      "address": "תל מונד",
+      "phone": null,
+      "latitude": 32.2572582,
+      "longitude": 34.9170209,
+      "destinationId": 536
+    },
+    {
+      "name": "בית כנסת תפארת ישראל",
+      "address": "מצדה 12, תל מונד",
+      "phone": "052-946-1552",
+      "latitude": 32.2543954,
+      "longitude": 34.9161518,
+      "destinationId": 536
+    },
+    {
+      "name": "בית כנסת מבשר ציון",
+      "address": "תל מונד",
+      "phone": null,
+      "latitude": 32.2495652,
+      "longitude": 34.9225582,
+      "destinationId": 536
+    },
+    {
+      "name": "Chabad Lev Hasharon Tel Mond",
+      "address": "תל מונד",
+      "phone": null,
+      "latitude": 32.2537369,
+      "longitude": 34.918592,
+      "destinationId": 536
+    },
+    {
+      "name": "בית כנסת עמנואל",
+      "address": "תל מונד",
+      "phone": null,
+      "latitude": 32.259811,
+      "longitude": 34.918099,
+      "destinationId": 536
+    },
+    {
+      "name": "בית הכנסת שערי צדק",
+      "address": "האלון, תל מונד",
+      "phone": null,
+      "latitude": 32.2594565,
+      "longitude": 34.919434,
+      "destinationId": 536
+    }
+  ],
+  "doneUrls": [
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A9%D7%A2%D7%A8%D7%99+%D7%A9%D7%9C%D7%95%D7%9D%E2%80%AD/data=!4m7!3m6!1s0x151d3ee553d374f9:0x2de7227f5540ba25!8m2!3d32.2572582!4d34.9170209!16s%2Fg%2F1ydntywkh!19sChIJ-XTTU-U-HRURJbpAVX8i5y0",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%AA%D7%A4%D7%90%D7%A8%D7%AA+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%E2%80%AD/data=!4m7!3m6!1s0x151d3ee5962db569:0x6b205fa7f3b582a9!8m2!3d32.2543954!4d34.9161518!16s%2Fg%2F1ydntykx3!19sChIJabUtluU-HRURqYK186dfIGs",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%9E%D7%91%D7%A9%D7%A8+%D7%A6%D7%99%D7%95%D7%9F%E2%80%AD/data=!4m7!3m6!1s0x151d3ee966fbe0c3:0x272f80c1ce7c2ccb!8m2!3d32.2495652!4d34.9225582!16s%2Fg%2F1hc6jgpcf!19sChIJw-D7Zuk-HRURyyx8zsGALyc",
+    "https://www.google.com/maps/place/Chabad+Lev+Hasharon+Tel+Mond/data=!4m7!3m6!1s0x151d3eef14982a5b:0xa7266b16cee1bbdd!8m2!3d32.2537369!4d34.918592!16s%2Fg%2F11b6c57w21!19sChIJWyqYFO8-HRUR3bvhzhZrJqc",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A2%D7%9E%D7%A0%D7%95%D7%90%D7%9C%E2%80%AD/data=!4m7!3m6!1s0x151d3ef0879df9df:0x15f6b704c09c35f7!8m2!3d32.259811!4d34.918099!16s%2Fg%2F1ydnq8d14!19sChIJ3_mdh_A-HRUR9zWcwAS39hU",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A9%D7%A2%D7%A8%D7%99+%D7%A6%D7%93%D7%A7%E2%80%AD/data=!4m7!3m6!1s0x151d3ef0f6456fe3:0xacc7a43de73a9c1b!8m2!3d32.2594565!4d34.919434!16s%2Fg%2F11f15k8w_n!19sChIJ429F9vA-HRURG5w65z2kx6w"
+  ]
+}

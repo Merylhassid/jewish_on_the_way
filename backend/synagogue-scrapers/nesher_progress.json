@@ -1,0 +1,123 @@
+{
+  "results": [
+    {
+      "name": "בית כנסת אור יצחק",
+      "address": "נשר",
+      "phone": null,
+      "latitude": 32.768079,
+      "longitude": 35.034747,
+      "destinationId": 506
+    },
+    {
+      "name": "בית הכנסת הגדול - נשר",
+      "address": "1, החלוצים, נשר",
+      "phone": null,
+      "latitude": 32.7614826,
+      "longitude": 35.0459097,
+      "destinationId": 506
+    },
+    {
+      "name": "בית כנסת גבעת נשר",
+      "address": "החלוצים 1, נשר",
+      "phone": null,
+      "latitude": 32.762123,
+      "longitude": 35.047091,
+      "destinationId": 506
+    },
+    {
+      "name": "בית כנסת הנוריות נשר",
+      "address": "הנוריות 13, נשר",
+      "phone": null,
+      "latitude": 32.7686404,
+      "longitude": 35.0388802,
+      "destinationId": 506
+    },
+    {
+      "name": "בית הכנסת הנוריות",
+      "address": "נשר",
+      "phone": null,
+      "latitude": 32.768678,
+      "longitude": 35.038224,
+      "destinationId": 506
+    },
+    {
+      "name": "בית כנסת תהילה לדוד",
+      "address": "עמוס 22, נשר",
+      "phone": "054-609-2300",
+      "latitude": 32.7755073,
+      "longitude": 35.0311126,
+      "destinationId": 506
+    },
+    {
+      "name": "בית כנסת אוהל יצחק",
+      "address": "נשר",
+      "phone": null,
+      "latitude": 32.770375,
+      "longitude": 35.045314,
+      "destinationId": 506
+    },
+    {
+      "name": "בית הכנסת משה וישראל",
+      "address": "נשר",
+      "phone": null,
+      "latitude": 32.765857,
+      "longitude": 35.049906,
+      "destinationId": 506
+    },
+    {
+      "name": "בית חב\"ד נשר",
+      "address": "הורדים 23, נשר",
+      "phone": null,
+      "latitude": 32.7694694,
+      "longitude": 35.0386072,
+      "destinationId": 506
+    },
+    {
+      "name": "בית כנסת התאנה",
+      "address": "התאנה 5, נשר",
+      "phone": null,
+      "latitude": 32.7671873,
+      "longitude": 35.0161388,
+      "destinationId": 506
+    },
+    {
+      "name": "בית כנסת המרכזי אשכנזי בן דור",
+      "address": "המתמיד 15, נשר",
+      "phone": "054-745-6632",
+      "latitude": 32.7746914,
+      "longitude": 35.0337214,
+      "destinationId": 506
+    },
+    {
+      "name": "בית הכנסת אוהל קדושים",
+      "address": "מרדכי בר מוחא, 14נשר",
+      "phone": null,
+      "latitude": 32.7694123,
+      "longitude": 35.0466289,
+      "destinationId": 506
+    },
+    {
+      "name": "Синогога שערי תפילה",
+      "address": "נשר",
+      "phone": null,
+      "latitude": 32.7692998,
+      "longitude": 35.0450875,
+      "destinationId": 506
+    }
+  ],
+  "doneUrls": [
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%90%D7%95%D7%A8+%D7%99%D7%A6%D7%97%D7%A7%E2%80%AD/data=!4m7!3m6!1s0x151dba9f18b1595b:0x4842f8e4170e66e9!8m2!3d32.768079!4d35.034747!16s%2Fg%2F1ydnqfg91!19sChIJW1mxGJ-6HRUR6WYOF-T4Qkg",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%92%D7%93%D7%95%D7%9C+-+%D7%A0%D7%A9%D7%A8%E2%80%AD/data=!4m7!3m6!1s0x151db00cc6e5f679:0xe19875276b1e88bf!8m2!3d32.7614826!4d35.0459097!16s%2Fg%2F11g6xwj50z!19sChIJefblxgywHRURv4geayd1mOE",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%92%D7%91%D7%A2%D7%AA+%D7%A0%D7%A9%D7%A8%E2%80%AD/data=!4m7!3m6!1s0x151db072d57c5c79:0x9aa8ca866f7864fa!8m2!3d32.762123!4d35.047091!16s%2Fg%2F11csq002c_!19sChIJeVx81XKwHRUR-mR4b4bKqJo",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%A0%D7%95%D7%A8%D7%99%D7%95%D7%AA+%D7%A0%D7%A9%D7%A8%E2%80%AD/data=!4m7!3m6!1s0x151db075f7cd231d:0xc687e8dd43b7cceb!8m2!3d32.7686404!4d35.0388802!16s%2Fg%2F11h51k78y_!19sChIJHSPN93WwHRUR68y3Q93oh8Y",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%A0%D7%95%D7%A8%D7%99%D7%95%D7%AA%E2%80%AD/data=!4m7!3m6!1s0x151dba9e184a4d97:0xc1d7ee0a26ab9bc7!8m2!3d32.768678!4d35.038224!16s%2Fg%2F1yfjtbwcz!19sChIJl01KGJ66HRURx5urJgru18E",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%AA%D7%94%D7%99%D7%9C%D7%94+%D7%9C%D7%93%D7%95%D7%93%E2%80%AD/data=!4m7!3m6!1s0x151dbb08a7150da3:0xf1f5c35429a0b4b2!8m2!3d32.7755073!4d35.0311126!16s%2Fg%2F11fm4q9v5s!19sChIJow0Vpwi7HRURsrSgKVTD9fE",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%90%D7%95%D7%94%D7%9C+%D7%99%D7%A6%D7%97%D7%A7%E2%80%AD/data=!4m7!3m6!1s0x151db070db8d66c7:0xb8c47dfeb84f0db3!8m2!3d32.770375!4d35.045314!16s%2Fg%2F1yfjrz391!19sChIJx2aN23CwHRURsw1PuP59xLg",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%9E%D7%A9%D7%94+%D7%95%D7%99%D7%A9%D7%A8%D7%90%D7%9C%E2%80%AD/data=!4m7!3m6!1s0x151db06dff72ee91:0x4e7859951f87b138!8m2!3d32.765857!4d35.049906!16s%2Fg%2F1w604b5q!19sChIJke5y_22wHRUROLGHH5VZeE4",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%97%D7%91%22%D7%93+%D7%A0%D7%A9%D7%A8%E2%80%AD/data=!4m7!3m6!1s0x151dbb16688db563:0xac8c01693149e023!8m2!3d32.7694694!4d35.0386072!16s%2Fg%2F11qbp_4346!19sChIJY7WNaBa7HRURI-BJMWkBjKw",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%AA%D7%90%D7%A0%D7%94%E2%80%AD/data=!4m7!3m6!1s0x151dbb8eb87d0e7b:0x5f6ef4312e9aae41!8m2!3d32.7671873!4d35.0161388!16s%2Fg%2F11swzfgq70!19sChIJew59uI67HRURQa6aLjH0bl8",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%9E%D7%A8%D7%9B%D7%96%D7%99+%D7%90%D7%A9%D7%9B%D7%A0%D7%96%D7%99+%D7%91%D7%9F+%D7%93%D7%95%D7%A8%E2%80%AD/data=!4m7!3m6!1s0x151dba9cecc944e5:0xc2487c6d14ce91fa!8m2!3d32.7746914!4d35.0337214!16s%2Fg%2F11b7tj6qkp!19sChIJ5UTJ7Jy6HRUR-pHOFG18SMI",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%90%D7%95%D7%94%D7%9C+%D7%A7%D7%93%D7%95%D7%A9%D7%99%D7%9D%E2%80%AD/data=!4m7!3m6!1s0x151db13e84bc24ab:0x959bc8f4b7f37e07!8m2!3d32.7694123!4d35.0466289!16s%2Fg%2F11fd7hm83r!19sChIJqyS8hD6xHRURB37zt_TIm5U",
+    "https://www.google.com/maps/place/%D0%A1%D0%B8%D0%BD%D0%BE%D0%B3%D0%BE%D0%B3%D0%B0+%D7%A9%D7%A2%D7%A8%D7%99+%D7%AA%D7%A4%D7%99%D7%9C%D7%94%E2%80%AD/data=!4m7!3m6!1s0x151db10957cf7f6d:0x121ff7b9b0dd44bb!8m2!3d32.7692998!4d35.0450875!16s%2Fg%2F11kpsnc3c7!19sChIJbX_PVwmxHRURu0TdsLn3HxI"
+  ]
+}
