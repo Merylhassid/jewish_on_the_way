@@ -1,0 +1,163 @@
+@startuml Jewish_On_The_Way_Classes
+title Jewish On The Way — Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #FFF9E6
+  BorderColor #B8860B
+  ArrowColor #555
+  HeaderBackgroundColor #F5DEB3
+}
+
+' ══════════════════════════════════════
+'  ENTITIES
+' ══════════════════════════════════════
+
+class User {
+  + id: number <<PK>>
+  + email: string <<unique>>
+  + password: string
+  + firstName: string
+  + lastName: string
+  + avatarUrl: string
+  + createdAt: Date
+  --
+  + register(): void
+  + login(): string (JWT)
+  + updateProfile(): void
+  + changePassword(): void
+  + uploadAvatar(): void
+  + resetPassword(): void
+}
+
+class Destination {
+  + id: number <<PK>>
+  + name: string
+  + country: string
+  + description: string
+  + imageUrl: string
+  + lat: number
+  + lng: number
+  --
+  + getRestaurants(): Restaurant[]
+  + getMinyans(): Minyan[]
+  + getChatMessages(): ChatMessage[]
+}
+
+class Restaurant {
+  + id: number <<PK>>
+  + name: string
+  + address: string
+  + phone: string
+  + kashrut_level: KashrutLevel
+  + restaurant_type: RestaurantType
+  + is_kosher: boolean
+  + opening_hours: string
+  + website_url: string
+  + lat: number
+  + lng: number
+  + destinationId: number <<FK>>
+  + created_at: Date
+  --
+  + getDetails(): Restaurant
+  + distanceTo(lat, lng): number
+}
+
+class Minyan {
+  + id: number <<PK>>
+  + name: string
+  + address: string
+  + phone: string
+  + nusach: string
+  + times: string
+  + lat: number
+  + lng: number
+  + destinationId: number <<FK>>
+  + createdAt: Date
+  --
+  + getDetails(): Minyan
+}
+
+class ChatMessage {
+  + id: number <<PK>>
+  + content: string
+  + createdAt: Date
+  + userId: number <<FK>>
+  + destinationId: number <<FK>>
+  + reportedBy: number[]
+  --
+  + send(): void
+  + report(userId): void
+}
+
+class HostingRequest {
+  + id: number <<PK>>
+  + guestId: number <<FK>>
+  + hostId: number <<FK>>
+  + destinationId: number <<FK>>
+  + status: HostingStatus
+  + requestedDate: Date
+  + guestCount: number
+  + notes: string
+  + createdAt: Date
+  --
+  + create(): void
+  + approve(): void
+  + reject(): void
+  + cancel(): void
+}
+
+class PrivateMessage {
+  + id: number <<PK>>
+  + content: string
+  + senderId: number <<FK>>
+  + hostingRequestId: number <<FK>>
+  + createdAt: Date
+  --
+  + send(): void
+}
+
+' ══════════════════════════════════════
+'  ENUMS
+' ══════════════════════════════════════
+
+enum KashrutLevel {
+  mehadrin
+  badatz
+  rabbinate
+}
+
+enum RestaurantType {
+  meat
+  dairy
+  pareve
+}
+
+enum HostingStatus {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+' ══════════════════════════════════════
+'  RELATIONSHIPS
+' ══════════════════════════════════════
+
+User "1" --o{ "0..*" ChatMessage      : writes
+User "1" --o{ "0..*" HostingRequest   : requests (guest)
+User "1" --o{ "0..*" HostingRequest   : hosts (host)
+User "1" --o{ "0..*" PrivateMessage   : sends
+
+Destination "1" --o{ "0..*" Restaurant    : has
+Destination "1" --o{ "0..*" Minyan        : has
+Destination "1" --o{ "0..*" ChatMessage   : contains
+Destination "1" --o{ "0..*" HostingRequest : for
+
+HostingRequest "1" --o{ "0..*" PrivateMessage : contains
+
+Restaurant  ..>  KashrutLevel   : uses
+Restaurant  ..>  RestaurantType : uses
+HostingRequest ..> HostingStatus : uses
+
+@enduml

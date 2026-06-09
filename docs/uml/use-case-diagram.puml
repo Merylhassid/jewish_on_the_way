@@ -1,0 +1,128 @@
+@startuml Jewish_On_The_Way_UseCases
+title Jewish On The Way — Use Case Diagram
+
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #FFF9E6
+  BorderColor #B8860B
+  ArrowColor #555
+}
+skinparam actor {
+  BackgroundColor #E8F4FD
+  BorderColor #2980B9
+}
+
+left to right direction
+
+actor "Guest\n(לא מחובר)" as Guest
+actor "Registered User\n(משתמש רשום)"  as User
+actor "Host\n(מארח)"                    as Host
+
+note "Host extends User" as N1
+Host --|> User
+
+rectangle "Jewish On The Way" {
+
+  ' ── Auth ──────────────────────────────
+  package "Authentication" {
+    usecase "Register\nהרשמה"             as UC_Register
+    usecase "Login\nהתחברות"              as UC_Login
+    usecase "Forgot Password\nשכחתי סיסמה" as UC_Forgot
+    usecase "Reset Password\nאיפוס סיסמה" as UC_Reset
+  }
+
+  ' ── Profile ───────────────────────────
+  package "User Profile" {
+    usecase "View Profile\nצפייה בפרופיל"       as UC_ViewProfile
+    usecase "Edit Profile\nעריכת פרופיל"         as UC_EditProfile
+    usecase "Upload Avatar\nהעלאת תמונה"         as UC_Avatar
+    usecase "Change Password\nשינוי סיסמה"       as UC_ChangePwd
+  }
+
+  ' ── Destinations ──────────────────────
+  package "Destinations" {
+    usecase "Browse Destinations\nעיון ביעדים"   as UC_Browse
+    usecase "Search Destination\nחיפוש יעד"      as UC_SearchDest
+    usecase "View Destination\nפרטי יעד"         as UC_ViewDest
+  }
+
+  ' ── Restaurants ───────────────────────
+  package "Restaurants" {
+    usecase "View Restaurants\nצפייה במסעדות"    as UC_Restaurants
+    usecase "Filter by Kashrut\nסינון לפי כשרות" as UC_FilterKashrut
+    usecase "Filter by Type\nסינון בשרי/חלבי"    as UC_FilterType
+    usecase "Search Restaurant\nחיפוש מסעדה"     as UC_SearchRest
+    usecase "Sort by Distance\nמיון לפי מרחק GPS" as UC_Distance
+    usecase "View Restaurant\nפרטי מסעדה"        as UC_ViewRest
+  }
+
+  ' ── Chat ──────────────────────────────
+  package "Destination Chat" {
+    usecase "Join Chat\nכניסה לצ'אט יעד"         as UC_JoinChat
+    usecase "Send Message\nשליחת הודעה"           as UC_SendMsg
+    usecase "View History\nהיסטוריית הודעות"      as UC_History
+    usecase "Report Message\nדיווח על הודעה"      as UC_Report
+  }
+
+  ' ── Minyans ───────────────────────────
+  package "Minyans" {
+    usecase "View Minyans\nצפייה במניינים"        as UC_Minyans
+    usecase "View Minyan Details\nפרטי מניין"     as UC_MinyanDetail
+  }
+
+  ' ── Hosting ───────────────────────────
+  package "Shabbat Hosting" {
+    usecase "Request Hosting\nבקשת אירוח שבת"     as UC_RequestHost
+    usecase "Offer Hosting\nהצעת אירוח שבת"       as UC_OfferHost
+    usecase "Manage Requests\nניהול בקשות"        as UC_ManageHost
+    usecase "Private Chat\nצ'אט פרטי עם מארח"    as UC_PrivateChat
+  }
+}
+
+' ── Guest connections ─────────────────
+Guest --> UC_Register
+Guest --> UC_Login
+Guest --> UC_Forgot
+
+' ── User connections ──────────────────
+User --> UC_ViewProfile
+User --> UC_EditProfile
+User --> UC_Avatar
+User --> UC_ChangePwd
+User --> UC_Browse
+User --> UC_SearchDest
+User --> UC_ViewDest
+User --> UC_Restaurants
+User --> UC_FilterKashrut
+User --> UC_FilterType
+User --> UC_SearchRest
+User --> UC_Distance
+User --> UC_ViewRest
+User --> UC_JoinChat
+User --> UC_SendMsg
+User --> UC_History
+User --> UC_Report
+User --> UC_Minyans
+User --> UC_MinyanDetail
+User --> UC_RequestHost
+
+' ── Host connections ──────────────────
+Host --> UC_OfferHost
+Host --> UC_ManageHost
+
+' ── include / extend ──────────────────
+UC_Forgot ..> UC_Reset          : <<include>>
+UC_ViewDest ..> UC_Browse       : <<include>>
+UC_Restaurants ..> UC_ViewDest  : <<include>>
+UC_FilterKashrut ..> UC_Restaurants : <<extend>>
+UC_FilterType ..> UC_Restaurants    : <<extend>>
+UC_SearchRest ..> UC_Restaurants    : <<extend>>
+UC_Distance ..> UC_Restaurants      : <<extend>>
+UC_ViewRest ..> UC_Restaurants      : <<include>>
+UC_SendMsg ..> UC_JoinChat      : <<include>>
+UC_Report ..> UC_SendMsg        : <<extend>>
+UC_MinyanDetail ..> UC_Minyans  : <<include>>
+UC_PrivateChat ..> UC_RequestHost : <<include>>
+UC_ManageHost ..> UC_OfferHost  : <<include>>
+
+@enduml
