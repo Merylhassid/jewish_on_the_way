@@ -376,6 +376,21 @@ export default {
     chatTooLong:        'Message trop long',
     chatTooLongMsg:     'Les messages doivent faire moins de 500 caractères.',
   },
+  contact: {
+    section:             'SUPPORT',
+    title:               'Nous contacter',
+    sendingAs:           'Envoyé par',
+    subject:             'SUJET',
+    subjectPlaceholder:  'De quoi s\'agit-il ?',
+    message:             'MESSAGE',
+    messagePlaceholder:  'Écrivez votre message ici…',
+    send:                'Envoyer le message',
+    success:             'Votre message a été envoyé ! Nous vous répondrons bientôt.',
+    errors: {
+      subjectRequired: 'Veuillez saisir un sujet',
+      messageTooShort: 'Le message doit contenir au moins 10 caractères',
+    },
+  },
   common: {
     back:     'Retour',
     loading:  'Chargement…',

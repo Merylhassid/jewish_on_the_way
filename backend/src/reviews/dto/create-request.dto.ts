@@ -5,13 +5,19 @@ export class CreateRequestDto {
   @IsEnum(EntityType)
   entityType: EntityType;
 
+  @IsOptional()
   @IsInt()
   @Min(1)
-  destinationId: number;
+  destinationId?: number;
 
   @IsString()
   @MaxLength(255)
   name: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  city?: string;
 
   @IsOptional()
   @IsString()

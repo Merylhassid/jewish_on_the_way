@@ -376,6 +376,21 @@ export default {
     chatTooLong:        'Too long',
     chatTooLongMsg:     'Messages must be under 500 characters.',
   },
+  contact: {
+    section:             'SUPPORT',
+    title:               'Contact Us',
+    sendingAs:           'Sending as',
+    subject:             'SUBJECT',
+    subjectPlaceholder:  'What is your message about?',
+    message:             'MESSAGE',
+    messagePlaceholder:  'Write your message here…',
+    send:                'Send Message',
+    success:             'Your message was sent! We\'ll get back to you soon.',
+    errors: {
+      subjectRequired: 'Please enter a subject',
+      messageTooShort: 'Message must be at least 10 characters',
+    },
+  },
   common: {
     back:        'Back',
     loading:     'Loading…',

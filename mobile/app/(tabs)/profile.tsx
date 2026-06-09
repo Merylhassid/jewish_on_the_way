@@ -298,6 +298,112 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
   );
 }
 
+// ─── Contact Modal ────────────────────────────────────────────────────────────
+
+function ContactModal({ visible, onClose }: { visible: boolean; onClose: () => void }) {
+  const { t } = useTranslation();
+  const { user } = useAuth();
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const reset = () => {
+    setSubject('');
+    setMessage('');
+    setErrorMsg('');
+    setSent(false);
+  };
+
+  const handleClose = () => { reset(); onClose(); };
+
+  const handleSend = async () => {
+    setErrorMsg('');
+    if (!subject.trim()) { setErrorMsg(t('contact.errors.subjectRequired')); return; }
+    if (message.trim().length < 10) { setErrorMsg(t('contact.errors.messageTooShort')); return; }
+    try {
+      setLoading(true);
+      await client.post('/contact', { subject: subject.trim(), message: message.trim() });
+      setSent(true);
+      setTimeout(() => { handleClose(); }, 2000);
+    } catch (err: any) {
+      setErrorMsg(err?.response?.data?.message ?? t('common.error'));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <SwipeableSheet visible={visible} onClose={handleClose}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={styles.sheetInner}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>{t('contact.title')}</Text>
+            <Pressable onPress={handleClose} hitSlop={12} style={styles.modalCloseBtn}>
+              <Text style={styles.modalCloseText}>✕</Text>
+            </Pressable>
+          </View>
+
+          {/* Sender info */}
+          <View style={contactStyles.senderBox}>
+            <Text style={contactStyles.senderLabel}>{t('contact.sendingAs')}</Text>
+            <Text style={contactStyles.senderName}>{user?.firstName} {user?.lastName}</Text>
+            <Text style={contactStyles.senderEmail}>{user?.email}</Text>
+          </View>
+
+          <Text style={styles.inputLabel}>{t('contact.subject')}</Text>
+          <TextInput
+            style={styles.input}
+            value={subject}
+            onChangeText={setSubject}
+            placeholder={t('contact.subjectPlaceholder')}
+            placeholderTextColor="#9AA8C0"
+            maxLength={100}
+            editable={!loading && !sent}
+          />
+
+          <Text style={styles.inputLabel}>{t('contact.message')}</Text>
+          <TextInput
+            style={[styles.input, contactStyles.messageInput]}
+            value={message}
+            onChangeText={setMessage}
+            placeholder={t('contact.messagePlaceholder')}
+            placeholderTextColor="#9AA8C0"
+            multiline
+            maxLength={2000}
+            editable={!loading && !sent}
+            textAlignVertical="top"
+          />
+          <Text style={contactStyles.charCount}>{message.length}/2000</Text>
+
+          {errorMsg ? (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>{errorMsg}</Text>
+            </View>
+          ) : null}
+
+          {sent ? (
+            <View style={styles.successContainer}>
+              <Text style={styles.successText}>✓ {t('contact.success')}</Text>
+            </View>
+          ) : (
+            <Pressable
+              style={({ pressed }) => [styles.primaryBtn, pressed && !loading && { opacity: 0.88 }]}
+              onPress={handleSend}
+              disabled={loading}
+            >
+              {loading
+                ? <ActivityIndicator color="#fff" />
+                : <Text style={styles.primaryBtnText}>{t('contact.send')}</Text>}
+            </Pressable>
+          )}
+        </View>
+      </KeyboardAvoidingView>
+    </SwipeableSheet>
+  );
+}
+
 // ─── Main Profile Screen ──────────────────────────────────────────────────────
 
 export default function ProfileScreen() {
@@ -310,6 +416,7 @@ export default function ProfileScreen() {
   const [deleteLoading, setDeleteLoading]   = useState(false);
   const [suggestType, setSuggestType]       = useState<'restaurant' | 'synagogue'>('restaurant');
   const [suggestVisible, setSuggestVisible] = useState(false);
+  const [contactVisible, setContactVisible] = useState(false);
   const [myMinyans,       setMyMinyans]       = useState<MyMinyan[]>([]);
   const [myOffers,        setMyOffers]        = useState<number>(0);
   const [myHostRequests,  setMyHostRequests]  = useState<number>(0);
@@ -590,6 +697,34 @@ export default function ProfileScreen() {
         </>
       )}
 
+      {/* ── Admin section (admin only) ── */}
+      {user?.role === 'admin' && (
+        <>
+          <Text style={styles.sectionEyebrow}>ADMIN</Text>
+          <View style={styles.card}>
+            <Pressable style={styles.row} onPress={() => router.push('/admin' as any)}>
+              <View style={[styles.iconBox, { backgroundColor: 'rgba(239,68,68,0.10)' }]}>
+                <MaterialIcons name="admin-panel-settings" size={20} color="#EF4444" />
+              </View>
+              <Text style={styles.rowLabel}>Control Panel</Text>
+              <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+            </Pressable>
+          </View>
+        </>
+      )}
+
+      {/* ── Support section ── */}
+      <Text style={styles.sectionEyebrow}>{t('contact.section')}</Text>
+      <View style={styles.card}>
+        <Pressable style={styles.row} onPress={() => setContactVisible(true)}>
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(11,23,54,0.08)' }]}>
+            <MaterialIcons name="headset-mic" size={20} color={NAVY} />
+          </View>
+          <Text style={styles.rowLabel}>{t('contact.title')}</Text>
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+        </Pressable>
+      </View>
+
       {/* ── Sign out ── */}
       <TouchableOpacity style={styles.signOutBtn} onPress={handleLogout} activeOpacity={0.75}>
         <Text style={styles.signOutText}>{t('profile.signOut')}</Text>
@@ -631,6 +766,7 @@ export default function ProfileScreen() {
         onSaved={(firstName, lastName, kashrutLevel) => updateUser({ firstName, lastName, kashrutLevel })}
       />
       <ChangePasswordModal visible={passwordVisible} onClose={() => setPasswordVisible(false)} />
+      <ContactModal visible={contactVisible} onClose={() => setContactVisible(false)} />
     </ScrollView>
   );
 }
@@ -829,6 +965,36 @@ const styles = StyleSheet.create({
   },
 
   kashrutRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 18 },
+});
+
+const contactStyles = StyleSheet.create({
+  senderBox: {
+    backgroundColor: '#F2F5FB',
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 18,
+    borderWidth: 1,
+    borderColor: '#E1E8F5',
+  },
+  senderLabel: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 10,
+    color: '#9AA8C0',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    marginBottom: 4,
+  },
+  senderName:  { fontFamily: 'Inter-SemiBold', fontSize: 14, color: '#0C1A2E' },
+  senderEmail: { fontFamily: 'Inter-Regular',  fontSize: 12, color: '#556080', marginTop: 1 },
+  messageInput: { height: 130, paddingTop: 14 },
+  charCount: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 11,
+    color: '#9AA8C0',
+    textAlign: 'right',
+    marginTop: -12,
+    marginBottom: 16,
+  },
   kashrutChip: {
     paddingHorizontal: 13,
     paddingVertical: 8,

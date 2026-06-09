@@ -1,6 +1,7 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ILike, Repository } from 'typeorm';
+import { ConfigService } from '@nestjs/config';
 import { Restaurant } from '../restaurant.entity';
 import { Destination } from '../destination.entity';
 import { GeocodingService } from '../geocoding/geocoding.service';
@@ -125,6 +126,7 @@ export class RestaurantsService {
     @InjectRepository(Destination)
     private destinationsRepo: Repository<Destination>,
     private readonly geocodingService: GeocodingService,
+    private readonly config: ConfigService,
   ) {}
 
   // req 4.1 — list restaurants with optional filters + distance
@@ -476,8 +478,8 @@ export class RestaurantsService {
         this.logger.log(`Imported: ${item.name} → (${coords.lat}, ${coords.lng})`);
       } catch (err) {
         failed++;
-        errors.push(`Error for "${item.name}": ${err.message}`);
         this.logger.error(`Import error for "${item.name}": ${err.message}`);
+        errors.push(`Failed to import "${item.name}"`);
       }
     }
 
@@ -486,7 +488,7 @@ export class RestaurantsService {
 
   // Import kosher restaurants from Google Places API for all destinations
   async importKosherRestaurantsFromGoogle() {
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    const apiKey = this.config.get<string>('GOOGLE_PLACES_API_KEY');
     this.logger.log('🔍 Starting restaurant import...');
     this.logger.log('API Key present:', !!apiKey);
 
@@ -537,79 +539,9 @@ export class RestaurantsService {
           totalFound += places.length;
 
           for (const place of places) {
-            // Check if restaurant already exists by googlePlaceId
-            const existing = await this.restaurantsRepo.findOne({
-              where: { googlePlaceId: place.place_id },
-            });
-
-            // Get detailed place information for better classification
-            const placeDetails = await this.getPlaceDetails(
-              place.place_id,
-              apiKey,
-            );
-
-            // Classify restaurant type based on available data
-            const classification = this.classifyRestaurantType(
-              place,
-              placeDetails,
-            );
-
-            this.logger.log(
-              `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
-            );
-
-            if (existing) {
-              // Update existing restaurant with new classification and data
-              existing.restaurantType = classification.type ?? null;
-              existing.restaurantTypeConfidence = classification.confidence;
-              existing.rating = place.rating || existing.rating;
-              existing.address = place.formatted_address;
-              existing.name = place.name;
-              existing.location = {
-                type: 'Point',
-                coordinates: [
-                  place.geometry.location.lng,
-                  place.geometry.location.lat,
-                ],
-              };
-              existing.isKosher = true;
-
-              await this.restaurantsRepo.save(existing);
-              totalImported++;
-              destinationStats[destination.name]++;
-
-              this.logger.log(
-                `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
-              );
-            } else {
-              // Create new restaurant with proper PostGIS location format
-              const restaurant = this.restaurantsRepo.create({
-                googlePlaceId: place.place_id,
-                name: place.name,
-                address: place.formatted_address,
-                rating: place.rating || undefined,
-                isKosher: true,
-                restaurantType: classification.type ?? null,
-                restaurantTypeConfidence: classification.confidence,
-                kashrutLevel: 'unknown', // Will be updated manually later
-                location: {
-                  type: 'Point',
-                  coordinates: [
-                    place.geometry.location.lng,
-                    place.geometry.location.lat,
-                  ],
-                },
-                destination,
-              });
-
-              await this.restaurantsRepo.save(restaurant);
-              totalImported++;
-              destinationStats[destination.name]++;
-
-              this.logger.log(
-                `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
-              );
-            }
+            await this.processGooglePlace(place, apiKey, destination);
+            totalImported++;
+            destinationStats[destination.name]++;
           }
 
           // Check if there's a next page token
@@ -656,7 +588,7 @@ export class RestaurantsService {
 
   // Reclassify all existing restaurants in the database
   async reclassifyExistingRestaurants() {
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    const apiKey = this.config.get<string>('GOOGLE_PLACES_API_KEY');
     const BATCH_SIZE = 100;
     let skip = 0;
     let updatedCount = 0;
@@ -696,7 +628,7 @@ export class RestaurantsService {
             updatedCount++;
           }
 
-          this.logger.log(
+          this.logger.debug(
             `      🔄 Reclassified "${restaurant.name}": ${newType || 'unknown'} (confidence: ${newConfidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
           );
         } catch (error) {
@@ -719,6 +651,60 @@ export class RestaurantsService {
 
     this.logger.log('Reclassification Summary: ' + JSON.stringify(summary));
     return summary;
+  }
+
+  private async processGooglePlace(
+    place: any,
+    apiKey: string,
+    destination: Destination,
+  ): Promise<void> {
+    const existing = await this.restaurantsRepo.findOne({
+      where: { googlePlaceId: place.place_id },
+    });
+
+    const placeDetails = await this.getPlaceDetails(place.place_id, apiKey);
+    const classification = this.classifyRestaurantType(place, placeDetails);
+
+    this.logger.debug(
+      `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
+    );
+
+    if (existing) {
+      existing.restaurantType = classification.type ?? null;
+      existing.restaurantTypeConfidence = classification.confidence;
+      existing.rating = place.rating || existing.rating;
+      existing.address = place.formatted_address;
+      existing.name = place.name;
+      existing.location = {
+        type: 'Point',
+        coordinates: [place.geometry.location.lng, place.geometry.location.lat],
+      };
+      existing.isKosher = true;
+      await this.restaurantsRepo.save(existing);
+      this.logger.log(
+        `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
+      );
+    } else {
+      const restaurant = this.restaurantsRepo.create({
+        googlePlaceId: place.place_id,
+        name: place.name,
+        address: place.formatted_address,
+        rating: place.rating || undefined,
+        isKosher: true,
+        restaurantType: classification.type ?? null,
+        restaurantTypeConfidence: classification.confidence,
+        kashrutLevel: 'unknown',
+        location: {
+          type: 'Point',
+          coordinates: [place.geometry.location.lng, place.geometry.location.lat],
+        },
+        destination,
+      });
+      await this.restaurantsRepo.save(restaurant);
+      this.logger.log(
+        `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
+      );
+    }
   }
 
   // Get detailed place information from Google Places Details API
@@ -1184,7 +1170,7 @@ export class RestaurantsService {
 
   // Batch import restaurants for specified destinations
   async importBatch(destinationIds: number[], limit: number) {
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    const apiKey = this.config.get<string>('GOOGLE_PLACES_API_KEY');
     this.logger.log('🔍 Starting batch restaurant import...');
     this.logger.log('API Key present:', !!apiKey);
 
@@ -1250,79 +1236,9 @@ export class RestaurantsService {
           totalFound += places.length;
 
           for (const place of places) {
-            // Check if restaurant already exists by googlePlaceId
-            const existing = await this.restaurantsRepo.findOne({
-              where: { googlePlaceId: place.place_id },
-            });
-
-            // Get detailed place information for better classification
-            const placeDetails = await this.getPlaceDetails(
-              place.place_id,
-              apiKey,
-            );
-
-            // Classify restaurant type based on available data
-            const classification = this.classifyRestaurantType(
-              place,
-              placeDetails,
-            );
-
-            this.logger.log(
-              `      📊 Classification for "${place.name}": ${classification.type || 'unknown'} (confidence: ${classification.confidence.toFixed(2)}) | meat=[${classification.keywords.meat.join(', ')}] dairy=[${classification.keywords.dairy.join(', ')}] pareve=[${classification.keywords.pareve.join(', ')}]`,
-            );
-
-            if (existing) {
-              // Update existing restaurant with new classification and data
-              existing.restaurantType = classification.type ?? null;
-              existing.restaurantTypeConfidence = classification.confidence;
-              existing.rating = place.rating || existing.rating;
-              existing.address = place.formatted_address;
-              existing.name = place.name;
-              existing.location = {
-                type: 'Point',
-                coordinates: [
-                  place.geometry.location.lng,
-                  place.geometry.location.lat,
-                ],
-              };
-              existing.isKosher = true;
-
-              await this.restaurantsRepo.save(existing);
-              totalImported++;
-              importedOnThisDestination++;
-
-              this.logger.log(
-                `      🔄 Updated: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
-              );
-            } else {
-              // Create new restaurant with proper PostGIS location format
-              const restaurant = this.restaurantsRepo.create({
-                googlePlaceId: place.place_id,
-                name: place.name,
-                address: place.formatted_address,
-                rating: place.rating || undefined,
-                isKosher: true,
-                restaurantType: classification.type ?? null,
-                restaurantTypeConfidence: classification.confidence,
-                kashrutLevel: 'unknown', // Will be updated manually later
-                location: {
-                  type: 'Point',
-                  coordinates: [
-                    place.geometry.location.lng,
-                    place.geometry.location.lat,
-                  ],
-                },
-                destination,
-              });
-
-              await this.restaurantsRepo.save(restaurant);
-              totalImported++;
-              importedOnThisDestination++;
-
-              this.logger.log(
-                `      ✅ Imported: "${place.name}" (rating: ${place.rating || 'N/A'}, type: ${classification.type || 'unknown'})`,
-              );
-            }
+            await this.processGooglePlace(place, apiKey, destination);
+            totalImported++;
+            importedOnThisDestination++;
           }
 
           // Check if there's a next page token

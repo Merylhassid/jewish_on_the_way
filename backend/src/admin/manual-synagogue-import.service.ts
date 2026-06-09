@@ -351,7 +351,8 @@ export class ManualSynagogueImportService {
             destinationId: item.destination.id,
           })
           .andWhere(
-            `ST_DWithin(s.location, ST_GeographyFromText('SRID=4326;POINT(${item.location.coordinates[0]} ${item.location.coordinates[1]})'), 0)`,
+            `ST_DWithin(s.location, ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography, 0)`,
+            { lon: item.location.coordinates[0], lat: item.location.coordinates[1] },
           )
           .orderBy('s.created_at', 'DESC')
           .getOne()
@@ -366,40 +367,6 @@ export class ManualSynagogueImportService {
 
     // 3) Do not perform fuzzy name matching anymore — be conservative and create new record
     return null;
-  }
-
-  private async findSimilarNamedSynagogue(
-    synagoguesRepo: Repository<Synagogue>,
-    item: PreparedManualSynagogueRow,
-  ): Promise<Synagogue | null> {
-    if (!item.normalizedName) {
-      return null;
-    }
-
-    const candidates = await synagoguesRepo.find({
-      where: { destination: { id: item.destination.id } },
-    });
-
-    let bestMatch: Synagogue | null = null;
-    let bestScore = 0;
-
-    for (const candidate of candidates) {
-      if (!candidate.normalizedName) {
-        continue;
-      }
-
-      const score = this.getNormalizedNameSimilarity(
-        item.normalizedName,
-        candidate.normalizedName,
-      );
-
-      if (score > bestScore) {
-        bestScore = score;
-        bestMatch = candidate;
-      }
-    }
-
-    return bestScore >= 0.75 ? bestMatch : null;
   }
 
   private toLocation(

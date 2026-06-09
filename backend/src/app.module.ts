@@ -4,6 +4,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { ChatModule } from './chat/chat.module';
 import { MinyansModule } from './minyans/minyans.module';
 import { HostingModule } from './hosting/hosting.module';
+import { ContactModule } from './contact/contact.module';
 import { AuditModule } from './audit/audit.module';
 import { AiModule } from './ai/ai.module';
 import { SynagoguesModule } from './synagogues/synagogues.module';
@@ -34,7 +35,7 @@ import { PlacesModule } from './places/places.module';
     // req 11.1 — in-memory cache for hot endpoints (destinations, restaurants)
     CacheModule.register({ isGlobal: true, ttl: 30_000, max: 200 }),
 
-    // req 9.3 — global rate limiting: 100 req / 60 s per IP
+    // req 9.3 — global rate limiting: 500 req / 60 s per IP
     ThrottlerModule.forRoot([
       {
         ttl: 60_000,
@@ -101,6 +102,8 @@ import { PlacesModule } from './places/places.module';
 
     ReviewsModule,
     FavoritesModule,
+
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [
