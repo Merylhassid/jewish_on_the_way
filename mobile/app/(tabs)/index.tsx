@@ -197,6 +197,25 @@ export default function HomeScreen() {
     <View style={s.root}>
       <StatusBar barStyle="light-content" />
 
+      {/* Sticky search bar — only shown when in text mode so it stays visible while scrolling */}
+      {searchMode === 'text' && (
+        <View style={s.stickySearchBar}>
+          <Search size={16} color={C.navy} strokeWidth={2} />
+          <TextInput
+            style={s.heroSearchInput}
+            placeholder={t('home.searchPlaceholder')}
+            placeholderTextColor="#9CA3AF"
+            value={search}
+            onChangeText={setSearch}
+            autoFocus
+            returnKeyType="search"
+          />
+          <Pressable hitSlop={12} onPress={() => { setSearch(''); setSearchMode('none'); fetchDests(undefined, gps ?? undefined); }}>
+            <X size={18} color="#6B7280" strokeWidth={2} />
+          </Pressable>
+        </View>
+      )}
+
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={async () => { setRef(true); await fetchDests(); setRef(false); }} tintColor={C.gold} />}
@@ -253,23 +272,7 @@ export default function HomeScreen() {
                 </View>
               )}
 
-              {searchMode === 'text' && (
-                <View style={s.heroSearchActive}>
-                  <Search size={16} color={C.navy} strokeWidth={2} />
-                  <TextInput
-                    style={s.heroSearchInput}
-                    placeholder={t('home.searchPlaceholder')}
-                    placeholderTextColor="#9CA3AF"
-                    value={search}
-                    onChangeText={setSearch}
-                    autoFocus
-                    returnKeyType="search"
-                  />
-                  <Pressable hitSlop={8} onPress={() => { setSearch(''); setSearchMode('none'); fetchDests(undefined, gps ?? undefined); }}>
-                    <X size={16} color="#9CA3AF" strokeWidth={2} />
-                  </Pressable>
-                </View>
-              )}
+              {/* search bar in hero is hidden in text mode — sticky bar above handles it */}
 
               {searchMode === 'ai' && (
                 <View style={s.heroSearchActive}>
@@ -503,6 +506,15 @@ const s = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', gap: 10,
     backgroundColor: '#fff', borderRadius: 16,
     paddingHorizontal: 16, paddingVertical: 13,
+  },
+  stickySearchBar: {
+    position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100,
+    flexDirection: 'row', alignItems: 'center', gap: 10,
+    backgroundColor: '#fff',
+    paddingTop: 52, paddingBottom: 12,
+    paddingHorizontal: 20,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08, shadowRadius: 8, elevation: 4,
   },
   heroSearchInput: { flex: 1, fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary, padding: 0 },
   aiGo: { width: 30, height: 30, borderRadius: 15, backgroundColor: C.navy, justifyContent: 'center', alignItems: 'center' },
