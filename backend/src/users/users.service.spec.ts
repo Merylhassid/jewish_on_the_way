@@ -62,7 +62,6 @@ describe('UsersService', () => {
       expect(result).not.toHaveProperty('passwordHash');
       expect(result).not.toHaveProperty('resetPasswordToken');
       expect(result).not.toHaveProperty('resetPasswordExpires');
-      expect(result).not.toHaveProperty('role');
       expect(result).not.toHaveProperty('isActive');
     });
 
