@@ -19,6 +19,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import client, { API_URL } from '@/src/api/client';
+import { getPrayerConfig } from '@/src/utils/prayerIcons';
 import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
 import SwipeableSheet from '@/src/components/SwipeableSheet';
 import { useAuth } from '@/src/store/auth';
@@ -40,9 +41,6 @@ interface MyMinyan {
   isCreator: boolean;
   destination: { id: number; city: string } | null;
 }
-const PRAYER_EMOJI: Record<string, string> = {
-  shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
-};
 const PRAYER_LABEL: Record<string, string> = {
   shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
 };
@@ -384,7 +382,7 @@ function ContactModal({ visible, onClose }: { visible: boolean; onClose: () => v
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
-  const { user, logout, updateUser } = useAuth();
+  const { user, logout, updateUser, getValidToken } = useAuth();
   const [editVisible, setEditVisible]       = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [avatarLoading, setAvatarLoading]   = useState(false);
@@ -445,7 +443,7 @@ export default function ProfileScreen() {
 
     try {
       setAvatarLoading(true);
-      const token = await AsyncStorage.getItem('token');
+      const token = await getValidToken();
       // Use native fetch — React Native sets multipart boundary correctly, unlike axios
       const response = await fetch(`${API_URL}/users/me/avatar`, {
         method: 'POST',
@@ -592,9 +590,11 @@ export default function ProfileScreen() {
               <View key={m.id}>
                 {index > 0 && <View style={styles.divider} />}
                 <Pressable style={styles.row} onPress={() => router.push(`/minyan/${m.id}` as any)}>
-                  <View style={[styles.iconBox, { backgroundColor: 'rgba(79,70,229,0.10)' }]}>
-                    <Text style={styles.minyanEmoji}>{PRAYER_EMOJI[m.prayerType] ?? '🙏'}</Text>
+                  {(() => { const cfg = getPrayerConfig(m.prayerType); return (
+                  <View style={[styles.iconBox, { backgroundColor: cfg.bg }]}>
+                    <cfg.Icon size={20} color={cfg.color} strokeWidth={2} />
                   </View>
+                  ); })()}
                   <View style={styles.rowBody}>
                     <Text style={styles.minyanLabel}>{PRAYER_LABEL[m.prayerType] ?? m.prayerType}</Text>
                     <Text style={styles.rowSub}>
