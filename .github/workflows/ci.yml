@@ -1,0 +1,42 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-build-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to server
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          tar -czf /tmp/dist.tar.gz dist/
+          scp -i /tmp/deploy_key -o StrictHostKeyChecking=no /tmp/dist.tar.gz student@49.12.189.108:~/backend/dist.tar.gz
+          ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no student@49.12.189.108 \
+            "cd ~/backend && tar -xzf dist.tar.gz && rm dist.tar.gz && ~/.npm/_npx/5f7878ce38f1eb13/node_modules/.bin/pm2 restart jewish-on-the-way"
+          rm /tmp/deploy_key
