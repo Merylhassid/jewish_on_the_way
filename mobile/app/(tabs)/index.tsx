@@ -147,16 +147,17 @@ export default function HomeScreen() {
       const res = await client.post('/search', body);
       const { route, category, emoji, detectedCity, error } = res.data;
 
-      if (error === 'low_confidence') {
+      if (error === 'low_confidence' || !route) {
+        // Try to find it as a plain destination name
+        try {
+          const destRes = await client.get('/destinations', { params: { q: query } });
+          if (destRes.data?.length > 0) {
+            const dest = destRes.data[0];
+            go(dest);
+            return;
+          }
+        } catch {}
         Alert.alert('לא הבנתי 🤔', 'נסה לכתוב בצורה ברורה יותר.\nלמשל: "מסעדה כשרה בתל אביב" או "מניין בירושלים"');
-        return;
-      }
-
-      if (!route) {
-        Alert.alert(
-          `${emoji} זיהינו: ${category}`,
-          'לא מצאנו יעד מתאים.\nנסה לכתוב למשל: "מסעדה כשרה בתל אביב"',
-        );
         return;
       }
 
