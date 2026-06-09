@@ -118,10 +118,14 @@ export class ReviewsService {
       this.usersRepo.findOne({ where: { id: userId } }),
       entityType === 'restaurant'
         ? this.restaurantRepo.findOne({ where: { id: entityId } })
-        : this.synagogueRepo.findOne({ where: { id: entityId } }),
+        : this.synagogueRepo.findOne({ where: { id: entityId }, relations: ['destination'] }),
     ]);
 
     if (user) {
+      const city = entityType === 'restaurant'
+        ? (place as any)?.city ?? null
+        : (place as any)?.destination?.city ?? null;
+
       this.mail.sendReportNotification({
         reporterName:  `${user.firstName} ${user.lastName}`,
         reporterEmail: user.email,
@@ -130,7 +134,7 @@ export class ReviewsService {
         placeName:    (place as any)?.name    ?? null,
         placeAddress: (place as any)?.address ?? null,
         placePhone:   (place as any)?.phone   ?? null,
-        placeCity:    (place as any)?.city    ?? null,
+        placeCity:    city,
       }).catch(() => {});
     }
 
