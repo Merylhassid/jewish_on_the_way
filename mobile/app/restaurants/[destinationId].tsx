@@ -75,7 +75,7 @@ export default function RestaurantsScreen() {
   const [kashrutFilter, setKashrutFilter] = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
   const [search, setSearch] = useState(qParam ?? '');
   const [trigger, setTrigger] = useState(0);
-  const [aiMode, setAiMode] = useState(!!qParam);
+  const [aiMode] = useState(true);
   const [aiMeta, setAiMeta] = useState<{ matchTier: number; message: string | null } | null>(null);
   const [lastAiQuery, setLastAiQuery] = useState('');
   const [gps, setGps]                 = useState<{ lat: number; lng: number } | null>(null);
@@ -279,10 +279,9 @@ export default function RestaurantsScreen() {
             </Pressable>
           )}
           <View style={s.searchDivider} />
-          <Pressable style={[s.aiPill, aiMode && s.aiPillOn]} onPress={() => { setAiMode(v => !v); setSearch(''); setAiMeta(null); }}>
-            <Sparkles size={12} color={aiMode ? C.navy : '#fff'} strokeWidth={2} />
-            <Text style={[s.aiPillText, aiMode && { color: C.navy }]}>AI</Text>
-          </Pressable>
+          <View style={[s.aiPill, s.aiPillOn]}>
+            <Text style={[s.aiPillText, { color: C.navy }]}>AI</Text>
+          </View>
         </View>
       </View>
 
@@ -313,7 +312,7 @@ export default function RestaurantsScreen() {
       )}
 
       {/* ── Filters ── */}
-      {!aiMode && (
+      {!search.trim() && (
         <View style={s.filtersWrap}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.filterRow}>
             {TYPE_FILTERS.map(f => (

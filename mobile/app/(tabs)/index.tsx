@@ -166,6 +166,10 @@ export default function HomeScreen() {
         ? `${fullRoute.includes('?') ? '&' : '?'}q=${encodeURIComponent(query)}`
         : '';
       router.push((fullRoute + qParam) as any);
+      setAiText('');
+      setSearchMode('none');
+      setChip(null);
+      fetchDests(undefined, gps ?? undefined);
     } catch {
       Alert.alert('שגיאה', 'לא ניתן לחפש כרגע, נסה שוב');
     } finally {
@@ -179,16 +183,6 @@ export default function HomeScreen() {
     router.push((item.hasChildren ? `/destination/${item.id}/subdestinations` : `/destination/${item.id}`) as any);
   };
 
-  // Debounced destination search as user types in the unified search bar
-  useEffect(() => {
-    if (debRef.current) clearTimeout(debRef.current);
-    if (searchMode !== 'ai') return;
-    debRef.current = setTimeout(() => {
-      fetchDests(aiText.trim() || undefined, aiText.trim() ? undefined : gps ?? undefined);
-    }, 300);
-    return () => { if (debRef.current) clearTimeout(debRef.current); };
-  }, [aiText, searchMode]);
-
   const popular = dests.filter(d => POPULAR_CITIES.some(c => d.city.toLowerCase().includes(c.toLowerCase())));
   const hero = popular[0] || dests[0];
   const filteredDests = dests;
@@ -196,31 +190,6 @@ export default function HomeScreen() {
   return (
     <View style={s.root}>
       <StatusBar barStyle="light-content" />
-
-      {/* Sticky AI search bar — stays visible while scrolling */}
-      {searchMode === 'ai' && (
-        <View style={s.stickySearchBar}>
-          <Sparkles size={16} color={C.gold} strokeWidth={2} />
-          <TextInput
-            style={s.heroSearchInput}
-            placeholder={t('home.aiPlaceholder')}
-            placeholderTextColor="#9CA3AF"
-            value={aiText}
-            onChangeText={onAiChange}
-            onSubmitEditing={doAi}
-            returnKeyType="search"
-            autoFocus
-          />
-          {aiBusy
-            ? <ActivityIndicator size="small" color={C.navy} />
-            : aiText
-              ? <Pressable style={s.aiGo} onPress={doAi}><Text style={s.aiGoText}>→</Text></Pressable>
-              : <Pressable hitSlop={12} onPress={() => { setAiText(''); setSearchMode('none'); setChip(null); fetchDests(undefined, gps ?? undefined); }}>
-                  <X size={18} color="#6B7280" strokeWidth={2} />
-                </Pressable>
-          }
-        </View>
-      )}
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -267,8 +236,10 @@ export default function HomeScreen() {
               {/* Unified AI search bar */}
               {searchMode === 'none' && (
                 <Pressable style={s.heroSearch} onPress={() => setSearchMode('ai')}>
-                  <Sparkles size={14} color={C.gold} strokeWidth={2} />
-                  <Text style={s.heroSearchPlaceholder}>{t('home.aiPlaceholder')}</Text>
+                  <View style={s.heroSearchInner}>
+                    <Sparkles size={14} color={C.gold} strokeWidth={2} />
+                    <Text style={s.heroSearchPlaceholder}>{t('home.aiPlaceholder')}</Text>
+                  </View>
                   <View style={s.heroAiBtn}>
                     <Text style={s.heroAiBtnText}>AI</Text>
                   </View>
@@ -507,15 +478,6 @@ const s = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', gap: 10,
     backgroundColor: '#fff', borderRadius: 16,
     paddingHorizontal: 16, paddingVertical: 13,
-  },
-  stickySearchBar: {
-    position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100,
-    flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: '#fff',
-    paddingTop: 52, paddingBottom: 12,
-    paddingHorizontal: 20,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08, shadowRadius: 8, elevation: 4,
   },
   heroSearchInput: { flex: 1, fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary, padding: 0 },
   aiGo: { width: 30, height: 30, borderRadius: 15, backgroundColor: C.navy, justifyContent: 'center', alignItems: 'center' },
