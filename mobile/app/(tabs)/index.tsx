@@ -179,11 +179,19 @@ export default function HomeScreen() {
     router.push((item.hasChildren ? `/destination/${item.id}/subdestinations` : `/destination/${item.id}`) as any);
   };
 
+  // Debounced API search — fires when text search changes
+  useEffect(() => {
+    if (debRef.current) clearTimeout(debRef.current);
+    if (searchMode !== 'text') return;
+    debRef.current = setTimeout(() => {
+      fetchDests(search.trim() || undefined, search.trim() ? undefined : gps ?? undefined);
+    }, 300);
+    return () => { if (debRef.current) clearTimeout(debRef.current); };
+  }, [search, searchMode]);
+
   const popular = dests.filter(d => POPULAR_CITIES.some(c => d.city.toLowerCase().includes(c.toLowerCase())));
   const hero = popular[0] || dests[0];
-  const filteredDests = search
-    ? dests.filter(d => d.city.toLowerCase().includes(search.toLowerCase()) || d.country.toLowerCase().includes(search.toLowerCase()))
-    : dests;
+  const filteredDests = dests;
 
   return (
     <View style={s.root}>
@@ -257,7 +265,7 @@ export default function HomeScreen() {
                     autoFocus
                     returnKeyType="search"
                   />
-                  <Pressable hitSlop={8} onPress={() => { setSearch(''); setSearchMode('none'); }}>
+                  <Pressable hitSlop={8} onPress={() => { setSearch(''); setSearchMode('none'); fetchDests(undefined, gps ?? undefined); }}>
                     <X size={16} color="#9CA3AF" strokeWidth={2} />
                   </Pressable>
                 </View>

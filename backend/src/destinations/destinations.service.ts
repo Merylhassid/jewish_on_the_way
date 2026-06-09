@@ -69,7 +69,7 @@ export class DestinationsService {
       }
       return this.destinationsRepo.query(
         `SELECT
-           d.id, d.name, d.city, d.country,
+           d.id, d.name, d.name_he AS "nameHe", d.city, d.country,
            d.country_code      AS "countryCode",
            d.description,
            EXISTS(SELECT 1 FROM destinations c WHERE c.parent_id = d.id) AS "hasChildren",
@@ -80,7 +80,7 @@ export class DestinationsService {
              )::numeric
            ) AS "distanceMeters"
          FROM destinations d
-         WHERE ${parentFilter} AND d.name ILIKE $3
+         WHERE ${parentFilter} AND (d.name ILIKE $3 OR d.name_he ILIKE $3)
          ORDER BY "distanceMeters" ASC`,
         params,
       );
@@ -88,13 +88,13 @@ export class DestinationsService {
 
     const where =
       parentId === undefined
-        ? { name: ILike(`%${q}%`) }
-        : { name: ILike(`%${q}%`), parent: { id: parentId } };
+        ? [{ name: ILike(`%${q}%`) }, { nameHe: ILike(`%${q}%`) }]
+        : [{ name: ILike(`%${q}%`), parent: { id: parentId } }, { nameHe: ILike(`%${q}%`), parent: { id: parentId } }];
 
     const destinations = await this.destinationsRepo.find({
       where,
       relations: ['children'],
-      select: ['id', 'name', 'city', 'country', 'countryCode', 'createdAt', 'description'],
+      select: ['id', 'name', 'nameHe', 'city', 'country', 'countryCode', 'createdAt', 'description'],
       order: { name: 'ASC' },
     });
 

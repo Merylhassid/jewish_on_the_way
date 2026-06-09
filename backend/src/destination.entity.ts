@@ -34,6 +34,9 @@ export class Destination {
   @Column()
   city: string;
 
+  @Column({ name: 'name_he', nullable: true, type: 'varchar', length: 128 })
+  nameHe?: string | null;
+
   // PostGIS location (lat/lng) — req 3.1.2
   @Column({
     type: 'geography',
