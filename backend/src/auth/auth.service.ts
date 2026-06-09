@@ -154,7 +154,7 @@ export class AuthService {
     await this.usersRepo.save(user);
     this.audit.log('PASSWORD_RESET_REQUESTED', user.id, { email });
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV === 'development') {
       this.logger.warn(`\n========================================`);
       this.logger.warn(`  PASSWORD RESET TOKEN (dev only)`);
       this.logger.warn(`  Email : ${email}`);
@@ -171,7 +171,7 @@ export class AuthService {
       user.resetPasswordExpires = null;
       await this.usersRepo.save(user);
 
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV === 'development') {
         this.logger.warn(
           'Email not sent; reset token was invalidated. Check SMTP/APP_URL configuration.',
         );

@@ -11,13 +11,21 @@ import { CreateRequestDto } from './dto/create-request.dto';
 import { ReportType } from './dto/create-report.dto';
 import { ReportStatus } from './dto/resolve-report.dto';
 import { RequestStatus } from './dto/resolve-request.dto';
+import { User } from '../users/user.entity';
+import { Restaurant } from '../restaurant.entity';
+import { Synagogue } from '../synagogue.entity';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class ReviewsService {
   constructor(
-    @InjectRepository(PlaceReview)  private reviewRepo:  Repository<PlaceReview>,
-    @InjectRepository(PlaceReport)  private reportRepo:  Repository<PlaceReport>,
-    @InjectRepository(PlaceRequest) private requestRepo: Repository<PlaceRequest>,
+    @InjectRepository(PlaceReview)  private reviewRepo:      Repository<PlaceReview>,
+    @InjectRepository(PlaceReport)  private reportRepo:      Repository<PlaceReport>,
+    @InjectRepository(PlaceRequest) private requestRepo:     Repository<PlaceRequest>,
+    @InjectRepository(User)         private usersRepo:       Repository<User>,
+    @InjectRepository(Restaurant)   private restaurantRepo:  Repository<Restaurant>,
+    @InjectRepository(Synagogue)    private synagogueRepo:   Repository<Synagogue>,
+    private mail: MailService,
   ) {}
 
   // ── Reviews ────────────────────────────────────────────────────────────────
@@ -104,17 +112,55 @@ export class ReviewsService {
       userId, entityType, entityId, reportType,
       description: description ?? null, status: 'pending',
     });
-    return this.reportRepo.save(report);
+    const saved = await this.reportRepo.save(report);
+
+    const [user, place] = await Promise.all([
+      this.usersRepo.findOne({ where: { id: userId } }),
+      entityType === 'restaurant'
+        ? this.restaurantRepo.findOne({ where: { id: entityId } })
+        : this.synagogueRepo.findOne({ where: { id: entityId } }),
+    ]);
+
+    if (user) {
+      this.mail.sendReportNotification({
+        reporterName:  `${user.firstName} ${user.lastName}`,
+        reporterEmail: user.email,
+        entityType, entityId, reportType,
+        description,
+        placeName:    (place as any)?.name    ?? null,
+        placeAddress: (place as any)?.address ?? null,
+        placePhone:   (place as any)?.phone   ?? null,
+        placeCity:    (place as any)?.city    ?? null,
+      }).catch(() => {});
+    }
+
+    return saved;
   }
 
   // ── Place Requests ─────────────────────────────────────────────────────────
 
   async createRequest(userId: number, dto: CreateRequestDto) {
-    if (!dto.name || !dto.destinationId || !dto.entityType) {
-      throw new BadRequestException('name, destinationId and entityType are required');
+    if (!dto.name || !dto.entityType) {
+      throw new BadRequestException('name and entityType are required');
     }
     const req = this.requestRepo.create({ ...dto, userId, status: 'pending' });
-    return this.requestRepo.save(req);
+    const saved = await this.requestRepo.save(req);
+
+    const user = await this.usersRepo.findOne({ where: { id: userId } });
+    if (user) {
+      this.mail.sendRequestNotification({
+        requesterName: `${user.firstName} ${user.lastName}`,
+        requesterEmail: user.email,
+        entityType: dto.entityType,
+        name: dto.name,
+        city: dto.city,
+        address: dto.address,
+        phone: dto.phone,
+        notes: dto.notes,
+      }).catch(() => {});
+    }
+
+    return saved;
   }
 
   // ── Admin ──────────────────────────────────────────────────────────────────

@@ -24,6 +24,7 @@ export interface User {
   lastName: string;
   profileImageUrl?: string | null;
   kashrutLevel?: string | null;
+  role?: string;
 }
 
 interface AuthContextType {

@@ -22,7 +22,6 @@ export class UsersService {
       passwordHash,
       resetPasswordToken,
       resetPasswordExpires,
-      role,
       isActive,
       deletedAt,
       ...safeUser

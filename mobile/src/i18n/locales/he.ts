@@ -376,6 +376,21 @@ export default {
     chatTooLong:        'הודעה ארוכה מדי',
     chatTooLongMsg:     'הודעות חייבות להיות עד 500 תווים.',
   },
+  contact: {
+    section:             'תמיכה',
+    title:               'צור קשר',
+    sendingAs:           'שולח בשם',
+    subject:             'נושא',
+    subjectPlaceholder:  'על מה ההודעה?',
+    message:             'הודעה',
+    messagePlaceholder:  'כתוב את הודעתך כאן…',
+    send:                'שלח הודעה',
+    success:             'ההודעה נשלחה! נחזור אליך בהקדם.',
+    errors: {
+      subjectRequired: 'נא להזין נושא',
+      messageTooShort: 'ההודעה חייבת להכיל לפחות 10 תווים',
+    },
+  },
   common: {
     back:     'חזרה',
     loading:  'טוען…',

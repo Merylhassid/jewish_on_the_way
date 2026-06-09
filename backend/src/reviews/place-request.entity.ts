@@ -22,15 +22,18 @@ export class PlaceRequest {
   @Column({ name: 'entity_type', type: 'varchar', length: 20 })
   entityType: string;
 
-  @Column({ name: 'destination_id' })
-  destinationId: number;
+  @Column({ name: 'destination_id', nullable: true, type: 'int' })
+  destinationId: number | null;
 
-  @ManyToOne(() => Destination, { onDelete: 'CASCADE', eager: false })
+  @ManyToOne(() => Destination, { nullable: true, onDelete: 'SET NULL', eager: false })
   @JoinColumn({ name: 'destination_id' })
-  destination: Destination;
+  destination: Destination | null;
 
   @Column({ type: 'varchar', length: 255 })
   name: string;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  city: string | null;
 
   @Column({ type: 'text', nullable: true })
   address: string | null;
