@@ -55,6 +55,12 @@ export class User {
   })
   resetPasswordExpires: Date | null;
 
+  @Column({ name: 'email_verification_code', type: 'varchar', length: 64, nullable: true })
+  emailVerificationCode: string | null = null;
+
+  @Column({ name: 'email_verification_expires', type: 'timestamptz', nullable: true })
+  emailVerificationExpires: Date | null = null;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 

@@ -61,4 +61,19 @@ export class AuthController {
     await this.authService.resetPassword(dto);
     return { message: 'Password reset successfully.' };
   }
+
+  @Post('verify-email')
+  @HttpCode(HttpStatus.OK)
+  verifyEmail(@Body('email') email: string, @Body('code') code: string) {
+    if (!email || !code) throw new BadRequestException('email and code are required');
+    return this.authService.verifyEmail(email, code);
+  }
+
+  @Post('resend-verification')
+  @HttpCode(HttpStatus.OK)
+  async resendVerification(@Body('email') email: string) {
+    if (!email) throw new BadRequestException('email is required');
+    await this.authService.resendVerification(email);
+    return { message: 'Verification code sent.' };
+  }
 }

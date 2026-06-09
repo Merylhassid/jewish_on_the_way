@@ -33,6 +33,7 @@ interface AuthContextType {
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
+  setSession: (access_token: string, userData: User) => Promise<void>;
   logout: () => Promise<void>;
   updateUser: (updates: Partial<User>) => void;
   refreshUser: () => Promise<void>;
@@ -119,13 +120,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = async (email: string, password: string, firstName: string, lastName: string) => {
     try {
       await client.post('/auth/register', { email, password, firstName, lastName });
-      await login(email, password);
     } catch (e: any) {
       const message = e?.response?.data?.message || e?.message || 'Registration failed';
       const error   = new Error(message);
       (error as any).response = e?.response;
       throw error;
     }
+  };
+
+  const setSession = async (access_token: string, userData: User) => {
+    await storage.set(ACCESS_TOKEN_KEY, access_token);
+    setToken(access_token);
+    setUser(userData);
+    void registerPushToken();
   };
 
   const logout = async () => {
@@ -175,7 +182,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, register, logout, updateUser, refreshUser, getValidToken }}>
+    <AuthContext.Provider value={{ user, token, loading, login, register, setSession, logout, updateUser, refreshUser, getValidToken }}>
       {children}
     </AuthContext.Provider>
   );

@@ -40,6 +40,13 @@ export default {
     errMinPassword:   'Password must be at least 6 characters',
     errNoMatch:       'Passwords do not match',
     errGeneric:       'Something went wrong. Please try again.',
+    verifyTitle:      'Verify your email',
+    verifySubtitle:   'We sent a 6-digit code to:',
+    verifyBtn:        'Verify account',
+    resendCode:       "Didn't receive it? Resend",
+    resentCode:       'Code resent',
+    errFillCode:      'Please enter the full code',
+    errInvalidCode:   'Invalid or expired code',
   },
   tabs: {
     explore:      'Explore',
