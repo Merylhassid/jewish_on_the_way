@@ -59,26 +59,18 @@ function EditProfileModal({
   onClose,
   initialFirst,
   initialLast,
-  initialKashrut,
   onSaved,
 }: {
   visible: boolean;
   onClose: () => void;
   initialFirst: string;
   initialLast: string;
-  initialKashrut?: string | null;
-  onSaved: (firstName: string, lastName: string, kashrutLevel: string) => void;
+  onSaved: (firstName: string, lastName: string) => void;
 }) {
   const { t } = useTranslation();
   const [firstName, setFirstName] = useState(initialFirst);
   const [lastName, setLastName] = useState(initialLast);
-  const [kashrut, setKashrut] = useState(initialKashrut ?? 'none');
   const [loading, setLoading] = useState(false);
-
-  const kashrutOptions = KASHRUT_VALUES.map((v) => ({
-    value: v,
-    label: t(`profile.kashrut.${v}` as any),
-  }));
 
   const handleSave = async () => {
     if (!firstName.trim() || !lastName.trim()) {
@@ -90,9 +82,8 @@ function EditProfileModal({
       await client.put('/users/me', {
         firstName: firstName.trim(),
         lastName: lastName.trim(),
-        kashrutLevel: kashrut,
       });
-      onSaved(firstName.trim(), lastName.trim(), kashrut);
+      onSaved(firstName.trim(), lastName.trim());
       onClose();
       Alert.alert(t('profile.alerts.saved'), t('profile.alerts.profileUpdated'));
     } catch (err: any) {
@@ -133,21 +124,6 @@ function EditProfileModal({
             placeholderTextColor="#9AA8C0"
             autoCapitalize="words"
           />
-
-          <Text style={styles.inputLabel}>{t('profile.edit.kashrutLevel')}</Text>
-          <View style={styles.kashrutRow}>
-            {kashrutOptions.map((opt) => (
-              <Pressable
-                key={opt.value}
-                style={[styles.kashrutChip, kashrut === opt.value && styles.kashrutChipActive]}
-                onPress={() => setKashrut(opt.value)}
-              >
-                <Text style={[styles.kashrutChipText, kashrut === opt.value && styles.kashrutChipTextActive]}>
-                  {opt.label}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
 
           <Pressable style={({ pressed }) => [styles.primaryBtn, pressed && { opacity: 0.88 }]} onPress={handleSave} disabled={loading}>
             {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.primaryBtnText}>{t('profile.edit.save')}</Text>}
@@ -772,8 +748,7 @@ export default function ProfileScreen() {
         onClose={() => setEditVisible(false)}
         initialFirst={user?.firstName ?? ''}
         initialLast={user?.lastName ?? ''}
-        initialKashrut={user?.kashrutLevel}
-        onSaved={(firstName, lastName, kashrutLevel) => updateUser({ firstName, lastName, kashrutLevel })}
+        onSaved={(firstName, lastName) => updateUser({ firstName, lastName })}
       />
       <ChangePasswordModal visible={passwordVisible} onClose={() => setPasswordVisible(false)} />
       <ContactModal visible={contactVisible} onClose={() => setContactVisible(false)} />
