@@ -378,7 +378,7 @@ export default {
   },
   about: {
     title:       'About',
-    description: 'Jewish On The Way helps Jewish travelers find kosher restaurants and synagogues in cities around the world.',
+    description: 'Jewish On The Way is a mobile platform designed to improve access to essential Jewish community services in unfamiliar destinations.\n\nThe system centralizes location-based information, including kosher restaurants, synagogues, minyan, hosting, and community services, in a structured and user-friendly mobile interface.',
     faqTitle:    'FAQ',
     version:     'Version',
     faqs: [
