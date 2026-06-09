@@ -19,7 +19,7 @@ describe('AuthService', () => {
   let usersRepo: { findOne: jest.Mock; save: jest.Mock; create: jest.Mock; delete: jest.Mock };
   let dataSource: { transaction: jest.Mock };
   let jwtService: { signAsync: jest.Mock };
-  let mailService: { sendPasswordReset: jest.Mock };
+  let mailService: { sendPasswordReset: jest.Mock; sendVerificationCode: jest.Mock };
   let audit: { log: jest.Mock };
 
   const makeUser = (overrides: Partial<User> = {}): User =>
@@ -57,7 +57,7 @@ describe('AuthService', () => {
       transaction: jest.fn().mockImplementation((cb: any) => cb(mockManager)),
     };
     jwtService = { signAsync: jest.fn() };
-    mailService = { sendPasswordReset: jest.fn() };
+    mailService = { sendPasswordReset: jest.fn(), sendVerificationCode: jest.fn().mockResolvedValue(undefined) };
     audit = { log: jest.fn() };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -90,8 +90,9 @@ describe('AuthService', () => {
       const result = await service.register(dto);
 
       expect(usersRepo.findOne).toHaveBeenCalledWith({ where: { email: 'new@example.com' } });
-      expect(result).toEqual({ id: 5, email: 'new@example.com', firstName: 'New', lastName: 'User' });
+      expect(result).toMatchObject({ id: 5, email: 'new@example.com', firstName: 'New', lastName: 'User', requiresVerification: true });
       expect(result).not.toHaveProperty('passwordHash');
+      expect(mailService.sendVerificationCode).toHaveBeenCalledWith('new@example.com', expect.stringMatching(/^\d{6}$/));
       expect(audit.log).toHaveBeenCalledWith('USER_REGISTERED', 5, expect.any(Object));
     });
 

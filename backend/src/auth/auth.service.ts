@@ -34,15 +34,23 @@ export class AuthService {
     private audit: AuditService,
   ) {}
 
+  private generateVerificationCode(): string {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+
   async register(dto: RegisterDto) {
     const email = dto.email.toLowerCase();
 
     try {
+      const code = this.generateVerificationCode();
+      const codeHash = crypto.createHash('sha256').update(code).digest('hex');
+      const expires = new Date(Date.now() + 15 * 60 * 1000);
+
       const saved = await this.dataSource.transaction(async (manager) => {
         const exists = await manager.findOne(User, { where: { email } });
         if (exists && exists.isActive)
           throw new BadRequestException('Email already exists');
-        if (exists && !exists.isActive)
+        if (exists)
           await manager.delete(User, { id: exists.id });
 
         const passwordHash = await bcrypt.hash(dto.password, 10);
@@ -51,21 +59,67 @@ export class AuthService {
           passwordHash,
           firstName: dto.firstName,
           lastName: dto.lastName,
+          isActive: false,
+          emailVerificationCode: codeHash,
+          emailVerificationExpires: expires,
         });
         return manager.save(user);
       });
 
+      await this.mailService.sendVerificationCode(email, code);
       this.audit.log('USER_REGISTERED', saved.id, { email: saved.email });
       return {
         id: saved.id,
         email: saved.email,
         firstName: saved.firstName,
         lastName: saved.lastName,
+        requiresVerification: true,
       };
     } catch (err: any) {
       if (err?.code === '23505') throw new ConflictException('Email already exists');
       throw err;
     }
+  }
+
+  async verifyEmail(email: string, code: string) {
+    const user = await this.usersRepo.findOne({ where: { email: email.toLowerCase() } });
+
+    if (!user || !user.emailVerificationCode || !user.emailVerificationExpires) {
+      throw new BadRequestException('Invalid or expired verification code');
+    }
+    if (user.emailVerificationExpires < new Date()) {
+      throw new BadRequestException('Invalid or expired verification code');
+    }
+
+    const codeHash = crypto.createHash('sha256').update(code).digest('hex');
+    if (codeHash !== user.emailVerificationCode) {
+      throw new BadRequestException('Invalid or expired verification code');
+    }
+
+    user.isActive = true;
+    user.emailVerificationCode = null;
+    user.emailVerificationExpires = null;
+    await this.usersRepo.save(user);
+    this.audit.log('EMAIL_VERIFIED', user.id, { email: user.email });
+
+    const payload = { sub: user.id, email: user.email };
+    const access_token = await this.jwtService.signAsync(payload);
+    return {
+      access_token,
+      user: { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName },
+    };
+  }
+
+  async resendVerification(email: string) {
+    const user = await this.usersRepo.findOne({ where: { email: email.toLowerCase() } });
+    if (!user || user.isActive) return;
+
+    const code = this.generateVerificationCode();
+    const codeHash = crypto.createHash('sha256').update(code).digest('hex');
+    user.emailVerificationCode = codeHash;
+    user.emailVerificationExpires = new Date(Date.now() + 15 * 60 * 1000);
+    await this.usersRepo.save(user);
+    await this.mailService.sendVerificationCode(user.email, code);
   }
 
   async login(dto: LoginDto) {

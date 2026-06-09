@@ -19,6 +19,30 @@ export class MailService {
     });
   }
 
+  async sendVerificationCode(toEmail: string, code: string): Promise<void> {
+    const from = this.config.get<string>('MAIL_USER')!;
+    await this.transporter.sendMail({
+      from: `"Jewish On The Way" <${from}>`,
+      to: toEmail,
+      subject: 'Verify your email – Jewish On The Way',
+      html: `
+        <div style="margin:0;padding:0;background:#f6f8fc;font-family:Arial,Helvetica,sans-serif;color:#1f2937;">
+          <div style="max-width:480px;margin:0 auto;padding:32px 20px;">
+            <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;box-shadow:0 8px 24px rgba(15,23,42,0.06);">
+              <h2 style="margin:0 0 16px;font-size:20px;color:#0b1736;">Verify your email address</h2>
+              <p style="margin:0 0 24px;font-size:15px;line-height:1.6;color:#374151;">Enter the following code in the app to activate your account:</p>
+              <div style="text-align:center;margin:24px 0;">
+                <span style="display:inline-block;background:#0b1736;color:#f5c842;font-size:36px;font-weight:700;letter-spacing:12px;padding:16px 28px;border-radius:12px;">${code}</span>
+              </div>
+              <p style="margin:20px 0 0;font-size:13px;color:#9ca3af;">This code expires in <strong>15 minutes</strong>. If you did not create an account, you can ignore this email.</p>
+            </div>
+          </div>
+        </div>
+      `,
+    });
+    this.logger.log(`Verification code sent to ${toEmail}`);
+  }
+
   async sendContactMessage(
     firstName: string,
     lastName: string,

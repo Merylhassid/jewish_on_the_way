@@ -39,7 +39,7 @@ export default function RegisterScreen() {
       setError(null);
       setLoading(true);
       await register(email.trim(), password, firstName.trim(), lastName.trim());
-      router.replace('/onboarding' as any);
+      router.replace({ pathname: '/(auth)/verify-email', params: { email: email.trim() } } as any);
     } catch (e) {
       setError(formatApiError(e));
     } finally {

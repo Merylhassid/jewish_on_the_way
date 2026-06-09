@@ -40,6 +40,13 @@ export default {
     errMinPassword:   'Le mot de passe doit comporter au moins 6 caractères',
     errNoMatch:       'Les mots de passe ne correspondent pas',
     errGeneric:       'Une erreur est survenue. Réessayez.',
+    verifyTitle:      'Vérifiez votre email',
+    verifySubtitle:   'Nous avons envoyé un code à 6 chiffres à :',
+    verifyBtn:        'Vérifier le compte',
+    resendCode:       "Pas reçu ? Renvoyer",
+    resentCode:       'Code renvoyé',
+    errFillCode:      'Veuillez saisir le code complet',
+    errInvalidCode:   'Code invalide ou expiré',
   },
   tabs: {
     explore:      'Explorer',

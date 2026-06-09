@@ -40,6 +40,13 @@ export default {
     errMinPassword:   'הסיסמה חייבת להכיל לפחות 6 תווים',
     errNoMatch:       'הסיסמאות אינן תואמות',
     errGeneric:       'משהו השתבש. נסה שוב.',
+    verifyTitle:      'אימות אימייל',
+    verifySubtitle:   'שלחנו קוד אימות בן 6 ספרות ל:',
+    verifyBtn:        'אמת חשבון',
+    resendCode:       'לא קיבלת? שלח שוב',
+    resentCode:       'הקוד נשלח מחדש',
+    errFillCode:      'נא להזין את הקוד המלא',
+    errInvalidCode:   'קוד שגוי או פג תוקף',
   },
   tabs: {
     explore:      'גלה',
