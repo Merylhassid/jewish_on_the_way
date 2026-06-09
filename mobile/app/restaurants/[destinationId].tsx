@@ -14,7 +14,7 @@ import {
   View,
 } from 'react-native';
 import {
-  ArrowLeft, ChevronRight, Clock, MapPin,
+  AlertTriangle, ArrowLeft, ChevronRight, Clock, Info, MapPin,
   Navigation, Search, Sparkles, Utensils, X,
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
@@ -305,9 +305,13 @@ export default function RestaurantsScreen() {
       {/* AI result quality banner */}
       {aiMeta?.message && (
         <View style={[s.metaBanner, aiMeta.matchTier >= 3 ? s.metaBannerWarn : s.metaBannerInfo]}>
-          <Text style={s.metaBannerText}>
-            {aiMeta.matchTier >= 3 ? '⚠️  ' : 'ℹ️  '}{aiMeta.message}
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            {aiMeta.matchTier >= 3
+              ? <AlertTriangle size={14} color="#92400E" strokeWidth={2} />
+              : <Info size={14} color="#1e40af" strokeWidth={2} />
+            }
+            <Text style={s.metaBannerText}>{aiMeta.message}</Text>
+          </View>
         </View>
       )}
 

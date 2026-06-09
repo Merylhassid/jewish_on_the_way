@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ChevronRight, Send } from 'lucide-react-native';
+import { ChevronRight, Send, Users } from 'lucide-react-native';
 import { io, Socket } from 'socket.io-client';
 import { API_URL } from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
@@ -25,6 +25,13 @@ interface ChatMsg {
   user: { id: number; firstName: string; lastName: string } | null;
 }
 
+interface ReadCursor {
+  userId: number;
+  firstName: string;
+  lastName: string;
+  lastReadId: number;
+}
+
 export default function HostingChatScreen() {
   const { requestId } = useLocalSearchParams<{ requestId: string }>();
   const { user, getValidToken } = useAuth();
@@ -32,6 +39,8 @@ export default function HostingChatScreen() {
   const [text, setText] = useState('');
   const [connected, setConnected] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [onlineCount, setOnlineCount] = useState(0);
+  const [cursors, setCursors] = useState<ReadCursor[]>([]);
   const socketRef = useRef<Socket | null>(null);
   const listRef = useRef<FlatList>(null);
   const hasConnectedBefore = useRef(false);
@@ -42,10 +51,7 @@ export default function HostingChatScreen() {
 
     const connect = async () => {
       const token = await getValidToken();
-      if (!token) {
-        setError('Not authenticated');
-        return;
-      }
+      if (!token) { setError('Not authenticated'); return; }
 
       socket = io(`${API_URL}/hosting-chat`, {
         auth: { token },
@@ -60,18 +66,13 @@ export default function HostingChatScreen() {
         socket.emit('hosting-chat:join', { requestId: Number(requestId) });
       });
 
-      socket.on('disconnect', () => {
-        setConnected(false);
-      });
+      socket.on('disconnect', () => setConnected(false));
 
       socket.on('connect_error', async (err) => {
         const msg = (err.message ?? '').toLowerCase();
         const isAuthErr =
-          msg.includes('unauthorized') ||
-          msg.includes('forbidden') ||
-          msg.includes('401') ||
+          msg.includes('unauthorized') || msg.includes('forbidden') || msg.includes('401') ||
           (err as any).data?.statusCode === 401;
-
         if (isAuthErr && !authRetried) {
           authRetried = true;
           const freshToken = await getValidToken();
@@ -82,28 +83,37 @@ export default function HostingChatScreen() {
             return;
           }
         }
-
         setError('Connection failed — make sure the request is approved');
       });
 
       socket.on('hosting-chat:history', (history: ChatMsg[]) => {
         setMessages(history);
+        if (history.length > 0) {
+          socket.emit('hosting-chat:mark-read', {
+            requestId: Number(requestId),
+            lastReadId: history[history.length - 1].id,
+          });
+        }
       });
 
       socket.on('hosting-chat:message', (msg: ChatMsg) => {
         setMessages((prev) => [...prev, msg]);
+        socket.emit('hosting-chat:mark-read', { requestId: Number(requestId), lastReadId: msg.id });
       });
 
-      socket.on('exception', (err: any) => {
-        setError(err?.message ?? 'Error');
+      socket.on('hosting-chat:online', ({ count }: { count: number }) => {
+        setOnlineCount(count);
       });
+
+      socket.on('hosting-chat:cursors', ({ cursors: c }: { cursors: ReadCursor[] }) => {
+        setCursors(c);
+      });
+
+      socket.on('exception', (err: any) => setError(err?.message ?? 'Error'));
     };
 
     connect();
-
-    return () => {
-      socket?.disconnect();
-    };
+    return () => { socket?.disconnect(); };
   }, [requestId]);
 
   useEffect(() => {
@@ -115,12 +125,12 @@ export default function HostingChatScreen() {
   const sendMessage = () => {
     const content = text.trim();
     if (!content || !socketRef.current) return;
-    socketRef.current.emit('hosting-chat:send', {
-      requestId: Number(requestId),
-      content,
-    });
+    socketRef.current.emit('hosting-chat:send', { requestId: Number(requestId), content });
     setText('');
   };
+
+  // For a 2-person chat, show "Seen" under own messages if the other person read them
+  const otherUserCursor = cursors.find((c) => c.userId !== user?.id);
 
   return (
     <KeyboardAvoidingView
@@ -136,7 +146,11 @@ export default function HostingChatScreen() {
           <Text style={s.eyebrow}>HOSTING</Text>
           <Text style={s.headerTitle}>Private Chat</Text>
         </View>
-        <View style={[s.dot, { backgroundColor: connected ? '#4ADE80' : '#F87171' }]} />
+        <View style={s.onlinePill}>
+          <Users size={11} color={C.gold} strokeWidth={2.5} />
+          <Text style={s.onlineText}>{onlineCount}</Text>
+          <View style={[s.dot, { backgroundColor: connected ? '#4ADE80' : '#F87171' }]} />
+        </View>
       </View>
 
       {error ? (
@@ -162,25 +176,38 @@ export default function HostingChatScreen() {
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={
             <View style={s.emptyWrap}>
-              <Text style={s.emptyText}>No messages yet. Say hello! 👋</Text>
+              <Text style={s.emptyText}>No messages yet. Say hello!</Text>
             </View>
           }
           renderItem={({ item }) => {
             const isMe = item.user?.id === user?.id;
+            const seenByOther =
+              isMe && otherUserCursor && otherUserCursor.lastReadId >= item.id;
+            // Show "Seen" only under the last message the other person has read
+            const isLastSeenMsg =
+              isMe && otherUserCursor && otherUserCursor.lastReadId === item.id;
+
             return (
-              <View style={[s.bubble, isMe ? s.bubbleMe : s.bubbleThem]}>
-                {!isMe && item.user && (
-                  <Text style={s.senderName}>{item.user.firstName}</Text>
+              <View>
+                <View style={[s.bubble, isMe ? s.bubbleMe : s.bubbleThem]}>
+                  {!isMe && item.user && (
+                    <Text style={s.senderName}>{item.user.firstName}</Text>
+                  )}
+                  <Text style={[s.bubbleText, isMe && s.bubbleTextMe]}>{item.content}</Text>
+                  <Text style={[s.bubbleTime, isMe && s.bubbleTimeMe]}>
+                    {new Date(item.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </Text>
+                </View>
+                {isLastSeenMsg && otherUserCursor && (
+                  <View style={s.seenRow}>
+                    <View style={s.seenAvatar}>
+                      <Text style={s.seenInitials}>
+                        {otherUserCursor.firstName[0]}{otherUserCursor.lastName[0]}
+                      </Text>
+                    </View>
+                    <Text style={s.seenLabel}>Seen</Text>
+                  </View>
                 )}
-                <Text style={[s.bubbleText, isMe && s.bubbleTextMe]}>
-                  {item.content}
-                </Text>
-                <Text style={[s.bubbleTime, isMe && s.bubbleTimeMe]}>
-                  {new Date(item.createdAt).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
-                </Text>
               </View>
             );
           }}
@@ -233,28 +260,38 @@ const s = StyleSheet.create({
   },
   eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5, marginBottom: 2 },
   headerTitle: { fontFamily: 'Inter-Black', fontSize: 22, color: '#fff', letterSpacing: -0.5 },
-  dot:         { width: 10, height: 10, borderRadius: 5, marginBottom: 4 },
+  onlinePill: {
+    flexDirection: 'row', alignItems: 'center', gap: 5,
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6,
+    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+    marginBottom: 2,
+  },
+  onlineText: { fontFamily: 'Inter-Bold', fontSize: 13, color: '#fff' },
+  dot:        { width: 8, height: 8, borderRadius: 4 },
 
   list:      { padding: 16, gap: 6, flexGrow: 1 },
   emptyWrap: { flex: 1, alignItems: 'center', paddingTop: 60 },
   emptyText: { fontFamily: 'Inter-Regular', color: C.textMuted, fontSize: 15 },
 
   bubble: {
-    maxWidth: '78%',
-    borderRadius: 18,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    marginBottom: 2,
+    maxWidth: '78%', borderRadius: 18,
+    paddingHorizontal: 14, paddingVertical: 10, marginBottom: 2,
   },
-  bubbleMe:      { alignSelf: 'flex-end', backgroundColor: C.navy },
-  bubbleThem:    { alignSelf: 'flex-start', backgroundColor: '#fff',
+  bubbleMe:     { alignSelf: 'flex-end', backgroundColor: C.navy },
+  bubbleThem:   { alignSelf: 'flex-start', backgroundColor: '#fff',
     shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 4,
     shadowOffset: { width: 0, height: 1 }, elevation: 1 },
-  senderName:    { fontFamily: 'Inter-SemiBold', fontSize: 11, color: C.navy, marginBottom: 3 },
-  bubbleText:    { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary },
-  bubbleTextMe:  { color: '#fff' },
-  bubbleTime:    { fontFamily: 'Inter-Regular', fontSize: 10, color: C.textMuted, marginTop: 4, textAlign: 'right' },
-  bubbleTimeMe:  { color: 'rgba(255,255,255,0.55)' },
+  senderName:   { fontFamily: 'Inter-SemiBold', fontSize: 11, color: C.navy, marginBottom: 3 },
+  bubbleText:   { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary },
+  bubbleTextMe: { color: '#fff' },
+  bubbleTime:   { fontFamily: 'Inter-Regular', fontSize: 10, color: C.textMuted, marginTop: 4, textAlign: 'right' },
+  bubbleTimeMe: { color: 'rgba(255,255,255,0.55)' },
+
+  seenRow:      { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingRight: 4, marginBottom: 4, gap: 4 },
+  seenAvatar:   { width: 16, height: 16, borderRadius: 8, backgroundColor: C.gold + '30', justifyContent: 'center', alignItems: 'center' },
+  seenInitials: { fontSize: 7, fontWeight: '800', color: C.navy },
+  seenLabel:    { fontFamily: 'Inter-Regular', fontSize: 10, color: C.textMuted },
 
   inputRow: {
     flexDirection: 'row', alignItems: 'flex-end',
@@ -263,22 +300,14 @@ const s = StyleSheet.create({
     borderTopWidth: 1, borderTopColor: '#F3F4F6',
   },
   input: {
-    flex: 1,
-    backgroundColor: C.bg,
-    borderRadius: 22,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    fontFamily: 'Inter-Regular',
-    fontSize: 15,
-    color: C.textPrimary,
-    maxHeight: 100,
-    borderWidth: 1.5,
-    borderColor: '#E5E7EB',
+    flex: 1, backgroundColor: C.bg, borderRadius: 22,
+    paddingHorizontal: 16, paddingVertical: 10,
+    fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary,
+    maxHeight: 100, borderWidth: 1.5, borderColor: '#E5E7EB',
   },
   sendBtn: {
     width: 44, height: 44, borderRadius: 22,
-    backgroundColor: C.navy,
-    alignItems: 'center', justifyContent: 'center',
+    backgroundColor: C.navy, alignItems: 'center', justifyContent: 'center',
   },
   sendBtnDisabled: { backgroundColor: '#D1D5DB' },
 

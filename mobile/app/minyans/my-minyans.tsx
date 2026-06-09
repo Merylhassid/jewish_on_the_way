@@ -10,8 +10,12 @@ import {
   View,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import {
+  AlertTriangle, ArrowLeft, Crown, MapPin, Users,
+} from 'lucide-react-native';
 import client from '@/src/api/client';
 import HomeButton from '@/src/components/HomeButton';
+import { getPrayerConfig } from '@/src/utils/prayerIcons';
 
 interface MyMinyan {
   id: number;
@@ -26,10 +30,6 @@ interface MyMinyan {
   destination: { id: number; city: string } | null;
   creator: { id: number; firstName: string; lastName: string } | null;
 }
-
-const PRAYER_EMOJI: Record<string, string> = {
-  shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
-};
 
 function formatDate(iso: string) {
   const [y, m, d] = String(iso).slice(0, 10).split('-');
@@ -68,41 +68,58 @@ export default function MyMinyansScreen() {
   const upcoming = minyans.filter((m) => m.date >= today);
   const past     = minyans.filter((m) => m.date < today);
 
-  const renderItem = ({ item, isPast }: { item: MyMinyan; isPast?: boolean }) => (
-    <Pressable
-      style={[styles.card, isPast && styles.cardPast]}
-      onPress={() => router.push(`/minyan/${item.id}`)}
-    >
-      <Text style={styles.cardEmoji}>{PRAYER_EMOJI[item.prayerType] ?? '🙏'}</Text>
-      <View style={styles.cardBody}>
-        <View style={styles.cardTop}>
-          <Text style={styles.cardPrayer}>{PRAYER_LABEL[item.prayerType]}</Text>
-          {item.isCreator && (
-            <View style={styles.creatorBadge}><Text style={styles.creatorBadgeText}>⭐ {t('minyans.creator')}</Text></View>
-          )}
-          {item.isFull && !item.isCreator && (
-            <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>{t('minyans.full')}</Text></View>
-          )}
-          {item.almostFull && !item.isFull && (
-            <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>{t('minyans.almostFull')}</Text></View>
-          )}
+  const renderItem = ({ item, isPast }: { item: MyMinyan; isPast?: boolean }) => {
+    const cfg = getPrayerConfig(item.prayerType);
+    return (
+      <Pressable
+        style={[styles.card, isPast && styles.cardPast]}
+        onPress={() => router.push(`/minyan/${item.id}`)}
+      >
+        <View style={[styles.cardIconBox, { backgroundColor: cfg.bg }]}>
+          <cfg.Icon size={22} color={cfg.color} strokeWidth={2} />
         </View>
-        <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
-        <Text style={styles.cardLocation} numberOfLines={1}>📍 {item.locationText}</Text>
-        <Text style={styles.cardCount}>👥 {item.participantsCount} / 10{item.destination ? `  •  ${item.destination.city}` : ''}</Text>
-      </View>
-      <Text style={styles.arrow}>›</Text>
-    </Pressable>
-  );
+        <View style={styles.cardBody}>
+          <View style={styles.cardTop}>
+            <Text style={styles.cardPrayer}>{PRAYER_LABEL[item.prayerType]}</Text>
+            {item.isCreator && (
+              <View style={styles.creatorBadge}>
+                <Crown size={11} color="#E65100" strokeWidth={2} />
+                <Text style={styles.creatorBadgeText}>{t('minyans.creator')}</Text>
+              </View>
+            )}
+            {item.isFull && !item.isCreator && (
+              <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>{t('minyans.full')}</Text></View>
+            )}
+            {item.almostFull && !item.isFull && (
+              <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>{t('minyans.almostFull')}</Text></View>
+            )}
+          </View>
+          <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+            <MapPin size={12} color="#9CA3AF" strokeWidth={2} />
+            <Text style={[styles.cardLocation, { flex: 1 }]} numberOfLines={1}>{item.locationText}</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
+            <Users size={12} color="#1a3a6b" strokeWidth={2} />
+            <Text style={styles.cardCount}>{item.participantsCount} / 10{item.destination ? `  •  ${item.destination.city}` : ''}</Text>
+          </View>
+        </View>
+        <Text style={styles.arrow}>›</Text>
+      </Pressable>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
+          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
         </Pressable>
         <HomeButton />
-        <Text style={styles.headerTitle}>🤝 {t('minyans.title')}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
+          <Users size={20} color="#fff" strokeWidth={2} />
+          <Text style={styles.headerTitle}>{t('minyans.title')}</Text>
+        </View>
         <Text style={styles.headerSub}>{minyans.length} {t('minyans.title').toLowerCase()}</Text>
       </View>
 
@@ -110,7 +127,7 @@ export default function MyMinyansScreen() {
         <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
       ) : error ? (
         <View style={styles.center}>
-          <Text style={styles.emptyIcon}>⚠️</Text>
+          <AlertTriangle size={48} color="#F59E0B" strokeWidth={1.5} />
           <Text style={styles.emptyText}>{t('minyans.couldNotLoad')}</Text>
           <Pressable style={styles.retryBtn} onPress={() => { setLoading(true); fetch(); }}>
             <Text style={styles.retryText}>{t('minyans.tryAgain')}</Text>
@@ -118,7 +135,7 @@ export default function MyMinyansScreen() {
         </View>
       ) : minyans.length === 0 ? (
         <View style={styles.center}>
-          <Text style={styles.emptyIcon}>🤝</Text>
+          <Users size={48} color="#E5E7EB" strokeWidth={1.5} />
           <Text style={styles.emptyText}>{t('minyans.noMinyansYet')}</Text>
         </View>
       ) : (
@@ -156,21 +173,20 @@ export default function MyMinyansScreen() {
 
 const styles = StyleSheet.create({
   container:       { flex: 1, backgroundColor: '#f0f4ff' },
-  center:          { flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 60 },
+  center:          { flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 60, gap: 12 },
   header:          { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20 },
   backBtn:         { marginBottom: 8 },
-  backText:        { fontSize: 24, color: '#fff' },
   headerTitle:     { fontSize: 22, fontWeight: '700', color: '#fff' },
   headerSub:       { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
   list:            { padding: 16, gap: 10 },
   sectionHeader:   { fontSize: 12, fontWeight: '700', color: '#8A96B0', letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 4, marginTop: 8 },
   card:            { backgroundColor: '#fff', borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
   cardPast:        { opacity: 0.55 },
-  cardEmoji:       { fontSize: 30, marginRight: 14 },
+  cardIconBox:     { width: 46, height: 46, borderRadius: 12, marginRight: 14, justifyContent: 'center', alignItems: 'center' },
   cardBody:        { flex: 1, gap: 3 },
   cardTop:         { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   cardPrayer:      { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
-  creatorBadge:    { backgroundColor: '#FFF3E0', borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 },
+  creatorBadge:    { backgroundColor: '#FFF3E0', borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3, flexDirection: 'row', alignItems: 'center', gap: 4 },
   creatorBadgeText:{ fontSize: 11, color: '#E65100', fontWeight: '600' },
   badge:           { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
   badgeText:       { color: '#fff', fontSize: 11, fontWeight: '600' },
@@ -178,8 +194,7 @@ const styles = StyleSheet.create({
   cardLocation:    { fontSize: 13, color: '#777' },
   cardCount:       { fontSize: 13, color: '#1a3a6b', fontWeight: '600' },
   arrow:           { fontSize: 22, color: '#bbb', marginLeft: 8 },
-  emptyIcon:       { fontSize: 48, marginBottom: 12 },
-  emptyText:       { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22, marginBottom: 20 },
+  emptyText:       { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22, marginBottom: 20, paddingHorizontal: 32 },
   retryBtn:        { backgroundColor: '#1a3a6b', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 },
   retryText:       { color: '#fff', fontWeight: '700', fontSize: 15 },
 });

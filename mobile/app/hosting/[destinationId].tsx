@@ -23,7 +23,7 @@ import {
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useTranslation } from 'react-i18next';
-import { Calendar, ChevronRight, Home, Users, Search, MessageCircle } from 'lucide-react-native';
+import { Calendar, ChevronRight, Home, Users, Search, MessageCircle, User, UserPlus } from 'lucide-react-native';
 import client from '@/src/api/client';
 import SwipeableSheet from '@/src/components/SwipeableSheet';
 import { C } from '@/constants/theme';
@@ -98,7 +98,10 @@ function PostNeedModal({ destinationId, onClose, onPosted }: { destinationId: nu
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.sheet}>
           <View style={styles.sheetHeader}>
-            <Text style={styles.sheetTitle}>🙋 Post a Hosting Need</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <UserPlus size={20} color={C.textPrimary} strokeWidth={2} />
+              <Text style={styles.sheetTitle}>Post a Hosting Need</Text>
+            </View>
             <Pressable onPress={onClose} hitSlop={12}><Text style={styles.closeBtn}>✕</Text></Pressable>
           </View>
           <Text style={{ fontSize: 13, color: '#666', marginBottom: 16 }}>
@@ -116,7 +119,10 @@ function PostNeedModal({ destinationId, onClose, onPosted }: { destinationId: nu
           ) : (
             <>
               <Pressable style={styles.pickerBtn} onPress={() => setShowArr(true)}>
-                <Text style={styles.pickerBtnText}>📅  {arrival}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <Calendar size={16} color={C.navy} strokeWidth={2} />
+                  <Text style={styles.pickerBtnText}>{arrival}</Text>
+                </View>
               </Pressable>
               {showArr && <DateTimePicker value={arrivalObj} mode="date" minimumDate={new Date()}
                 onChange={(_, d) => { setShowArr(false); if (d) setArrivalObj(d); }} />}
@@ -134,7 +140,10 @@ function PostNeedModal({ destinationId, onClose, onPosted }: { destinationId: nu
           ) : (
             <>
               <Pressable style={styles.pickerBtn} onPress={() => setShowDep(true)}>
-                <Text style={styles.pickerBtnText}>📅  {departure}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <Calendar size={16} color={C.navy} strokeWidth={2} />
+                  <Text style={styles.pickerBtnText}>{departure}</Text>
+                </View>
               </Pressable>
               {showDep && <DateTimePicker value={departureObj} mode="date" minimumDate={arrivalObj}
                 onChange={(_, d) => { setShowDep(false); if (d) setDepartureObj(d); }} />}
@@ -275,7 +284,10 @@ function GuestView({ destinationId }: { destinationId: number }) {
             offers.map((offer) => (
               <View key={offer.id} style={styles.offerCard}>
                 <View style={styles.offerTop}>
-                  <Text style={styles.offerHost}>🏠 {offer.host?.firstName ?? t('hosting.hostLabel')}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                    <Home size={15} color={C.navy} strokeWidth={2} />
+                    <Text style={styles.offerHost}>{offer.host?.firstName ?? t('hosting.hostLabel')}</Text>
+                  </View>
                   <Text style={styles.offerGuests}>{t('hosting.upToGuests')} {offer.maxGuests} {t('hosting.guests')}</Text>
                 </View>
                 <View style={styles.offerTags}>
@@ -284,9 +296,10 @@ function GuestView({ destinationId }: { destinationId: number }) {
                   {offer.kashrutLevel   && <Tag text={offer.kashrutLevel} />}
                 </View>
                 {offer.notes && <Text style={styles.offerNotes}>{offer.notes}</Text>}
-                <Text style={styles.offerDates}>
-                  📅 {offer.availableFrom} → {offer.availableTo}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+                  <Calendar size={13} color={C.textMuted} strokeWidth={2} />
+                  <Text style={styles.offerDates}>{offer.availableFrom} → {offer.availableTo}</Text>
+                </View>
                 <TouchableOpacity style={styles.requestBtn} onPress={() => setRequestOffer(offer)}>
                   <Text style={styles.requestBtnText}>{t('hosting.sendRequest')}</Text>
                 </TouchableOpacity>
@@ -299,10 +312,11 @@ function GuestView({ destinationId }: { destinationId: number }) {
       {/* No results — offer to post a need */}
       {offers !== null && offers.length === 0 && (
         <View style={styles.empty}>
-          <Text style={styles.emptyIcon}>🏠</Text>
+          <Home size={48} color="#E5E7EB" strokeWidth={1.5} />
           <Text style={styles.emptyText}>{t('hosting.noHosts')}</Text>
-          <TouchableOpacity style={[styles.searchBtn, { marginTop: 16 }]} onPress={() => setPostNeedVisible(true)}>
-            <Text style={styles.searchBtnText}>🙋 Post a Hosting Request</Text>
+          <TouchableOpacity style={[styles.searchBtn, { marginTop: 16, flexDirection: 'row', gap: 8, alignItems: 'center' }]} onPress={() => setPostNeedVisible(true)}>
+            <UserPlus size={16} color="#fff" strokeWidth={2} />
+            <Text style={styles.searchBtnText}>Post a Hosting Request</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -310,7 +324,8 @@ function GuestView({ destinationId }: { destinationId: number }) {
       {/* Always show "post a need" option after results */}
       {offers !== null && offers.length > 0 && (
         <TouchableOpacity style={styles.outlineBtn} onPress={() => setPostNeedVisible(true)}>
-          <Text style={styles.outlineBtnText}>{"🙋 Don't see a match? Post a request →"}</Text>
+          <UserPlus size={15} color={C.navy} strokeWidth={2} />
+          <Text style={styles.outlineBtnText}>{"Don't see a match? Post a request →"}</Text>
         </TouchableOpacity>
       )}
 
@@ -404,7 +419,10 @@ function SendRequestModal({
           ) : (
             <>
               <Pressable style={styles.pickerBtn} onPress={() => setShowArr(true)}>
-                <Text style={styles.pickerBtnText}>📅  {arrival}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <Calendar size={16} color={C.navy} strokeWidth={2} />
+                  <Text style={styles.pickerBtnText}>{arrival}</Text>
+                </View>
               </Pressable>
               {showArr && (
                 <DateTimePicker value={arrivalObj} mode="date" minimumDate={new Date()}
@@ -424,7 +442,10 @@ function SendRequestModal({
           ) : (
             <>
               <Pressable style={styles.pickerBtn} onPress={() => setShowDep(true)}>
-                <Text style={styles.pickerBtnText}>📅  {departure}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <Calendar size={16} color={C.navy} strokeWidth={2} />
+                  <Text style={styles.pickerBtnText}>{departure}</Text>
+                </View>
               </Pressable>
               {showDep && (
                 <DateTimePicker value={departObj} mode="date" minimumDate={arrivalObj}
@@ -542,11 +563,17 @@ function HostView({ destinationId }: { destinationId: number }) {
         <ActivityIndicator size="small" color={C.gold} style={{ marginBottom: 24 }} />
       ) : needs.length > 0 && (
         <View style={{ marginBottom: 24 }}>
-          <Text style={styles.sectionTitle}>🙋 Guests Looking for Hosting ({needs.length})</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+            <Users size={16} color={C.textPrimary} strokeWidth={2} />
+            <Text style={styles.sectionTitle}>Guests Looking for Hosting ({needs.length})</Text>
+          </View>
           {needs.map(n => (
             <View key={n.id} style={styles.offerCard}>
               <View style={styles.offerTop}>
-                <Text style={styles.offerHost}>👤 {n.guest?.firstName ?? 'Guest'}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                  <User size={14} color={C.navy} strokeWidth={2} />
+                  <Text style={styles.offerHost}>{n.guest?.firstName ?? 'Guest'}</Text>
+                </View>
                 <Text style={styles.offerGuests}>{n.guestsCount} {n.guestsCount !== 1 ? 'guests' : 'guest'}</Text>
               </View>
               <View style={styles.offerTags}>
@@ -554,9 +581,13 @@ function HostView({ destinationId }: { destinationId: number }) {
                 {n.withChildren && <Tag text={t('hosting.childrenOk')} />}
               </View>
               {n.notes && <Text style={styles.offerNotes}>{n.notes}</Text>}
-              <Text style={styles.offerDates}>📅 {n.arrivalDate} → {n.departureDate}</Text>
-              <TouchableOpacity style={styles.requestBtn} onPress={() => respondToNeed(n.id)}>
-                <Text style={styles.requestBtnText}>🏠 I can host them</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+                <Calendar size={13} color={C.textMuted} strokeWidth={2} />
+                <Text style={styles.offerDates}>{n.arrivalDate} → {n.departureDate}</Text>
+              </View>
+              <TouchableOpacity style={[styles.requestBtn, { flexDirection: 'row', gap: 6, alignItems: 'center', justifyContent: 'center' }]} onPress={() => respondToNeed(n.id)}>
+                <Home size={15} color="#fff" strokeWidth={2} />
+                <Text style={styles.requestBtnText}>I can host them</Text>
               </TouchableOpacity>
             </View>
           ))}
@@ -582,7 +613,10 @@ function HostView({ destinationId }: { destinationId: number }) {
       ) : (
         <>
           <Pressable style={styles.pickerBtn} onPress={() => setShowFrom(true)}>
-            <Text style={styles.pickerBtnText}>📅  {availableFrom}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Calendar size={16} color={C.navy} strokeWidth={2} />
+              <Text style={styles.pickerBtnText}>{availableFrom}</Text>
+            </View>
           </Pressable>
           {showFrom && (
             <DateTimePicker value={fromObj} mode="date" minimumDate={new Date()}
@@ -603,7 +637,10 @@ function HostView({ destinationId }: { destinationId: number }) {
       ) : (
         <>
           <Pressable style={styles.pickerBtn} onPress={() => setShowTo(true)}>
-            <Text style={styles.pickerBtnText}>📅  {availableTo}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Calendar size={16} color={C.navy} strokeWidth={2} />
+              <Text style={styles.pickerBtnText}>{availableTo}</Text>
+            </View>
           </Pressable>
           {showTo && (
             <DateTimePicker value={toObj} mode="date" minimumDate={fromObj}

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Linking,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { ArrowLeft, Building2, Clock, Globe, Map, MapPin, Phone } from 'lucide-react-native';
 import client from '@/src/api/client';
 import HomeButton from '@/src/components/HomeButton';
 import ReviewSection from '@/src/components/ReviewSection';
@@ -17,11 +19,11 @@ import ReportModal from '@/src/components/ReportModal';
 import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
 import FavoriteButton from '@/src/components/FavoriteButton';
 
-const DENOM_DISPLAY: Record<string, { label: string; emoji: string; color: string }> = {
-  ashkenaz: { label: 'אשכנז', emoji: '🎩', color: '#3949AB' },
-  sfarad:   { label: 'ספרד',  emoji: '🌙', color: '#00897B' },
-  chabad:   { label: 'חב"ד', emoji: '🕎', color: '#E65100' },
-  teimanim: { label: 'תימן',  emoji: '🌿', color: '#558B2F' },
+const DENOM_DISPLAY: Record<string, { label: string; color: string }> = {
+  ashkenaz: { label: 'אשכנז', color: '#3949AB' },
+  sfarad:   { label: 'ספרד',  color: '#00897B' },
+  chabad:   { label: 'חב"ד', color: '#E65100' },
+  teimanim: { label: 'תימן',  color: '#558B2F' },
 };
 
 const ASHKENAZ_VALS = ['אשכנז', 'אשכנזי', 'ליטאי', 'ליטאית', 'ashkenaz', 'ashkenazi', 'orthodox'];
@@ -79,39 +81,41 @@ export default function SynagogueDetailsScreen() {
   }, [id]);
 
   const handleCall = (phone: string) => {
-    Linking.openURL(`tel:${phone}`).catch(() => {
-      // silent
-    });
+    Linking.openURL(`tel:${phone}`).catch(() => {});
   };
 
   const handleWebsite = (url: string) => {
     if (!url.startsWith('http')) {
       url = 'https://' + url;
     }
-    Linking.openURL(url).catch(() => {
-      // silent
-    });
+    Linking.openURL(url).catch(() => {});
   };
 
   const handleMaps = (coords: [number, number]) => {
     const [lng, lat] = coords;
     const url = `https://maps.google.com/?q=${lat},${lng}`;
-    Linking.openURL(url).catch(() => {
-      // silent
-    });
+    Linking.openURL(url).catch(() => {});
   };
 
-  const aboutText = synagogue?.description?.trim();
+  const HeaderBar = ({ showHome }: { showHome?: boolean }) => (
+    <View style={styles.header}>
+      <Pressable style={styles.backBtn} onPress={() => router.back()}>
+        <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
+      </Pressable>
+      {showHome && <HomeButton />}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <View style={styles.headerIconRing}>
+          <Building2 size={28} color="#fff" strokeWidth={1.8} />
+        </View>
+        <Text style={styles.headerTitle}>Synagogue</Text>
+      </View>
+    </View>
+  );
 
   if (loading) {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Pressable style={styles.backBtn} onPress={() => router.back()}>
-            <Text style={styles.backText}>←</Text>
-          </Pressable>
-          <Text style={styles.headerTitle}>🕍 Synagogue</Text>
-        </View>
+        <HeaderBar />
         <View style={styles.center}>
           <ActivityIndicator size="large" color="#5E35B1" />
         </View>
@@ -122,12 +126,7 @@ export default function SynagogueDetailsScreen() {
   if (!synagogue) {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Pressable style={styles.backBtn} onPress={() => router.back()}>
-            <Text style={styles.backText}>←</Text>
-          </Pressable>
-          <Text style={styles.headerTitle}>🕍 Synagogue</Text>
-        </View>
+        <HeaderBar />
         <View style={styles.center}>
           <Text style={styles.notFound}>Synagogue not found</Text>
         </View>
@@ -135,18 +134,12 @@ export default function SynagogueDetailsScreen() {
     );
   }
 
+  const aboutText = synagogue?.description?.trim();
+
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
-        </Pressable>
-        <HomeButton />
-        <Text style={styles.headerTitle}>🕍 Synagogue</Text>
-      </View>
+      <HeaderBar showHome />
 
-      {/* Content */}
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {/* Name + Favorite */}
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -162,7 +155,7 @@ export default function SynagogueDetailsScreen() {
           return (
             <View style={[styles.denominationBadge, d ? { backgroundColor: d.color } : {}]}>
               <Text style={styles.denominationText}>
-                {d ? `${d.emoji}  נוסח ${d.label}` : synagogue.denomination}
+                {d ? `נוסח ${d.label}` : synagogue.denomination}
               </Text>
             </View>
           );
@@ -179,7 +172,10 @@ export default function SynagogueDetailsScreen() {
         {/* Address */}
         {synagogue.address && (
           <View style={styles.section}>
-            <Text style={styles.sectionLabel}>📍 Address</Text>
+            <View style={styles.sectionLabelRow}>
+              <MapPin size={13} color="#8A96B0" strokeWidth={2} />
+              <Text style={styles.sectionLabel}>Address</Text>
+            </View>
             <Text style={styles.sectionValue}>{synagogue.address}</Text>
           </View>
         )}
@@ -187,7 +183,10 @@ export default function SynagogueDetailsScreen() {
         {/* Operator */}
         {synagogue.operator && (
           <View style={styles.section}>
-            <Text style={styles.sectionLabel}>🏢 Operator</Text>
+            <View style={styles.sectionLabelRow}>
+              <Building2 size={13} color="#8A96B0" strokeWidth={2} />
+              <Text style={styles.sectionLabel}>Operator</Text>
+            </View>
             <Text style={styles.sectionValue}>{synagogue.operator}</Text>
           </View>
         )}
@@ -195,64 +194,64 @@ export default function SynagogueDetailsScreen() {
         {/* Opening Hours */}
         {synagogue.openingHours && (
           <View style={styles.section}>
-            <Text style={styles.sectionLabel}>🕐 Hours</Text>
+            <View style={styles.sectionLabelRow}>
+              <Clock size={13} color="#8A96B0" strokeWidth={2} />
+              <Text style={styles.sectionLabel}>Hours</Text>
+            </View>
             <Text style={styles.sectionValue}>{synagogue.openingHours}</Text>
           </View>
         )}
 
         {/* Contact Actions */}
-        <View style={styles.section}>
-          <Text style={styles.sectionLabel}>Contact</Text>
-          <View style={styles.actions}>
-            {synagogue.phone && (
-              <Pressable
-                style={styles.actionBtnLarge}
-                onPress={() => handleCall(synagogue.phone!)}
-              >
-                <Text style={styles.actionIcon}>📞</Text>
-                <View style={styles.actionContent}>
-                  <Text style={styles.actionTitle}>Call</Text>
-                  <Text style={styles.actionValue}>{synagogue.phone}</Text>
-                </View>
-              </Pressable>
-            )}
-            {synagogue.website && (
-              <Pressable
-                style={styles.actionBtnLarge}
-                onPress={() => handleWebsite(synagogue.website!)}
-              >
-                <Text style={styles.actionIcon}>🌐</Text>
-                <View style={styles.actionContent}>
-                  <Text style={styles.actionTitle}>Visit Website</Text>
-                  <Text style={styles.actionValue} numberOfLines={1}>
-                    {synagogue.website}
-                  </Text>
-                </View>
-              </Pressable>
-            )}
+        {(synagogue.phone || synagogue.website) && (
+          <View style={styles.section}>
+            <Text style={styles.sectionLabel}>Contact</Text>
+            <View style={styles.actions}>
+              {synagogue.phone && (
+                <Pressable style={styles.actionBtnLarge} onPress={() => handleCall(synagogue.phone!)}>
+                  <View style={[styles.actionIconBox, { backgroundColor: 'rgba(5,150,105,0.10)' }]}>
+                    <Phone size={20} color="#059669" strokeWidth={2} />
+                  </View>
+                  <View style={styles.actionContent}>
+                    <Text style={styles.actionTitle}>Call</Text>
+                    <Text style={styles.actionValue}>{synagogue.phone}</Text>
+                  </View>
+                  <MaterialIcons name="chevron-right" size={20} color="#D1D5DB" />
+                </Pressable>
+              )}
+              {synagogue.website && (
+                <Pressable style={styles.actionBtnLarge} onPress={() => handleWebsite(synagogue.website!)}>
+                  <View style={[styles.actionIconBox, { backgroundColor: 'rgba(94,53,177,0.10)' }]}>
+                    <Globe size={20} color="#5E35B1" strokeWidth={2} />
+                  </View>
+                  <View style={styles.actionContent}>
+                    <Text style={styles.actionTitle}>Visit Website</Text>
+                    <Text style={styles.actionValue} numberOfLines={1}>{synagogue.website}</Text>
+                  </View>
+                  <MaterialIcons name="chevron-right" size={20} color="#D1D5DB" />
+                </Pressable>
+              )}
+            </View>
           </View>
-        </View>
+        )}
 
         {/* Location / Map */}
         {synagogue.location && (
           <View style={styles.section}>
-            <Pressable
-              style={styles.mapButton}
-              onPress={() => handleMaps(synagogue.location!.coordinates)}
-            >
-              <Text style={styles.mapButtonIcon}>🗺️</Text>
+            <Pressable style={styles.mapButton} onPress={() => handleMaps(synagogue.location!.coordinates)}>
+              <Map size={18} color="#fff" strokeWidth={2} />
               <Text style={styles.mapButtonText}>View on Map</Text>
             </Pressable>
           </View>
         )}
 
-        {/* ── Reviews ── */}
+        {/* Reviews */}
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>Reviews</Text>
           <ReviewSection entityType="synagogue" entityId={Number(id)} />
         </View>
 
-        {/* ── Report + Suggest ── */}
+        {/* Report + Suggest */}
         <View style={styles.bottomActions}>
           <Pressable style={styles.ghostBtn} onPress={() => setReportVisible(true)}>
             <MaterialIcons name="flag" size={16} color="#DC2626" />
@@ -290,77 +289,58 @@ const styles = StyleSheet.create({
 
   header: {
     backgroundColor: '#5E35B1',
-    paddingTop: 60,
+    paddingTop: Platform.OS === 'ios' ? 60 : 42,
     paddingBottom: 20,
     paddingHorizontal: 20,
+    gap: 14,
   },
-  backBtn: { marginBottom: 12 },
-  backText: { fontSize: 24, color: '#fff' },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#fff' },
+  backBtn: { alignSelf: 'flex-start' },
+  headerIconRing: {
+    width: 52, height: 52, borderRadius: 26,
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    justifyContent: 'center', alignItems: 'center',
+    borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.30)',
+  },
+  headerTitle: { fontSize: 22, fontWeight: '800', color: '#fff' },
 
   content: { paddingHorizontal: 20, paddingTop: 24, paddingBottom: 32 },
 
   name: {
-    fontSize: 28,
-    fontWeight: '800',
-    color: '#1a1a1a',
-    marginBottom: 12,
+    fontSize: 28, fontWeight: '800', color: '#1a1a1a', marginBottom: 12,
   },
 
   denominationBadge: {
     backgroundColor: '#5E35B1',
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-    alignSelf: 'flex-start',
-    marginBottom: 20,
+    paddingVertical: 6, paddingHorizontal: 12,
+    borderRadius: 8, alignSelf: 'flex-start', marginBottom: 20,
   },
   denominationText: { fontSize: 12, fontWeight: '600', color: '#fff' },
 
   section: { marginBottom: 24 },
+  sectionLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 8 },
   sectionLabel: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#8A96B0',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    marginBottom: 8,
+    fontSize: 12, fontWeight: '700', color: '#8A96B0',
+    textTransform: 'uppercase', letterSpacing: 0.5,
   },
-  sectionValue: {
-    fontSize: 15,
-    color: '#1a1a1a',
-    lineHeight: 22,
-  },
+  sectionValue: { fontSize: 15, color: '#1a1a1a', lineHeight: 22 },
 
   actions: { gap: 12 },
   actionBtnLarge: {
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 14,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
+    flexDirection: 'row', backgroundColor: '#fff',
+    borderRadius: 16, padding: 14, alignItems: 'center',
+    shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 10,
+    shadowOffset: { width: 0, height: 2 }, elevation: 2, gap: 14,
   },
-  actionIcon: { fontSize: 24, marginRight: 12 },
+  actionIconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
   actionContent: { flex: 1 },
-  actionTitle: { fontSize: 13, fontWeight: '600', color: '#5E35B1' },
+  actionTitle: { fontSize: 15, fontWeight: '700', color: '#1a1a1a' },
   actionValue: { fontSize: 12, color: '#666', marginTop: 2 },
 
   mapButton: {
-    flexDirection: 'row',
-    backgroundColor: '#5E35B1',
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
+    flexDirection: 'row', backgroundColor: '#5E35B1',
+    paddingVertical: 14, paddingHorizontal: 16,
+    borderRadius: 12, alignItems: 'center', justifyContent: 'center', gap: 8,
   },
-  mapButtonIcon: { fontSize: 20 },
   mapButtonText: { fontSize: 15, fontWeight: '600', color: '#fff' },
 
   bottomActions: { flexDirection: 'row', gap: 10, marginTop: 8, marginBottom: 8 },
