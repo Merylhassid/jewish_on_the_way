@@ -108,6 +108,12 @@ function containsFoodTerm(text: string): boolean {
   if ((lower.match(/[a-z]+/g) ?? []).some((w: string) => ENGLISH_FOOD_TERMS.has(w))) return true;
   return false;
 }
+
+// Plural forms of synagogue ("בתי כנסת") are not in the ML training data and get
+// misclassified as minyan — force category to synagogue when detected.
+function containsSynagogueExplicitTerm(text: string): boolean {
+  return /בתי\s+כנסת/.test(text) || /בתי\s+כנסיות/.test(text);
+}
 const KASHRUT_KEYWORDS: Record<string, string> = {
   'מהדרין':'mehadrin','mehadrin':'mehadrin',
   'בדץ':'badatz','badatz':'badatz',
@@ -180,14 +186,17 @@ export class SearchController {
     if (!text?.trim()) return { category: null, emoji: null, denomination: null, confidence: 0 };
     const mlResult = this.classifier.classify(text);
     const foodOverride = containsFoodTerm(text);
+    const synagoguePluralOverride = !foodOverride && containsSynagogueExplicitTerm(text);
     const lower = text.toLowerCase();
-    const hostingOverride = !foodOverride && /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
+    const hostingOverride = !foodOverride && !synagoguePluralOverride && /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
     const result = foodOverride
       ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
+      : synagoguePluralOverride
+      ? { ...mlResult, category: 'synagogue', emoji: '🕍' }
       : hostingOverride
       ? { ...mlResult, category: 'hosting', emoji: '🏠' }
       : mlResult;
-    if (!foodOverride && !hostingOverride && result.confidence < 0.45) {
+    if (!foodOverride && !synagoguePluralOverride && !hostingOverride && result.confidence < 0.45) {
       return { category: null, emoji: null, denomination: null, confidence: result.confidence };
     }
     let denomination: string | null = null;
@@ -214,16 +223,19 @@ export class SearchController {
     // Override ML when food/restaurant terms are present — prevents "בית" in city
     // names (בית שמש, בית שאן) from biasing the ML toward synagogue
     const hebrewFoodOverride = containsFoodTerm(text);
+    const hebrewSynagogueOverride = !hebrewFoodOverride && containsSynagogueExplicitTerm(text);
     const lower = text.toLowerCase();
-    const hebrewHostingOverride = !hebrewFoodOverride &&
+    const hebrewHostingOverride = !hebrewFoodOverride && !hebrewSynagogueOverride &&
       /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
     const result = hebrewFoodOverride
       ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
+      : hebrewSynagogueOverride
+      ? { ...mlResult, category: 'synagogue', emoji: '🕍' }
       : hebrewHostingOverride
       ? { ...mlResult, category: 'hosting', emoji: '🏠' }
       : mlResult;
 
-    if (!hebrewFoodOverride && !hebrewHostingOverride && result.confidence < 0.45) {
+    if (!hebrewFoodOverride && !hebrewSynagogueOverride && !hebrewHostingOverride && result.confidence < 0.45) {
       return { error: 'low_confidence', message: 'לא הצלחתי להבין מה אתה מחפש. נסה לכתוב למשל: "מסעדה כשרה בתל אביב"', confidence: result.confidence };
     }
 
