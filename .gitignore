@@ -5,3 +5,10 @@ backend/.env
 dist
 backend/dist
 CLAUDE.md
+
+# Generated artifacts
+*.zip
+*.tar.gz
+*.bak
+__pycache__/
+*.pyc
