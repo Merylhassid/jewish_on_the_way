@@ -17,9 +17,14 @@ import {
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { io, Socket } from 'socket.io-client';
 import { useTranslation } from 'react-i18next';
+import {
+  ArrowLeft, Calendar, Clock, Crown,
+  FileText, Flame, MapPin, MessageCircle, User, Users,
+} from 'lucide-react-native';
 import client, { API_URL } from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
 import HomeButton from '@/src/components/HomeButton';
+import { getPrayerConfig } from '@/src/utils/prayerIcons';
 
 interface MinyanDetail {
   id: number;
@@ -41,10 +46,6 @@ interface Participant {
   firstName: string;
   lastName: string;
 }
-
-const PRAYER_EMOJI: Record<string, string> = {
-  shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
-};
 
 function formatDate(iso: string) {
   const [y, m, d] = String(iso).slice(0, 10).split('-');
@@ -117,19 +118,27 @@ function EditMinyanModal({
             <Text style={es.label}>{t('minyans.prayerType')}</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 14 }}>
               <View style={{ flexDirection: 'row', gap: 8 }}>
-                {PRAYER_TYPES.map((p) => (
-                  <Pressable key={p} style={[es.chip, prayerType === p && es.chipActive]} onPress={() => setPrayerType(p)}>
-                    <Text style={[es.chipText, prayerType === p && es.chipTextActive]}>
-                      {PRAYER_EMOJI[p]} {PRAYER_LABEL[p]}
-                    </Text>
-                  </Pressable>
-                ))}
+                {PRAYER_TYPES.map((p) => {
+                  const cfg = getPrayerConfig(p);
+                  const isActive = prayerType === p;
+                  return (
+                    <Pressable key={p} style={[es.chip, isActive && es.chipActive]} onPress={() => setPrayerType(p)}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                        <cfg.Icon size={13} color={isActive ? '#fff' : cfg.color} strokeWidth={2} />
+                        <Text style={[es.chipText, isActive && es.chipTextActive]}>{PRAYER_LABEL[p]}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })}
               </View>
             </ScrollView>
 
             <Text style={es.label}>{t('minyans.date')}</Text>
             <Pressable style={es.pickerBtn} onPress={() => setShowDatePicker(true)}>
-              <Text style={es.pickerText}>{'📅  '}{dateStr}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Calendar size={16} color="#1a3a6b" strokeWidth={2} />
+                <Text style={es.pickerText}>{dateStr}</Text>
+              </View>
             </Pressable>
             {showDatePicker && (
               <DateTimePicker value={dateObj} mode="date" minimumDate={new Date()}
@@ -138,7 +147,10 @@ function EditMinyanModal({
 
             <Text style={es.label}>{t('minyans.time')}</Text>
             <Pressable style={es.pickerBtn} onPress={() => setShowTimePicker(true)}>
-              <Text style={es.pickerText}>{'🕐  '}{timeStr}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Clock size={16} color="#1a3a6b" strokeWidth={2} />
+                <Text style={es.pickerText}>{timeStr}</Text>
+              </View>
             </Pressable>
             {showTimePicker && (
               <DateTimePicker value={timeObj} mode="time" is24Hour
@@ -205,7 +217,6 @@ export default function MinyanDetailScreen() {
 
   useEffect(() => { void fetchMinyan(); }, [id]);
 
-  // Real-time WebSocket
   useEffect(() => {
     if (!id) return;
     let socket: Socket;
@@ -294,6 +305,7 @@ export default function MinyanDetailScreen() {
 
   if (!minyan) return null;
 
+  const cfg = getPrayerConfig(minyan.prayerType);
   const isCreator = minyan.creator?.id === user?.id;
   const count = minyan.participantsCount;
   const progressWidth = Math.min((count / 10) * 100, 100);
@@ -304,13 +316,18 @@ export default function MinyanDetailScreen() {
       {/* Header */}
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
+          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
         </Pressable>
         <HomeButton />
-        <Text style={styles.headerEmoji}>{PRAYER_EMOJI[minyan.prayerType] ?? '🙏'}</Text>
+        <View style={[styles.headerIconRing, { borderColor: cfg.color + '60' }]}>
+          <cfg.Icon size={32} color="#fff" strokeWidth={1.8} />
+        </View>
         <Text style={styles.headerTitle}>{PRAYER_LABEL[minyan.prayerType]}</Text>
         {minyan.destination && (
-          <Text style={styles.headerSub}>📍 {minyan.destination.city}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 4 }}>
+            <MapPin size={13} color="#a8c4e8" strokeWidth={2} />
+            <Text style={styles.headerSub}>{minyan.destination.city}</Text>
+          </View>
         )}
       </View>
 
@@ -323,8 +340,9 @@ export default function MinyanDetailScreen() {
             </View>
           )}
           {minyan.almostFull && !minyan.isFull && (
-            <View style={[styles.badge, { backgroundColor: '#ff9800' }]}>
-              <Text style={styles.badgeText}>{'🔥 '}{t('minyans.almostFull')}</Text>
+            <View style={[styles.badge, { backgroundColor: '#ff9800', flexDirection: 'row', alignItems: 'center', gap: 4 }]}>
+              <Flame size={12} color="#fff" strokeWidth={2} />
+              <Text style={styles.badgeText}>{t('minyans.almostFull')}</Text>
             </View>
           )}
           {minyan.isRegistered && (
@@ -336,12 +354,12 @@ export default function MinyanDetailScreen() {
 
         {/* Info card */}
         <View style={styles.card}>
-          <InfoRow icon="📅" label={t('minyans.date')} value={formatDate(minyan.date)} />
-          <InfoRow icon="🕐" label={t('minyans.time')} value={minyan.time} />
-          <InfoRow icon="📍" label={t('minyans.location')} value={minyan.locationText} />
-          {minyan.notes && <InfoRow icon="📝" label={t('minyans.notesLabel')} value={minyan.notes} />}
+          <InfoRow icon={<Calendar size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.date')} value={formatDate(minyan.date)} />
+          <InfoRow icon={<Clock size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.time')} value={minyan.time} />
+          <InfoRow icon={<MapPin size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.location')} value={minyan.locationText} />
+          {minyan.notes && <InfoRow icon={<FileText size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.notesLabel')} value={minyan.notes} />}
           {minyan.creator && (
-            <InfoRow icon="👤" label={t('minyans.organiser')} value={`${minyan.creator.firstName} ${minyan.creator.lastName}`} />
+            <InfoRow icon={<User size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.organiser')} value={`${minyan.creator.firstName} ${minyan.creator.lastName}`} />
           )}
         </View>
 
@@ -362,7 +380,7 @@ export default function MinyanDetailScreen() {
                     <Text style={styles.participantAvatarText}>{p.firstName[0]}{p.lastName[0]}</Text>
                   </View>
                   <Text style={styles.participantName}>{p.firstName} {p.lastName}</Text>
-                  {i === 0 && <Text style={styles.organizerTag}>⭐</Text>}
+                  {i === 0 && <Crown size={14} color="#E6A817" strokeWidth={2} />}
                 </View>
               ))}
             </View>
@@ -408,12 +426,13 @@ export default function MinyanDetailScreen() {
           )
         )}
 
-        {/* Chat button — visible to everyone */}
+        {/* Chat button */}
         <TouchableOpacity
           style={styles.chatBtn}
           onPress={() => router.push(`/minyan/chat/${id}?prayerType=${minyan.prayerType}&city=${minyan.destination?.city ?? ''}` as any)}
         >
-          <Text style={styles.chatBtnText}>💬 {t('minyans.chatBtn')}</Text>
+          <MessageCircle size={18} color="#fff" strokeWidth={2} />
+          <Text style={styles.chatBtnText}>{t('minyans.chatBtn')}</Text>
         </TouchableOpacity>
 
         {isCreator && (
@@ -445,10 +464,10 @@ export default function MinyanDetailScreen() {
   );
 }
 
-function InfoRow({ icon, label, value }: { icon: string; label: string; value: string }) {
+function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <View style={styles.infoRow}>
-      <Text style={styles.infoIcon}>{icon}</Text>
+      <View style={styles.infoIcon}>{icon}</View>
       <View style={styles.infoContent}>
         <Text style={styles.infoLabel}>{label}</Text>
         <Text style={styles.infoValue}>{value}</Text>
@@ -462,8 +481,7 @@ const styles = StyleSheet.create({
   center:               { flex: 1, justifyContent: 'center', alignItems: 'center' },
   header:               { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 28, paddingHorizontal: 20, alignItems: 'center' },
   backBtn:              { position: 'absolute', top: 60, left: 20 },
-  backText:             { fontSize: 24, color: '#fff' },
-  headerEmoji:          { fontSize: 52, marginBottom: 8 },
+  headerIconRing:       { width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center', marginBottom: 12, borderWidth: 1.5 },
   headerTitle:          { fontSize: 24, fontWeight: '700', color: '#fff', marginBottom: 4 },
   headerSub:            { fontSize: 14, color: '#a8c4e8' },
   body:                 { padding: 16, gap: 14 },
@@ -473,7 +491,7 @@ const styles = StyleSheet.create({
   card:                 { backgroundColor: '#fff', borderRadius: 16, padding: 16, shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 6, elevation: 1 },
   cardTitle:            { fontSize: 14, fontWeight: '700', color: '#1a3a6b', marginBottom: 12, textTransform: 'uppercase', letterSpacing: 0.5 },
   infoRow:              { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#f0f4ff' },
-  infoIcon:             { fontSize: 18, width: 32 },
+  infoIcon:             { width: 32, justifyContent: 'center', alignItems: 'center', paddingTop: 1 },
   infoContent:          { flex: 1 },
   infoLabel:            { fontSize: 12, color: '#999', fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.4 },
   infoValue:            { fontSize: 15, color: '#1a1a2e', marginTop: 2 },
@@ -486,7 +504,6 @@ const styles = StyleSheet.create({
   participantAvatar:    { width: 34, height: 34, borderRadius: 17, backgroundColor: '#e8eef8', justifyContent: 'center', alignItems: 'center' },
   participantAvatarText:{ fontSize: 12, fontWeight: '700', color: '#1a3a6b' },
   participantName:      { flex: 1, fontSize: 14, color: '#1a1a2e', fontWeight: '500' },
-  organizerTag:         { fontSize: 14 },
   noParticipants:       { fontSize: 13, color: '#bbb', textAlign: 'center', marginTop: 12 },
   registerBtn:          { backgroundColor: '#1a3a6b', borderRadius: 14, padding: 18, alignItems: 'center' },
   registerBtnDisabled:  { backgroundColor: '#ccc' },
@@ -502,7 +519,7 @@ const styles = StyleSheet.create({
   confirmCancelText:    { fontSize: 15, fontWeight: '600', color: '#fff' },
   creatorNote:          { backgroundColor: '#e8eef8', borderRadius: 14, padding: 16, alignItems: 'center' },
   creatorNoteText:      { color: '#1a3a6b', fontSize: 14, fontWeight: '600' },
-  chatBtn:              { backgroundColor: '#4F46E5', borderRadius: 14, padding: 16, alignItems: 'center' },
+  chatBtn:              { backgroundColor: '#4F46E5', borderRadius: 14, padding: 16, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 },
   chatBtnText:          { color: '#fff', fontSize: 15, fontWeight: '600' },
   editBtn:              { backgroundColor: '#1a3a6b', borderRadius: 14, padding: 16, alignItems: 'center' },
   editBtnText:          { color: '#fff', fontSize: 15, fontWeight: '600' },

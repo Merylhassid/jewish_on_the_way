@@ -14,12 +14,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Logger, OnModuleDestroy } from '@nestjs/common';
 import { ChatMessage } from './chat-message.entity';
+import { ChatCursor } from './chat-cursor.entity';
 import { User } from '../users/user.entity';
 import { Destination } from '../destination.entity';
 import { Minyan } from '../minyan.entity';
 import { AuditService } from '../audit/audit.service';
 
-// req 5.4 — max 5 messages per 10 seconds per user
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10_000;
 const RATE_LIMIT_STALE_MS = RATE_LIMIT_WINDOW_MS * 2;
@@ -32,6 +32,8 @@ const CORS_ORIGIN =
         .filter(Boolean)
     : '*';
 
+type SimpleUser = { userId: number; firstName: string; lastName: string };
+
 @WebSocketGateway({
   cors: { origin: CORS_ORIGIN },
   namespace: '/chat',
@@ -41,17 +43,27 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   server: Server;
 
   private readonly logger = new Logger(ChatGateway.name);
-  // userId → { count, windowStart, lastSeen }
+
+  // Rate limiting
   private readonly msgRateMap = new Map<
     number,
     { count: number; windowStart: number; lastSeen: number }
   >();
   private cleanupInterval: ReturnType<typeof setInterval>;
 
+  // Online presence: socketId → user info
+  private readonly socketUsers = new Map<string, SimpleUser>();
+  // roomKey → Set<userId> (deduplicated)
+  private readonly roomPresence = new Map<string, Set<number>>();
+  // socketId → Set<roomKey>
+  private readonly socketRooms = new Map<string, Set<string>>();
+
   constructor(
     private jwtService: JwtService,
     @InjectRepository(ChatMessage)
     private messagesRepo: Repository<ChatMessage>,
+    @InjectRepository(ChatCursor)
+    private cursorsRepo: Repository<ChatCursor>,
     @InjectRepository(User) private usersRepo: Repository<User>,
     @InjectRepository(Destination)
     private destinationsRepo: Repository<Destination>,
@@ -69,13 +81,11 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     clearInterval(this.cleanupInterval);
   }
 
-  // ── Auth middleware — validate JWT on connection ──
   async handleConnection(client: Socket) {
     try {
       const token =
         client.handshake.auth?.token ||
         client.handshake.headers?.authorization?.replace('Bearer ', '');
-
       if (!token) throw new Error('No token');
 
       const payload = await this.jwtService.verifyAsync(token);
@@ -89,6 +99,11 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
         lastName: user.lastName,
         profileImageUrl: user.profileImageUrl,
       };
+      this.socketUsers.set(client.id, {
+        userId: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      });
       this.logger.log(`Client connected: ${client.id} (user ${user.id})`);
     } catch {
       this.logger.warn(`Rejected connection: ${client.id}`);
@@ -99,10 +114,21 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   handleDisconnect(client: Socket) {
     const userId = (client as any).userId;
     if (userId) this.msgRateMap.delete(userId);
+
+    // Clean up presence
+    const rooms = this.socketRooms.get(client.id);
+    if (rooms) {
+      for (const room of rooms) {
+        this.removeFromPresence(client.id, room);
+        this.broadcastOnline(room);
+      }
+      this.socketRooms.delete(client.id);
+    }
+    this.socketUsers.delete(client.id);
     this.logger.log(`Client disconnected: ${client.id}`);
   }
 
-  // ── Join a destination room ──
+  // ── City Chat: Join ──
   @SubscribeMessage('chat:join')
   async handleJoin(
     @ConnectedSocket() client: Socket,
@@ -110,35 +136,41 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   ) {
     const destination = await this.destinationsRepo.findOne({ where: { id: data.destinationId } });
     if (!destination) throw new WsException('Destination not found');
-
     (client as any).destinationId = destination.id;
 
     const room = `destination:${destination.id}`;
     await client.join(room);
-    this.logger.log(`${client.id} joined room ${room}`);
+    this.addToPresence(client.id, room);
+    this.broadcastOnline(room);
 
-    // Send last 50 messages as history
     const history = await this.messagesRepo.find({
       where: { destination: { id: destination.id } },
       order: { createdAt: 'ASC' },
       take: 50,
     });
-
     client.emit('chat:history', history.map(this.formatMessage));
+
+    // Send current read cursors
+    const cursors = await this.getCursors(room);
+    client.emit('chat:cursors', { cursors });
+
     return { ok: true };
   }
 
-  // ── Leave a destination room ──
+  // ── City Chat: Leave ──
   @SubscribeMessage('chat:leave')
   async handleLeave(
     @ConnectedSocket() client: Socket,
     @MessageBody() data: { destinationId: number },
   ) {
-    await client.leave(`destination:${data.destinationId}`);
+    const room = `destination:${data.destinationId}`;
+    await client.leave(room);
+    this.removeFromPresence(client.id, room);
+    this.broadcastOnline(room);
     return { ok: true };
   }
 
-  // ── Send a message ──
+  // ── City Chat: Send ──
   @SubscribeMessage('chat:sendMessage')
   async handleMessage(
     @ConnectedSocket() client: Socket,
@@ -146,25 +178,10 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   ) {
     const userId = (client as any).userId;
     if (!userId) throw new WsException('Unauthorized');
-
-    // req 5.4 — rate limit: max 5 messages / 10 s per user
-    const now = Date.now();
-    const rate = this.msgRateMap.get(userId) ?? { count: 0, windowStart: now, lastSeen: now };
-    if (now - rate.windowStart > RATE_LIMIT_WINDOW_MS) {
-      rate.count = 0;
-      rate.windowStart = now;
-    }
-    rate.count++;
-    rate.lastSeen = now;
-    this.msgRateMap.set(userId, rate);
-    if (rate.count > RATE_LIMIT_MAX) {
-      throw new WsException('Too many messages — slow down');
-    }
+    this.checkRateLimit(userId);
 
     const content = (data.content ?? '').trim();
-    if (!content || content.length > 500) {
-      throw new WsException('Message must be 1–500 characters');
-    }
+    if (!content || content.length > 500) throw new WsException('Message must be 1–500 characters');
 
     const cachedUser = (client as any).cachedUser as User;
     const cachedDestinationId = (client as any).destinationId as number;
@@ -179,14 +196,33 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     saved.user = cachedUser;
 
     const formatted = this.formatMessage(saved);
-    this.server
-      .to(`destination:${cachedDestinationId}`)
-      .emit('chat:newMessage', formatted);
-    this.audit.log('CHAT_MESSAGE_SENT', userId, {
-      destinationId: cachedDestinationId,
-    });
+    const room = `destination:${cachedDestinationId}`;
+    this.server.to(room).emit('chat:newMessage', formatted);
 
+    // Auto-mark sender as read
+    await this.upsertCursor(room, userId, cachedUser.firstName, cachedUser.lastName, saved.id);
+    const cursors = await this.getCursors(room);
+    this.server.to(room).emit('chat:cursors', { cursors });
+
+    this.audit.log('CHAT_MESSAGE_SENT', userId, { destinationId: cachedDestinationId });
     return formatted;
+  }
+
+  // ── City Chat: Mark Read ──
+  @SubscribeMessage('chat:mark-read')
+  async handleMarkRead(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number; lastReadId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedUser = (client as any).cachedUser as User;
+    if (!userId || !cachedUser) return;
+
+    const room = `destination:${data.destinationId}`;
+    await this.upsertCursor(room, userId, cachedUser.firstName, cachedUser.lastName, data.lastReadId);
+    const cursors = await this.getCursors(room);
+    this.server.to(room).emit('chat:cursors', { cursors });
+    return { ok: true };
   }
 
   // ── Minyan Chat: Join ──
@@ -198,6 +234,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const room = `minyan-chat:${data.minyanId}`;
     (client as any).minyanId = data.minyanId;
     await client.join(room);
+    this.addToPresence(client.id, room);
+    this.broadcastOnline(room);
 
     const history = await this.messagesRepo.find({
       where: { minyan: { id: data.minyanId } },
@@ -205,6 +243,10 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
       take: 50,
     });
     client.emit('minyan-chat:history', history.map(this.formatMessage));
+
+    const cursors = await this.getCursors(room);
+    client.emit('minyan-chat:cursors', { cursors });
+
     return { ok: true };
   }
 
@@ -214,11 +256,14 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     @ConnectedSocket() client: Socket,
     @MessageBody() data: { minyanId: number },
   ) {
-    await client.leave(`minyan-chat:${data.minyanId}`);
+    const room = `minyan-chat:${data.minyanId}`;
+    await client.leave(room);
+    this.removeFromPresence(client.id, room);
+    this.broadcastOnline(room);
     return { ok: true };
   }
 
-  // ── Minyan Chat: Send Message ──
+  // ── Minyan Chat: Send ──
   @SubscribeMessage('minyan-chat:sendMessage')
   async handleMinyanMessage(
     @ConnectedSocket() client: Socket,
@@ -226,17 +271,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   ) {
     const userId = (client as any).userId;
     if (!userId) throw new WsException('Unauthorized');
-
-    const now = Date.now();
-    const rate = this.msgRateMap.get(userId) ?? { count: 0, windowStart: now, lastSeen: now };
-    if (now - rate.windowStart > RATE_LIMIT_WINDOW_MS) {
-      rate.count = 0;
-      rate.windowStart = now;
-    }
-    rate.count++;
-    rate.lastSeen = now;
-    this.msgRateMap.set(userId, rate);
-    if (rate.count > RATE_LIMIT_MAX) throw new WsException('Too many messages — slow down');
+    this.checkRateLimit(userId);
 
     const content = (data.content ?? '').trim();
     if (!content || content.length > 500) throw new WsException('Message must be 1–500 characters');
@@ -255,12 +290,35 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     saved.user = cachedUser;
 
     const formatted = this.formatMessage(saved);
-    this.server.to(`minyan-chat:${minyanId}`).emit('minyan-chat:newMessage', formatted);
+    const room = `minyan-chat:${minyanId}`;
+    this.server.to(room).emit('minyan-chat:newMessage', formatted);
+
+    await this.upsertCursor(room, userId, cachedUser.firstName, cachedUser.lastName, saved.id);
+    const cursors = await this.getCursors(room);
+    this.server.to(room).emit('minyan-chat:cursors', { cursors });
+
     this.audit.log('CHAT_MESSAGE_SENT', userId, { minyanId });
     return formatted;
   }
 
-  // ── Report a message ──
+  // ── Minyan Chat: Mark Read ──
+  @SubscribeMessage('minyan-chat:mark-read')
+  async handleMinyanMarkRead(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { minyanId: number; lastReadId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedUser = (client as any).cachedUser as User;
+    if (!userId || !cachedUser) return;
+
+    const room = `minyan-chat:${data.minyanId}`;
+    await this.upsertCursor(room, userId, cachedUser.firstName, cachedUser.lastName, data.lastReadId);
+    const cursors = await this.getCursors(room);
+    this.server.to(room).emit('minyan-chat:cursors', { cursors });
+    return { ok: true };
+  }
+
+  // ── Report ──
   @SubscribeMessage('chat:report')
   async handleReport(
     @ConnectedSocket() client: Socket,
@@ -270,6 +328,72 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     if (!userId) throw new WsException('Unauthorized');
     this.logger.warn(`Message #${data.messageId} reported by user #${userId}`);
     return { ok: true };
+  }
+
+  // ── Helpers ──
+
+  private checkRateLimit(userId: number) {
+    const now = Date.now();
+    const rate = this.msgRateMap.get(userId) ?? { count: 0, windowStart: now, lastSeen: now };
+    if (now - rate.windowStart > RATE_LIMIT_WINDOW_MS) {
+      rate.count = 0;
+      rate.windowStart = now;
+    }
+    rate.count++;
+    rate.lastSeen = now;
+    this.msgRateMap.set(userId, rate);
+    if (rate.count > RATE_LIMIT_MAX) throw new WsException('Too many messages — slow down');
+  }
+
+  private addToPresence(socketId: string, room: string) {
+    const su = this.socketUsers.get(socketId);
+    if (!su) return;
+    if (!this.roomPresence.has(room)) this.roomPresence.set(room, new Set());
+    this.roomPresence.get(room)!.add(su.userId);
+    if (!this.socketRooms.has(socketId)) this.socketRooms.set(socketId, new Set());
+    this.socketRooms.get(socketId)!.add(room);
+  }
+
+  private removeFromPresence(socketId: string, room: string) {
+    const su = this.socketUsers.get(socketId);
+    if (!su) return;
+    // Only remove userId if no other socket from same user is in this room
+    const hasOther = [...this.socketUsers.entries()].some(
+      ([sid, u]) => sid !== socketId && u.userId === su.userId && this.socketRooms.get(sid)?.has(room),
+    );
+    if (!hasOther) this.roomPresence.get(room)?.delete(su.userId);
+    this.socketRooms.get(socketId)?.delete(room);
+  }
+
+  private broadcastOnline(room: string) {
+    const count = this.roomPresence.get(room)?.size ?? 0;
+    this.server.to(room).emit('chat:online', { count });
+  }
+
+  private async upsertCursor(room: string, userId: number, firstName: string, lastName: string, lastReadId: number) {
+    const existing = await this.cursorsRepo.findOne({ where: { roomKey: room, userId } });
+    if (existing) {
+      if (lastReadId > existing.lastReadId) {
+        existing.firstName = firstName;
+        existing.lastName = lastName;
+        existing.lastReadId = lastReadId;
+        await this.cursorsRepo.save(existing);
+      }
+    } else {
+      await this.cursorsRepo.save(
+        this.cursorsRepo.create({ roomKey: room, userId, firstName, lastName, lastReadId }),
+      );
+    }
+  }
+
+  private async getCursors(room: string) {
+    const rows = await this.cursorsRepo.find({ where: { roomKey: room } });
+    return rows.map((c) => ({
+      userId: c.userId,
+      firstName: c.firstName,
+      lastName: c.lastName,
+      lastReadId: c.lastReadId,
+    }));
   }
 
   private formatMessage(msg: ChatMessage) {

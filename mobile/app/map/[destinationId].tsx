@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import MapView, { Marker, Callout, PROVIDER_DEFAULT } from 'react-native-maps';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Building2, Utensils } from 'lucide-react-native';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 
@@ -152,9 +153,14 @@ export default function MapScreen() {
                 <View style={s.callout}>
                   <Text style={s.calloutTitle}>{p.name}</Text>
                   {p.address ? <Text style={s.calloutSub}>{p.address}</Text> : null}
-                  <Text style={[s.calloutType, { color: p.type === 'restaurant' ? '#16A34A' : '#7C3AED' }]}>
-                    {p.type === 'restaurant' ? '🍴 Restaurant' : '🕍 Synagogue'}
-                  </Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                    {p.type === 'restaurant'
+                      ? <Utensils size={12} color="#16A34A" strokeWidth={2} />
+                      : <Building2 size={12} color="#7C3AED" strokeWidth={2} />}
+                    <Text style={[s.calloutType, { color: p.type === 'restaurant' ? '#16A34A' : '#7C3AED' }]}>
+                      {p.type === 'restaurant' ? 'Restaurant' : 'Synagogue'}
+                    </Text>
+                  </View>
                 </View>
               </Callout>
             </Marker>

@@ -5,11 +5,12 @@ import {
   RefreshControl, ScrollView, StyleSheet, Text, View,
 } from 'react-native';
 import { useLocation } from '@/src/hooks/useLocation';
-import { ChevronRight, Globe, MapPin, Navigation, Utensils } from 'lucide-react-native';
+import { ChevronRight, Flame, Globe, MapPin, Navigation, Utensils } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 import ErrorState from '@/src/components/ErrorState';
+import { getPrayerConfig } from '@/src/utils/prayerIcons';
 
 interface NearbyRestaurant { id: number; name: string; address?: string; kashrutLevel: string; restaurantType: string | null; distanceMeters: number; city?: string; }
 interface NearbySynagogue  { id: number; name: string; address?: string; denomination?: string; distanceMeters: number; }
@@ -21,8 +22,6 @@ const KASHRUT: Record<string, { color: string; bg: string }> = {
   badatz:    { color: '#16A34A', bg: '#F0FDF4' },
   unknown:   { color: '#9CA3AF', bg: '#F9FAFB' },
 };
-
-const PRAYER_EMOJI: Record<string, string> = { shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏' };
 
 function fmtDate(iso: string) {
   const [y, m, d] = String(iso).slice(0, 10).split('-');
@@ -205,9 +204,14 @@ export default function NearbyScreen() {
                     style={({ pressed }) => [s.card, pressed && { opacity: 0.85, transform: [{ scale: 0.985 }] }]}
                     onPress={() => router.push(`/minyan/${mn.id}` as any)}
                   >
-                    <View style={[s.cardIcon, { backgroundColor: '#EEF2FF' }]}>
-                      <Text style={{ fontSize: 20 }}>{PRAYER_EMOJI[mn.prayerType] ?? '🙏'}</Text>
-                    </View>
+                    {(() => {
+                      const cfg = getPrayerConfig(mn.prayerType);
+                      return (
+                        <View style={[s.cardIcon, { backgroundColor: cfg.bg }]}>
+                          <cfg.Icon size={20} color={cfg.color} strokeWidth={2} />
+                        </View>
+                      );
+                    })()}
                     <View style={s.cardBody}>
                       <Text style={s.cardName} numberOfLines={1}>{PRAYER_LABEL[mn.prayerType] ?? mn.prayerType}</Text>
                       <Text style={s.cardSub} numberOfLines={1}>{fmtDate(mn.date)} · {mn.time}{mn.destination ? `  ·  ${mn.destination.city}` : ''}</Text>
@@ -219,8 +223,8 @@ export default function NearbyScreen() {
                         </View>
                       )}
                       {mn.almostFull && !mn.isFull && (
-                        <View style={[s.badge, { backgroundColor: '#FFF7ED' }]}>
-                          <Text style={[s.badgeText, { color: '#C2410C' }]}>{'🔥'}</Text>
+                        <View style={[s.badge, { backgroundColor: '#FFF7ED', flexDirection: 'row', alignItems: 'center', gap: 3 }]}>
+                          <Flame size={10} color="#C2410C" strokeWidth={2} />
                         </View>
                       )}
                       <View style={s.distPill}>

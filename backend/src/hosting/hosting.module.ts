@@ -6,6 +6,7 @@ import { HostingOffer } from './entities/hosting-offer.entity';
 import { HostingRequest } from './entities/hosting-request.entity';
 import { HostingNeed } from './entities/hosting-need.entity';
 import { HostingChatMessage } from './entities/hosting-chat-message.entity';
+import { ChatCursor } from '../chat/chat-cursor.entity';
 import { Destination } from '../destination.entity';
 import { User } from '../users/user.entity';
 import { HostingController } from './hosting.controller';
@@ -20,6 +21,7 @@ import { NotificationsModule } from '../notifications/notifications.module';
       HostingRequest,
       HostingNeed,
       HostingChatMessage,
+      ChatCursor,
       Destination,
       User,
     ]),

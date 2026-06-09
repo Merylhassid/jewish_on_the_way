@@ -14,8 +14,10 @@ import {
   View,
 } from 'react-native';
 import { io, Socket } from 'socket.io-client';
+import { ArrowLeft, MessageCircle, Send } from 'lucide-react-native';
 import { useAuth } from '@/src/store/auth';
 import { API_URL } from '@/src/api/client';
+import { getPrayerConfig } from '@/src/utils/prayerIcons';
 
 interface ChatMsg {
   id: number;
@@ -24,9 +26,13 @@ interface ChatMsg {
   user: { id: number; firstName: string; lastName: string; profileImageUrl?: string | null };
 }
 
-const PRAYER_EMOJI: Record<string, string> = {
-  shacharit: '🌅', mincha: '🌤️', maariv: '🌙', musaf: '✨', other: '🙏',
-};
+interface ReadCursor {
+  userId: number;
+  firstName: string;
+  lastName: string;
+  lastReadId: number;
+}
+
 const PRAYER_LABEL: Record<string, string> = {
   shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
 };
@@ -35,12 +41,14 @@ export default function MinyanChatScreen() {
   const { id, prayerType, city } = useLocalSearchParams<{ id: string; prayerType?: string; city?: string }>();
   const { user, getValidToken } = useAuth();
   const { t } = useTranslation();
-  const [messages, setMessages]   = useState<ChatMsg[]>([]);
-  const [text, setText]           = useState('');
+  const [messages, setMessages] = useState<ChatMsg[]>([]);
+  const [text, setText] = useState('');
   const [connected, setConnected] = useState(false);
-  const [loading, setLoading]     = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [onlineCount, setOnlineCount] = useState(0);
+  const [cursors, setCursors] = useState<ReadCursor[]>([]);
   const socketRef = useRef<Socket | null>(null);
-  const listRef   = useRef<FlatList>(null);
+  const listRef = useRef<FlatList>(null);
 
   useEffect(() => {
     let socket: Socket;
@@ -56,7 +64,6 @@ export default function MinyanChatScreen() {
         reconnection: true,
         reconnectionDelay: 2000,
       });
-
       socketRef.current = socket;
 
       socket.on('connect', () => {
@@ -70,11 +77,26 @@ export default function MinyanChatScreen() {
         setMessages(history);
         setLoading(false);
         setTimeout(() => listRef.current?.scrollToEnd({ animated: false }), 100);
+        if (history.length > 0) {
+          socket.emit('minyan-chat:mark-read', {
+            minyanId: Number(id),
+            lastReadId: history[history.length - 1].id,
+          });
+        }
       });
 
       socket.on('minyan-chat:newMessage', (msg: ChatMsg) => {
         setMessages((prev) => [...prev, msg]);
         setTimeout(() => listRef.current?.scrollToEnd({ animated: true }), 50);
+        socket.emit('minyan-chat:mark-read', { minyanId: Number(id), lastReadId: msg.id });
+      });
+
+      socket.on('chat:online', ({ count }: { count: number }) => {
+        setOnlineCount(count);
+      });
+
+      socket.on('minyan-chat:cursors', ({ cursors: c }: { cursors: ReadCursor[] }) => {
+        setCursors(c);
       });
 
       socket.on('connect_error', async (err) => {
@@ -114,9 +136,6 @@ export default function MinyanChatScreen() {
     setText('');
   };
 
-  const formatTime = (iso: string) =>
-    new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
   const reportMessage = (messageId: number) => {
     Alert.alert('Report Message', 'Flag this message as inappropriate?', [
       { text: 'Cancel', style: 'cancel' },
@@ -133,28 +152,46 @@ export default function MinyanChatScreen() {
   const renderItem = ({ item }: { item: ChatMsg }) => {
     const isMe = item.user.id === user?.id;
     const initials = `${item.user.firstName[0]}${item.user.lastName[0]}`.toUpperCase();
+    const readers = isMe
+      ? cursors.filter((c) => c.userId !== user?.id && c.lastReadId === item.id)
+      : [];
+
     return (
-      <View style={[styles.msgRow, isMe && styles.msgRowMe]}>
-        {!isMe && (
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{initials}</Text>
+      <View>
+        <View style={[styles.msgRow, isMe && styles.msgRowMe]}>
+          {!isMe && (
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText}>{initials}</Text>
+            </View>
+          )}
+          <Pressable
+            style={[styles.bubble, isMe ? styles.bubbleMe : styles.bubbleOther]}
+            onLongPress={() => !isMe && reportMessage(item.id)}
+            delayLongPress={500}
+          >
+            {!isMe && <Text style={styles.senderName}>{item.user.firstName} {item.user.lastName}</Text>}
+            <Text style={[styles.msgText, isMe && styles.msgTextMe]}>{item.content}</Text>
+            <Text style={[styles.msgTime, isMe && styles.msgTimeMe]}>
+              {new Date(item.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </Text>
+          </Pressable>
+        </View>
+        {readers.length > 0 && (
+          <View style={styles.readersRow}>
+            {readers.slice(0, 4).map((r) => (
+              <View key={r.userId} style={styles.readerAvatar}>
+                <Text style={styles.readerInitials}>{r.firstName[0]}{r.lastName[0]}</Text>
+              </View>
+            ))}
+            {readers.length > 4 && <Text style={styles.readerMore}>+{readers.length - 4}</Text>}
           </View>
         )}
-        <Pressable
-          style={[styles.bubble, isMe ? styles.bubbleMe : styles.bubbleOther]}
-          onLongPress={() => !isMe && reportMessage(item.id)}
-          delayLongPress={500}
-        >
-          {!isMe && <Text style={styles.senderName}>{item.user.firstName} {item.user.lastName}</Text>}
-          <Text style={[styles.msgText, isMe && styles.msgTextMe]}>{item.content}</Text>
-          <Text style={[styles.msgTime, isMe && styles.msgTimeMe]}>{formatTime(item.createdAt)}</Text>
-        </Pressable>
       </View>
     );
   };
 
-  const emoji = PRAYER_EMOJI[prayerType ?? ''] ?? '🙏';
   const label = PRAYER_LABEL[prayerType ?? ''] ?? 'Minyan';
+  const prayerCfg = getPrayerConfig(prayerType ?? '');
 
   return (
     <KeyboardAvoidingView
@@ -164,13 +201,18 @@ export default function MinyanChatScreen() {
     >
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <Text style={styles.backText}>←</Text>
+          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
         </Pressable>
+        <View style={[styles.headerIconBox, { backgroundColor: prayerCfg.color + '30' }]}>
+          <prayerCfg.Icon size={18} color="#fff" strokeWidth={2} />
+        </View>
         <View style={styles.headerCenter}>
-          <Text style={styles.headerTitle}>{emoji} {label} Chat{city ? ` — ${city}` : ''}</Text>
+          <Text style={styles.headerTitle}>{label} Chat{city ? ` — ${city}` : ''}</Text>
           <View style={styles.statusRow}>
             <View style={[styles.dot, { backgroundColor: connected ? '#4caf50' : '#f44336' }]} />
-            <Text style={styles.statusText}>{connected ? 'Live' : 'Connecting…'}</Text>
+            <Text style={styles.statusText}>
+              {connected ? `Live · ${onlineCount} online` : 'Connecting…'}
+            </Text>
           </View>
         </View>
       </View>
@@ -186,7 +228,7 @@ export default function MinyanChatScreen() {
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={
             <View style={styles.empty}>
-              <Text style={styles.emptyIcon}>💬</Text>
+              <MessageCircle size={48} color="#E5E7EB" strokeWidth={1.5} />
               <Text style={styles.emptyText}>{t('minyans.chatNoMessages')}</Text>
             </View>
           }
@@ -212,7 +254,7 @@ export default function MinyanChatScreen() {
           onPress={sendMessage}
           disabled={!text.trim() || !connected}
         >
-          <Text style={styles.sendIcon}>➤</Text>
+          <Send size={18} color="#fff" strokeWidth={2} />
         </Pressable>
       </View>
     </KeyboardAvoidingView>
@@ -222,15 +264,15 @@ export default function MinyanChatScreen() {
 const styles = StyleSheet.create({
   container:    { flex: 1, backgroundColor: '#f0f4ff' },
   center:       { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  header:       { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 16, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
+  header:       { backgroundColor: '#1a3a6b', paddingTop: Platform.OS === 'ios' ? 60 : 42, paddingBottom: 16, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
   backBtn:      { marginRight: 12 },
-  backText:     { fontSize: 24, color: '#fff' },
+  headerIconBox:{ width: 34, height: 34, borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginRight: 10 },
   headerCenter: { flex: 1 },
   headerTitle:  { fontSize: 17, fontWeight: '700', color: '#fff' },
   statusRow:    { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
   dot:          { width: 8, height: 8, borderRadius: 4, marginRight: 6 },
   statusText:   { fontSize: 12, color: '#a8c4e8' },
-  messageList:  { padding: 16, gap: 10, flexGrow: 1 },
+  messageList:  { padding: 16, gap: 4, flexGrow: 1 },
   msgRow:       { flexDirection: 'row', alignItems: 'flex-end', gap: 8 },
   msgRowMe:     { flexDirection: 'row-reverse' },
   avatar:       { width: 32, height: 32, borderRadius: 16, backgroundColor: '#a8c4e8', justifyContent: 'center', alignItems: 'center' },
@@ -243,12 +285,14 @@ const styles = StyleSheet.create({
   msgTextMe:    { color: '#fff' },
   msgTime:      { fontSize: 11, color: '#aaa', marginTop: 4, textAlign: 'right' },
   msgTimeMe:    { color: 'rgba(255,255,255,0.6)' },
-  empty:        { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 80 },
-  emptyIcon:    { fontSize: 48, marginBottom: 12 },
+  readersRow:   { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingRight: 6, marginTop: 2, marginBottom: 4, gap: 3 },
+  readerAvatar: { width: 18, height: 18, borderRadius: 9, backgroundColor: '#a8c4e8', justifyContent: 'center', alignItems: 'center', borderWidth: 1.5, borderColor: '#f0f4ff' },
+  readerInitials:{ fontSize: 8, fontWeight: '800', color: '#1a3a6b' },
+  readerMore:   { fontSize: 10, color: '#888', marginLeft: 2 },
+  empty:        { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 80, gap: 12 },
   emptyText:    { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
   inputBar:     { flexDirection: 'row', alignItems: 'flex-end', padding: 12, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#eee', gap: 10 },
   input:        { flex: 1, backgroundColor: '#f0f4ff', borderRadius: 22, paddingHorizontal: 16, paddingVertical: 10, fontSize: 15, color: '#1a1a2e', maxHeight: 100 },
   sendBtn:      { width: 44, height: 44, borderRadius: 22, backgroundColor: '#1a3a6b', justifyContent: 'center', alignItems: 'center' },
   sendBtnDisabled: { backgroundColor: '#ccc' },
-  sendIcon:     { color: '#fff', fontSize: 16 },
 });
