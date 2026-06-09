@@ -1,0 +1,466 @@
+[
+  {
+    "name": "בית הכנסת היכל מרדכי",
+    "address": "רחוב הנשיא יצחק בן צבי 134, הרצליה",
+    "phone": "09-957-3456",
+    "latitude": 32.1748965,
+    "longitude": 34.8083809,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת הגדול",
+    "address": "שדרות בן גוריון 1, הרצליה",
+    "phone": "09-957-2096",
+    "latitude": 32.1669027,
+    "longitude": 34.8430894,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת אחדות",
+    "address": "הכוזרי 3, הרצליה",
+    "phone": null,
+    "latitude": 32.1642536,
+    "longitude": 34.8477252,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת גליל ים",
+    "address": "מוטה גור 30, הרצליה, 4651069",
+    "phone": "050-687-5983",
+    "latitude": 32.119845,
+    "longitude": 34.8064229,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת אור החיים",
+    "address": "הר סיני 32, הרצליה",
+    "phone": null,
+    "latitude": 32.1735225,
+    "longitude": 34.8557111,
+    "destinationId": 359
+  },
+  {
+    "name": "מקדש מלך",
+    "address": "סמטת מקדש מלך, הרצליה",
+    "phone": "053-763-1046",
+    "latitude": 32.1659006,
+    "longitude": 34.8493268,
+    "destinationId": 359
+  },
+  {
+    "name": "חי סנטר בית כנסת צרפתי",
+    "address": "וינגייט 38, הרצליה",
+    "phone": null,
+    "latitude": 32.1793518,
+    "longitude": 34.8058449,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת הרב קוק (חב\"ד)",
+    "address": "הרב קוק 89, הרצליה",
+    "phone": null,
+    "latitude": 32.1626776,
+    "longitude": 34.8309809,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת היכל משה",
+    "address": "חב\"ד 3, הרצליה",
+    "phone": "054-665-6562",
+    "latitude": 32.1549003,
+    "longitude": 34.8417573,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת ברית שלום",
+    "address": "פורצי הדרך 40, הרצליה",
+    "phone": null,
+    "latitude": 32.1660937,
+    "longitude": 34.8622178,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת נוף ים הרצליה",
+    "address": "רחוב שפרינצק 4, הרצליה, 4662532",
+    "phone": "052-546-2766",
+    "latitude": 32.1897025,
+    "longitude": 34.8133613,
+    "destinationId": 359
+  },
+  {
+    "name": "בית חב\"ד",
+    "address": "משכית 22, הרצליה",
+    "phone": "052-252-3430",
+    "latitude": 32.1638553,
+    "longitude": 34.8104321,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת אוהל משה",
+    "address": "רחוב אריה בן אליעזר 33, הרצליה",
+    "phone": "09-954-2547",
+    "latitude": 32.1752555,
+    "longitude": 34.8078305,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת מעלות קדושים",
+    "address": "הרב אונטרמן 16, פתח תקווה, הרצליה",
+    "phone": null,
+    "latitude": 32.0998928,
+    "longitude": 34.8979561,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת \"תורת חיים\"",
+    "address": "יהודה הנשיא 52, הרצליה",
+    "phone": "09-861-7221",
+    "latitude": 32.154499,
+    "longitude": 34.847126,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת בית יואל",
+    "address": "פישמן 8, הרצליה",
+    "phone": null,
+    "latitude": 32.1720191,
+    "longitude": 34.8152579,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת תפארת בחורים",
+    "address": "גיסין 8, הרצליה",
+    "phone": "09-954-3914",
+    "latitude": 32.1722128,
+    "longitude": 34.8416998,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת י״א חללי מינכן",
+    "address": "הר נבו 10, הרצליה",
+    "phone": null,
+    "latitude": 32.174911,
+    "longitude": 34.8565246,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת שערי תפילה",
+    "address": "הרצליה",
+    "phone": null,
+    "latitude": 32.17671,
+    "longitude": 34.848513,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת רבנו יוסף חיים",
+    "address": "הרי גלעד 14, הרצליה",
+    "phone": null,
+    "latitude": 32.174982,
+    "longitude": 34.8539486,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת בית הלוי",
+    "address": "4620713, הפרטיזנים 32, הרצליה",
+    "phone": null,
+    "latitude": 32.1696435,
+    "longitude": 34.8597849,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת היכל שלמה",
+    "address": "הרי גלעד 16א, הרצליה",
+    "phone": null,
+    "latitude": 32.1748295,
+    "longitude": 34.8540911,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת בר-אילן",
+    "address": "בר אילן 42, הרצליה",
+    "phone": null,
+    "latitude": 32.1636548,
+    "longitude": 34.8379301,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת בית שירנה",
+    "address": "מדינת היהודים 18, הרצליה",
+    "phone": null,
+    "latitude": 32.167887,
+    "longitude": 34.80396,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת אלי כהן",
+    "address": "אבן גבירול 44, הרצליה",
+    "phone": null,
+    "latitude": 32.163713,
+    "longitude": 34.8332456,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת אהבת ישראל",
+    "address": "סעדיה גאון 14, הרצליה",
+    "phone": null,
+    "latitude": 32.1552109,
+    "longitude": 34.836352,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת עקידת יצחק",
+    "address": "הגליל 8, הרצליה",
+    "phone": null,
+    "latitude": 32.1657408,
+    "longitude": 34.8437305,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת הספרדי בבית אבות לאנוסי משהד",
+    "address": "רחוב הנשיא יצחק בן צבי 106, הרצליה",
+    "phone": null,
+    "latitude": 32.1780569,
+    "longitude": 34.809925,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת אהבה ואחווה",
+    "address": "רחוב ברל כצנלסון 53, הרצליה",
+    "phone": null,
+    "latitude": 32.1656514,
+    "longitude": 34.8593574,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת \"בית דוד\"",
+    "address": "שרעבי 13, הרצליה",
+    "phone": null,
+    "latitude": 32.184289,
+    "longitude": 34.8371038,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת הנדיב",
+    "address": "הנדיב 61, הרצליה",
+    "phone": null,
+    "latitude": 32.1697462,
+    "longitude": 34.8342582,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת פרח",
+    "address": "הקוצרים 2, הרצליה",
+    "phone": null,
+    "latitude": 32.1659755,
+    "longitude": 34.837152,
+    "destinationId": 359
+  },
+  {
+    "name": "בי\"כ בבנייה",
+    "address": "הרצליה",
+    "phone": null,
+    "latitude": 32.1667102,
+    "longitude": 34.8307932,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת הקהילתי גליל ים",
+    "address": "מוטה גור 30, הרצליה",
+    "phone": null,
+    "latitude": 32.1581591,
+    "longitude": 34.8171085,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת אור החיים (חב״ד)",
+    "address": "הרי גלעד 16, הרצליה",
+    "phone": null,
+    "latitude": 32.1750088,
+    "longitude": 34.8542047,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת תמימי דרך",
+    "address": "בתוך מרכזים 2001, הרצליה",
+    "phone": "054-262-2241",
+    "latitude": 32.1615829,
+    "longitude": 34.8101715,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת רבי שמעון בר יוחאי",
+    "address": "הגאון מוילנה 14-22, הרצליה",
+    "phone": null,
+    "latitude": 32.1524638,
+    "longitude": 34.8434025,
+    "destinationId": 359
+  },
+  {
+    "name": "שכונת אחים",
+    "address": "הרצליה",
+    "phone": null,
+    "latitude": 32.1639348,
+    "longitude": 34.8520618,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת העוגן 4",
+    "address": "העוגן 4, הרצליה",
+    "phone": null,
+    "latitude": 32.1589229,
+    "longitude": 34.7946642,
+    "destinationId": 359
+  },
+  {
+    "name": "אור זרוע",
+    "address": "אבן עזרא 35, הרצליה",
+    "phone": "054-836-3364",
+    "latitude": 32.1667097,
+    "longitude": 34.8307932,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת צעירים",
+    "address": "גיבורי עציון 25, הרצליה",
+    "phone": null,
+    "latitude": 32.1640501,
+    "longitude": 34.8590162,
+    "destinationId": 359
+  },
+  {
+    "name": "בית חב\"ד פתח תקוה",
+    "address": "רוטשילד 88 פינת, דוד פרנקפורטר 2, פתח תקווה, הרצליה",
+    "phone": "03-922-7134",
+    "latitude": 32.0858979,
+    "longitude": 34.8818285,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת יונה הנביא",
+    "address": "הצברים, הרצליה",
+    "phone": null,
+    "latitude": 32.177921,
+    "longitude": 34.846873,
+    "destinationId": 359
+  },
+  {
+    "name": "קודש נט - כל מה שיהודים צריכים",
+    "address": "הירקונים 6, פתח תקווה, הרצליה",
+    "phone": "050-858-1833",
+    "latitude": 32.0978201,
+    "longitude": 34.8962328,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת בית אל",
+    "address": "רחוב העירית 6, הרצליה",
+    "phone": null,
+    "latitude": 32.184911,
+    "longitude": 34.813901,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת המרכזי נוה עמל",
+    "address": "רחוב ברל כצנלסון 11, הרצליה",
+    "phone": null,
+    "latitude": 32.1694102,
+    "longitude": 34.8553269,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת שער השמים",
+    "address": "הרב קוק 6, הרצליה",
+    "phone": null,
+    "latitude": 32.1612753,
+    "longitude": 34.8417877,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת בית פרוטיאה",
+    "address": "רחוב אשר ברש 7, הרצליה",
+    "phone": null,
+    "latitude": 32.1717139,
+    "longitude": 34.8382602,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת בית ישראל",
+    "address": "התקווה 132, הרצליה",
+    "phone": null,
+    "latitude": 32.167851,
+    "longitude": 34.859375,
+    "destinationId": 359
+  },
+  {
+    "name": "Bais Chabad Hertzalia",
+    "address": "משכית 29, הרצליה",
+    "phone": null,
+    "latitude": 32.1630908,
+    "longitude": 34.8104637,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת כתר תורה",
+    "address": "רחל 11, הרצליה",
+    "phone": null,
+    "latitude": 32.1719271,
+    "longitude": 34.8596723,
+    "destinationId": 359
+  },
+  {
+    "name": "בית אלעזר",
+    "address": "סמטת יפת בן זכריה מגד 56, הרצליה",
+    "phone": null,
+    "latitude": 32.1602331,
+    "longitude": 34.8579136,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת מרכזי",
+    "address": "רחוב שפרינצק 4, הרצליה",
+    "phone": null,
+    "latitude": 32.1904793,
+    "longitude": 34.8134613,
+    "destinationId": 359
+  },
+  {
+    "name": "שערי צדק",
+    "address": "סמטת מורי עפארי אברהם 41, הרצליה",
+    "phone": null,
+    "latitude": 32.1607372,
+    "longitude": 34.8579486,
+    "destinationId": 359
+  },
+  {
+    "name": "בית הכנסת בית אל (עולי לוב)",
+    "address": "יציאת אירופה 38, הרצליה",
+    "phone": null,
+    "latitude": 32.1686814,
+    "longitude": 34.8619639,
+    "destinationId": 359
+  },
+  {
+    "name": "נחלת צבי",
+    "address": "רחוב ישראל שוחט 44, הרצליה",
+    "phone": null,
+    "latitude": 32.1654698,
+    "longitude": 34.8562091,
+    "destinationId": 359
+  },
+  {
+    "name": "מניין צעירים מרכז הרצליה",
+    "address": "ליברמן 1, הרצליה",
+    "phone": null,
+    "latitude": 32.1700063,
+    "longitude": 34.8470716,
+    "destinationId": 359
+  },
+  {
+    "name": "בית כנסת אגודת אחים",
+    "address": "העצמאות 78, הרצליה",
+    "phone": null,
+    "latitude": 32.1648301,
+    "longitude": 34.8475858,
+    "destinationId": 359
+  }
+]

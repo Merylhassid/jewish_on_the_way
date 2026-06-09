@@ -1,0 +1,15 @@
+{
+  "results": [
+    {
+      "name": "בית הכנסת המרכזי קצרין",
+      "address": "אלונים, קצרין",
+      "phone": null,
+      "latitude": 32.9908739,
+      "longitude": 35.6874139,
+      "destinationId": 533
+    }
+  ],
+  "doneUrls": [
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%9E%D7%A8%D7%9B%D7%96%D7%99+%D7%A7%D7%A6%D7%A8%D7%99%D7%9F%E2%80%AD/@32.9908739,35.6899835,14z/data=!4m6!3m5!1s0x151c1d98357b774f:0x938a397b49f0195e!8m2!3d32.9908739!4d35.6874139!16s%2Fg%2F11c138ty8w"
+  ]
+}

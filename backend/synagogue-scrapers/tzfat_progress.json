@@ -1,0 +1,186 @@
+{
+  "results": [
+    {
+      "name": "בית כנסת אבוהב",
+      "address": "אבוהב, צפת",
+      "phone": "050-411-5127",
+      "latitude": 32.9686658,
+      "longitude": 35.4914559,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת האר\"י הספרדי",
+      "address": "האר\"י 100, צפת",
+      "phone": "050-624-2589",
+      "latitude": 32.9681999,
+      "longitude": 35.4905163,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת רחובות הנהר",
+      "address": "נוף החולה 1-17, צפת",
+      "phone": "052-946-5382",
+      "latitude": 32.9469584,
+      "longitude": 35.5310567,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת האר\"י האשכנזי",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.9696426,
+      "longitude": 35.4916916,
+      "destinationId": 529
+    },
+    {
+      "name": "בית הכנסת רבי חומני עלוש זצ\"ל",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.9684757,
+      "longitude": 35.4982856,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת אור תורה",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.963841,
+      "longitude": 35.514043,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת מקארב",
+      "address": "שמעון בר יוחאי 37, צפת, 11310",
+      "phone": "052-312-5826",
+      "latitude": 32.9702714,
+      "longitude": 35.4927083,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת \"אגודת אחים\"",
+      "address": "הרצל 9, צפת",
+      "phone": "058-320-4661",
+      "latitude": 32.9584353,
+      "longitude": 35.496174,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת המויסדעס",
+      "address": "אצ\"ל 202, צפת",
+      "phone": "058-414-7148",
+      "latitude": 32.9598665,
+      "longitude": 35.4918906,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת נוף כנרת",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.9501736,
+      "longitude": 35.5290361,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת על שם רבי יעקב אבוחצירא",
+      "address": "דוד רמז 90, צפת",
+      "phone": null,
+      "latitude": 32.956571,
+      "longitude": 35.494919,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת צאנז",
+      "address": "תרפ\"ט 8, צפת",
+      "phone": null,
+      "latitude": 32.9683888,
+      "longitude": 35.4921652,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת חב\"ד, היכל לוי יצחק",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.9648001,
+      "longitude": 35.5051577,
+      "destinationId": 529
+    },
+    {
+      "name": "בית הכנסת ליובאוויטש לדוברי רוסית צפת",
+      "address": "השבעה 70, צפת",
+      "phone": "054-788-2586",
+      "latitude": 32.9674514,
+      "longitude": 35.5050082,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת חב\"ד",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.9608592,
+      "longitude": 35.5086724,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת צפת",
+      "address": "צה\"ל 3, צפת",
+      "phone": null,
+      "latitude": 32.9655268,
+      "longitude": 35.4872114,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת תפארת אחים",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.9580463,
+      "longitude": 35.4991449,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת ע\"ש ר' חיי טייב",
+      "address": "צפת",
+      "phone": null,
+      "latitude": 32.969126,
+      "longitude": 35.50627,
+      "destinationId": 529
+    },
+    {
+      "name": "בית כנסת חב\"ד צמח צדק",
+      "address": "חת\"ם סופר, צפת",
+      "phone": null,
+      "latitude": 32.969151,
+      "longitude": 35.4923623,
+      "destinationId": 529
+    },
+    {
+      "name": "בית הכנסת רבי יוסף קארו",
+      "address": "בית יוסף 2, צפת",
+      "phone": null,
+      "latitude": 32.9686594,
+      "longitude": 35.4917075,
+      "destinationId": 529
+    }
+  ],
+  "doneUrls": [
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%90%D7%91%D7%95%D7%94%D7%91%E2%80%AD/data=!4m7!3m6!1s0x151c23918690bc9b:0x5594f1e2e1f7deba!8m2!3d32.9686658!4d35.4914559!16s%2Fm%2F0dsd36d!19sChIJm7yQhpEjHBURut734eLxlFU",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%90%D7%A8%22%D7%99+%D7%94%D7%A1%D7%A4%D7%A8%D7%93%D7%99%E2%80%AD/data=!4m7!3m6!1s0x151c2391be195193:0x6a68fe9a67f92e5f!8m2!3d32.9681999!4d35.4905163!16s%2Fg%2F121l0tl2!19sChIJk1EZvpEjHBURXy75Z5r-aGo",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA+%D7%94%D7%A0%D7%94%D7%A8%E2%80%AD/data=!4m7!3m6!1s0x151c2250c574fd2b:0x3ca8ec5010a5be1!8m2!3d32.9469584!4d35.5310567!16s%2Fg%2F11c7wf6gf2!19sChIJK_10xVAiHBUR4VsKAcWOygM",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%90%D7%A8%22%D7%99+%D7%94%D7%90%D7%A9%D7%9B%D7%A0%D7%96%D7%99%E2%80%AD/data=!4m7!3m6!1s0x151c23971882c6cb:0x2c5b44c8a3f3e7ba!8m2!3d32.9696426!4d35.4916916!16s%2Fm%2F02q91bb!19sChIJy8aCGJcjHBURuufzo8hEWyw",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A8%D7%91%D7%99+%D7%97%D7%95%D7%9E%D7%A0%D7%99+%D7%A2%D7%9C%D7%95%D7%A9+%D7%96%D7%A6%22%D7%9C%E2%80%AD/data=!4m7!3m6!1s0x151c2395bba0b8d5:0xdaaa5edc945afeab!8m2!3d32.9684757!4d35.4982856!16s%2Fg%2F11b88pv575!19sChIJ1bigu5UjHBURq_5alNxeqto",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%90%D7%95%D7%A8+%D7%AA%D7%95%D7%A8%D7%94%E2%80%AD/data=!4m7!3m6!1s0x151c23b6fe9871fb:0x3d89152ff72cadde!8m2!3d32.963841!4d35.514043!16s%2Fg%2F1hc2wg560!19sChIJ-3GY_rYjHBUR3q0s9y8ViT0",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%9E%D7%A7%D7%90%D7%A8%D7%91%E2%80%AD/data=!4m7!3m6!1s0x151c2393c51e2fd1:0xbf83739b4ae5261c!8m2!3d32.9702714!4d35.4927083!16s%2Fg%2F11rd486tx3!19sChIJ0S8exZMjHBURHCblSptzg78",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%22%D7%90%D7%92%D7%95%D7%93%D7%AA+%D7%90%D7%97%D7%99%D7%9D%22%E2%80%AD/data=!4m7!3m6!1s0x151c23993902fdcf:0xce9eb4a6e7b43da0!8m2!3d32.9584353!4d35.496174!16s%2Fg%2F11c1lywvzw!19sChIJz_0COZkjHBURoD2056a0ns4",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%94%D7%9E%D7%95%D7%99%D7%A1%D7%93%D7%A2%D7%A1%E2%80%AD/data=!4m7!3m6!1s0x151c23c9d376414d:0x5124c43bd114c6a5!8m2!3d32.9598665!4d35.4918906!16s%2Fg%2F11rcxfmnpn!19sChIJTUF208kjHBURpcYU0TvEJFE",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A0%D7%95%D7%A3+%D7%9B%D7%A0%D7%A8%D7%AA%E2%80%AD/data=!4m7!3m6!1s0x151c23703934bd8f:0x976d059a0cf8f1da!8m2!3d32.9501736!4d35.5290361!16s%2Fg%2F11jgd4x30t!19sChIJj700OXAjHBUR2vH4DJoFbZc",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A2%D7%9C+%D7%A9%D7%9D+%D7%A8%D7%91%D7%99+%D7%99%D7%A2%D7%A7%D7%91+%D7%90%D7%91%D7%95%D7%97%D7%A6%D7%99%D7%A8%D7%90%E2%80%AD/data=!4m7!3m6!1s0x151c239e9eb9c6af:0x3e46872fb6c423f2!8m2!3d32.956571!4d35.494919!16s%2Fg%2F11cp7jdk3q!19sChIJr8a5np4jHBUR8iPEti-HRj4",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A6%D7%90%D7%A0%D7%96%E2%80%AD/data=!4m7!3m6!1s0x151c23917a3a532f:0x2d216467b55b3121!8m2!3d32.9683888!4d35.4921652!16s%2Fg%2F1hc86bmfd!19sChIJL1M6epEjHBURITFbtWdkIS0",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%97%D7%91%22%D7%93,+%D7%94%D7%99%D7%9B%D7%9C+%D7%9C%D7%95%D7%99+%D7%99%D7%A6%D7%97%D7%A7%E2%80%AD/data=!4m7!3m6!1s0x151c23bc02233a15:0x648b545f15cdcd77!8m2!3d32.9648001!4d35.5051577!16s%2Fg%2F11b76d3nck!19sChIJFTojArwjHBURd83NFV9Ui2Q",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%9C%D7%99%D7%95%D7%91%D7%90%D7%95%D7%95%D7%99%D7%98%D7%A9+%D7%9C%D7%93%D7%95%D7%91%D7%A8%D7%99+%D7%A8%D7%95%D7%A1%D7%99%D7%AA+%D7%A6%D7%A4%D7%AA%E2%80%AD/data=!4m7!3m6!1s0x151c2300112997b7:0x5afbd5a4efa3c31b!8m2!3d32.9674514!4d35.5050082!16s%2Fg%2F11myr77ct7!19sChIJt5cpEQAjHBURG8Oj76TV-1o",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%97%D7%91%22%D7%93%E2%80%AD/data=!4m7!3m6!1s0x151c23ba57932e2f:0xbe7d3ddbd0935b4c!8m2!3d32.9608592!4d35.5086724!16s%2Fg%2F1yfjhl0x3!19sChIJLy6TV7ojHBURTFuT0Ns9fb4",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A6%D7%A4%D7%AA%E2%80%AD/data=!4m7!3m6!1s0x151c236a40ad2a4b:0xc59095b2af61a50c!8m2!3d32.9655268!4d35.4872114!16s%2Fg%2F11ny347ypp!19sChIJSyqtQGojHBURDKVhr7KVkMU",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%AA%D7%A4%D7%90%D7%A8%D7%AA+%D7%90%D7%97%D7%99%D7%9D%E2%80%AD/data=!4m7!3m6!1s0x151c238d85f9702b:0x52e40a2cb27c7df1!8m2!3d32.9580463!4d35.4991449!16s%2Fg%2F11ffm80hkb!19sChIJK3D5hY0jHBUR8X18siwK5FI",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A2%22%D7%A9+%D7%A8%27+%D7%97%D7%99%D7%99+%D7%98%D7%99%D7%99%D7%91%E2%80%AD/data=!4m7!3m6!1s0x151c23c7580183df:0x160c75159e636d9c!8m2!3d32.969126!4d35.50627!16s%2Fg%2F1ydk8jsc7!19sChIJ34MBWMcjHBURnG1jnhV1DBY",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%97%D7%91%22%D7%93+%D7%A6%D7%9E%D7%97+%D7%A6%D7%93%D7%A7%E2%80%AD/data=!4m7!3m6!1s0x151c2393d105a3df:0xe0b52ceff88c41af!8m2!3d32.969151!4d35.4923623!16s%2Fg%2F11g6qzh9sc!19sChIJ36MF0ZMjHBURr0GM-O8steA",
+    "https://www.google.com/maps/place/%D7%91%D7%99%D7%AA+%D7%94%D7%9B%D7%A0%D7%A1%D7%AA+%D7%A8%D7%91%D7%99+%D7%99%D7%95%D7%A1%D7%A3+%D7%A7%D7%90%D7%A8%D7%95%E2%80%AD/data=!4m7!3m6!1s0x151c2391821afaf5:0xe32661095bcecdac!8m2!3d32.9686594!4d35.4917075!16s%2Fg%2F11gjs28_m6!19sChIJ9foagpEjHBURrM3OWwlhJuM"
+  ]
+}

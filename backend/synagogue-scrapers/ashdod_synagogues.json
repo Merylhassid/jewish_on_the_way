@@ -1,0 +1,898 @@
+[
+  {
+    "name": "בית הכנסת בעלזא המרכזי",
+    "address": "חטיבת הנגב 35, אשדוד",
+    "phone": "08-856-9675",
+    "latitude": 31.8001221,
+    "longitude": 34.6647715,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אור החיים הקדוש",
+    "address": "קק\"ל 70, אשדוד",
+    "phone": null,
+    "latitude": 31.7797185,
+    "longitude": 34.6478169,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אור החיים",
+    "address": "אור חיים 9, אשדוד",
+    "phone": null,
+    "latitude": 31.7853879,
+    "longitude": 34.6644221,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת בעלזא",
+    "address": "רבי יהודה הנשיא 16, אשדוד",
+    "phone": null,
+    "latitude": 31.7906448,
+    "longitude": 34.6660318,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת מקור ברוך",
+    "address": "עמרם חזנוב, אשדוד",
+    "phone": null,
+    "latitude": 31.7708458,
+    "longitude": 34.632837,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת רובע הסיטי",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.785643,
+    "longitude": 34.639512,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אחוות ישראל",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.783719,
+    "longitude": 34.633926,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת שי עולמות",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.787956,
+    "longitude": 34.6574486,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת החיד\"א",
+    "address": "יצחק הנשיא 22, אשדוד",
+    "phone": "08-610-7725",
+    "latitude": 31.7978225,
+    "longitude": 34.6564017,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת נר דוד ואוהל רחמה",
+    "address": "פתח תקווה 15, אשדוד",
+    "phone": "050-628-9005",
+    "latitude": 31.7827874,
+    "longitude": 34.6635846,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת פורת יוסף",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7807278,
+    "longitude": 34.6487084,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אהבת ציון",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7909624,
+    "longitude": 34.6558292,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת מורשה",
+    "address": "הרב שמואל רוזובסקי, אשדוד",
+    "phone": null,
+    "latitude": 31.803163,
+    "longitude": 34.6595852,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת תפארת מאיר אשדוד",
+    "address": "רבי מאיר בעל הנס 40, אשדוד",
+    "phone": null,
+    "latitude": 31.7887827,
+    "longitude": 34.6624449,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת מגן חסידים",
+    "address": "מבצע חורב 5, אשדוד",
+    "phone": null,
+    "latitude": 31.7993503,
+    "longitude": 34.6625371,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת",
+    "address": "רשב\"י 21, אשדוד",
+    "phone": null,
+    "latitude": 31.7901851,
+    "longitude": 34.665052,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת אור יצחק",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7869131,
+    "longitude": 34.6432555,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת הרמ\"א",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.796184,
+    "longitude": 34.653753,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת תפארת רפאל",
+    "address": "המאבק, אשדוד",
+    "phone": null,
+    "latitude": 31.7839685,
+    "longitude": 34.6427599,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת ט״ו היכל נפתלי",
+    "address": "ברוריה 5, אשדוד",
+    "phone": null,
+    "latitude": 31.774092,
+    "longitude": 34.628064,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת היכל בני אדרי",
+    "address": "אשדוד",
+    "phone": "050-742-3064",
+    "latitude": 31.7941029,
+    "longitude": 34.6324281,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת \"שבט הלוי\"אשדוד",
+    "address": "רבי אליעזר בן הורקנוס, אשדוד",
+    "phone": null,
+    "latitude": 31.7913844,
+    "longitude": 34.661013,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אוהל - יעקב",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.804696,
+    "longitude": 34.6498576,
+    "destinationId": 364
+  },
+  {
+    "name": "רינת זכריה",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7967831,
+    "longitude": 34.6513076,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת \"ברכת אברהם\"",
+    "address": "ענבים, אשדוד",
+    "phone": null,
+    "latitude": 31.7701253,
+    "longitude": 34.6401082,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת זרע אברהם אשדוד",
+    "address": "הרי\"ף 62, אשדוד",
+    "phone": null,
+    "latitude": 31.7856297,
+    "longitude": 34.6660712,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת תפארת יצחק פיצ'חדזה",
+    "address": "פינת, מנחם אוסישקין, אשדוד",
+    "phone": "053-750-9552",
+    "latitude": 31.773148,
+    "longitude": 34.634917,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת בית - אל",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.804171,
+    "longitude": 34.661918,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת אברהם אבינו",
+    "address": "Unnamed Road, אשדוד",
+    "phone": null,
+    "latitude": 31.783061,
+    "longitude": 34.6354346,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת ישיבת אשדוד",
+    "address": "רבי עקיבא 6, אשדוד",
+    "phone": null,
+    "latitude": 31.7980423,
+    "longitude": 34.659979,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת קהילת שירה חדשה",
+    "address": "אשדוד",
+    "phone": "053-557-6137",
+    "latitude": 31.778974,
+    "longitude": 34.635552,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אוהל שמואל",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.8027607,
+    "longitude": 34.6401786,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת חב\"ד רובע ג'",
+    "address": "רבי עקיבא 4, אשדוד",
+    "phone": "052-369-2067",
+    "latitude": 31.7982599,
+    "longitude": 34.6596357,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת \"יחד שבטי ישראל\"",
+    "address": "קק\"ל 17, אשדוד",
+    "phone": null,
+    "latitude": 31.7835508,
+    "longitude": 34.6464421,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת תהילת ציון",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7984018,
+    "longitude": 34.6376745,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת משכן מאיר",
+    "address": "קק\"ל 106, אשדוד",
+    "phone": "052-525-0962",
+    "latitude": 31.7821019,
+    "longitude": 34.65262,
+    "destinationId": 364
+  },
+  {
+    "name": "סולם יעקב",
+    "address": "ברוריה, אשדוד",
+    "phone": null,
+    "latitude": 31.7744596,
+    "longitude": 34.6289844,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת מגן יוסף",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.781936,
+    "longitude": 34.660239,
+    "destinationId": 364
+  },
+  {
+    "name": "שערי רחמים - גומל חסד",
+    "address": "Unnamed Road, אשדוד",
+    "phone": null,
+    "latitude": 31.7856527,
+    "longitude": 34.6534662,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת י\"ג קדושי אשדוד",
+    "address": "חטיבת הנגב 25, אשדוד",
+    "phone": "054-914-7071",
+    "latitude": 31.801273,
+    "longitude": 34.664671,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת מגן דוד",
+    "address": "הראשונים 37, אשדוד",
+    "phone": null,
+    "latitude": 31.8052904,
+    "longitude": 34.6448246,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת \"רבי שלום זאווי\"",
+    "address": "כיכר סיגל, אשדוד",
+    "phone": null,
+    "latitude": 31.7936444,
+    "longitude": 34.6462216,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת היכל יצחק",
+    "address": "מבוא יהוא המלך 10, אשדוד",
+    "phone": null,
+    "latitude": 31.7763493,
+    "longitude": 34.6441579,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת שלום שבזי",
+    "address": "נחל שניר 5, אשדוד",
+    "phone": null,
+    "latitude": 31.7817948,
+    "longitude": 34.634323,
+    "destinationId": 364
+  },
+  {
+    "name": "מעייני ישראל אשדוד",
+    "address": "האדמו\"ר מויז'ניץ 3, אשדוד",
+    "phone": null,
+    "latitude": 31.7911686,
+    "longitude": 34.6643498,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת קהילת ישראל",
+    "address": "מבוא השרביטן 9, אשדוד",
+    "phone": null,
+    "latitude": 31.7880643,
+    "longitude": 34.6542967,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת הקראי \"כתר תורה\"",
+    "address": "תשרי 9, אשדוד",
+    "phone": "08-866-9309",
+    "latitude": 31.7817199,
+    "longitude": 34.642087,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת רבי דוד בן ברוך",
+    "address": "הרב קוק 20, אשדוד",
+    "phone": null,
+    "latitude": 31.8080266,
+    "longitude": 34.6561712,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת זכרון אברהם",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.783862,
+    "longitude": 34.633628,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת שאולי",
+    "address": "Unnamed Road, אשדוד",
+    "phone": null,
+    "latitude": 31.8082692,
+    "longitude": 34.6493836,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת המרכזי ובית המדרש מגן אברהם",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.798673,
+    "longitude": 34.643506,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת יצחק ירנן",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.8071471,
+    "longitude": 34.654684,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת בית אהרון",
+    "address": "רבי שלום שבזי 5, אשדוד",
+    "phone": null,
+    "latitude": 31.7985717,
+    "longitude": 34.6480281,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת החדש דחסידי בעלזא",
+    "address": "אברהם שפירא 4, אשדוד",
+    "phone": null,
+    "latitude": 31.7948861,
+    "longitude": 34.6593162,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת בית שלמה זלמן בעלזא",
+    "address": "הרב יצחק בוסקילה &, שדרות משה סנה, אשדוד",
+    "phone": null,
+    "latitude": 31.7987096,
+    "longitude": 34.6661051,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת ברכת עמליה",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7813944,
+    "longitude": 34.6292276,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת היכל בני אסרף",
+    "address": "העצמאות 3, אשדוד",
+    "phone": "052-982-2450",
+    "latitude": 31.792598,
+    "longitude": 34.6435722,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת הרמח\"ל",
+    "address": "האצ\"ל 13, אשדוד",
+    "phone": null,
+    "latitude": 31.8096615,
+    "longitude": 34.6444476,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת בית מאיר",
+    "address": "העצמאות 39, אשדוד",
+    "phone": "052-315-0707",
+    "latitude": 31.7911623,
+    "longitude": 34.6467185,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת ברסלב",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7876442,
+    "longitude": 34.6626203,
+    "destinationId": 364
+  },
+  {
+    "name": "שטיבלאך - קהל חסידים",
+    "address": "רבי אליעזר בן הורקנוס 7, אשדוד",
+    "phone": "054-845-0340",
+    "latitude": 31.7914709,
+    "longitude": 34.6604398,
+    "destinationId": 364
+  },
+  {
+    "name": "בית חב\"ד רובע הקריה אשדוד",
+    "address": "קניון הסיטי, שדרות מנחם בגין 1, אשדוד",
+    "phone": "08-866-2763",
+    "latitude": 31.7906076,
+    "longitude": 34.639391,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת יד שבתאי",
+    "address": "שלמה בן יוסף, אשדוד",
+    "phone": null,
+    "latitude": 31.7959841,
+    "longitude": 34.6576361,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת קול יעקב",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.799688,
+    "longitude": 34.648519,
+    "destinationId": 364
+  },
+  {
+    "name": "בית החסידים גור עטרת בנים רחוב רבי טרפון אשדוד",
+    "address": "רבי טרפון 3, אשדוד",
+    "phone": "053-318-6658",
+    "latitude": 31.7875382,
+    "longitude": 34.6634026,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת \"בית שלום\" בעלזא",
+    "address": "רבי מאיר בעל הנס 38, אשדוד",
+    "phone": "054-847-2289",
+    "latitude": 31.7883956,
+    "longitude": 34.6621824,
+    "destinationId": 364
+  },
+  {
+    "name": "ביה״כ שאר ישוב",
+    "address": "שדרות מונטיפיורי 4, אשדוד",
+    "phone": "052-685-4141",
+    "latitude": 31.771852,
+    "longitude": 34.625003,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אוהלי שם",
+    "address": "ברקת, אשדוד",
+    "phone": null,
+    "latitude": 31.7696123,
+    "longitude": 34.6229932,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת רשב\"י",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7844976,
+    "longitude": 34.6286095,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת שבת אחים",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.8052762,
+    "longitude": 34.6448784,
+    "destinationId": 364
+  },
+  {
+    "name": "קהילת מעם לועז",
+    "address": "מרכז מסחרי טופז, אשדוד",
+    "phone": null,
+    "latitude": 31.7719321,
+    "longitude": 34.6240595,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת המרכזי שמחת אליהו",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.787913,
+    "longitude": 34.663797,
+    "destinationId": 364
+  },
+  {
+    "name": "מרכז תורני אבות קדושים אשדוד",
+    "address": "ארלוזורוב 15-21, אשדוד",
+    "phone": null,
+    "latitude": 31.7941642,
+    "longitude": 34.6482621,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת בית יצחק אוהל אליהו",
+    "address": "השייטים 12, אשדוד",
+    "phone": null,
+    "latitude": 31.7995476,
+    "longitude": 34.6412072,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת בני קדושים",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7961119,
+    "longitude": 34.6504537,
+    "destinationId": 364
+  },
+  {
+    "name": "בית אליהו",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.790239,
+    "longitude": 34.657276,
+    "destinationId": 364
+  },
+  {
+    "name": "בית מנחם אשדוד סיטי",
+    "address": "העצמאות 93, אשדוד",
+    "phone": "050-819-0604",
+    "latitude": 31.7889378,
+    "longitude": 34.6424873,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת שבטי ישראל",
+    "address": "אשדוד",
+    "phone": "054-595-4434",
+    "latitude": 31.8033205,
+    "longitude": 34.6537823,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת בית אהרון",
+    "address": "הפלמ\"ח 20, אשדוד, 7737702",
+    "phone": "055-663-6194",
+    "latitude": 31.8007503,
+    "longitude": 34.6626549,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת שובה ישראל",
+    "address": "רוגוזין 45, אשדוד",
+    "phone": "050-447-6060",
+    "latitude": 31.8008356,
+    "longitude": 34.6403952,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אוצרות החיים",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.804014,
+    "longitude": 34.653197,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת קלארה קראקו",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.800588,
+    "longitude": 34.6472365,
+    "destinationId": 364
+  },
+  {
+    "name": "בית המדרש המרכזי אשדוד",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7897834,
+    "longitude": 34.6570812,
+    "destinationId": 364
+  },
+  {
+    "name": "אדר היקר",
+    "address": "שבי ציון 14, אשדוד",
+    "phone": null,
+    "latitude": 31.8075464,
+    "longitude": 34.6474414,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת מגן - רפאל",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.806427,
+    "longitude": 34.648286,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת שומר ישראל",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7936895,
+    "longitude": 34.6550509,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת כתר שלום שבזי",
+    "address": "הראשונים, אשדוד",
+    "phone": null,
+    "latitude": 31.8048122,
+    "longitude": 34.6438146,
+    "destinationId": 364
+  },
+  {
+    "name": "נס לישראל בית כנסת",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.7851884,
+    "longitude": 34.6385394,
+    "destinationId": 364
+  },
+  {
+    "name": "בית מדרש שאץ",
+    "address": "רבי יהודה הנשיא 2, אשדוד",
+    "phone": null,
+    "latitude": 31.7895563,
+    "longitude": 34.6667678,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת הרמב\"ם תפארת חיים",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.8049251,
+    "longitude": 34.6499989,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת גור בעל הנס",
+    "address": "רבי מאיר בעל הנס 8, אשדוד",
+    "phone": null,
+    "latitude": 31.7894014,
+    "longitude": 34.6596514,
+    "destinationId": 364
+  },
+  {
+    "name": "בית מדרש משכנות שמואל",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.783683,
+    "longitude": 34.6376204,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת נר מערבי",
+    "address": "חטיבת הנגב 9, אשדוד",
+    "phone": "054-485-2388",
+    "latitude": 31.8029926,
+    "longitude": 34.6638657,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת ענן הנשיא",
+    "address": "האצ\"ל 7, אשדוד",
+    "phone": "08-853-2655",
+    "latitude": 31.8106479,
+    "longitude": 34.6449217,
+    "destinationId": 364
+  },
+  {
+    "name": "בית יעקב מעם לועז",
+    "address": "אגוז 11, אשדוד",
+    "phone": null,
+    "latitude": 31.7983907,
+    "longitude": 34.6328923,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת \"קול יהודה\", אשדוד",
+    "address": "שדרות רחובות 17, אשדוד",
+    "phone": null,
+    "latitude": 31.7827948,
+    "longitude": 34.6638647,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת אהבת ישראל",
+    "address": "הרותם 6, אשדוד",
+    "phone": "054-840-3020",
+    "latitude": 31.788365,
+    "longitude": 34.6565747,
+    "destinationId": 364
+  },
+  {
+    "name": "היכל דב - גראנס",
+    "address": "הרותם 35, אשדוד",
+    "phone": null,
+    "latitude": 31.7892559,
+    "longitude": 34.651148,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת נעשכיז",
+    "address": "רחוב רבי יוסי בר חלפתא רבי יוסי בר חלפתא 9, אשדוד",
+    "phone": null,
+    "latitude": 31.7951738,
+    "longitude": 34.661775,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת ליהודי תימן",
+    "address": "שלמה בן יוסף 18, אשדוד",
+    "phone": null,
+    "latitude": 31.7939439,
+    "longitude": 34.6551285,
+    "destinationId": 364
+  },
+  {
+    "name": "מקווה רובע ד אשדוד",
+    "address": "הרב שאולי 5, אשדוד",
+    "phone": null,
+    "latitude": 31.7984448,
+    "longitude": 34.6430542,
+    "destinationId": 364
+  },
+  {
+    "name": "בעלזא",
+    "address": "ב.צ. מילמן &, דב גור, אשדוד",
+    "phone": null,
+    "latitude": 31.792176,
+    "longitude": 34.655041,
+    "destinationId": 364
+  },
+  {
+    "name": "בית וועד לחכמים אשדוד",
+    "address": "רבא 20, אשדוד",
+    "phone": "053-311-0751",
+    "latitude": 31.7897729,
+    "longitude": 34.6672332,
+    "destinationId": 364
+  },
+  {
+    "name": "מרכז ׳אור מנחם׳ - ע״ש הרבי מליובאוויטש",
+    "address": "אבני חושן 1, אשדוד",
+    "phone": "08-867-6678",
+    "latitude": 31.766502,
+    "longitude": 34.627617,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת אליהו הנביא",
+    "address": "דב גור 24, אשדוד",
+    "phone": null,
+    "latitude": 31.7918632,
+    "longitude": 34.6554742,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת חב\"ד ט\"ו",
+    "address": "שדרות תל חי 53, אשדוד",
+    "phone": "054-751-7842",
+    "latitude": 31.767917,
+    "longitude": 34.6302177,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת לעולי הודו קהילת בני ישראל",
+    "address": "מרכז מסחרי,רח' שמואל רוזובסקי, אשדוד",
+    "phone": null,
+    "latitude": 31.8025783,
+    "longitude": 34.6591089,
+    "destinationId": 364
+  },
+  {
+    "name": "ישיבת פיטסבורג",
+    "address": "צדקת יוסף 1, אשדוד",
+    "phone": null,
+    "latitude": 31.7982795,
+    "longitude": 34.6573261,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת ובית הוראה מאורי אור",
+    "address": "20, רבי יהודה הנשיא 16, אשדוד",
+    "phone": null,
+    "latitude": 31.7906583,
+    "longitude": 34.6659876,
+    "destinationId": 364
+  },
+  {
+    "name": "בית הכנסת תורה וחיים ע\"ש רבי חיים חורי זצ\"ל לפי ק\"ק תוניס",
+    "address": "חיבת ציון 14, אשדוד",
+    "phone": null,
+    "latitude": 31.8098201,
+    "longitude": 34.6463983,
+    "destinationId": 364
+  },
+  {
+    "name": "בית מדרש 'תפארת יוחנן' טאלנא",
+    "address": "רב חיסדא 10, אשדוד",
+    "phone": "08-854-2715",
+    "latitude": 31.7877134,
+    "longitude": 34.6668723,
+    "destinationId": 364
+  },
+  {
+    "name": "בית כנסת בית שלמה",
+    "address": "אשדוד",
+    "phone": null,
+    "latitude": 31.792802,
+    "longitude": 34.661231,
+    "destinationId": 364
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "name": "בית כנסת אבוהב",
+    "address": "אבוהב, צפת",
+    "phone": "050-411-5127",
+    "latitude": 32.9686658,
+    "longitude": 35.4914559,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת האר\"י הספרדי",
+    "address": "האר\"י 100, צפת",
+    "phone": "050-624-2589",
+    "latitude": 32.9681999,
+    "longitude": 35.4905163,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת רחובות הנהר",
+    "address": "נוף החולה 1-17, צפת",
+    "phone": "052-946-5382",
+    "latitude": 32.9469584,
+    "longitude": 35.5310567,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת האר\"י האשכנזי",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.9696426,
+    "longitude": 35.4916916,
+    "destinationId": 529
+  },
+  {
+    "name": "בית הכנסת רבי חומני עלוש זצ\"ל",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.9684757,
+    "longitude": 35.4982856,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת אור תורה",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.963841,
+    "longitude": 35.514043,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת מקארב",
+    "address": "שמעון בר יוחאי 37, צפת, 11310",
+    "phone": "052-312-5826",
+    "latitude": 32.9702714,
+    "longitude": 35.4927083,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת \"אגודת אחים\"",
+    "address": "הרצל 9, צפת",
+    "phone": "058-320-4661",
+    "latitude": 32.9584353,
+    "longitude": 35.496174,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת המויסדעס",
+    "address": "אצ\"ל 202, צפת",
+    "phone": "058-414-7148",
+    "latitude": 32.9598665,
+    "longitude": 35.4918906,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת נוף כנרת",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.9501736,
+    "longitude": 35.5290361,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת על שם רבי יעקב אבוחצירא",
+    "address": "דוד רמז 90, צפת",
+    "phone": null,
+    "latitude": 32.956571,
+    "longitude": 35.494919,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת צאנז",
+    "address": "תרפ\"ט 8, צפת",
+    "phone": null,
+    "latitude": 32.9683888,
+    "longitude": 35.4921652,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת חב\"ד, היכל לוי יצחק",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.9648001,
+    "longitude": 35.5051577,
+    "destinationId": 529
+  },
+  {
+    "name": "בית הכנסת ליובאוויטש לדוברי רוסית צפת",
+    "address": "השבעה 70, צפת",
+    "phone": "054-788-2586",
+    "latitude": 32.9674514,
+    "longitude": 35.5050082,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת חב\"ד",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.9608592,
+    "longitude": 35.5086724,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת צפת",
+    "address": "צה\"ל 3, צפת",
+    "phone": null,
+    "latitude": 32.9655268,
+    "longitude": 35.4872114,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת תפארת אחים",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.9580463,
+    "longitude": 35.4991449,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת ע\"ש ר' חיי טייב",
+    "address": "צפת",
+    "phone": null,
+    "latitude": 32.969126,
+    "longitude": 35.50627,
+    "destinationId": 529
+  },
+  {
+    "name": "בית כנסת חב\"ד צמח צדק",
+    "address": "חת\"ם סופר, צפת",
+    "phone": null,
+    "latitude": 32.969151,
+    "longitude": 35.4923623,
+    "destinationId": 529
+  },
+  {
+    "name": "בית הכנסת רבי יוסף קארו",
+    "address": "בית יוסף 2, צפת",
+    "phone": null,
+    "latitude": 32.9686594,
+    "longitude": 35.4917075,
+    "destinationId": 529
+  }
+]

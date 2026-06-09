@@ -1,24 +1,14 @@
 'use strict';
 
-/**
- * Ashdod Synagogue Scraper — Google Maps
- * Source: https://www.google.com/maps/search/בית+כנסת+אשדוד
- * Destination ID: 364
- *
- * Usage:
- *   node scrape-ashdod-gmaps.js            → headless
- *   node scrape-ashdod-gmaps.js --headed   → visible browser (recommended first run)
- */
-
 const { chromium } = require('playwright');
 const fs   = require('fs');
 const path = require('path');
 
-const DESTINATION_ID = 364;
-const CITY           = 'אשדוד';
-const GMAPS_URL      = 'https://www.google.com/maps/search/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%90%D7%A9%D7%93%D7%95%D7%93/@31.793353,34.6451026,14z?hl=iw';
-const OUTPUT_FILE    = path.join(__dirname, 'ashdod_synagogues.json');
-const PROGRESS_FILE  = path.join(__dirname, 'ashdod_progress.json');
+const DESTINATION_ID = 334;
+const CITY           = 'בני ברק';
+const GMAPS_URL      = 'https://www.google.com/maps/search/%D7%91%D7%99%D7%AA+%D7%9B%D7%A0%D7%A1%D7%AA+%D7%91%D7%A0%D7%99+%D7%91%D7%A8%D7%A7%E2%80%AD/@32.0832842,34.8547716,14z?hl=iw';
+const OUTPUT_FILE    = path.join(__dirname, 'bnei_brak_synagogues.json');
+const PROGRESS_FILE  = path.join(__dirname, 'bnei_brak_progress.json');
 
 const HEADED = process.argv.includes('--headed');
 
@@ -39,17 +29,14 @@ function saveProgress(results, doneUrls) {
   fs.writeFileSync(PROGRESS_FILE, JSON.stringify({ results, doneUrls }, null, 2), 'utf-8');
 }
 
-// Extract lat/lon from Google Maps URL e.g. !3d31.1234!4d34.5678
 function coordsFromUrl(url) {
   const m = url.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
   if (m) return { lat: parseFloat(m[1]), lon: parseFloat(m[2]) };
-  // fallback: @lat,lon,zoom pattern
   const m2 = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
   if (m2) return { lat: parseFloat(m2[1]), lon: parseFloat(m2[2]) };
   return null;
 }
 
-// Scroll the results panel until no new links appear
 async function scrollToLoadAll(page) {
   const feed = 'div[role="feed"]';
   await page.waitForSelector(feed, { timeout: 15000 });
@@ -100,14 +87,12 @@ async function scrollToLoadAll(page) {
   await page.goto(GMAPS_URL, { waitUntil: 'load', timeout: 60000 });
   await wait(3000);
 
-  // Dismiss cookie banner if present
   const cookieBtn = await page.$('button:has-text("אישור הכל"), button:has-text("Accept all"), button:has-text("Reject all")');
   if (cookieBtn) { await cookieBtn.click(); await wait(1000); }
 
   log('📜 Scrolling to load all results...');
   await scrollToLoadAll(page);
 
-  // Collect all unique place links
   const rawLinks = await page.$$eval('a[href*="/maps/place/"]', links =>
     links.map(a => ({
       name: (a.getAttribute('aria-label') || '').trim(),
@@ -115,7 +100,6 @@ async function scrollToLoadAll(page) {
     })).filter(l => l.href.includes('/maps/place/'))
   );
 
-  // Deduplicate by href prefix (strip after ?)
   const seen = new Set();
   const placeLinks = [];
   for (const l of rawLinks) {
@@ -142,11 +126,9 @@ async function scrollToLoadAll(page) {
       await page.goto(href, { waitUntil: 'load', timeout: 30000 });
       await wait(1500);
 
-      // Name
       const name = await page.$eval('h1', el => el.innerText.trim()).catch(() => peekName || null);
       if (!name) { log(`     ⚠️ No name, skip`); continue; }
 
-      // Address
       let address = await page.$$eval(
         'button[data-item-id="address"] .Io6YTe, [data-tooltip="העתק כתובת"] .Io6YTe',
         els => els[0]?.innerText?.trim() || null
@@ -154,17 +136,15 @@ async function scrollToLoadAll(page) {
       if (!address) {
         address = await page.$eval('[aria-label*="כתובת"]', el => el.innerText?.trim()).catch(() => null);
       }
-      if (address && !address.includes(CITY) && !address.includes('אשדוד')) {
+      if (address && !address.includes(CITY) && !address.includes('בני ברק')) {
         address = `${address}, ${CITY}`;
       }
       if (!address) address = CITY;
 
-      // Phone
       const phone = await page.$$eval('[data-item-id^="phone:tel:"] .Io6YTe',
         els => els[0]?.innerText?.trim() || null
       ).catch(() => null);
 
-      // Coordinates from URL
       const coords = coordsFromUrl(page.url()) || coordsFromUrl(href);
 
       results.push({
@@ -184,7 +164,6 @@ async function scrollToLoadAll(page) {
       log(`     ⚠️ Error: ${e.message.split('\n')[0]}`);
     }
 
-    // Back to results
     await page.goBack({ waitUntil: 'load', timeout: 15000 }).catch(() => {});
     await wait(800);
 
@@ -197,6 +176,6 @@ async function scrollToLoadAll(page) {
   await browser.close();
 
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(results, null, 2), 'utf-8');
-  log(`\n✅ Done! ${results.length} synagogues saved to ashdod_synagogues.json`);
+  log(`\n✅ Done! ${results.length} synagogues saved to bnei_brak_synagogues.json`);
   log(`   (${newCount} new this run)`);
 })();
