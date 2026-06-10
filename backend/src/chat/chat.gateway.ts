@@ -57,6 +57,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   private readonly roomPresence = new Map<string, Set<number>>();
   // socketId → Set<roomKey>
   private readonly socketRooms = new Map<string, Set<string>>();
+  // Resolves when handleConnection finishes auth — prevents race with handleJoin
+  private readonly connectionReady = new Map<string, Promise<void>>();
 
   constructor(
     private jwtService: JwtService,
@@ -82,7 +84,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   }
 
   async handleConnection(client: Socket) {
-    try {
+    const authPromise = (async () => {
       const token =
         client.handshake.auth?.token ||
         client.handshake.headers?.authorization?.replace('Bearer ', '');
@@ -105,6 +107,13 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
         lastName: user.lastName,
       });
       this.logger.log(`Client connected: ${client.id} (user ${user.id})`);
+    })();
+
+    // Store a non-rejecting version so awaiting it in handleJoin is safe
+    this.connectionReady.set(client.id, authPromise.catch(() => {}));
+
+    try {
+      await authPromise;
     } catch {
       this.logger.warn(`Rejected connection: ${client.id}`);
       client.disconnect();
@@ -112,6 +121,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   }
 
   handleDisconnect(client: Socket) {
+    this.connectionReady.delete(client.id);
     const userId = (client as any).userId;
     if (userId) this.msgRateMap.delete(userId);
 
@@ -134,6 +144,10 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     @ConnectedSocket() client: Socket,
     @MessageBody() data: { destinationId: number },
   ) {
+    // Wait for handleConnection to finish (guards against the async race condition)
+    await this.connectionReady.get(client.id);
+    if (!(client as any).userId) throw new WsException('Unauthorized');
+
     const destination = await this.destinationsRepo.findOne({ where: { id: data.destinationId } });
     if (!destination) throw new WsException('Destination not found');
     (client as any).destinationId = destination.id;
@@ -231,6 +245,10 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     @ConnectedSocket() client: Socket,
     @MessageBody() data: { minyanId: number },
   ) {
+    // Wait for handleConnection to finish (guards against the async race condition)
+    await this.connectionReady.get(client.id);
+    if (!(client as any).userId) throw new WsException('Unauthorized');
+
     const room = `minyan-chat:${data.minyanId}`;
     (client as any).minyanId = data.minyanId;
     await client.join(room);
