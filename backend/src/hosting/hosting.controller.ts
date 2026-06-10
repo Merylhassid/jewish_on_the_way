@@ -1,11 +1,13 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Query,
   Req,
@@ -39,6 +41,12 @@ export class HostingController {
   @HttpCode(HttpStatus.OK)
   deactivateOffer(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
     return this.hostingService.deactivateOffer(id, req.user.sub);
+  }
+
+  @Delete('offers/:id')
+  @HttpCode(HttpStatus.OK)
+  deleteOffer(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.deleteOffer(id, req.user.sub);
   }
 
   // GET /hosting/offers/search?destinationId=1&guestsCount=2&forShabbat=true&arrivalDate=2026-05-01&limit=20&offset=0
@@ -89,6 +97,18 @@ export class HostingController {
     return this.hostingService.updateRequestStatus(id, req.user.sub, 'rejected');
   }
 
+  @Post('requests/:id/cancel')
+  @HttpCode(HttpStatus.OK)
+  cancelRequest(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.cancelRequest(id, req.user.sub);
+  }
+
+  @Delete('requests/:id')
+  @HttpCode(HttpStatus.OK)
+  deleteRequest(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.deleteRequest(id, req.user.sub);
+  }
+
   // ── Needs ───────────────────────────────────────────────────────────────────
 
   @Post('needs')
@@ -104,6 +124,18 @@ export class HostingController {
   @Get('needs/mine')
   myNeeds(@Req() req: any) {
     return this.hostingService.myNeeds(req.user.sub);
+  }
+
+  @Patch('needs/:id/close')
+  @HttpCode(HttpStatus.OK)
+  closeNeed(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.closeNeed(id, req.user.sub);
+  }
+
+  @Delete('needs/:id')
+  @HttpCode(HttpStatus.OK)
+  deleteNeed(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.deleteNeed(id, req.user.sub);
   }
 
   @Post('needs/:id/respond')

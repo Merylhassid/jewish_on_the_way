@@ -64,6 +64,23 @@ export default function MyOffersScreen() {
     ]);
   };
 
+  const handleDelete = (id: number) => {
+    Alert.alert('Delete Offer', 'This will permanently delete the offer. Are you sure?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete', style: 'destructive',
+        onPress: async () => {
+          try {
+            await client.delete(`/hosting/offers/${id}`);
+            loadOffers();
+          } catch (err: any) {
+            Alert.alert('Error', err?.response?.data?.message ?? 'Failed to delete');
+          }
+        },
+      },
+    ]);
+  };
+
   return (
     <View style={s.root}>
       <View style={s.header}>
@@ -116,12 +133,18 @@ export default function MyOffersScreen() {
 
               {item.notes ? <Text style={s.notes}>{item.notes}</Text> : null}
 
-              {item.isActive && (
-                <TouchableOpacity style={s.deactivateBtn} onPress={() => handleDeactivate(item.id)}>
-                  <X size={14} color={C.error} strokeWidth={2.5} />
-                  <Text style={s.deactivateBtnText}>Deactivate</Text>
+              <View style={s.cardActions}>
+                {item.isActive && (
+                  <TouchableOpacity style={s.deactivateBtn} onPress={() => handleDeactivate(item.id)}>
+                    <X size={14} color={C.error} strokeWidth={2.5} />
+                    <Text style={s.deactivateBtnText}>Deactivate</Text>
+                  </TouchableOpacity>
+                )}
+                <TouchableOpacity style={s.deleteBtn} onPress={() => handleDelete(item.id)}>
+                  <X size={14} color="#9CA3AF" strokeWidth={2.5} />
+                  <Text style={s.deleteBtnText}>Delete</Text>
                 </TouchableOpacity>
-              )}
+              </View>
             </View>
           )}
           ListEmptyComponent={
@@ -180,13 +203,23 @@ const s = StyleSheet.create({
 
   notes: { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, fontStyle: 'italic', marginTop: 8 },
 
+  cardActions: { flexDirection: 'row', gap: 8, marginTop: 12 },
+
   deactivateBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
-    marginTop: 12, paddingVertical: 10, paddingHorizontal: 14,
+    paddingVertical: 10, paddingHorizontal: 14,
     borderRadius: 10, borderWidth: 1, borderColor: '#FECACA',
-    backgroundColor: '#FFF5F5', alignSelf: 'flex-start',
+    backgroundColor: '#FFF5F5',
   },
   deactivateBtnText: { fontFamily: 'Inter-SemiBold', fontSize: 13, color: C.error },
+
+  deleteBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    paddingVertical: 10, paddingHorizontal: 14,
+    borderRadius: 10, borderWidth: 1, borderColor: '#E5E7EB',
+    backgroundColor: '#F9FAFB',
+  },
+  deleteBtnText: { fontFamily: 'Inter-SemiBold', fontSize: 13, color: '#6B7280' },
 
   empty:     { alignItems: 'center', paddingTop: 80, gap: 10 },
   emptyTitle: { fontFamily: 'Inter-SemiBold', fontSize: 16, color: C.textSecondary },

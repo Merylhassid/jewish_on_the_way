@@ -149,6 +149,19 @@ export const FOOD_RELATIONS: Record<string, FoodRelation> = {
   'takeaway':       { searchTags: ['takeaway', 'deli'] },
   'take away':      { searchTags: ['takeaway', 'deli'] },
   'takeout':        { searchTags: ['takeaway', 'deli'] },
+
+  // ── Bakery Hebrew (query terms, not just name patterns) ───────────────────
+  'מאפייה':    { searchTags: ['bakery', 'cafe'],                  fallbackType: 'dairy' },
+  'מאפיה':     { searchTags: ['bakery', 'cafe'],                  fallbackType: 'dairy' },
+  'מאפיית':    { searchTags: ['bakery', 'cafe'],                  fallbackType: 'dairy' },
+
+  // ── Missing food terms ────────────────────────────────────────────────────
+  'קציצות':    { searchTags: ['grill', 'burger', 'fast-food'],    fallbackType: 'meat' },
+  'קציצה':     { searchTags: ['grill', 'burger', 'fast-food'],    fallbackType: 'meat' },
+  'פריקסה':    { searchTags: ['sandwich', 'street-food'],         fallbackType: 'pareve' },
+  'בגט':       { searchTags: ['sandwich', 'bakery', 'cafe'],      fallbackType: 'dairy' },
+  'יין':       { searchTags: ['deli', 'italian', 'cafe'],         fallbackType: 'dairy' },
+  'wine':      { searchTags: ['deli', 'italian', 'cafe'],         fallbackType: 'dairy' },
 };
 
 /**
@@ -187,6 +200,35 @@ export const NAME_TO_TAG: [RegExp, string][] = [
   [/street.?food|מזון רחוב/i,                 'street-food'],
   [/take.?away|takeout|טייק אווי|משלוחים/i,   'takeaway'],
   [/healthy|בריא/i,                           'healthy'],
+  // ── Bakery / confectionery ────────────────────────────────────────────────
+  [/קונדיטורי|מגדני|patisserie|confiser/i,    'bakery'],
+  [/קונדיטורי|מגדני|דונא|donut|doughnut|סופגני/i, 'dessert'],
+  [/donut|doughnut|דונא|סופגני|בורקס/i,       'bakery'],
+  [/עוג(?:ה|ות|יו)|cake|cupcake|cheesecake/i, 'bakery'],
+  [/עוג(?:ה|ות|יו)|cake|cupcake|מקרון|macaron|אקלר|פרלינ|שוקולד|chocolate/i, 'dessert'],
+  [/לחם|לחמי|boulangerie|bread/i,             'bakery'],
+  // ── Cafe / coffee ─────────────────────────────────────────────────────────
+  [/espresso|cappuccino|אספרסו|קפואינו|בית קפה/i, 'cafe'],
+  [/espresso|cappuccino|אספרסו|coffee/i,      'coffee'],
+  // ── Ice cream / sweet treats ──────────────────────────────────────────────
+  [/gelateria|גלידרי|frozen.?yogurt|יוגורט/i, 'ice-cream'],
+  [/waffle|וופל|crepe|קרפ|פנקייק|pancake/i,   'dessert'],
+  // ── Breakfast ─────────────────────────────────────────────────────────────
+  [/shakshuka|שקשוק|פנקייק|pancake/i,         'breakfast'],
+  // ── Grill / meat ──────────────────────────────────────────────────────────
+  [/על האש|פרגי|שיפוד|asado|אסאדו|כבב|skewers?/i, 'grill'],
+  [/asado|אסאדו/i,                             'steak'],
+  [/פרגי|chicken|schnitzel|שניצל|חזה עוף/i,    'chicken'],
+  [/נקני|hot.?dog|sausage|נקניקי/i,           'fast-food'],
+  // ── Fast food / street ────────────────────────────────────────────────────
+  [/chips|fries|צ.?יפס/i,                      'fast-food'],
+  // ── Asian ─────────────────────────────────────────────────────────────────
+  [/\bwok\b|ווק|dim.?sum|דים.?סם|dumpling|korean|קוריאני|pad.?thai/i, 'asian'],
+  [/\bwok\b|ווק|\bpho\b|פאד.?תאי|pad.?thai/i, 'noodles'],
+  // ── Mexican ───────────────────────────────────────────────────────────────
+  [/tortilla|טורטיה|burrito|בוריטו|quesadilla|nachos|נאצ.?וס/i, 'mexican'],
+  // ── Healthy / juice ───────────────────────────────────────────────────────
+  [/juice|smoothie|מיץ|שייק|ג.?וס|organic|אורגני/i, 'healthy'],
 ];
 
 /**

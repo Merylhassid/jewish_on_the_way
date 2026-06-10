@@ -657,7 +657,7 @@ export default function ProfileScreen() {
             {myNeeds > 0 && (
               <>
                 {(myOffers > 0 || myHostRequests > 0) && <View style={styles.divider} />}
-                <Pressable style={styles.row} onPress={() => router.push('/hosting/my-requests' as any)}>
+                <Pressable style={styles.row} onPress={() => router.push('/hosting/my-needs' as any)}>
                   <View style={[styles.iconBox, { backgroundColor: 'rgba(124,58,237,0.10)' }]}>
                     <MaterialIcons name="people-outline" size={20} color="#7C3AED" />
                   </View>

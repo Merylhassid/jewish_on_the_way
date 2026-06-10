@@ -1022,34 +1022,68 @@ export class RestaurantsService {
     const searchTags = relation?.searchTags ?? [];
     const fallbackType = relation?.fallbackType;
 
-    // Tier 1: restaurant tags overlap with food-relation tags
-    if (searchTags.length > 0) {
-      const result = await this.searchByTags(searchTags, kashrut, destinationId, lat, lng);
+    const SPARSE_THRESHOLD = 5;
+    const SUPPLEMENT_MAX_METERS = 30000; // only pull in results from nearby cities (≤30km)
+    const MAX_RESULTS = 40; // cap the final list — best first, then fill with similar
+    const kwNorm = cleanedKeyword ? normalizeRestaurantSearchText(cleanedKeyword) : '';
+    const nameMatchesKeyword = (r: any): boolean =>
+      kwNorm.length > 0 && normalizeRestaurantSearchText(r.name ?? '').includes(kwNorm);
+    const supplement = async (localData: any[]): Promise<any[]> => {
+      // Without GPS we cannot tell which global results are nearby, so cities like
+      // Eilat would appear before local results. Skip supplement entirely; the
+      // mobile re-runs the search once GPS arrives, at which point filtering is safe.
+      if (lat === undefined || lng === undefined) return localData;
+
+      const ids = new Set(localData.map((r: any) => r.id));
+      const g = await this.searchGlobal(searchTags, cleanedKeyword, classifierType ?? fallbackType, kashrut, lat, lng);
+      // Only keep nearby results with known coordinates (≤30km)
+      const extra = g.data.filter(
+        (r: any) => !ids.has(r.id) && r.distanceMeters != null && r.distanceMeters <= SUPPLEMENT_MAX_METERS,
+      );
+      if (extra.length === 0) return localData;
+      const combined = [...localData, ...extra];
+      // Sort purely by distance — nearest first
+      combined.sort((a: any, b: any) =>
+        (a.distanceMeters ?? 999999) - (b.distanceMeters ?? 999999),
+      );
+      return combined.slice(0, MAX_RESULTS);
+    };
+
+    // Tier 1: name ILIKE — most specific (finds "גלידת ים", "שניצל בגדדי")
+    if (cleanedKeyword) {
+      const result = await this.findByDestination(destinationId, { q: cleanedKeyword, kashrut, lat, lng });
       if (result.data.length > 0) {
-        const tagDisplay = searchTags.slice(0, 2).join('/');
-        // Show "No X found" banner only for partial/unusual food terms (not exact FOOD_RELATIONS keys)
-        const kwLower = cleanedKeyword?.toLowerCase().trim() ?? '';
-        const exactRelation = kwLower ? FOOD_RELATIONS[kwLower] !== undefined : false;
-        const tagMatch = searchTags.some(t => t === kwLower || kwLower.includes(t));
-        const isDirectMatch = !cleanedKeyword || exactRelation || tagMatch;
+        const data = result.data.length < SPARSE_THRESHOLD
+          ? await supplement(result.data)
+          : result.data;
+        const supplemented = data.length > result.data.length;
         return {
-          ...result,
+          data,
+          total: data.length,
           matchTier: 1,
-          matchedVia: searchTags,
-          message: isDirectMatch ? null : `No "${cleanedKeyword}" restaurants found — showing ${tagDisplay} options`,
+          matchedVia: [cleanedKeyword],
+          message: supplemented ? 'מציג גם תוצאות מערים קרובות' : null,
         };
       }
     }
 
-    // Tier 2: name ILIKE on keyword
-    if (cleanedKeyword) {
-      const result = await this.findByDestination(destinationId, { q: cleanedKeyword, kashrut, lat, lng });
+    // Tier 2: food-relation tags — category match (dairy, meat, etc.)
+    if (searchTags.length > 0) {
+      const result = await this.searchByTags(searchTags, kashrut, destinationId, lat, lng);
       if (result.data.length > 0) {
+        const kwLower = cleanedKeyword?.toLowerCase().trim() ?? '';
+        const tagMatch = searchTags.some(t => t === kwLower || kwLower.includes(t));
+        const isDirectMatch = !cleanedKeyword || tagMatch;
+        // Indirect match (e.g. גלידה→dairy) always supplements so global ILIKE can find actual ice cream
+        const shouldSupplement = !isDirectMatch || result.data.length < SPARSE_THRESHOLD;
+        const data = shouldSupplement ? await supplement(result.data) : result.data;
+        const supplemented = data.length > result.data.length;
         return {
-          ...result,
+          data,
+          total: data.length,
           matchTier: 2,
-          matchedVia: [cleanedKeyword],
-          message: `Restaurants matching "${cleanedKeyword}"`,
+          matchedVia: searchTags,
+          message: supplemented ? 'מציג גם תוצאות מערים קרובות' : null,
         };
       }
     }
@@ -1058,27 +1092,103 @@ export class RestaurantsService {
     const effectiveType = classifierType ?? fallbackType;
     const result3 = await this.findByDestination(destinationId, { type: effectiveType, kashrut, lat, lng });
     if (result3.data.length > 0) {
-      const typeLabel = effectiveType ?? (kashrut ? `${kashrut} kosher` : 'kosher');
+      const data = await supplement(result3.data);
+      const supplemented = data.length > result3.data.length;
       return {
-        ...result3,
+        data,
+        total: data.length,
         matchTier: 3,
         matchedVia: [],
-        message: cleanedKeyword
-          ? `No "${cleanedKeyword}" restaurants found — showing ${typeLabel} options`
-          : null,
+        message: supplemented ? 'מציג גם תוצאות מערים קרובות' : null,
       };
     }
 
-    // Tier 4: nothing
+    // Tier 3.5: search globally across all destinations (fallback when local search fails)
+    const globalResult = await this.searchGlobal(searchTags, cleanedKeyword, effectiveType, kashrut, lat, lng);
+    if (globalResult.data.length > 0) {
+      return {
+        ...globalResult,
+        matchTier: 3,
+        matchedVia: ['global'],
+        message: `לא נמצאו תוצאות בעיר זו — מציג תוצאות מערים אחרות`,
+      };
+    }
+
+    // Tier 4: nothing found anywhere
     return {
       data: [],
       total: 0,
       matchTier: 4,
       matchedVia: [],
       message: cleanedKeyword
-        ? `No results for "${cleanedKeyword}". Try a different search.`
-        : 'No restaurants found.',
+        ? `לא נמצאו תוצאות עבור "${cleanedKeyword}"`
+        : 'לא נמצאו מסעדות.',
     };
+  }
+
+  private async searchGlobal(
+    tags: string[],
+    keyword: string | undefined,
+    type: string | undefined,
+    kashrut: string | undefined,
+    lat?: number,
+    lng?: number,
+  ): Promise<{ data: any[]; total: number }> {
+    const hasGps = lat !== undefined && lng !== undefined;
+    const select = `r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
+                    r.address, r.opening_hours AS "openingHours", d.city AS "destinationCity"`;
+    const distSelect = hasGps
+      ? `, ROUND(ST_Distance(r.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"`
+      : '';
+    const orderBy = hasGps ? `ORDER BY "distanceMeters" ASC` : `ORDER BY r.name ASC`;
+    const baseParams: any[] = hasGps ? [lng, lat] : [];
+    const paramOffset = baseParams.length;
+
+    const tryQuery = async (where: string, params: any[]): Promise<any[]> => {
+      const full = [...baseParams, ...params];
+      const q = `SELECT ${select}${distSelect} FROM restaurants r JOIN destinations d ON d.id = r."destinationId" WHERE ${where} ${orderBy} LIMIT 30`;
+      return this.restaurantsRepo.query(q, full);
+    };
+
+    // Accumulate across all layers (don't stop at the first hit) so the caller can
+    // fill the list: exact name-matches PLUS similar (tag/type) results from nearby
+    // cities. Dedupe by id; the caller decides final ordering and distance cap.
+    const seen = new Set<number>();
+    const results: any[] = [];
+    const addAll = (rows: any[]) => {
+      for (const r of rows) {
+        if (!seen.has(r.id)) { seen.add(r.id); results.push(r); }
+      }
+    };
+
+    // 1. keyword ILIKE — most specific (finds "גלידת ים", not just dairy cafes)
+    if (keyword) {
+      const where = kashrut
+        ? `r.name ILIKE $${paramOffset + 1} AND r.kashrut_level = $${paramOffset + 2}`
+        : `r.name ILIKE $${paramOffset + 1}`;
+      const params = kashrut ? [`%${keyword}%`, kashrut] : [`%${keyword}%`];
+      addAll(await tryQuery(where, params));
+    }
+
+    // 2. tags — category match (dairy, meat, …)
+    if (tags.length > 0) {
+      const where = kashrut
+        ? `r.tags && $${paramOffset + 1}::text[] AND r.kashrut_level = $${paramOffset + 2}`
+        : `r.tags && $${paramOffset + 1}::text[]`;
+      const params = kashrut ? [tags, kashrut] : [tags];
+      addAll(await tryQuery(where, params));
+    }
+
+    // 3. type
+    if (type) {
+      const where = kashrut
+        ? `r.restaurant_type = $${paramOffset + 1} AND r.kashrut_level = $${paramOffset + 2}`
+        : `r.restaurant_type = $${paramOffset + 1}`;
+      const params = kashrut ? [type, kashrut] : [type];
+      addAll(await tryQuery(where, params));
+    }
+
+    return { data: results, total: results.length };
   }
 
   private async searchByTags(

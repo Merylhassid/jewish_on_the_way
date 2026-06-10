@@ -59,8 +59,8 @@ const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFix
 const cap = (s: string | null | undefined) => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Unknown';
 
 export default function RestaurantsScreen() {
-  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam } =
-    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string }>();
+  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam, lat: latParam, lng: lngParam } =
+    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string; lat?: string; lng?: string }>();
   const isCountryMode = fromParent === 'true';
   const { t } = useTranslation();
 
@@ -78,11 +78,16 @@ export default function RestaurantsScreen() {
   const [aiMode] = useState(true);
   const [aiMeta, setAiMeta] = useState<{ matchTier: number; message: string | null } | null>(null);
   const [lastAiQuery, setLastAiQuery] = useState('');
-  const [gps, setGps]                 = useState<{ lat: number; lng: number } | null>(null);
+  // GPS: initialise from URL params (passed by home screen) so the first search already has coordinates.
+  // The async location request below may later update to a more accurate value.
+  const [gps, setGps] = useState<{ lat: number; lng: number } | null>(
+    latParam && lngParam ? { lat: parseFloat(latParam), lng: parseFloat(lngParam) } : null,
+  );
   const [aiChip, setAiChip]           = useState<{ category: string; emoji: string } | null>(null);
   const timeoutRef    = useRef<any>(null);
   const chipRef       = useRef<any>(null);
   const initialSearch = useRef(true);
+  const prevGpsRef    = useRef<{ lat: number; lng: number } | null>(null);
   const cityLabel = city ? decodeURIComponent(city) : '';
 
   useEffect(() => {
@@ -96,13 +101,17 @@ export default function RestaurantsScreen() {
   }, []);
 
   // In AI mode with text, search is triggered explicitly via doAiSearch (not auto-debounce).
-  // Exception: the very first load (qParam on mount) still runs to show initial results.
-  // We capture isFirst in the cleanup closure so the GPS arrival doesn't cancel the initial timeout.
+  // Exception 1: the very first load (qParam on mount) still runs to show initial results.
+  // Exception 2: when GPS first becomes available after the initial (GPS-less) search,
+  //   re-run so results are sorted by distance and distances are shown.
   useEffect(() => {
     const isFirst = initialSearch.current;
     if (isFirst) initialSearch.current = false;
 
-    if (aiMode && search.trim() && !isFirst) return;
+    const gpsJustArrived = !isFirst && gps != null && prevGpsRef.current == null;
+    prevGpsRef.current = gps;
+
+    if (aiMode && search.trim() && !isFirst && !gpsJustArrived) return;
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(async () => {
@@ -172,7 +181,8 @@ export default function RestaurantsScreen() {
         if (!isRestaurantRoute || differentDest) {
           const sep = route.includes('?') ? '&' : '?';
           const cityPart = detectedCity ? `city=${encodeURIComponent(detectedCity)}&` : '';
-          router.push(`${route}${sep}${cityPart}q=${encodeURIComponent(q)}` as any);
+          const gpsPart  = gps ? `&lat=${gps.lat}&lng=${gps.lng}` : '';
+          router.push(`${route}${sep}${cityPart}q=${encodeURIComponent(q)}${gpsPart}` as any);
           return;
         }
       }
