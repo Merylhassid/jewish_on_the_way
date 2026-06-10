@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator,
@@ -149,12 +149,31 @@ export default function MinyanChatScreen() {
     ]);
   };
 
+  const readReceiptMap = useMemo(() => {
+    const myMsgIds = messages
+      .filter((m) => m.user.id === user?.id)
+      .map((m) => m.id)
+      .sort((a, b) => a - b);
+
+    const map = new Map<number, ReadCursor[]>();
+    for (const cursor of cursors) {
+      if (cursor.userId === user?.id) continue;
+      let targetId: number | null = null;
+      for (const msgId of myMsgIds) {
+        if (msgId <= cursor.lastReadId) targetId = msgId;
+      }
+      if (targetId !== null) {
+        if (!map.has(targetId)) map.set(targetId, []);
+        map.get(targetId)!.push(cursor);
+      }
+    }
+    return map;
+  }, [messages, cursors, user?.id]);
+
   const renderItem = ({ item }: { item: ChatMsg }) => {
     const isMe = item.user.id === user?.id;
     const initials = `${item.user.firstName[0]}${item.user.lastName[0]}`.toUpperCase();
-    const readers = isMe
-      ? cursors.filter((c) => c.userId !== user?.id && c.lastReadId === item.id)
-      : [];
+    const readers = isMe ? (readReceiptMap.get(item.id) ?? []) : [];
 
     return (
       <View>
