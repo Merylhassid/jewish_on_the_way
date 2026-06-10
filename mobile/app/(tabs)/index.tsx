@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Animated,
   Dimensions,
   Platform,
   Pressable,
@@ -74,7 +75,10 @@ export default function HomeScreen() {
   const [searchMode, setSearchMode] = useState<'none' | 'ai'>('none');
   const [gps, setGps]           = useState<{ lat: number; lng: number } | null>(null);
   const [userCountry, setUserCountry] = useState<string | null>(null);
-  const [heroIdx, setHeroIdx]   = useState(0);
+  const [heroIdx, setHeroIdx]       = useState(0);
+  const [prevHeroIdx, setPrevHeroIdx] = useState(0);
+  const heroOpacity = useRef(new Animated.Value(1)).current;
+  const heroIdxRef  = useRef(0);
   const debRef = useRef<any>(null);
 
   const fetchDests = async (q?: string, coords?: { lat: number; lng: number }) => {
@@ -123,7 +127,19 @@ export default function HomeScreen() {
   useEffect(() => () => { if (debRef.current) clearTimeout(debRef.current); }, []);
 
   useEffect(() => {
-    const id = setInterval(() => setHeroIdx(i => (i + 1) % HERO_IMAGES.length), 4000);
+    const id = setInterval(() => {
+      const prev = heroIdxRef.current;
+      const next = (prev + 1) % HERO_IMAGES.length;
+      heroIdxRef.current = next;
+      setPrevHeroIdx(prev);
+      heroOpacity.setValue(0);
+      Animated.timing(heroOpacity, {
+        toValue: 1,
+        duration: 900,
+        useNativeDriver: true,
+      }).start();
+      setHeroIdx(next);
+    }, 4000);
     return () => clearInterval(id);
   }, []);
 
@@ -213,12 +229,20 @@ export default function HomeScreen() {
         {/* ── HERO ── */}
         {hero && (
           <View style={s.hero}>
+            {/* Previous image sits below */}
             <Image
-              source={HERO_IMAGES[heroIdx]}
+              source={HERO_IMAGES[prevHeroIdx]}
               style={StyleSheet.absoluteFillObject}
               contentFit="cover"
-              transition={1000}
             />
+            {/* New image fades in on top */}
+            <Animated.View style={[StyleSheet.absoluteFillObject, { opacity: heroOpacity }]}>
+              <Image
+                source={HERO_IMAGES[heroIdx]}
+                style={StyleSheet.absoluteFillObject}
+                contentFit="cover"
+              />
+            </Animated.View>
 
             {/* Gradient overlays */}
             <View style={s.heroGradTop} />
