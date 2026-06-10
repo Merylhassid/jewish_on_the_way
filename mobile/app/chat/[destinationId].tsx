@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -151,18 +151,33 @@ export default function ChatScreen() {
     ]);
   };
 
-  const getReadersForMessage = (msgId: number) =>
-    cursors.filter((c) => c.userId !== user?.id && c.lastReadId >= msgId);
+  // For each reader, find the highest of MY messages whose id ≤ their cursor.
+  // That message gets the reader's avatar shown under it.
+  const readReceiptMap = useMemo(() => {
+    const myMsgIds = messages
+      .filter((m) => m.user.id === user?.id)
+      .map((m) => m.id)
+      .sort((a, b) => a - b);
 
-  const renderItem = ({ item, index }: { item: ChatMsg; index: number }) => {
+    const map = new Map<number, ReadCursor[]>();
+    for (const cursor of cursors) {
+      if (cursor.userId === user?.id) continue;
+      let targetId: number | null = null;
+      for (const msgId of myMsgIds) {
+        if (msgId <= cursor.lastReadId) targetId = msgId;
+      }
+      if (targetId !== null) {
+        if (!map.has(targetId)) map.set(targetId, []);
+        map.get(targetId)!.push(cursor);
+      }
+    }
+    return map;
+  }, [messages, cursors, user?.id]);
+
+  const renderItem = ({ item }: { item: ChatMsg }) => {
     const isMe = item.user.id === user?.id;
     const initials = `${item.user.firstName[0]}${item.user.lastName[0]}`.toUpperCase();
-
-    // Show readers under the last message that each reader has reached
-    // A reader appears under message M if their cursor === M (i.e. M is the last msg they read)
-    const readers = isMe
-      ? cursors.filter((c) => c.userId !== user?.id && c.lastReadId === item.id)
-      : [];
+    const readers = isMe ? (readReceiptMap.get(item.id) ?? []) : [];
 
     return (
       <View>
