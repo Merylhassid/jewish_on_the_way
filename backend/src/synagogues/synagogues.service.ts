@@ -28,12 +28,11 @@ export class SynagoguesService {
     offset = 0,
     lat?: number,
     lng?: number,
-  ): Promise<{ data: any[]; total: number }> {
+  ): Promise<{ data: any[]; total: number; denominationFallback?: boolean }> {
     const denomValues = denomination ? (this.DENOM_MAP[denomination] ?? []) : [];
 
     // ── GPS mode: raw SQL with distance ordering ─────────
     if (lat !== undefined && lng !== undefined) {
-      // Build WHERE + params separately (count query doesn't need lat/lng)
       const countParams: any[] = [destinationId];
       let countWhere = `s."destinationId" = $1`;
       const gpsParams: any[] = [lng, lat, destinationId];
@@ -52,19 +51,66 @@ export class SynagoguesService {
         `SELECT COUNT(*) FROM synagogues s WHERE ${countWhere}`,
         countParams,
       );
-      const total = parseInt(countResult[0].count, 10);
+      let total = parseInt(countResult[0].count, 10);
+      let denominationFallback = false;
+
+      // Fallback: if denomination filter returned nothing, retry without denomination
+      if (total === 0 && denomValues.length > 0) {
+        const fbCount = await this.synagoguesRepo.query(
+          `SELECT COUNT(*) FROM synagogues s WHERE s."destinationId" = $1`,
+          [destinationId],
+        );
+        total = parseInt(fbCount[0].count, 10);
+        gpsWhere = `s."destinationId" = $3`;
+        gpsParams.splice(3); // remove denomination param
+        denominationFallback = true;
+        gIdx = 4;
+      }
 
       gpsParams.push(offset);
-      const data = await this.synagoguesRepo.query(
+      const localData = await this.synagoguesRepo.query(
         `SELECT s.id, s.name, s.address, s.description, s.phone, s.website, s.denomination, s.location,
+                d.city AS "destinationCity",
                 ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
          FROM synagogues s
+         JOIN destinations d ON s."destinationId" = d.id
          WHERE ${gpsWhere}
          ORDER BY s.location::geography <-> ST_SetSRID(ST_MakePoint($1,$2),4326)::geography
          LIMIT 50 OFFSET $${gIdx}`,
         gpsParams,
       );
-      return { data, total };
+
+      // Supplement with nearby synagogues from other destinations when local results are sparse
+      if (offset === 0 && total < 30) {
+        const supParams: any[] = [lng, lat, destinationId];
+        let supWhere = `s."destinationId" != $3 AND s.location IS NOT NULL
+          AND ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography) <= 30000`;
+        if (denomValues.length > 0 && !denominationFallback) {
+          supWhere += ` AND s.denomination = ANY($4)`;
+          supParams.push(denomValues);
+        }
+        const supplement = await this.synagoguesRepo.query(
+          `SELECT s.id, s.name, s.address, s.description, s.phone, s.website, s.denomination, s.location,
+                  d.city AS "destinationCity",
+                  ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
+           FROM synagogues s
+           JOIN destinations d ON s."destinationId" = d.id
+           WHERE ${supWhere}
+           ORDER BY s.location::geography <-> ST_SetSRID(ST_MakePoint($1,$2),4326)::geography
+           LIMIT 50`,
+          supParams,
+        );
+        const localIds = new Set(localData.map((r: any) => r.id));
+        const extra = supplement.filter((r: any) => !localIds.has(r.id));
+        if (extra.length > 0) {
+          const combined = [...localData, ...extra];
+          combined.sort((a: any, b: any) => (a.distanceMeters ?? 999999) - (b.distanceMeters ?? 999999));
+          const merged = combined.slice(0, 50);
+          return { data: merged, total: merged.length, denominationFallback };
+        }
+      }
+
+      return { data: localData, total, denominationFallback };
     }
 
     // ── No GPS: findAndCount sorted by name ──────────────
@@ -72,14 +118,28 @@ export class SynagoguesService {
     const where: any = { destination: { id: destinationId } };
     if (denomValues.length > 0) where.denomination = In(denomValues);
 
-    const [data, total] = await this.synagoguesRepo.findAndCount({
+    let [data, total] = await this.synagoguesRepo.findAndCount({
       where,
       select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
       order: { name: 'ASC' },
       take: 50,
       skip: offset,
     });
-    return { data, total };
+
+    // Fallback: if denomination filter returned nothing, retry without denomination
+    let denominationFallback = false;
+    if (total === 0 && denomValues.length > 0) {
+      [data, total] = await this.synagoguesRepo.findAndCount({
+        where: { destination: { id: destinationId } },
+        select: ['id', 'name', 'address', 'description', 'phone', 'website', 'location', 'denomination'],
+        order: { name: 'ASC' },
+        take: 50,
+        skip: offset,
+      });
+      denominationFallback = true;
+    }
+
+    return { data, total, denominationFallback };
   }
 
   /**

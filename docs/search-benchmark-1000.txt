@@ -1,0 +1,1000 @@
+q001	restaurant	Buenos Aires	פיצה בבואנוס איירס
+q002	restaurant	Vienna	מחפש המבורגר כשר בוינה
+q003	restaurant	Montreal	איפה אפשר לאכול בורגר במונטריאול?
+q004	restaurant	Limassol	שווארמה מהדרין בלימסול
+q005	restaurant	Paphos	kosher סושי in Paphos
+q006	restaurant	Larnaca	פסטה near me in Larnaca
+q007	restaurant	Prague	קפה בפראג
+q008	restaurant	Cannes	מחפש גלידה כשר in Cannes
+q009	restaurant	Nice	איפה אפשר לאכול חומוס in Nice?
+q010	restaurant	Paris	פלאפל מהדרין בפריז
+q011	restaurant	Berlin	kosher דגים in Berlin
+q012	restaurant	Budapest	סטייק near me in Budapest
+q013	restaurant	Dublin	בורקס in Dublin
+q014	restaurant	Rome	מחפש בורקס גבינה כשר ברומא
+q015	restaurant	Marrakech	איפה אפשר לאכול בורקס תפוח אדמה in Marrakech?
+q016	restaurant	Amsterdam	מאפייה מהדרין באמסטרדם
+q017	restaurant	Porto	kosher ארוחת בוקר in Porto
+q018	restaurant	Barcelona	סלט near me in Barcelona
+q019	restaurant	Koh Phangan	וופל in Koh Phangan
+q020	restaurant	Pai	מחפש לאזניה כשר in Pai
+q021	restaurant	Chiang Mai	איפה אפשר לאכול אוכל טבעוני in Chiang Mai?
+q022	restaurant	Bangkok	שניצל מהדרין בבנגקוק
+q023	restaurant	Phuket	kosher פיצה in Phuket
+q024	restaurant	Ko Samui	המבורגר near me in Ko Samui
+q025	restaurant	Dubai	בורגר בדובאי
+q026	restaurant	Kiryat Ata	מחפש שווארמה כשר בקרית אתא
+q027	restaurant	Migdal HaEmek	איפה אפשר לאכול סושי in Migdal HaEmek?
+q028	restaurant	Holon	פסטה מהדרין בהולון
+q029	restaurant	Kfar Saba	kosher קפה in Kfar Saba
+q030	restaurant	Lod	גלידה near me in Lod
+q031	restaurant	Ashkelon	חומוס באשקלון
+q032	restaurant	Tiberias	מחפש פלאפל כשר בטבריה
+q033	restaurant	Kiryat Gat	איפה אפשר לאכול דגים בקרית גת?
+q034	restaurant	Dimona	סטייק מהדרין בדימונה
+q035	restaurant	Yokneam	kosher בורקס in Yokneam
+q036	restaurant	Zichron Yaakov	בורקס גבינה near me in Zichron Yaakov
+q037	restaurant	Mazkeret Batya	בורקס תפוח אדמה במזכרת בתיה
+q038	restaurant	Be'er Yaakov	מחפש מאפייה כשר בבאר יעקב
+q039	restaurant	Netanya	איפה אפשר לאכול ארוחת בוקר בנתניה?
+q040	restaurant	Ramat Gan	סלט מהדרין ברמת גן
+q041	restaurant	Herzliya	kosher וופל in Herzliya
+q042	restaurant	Ramla	לאזניה near me in Ramla
+q043	restaurant	Beit Shemesh	אוכל טבעוני בבית שמש
+q044	restaurant	Netivot	מחפש שניצל כשר בנתיבות
+q045	restaurant	Yavne	איפה אפשר לאכול פיצה ביבנה?
+q046	restaurant	Or Yehuda	המבורגר מהדרין באור יהודה
+q047	restaurant	Sderot	kosher בורגר in Sderot
+q048	restaurant	Tzfat	שווארמה near me in Tzfat
+q049	restaurant	Rosh Pina	סושי in Rosh Pina
+q050	restaurant	Afula	מחפש פסטה כשר בעפולה
+q051	restaurant	Akko	איפה אפשר לאכול קפה בעכו?
+q052	restaurant	Kiryat Shmona	גלידה מהדרין בקרית שמונה
+q053	restaurant	Kiryat Motzkin	kosher חומוס in Kiryat Motzkin
+q054	restaurant	Kiryat Ono	פלאפל near me in Kiryat Ono
+q055	restaurant	Pardes Hanna	דגים בפרדס חנה כרכור
+q056	restaurant	Kiryat Bialik	מחפש סטייק כשר בקרית ביאליק
+q057	restaurant	Caesarea	איפה אפשר לאכול בורקס בקיסריה?
+q058	restaurant	Gan Yavne	בורקס גבינה מהדרין בגן יבנה
+q059	restaurant	Givatayim	kosher בורקס תפוח אדמה in Givatayim
+q060	restaurant	Yehud	מאפייה near me in Yehud
+q061	restaurant	Nesher	ארוחת בוקר בנשר
+q062	restaurant	Savion	מחפש סלט כשר in Savion
+q063	restaurant	Ofakim	איפה אפשר לאכול וופל באופקים?
+q064	restaurant	Ness Ziona	לאזניה מהדרין in Ness Ziona
+q065	restaurant	Modiin	kosher אוכל טבעוני in Modiin
+q066	restaurant	Jerusalem	שניצל near me in Jerusalem
+q067	restaurant	Haifa	פיצה בחיפה
+q068	restaurant	Be'er Sheva	מחפש המבורגר כשר בבאר שבע
+q069	restaurant	Petah Tikva	איפה אפשר לאכול בורגר בפתח תקווה?
+q070	restaurant	Bnei Brak	שווארמה מהדרין בבני ברק
+q071	restaurant	Rehovot	kosher סושי in Rehovot
+q072	restaurant	Bat Yam	פסטה near me in Bat Yam
+q073	restaurant	Ra'anana	קפה ברעננה
+q074	restaurant	Hadera	מחפש גלידה כשר בחדרה
+q075	restaurant	Nahariya	איפה אפשר לאכול חומוס בנהריה?
+q076	restaurant	Rosh HaAyin	פלאפל מהדרין בראש העין
+q077	restaurant	Eilat	kosher דגים in Eilat
+q078	restaurant	Ma'ale Adumim	סטייק near me in Ma'ale Adumim
+q079	restaurant	Gedera	בורקס בגדרה
+q080	restaurant	Givat Shmuel	מחפש בורקס גבינה כשר בגבעת שמואל
+q081	restaurant	Buenos Aires	איפה אפשר לאכול בורקס תפוח אדמה בבואנוס איירס?
+q082	restaurant	Vienna	מאפייה מהדרין בוינה
+q083	restaurant	Montreal	kosher ארוחת בוקר in Montreal
+q084	restaurant	Limassol	סלט near me in Limassol
+q085	restaurant	Paphos	וופל בפאפוס
+q086	restaurant	Larnaca	מחפש לאזניה כשר בלרנקה
+q087	restaurant	Prague	איפה אפשר לאכול אוכל טבעוני בפראג?
+q088	restaurant	Cannes	שניצל מהדרין in Cannes
+q089	restaurant	Nice	kosher פיצה in Nice
+q090	restaurant	Paris	המבורגר near me in Paris
+q091	restaurant	Berlin	בורגר בברלין
+q092	restaurant	Budapest	מחפש שווארמה כשר בבודפשט
+q093	restaurant	Dublin	איפה אפשר לאכול סושי in Dublin?
+q094	restaurant	Rome	פסטה מהדרין ברומא
+q095	restaurant	Marrakech	kosher קפה in Marrakech
+q096	restaurant	Amsterdam	גלידה near me in Amsterdam
+q097	restaurant	Porto	חומוס in Porto
+q098	restaurant	Barcelona	מחפש פלאפל כשר בברצלונה
+q099	restaurant	Koh Phangan	איפה אפשר לאכול דגים in Koh Phangan?
+q100	restaurant	Pai	סטייק מהדרין in Pai
+q101	restaurant	Chiang Mai	kosher בורקס in Chiang Mai
+q102	restaurant	Bangkok	בורקס גבינה near me in Bangkok
+q103	restaurant	Phuket	בורקס תפוח אדמה in Phuket
+q104	restaurant	Ko Samui	מחפש מאפייה כשר in Ko Samui
+q105	restaurant	Dubai	איפה אפשר לאכול ארוחת בוקר בדובאי?
+q106	restaurant	Kiryat Ata	סלט מהדרין בקרית אתא
+q107	restaurant	Migdal HaEmek	kosher וופל in Migdal HaEmek
+q108	restaurant	Holon	לאזניה near me in Holon
+q109	restaurant	Kfar Saba	אוכל טבעוני בכפר סבא
+q110	restaurant	Lod	מחפש שניצל כשר בלוד
+q111	restaurant	Ashkelon	איפה אפשר לאכול פיצה באשקלון?
+q112	restaurant	Tiberias	המבורגר מהדרין בטבריה
+q113	restaurant	Kiryat Gat	kosher בורגר in Kiryat Gat
+q114	restaurant	Dimona	שווארמה near me in Dimona
+q115	restaurant	Yokneam	סושי ביקנעם
+q116	restaurant	Zichron Yaakov	מחפש פסטה כשר בזכרון יעקב
+q117	restaurant	Mazkeret Batya	איפה אפשר לאכול קפה במזכרת בתיה?
+q118	restaurant	Be'er Yaakov	גלידה מהדרין בבאר יעקב
+q119	restaurant	Netanya	kosher חומוס in Netanya
+q120	restaurant	Ramat Gan	פלאפל near me in Ramat Gan
+q121	restaurant	Herzliya	דגים בהרצליה
+q122	restaurant	Ramla	מחפש סטייק כשר ברמלה
+q123	restaurant	Beit Shemesh	איפה אפשר לאכול בורקס בבית שמש?
+q124	restaurant	Netivot	בורקס גבינה מהדרין בנתיבות
+q125	restaurant	Yavne	kosher בורקס תפוח אדמה in Yavne
+q126	restaurant	Or Yehuda	מאפייה near me in Or Yehuda
+q127	restaurant	Sderot	ארוחת בוקר בשדרות
+q128	restaurant	Tzfat	מחפש סלט כשר in Tzfat
+q129	restaurant	Rosh Pina	איפה אפשר לאכול וופל in Rosh Pina?
+q130	restaurant	Afula	לאזניה מהדרין בעפולה
+q131	restaurant	Akko	kosher אוכל טבעוני in Akko
+q132	restaurant	Kiryat Shmona	שניצל near me in Kiryat Shmona
+q133	restaurant	Kiryat Motzkin	פיצה בקריית מוצקין
+q134	restaurant	Kiryat Ono	מחפש המבורגר כשר בקריית אונו
+q135	restaurant	Pardes Hanna	איפה אפשר לאכול בורגר בפרדס חנה כרכור?
+q136	restaurant	Kiryat Bialik	שווארמה מהדרין בקרית ביאליק
+q137	restaurant	Caesarea	kosher סושי in Caesarea
+q138	restaurant	Gan Yavne	פסטה near me in Gan Yavne
+q139	restaurant	Givatayim	קפה בגבעתיים
+q140	restaurant	Yehud	מחפש גלידה כשר ביהוד
+q141	restaurant	Nesher	איפה אפשר לאכול חומוס בנשר?
+q142	restaurant	Savion	פלאפל מהדרין in Savion
+q143	restaurant	Ofakim	kosher דגים in Ofakim
+q144	restaurant	Ness Ziona	סטייק near me in Ness Ziona
+q145	restaurant	Modiin	בורקס in Modiin
+q146	restaurant	Jerusalem	מחפש בורקס גבינה כשר בירושלים
+q147	restaurant	Haifa	איפה אפשר לאכול בורקס תפוח אדמה בחיפה?
+q148	restaurant	Be'er Sheva	מאפייה מהדרין בבאר שבע
+q149	restaurant	Petah Tikva	kosher ארוחת בוקר in Petah Tikva
+q150	restaurant	Bnei Brak	סלט near me in Bnei Brak
+q151	restaurant	Rehovot	וופל ברחובות
+q152	restaurant	Bat Yam	מחפש לאזניה כשר בבת ים
+q153	restaurant	Ra'anana	איפה אפשר לאכול אוכל טבעוני ברעננה?
+q154	restaurant	Hadera	שניצל מהדרין בחדרה
+q155	restaurant	Nahariya	kosher פיצה in Nahariya
+q156	restaurant	Rosh HaAyin	המבורגר near me in Rosh HaAyin
+q157	restaurant	Eilat	בורגר באילת
+q158	restaurant	Ma'ale Adumim	מחפש שווארמה כשר במעלה אדו��ים
+q159	restaurant	Gedera	איפה אפשר לאכול סושי בגדרה?
+q160	restaurant	Givat Shmuel	פסטה מהדרין בגבעת שמואל
+q161	restaurant	Buenos Aires	kosher קפה in Buenos Aires
+q162	restaurant	Vienna	גלידה near me in Vienna
+q163	restaurant	Montreal	חומוס במונטריאול
+q164	restaurant	Limassol	מחפש פלאפל כשר בלימסול
+q165	restaurant	Paphos	איפה אפשר לאכול דגים בפאפוס?
+q166	restaurant	Larnaca	סטייק מהדרין בלרנקה
+q167	restaurant	Prague	kosher בורקס in Prague
+q168	restaurant	Cannes	בורקס גבינה near me in Cannes
+q169	restaurant	Nice	בורקס תפוח אדמה in Nice
+q170	restaurant	Paris	מחפש מאפייה כשר בפריז
+q171	restaurant	Berlin	איפה אפשר לאכול ארוחת בוקר בברלין?
+q172	restaurant	Budapest	סלט מהדרין בבודפשט
+q173	restaurant	Dublin	kosher וופל in Dublin
+q174	restaurant	Rome	לאזניה near me in Rome
+q175	restaurant	Marrakech	אוכל טבעוני in Marrakech
+q176	restaurant	Amsterdam	מחפש שניצל כשר באמסטרדם
+q177	restaurant	Porto	איפה אפשר לאכול פיצה in Porto?
+q178	restaurant	Barcelona	המבורגר מהדרין בברצלונה
+q179	restaurant	Koh Phangan	kosher בורגר in Koh Phangan
+q180	restaurant	Pai	שווארמה near me in Pai
+q181	restaurant	Chiang Mai	סושי in Chiang Mai
+q182	restaurant	Bangkok	מחפש פסטה כשר בבנגקוק
+q183	restaurant	Phuket	איפה אפשר לאכול קפה in Phuket?
+q184	restaurant	Ko Samui	גלידה מהדרין in Ko Samui
+q185	restaurant	Dubai	kosher חומוס in Dubai
+q186	restaurant	Kiryat Ata	פלאפל near me in Kiryat Ata
+q187	restaurant	Migdal HaEmek	דגים in Migdal HaEmek
+q188	restaurant	Holon	מחפש סטייק כשר בהולון
+q189	restaurant	Kfar Saba	איפה אפשר לאכול בורקס בכפר סבא?
+q190	restaurant	Lod	בורקס גבינה מהדרין בלוד
+q191	restaurant	Ashkelon	kosher בורקס תפוח אדמה in Ashkelon
+q192	restaurant	Tiberias	מאפייה near me in Tiberias
+q193	restaurant	Kiryat Gat	ארוחת בוקר בקרית גת
+q194	restaurant	Dimona	מחפש סלט כשר בדימונה
+q195	restaurant	Yokneam	איפה אפשר לאכול וופל ביקנעם?
+q196	restaurant	Zichron Yaakov	לאזניה מהדרין בזכרון יעקב
+q197	restaurant	Mazkeret Batya	kosher אוכל טבעוני in Mazkeret Batya
+q198	restaurant	Be'er Yaakov	שניצל near me in Be'er Yaakov
+q199	restaurant	Netanya	פיצה בנתניה
+q200	restaurant	Ramat Gan	מחפש המבורגר כשר ברמת גן
+q201	restaurant	Herzliya	איפה אפשר לאכול בורגר בהרצליה?
+q202	restaurant	Ramla	שווארמה מהדרין ברמלה
+q203	restaurant	Beit Shemesh	kosher סושי in Beit Shemesh
+q204	restaurant	Netivot	פסטה near me in Netivot
+q205	restaurant	Yavne	קפה ביבנה
+q206	restaurant	Or Yehuda	מחפש גלידה כשר באור יהודה
+q207	restaurant	Sderot	איפה אפשר לאכול חומוס בשדרות?
+q208	restaurant	Tzfat	פלאפל מהדרין in Tzfat
+q209	restaurant	Rosh Pina	kosher דגים in Rosh Pina
+q210	restaurant	Afula	סטייק near me in Afula
+q211	restaurant	Akko	בורקס בעכו
+q212	restaurant	Kiryat Shmona	מחפש בורקס גבינה כשר בקרית שמונה
+q213	restaurant	Kiryat Motzkin	איפה אפשר לאכול בורקס תפוח אדמה בקריית מוצקין?
+q214	restaurant	Kiryat Ono	מאפייה מהדרין בקריית אונו
+q215	restaurant	Pardes Hanna	kosher ארוחת בוקר in Pardes Hanna
+q216	restaurant	Kiryat Bialik	סלט near me in Kiryat Bialik
+q217	restaurant	Caesarea	וופל בקיסריה
+q218	restaurant	Gan Yavne	מחפש לאזניה כשר בגן יבנה
+q219	restaurant	Givatayim	איפה אפשר לאכול אוכל טבעוני בגבעתיים?
+q220	restaurant	Yehud	שניצל מהדרין ביהוד
+q221	restaurant	Nesher	kosher פיצה in Nesher
+q222	restaurant	Savion	המבורגר near me in Savion
+q223	restaurant	Ofakim	בורגר באופקים
+q224	restaurant	Ness Ziona	מחפש שווארמה כשר in Ness Ziona
+q225	restaurant	Modiin	איפה אפשר לאכול סושי in Modiin?
+q226	restaurant	Jerusalem	פסטה מהדרין בירושלים
+q227	restaurant	Haifa	kosher קפה in Haifa
+q228	restaurant	Be'er Sheva	גלידה near me in Be'er Sheva
+q229	restaurant	Petah Tikva	חומוס בפתח תקווה
+q230	restaurant	Bnei Brak	מחפש פלאפל כשר בבני ברק
+q231	restaurant	Rehovot	איפה אפשר לאכול דגים ברחובות?
+q232	restaurant	Bat Yam	סטייק מהדרין בבת ים
+q233	restaurant	Ra'anana	kosher בורקס in Ra'anana
+q234	restaurant	Hadera	בורקס גבינה near me in Hadera
+q235	restaurant	Nahariya	בורקס תפוח אדמה בנהריה
+q236	restaurant	Rosh HaAyin	מחפש מאפייה כשר בראש העין
+q237	restaurant	Eilat	איפה אפשר לאכול ארוחת בוקר באילת?
+q238	restaurant	Ma'ale Adumim	סלט מהדרין במעלה אדו��ים
+q239	restaurant	Gedera	kosher וופל in Gedera
+q240	restaurant	Givat Shmuel	לאזניה near me in Givat Shmuel
+q241	restaurant	Buenos Aires	אוכל טבעוני בבואנוס איירס
+q242	restaurant	Vienna	מחפש שניצל כשר בוינה
+q243	restaurant	Montreal	איפה אפשר לאכול פיצה במונטריאול?
+q244	restaurant	Limassol	המבורגר מהדרין בלימסול
+q245	restaurant	Paphos	kosher בורגר in Paphos
+q246	restaurant	Larnaca	שווארמה near me in Larnaca
+q247	restaurant	Prague	סושי בפראג
+q248	restaurant	Cannes	מחפש פסטה כשר in Cannes
+q249	restaurant	Nice	איפה אפשר לאכול קפה in Nice?
+q250	restaurant	Paris	גלידה מהדרין בפריז
+q251	restaurant	Berlin	kosher חומוס in Berlin
+q252	restaurant	Budapest	פלאפל near me in Budapest
+q253	restaurant	Dublin	דגים in Dublin
+q254	restaurant	Rome	מחפש סטייק כשר ברומא
+q255	restaurant	Marrakech	איפה אפשר לאכול בורקס in Marrakech?
+q256	restaurant	Amsterdam	בורקס גבינה מהדרין באמסטרדם
+q257	restaurant	Porto	kosher בורקס תפוח אדמה in Porto
+q258	restaurant	Barcelona	מאפייה near me in Barcelona
+q259	restaurant	Koh Phangan	ארוחת בוקר in Koh Phangan
+q260	restaurant	Pai	מחפש סלט כשר in Pai
+q261	restaurant	Chiang Mai	איפה אפשר לאכול וופל in Chiang Mai?
+q262	restaurant	Bangkok	לאזניה מהדרין בבנגקוק
+q263	restaurant	Phuket	kosher אוכל טבעוני in Phuket
+q264	restaurant	Ko Samui	שניצל near me in Ko Samui
+q265	restaurant	Dubai	פיצה בדובאי
+q266	restaurant	Kiryat Ata	מחפש המבורגר כשר בקרית אתא
+q267	restaurant	Migdal HaEmek	איפה אפשר לאכול בורגר in Migdal HaEmek?
+q268	restaurant	Holon	שווארמה מהדרין בהולון
+q269	restaurant	Kfar Saba	kosher סושי in Kfar Saba
+q270	restaurant	Lod	פסטה near me in Lod
+q271	restaurant	Ashkelon	קפה באשקלון
+q272	restaurant	Tiberias	מחפש גלידה כשר בטבריה
+q273	restaurant	Kiryat Gat	איפה אפשר לאכול חומוס בקרית גת?
+q274	restaurant	Dimona	פלאפל מהדרין בדימונה
+q275	restaurant	Yokneam	kosher דגים in Yokneam
+q276	restaurant	Zichron Yaakov	סטייק near me in Zichron Yaakov
+q277	restaurant	Mazkeret Batya	בורקס במזכרת בתיה
+q278	restaurant	Be'er Yaakov	מחפש בורקס גבינה כשר בבאר יעקב
+q279	restaurant	Netanya	איפה אפשר לאכול בורקס תפוח אדמה בנתניה?
+q280	restaurant	Ramat Gan	מאפייה מהדרין ברמת גן
+q281	restaurant	Herzliya	kosher ארוחת בוקר in Herzliya
+q282	restaurant	Ramla	סלט near me in Ramla
+q283	restaurant	Beit Shemesh	וופל בבית שמש
+q284	restaurant	Netivot	מחפש לאזניה כשר בנתיבות
+q285	restaurant	Yavne	איפה אפשר לאכול אוכל טבעוני ביבנה?
+q286	restaurant	Or Yehuda	שניצל מהדרין באור יהודה
+q287	restaurant	Sderot	kosher פיצה in Sderot
+q288	restaurant	Tzfat	המבורגר near me in Tzfat
+q289	restaurant	Rosh Pina	בורגר in Rosh Pina
+q290	restaurant	Afula	מחפש שווארמה כשר בעפולה
+q291	restaurant	Akko	איפה אפשר לאכול סושי בעכו?
+q292	restaurant	Kiryat Shmona	פסטה מהדרין בקרית שמונה
+q293	restaurant	Kiryat Motzkin	kosher קפה in Kiryat Motzkin
+q294	restaurant	Kiryat Ono	גלידה near me in Kiryat Ono
+q295	restaurant	Pardes Hanna	חומוס בפרדס חנה כרכור
+q296	restaurant	Kiryat Bialik	מחפש פלאפל כשר בקרית ביאליק
+q297	restaurant	Caesarea	איפה אפשר לאכול דגים בקיסריה?
+q298	restaurant	Gan Yavne	סטייק מהדרין בגן יבנה
+q299	restaurant	Givatayim	kosher בורקס in Givatayim
+q300	restaurant	Yehud	בורקס גבינה near me in Yehud
+q301	restaurant	Nesher	בורקס תפוח אדמה בנשר
+q302	restaurant	Savion	מחפש מאפייה כשר in Savion
+q303	restaurant	Ofakim	איפה אפשר לאכול ארוחת בוקר באופקים?
+q304	restaurant	Ness Ziona	סלט מהדרין in Ness Ziona
+q305	restaurant	Modiin	kosher וופל in Modiin
+q306	restaurant	Jerusalem	לאזניה near me in Jerusalem
+q307	restaurant	Haifa	אוכל טבעוני בחיפה
+q308	restaurant	Be'er Sheva	מחפש שניצל כשר בבאר שבע
+q309	restaurant	Petah Tikva	איפה אפשר לאכול פיצה בפתח תקווה?
+q310	restaurant	Bnei Brak	המבורגר מהדרין בבני ברק
+q311	restaurant	Rehovot	kosher בורגר in Rehovot
+q312	restaurant	Bat Yam	שווארמה near me in Bat Yam
+q313	restaurant	Ra'anana	סושי ברעננה
+q314	restaurant	Hadera	מחפש פסטה כשר בחדרה
+q315	restaurant	Nahariya	איפה אפשר לאכול קפה בנהריה?
+q316	restaurant	Rosh HaAyin	גלידה מהדרין בראש העין
+q317	restaurant	Eilat	kosher חומוס in Eilat
+q318	restaurant	Ma'ale Adumim	פלאפל near me in Ma'ale Adumim
+q319	restaurant	Gedera	דגים בגדרה
+q320	restaurant	Givat Shmuel	מחפש סטייק כשר בגבעת שמואל
+q321	restaurant	Buenos Aires	איפה אפשר לאכול בורקס בבואנוס איירס?
+q322	restaurant	Vienna	בורקס גבינה מהדרין בוינה
+q323	restaurant	Montreal	kosher בורקס תפוח אדמה in Montreal
+q324	restaurant	Limassol	מאפייה near me in Limassol
+q325	restaurant	Paphos	ארוחת בוקר בפאפוס
+q326	restaurant	Larnaca	מחפש סלט כשר בלרנקה
+q327	restaurant	Prague	איפה אפשר לאכול וופל בפראג?
+q328	restaurant	Cannes	לאזניה מהדרין in Cannes
+q329	restaurant	Nice	kosher אוכל טבעוני in Nice
+q330	restaurant	Paris	שניצל near me in Paris
+q331	restaurant	Berlin	פיצה בברלין
+q332	restaurant	Budapest	מחפש המבורגר כשר בבודפשט
+q333	restaurant	Dublin	איפה אפשר לאכול בורגר in Dublin?
+q334	restaurant	Rome	שווארמה מהדרין ברומא
+q335	restaurant	Marrakech	kosher סושי in Marrakech
+q336	restaurant	Amsterdam	פסטה near me in Amsterdam
+q337	restaurant	Porto	קפה in Porto
+q338	restaurant	Barcelona	מחפש גלידה כשר בברצלונה
+q339	restaurant	Koh Phangan	איפה אפשר לאכול חומוס in Koh Phangan?
+q340	restaurant	Pai	פלאפל מהדרין in Pai
+q341	restaurant	Chiang Mai	kosher דגים in Chiang Mai
+q342	restaurant	Bangkok	סטייק near me in Bangkok
+q343	restaurant	Phuket	בורקס in Phuket
+q344	restaurant	Ko Samui	מחפש בורקס גבינה כשר in Ko Samui
+q345	restaurant	Dubai	איפה אפשר לאכול בורקס תפוח אדמה בדובאי?
+q346	restaurant	Kiryat Ata	מאפייה מהדרין בקרית אתא
+q347	restaurant	Migdal HaEmek	kosher ארוחת בוקר in Migdal HaEmek
+q348	restaurant	Holon	סלט near me in Holon
+q349	restaurant	Kfar Saba	וופל בכפר סבא
+q350	restaurant	Lod	מחפש לאזניה כשר בלוד
+q351	restaurant	Ashkelon	איפה אפשר לאכול אוכל טבעוני באשקלון?
+q352	restaurant	Tiberias	שניצל מהדרין בטבריה
+q353	restaurant	Kiryat Gat	kosher פיצה in Kiryat Gat
+q354	restaurant	Dimona	המבורגר near me in Dimona
+q355	restaurant	Yokneam	בורגר ביקנעם
+q356	restaurant	Zichron Yaakov	מחפש שווארמה כשר בזכרון יעקב
+q357	restaurant	Mazkeret Batya	איפה אפשר לאכול סושי במזכרת בתיה?
+q358	restaurant	Be'er Yaakov	פסטה מהדרין בבאר יעקב
+q359	restaurant	Netanya	kosher קפה in Netanya
+q360	restaurant	Ramat Gan	גלידה near me in Ramat Gan
+q361	restaurant	Herzliya	חומוס בהרצליה
+q362	restaurant	Ramla	מחפש פלאפל כשר ברמלה
+q363	restaurant	Beit Shemesh	איפה אפשר לאכול דגים בבית שמש?
+q364	restaurant	Netivot	סטייק מהדרין בנתיבות
+q365	restaurant	Yavne	kosher בורקס in Yavne
+q366	restaurant	Or Yehuda	בורקס גבינה near me in Or Yehuda
+q367	restaurant	Sderot	בורקס תפוח אדמה בשדרות
+q368	restaurant	Tzfat	מחפש מאפייה כשר in Tzfat
+q369	restaurant	Rosh Pina	איפה אפשר לאכול ארוחת בוקר in Rosh Pina?
+q370	restaurant	Afula	סלט מהדרין בעפולה
+q371	restaurant	Akko	kosher וופל in Akko
+q372	restaurant	Kiryat Shmona	לאזניה near me in Kiryat Shmona
+q373	restaurant	Kiryat Motzkin	אוכל טבעוני בקריית מוצקין
+q374	restaurant	Kiryat Ono	מחפש שניצל כשר בקריית אונו
+q375	restaurant	Pardes Hanna	איפה אפשר לאכול פיצה בפרדס חנה כרכור?
+q376	restaurant	Kiryat Bialik	המבורגר מהדרין בקרית ביאליק
+q377	restaurant	Caesarea	kosher בורגר in Caesarea
+q378	restaurant	Gan Yavne	שווארמה near me in Gan Yavne
+q379	restaurant	Givatayim	סושי בגבעתיים
+q380	restaurant	Yehud	מחפש פסטה כשר ביהוד
+q381	restaurant	Nesher	איפה אפשר לאכול קפה בנשר?
+q382	restaurant	Savion	גלידה מהדרין in Savion
+q383	restaurant	Ofakim	kosher חומוס in Ofakim
+q384	restaurant	Ness Ziona	פלאפל near me in Ness Ziona
+q385	restaurant	Modiin	דגים in Modiin
+q386	restaurant	Jerusalem	מחפש סטייק כשר בירושלים
+q387	restaurant	Haifa	איפה אפשר לאכול בורקס בחיפה?
+q388	restaurant	Be'er Sheva	בורקס גבינה מהדרין בבאר שבע
+q389	restaurant	Petah Tikva	kosher בורקס תפוח אדמה in Petah Tikva
+q390	restaurant	Bnei Brak	מאפייה near me in Bnei Brak
+q391	restaurant	Rehovot	ארוחת בוקר ברחובות
+q392	restaurant	Bat Yam	מחפש סלט כשר בבת ים
+q393	restaurant	Ra'anana	איפה אפשר לאכול וופל ברעננה?
+q394	restaurant	Hadera	לאזניה מהדרין בחדרה
+q395	restaurant	Nahariya	kosher אוכל טבעוני in Nahariya
+q396	restaurant	Rosh HaAyin	שניצל near me in Rosh HaAyin
+q397	restaurant	Eilat	פיצה באילת
+q398	restaurant	Ma'ale Adumim	מחפש המבורגר כשר במעלה אדו��ים
+q399	restaurant	Gedera	איפה אפשר לאכול בורגר בגדרה?
+q400	restaurant	Givat Shmuel	שווארמה מהדרין בגבעת שמואל
+q401	restaurant	Buenos Aires	kosher סושי in Buenos Aires
+q402	restaurant	Vienna	פסטה near me in Vienna
+q403	restaurant	Montreal	קפה במונטריאול
+q404	restaurant	Limassol	מחפש גלידה כשר בלימסול
+q405	restaurant	Paphos	איפה אפשר לאכול חומוס בפאפוס?
+q406	restaurant	Larnaca	פלאפל מהדרין בלרנקה
+q407	restaurant	Prague	kosher דגים in Prague
+q408	restaurant	Cannes	סטייק near me in Cannes
+q409	restaurant	Nice	בורקס in Nice
+q410	restaurant	Paris	מחפש בורקס גבינה כשר בפריז
+q411	restaurant	Berlin	איפה אפשר לאכול בורקס תפוח אדמה בברלין?
+q412	restaurant	Budapest	מאפייה מהדרין בבודפשט
+q413	restaurant	Dublin	kosher ארוחת בוקר in Dublin
+q414	restaurant	Rome	סלט near me in Rome
+q415	restaurant	Marrakech	וופל in Marrakech
+q416	restaurant	Amsterdam	מחפש לאזניה כשר באמסטרדם
+q417	restaurant	Porto	איפה אפשר לאכול אוכל טבעוני in Porto?
+q418	restaurant	Barcelona	שניצל מהדרין בברצלונה
+q419	restaurant	Koh Phangan	kosher פיצה in Koh Phangan
+q420	restaurant	Pai	המבורגר near me in Pai
+q421	restaurant	Chiang Mai	בורגר in Chiang Mai
+q422	restaurant	Bangkok	מחפש שווארמה כשר בבנגקוק
+q423	restaurant	Phuket	איפה אפשר לאכול סושי in Phuket?
+q424	restaurant	Ko Samui	פסטה מהדרין in Ko Samui
+q425	restaurant	Dubai	kosher קפה in Dubai
+q426	restaurant	Kiryat Ata	גלידה near me in Kiryat Ata
+q427	restaurant	Migdal HaEmek	חומוס in Migdal HaEmek
+q428	restaurant	Holon	מחפש פלאפל כשר בהולון
+q429	restaurant	Kfar Saba	איפה אפשר לאכול דגים בכפר סבא?
+q430	restaurant	Lod	סטייק מהדרין בלוד
+q431	restaurant	Ashkelon	kosher בורקס in Ashkelon
+q432	restaurant	Tiberias	בורקס גבינה near me in Tiberias
+q433	restaurant	Kiryat Gat	בורקס תפוח אדמה בקרית גת
+q434	restaurant	Dimona	מחפש מאפייה כשר בדימונה
+q435	restaurant	Yokneam	איפה אפשר לאכול ארוחת בוקר ביקנעם?
+q436	restaurant	Zichron Yaakov	סלט מהדרין בזכרון יעקב
+q437	restaurant	Mazkeret Batya	kosher וופל in Mazkeret Batya
+q438	restaurant	Be'er Yaakov	לאזניה near me in Be'er Yaakov
+q439	restaurant	Netanya	אוכל טבעוני בנתניה
+q440	restaurant	Ramat Gan	מחפש שניצל כשר ברמת גן
+q441	restaurant	Herzliya	איפה אפשר לאכול פיצה בהרצליה?
+q442	restaurant	Ramla	המבורגר מהדרין ברמלה
+q443	restaurant	Beit Shemesh	kosher בורגר in Beit Shemesh
+q444	restaurant	Netivot	שווארמה near me in Netivot
+q445	restaurant	Yavne	סושי ביבנה
+q446	restaurant	Or Yehuda	מחפש פסטה כשר באור יהודה
+q447	restaurant	Sderot	איפה אפשר לאכול קפה בשדרות?
+q448	restaurant	Tzfat	גלידה מהדרין in Tzfat
+q449	restaurant	Rosh Pina	kosher חומוס in Rosh Pina
+q450	restaurant	Afula	פלאפל near me in Afula
+q451	restaurant	Akko	דגים בעכו
+q452	restaurant	Kiryat Shmona	מחפש סטייק כשר בקרית שמונה
+q453	restaurant	Kiryat Motzkin	איפה אפשר לאכול בורקס בקריית מוצקין?
+q454	restaurant	Kiryat Ono	בורקס גבינה מהדרין בקריית אונו
+q455	restaurant	Pardes Hanna	kosher בורקס תפוח אדמה in Pardes Hanna
+q456	restaurant	Kiryat Bialik	מאפייה near me in Kiryat Bialik
+q457	restaurant	Caesarea	ארוחת בוקר בקיסריה
+q458	restaurant	Gan Yavne	מחפש סלט כשר בגן יבנה
+q459	restaurant	Givatayim	איפה אפשר לאכול וופל בגבעתיים?
+q460	restaurant	Yehud	לאזניה מהדרין ביהוד
+q461	restaurant	Nesher	kosher אוכל טבעוני in Nesher
+q462	restaurant	Savion	שניצל near me in Savion
+q463	restaurant	Ofakim	פיצה באופקים
+q464	restaurant	Ness Ziona	מחפש המבורגר כשר in Ness Ziona
+q465	restaurant	Modiin	איפה אפשר לאכול בורגר in Modiin?
+q466	restaurant	Jerusalem	שווארמה מהדרין בירושלים
+q467	restaurant	Haifa	kosher סושי in Haifa
+q468	restaurant	Be'er Sheva	פסטה near me in Be'er Sheva
+q469	restaurant	Petah Tikva	קפה בפתח תקווה
+q470	restaurant	Bnei Brak	מחפש גלידה כשר בבני ברק
+q471	restaurant	Rehovot	איפה אפשר לאכול חומוס ברחובות?
+q472	restaurant	Bat Yam	פלאפל מהדרין בבת ים
+q473	restaurant	Ra'anana	kosher דגים in Ra'anana
+q474	restaurant	Hadera	סטייק near me in Hadera
+q475	restaurant	Nahariya	בורקס בנהריה
+q476	restaurant	Rosh HaAyin	מחפש בורקס גבינה כשר בראש העין
+q477	restaurant	Eilat	איפה אפשר לאכול בורקס תפוח אדמה באילת?
+q478	restaurant	Ma'ale Adumim	מאפייה מהדרין במעלה אדו��ים
+q479	restaurant	Gedera	kosher ארוחת בוקר in Gedera
+q480	restaurant	Givat Shmuel	סלט near me in Givat Shmuel
+q481	restaurant	Buenos Aires	וופל בבואנוס איירס
+q482	restaurant	Vienna	מחפש לאזניה כשר בוינה
+q483	restaurant	Montreal	איפה אפשר לאכול אוכל טבעוני במונטריאול?
+q484	restaurant	Limassol	שניצל מהדרין בלימסול
+q485	restaurant	Paphos	kosher פיצה in Paphos
+q486	restaurant	Larnaca	המבורגר near me in Larnaca
+q487	restaurant	Prague	בורגר בפראג
+q488	restaurant	Cannes	מחפש שווארמה כשר in Cannes
+q489	restaurant	Nice	איפה אפשר לאכול סושי in Nice?
+q490	restaurant	Paris	פסטה מהדרין בפריז
+q491	restaurant	Berlin	kosher קפה in Berlin
+q492	restaurant	Budapest	גלידה near me in Budapest
+q493	restaurant	Dublin	חומוס in Dublin
+q494	restaurant	Rome	מחפש פלאפל כשר ברומא
+q495	restaurant	Marrakech	איפה אפשר לאכול דגים in Marrakech?
+q496	restaurant	Amsterdam	סטייק מהדרין באמסטרדם
+q497	restaurant	Porto	kosher בורקס in Porto
+q498	restaurant	Barcelona	בורקס גבינה near me in Barcelona
+q499	restaurant	Koh Phangan	בורקס תפוח אדמה in Koh Phangan
+q500	restaurant	Pai	מחפש מאפייה כשר in Pai
+q501	synagogue	Buenos Aires	בית כנסת בבואנוס איירס
+q502	synagogue	Limassol	בית כנסת ספרדי בלימסול
+q503	synagogue	Prague	בית כנסת ספרדית בפראג
+q504	synagogue	Paris	נוסח ספרד בפריז
+q505	synagogue	Dublin	בית כנסת חב"ד in Dublin
+q506	synagogue	Amsterdam	בית כנסת חב״ד באמסטרדם
+q507	synagogue	Koh Phangan	בית כנסת חבד in Koh Phangan
+q508	synagogue	Bangkok	בית כנסת אשכנזי בבנגקוק
+q509	synagogue	Dubai	קהילה יהודית בדובאי
+q510	synagogue	Holon	chabad house in Holon
+q511	synagogue	Ashkelon	synagogue in Ashkelon
+q512	synagogue	Dimona	sephardi synagogue in Dimona
+q513	synagogue	Mazkeret Batya	jewish community in Mazkeret Batya
+q514	synagogue	Ramat Gan	בית כנסת ברמת גן
+q515	synagogue	Beit Shemesh	בית כנסת ספרדי בבית שמש
+q516	synagogue	Or Yehuda	בית כנסת ספרדית באור יהודה
+q517	synagogue	Rosh Pina	נוסח ספרד in Rosh Pina
+q518	synagogue	Kiryat Shmona	בית כנסת חב"ד בקרית שמונה
+q519	synagogue	Pardes Hanna	בית כנסת חב״ד בפרדס חנה כרכור
+q520	synagogue	Gan Yavne	בית כנסת חבד בגן יבנה
+q521	synagogue	Nesher	בית כנסת אשכנזי בנשר
+q522	synagogue	Ness Ziona	קהילה יהודית in Ness Ziona
+q523	synagogue	Haifa	chabad house in Haifa
+q524	synagogue	Bnei Brak	synagogue in Bnei Brak
+q525	synagogue	Ra'anana	sephardi synagogue in Ra'anana
+q526	synagogue	Rosh HaAyin	jewish community in Rosh HaAyin
+q527	synagogue	Gedera	בית כנסת בגדרה
+q528	synagogue	Vienna	בית כנסת ספרדי בוינה
+q529	synagogue	Paphos	בית כנסת ספרדית בפאפוס
+q530	synagogue	Cannes	נוסח ספרד in Cannes
+q531	synagogue	Berlin	בית כנסת חב"ד בברלין
+q532	synagogue	Rome	בית כנסת חב״ד ברומא
+q533	synagogue	Porto	בית כנסת חבד in Porto
+q534	synagogue	Pai	בית כנסת אשכנזי in Pai
+q535	synagogue	Phuket	קהילה יהודית in Phuket
+q536	synagogue	Kiryat Ata	chabad house in Kiryat Ata
+q537	synagogue	Kfar Saba	synagogue in Kfar Saba
+q538	synagogue	Tiberias	sephardi synagogue in Tiberias
+q539	synagogue	Yokneam	jewish community in Yokneam
+q540	synagogue	Be'er Yaakov	בית כנסת בבאר יעקב
+q541	synagogue	Herzliya	בית כנסת ספרדי בהרצליה
+q542	synagogue	Netivot	בית כנסת ספרדית בנתיבות
+q543	synagogue	Sderot	נוסח ספרד בשדרות
+q544	synagogue	Afula	בית כנסת חב"ד בעפולה
+q545	synagogue	Kiryat Motzkin	בית כנסת חב״ד בקריית מוצקין
+q546	synagogue	Kiryat Bialik	בית כנסת חבד בקרית ביאליק
+q547	synagogue	Givatayim	בית כנסת אשכנזי בגבעתיים
+q548	synagogue	Savion	קהילה יהודית in Savion
+q549	synagogue	Modiin	chabad house in Modiin
+q550	synagogue	Be'er Sheva	synagogue in Be'er Sheva
+q551	synagogue	Rehovot	sephardi synagogue in Rehovot
+q552	synagogue	Hadera	jewish community in Hadera
+q553	synagogue	Eilat	בית כנסת באילת
+q554	synagogue	Givat Shmuel	בית כנסת ספרדי בגבעת שמואל
+q555	synagogue	Montreal	בית כנסת ספרדית במונטריאול
+q556	synagogue	Larnaca	נוסח ספרד בלרנקה
+q557	synagogue	Nice	בית כנסת חב"ד in Nice
+q558	synagogue	Budapest	בית כנסת חב״ד בבודפשט
+q559	synagogue	Marrakech	בית כנסת חבד in Marrakech
+q560	synagogue	Barcelona	בית כנסת אשכנזי בברצלונה
+q561	synagogue	Chiang Mai	קהילה יהודית in Chiang Mai
+q562	synagogue	Ko Samui	chabad house in Ko Samui
+q563	synagogue	Migdal HaEmek	synagogue in Migdal HaEmek
+q564	synagogue	Lod	sephardi synagogue in Lod
+q565	synagogue	Kiryat Gat	jewish community in Kiryat Gat
+q566	synagogue	Zichron Yaakov	בית כנסת בזכרון יעקב
+q567	synagogue	Netanya	בית כנסת ספרדי בנתניה
+q568	synagogue	Ramla	בית כנסת ספרדית ברמלה
+q569	synagogue	Yavne	נוסח ספרד ביבנה
+q570	synagogue	Tzfat	בית כנסת חב"ד in Tzfat
+q571	synagogue	Akko	בית כנסת חב״ד בעכו
+q572	synagogue	Kiryat Ono	בית כנסת חבד בקריית אונו
+q573	synagogue	Caesarea	בית כנסת אשכנזי בקיסריה
+q574	synagogue	Yehud	קהילה יהודית ביהוד
+q575	synagogue	Ofakim	chabad house in Ofakim
+q576	synagogue	Jerusalem	synagogue in Jerusalem
+q577	synagogue	Petah Tikva	sephardi synagogue in Petah Tikva
+q578	synagogue	Bat Yam	jewish community in Bat Yam
+q579	synagogue	Nahariya	בית כנסת בנהריה
+q580	synagogue	Ma'ale Adumim	בית כנסת ספרדי במעלה אדו��ים
+q581	synagogue	Buenos Aires	בית כנסת ספרדית בבואנוס איירס
+q582	synagogue	Limassol	נוסח ספרד בלימסול
+q583	synagogue	Prague	בית כנסת חב"ד בפראג
+q584	synagogue	Paris	בית כנסת חב״ד בפריז
+q585	synagogue	Dublin	בית כנסת חבד in Dublin
+q586	synagogue	Amsterdam	בית כנסת אשכנזי באמסטרדם
+q587	synagogue	Koh Phangan	קהילה יהודית in Koh Phangan
+q588	synagogue	Bangkok	chabad house in Bangkok
+q589	synagogue	Dubai	synagogue in Dubai
+q590	synagogue	Holon	sephardi synagogue in Holon
+q591	synagogue	Ashkelon	jewish community in Ashkelon
+q592	synagogue	Dimona	בית כנסת בדימונה
+q593	synagogue	Mazkeret Batya	בית כנסת ספרדי במזכרת בתיה
+q594	synagogue	Ramat Gan	בית כנסת ספרדית ברמת גן
+q595	synagogue	Beit Shemesh	נוסח ספרד בבית שמש
+q596	synagogue	Or Yehuda	בית כנסת חב"ד באור יהודה
+q597	synagogue	Rosh Pina	בית כנסת חב״ד in Rosh Pina
+q598	synagogue	Kiryat Shmona	בית כנסת חבד בקרית שמונה
+q599	synagogue	Pardes Hanna	בית כנסת אשכנזי בפרדס חנה כרכור
+q600	synagogue	Gan Yavne	קהילה יהודית בגן יבנה
+q601	synagogue	Nesher	chabad house in Nesher
+q602	synagogue	Ness Ziona	synagogue in Ness Ziona
+q603	synagogue	Haifa	sephardi synagogue in Haifa
+q604	synagogue	Bnei Brak	jewish community in Bnei Brak
+q605	synagogue	Ra'anana	בית כנסת ברעננה
+q606	synagogue	Rosh HaAyin	בית כנסת ספרדי בראש העין
+q607	synagogue	Gedera	בית כנסת ספרדית בגדרה
+q608	synagogue	Vienna	נוסח ספרד בוינה
+q609	synagogue	Paphos	בית כנסת חב"ד בפאפוס
+q610	synagogue	Cannes	בית כנסת חב״ד in Cannes
+q611	synagogue	Berlin	בית כנסת חבד בברלין
+q612	synagogue	Rome	בית כנסת אשכנזי ברומא
+q613	synagogue	Porto	קהילה יהודית in Porto
+q614	synagogue	Pai	chabad house in Pai
+q615	synagogue	Phuket	synagogue in Phuket
+q616	synagogue	Kiryat Ata	sephardi synagogue in Kiryat Ata
+q617	synagogue	Kfar Saba	jewish community in Kfar Saba
+q618	synagogue	Tiberias	בית כנסת בטבריה
+q619	synagogue	Yokneam	בית כנסת ספרדי ביקנעם
+q620	synagogue	Be'er Yaakov	בית כנסת ספרדית בבאר יעקב
+q621	synagogue	Herzliya	נוסח ספרד בהרצליה
+q622	synagogue	Netivot	בית כנסת חב"ד בנתיבות
+q623	synagogue	Sderot	בית כנסת חב״ד בשדרות
+q624	synagogue	Afula	בית כנסת חבד בעפולה
+q625	synagogue	Kiryat Motzkin	בית כנסת אשכנזי בקריית מוצקין
+q626	synagogue	Kiryat Bialik	קהילה יהודית בקרית ביאליק
+q627	synagogue	Givatayim	chabad house in Givatayim
+q628	synagogue	Savion	synagogue in Savion
+q629	synagogue	Modiin	sephardi synagogue in Modiin
+q630	synagogue	Be'er Sheva	jewish community in Be'er Sheva
+q631	synagogue	Rehovot	בית כנסת ברחובות
+q632	synagogue	Hadera	בית כנסת ספרדי בחדרה
+q633	synagogue	Eilat	בית כנסת ספרדית באילת
+q634	synagogue	Givat Shmuel	נוסח ספרד בגבעת שמואל
+q635	synagogue	Montreal	בית כנסת חב"ד במונטריאול
+q636	synagogue	Larnaca	בית כנסת חב״ד בלרנקה
+q637	synagogue	Nice	בית כנסת חבד in Nice
+q638	synagogue	Budapest	בית כנסת אשכנזי בבודפשט
+q639	synagogue	Marrakech	קהילה יהודית in Marrakech
+q640	synagogue	Barcelona	chabad house in Barcelona
+q641	synagogue	Chiang Mai	synagogue in Chiang Mai
+q642	synagogue	Ko Samui	sephardi synagogue in Ko Samui
+q643	synagogue	Migdal HaEmek	jewish community in Migdal HaEmek
+q644	synagogue	Lod	בית כנסת בלוד
+q645	synagogue	Kiryat Gat	בית כנסת ספרדי בקרית גת
+q646	synagogue	Zichron Yaakov	בית כנסת ספרדית בזכרון יעקב
+q647	synagogue	Netanya	נוסח ספרד בנתניה
+q648	synagogue	Ramla	בית כנסת חב"ד ברמלה
+q649	synagogue	Yavne	בית כנסת חב״ד ביבנה
+q650	synagogue	Tzfat	בית כנסת חבד in Tzfat
+q651	synagogue	Akko	בית כנסת אשכנזי בעכו
+q652	synagogue	Kiryat Ono	קהילה יהודית בקריית אונו
+q653	synagogue	Caesarea	chabad house in Caesarea
+q654	synagogue	Yehud	synagogue in Yehud
+q655	synagogue	Ofakim	sephardi synagogue in Ofakim
+q656	synagogue	Jerusalem	jewish community in Jerusalem
+q657	synagogue	Petah Tikva	בית כנסת בפתח תקווה
+q658	synagogue	Bat Yam	בית כנסת ספרדי בבת ים
+q659	synagogue	Nahariya	בית כנסת ספרדית בנהריה
+q660	synagogue	Ma'ale Adumim	נוסח ספרד במעלה אדו��ים
+q661	synagogue	Buenos Aires	בית כנסת חב"ד בבואנוס איירס
+q662	synagogue	Limassol	בית כנסת חב״ד בלימסול
+q663	synagogue	Prague	בית כנסת חבד בפראג
+q664	synagogue	Paris	בית כנסת אשכנזי בפריז
+q665	synagogue	Dublin	קהילה יהודית in Dublin
+q666	synagogue	Amsterdam	chabad house in Amsterdam
+q667	synagogue	Koh Phangan	synagogue in Koh Phangan
+q668	synagogue	Bangkok	sephardi synagogue in Bangkok
+q669	synagogue	Dubai	jewish community in Dubai
+q670	synagogue	Holon	בית כנסת בהולון
+q671	synagogue	Ashkelon	בית כנסת ספרדי באשקלון
+q672	synagogue	Dimona	בית כנסת ספרדית בדימונה
+q673	synagogue	Mazkeret Batya	נוסח ספרד במזכרת בתיה
+q674	synagogue	Ramat Gan	בית כנסת חב"ד ברמת גן
+q675	synagogue	Beit Shemesh	בית כנסת חב״ד בבית שמש
+q676	synagogue	Or Yehuda	בית כנסת חבד באור יהודה
+q677	synagogue	Rosh Pina	בית כנסת אשכנזי in Rosh Pina
+q678	synagogue	Kiryat Shmona	קהילה יהודית בקרית שמונה
+q679	synagogue	Pardes Hanna	chabad house in Pardes Hanna
+q680	synagogue	Gan Yavne	synagogue in Gan Yavne
+q681	synagogue	Nesher	sephardi synagogue in Nesher
+q682	synagogue	Ness Ziona	jewish community in Ness Ziona
+q683	synagogue	Haifa	בית כנסת בחיפה
+q684	synagogue	Bnei Brak	בית כנסת ספרדי בבני ברק
+q685	synagogue	Ra'anana	בית כנסת ספרדית ברעננה
+q686	synagogue	Rosh HaAyin	נוסח ספרד בראש העין
+q687	synagogue	Gedera	בית כנסת חב"ד בגדרה
+q688	synagogue	Vienna	בית כנסת חב״ד בוינה
+q689	synagogue	Paphos	בית כנסת חבד בפאפוס
+q690	synagogue	Cannes	בית כנסת אשכנזי in Cannes
+q691	synagogue	Berlin	קהילה יהודית בברלין
+q692	synagogue	Rome	chabad house in Rome
+q693	synagogue	Porto	synagogue in Porto
+q694	synagogue	Pai	sephardi synagogue in Pai
+q695	synagogue	Phuket	jewish community in Phuket
+q696	synagogue	Kiryat Ata	בית כנסת בקרית אתא
+q697	synagogue	Kfar Saba	בית כנסת ספרדי בכפר סבא
+q698	synagogue	Tiberias	בית כנסת ספרדית בטבריה
+q699	synagogue	Yokneam	נוסח ספרד ביקנעם
+q700	synagogue	Be'er Yaakov	בית כנסת חב"ד בבאר יעקב
+q701	synagogue	Herzliya	בית כנסת חב״ד בהרצליה
+q702	synagogue	Netivot	בית כנסת חבד בנתיבות
+q703	synagogue	Sderot	בית כנסת אשכנזי בשדרות
+q704	synagogue	Afula	קהילה יהודית בעפולה
+q705	synagogue	Kiryat Motzkin	chabad house in Kiryat Motzkin
+q706	synagogue	Kiryat Bialik	synagogue in Kiryat Bialik
+q707	synagogue	Givatayim	sephardi synagogue in Givatayim
+q708	synagogue	Savion	jewish community in Savion
+q709	synagogue	Modiin	בית כנסת in Modiin
+q710	synagogue	Be'er Sheva	בית כנסת ספרדי בבאר שבע
+q711	synagogue	Rehovot	בית כנסת ספרדית ברחובות
+q712	synagogue	Hadera	נוסח ספרד בחדרה
+q713	synagogue	Eilat	בית כנסת חב"ד באילת
+q714	synagogue	Givat Shmuel	בית כנסת חב״ד בגבעת שמואל
+q715	synagogue	Montreal	בית כנסת חבד במונטריאול
+q716	synagogue	Larnaca	בית כנסת אשכנזי בלרנקה
+q717	synagogue	Nice	קהילה יהודית in Nice
+q718	synagogue	Budapest	chabad house in Budapest
+q719	synagogue	Marrakech	synagogue in Marrakech
+q720	synagogue	Barcelona	sephardi synagogue in Barcelona
+q721	synagogue	Chiang Mai	jewish community in Chiang Mai
+q722	synagogue	Ko Samui	בית כנסת in Ko Samui
+q723	synagogue	Migdal HaEmek	בית כנסת ספרדי in Migdal HaEmek
+q724	synagogue	Lod	בית כנסת ספרדית בלוד
+q725	synagogue	Kiryat Gat	נוסח ספרד בקרית גת
+q726	synagogue	Zichron Yaakov	בית כנסת חב"ד בזכרון יעקב
+q727	synagogue	Netanya	בית כנסת חב״ד בנתניה
+q728	synagogue	Ramla	בית כנסת חבד ברמלה
+q729	synagogue	Yavne	בית כנסת אשכנזי ביבנה
+q730	synagogue	Tzfat	קהילה יהודית in Tzfat
+q731	synagogue	Akko	chabad house in Akko
+q732	synagogue	Kiryat Ono	synagogue in Kiryat Ono
+q733	synagogue	Caesarea	sephardi synagogue in Caesarea
+q734	synagogue	Yehud	jewish community in Yehud
+q735	synagogue	Ofakim	בית כנסת באופקים
+q736	synagogue	Jerusalem	בית כנסת ספרדי בירושלים
+q737	synagogue	Petah Tikva	בית כנסת ספרדית בפתח תקווה
+q738	synagogue	Bat Yam	נוסח ספרד בבת ים
+q739	synagogue	Nahariya	בית כנסת חב"ד בנהריה
+q740	synagogue	Ma'ale Adumim	בית כנסת חב״ד במעלה אדו��ים
+q741	synagogue	Buenos Aires	בית כנסת חבד בבואנוס איירס
+q742	synagogue	Limassol	בית כנסת אשכנזי בלימסול
+q743	synagogue	Prague	קהילה יהודית בפראג
+q744	synagogue	Paris	chabad house in Paris
+q745	synagogue	Dublin	synagogue in Dublin
+q746	synagogue	Amsterdam	sephardi synagogue in Amsterdam
+q747	synagogue	Koh Phangan	jewish community in Koh Phangan
+q748	synagogue	Bangkok	בית כנסת בבנגקוק
+q749	synagogue	Dubai	בית כנסת ספרדי בדובאי
+q750	synagogue	Holon	בית כנסת ספרדית בהולון
+q751	minyan	Afula	מניין שחרית בעפולה
+q752	minyan	Afula	מניין מנחה בעפולה
+q753	minyan	Afula	מניין ערבית בעפולה
+q754	minyan	Afula	צריך מניין לשחרית מחר בעפולה
+q755	minyan	Afula	איפה מתפללים שחרית בעפולה
+q756	minyan	Afula	יש מניין קרוב בעפולה
+q757	minyan	Afula	minyan shacharit in Afula
+q758	minyan	Afula	mincha minyan in Afula
+q759	minyan	Afula	maariv minyan in Afula
+q760	minyan	Afula	prayer quorum in Afula
+q761	minyan	Afula	מניין שחרית היום בעפולה
+q762	minyan	Afula	מניין מנחה היום בעפולה
+q763	minyan	Afula	מניין ערבית היום בעפולה
+q764	minyan	Afula	צריך מניין לשחרית מחר היום בעפולה
+q765	minyan	Afula	איפה מתפללים שחרית היום בעפולה
+q766	minyan	Afula	יש מניין קרוב היום בעפולה
+q767	minyan	Afula	minyan shacharit היום in Afula
+q768	minyan	Afula	mincha minyan היום in Afula
+q769	minyan	Afula	maariv minyan היום in Afula
+q770	minyan	Afula	prayer quorum היום in Afula
+q771	minyan	Afula	מניין שחרית מחר בעפולה
+q772	minyan	Afula	מניין מנחה מחר בעפולה
+q773	minyan	Afula	מניין ערבית מחר בעפולה
+q774	minyan	Afula	צריך מניין לשחרית מחר מחר בעפולה
+q775	minyan	Afula	איפה מתפללים שחרית מחר בעפולה
+q776	minyan	Afula	יש מניין קרוב מחר בעפולה
+q777	minyan	Afula	minyan shacharit מחר in Afula
+q778	minyan	Afula	mincha minyan מחר in Afula
+q779	minyan	Afula	maariv minyan מחר in Afula
+q780	minyan	Afula	prayer quorum מחר in Afula
+q781	minyan	Afula	מניין שחרית בבוקר בעפולה
+q782	minyan	Afula	מניין מנחה בבוקר בעפולה
+q783	minyan	Afula	מניין ערבית בבוקר בעפולה
+q784	minyan	Afula	צריך מניין לשחרית מחר בבוקר בעפולה
+q785	minyan	Afula	איפה מתפללים שחרית בבוקר בעפולה
+q786	minyan	Afula	יש מניין קרוב בבוקר בעפולה
+q787	minyan	Afula	minyan shacharit בבוקר in Afula
+q788	minyan	Afula	mincha minyan בבוקר in Afula
+q789	minyan	Afula	maariv minyan בבוקר in Afula
+q790	minyan	Afula	prayer quorum בבוקר in Afula
+q791	minyan	Afula	מניין שחרית בערב בעפולה
+q792	minyan	Afula	מניין מנחה בערב בעפולה
+q793	minyan	Afula	מניין ערבית בערב בעפולה
+q794	minyan	Afula	צריך מניין לשחרית מחר בערב בעפולה
+q795	minyan	Afula	איפה מתפללים שחרית בערב בעפולה
+q796	minyan	Afula	יש מניין קרוב בערב בעפולה
+q797	minyan	Afula	minyan shacharit בערב in Afula
+q798	minyan	Afula	mincha minyan בערב in Afula
+q799	minyan	Afula	maariv minyan בערב in Afula
+q800	minyan	Afula	prayer quorum בערב in Afula
+q801	minyan	Afula	מניין שחרית קרוב אליי בעפולה
+q802	minyan	Afula	מניין מנחה קרוב אליי בעפולה
+q803	minyan	Afula	מניין ערבית קרוב אליי בעפולה
+q804	minyan	Afula	צריך מניין לשחרית מחר קרוב אליי בעפולה
+q805	minyan	Afula	איפה מתפללים שחרית קרוב אליי בעפולה
+q806	minyan	Afula	יש מניין קרוב קרוב אליי בעפולה
+q807	minyan	Afula	minyan shacharit קרוב אליי in Afula
+q808	minyan	Afula	mincha minyan קרוב אליי in Afula
+q809	minyan	Afula	maariv minyan קרוב אליי in Afula
+q810	minyan	Afula	prayer quorum קרוב אליי in Afula
+q811	minyan	Afula	מניין שחרית ספרדי בעפולה
+q812	minyan	Afula	מניין מנחה ספרדי בעפולה
+q813	minyan	Afula	מניין ערבית ספרדי בעפולה
+q814	minyan	Afula	צריך מניין לשחרית מחר ספרדי בעפולה
+q815	minyan	Afula	איפה מתפללים שחרית ספרדי בעפולה
+q816	minyan	Afula	יש מניין קרוב ספרדי בעפולה
+q817	minyan	Afula	minyan shacharit ספרדי in Afula
+q818	minyan	Afula	mincha minyan ספרדי in Afula
+q819	minyan	Afula	maariv minyan ספרדי in Afula
+q820	minyan	Afula	prayer quorum ספרדי in Afula
+q821	minyan	Afula	מניין שחרית חב"ד בעפולה
+q822	minyan	Afula	מניין מנחה חב"ד בעפולה
+q823	minyan	Afula	מניין ערבית חב"ד בעפולה
+q824	minyan	Afula	צריך מניין לשחרית מחר חב"ד בעפולה
+q825	minyan	Afula	איפה מתפללים שחרית חב"ד בעפולה
+q826	minyan	Afula	יש מניין קרוב חב"ד בעפולה
+q827	minyan	Afula	minyan shacharit חב"ד in Afula
+q828	minyan	Afula	mincha minyan חב"ד in Afula
+q829	minyan	Afula	maariv minyan חב"ד in Afula
+q830	minyan	Afula	prayer quorum חב"ד in Afula
+q831	minyan	Afula	מניין שחרית נוסח ספרד בעפולה
+q832	minyan	Afula	מניין מנחה נוסח ספרד בעפולה
+q833	minyan	Afula	מניין ערבית נוסח ספרד בעפולה
+q834	minyan	Afula	צריך מניין לשחרית מחר נוסח ספרד בעפולה
+q835	minyan	Afula	איפה מתפללים שחרית נוסח ספרד בעפולה
+q836	minyan	Afula	יש מניין קרוב נוסח ספרד בעפולה
+q837	minyan	Afula	minyan shacharit נוסח ספרד in Afula
+q838	minyan	Afula	mincha minyan נוסח ספרד in Afula
+q839	minyan	Afula	maariv minyan נוסח ספרד in Afula
+q840	minyan	Afula	prayer quorum נוסח ספרד in Afula
+q841	minyan	Afula	מניין שחרית אשכנזי בעפולה
+q842	minyan	Afula	מניין מנחה אשכנזי בעפולה
+q843	minyan	Afula	מניין ערבית אשכנזי בעפולה
+q844	minyan	Afula	צריך מניין לשחרית מחר אשכנזי בעפולה
+q845	minyan	Afula	איפה מתפללים שחרית אשכנזי בעפולה
+q846	minyan	Afula	יש מניין קרוב אשכנזי בעפולה
+q847	minyan	Afula	minyan shacharit אשכנזי in Afula
+q848	minyan	Afula	mincha minyan אשכנזי in Afula
+q849	minyan	Afula	maariv minyan אשכנזי in Afula
+q850	minyan	Afula	prayer quorum אשכנזי in Afula
+q851	minyan	Afula	מניין שחרית תימני בעפולה
+q852	minyan	Afula	מניין מנחה תימני בעפולה
+q853	minyan	Afula	מניין ערבית תימני בעפולה
+q854	minyan	Afula	צריך מניין לשחרית מחר תימני בעפולה
+q855	minyan	Afula	איפה מתפללים שחרית תימני בעפולה
+q856	minyan	Afula	יש מניין קרוב תימני בעפולה
+q857	minyan	Afula	minyan shacharit תימני in Afula
+q858	minyan	Afula	mincha minyan תימני in Afula
+q859	minyan	Afula	maariv minyan תימני in Afula
+q860	minyan	Afula	prayer quorum תימני in Afula
+q861	minyan	Afula	מניין שחרית בשעה מוקדמת בעפולה
+q862	minyan	Afula	מניין מנחה בשעה מוקדמת בעפולה
+q863	minyan	Afula	מניין ערבית בשעה מוקדמת בעפולה
+q864	minyan	Afula	צריך מניין לשחרית מחר בשעה מוקדמת בעפולה
+q865	minyan	Afula	איפה מתפללים שחרית בשעה מוקדמת בעפולה
+q866	minyan	Afula	יש מניין קרוב בשעה מוקדמת בעפולה
+q867	minyan	Afula	minyan shacharit בשעה מוקדמת in Afula
+q868	minyan	Afula	mincha minyan בשעה מוקדמת in Afula
+q869	minyan	Afula	maariv minyan בשעה מוקדמת in Afula
+q870	minyan	Afula	prayer quorum בשעה מוקדמת in Afula
+q871	minyan	Afula	מניין שחרית בשעה מאוחרת בעפולה
+q872	minyan	Afula	מניין מנחה בשעה מאוחרת בעפולה
+q873	minyan	Afula	מניין ערבית בשעה מאוחרת בעפולה
+q874	minyan	Afula	צריך מניין לשחרית מחר בשעה מאוחרת בעפולה
+q875	minyan	Afula	איפה מתפללים שחרית בשעה מאוחרת בעפולה
+q876	minyan	Afula	יש מניין קרוב בשעה מאוחרת בעפולה
+q877	minyan	Afula	minyan shacharit בשעה מאוחרת in Afula
+q878	minyan	Afula	mincha minyan בשעה מאוחרת in Afula
+q879	minyan	Afula	maariv minyan בשעה מאוחרת in Afula
+q880	minyan	Afula	prayer quorum בשעה מאוחרת in Afula
+q881	minyan	Afula	מניין שחרית for tomorrow בעפולה
+q882	minyan	Afula	מניין מנחה for tomorrow בעפולה
+q883	minyan	Afula	מניין ערבית for tomorrow בעפולה
+q884	minyan	Afula	צריך מניין לשחרית מחר for tomorrow בעפולה
+q885	minyan	Afula	איפה מתפללים שחרית for tomorrow בעפולה
+q886	minyan	Afula	יש מניין קרוב for tomorrow בעפולה
+q887	minyan	Afula	minyan shacharit for tomorrow in Afula
+q888	minyan	Afula	mincha minyan for tomorrow in Afula
+q889	minyan	Afula	maariv minyan for tomorrow in Afula
+q890	minyan	Afula	prayer quorum for tomorrow in Afula
+q891	minyan	Afula	מניין שחרית near me בעפולה
+q892	minyan	Afula	מניין מנחה near me בעפולה
+q893	minyan	Afula	מניין ערבית near me בעפולה
+q894	minyan	Afula	צריך מניין לשחרית מחר near me בעפולה
+q895	minyan	Afula	איפה מתפללים שחרית near me בעפולה
+q896	minyan	Afula	יש מניין קרוב near me בעפולה
+q897	minyan	Afula	minyan shacharit near me in Afula
+q898	minyan	Afula	mincha minyan near me in Afula
+q899	minyan	Afula	maariv minyan near me in Afula
+q900	minyan	Afula	prayer quorum near me in Afula
+q901	hosting	Afula	משפחה שמארחת בשבת בעפולה
+q902	hosting	Afula	אירוח שבת בעפולה
+q903	hosting	Afula	מחפש איפה להתארח לשבת בעפולה
+q904	hosting	Afula	יש משפחה שמארחת לשבת? בעפולה
+q905	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה בעפולה
+q906	hosting	Afula	need shabbat hosting in Afula
+q907	hosting	Afula	family hosting for shabbat in Afula
+q908	hosting	Afula	shabbat meal with a family in Afula
+q909	hosting	Afula	looking for a host family in Afula
+q910	hosting	Afula	אירוח למשפחה עם ילדים בעפולה
+q911	hosting	Afula	משפחה שמארחת בשבת לשני אנשים בעפולה
+q912	hosting	Afula	אירוח שבת לשני אנשים בעפולה
+q913	hosting	Afula	מחפש איפה להתארח לשבת לשני אנשים בעפולה
+q914	hosting	Afula	יש משפחה שמארחת לשבת? לשני אנשים בעפולה
+q915	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה לשני אנשים בעפולה
+q916	hosting	Afula	need shabbat hosting לשני אנשים in Afula
+q917	hosting	Afula	family hosting for shabbat לשני אנשים in Afula
+q918	hosting	Afula	shabbat meal with a family לשני אנשים in Afula
+q919	hosting	Afula	looking for a host family לשני אנשים in Afula
+q920	hosting	Afula	אירוח למשפחה עם ילדים לשני אנשים בעפולה
+q921	hosting	Afula	משפחה שמארחת בשבת למשפחה בעפולה
+q922	hosting	Afula	אירוח שבת למשפחה בעפולה
+q923	hosting	Afula	מחפש איפה להתארח לשבת למשפחה בעפולה
+q924	hosting	Afula	יש משפחה שמארחת לשבת? למשפחה בעפולה
+q925	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה למשפחה בעפולה
+q926	hosting	Afula	need shabbat hosting למשפחה in Afula
+q927	hosting	Afula	family hosting for shabbat למשפחה in Afula
+q928	hosting	Afula	shabbat meal with a family למשפחה in Afula
+q929	hosting	Afula	looking for a host family למשפחה in Afula
+q930	hosting	Afula	אירוח למשפחה עם ילדים למשפחה בעפולה
+q931	hosting	Afula	משפחה שמארחת בשבת עם ילדים בעפולה
+q932	hosting	Afula	אירוח שבת עם ילדים בעפולה
+q933	hosting	Afula	מחפש איפה להתארח לשבת עם ילדים בעפולה
+q934	hosting	Afula	יש משפחה שמארחת לשבת? עם ילדים בעפולה
+q935	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה עם ילדים בעפולה
+q936	hosting	Afula	need shabbat hosting עם ילדים in Afula
+q937	hosting	Afula	family hosting for shabbat עם ילדים in Afula
+q938	hosting	Afula	shabbat meal with a family עם ילדים in Afula
+q939	hosting	Afula	looking for a host family עם ילדים in Afula
+q940	hosting	Afula	אירוח למשפחה עם ילדים עם ילדים בעפולה
+q941	hosting	Afula	משפחה שמארחת בשבת לסופש בעפולה
+q942	hosting	Afula	אירוח שבת לסופש בעפולה
+q943	hosting	Afula	מחפש איפה להתארח לשבת לסופש בעפולה
+q944	hosting	Afula	יש משפחה שמארחת לשבת? לסופש בעפולה
+q945	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה לסופש בעפולה
+q946	hosting	Afula	need shabbat hosting לסופש in Afula
+q947	hosting	Afula	family hosting for shabbat לסופש in Afula
+q948	hosting	Afula	shabbat meal with a family לסופש in Afula
+q949	hosting	Afula	looking for a host family לסופש in Afula
+q950	hosting	Afula	אירוח למשפחה עם ילדים לסופש בעפולה
+q951	hosting	Afula	משפחה שמארחת בשבת השבוע בעפולה
+q952	hosting	Afula	אירוח שבת השבוע בעפולה
+q953	hosting	Afula	מחפש איפה להתארח לשבת השבוע בעפולה
+q954	hosting	Afula	יש משפחה שמארחת לשבת? השבוע בעפולה
+q955	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה השבוע בעפולה
+q956	hosting	Afula	need shabbat hosting השבוע in Afula
+q957	hosting	Afula	family hosting for shabbat השבוע in Afula
+q958	hosting	Afula	shabbat meal with a family השבוע in Afula
+q959	hosting	Afula	looking for a host family השבוע in Afula
+q960	hosting	Afula	אירוח למשפחה עם ילדים השבוע בעפולה
+q961	hosting	Afula	משפחה שמארחת בשבת מחר בעפולה
+q962	hosting	Afula	אירוח שבת מחר בעפולה
+q963	hosting	Afula	מחפש איפה להתארח לשבת מחר בעפולה
+q964	hosting	Afula	יש משפחה שמארחת לשבת? מחר בעפולה
+q965	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה מחר בעפולה
+q966	hosting	Afula	need shabbat hosting מחר in Afula
+q967	hosting	Afula	family hosting for shabbat מחר in Afula
+q968	hosting	Afula	shabbat meal with a family מחר in Afula
+q969	hosting	Afula	looking for a host family מחר in Afula
+q970	hosting	Afula	אירוח למשפחה עם ילדים מחר בעפולה
+q971	hosting	Afula	משפחה שמארחת בשבת בשבת הקרובה בעפולה
+q972	hosting	Afula	אירוח שבת בשבת הקרובה בעפולה
+q973	hosting	Afula	מחפש איפה להתארח לשבת בשבת הקרובה בעפולה
+q974	hosting	Afula	יש משפחה שמארחת לשבת? בשבת הקרובה בעפולה
+q975	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה בשבת הקרובה בעפולה
+q976	hosting	Afula	need shabbat hosting בשבת הקרובה in Afula
+q977	hosting	Afula	family hosting for shabbat בשבת הקרובה in Afula
+q978	hosting	Afula	shabbat meal with a family בשבת הקרובה in Afula
+q979	hosting	Afula	looking for a host family בשבת הקרובה in Afula
+q980	hosting	Afula	אירוח למשפחה עם ילדים בשבת הקרובה בעפולה
+q981	hosting	Afula	משפחה שמארחת בשבת לארוחת ערב בעפולה
+q982	hosting	Afula	אירוח שבת לארוחת ערב בעפולה
+q983	hosting	Afula	מחפש איפה להתארח לשבת לארוחת ערב בעפולה
+q984	hosting	Afula	יש משפחה שמארחת לשבת? לארוחת ערב בעפולה
+q985	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה לארוחת ערב בעפולה
+q986	hosting	Afula	need shabbat hosting לארוחת ערב in Afula
+q987	hosting	Afula	family hosting for shabbat לארוחת ערב in Afula
+q988	hosting	Afula	shabbat meal with a family לארוחת ערב in Afula
+q989	hosting	Afula	looking for a host family לארוחת ערב in Afula
+q990	hosting	Afula	אירוח למשפחה עם ילדים לארוחת ערב בעפולה
+q991	hosting	Afula	משפחה שמארחת בשבת for 2 people בעפולה
+q992	hosting	Afula	אירוח שבת for 2 people בעפולה
+q993	hosting	Afula	מחפש איפה להתארח לשבת for 2 people בעפולה
+q994	hosting	Afula	יש משפחה שמארחת לשבת? for 2 people בעפולה
+q995	hosting	Afula	איפה אפשר לאכול בשבת אצל משפחה for 2 people בעפולה
+q996	hosting	Afula	need shabbat hosting for 2 people in Afula
+q997	hosting	Afula	family hosting for shabbat for 2 people in Afula
+q998	hosting	Afula	shabbat meal with a family for 2 people in Afula
+q999	hosting	Afula	looking for a host family for 2 people in Afula
+q1000	hosting	Afula	אירוח למשפחה עם ילדים for 2 people בעפולה

@@ -160,12 +160,26 @@ export default function HomeScreen() {
         return;
       }
 
+      // Safety: backend returns null route when no destination found
+      if (!route) {
+        Alert.alert('לא מצאתי עיר 🤔', 'ציין עיר כדי לחפש\nלמשל: "המבורגר בתל אביב" או "פיצה בירושלים"');
+        return;
+      }
+      // Safety: route without destinationId (e.g. "/restaurants") crashes Expo Router
+      if (/^\/(restaurants|synagogues|minyans|hosting)\/?(\?.*)?$/.test(route)) {
+        Alert.alert('לא מצאתי עיר 🤔', 'ציין עיר כדי לחפש\nלמשל: "המבורגר בתל אביב" או "פיצה בירושלים"');
+        return;
+      }
       const cityParam = detectedCity ? `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}` : '';
       const fullRoute = route + cityParam;
       const qParam = category === 'restaurant' && query
         ? `${fullRoute.includes('?') ? '&' : '?'}q=${encodeURIComponent(query)}`
         : '';
-      router.push((fullRoute + qParam) as any);
+      const sep = (fullRoute + qParam).includes('?') ? '&' : '?';
+      const gpsParam = (category === 'restaurant' && gps)
+        ? `${sep}lat=${gps.lat}&lng=${gps.lng}`
+        : '';
+      router.push((fullRoute + qParam + gpsParam) as any);
       setAiText('');
       setSearchMode('none');
       setChip(null);

@@ -53,6 +53,7 @@ export default function SynagoguesScreen() {
   const [offset, setOffset]         = useState(0);
   const [loading, setLoading]       = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore]       = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError]           = useState(false);
   const [trigger, setTrigger]       = useState(0);
@@ -88,12 +89,13 @@ export default function SynagoguesScreen() {
         const list = Array.isArray(raw) ? raw : (raw?.data ?? []);
         setSynagogues(list);
         setTotal(raw?.total ?? list.length);
+        setHasMore((raw?.total ?? list.length) > list.length);
       } catch { setError(true); } finally { setLoading(false); setRefreshing(false); }
     })();
   }, [destinationId, denomination, gps, trigger]);
 
   const loadMore = async () => {
-    if (loadingMore) return;
+    if (loadingMore || !hasMore) return;
     const next = offset + 50;
     try {
       setLoadingMore(true);
@@ -106,8 +108,10 @@ export default function SynagoguesScreen() {
       const res = await client.get('/synagogues', { params });
       const raw = res.data;
       const list = Array.isArray(raw) ? raw : (raw?.data ?? []);
+      if (list.length === 0) { setHasMore(false); return; }
       setSynagogues(p => [...p, ...list]);
       setOffset(next);
+      setHasMore(list.length === 50);
     } catch {} finally { setLoadingMore(false); }
   };
 

@@ -10,7 +10,7 @@ import { User } from '../../users/user.entity';
 import { Destination } from '../../destination.entity';
 import { HostingOffer } from './hosting-offer.entity';
 
-export type HostingRequestStatus = 'pending' | 'approved' | 'rejected';
+export type HostingRequestStatus = 'pending' | 'approved' | 'rejected' | 'cancelled';
 
 @Entity('hosting_requests')
 export class HostingRequest {
@@ -56,6 +56,12 @@ export class HostingRequest {
   // Explicit host reference — used when request originates from a need (offer=null)
   @Column({ type: 'int', nullable: true, name: 'host_id' })
   host_id: number | null;
+
+  @Column({ default: false })
+  guest_hidden: boolean;
+
+  @Column({ default: false })
+  host_hidden: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;

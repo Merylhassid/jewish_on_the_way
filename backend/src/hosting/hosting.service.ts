@@ -91,6 +91,78 @@ export class HostingService {
     return { success: true };
   }
 
+  async deleteOffer(offerId: number, userId: number) {
+    const offer = await this.offersRepo.findOne({ where: { id: offerId }, relations: ['user'] });
+    if (!offer) throw new NotFoundException('Offer not found');
+    if (offer.user.id !== userId) throw new ForbiddenException('Not your offer');
+    await this.offersRepo.delete(offerId);
+    return { success: true };
+  }
+
+  async cancelRequest(requestId: number, userId: number) {
+    const request = await this.requestsRepo.findOne({
+      where: { id: requestId },
+      relations: ['user', 'offer', 'offer.user'],
+    });
+    if (!request) throw new NotFoundException('Request not found');
+
+    const isGuest = request.user?.id === userId;
+    const isHost  = request.offer?.user?.id === userId || request.host_id === userId;
+    if (!isGuest && !isHost) throw new ForbiddenException('Not your request');
+    if (request.status !== 'approved') throw new BadRequestException('Only approved requests can be cancelled');
+
+    request.status = 'cancelled';
+    await this.requestsRepo.save(request);
+    this.audit.log('HOSTING_REQUEST_CANCELLED', userId, { requestId });
+
+    // Notify the other party
+    const otherUserId = isGuest ? (request.offer?.user?.id ?? request.host_id) : request.user?.id;
+    if (otherUserId) {
+      const other = await this.usersRepo.findOne({ where: { id: otherUserId } });
+      if (other?.pushToken) {
+        const cancellerName = isGuest ? request.user?.firstName : 'The host';
+        void this.notifications.sendPush(
+          other.pushToken,
+          'Hosting request cancelled',
+          `${cancellerName} has cancelled the hosting arrangement`,
+          { requestId },
+        );
+      }
+    }
+
+    return { success: true };
+  }
+
+  async deleteRequest(requestId: number, userId: number) {
+    const request = await this.requestsRepo.findOne({
+      where: { id: requestId },
+      relations: ['user', 'offer', 'offer.user'],
+    });
+    if (!request) throw new NotFoundException('Request not found');
+
+    const isGuest = request.user?.id === userId;
+    const isHost  = request.offer?.user?.id === userId || request.host_id === userId;
+    if (!isGuest && !isHost) throw new ForbiddenException('Not your request');
+
+    if (isGuest) request.guest_hidden = true;
+    if (isHost)  request.host_hidden  = true;
+
+    if (request.guest_hidden && request.host_hidden) {
+      await this.requestsRepo.delete(requestId);
+    } else {
+      await this.requestsRepo.save(request);
+    }
+    return { success: true };
+  }
+
+  async deleteNeed(needId: number, userId: number) {
+    const need = await this.needsRepo.findOne({ where: { id: needId }, relations: ['user'] });
+    if (!need) throw new NotFoundException('Need not found');
+    if (need.user.id !== userId) throw new ForbiddenException('Not your need');
+    await this.needsRepo.delete(needId);
+    return { success: true };
+  }
+
   // ── Guest: search offers — req 7.2.5 / 7.2.6 ───────────────────────────────
 
   async searchOffers(filters: {
@@ -223,7 +295,7 @@ export class HostingService {
 
   async myRequests(userId: number) {
     const requests = await this.requestsRepo.find({
-      where: { user: { id: userId } },
+      where: { user: { id: userId }, guest_hidden: false },
       relations: ['destination', 'offer', 'offer.user'],
       order: { created_at: 'DESC' },
     });
@@ -239,7 +311,7 @@ export class HostingService {
       .leftJoinAndSelect('r.destination', 'd')
       .leftJoinAndSelect('r.offer', 'o')
       .leftJoinAndSelect('o.user', 'offerUser')
-      .where('o.user_id = :hostId OR r.host_id = :hostId', { hostId })
+      .where('(o.user_id = :hostId OR r.host_id = :hostId) AND r.host_hidden = false', { hostId })
       .orderBy('r.created_at', 'DESC')
       .getMany();
 
@@ -331,11 +403,23 @@ export class HostingService {
 
   async myNeeds(userId: number) {
     const needs = await this.needsRepo.find({
-      where: { user: { id: userId } },
+      where: { user: { id: userId }, is_open: true },
       relations: ['destination'],
       order: { created_at: 'DESC' },
     });
     return needs.map(this.formatNeed);
+  }
+
+  // ── Close own need ───────────────────────────────────────────────────────────
+
+  async closeNeed(needId: number, userId: number) {
+    const need = await this.needsRepo.findOne({
+      where: { id: needId, user: { id: userId } },
+    });
+    if (!need) throw new NotFoundException('Hosting need not found');
+    need.is_open = false;
+    await this.needsRepo.save(need);
+    return { success: true };
   }
 
   // ── Host responds to a need → creates an approved request + notifies guest ──
@@ -365,9 +449,8 @@ export class HostingService {
     });
     const saved = await this.requestsRepo.save(request);
 
-    // Close the need
-    need.is_open = false;
-    await this.needsRepo.save(need);
+    // Delete the need — it was matched, no longer relevant
+    await this.needsRepo.delete(need.id);
 
     this.audit.log('HOSTING_NEED_RESPONDED', hostId, { needId, requestId: saved.id });
 

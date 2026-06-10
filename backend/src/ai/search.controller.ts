@@ -88,6 +88,10 @@ const HEBREW_FOOD_TERMS = new Set([
   'מסעדה','מסעדת','מסעדות',
   // Common typos / informal variants
   'פיצריה','שוארמה','המברגר','שניצלון','בורגרים','פלאפלים','סטייקהאוס','שינצל',
+  // Bakery — query terms (not just name patterns)
+  'מאפייה','מאפיה','מאפיית',
+  // Missing food query terms
+  'קציצות','קציצה','פריקסה','בגט','יין',
 ]);
 
 // English food/restaurant terms the ML model may misclassify
@@ -109,16 +113,35 @@ function containsFoodTerm(text: string): boolean {
   return false;
 }
 
-// Plural forms of synagogue ("בתי כנסת") are not in the ML training data and get
-// misclassified as minyan — force category to synagogue when detected.
+// Force synagogue only when "בית כנסת" is written explicitly.
+// Denomination words alone (ספרדי, חב"ד) should not override the ML model —
+// "מניין שחרית ספרדי" is still a minyan, the model handles denomination context.
 function containsSynagogueExplicitTerm(text: string): boolean {
-  return /בתי\s+כנסת/.test(text) || /בתי\s+כנסיות/.test(text);
+  if (/בתי\s+כנסת/.test(text) || /בתי\s+כנסיות/.test(text)) return true;
+  if (/בית\s+כנסת/.test(text)) return true;
+  return false;
 }
 const KASHRUT_KEYWORDS: Record<string, string> = {
   'מהדרין':'mehadrin','mehadrin':'mehadrin',
   'בדץ':'badatz','badatz':'badatz',
   'רבנות':'rabbinate','rabbinate':'rabbinate',
 };
+
+// Whitelist-based typo correction for high-value food terms only.
+// Only very safe, common Hebrew keyboard mistakes are included.
+function normalizeTypos(text: string): string {
+  return text
+    .replace(/(^|[\s])פיצמ([\s]|$)/g, '$1פיצה$2')
+    .replace(/(^|[\s])פיצנ([\s]|$)/g, '$1פיצה$2');
+}
+
+// Hosting signal: explicit words OR (שבת + hosting verb)
+function containsHostingSignal(text: string): boolean {
+  const lower = text.toLowerCase();
+  if (/(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower)) return true;
+  if (/שבת/.test(lower) && /להתארח|מתארח|מארח/.test(lower)) return true;
+  return false;
+}
 
 function extractRestaurantFilters(text: string): { type: string | null; kashrut: string | null } {
   const lower = text.toLowerCase();
@@ -184,11 +207,11 @@ export class SearchController {
   @Get('classify')
   classifyText(@Query('text') text: string) {
     if (!text?.trim()) return { category: null, emoji: null, denomination: null, confidence: 0 };
-    const mlResult = this.classifier.classify(text);
-    const foodOverride = containsFoodTerm(text);
-    const synagoguePluralOverride = !foodOverride && containsSynagogueExplicitTerm(text);
-    const lower = text.toLowerCase();
-    const hostingOverride = !foodOverride && !synagoguePluralOverride && /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
+    const normalized = normalizeTypos(text);
+    const mlResult = this.classifier.classify(normalized);
+    const foodOverride = containsFoodTerm(normalized);
+    const synagoguePluralOverride = !foodOverride && containsSynagogueExplicitTerm(normalized);
+    const hostingOverride = !foodOverride && !synagoguePluralOverride && containsHostingSignal(normalized);
     const result = foodOverride
       ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
       : synagoguePluralOverride
@@ -215,7 +238,9 @@ export class SearchController {
 
   @Post()
   async search(@Body() dto: SearchDto) {
-    const { text, destinationId } = dto;
+    const { destinationId } = dto;
+    // Normalise typos before any processing
+    const text = normalizeTypos(dto.text);
 
     // ── שלב 1: Model 1 — סיווג קטגוריה ────────────────
     const mlResult = this.classifier.classify(text);
@@ -224,9 +249,7 @@ export class SearchController {
     // names (בית שמש, בית שאן) from biasing the ML toward synagogue
     const hebrewFoodOverride = containsFoodTerm(text);
     const hebrewSynagogueOverride = !hebrewFoodOverride && containsSynagogueExplicitTerm(text);
-    const lower = text.toLowerCase();
-    const hebrewHostingOverride = !hebrewFoodOverride && !hebrewSynagogueOverride &&
-      /(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower);
+    const hebrewHostingOverride = !hebrewFoodOverride && !hebrewSynagogueOverride && containsHostingSignal(text);
     const result = hebrewFoodOverride
       ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
       : hebrewSynagogueOverride
@@ -236,6 +259,23 @@ export class SearchController {
       : mlResult;
 
     if (!hebrewFoodOverride && !hebrewSynagogueOverride && !hebrewHostingOverride && result.confidence < 0.45) {
+      // Before giving up: check if the text is a destination-only query (e.g. "מרקש", "קאן")
+      const destOnlyResolution = this.resolveDestinationFromText(text);
+      if (destOnlyResolution.destination) {
+        const d = destOnlyResolution.destination;
+        void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: 'destination_only' }));
+        return {
+          category: 'destination',
+          emoji: '📍',
+          confidence: result.confidence,
+          // resolveDestinationFromText only indexes city-level destinations (WHERE parent_id IS NOT NULL),
+          // so all matches here are cities → go to city overview, not subdestinations picker.
+          route: `/destination/${d.id}`,
+          destinationId: d.id,
+          detectedCity: d.city ?? null,
+          gpsUsed: false,
+        };
+      }
       return { error: 'low_confidence', message: 'לא הצלחתי להבין מה אתה מחפש. נסה לכתוב למשל: "מסעדה כשרה בתל אביב"', confidence: result.confidence };
     }
 
@@ -295,7 +335,11 @@ export class SearchController {
         }
       } else {
         foundDest = this.indexService.fuzzyMatch(buildDestinationCandidates(text));
-        if (!foundDest && !destinationResolution.explicitMention && dto.lat != null && dto.lng != null) {
+        // The ML model already identified the category. If no city was found in the index,
+        // GPS is always the right fallback — unknown words like numbers or common nouns
+        // should not block GPS just because they look like potential city names.
+        const allowGpsFallback = true;
+        if (!foundDest && allowGpsFallback && dto.lat != null && dto.lng != null) {
           foundDest = await this.findNearestDestination(dto.lat, dto.lng);
           if (foundDest) gpsUsed = true;
         }
@@ -388,8 +432,8 @@ export class SearchController {
   }
 
   // ── בניית נתיב ניווט ───────────────────────────────
-  private getRoute(category: string, destinationId?: number, denomination?: string | null, restaurantType?: string | null, restaurantKashrut?: string | null): string {
-    if (!destinationId) return `/${category}s`;
+  private getRoute(category: string, destinationId?: number, denomination?: string | null, restaurantType?: string | null, restaurantKashrut?: string | null): string | null {
+    if (!destinationId) return null;
 
     const denomParam = denomination ? `?denomination=${denomination}` : '';
 

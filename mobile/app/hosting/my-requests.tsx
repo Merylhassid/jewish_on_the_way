@@ -10,7 +10,7 @@ import { C } from '@/constants/theme';
 
 interface HostingRequest {
   id: number;
-  status: 'pending' | 'approved' | 'rejected';
+  status: 'pending' | 'approved' | 'rejected' | 'cancelled';
   arrivalDate: string;
   departureDate: string;
   guestsCount: number;
@@ -22,9 +22,10 @@ interface HostingRequest {
 }
 
 const STATUS: Record<string, { label: string; color: string; bg: string }> = {
-  pending:  { label: 'Pending',  color: '#D97706', bg: '#FFFBEB' },
-  approved: { label: 'Approved', color: '#16A34A', bg: '#F0FDF4' },
-  rejected: { label: 'Declined', color: '#DC2626', bg: '#FFF5F5' },
+  pending:   { label: 'Pending',   color: '#D97706', bg: '#FFFBEB' },
+  approved:  { label: 'Approved',  color: '#16A34A', bg: '#F0FDF4' },
+  rejected:  { label: 'Declined',  color: '#DC2626', bg: '#FFF5F5' },
+  cancelled: { label: 'Cancelled', color: '#6B7280', bg: '#F3F4F6' },
 };
 
 export default function MyRequestsScreen() {
@@ -54,6 +55,40 @@ export default function MyRequestsScreen() {
     } catch (err: any) {
       Alert.alert('Error', err?.response?.data?.message ?? 'Action failed');
     }
+  };
+
+  const handleCancel = (id: number) => {
+    Alert.alert('Cancel Request', 'Cancel this hosting arrangement? Both parties will see it as cancelled.', [
+      { text: 'Back', style: 'cancel' },
+      {
+        text: 'Cancel Arrangement', style: 'destructive',
+        onPress: async () => {
+          try {
+            await client.post(`/hosting/requests/${id}/cancel`);
+            load(tab);
+          } catch (err: any) {
+            Alert.alert('Error', err?.response?.data?.message ?? 'Failed to cancel');
+          }
+        },
+      },
+    ]);
+  };
+
+  const handleDelete = (id: number) => {
+    Alert.alert('Remove from list', 'Remove this request from your view?', [
+      { text: 'Back', style: 'cancel' },
+      {
+        text: 'Remove', style: 'destructive',
+        onPress: async () => {
+          try {
+            await client.delete(`/hosting/requests/${id}`);
+            load(tab);
+          } catch (err: any) {
+            Alert.alert('Error', err?.response?.data?.message ?? 'Failed to remove');
+          }
+        },
+      },
+    ]);
   };
 
   return (
@@ -147,6 +182,30 @@ export default function MyRequestsScreen() {
                     </TouchableOpacity>
                   </View>
                 )}
+
+                {/* Guest actions */}
+                {tab === 'sent' && item.status === 'approved' && (
+                  <TouchableOpacity style={s.cancelBtn} onPress={() => handleCancel(item.id)}>
+                    <Text style={s.cancelBtnText}>Cancel Arrangement</Text>
+                  </TouchableOpacity>
+                )}
+                {tab === 'sent' && item.status !== 'approved' && (
+                  <TouchableOpacity style={s.deleteBtn} onPress={() => handleDelete(item.id)}>
+                    <Text style={s.deleteBtnText}>Remove</Text>
+                  </TouchableOpacity>
+                )}
+
+                {/* Host actions — cancel approved, remove cancelled/rejected */}
+                {tab === 'received' && item.status === 'approved' && (
+                  <TouchableOpacity style={s.cancelBtn} onPress={() => handleCancel(item.id)}>
+                    <Text style={s.cancelBtnText}>Cancel Arrangement</Text>
+                  </TouchableOpacity>
+                )}
+                {tab === 'received' && (item.status === 'cancelled' || item.status === 'rejected') && (
+                  <TouchableOpacity style={s.deleteBtn} onPress={() => handleDelete(item.id)}>
+                    <Text style={s.deleteBtnText}>Remove</Text>
+                  </TouchableOpacity>
+                )}
               </View>
             );
           }}
@@ -226,6 +285,20 @@ const s = StyleSheet.create({
   rejectBtn:  { flex: 1, paddingVertical: 12, borderRadius: 12, backgroundColor: '#FFF5F5', borderWidth: 1, borderColor: '#FECACA', alignItems: 'center' },
   approveBtnText: { fontFamily: 'Inter-Bold', fontSize: 14, color: '#16A34A' },
   rejectBtnText:  { fontFamily: 'Inter-Bold', fontSize: 14, color: C.error },
+
+  cancelBtn: {
+    marginTop: 12, alignSelf: 'flex-start',
+    paddingVertical: 8, paddingHorizontal: 14,
+    borderRadius: 10, borderWidth: 1, borderColor: '#FECACA', backgroundColor: '#FFF5F5',
+  },
+  cancelBtnText: { fontFamily: 'Inter-SemiBold', fontSize: 13, color: '#DC2626' },
+
+  deleteBtn: {
+    marginTop: 12, alignSelf: 'flex-start',
+    paddingVertical: 8, paddingHorizontal: 14,
+    borderRadius: 10, borderWidth: 1, borderColor: '#E5E7EB', backgroundColor: '#F9FAFB',
+  },
+  deleteBtnText: { fontFamily: 'Inter-SemiBold', fontSize: 13, color: '#6B7280' },
 
   empty:      { alignItems: 'center', paddingTop: 80, gap: 10 },
   emptyTitle: { fontFamily: 'Inter-SemiBold', fontSize: 16, color: C.textSecondary },
