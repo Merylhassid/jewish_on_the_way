@@ -192,6 +192,11 @@ interface DestinationResolution {
   explicitMention: boolean;
 }
 
+interface RouteOptions {
+  expandNearby?: boolean;
+  useUserGps?: boolean;
+}
+
 @Controller('search')
 export class SearchController {
   constructor(
@@ -302,7 +307,9 @@ export class SearchController {
       void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
       return {
         ...result,
-        route: this.getRoute(result.category, destinationId, denomination, restaurantType, restaurantKashrut),
+        route: this.getRoute(result.category, destinationId, denomination, restaurantType, restaurantKashrut, {
+          expandNearby: result.category === 'synagogue',
+        }),
         destinationId,
         denomination,
         denomEmoji,
@@ -349,7 +356,10 @@ export class SearchController {
     if (foundDest) void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
     return {
       ...result,
-      route:         this.getRoute(result.category, foundDest?.id, denomination, restaurantType, restaurantKashrut),
+      route:         this.getRoute(result.category, foundDest?.id, denomination, restaurantType, restaurantKashrut, {
+        expandNearby: result.category === 'synagogue',
+        useUserGps: (result.category === 'synagogue' || result.category === 'restaurant') && gpsUsed,
+      }),
       destinationId: foundDest?.id,
       detectedCity:  foundDest?.city ?? null,
       gpsUsed,
@@ -432,9 +442,15 @@ export class SearchController {
   }
 
   // ── בניית נתיב ניווט ───────────────────────────────
-  private getRoute(category: string, destinationId?: number, denomination?: string | null, restaurantType?: string | null, restaurantKashrut?: string | null): string | null {
+  private getRoute(
+    category: string,
+    destinationId?: number,
+    denomination?: string | null,
+    restaurantType?: string | null,
+    restaurantKashrut?: string | null,
+    options: RouteOptions = {},
+  ): string | null {
     if (!destinationId) return null;
-
     const denomParam = denomination ? `?denomination=${denomination}` : '';
 
     switch (category) {
@@ -442,10 +458,18 @@ export class SearchController {
         const params = new URLSearchParams();
         if (restaurantType)    params.set('type',    restaurantType);
         if (restaurantKashrut) params.set('kashrut', restaurantKashrut);
+        if (options.useUserGps) params.set('useUserGps', 'true');
         const qs = params.toString();
         return `/restaurants/${destinationId}${qs ? `?${qs}` : ''}`;
       }
-      case 'synagogue':  return `/synagogues/${destinationId}${denomParam}`;
+      case 'synagogue': {
+        const params = new URLSearchParams();
+        if (denomination) params.set('denomination', denomination);
+        if (options.expandNearby) params.set('expandNearby', 'true');
+        if (options.useUserGps) params.set('useUserGps', 'true');
+        const qs = params.toString();
+        return `/synagogues/${destinationId}${qs ? `?${qs}` : ''}`;
+      }
       case 'minyan':     return `/minyans/${destinationId}${denomParam}`;
       case 'hosting':    return `/hosting/${destinationId}`;
       default:           return '/';

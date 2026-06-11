@@ -4,11 +4,12 @@ import { lookupFoodRelation } from './food-relations';
 describe('RestaurantsService smartSearch keyword cleanup', () => {
   const makeService = () => {
     const restaurantsRepo = {
-      query: jest.fn(),
-      findAndCount: jest.fn(),
+      query: jest.fn().mockResolvedValue([{ count: '0' }]),
+      findAndCount: jest.fn().mockResolvedValue([[], 0]),
     };
     const destinationsRepo = {
       findOne: jest.fn(),
+      query: jest.fn().mockResolvedValue([]),
     };
     const service = new RestaurantsService(
       restaurantsRepo as any,
@@ -48,6 +49,56 @@ describe('RestaurantsService smartSearch keyword cleanup', () => {
     expect((firstFindOptions.where.name as any)._value).toBe('%פיצה%');
     expect(result.matchTier).toBe(1);
     expect(result.matchedVia).toEqual(['פיצה']);
+  });
+
+  it('fills sparse pizza searches with local tags and nearby results up to the smart-search cap', async () => {
+    const { service, restaurantsRepo, destinationsRepo } = makeService();
+    destinationsRepo.findOne.mockResolvedValue({
+      id: 101, name: 'Beit Shemesh', city: 'Beit Shemesh', country: 'Israel',
+    });
+
+    const localName = Array.from({ length: 6 }, (_, i) => ({
+      id: i + 1,
+      name: `פיצה ${i + 1}`,
+      distanceMeters: 100 + i,
+    }));
+    const localTags = [
+      { id: 10, name: 'Italian Place', distanceMeters: 300 },
+      { id: 11, name: 'Cafe With Pizza', distanceMeters: 350 },
+    ];
+    const nearbyName = [
+      { id: 20, name: 'פיצה ממש קרובה', destinationCity: 'Nearby City', distanceMeters: 8000 },
+      { id: 22, name: 'פיצה רחוקה יותר', destinationCity: 'Jerusalem', distanceMeters: 12000 },
+    ];
+    const nearbyTags = [
+      { id: 21, name: 'Italian Nearby', destinationCity: 'Nearby City', distanceMeters: 9000 },
+      { id: 23, name: 'Italian Farther', destinationCity: 'Jerusalem', distanceMeters: 15000 },
+    ];
+    const localType = [
+      { id: 30, name: 'Local Dairy Cafe', distanceMeters: 500 },
+    ];
+    const nearbyType = [
+      { id: 31, name: 'Nearby Dairy Cafe', destinationCity: 'Nearby City', distanceMeters: 9500 },
+      { id: 32, name: 'Farther Dairy Cafe', destinationCity: 'Jerusalem', distanceMeters: 18000 },
+    ];
+
+    restaurantsRepo.query
+      .mockResolvedValueOnce([{ count: '6' }])
+      .mockResolvedValueOnce(localName)
+      .mockResolvedValueOnce(nearbyName)
+      .mockResolvedValueOnce(nearbyTags)
+      .mockResolvedValueOnce(nearbyType)
+      .mockResolvedValueOnce([{ count: '2' }])
+      .mockResolvedValueOnce(localTags)
+      .mockResolvedValueOnce([{ count: '1' }])
+      .mockResolvedValueOnce(localType);
+
+    const result = await service.smartSearch('פיצה', 'dairy', undefined, 101, 31.75, 34.99, 'פיצה');
+
+    expect(result.data.map(r => r.id)).toEqual([1, 2, 3, 4, 5, 6, 20, 10, 11, 30, 21, 31, 22, 23, 32]);
+    expect(result.total).toBe(15);
+    expect(result.matchTier).toBe(1);
+    expect(result.message).toBe('מציג גם תוצאות מערים קרובות');
   });
 });
 

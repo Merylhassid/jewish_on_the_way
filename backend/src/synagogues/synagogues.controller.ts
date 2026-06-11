@@ -17,10 +17,12 @@ export class SynagoguesController {
     @Query('offset')              offsetStr?: string,
     @Query('lat')                 latStr?: string,
     @Query('lng')                 lngStr?: string,
+    @Query('expandNearby')        expandNearbyStr?: string,
   ) {
     const offset = offsetStr ? parseInt(offsetStr, 10) : 0;
     const lat    = latStr ? parseFloat(latStr)  : undefined;
     const lng    = lngStr ? parseFloat(lngStr)  : undefined;
+    const expandNearby = expandNearbyStr === 'true';
 
     if (parentDestinationIdStr) {
       const parentId = parseInt(parentDestinationIdStr, 10);
@@ -35,7 +37,7 @@ export class SynagoguesController {
     if (isNaN(destinationId)) {
       throw new BadRequestException('destinationId must be a valid integer');
     }
-    return this.synagoguesService.findByDestination(destinationId, denomination, offset, lat, lng);
+    return this.synagoguesService.findByDestination(destinationId, denomination, offset, lat, lng, expandNearby);
   }
 
   /**

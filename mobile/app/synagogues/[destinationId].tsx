@@ -43,9 +43,20 @@ function getDenomKey(d?: string | null) {
 }
 
 export default function SynagoguesScreen() {
-  const { destinationId, denomination, city, fromParent } =
-    useLocalSearchParams<{ destinationId: string; denomination?: string; city?: string; fromParent?: string }>();
+  const { destinationId, denomination, city, fromParent, expandNearby, useUserGps, lat: latParam, lng: lngParam } =
+    useLocalSearchParams<{
+      destinationId: string;
+      denomination?: string;
+      city?: string;
+      fromParent?: string;
+      expandNearby?: string;
+      useUserGps?: string;
+      lat?: string;
+      lng?: string;
+    }>();
   const isCountryMode = fromParent === 'true';
+  const shouldExpandNearby = expandNearby === 'true' && !isCountryMode;
+  const shouldUseUserGps = useUserGps === 'true';
   const { t } = useTranslation();
 
   const [synagogues, setSynagogues] = useState<Synagogue[]>([]);
@@ -57,10 +68,13 @@ export default function SynagoguesScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError]           = useState(false);
   const [trigger, setTrigger]       = useState(0);
-  const [gps, setGps]               = useState<{ lat: number; lng: number } | null>(null);
+  const [gps, setGps]               = useState<{ lat: number; lng: number } | null>(
+    shouldUseUserGps && latParam && lngParam ? { lat: parseFloat(latParam), lng: parseFloat(lngParam) } : null,
+  );
   const cityLabel = city ? decodeURIComponent(city) : '';
 
   useEffect(() => {
+    if (!shouldUseUserGps) return;
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') return;
@@ -69,7 +83,7 @@ export default function SynagoguesScreen() {
         setGps({ lat: pos.coords.latitude, lng: pos.coords.longitude });
       } catch {}
     })();
-  }, []);
+  }, [shouldUseUserGps]);
 
   useEffect(() => {
     if (!destinationId) return;
@@ -83,7 +97,8 @@ export default function SynagoguesScreen() {
           offset: '0',
         };
         if (denomination) params.denomination = denomination;
-        if (gps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+        if (shouldExpandNearby) params.expandNearby = 'true';
+        if (shouldUseUserGps && gps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
         const res = await client.get('/synagogues', { params });
         const raw = res.data;
         const list = Array.isArray(raw) ? raw : (raw?.data ?? []);
@@ -92,7 +107,7 @@ export default function SynagoguesScreen() {
         setHasMore((raw?.total ?? list.length) > list.length);
       } catch { setError(true); } finally { setLoading(false); setRefreshing(false); }
     })();
-  }, [destinationId, denomination, gps, trigger]);
+  }, [destinationId, denomination, gps, trigger, shouldExpandNearby, shouldUseUserGps]);
 
   const loadMore = async () => {
     if (loadingMore || !hasMore) return;
@@ -104,7 +119,8 @@ export default function SynagoguesScreen() {
         offset: String(next),
       };
       if (denomination) params.denomination = denomination;
-      if (gps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+      if (shouldExpandNearby) params.expandNearby = 'true';
+      if (shouldUseUserGps && gps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
       const res = await client.get('/synagogues', { params });
       const raw = res.data;
       const list = Array.isArray(raw) ? raw : (raw?.data ?? []);

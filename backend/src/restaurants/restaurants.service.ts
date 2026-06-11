@@ -1015,102 +1015,169 @@ export class RestaurantsService {
     });
     const cleanedKeyword = stripDestinationTerms(keyword, destination);
 
+    // Generic "I want food" words carry no dish intent. They must behave identically
+    // ("אוכל" === "לאכול") and fall through to the local list, not partial-match a
+    // specific dictionary entry (e.g. "אוכל" matching "אוכל רחוב" → street food).
+    const GENERIC_FOOD_WORDS = new Set(['אוכל', 'אוכלים', 'לאכול', 'לאכל', 'ארוחה', 'food', 'eat']);
+
     // Use keyword first; fall back to original query so Hebrew food terms like "פיצה"
     // still hit the food-relations table even when the classifier strips the keyword
-    const lookupTerm = cleanedKeyword ?? stripDestinationTerms(originalQuery, destination);
+    const rawLookupTerm = cleanedKeyword ?? stripDestinationTerms(originalQuery, destination);
+    const lookupTerm = rawLookupTerm && GENERIC_FOOD_WORDS.has(rawLookupTerm.trim().toLowerCase())
+      ? undefined
+      : rawLookupTerm;
     const relation = lookupTerm ? lookupFoodRelation(lookupTerm) : undefined;
     const searchTags = relation?.searchTags ?? [];
     const fallbackType = relation?.fallbackType;
 
-    const SPARSE_THRESHOLD = 5;
+    const NEARBY_PRIORITY_METERS = 10000;
     const SUPPLEMENT_MAX_METERS = 30000; // only pull in results from nearby cities (≤30km)
-    const MAX_RESULTS = 40; // cap the final list — best first, then fill with similar
-    const kwNorm = cleanedKeyword ? normalizeRestaurantSearchText(cleanedKeyword) : '';
-    const nameMatchesKeyword = (r: any): boolean =>
-      kwNorm.length > 0 && normalizeRestaurantSearchText(r.name ?? '').includes(kwNorm);
-    const supplement = async (localData: any[]): Promise<any[]> => {
-      // Without GPS we cannot tell which global results are nearby, so cities like
-      // Eilat would appear before local results. Skip supplement entirely; the
-      // mobile re-runs the search once GPS arrives, at which point filtering is safe.
-      if (lat === undefined || lng === undefined) return localData;
+    const MAX_RESULTS = 50;
+    const effectiveType = classifierType ?? fallbackType;
+    const origin = await this.resolveRestaurantSearchOrigin(destinationId, lat, lng);
+    const originLat = origin?.lat;
+    const originLng = origin?.lng;
+    const data: any[] = [];
+    const seen = new Set<number>();
+    let matchedTier: 1 | 2 | 3 | 4 = 4;
+    let addedNearby = false;
 
-      const ids = new Set(localData.map((r: any) => r.id));
-      const g = await this.searchGlobal(searchTags, cleanedKeyword, classifierType ?? fallbackType, kashrut, lat, lng);
-      // Only keep nearby results with known coordinates (≤30km)
-      const extra = g.data.filter(
-        (r: any) => !ids.has(r.id) && r.distanceMeters != null && r.distanceMeters <= SUPPLEMENT_MAX_METERS,
-      );
-      if (extra.length === 0) return localData;
-      const combined = [...localData, ...extra];
-      // Sort purely by distance — nearest first
-      combined.sort((a: any, b: any) =>
-        (a.distanceMeters ?? 999999) - (b.distanceMeters ?? 999999),
-      );
-      return combined.slice(0, MAX_RESULTS);
+    const addLayer = (
+      rows: any[],
+      tier: 1 | 2 | 3,
+      options: { nearby?: boolean; minMeters?: number; maxMeters?: number } = {},
+    ) => {
+      const { nearby = false, minMeters = 0, maxMeters = SUPPLEMENT_MAX_METERS } = options;
+      for (const row of rows) {
+        if (data.length >= MAX_RESULTS) break;
+        if (seen.has(row.id)) continue;
+        if (nearby) {
+          const distance = Number(row.distanceMeters);
+          if (!Number.isFinite(distance) || distance <= minMeters || distance > maxMeters) continue;
+          if (destination?.city && row.destinationCity && row.destinationCity !== destination.city) {
+            addedNearby = true;
+          }
+        }
+        seen.add(row.id);
+        data.push(row);
+        if (matchedTier === 4 || tier < matchedTier) matchedTier = tier;
+      }
     };
 
-    // Tier 1: name ILIKE — most specific (finds "גלידת ים", "שניצל בגדדי")
-    if (cleanedKeyword) {
-      const result = await this.findByDestination(destinationId, { q: cleanedKeyword, kashrut, lat, lng });
-      if (result.data.length > 0) {
-        const data = result.data.length < SPARSE_THRESHOLD
-          ? await supplement(result.data)
-          : result.data;
-        const supplemented = data.length > result.data.length;
-        return {
-          data,
-          total: data.length,
-          matchTier: 1,
-          matchedVia: [cleanedKeyword],
-          message: supplemented ? 'מציג גם תוצאות מערים קרובות' : null,
-        };
-      }
+    // 1. Highest confidence: exact keyword in the current destination.
+    if (cleanedKeyword && data.length < MAX_RESULTS) {
+      const result = await this.findByDestination(destinationId, {
+        q: cleanedKeyword,
+        kashrut,
+        lat: originLat,
+        lng: originLng,
+      });
+      addLayer(result.data, 1);
     }
 
-    // Tier 2: food-relation tags — category match (dairy, meat, etc.)
-    if (searchTags.length > 0) {
-      const result = await this.searchByTags(searchTags, kashrut, destinationId, lat, lng);
-      if (result.data.length > 0) {
-        const kwLower = cleanedKeyword?.toLowerCase().trim() ?? '';
-        const tagMatch = searchTags.some(t => t === kwLower || kwLower.includes(t));
-        const isDirectMatch = !cleanedKeyword || tagMatch;
-        // Indirect match (e.g. גלידה→dairy) always supplements so global ILIKE can find actual ice cream
-        const shouldSupplement = !isDirectMatch || result.data.length < SPARSE_THRESHOLD;
-        const data = shouldSupplement ? await supplement(result.data) : result.data;
-        const supplemented = data.length > result.data.length;
-        return {
-          data,
-          total: data.length,
-          matchTier: 2,
-          matchedVia: searchTags,
-          message: supplemented ? 'מציג גם תוצאות מערים קרובות' : null,
-        };
-      }
+    let nearbyNameData: any[] = [];
+    let nearbyTagData: any[] = [];
+    let nearbyTypeData: any[] = [];
+
+    if (origin && cleanedKeyword) {
+      nearbyNameData = (await this.searchGlobal([], cleanedKeyword, undefined, kashrut, origin.lat, origin.lng)).data;
+    }
+    if (origin && searchTags.length > 0) {
+      nearbyTagData = (await this.searchGlobal(searchTags, undefined, undefined, kashrut, origin.lat, origin.lng)).data;
+    }
+    if (origin && effectiveType) {
+      nearbyTypeData = (await this.searchGlobal([], undefined, effectiveType, kashrut, origin.lat, origin.lng)).data;
     }
 
-    // Tier 3: drop keyword — use classifier type or fallback type + kashrut
-    const effectiveType = classifierType ?? fallbackType;
-    const result3 = await this.findByDestination(destinationId, { type: effectiveType, kashrut, lat, lng });
-    if (result3.data.length > 0) {
-      const data = await supplement(result3.data);
-      const supplemented = data.length > result3.data.length;
+    // 2. Exact keyword in another nearby destination (≤10km).
+    if (data.length < MAX_RESULTS) {
+      addLayer(nearbyNameData, 1, { nearby: true, maxMeters: NEARBY_PRIORITY_METERS });
+    }
+
+    // 3. Strong semantic match in the current destination, based on food tags.
+    if (searchTags.length > 0 && data.length < MAX_RESULTS) {
+      const result = await this.searchByTags(searchTags, kashrut, destinationId, originLat, originLng);
+      addLayer(result.data, 2);
+    }
+
+    // 4. Broad local fallback, e.g. dairy places for pizza.
+    if (effectiveType && data.length < MAX_RESULTS) {
+      const result = await this.findByDestination(destinationId, {
+        type: effectiveType,
+        kashrut,
+        lat: originLat,
+        lng: originLng,
+      });
+      addLayer(result.data, 3);
+    }
+
+    // 5. Possible matches in another nearby destination (≤10km).
+    if (data.length < MAX_RESULTS) {
+      addLayer(nearbyTagData, 2, { nearby: true, maxMeters: NEARBY_PRIORITY_METERS });
+      addLayer(nearbyTypeData, 3, { nearby: true, maxMeters: NEARBY_PRIORITY_METERS });
+    }
+
+    // 6. Exact keyword in nearby destinations from 10–30km.
+    if (data.length < MAX_RESULTS) {
+      addLayer(nearbyNameData, 1, {
+        nearby: true,
+        minMeters: NEARBY_PRIORITY_METERS,
+        maxMeters: SUPPLEMENT_MAX_METERS,
+      });
+    }
+
+    // 7. Possible matches in nearby destinations from 10–30km.
+    if (data.length < MAX_RESULTS) {
+      addLayer(nearbyTagData, 2, {
+        nearby: true,
+        minMeters: NEARBY_PRIORITY_METERS,
+        maxMeters: SUPPLEMENT_MAX_METERS,
+      });
+      addLayer(nearbyTypeData, 3, {
+        nearby: true,
+        minMeters: NEARBY_PRIORITY_METERS,
+        maxMeters: SUPPLEMENT_MAX_METERS,
+      });
+    }
+
+    if (data.length > 0) {
       return {
         data,
         total: data.length,
-        matchTier: 3,
-        matchedVia: [],
-        message: supplemented ? 'מציג גם תוצאות מערים קרובות' : null,
+        matchTier: matchedTier === 4 ? 3 : matchedTier,
+        matchedVia: cleanedKeyword ? [cleanedKeyword] : searchTags,
+        message: addedNearby ? 'מציג גם תוצאות מערים קרובות' : null,
       };
     }
 
     // Tier 3.5: search globally across all destinations (fallback when local search fails)
-    const globalResult = await this.searchGlobal(searchTags, cleanedKeyword, effectiveType, kashrut, lat, lng);
+    const globalResult = await this.searchGlobal(searchTags, cleanedKeyword, effectiveType, kashrut, originLat, originLng);
     if (globalResult.data.length > 0) {
       return {
         ...globalResult,
         matchTier: 3,
         matchedVia: ['global'],
         message: `לא נמצאו תוצאות בעיר זו — מציג תוצאות מערים אחרות`,
+      };
+    }
+
+    // Safety net: a restaurant-intent query must never come back empty while the
+    // destination has restaurants. Generic queries ("לאכול") strip to nothing and
+    // unmatched keywords ("מאפה גבינה") miss every layer — show the local list instead.
+    const fallback = await this.findByDestination(destinationId, {
+      kashrut,
+      lat: originLat,
+      lng: originLng,
+    });
+    if (fallback.data.length > 0) {
+      return {
+        data: fallback.data,
+        total: fallback.data.length,
+        matchTier: 3,
+        matchedVia: [],
+        message: cleanedKeyword
+          ? `לא נמצאה התאמה מדויקת ל"${cleanedKeyword}" — מציג מסעדות באזור`
+          : null,
       };
     }
 
@@ -1124,6 +1191,25 @@ export class RestaurantsService {
         ? `לא נמצאו תוצאות עבור "${cleanedKeyword}"`
         : 'לא נמצאו מסעדות.',
     };
+  }
+
+  private async resolveRestaurantSearchOrigin(
+    destinationId: number,
+    lat?: number,
+    lng?: number,
+  ): Promise<{ lat: number; lng: number } | null> {
+    if (lat !== undefined && lng !== undefined) return { lat, lng };
+
+    const rows = await this.destinationsRepo.query(
+      `SELECT ST_Y(location::geometry) AS lat, ST_X(location::geometry) AS lng
+       FROM destinations
+       WHERE id = $1 AND location IS NOT NULL
+       LIMIT 1`,
+      [destinationId],
+    );
+    const row = rows[0];
+    if (row?.lat == null || row?.lng == null) return null;
+    return { lat: Number(row.lat), lng: Number(row.lng) };
   }
 
   private async searchGlobal(

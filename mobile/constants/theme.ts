@@ -231,10 +231,6 @@ const LANDMARK: Record<string, string> = {
   'rio de janeiro': U('1483729600819-4de4a80c5249'),
   'sao paulo':      U('1483729600819-4de4a80c5249'),
 
-  // ── Mexico ───────────────────────────────────────────────────────────────────
-  mexico:           U('1518638150340-f706e86654de'), // Chichen Itza
-  'mexico city':    U('1518638150340-f706e86654de'),
-
   // ── Japan ────────────────────────────────────────────────────────────────────
   japan:            U('1542051841857-5f90071e7989'), // Mount Fuji
   tokyo:            U('1542051841857-5f90071e7989'),
@@ -413,7 +409,6 @@ const COUNTRY_FALLBACK: Record<string, string> = {
   SG: P('singapore-marina-bay'),
   ZA: P('cape-town-table-mountain'),
   BR: P('rio-cristo-redentor'),
-  MX: P('mexico-city-landmark'),
   JP: P('mount-fuji-japan'),
   RO: P('bucharest-romania'),
   UA: P('kyiv-ukraine'),

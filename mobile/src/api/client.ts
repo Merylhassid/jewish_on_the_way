@@ -14,11 +14,39 @@ const storage = {
 
 export const API_URL = 'http://49.12.189.108:3000';
 
+export function describeApiError(error: unknown) {
+  const e = error as any;
+  const status = e?.response?.status;
+  const code = e?.code;
+  const method = e?.config?.method?.toUpperCase?.();
+  const url = e?.config?.url;
+  const serverMessage = e?.response?.data?.message;
+  const message = Array.isArray(serverMessage)
+    ? serverMessage.join('\n')
+    : serverMessage || e?.message || 'Unknown error';
+
+  let userMessage = 'בדוק את החיבור לאינטרנט ונסה שוב';
+  if (status === 401) userMessage = 'ההתחברות פגה. התחבר מחדש ונסה שוב';
+  else if (status === 403) userMessage = 'אין הרשאה לבצע את הפעולה הזאת';
+  else if (status === 429) userMessage = 'נשלחו יותר מדי בקשות. נסה שוב בעוד רגע';
+  else if (status >= 500) userMessage = 'יש תקלה זמנית בשרת. נסה שוב בעוד רגע';
+  else if (code === 'ECONNABORTED') userMessage = 'הבקשה לשרת לקחה יותר מדי זמן. נסה שוב';
+  else if (message && message !== 'Network Error') userMessage = String(message);
+
+  return { status, code, method, url, message: String(message), userMessage };
+}
+
+export function logApiError(context: string, error: unknown) {
+  const info = describeApiError(error);
+  console.warn(`[api] ${context}`, info);
+  return info;
+}
+
 // ── Module-level refresh state ────────────────────────────────────────────────
 let _refreshToken: string | null = null;
 let _forcedLogout: (() => void) | null = null;
 let _isRefreshing = false;
-let _queue: Array<{ resolve: (token: string) => void; reject: (err: unknown) => void }> = [];
+let _queue: { resolve: (token: string) => void; reject: (err: unknown) => void }[] = [];
 
 /** Called by AuthProvider after login / on app start */
 export function setClientRefreshToken(token: string | null) {
