@@ -2,12 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Synagogue } from '../synagogue.entity';
+import { Destination } from '../destination.entity';
 
 @Injectable()
 export class SynagoguesService {
   constructor(
     @InjectRepository(Synagogue)
     private synagoguesRepo: Repository<Synagogue>,
+    @InjectRepository(Destination)
+    private destinationsRepo: Repository<Destination>,
   ) {}
 
   /**
@@ -28,14 +31,18 @@ export class SynagoguesService {
     offset = 0,
     lat?: number,
     lng?: number,
+    expandNearby = false,
   ): Promise<{ data: any[]; total: number; denominationFallback?: boolean }> {
     const denomValues = denomination ? (this.DENOM_MAP[denomination] ?? []) : [];
+    const origin = await this.resolveSearchOrigin(destinationId, lat, lng, expandNearby);
+    const searchLat = origin?.lat;
+    const searchLng = origin?.lng;
 
     // ── GPS mode: raw SQL with distance ordering ─────────
-    if (lat !== undefined && lng !== undefined) {
+    if (searchLat !== undefined && searchLng !== undefined) {
       const countParams: any[] = [destinationId];
       let countWhere = `s."destinationId" = $1`;
-      const gpsParams: any[] = [lng, lat, destinationId];
+      const gpsParams: any[] = [searchLng, searchLat, destinationId];
       let gpsWhere = `s."destinationId" = $3`;
       let cIdx = 2;
       let gIdx = 4;
@@ -81,8 +88,8 @@ export class SynagoguesService {
       );
 
       // Supplement with nearby synagogues from other destinations when local results are sparse
-      if (offset === 0 && total < 30) {
-        const supParams: any[] = [lng, lat, destinationId];
+      if (expandNearby && offset === 0 && total < 30) {
+        const supParams: any[] = [searchLng, searchLat, destinationId];
         let supWhere = `s."destinationId" != $3 AND s.location IS NOT NULL
           AND ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography) <= 30000`;
         if (denomValues.length > 0 && !denominationFallback) {
@@ -140,6 +147,42 @@ export class SynagoguesService {
     }
 
     return { data, total, denominationFallback };
+  }
+
+  private async resolveSearchOrigin(
+    destinationId: number,
+    lat?: number,
+    lng?: number,
+    expandNearby = false,
+  ): Promise<{ lat: number; lng: number } | null> {
+    if (lat !== undefined && lng !== undefined) {
+      return { lat, lng };
+    }
+    if (!expandNearby) return null;
+
+    const rows = await this.destinationsRepo.query(
+      `SELECT ST_Y(location::geometry) AS lat, ST_X(location::geometry) AS lng
+       FROM destinations
+       WHERE id = $1 AND location IS NOT NULL
+       LIMIT 1`,
+      [destinationId],
+    );
+    const row = rows[0];
+    if (row?.lat != null && row?.lng != null) {
+      return { lat: parseFloat(row.lat), lng: parseFloat(row.lng) };
+    }
+
+    const synagogueRows = await this.synagoguesRepo.query(
+      `SELECT
+         ST_Y(ST_Centroid(ST_Collect(location::geometry))) AS lat,
+         ST_X(ST_Centroid(ST_Collect(location::geometry))) AS lng
+       FROM synagogues
+       WHERE "destinationId" = $1 AND location IS NOT NULL`,
+      [destinationId],
+    );
+    const synagogueOrigin = synagogueRows[0];
+    if (synagogueOrigin?.lat == null || synagogueOrigin?.lng == null) return null;
+    return { lat: parseFloat(synagogueOrigin.lat), lng: parseFloat(synagogueOrigin.lng) };
   }
 
   /**

@@ -18,7 +18,7 @@ import {
   Navigation, Search, Sparkles, Utensils, X,
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
-import client from '@/src/api/client';
+import client, { logApiError } from '@/src/api/client';
 import { C } from '@/constants/theme';
 import ErrorState from '@/src/components/ErrorState';
 import { RestaurantCardSkeleton } from '@/src/components/Skeleton';
@@ -59,9 +59,12 @@ const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFix
 const cap = (s: string | null | undefined) => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Unknown';
 
 export default function RestaurantsScreen() {
-  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam, lat: latParam, lng: lngParam } =
-    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string; lat?: string; lng?: string }>();
+  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam, lat: latParam, lng: lngParam, useUserGps } =
+    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string; lat?: string; lng?: string; useUserGps?: string }>();
   const isCountryMode = fromParent === 'true';
+  // Explicit-destination searches ("פיצה במזכרת בתיה") must measure distances from the
+  // destination, not from the user — only near-me searches carry useUserGps=true.
+  const shouldUseUserGps = useUserGps === 'true';
   const { t } = useTranslation();
 
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
@@ -71,6 +74,7 @@ export default function RestaurantsScreen() {
   const [loading, setLoading]   = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError]       = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const [typeFilter, setTypeFilter]       = useState(typeParam && TYPE_FILTERS.includes(typeParam) ? typeParam : 'all');
   const [kashrutFilter, setKashrutFilter] = useState(kashrutParam && KASHRUT_FILTERS.includes(kashrutParam) ? kashrutParam : 'all');
   const [search, setSearch] = useState(qParam ?? '');
@@ -108,7 +112,10 @@ export default function RestaurantsScreen() {
     const isFirst = initialSearch.current;
     if (isFirst) initialSearch.current = false;
 
-    const gpsJustArrived = !isFirst && gps != null && prevGpsRef.current == null;
+    // GPS arrival only matters when the query actually uses it: plain list (distance
+    // sorting) or a near-me search. Explicit-destination searches ignore user GPS.
+    const gpsAffectsQuery = !search.trim() || shouldUseUserGps;
+    const gpsJustArrived = !isFirst && gps != null && prevGpsRef.current == null && gpsAffectsQuery;
     prevGpsRef.current = gps;
 
     if (aiMode && search.trim() && !isFirst && !gpsJustArrived) return;
@@ -116,11 +123,16 @@ export default function RestaurantsScreen() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(async () => {
       try {
+        setError(false);
+        setErrorMessage(undefined);
         setLoading(true); setOffset(0);
         const params: Record<string, string> = isCountryMode
           ? { parentDestinationId: destinationId, offset: '0' }
           : { destinationId, offset: '0' };
-        if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+        // Pass user GPS for the plain list (in-city distance sorting) and for near-me
+        // searches; never for explicit-destination searches — the server then falls
+        // back to the destination's own coordinates as the distance origin.
+        if (gps?.lat && (!search.trim() || shouldUseUserGps)) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
 
         let endpoint = '/restaurants';
         if (search.trim()) {
@@ -141,7 +153,11 @@ export default function RestaurantsScreen() {
           setRestaurants(Array.isArray(data) ? data : []);
           setTotal(t ?? 0);
         }
-      } catch { setError(true); } finally { setLoading(false); setRefreshing(false); }
+      } catch (err) {
+        const info = logApiError('restaurants.load', err);
+        setErrorMessage(info.userMessage);
+        setError(true);
+      } finally { setLoading(false); setRefreshing(false); }
     }, 300);
     // Don't cancel the initial timeout on cleanup — GPS arriving would wipe it
     return () => { if (!isFirst && timeoutRef.current) clearTimeout(timeoutRef.current); };
@@ -166,6 +182,8 @@ export default function RestaurantsScreen() {
     if (!q) return;
     setAiChip(null);
     try {
+      setError(false);
+      setErrorMessage(undefined);
       setLoading(true);
       const body: any = { text: q };
       if (gps) { body.lat = gps.lat; body.lng = gps.lng; }
@@ -181,17 +199,20 @@ export default function RestaurantsScreen() {
         if (!isRestaurantRoute || differentDest) {
           const sep = route.includes('?') ? '&' : '?';
           const cityPart = detectedCity ? `city=${encodeURIComponent(detectedCity)}&` : '';
-          const gpsPart  = gps ? `&lat=${gps.lat}&lng=${gps.lng}` : '';
+          const shouldPassGps = route.includes('useUserGps=true');
+          const gpsPart  = shouldPassGps && gps ? `&lat=${gps.lat}&lng=${gps.lng}` : '';
           router.push(`${route}${sep}${cityPart}q=${encodeURIComponent(q)}${gpsPart}` as any);
           return;
         }
       }
 
-      // Same city or no city detected → search within current destination
+      // Same city or no city detected → search within current destination.
+      // User GPS is only a valid distance origin for near-me entries; otherwise the
+      // server measures from the destination itself.
       const params: Record<string, string> = isCountryMode
         ? { parentDestinationId: destinationId, offset: '0' }
         : { destinationId, offset: '0' };
-      if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+      if (gps?.lat && shouldUseUserGps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
       params.q = q;
       setLastAiQuery(q);
       const searchRes = await client.get('/restaurants/search', { params });
@@ -200,7 +221,11 @@ export default function RestaurantsScreen() {
       setAiMeta({ matchTier, message });
       setTotal(aiTotal ?? 0);
       setOffset(0);
-    } catch {} finally { setLoading(false); }
+    } catch (err) {
+      const info = logApiError('restaurants.aiSearch', err);
+      setErrorMessage(info.userMessage);
+      setError(true);
+    } finally { setLoading(false); }
   };
 
   const loadMore = async () => {
@@ -217,7 +242,9 @@ export default function RestaurantsScreen() {
       const res = await client.get('/restaurants', { params });
       setRestaurants(p => [...p, ...(Array.isArray(res.data.data) ? res.data.data : [])]);
       setOffset(nextOffset);
-    } catch {} finally { setLoadingMore(false); }
+    } catch (err) {
+      logApiError('restaurants.loadMore', err);
+    } finally { setLoadingMore(false); }
   };
 
   const sendAiFeedback = (item: Restaurant) => {
@@ -355,14 +382,14 @@ export default function RestaurantsScreen() {
           {[0,1,2,3,4].map(i => <RestaurantCardSkeleton key={i} />)}
         </View>
       ) : error ? (
-        <ErrorState onRetry={() => { setError(false); setTrigger(t => t + 1); }} />
+        <ErrorState message={errorMessage} onRetry={() => { setError(false); setErrorMessage(undefined); setTrigger(t => t + 1); }} />
       ) : (
         <FlatList
           data={restaurants}
           keyExtractor={i => String(i.id)}
           contentContainerStyle={s.list}
           showsVerticalScrollIndicator={false}
-          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); setError(false); setTrigger(t => t + 1); }} tintColor={C.gold} />}
+          refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); setError(false); setErrorMessage(undefined); setTrigger(t => t + 1); }} tintColor={C.gold} />}
           onEndReached={loadMore}
           onEndReachedThreshold={0.3}
           ListFooterComponent={loadingMore ? <ActivityIndicator color={C.gold} style={{ margin: 20 }} /> : null}

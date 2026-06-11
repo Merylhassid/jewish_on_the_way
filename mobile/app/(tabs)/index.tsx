@@ -115,7 +115,6 @@ export default function HomeScreen() {
           try {
             const [place] = await Location.reverseGeocodeAsync(
               { latitude: coords.lat, longitude: coords.lng },
-              { useGoogleMaps: false },
             );
             if (place?.isoCountryCode) setUserCountry(place.isoCountryCode.toUpperCase());
           } catch {}
@@ -192,7 +191,8 @@ export default function HomeScreen() {
         ? `${fullRoute.includes('?') ? '&' : '?'}q=${encodeURIComponent(query)}`
         : '';
       const sep = (fullRoute + qParam).includes('?') ? '&' : '?';
-      const gpsParam = (category === 'restaurant' && gps)
+      const shouldPassGps = fullRoute.includes('useUserGps=true');
+      const gpsParam = (shouldPassGps && gps)
         ? `${sep}lat=${gps.lat}&lng=${gps.lng}`
         : '';
       router.push((fullRoute + qParam + gpsParam) as any);
