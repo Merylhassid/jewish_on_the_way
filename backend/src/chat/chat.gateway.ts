@@ -168,6 +168,9 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const cursors = await this.getCursors(room);
     client.emit('chat:cursors', { cursors });
 
+    // Send online count directly to joining client in addition to broadcast
+    client.emit('chat:online', { count: this.roomPresence.get(room)?.size ?? 0 });
+
     return { ok: true };
   }
 
@@ -265,6 +268,9 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const cursors = await this.getCursors(room);
     client.emit('minyan-chat:cursors', { cursors });
 
+    // Send online count directly to joining client in addition to broadcast
+    client.emit('chat:online', { count: this.roomPresence.get(room)?.size ?? 0 });
+
     return { ok: true };
   }
 
@@ -334,6 +340,54 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const cursors = await this.getCursors(room);
     this.server.to(room).emit('minyan-chat:cursors', { cursors });
     return { ok: true };
+  }
+
+  // ── City Chat: Typing ──
+  @SubscribeMessage('chat:typing')
+  handleTyping(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedUser = (client as any).cachedUser as User;
+    if (!userId || !cachedUser) return;
+    const room = `destination:${data.destinationId}`;
+    this.server.except(client.id).to(room).emit('chat:typing', { userId, firstName: cachedUser.firstName });
+  }
+
+  @SubscribeMessage('chat:stop-typing')
+  handleStopTyping(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number },
+  ) {
+    const userId = (client as any).userId;
+    if (!userId) return;
+    const room = `destination:${data.destinationId}`;
+    this.server.except(client.id).to(room).emit('chat:stop-typing', { userId });
+  }
+
+  // ── Minyan Chat: Typing ──
+  @SubscribeMessage('minyan-chat:typing')
+  handleMinyanTyping(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { minyanId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedUser = (client as any).cachedUser as User;
+    if (!userId || !cachedUser) return;
+    const room = `minyan-chat:${data.minyanId}`;
+    this.server.except(client.id).to(room).emit('chat:typing', { userId, firstName: cachedUser.firstName });
+  }
+
+  @SubscribeMessage('minyan-chat:stop-typing')
+  handleMinyanStopTyping(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { minyanId: number },
+  ) {
+    const userId = (client as any).userId;
+    if (!userId) return;
+    const room = `minyan-chat:${data.minyanId}`;
+    this.server.except(client.id).to(room).emit('chat:stop-typing', { userId });
   }
 
   // ── Report ──

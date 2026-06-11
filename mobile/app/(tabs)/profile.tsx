@@ -41,9 +41,6 @@ interface MyMinyan {
   isCreator: boolean;
   destination: { id: number; city: string } | null;
 }
-const PRAYER_LABEL: Record<string, string> = {
-  shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
-};
 function fmtMinyanDate(iso: string) {
   const [y, m, d] = String(iso).slice(0, 10).split('-');
   return new Date(Number(y), Number(m) - 1, Number(d))
@@ -173,11 +170,11 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
       return;
     }
     if (newPassword.length < 8) {
-      setErrorMsg('Password must be at least 8 characters long');
+      setErrorMsg(t('profile.pwMinLength'));
       return;
     }
     if (!PASSWORD_REGEX.test(newPassword)) {
-      setErrorMsg('Password must contain only English letters and numbers, and include at least one letter and one number');
+      setErrorMsg(t('profile.pwLetterAndNumber'));
       return;
     }
     if (newPassword !== confirmPassword) {
@@ -528,7 +525,7 @@ export default function ProfileScreen() {
       </View>
 
       {/* ── Account section ── */}
-      <Text style={styles.sectionEyebrow}>ACCOUNT</Text>
+      <Text style={styles.sectionEyebrow}>{t('profile.sectionAccount')}</Text>
       <View style={styles.card}>
         <Pressable style={styles.row} onPress={() => setEditVisible(true)}>
           <View style={[styles.iconBox, { backgroundColor: 'rgba(11,23,54,0.08)' }]}>
@@ -560,7 +557,7 @@ export default function ProfileScreen() {
       </View>
 
       {/* ── Contribute section ── */}
-      <Text style={styles.sectionEyebrow}>CONTRIBUTE</Text>
+      <Text style={styles.sectionEyebrow}>{t('profile.sectionContribute')}</Text>
       <View style={styles.card}>
         <Pressable style={styles.row} onPress={() => { setSuggestType('restaurant'); setSuggestVisible(true); }}>
           <View style={[styles.iconBox, { backgroundColor: 'rgba(22,163,74,0.10)' }]}>
@@ -584,7 +581,7 @@ export default function ProfileScreen() {
       {/* ── My Minyans (hidden if user never created one) ── */}
       {myMinyans.length > 0 && (
         <>
-          <Text style={styles.sectionEyebrow}>MY MINYANS</Text>
+          <Text style={styles.sectionEyebrow}>{t('profile.sectionMinyans')}</Text>
           <View style={styles.card}>
             {myMinyans.slice(0, 3).map((m, index) => (
               <View key={m.id}>
@@ -596,7 +593,7 @@ export default function ProfileScreen() {
                   </View>
                   ); })()}
                   <View style={styles.rowBody}>
-                    <Text style={styles.minyanLabel}>{PRAYER_LABEL[m.prayerType] ?? m.prayerType}</Text>
+                    <Text style={styles.minyanLabel}>{t(`minyans.${m.prayerType}` as any) || m.prayerType}</Text>
                     <Text style={styles.rowSub}>
                       {fmtMinyanDate(m.date)} · {m.time}{m.destination ? ` · ${m.destination.city}` : ''}
                     </Text>
@@ -622,7 +619,7 @@ export default function ProfileScreen() {
       {/* ── My Hosting (hidden if no activity) ── */}
       {(myOffers > 0 || myHostRequests > 0 || myNeeds > 0) && (
         <>
-          <Text style={styles.sectionEyebrow}>HOSTING</Text>
+          <Text style={styles.sectionEyebrow}>{t('profile.sectionHosting')}</Text>
           <View style={styles.card}>
             {myOffers > 0 && (
               <>
@@ -631,8 +628,8 @@ export default function ProfileScreen() {
                     <MaterialIcons name="home" size={20} color="#16A34A" />
                   </View>
                   <View style={styles.rowBody}>
-                    <Text style={styles.rowLabel}>My Offers</Text>
-                    <Text style={styles.rowSub}>{myOffers} active offer{myOffers !== 1 ? 's' : ''}</Text>
+                    <Text style={styles.rowLabel}>{t('profile.myOffers')}</Text>
+                    <Text style={styles.rowSub}>{myOffers} {t(myOffers === 1 ? 'profile.activeOffer' : 'profile.activeOffers')}</Text>
                   </View>
                   <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
                 </Pressable>
@@ -647,8 +644,8 @@ export default function ProfileScreen() {
                     <MaterialIcons name="swap-horiz" size={20} color={GOLD} />
                   </View>
                   <View style={styles.rowBody}>
-                    <Text style={styles.rowLabel}>My Requests</Text>
-                    <Text style={styles.rowSub}>{myHostRequests} request{myHostRequests !== 1 ? 's' : ''}</Text>
+                    <Text style={styles.rowLabel}>{t('profile.myRequests')}</Text>
+                    <Text style={styles.rowSub}>{myHostRequests} {t(myHostRequests === 1 ? 'profile.request' : 'profile.requests')}</Text>
                   </View>
                   <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
                 </Pressable>
@@ -662,8 +659,8 @@ export default function ProfileScreen() {
                     <MaterialIcons name="people-outline" size={20} color="#7C3AED" />
                   </View>
                   <View style={styles.rowBody}>
-                    <Text style={styles.rowLabel}>My Posted Needs</Text>
-                    <Text style={styles.rowSub}>{myNeeds} open request{myNeeds !== 1 ? 's' : ''}</Text>
+                    <Text style={styles.rowLabel}>{t('profile.myPostedNeeds')}</Text>
+                    <Text style={styles.rowSub}>{myNeeds} {t(myNeeds === 1 ? 'profile.openRequest' : 'profile.openRequests')}</Text>
                   </View>
                   <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
                 </Pressable>
@@ -676,13 +673,13 @@ export default function ProfileScreen() {
       {/* ── Admin section (admin only) ── */}
       {user?.role === 'admin' && (
         <>
-          <Text style={styles.sectionEyebrow}>ADMIN</Text>
+          <Text style={styles.sectionEyebrow}>{t('profile.sectionAdmin')}</Text>
           <View style={styles.card}>
             <Pressable style={styles.row} onPress={() => router.push('/admin' as any)}>
               <View style={[styles.iconBox, { backgroundColor: 'rgba(239,68,68,0.10)' }]}>
                 <MaterialIcons name="admin-panel-settings" size={20} color="#EF4444" />
               </View>
-              <Text style={styles.rowLabel}>Control Panel</Text>
+              <Text style={styles.rowLabel}>{t('profile.controlPanel')}</Text>
               <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
             </Pressable>
           </View>

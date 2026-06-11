@@ -41,9 +41,12 @@ export default function HostingChatScreen() {
   const [error, setError] = useState<string | null>(null);
   const [onlineCount, setOnlineCount] = useState(0);
   const [cursors, setCursors] = useState<ReadCursor[]>([]);
+  const [typingUsers, setTypingUsers] = useState<Record<number, string>>({});
   const socketRef = useRef<Socket | null>(null);
   const listRef = useRef<FlatList>(null);
   const hasConnectedBefore = useRef(false);
+  const lastTypingEmitRef = useRef(0);
+  const typingTimeoutsRef = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
 
   useEffect(() => {
     let socket: Socket;
@@ -109,11 +112,30 @@ export default function HostingChatScreen() {
         setCursors(c);
       });
 
+      socket.on('hosting-chat:typing', ({ userId, firstName }: { userId: number; firstName: string }) => {
+        setTypingUsers((prev) => ({ ...prev, [userId]: firstName }));
+        if (typingTimeoutsRef.current[userId]) clearTimeout(typingTimeoutsRef.current[userId]);
+        typingTimeoutsRef.current[userId] = setTimeout(() => {
+          setTypingUsers((prev) => { const next = { ...prev }; delete next[userId]; return next; });
+          delete typingTimeoutsRef.current[userId];
+        }, 4000);
+      });
+
+      socket.on('hosting-chat:stop-typing', ({ userId }: { userId: number }) => {
+        if (typingTimeoutsRef.current[userId]) clearTimeout(typingTimeoutsRef.current[userId]);
+        delete typingTimeoutsRef.current[userId];
+        setTypingUsers((prev) => { const next = { ...prev }; delete next[userId]; return next; });
+      });
+
       socket.on('exception', (err: any) => setError(err?.message ?? 'Error'));
     };
 
     connect();
-    return () => { socket?.disconnect(); };
+    return () => {
+      Object.values(typingTimeoutsRef.current).forEach(clearTimeout);
+      typingTimeoutsRef.current = {};
+      socket?.disconnect();
+    };
   }, [requestId]);
 
   useEffect(() => {
@@ -122,10 +144,27 @@ export default function HostingChatScreen() {
     }
   }, [messages]);
 
+  const handleTextChange = (value: string) => {
+    setText(value);
+    if (!socketRef.current?.connected) return;
+    const now = Date.now();
+    if (value.length > 0) {
+      if (now - lastTypingEmitRef.current > 3000) {
+        socketRef.current.emit('hosting-chat:typing', { requestId: Number(requestId) });
+        lastTypingEmitRef.current = now;
+      }
+    } else {
+      socketRef.current.emit('hosting-chat:stop-typing', { requestId: Number(requestId) });
+      lastTypingEmitRef.current = 0;
+    }
+  };
+
   const sendMessage = () => {
     const content = text.trim();
     if (!content || !socketRef.current) return;
     socketRef.current.emit('hosting-chat:send', { requestId: Number(requestId), content });
+    socketRef.current.emit('hosting-chat:stop-typing', { requestId: Number(requestId) });
+    lastTypingEmitRef.current = 0;
     setText('');
   };
 
@@ -214,6 +253,14 @@ export default function HostingChatScreen() {
         />
       )}
 
+      {connected && Object.keys(typingUsers).length > 0 && (
+        <View style={s.typingBar}>
+          <Text style={s.typingText}>
+            {Object.values(typingUsers).join(', ')} {Object.keys(typingUsers).length === 1 ? 'is' : 'are'} typing…
+          </Text>
+        </View>
+      )}
+
       {connected && (
         <View style={s.inputRow}>
           <TextInput
@@ -221,7 +268,7 @@ export default function HostingChatScreen() {
             placeholder="Type a message…"
             placeholderTextColor={C.textMuted}
             value={text}
-            onChangeText={setText}
+            onChangeText={handleTextChange}
             onSubmitEditing={sendMessage}
             returnKeyType="send"
             multiline
@@ -315,4 +362,6 @@ const s = StyleSheet.create({
   errorText:      { fontFamily: 'Inter-Regular', color: C.error, fontSize: 15, textAlign: 'center', paddingHorizontal: 24 },
   backLink:       { marginTop: 8 },
   backLinkText:   { fontFamily: 'Inter-SemiBold', color: C.navy, fontSize: 14 },
+  typingBar:      { paddingHorizontal: 20, paddingVertical: 4, backgroundColor: '#fff' },
+  typingText:     { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textMuted, fontStyle: 'italic' },
 });
