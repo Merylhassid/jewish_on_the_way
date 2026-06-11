@@ -164,6 +164,9 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     const cursors = await this.getCursors(room);
     client.emit('hosting-chat:cursors', { cursors });
 
+    // Send online count directly to joining client in addition to broadcast
+    client.emit('hosting-chat:online', { count: this.roomPresence.get(room)?.size ?? 0 });
+
     return { ok: true };
   }
 
@@ -238,6 +241,31 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     const cursors = await this.getCursors(room);
     this.server.to(room).emit('hosting-chat:cursors', { cursors });
     return { ok: true };
+  }
+
+  // ── Typing ──
+
+  @SubscribeMessage('hosting-chat:typing')
+  handleTyping(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { requestId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cu = (client as any).cachedUser;
+    if (!userId) return;
+    const room = `hosting-request:${data.requestId}`;
+    this.server.except(client.id).to(room).emit('hosting-chat:typing', { userId, firstName: cu?.firstName ?? '' });
+  }
+
+  @SubscribeMessage('hosting-chat:stop-typing')
+  handleStopTyping(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { requestId: number },
+  ) {
+    const userId = (client as any).userId;
+    if (!userId) return;
+    const room = `hosting-request:${data.requestId}`;
+    this.server.except(client.id).to(room).emit('hosting-chat:stop-typing', { userId });
   }
 
   // ── Helpers ──

@@ -40,8 +40,11 @@ export default function ChatScreen() {
   const [loading, setLoading] = useState(true);
   const [onlineCount, setOnlineCount] = useState(0);
   const [cursors, setCursors] = useState<ReadCursor[]>([]);
+  const [typingUsers, setTypingUsers] = useState<Record<number, string>>({});
   const socketRef = useRef<Socket | null>(null);
   const listRef = useRef<FlatList>(null);
+  const lastTypingEmitRef = useRef(0);
+  const typingTimeoutsRef = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
 
   useEffect(() => {
     let socket: Socket;
@@ -97,6 +100,21 @@ export default function ChatScreen() {
         setCursors(c);
       });
 
+      socket.on('chat:typing', ({ userId, firstName }: { userId: number; firstName: string }) => {
+        setTypingUsers((prev) => ({ ...prev, [userId]: firstName }));
+        if (typingTimeoutsRef.current[userId]) clearTimeout(typingTimeoutsRef.current[userId]);
+        typingTimeoutsRef.current[userId] = setTimeout(() => {
+          setTypingUsers((prev) => { const next = { ...prev }; delete next[userId]; return next; });
+          delete typingTimeoutsRef.current[userId];
+        }, 4000);
+      });
+
+      socket.on('chat:stop-typing', ({ userId }: { userId: number }) => {
+        if (typingTimeoutsRef.current[userId]) clearTimeout(typingTimeoutsRef.current[userId]);
+        delete typingTimeoutsRef.current[userId];
+        setTypingUsers((prev) => { const next = { ...prev }; delete next[userId]; return next; });
+      });
+
       socket.on('connect_error', async (err) => {
         const msg = (err.message ?? '').toLowerCase();
         const isAuthErr =
@@ -120,12 +138,29 @@ export default function ChatScreen() {
     connect();
 
     return () => {
+      Object.values(typingTimeoutsRef.current).forEach(clearTimeout);
+      typingTimeoutsRef.current = {};
       if (socketRef.current) {
         socketRef.current.emit('chat:leave', { destinationId: Number(destinationId) });
         socketRef.current.disconnect();
       }
     };
   }, [destinationId]);
+
+  const handleTextChange = (value: string) => {
+    setText(value);
+    if (!socketRef.current?.connected) return;
+    const now = Date.now();
+    if (value.length > 0) {
+      if (now - lastTypingEmitRef.current > 3000) {
+        socketRef.current.emit('chat:typing', { destinationId: Number(destinationId) });
+        lastTypingEmitRef.current = now;
+      }
+    } else {
+      socketRef.current.emit('chat:stop-typing', { destinationId: Number(destinationId) });
+      lastTypingEmitRef.current = 0;
+    }
+  };
 
   const sendMessage = () => {
     const content = text.trim();
@@ -135,6 +170,8 @@ export default function ChatScreen() {
       return;
     }
     socketRef.current.emit('chat:sendMessage', { destinationId: Number(destinationId), content });
+    socketRef.current.emit('chat:stop-typing', { destinationId: Number(destinationId) });
+    lastTypingEmitRef.current = 0;
     setText('');
   };
 
@@ -149,6 +186,11 @@ export default function ChatScreen() {
         },
       },
     ]);
+  };
+
+  const showReaders = (readers: ReadCursor[]) => {
+    const names = readers.map((r) => `${r.firstName} ${r.lastName}`).join('\n');
+    Alert.alert(`Read by ${readers.length}`, names, [{ text: 'OK' }]);
   };
 
   // For each reader, find the highest of MY messages whose id ≤ their cursor.
@@ -200,7 +242,7 @@ export default function ChatScreen() {
           </Pressable>
         </View>
         {readers.length > 0 && (
-          <View style={styles.readersRow}>
+          <Pressable onPress={() => showReaders(readers)} style={styles.readersRow}>
             {readers.slice(0, 4).map((r) => (
               <View key={r.userId} style={styles.readerAvatar}>
                 <Text style={styles.readerInitials}>
@@ -211,7 +253,7 @@ export default function ChatScreen() {
             {readers.length > 4 && (
               <Text style={styles.readerMore}>+{readers.length - 4}</Text>
             )}
-          </View>
+          </Pressable>
         )}
       </View>
     );
@@ -260,11 +302,19 @@ export default function ChatScreen() {
         />
       )}
 
+      {Object.keys(typingUsers).length > 0 && (
+        <View style={styles.typingBar}>
+          <Text style={styles.typingText}>
+            {Object.values(typingUsers).join(', ')} {Object.keys(typingUsers).length === 1 ? 'is' : 'are'} typing…
+          </Text>
+        </View>
+      )}
+
       <View style={styles.inputBar}>
         <TextInput
           style={styles.input}
           value={text}
-          onChangeText={setText}
+          onChangeText={handleTextChange}
           placeholder="Type a message…"
           placeholderTextColor="#999"
           multiline
@@ -319,4 +369,6 @@ const styles = StyleSheet.create({
   input:        { flex: 1, backgroundColor: '#f0f4ff', borderRadius: 22, paddingHorizontal: 16, paddingVertical: 10, fontSize: 15, color: '#1a1a2e', maxHeight: 100 },
   sendBtn:      { width: 44, height: 44, borderRadius: 22, backgroundColor: '#1a3a6b', justifyContent: 'center', alignItems: 'center' },
   sendBtnDisabled: { backgroundColor: '#ccc' },
+  typingBar:    { paddingHorizontal: 20, paddingVertical: 4, backgroundColor: '#fff' },
+  typingText:   { fontSize: 12, color: '#888', fontStyle: 'italic' },
 });
