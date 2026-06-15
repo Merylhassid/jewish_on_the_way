@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>מדריך הגנת פרויקט גמר — Jewish On The Way</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", "Arial", sans-serif;
+    direction: rtl; text-align: right;
+    line-height: 1.6; color: #1a1a1a; font-size: 11pt;
+    max-width: 800px; margin: 0 auto; padding: 0 8px;
+  }
+  h1 { font-size: 22pt; color: #0b2e59; border-bottom: 3px solid #c79a3a; padding-bottom: 8px; margin-top: 28px; page-break-after: avoid; }
+  h2 { font-size: 16pt; color: #0b2e59; border-bottom: 1px solid #c79a3a; padding-bottom: 4px; margin-top: 26px; page-break-after: avoid; }
+  h3 { font-size: 13pt; color: #1a4480; margin-top: 18px; page-break-after: avoid; }
+  h4 { font-size: 11.5pt; color: #333; margin-top: 14px; page-break-after: avoid; }
+  p { margin: 8px 0; }
+  ul, ol { margin: 6px 24px 10px 0; padding: 0; }
+  li { margin: 4px 0; }
+  code, .mono { font-family: "Consolas", "Courier New", monospace; direction: ltr; unicode-bidi: embed; background: #f3f4f6; padding: 1px 5px; border-radius: 3px; font-size: 9.5pt; }
+  pre { background: #f3f4f6; border: 1px solid #ddd; border-radius: 6px; padding: 10px 14px; direction: ltr; text-align: left; overflow-x: auto; font-family: "Consolas", monospace; font-size: 9.5pt; line-height: 1.4; page-break-inside: avoid; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #c9c9c9; padding: 6px 9px; text-align: right; vertical-align: top; }
+  th { background: #0b2e59; color: #fff; font-weight: bold; }
+  tr:nth-child(even) td { background: #f7f8fa; }
+  .say { background: #eef4ff; border-right: 4px solid #1a4480; padding: 8px 12px; margin: 10px 0; border-radius: 4px; }
+  .say::before { content: "🗣️ ניסוח להגנה: "; font-weight: bold; color: #1a4480; }
+  .warn { background: #fff7e6; border-right: 4px solid #c79a3a; padding: 8px 12px; margin: 10px 0; border-radius: 4px; }
+  .warn::before { content: "⚠️ "; font-weight: bold; }
+  .qa { margin: 10px 0; }
+  .qa .q { font-weight: bold; color: #0b2e59; }
+  .qa .a { margin-right: 14px; }
+  .toc { background: #f7f8fa; border: 1px solid #ddd; border-radius: 8px; padding: 14px 22px; }
+  .toc a { color: #1a4480; text-decoration: none; }
+  .toc ol { margin-right: 18px; }
+  .cover { text-align: center; padding: 60px 0 40px; }
+  .cover h1 { border: none; font-size: 28pt; }
+  .cover .sub { font-size: 14pt; color: #555; margin-top: 10px; }
+  .cover .meta { font-size: 11pt; color: #777; margin-top: 30px; }
+  .pagebreak { page-break-before: always; }
+  strong { color: #0b2e59; }
+  .good { color: #157347; font-weight: bold; }
+  .bad { color: #b02a37; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>מדריך הכנה להגנת פרויקט גמר</h1>
+  <div class="sub">Jewish On The Way — אפליקציית חיפוש יהודי חכם</div>
+  <div class="meta">מסמך לימוד מלא · ארכיטקטורה · טכנולוגיות · חיפוש חכם · מודל ML מאפס · אבטחה · שאלות ותשובות להגנה</div>
+</div>
+
+<div class="pagebreak"></div>
+
+<h1>תוכן עניינים</h1>
+<div class="toc">
+<ol>
+  <li>תקציר הפרויקט וארכיטקטורה</li>
+  <li>הטכנולוגיות — מה כל אחת ולמה בחרנו בה</li>
+  <li>החיפוש החכם — צלילה עמוקה (הלב של הפרויקט)</li>
+  <li>המודל מאפס — TF-IDF, Naive Bayes, אימון וייצוא</li>
+  <li>זיהוי יעדים (Destination Resolution)</li>
+  <li>GPS ומרחקים</li>
+  <li>חיפוש מסעדות</li>
+  <li>חיפוש בתי כנסת</li>
+  <li>מניינים ואירוח</li>
+  <li>אבטחה והרשאות</li>
+  <li>טיפול בשגיאות</li>
+  <li>עיצוב מסד הנתונים, אינדקסים וביצועים</li>
+  <li>איסוף הנתונים וגיאוקודינג</li>
+  <li>Real-Time — WebSockets</li>
+  <li>פיצ'רים תומכים</li>
+  <li>עיצוב ה-API ואימות קלט</li>
+  <li>פריסה ותשתית (Deployment)</li>
+  <li>בדיקות (Testing)</li>
+  <li>סקירת דיוק המודל — המספרים האמיתיים</li>
+  <li>ביקורת מקצועית — חזקות וחולשות</li>
+  <li>קשיים, אתגרים ואיך התמודדתי</li>
+  <li>מילון מושגים — "מה זה X ולמה השתמשתי בו"</li>
+  <li>שאלות קשות ותשובות זהב להגנה</li>
+  <li>סיכום בעל פה — תשובת זהב</li>
+</ol>
+</div>
+
+<div class="pagebreak"></div>
+
+<h1>1. תקציר הפרויקט וארכיטקטורה</h1>
+
+<h2>תקציר</h2>
+<p>הפרויקט הוא אפליקציה בשם <strong>Jewish On The Way</strong>, שמטרתה לעזור ליהודים ומטיילים יהודים למצוא שירותים יהודיים לפי מיקום ויעד: מסעדות כשרות, בתי כנסת, מניינים, אירוח שבת, ויעדים רלוונטיים בעולם. הרעיון המרכזי הוא שהמשתמש לא צריך לדעת בדיוק איפה לחפש או באיזו קטגוריה לבחור — הוא כותב חיפוש חופשי כמו "פיצה במזכרת בתיה", "בית כנסת קרוב", "מניין שחרית ספרדי בירושלים" או "אירוח שבת בפוקט", והמערכת מבינה את הכוונה, מזהה את הקטגוריה, מזהה יעד אם קיים, ומנווטת למסך המתאים עם תוצאות רלוונטיות.</p>
+
+<h2>שלוש שכבות (3-Tier)</h2>
+<p>המערכת בנויה בארכיטקטורת <strong>3-tier</strong> קלאסית עם הפרדת אחריות מלאה:</p>
+<ul>
+  <li><strong>Mobile (Client)</strong> — אפליקציית React Native + Expo. רצה על הטלפון, אחראית רק על תצוגה ואינטראקציה. לא מכילה לוגיקה עסקית או גישה ישירה ל-DB.</li>
+  <li><strong>Backend (Server)</strong> — שרת NestJS על Node.js, פורט 3000 בפרודקשן (3001 בפיתוח). מכיל את כל הלוגיקה: אימות, חיפוש חכם, שאילתות, הרשאות.</li>
+  <li><strong>Database</strong> — PostgreSQL ענן (Neon) עם תוסף PostGIS לחישובים גאוגרפיים.</li>
+</ul>
+
+<h2>איך הם מדברים</h2>
+<ul>
+  <li>המובייל מדבר עם הבקאנד דרך <strong>REST API</strong> מעל HTTP, בפורמט JSON, באמצעות ספריית <strong>Axios</strong>.</li>
+  <li>הבקאנד מדבר עם ה-DB דרך <strong>TypeORM</strong> (ORM — ממפה טבלאות לאובייקטים).</li>
+  <li><strong>הפרדה מוחלטת:</strong> המובייל אף פעם לא ניגש ל-DB ישירות. כל בקשה עוברת דרך ה-API. זה עיקרון אבטחה ותחזוקה בסיסי.</li>
+</ul>
+
+<h2>Flow מלא של חיפוש (מהקלדה ועד תוצאות)</h2>
+<ol>
+  <li>משתמש מקליד "פיצה במזכרת בתיה" במסך הבית.</li>
+  <li>המובייל שולח <code>POST /search { text, lat?, lng? }</code> (Axios + JWT בכותרת).</li>
+  <li>הבקאנד: (א) <code>ClassifierService</code> מסווג קטגוריה → restaurant. (ב) שכבת חוקים בודקת מילות אוכל → מאשר restaurant. (ג) <code>DestinationIndexService</code> מזהה "מזכרת בתיה" → destinationId=290. (ד) בונה route: <code>/restaurants/290?q=פיצה</code> (בלי useUserGps, כי יעד מפורש).</li>
+  <li>הבקאנד מחזיר JSON עם ה-route.</li>
+  <li>המובייל מנווט (Expo Router) למסך המסעדות עם הפרמטרים.</li>
+  <li>המסך שולח <code>GET /restaurants/search?destinationId=290&q=פיצה</code>.</li>
+  <li><code>smartSearch</code> מריץ שאילתת PostGIS, מחזיר עד 50 תוצאות לפי מרחק מהיעד.</li>
+  <li>המסך מציג רשימה עם מרחקים.</li>
+</ol>
+<div class="say">הארכיטקטורה היא 3-tier עם הפרדת אחריות מלאה: המובייל אחראי על UI, הבקאנד על כל הלוגיקה והאבטחה, וה-DB על אחסון. התקשורת היא REST/JSON — וזה מאפשר שגם אם נחליף את המובייל בעתיד, אותו בקאנד ישרת אותו.</div>
+
+<div class="pagebreak"></div>
+
+<h1>2. הטכנולוגיות — מה כל אחת ולמה בחרנו בה</h1>
+
+<table>
+<tr><th>טכנולוגיה</th><th>מה זה</th><th>למה בפרויקט</th></tr>
+<tr><td>React Native</td><td>פריימוורק לאפליקציות מובייל ב-JS/TS, קוד אחד לאנדרואיד+iOS</td><td>פיתוח מהיר, קוד משותף לשתי הפלטפורמות</td></tr>
+<tr><td>Expo</td><td>סביבת עבודה מעל React Native — כלים, גישה לחומרה (GPS, מצלמה)</td><td>מאיץ פיתוח, אין צורך ב-Xcode/Android Studio</td></tr>
+<tr><td>Expo Router</td><td>ניתוב מבוסס-קבצים (file-based routing)</td><td>כל קובץ ב-app/ הוא מסך; ניווט פשוט ודקלרטיבי</td></tr>
+<tr><td>TypeScript</td><td>JavaScript עם טיפוסים סטטיים</td><td>תופס שגיאות בזמן כתיבה, לא בזמן ריצה — קוד בטוח יותר</td></tr>
+<tr><td>NestJS</td><td>פריימוורק Node.js מודולרי, מבוסס Decorators ו-DI</td><td>מבנה מסודר (Controllers/Services/Modules), קל לבדיקה</td></tr>
+<tr><td>REST API</td><td>סגנון תקשורת מבוסס משאבים ופעלי HTTP (GET/POST/…)</td><td>סטנדרט, פשוט, stateless</td></tr>
+<tr><td>PostgreSQL</td><td>מסד נתונים רלציוני</td><td>אמין, תמיכה בטרנזקציות, תוסף גאוגרפי</td></tr>
+<tr><td>PostGIS</td><td>תוסף ל-PostgreSQL לחישובים גאוגרפיים</td><td>מחשב מרחקים אמיתיים על פני כדור הארץ</td></tr>
+<tr><td>TypeORM</td><td>מיפוי אובייקטים — ORM לטבלאות</td><td>כותבים TypeScript במקום SQL גולמי (ברוב המקרים)</td></tr>
+<tr><td>JWT + Refresh Token</td><td>אסימוני אימות</td><td>התחברות stateless + חידוש מאובטח</td></tr>
+<tr><td>Axios</td><td>ספריית HTTP client</td><td>interceptors לטוקנים ולשגיאות</td></tr>
+<tr><td>SecureStore / AsyncStorage</td><td>אחסון מקומי בטלפון</td><td>SecureStore = מוצפן (טוקנים); AsyncStorage = רגיל (העדפות)</td></tr>
+<tr><td>PM2</td><td>מנהל תהליכים ל-Node</td><td>משאיר את השרת חי, restart אוטומטי על קריסה</td></tr>
+<tr><td>Jest</td><td>פריימוורק בדיקות</td><td>unit + integration tests</td></tr>
+</table>
+
+<div class="warn"><strong>נקודה חשובה על TypeORM:</strong> השתמשנו בו לפעולות פשוטות (CRUD), אבל לשאילתות הגאוגרפיות המורכבות (PostGIS <code>ST_Distance</code>) כתבנו SQL גולמי דרך <code>repository.query()</code>, כי TypeORM לא תומך טוב בפונקציות PostGIS. זו החלטה מודעת — להשתמש בכלי הנכון לכל משימה.</div>
+
+<div class="pagebreak"></div>
+
+<h1>3. החיפוש החכם — צלילה עמוקה (הלב של הפרויקט)</h1>
+
+<h2>מה הבעיה שפתרנו</h2>
+<p>המשתמש כותב <strong>טקסט חופשי</strong> בעברית או אנגלית — "מסעדה כשרה בפריז", "מניין שחרית מחר", "אירוח לשבת בתל אביב". המערכת צריכה: (1) להבין <strong>מה</strong> הוא רוצה (מסעדה? בית כנסת? מניין? אירוח?); (2) להבין <strong>איפה</strong> (איזו עיר/מדינה); (3) לנווט אותו למסך הנכון עם הפילטרים הנכונים.</p>
+<p>החלק של "להבין מה הוא רוצה" — זה ה-AI. זו בעיית <strong>סיווג טקסט</strong> (text classification): מקבלים משפט, פולטים תווית מתוך 4 אפשרויות. בדיוק כמו מסנן spam שמסווג מייל ל"זבל/תקין", רק עם 4 קטגוריות.</p>
+
+<h2>הבחנה קריטית — פייפליין דו-שלבי</h2>
+<ul>
+  <li><strong>שלב ההבנה (AI)</strong> — מודל ML שמסווג כוונה.</li>
+  <li><strong>שלב הביצוע (דטרמיניסטי)</strong> — שאילתות SQL/PostGIS שמביאות תוצאות.</li>
+</ul>
+<div class="say">ה-AI מבין את הכוונה; הקוד הדטרמיניסטי מביא את התוצאות. AI איפה שצריך גמישות בשפה, וקוד מדויק איפה שצריך עקביות.</div>
+
+<h2>הפייפליין המלא — POST /search</h2>
+<p>הקובץ המרכזי: <code>backend/src/ai/search.controller.ts</code>, מתודה <code>search()</code>.</p>
+<ol>
+  <li><strong>normalizeTypos</strong> — תיקון שגיאות כתיב בטוחות (פיצמ→פיצה).</li>
+  <li><strong>Model 1 (ClassifierService)</strong> → קטגוריה + confidence (restaurant / synagogue / minyan / hosting).</li>
+  <li><strong>שכבת overrides</strong> (אוכל / בית כנסת / אירוח).</li>
+  <li>אם <code>confidence &lt; 0.45</code> ואין override: אולי זה שם עיר בלבד? אם כן → ניווט ליעד; אחרת → "לא הבנתי, נסה שוב".</li>
+  <li><strong>Model 2 (נוסח)</strong> — רק לבית כנסת/מניין.</li>
+  <li><strong>extractRestaurantFilters</strong> — סוג + כשרות (regex, לא ML).</li>
+  <li><strong>זיהוי יעד</strong>: טקסט מפורש → מדינה → fuzzy → GPS הקרוב.</li>
+  <li><strong>getRoute</strong> — בונה URL עם הדגלים (expandNearby, useUserGps).</li>
+  <li>שמירת <strong>SearchFeedback</strong> ל-DB (ללמידה עתידית).</li>
+</ol>
+
+<div class="pagebreak"></div>
+
+<h1>4. המודל מאפס — TF-IDF, Naive Bayes, אימון וייצוא</h1>
+
+<h2>למה בנינו מודל מאפס ולא ChatGPT / ספרייה (קריטי!)</h2>
+<p>זו השאלה מספר 1 שישאלו. חמש סיבות:</p>
+<ol>
+  <li><strong>דרישה אקדמית</strong> — הפרויקט דורש שנבנה ונבין מודל ML. בנינו את TF-IDF ואת Naive Bayes ביד, בלי scikit-learn, בלי TensorFlow. כל שורת מתמטיקה היא שלנו.</li>
+  <li><strong>עלות</strong> — אפס. אין תשלום לכל קריאה (ChatGPT עולה כסף לכל בקשה).</li>
+  <li><strong>פרטיות</strong> — הטקסט של המשתמש לא יוצא מהשרת שלנו לחברה חיצונית.</li>
+  <li><strong>מהירות</strong> — סיווג תוך מילישניות מקומית, בלי latency של קריאת רשת לשרת חיצוני.</li>
+  <li><strong>דטרמיניזם</strong> — אותו קלט תמיד נותן אותו פלט. LLM יכול לתת תשובות שונות; אצלנו זה צפוי ובדיק.</li>
+</ol>
+<div class="say">בנינו את המודל מאפס ב-Python — TF-IDF ו-Naive Bayes בלי שום ספריית ML. זו דרישה אקדמית, אבל גם החלטה נכונה: חינם, פרטי, מהיר, ודטרמיניסטי. לבעיה של סיווג טקסט קצר ל-4 קטגוריות, מודל קלאסי כזה מנצח LLM ענק מכל בחינה מעשית.</div>
+
+<h2>הנתונים (Dataset)</h2>
+<ul>
+  <li><code>data.csv</code> — <strong>728 משפטים</strong> מתויגים ידנית, כל שורה: טקסט, תווית.</li>
+  <li>התפלגות הקטגוריות: minyan 221, synagogue 187, restaurant 175, hosting 145. מאוזן יחסית (אין קטגוריה שמשתלטת).</li>
+  <li>מודל הנוסח: <code>data_denomination.csv</code> — <strong>143 משפטים</strong>, 4 נוסחים.</li>
+  <li>אוצר מילים (vocabulary): <strong>744 מילים ייחודיות</strong>.</li>
+  <li>כולל עברית ואנגלית מעורבבות, כדי שהמודל יעבוד בשתי השפות.</li>
+</ul>
+
+<h2>צעד 1 — Tokenization (פירוק למילים)</h2>
+<p>פונקציה <code>tokenize</code> (זהה ב-Python וב-TypeScript): מורידה לאותיות קטנות, מנרמלת חב"ד (עם גרשיים) → חבד כמילה אחת, ושומרת רק מילים עברית/אנגלית (Regex <code>[א-ת]+|[a-z]+</code>), זורקת פיסוק ומספרים.</p>
+<pre>"מסעדה כשרה בפריז" → ["מסעדה", "כשרה", "בפריז"]</pre>
+
+<h2>צעד 2 — Features: מילים + Bigrams</h2>
+<p>פונקציה <code>generate_features</code> מוסיפה גם <strong>זוגות מילים רצופים</strong> (bigrams), מופרדים ב-<code>__</code>. למה: מילה בודדת מאבדת הקשר. "מניין שחרית" כזוג חזק יותר ממילים נפרדות; "בית" לבד לא אומר בית כנסת, אבל "בית__כנסת" כן. כדי למנוע overfitting, bigram נשמר רק אם הופיע ב-≥3 משפטים (<code>MIN_BIGRAM_DF</code>).</p>
+
+<h2>צעד 3 — TF-IDF (הופך מילים למספרים)</h2>
+<p>המחשב לא מבין מילים, רק מספרים. TF-IDF הופך כל משפט לוקטור מספרי.</p>
+<ul>
+  <li><strong>TF (Term Frequency):</strong> כמה פעמים פיצ'ר מופיע במשפט, חלקי מספר הפיצ'רים (<code>tf += 1.0/len(features)</code>). מנרמל לפי אורך — משפט ארוך לא מקבל יתרון.</li>
+  <li><strong>IDF (Inverse Document Frequency):</strong> כמה המילה נדירה בכל הדאטה. הנוסחה: <code>idf = log(מספר_משפטים / כמה_מכילים_את_המילה)</code>. "כשר" מופיעה כמעט בכל משפטי מסעדה → IDF נמוך (לא מבדילה). "מניין" מופיעה רק במניין → IDF גבוה (מילה "חזקה").</li>
+  <li><strong>TF-IDF = TF × IDF.</strong> התוצאה: וקטור שבו המילים החשובות והמבדילות בולטות, והשכיחות נחלשות.</li>
+</ul>
+<div class="say">TF-IDF נותן משקל למילים. מילה שמופיעה בכל המשפטים כמו 'אני' או 'רוצה' כמעט לא נחשבת. מילה ייחודית כמו 'מניין' מקבלת משקל גבוה — היא מסגירה את הכוונה.</div>
+
+<h2>צעד 4 — Naive Bayes (הסיווג עצמו)</h2>
+<p>מבוסס על <strong>משפט בייס</strong>: <code>P(קטגוריה|משפט) ∝ P(קטגוריה) × P(משפט|קטגוריה)</code>. בפשטות: "אם המשפט שייך לקטגוריה X, כמה הגיוני שייראה ככה?" — בודקים לכל 4 הקטגוריות ובוחרים את הכי הגיונית.</p>
+<p>שני רכיבים שהמודל לומד באימון (<code>fit</code>):</p>
+<ul>
+  <li><strong>Prior (class_probs):</strong> כמה הקטגוריה שכיחה מראש. אם 175/728 הם מסעדה → prior = 0.24.</li>
+  <li><strong>Likelihood (feature_probs):</strong> ממוצע ערך ה-TF-IDF של כל פיצ'ר בתוך כל קטגוריה.</li>
+</ul>
+<p>הניבוי (<code>predict_one</code>): לכל קטגוריה מחשבים ציון <code>score = log(prior) + Σ [tfidf × log(feature_prob)]</code>, ובוחרים את הגבוה.</p>
+<p><strong>שלוש דקויות שצריך לדעת להסביר:</strong></p>
+<ol>
+  <li><strong>למה "Naive" (תמים)?</strong> כי מניחים שכל המילים בלתי-תלויות זו בזו. הנחה לא מדויקת, אבל עובדת מצוין לסיווג טקסט ומפשטת מאוד את החישוב.</li>
+  <li><strong>למה log?</strong> כי מכפילים הרבה הסתברויות קטנות → המספר נעשה זעיר מדי והמחשב מאבד דיוק (underflow). לוגריתם הופך כפל לחיבור ופותר את זה.</li>
+  <li><strong>למה +1e-9 (smoothing)?</strong> אם feature_prob = 0 אז log(0) = מינוס אינסוף = קריסה. מוסיפים מספר זעיר. זו גרסה של Laplace smoothing.</li>
+</ol>
+
+<h2>צעד 5 — Softmax (מ"ציון" ל"ביטחון")</h2>
+<p>ציוני Naive Bayes הם לוגריתמים שליליים — לא קריאים. Softmax הופך אותם להסתברויות שמסתכמות ל-1:</p>
+<pre>{ restaurant: 0.92, synagogue: 0.05, minyan: 0.02, hosting: 0.01 }</pre>
+<p>ה-confidence הוא ההסתברות של המנצח (0.92). אם הוא &lt; 0.45 — המודל "לא בטוח", ואנחנו לא מנחשים אלא מבקשים מהמשתמש לנסח מחדש.</p>
+<div class="say">Softmax הופך את הציונים הגולמיים להסתברויות. אם הביטחון נמוך מ-45% — אנחנו עוצרים ואומרים 'לא הבנתי', במקום לנחש ולהטעות.</div>
+
+<h2>תהליך האימון (Pipeline) — ולמה הוא נכון מתודולוגית (נקודת חוזק!)</h2>
+<p>הקוד (<code>classifier.py</code>) עושה הכל לפי הספר:</p>
+<ol>
+  <li>טעינה — 728 משפטים.</li>
+  <li><strong>פיצול 70/15/15</strong> (<code>three_way_split</code>, seed=42): Train (70%) — המודל לומד; Validation (15%) — לכוונון; Test (15%) — נחסם, נוגעים פעם אחת בסוף.</li>
+  <li><strong>TF-IDF נלמד רק מ-Train</strong> — קריטי! מונע data leakage (דליפת מידע מהמבחן לאימון).</li>
+  <li>אימון Naive Bayes על Train בלבד.</li>
+  <li>הערכה על Validation — מותר לשפר לפי זה.</li>
+  <li>ציון סופי על Test — פעם אחת. הקוד מדפיס: "זהו הציון האמיתי — ללא הטיה".</li>
+</ol>
+<p><strong>מדדי הערכה</strong> (לא רק accuracy): Accuracy (אחוז ניחושים נכונים), Precision (מתוך מה שניחשנו "מסעדה", כמה באמת מסעדה), Recall (מתוך כל המסעדות האמיתיות, כמה תפסנו), F1 (ממוצע הרמוני של Precision ו-Recall).</p>
+<p><strong>דקות חשובה לכנות:</strong> הערכת הדיוק נעשית על split, אבל המודל המיוצא לפרודקשן (<code>export_model.py</code>) מאומן על <strong>100% מהדאטה</strong>. זו פרקטיקה תקנית — מודדים הכללה על held-out, אבל המודל הסופי משתמש בכל דוגמה זמינה כדי ללמוד מקסימום.</p>
+<div class="say">אימנו לפי המתודולוגיה הנכונה: פיצול 70/15/15, TF-IDF שנלמד רק מ-Train כדי למנוע data leakage, ו-test set שנגענו בו פעם אחת. מדדנו Precision, Recall ו-F1 — לא רק accuracy. הציון שדיווחנו הוא held-out — מדד הכללה אמיתי, לא שינון.</div>
+
+<h2>הגשר Python → TypeScript</h2>
+<p>הבעיה: אימנו ב-Python, אבל השרת רץ ב-TypeScript (NestJS). הפתרון: <code>export_model.py</code> שומר את כל מה שהמודל למד ל-<code>model.json</code> (vocab, idf, class_probs, feature_probs, classes). ב-TypeScript, <code>ClassifierService</code> טוען את ה-JSON בעליית השרת (<code>onModuleInit</code>) ומיישם את <strong>אותו אלגוריתם בדיוק</strong> (tokenize → TF-IDF → Naive Bayes → softmax).</p>
+<div class="say">אימנו ב-Python, אבל השרת ב-TypeScript. ייצאנו את המודל ל-JSON — אוצר המילים, ערכי ה-IDF וההסתברויות — וטענו אותו בשרת שמיישם את אותו אלגוריתם. ה'מוח' זהה, רק השפה השתנתה. היתרון: אין צורך בשרת Python נפרד; המודל רץ בתוך הבקאנד.</div>
+
+<h2>ההבדל בין Training ל-Inference</h2>
+<p><strong>Training</strong> = שלב הלמידה: לוקחים דאטה, מחשבים TF-IDF, לומדים הסתברויות, שומרים מודל (בתיקיית <code>ai-model</code>). <strong>Inference</strong> = שלב השימוש: משתמש כותב משפט חדש, השרת טוען את המודל הקיים ומחזיר קטגוריה (בתוך <code>backend/src/ai</code>).</p>
+
+<h2>המודל השני — נוסח (Denomination)</h2>
+<p><code>DenominationClassifierService</code> — <strong>אותו אלגוריתם בדיוק</strong> (TF-IDF + NB + Softmax), מודל נפרד (<code>denomination_model.json</code>), רץ <strong>רק</strong> כשהקטגוריה היא בית כנסת/מניין. 4 נוסחים: אשכנז / ספרד / חב"ד / תימני. סף ביטחון 0.45 — מתחתיו מחזיר <code>null</code> (לא זיהה נוסח), כדי לא לסנן בית כנסת בטעות לנוסח שגוי.</p>
+
+<h2>שכבת החוקים (Rule-based overrides) — למה הכרחית</h2>
+<p>המודל לא מושלם, ויש לו טעויות <strong>ידועות ושיטתיות</strong>. אחרי הסיווג יש בדיקות תיקון:</p>
+<ul>
+  <li><strong>בעיית "בית":</strong> ערים כמו "בית שמש", "בית שאן" מכילות "בית" → המודל נוטה לסווג כ-synagogue. <code>containsFoodTerm</code> מזהה מילת אוכל ("פיצה", "שווארמה") ומכריח restaurant.</li>
+  <li><strong>"בתי כנסת" מפורש</strong> → <code>containsSynagogueExplicitTerm</code> מכריח synagogue.</li>
+  <li><strong>אירוח:</strong> <code>containsHostingSignal</code> — "אירוח", או "שבת"+"להתארח".</li>
+</ul>
+<div class="say">זו מערכת היברידית — ML לרוב המקרים, ושכבת חוקים דקה שמתקנת טעויות ידועות. זה לא 'רמאות' — בתעשייה מערכות production כמעט תמיד משלבות ML עם heuristics. ה-ML נותן גמישות, החוקים נותנים דיוק בנקודות הרגישות.</div>
+
+<h2>חסרונות ומגבלות המודל (תהיה כן!)</h2>
+<ol>
+  <li><strong>דאטה קטן</strong> — 728 דוגמאות זה מעט. מודל מתקשה עם ניסוחים שונים מאוד מאלה שראה.</li>
+  <li><strong>אנגלית חלשה</strong> — רוב הדאטה עברית; באנגלית הביצועים נמוכים יותר.</li>
+  <li><strong>הנחת ה-"Naive"</strong> — מילים לא באמת בלתי-תלויות (ה-bigrams מפצים חלקית).</li>
+  <li><strong>תלות בשכבת החוקים</strong> — הרבה תיקונים ידניים (רשימות מילים), קשה לתחזוקה.</li>
+  <li><strong>לא לומד תוך כדי</strong> — המודל סטטי. אספנו <code>SearchFeedback</code> כתשתית ללמידה עתידית, אבל הוא לא מאמן מחדש אוטומטית.</li>
+  <li><strong>Vocabulary סגור</strong> — מילה שלא הופיעה באימון פשוט מתעלמים ממנה.</li>
+</ol>
+<div class="say">מה הייתי משפר: יותר דאטה ובמיוחד באנגלית; להחליף חלק משכבת החוקים באימון טוב יותר; ולסגור את לולאת הלמידה — לאמן מחדש אוטומטית מה-SearchFeedback שכבר אנחנו אוספים.</div>
+
+</body>
+</html>

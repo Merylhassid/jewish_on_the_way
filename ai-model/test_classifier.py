@@ -74,6 +74,47 @@ def _denom_predict(tfidf, model, text):
 
 
 # ─────────────────────────────────────────────────────────────
+# Held-out accuracy helpers
+# ─────────────────────────────────────────────────────────────
+# These train on a TRAIN split and measure on an UNSEEN TEST split,
+# so the reported number is true generalization accuracy — matching the
+# methodology and figure in classifier.py (~82%), not training accuracy.
+
+def _cat_holdout_accuracy():
+    """Category classifier accuracy on a held-out test split (no leakage)."""
+    texts, labels = cat_clf.load_data(DATA_PATH)
+    # Reuse the same 70/15/15 split used by classifier.py (seed=42).
+    train_t, _val_t, test_t, train_l, _val_l, test_l = cat_clf.three_way_split(texts, labels)
+    tfidf = cat_clf.TFIDF()
+    tfidf.fit(train_t)                      # vocabulary learned from TRAIN only
+    model = cat_clf.NaiveBayes()
+    model.fit(tfidf.transform(train_t), train_l)
+    preds = model.predict(tfidf.transform(test_t))
+    return sum(p == t for p, t in zip(preds, test_l)) / len(test_l)
+
+
+def _denom_holdout_accuracy():
+    """Denomination classifier accuracy on a held-out test split (no leakage)."""
+    import random
+    data = list(denom_clf.load_data(DENOM_DATA_PATH))
+    random.seed(42)
+    random.shuffle(data)
+    n_test = int(len(data) * 0.2)           # 80/20 split
+    test, train = data[:n_test], data[n_test:]
+    train_t = [t for t, _ in train]
+    train_l = [l for _, l in train]
+    tfidf = denom_clf.TFIDF()
+    tfidf.fit(train_t)                       # vocabulary learned from TRAIN only
+    model = denom_clf.NaiveBayes()
+    model.fit([tfidf.transform(t) for t in train_t], train_l)
+    correct = sum(
+        1 for text, true_label in test
+        if model.predict_one(tfidf.transform(text))[0] == true_label
+    )
+    return correct / len(test)
+
+
+# ─────────────────────────────────────────────────────────────
 # CLASS 1 — Category Classifier
 # ─────────────────────────────────────────────────────────────
 
@@ -90,10 +131,11 @@ class TestCategoryClassifier(unittest.TestCase):
         )
 
     def test_accuracy_above_threshold(self):
-        X     = self.tfidf.transform(self.texts)
-        preds = self.model.predict(X)
-        acc   = sum(p == t for p, t in zip(preds, self.labels)) / len(self.labels)
-        self.assertGreaterEqual(acc, 0.80, f"Expected accuracy >= 0.80, got {acc:.2%}")
+        # Held-out generalization accuracy (train/test split, no leakage).
+        # This matches the ~82% reported in classifier.py and the project book,
+        # rather than training accuracy on data the model has already seen.
+        acc = _cat_holdout_accuracy()
+        self.assertGreaterEqual(acc, 0.75, f"Expected held-out accuracy >= 0.75, got {acc:.2%}")
 
     def test_restaurant_keywords(self):
         pred, _ = _cat_predict(self.tfidf, self.model, "מסעדה כשרה בתל אביב")
@@ -132,12 +174,9 @@ class TestDenominationClassifier(unittest.TestCase):
         cls.tfidf, cls.model, cls.data = _build_denom_model()
 
     def test_accuracy_above_threshold(self):
-        correct = sum(
-            1 for text, true_label in self.data
-            if _denom_predict(self.tfidf, self.model, text)[0] == true_label
-        )
-        acc = correct / len(self.data)
-        self.assertGreaterEqual(acc, 0.75, f"Expected accuracy >= 0.75, got {acc:.2%}")
+        # Held-out generalization accuracy (train/test split, no leakage).
+        acc = _denom_holdout_accuracy()
+        self.assertGreaterEqual(acc, 0.70, f"Expected held-out accuracy >= 0.70, got {acc:.2%}")
 
     def test_chabad(self):
         pred, _ = _denom_predict(self.tfidf, self.model, 'חב״ד')

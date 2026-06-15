@@ -1,0 +1,270 @@
+--- SLIDE 1 ---
+JEWISH ON THE WAY
+בעולם יהודים למטיילים חכמה אפליקציה
+Daniel — AI / Machine Learning
+Meryl — Cyber / Security
+
+--- SLIDE 2 ---
+הבעיה הגדרת :מוטיבציה
+מפוזר יהודי מידע
+בין מפוזר שבת ואירוח מניינים ,כנסת בתי ,כשרות מסעדות על מידע
+מרכזי אחד מקור אין — שונות חברתיות ורשתות מפות ,קהילות ,אתרים
+.ואמין
+רבים במשתנים תלוי חיפוש
+כל — החיפוש ושפת GPS מיקום ,מדינה ,עיר לפי משתנות התוצאות
+.המשתמש עבור עקבית ולא שונה חוויה יוצר משתנה
+ידנית לבדיקה זמן אין
+של ידנית בדיקה .ומדויק מיידי למידע זקוקים טיול בזמן משתמשים
+.ומהיר חכם פתרון נדרש — בשטח אפשרית אינה רבים מקורות
+
+--- SLIDE 3 ---
+יעד קהל
+יהודים מטיילים ✈
+ובתי כשרות מסעדות ,דתיים שירותים ומחפשים בעולם הנוסעים יהודים
+.מקום בכל כנסת
+כשרות ושומרי בחו״ל ישראלים 🇮🇱
+המחפשים כשרות ושומרי ,ארוך או קצר לטווח בחו״ל השוהים ישראלים
+.עיר בכל ומניינים כשר אוכל
+קהילות ומבקרי משפחות 👨‍👩‍👧
+המחפשים חב״ד ובתי יהודיות קהילות מבקרי ,בטיולים יהודיות משפחות
+.לקהילה וחיבור שבת אירוח
+
+--- SLIDE 4 ---
+עושה הפרויקט מה :פתרון
+יהודיים שירותים ריכוז
+וקל נוח אחד בממשק יהודיים שירותים מרכזת Jewish On The Way
+.ומקורות אתרים במספר לחפש צורך ללא — לשימוש
+ומתקדם מגוון חיפוש
+טקסט לפי — שבת ואירוח מניינים ,כנסת בתי ,כשרות מסעדות חיפוש
+.ומדינה עיר ,GPS ,חופשי
+AI Classification & Backend
++ AI classification (TF-IDF מפעיל ,הבקשה את מנתח Backendה־
+.אישית ומותאמות מדורגות תוצאות ומחזיר (Naive Bayes
+
+--- SLIDE 5 ---
+מרכזיות יכולות
+חכם חיפוש — Smart AI Search 🔍
+,חופשי טקסט הבנת .מותאם AI מודל באמצעות ובאנגלית בעברית חיפוש
+.ומדויקות מדורגות תוצאות ומתן משתמש כוונת סיווג
+מיקום לפי חיפוש — GPS Search 📍
+PostGIS distance באמצעות ומרחק גיאוגרפי מיקום לפי חיפוש
+.אמת בזמן GPS-ו מדינה ,עיר לפי בחיפוש תמיכה .functions
+כשרות מסעדות — Kosher Restaurants 🍽
+.ומרחק מיקום ,כשרות רמת לפי מתקדמים סינונים עם כשרות מסעדות מאגר
+.בעולם מקום בכל אחד בקליק ונגיש מעודכן מידע
+
+--- SLIDE 6 ---
+מרכזיות יכולות
+נוסח לפי כנסת בתי — Synagogues 🕍
+מיקום לפי סינון .ועוד תימן ,ספרד ,אשכנז :תפילה נוסח לפי כנסת בתי חיפוש
+.קשר ופרטי תפילה שעות תצוגת .ומדינה עיר ,GPS
+והרשמה מניינים — Minyans 🤝
+.האפליקציה דרך למניין הרשמה .ומיקום זמן לפי קרובים מניינים חיפוש
+.אמת בזמן עדכונים עם מארגנים ידי על מניינים ניהול
+שבת אירוח — Shabbat Hosting 🕯
+.מלאים פרטים עם אירוח הצעות .ומארחים ממשפחות לשבת אירוח בקשות
+.מלא לתיאום למארח אורח בין פרטי צ׳אט
+
+--- SLIDE 7 ---
+PROJECT EPICS
+.1
+User Management & Authentication
+והרשאות פרופיל ,התחברות ,הרשמה
+Refresh Tokens-ו JWT עם מלא משתמשים ניהול
+.1
+Smart AI Search
+משתמש כוונת וסיווג חופשי טקסט הבנת
+86%-82% בדיוק TF-IDF + Naive Bayes מודל
+.1
+Kosher Restaurants
+מתקדמים וסינונים כשרות ,מסעדות ניהול
+ומדינה עיר ,GPS לפי חיפוש
+
+--- SLIDE 8 ---
+PROJECT EPICS
+.1
+Synagogues & Minyans
+כנסת בתי של מלא ניהול — למניין והרשמה מניינים ,נוסח לפי כנסת בתי
+גאוגרפי ומיקום תפילה נוסח לפי סינון עם ומניינים
+.1
+Shabbat Hosting
+בין לחיבור מלאה מערכת — פרטי וצ׳אט אירוח הצעות ,שבת אירוח בקשות
+ולחגים לשבת לאורחים מארחים
+.1
+Location & Distance Engine
+PostGIS מבוסס מיקום מנוע — מיקום לפי וחיפוש מרחקים חישובי ,GPS
+מוגדר ומרחק מדינה ,עיר לפי יהודיים שירותים לחיפוש
+
+--- SLIDE 9 ---
+PROJECT EPICS
+Admin ואזור דיווחים ,משתמשים הצעות
+מנהלים ידי על ועדכונים תוכן ניהול •
+עדכון ובקשות דיווחים מערכת •
+נתונים לניהול Admin ממשק •
+.1
+Data Management
+במובייל משתמש חוויית
+React Native + Expo ממשק •
+במובייל ונוח מהיר ניווט •
+ואנגלית בעברית תמיכה •
+.1
+Mobile User Experience
+
+--- SLIDE 10 ---
+SYSTEM ARCHITECTURE
+Mobile App (React Native + Expo)
+REST API  ↓  Controllers (NestJS)  ↓  Guards (Authorization)  ↓
+Services (Business Logic + AI Search)
++ TypeORM (Entity Management & Queries)  ↓  PostgreSQL  ↓
+PostGIS
+(Data Storage · Geolocation · Distance Functions)
+AI Model — TF-IDF + Naive Bayes
+/ intent: restaurant / synagogue / minyan מסווג → Servicesל־ מחובר
+hosting
+חיפוש בזמן ChatGPT ללא ,מאפס נבנה  |  86%–82%~ :דיוק
+
+--- SLIDE 11 ---
+BACKEND ARCHITECTURE
+קוד ארגון — Modules
+,User, Auth, Search, Restaurant :עסקיים תחומים לפי קוד ארגון
+,Controllers עם עצמאי מודול כל — Synagogue, Minyan, Hosting
+משלו DTOs-ו Services
+עסקית לוגיקה — Controllers & Services
+לוגיקה — DTOs | Services ואימות HTTP בבקשות טיפול — Controllers
+מובנה נתונים ומבנה קלט אימות — DTOs | מרחקים וחישובי AI חיפוש ,עסקית
+ואימות אבטחה — Guards
+Role-Based | בקשה בכל טוקן אימות — JWT Authentication Guard
+Rate | (User / Admin) תפקידים מבוססות הרשאות — Authorization
+חריג עומס מפני קצה נקודות על הגנה — Limiting Guard
+
+--- SLIDE 12 ---
+DATABASE ARCHITECTURE
+PostgreSQL
+מורכבות שאילתות ,קשרים ,טבלאות — רלציוני נתונים אחסון
+Entities: Users, Restaurants, Synagogues, Minyans, Hosting
+PostGIS + Geospatial Queries
+PostGIS distance functions — מרחק וחישובי גאוגרפיים נתונים
+במטרים מוגדר ומרחק מדינה ,עיר ,GPS לפי חיפוש
+TypeORM
+שאילתות וכתיבת PostgreSQL לטבלאות Entities מיפוי
+Repository Pattern-ו Migrations, Relations ניהול
+
+--- SLIDE 13 ---
+TECHNOLOGY STACK
+📱 Mobile
+React Native
+Expo
+TypeScript
+פלטפורמות-חוצה מובייל פיתוח
+⚙️ Backend
+NestJS
+Node.js
+TypeScript
+REST API — ושירותים עסקית לוגיקה
+🗄️ Database
+PostgreSQL
+PostGIS
+TypeORM
+מרחק וחישובי גאוגרפיה ,נתונים אחסון
+
+--- SLIDE 14 ---
+TECHNOLOGY STACK
+🤖 AI & Machine Learning
+TF-IDF — מספריים לוקטורים טקסט המרת
+Naive Bayes — משתמש כוונת סיווג
+Intent Classification — 86%–82% דיוק
+Text Preprocessing — שאילתות של מקדים עיבוד
+🔒 Security
+JWT + Refresh Token — ניהול Session מאובטח
+Bcrypt — סיסמאות הצפנת
+Guards + DTO Validation — קצה נקודות על הגנה
+Rate Limiting — מפני הגנה brute-force
+🛠 Tools & Deployment
+Git & GitHub — קוד ושיתוף גרסאות ניהול
+VPS — ייעודי בשרת פריסה
+Environment Variables — מאובטחות סביבה הגדרות
+
+--- SLIDE 15 ---
+SMART SEARCH FLOW
+User Query → Text Preprocessing
+→ AI Classification → Destination
+Detection → Filters → Ranking →
+Results
+החכם החיפוש תהליך
+restaurant + city ← "שמש בבית פיצה"
+synagogue + GPS ← "קרוב כנסת בית"
+restaurant + ← "בתאילנד מסעדה"
+country
+לחיפוש דוגמאות
+
+--- SLIDE 16 ---
+DANIEL — מותאם AI מודל
+המודל עקרונות
+החיפוש בזמן ChatGPTב־ משתמש לא — הפרויקט עבור מאפס נבנה •
+מילים ומשקל תדירות לפי מספריים לוקטורים טקסט ממיר TF-IDF •
+restaurant / synagogue / minyan / hosting :לקטגוריות intent מסווג Naive Bayes •
+ביצועים הערכת
+נראו שלא נתונים על הדיוק לבדיקת Train/Test Split •
+קטגוריה לכל Precision, Recall, F1-Score :מדדים •
+שאילתות מגוון על held-out: ~82%–86% דיוק •
+Intent סיווג דוגמאות
+restaurant → "שמש בבית פיצה" •
+synagogue → "קרוב כנסת בית" •
+minyan → "שחרית מניין" •
+hosting → "בפריז שבת אירוח" •
+
+--- SLIDE 17 ---
+SECURITY & LOAD TESTING — MERYL
+Sessions וניהול מידע אבטחת
+מאובטח Session לניהול JWT + Refresh Token •
+password hashing-ל Bcrypt •
+בלבד מורשות קצה נקודות על להגנה Guards •
+ותקשורת קלט על הגנה
+תקין לא קלט למניעת DTO validation •
+חריג ועומס brute-force נגד Rate Limiting •
+SQL Injection מפני להגנה Parameterized queries •
+עומס ובדיקות תיעוד ,ניטור
+אבטחה אירועי לתיעוד Audit logging •
+וביצועים עומס לבדיקות k6 •
+המערכת יציבות לאימות גבוה עומס תחת בדיקות •
+
+--- SLIDE 18 ---
+למסלולים תואם הפרויקט למה
+AI / Machine Learning
+מהיסוד ML מודל פיתוח •
+TF-IDF + Naive Bayes •
+ביצועים והערכת כוונה סיווג •
+Cyber / Security
+JWT + Bcrypt •
+Guards + Rate Limiting •
+SQL Injection-מ הגנה •
+Full-Stack
+Mobile + Backend + Database •
+REST API •
+מלא Deployment •
+
+--- SLIDE 19 ---
+חיה הדגמה
+Live Demo
+Expo Go
+הדגמה שלבי 6
+✓
+.1
+Expo Go דרך אמיתי במכשיר האפליקציה פתיחת
+.2
+"קרוב כנסת בית" :חיפוש
+.3
+"שמש בבית פיצה" :חיפוש
+.1
+"בתאילנד מסעדה" :מדינה חיפוש
+.2מלא ומידע מקום פרטי פתיחת
+.3זמן יש אם — צ׳אט / אירוח / מניין
+Jewish On The Way — Live Demo
+Daniel • Meryl
+
+--- SLIDE 20 ---
+רבה תודה
+?שאלות
+Jewish On The Way
+Daniel — AI / Machine Learning
+Meryl — Cyber / Security

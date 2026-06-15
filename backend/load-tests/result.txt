@@ -1,0 +1,46 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✗ 'p(95)<500' p(95)=859.05ms
+
+    http_req_failed
+    ✗ 'rate<0.05' rate=63.05%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 5416   19.877929/s
+    checks_succeeded...: 36.94% 2001 out of 5416
+    checks_failed......: 63.05% 3415 out of 5416
+
+    ✓ login 200
+    ✗ health 200
+      ↳  44% — ✓ 500 / ✗ 621
+    ✗ destinations 200
+      ↳  33% — ✓ 500 / ✗ 997
+    ✗ restaurants 200
+      ↳  33% — ✓ 500 / ✗ 1000
+    ✗ search 200
+      ↳  38% — ✓ 500 / ✗ 797
+
+    HTTP
+    http_req_duration..............: avg=226.67ms min=64.34ms med=73.38ms  max=2.37s p(90)=570.53ms p(95)=859.05ms
+      { expected_response:true }...: avg=487.52ms min=64.34ms med=386.99ms max=2.37s p(90)=972.56ms p(95)=1.37s   
+    http_req_failed................: 63.05% 3415 out of 5416
+    http_reqs......................: 5416   19.877929/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.22s    min=1.06s   med=1.07s    max=3.45s p(90)=1.57s    p(95)=1.85s   
+    iterations.....................: 5415   19.874259/s
+    vus............................: 10     min=0            max=49
+    vus_max........................: 60     min=60           max=60
+
+    NETWORK
+    data_received..................: 27 MB  99 kB/s
+    data_sent......................: 1.5 MB 5.5 kB/s
+
+
+
+time="2026-06-14T21:40:37+03:00" level=error msg="thresholds on metrics 'http_req_duration, http_req_failed' have been crossed"

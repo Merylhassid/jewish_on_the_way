@@ -135,7 +135,10 @@ export default function RestaurantsScreen() {
         if (gps?.lat && (!search.trim() || shouldUseUserGps)) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
 
         let endpoint = '/restaurants';
-        if (search.trim()) {
+        // Smart search runs only for a single city. A country (parent) has no numeric
+        // destinationId, and /restaurants/search requires one (ParseIntPipe → 400).
+        // In country mode we fall through to the plain list with type/kashrut filters.
+        if (search.trim() && !isCountryMode) {
           endpoint = '/restaurants/search';
           params.q = search.trim();
           setLastAiQuery(search.trim());
@@ -212,6 +215,20 @@ export default function RestaurantsScreen() {
       const params: Record<string, string> = isCountryMode
         ? { parentDestinationId: destinationId, offset: '0' }
         : { destinationId, offset: '0' };
+
+      // Country mode: /restaurants/search needs a numeric destinationId (which a
+      // country doesn't have) → use the plain country list with type/kashrut filters.
+      if (isCountryMode) {
+        setAiMeta(null);
+        if (typeFilter    && typeFilter    !== 'all') params.type    = typeFilter;
+        if (kashrutFilter && kashrutFilter !== 'all') params.kashrut = kashrutFilter;
+        const res = await client.get('/restaurants', { params });
+        const { data, total: t } = res.data;
+        setRestaurants(Array.isArray(data) ? data : []);
+        setTotal(t ?? 0);
+        return;
+      }
+
       if (gps?.lat && shouldUseUserGps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
       params.q = q;
       setLastAiQuery(q);

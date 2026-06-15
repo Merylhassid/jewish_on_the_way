@@ -1,0 +1,240 @@
+--- SLIDE 1 ---
+Jewish On The
+Way
+חכמה אפליקציה
+בעולם יהודים למטיילים
+Daniel — AI / Machine Learning   |   Meryl — Cyber / Security
+Jewish On The Way
+:מנחה:תאריך
+המנחה שם
+ההגנה תאריך
+
+--- SLIDE 2 ---
+הבעיה הגדרת :מוטיבציה
+Jewish On The Way
+שבת ואירוח מניינים ,כנסת בתי ,כשר אוכל של אמת בזמן לזיהוי זקוקים יהודים מטיילים
+אחת אינטגרציה ללא חברתיות ורשתות מפות ,קהילות ,באתרים מפוזר המידע
+הטיול במהלך אמת בזמן רבים מקורות לבדוק זמן חסרי המשתמשים
+מרוכז פתרון ללא — ושפה מדינה ,עיר ,GPS במיקום תלוי החיפוש
+
+--- SLIDE 3 ---
+יעד קהל
+Jewish On The Way
+אמת בזמן יהודיים שירותים המחפשים העולם ברחבי יהודים מטיילים
+ומדויק מהיר למידע הזקוקים כשרות ושומרי בחו״ל ישראלים
+העולם ברחבי חב״ד ובבתי יהודיות בקהילות מבקרים
+שבת אירוח או מניין ,תפילה המחפשות בטיולים משפחות
+
+--- SLIDE 4 ---
+עושה הפרויקט מה :פתרון
+Jewish On The Way
+אחד בממשק רלוונטיים יהודיים שירותים מרכזת Jewish On The Way
+שבת ואירוח מניינים ,כנסת בתי ,כשרות מסעדות של מתקדם חיפוש
+ורלוונטיות מדויקות תוצאות ומציג משתמש כוונת מבין חכם AI מודל
+מדינה או עיר ,GPS ,חופשי בטקסט בחיפוש תמיכה
+
+--- SLIDE 5 ---
+מרכזיות יכולות
+Jewish On The Way
+הטכניות המערכת יכולות סקירת
+Smart AI Search 🔍
+-ו TF-IDF באמצעות משתמש כוונת המבין ואנגלית בעברית חכם חיפוש
+Naive Bayes
+ומרחק GPS חיפוש 📍
+-ו PostGIS באמצעות מדויקים מרחק חישובי עם מיקום מבוסס חיפוש
+ST_Distance_Sphere
+כשרות מסעדות 🍽
+ורלוונטיות מדויקות תוצאות — ועיר מרחק ,אוכל סוג ,כשרות סוג לפי סינון
+ומניינים כנסת בתי 🕍
+נוסח לפי כנסת בתי חיפוש
+,(המזרח עדות ,ספרד ,אשכנז)
+למניין והרשמה תפילה שעות
+אמת בזמן
+שבת אירוח 🏠
+שבת אירוח בקשות מערכת
+אישור ,מארחים הצעות עם
+מארח בין פרטי וצ׳אט בקשות
+לאורח
+מקום ופרטי ניווט 🗺
+פרטי ,אינטראקטיבי ניווט
+פתיחה שעות ,קשר יצירת
+מקום כל על מלא ומידע
+מתקדמים סינונים ⚙
+,מדינה ,עיר לפי חיפוש
+וטווח GPS קואורדינטות
+אפשרויות עם מוגדר מרחק
+מגוונות סינון
+משתמשים ניהול 🔐
+פרופיל ,התחברות ,הרשמה
+מבוססות הרשאות ,אישי
+JWT ואימות תפקידים
+מאובטח
+נתונים ניהול 📊
+,מהמשתמשים עדכון הצעות
+ואזור שגיאות על דיווח
+תוכן לניהול Admin
+המערכת
+
+--- SLIDE 6 ---
+Project Epics
+Jewish On The Way
+User Management & Auth ◾
+והרשאות פרופיל ,התחברות ,הרשמה
+Smart AI Search ◾
+משתמש כוונת וסיווג חופשי טקסט הבנת
+Kosher Restaurants ◾
+וסינונים כשרות ,מסעדות ניהול
+Synagogues & Minyans ◾
+והרשמה מניינים ,נוסחים ,כנסת בתי
+Shabbat Hosting ◾
+הצעות ,אירוח בקשות
+פרטי וצ׳אט
+& Location ◾
+Distance
+וחיפוש מרחקים ,GPS
+מיקום לפי
+Data ◾
+Management
+,משתמשים הצעות
+Admin ואזור דיווחים
+Mobile UX ◾
+מלאה משתמש חוויית
+במובייל
+עיקריים פיתוח תחומי
+מרכזיים אפיקים 8
+מערכת את המרכיבים
+Jewish On The Way
+כולל אפיק כל
+עצמאית ארכיטקטורה
+,Modules עם
+,Controllers
+Entities-ו Services
+
+--- SLIDE 7 ---
+System Architecture
+Jewish On The Way
+.ומדויק חכם לחיפוש Services בשכבת משולב AI (TF-IDF + Naive Bayes) המודל .הנתונים מסד ועד מהמובייל מלאה נתונים זרימת — המערכת ארכיטקטורת
+Mobile App (React Native + Expo) 📱
+HTTP Requests  ↓
+REST API Layer 🔗
+Route Handling  ↓
+קצה נקודות ניהול ,DTOs אימות — Controllers (NestJS) 🎮
+Authorization Check  ↓
+Guards — JWT Authentication, Role-Based Access Control 🛡
+Business Logic  ↓
+AI Search (TF-IDF + Naive Bayes) | 📍 Distance Calculations 🤖 | עסקית לוגיקה — Services ⚙
+ORM Queries  ↓
+TypeORM — Entity Management, Query Builder 🗄
+SQL + Geospatial Queries  ↓
+PostgreSQL + PostGIS — Data Storage | ST_Distance_Sphere | GPS Coordinates 🐘
+
+--- SLIDE 8 ---
+Backend ארכיטקטורת
+Jewish On The Way
+מחולקת המערכת .Guard-ו Controller, Service, Entity, DTO כולל מודול כל — NestJS עם מודולרי מבנה
+.User, Auth, Restaurant, Synagogue, Minyan, Hosting, Search, Location :עצמאיים למודולים
+(Endpoints) קצה נקודות ניהול ,DTOs אימות ,HTTP בבקשות טיפול — Controllers
+גאוגרפיים מרחקים חישובי ,AI מבוסס חיפוש ,עסקית לוגיקה — Services
+PostgreSQL טבלאות המשקפים TypeORM-ב מודלים — Entities
+מובנה נתונים ומבנה קלט אימות — DTOs
+קצה נקודות על הגנה ,(RBAC) תפקידים מבוססות הרשאות ,JWT אימות — Guards
+
+--- SLIDE 9 ---
+הנתונים מסד ארכיטקטורת
+Jewish On The Way
+POINT טיפוסי עם גאוגרפי במידע תמיכה להרחבת PostGIS • מלא רלציוניים נתונים לאחסון PostgreSQL
+PostGIS-כ מיקומים שמירת • הנתונים למסד Backend-ה שכבת בין ORM כממשק TypeORM • ומרחקים
+ST_Distance_Sphere פונקציית בעזרת מרחקים חישובי • longitude-ו latitude עם POINT
+אינדקסים • מוגדר מרחק בטווח GPS קואורדינטות לפי חיפוש • ומדינה עיר לפי חיפוש :גאוגרפיות שאילתות
+שתי בין מרחק לחישוב ST_Distance_Sphere שאילתות • מהירים לביצועים GIST מסוג גאוגרפיים
+NestJS-ב Services-ה שכבת עם מלאה אינטגרציה • נקודות
+
+--- SLIDE 10 ---
+Technology Stack
+Jewish On The Way
+📱 Mobile
+React Native, Expo, TypeScript
+⚙️ Backend
+NestJS, Node.js, TypeScript, REST API
+🗄️ Database
+PostgreSQL, PostGIS, TypeORM
+🔧 Tools
+Git, GitHub, VPS, Environment Variables
+🤖 AI / ML
+TF-IDF וקטוריזציה
+Naive Bayes סיווג
+ואנגלי עברי טקסט עיבוד
+משתמש כוונת סיווג
+82% :דיוק-
+86%
+🔒 Security
+JWT
+Authentication
+Refresh Token
+Bcrypt Hashing
+Guards & DTO
+Validation
+Rate Limiting
+k6 Load Testing
+
+--- SLIDE 11 ---
+Smart Search Flow
+החכם החיפוש זרימת
+Jewish On The Way
+:מלא עיבוד צינור — החכם החיפוש תהליך
+→ User Query → Text Preprocessing → AI Category Classification → Destination / Country Detection → Filters
+GPS & Distance Logic → Ranked Results
+:חיות חיפוש דוגמאות
+שמש בית :עיר ,כשרה מסעדה ← "שמש בבית פיצה" •
+נוכחי מיקום GPS ,כנסת בית ← "קרוב כנסת בית" •
+נוסח סינון ,כנסת בית ← "ספרדי בנוסח תפילה" •
+תאילנד :מדינה ,כשרה מסעדה ← "בתאילנד מסעדה" •
+restaurant | synagogue | minyan | hosting :קטגוריה מסווג Naive Bayes + TF-IDF מודל
+
+--- SLIDE 12 ---
+Custom AI Model — Daniel
+Jewish On The Way
+.אמת בזמן קטגוריה וזיהוי משתמש כוונת סיווג ,טקסט עיבוד מבצע המודל .החיפוש בשלב ChatGPT-ב שימוש ללא — הפרויקט לצורך מהיסוד שפותח ייחודי AI מודל
+.restaurant, synagogue, minyan, hosting :לקטגוריות הכוונה את מסווג Naive Bayes .מילים ומשקל תדירות לפי מספריים לוקטורים חופשי טקסט ממיר TF-IDF
+train/test split עם ביצועים והערכת אימון
+Precision | Recall | F1-Score :הערכה מדדי
+held-out set: ~82%–86% על דיוק
+:סיווג דוגמאות
+restaurant → "שמש בבית פיצה"
+synagogue → "קרוב כנסת בית"
+minyan → "ספרדי בנוסח תפילה"
+hosting → "בתאילנד שבת אירוח"
+
+--- SLIDE 13 ---
+Security & Load Testing — Meryl
+Jewish On The Way
+,מאובטח Session לניהול JWT + Refresh Token :המערכת של הקצה נקודות כל על מגנה האבטחה שכבת
+.תקין לא קלט למניעת DTO Validation-ו ,בלבד מורשים Routes על להגנה Guards ,סיסמאות להצפנת Bcrypt
+.SQL Injection מונעים Parameterized Queries-ו ,חריג ועומס brute-force מפני מגן Rate Limiting
+.גבוה עומס תחת וביצועים יציבות לבדיקת במקביל משתמשים מאות של סימולציה :k6 עם עומס בדיקות
+מוגנת ,עמידה שהמערכת מבטיחה האבטחה שכבת .קריטיים אבטחה אירועי מתעד Audit Logging
+.אמיתית ייצור לסביבת ומוכנה
+
+--- SLIDE 14 ---
+למסלולים תואם הפרויקט למה
+Jewish On The Way
+ביצועים והערכת כוונה סיווג ,TF-IDF, Naive Bayes ,מהיסוד ML מודל פיתוח :AI / Machine Learning
+עומס בדיקות ,SQL Injection מפני הגנה ,Cyber / Security: JWT, Bcrypt, Guards, DTO Validation, Rate Limiting
+ומקצועית שלמה מערכת לכדי הפרויקט את המשלים ייחודי תחום תרם צוות חבר כל
+מלאה משתמש וחוויית Mobile App, Backend, REST API, Database, Deployment שילוב :Full-Stack
+
+--- SLIDE 15 ---
+חיה הדגמה
+Jewish On The Way
+"בתיה במזכרת כנסת בית"ו "קרוב כנסת בית" וחיפוש האפליקציה פתיחת
+שפות-חוצה AI בדיקת — "בתאילנד מסעדה"ו "שמש בבית פיצה" חיפוש
+אמיתי מכשיר על Expo Go דרך מתבצעת ההדגמה — פרטי וצ׳אט שבת אירוח ,מניין הצגת
+אינטראקטיבי קשר ויצירת ניווט ,מקום פרטי פתיחת
+
+--- SLIDE 16 ---
+!רבה תודה
+?שאלות — Jewish On The Way
+Jewish On The Way
+:הפרויקט צוות:תאריך
+Daniel & Meryl
+2026
