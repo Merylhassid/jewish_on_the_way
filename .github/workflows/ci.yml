@@ -32,11 +32,16 @@ jobs:
       - name: Deploy to server
         env:
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           echo "$SSH_KEY" > /tmp/deploy_key
           chmod 600 /tmp/deploy_key
           tar -czf /tmp/dist.tar.gz dist/
           scp -i /tmp/deploy_key -o StrictHostKeyChecking=no /tmp/dist.tar.gz student@49.12.189.108:~/backend/dist.tar.gz
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            printf '%s' "$ANTHROPIC_API_KEY" > /tmp/anthropic_key
+            scp -i /tmp/deploy_key -o StrictHostKeyChecking=no /tmp/anthropic_key student@49.12.189.108:~/backend/.anthropic_key.tmp
+          fi
           ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no student@49.12.189.108 \
             "cd ~/backend && tar -xzf dist.tar.gz && rm dist.tar.gz && \
             touch .env && \
@@ -45,5 +50,6 @@ jobs:
             set_env SMART_SEARCH_LLM_DAILY_CAP 50 && \
             set_env SMART_SEARCH_LLM_TIMEOUT_MS 10000 && \
             set_env SMART_SEARCH_LLM_MODEL claude-haiku-4-5-20251001 && \
+            if [ -s .anthropic_key.tmp ]; then set_env ANTHROPIC_API_KEY \"\$(cat .anthropic_key.tmp)\" && rm .anthropic_key.tmp; fi && \
             ~/.npm/_npx/5f7878ce38f1eb13/node_modules/.bin/pm2 restart jewish-on-the-way"
-          rm /tmp/deploy_key
+          rm -f /tmp/deploy_key /tmp/anthropic_key
