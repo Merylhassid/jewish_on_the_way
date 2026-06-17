@@ -1,0 +1,202 @@
+{"query":"פיצה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"פיצריה בירשלים","expected":{"category":"restaurant","destinationText":"ירושלים","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"מסעדה חלבית מהדרין בירושלים","expected":{"category":"restaurant","destinationText":"ירושלים","explicitDestination":true,"restaurant":{"type":"dairy","kashrut":"mehadrin"}}}
+{"query":"מסעדה בשרית זולה ליד הים בתל אביב","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"type":"meat","priceLevel":"cheap"}}}
+{"query":"sushi near me","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false,"useCurrentLocation":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"burger near me","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false,"useCurrentLocation":true,"restaurant":{"dish":"burger","type":"meat"}}}
+{"query":"kosher dairy restaurant in Paris","expected":{"category":"restaurant","destinationText":"פריז","explicitDestination":true,"restaurant":{"type":"dairy","kashrut":"rabbinate"}}}
+{"query":"איפה אפשר לאכול","expected":{"category":"restaurant","explicitDestination":false,"restaurant":{"dish":null}}}
+{"query":"גלידה בפאפוס","expected":{"category":"restaurant","destinationText":"פאפוס","explicitDestination":true,"restaurant":{"dish":"ice cream","type":"dairy"}}}
+{"query":"חומוס בתל אביב","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"dish":"hummus","type":"pareve"}}}
+{"query":"להתארח בעפולה","expected":{"category":"hosting","destinationText":"עפולה","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"להתארח בפעולה","expected":{"category":"hosting","destinationText":"עפולה","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"להתארח במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"אירוח משפחות בתל אביב","expected":{"category":"hosting","destinationText":"תל אביב","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"שבת בלונדון","expected":{"category":"hosting","destinationText":"לונדון","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"ארוחת שבת בפריז","expected":{"category":"hosting","destinationText":"פריז","explicitDestination":true,"hosting":{"shabbat":true,"mealOrStay":"meal"}}}
+{"query":"מניין שחרית בפריז","expected":{"category":"minyan","destinationText":"פריז","explicitDestination":true}}
+{"query":"מניין בעפולה","expected":{"category":"minyan","destinationText":"עפולה","explicitDestination":true}}
+{"query":"minyan near me","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"בית כנסת חבד בלונדון","expected":{"category":"synagogue","destinationText":"לונדון","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"בית כנסת ספרדי","expected":{"category":"synagogue","explicitDestination":false,"synagogue":{"denomination":"sfarad"}}}
+{"query":"נוסח ספרד","expected":{"category":"synagogue","explicitDestination":false,"synagogue":{"denomination":"sfarad"}}}
+{"query":"בית כנסת בפאפוס","expected":{"category":"synagogue","destinationText":"פאפוס","explicitDestination":true}}
+{"query":"chabad synagogue in Miami","expected":{"category":"synagogue","destinationText":"מיאמי","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"מקווה בלונדון","expected":{"category":"destination","destinationText":"לונדון","explicitDestination":true}}
+{"query":"פיצה בקריית גת","expected":{"category":"restaurant","destinationText":"קריית גת","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"מסעדה בשרית בקריית גת","expected":{"category":"restaurant","destinationText":"קריית גת","explicitDestination":true,"restaurant":{"type":"meat"}}}
+{"query":"בית כנסת בקריית גת","expected":{"category":"synagogue","destinationText":"קריית גת","explicitDestination":true}}
+{"query":"מניין שחרית בקריית גת","expected":{"category":"minyan","destinationText":"קריית גת","explicitDestination":true}}
+{"query":"אירוח שבת בקריית גת","expected":{"category":"hosting","destinationText":"קריית גת","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"פיצה בבית שמש","expected":{"category":"restaurant","destinationText":"בית שמש","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"מסעדה בבית שמש","expected":{"category":"restaurant","destinationText":"בית שמש","explicitDestination":true}}
+{"query":"בית כנסת בבית שמש","expected":{"category":"synagogue","destinationText":"בית שמש","explicitDestination":true}}
+{"query":"מניין בבית שמש","expected":{"category":"minyan","destinationText":"בית שמש","explicitDestination":true}}
+{"query":"להתארח בבית שמש","expected":{"category":"hosting","destinationText":"בית שמש","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"סושי בראשון לציון","expected":{"category":"restaurant","destinationText":"ראשון לציון","explicitDestination":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"בית כנסת בראשון לציון","expected":{"category":"synagogue","destinationText":"ראשון לציון","explicitDestination":true}}
+{"query":"מניין ערבית בראשון לציון","expected":{"category":"minyan","destinationText":"ראשון לציון","explicitDestination":true}}
+{"query":"אירוח בראשון לציון","expected":{"category":"hosting","destinationText":"ראשון לציון","explicitDestination":true}}
+{"query":"מסעדה בבני ברק","expected":{"category":"restaurant","destinationText":"בני ברק","explicitDestination":true}}
+{"query":"פיצה בבני ברק","expected":{"category":"restaurant","destinationText":"בני ברק","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"בית כנסת חבד בבני ברק","expected":{"category":"synagogue","destinationText":"בני ברק","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"מניין שחרית בבני ברק","expected":{"category":"minyan","destinationText":"בני ברק","explicitDestination":true}}
+{"query":"אירוח משפחות בבני ברק","expected":{"category":"hosting","destinationText":"בני ברק","explicitDestination":true}}
+{"query":"חומוס בנתניה","expected":{"category":"restaurant","destinationText":"נתניה","explicitDestination":true,"restaurant":{"dish":"hummus","type":"pareve"}}}
+{"query":"בית כנסת בנתניה","expected":{"category":"synagogue","destinationText":"נתניה","explicitDestination":true}}
+{"query":"מניין בנתניה","expected":{"category":"minyan","destinationText":"נתניה","explicitDestination":true}}
+{"query":"להתארח בנתניה","expected":{"category":"hosting","destinationText":"נתניה","explicitDestination":true}}
+{"query":"מסעדה באילת","expected":{"category":"restaurant","destinationText":"אילת","explicitDestination":true}}
+{"query":"סושי באילת","expected":{"category":"restaurant","destinationText":"אילת","explicitDestination":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"בית כנסת באילת","expected":{"category":"synagogue","destinationText":"אילת","explicitDestination":true}}
+{"query":"מניין באילת","expected":{"category":"minyan","destinationText":"אילת","explicitDestination":true}}
+{"query":"אירוח שבת באילת","expected":{"category":"hosting","destinationText":"אילת","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"מסעדה חלבית בחיפה","expected":{"category":"restaurant","destinationText":"חיפה","explicitDestination":true,"restaurant":{"type":"dairy"}}}
+{"query":"פלאפל בחיפה","expected":{"category":"restaurant","destinationText":"חיפה","explicitDestination":true,"restaurant":{"dish":"falafel","type":"pareve"}}}
+{"query":"בית כנסת ספרדי בחיפה","expected":{"category":"synagogue","destinationText":"חיפה","explicitDestination":true,"synagogue":{"denomination":"sfarad"}}}
+{"query":"מניין מנחה בחיפה","expected":{"category":"minyan","destinationText":"חיפה","explicitDestination":true}}
+{"query":"אירוח בחיפה","expected":{"category":"hosting","destinationText":"חיפה","explicitDestination":true}}
+{"query":"מסעדה בטבריה","expected":{"category":"restaurant","destinationText":"טבריה","explicitDestination":true}}
+{"query":"גלידה בטבריה","expected":{"category":"restaurant","destinationText":"טבריה","explicitDestination":true,"restaurant":{"dish":"ice cream","type":"dairy"}}}
+{"query":"בית כנסת בטבריה","expected":{"category":"synagogue","destinationText":"טבריה","explicitDestination":true}}
+{"query":"מניין בטבריה","expected":{"category":"minyan","destinationText":"טבריה","explicitDestination":true}}
+{"query":"שבת בטבריה","expected":{"category":"hosting","destinationText":"טבריה","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"pizza in New York","expected":{"category":"restaurant","destinationText":"ניו יורק","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"kosher burger in New York","expected":{"category":"restaurant","destinationText":"ניו יורק","explicitDestination":true,"restaurant":{"dish":"burger","type":"meat","kashrut":"rabbinate"}}}
+{"query":"chabad synagogue in New York","expected":{"category":"synagogue","destinationText":"ניו יורק","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"minyan shacharit in New York","expected":{"category":"minyan","destinationText":"ניו יורק","explicitDestination":true}}
+{"query":"shabbat meal in New York","expected":{"category":"hosting","destinationText":"ניו יורק","explicitDestination":true,"hosting":{"shabbat":true,"mealOrStay":"meal"}}}
+{"query":"pizza in Los Angeles","expected":{"category":"restaurant","destinationText":"לוס אנג׳לס","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"synagogue in Los Angeles","expected":{"category":"synagogue","destinationText":"לוס אנג׳לס","explicitDestination":true}}
+{"query":"minyan in Los Angeles","expected":{"category":"minyan","destinationText":"לוס אנג׳לס","explicitDestination":true}}
+{"query":"hosting in Los Angeles","expected":{"category":"hosting","destinationText":"לוס אנג׳לס","explicitDestination":true}}
+{"query":"sushi in Toronto","expected":{"category":"restaurant","destinationText":"טורונטו","explicitDestination":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"synagogue in Toronto","expected":{"category":"synagogue","destinationText":"טורונטו","explicitDestination":true}}
+{"query":"minyan near Toronto","expected":{"category":"minyan","destinationText":"טורונטו","explicitDestination":true}}
+{"query":"shabbat in Toronto","expected":{"category":"hosting","destinationText":"טורונטו","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"pizza in Montreal","expected":{"category":"restaurant","destinationText":"מונטריאול","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"chabad in Montreal","expected":{"category":"synagogue","destinationText":"מונטריאול","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"minyan in Montreal","expected":{"category":"minyan","destinationText":"מונטריאול","explicitDestination":true}}
+{"query":"hosting in Montreal","expected":{"category":"hosting","destinationText":"מונטריאול","explicitDestination":true}}
+{"query":"מסעדה כשרה ברומא","expected":{"category":"restaurant","destinationText":"רומא","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"פיצה ברומא","expected":{"category":"restaurant","destinationText":"רומא","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"בית כנסת ברומא","expected":{"category":"synagogue","destinationText":"רומא","explicitDestination":true}}
+{"query":"מניין ברומא","expected":{"category":"minyan","destinationText":"רומא","explicitDestination":true}}
+{"query":"שבת ברומא","expected":{"category":"hosting","destinationText":"רומא","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"kosher pizza in Milan","expected":{"category":"restaurant","destinationText":"מילאנו","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy","kashrut":"rabbinate"}}}
+{"query":"synagogue in Milan","expected":{"category":"synagogue","destinationText":"מילאנו","explicitDestination":true}}
+{"query":"minyan in Milan","expected":{"category":"minyan","destinationText":"מילאנו","explicitDestination":true}}
+{"query":"hosting in Milan","expected":{"category":"hosting","destinationText":"מילאנו","explicitDestination":true}}
+{"query":"מסעדה במדריד","expected":{"category":"restaurant","destinationText":"מדריד","explicitDestination":true}}
+{"query":"בית כנסת במדריד","expected":{"category":"synagogue","destinationText":"מדריד","explicitDestination":true}}
+{"query":"מניין במדריד","expected":{"category":"minyan","destinationText":"מדריד","explicitDestination":true}}
+{"query":"אירוח במדריד","expected":{"category":"hosting","destinationText":"מדריד","explicitDestination":true}}
+{"query":"מסעדה בברצלונה","expected":{"category":"restaurant","destinationText":"ברצלונה","explicitDestination":true}}
+{"query":"בית כנסת בברצלונה","expected":{"category":"synagogue","destinationText":"ברצלונה","explicitDestination":true}}
+{"query":"מניין בברצלונה","expected":{"category":"minyan","destinationText":"ברצלונה","explicitDestination":true}}
+{"query":"אירוח שבת בברצלונה","expected":{"category":"hosting","destinationText":"ברצלונה","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"kosher restaurant in Lisbon","expected":{"category":"restaurant","destinationText":"ליסבון","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"synagogue in Lisbon","expected":{"category":"synagogue","destinationText":"ליסבון","explicitDestination":true}}
+{"query":"minyan in Lisbon","expected":{"category":"minyan","destinationText":"ליסבון","explicitDestination":true}}
+{"query":"hosting in Lisbon","expected":{"category":"hosting","destinationText":"ליסבון","explicitDestination":true}}
+{"query":"kosher food in Athens","expected":{"category":"restaurant","destinationText":"אתונה","explicitDestination":true}}
+{"query":"synagogue in Athens","expected":{"category":"synagogue","destinationText":"אתונה","explicitDestination":true}}
+{"query":"minyan in Athens","expected":{"category":"minyan","destinationText":"אתונה","explicitDestination":true}}
+{"query":"shabbat meal in Athens","expected":{"category":"hosting","destinationText":"אתונה","explicitDestination":true,"hosting":{"shabbat":true,"mealOrStay":"meal"}}}
+{"query":"burger in Berlin","expected":{"category":"restaurant","destinationText":"ברלין","explicitDestination":true,"restaurant":{"dish":"burger","type":"meat"}}}
+{"query":"synagogue in Berlin","expected":{"category":"synagogue","destinationText":"ברלין","explicitDestination":true}}
+{"query":"minyan in Berlin","expected":{"category":"minyan","destinationText":"ברלין","explicitDestination":true}}
+{"query":"hosting in Berlin","expected":{"category":"hosting","destinationText":"ברלין","explicitDestination":true}}
+{"query":"pizza in Vienna","expected":{"category":"restaurant","destinationText":"וינה","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"synagogue in Vienna","expected":{"category":"synagogue","destinationText":"וינה","explicitDestination":true}}
+{"query":"minyan in Vienna","expected":{"category":"minyan","destinationText":"וינה","explicitDestination":true}}
+{"query":"shabbat in Vienna","expected":{"category":"hosting","destinationText":"וינה","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"restaurant in Prague","expected":{"category":"restaurant","destinationText":"פראג","explicitDestination":true}}
+{"query":"chabad in Prague","expected":{"category":"synagogue","destinationText":"פראג","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"minyan in Prague","expected":{"category":"minyan","destinationText":"פראג","explicitDestination":true}}
+{"query":"hosting in Prague","expected":{"category":"hosting","destinationText":"פראג","explicitDestination":true}}
+{"query":"kosher restaurant in Budapest","expected":{"category":"restaurant","destinationText":"בודפשט","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"synagogue in Budapest","expected":{"category":"synagogue","destinationText":"בודפשט","explicitDestination":true}}
+{"query":"minyan in Budapest","expected":{"category":"minyan","destinationText":"בודפשט","explicitDestination":true}}
+{"query":"hosting in Budapest","expected":{"category":"hosting","destinationText":"בודפשט","explicitDestination":true}}
+{"query":"kosher food in Dubai","expected":{"category":"restaurant","destinationText":"דובאי","explicitDestination":true}}
+{"query":"synagogue in Dubai","expected":{"category":"synagogue","destinationText":"דובאי","explicitDestination":true}}
+{"query":"minyan in Dubai","expected":{"category":"minyan","destinationText":"דובאי","explicitDestination":true}}
+{"query":"hosting in Dubai","expected":{"category":"hosting","destinationText":"דובאי","explicitDestination":true}}
+{"query":"kosher restaurant in Bangkok","expected":{"category":"restaurant","destinationText":"בנגקוק","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"chabad in Bangkok","expected":{"category":"synagogue","destinationText":"בנגקוק","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"minyan in Bangkok","expected":{"category":"minyan","destinationText":"בנגקוק","explicitDestination":true}}
+{"query":"hosting in Bangkok","expected":{"category":"hosting","destinationText":"בנגקוק","explicitDestination":true}}
+{"query":"kosher food in Tokyo","expected":{"category":"restaurant","destinationText":"טוקיו","explicitDestination":true}}
+{"query":"synagogue in Tokyo","expected":{"category":"synagogue","destinationText":"טוקיו","explicitDestination":true}}
+{"query":"minyan in Tokyo","expected":{"category":"minyan","destinationText":"טוקיו","explicitDestination":true}}
+{"query":"hosting in Tokyo","expected":{"category":"hosting","destinationText":"טוקיו","explicitDestination":true}}
+{"query":"פיצה בירושליים","expected":{"category":"restaurant","destinationText":"ירושלים","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"פיצה במיימי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"מסדה כשרה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"בית כנסת לונדן","expected":{"category":"synagogue","destinationText":"לונדון","explicitDestination":true}}
+{"query":"מנין בפריזז","expected":{"category":"minyan","destinationText":"פריז","explicitDestination":true}}
+{"query":"להתרח במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"piza in miami","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"sushii near me","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false,"useCurrentLocation":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"synagoge in london","expected":{"category":"synagogue","destinationText":"לונדון","explicitDestination":true}}
+{"query":"minyn in paris","expected":{"category":"minyan","destinationText":"פריז","explicitDestination":true}}
+{"query":"בית כנסת פיצה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"מניין פיצה במיאמי","expected":{"category":"minyan","destinationText":"מיאמי","explicitDestination":true}}
+{"query":"להתארח מסעדה במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
+{"query":"מסעדה בית כנסת בלונדון","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true}}
+{"query":"אני נמצא בתל אביב אבל רוצה פיצה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"אני בארץ מחפש סושי בניו יורק לא לידי","expected":{"category":"restaurant","destinationText":"ניו יורק","explicitDestination":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"יש משהו לאכול ליד הים בתל אביב שיהיה בשרי וזול","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"type":"meat","priceLevel":"cheap"}}}
+{"query":"מחפש בית כנסת חבד קרוב למלון בלונדון עם מניין שחרית","expected":{"category":"minyan","destinationText":"לונדון","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"משפחה לשבת ליד בית חבד בפריז","expected":{"category":"hosting","destinationText":"פריז","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"איפה יש אוכל כשר לילדים במרכז רומא","expected":{"category":"restaurant","destinationText":"רומא","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"restaurant in Atlantis City","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false}}
+{"query":"בית כנסת בעיר שלא קיימת","expected":{"category":"synagogue","destinationText":null,"explicitDestination":false}}
+{"query":"מניין בגן עדן","expected":{"category":"minyan","destinationText":null,"explicitDestination":false}}
+{"query":"להתארח באי ירח","expected":{"category":"hosting","destinationText":null,"explicitDestination":false}}
+{"query":"מסעדה כשרה על הירח","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"cheap meat restaurant near the beach in Tel Aviv","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"type":"meat","priceLevel":"cheap"}}}
+{"query":"romantic dairy place with view in Jerusalem","expected":{"category":"restaurant","destinationText":"ירושלים","explicitDestination":true,"restaurant":{"type":"dairy"}}}
+{"query":"family shabbat hosting in London","expected":{"category":"hosting","destinationText":"לונדון","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"ashkenaz synagogue in Paris","expected":{"category":"synagogue","destinationText":"פריז","explicitDestination":true,"synagogue":{"denomination":"ashkenaz"}}}
+{"query":"sfarad minyan in Miami","expected":{"category":"minyan","destinationText":"מיאמי","explicitDestination":true,"synagogue":{"denomination":"sfarad"}}}
+{"query":"teimani synagogue in Jerusalem","expected":{"category":"synagogue","destinationText":"ירושלים","explicitDestination":true,"synagogue":{"denomination":"teimanim"}}}
+{"query":"badatz meat in Bnei Brak","expected":{"category":"restaurant","destinationText":"בני ברק","explicitDestination":true,"restaurant":{"type":"meat","kashrut":"badatz"}}}
+{"query":"mehadrin dairy in Beit Shemesh","expected":{"category":"restaurant","destinationText":"בית שמש","explicitDestination":true,"restaurant":{"type":"dairy","kashrut":"mehadrin"}}}
+{"query":"where can I eat","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false}}
+{"query":"where can I pray near me","expected":{"category":"synagogue","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"need a minyan nearby","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"host family for shabbat near me","expected":{"category":"hosting","destinationText":null,"explicitDestination":false,"useCurrentLocation":true,"hosting":{"shabbat":true}}}
+{"query":"סתם בדיקה בלי משמעות","expected":{"category":"unknown","destinationText":null,"explicitDestination":false}}
+{"query":"פיצה בציריך","expected":{"category":"restaurant","destinationText":"ציריך","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"בית כנסת בציריך","expected":{"category":"synagogue","destinationText":"ציריך","explicitDestination":true}}
+{"query":"מניין בציריך","expected":{"category":"minyan","destinationText":"ציריך","explicitDestination":true}}
+{"query":"אירוח בציריך","expected":{"category":"hosting","destinationText":"ציריך","explicitDestination":true}}
+{"query":"kosher restaurant in Geneva","expected":{"category":"restaurant","destinationText":"ז׳נבה","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"synagogue in Geneva","expected":{"category":"synagogue","destinationText":"ז׳נבה","explicitDestination":true}}
+{"query":"minyan in Geneva","expected":{"category":"minyan","destinationText":"ז׳נבה","explicitDestination":true}}
+{"query":"hosting in Geneva","expected":{"category":"hosting","destinationText":"ז׳נבה","explicitDestination":true}}
+{"query":"מסעדה במרקש","expected":{"category":"restaurant","destinationText":"מרקש","explicitDestination":true}}
+{"query":"בית כנסת במרקש","expected":{"category":"synagogue","destinationText":"מרקש","explicitDestination":true}}
+{"query":"מניין במרקש","expected":{"category":"minyan","destinationText":"מרקש","explicitDestination":true}}
+{"query":"שבת במרקש","expected":{"category":"hosting","destinationText":"מרקש","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"kosher food in Casablanca","expected":{"category":"restaurant","destinationText":"קזבלנקה","explicitDestination":true}}
+{"query":"synagogue in Casablanca","expected":{"category":"synagogue","destinationText":"קזבלנקה","explicitDestination":true}}
+{"query":"minyan in Casablanca","expected":{"category":"minyan","destinationText":"קזבלנקה","explicitDestination":true}}
+{"query":"hosting in Casablanca","expected":{"category":"hosting","destinationText":"קזבלנקה","explicitDestination":true}}
+{"query":"מסעדה באמסטרדם","expected":{"category":"restaurant","destinationText":"אמסטרדם","explicitDestination":true}}
+{"query":"בית כנסת באמסטרדם","expected":{"category":"synagogue","destinationText":"אמסטרדם","explicitDestination":true}}
+{"query":"מניין באמסטרדם","expected":{"category":"minyan","destinationText":"אמסטרדם","explicitDestination":true}}
+{"query":"אירוח באמסטרדם","expected":{"category":"hosting","destinationText":"אמסטרדם","explicitDestination":true}}
+{"query":"pizza in Antwerp","expected":{"category":"restaurant","destinationText":"אנטוורפן","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"synagogue in Antwerp","expected":{"category":"synagogue","destinationText":"אנטוורפן","explicitDestination":true}}
+{"query":"minyan in Antwerp","expected":{"category":"minyan","destinationText":"אנטוורפן","explicitDestination":true}}
+{"query":"hosting in Antwerp","expected":{"category":"hosting","destinationText":"אנטוורפן","explicitDestination":true}}
+{"query":"מסעדה כשרה טובה וזולה למשפחה גדולה ליד הים בתל אביב אבל לא חלבית","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"type":"meat","priceLevel":"cheap","kashrut":"rabbinate"}}}
+{"query":"אני צריך מניין מוקדם ואז מקום לאכול בבוקר בפריז","expected":{"category":"minyan","destinationText":"פריז","explicitDestination":true}}
+{"query":"בית חבד עם אירוח שבת ליד מילאנו","expected":{"category":"hosting","destinationText":"מילאנו","explicitDestination":true,"hosting":{"shabbat":true}}}
+{"query":"אוכל כשר ליד בית כנסת חבד בלונדון","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
+{"query":"מקום לישון אצל משפחה יהודית במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"stay"}}}
+{"query":"i want to eat pizza but not in miami maybe london","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"find me a shul not restaurant in paris","expected":{"category":"synagogue","destinationText":"פריז","explicitDestination":true}}

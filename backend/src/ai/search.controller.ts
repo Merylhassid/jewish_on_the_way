@@ -9,7 +9,7 @@
  *                                       רלוונטי רק כשקטגוריה = synagogue/minyan
  */
 
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Optional, Post, Query } from '@nestjs/common';
 import { IsString, IsOptional, IsNumber, MaxLength, MinLength } from 'class-validator';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -18,6 +18,8 @@ import { DenominationClassifierService } from './denomination-classifier.service
 import { Destination } from '../destination.entity';
 import { SearchFeedback } from './search-feedback.entity';
 import { DestinationIndexService } from './destination-index.service';
+import { QueryParserService } from './query-parser.service';
+import { ConfigService } from '@nestjs/config';
 
 // Re-export pure helpers so existing imports (e.g. in tests) continue to work
 export {
@@ -132,14 +134,16 @@ const KASHRUT_KEYWORDS: Record<string, string> = {
 function normalizeTypos(text: string): string {
   return text
     .replace(/(^|[\s])פיצמ([\s]|$)/g, '$1פיצה$2')
-    .replace(/(^|[\s])פיצנ([\s]|$)/g, '$1פיצה$2');
+    .replace(/(^|[\s])פיצנ([\s]|$)/g, '$1פיצה$2')
+    .replace(/(^|[\s])בפעולה(?=$|[\s,.;:!?])/g, '$1בעפולה')
+    .replace(/(^|[\s])לפעולה(?=$|[\s,.;:!?])/g, '$1לעפולה');
 }
 
 // Hosting signal: explicit words OR (שבת + hosting verb)
 function containsHostingSignal(text: string): boolean {
   const lower = text.toLowerCase();
-  if (/(?:^|[\s])(?:אירוח|הארחה|לינה)(?:$|[\s])/.test(lower)) return true;
-  if (/שבת/.test(lower) && /להתארח|מתארח|מארח/.test(lower)) return true;
+  if (/(?:^|[\s])(?:אירוח|הארחה|לינה|להתארח|מתארח|מתארחת|מתארחים|מתארחות|מארח|מארחת|מארחים|מארחות)(?:$|[\s,.;:!?])/.test(lower)) return true;
+  if (/שבת/.test(lower) && /יארח|יארחו|שיארח|שיארחו|אארח|נארח|להתארח|מתארח|מארח/.test(lower)) return true;
   return false;
 }
 
@@ -197,8 +201,18 @@ interface RouteOptions {
   useUserGps?: boolean;
 }
 
+interface ShadowLlmUsage {
+  day: string;
+  attempts: number;
+}
+
 @Controller('search')
 export class SearchController {
+  private readonly logger = new Logger(SearchController.name);
+  private readonly shadowSampleRate: number;
+  private readonly shadowLlmDailyCap: number;
+  private readonly shadowLlmUsage: ShadowLlmUsage = { day: this.todayKey(), attempts: 0 };
+
   constructor(
     private readonly classifier: ClassifierService,
     private readonly denomClassifier: DenominationClassifierService,
@@ -207,7 +221,21 @@ export class SearchController {
     private readonly destRepo: Repository<Destination>,
     @InjectRepository(SearchFeedback)
     private readonly feedbackRepo: Repository<SearchFeedback>,
-  ) {}
+    @Optional()
+    private readonly queryParser?: QueryParserService,
+    @Optional()
+    private readonly config?: ConfigService,
+  ) {
+    this.shadowSampleRate = this.clampNumber(
+      Number(this.config?.get<string>('SMART_SEARCH_SHADOW_SAMPLE') ?? process.env.SMART_SEARCH_SHADOW_SAMPLE ?? 0.1),
+      0,
+      1,
+    );
+    this.shadowLlmDailyCap = Math.max(
+      0,
+      Number(this.config?.get<string>('SMART_SEARCH_LLM_DAILY_CAP') ?? process.env.SMART_SEARCH_LLM_DAILY_CAP ?? 50),
+    );
+  }
 
   @Get('classify')
   classifyText(@Query('text') text: string) {
@@ -268,7 +296,7 @@ export class SearchController {
       const destOnlyResolution = this.resolveDestinationFromText(text);
       if (destOnlyResolution.destination) {
         const d = destOnlyResolution.destination;
-        void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: 'destination_only' }));
+        this.recordSearchFeedback(text, { detectedKeyword: 'destination_only' });
         return {
           category: 'destination',
           emoji: '📍',
@@ -304,11 +332,13 @@ export class SearchController {
 
     // ── שלב 4: חיפוש עיר ──────────────────────────────
     if (destinationId) {
-      void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
+      this.recordSearchFeedback(text, { detectedKeyword: result.category });
+      const hasUserGps = dto.lat != null && dto.lng != null;
       return {
         ...result,
         route: this.getRoute(result.category, destinationId, denomination, restaurantType, restaurantKashrut, {
           expandNearby: result.category === 'synagogue',
+          useUserGps: (result.category === 'synagogue' || result.category === 'restaurant') && hasUserGps,
         }),
         destinationId,
         denomination,
@@ -328,7 +358,7 @@ export class SearchController {
       if (countryEng) {
         const parentDest = await this.findParentDestinationByCountry(countryEng);
         if (parentDest) {
-          void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
+          this.recordSearchFeedback(text, { detectedKeyword: result.category });
           const route = this.getCountryRoute(result.category, parentDest.id, denomination, restaurantType, restaurantKashrut);
           return {
             ...result,
@@ -353,12 +383,12 @@ export class SearchController {
       }
     }
 
-    if (foundDest) void this.feedbackRepo.save(this.feedbackRepo.create({ query: text, detectedKeyword: result.category }));
+    if (foundDest) this.recordSearchFeedback(text, { detectedKeyword: result.category });
     return {
       ...result,
       route:         this.getRoute(result.category, foundDest?.id, denomination, restaurantType, restaurantKashrut, {
         expandNearby: result.category === 'synagogue',
-        useUserGps: (result.category === 'synagogue' || result.category === 'restaurant') && gpsUsed,
+        useUserGps: (result.category === 'synagogue' || result.category === 'restaurant') && dto.lat != null && dto.lng != null,
       }),
       destinationId: foundDest?.id,
       detectedCity:  foundDest?.city ?? null,
@@ -369,6 +399,73 @@ export class SearchController {
       restaurantType,
       restaurantKashrut,
     };
+  }
+
+  private recordSearchFeedback(query: string, data: Partial<SearchFeedback> = {}): void {
+    const feedback = this.feedbackRepo.create({ ...data, query });
+    void Promise.resolve(this.feedbackRepo.save(feedback))
+      .then((saved) => {
+        if (saved?.id) return this.runParserShadow(query, saved.id);
+        return undefined;
+      })
+      .catch((error) => this.logger.warn(`Failed to save search feedback: ${(error as Error).message}`));
+  }
+
+  private async runParserShadow(query: string, feedbackId: number): Promise<void> {
+    if (!this.queryParser) return;
+    if (!this.shouldSampleShadow()) return;
+    try {
+      const allowLlm = this.canAttemptShadowLlm();
+      const result = await this.queryParser.parse(query, { allowLlm });
+      if (result.source === 'llm' || result.source === 'fallback') {
+        this.recordShadowLlmAttempt();
+      }
+      const resolvedDestination = result.parsed.destinationText
+        ? this.resolveDestinationFromText(result.parsed.destinationText).destination
+        : null;
+      await this.feedbackRepo.update(feedbackId, {
+        parsedJson: result.parsed as any,
+        parserVersion: this.queryParser.version,
+        resolvedDestinationId: resolvedDestination?.id ?? null,
+        modelName: result.modelName,
+        latencyMs: result.latencyMs,
+        source: result.source,
+      });
+    } catch (error) {
+      this.logger.warn(`Shadow parser failed: ${(error as Error).message}`);
+    }
+  }
+
+  private shouldSampleShadow(): boolean {
+    if (this.shadowSampleRate <= 0) return false;
+    if (this.shadowSampleRate >= 1) return true;
+    return Math.random() < this.shadowSampleRate;
+  }
+
+  private canAttemptShadowLlm(): boolean {
+    this.rollShadowLlmDayIfNeeded();
+    return this.shadowLlmDailyCap > 0 && this.shadowLlmUsage.attempts < this.shadowLlmDailyCap;
+  }
+
+  private recordShadowLlmAttempt(): void {
+    this.rollShadowLlmDayIfNeeded();
+    this.shadowLlmUsage.attempts += 1;
+  }
+
+  private rollShadowLlmDayIfNeeded(): void {
+    const today = this.todayKey();
+    if (this.shadowLlmUsage.day === today) return;
+    this.shadowLlmUsage.day = today;
+    this.shadowLlmUsage.attempts = 0;
+  }
+
+  private todayKey(): string {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  private clampNumber(value: number, min: number, max: number): number {
+    if (!Number.isFinite(value)) return min;
+    return Math.min(max, Math.max(min, value));
   }
 
   // ── חיפוש parent destination לפי שם מדינה ──────────

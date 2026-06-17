@@ -5,6 +5,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+export type SearchParserSource = 'fast' | 'llm' | 'fallback' | 'cache';
+
 /**
  * Stores every AI search + which restaurant the user clicked.
  * These rows become few-shot examples for the next Claude call —
@@ -28,6 +30,24 @@ export class SearchFeedback {
 
   @Column({ type: 'varchar', nullable: true })
   detectedKeyword: string | null;
+
+  @Column({ name: 'parsed_json', type: 'jsonb', nullable: true })
+  parsedJson: Record<string, unknown> | null;
+
+  @Column({ name: 'parser_version', type: 'varchar', nullable: true })
+  parserVersion: string | null;
+
+  @Column({ name: 'resolved_destination_id', type: 'integer', nullable: true })
+  resolvedDestinationId: number | null;
+
+  @Column({ name: 'model_name', type: 'varchar', nullable: true })
+  modelName: string | null;
+
+  @Column({ name: 'latency_ms', type: 'integer', nullable: true })
+  latencyMs: number | null;
+
+  @Column({ type: 'varchar', nullable: true })
+  source: SearchParserSource | null;
 
   /** What the user actually clicked (null = no click recorded yet) */
   @Column({ type: 'varchar', nullable: true })

@@ -56,6 +56,7 @@ describe('RestaurantsService smartSearch keyword cleanup', () => {
     destinationsRepo.findOne.mockResolvedValue({
       id: 101, name: 'Beit Shemesh', city: 'Beit Shemesh', country: 'Israel',
     });
+    destinationsRepo.query.mockResolvedValue([{ lat: 31.75, lng: 34.99 }]);
 
     const localName = Array.from({ length: 6 }, (_, i) => ({
       id: i + 1,
@@ -99,6 +100,30 @@ describe('RestaurantsService smartSearch keyword cleanup', () => {
     expect(result.total).toBe(15);
     expect(result.matchTier).toBe(1);
     expect(result.message).toBe('מציג גם תוצאות מערים קרובות');
+  });
+
+  it('does not use user GPS for global restaurant fallback when destination origin is missing', async () => {
+    const { service, restaurantsRepo, destinationsRepo } = makeService();
+    destinationsRepo.findOne.mockResolvedValue({
+      id: 501, name: 'Miami', city: 'Miami', country: 'United States',
+    });
+    destinationsRepo.query.mockResolvedValue([]);
+
+    restaurantsRepo.query
+      .mockResolvedValueOnce([{ count: '0' }])
+      .mockResolvedValueOnce([])
+      .mockResolvedValueOnce([{ count: '0' }])
+      .mockResolvedValueOnce([{ count: '0' }])
+      .mockResolvedValueOnce([])
+      .mockResolvedValueOnce([{ count: '1' }])
+      .mockResolvedValueOnce([{ id: 99, name: 'Miami Kosher Place', distanceMeters: 12000000 }]);
+
+    const result = await service.smartSearch('פיצה', 'dairy', undefined, 501, 32.08, 34.78, 'פיצה במיאמי');
+
+    expect(result.data.map(r => r.id)).toEqual([99]);
+    expect(result.matchedVia).toEqual([]);
+    expect(result.message).toBe('לא נמצאה התאמה מדויקת ל"פיצה" — מציג מסעדות באזור');
+    expect(restaurantsRepo.query).toHaveBeenCalledTimes(7);
   });
 });
 

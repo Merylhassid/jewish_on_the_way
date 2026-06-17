@@ -34,6 +34,8 @@ describe('SearchController destination resolver', () => {
     { id: 3, name: 'Limassol', city: 'Limassol', country: 'Cyprus' },
     { id: 4, name: 'Paphos', city: 'Paphos', country: 'Cyprus' },
     { id: 5, name: 'Spain', city: 'Spain', country: 'Spain' },
+    { id: 6, name: 'Miami', city: 'Miami', country: 'United States' },
+    { id: 7, name: 'Afula', city: 'Afula', country: 'Israel' },
   ];
 
   function createController() {
@@ -79,6 +81,62 @@ describe('SearchController destination resolver', () => {
     expect(controller.resolveDestinationFromText('בית כנסת בספרד')).toMatchObject({
       destination: expect.objectContaining({ city: 'Spain' }),
       explicitMention: true,
+    });
+  });
+});
+
+describe('SearchController hosting intent', () => {
+  const destinations = [
+    { id: 6, name: 'Miami', city: 'Miami', country: 'United States' },
+    { id: 7, name: 'Afula', city: 'Afula', country: 'Israel' },
+  ];
+
+  function createController(category: string) {
+    const aliasIndex = buildDestinationAliasIndex(destinations as any);
+    const controller = new SearchController(
+      {
+        classify: jest.fn().mockReturnValue({
+          category,
+          confidence: 0.9,
+          emoji: category === 'minyan' ? '🤝' : '🍽️',
+          allScores: {},
+        }),
+      } as any,
+      { classify: jest.fn().mockReturnValue({ denomination: null }) } as any,
+      { getIndex: () => aliasIndex, fuzzyMatch: jest.fn() } as any,
+      {} as any,
+      { create: (value: any) => value, save: jest.fn() } as any,
+    );
+    return controller;
+  }
+
+  it('routes להתארח במיאמי to hosting even if the model predicts restaurant', async () => {
+    const controller = createController('restaurant');
+
+    await expect(controller.search({ text: 'להתארח במיאמי' } as any)).resolves.toMatchObject({
+      category: 'hosting',
+      destinationId: 6,
+      route: '/hosting/6',
+    });
+  });
+
+  it('routes להתארח בעפולה to hosting even if the model predicts minyan', async () => {
+    const controller = createController('minyan');
+
+    await expect(controller.search({ text: 'להתארח בעפולה' } as any)).resolves.toMatchObject({
+      category: 'hosting',
+      destinationId: 7,
+      route: '/hosting/7',
+    });
+  });
+
+  it('handles the common typo להתארח בפעולה as Afula hosting', async () => {
+    const controller = createController('minyan');
+
+    await expect(controller.search({ text: 'להתארח בפעולה' } as any)).resolves.toMatchObject({
+      category: 'hosting',
+      destinationId: 7,
+      route: '/hosting/7',
     });
   });
 });

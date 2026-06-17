@@ -38,5 +38,12 @@ jobs:
           tar -czf /tmp/dist.tar.gz dist/
           scp -i /tmp/deploy_key -o StrictHostKeyChecking=no /tmp/dist.tar.gz student@49.12.189.108:~/backend/dist.tar.gz
           ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no student@49.12.189.108 \
-            "cd ~/backend && tar -xzf dist.tar.gz && rm dist.tar.gz && ~/.npm/_npx/5f7878ce38f1eb13/node_modules/.bin/pm2 restart jewish-on-the-way"
+            "cd ~/backend && tar -xzf dist.tar.gz && rm dist.tar.gz && \
+            touch .env && \
+            set_env() { key=\"\$1\"; value=\"\$2\"; if grep -q \"^\${key}=\" .env; then sed -i \"s|^\${key}=.*|\${key}=\${value}|\" .env; else printf '\n%s=%s\n' \"\${key}\" \"\${value}\" >> .env; fi; }; \
+            set_env SMART_SEARCH_SHADOW_SAMPLE 0.1 && \
+            set_env SMART_SEARCH_LLM_DAILY_CAP 50 && \
+            set_env SMART_SEARCH_LLM_TIMEOUT_MS 10000 && \
+            set_env SMART_SEARCH_LLM_MODEL claude-haiku-4-5-20251001 && \
+            ~/.npm/_npx/5f7878ce38f1eb13/node_modules/.bin/pm2 restart jewish-on-the-way"
           rm /tmp/deploy_key

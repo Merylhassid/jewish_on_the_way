@@ -59,12 +59,9 @@ const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFix
 const cap = (s: string | null | undefined) => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Unknown';
 
 export default function RestaurantsScreen() {
-  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam, lat: latParam, lng: lngParam, useUserGps } =
-    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string; lat?: string; lng?: string; useUserGps?: string }>();
+  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam, lat: latParam, lng: lngParam } =
+    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string; lat?: string; lng?: string }>();
   const isCountryMode = fromParent === 'true';
-  // Explicit-destination searches ("פיצה במזכרת בתיה") must measure distances from the
-  // destination, not from the user — only near-me searches carry useUserGps=true.
-  const shouldUseUserGps = useUserGps === 'true';
   const { t } = useTranslation();
 
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
@@ -112,10 +109,7 @@ export default function RestaurantsScreen() {
     const isFirst = initialSearch.current;
     if (isFirst) initialSearch.current = false;
 
-    // GPS arrival only matters when the query actually uses it: plain list (distance
-    // sorting) or a near-me search. Explicit-destination searches ignore user GPS.
-    const gpsAffectsQuery = !search.trim() || shouldUseUserGps;
-    const gpsJustArrived = !isFirst && gps != null && prevGpsRef.current == null && gpsAffectsQuery;
+    const gpsJustArrived = !isFirst && gps != null && prevGpsRef.current == null;
     prevGpsRef.current = gps;
 
     if (aiMode && search.trim() && !isFirst && !gpsJustArrived) return;
@@ -129,10 +123,7 @@ export default function RestaurantsScreen() {
         const params: Record<string, string> = isCountryMode
           ? { parentDestinationId: destinationId, offset: '0' }
           : { destinationId, offset: '0' };
-        // Pass user GPS for the plain list (in-city distance sorting) and for near-me
-        // searches; never for explicit-destination searches — the server then falls
-        // back to the destination's own coordinates as the distance origin.
-        if (gps?.lat && (!search.trim() || shouldUseUserGps)) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+        if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
 
         let endpoint = '/restaurants';
         // Smart search runs only for a single city. A country (parent) has no numeric
@@ -209,9 +200,7 @@ export default function RestaurantsScreen() {
         }
       }
 
-      // Same city or no city detected → search within current destination.
-      // User GPS is only a valid distance origin for near-me entries; otherwise the
-      // server measures from the destination itself.
+      // Same city or no city detected -> search within current destination.
       const params: Record<string, string> = isCountryMode
         ? { parentDestinationId: destinationId, offset: '0' }
         : { destinationId, offset: '0' };
@@ -229,7 +218,7 @@ export default function RestaurantsScreen() {
         return;
       }
 
-      if (gps?.lat && shouldUseUserGps) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
+      if (gps?.lat) { params.lat = String(gps.lat); params.lng = String(gps.lng); }
       params.q = q;
       setLastAiQuery(q);
       const searchRes = await client.get('/restaurants/search', { params });

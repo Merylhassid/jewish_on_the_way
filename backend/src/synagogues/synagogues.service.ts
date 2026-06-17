@@ -4,6 +4,11 @@ import { Repository } from 'typeorm';
 import { Synagogue } from '../synagogue.entity';
 import { Destination } from '../destination.entity';
 
+interface GeoPoint {
+  lat: number;
+  lng: number;
+}
+
 @Injectable()
 export class SynagoguesService {
   constructor(
@@ -34,15 +39,16 @@ export class SynagoguesService {
     expandNearby = false,
   ): Promise<{ data: any[]; total: number; denominationFallback?: boolean }> {
     const denomValues = denomination ? (this.DENOM_MAP[denomination] ?? []) : [];
-    const origin = await this.resolveSearchOrigin(destinationId, lat, lng, expandNearby);
-    const searchLat = origin?.lat;
-    const searchLng = origin?.lng;
+    const userOrigin = lat !== undefined && lng !== undefined ? { lat, lng } : null;
+    const supplementOrigin = expandNearby ? await this.resolveSupplementOrigin(destinationId) : null;
+    const displayLat = userOrigin?.lat;
+    const displayLng = userOrigin?.lng;
 
-    // ── GPS mode: raw SQL with distance ordering ─────────
-    if (searchLat !== undefined && searchLng !== undefined) {
+    // GPS mode: raw SQL with user-distance ordering.
+    if (displayLat !== undefined && displayLng !== undefined) {
       const countParams: any[] = [destinationId];
       let countWhere = `s."destinationId" = $1`;
-      const gpsParams: any[] = [searchLng, searchLat, destinationId];
+      const gpsParams: any[] = [displayLng, displayLat, destinationId];
       let gpsWhere = `s."destinationId" = $3`;
       let cIdx = 2;
       let gIdx = 4;
@@ -88,18 +94,25 @@ export class SynagoguesService {
       );
 
       // Supplement with nearby synagogues from other destinations when local results are sparse
-      if (expandNearby && offset === 0 && total < 30) {
-        const supParams: any[] = [searchLng, searchLat, destinationId];
-        let supWhere = `s."destinationId" != $3 AND s.location IS NOT NULL
+      if (supplementOrigin && offset === 0 && total < 30) {
+        const supParams: any[] = [
+          supplementOrigin.lng,
+          supplementOrigin.lat,
+          displayLng,
+          displayLat,
+          destinationId,
+        ];
+        let supWhere = `s."destinationId" != $5 AND s.location IS NOT NULL
           AND ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography) <= 30000`;
         if (denomValues.length > 0 && !denominationFallback) {
-          supWhere += ` AND s.denomination = ANY($4)`;
+          supWhere += ` AND s.denomination = ANY($6)`;
           supParams.push(denomValues);
         }
         const supplement = await this.synagoguesRepo.query(
           `SELECT s.id, s.name, s.address, s.description, s.phone, s.website, s.denomination, s.location,
                   d.city AS "destinationCity",
-                  ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
+                  ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($3,$4),4326)::geography)::numeric) AS "distanceMeters",
+                  ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "supplementDistanceMeters"
            FROM synagogues s
            JOIN destinations d ON s."destinationId" = d.id
            WHERE ${supWhere}
@@ -146,20 +159,37 @@ export class SynagoguesService {
       denominationFallback = true;
     }
 
+    if (supplementOrigin && offset === 0 && total < 30) {
+      const supParams: any[] = [supplementOrigin.lng, supplementOrigin.lat, destinationId];
+      let supWhere = `s."destinationId" != $3 AND s.location IS NOT NULL
+        AND ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography) <= 30000`;
+      if (denomValues.length > 0 && !denominationFallback) {
+        supWhere += ` AND s.denomination = ANY($4)`;
+        supParams.push(denomValues);
+      }
+      const supplement = await this.synagoguesRepo.query(
+        `SELECT s.id, s.name, s.address, s.description, s.phone, s.website, s.denomination, s.location,
+                d.city AS "destinationCity",
+                ROUND(ST_Distance(s.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "supplementDistanceMeters"
+         FROM synagogues s
+         JOIN destinations d ON s."destinationId" = d.id
+         WHERE ${supWhere}
+         ORDER BY s.location::geography <-> ST_SetSRID(ST_MakePoint($1,$2),4326)::geography
+         LIMIT 50`,
+        supParams,
+      );
+      const localIds = new Set(data.map((r: any) => r.id));
+      const extra = supplement.filter((r: any) => !localIds.has(r.id));
+      if (extra.length > 0) {
+        const merged = [...data, ...extra].slice(0, 50);
+        return { data: merged, total: merged.length, denominationFallback };
+      }
+    }
+
     return { data, total, denominationFallback };
   }
 
-  private async resolveSearchOrigin(
-    destinationId: number,
-    lat?: number,
-    lng?: number,
-    expandNearby = false,
-  ): Promise<{ lat: number; lng: number } | null> {
-    if (lat !== undefined && lng !== undefined) {
-      return { lat, lng };
-    }
-    if (!expandNearby) return null;
-
+  private async resolveSupplementOrigin(destinationId: number): Promise<GeoPoint | null> {
     const rows = await this.destinationsRepo.query(
       `SELECT ST_Y(location::geometry) AS lat, ST_X(location::geometry) AS lng
        FROM destinations
@@ -169,7 +199,7 @@ export class SynagoguesService {
     );
     const row = rows[0];
     if (row?.lat != null && row?.lng != null) {
-      return { lat: parseFloat(row.lat), lng: parseFloat(row.lng) };
+      return { lat: Number(row.lat), lng: Number(row.lng) };
     }
 
     const synagogueRows = await this.synagoguesRepo.query(
@@ -182,7 +212,7 @@ export class SynagoguesService {
     );
     const synagogueOrigin = synagogueRows[0];
     if (synagogueOrigin?.lat == null || synagogueOrigin?.lng == null) return null;
-    return { lat: parseFloat(synagogueOrigin.lat), lng: parseFloat(synagogueOrigin.lng) };
+    return { lat: Number(synagogueOrigin.lat), lng: Number(synagogueOrigin.lng) };
   }
 
   /**

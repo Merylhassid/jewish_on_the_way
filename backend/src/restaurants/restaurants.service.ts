@@ -49,6 +49,11 @@ interface RestaurantClassificationResult {
   strongPareve: boolean;
 }
 
+interface GeoPoint {
+  lat: number;
+  lng: number;
+}
+
 function normalizeRestaurantSearchText(text: string): string {
   return text
     .toLowerCase()
@@ -1034,9 +1039,10 @@ export class RestaurantsService {
     const SUPPLEMENT_MAX_METERS = 30000; // only pull in results from nearby cities (≤30km)
     const MAX_RESULTS = 50;
     const effectiveType = classifierType ?? fallbackType;
-    const origin = await this.resolveRestaurantSearchOrigin(destinationId, lat, lng);
-    const originLat = origin?.lat;
-    const originLng = origin?.lng;
+    const userOrigin = lat !== undefined && lng !== undefined ? { lat, lng } : null;
+    const supplementOrigin = await this.resolveDestinationOrigin(destinationId);
+    const displayLat = userOrigin?.lat;
+    const displayLng = userOrigin?.lng;
     const data: any[] = [];
     const seen = new Set<number>();
     let matchedTier: 1 | 2 | 3 | 4 = 4;
@@ -1052,7 +1058,7 @@ export class RestaurantsService {
         if (data.length >= MAX_RESULTS) break;
         if (seen.has(row.id)) continue;
         if (nearby) {
-          const distance = Number(row.distanceMeters);
+          const distance = Number(row.supplementDistanceMeters ?? row.distanceMeters);
           if (!Number.isFinite(distance) || distance <= minMeters || distance > maxMeters) continue;
           if (destination?.city && row.destinationCity && row.destinationCity !== destination.city) {
             addedNearby = true;
@@ -1069,8 +1075,8 @@ export class RestaurantsService {
       const result = await this.findByDestination(destinationId, {
         q: cleanedKeyword,
         kashrut,
-        lat: originLat,
-        lng: originLng,
+        lat: displayLat,
+        lng: displayLng,
       });
       addLayer(result.data, 1);
     }
@@ -1079,14 +1085,35 @@ export class RestaurantsService {
     let nearbyTagData: any[] = [];
     let nearbyTypeData: any[] = [];
 
-    if (origin && cleanedKeyword) {
-      nearbyNameData = (await this.searchGlobal([], cleanedKeyword, undefined, kashrut, origin.lat, origin.lng)).data;
+    if (supplementOrigin && cleanedKeyword) {
+      nearbyNameData = (await this.searchGlobal(
+        [],
+        cleanedKeyword,
+        undefined,
+        kashrut,
+        supplementOrigin,
+        userOrigin,
+      )).data;
     }
-    if (origin && searchTags.length > 0) {
-      nearbyTagData = (await this.searchGlobal(searchTags, undefined, undefined, kashrut, origin.lat, origin.lng)).data;
+    if (supplementOrigin && searchTags.length > 0) {
+      nearbyTagData = (await this.searchGlobal(
+        searchTags,
+        undefined,
+        undefined,
+        kashrut,
+        supplementOrigin,
+        userOrigin,
+      )).data;
     }
-    if (origin && effectiveType) {
-      nearbyTypeData = (await this.searchGlobal([], undefined, effectiveType, kashrut, origin.lat, origin.lng)).data;
+    if (supplementOrigin && effectiveType) {
+      nearbyTypeData = (await this.searchGlobal(
+        [],
+        undefined,
+        effectiveType,
+        kashrut,
+        supplementOrigin,
+        userOrigin,
+      )).data;
     }
 
     // 2. Exact keyword in another nearby destination (≤10km).
@@ -1096,7 +1123,7 @@ export class RestaurantsService {
 
     // 3. Strong semantic match in the current destination, based on food tags.
     if (searchTags.length > 0 && data.length < MAX_RESULTS) {
-      const result = await this.searchByTags(searchTags, kashrut, destinationId, originLat, originLng);
+      const result = await this.searchByTags(searchTags, kashrut, destinationId, displayLat, displayLng);
       addLayer(result.data, 2);
     }
 
@@ -1105,8 +1132,8 @@ export class RestaurantsService {
       const result = await this.findByDestination(destinationId, {
         type: effectiveType,
         kashrut,
-        lat: originLat,
-        lng: originLng,
+        lat: displayLat,
+        lng: displayLng,
       });
       addLayer(result.data, 3);
     }
@@ -1150,24 +1177,13 @@ export class RestaurantsService {
       };
     }
 
-    // Tier 3.5: search globally across all destinations (fallback when local search fails)
-    const globalResult = await this.searchGlobal(searchTags, cleanedKeyword, effectiveType, kashrut, originLat, originLng);
-    if (globalResult.data.length > 0) {
-      return {
-        ...globalResult,
-        matchTier: 3,
-        matchedVia: ['global'],
-        message: `לא נמצאו תוצאות בעיר זו — מציג תוצאות מערים אחרות`,
-      };
-    }
-
     // Safety net: a restaurant-intent query must never come back empty while the
     // destination has restaurants. Generic queries ("לאכול") strip to nothing and
     // unmatched keywords ("מאפה גבינה") miss every layer — show the local list instead.
     const fallback = await this.findByDestination(destinationId, {
       kashrut,
-      lat: originLat,
-      lng: originLng,
+      lat: displayLat,
+      lng: displayLng,
     });
     if (fallback.data.length > 0) {
       return {
@@ -1193,13 +1209,9 @@ export class RestaurantsService {
     };
   }
 
-  private async resolveRestaurantSearchOrigin(
+  private async resolveDestinationOrigin(
     destinationId: number,
-    lat?: number,
-    lng?: number,
-  ): Promise<{ lat: number; lng: number } | null> {
-    if (lat !== undefined && lng !== undefined) return { lat, lng };
-
+  ): Promise<GeoPoint | null> {
     const rows = await this.destinationsRepo.query(
       `SELECT ST_Y(location::geometry) AS lat, ST_X(location::geometry) AS lng
        FROM destinations
@@ -1217,22 +1229,39 @@ export class RestaurantsService {
     keyword: string | undefined,
     type: string | undefined,
     kashrut: string | undefined,
-    lat?: number,
-    lng?: number,
+    supplementOrigin?: GeoPoint | null,
+    displayOrigin?: GeoPoint | null,
   ): Promise<{ data: any[]; total: number }> {
-    const hasGps = lat !== undefined && lng !== undefined;
+    const hasSupplementOrigin = !!supplementOrigin;
+    const hasDisplayOrigin = !!displayOrigin;
+    const baseParams: any[] = [];
+    let supplementDistanceSelect = '';
+    let displayDistanceSelect = '';
+    let orderBy = `ORDER BY r.name ASC`;
+
+    if (hasSupplementOrigin) {
+      baseParams.push(supplementOrigin.lng, supplementOrigin.lat);
+      supplementDistanceSelect =
+        `, ROUND(ST_Distance(r.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "supplementDistanceMeters"`;
+      orderBy = `ORDER BY "supplementDistanceMeters" ASC`;
+    }
+
+    if (hasDisplayOrigin) {
+      baseParams.push(displayOrigin.lng, displayOrigin.lat);
+      const lngIdx = baseParams.length - 1;
+      const latIdx = baseParams.length;
+      displayDistanceSelect =
+        `, ROUND(ST_Distance(r.location::geography, ST_SetSRID(ST_MakePoint($${lngIdx},$${latIdx}),4326)::geography)::numeric) AS "distanceMeters"`;
+      if (!hasSupplementOrigin) orderBy = `ORDER BY "distanceMeters" ASC`;
+    }
+
     const select = `r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
                     r.address, r.opening_hours AS "openingHours", d.city AS "destinationCity"`;
-    const distSelect = hasGps
-      ? `, ROUND(ST_Distance(r.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"`
-      : '';
-    const orderBy = hasGps ? `ORDER BY "distanceMeters" ASC` : `ORDER BY r.name ASC`;
-    const baseParams: any[] = hasGps ? [lng, lat] : [];
     const paramOffset = baseParams.length;
 
     const tryQuery = async (where: string, params: any[]): Promise<any[]> => {
       const full = [...baseParams, ...params];
-      const q = `SELECT ${select}${distSelect} FROM restaurants r JOIN destinations d ON d.id = r."destinationId" WHERE ${where} ${orderBy} LIMIT 30`;
+      const q = `SELECT ${select}${supplementDistanceSelect}${displayDistanceSelect} FROM restaurants r JOIN destinations d ON d.id = r."destinationId" WHERE ${where} ${orderBy} LIMIT 30`;
       return this.restaurantsRepo.query(q, full);
     };
 
