@@ -240,7 +240,9 @@ export class QueryParserService {
       system:
         'You translate Jewish travel search queries into a strict JSON tool call. ' +
         'Return only fields in the schema. Do not invent destination IDs. ' +
-        'destinationText is raw text only when the user explicitly mentions a destination.',
+        'destinationText is raw text only when the user explicitly mentions a destination. ' +
+        'If a specific dish or food item is explicit, category must be restaurant even when other place words appear. ' +
+        'For hosting queries, set hosting.mealOrStay to either when the query does not clearly ask only for a meal or only for lodging.',
       messages: [
         {
           role: 'user',
@@ -268,12 +270,20 @@ export class QueryParserService {
   private postProcessParsedQuery(parsed: ParsedQuery): ParsedQuery {
     const dish = parsed.restaurant.dish ? this.detectDish(parsed.restaurant.dish) ?? parsed.restaurant.dish : null;
     const relation = dish ? lookupFoodRelation(dish) : undefined;
+    const category = dish ? 'restaurant' : parsed.category;
+    const mealOrStay =
+      category === 'hosting' && parsed.hosting.mealOrStay === null ? 'either' : parsed.hosting.mealOrStay;
     return {
       ...parsed,
+      category,
       restaurant: {
         ...parsed.restaurant,
         dish,
         type: parsed.restaurant.type ?? this.normalizeRestaurantType(relation?.fallbackType),
+      },
+      hosting: {
+        ...parsed.hosting,
+        mealOrStay,
       },
     };
   }

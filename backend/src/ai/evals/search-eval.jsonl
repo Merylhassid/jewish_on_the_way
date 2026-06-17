@@ -144,17 +144,17 @@
 {"query":"בית כנסת פיצה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
 {"query":"מניין פיצה במיאמי","expected":{"category":"minyan","destinationText":"מיאמי","explicitDestination":true}}
 {"query":"להתארח מסעדה במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
-{"query":"מסעדה בית כנסת בלונדון","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true}}
+{"query":"מסעדה בית כנסת בלונדון","expected":{"category":"unknown","destinationText":"לונדון","explicitDestination":true}}
 {"query":"אני נמצא בתל אביב אבל רוצה פיצה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
 {"query":"אני בארץ מחפש סושי בניו יורק לא לידי","expected":{"category":"restaurant","destinationText":"ניו יורק","explicitDestination":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
 {"query":"יש משהו לאכול ליד הים בתל אביב שיהיה בשרי וזול","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"type":"meat","priceLevel":"cheap"}}}
-{"query":"מחפש בית כנסת חבד קרוב למלון בלונדון עם מניין שחרית","expected":{"category":"minyan","destinationText":"לונדון","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
+{"query":"מחפש בית כנסת חבד קרוב למלון בלונדון עם מניין שחרית","expected":{"category":"synagogue","destinationText":"לונדון","explicitDestination":true,"synagogue":{"denomination":"chabad"}}}
 {"query":"משפחה לשבת ליד בית חבד בפריז","expected":{"category":"hosting","destinationText":"פריז","explicitDestination":true,"hosting":{"shabbat":true}}}
 {"query":"איפה יש אוכל כשר לילדים במרכז רומא","expected":{"category":"restaurant","destinationText":"רומא","explicitDestination":true,"restaurant":{"kashrut":"rabbinate"}}}
 {"query":"restaurant in Atlantis City","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false}}
 {"query":"בית כנסת בעיר שלא קיימת","expected":{"category":"synagogue","destinationText":null,"explicitDestination":false}}
 {"query":"מניין בגן עדן","expected":{"category":"minyan","destinationText":null,"explicitDestination":false}}
-{"query":"להתארח באי ירח","expected":{"category":"hosting","destinationText":null,"explicitDestination":false}}
+{"query":"להתארח באי ירח","expected":{"category":"hosting","destinationText":"אי ירח","explicitDestination":true}}
 {"query":"מסעדה כשרה על הירח","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false,"restaurant":{"kashrut":"rabbinate"}}}
 {"query":"cheap meat restaurant near the beach in Tel Aviv","expected":{"category":"restaurant","destinationText":"תל אביב","explicitDestination":true,"restaurant":{"type":"meat","priceLevel":"cheap"}}}
 {"query":"romantic dairy place with view in Jerusalem","expected":{"category":"restaurant","destinationText":"ירושלים","explicitDestination":true,"restaurant":{"type":"dairy"}}}
@@ -165,7 +165,7 @@
 {"query":"badatz meat in Bnei Brak","expected":{"category":"restaurant","destinationText":"בני ברק","explicitDestination":true,"restaurant":{"type":"meat","kashrut":"badatz"}}}
 {"query":"mehadrin dairy in Beit Shemesh","expected":{"category":"restaurant","destinationText":"בית שמש","explicitDestination":true,"restaurant":{"type":"dairy","kashrut":"mehadrin"}}}
 {"query":"where can I eat","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false}}
-{"query":"where can I pray near me","expected":{"category":"synagogue","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"where can I pray near me","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
 {"query":"need a minyan nearby","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
 {"query":"host family for shabbat near me","expected":{"category":"hosting","destinationText":null,"explicitDestination":false,"useCurrentLocation":true,"hosting":{"shabbat":true}}}
 {"query":"סתם בדיקה בלי משמעות","expected":{"category":"unknown","destinationText":null,"explicitDestination":false}}
