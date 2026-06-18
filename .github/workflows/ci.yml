@@ -39,17 +39,23 @@ jobs:
           tar -czf /tmp/dist.tar.gz dist/
           scp -i /tmp/deploy_key -o StrictHostKeyChecking=no /tmp/dist.tar.gz student@49.12.189.108:~/backend/dist.tar.gz
           if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY GitHub secret is present"
             printf '%s' "$ANTHROPIC_API_KEY" > /tmp/anthropic_key
             scp -i /tmp/deploy_key -o StrictHostKeyChecking=no /tmp/anthropic_key student@49.12.189.108:~/backend/.anthropic_key.tmp
+          else
+            echo "::warning::ANTHROPIC_API_KEY GitHub secret is empty or unavailable"
           fi
           ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no student@49.12.189.108 \
             "cd ~/backend && tar -xzf dist.tar.gz && rm dist.tar.gz && \
             touch .env && \
             set_env() { key=\"\$1\"; value=\"\$2\"; if grep -q \"^\${key}=\" .env; then sed -i \"s|^\${key}=.*|\${key}=\${value}|\" .env; else printf '\n%s=%s\n' \"\${key}\" \"\${value}\" >> .env; fi; }; \
-            set_env SMART_SEARCH_SHADOW_SAMPLE 0.1 && \
+            set_env SMART_SEARCH_SHADOW_SAMPLE 1.0 && \
             set_env SMART_SEARCH_LLM_DAILY_CAP 50 && \
             set_env SMART_SEARCH_LLM_TIMEOUT_MS 10000 && \
             set_env SMART_SEARCH_LLM_MODEL claude-haiku-4-5-20251001 && \
             if [ -s .anthropic_key.tmp ]; then set_env ANTHROPIC_API_KEY \"\$(cat .anthropic_key.tmp)\" && rm .anthropic_key.tmp; fi && \
-            ~/.npm/_npx/5f7878ce38f1eb13/node_modules/.bin/pm2 restart jewish-on-the-way"
+            if grep -q '^ANTHROPIC_API_KEY=.' .env; then echo 'Remote ANTHROPIC_API_KEY is configured'; else echo 'Remote ANTHROPIC_API_KEY is missing'; fi && \
+            export SMART_SEARCH_SHADOW_SAMPLE=1.0 SMART_SEARCH_LLM_DAILY_CAP=50 SMART_SEARCH_LLM_TIMEOUT_MS=10000 SMART_SEARCH_LLM_MODEL=claude-haiku-4-5-20251001 && \
+            if grep -q '^ANTHROPIC_API_KEY=.' .env; then export ANTHROPIC_API_KEY=\"\$(grep '^ANTHROPIC_API_KEY=' .env | cut -d= -f2-)\"; fi && \
+            ~/.npm/_npx/5f7878ce38f1eb13/node_modules/.bin/pm2 restart jewish-on-the-way --update-env"
           rm -f /tmp/deploy_key /tmp/anthropic_key
