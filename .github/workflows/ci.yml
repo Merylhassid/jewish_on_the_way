@@ -46,7 +46,7 @@ jobs:
             "cd ~/backend && tar -xzf dist.tar.gz && rm dist.tar.gz && \
             touch .env && \
             set_env() { key=\"\$1\"; value=\"\$2\"; if grep -q \"^\${key}=\" .env; then sed -i \"s|^\${key}=.*|\${key}=\${value}|\" .env; else printf '\n%s=%s\n' \"\${key}\" \"\${value}\" >> .env; fi; }; \
-            set_env SMART_SEARCH_SHADOW_SAMPLE 1.0 && \
+            set_env SMART_SEARCH_SHADOW_SAMPLE 0.1 && \
             set_env SMART_SEARCH_LLM_DAILY_CAP 50 && \
             set_env SMART_SEARCH_LLM_TIMEOUT_MS 10000 && \
             set_env SMART_SEARCH_LLM_MODEL claude-haiku-4-5-20251001 && \
