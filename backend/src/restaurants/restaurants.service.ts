@@ -121,6 +121,12 @@ function stripDestinationTerms(keyword: string | undefined, destination?: Destin
   return cleaned.length > 1 ? cleaned : undefined;
 }
 
+function rowMatchesRequiredType(row: any, requiredType?: string | null): boolean {
+  if (!requiredType) return true;
+  const rowType = row?.restaurantType ?? row?.restaurant_type ?? null;
+  return rowType == null || rowType === requiredType;
+}
+
 @Injectable()
 export class RestaurantsService {
   private readonly logger = new Logger(RestaurantsService.name);
@@ -1057,6 +1063,7 @@ export class RestaurantsService {
       for (const row of rows) {
         if (data.length >= MAX_RESULTS) break;
         if (seen.has(row.id)) continue;
+        if (!rowMatchesRequiredType(row, effectiveType)) continue;
         if (nearby) {
           const distance = Number(row.supplementDistanceMeters ?? row.distanceMeters);
           if (!Number.isFinite(distance) || distance <= minMeters || distance > maxMeters) continue;
@@ -1074,6 +1081,7 @@ export class RestaurantsService {
     if (cleanedKeyword && data.length < MAX_RESULTS) {
       const result = await this.findByDestination(destinationId, {
         q: cleanedKeyword,
+        type: effectiveType,
         kashrut,
         lat: displayLat,
         lng: displayLng,
@@ -1089,7 +1097,7 @@ export class RestaurantsService {
       nearbyNameData = (await this.searchGlobal(
         [],
         cleanedKeyword,
-        undefined,
+        effectiveType,
         kashrut,
         supplementOrigin,
         userOrigin,
@@ -1099,7 +1107,7 @@ export class RestaurantsService {
       nearbyTagData = (await this.searchGlobal(
         searchTags,
         undefined,
-        undefined,
+        effectiveType,
         kashrut,
         supplementOrigin,
         userOrigin,
@@ -1123,7 +1131,7 @@ export class RestaurantsService {
 
     // 3. Strong semantic match in the current destination, based on food tags.
     if (searchTags.length > 0 && data.length < MAX_RESULTS) {
-      const result = await this.searchByTags(searchTags, kashrut, destinationId, displayLat, displayLng);
+      const result = await this.searchByTags(searchTags, kashrut, destinationId, displayLat, displayLng, effectiveType);
       addLayer(result.data, 2);
     }
 
@@ -1181,6 +1189,7 @@ export class RestaurantsService {
     // destination has restaurants. Generic queries ("לאכול") strip to nothing and
     // unmatched keywords ("מאפה גבינה") miss every layer — show the local list instead.
     const fallback = await this.findByDestination(destinationId, {
+      type: effectiveType,
       kashrut,
       lat: displayLat,
       lng: displayLng,
@@ -1278,24 +1287,39 @@ export class RestaurantsService {
 
     // 1. keyword ILIKE — most specific (finds "גלידת ים", not just dairy cafes)
     if (keyword) {
-      const where = kashrut
-        ? `r.name ILIKE $${paramOffset + 1} AND r.kashrut_level = $${paramOffset + 2}`
-        : `r.name ILIKE $${paramOffset + 1}`;
-      const params = kashrut ? [`%${keyword}%`, kashrut] : [`%${keyword}%`];
+      const conditions = [`r.name ILIKE $${paramOffset + 1}`];
+      const params: any[] = [`%${keyword}%`];
+      if (type) {
+        params.push(type);
+        conditions.push(`r.restaurant_type = $${paramOffset + params.length}`);
+      }
+      if (kashrut) {
+        params.push(kashrut);
+        conditions.push(`r.kashrut_level = $${paramOffset + params.length}`);
+      }
+      const where = conditions.join(' AND ');
       addAll(await tryQuery(where, params));
     }
 
     // 2. tags — category match (dairy, meat, …)
     if (tags.length > 0) {
-      const where = kashrut
-        ? `r.tags && $${paramOffset + 1}::text[] AND r.kashrut_level = $${paramOffset + 2}`
-        : `r.tags && $${paramOffset + 1}::text[]`;
-      const params = kashrut ? [tags, kashrut] : [tags];
+      const conditions = [`r.tags && $${paramOffset + 1}::text[]`];
+      const params: any[] = [tags];
+      if (type) {
+        params.push(type);
+        conditions.push(`r.restaurant_type = $${paramOffset + params.length}`);
+      }
+      if (kashrut) {
+        params.push(kashrut);
+        conditions.push(`r.kashrut_level = $${paramOffset + params.length}`);
+      }
+      const where = conditions.join(' AND ');
       addAll(await tryQuery(where, params));
     }
 
-    // 3. type
-    if (type) {
+    // 3. type-only broad search. When keyword/tags are present, type is already
+    // used as a hard filter in those queries and should not add an extra broad layer.
+    if (type && !keyword && tags.length === 0) {
       const where = kashrut
         ? `r.restaurant_type = $${paramOffset + 1} AND r.kashrut_level = $${paramOffset + 2}`
         : `r.restaurant_type = $${paramOffset + 1}`;
@@ -1312,10 +1336,12 @@ export class RestaurantsService {
     destinationId: number,
     lat?: number,
     lng?: number,
+    type?: string,
   ): Promise<{ data: any[]; total: number }> {
     // Count (no GPS needed)
     const cParams: any[] = [destinationId, tags];
     let cWhere = `r."destinationId" = $1 AND r.tags && $2::text[]`;
+    if (type) { cParams.push(type); cWhere += ` AND r.restaurant_type = $${cParams.length}`; }
     if (kashrut) { cParams.push(kashrut); cWhere += ` AND r.kashrut_level = $${cParams.length}`; }
 
     const countResult = await this.restaurantsRepo.query(
@@ -1328,6 +1354,7 @@ export class RestaurantsService {
     if (lat !== undefined && lng !== undefined) {
       const dParams: any[] = [lng, lat, destinationId, tags];
       let dWhere = `r."destinationId" = $3 AND r.tags && $4::text[]`;
+      if (type) { dParams.push(type); dWhere += ` AND r.restaurant_type = $${dParams.length}`; }
       if (kashrut) { dParams.push(kashrut); dWhere += ` AND r.kashrut_level = $${dParams.length}`; }
 
       const data = await this.restaurantsRepo.query(
@@ -1345,6 +1372,7 @@ export class RestaurantsService {
 
     const dParams: any[] = [destinationId, tags];
     let dWhere = `r."destinationId" = $1 AND r.tags && $2::text[]`;
+    if (type) { dParams.push(type); dWhere += ` AND r.restaurant_type = $${dParams.length}`; }
     if (kashrut) { dParams.push(kashrut); dWhere += ` AND r.kashrut_level = $${dParams.length}`; }
 
     const data = await this.restaurantsRepo.query(

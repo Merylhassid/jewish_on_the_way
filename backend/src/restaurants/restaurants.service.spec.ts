@@ -125,6 +125,33 @@ describe('RestaurantsService smartSearch keyword cleanup', () => {
     expect(result.message).toBe('לא נמצאה התאמה מדויקת ל"פיצה" — מציג מסעדות באזור');
     expect(restaurantsRepo.query).toHaveBeenCalledTimes(7);
   });
+
+  it('filters explicit food-type mismatches across smart-search layers', async () => {
+    const { service, restaurantsRepo, destinationsRepo } = makeService();
+    destinationsRepo.findOne.mockResolvedValue({
+      id: 101, name: 'Miami', city: 'Miami', country: 'United States',
+    });
+    destinationsRepo.query.mockResolvedValue([]);
+
+    restaurantsRepo.findAndCount.mockResolvedValueOnce([[
+      { id: 1, name: 'Burger Dairy Cafe', restaurantType: 'dairy' },
+      { id: 2, name: 'Burger Grill', restaurantType: 'meat' },
+      { id: 3, name: 'Burger Unknown', restaurantType: null },
+    ], 3]);
+    restaurantsRepo.query
+      .mockResolvedValueOnce([{ count: '2' }])
+      .mockResolvedValueOnce([
+        { id: 4, name: 'Tagged Dairy Burger', restaurantType: 'dairy' },
+        { id: 5, name: 'Tagged Meat Burger', restaurantType: 'meat' },
+      ]);
+
+    const result = await service.smartSearch('המבורגר', undefined, undefined, 101, undefined, undefined, 'המבורגר במיאמי');
+
+    expect(result.data.map(r => r.id)).toEqual([2, 3, 5]);
+    expect(result.data).not.toEqual(expect.arrayContaining([
+      expect.objectContaining({ restaurantType: 'dairy' }),
+    ]));
+  });
 });
 
 describe('food-relations lookupFoodRelation — new terms', () => {

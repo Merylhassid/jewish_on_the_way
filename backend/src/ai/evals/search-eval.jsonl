@@ -200,3 +200,21 @@
 {"query":"מקום לישון אצל משפחה יהודית במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"stay"}}}
 {"query":"i want to eat pizza but not in miami maybe london","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
 {"query":"find me a shul not restaurant in paris","expected":{"category":"synagogue","destinationText":"פריז","explicitDestination":true}}
+{"query":"איפה מתפללים עכשיו","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"מניין שחרית לידי","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"מנין ערבית קרוב אליי","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"תפילה במיאמי","expected":{"category":"minyan","destinationText":"מיאמי","explicitDestination":true}}
+{"query":"איפה יש תפילת מנחה בלונדון","expected":{"category":"minyan","destinationText":"לונדון","explicitDestination":true}}
+{"query":"בית כנסת שיש בו מניין בפריז","expected":{"category":"synagogue","destinationText":"פריז","explicitDestination":true}}
+{"query":"מניין ספרדי בלונדון","expected":{"category":"minyan","destinationText":"לונדון","explicitDestination":true,"synagogue":{"denomination":"sfarad"}}}
+{"query":"shacharit near me","expected":{"category":"minyan","destinationText":null,"explicitDestination":false,"useCurrentLocation":true}}
+{"query":"maariv in miami","expected":{"category":"minyan","destinationText":"מיאמי","explicitDestination":true}}
+{"query":"where is prayer in london","expected":{"category":"minyan","destinationText":"לונדון","explicitDestination":true}}
+{"query":"המבורגר חלבי במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"burger","type":"meat"}}}
+{"query":"בורגר במיאמי לא חלבי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"burger","type":"meat"}}}
+{"query":"פיצה בשרית בלונדון","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"מסעדה בשרית במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"type":"meat"}}}
+{"query":"מסעדה חלבית בלונדון","expected":{"category":"restaurant","destinationText":"לונדון","explicitDestination":true,"restaurant":{"type":"dairy"}}}
+{"query":"להתארח לשבת אצל משפחה במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"shabbat":true,"mealOrStay":"either"}}}
+{"query":"מקום לינה לשבת בלונדון","expected":{"category":"hosting","destinationText":"לונדון","explicitDestination":true,"hosting":{"shabbat":true,"mealOrStay":"stay"}}}
+{"query":"ארוחת שבת אצל משפחה בפריז","expected":{"category":"hosting","destinationText":"פריז","explicitDestination":true,"hosting":{"shabbat":true,"mealOrStay":"meal"}}}

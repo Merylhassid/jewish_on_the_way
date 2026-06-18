@@ -143,7 +143,10 @@ const SYNAGOGUE_SIGNALS = [
   /\b(synagogue|shul|chabad)\b/i,
 ];
 
-const MINYAN_SIGNALS = [/מניין|מנין|שחרית|מנחה|ערבית/i, /\bminyan\b/i];
+const MINYAN_SIGNALS = [
+  /מניין|מנין|שחרית|מנחה|ערבית|תפילה|תפילת|מתפללים|מתפלל|להתפלל/i,
+  /\b(minyan|shacharit|shacharis|mincha|maariv|arvit|prayer|pray)\b/i,
+];
 
 const HOSTING_SIGNALS = [
   /להתארח|מתארח|אירוח|מארח|מארחים|ארוחת שבת|שבת/i,
@@ -151,7 +154,7 @@ const HOSTING_SIGNALS = [
 ];
 
 const NEAR_ME_SIGNALS = [
-  /לידי|לידיי|קרוב אלי|קרוב אליי|קרובה אלי|קרובה אליי/i,
+  /לידי|לידיי|קרוב אלי|קרוב אליי|קרובה אלי|קרובה אליי|עכשיו/i,
   /\b(near me|nearby|around me)\b/i,
 ];
 
@@ -273,7 +276,7 @@ async function parseLegacyBaseline(
     restaurant: {
       dish,
       cuisine: null,
-      type: normalizeRestaurantType(restaurantParts.type ?? relation?.fallbackType),
+      type: normalizeRestaurantType(relation?.fallbackType ?? restaurantParts.type),
       kashrut: normalizeKashrut(restaurantParts.kashrut),
       priceLevel: detectPriceLevel(text),
     },
@@ -294,8 +297,8 @@ function chooseCategory(
   hasDestination: boolean,
 ): SearchCategory {
   if (hasSignal(text, HOSTING_SIGNALS)) return 'hosting';
-  if (hasSignal(text, MINYAN_SIGNALS)) return 'minyan';
   if (hasSignal(text, SYNAGOGUE_SIGNALS)) return 'synagogue';
+  if (hasSignal(text, MINYAN_SIGNALS)) return 'minyan';
   if (hasDish || hasSignal(text, RESTAURANT_SIGNALS)) return 'restaurant';
   if (modelCategory !== 'unknown') return modelCategory;
   return hasDestination ? 'destination' : 'unknown';

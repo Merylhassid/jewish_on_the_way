@@ -65,14 +65,17 @@ const HOSTING_SIGNALS = [
   /\b(hosting|host|hosted|stay with|shabbat meal|shabbos meal)\b/i,
 ];
 
-const MINYAN_SIGNALS = [/מניין|מנין|שחרית|מנחה|ערבית/i, /\bminyan\b/i];
+const MINYAN_SIGNALS = [
+  /מניין|מנין|שחרית|מנחה|ערבית|תפילה|תפילת|מתפללים|מתפלל|להתפלל/i,
+  /\b(minyan|shacharit|shacharis|mincha|maariv|arvit|prayer|pray)\b/i,
+];
 const SYNAGOGUE_SIGNALS = [/בית\s+כנסת|בתי\s+כנסת|בתי\s+כנסיות/i, /\b(synagogue|shul)\b/i];
 const RESTAURANT_SIGNALS = [
   /מסעד(?:ה|ת|ות)|לאכול|אוכל|ארוח(?:ה|ת)|פיצה|פיצריה|סושי|בורגר|המבורגר|חומוס|גלידה|קפה|פלאפל/i,
   /\b(restaurant|restaurants|eat|food|pizza|sushi|burger|dairy|meat|kosher)\b/i,
 ];
 const NEAR_ME_SIGNALS = [
-  /לידי|לידיי|קרוב אלי|קרוב אליי|קרובה אלי|קרובה אליי/i,
+  /לידי|לידיי|קרוב אלי|קרוב אליי|קרובה אלי|קרובה אליי|עכשיו/i,
   /\b(near me|nearby|around me)\b/i,
 ];
 
@@ -215,7 +218,7 @@ export class QueryParserService {
     parsed.useCurrentLocation = !parsed.explicitDestination && this.hasSignal(text, NEAR_ME_SIGNALS);
     parsed.queryText = restaurantParts.keyword ?? null;
     parsed.restaurant.dish = dish;
-    parsed.restaurant.type = this.normalizeRestaurantType(restaurantParts.type ?? relation?.fallbackType);
+    parsed.restaurant.type = this.normalizeRestaurantType(relation?.fallbackType ?? restaurantParts.type);
     parsed.restaurant.kashrut = this.normalizeKashrut(restaurantParts.kashrut);
     parsed.restaurant.priceLevel = this.detectPriceLevel(text);
     parsed.synagogue.denomination = this.normalizeDenomination(denomination);
@@ -242,6 +245,8 @@ export class QueryParserService {
         'Return only fields in the schema. Do not invent destination IDs. ' +
         'destinationText is raw text only when the user explicitly mentions a destination. ' +
         'If a specific dish or food item is explicit, category must be restaurant even when other place words appear. ' +
+        'If the query asks for a synagogue/building/place that has a minyan, category is synagogue; use minyan for prayer/quorum searches. ' +
+        'If restaurant and synagogue/minyan intent conflict without a clear food or prayer intent, category is unknown. ' +
         'For hosting queries, set hosting.mealOrStay to either when the query does not clearly ask only for a meal or only for lodging.',
       messages: [
         {
@@ -264,22 +269,26 @@ export class QueryParserService {
     const message = await this.withTimeout(messagePromise, this.timeoutMs);
     const toolUse = (message.content as any[]).find((block) => block?.type === 'tool_use' && block?.name === 'parse_query');
     if (!toolUse?.input) throw new Error('LLM did not return parse_query tool input');
-    return this.postProcessParsedQuery(this.validateParsedQuery(toolUse.input));
+    return this.postProcessParsedQuery(this.validateParsedQuery(toolUse.input), text);
   }
 
-  private postProcessParsedQuery(parsed: ParsedQuery): ParsedQuery {
+  private postProcessParsedQuery(parsed: ParsedQuery, text: string): ParsedQuery {
     const dish = parsed.restaurant.dish ? this.detectDish(parsed.restaurant.dish) ?? parsed.restaurant.dish : null;
     const relation = dish ? lookupFoodRelation(dish) : undefined;
     const category = dish ? 'restaurant' : parsed.category;
     const mealOrStay =
-      category === 'hosting' && parsed.hosting.mealOrStay === null ? 'either' : parsed.hosting.mealOrStay;
+      category === 'hosting' && !this.hasExplicitMealOrStay(text)
+        ? 'either'
+        : category === 'hosting' && parsed.hosting.mealOrStay === null
+          ? 'either'
+          : parsed.hosting.mealOrStay;
     return {
       ...parsed,
       category,
       restaurant: {
         ...parsed.restaurant,
         dish,
-        type: parsed.restaurant.type ?? this.normalizeRestaurantType(relation?.fallbackType),
+        type: this.normalizeRestaurantType(relation?.fallbackType) ?? parsed.restaurant.type,
       },
       hosting: {
         ...parsed.hosting,
@@ -330,8 +339,8 @@ export class QueryParserService {
     hasDestination: boolean,
   ): SearchCategory {
     if (this.hasSignal(text, HOSTING_SIGNALS)) return 'hosting';
-    if (this.hasSignal(text, MINYAN_SIGNALS)) return 'minyan';
     if (this.hasSignal(text, SYNAGOGUE_SIGNALS)) return 'synagogue';
+    if (this.hasSignal(text, MINYAN_SIGNALS)) return 'minyan';
     if (hasDish || this.hasSignal(text, RESTAURANT_SIGNALS)) return 'restaurant';
     if (/מקווה|mikvah|mikveh/i.test(text)) return hasDestination ? 'destination' : 'unknown';
     if (this.isCategory(modelCategory)) return modelCategory;
@@ -387,6 +396,10 @@ export class QueryParserService {
     if (/לינה|לישון|stay|sleep/i.test(text)) return 'stay';
     if (this.hasSignal(text, HOSTING_SIGNALS)) return 'either';
     return null;
+  }
+
+  private hasExplicitMealOrStay(text: string): boolean {
+    return /ארוח(?:ה|ת)|סעודה|meal|לינה|לישון|stay|sleep/i.test(text);
   }
 
   private hasSignal(text: string, signals: RegExp[]): boolean {

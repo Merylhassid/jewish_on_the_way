@@ -87,6 +87,31 @@ describe('QueryParserService', () => {
     });
   });
 
+  it('parses local prayer intent as a minyan near the current location', async () => {
+    const service = createService();
+
+    await expect(service.parse('איפה מתפללים עכשיו', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'minyan',
+        destinationText: null,
+        explicitDestination: false,
+        useCurrentLocation: true,
+      },
+    });
+  });
+
+  it('treats a synagogue that has a minyan as a synagogue place search', async () => {
+    const service = createService();
+
+    await expect(service.parse('בית כנסת שיש בו מניין בירושלים', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'synagogue',
+        destinationText: 'ירושלים',
+        explicitDestination: true,
+      },
+    });
+  });
+
   it('serves repeated normalized queries from cache', async () => {
     const service = createService();
 
