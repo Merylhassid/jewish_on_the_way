@@ -8,10 +8,20 @@ interface SourceRow {
 }
 
 interface MetricRow {
+  total_count: string;
   parsed_count: string;
   changed_count: string;
   explicit_destination_null_count: string;
   avg_latency_ms: string | null;
+}
+
+interface LlmLatencyRow {
+  llm_count: string;
+  min_ms: string | null;
+  p50_ms: string | null;
+  p95_ms: string | null;
+  max_ms: string | null;
+  avg_ms: string | null;
 }
 
 interface ChangedRow {
@@ -57,6 +67,7 @@ async function main(): Promise<void> {
     );
     const metricRows = await client.query<MetricRow>(
       `SELECT
+         COUNT(*)::text AS total_count,
          COUNT(*) FILTER (WHERE parsed_json IS NOT NULL)::text AS parsed_count,
          COUNT(*) FILTER (
            WHERE parsed_json IS NOT NULL
@@ -71,6 +82,18 @@ async function main(): Promise<void> {
              AND resolved_destination_id IS NULL
          )::text AS explicit_destination_null_count,
          ROUND(AVG(latency_ms))::text AS avg_latency_ms
+       FROM search_feedback
+       WHERE created_at >= NOW() - ($1::text || ' hours')::interval`,
+      [sinceHours],
+    );
+    const llmLatencyRows = await client.query<LlmLatencyRow>(
+      `SELECT
+         COUNT(*) FILTER (WHERE source = 'llm')::text AS llm_count,
+         ROUND(MIN(latency_ms) FILTER (WHERE source = 'llm'))::text AS min_ms,
+         ROUND(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY latency_ms) FILTER (WHERE source = 'llm'))::text AS p50_ms,
+         ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY latency_ms) FILTER (WHERE source = 'llm'))::text AS p95_ms,
+         ROUND(MAX(latency_ms) FILTER (WHERE source = 'llm'))::text AS max_ms,
+         ROUND(AVG(latency_ms) FILTER (WHERE source = 'llm'))::text AS avg_ms
        FROM search_feedback
        WHERE created_at >= NOW() - ($1::text || ' hours')::interval`,
       [sinceHours],
@@ -101,15 +124,24 @@ async function main(): Promise<void> {
     );
 
     const metrics = metricRows.rows[0];
+    const llmLatency = llmLatencyRows.rows[0];
+    const totalCount = Number(metrics?.total_count ?? 0);
+    const parsedCount = Number(metrics?.parsed_count ?? 0);
+    const changedCount = Number(metrics?.changed_count ?? 0);
     console.log(`Search shadow report (${sinceHours}h)`);
     console.log('Sources:');
     for (const row of sourceRows.rows) {
-      console.log(`- ${row.source ?? 'null'}: ${row.count}`);
+      console.log(`- ${row.source ?? 'null'}: ${row.count} (${percent(Number(row.count), totalCount)})`);
     }
-    console.log(`Parsed rows: ${metrics?.parsed_count ?? '0'}`);
-    console.log(`Changed from legacy: ${metrics?.changed_count ?? '0'}`);
+    console.log(`Parsed rows: ${metrics?.parsed_count ?? '0'} (${percent(parsedCount, totalCount)})`);
+    console.log(`Changed from legacy: ${metrics?.changed_count ?? '0'} (${percent(changedCount, parsedCount)})`);
     console.log(`explicitDestination=true with unresolved destination: ${metrics?.explicit_destination_null_count ?? '0'}`);
     console.log(`Average parser latency ms: ${metrics?.avg_latency_ms ?? 'n/a'}`);
+    console.log(
+      `LLM latency ms: count=${llmLatency?.llm_count ?? '0'}, min=${llmLatency?.min_ms ?? 'n/a'}, ` +
+        `p50=${llmLatency?.p50_ms ?? 'n/a'}, p95=${llmLatency?.p95_ms ?? 'n/a'}, ` +
+        `max=${llmLatency?.max_ms ?? 'n/a'}, avg=${llmLatency?.avg_ms ?? 'n/a'}`,
+    );
 
     if (changedRows.rows.length > 0) {
       console.log('\nRecent changed rows:');
@@ -124,6 +156,11 @@ async function main(): Promise<void> {
   } finally {
     await client.end();
   }
+}
+
+function percent(part: number, total: number): string {
+  if (!total) return '0.0%';
+  return `${((part / total) * 100).toFixed(1)}%`;
 }
 
 void main().catch((error) => {
