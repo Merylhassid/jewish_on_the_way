@@ -373,14 +373,32 @@ export class SearchController {
       } else {
         foundDest = this.indexService.fuzzyMatch(buildDestinationCandidates(text));
         // The ML model already identified the category. If no city was found in the index,
-        // GPS is always the right fallback — unknown words like numbers or common nouns
-        // should not block GPS just because they look like potential city names.
-        const allowGpsFallback = true;
+        // GPS is the right fallback only when the user did not explicitly ask for an
+        // unresolved destination. If they typed a destination-like place, fail closed
+        // instead of showing local results from the user's current GPS position.
+        const allowGpsFallback = !destinationResolution.explicitMention;
         if (!foundDest && allowGpsFallback && dto.lat != null && dto.lng != null) {
           foundDest = await this.findNearestDestination(dto.lat, dto.lng);
           if (foundDest) gpsUsed = true;
         }
       }
+    }
+
+    if (!foundDest && destinationResolution.explicitMention) {
+      return {
+        ...result,
+        error: 'destination_not_found',
+        message: 'לא מצאתי את היעד שביקשת. נסה לכתוב את שם העיר בצורה אחרת.',
+        route: null,
+        destinationId: undefined,
+        detectedCity: null,
+        gpsUsed: false,
+        denomination,
+        denomEmoji,
+        denomLabel,
+        restaurantType,
+        restaurantKashrut,
+      };
     }
 
     if (foundDest) this.recordSearchFeedback(text, { detectedKeyword: result.category });

@@ -140,3 +140,68 @@ describe('SearchController hosting intent', () => {
     });
   });
 });
+
+describe('SearchController routing regressions', () => {
+  const destinations = [
+    { id: 6, name: 'Miami', city: 'Miami', country: 'United States' },
+    { id: 7, name: 'Afula', city: 'Afula', country: 'Israel' },
+    { id: 8, name: 'London', city: 'London', country: 'United Kingdom' },
+  ];
+
+  function createController(category: string, nearestDestination: any = null) {
+    const aliasIndex = buildDestinationAliasIndex(destinations as any);
+    const destRepo = {
+      query: jest.fn().mockResolvedValue(nearestDestination ? [{ id: nearestDestination.id }] : []),
+      findOne: jest.fn().mockResolvedValue(nearestDestination),
+    };
+    const controller = new SearchController(
+      {
+        classify: jest.fn().mockReturnValue({
+          category,
+          confidence: 0.9,
+          emoji: category === 'synagogue' ? '🕍' : '🍽️',
+          allScores: {},
+        }),
+      } as any,
+      { classify: jest.fn().mockReturnValue({ denomination: null }) } as any,
+      { getIndex: () => aliasIndex, fuzzyMatch: jest.fn().mockReturnValue(null) } as any,
+      destRepo as any,
+      { create: (value: any) => value, save: jest.fn().mockResolvedValue({ id: 1 }) } as any,
+    );
+    return { controller, destRepo };
+  }
+
+  it('keeps explicit foreign restaurant destination even when user GPS is local', async () => {
+    const { controller } = createController('synagogue');
+
+    await expect(controller.search({ text: 'פיצה במיאמי', lat: 32.08, lng: 34.78 } as any)).resolves.toMatchObject({
+      category: 'restaurant',
+      destinationId: 6,
+      gpsUsed: false,
+      restaurantType: 'dairy',
+      route: '/restaurants/6?type=dairy&useUserGps=true',
+    });
+  });
+
+  it('routes food intent to restaurants even when synagogue words are present', async () => {
+    const { controller } = createController('synagogue');
+
+    await expect(controller.search({ text: 'אוכל כשר ליד בית כנסת חבד בלונדון' } as any)).resolves.toMatchObject({
+      category: 'restaurant',
+      destinationId: 8,
+      route: '/restaurants/8',
+    });
+  });
+
+  it('does not fall back to current GPS when an explicit destination cannot be resolved', async () => {
+    const { controller, destRepo } = createController('restaurant', destinations[1]);
+
+    await expect(controller.search({ text: 'מסעדה באי ירח', lat: 32.08, lng: 34.78 } as any)).resolves.toMatchObject({
+      category: 'restaurant',
+      error: 'destination_not_found',
+      route: null,
+      gpsUsed: false,
+    });
+    expect(destRepo.query).not.toHaveBeenCalled();
+  });
+});
