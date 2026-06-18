@@ -174,23 +174,31 @@ describe('SearchController routing regressions', () => {
   it('keeps explicit foreign restaurant destination even when user GPS is local', async () => {
     const { controller } = createController('synagogue');
 
-    await expect(controller.search({ text: 'פיצה במיאמי', lat: 32.08, lng: 34.78 } as any)).resolves.toMatchObject({
+    const result = await controller.search({ text: 'פיצה במיאמי', lat: 32.08, lng: 34.78 } as any);
+    expect(result).toMatchObject({
       category: 'restaurant',
       destinationId: 6,
       gpsUsed: false,
       restaurantType: 'dairy',
-      route: '/restaurants/6?type=dairy&useUserGps=true',
     });
+    const url = new URL(result.route, 'http://localhost');
+    expect(url.pathname).toBe('/restaurants/6');
+    expect(url.searchParams.get('type')).toBe('dairy');
+    expect(url.searchParams.get('useUserGps')).toBe('true');
+    expect(url.searchParams.get('q')).toBe('פיצה במיאמי');
   });
 
   it('routes food intent to restaurants even when synagogue words are present', async () => {
     const { controller } = createController('synagogue');
 
-    await expect(controller.search({ text: 'אוכל כשר ליד בית כנסת חבד בלונדון' } as any)).resolves.toMatchObject({
+    const result = await controller.search({ text: 'אוכל כשר ליד בית כנסת חבד בלונדון' } as any);
+    expect(result).toMatchObject({
       category: 'restaurant',
       destinationId: 8,
-      route: '/restaurants/8',
     });
+    const url = new URL(result.route, 'http://localhost');
+    expect(url.pathname).toBe('/restaurants/8');
+    expect(url.searchParams.get('q')).toBe('אוכל כשר ליד בית כנסת חבד בלונדון');
   });
 
   it('does not fall back to current GPS when an explicit destination cannot be resolved', async () => {

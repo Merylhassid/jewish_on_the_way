@@ -152,6 +152,26 @@ describe('RestaurantsService smartSearch keyword cleanup', () => {
       expect.objectContaining({ restaurantType: 'dairy' }),
     ]));
   });
+
+  it('ranks kashrut preference in smart search without hiding unknown or different kashrut levels', async () => {
+    const { service, restaurantsRepo, destinationsRepo } = makeService();
+    destinationsRepo.findOne.mockResolvedValue({
+      id: 101, name: 'Miami', city: 'Miami', country: 'United States',
+    });
+    destinationsRepo.query.mockResolvedValue([]);
+
+    restaurantsRepo.findAndCount.mockResolvedValueOnce([[
+      { id: 1, name: 'Kosher Place', restaurantType: 'meat', kashrutLevel: 'rabbinate' },
+      { id: 2, name: 'Mehadrin Place', restaurantType: 'meat', kashrutLevel: 'mehadrin' },
+      { id: 3, name: 'Unknown Place', restaurantType: 'meat', kashrutLevel: 'unknown' },
+    ], 3]);
+
+    const result = await service.smartSearch('מסעדה', undefined, 'mehadrin', 101, undefined, undefined, 'מסעדה מהדרין במיאמי');
+
+    const firstFindOptions = restaurantsRepo.findAndCount.mock.calls[0][0];
+    expect(firstFindOptions.where.kashrutLevel).toBeUndefined();
+    expect(result.data.map(r => r.id)).toEqual([2, 3, 1]);
+  });
 });
 
 describe('food-relations lookupFoodRelation — new terms', () => {

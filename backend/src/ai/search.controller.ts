@@ -199,6 +199,7 @@ interface DestinationResolution {
 interface RouteOptions {
   expandNearby?: boolean;
   useUserGps?: boolean;
+  searchQuery?: string;
 }
 
 interface ShadowLlmUsage {
@@ -339,6 +340,7 @@ export class SearchController {
         route: this.getRoute(result.category, destinationId, denomination, restaurantType, restaurantKashrut, {
           expandNearby: result.category === 'synagogue',
           useUserGps: (result.category === 'synagogue' || result.category === 'restaurant') && hasUserGps,
+          searchQuery: result.category === 'restaurant' ? text : undefined,
         }),
         destinationId,
         denomination,
@@ -407,6 +409,7 @@ export class SearchController {
       route:         this.getRoute(result.category, foundDest?.id, denomination, restaurantType, restaurantKashrut, {
         expandNearby: result.category === 'synagogue',
         useUserGps: (result.category === 'synagogue' || result.category === 'restaurant') && dto.lat != null && dto.lng != null,
+        searchQuery: result.category === 'restaurant' ? text : undefined,
       }),
       destinationId: foundDest?.id,
       detectedCity:  foundDest?.city ?? null,
@@ -540,7 +543,6 @@ export class SearchController {
       case 'restaurant': {
         const params = new URLSearchParams({ fromParent: 'true' });
         if (restaurantType)    params.set('type',    restaurantType);
-        if (restaurantKashrut) params.set('kashrut', restaurantKashrut);
         return `/restaurants/${parentId}?${params.toString()}`;
       }
       case 'synagogue':
@@ -572,8 +574,8 @@ export class SearchController {
       case 'restaurant': {
         const params = new URLSearchParams();
         if (restaurantType)    params.set('type',    restaurantType);
-        if (restaurantKashrut) params.set('kashrut', restaurantKashrut);
         if (options.useUserGps) params.set('useUserGps', 'true');
+        if (options.searchQuery) params.set('q', options.searchQuery);
         const qs = params.toString();
         return `/restaurants/${destinationId}${qs ? `?${qs}` : ''}`;
       }

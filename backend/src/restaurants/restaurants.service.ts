@@ -127,6 +127,21 @@ function rowMatchesRequiredType(row: any, requiredType?: string | null): boolean
   return rowType == null || rowType === requiredType;
 }
 
+function kashrutPreferenceRank(row: any, preferredKashrut?: string | null): number {
+  if (!preferredKashrut) return 0;
+  const rowKashrut = row?.kashrutLevel ?? row?.kashrut_level ?? null;
+  if (!rowKashrut || rowKashrut === 'unknown') return 1;
+  if (rowKashrut === preferredKashrut) return 0;
+  if (preferredKashrut === 'rabbinate' && (rowKashrut === 'mehadrin' || rowKashrut === 'badatz')) return 0;
+  if (preferredKashrut === 'mehadrin' && rowKashrut === 'badatz') return 0;
+  return 2;
+}
+
+function rankRowsByKashrutPreference(rows: any[], preferredKashrut?: string | null): any[] {
+  if (!preferredKashrut) return rows;
+  return [...rows].sort((a, b) => kashrutPreferenceRank(a, preferredKashrut) - kashrutPreferenceRank(b, preferredKashrut));
+}
+
 @Injectable()
 export class RestaurantsService {
   private readonly logger = new Logger(RestaurantsService.name);
@@ -1060,7 +1075,7 @@ export class RestaurantsService {
       options: { nearby?: boolean; minMeters?: number; maxMeters?: number } = {},
     ) => {
       const { nearby = false, minMeters = 0, maxMeters = SUPPLEMENT_MAX_METERS } = options;
-      for (const row of rows) {
+      for (const row of rankRowsByKashrutPreference(rows, kashrut)) {
         if (data.length >= MAX_RESULTS) break;
         if (seen.has(row.id)) continue;
         if (!rowMatchesRequiredType(row, effectiveType)) continue;
@@ -1082,7 +1097,7 @@ export class RestaurantsService {
       const result = await this.findByDestination(destinationId, {
         q: cleanedKeyword,
         type: effectiveType,
-        kashrut,
+        kashrut: undefined,
         lat: displayLat,
         lng: displayLng,
       });
@@ -1098,7 +1113,7 @@ export class RestaurantsService {
         [],
         cleanedKeyword,
         effectiveType,
-        kashrut,
+        undefined,
         supplementOrigin,
         userOrigin,
       )).data;
@@ -1108,7 +1123,7 @@ export class RestaurantsService {
         searchTags,
         undefined,
         effectiveType,
-        kashrut,
+        undefined,
         supplementOrigin,
         userOrigin,
       )).data;
@@ -1118,7 +1133,7 @@ export class RestaurantsService {
         [],
         undefined,
         effectiveType,
-        kashrut,
+        undefined,
         supplementOrigin,
         userOrigin,
       )).data;
@@ -1131,7 +1146,7 @@ export class RestaurantsService {
 
     // 3. Strong semantic match in the current destination, based on food tags.
     if (searchTags.length > 0 && data.length < MAX_RESULTS) {
-      const result = await this.searchByTags(searchTags, kashrut, destinationId, displayLat, displayLng, effectiveType);
+      const result = await this.searchByTags(searchTags, undefined, destinationId, displayLat, displayLng, effectiveType);
       addLayer(result.data, 2);
     }
 
@@ -1139,7 +1154,7 @@ export class RestaurantsService {
     if (effectiveType && data.length < MAX_RESULTS) {
       const result = await this.findByDestination(destinationId, {
         type: effectiveType,
-        kashrut,
+        kashrut: undefined,
         lat: displayLat,
         lng: displayLng,
       });
@@ -1190,14 +1205,15 @@ export class RestaurantsService {
     // unmatched keywords ("מאפה גבינה") miss every layer — show the local list instead.
     const fallback = await this.findByDestination(destinationId, {
       type: effectiveType,
-      kashrut,
+      kashrut: undefined,
       lat: displayLat,
       lng: displayLng,
     });
     if (fallback.data.length > 0) {
+      const rankedFallback = rankRowsByKashrutPreference(fallback.data, kashrut);
       return {
-        data: fallback.data,
-        total: fallback.data.length,
+        data: rankedFallback,
+        total: rankedFallback.length,
         matchTier: 3,
         matchedVia: [],
         message: cleanedKeyword
