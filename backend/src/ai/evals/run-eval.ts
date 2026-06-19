@@ -6,6 +6,7 @@ import { DenominationClassifierService } from '../denomination-classifier.servic
 import {
   buildDestinationAliasIndex,
   buildDestinationCandidates,
+  DESTINATION_ALIASES,
   detectCountryInText,
   levenshtein,
   normalizeDestinationText,
@@ -77,6 +78,14 @@ interface EvalCaseResult {
   parsed: ParsedEvalQuery;
   source: string;
   failures: string[];
+}
+
+interface RoutingSignalStat {
+  total: number;
+  fastFailedLlmPassed: number;
+  fastPassedLlmFailed: number;
+  bothPassed: number;
+  bothFailed: number;
 }
 
 const STATIC_DESTINATIONS = [
@@ -508,7 +517,8 @@ async function main(): Promise<void> {
   printSummary(fastSummary, cases.length);
 
   const shouldRunLlm = process.env.EVAL_SEARCH_LLM === 'true';
-  if (!shouldRunLlm) {
+  const shouldRunLiveRouting = process.env.EVAL_SEARCH_LIVE_ROUTING === 'true';
+  if (!shouldRunLlm && !shouldRunLiveRouting) {
     console.log('\nLLM eval skipped. Run with EVAL_SEARCH_LLM=true to measure Claude separately.');
     return;
   }
@@ -525,6 +535,15 @@ async function main(): Promise<void> {
     { get: (key: string) => process.env[key] } as any,
     destinationIndex as any,
   );
+
+  if (shouldRunLiveRouting) {
+    const liveSummary = await runParserEval('live-routing', cases, async (query) =>
+      llmParser.parse(query, { allowLlm: true, bypassCache: true }),
+    );
+    printSummary(liveSummary, cases.length);
+  }
+
+  if (!shouldRunLlm) return;
 
   const llmCases =
     process.env.EVAL_SEARCH_FAST_FAILURES_ONLY === 'true'
@@ -662,6 +681,10 @@ function normalizeFeedbackKashrut(kashrut: string | null): 'rabbinate' | 'mehadr
   return null;
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 async function runParserEval(
   mode: string,
   cases: EvalCase[],
@@ -703,6 +726,8 @@ function printFastVsLlmComparison(
   let fastPassedLlmFailed = 0;
   let changed = 0;
   const rows: string[] = [];
+  const llmRegressions: string[] = [];
+  const signalStats = new Map<string, RoutingSignalStat>();
 
   for (const llmResult of llmSummary.results) {
     const fastResult = fastByCase.get(caseKey(llmResult.testCase));
@@ -714,7 +739,13 @@ function printFastVsLlmComparison(
     if (fieldDiffs.length > 0) changed += 1;
     if (!fastPassed && llmPassed) fastFailedLlmPassed += 1;
     if (!fastPassed && !llmPassed) bothFailed += 1;
-    if (fastPassed && !llmPassed) fastPassedLlmFailed += 1;
+    if (fastPassed && !llmPassed) {
+      fastPassedLlmFailed += 1;
+      llmRegressions.push(`- ${llmResult.testCase.query}: ${llmResult.failures.join('; ')}`);
+    }
+    for (const signal of routingSignalsForCase(llmResult.testCase, fastResult)) {
+      updateSignalStats(signalStats, signal, fastPassed, llmPassed);
+    }
 
     if (rows.length < limit && (!fastPassed || !llmPassed || fieldDiffs.length > 0)) {
       rows.push(
@@ -737,10 +768,114 @@ function printFastVsLlmComparison(
   console.log(`Both failed: ${bothFailed}`);
   console.log(`Fast passed, LLM failed: ${fastPassedLlmFailed}`);
   console.log(`Parsed JSON changed: ${changed}`);
+  printRoutingSignalTable(signalStats);
+  if (llmRegressions.length > 0) {
+    console.log('\nFast passed, LLM failed cases:');
+    for (const regression of llmRegressions) console.log(regression);
+  }
   if (rows.length > 0) {
     console.log('\nField-by-field samples:');
     for (const row of rows) console.log(row);
   }
+}
+
+function updateSignalStats(
+  stats: Map<string, RoutingSignalStat>,
+  signal: string,
+  fastPassed: boolean,
+  llmPassed: boolean,
+): void {
+  const current = stats.get(signal) ?? {
+    total: 0,
+    fastFailedLlmPassed: 0,
+    fastPassedLlmFailed: 0,
+    bothPassed: 0,
+    bothFailed: 0,
+  };
+  current.total += 1;
+  if (!fastPassed && llmPassed) current.fastFailedLlmPassed += 1;
+  if (fastPassed && !llmPassed) current.fastPassedLlmFailed += 1;
+  if (fastPassed && llmPassed) current.bothPassed += 1;
+  if (!fastPassed && !llmPassed) current.bothFailed += 1;
+  stats.set(signal, current);
+}
+
+function printRoutingSignalTable(stats: Map<string, RoutingSignalStat>): void {
+  const rows = [...stats.entries()].sort((a, b) => {
+    const aNet = a[1].fastFailedLlmPassed - a[1].fastPassedLlmFailed;
+    const bNet = b[1].fastFailedLlmPassed - b[1].fastPassedLlmFailed;
+    return bNet - aNet || b[1].total - a[1].total || a[0].localeCompare(b[0]);
+  });
+  if (rows.length === 0) return;
+
+  console.log('\nRouting signal table');
+  console.log('signal | cases | fast_fail_llm_pass | fast_pass_llm_fail | both_pass | both_fail | net');
+  for (const [signal, stat] of rows) {
+    const net = stat.fastFailedLlmPassed - stat.fastPassedLlmFailed;
+    console.log(
+      `${signal} | ${stat.total} | ${stat.fastFailedLlmPassed} | ${stat.fastPassedLlmFailed} | ${stat.bothPassed} | ${stat.bothFailed} | ${net}`,
+    );
+  }
+}
+
+function routingSignalsForCase(testCase: EvalCase, fastResult: EvalCaseResult): string[] {
+  const query = normalizeDestinationText(testCase.query);
+  const words = query.split(/\s+/).filter(Boolean);
+  const signals = new Set<string>();
+
+  if (words.length > 3) signals.add('long_query_gt_3_words');
+  if (countDestinationMentions(query) >= 2) signals.add('multiple_destination_mentions');
+  if (hasCrossCategoryTerms(query)) signals.add('cross_category_terms');
+  if (hasLikelyTypoOrMixedLatin(query)) signals.add('typo_or_mixed_latin');
+  if (fastResult.parsed.explicitDestination && !fastResult.parsed.destinationText) {
+    signals.add('fast_unresolved_explicit_destination');
+  }
+  if (fastResult.failures.some((failure) => failure.startsWith('category:'))) {
+    signals.add('fast_category_uncertain');
+  }
+  if (fastResult.failures.some((failure) => failure.startsWith('destinationText:'))) {
+    signals.add('fast_destination_uncertain');
+  }
+  if (fastResult.failures.length > 0) signals.add('fast_has_eval_failure');
+  if (signals.size === 0) signals.add('plain_fast_success');
+
+  return [...signals];
+}
+
+function countDestinationMentions(query: string): number {
+  const mentioned = new Set<number>();
+  for (const destination of STATIC_DESTINATIONS) {
+    const aliases = [
+      destination.name,
+      destination.city,
+      ...(DESTINATION_ALIASES[destination.name] ?? []),
+      ...(DESTINATION_ALIASES[destination.city] ?? []),
+    ]
+      .map((alias) => normalizeDestinationText(alias))
+      .filter(Boolean);
+    if (aliases.some((alias) => {
+      const variants = /[א-ת]/.test(alias) ? [alias, `ב${alias}`, `ל${alias}`, `מ${alias}`] : [alias];
+      return variants.some((variant) => new RegExp(`(^|\\s)${escapeRegExp(variant)}(?=\\s|$)`).test(query));
+    })) {
+      mentioned.add(destination.id);
+    }
+  }
+  return mentioned.size;
+}
+
+function hasCrossCategoryTerms(query: string): boolean {
+  const categories = [
+    /\b(מסעדה|אוכל|לאכול|פיצה|המבורגר|בורגר|סושי|סטייק|גלידה|קפה|מאפה|restaurant|food|eat|pizza|burger|sushi|steak)\b/,
+    /\b(בית כנסת|שול|חבד|synagogue|shul|chabad)\b/,
+    /\b(מניין|מנין|תפילה|שחרית|מנחה|ערבית|minyan|shacharit|mincha|maariv|pray|prayer)\b/,
+    /\b(אירוח|להתארח|משפחה|לינה|שבת|hosting|host|shabbat|shabbos|meal|stay)\b/,
+  ];
+  return categories.filter((pattern) => pattern.test(query)).length >= 2;
+}
+
+function hasLikelyTypoOrMixedLatin(query: string): boolean {
+  if (/[a-z]/i.test(query) && /[א-ת]/.test(query)) return true;
+  return /piza|synagoge|minyn|shabat|shul|להתרח/i.test(query);
 }
 
 function caseKey(testCase: EvalCase): string {

@@ -51,6 +51,7 @@ const FOOD_QUERY_MAP: [RegExp, string][] = [
   [/פיצ(?:ה|ריה)|pizza|pizzeria/i, 'pizza'],
   [/סושי|sushi/i, 'sushi'],
   [/המבורגר|המברגר|בורגר|burger|hamburger/i, 'burger'],
+  [/סטייק|steak/i, 'steak'],
   [/גלידה|ice.?cream|gelato/i, 'ice cream'],
   [/חומוס|hummus/i, 'hummus'],
   [/פסטה|pasta/i, 'pasta'],
@@ -62,7 +63,7 @@ const FOOD_QUERY_MAP: [RegExp, string][] = [
 const HOSTING_SIGNALS = [
   /ארוחת\s+שבת|סעודת\s+שבת/i,
   /(?:^|[\s])(?:אירוח|הארחה|לינה|להתארח|מתארח|מתארחת|מתארחים|מתארחות|מארח|מארחת|מארחים|מארחות)(?:$|[\s,.;:!?])/i,
-  /\b(hosting|host|hosted|stay with|shabbat meal|shabbos meal)\b/i,
+  /\b(hosting|host|hosted|stay with|shabbat|shabbos|shabbat meal|shabbos meal)\b/i,
 ];
 
 const MINYAN_SIGNALS = [
@@ -171,7 +172,7 @@ export class QueryParserService {
 
     const fast = await this.parseFast(normalizedText);
     const allowLlm = opts.allowLlm ?? true;
-    if (!allowLlm || !this.client || (!opts.forceLlm && !this.shouldUseLlm(normalizedText, fast.parsed))) {
+    if (!allowLlm || !this.client || (!opts.forceLlm && !this.shouldUseLlm(text, fast.parsed))) {
       const result = { ...fast, latencyMs: Date.now() - started };
       if (!opts.bypassCache) this.setCache(cacheKey, result);
       return result;
@@ -324,12 +325,47 @@ export class QueryParserService {
     return parsed;
   }
 
-  private shouldUseLlm(text: string, fast: ParsedQuery): boolean {
-    const words = text.split(/\s+/).filter(Boolean);
-    if (words.length > 3) return true;
+  private shouldUseLlm(originalText: string, fast: ParsedQuery): boolean {
+    const normalizedText = normalizeDestinationText(originalText);
+    if (fast.category === 'destination') return false;
+    if (fast.category === 'hosting' && this.hasSignal(originalText, HOSTING_SIGNALS)) return false;
     if (fast.categoryConfidence < 0.72) return true;
     if (fast.category === 'unknown') return true;
-    return fast.explicitDestination && fast.queryText !== null && fast.categoryConfidence < 0.85;
+    if (this.hasLikelyTypoOrMixedLanguage(originalText)) return true;
+    if (this.countDestinationMentions(normalizedText) >= 2) return true;
+    if (this.hasMultipleCategorySignals(normalizedText) && fast.categoryConfidence < 0.85) return true;
+    return fast.explicitDestination && fast.queryText !== null && fast.categoryConfidence < 0.78;
+  }
+
+  private hasLikelyTypoOrMixedLanguage(originalText: string): boolean {
+    if (/[a-z]/i.test(originalText) && /[א-ת]/.test(originalText)) return true;
+    return /piza|synagoge|minyn|shabat|shul|להתרח/i.test(originalText);
+  }
+
+  private countDestinationMentions(text: string): number {
+    const mentioned = new Set<number>();
+    const normalizedText = normalizeDestinationText(text);
+    for (const [alias, destination] of this.destinationIndex.getIndex().entries()) {
+      const variants = /[א-ת]/.test(alias) ? [alias, `ב${alias}`, `ל${alias}`, `מ${alias}`] : [alias];
+      if (variants.some((variant) => new RegExp(`(^|\\s)${this.escapeRegExp(variant)}(?=\\s|$)`).test(normalizedText))) {
+        mentioned.add(destination.id);
+      }
+    }
+    return mentioned.size;
+  }
+
+  private hasMultipleCategorySignals(text: string): boolean {
+    const categories = [
+      this.hasSignal(text, RESTAURANT_SIGNALS),
+      this.hasSignal(text, SYNAGOGUE_SIGNALS),
+      this.hasSignal(text, MINYAN_SIGNALS),
+      this.hasSignal(text, HOSTING_SIGNALS),
+    ];
+    return categories.filter(Boolean).length >= 2;
+  }
+
+  private escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
   private chooseCategory(

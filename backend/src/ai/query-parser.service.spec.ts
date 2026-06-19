@@ -11,7 +11,7 @@ describe('QueryParserService', () => {
     { id: 3, name: 'Jerusalem', nameHe: 'ירושלים', city: 'Jerusalem', country: 'Israel' },
   ];
 
-  function createService() {
+  function createService(config: Record<string, string | undefined> = {}) {
     const classifier = new ClassifierService();
     classifier.onModuleInit();
     const denomination = new DenominationClassifierService();
@@ -33,7 +33,7 @@ describe('QueryParserService', () => {
       classifier,
       new SearchClassifierService(),
       denomination,
-      { get: () => undefined } as any,
+      { get: (key: string) => config[key] } as any,
       destinationIndex as any,
     );
   }
@@ -119,5 +119,21 @@ describe('QueryParserService', () => {
     const second = await service.parse('  פיצה   במיאמי  ', { allowLlm: false });
 
     expect(second.source).toBe('cache');
+  });
+
+  it('does not call LLM only because a clear query is long', async () => {
+    const service = createService({ ANTHROPIC_API_KEY: 'test-key' });
+
+    await expect(service.parse('מסעדה בשרית זולה ליד הים בירושלים')).resolves.toMatchObject({
+      source: 'fast',
+      parsed: {
+        category: 'restaurant',
+        destinationText: 'ירושלים',
+        restaurant: {
+          type: 'meat',
+          priceLevel: 'cheap',
+        },
+      },
+    });
   });
 });
