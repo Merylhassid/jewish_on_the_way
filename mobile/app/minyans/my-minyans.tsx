@@ -14,8 +14,10 @@ import {
   AlertTriangle, ArrowLeft, Crown, MapPin, Users,
 } from 'lucide-react-native';
 import client from '@/src/api/client';
+import { withProtectedRoute } from '@/src/auth/auth-gates';
 import HomeButton from '@/src/components/HomeButton';
 import { getPrayerConfig } from '@/src/utils/prayerIcons';
+import { C } from '@/constants/theme';
 
 interface MyMinyan {
   id: number;
@@ -39,7 +41,7 @@ function formatDate(iso: string) {
 
 const today = new Date().toISOString().split('T')[0];
 
-export default function MyMinyansScreen() {
+function MyMinyansScreen() {
   const { t } = useTranslation();
   const PRAYER_LABEL: Record<string, string> = {
     shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
@@ -83,15 +85,15 @@ export default function MyMinyansScreen() {
             <Text style={styles.cardPrayer}>{PRAYER_LABEL[item.prayerType]}</Text>
             {item.isCreator && (
               <View style={styles.creatorBadge}>
-                <Crown size={11} color="#E65100" strokeWidth={2} />
+                <Crown size={11} color={C.goldMuted} strokeWidth={2} />
                 <Text style={styles.creatorBadgeText}>{t('minyans.creator')}</Text>
               </View>
             )}
             {item.isFull && !item.isCreator && (
-              <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>{t('minyans.full')}</Text></View>
+              <View style={[styles.badge, styles.fullBadge]}><Text style={[styles.badgeText, styles.fullBadgeText]}>{t('minyans.full')}</Text></View>
             )}
             {item.almostFull && !item.isFull && (
-              <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>{t('minyans.almostFull')}</Text></View>
+              <View style={[styles.badge, styles.almostBadge]}><Text style={[styles.badgeText, styles.almostBadgeText]}>{t('minyans.almostFull')}</Text></View>
             )}
           </View>
           <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
@@ -100,7 +102,7 @@ export default function MyMinyansScreen() {
             <Text style={[styles.cardLocation, { flex: 1 }]} numberOfLines={1}>{item.locationText}</Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
-            <Users size={12} color="#1a3a6b" strokeWidth={2} />
+            <Users size={12} color={C.navy} strokeWidth={2} />
             <Text style={styles.cardCount}>{item.participantsCount} / 10{item.destination ? `  •  ${item.destination.city}` : ''}</Text>
           </View>
         </View>
@@ -113,18 +115,18 @@ export default function MyMinyansScreen() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
+          <ArrowLeft size={22} color={C.navy} strokeWidth={2.5} />
         </Pressable>
         <HomeButton />
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
-          <Users size={20} color="#fff" strokeWidth={2} />
+          <Users size={20} color={C.goldMuted} strokeWidth={2} />
           <Text style={styles.headerTitle}>{t('minyans.title')}</Text>
         </View>
         <Text style={styles.headerSub}>{minyans.length} {t('minyans.title').toLowerCase()}</Text>
       </View>
 
       {loading ? (
-        <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
+        <View style={styles.center}><ActivityIndicator size="large" color={C.gold} /></View>
       ) : error ? (
         <View style={styles.center}>
           <AlertTriangle size={48} color="#F59E0B" strokeWidth={1.5} />
@@ -146,7 +148,7 @@ export default function MyMinyansScreen() {
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); fetch(); }}
-              colors={['#1a3a6b']} tintColor="#1a3a6b" />
+              colors={[C.navy]} tintColor={C.navy} />
           }
           ListHeaderComponent={
             upcoming.length > 0 && past.length > 0 ? (
@@ -171,30 +173,51 @@ export default function MyMinyansScreen() {
   );
 }
 
+export default withProtectedRoute(MyMinyansScreen, 'account');
+
 const styles = StyleSheet.create({
-  container:       { flex: 1, backgroundColor: '#f0f4ff' },
+  container:       { flex: 1, backgroundColor: C.bg },
   center:          { flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 60, gap: 12 },
-  header:          { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20 },
-  backBtn:         { marginBottom: 8 },
-  headerTitle:     { fontSize: 22, fontWeight: '700', color: '#fff' },
-  headerSub:       { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
+  header:          { backgroundColor: C.cream, paddingTop: 60, paddingBottom: 22, paddingHorizontal: 20, borderBottomWidth: 1, borderBottomColor: C.goldBorder },
+  backBtn:         {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: C.goldBorder,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+    shadowColor: C.navy,
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  headerTitle:     { fontFamily: 'Inter-Black', fontSize: 24, color: C.navy },
+  headerSub:       { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textSecondary, marginTop: 2 },
   list:            { padding: 16, gap: 10 },
-  sectionHeader:   { fontSize: 12, fontWeight: '700', color: '#8A96B0', letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 4, marginTop: 8 },
-  card:            { backgroundColor: '#fff', borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
+  sectionHeader:   { fontFamily: 'Inter-Bold', fontSize: 12, color: C.goldEyebrow, letterSpacing: 0.8, textTransform: 'uppercase', marginBottom: 4, marginTop: 8 },
+  card:            { backgroundColor: '#fff', borderRadius: 20, padding: 16, flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(11,23,54,0.08)', shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 2 },
   cardPast:        { opacity: 0.55 },
   cardIconBox:     { width: 46, height: 46, borderRadius: 12, marginRight: 14, justifyContent: 'center', alignItems: 'center' },
   cardBody:        { flex: 1, gap: 3 },
   cardTop:         { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
-  cardPrayer:      { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
-  creatorBadge:    { backgroundColor: '#FFF3E0', borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3, flexDirection: 'row', alignItems: 'center', gap: 4 },
-  creatorBadgeText:{ fontSize: 11, color: '#E65100', fontWeight: '600' },
+  cardPrayer:      { fontFamily: 'Inter-Bold', fontSize: 16, color: C.textPrimary },
+  creatorBadge:    { backgroundColor: C.kashrutGoldBg, borderWidth: 1, borderColor: C.goldBorder, borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3, flexDirection: 'row', alignItems: 'center', gap: 4 },
+  creatorBadgeText:{ fontFamily: 'Inter-SemiBold', fontSize: 11, color: C.goldMuted },
   badge:           { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
-  badgeText:       { color: '#fff', fontSize: 11, fontWeight: '600' },
-  cardDate:        { fontSize: 13, color: '#555' },
-  cardLocation:    { fontSize: 13, color: '#777' },
-  cardCount:       { fontSize: 13, color: '#1a3a6b', fontWeight: '600' },
-  arrow:           { fontSize: 22, color: '#bbb', marginLeft: 8 },
-  emptyText:       { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22, marginBottom: 20, paddingHorizontal: 32 },
-  retryBtn:        { backgroundColor: '#1a3a6b', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 },
-  retryText:       { color: '#fff', fontWeight: '700', fontSize: 15 },
+  fullBadge:       { backgroundColor: C.typeParveBg, borderWidth: 1, borderColor: 'rgba(107,142,107,0.24)' },
+  almostBadge:     { backgroundColor: C.kashrutGoldBg, borderWidth: 1, borderColor: C.goldBorder },
+  badgeText:       { fontFamily: 'Inter-SemiBold', fontSize: 11 },
+  fullBadgeText:   { color: C.typeParve },
+  almostBadgeText: { color: C.goldMuted },
+  cardDate:        { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textSecondary },
+  cardLocation:    { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textSecondary },
+  cardCount:       { fontFamily: 'Inter-SemiBold', fontSize: 13, color: C.navy },
+  arrow:           { fontSize: 22, color: C.textMuted, marginLeft: 8 },
+  emptyText:       { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textMuted, textAlign: 'center', lineHeight: 22, marginBottom: 20, paddingHorizontal: 32 },
+  retryBtn:        { backgroundColor: C.navy, paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 },
+  retryText:       { color: '#fff', fontFamily: 'Inter-Bold', fontWeight: '700', fontSize: 15 },
 });

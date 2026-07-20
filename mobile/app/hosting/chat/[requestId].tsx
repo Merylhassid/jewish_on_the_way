@@ -2,6 +2,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   KeyboardAvoidingView,
   Platform,
@@ -12,10 +13,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ChevronRight, Send, Users } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
+import { ChevronRight, Flag, Send, ShieldOff, Users } from 'lucide-react-native';
 import { io, Socket } from 'socket.io-client';
-import { API_URL } from '@/src/api/client';
+import client, { API_URL } from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
+import { withProtectedRoute } from '@/src/auth/auth-gates';
 import { C } from '@/constants/theme';
 
 interface ChatMsg {
@@ -32,7 +35,8 @@ interface ReadCursor {
   lastReadId: number;
 }
 
-export default function HostingChatScreen() {
+function HostingChatScreen() {
+  const { t } = useTranslation();
   const { requestId } = useLocalSearchParams<{ requestId: string }>();
   const { user, getValidToken } = useAuth();
   const [messages, setMessages] = useState<ChatMsg[]>([]);
@@ -40,6 +44,7 @@ export default function HostingChatScreen() {
   const [connected, setConnected] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [onlineCount, setOnlineCount] = useState(0);
+  const [otherUser, setOtherUser] = useState<{ id: number; firstName: string; lastName: string } | null>(null);
   const [cursors, setCursors] = useState<ReadCursor[]>([]);
   const [typingUsers, setTypingUsers] = useState<Record<number, string>>({});
   const socketRef = useRef<Socket | null>(null);
@@ -54,7 +59,7 @@ export default function HostingChatScreen() {
 
     const connect = async () => {
       const token = await getValidToken();
-      if (!token) { setError('Not authenticated'); return; }
+      if (!token) { setError(t('hosting.notAuthenticated')); return; }
 
       socket = io(`${API_URL}/hosting-chat`, {
         auth: { token },
@@ -86,7 +91,11 @@ export default function HostingChatScreen() {
             return;
           }
         }
-        setError('Connection failed — make sure the request is approved');
+        setError(t('hosting.connectionFailed'));
+      });
+
+      socket.on('hosting-chat:participant', (participant: { id: number; firstName: string; lastName: string } | null) => {
+        setOtherUser(participant);
       });
 
       socket.on('hosting-chat:history', (history: ChatMsg[]) => {
@@ -127,7 +136,7 @@ export default function HostingChatScreen() {
         setTypingUsers((prev) => { const next = { ...prev }; delete next[userId]; return next; });
       });
 
-      socket.on('exception', (err: any) => setError(err?.message ?? 'Error'));
+      socket.on('exception', (err: any) => setError(err?.message ?? t('common.error')));
     };
 
     connect();
@@ -171,6 +180,46 @@ export default function HostingChatScreen() {
   // For a 2-person chat, show "Seen" under own messages if the other person read them
   const otherUserCursor = cursors.find((c) => c.userId !== user?.id);
 
+  const handleBlock = () => {
+    if (!otherUser) return;
+    Alert.alert(
+      t('hosting.blockUserTitle', { name: otherUser.firstName }),
+      t('hosting.blockUserMsg'),
+      [
+        { text: t('hosting.cancelBtn'), style: 'cancel' },
+        {
+          text: t('hosting.blockBtn'), style: 'destructive',
+          onPress: async () => {
+            try {
+              await client.post(`/users/${otherUser.id}/block`);
+              Alert.alert(t('hosting.blockedTitle'), t('hosting.blockedMsg', { name: otherUser.firstName }));
+              router.back();
+            } catch (err: any) {
+              Alert.alert(t('common.error'), err?.response?.data?.message ?? t('hosting.couldNotBlock'));
+            }
+          },
+        },
+      ],
+    );
+  };
+
+  const handleReport = () => {
+    Alert.alert(
+      t('hosting.reportConvTitle'),
+      t('hosting.reportConvMsg'),
+      [
+        { text: t('hosting.cancelBtn'), style: 'cancel' },
+        {
+          text: t('hosting.reportBtn'), style: 'destructive',
+          onPress: () => {
+            socketRef.current?.emit('hosting-chat:report', { requestId: Number(requestId) });
+            Alert.alert(t('hosting.reportedTitle'), t('hosting.reportedMsg'));
+          },
+        },
+      ],
+    );
+  };
+
   return (
     <KeyboardAvoidingView
       style={s.container}
@@ -179,14 +228,22 @@ export default function HostingChatScreen() {
     >
       <View style={s.header}>
         <Pressable onPress={() => router.back()} style={s.backBtn} hitSlop={12}>
-          <ChevronRight size={20} color="#fff" strokeWidth={2.5} style={{ transform: [{ rotate: '180deg' }] }} />
+          <ChevronRight size={20} color={C.navy} strokeWidth={2.5} style={{ transform: [{ rotate: '180deg' }] }} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text style={s.eyebrow}>HOSTING</Text>
-          <Text style={s.headerTitle}>Private Chat</Text>
+          <Text style={s.headerTitle}>{t('hosting.privateChatTitle')}</Text>
         </View>
+        {otherUser && (
+          <Pressable onPress={handleBlock} hitSlop={12} style={s.reportBtn}>
+            <ShieldOff size={16} color={C.error} strokeWidth={2.2} />
+          </Pressable>
+        )}
+        <Pressable onPress={handleReport} hitSlop={12} style={s.reportBtn}>
+          <Flag size={16} color={C.error} strokeWidth={2.2} />
+        </Pressable>
         <View style={s.onlinePill}>
-          <Users size={11} color={C.gold} strokeWidth={2.5} />
+          <Users size={11} color={C.goldMuted} strokeWidth={2.5} />
           <Text style={s.onlineText}>{onlineCount}</Text>
           <View style={[s.dot, { backgroundColor: connected ? '#4ADE80' : '#F87171' }]} />
         </View>
@@ -196,14 +253,14 @@ export default function HostingChatScreen() {
         <View style={s.center}>
           <Text style={s.errorText}>{error}</Text>
           <TouchableOpacity onPress={() => router.back()} style={s.backLink}>
-            <Text style={s.backLinkText}>← Go back</Text>
+            <Text style={s.backLinkText}>{t('hosting.goBack')}</Text>
           </TouchableOpacity>
         </View>
       ) : !connected ? (
         <View style={s.center}>
           <ActivityIndicator size="large" color={C.gold} />
           <Text style={s.connectingText}>
-            {hasConnectedBefore.current ? 'Reconnecting…' : 'Connecting…'}
+            {hasConnectedBefore.current ? t('hosting.reconnecting') : t('hosting.connecting')}
           </Text>
         </View>
       ) : (
@@ -215,7 +272,7 @@ export default function HostingChatScreen() {
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={
             <View style={s.emptyWrap}>
-              <Text style={s.emptyText}>No messages yet. Say hello!</Text>
+              <Text style={s.emptyText}>{t('hosting.noMessagesYet')}</Text>
             </View>
           }
           renderItem={({ item }) => {
@@ -244,7 +301,7 @@ export default function HostingChatScreen() {
                         {otherUserCursor.firstName[0]}{otherUserCursor.lastName[0]}
                       </Text>
                     </View>
-                    <Text style={s.seenLabel}>Seen</Text>
+                    <Text style={s.seenLabel}>{t('hosting.seenLabel')}</Text>
                   </View>
                 )}
               </View>
@@ -256,7 +313,7 @@ export default function HostingChatScreen() {
       {connected && Object.keys(typingUsers).length > 0 && (
         <View style={s.typingBar}>
           <Text style={s.typingText}>
-            {Object.values(typingUsers).join(', ')} {Object.keys(typingUsers).length === 1 ? 'is' : 'are'} typing…
+            {Object.values(typingUsers).join(', ')} {Object.keys(typingUsers).length === 1 ? t('hosting.typingOne') : t('hosting.typingMany')}
           </Text>
         </View>
       )}
@@ -265,7 +322,7 @@ export default function HostingChatScreen() {
         <View style={s.inputRow}>
           <TextInput
             style={s.input}
-            placeholder="Type a message…"
+            placeholder={t('hosting.messagePlaceholder')}
             placeholderTextColor={C.textMuted}
             value={text}
             onChangeText={handleTextChange}
@@ -286,35 +343,50 @@ export default function HostingChatScreen() {
   );
 }
 
+export default withProtectedRoute(HostingChatScreen, 'hosting');
+
 const s = StyleSheet.create({
   container: { flex: 1, backgroundColor: C.bg },
   center:    { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
 
   header: {
-    backgroundColor: C.navy,
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 56 : 38,
-    paddingBottom: 16,
+    paddingBottom: 18,
     paddingHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'flex-end',
     gap: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: C.goldBorder,
   },
   backBtn: {
     width: 36, height: 36, borderRadius: 18,
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+    backgroundColor: '#fff',
+    borderWidth: 1, borderColor: C.goldBorder,
+    justifyContent: 'center', alignItems: 'center', marginBottom: 2,
+    shadowColor: C.navy,
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.goldEyebrow, letterSpacing: 2.5, marginBottom: 2 },
+  headerTitle: { fontFamily: 'Inter-Black', fontSize: 24, color: C.navy },
+  reportBtn: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: '#fff',
+    borderWidth: 1, borderColor: 'rgba(220,38,38,0.25)',
     justifyContent: 'center', alignItems: 'center', marginBottom: 2,
   },
-  eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5, marginBottom: 2 },
-  headerTitle: { fontFamily: 'Inter-Black', fontSize: 22, color: '#fff', letterSpacing: -0.5 },
   onlinePill: {
     flexDirection: 'row', alignItems: 'center', gap: 5,
-    backgroundColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: '#fff',
     borderRadius: 12, paddingHorizontal: 10, paddingVertical: 6,
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+    borderWidth: 1, borderColor: C.goldBorder,
     marginBottom: 2,
   },
-  onlineText: { fontFamily: 'Inter-Bold', fontSize: 13, color: '#fff' },
+  onlineText: { fontFamily: 'Inter-Bold', fontSize: 13, color: C.navy },
   dot:        { width: 8, height: 8, borderRadius: 4 },
 
   list:      { padding: 16, gap: 6, flexGrow: 1 },
@@ -327,6 +399,7 @@ const s = StyleSheet.create({
   },
   bubbleMe:     { alignSelf: 'flex-end', backgroundColor: C.navy },
   bubbleThem:   { alignSelf: 'flex-start', backgroundColor: '#fff',
+    borderWidth: 1, borderColor: 'rgba(11,23,54,0.08)',
     shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 4,
     shadowOffset: { width: 0, height: 1 }, elevation: 1 },
   senderName:   { fontFamily: 'Inter-SemiBold', fontSize: 11, color: C.navy, marginBottom: 3 },
@@ -337,20 +410,20 @@ const s = StyleSheet.create({
 
   seenRow:      { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingRight: 4, marginBottom: 4, gap: 4 },
   seenAvatar:   { width: 16, height: 16, borderRadius: 8, backgroundColor: C.gold + '30', justifyContent: 'center', alignItems: 'center' },
-  seenInitials: { fontSize: 7, fontWeight: '800', color: C.navy },
+  seenInitials: { fontSize: 7, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
   seenLabel:    { fontFamily: 'Inter-Regular', fontSize: 10, color: C.textMuted },
 
   inputRow: {
     flexDirection: 'row', alignItems: 'flex-end',
     padding: 12, gap: 10,
     backgroundColor: '#fff',
-    borderTopWidth: 1, borderTopColor: '#F3F4F6',
+    borderTopWidth: 1, borderTopColor: 'rgba(11,23,54,0.07)',
   },
   input: {
     flex: 1, backgroundColor: C.bg, borderRadius: 22,
     paddingHorizontal: 16, paddingVertical: 10,
     fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary,
-    maxHeight: 100, borderWidth: 1.5, borderColor: '#E5E7EB',
+    maxHeight: 100, borderWidth: 1.5, borderColor: C.goldBorder,
   },
   sendBtn: {
     width: 44, height: 44, borderRadius: 22,
@@ -362,6 +435,6 @@ const s = StyleSheet.create({
   errorText:      { fontFamily: 'Inter-Regular', color: C.error, fontSize: 15, textAlign: 'center', paddingHorizontal: 24 },
   backLink:       { marginTop: 8 },
   backLinkText:   { fontFamily: 'Inter-SemiBold', color: C.navy, fontSize: 14 },
-  typingBar:      { paddingHorizontal: 20, paddingVertical: 4, backgroundColor: '#fff' },
+  typingBar:      { paddingHorizontal: 20, paddingVertical: 4, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: 'rgba(11,23,54,0.05)' },
   typingText:     { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textMuted, fontStyle: 'italic' },
 });

@@ -1,0 +1,392 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run HU</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — HU</h1>
+<div class="sum">
+שורות שנבדקו: <b>31</b> מתוך 31<br>
+✅ בטוח נכון: <b>26</b> · ❓ אולי: <b>0</b> · ❌ לא נמצא/לא נכון: <b>5</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 75 · Details: 44 (44 חדשים, 25 cache) · Google estimate max: ~$0.75 · LLM: $0.009 (7)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 26</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>6303</td>
+      <td><b>קפה תמר Cafe Tamar</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Nagy Diófa u. 3</td>
+      <td>Cafe Tamar Budapest</td>
+      <td>Budapest, Nagy Diófa u. 3, 1072 Hungary</td>
+      <td>4.7 (2320)</td>
+      <td></td>
+      <td class="photo">places/ChIJo0cCE7XdQUcRqguYOfQ8yKk/photos/AaVGc3nBP8UQY7Zm52_3tin1IKMCgk6w3mn4B0j2CZYPhUZP6m1pQzW-jObzK89DPc1LHbsjMiflEBg5VbonSumnrBQ4wSmDNA7B50AGjpK5GN0vKTOfIkK8bVdCk7eursp32VshtaNc2k2Go-EmY1Dz8qxiodeER0-O_1c7Ti-0_DkMK-yj6QFmY7SLmpeuqUXk0ckHl0tm7z6Ecy_fH8kP-cXBayx_Fcab4SeQKJ2x9rBuD5ci41vc68YvOXpozF9KFZ-07-3ms5uDffoY32ID_EfozGQhkbSjYtcL-EnL5TR04GQkohBOJBn-tGG-T50WPZlKtFaK0kSDGl4zCSHGuhi0m-CmD88lZ_9WTudpAnJaLDWplSv1l-3E7yCZ8gb4ZA-Jb9eahT74Oww5emGDl0flSF5wBg0ZkTZwttb0mxx9Hdyv</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי תואם (קפה תמר/Cafe Tamar), עיר זהה (בודפשט), כתובת מדויקת זהה (Nagy Diófa u. 3), סוג עסק תואם (מסעדה/קפה). כל הפרטים המשמעותיים תואמים.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%AA%D7%9E%D7%A8%20Cafe%20Tamar%20Budapest%2C%20Nagy%20Di%C3%B3fa%20u.%203" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJo0cCE7XdQUcRqguYOfQ8yKk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6304</td>
+      <td><b>קפה תל אביב  Tel Aviv Cafe</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Kazinczy u. 28, 1075 Hungary.</td>
+      <td>Tel Aviv Cafe</td>
+      <td>Budapest, Kazinczy u. 28, 1074 Hungary</td>
+      <td>4 (2121)</td>
+      <td>06 30 572 1684</td>
+      <td class="photo">places/ChIJfT41N2jcQUcRiBeoviRnh8w/photos/AaVGc3njeyW1CPwHj58vVG8JgvguQ-w0L7Ec0Re00SUqTet-kJr_qDzT1blWHi5MhTApqvjJG1gMVaLUU8S8o7wTYQv19rLTT5brbkyuG6LUChcPZT9EmnU8LAd2sS0Un_sz1urCT1OpBgi54cccCF3iSYOeQtmeQ93jORzeHcqQhH5SjFEcU97FBLmc30ka4d78fFw5yf5CUitAqG_QFYUC_M5F7zIK9O3PUUsdO8V3XZjA7U78lc5FuN3-iJT6qWLh8ptE_g8I6UerNRlOZY76IFzwZKzc74k4GaMRIQ4fb0HXaIx8RdxLqlEjcjics4_jki9oJ2DNKEJmJUTi3vk2yYgQHA2MHAF4IAkE5w3R-JLTC2vxHGYO1hJJrVXmuIMZ21XAVrkKluIBjBj9GIVs6AXGcE4PNQCdPzu7u6JTvcE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%20%20Tel%20Aviv%20Cafe%20Budapest%2C%20Kazinczy%20u.%2028%2C%201075%20Hungary." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfT41N2jcQUcRiBeoviRnh8w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6305</td>
+      <td><b>ברוקלין בייגל  Brooklyn Bagel</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Újpesti rkp. 1, 1137 Hungary</td>
+      <td>Brooklyn Bagel</td>
+      <td>Budapest, Újpesti rkp. 1, 1137 Hungary</td>
+      <td>4.5 (560)</td>
+      <td>06 30 319 4356</td>
+      <td class="photo">places/ChIJQZ6KOJXdQUcRcv6zbLiM3SY/photos/AaVGc3nafUavSD5h_hGPVc-R9DVrQu31bDGl9lJ6mkD06o-aoyOWR5-MP0JkkqpfxGPaFcypg5pMda9aI6nN2MC96vKnMBwa2a4kNb5NzDsqWGi6BhOub35BW5xIpBFusiKgOsz8s_ruQ0PoJt6kPnGaAG-zRRX3bXhyamPHeSZvvHnpUnZAmqNneDZ9T21xJqoB-YqZRz5JcRK8_OrAO5OMHUbSGmCj-IF3yxHYlBD0IVzcxCBvK66NIfmz7JIDOyDgbHA9qWHLc98rXpBdOvoiOXcgo42kyJUyVVsbrDSz1ME3q7V-NDB1zo79XFklMcKYKESffiMfKCdWA-1ktq7-TtTr_cCcp6L8GDv3zjiTa0JbAEr_cvg5LsuHSARchmQUcmTuzFNfSX0Q9cvy-tPFIrf3D_hKIBwY9OzInQsBkyUIfQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A8%D7%95%D7%A7%D7%9C%D7%99%D7%9F%20%D7%91%D7%99%D7%99%D7%92%D7%9C%20%20Brooklyn%20Bagel%20Budapest%2C%20%C3%9Ajpesti%20rkp.%201%2C%201137%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQZ6KOJXdQUcRcv6zbLiM3SY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6306</td>
+      <td><b>ממילא  Mamilla</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Síp u. 12, 1075</td>
+      <td>Mamilla kosher restaurant-ממילא מסעדה חלבית כשרה בודפשט</td>
+      <td>Budapest, Síp u. 12, 1075 Hungary</td>
+      <td>4.6 (95)</td>
+      <td>06 70 553 4286</td>
+      <td class="photo">places/ChIJ8bMmky_dQUcR-0xQQVxTQvo/photos/AaVGc3mu83WDU-2A7zIAzkam5oD9fumYuR-Bt-J5n5j_NBnB52eQl3xcu-lgYYMoAPAk0f4rNKXMRj7ID790NSm1lL-gty9jzLqfMHqJRfqdvGcbp3NrxoC15rOuLeCJ4vAEe9oiKew0yTLjFniwX9uVCHY8GJQANxlOiuf2UEckWsDvVpyzG6l_nOrxb-ACcrjRpxRa-4d08HxgvFEC4Yxwx5dCmQXING6tdgBVig95R_KVSbLGcI-B4ScbWb330DXL9ftKSdG2GzQP0ofnWAIwDq3QfVF6eKK_SXRIExMmLzi-yRTVPs7TL0YMrhFYz22C1aY_XL2P0iKk8WwJ731z6FEnpBUSZelkh6fGU5QM3I9Ly2pxLoipq9FGB2EvfSASBsGedNciaT64o1EMR81lEpLoggx4cS1YtI_2L01FWvzH_fIhpMmg6UjYwslPnw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%9E%D7%99%D7%9C%D7%90%20%20Mamilla%20Budapest%2C%20S%C3%ADp%20u.%2012%2C%201075" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ8bMmky_dQUcR-0xQQVxTQvo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6309</td>
+      <td><b>חדש! מסעדת מרקש  Marrakesh</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Wesselényi utca, 30 [map: https://maps.app.goo.gl/dFkkn5y5eQ7NJeEu7]</td>
+      <td>Marrakesh kosher restaurant</td>
+      <td>Budapest, Wesselényi utca 30, 1077 Hungary</td>
+      <td>4.3 (142)</td>
+      <td>06 70 300 0075</td>
+      <td class="photo">places/ChIJ923IhATdQUcRZeXGi-zmeww/photos/AaVGc3mOUory6vRFDiK-jNLN19n_Leq5_ErgVQXr73uzzBqOHQ_FbxOvNxzJCoNoMWluSXFd42IKmbgBznvznT44xxmN3vuwK3koSmv3T1bfdJIQWrQeGMeaNrQWoF1HxYm8Xkg9uxQbyBYNvMwVa46MzQjM-zDtq0qS8BHPs0F-BPeU5xDDuRgkCOBSnbeyXdfVcEjgZKVEiQBfAahhj621JyuZCWCLqcgSrW99cEqoqxndIJZO2AnNzXBI8FfVsX8u6oAkjrWpJYVK4sDeFgnEmJEvfo4FpfKmC1bgqj5LDmEv8i3uIzO8AZ1CqdUnC_K4vjd1N5t6oLwFYZpOvHXuqU_ypmk5S-PFbcM30ta25m-e0sxM-3mUT1Wp-qCJ4izam-Cd2XOnJv-sbWyoLzDIIG5gohRPi84M2fO3WFXvHIOtggQvCfzdlK7-cLP3gPZ_</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%93%D7%A9!%20%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%9E%D7%A8%D7%A7%D7%A9%20%20Marrakesh%20Budapest%2C%20Wessel%C3%A9nyi%20utca%2C%2030%20%5Bmap%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FdFkkn5y5eQ7NJeEu7%5D" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ923IhATdQUcRZeXGi-zmeww" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6310</td>
+      <td><b>חדש! שוק הכרמל  Shuk HaCarmel</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Kazinczy u. 32 [map: https://maps.app.goo.gl/gRWDewyFt3Nht6tJ7]</td>
+      <td>שוק הכרמל - Shuk HaCarmel</td>
+      <td>Budapest, Kazinczy u. 32, 1075 Hungary</td>
+      <td>4.6 (39)</td>
+      <td>06 30 115 0242</td>
+      <td class="photo">places/ChIJd1EvLADdQUcRLnBd8QC9ecU/photos/AaVGc3kaJkyrT-DWbW8Xr6VVkXtFRcNw8hIwR4YjK3hf2oeGN2iL8OJH7qR71k17geJtFIqO6E3VHeYkH7Op_qAZGKCg7h95KV0VppRQHs9g692eRekEJiaJhmpp8Ei3fwPcmxyCTknBy9i2u9xjO4BGX99w3hf7h_A01WxcUYdvLBqz0tAxkaFAOYPTkRnLgWJ4-lds1pefnaohD5xMyBuEpOYy63rhWZvwz8WPXLpiSL7TeNqi-kXgByRXjSNSEBn_mbZ2ZTly0jrSbiIMpeMQLBz54rRyF9nbLmeIT6rKz-uoANt5pvyA43VDP_k3_lvpk7FeczDG3YYKHDh3wWT74zk0KH1ry1hOfqCRtpKd8tjn_Qk-uSdYndw-6qrPHkvSERoE5zguAzivCNwD-OQUKQ-UQId2cdKpwwHdmAZhISWiecbCRLfqe4_eMSbgVlJI</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי זהה (שוק הכרמל), כתובת זהה לחלוטין (Kazinczy u. 32, Budapest), שניהם מסעדה כשרה. ההבדל ברמה הגאוגרפית (Budapest כעיר בהונגריה) לא רלוונטי - זו אותה מקום פיזי. A מציין 'חדש!' אבל B מאופרציונלי, מה שמעיד על עדכון המידע.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%93%D7%A9!%20%D7%A9%D7%95%D7%A7%20%D7%94%D7%9B%D7%A8%D7%9E%D7%9C%20%20Shuk%20HaCarmel%20Budapest%2C%20Kazinczy%20u.%2032%20%5Bmap%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FgRWDewyFt3Nht6tJ7%5D" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJd1EvLADdQUcRLnBd8QC9ecU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6312</td>
+      <td><b>מסעדת ניטאבלו  Nitavalo</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Dob u. 32</td>
+      <td>Nitavalo</td>
+      <td>Budapest, Dob u. 32, 1072 Hungary</td>
+      <td>4.9 (1368)</td>
+      <td></td>
+      <td class="photo">places/ChIJs0eEYQDdQUcRLOtXTBtSLPU/photos/AaVGc3lRLX1otRwqmmKEsTPFkMEhcJct--pZ49VFYdYnw2bfOlLw5_m2qnBPN2MgphdpWR1otnvMkT7Z5vL0LzNU5pPhDhvfLWKtV6znRIJjzSJbcnJBIjZOAiwd_q3UefCM7Op_TUuxeiYTN6FhpeQ1TvVi8y-DZMzmWLV72gJLIZvswucGqHrMhmXIuhdcDy9hHfmBEPlArhKKB5sgNx3ZrH3XBNzsU_O8K3yL5qdPz7RNhZ8dFmY10yFOVroLX1wHGo8k_Uqa7hCCWIfpDTZ_RsTWS3SjSW88r2mTbdOezsmWj67fWmyhluwR3XKAd1XdNwcd3jKkYy_0DLNMjB29PcZRGMvchXzlKeieEF0AjQi8TlT6JP4li7FUzRdPobrOw5-eTsFacJsCLH8wSD1c9kaHD_JtSVjIyzGGSTN3lVh8DgCsxsfewbR0pEVYBYuZ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%A0%D7%99%D7%98%D7%90%D7%91%D7%9C%D7%95%20%20Nitavalo%20Budapest%2C%20Dob%20u.%2032" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJs0eEYQDdQUcRLOtXTBtSLPU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6313</td>
+      <td><b>מסעדת חנה  Hanna</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Kazinczy u. 29, 1074.טלפון:  T +3613421072</td>
+      <td>Hanna Orthodox Kosher Restaurant</td>
+      <td>Budapest, Kazinczy u. 29, 1074 Hungary</td>
+      <td>4 (1681)</td>
+      <td>06 20 395 1746</td>
+      <td class="photo">places/ChIJ_5KJrWncQUcRXswA76gD_pE/photos/AaVGc3kl53JRBVCN_rRkTaC3gaobOaLogyCv2tDTiQPVSGaE-ODCzsZEh6L7iOoE8bUCJHFx2xq0PIGMYurMIyayhGZcpjMRfTqZsY4LiDj_seXjjTxUDnVeeV0zYg0cWRUoc5CuMRc6j4K7PeknCPRBhg2g34yTnRig2MIjlHcU9jYFvaKr_JubPGCTCA4a4Wc9OqCrh7Mt-p38IouoEzVg0iCZJWInw1j0HArIKdbUX2s4kqspNh7YnmSfertArIqqHXN6dtnf4IZoqfudEplMJH3BXaLw688CO9q0HQ5H0NrC8-cefFUz0Xpc9Y6Wjm99BkdONlDyNUxXZEXB4Odo7fD6eHpZ-IMeNgGNDxdSneDXAl_W519hsBJvVPqPZUcq3rkJK17Qe96B5WMXbwkYHThHQXRdlFaCulBLlGlyK7NXOEF133BjxQFKH_nHvOUo</td>
+      <td class="reason">LLM אישר (0.95): שם זהה (חנה/Hanna), כתובת זהה בדיוק (Kazinczy u. 29, Budapest 1074), שניהם מסעדה כשרה. A בעברית וB באנגלית - אותו מקום</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%97%D7%A0%D7%94%20%20Hanna%20Budapest%2C%20Kazinczy%20u.%2029%2C%201074.%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%C2%A0%20T%20%2B3613421072" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ_5KJrWncQUcRXswA76gD_pE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6314</td>
+      <td><b>מסעדת כרמל  Carmel</b><div class="muted">Budapest · Hungary</div></td>
+      <td>31. Kazinczy St.</td>
+      <td>Carmel Kóser Étterem</td>
+      <td>Budapest, Kazinczy u. 31, 1075 Hungary</td>
+      <td>4.1 (2784)</td>
+      <td>06 30 259 7022</td>
+      <td class="photo">places/ChIJPVJEtWncQUcR2QeT3fK4chU/photos/AaVGc3m8ziOjrMruv65kBn48NPtuPPujx3nqR5VQsrOrgw9NiMzp3DOSoKeuLYhhMp3GU81qUS1Uzij29k-RVjfW7VAKalbfdLJ40al42Y5cxiFOK8mIk3ha-FGwcnOwtqR8P3Blo6niFRekPatFnG0iiB03yfXPqheGmi1wKcFw9eUkxXkz0QR_fX-PY_ZPl93S6L0d2XSppCGgCVjRWoD3vcUiogsK8wrFIxG-Q5XMUQD6mAFq6RcTfJN0p57JZ4M9XwgSzrGfds4_TZfwX4x44AFJpm7GhLovojigLftD0QcwYT7kWXbtP5-AaOJTDcdcWCSmWf5ZR5jGzfCGdkOo6etH38Dew4MZO_i-VxNVO2VfomH4YCuZCKt7Hr2uyuRFxB5MEj9AdATb-YBLc5FqLr9z4KzGjffVnoHs2LPHaptn17zlVb1rnSX9130iZ1NY</td>
+      <td class="reason">LLM אישר (0.95): Same kosher restaurant: Carmel/מסעדת כרמל. Identical street (Kazinczy) and house number (31) in Budapest. Address variants (31. vs u. 31) are standard Hungarian notation differences. Hebrew name + English transliteration = same establishment. Google provides complete postal code (1075) confirming location.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%9B%D7%A8%D7%9E%D7%9C%20%20Carmel%2031.%20Kazinczy%20St." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJPVJEtWncQUcR2QeT3fK4chU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6315</td>
+      <td><b>פלאפל בר  Falafel Bar</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Wesselényi utca 30.</td>
+      <td>Falafel Bar</td>
+      <td>Budapest, Wesselényi utca 30, 1077 Hungary</td>
+      <td>4.4 (1652)</td>
+      <td></td>
+      <td class="photo">places/ChIJ1ek1d2jcQUcR1wtOR6mhePU/photos/AaVGc3lrVhG2wvSYiZzXZ3tjmsewI1Je978EEUGbj9PHdGvopefPawVP5XmITygN3MvjfqPl5TQJFAmvt1BDW8Vb7NKx2sVNSBR6NGc7jHnmw18BiATNPJCN7uLW4Ol8bdG8GvFOHijcTMFf7QYyXbpP3xUvNDOAmFDrc3jgn8GKEBoP3h57QFO5dKweZH7q6X2fZD1KUCX_tT9SxrerVgHFXdWSHDp6r6ikHQJ1oPF0Ev0-BE-c0tmE1_8aAW5VUl5IGoIisfn-KuTOyQSchlNy3Z8IjQ63pEppDrFYkadUCMU3nP4rld161gNL5YirEXCeKc_o-HlNhDhoDav-e3hG0Fu7UYrbZhS4SpiUuGSwTx7GLi-Gan-wphriYfSgUMzg3K-lT_eZpPs9j-W5mUNf7EfmVCyLgQKyKGdAKl7oDig</td>
+      <td class="reason">generic name but exact address</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%20%20Falafel%20Bar%20Budapest%2C%20Wessel%C3%A9nyi%20utca%2030." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1ek1d2jcQUcR1wtOR6mhePU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6318</td>
+      <td><b>מסעדת אשיז׳ Ashis</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Dob u. 5</td>
+      <td>אשיז׳ אוכל רחוב ישראלי Ashis' Israeli street food</td>
+      <td>Budapest, Dob u. 5, 1074 Hungary</td>
+      <td>4.6 (1197)</td>
+      <td>06 70 329 1244</td>
+      <td class="photo">places/ChIJxyLK-ubdQUcRmMyAfIqZBkA/photos/AaVGc3l5eLjvUQJotjBPA5dn44B4cOwceFLKPUt8rCpm7UHUVR2yNWbNpJJ1UZA6IZZkO3O99wcsZTFeocBHMQfrFn7PbgB8z4QHPp2aMRjtlKqMJPJ4o-ehvvB_WP4mS-sp0UEfB4neVrVQLhUn9bgRez4BlLtAVrCtK-XwHNxM-A_sXhrxnS0qhamfWf8eu34PYb1lJ5SXloVfLNpOKwINg6czKWHq9mkIYbrif8cjDayoSy51kFIkiyI5EBUVamDcdNeVmM12U8uj-h-Z6kzCywcdkLRT8De9-P-5Bsjn2VliVtRiOXmdoVJ5Nv_xHxeuyOqvVyZDc77ICJWeye_mZvPW5VjNuLeOZtoYpjxpfDGZ7vn7ywKVPfIeRUbV2isYR5UYIaC5Ocf6dvYGGILbhxdN9H7OPzgXPhKByq0-x8PjTA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%90%D7%A9%D7%99%D7%96%D7%B3%20Ashis%20Budapest%2C%20Dob%20u.%205" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJxyLK-ubdQUcRmMyAfIqZBkA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6319</td>
+      <td><b>מסעדת קאצ'אפ Catchup</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Nagy Diófa u. 4, 1072.</td>
+      <td>Kosher MeatUp &amp; Kosher Catchup</td>
+      <td>Budapest, Nagy Diófa u. 4, 1075 Hungary</td>
+      <td>4.4 (562)</td>
+      <td>06 70 754 1948</td>
+      <td class="photo">places/ChIJ26YWRfLdQUcRJFjohXiyv4Y/photos/AaVGc3mRPf1BTfYe7NBs83E665RhJC0lDAe8yd-s9iPBw_XTp-K9etOcMIjqvt2nps9ms5QsCZOZcN79t9XekyhgLQ2L7A0Yy4FgfiBOPirMo3WFJueW9KXXKfxXoLm0LxNZpsjo7drcSPnqYAT1Cz3fK3IyNhpRqr7X0b_Xe3TQJps4YTMxtZlU107IrSwsfcB8s7I5o1zZ-qUgo1INz6SsswTglFpj6bTC0LGXIo10VTEoTDf1CcvL761WI3C1z0u0MIQN02gcWG8zjDZQbliQiYa77qLtOZxYwkdppsx2Owz0-6LqIJuHaN22250Pw0FQT_Q4ttx8e_eE8ecMYnX5QOt3_wTLIw_V8y138BlCulsh4Gi27BBJAf2RtCyAjUfBrTKXWRJsMnhnn_G_g2LmB3s-wu3kcPyNo0ix6Qzw3r3PkA</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%A7%D7%90%D7%A6'%D7%90%D7%A4%20Catchup%20Budapest%2C%20Nagy%20Di%C3%B3fa%20u.%204%2C%201072." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ26YWRfLdQUcRJFjohXiyv4Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8335</td>
+      <td><b>Ashis' Israeli street food</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Dob u. 5, Budapest, 1074, Hungary</td>
+      <td>אשיז׳ אוכל רחוב ישראלי Ashis' Israeli street food</td>
+      <td>Budapest, Dob u. 5, 1074 Hungary</td>
+      <td>4.6 (1197)</td>
+      <td>06 70 329 1244</td>
+      <td class="photo">places/ChIJxyLK-ubdQUcRmMyAfIqZBkA/photos/AaVGc3l5eLjvUQJotjBPA5dn44B4cOwceFLKPUt8rCpm7UHUVR2yNWbNpJJ1UZA6IZZkO3O99wcsZTFeocBHMQfrFn7PbgB8z4QHPp2aMRjtlKqMJPJ4o-ehvvB_WP4mS-sp0UEfB4neVrVQLhUn9bgRez4BlLtAVrCtK-XwHNxM-A_sXhrxnS0qhamfWf8eu34PYb1lJ5SXloVfLNpOKwINg6czKWHq9mkIYbrif8cjDayoSy51kFIkiyI5EBUVamDcdNeVmM12U8uj-h-Z6kzCywcdkLRT8De9-P-5Bsjn2VliVtRiOXmdoVJ5Nv_xHxeuyOqvVyZDc77ICJWeye_mZvPW5VjNuLeOZtoYpjxpfDGZ7vn7ywKVPfIeRUbV2isYR5UYIaC5Ocf6dvYGGILbhxdN9H7OPzgXPhKByq0-x8PjTA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ashis'%20Israeli%20street%20food%20Dob%20u.%205%2C%20Budapest%2C%201074%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJxyLK-ubdQUcRmMyAfIqZBkA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8336</td>
+      <td><b>Brooklyn Bagel - Budapest</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Újpesti rkp. 1, Budapest, , 1137, Hungary</td>
+      <td>Brooklyn Bagel</td>
+      <td>Budapest, Újpesti rkp. 1, 1137 Hungary</td>
+      <td>4.5 (560)</td>
+      <td>06 30 319 4356</td>
+      <td class="photo">places/ChIJQZ6KOJXdQUcRcv6zbLiM3SY/photos/AaVGc3nafUavSD5h_hGPVc-R9DVrQu31bDGl9lJ6mkD06o-aoyOWR5-MP0JkkqpfxGPaFcypg5pMda9aI6nN2MC96vKnMBwa2a4kNb5NzDsqWGi6BhOub35BW5xIpBFusiKgOsz8s_ruQ0PoJt6kPnGaAG-zRRX3bXhyamPHeSZvvHnpUnZAmqNneDZ9T21xJqoB-YqZRz5JcRK8_OrAO5OMHUbSGmCj-IF3yxHYlBD0IVzcxCBvK66NIfmz7JIDOyDgbHA9qWHLc98rXpBdOvoiOXcgo42kyJUyVVsbrDSz1ME3q7V-NDB1zo79XFklMcKYKESffiMfKCdWA-1ktq7-TtTr_cCcp6L8GDv3zjiTa0JbAEr_cvg5LsuHSARchmQUcmTuzFNfSX0Q9cvy-tPFIrf3D_hKIBwY9OzInQsBkyUIfQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Brooklyn%20Bagel%20-%20Budapest%20%C3%9Ajpesti%20rkp.%201%2C%20Budapest%2C%20%2C%201137%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQZ6KOJXdQUcRcv6zbLiM3SY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8337</td>
+      <td><b>Cafe Tamar Budapest</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Nagy diófa 3,   Budapest, Hungary</td>
+      <td>Cafe Tamar Budapest</td>
+      <td>Budapest, Nagy Diófa u. 3, 1072 Hungary</td>
+      <td>4.7 (2320)</td>
+      <td></td>
+      <td class="photo">places/ChIJo0cCE7XdQUcRqguYOfQ8yKk/photos/AaVGc3nBP8UQY7Zm52_3tin1IKMCgk6w3mn4B0j2CZYPhUZP6m1pQzW-jObzK89DPc1LHbsjMiflEBg5VbonSumnrBQ4wSmDNA7B50AGjpK5GN0vKTOfIkK8bVdCk7eursp32VshtaNc2k2Go-EmY1Dz8qxiodeER0-O_1c7Ti-0_DkMK-yj6QFmY7SLmpeuqUXk0ckHl0tm7z6Ecy_fH8kP-cXBayx_Fcab4SeQKJ2x9rBuD5ci41vc68YvOXpozF9KFZ-07-3ms5uDffoY32ID_EfozGQhkbSjYtcL-EnL5TR04GQkohBOJBn-tGG-T50WPZlKtFaK0kSDGl4zCSHGuhi0m-CmD88lZ_9WTudpAnJaLDWplSv1l-3E7yCZ8gb4ZA-Jb9eahT74Oww5emGDl0flSF5wBg0ZkTZwttb0mxx9Hdyv</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe%20Tamar%20Budapest%20Nagy%20di%C3%B3fa%203%2C%20%20%20Budapest%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJo0cCE7XdQUcRqguYOfQ8yKk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8338</td>
+      <td><b>Cafe Tel Aviv</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Kazinczy utca (street) 28, Budapest, 1075, Hungary</td>
+      <td>Tel Aviv Cafe</td>
+      <td>Budapest, Kazinczy u. 28, 1074 Hungary</td>
+      <td>4 (2121)</td>
+      <td>06 30 572 1684</td>
+      <td class="photo">places/ChIJfT41N2jcQUcRiBeoviRnh8w/photos/AaVGc3njeyW1CPwHj58vVG8JgvguQ-w0L7Ec0Re00SUqTet-kJr_qDzT1blWHi5MhTApqvjJG1gMVaLUU8S8o7wTYQv19rLTT5brbkyuG6LUChcPZT9EmnU8LAd2sS0Un_sz1urCT1OpBgi54cccCF3iSYOeQtmeQ93jORzeHcqQhH5SjFEcU97FBLmc30ka4d78fFw5yf5CUitAqG_QFYUC_M5F7zIK9O3PUUsdO8V3XZjA7U78lc5FuN3-iJT6qWLh8ptE_g8I6UerNRlOZY76IFzwZKzc74k4GaMRIQ4fb0HXaIx8RdxLqlEjcjics4_jki9oJ2DNKEJmJUTi3vk2yYgQHA2MHAF4IAkE5w3R-JLTC2vxHGYO1hJJrVXmuIMZ21XAVrkKluIBjBj9GIVs6AXGcE4PNQCdPzu7u6JTvcE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe%20Tel%20Aviv%20Kazinczy%20utca%20(street)%2028%2C%20Budapest%2C%201075%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfT41N2jcQUcRiBeoviRnh8w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8339</td>
+      <td><b>Carmel Restaurant</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Kazinczy u. 31, Budapest, 1074, Hungary</td>
+      <td>Carmel Kóser Étterem</td>
+      <td>Budapest, Kazinczy u. 31, 1075 Hungary</td>
+      <td>4.1 (2784)</td>
+      <td>06 30 259 7022</td>
+      <td class="photo">places/ChIJPVJEtWncQUcR2QeT3fK4chU/photos/AaVGc3m8ziOjrMruv65kBn48NPtuPPujx3nqR5VQsrOrgw9NiMzp3DOSoKeuLYhhMp3GU81qUS1Uzij29k-RVjfW7VAKalbfdLJ40al42Y5cxiFOK8mIk3ha-FGwcnOwtqR8P3Blo6niFRekPatFnG0iiB03yfXPqheGmi1wKcFw9eUkxXkz0QR_fX-PY_ZPl93S6L0d2XSppCGgCVjRWoD3vcUiogsK8wrFIxG-Q5XMUQD6mAFq6RcTfJN0p57JZ4M9XwgSzrGfds4_TZfwX4x44AFJpm7GhLovojigLftD0QcwYT7kWXbtP5-AaOJTDcdcWCSmWf5ZR5jGzfCGdkOo6etH38Dew4MZO_i-VxNVO2VfomH4YCuZCKt7Hr2uyuRFxB5MEj9AdATb-YBLc5FqLr9z4KzGjffVnoHs2LPHaptn17zlVb1rnSX9130iZ1NY</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Carmel%20Restaurant%20Kazinczy%20u.%2031%2C%20Budapest%2C%201074%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJPVJEtWncQUcR2QeT3fK4chU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8340</td>
+      <td><b>Falafel Bar Budapest</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Wesselényi utca 30 Budapest, 1077 , Hungary</td>
+      <td>Falafel Bar</td>
+      <td>Budapest, Wesselényi utca 30, 1077 Hungary</td>
+      <td>4.4 (1652)</td>
+      <td></td>
+      <td class="photo">places/ChIJ1ek1d2jcQUcR1wtOR6mhePU/photos/AaVGc3lrVhG2wvSYiZzXZ3tjmsewI1Je978EEUGbj9PHdGvopefPawVP5XmITygN3MvjfqPl5TQJFAmvt1BDW8Vb7NKx2sVNSBR6NGc7jHnmw18BiATNPJCN7uLW4Ol8bdG8GvFOHijcTMFf7QYyXbpP3xUvNDOAmFDrc3jgn8GKEBoP3h57QFO5dKweZH7q6X2fZD1KUCX_tT9SxrerVgHFXdWSHDp6r6ikHQJ1oPF0Ev0-BE-c0tmE1_8aAW5VUl5IGoIisfn-KuTOyQSchlNy3Z8IjQ63pEppDrFYkadUCMU3nP4rld161gNL5YirEXCeKc_o-HlNhDhoDav-e3hG0Fu7UYrbZhS4SpiUuGSwTx7GLi-Gan-wphriYfSgUMzg3K-lT_eZpPs9j-W5mUNf7EfmVCyLgQKyKGdAKl7oDig</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Falafel%20Bar%20Budapest%20Wessel%C3%A9nyi%20utca%2030%20Budapest%2C%201077%20%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1ek1d2jcQUcR1wtOR6mhePU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8341</td>
+      <td><b>Hanna Garden</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Kazinczy u. 29-31, 1074, Budapest, Hungary</td>
+      <td>Hanna Orthodox Kosher Restaurant</td>
+      <td>Budapest, Kazinczy u. 29, 1074 Hungary</td>
+      <td>4 (1681)</td>
+      <td>06 20 395 1746</td>
+      <td class="photo">places/ChIJ_5KJrWncQUcRXswA76gD_pE/photos/AaVGc3kl53JRBVCN_rRkTaC3gaobOaLogyCv2tDTiQPVSGaE-ODCzsZEh6L7iOoE8bUCJHFx2xq0PIGMYurMIyayhGZcpjMRfTqZsY4LiDj_seXjjTxUDnVeeV0zYg0cWRUoc5CuMRc6j4K7PeknCPRBhg2g34yTnRig2MIjlHcU9jYFvaKr_JubPGCTCA4a4Wc9OqCrh7Mt-p38IouoEzVg0iCZJWInw1j0HArIKdbUX2s4kqspNh7YnmSfertArIqqHXN6dtnf4IZoqfudEplMJH3BXaLw688CO9q0HQ5H0NrC8-cefFUz0Xpc9Y6Wjm99BkdONlDyNUxXZEXB4Odo7fD6eHpZ-IMeNgGNDxdSneDXAl_W519hsBJvVPqPZUcq3rkJK17Qe96B5WMXbwkYHThHQXRdlFaCulBLlGlyK7NXOEF133BjxQFKH_nHvOUo</td>
+      <td class="reason">LLM אישר (0.95): Same unique kosher restaurant in Budapest. Identical street (Kazinczy u.) and house number match (29-31 vs 29 - same building). Same postal code 1074. B's full name 'Hanna Orthodox Kosher Restaurant' matches A's 'Hanna Garden' as the same establishment with expanded descriptor. Operational status confirms active business.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hanna%20Garden%20Kazinczy%20u.%2029-31%2C%201074%2C%20Budapest%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ_5KJrWncQUcRXswA76gD_pE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8342</td>
+      <td><b>Hummus Bar Budapest</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Wesselényi utca 14, Budapest, 1075, Hungary</td>
+      <td>hummusbar kosher</td>
+      <td>Budapest, Wesselényi utca 14, 1075 Hungary</td>
+      <td>4.2 (2374)</td>
+      <td>06 70 466 2496</td>
+      <td class="photo">places/ChIJRfzjg0LcQUcRbybdgOIV-wE/photos/AaVGc3mXbUU9N7W0qCd7bSsbUc7JgPx7q470QfNVC35q4gSrgtwTlLMMmB4hCi7_p0cz63kuCT9nl8ZZ9A8B9DsSwBdK3cU_XvRevLm4PA3oX4qjYRpLweWvHeByyR2d2Tr0_LFW3GL-j5w6AT_tnnM-7fMnbfL3cnz4s6abKmiHykvTAhZQu_S8K9c4pIF6TlPjpL4q6rEm_VhwvryPy4v3GHavx2O24Ka4AsoF6vj5LkpZdZLvC8807g8jCePNy6anFa7Cl_WlFBgFakpl7gv_833h3T1pXgZJ8wNB3FaddmomjPcJGlK3dkt-aT16eBxDx-Li2rlxCeOc3NADEb_cw_yvJNrWbqhMezTb1xFmy7z5smW0b9IZ2CW8q81L6TefumBmQeKrYnKUrDphuqxlR98JtwZu1Z7jVp28EroZkSoNpg</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hummus%20Bar%20Budapest%20Wessel%C3%A9nyi%20utca%2014%2C%20Budapest%2C%201075%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJRfzjg0LcQUcRbybdgOIV-wE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8344</td>
+      <td><b>Marrakesh Kosher Restaurant</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Wesselényi utca, 30, Budapest, 1077, Hungary</td>
+      <td>Marrakesh kosher restaurant</td>
+      <td>Budapest, Wesselényi utca 30, 1077 Hungary</td>
+      <td>4.3 (142)</td>
+      <td>06 70 300 0075</td>
+      <td class="photo">places/ChIJ923IhATdQUcRZeXGi-zmeww/photos/AaVGc3mOUory6vRFDiK-jNLN19n_Leq5_ErgVQXr73uzzBqOHQ_FbxOvNxzJCoNoMWluSXFd42IKmbgBznvznT44xxmN3vuwK3koSmv3T1bfdJIQWrQeGMeaNrQWoF1HxYm8Xkg9uxQbyBYNvMwVa46MzQjM-zDtq0qS8BHPs0F-BPeU5xDDuRgkCOBSnbeyXdfVcEjgZKVEiQBfAahhj621JyuZCWCLqcgSrW99cEqoqxndIJZO2AnNzXBI8FfVsX8u6oAkjrWpJYVK4sDeFgnEmJEvfo4FpfKmC1bgqj5LDmEv8i3uIzO8AZ1CqdUnC_K4vjd1N5t6oLwFYZpOvHXuqU_ypmk5S-PFbcM30ta25m-e0sxM-3mUT1Wp-qCJ4izam-Cd2XOnJv-sbWyoLzDIIG5gohRPi84M2fO3WFXvHIOtggQvCfzdlK7-cLP3gPZ_</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Marrakesh%20Kosher%20Restaurant%20Wessel%C3%A9nyi%20utca%2C%2030%2C%20Budapest%2C%201077%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ923IhATdQUcRZeXGi-zmeww" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8345</td>
+      <td><b>Nitavalo</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Dob u. 32, Budapest, 1072, Hungary</td>
+      <td>Nitavalo</td>
+      <td>Budapest, Dob u. 32, 1072 Hungary</td>
+      <td>4.9 (1368)</td>
+      <td></td>
+      <td class="photo">places/ChIJs0eEYQDdQUcRLOtXTBtSLPU/photos/AaVGc3lRLX1otRwqmmKEsTPFkMEhcJct--pZ49VFYdYnw2bfOlLw5_m2qnBPN2MgphdpWR1otnvMkT7Z5vL0LzNU5pPhDhvfLWKtV6znRIJjzSJbcnJBIjZOAiwd_q3UefCM7Op_TUuxeiYTN6FhpeQ1TvVi8y-DZMzmWLV72gJLIZvswucGqHrMhmXIuhdcDy9hHfmBEPlArhKKB5sgNx3ZrH3XBNzsU_O8K3yL5qdPz7RNhZ8dFmY10yFOVroLX1wHGo8k_Uqa7hCCWIfpDTZ_RsTWS3SjSW88r2mTbdOezsmWj67fWmyhluwR3XKAd1XdNwcd3jKkYy_0DLNMjB29PcZRGMvchXzlKeieEF0AjQi8TlT6JP4li7FUzRdPobrOw5-eTsFacJsCLH8wSD1c9kaHD_JtSVjIyzGGSTN3lVh8DgCsxsfewbR0pEVYBYuZ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Nitavalo%20Dob%20u.%2032%2C%20Budapest%2C%201072%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJs0eEYQDdQUcRLOtXTBtSLPU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8346</td>
+      <td><b>Piac-Kosher Market Budapest</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Dohány u. 36, Budapest, 1074, Hungary</td>
+      <td>kosher market</td>
+      <td>Budapest, Dohány u. 36, 1074 Hungary</td>
+      <td>4.3 (466)</td>
+      <td>06 30 572 2165</td>
+      <td class="photo">places/ChIJj4FRWl3cQUcR2shfCpiV5Pg/photos/AaVGc3kUfFoR894cpH89W1ds_RRs_0aJUUvGI8QIhqwSvv3V_9lWaN7sc4TT-OGOekwrXIo_CQSTI3LMKPEXVt0LvWcdyWWjal6SEVYy62DTMwuRYzmryFEnr8VZ7gecV375pbSnrrRNjHgBFIfjZnDkyzXw1SVli4TNY6TyUCO8og2kQ3NJbjwlSZfkPV_TNyMfyXFL_E3U-sRRQapvbBzhTr8sGUCs8yUQPkPOLxjeklNiMW8hZmz-W6qC6AYa2G52HB6a0qj5To00ny0PM-gwGsXCbv7CPTU9Kvn1ZEnKKNkbMIE2uTye-cYvKxRONqjxfxzczOqvGhOSnUZBBH-iMMNJTYnw1yMum6CVdHv1Q5mz5JLIZ8WVJCd1wucLqoje89LydeLJrnIKPdEuzclRAMueoHvDsaeNGLAp5tqW0q8WnLqq</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Piac-Kosher%20Market%20Budapest%20Doh%C3%A1ny%20u.%2036%2C%20Budapest%2C%201074%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJj4FRWl3cQUcR2shfCpiV5Pg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8347</td>
+      <td><b>Shuk HaCarmel</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Kazinczy u. 32, Budapest, 1075, Hungary</td>
+      <td>שוק הכרמל - Shuk HaCarmel</td>
+      <td>Budapest, Kazinczy u. 32, 1075 Hungary</td>
+      <td>4.6 (39)</td>
+      <td>06 30 115 0242</td>
+      <td class="photo">places/ChIJd1EvLADdQUcRLnBd8QC9ecU/photos/AaVGc3kaJkyrT-DWbW8Xr6VVkXtFRcNw8hIwR4YjK3hf2oeGN2iL8OJH7qR71k17geJtFIqO6E3VHeYkH7Op_qAZGKCg7h95KV0VppRQHs9g692eRekEJiaJhmpp8Ei3fwPcmxyCTknBy9i2u9xjO4BGX99w3hf7h_A01WxcUYdvLBqz0tAxkaFAOYPTkRnLgWJ4-lds1pefnaohD5xMyBuEpOYy63rhWZvwz8WPXLpiSL7TeNqi-kXgByRXjSNSEBn_mbZ2ZTly0jrSbiIMpeMQLBz54rRyF9nbLmeIT6rKz-uoANt5pvyA43VDP_k3_lvpk7FeczDG3YYKHDh3wWT74zk0KH1ry1hOfqCRtpKd8tjn_Qk-uSdYndw-6qrPHkvSERoE5zguAzivCNwD-OQUKQ-UQId2cdKpwwHdmAZhISWiecbCRLfqe4_eMSbgVlJI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Shuk%20HaCarmel%20Kazinczy%20u.%2032%2C%20Budapest%2C%201075%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJd1EvLADdQUcRLnBd8QC9ecU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8348</td>
+      <td><b>Uptown Kosher Bakery</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Nagy Diófa u. 4, Budapest, 1072 , Hungary</td>
+      <td>UpTown Kosher bakery - מאפייה כשרה</td>
+      <td>Budapest, Nagy Diófa u. 4, 1072 Hungary</td>
+      <td>4.4 (167)</td>
+      <td>06 30 485 8873</td>
+      <td class="photo">places/ChIJWc7UFj3dQUcRAuK3NgtE54w/photos/AaVGc3kzMCSLJDDCbgiTlI_3CIeT5kdmT18wi4Ckl4hc9cUF7OO_H7uWyFUHMwtdDJadAE9AtHa8Fz7S37j4e1NUx5zklgW0F7_uUn-HN3ZUyLbN33uxUdy04qbEluHEEeaYus9q-Dqw2bzlOuHb1xWVHhex4pXRk80_HeujasyQ4LsG2shopzy_it4BURb0jR7qSRI6juPto0DU7gD-LlNbGx955biAGJtoubYxEiM09RWdVvbL0hFgic8YzAXDi8nK221M3XCx7eAlsZR6SJpti-K_uMdIaa5d5bP69UlXIILyJDsuAnYDBAs99VV55BdAO-Hrf-6wK-J9iy2UgRs0DAqXVleQ72JepXnetgPB4PJWVbCsLdGln2JTCGT5LRjhuTO7hA4xV1oJxEep_v4ynmtvmzdmewcTd_pxu-bU8UimnA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Uptown%20Kosher%20Bakery%20Nagy%20Di%C3%B3fa%20u.%204%2C%20Budapest%2C%201072%20%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJWc7UFj3dQUcRAuK3NgtE54w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8349</td>
+      <td><b>Yafo Deli &amp; Kosher Food</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Dob u 31/B,  Budapest, Hungary</td>
+      <td>YAFO.HU közel-keleti, kóser élelmiszerek webáruháza | Kosher Webshop | חנות אינטרנט כשרה</td>
+      <td>Veresegyház, Hegyalja u. 8, 2112 Hungary</td>
+      <td>5 (15)</td>
+      <td>06 20 233 3845</td>
+      <td class="photo">places/ChIJVUpEJFbdQUcRi_gSIGQs9qc/photos/AaVGc3n9sHL-vwgQkGxvq0JG2hTTuD8YKqxtMUtbHGgYD5dHuIc25tf3zVmr9gOHhxPIyuWQ2ts7nLN5-QfcW6TiVMiqKGXvsvZez1_WMfPsf-HKAZFiL-9dEGXqkwdgJi6XVHDuTg1iZZJSCgpMyuYDisQcC0J9VACgaJO5l3rGc1oi3YLcidQGh5RjYFcQBCkrPX33IcEVh_1fvv6zwXhDMTcCF6xmP1vI4jM4GtqHGdX-sDX1_BLlyr68eQlIfnukXhj_f4q_vkYn3ohTC6NlKunDR3n05oIL0-yLZexDqvFa5_w5zSGPiKRMh7hwE4rRcAiGm7h0qnvuCTZOdskvRbCGbT2p14cmHtRtlLPovSoDW-J63ckzvXTIJohk7jQKck45M_6p82mEw4K2WnXXOd7wA0XG_ofh1NphfEJd8iEWvp1d__6faKOnmNFHQz_7</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yafo%20Deli%20%26%20Kosher%20Food%20Dob%20u%2031%2FB%2C%20%20Budapest%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJVUpEJFbdQUcRi_gSIGQs9qc" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 5</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>6307</td>
+      <td><b>שקשוקה  Shakshuka</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Kazinczy u. 32, 1075 Hungary.</td>
+      <td>Shakshuka - the Israeli breakfast place</td>
+      <td>Budapest, Kazinczy u. 32, 1075 Hungary</td>
+      <td>4.6 (129)</td>
+      <td>06 30 554 1282</td>
+      <td class="photo">places/ChIJidB8B_PdQUcRSI3ynnHr8pg/photos/AaVGc3nAMtRkZlYqZtfEbn0UqNMsLUhLd_Sdzu4Zvz91gGN3nSwxXqeEb6t_FcWwC-LHLs1Sjk21fBW4htrc7Tx0qnh4ZCt4FG5PDraDUByOjI9rhYuvoUV_E1op-brmBAEVcNiSApZDa7X2AYtPpxh1_HxmH3eCJC3UzYPl11pq3uUA3OLnmWugtG8Q-Ink2fby7FsMRigMDQaxp1CJFVOEveSUGdCdhYPB7qpRhYpmjLCEF6wvAGbNe2y4w2LZ_3Maw9sIKGmjkycI-CyWSr43blDQ4wEKSOOz_F1DFViLjHKAFgbxC4H4aJN_37zZzE5MGXEONmOJDzw6KTcMMCycFSkSREAY9UntKGTFHBYSK-RxKddBRtR1nBh_ZBkThDb6zvsrbNlCpm6f2CeuROgePrrwr9Me_KBvYuwp-QvOBEh1AeWH</td>
+      <td class="reason">business_status=CLOSED_TEMPORARILY</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%A7%D7%A9%D7%95%D7%A7%D7%94%20%20Shakshuka%20Budapest%2C%20Kazinczy%20u.%2032%2C%201075%20Hungary." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJidB8B_PdQUcRSI3ynnHr8pg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6311</td>
+      <td><b>חדש! חומוס בר  hummusbar</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Wesselényi utca 14 [map: https://maps.app.goo.gl/bJwQpyCwRZahn8WC7]</td>
+      <td>hummusbar</td>
+      <td>Budapest, Október 6. u. 19, 1051 Hungary</td>
+      <td>4.4 (2908)</td>
+      <td>(06 1) 354 0108</td>
+      <td class="photo">places/ChIJEckyKW_cQUcRBrA8aP53-s4/photos/AaVGc3mz9AdjYxQ8io4coGaSQwrBSgZuHyPxpDHd8kEKomuA4KzXEFbahR0psPsYxxr2xE9MIlgIpROBwchOF4WqPy055lPOZV4dK-FbPzRJvdEqNR0ZvUJXm2O7JwCRl4QGr86154ZmoWZryI8tutB4ZL1TrRS5HQU1CAHNw2dqtf4fDuYVD4MIzAUsWrGjC7JR8pNxRjKxu6MCs-xCs4VBHrCBlTjgJJj5-bwIANpkKzD_6uM5RDX3S2mcddVbLUkyQcCC8g4a49LgCTVf053pcSAVSqmxGxJO0sGknGtxudJIHHrLe5GVHLmc8k0YkODzPN0ps-0oe09Y7YrdAl28x59nY87ObJx-dUoaDIL3sleA6i-J8nwxwiGGSAgBVGLsXyLmDiLsOYCCOU3cdrwAfH7fyiU5mZKHuPzBGfTA_E35pc1TGGyn8evAOY5jjPu6</td>
+      <td class="reason">LLM דחה (0.85): שם ייחודי זהה אך כתובות שונות משמעותית בבודפשט - 915 מטר בין Wesselényi utca 14 ל-Október 6. u. 19. אלו שני סניפים שונים או עסקים שונים עם אותו שם</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%93%D7%A9!%20%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%91%D7%A8%20%20hummusbar%20Budapest%2C%20Wessel%C3%A9nyi%20utca%2014%20%5Bmap%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FbJwQpyCwRZahn8WC7%5D" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJEckyKW_cQUcRBrA8aP53-s4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6316</td>
+      <td><b>מסעדת מיטאפ  MeatUp</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Budapest, Nagy Diófa u. 4.טלפון:  T +36203885453</td>
+      <td>Kosher MeatUp &amp; Kosher Catchup</td>
+      <td>Budapest, Nagy Diófa u. 4, 1075 Hungary</td>
+      <td>4.4 (562)</td>
+      <td>06 70 754 1948</td>
+      <td class="photo">places/ChIJ26YWRfLdQUcRJFjohXiyv4Y/photos/AaVGc3mRPf1BTfYe7NBs83E665RhJC0lDAe8yd-s9iPBw_XTp-K9etOcMIjqvt2nps9ms5QsCZOZcN79t9XekyhgLQ2L7A0Yy4FgfiBOPirMo3WFJueW9KXXKfxXoLm0LxNZpsjo7drcSPnqYAT1Cz3fK3IyNhpRqr7X0b_Xe3TQJps4YTMxtZlU107IrSwsfcB8s7I5o1zZ-qUgo1INz6SsswTglFpj6bTC0LGXIo10VTEoTDf1CcvL761WI3C1z0u0MIQN02gcWG8zjDZQbliQiYa77qLtOZxYwkdppsx2Owz0-6LqIJuHaN22250Pw0FQT_Q4ttx8e_eE8ecMYnX5QOt3_wTLIw_V8y138BlCulsh4Gi27BBJAf2RtCyAjUfBrTKXWRJsMnhnn_G_g2LmB3s-wu3kcPyNo0ix6Qzw3r3PkA</td>
+      <td class="reason">business_status=CLOSED_PERMANENTLY</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%9E%D7%99%D7%98%D7%90%D7%A4%20%20MeatUp%20Budapest%2C%20Nagy%20Di%C3%B3fa%20u.%204.%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%C2%A0%20T%20%2B36203885453" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ26YWRfLdQUcRJFjohXiyv4Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6317</td>
+      <td><b>זמיר דיינר בר</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Dohány utca 54, Budapest</td>
+      <td>Marrakesh kosher restaurant</td>
+      <td>Budapest, Wesselényi utca 30, 1077 Hungary</td>
+      <td>4.3 (142)</td>
+      <td>06 70 300 0075</td>
+      <td class="photo">places/ChIJ923IhATdQUcRZeXGi-zmeww/photos/AaVGc3mOUory6vRFDiK-jNLN19n_Leq5_ErgVQXr73uzzBqOHQ_FbxOvNxzJCoNoMWluSXFd42IKmbgBznvznT44xxmN3vuwK3koSmv3T1bfdJIQWrQeGMeaNrQWoF1HxYm8Xkg9uxQbyBYNvMwVa46MzQjM-zDtq0qS8BHPs0F-BPeU5xDDuRgkCOBSnbeyXdfVcEjgZKVEiQBfAahhj621JyuZCWCLqcgSrW99cEqoqxndIJZO2AnNzXBI8FfVsX8u6oAkjrWpJYVK4sDeFgnEmJEvfo4FpfKmC1bgqj5LDmEv8i3uIzO8AZ1CqdUnC_K4vjd1N5t6oLwFYZpOvHXuqU_ypmk5S-PFbcM30ta25m-e0sxM-3mUT1Wp-qCJ4izam-Cd2XOnJv-sbWyoLzDIIG5gohRPi84M2fO3WFXvHIOtggQvCfzdlK7-cLP3gPZ_</td>
+      <td class="reason">LLM דחה (0.92): שני מסעדות כשרות שונות בבודפשט - זמיר דיינר בר בדוהני וסטריט 54, מרקש בווסלנילי סטריט 30. שמות שונים לחלוטין, כתובות שונות (262 מטר ההפרש), לא אותה מסעדה</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%96%D7%9E%D7%99%D7%A8%20%D7%93%D7%99%D7%99%D7%A0%D7%A8%20%D7%91%D7%A8%20Doh%C3%A1ny%20utca%2054%2C%20Budapest" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ923IhATdQUcRZeXGi-zmeww" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8343</td>
+      <td><b>Mamilla Restaurant Budapest</b><div class="muted">Budapest · Hungary</div></td>
+      <td>Síp u. 12, , Budapest, 1075, Hungary</td>
+      <td>Mamilla kosher restaurant-ממילא מסעדה חלבית כשרה בודפשט</td>
+      <td>Budapest, Síp u. 12, 1075 Hungary</td>
+      <td>4.6 (95)</td>
+      <td>06 70 553 4286</td>
+      <td class="photo">places/ChIJ8bMmky_dQUcR-0xQQVxTQvo/photos/AaVGc3mu83WDU-2A7zIAzkam5oD9fumYuR-Bt-J5n5j_NBnB52eQl3xcu-lgYYMoAPAk0f4rNKXMRj7ID790NSm1lL-gty9jzLqfMHqJRfqdvGcbp3NrxoC15rOuLeCJ4vAEe9oiKew0yTLjFniwX9uVCHY8GJQANxlOiuf2UEckWsDvVpyzG6l_nOrxb-ACcrjRpxRa-4d08HxgvFEC4Yxwx5dCmQXING6tdgBVig95R_KVSbLGcI-B4ScbWb330DXL9ftKSdG2GzQP0ofnWAIwDq3QfVF6eKK_SXRIExMmLzi-yRTVPs7TL0YMrhFYz22C1aY_XL2P0iKk8WwJ731z6FEnpBUSZelkh6fGU5QM3I9Ly2pxLoipq9FGB2EvfSASBsGedNciaT64o1EMR81lEpLoggx4cS1YtI_2L01FWvzH_fIhpMmg6UjYwslPnw</td>
+      <td class="reason">business_status=CLOSED_PERMANENTLY</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mamilla%20Restaurant%20Budapest%20S%C3%ADp%20u.%2012%2C%20%2C%20Budapest%2C%201075%2C%20Hungary" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ8bMmky_dQUcR-0xQQVxTQvo" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

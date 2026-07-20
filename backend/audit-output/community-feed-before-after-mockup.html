@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>השוואת פיד קהילתי - לפני ואחרי</title>
+<style>
+:root{
+  --page:#eee8dc;
+  --phone:#f5efe3;
+  --header:#fffdf8;
+  --card:#fff;
+  --navy:#0b1736;
+  --muted:#8b94a3;
+  --line:#eadfcd;
+  --gold:#d5bd69;
+  --blue:#4358f6;
+  --blueSoft:#f1f3ff;
+  --green:#148447;
+  --greenSoft:#e9fbf1;
+  --yellowSoft:#fff4d8;
+  --shadow:rgba(9,22,52,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--navy);
+  font-family:Rubik,Inter,Arial,sans-serif;
+}
+.page{
+  max-width:1220px;
+  margin:0 auto;
+  padding:26px 22px 42px;
+}
+.intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:18px;
+}
+h1{
+  margin:0 0 6px;
+  font-size:25px;
+  font-weight:900;
+}
+.lead{
+  margin:0;
+  color:#5d6675;
+  font-size:14px;
+  line-height:1.55;
+}
+.legend{
+  background:#fffaf0;
+  border:1px solid #e6dac5;
+  border-radius:14px;
+  padding:10px 12px;
+  color:#515b6c;
+  font-size:12px;
+  line-height:1.45;
+  min-width:270px;
+}
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+.columnTitle{
+  text-align:center;
+  margin:0 0 11px;
+  font-size:16px;
+  font-weight:900;
+}
+.columnTitle span{
+  display:block;
+  margin-top:3px;
+  color:#7a8494;
+  font-size:12px;
+  font-weight:700;
+}
+.phone{
+  width:375px;
+  min-height:790px;
+  margin:0 auto;
+  border-radius:30px;
+  overflow:hidden;
+  background:var(--phone);
+  border:1px solid #ddd2bf;
+  box-shadow:0 22px 58px rgba(0,0,0,.18);
+}
+.status{
+  height:25px;
+  background:#fbf8f0;
+  color:#dfd5c4;
+  text-align:center;
+  font-size:12px;
+  padding-top:6px;
+}
+.header{
+  background:var(--header);
+  border-bottom:1px solid var(--line);
+  padding:10px 15px 12px;
+}
+.top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.round{
+  width:36px;
+  height:36px;
+  border-radius:18px;
+  border:1px solid #efe4cf;
+  background:#fff;
+  box-shadow:0 4px 12px var(--shadow);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  flex:0 0 auto;
+}
+.home{
+  background:#d7c27b;
+  color:white;
+  border-color:#d7c27b;
+}
+.titleBlock{
+  min-width:0;
+  flex:1;
+}
+.title{
+  font-size:20px;
+  line-height:1.08;
+  font-weight:900;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.meta{
+  margin-top:3px;
+  color:#8a94a6;
+  font-size:11px;
+}
+.live{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:#2bbb6b;
+  border-radius:50%;
+  margin-inline-start:4px;
+}
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:13px;
+}
+.tab{
+  min-height:30px;
+  border-radius:15px;
+  background:#f4f1ea;
+  color:#687284;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:900;
+}
+.tab.on{
+  background:var(--navy);
+  color:#fff;
+}
+.askArea{
+  padding:12px 15px 0;
+}
+.askOld{
+  height:52px;
+  border-radius:16px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-size:14px;
+  font-weight:900;
+}
+.askNew{
+  height:42px;
+  border-radius:15px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:13px;
+  font-weight:900;
+}
+.feedOld{
+  padding:14px 14px 20px;
+  display:grid;
+  gap:12px;
+}
+.oldCard{
+  min-height:116px;
+  background:#fff;
+  border:1px solid #f0e5d4;
+  border-radius:18px;
+  box-shadow:0 6px 16px rgba(9,22,52,.055);
+  padding:14px;
+  position:relative;
+}
+.oldHead{
+  display:grid;
+  grid-template-columns:38px 1fr auto;
+  gap:9px;
+  align-items:start;
+}
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:19px;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:900;
+  background:#e8f7ef;
+  color:#148447;
+}
+.avatar.yellow{
+  background:#fff0c8;
+  color:#8b6616;
+}
+.oldName{
+  font-size:12px;
+  font-weight:900;
+  color:#172033;
+}
+.oldMeta{
+  margin-top:1px;
+  color:#a5aebb;
+  font-size:10px;
+}
+.oldTag{
+  border-radius:11px;
+  background:#f1f3f8;
+  color:#7b8493;
+  padding:4px 8px;
+  font-size:10px;
+  font-weight:900;
+}
+.oldText{
+  margin:13px 0 15px;
+  color:#263246;
+  font-size:13px;
+  line-height:1.45;
+  min-height:22px;
+}
+.oldActions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+.oldPill{
+  height:27px;
+  min-width:58px;
+  border-radius:14px;
+  background:#f7f8fb;
+  color:#7f8897;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:800;
+}
+.oldInput{
+  margin-top:10px;
+  height:34px;
+  border-radius:13px;
+  background:#fff;
+  border:1px solid #eee5d7;
+  color:#bcc3ce;
+  display:flex;
+  align-items:center;
+  padding:0 12px;
+  font-size:11px;
+}
+.feedNew{
+  padding:14px 17px 22px;
+  display:grid;
+  gap:14px;
+}
+.newCard{
+  background:#fff;
+  border:1px solid #f0e7da;
+  border-radius:18px;
+  box-shadow:0 8px 20px rgba(9,22,52,.065);
+  padding:14px 15px 13px;
+}
+.newHead{
+  display:grid;
+  grid-template-columns:42px 1fr auto;
+  gap:10px;
+  align-items:center;
+}
+.newNameLine{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.newName{
+  font-size:13px;
+  font-weight:900;
+  color:#172033;
+}
+.newTag{
+  border-radius:12px;
+  padding:4px 9px;
+  font-size:10.5px;
+  font-weight:900;
+}
+.tagFood{
+  background:#e9fbf1;
+  color:#148447;
+}
+.tagTransport{
+  background:#fff4d8;
+  color:#9a6b12;
+}
+.tagGeneral{
+  background:#eef1f8;
+  color:#6a7281;
+}
+.newTime{
+  color:#a5aebb;
+  font-size:11px;
+  font-weight:700;
+}
+.dots{
+  color:#b2bac6;
+  font-size:20px;
+  font-weight:900;
+  line-height:1;
+}
+.newText{
+  margin:12px 3px 14px;
+  color:#172033;
+  font-size:18px;
+  line-height:1.45;
+  font-weight:500;
+}
+.newImage{
+  height:128px;
+  border-radius:16px;
+  overflow:hidden;
+  margin:0 0 12px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.62) 0 25%,transparent 25% 50%,rgba(255,255,255,.62) 50% 75%,transparent 75%) 0 0/34px 34px,
+    linear-gradient(135deg,#f5eddc,#e7dcc7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#9b8d73;
+  font-size:13px;
+  font-weight:900;
+}
+.newStats{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:9px;
+}
+.newPill{
+  min-width:54px;
+  height:30px;
+  border-radius:15px;
+  background:#f6f7fb;
+  color:#596476;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  font-size:12px;
+  font-weight:900;
+}
+.newPill.comments{
+  color:#4057f5;
+  background:var(--blueSoft);
+  min-width:92px;
+}
+.commentBlock{
+  margin-top:12px;
+  border-top:1px solid #f0e7da;
+  padding-top:10px;
+  display:grid;
+  gap:8px;
+}
+.commentTitle{
+  color:#87909f;
+  font-size:11px;
+  font-weight:900;
+}
+.comment{
+  background:#faf7f0;
+  border:1px solid #f0e7da;
+  border-radius:13px;
+  padding:8px 10px;
+}
+.commentName{
+  color:#172033;
+  font-size:11px;
+  font-weight:900;
+}
+.commentText{
+  margin-top:2px;
+  color:#596476;
+  font-size:11px;
+  line-height:1.35;
+}
+.notes{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.note{
+  background:#fffaf0;
+  border:1px solid #e6dac5;
+  border-radius:14px;
+  padding:11px 12px;
+  color:#515b6c;
+  font-size:12px;
+  line-height:1.45;
+}
+.note b{
+  color:#172033;
+}
+@media(max-width:900px){
+  .intro{display:block}
+  .legend{margin-top:12px}
+  .compare{grid-template-columns:1fr}
+  .notes{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="intro">
+    <div>
+      <h1>פיד קהילתי - השוואה ברורה לפני/אחרי</h1>
+      <p class="lead">הפעם ההבדלים בכוונה חזקים יותר: שמאל הוא הכיוון הנוכחי, ימין הוא הכיוון החברתי יותר בסגנון המוקאפ שאהבת.</p>
+    </div>
+    <div class="legend">
+      המטרה: לראות אם הכיוון החדש באמת מרגיש כמו פוסט קהילתי, לא רק כרטיס הודעה עם כפתורי לייק/תגובה.
+    </div>
+  </section>
+
+  <section class="compare">
+    <div>
+      <h2 class="columnTitle">עכשיו <span>כרטיסים יותר מערכתיים, הרבה אוויר, פחות היררכיה</span></h2>
+      <div class="phone">
+        <div class="status">16:07</div>
+        <header class="header">
+          <div class="top">
+            <div class="round">‹</div>
+            <div class="titleBlock">
+              <div class="title">Ariel קהילת</div>
+              <div class="meta"><span class="live"></span>חי · 8 מחוברים</div>
+            </div>
+            <div class="round home">⌂</div>
+          </div>
+          <nav class="tabs">
+            <div class="tab on">הכל</div>
+            <div class="tab">מלונות</div>
+            <div class="tab">אטרקציות</div>
+            <div class="tab">אוכל</div>
+            <div class="tab">טיסות</div>
+            <div class="tab">בילויים</div>
+            <div class="tab">תחבורה</div>
+            <div class="tab">כללי</div>
+          </nav>
+        </header>
+
+        <div class="askArea">
+          <div class="askOld"><span>＋</span><span>שאל שאלה בקהילה</span></div>
+        </div>
+
+        <section class="feedOld">
+          <article class="oldCard">
+            <div class="oldHead">
+              <div class="avatar">DY</div>
+              <div>
+                <div class="oldName">daniel yehudai</div>
+                <div class="oldMeta">לפני 5 דק'</div>
+              </div>
+              <div class="oldTag">בתי כנסת</div>
+            </div>
+            <div class="oldText">פעם</div>
+            <div class="oldActions">
+              <div class="oldPill">0 👍</div>
+              <div class="oldPill">תגובות</div>
+            </div>
+          </article>
+
+          <article class="oldCard">
+            <div class="oldHead">
+              <div class="avatar">DY</div>
+              <div>
+                <div class="oldName">daniel yehudai</div>
+                <div class="oldMeta">לפני 18 דק'</div>
+              </div>
+              <div class="oldTag">כללי</div>
+            </div>
+            <div class="oldText">סבבב</div>
+            <div class="oldActions">
+              <div class="oldPill">0 👍</div>
+              <div class="oldPill">תגובות</div>
+            </div>
+            <div class="oldInput">כתוב תגובה לפוסט הזה...</div>
+          </article>
+
+          <article class="oldCard">
+            <div class="oldHead">
+              <div class="avatar">DY</div>
+              <div>
+                <div class="oldName">daniel yehudai</div>
+                <div class="oldMeta">לפני 18 דק'</div>
+              </div>
+              <div class="oldTag">כללי</div>
+            </div>
+            <div class="oldText">ב</div>
+            <div class="oldActions">
+              <div class="oldPill">0 👍</div>
+              <div class="oldPill">תגובות</div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="columnTitle">אחרי השינויים <span>יותר פיד חברתי, קריא, ברור, ועם תגובות ששייכות לפוסט</span></h2>
+      <div class="phone">
+        <div class="status">16:07</div>
+        <header class="header">
+          <div class="top">
+            <div class="round">‹</div>
+            <div class="titleBlock">
+              <div class="title">Ariel קהילה</div>
+              <div class="meta"><span class="live"></span>חי · 24 חברים · 8 מחוברים</div>
+            </div>
+            <div class="round home">⌂</div>
+          </div>
+          <nav class="tabs">
+            <div class="tab on">הכל</div>
+            <div class="tab">מלונות</div>
+            <div class="tab">אטרקציות</div>
+            <div class="tab">אוכל</div>
+            <div class="tab">טיסות</div>
+            <div class="tab">בילויים</div>
+            <div class="tab">תחבורה</div>
+            <div class="tab">כללי</div>
+          </nav>
+        </header>
+
+        <div class="askArea">
+          <div class="askNew"><span>＋</span><span>שאלה חדשה בקהילה</span></div>
+        </div>
+
+        <section class="feedNew">
+          <article class="newCard">
+            <div class="newHead">
+              <div class="avatar">מ</div>
+              <div>
+                <div class="newNameLine">
+                  <span class="newName">מירי הלוי</span>
+                  <span class="newTag tagFood">אוכל</span>
+                </div>
+                <div class="newTime">לפני 12 דק'</div>
+              </div>
+              <div class="dots">⋯</div>
+            </div>
+            <div class="newText">מישהו אכל במסעדה הכשרית החדשה ליד מרכז העיר? מחפשת המלצה לארוחת ערב.</div>
+            <div class="newStats">
+              <div class="newPill">4 🔥</div>
+              <div class="newPill comments">6 תגובות 💬</div>
+            </div>
+            <div class="commentBlock">
+              <div class="commentTitle">תגובות לפוסט הזה</div>
+              <div class="comment">
+                <div class="commentName">שרה כהן</div>
+                <div class="commentText">כן, היינו אתמול. השירות טוב והמנות גדולות, רק כדאי להזמין מקום.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="newCard">
+            <div class="newHead">
+              <div class="avatar yellow">י</div>
+              <div>
+                <div class="newNameLine">
+                  <span class="newName">יוסי בודד</span>
+                  <span class="newTag tagTransport">תחבורה</span>
+                </div>
+                <div class="newTime">לפני 40 דק'</div>
+              </div>
+              <div class="dots">⋯</div>
+            </div>
+            <div class="newText">פותח מניין שחרית מחר ב-7:00 ליד מרכז העיר, מקום ל-3 אנשים נוספים. מי מצטרף?</div>
+            <div class="newStats">
+              <div class="newPill">7 🙏</div>
+              <div class="newPill">2 👍</div>
+              <div class="newPill comments">3 תגובות 💬</div>
+            </div>
+          </article>
+
+          <article class="newCard">
+            <div class="newHead">
+              <div class="avatar">ר</div>
+              <div>
+                <div class="newNameLine">
+                  <span class="newName">רחל אברהם</span>
+                  <span class="newTag tagGeneral">כללי</span>
+                </div>
+                <div class="newTime">לפני שעה</div>
+              </div>
+              <div class="dots">⋯</div>
+            </div>
+            <div class="newText">הציבור כאן ברמה גבוהה, ממש מומלץ. צילמתי את המפרט למי שרוצה לראות כשרות.</div>
+            <div class="newImage">תמונה מצורפת לפוסט</div>
+            <div class="newStats">
+              <div class="newPill">9 😊</div>
+              <div class="newPill comments">2 תגובות 💬</div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes">
+    <div class="note"><b>הבדל 1:</b> הכרטיס החדש בנוי כמו פוסט, לא כמו הודעה קצרה בתוך כרטיס ריק.</div>
+    <div class="note"><b>הבדל 2:</b> תגובות מוצגות תחת הפוסט, עם כותרת ברורה, ולא מרגישות כמו פוסט נפרד.</div>
+    <div class="note"><b>הבדל 3:</b> הלייקים והתגובות הם פעולות חברתיות קצרות וברורות, בלי המילה "מועיל".</div>
+    <div class="note"><b>הבדל 4:</b> תמונה מקבלת מקום ברור בתוך הפוסט, בלי לשבור את הקריאות של הטקסט.</div>
+  </section>
+</main>
+</body>
+</html>

@@ -7,11 +7,11 @@ import { useAuth } from '@/src/store/auth';
 import { C } from '@/constants/theme';
 
 export default function TabLayout() {
-  const { token, loading } = useAuth();
+  const { sessionMode } = useAuth();
   const { t } = useTranslation();
 
-  if (loading) return <View style={{ flex: 1, backgroundColor: C.cream }} />;
-  if (!token) return <Redirect href="/(auth)/login" />;
+  if (sessionMode === 'loading') return <View style={{ flex: 1, backgroundColor: C.cream }} />;
+  if (sessionMode === 'signedOut') return <Redirect href="/(auth)/login" />;
 
   return (
     <Tabs
@@ -76,10 +76,6 @@ export default function TabLayout() {
           title: t('tabs.nearby'),
           tabBarIcon: ({ color, size }) => <Navigation size={size ?? 22} color={color} strokeWidth={2} />,
         }}
-      />
-      <Tabs.Screen
-        name="shabbat"
-        options={{ href: null }}
       />
       <Tabs.Screen
         name="profile"

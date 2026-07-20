@@ -291,4 +291,85 @@ describe('MinyansService', () => {
       expect(result.isFull).toBe(false);
     });
   });
+
+  describe('public creator privacy', () => {
+    it('abbreviates the creator and skips registration lookup for an anonymous detail request', async () => {
+      minyansRepo.findOne.mockResolvedValue(
+        makeMinyan({
+          creator: { id: 10, firstName: 'דוד', lastName: 'כהן' } as User,
+        }),
+      );
+
+      const result = await service.findOne(1);
+
+      expect(result.creator).toEqual({ firstName: 'דוד', lastName: 'כ.' });
+      expect(result.isRegistered).toBe(false);
+      expect(registrationsRepo.createQueryBuilder).not.toHaveBeenCalled();
+    });
+
+    it('returns the full creator identity to an authenticated detail request', async () => {
+      minyansRepo.findOne.mockResolvedValue(
+        makeMinyan({
+          creator: { id: 10, firstName: 'דוד', lastName: 'כהן' } as User,
+        }),
+      );
+      registrationsRepo.createQueryBuilder.mockReturnValue(makeQb({ id: 5 }));
+
+      const result = await service.findOne(1, 20);
+
+      expect(result.creator).toEqual({ id: 10, firstName: 'דוד', lastName: 'כהן' });
+      expect(result.isRegistered).toBe(true);
+    });
+
+    it('abbreviates creator names in the anonymous destination list', async () => {
+      minyansRepo.query.mockResolvedValue([
+        {
+          id: 1,
+          prayerType: 'shacharit',
+          date: FUTURE_DATE,
+          time: '08:00',
+          locationText: 'Main Hall',
+          notes: null,
+          participantsCount: 3,
+          createdAt: new Date(),
+          lat: null,
+          lng: null,
+          creatorId: 10,
+          creatorFirstName: 'David',
+          creatorLastName: 'Cohen',
+          destLat: 32,
+          destLng: 34,
+        },
+      ]);
+
+      const [result] = await service.findUpcoming(5, {});
+
+      expect(result.creator).toEqual({ firstName: 'David', lastName: 'C.' });
+    });
+
+    it('abbreviates creator names in anonymous nearby results', async () => {
+      minyansRepo.query.mockResolvedValue([
+        {
+          id: 1,
+          prayerType: 'shacharit',
+          date: FUTURE_DATE,
+          time: '08:00',
+          locationText: 'Main Hall',
+          notes: null,
+          participantsCount: 3,
+          creatorId: 10,
+          creatorFirstName: 'David',
+          creatorLastName: 'Cohen',
+          destinationId: 5,
+          destinationCity: 'Tel Aviv',
+          mLat: 32,
+          mLng: 34,
+        },
+      ]);
+
+      const [result] = await service.findNearby(32, 34, 10);
+
+      expect(result.creator).toEqual({ firstName: 'David', lastName: 'C.' });
+    });
+  });
 });

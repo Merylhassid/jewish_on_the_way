@@ -1,0 +1,480 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run AT</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — AT</h1>
+<div class="sum">
+שורות שנבדקו: <b>39</b> מתוך 39<br>
+✅ בטוח נכון: <b>34</b> · ❓ אולי: <b>1</b> · ❌ לא נמצא/לא נכון: <b>4</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 95 · Details: 35 (35 חדשים, 34 cache) · Google estimate max: ~$0.60 · LLM: $0.012 (9)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 34</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>6442</td>
+      <td><b>מסעדת בחור טוב  Bahur Tov</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 19, 1020 Wien, Austria.</td>
+      <td>Bahur Tov</td>
+      <td>Taborstraße 19, 1020 Wien, Austria</td>
+      <td>4.6 (1351)</td>
+      <td>0660 7051033</td>
+      <td class="photo">places/ChIJfYBJBqcHbUcRHrfiI6y8q5U/photos/AaVGc3kbCRvDrY4vX0-3Y8iwxq80yBeipD8RdnW1qBvb_r4F2TshQaRyd42fBDCRyUNLeucn90NH3zLpEaoIiqtAwY1ohhM3N2P9MeGGhRIWj2he7wC262geBCrQ8cAgCkwXRyosulATQvWfFE8FDprEml-5Ynhe0E4-ztxNtePvmOJTHASLQ61tLuxNx02VVniv0VFz0ohAc9ephE6d3V-EJP3aeJKRCzElaPVxCmMfbzzbXuPZm1WeNDaFcfd1koRK_Egx_QguVLbyYUakbyFsSgBM2TBwxC-RZVnMPDXtij_KdzXmYSsWG6QQy10a9FuZ6SmFAtFNHKm1IVnkv1_1csCaFffN1q-dDtVOtL8fXgq-bIAIbsB7Ih1gvBUc3tnoCFg1b1Vs804m4QUXjak7p6sLcNtOHDGVfvaB7YH1hwE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%91%D7%97%D7%95%D7%A8%20%D7%98%D7%95%D7%91%20%20Bahur%20Tov%20Taborstra%C3%9Fe%2019%2C%201020%20Wien%2C%20Austria." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfYBJBqcHbUcRHrfiI6y8q5U" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6443</td>
+      <td><b>חדש!  Mea Shearim ,Fine Dinning</b><div class="muted">Vienna · Austria</div></td>
+      <td>Heinestraße 25, 1020 Wien. [map: https://maps.app.goo.gl/1UezFJoR4SFbeYsh6]</td>
+      <td>Mea Shearim ,Fine Dinning</td>
+      <td>Heinestraße 25, 1020 Wien, Austria</td>
+      <td>4.9 (298)</td>
+      <td>01 399959520</td>
+      <td class="photo">places/ChIJ--vlUAAHbUcR3tEEK-VyJSI/photos/AaVGc3lSIEd-O9RsyWKx9C0pX9H5F21NSM_cKs8bIImMfLwnw307LEZcHVHH5p6PVwuD-9lDV_PJhW0grbiypStijF2N4FaEl07866lTAuHcUq9zdHO-sTnH6ETVf0nLodv7Eaw7VVWVxKklgV2sXPmU9QOcC5SVmoMZyJNQwrMddc-ZTBvpTWGybl7U39-K2NE6yrTzf_8ZDZstXcZ9WSvqHoT89MPVUt5N4FN4yle5HQih4_YovpLUiIVdm6L9pxG63kWXrflrQUsca02knPTHPb-kXfCM7barf36Xtk-OLANiSYUFRVklbLIRdaRDHtv45Q73n9s7D0Eo6kEjILLrDsCNfHMtCMCglN57J46fNGQPabVgT3-T0h8AvQB97vqVHQ6DaNeVjxzwV0NrinMRvG26hfNPHwRQZn30OXXhA1zwepCM6UFLoEHQ8uC1bg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%93%D7%A9!%20%20Mea%20Shearim%20%2CFine%20Dinning%20Heinestra%C3%9Fe%2025%2C%201020%20Wien.%20%5Bmap%3A%20https%3A%2F%2Fmaps.app.goo.gl%2F1UezFJoR4SFbeYsh6%5D" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ--vlUAAHbUcR3tEEK-VyJSI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6444</td>
+      <td><b>מסעדת &quot;מאה שערים&quot; וינה Mea Shearim</b><div class="muted">Vienna · Austria</div></td>
+      <td>Schmelzgasse 3, 1020 Wien.</td>
+      <td>Mea Shearim Kosher Restaurant</td>
+      <td>Schmelzgasse 3, 1020 Wien, Austria</td>
+      <td>4.7 (1749)</td>
+      <td>01 3999595</td>
+      <td class="photo">places/ChIJ9w16bacHbUcRwhhi4m7jn-Q/photos/AaVGc3mg2J8ts2krvsow_FVuCSj2HZU1ugXkgTGCSzREftuM9cBmZTX9bwpoZVAyzSB7IQf9LZWW94xrUCvnZaSDPT75vKYZI2Zg9o0Zsq6lY8BwE1fVdCt32sIZGzPQokOCoLIVriM5S9d3RPaxTYfOgkkxP6NJeTicE3HjAtYAuBRVmfpMWnIxKb7s_sAiqxSOjev09c15poJc2-U-wt4w7qr_thElhjw2eo6PwagMs3uo5W7ZwAk5Az1fazEmT-FrrOVY6khGrGEJNLP6S8X9UlbAQkOZOPEtQpMgQirNZSryePebp3WLKv-KGHl4Dqj_UsJr-arJAuYASN3-egMd1H32SYstNVgMLfV6rO2mRyytd2xlgp72Y-VxbCzbpSuyTgXDhmQs6M-HhVRONmWedAhjTvedNNEJ9UjpyY2sfinl8Yb7</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%22%D7%9E%D7%90%D7%94%20%D7%A9%D7%A2%D7%A8%D7%99%D7%9D%22%20%D7%95%D7%99%D7%A0%D7%94%20Mea%20Shearim%20Schmelzgasse%203%2C%201020%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9w16bacHbUcRwhhi4m7jn-Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6445</td>
+      <td><b>מסעדת צפת  TZFAS</b><div class="muted">Vienna · Austria</div></td>
+      <td>Kleine Sperlgasse 6, Wien. טלפון/וואטסאפ:  ⁦+43 1 9568025</td>
+      <td>מסעדת צפת Tzfas Kosher Restaurant</td>
+      <td>Kleine Sperlgasse 6, 1020 Wien, Austria</td>
+      <td>4.9 (37)</td>
+      <td>01 9568025</td>
+      <td class="photo">places/ChIJ3yIxsgcHbUcRL7bRTxxcwJI/photos/AaVGc3m8BNYG6RCifZJXqJ6ZQ7PysDqIWEmZ_TqoNDnt2L6ZHGo2SutkjjBGBsfc1y-T7tLTVjkf6UBYq1RvxxqDTaDSWuab4wYgk3xHDMahNeyleGbVl4_hlSDUVLdHN6okQ1K3zbB0rt8tUms6xVK4LdVdVDBVvnUg9soYhR_6g1zidzc9MwOQhlyW7VZXDrRpAmHnfWF7RZFceg1whCPxMvxxbCZOcq3BQIsfAsdAzMahgcVGG94fR4q5ltWxdZvGAFo026uqhp2di3My7ildHyglF_ciIzVf6uERDRi-od_dZ2PFAJNKZF4_uXDIqEcdaR0sPB0jA3gBLe2Unx682IVg6Bg3_xVyw1i2v41R--Xjoz_xCfV47RjnlOf6wkfh0ues7dpLUSpDw8FK_KUfcxc4_Yro5YXbOmonF4tp4UXI0tRBonfy-H4IIoRK5sqG</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי זהה (צפת/Tzfas), כתובת זהה לחלוטין (Kleine Sperlgasse 6, Vienna), שניהם מסעדות כשרות. ההבדל בפורמט הכתובת (1020 Wien) הוא רק קוד הדואר שלא היה ברשומה A. עסק פעיל.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%A6%D7%A4%D7%AA%20%20TZFAS%20Kleine%20Sperlgasse%206%2C%20Wien.%C2%A0%D7%98%D7%9C%D7%A4%D7%95%D7%9F%2F%D7%95%D7%95%D7%90%D7%98%D7%A1%D7%90%D7%A4%3A%C2%A0%20%E2%81%A6%2B43%201%209568025" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ3yIxsgcHbUcRL7bRTxxcwJI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6446</td>
+      <td><b>מסעדת אלף אלף וינה  Alef-Alef</b><div class="muted">Vienna · Austria</div></td>
+      <td>Seitenstettengasse 2, 1010 Wien, Austria. טלפון:  ⁦+43 676 844258201</td>
+      <td>Alef Alef Kosher Restaurant</td>
+      <td>Seitenstettengasse 2, 1010 Wien, Austria</td>
+      <td>4.6 (847)</td>
+      <td>0676 3352530</td>
+      <td class="photo">places/ChIJVW_PkaEHbUcRmLMiPg9jghE/photos/AaVGc3ljQ7EHbsfD7Ut1tag7DyK_p3bG5Yox2u2P3mrKfthOzW9IS6I0ioZD57xRhydKaecr6Zu9J0v5HjPD1AqPmEThx7VeuSJ03WBXg75Sa0chGKhHHOkdB8V_XpCjifln8psVrz3hwdVbFmSvIfVk0jQtLEkbyMcV5nTv5s3AsvwUC4CC4z-Hu12XEXfZCnGOG3C8PzriHGb9uozG0HXazAX8-5_vWvWnbJrSusP5EZIBvhHI6MX5PZLYe1NUvLNkF-YySYpEWv2oyGZfGvesBrxkwurJ5wQ-nRgxiudV0x3cgcdrMehYQZ1-N14y9Hzsxbq7-794AoqeX5YfRp5viEJ-1XU5bCNNt6D4XVcabA32N-kb2Xm-HFYs_axZiYQFPjt_C7Z0ts8iYu6RBOnH_9hOVuTyk3ua94bbjZ7MCSvmtTWE</td>
+      <td class="reason">LLM אישר (0.98): זהה שם ייחודי (אלף אלף), כתובת זהה לחלוטין (Seitenstettengasse 2, Vienna), שניהם מסעדה כשרה. ההבדל בקטגוריה שם (עברית vs אנגלית) הוא וריאציה של תרגום טבעית. פעילה ופעילה.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%90%D7%9C%D7%A3%20%D7%90%D7%9C%D7%A3%20%D7%95%D7%99%D7%A0%D7%94%20%20Alef-Alef%20Seitenstettengasse%202%2C%201010%20Wien%2C%20Austria.%C2%A0%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%C2%A0%20%E2%81%A6%2B43%20676%20844258201" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJVW_PkaEHbUcRmLMiPg9jghE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6447</td>
+      <td><b>Kosher Deli  כושר דלי</b><div class="muted">Vienna · Austria</div></td>
+      <td>Kleine Sperlgasse 7, 1020 Wien, Austria.</td>
+      <td>Kosher deli</td>
+      <td>Kleine Sperlgasse 7, 1020 Wien, Austria</td>
+      <td>4.6 (88)</td>
+      <td>0660 1613266</td>
+      <td class="photo">places/ChIJj2vh4KYHbUcRfwNN_81UBFQ/photos/AaVGc3mprNvNiEWYAjWfhGYtjcM3825dHgH_kbEbr87IwlsHupFKwHnRhx8WNTof_Hw15z6nXTPRrJx3ZT9JnLvP1EWAnzZCOrQECnN-Wx-o88JBgjsOrp9-mb9rxiYpdz8_RwSnpMjoM1N1nEV1YGhOK1VcpnIkN_ZYbjkPxe6BjdQuDyDkhfSXRaDhXtNfEkMNB5_nZefDhG2GDO1IHk4mvUMWBQUncDbE8RVTEvNzZdG0f1IF5iSJJbpV-gUNNvuewOxnUojDTI8YzyOrczBALQ7Rz1WX7q-FBSkcIB0JextYNg0k9XcC6JfRcmWCaXTwUWxMReVp0p8dZl2BLx_WcKn-opTg6tSOk92Xw_PzQFSzHPB3lRazuS9UlhI-_xYppoy0FWnoxIi5BQxq8oYYWQu2WzK885YDmdTwt1-fSk4</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Deli%20%20%D7%9B%D7%95%D7%A9%D7%A8%20%D7%93%D7%9C%D7%99%20Kleine%20Sperlgasse%207%2C%201020%20Wien%2C%20Austria." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJj2vh4KYHbUcRfwNN_81UBFQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6448</td>
+      <td><b>בושלי  Baschly Street Food</b><div class="muted">Vienna · Austria</div></td>
+      <td>D4, Welthandelspl. 1, 1020 Wien. [map: https://maps.app.goo.gl/9aCtKecLqrgv5pMa6]</td>
+      <td>Baschly</td>
+      <td>D4, Welthandelspl. 1, 1020 Wien, Austria</td>
+      <td>4.5 (819)</td>
+      <td>0676 844344444</td>
+      <td class="photo">places/ChIJ8Xr7-5UHbUcRM1txAtl8kZU/photos/AaVGc3maun7L-tsWD-WXAwlp4ma2A7at3jyDSJP3uY1z8iMvO01-SFHx59rI0NqSvi5ONyKs_nMoh78YS_w5jbSbjvk0WwK-W3SWW1LUfdhtQ35pvOu1U4fWCn3wU6vT1b-TviUVrbTWsxjjdclcjZrKb87JurAOSdk2rEKkLNYPFVIxei1jOfhk9zPaA1tl8-GX_8chcY0hG6rSbj2McMi9YSotlLB8al4Hlx5NB8ls250TCoGc77LIfv0ojHcUSPXXq6uxWfZKxPFv9zTZAnMHs88P9BXF4NkvEwh8zM_ilnu-ZOJ2yWbld-OyIYM_QULUmEfLMkKWiT-sNjPzF6X1w8tWNVTdyX1F209ouGuiSVMOCvdNvNaYpLeJUM_bUDafSrKpLhB_ZbVsRYHT-Hz1bCilk0GmxOv4bFafr5GqIh5a35Ao</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A9%D7%9C%D7%99%20%20Baschly%20Street%20Food%20D4%2C%20Welthandelspl.%201%2C%201020%20Wien.%20%5Bmap%3A%20https%3A%2F%2Fmaps.app.goo.gl%2F9aCtKecLqrgv5pMa6%5D" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ8Xr7-5UHbUcRM1txAtl8kZU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6451</td>
+      <td><b>מסעדת האוכל של שלום   Schalom Food</b><div class="muted">Vienna · Austria</div></td>
+      <td>Rotensterngasse 16, Wien.</td>
+      <td>Schalom Food</td>
+      <td>Rotensterngasse 16, 1020 Wien, Austria</td>
+      <td>4.5 (126)</td>
+      <td>01 9346215</td>
+      <td class="photo">places/ChIJw8yFZIgHbUcRqBIdy0qwAnA/photos/AaVGc3nZyTBmLeNaJTEm8OK4CX6ilxRBZTSO6_qetxy3qvIDS7iz47Y5E8WToJGz-wKzcE8gllEdLRt8ASkB3glRnKUMhGVkWnmGP-5zG7St7RTtxkSOkeHu9tKEwO77aBkyIlcIK39OV2em-pMXW1WwU-Vqfvk3X10OkykxHOhIbme3gAxoeLl3_3H4kxMrwtFra8sgraiqjKLcVV0pgJI9au07hSGBqAm81mxRIUu_6kUulhzzXowXmWECxhJ7PGz1Fyt0eS-RrETCsTAeUQhUlYu8F9BzYVwfpzTJPZ-URaMEPse7kOkyevECVdAB7ALBNjCty3Ll92ZOUY_yPiaCOuB0snH-W0du-19vZExM9sO6Nf2lPY-CQ6KpbI1UypYL1K9giL9sz4Kew6Fro1l8mK7HyrEuIfZBcOy-ciFB1zg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%94%D7%90%D7%95%D7%9B%D7%9C%20%D7%A9%D7%9C%20%D7%A9%D7%9C%D7%95%D7%9D%20%20%20Schalom%20Food%20Rotensterngasse%2016%2C%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJw8yFZIgHbUcRqBIdy0qwAnA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6454</td>
+      <td><b>LOX &amp; TRUFFLES Deli</b><div class="muted">Vienna · Austria</div></td>
+      <td>Steindlgasse 6 / EG, 1010 Wien, אוסטריה</td>
+      <td>LOX &amp; TRUFFLES Deli</td>
+      <td>Steindlgasse 6 / EG, 1010 Wien, Austria</td>
+      <td>4.7 (127)</td>
+      <td>0699 10107707</td>
+      <td class="photo">places/ChIJY6Cng_wHbUcRbnEWMQd8wp4/photos/AaVGc3mQ5PI1SEIzM81VAR-pwR3Eo_mBgDVSCeVpLe6w6V0s_5QvfAkUma14r7vbySUmNij4QOrEmMUf2kdQas8YGxrOfX6S9GPpl2_H2_KG2NV12q-CfXPS7Li3XmmxURfvCaD2_oCR8Sdt3aOoJOw_d80LtSD9kyGcbJ5gCrAVg5D5-7virs51eGqbTaG4LzLlRjA4JFk6YYq3vNGE5uqhC7r63khdJWhWXLigF2jus3asRzBnLIX_nA2aGhEYSgDVS3yNG_Z26J1YvZLCuYFXRcXCpPQvR727nSH7KHwnD7Ms8pl9y2VywI321hCD864atDt3qcFdnIjG7QnhH_pxRYn8AEUO8mAjIdGQMvd_THNw-llXeJSD53sZtF5P-wSDy7GjyrpGerRiw-yswuM3DGczPUgjRZ6LP0EDVvTaXQA_Yw4cGOl0DoJvaKUx6SMF</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=LOX%20%26%20TRUFFLES%20Deli%20Steindlgasse%206%20%2F%20EG%2C%201010%20Wien%2C%20%D7%90%D7%95%D7%A1%D7%98%D7%A8%D7%99%D7%94" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJY6Cng_wHbUcRbnEWMQd8wp4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6455</td>
+      <td><b>רוסטיקו פיצה Rustico Pizza Napoletana</b><div class="muted">Vienna · Austria</div></td>
+      <td>Rotensterngasse 3, 1020 Wien.</td>
+      <td>Rustico Pizza Napoletana</td>
+      <td>Rotensterngasse 3, 1020 Wien, Austria</td>
+      <td>4.8 (491)</td>
+      <td>0660 6079510</td>
+      <td class="photo">places/ChIJW1WcSQAHbUcR6ZFqs-7ahzs/photos/AaVGc3lEfJOcMOk2YY88hiPgVeCGXHSRPMBV08-nwrAtZWigvuYHIhJr196d_ESMHEGcG_klc3EIYf501v2Y8NYpjLsqHhnl76DQoNTbtazcpXKLdwpxa1GYKA83vep_Nwrw5YvsMq9AEJUiG8M14nI6jAx7JiFzTbZBFC6-0k71z2qb0rEl0pl3rE_FSWH2sKh3sRcu8KsSzpPTmr6PUrHtENQ3bH9WGPTlb83Rn06XhO--J8zAMc-tlf2pNdJTMLr--qkfvYtQKCME4C_1-BFaG9RNTd51pPryUDbV19JzMU1HWJtTn76uSva8H9X2_h8ZhA7f2lWtbWNLDdfCdOzAjuav2d_zcBR2vMfIhxdz59TTwgBa5YZF5UldyYztJkEVv_Efmmdq2luWf-kAdCxRkstlMb-z0VP4MZxFz0e1RrGyXw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%95%D7%A1%D7%98%D7%99%D7%A7%D7%95%20%D7%A4%D7%99%D7%A6%D7%94%20Rustico%20Pizza%20Napoletana%20Rotensterngasse%203%2C%201020%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJW1WcSQAHbUcR6ZFqs-7ahzs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6457</td>
+      <td><b>ואהבת VeAhavta!</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 20a, 1020 Wien.</td>
+      <td>VeAhavta - Kosher Bistro ואהבת - ביסטרו כשר</td>
+      <td>Taborstraße 20A, 1020 Wien, Austria</td>
+      <td>4.8 (193)</td>
+      <td>01 2265566</td>
+      <td class="photo">places/ChIJe8A-760HbUcRE-1mm4a3HOo/photos/AaVGc3kAY8V8X4EXY-QRiDdEN6eSosTekj8bupwPCtfM47UkcPA58TFJzljbcGMAL90QIBLWq6idfRWVveE7NBdRlLg7Og-kZGD1niofnlKXABgWN46q8lWhGV6hQctv4GBuVgEAlFsoymcX6r8Eu8gVs2GuZg3ROSQnIDw4MY3i8a64YgyzGoEEb9fXgX1JCEicyjomKPFzD9RMHo4YL2i7C9o_3rrDmCTjI_OdSMytoEZNCgGifU_E6m8_F5drIt3GMJJtH-OjtGms_uUc8rn6v5PM-fL-w0INiVFli1wyPfxwCZhfWAV6BBIawnyvGx5qYjCVm1Pvw4hkJhP6CZn0IldVlhWjiZmRm3CHxfCnBH3riQIJChJ5tZT2HjZBg14g-1NcTSYwQB1AEqPkuOe3TmXpqa1HJX7B5oor8ByzlloOGHMb</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%95%D7%90%D7%94%D7%91%D7%AA%20VeAhavta!%20Taborstra%C3%9Fe%2020a%2C%201020%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJe8A-760HbUcRE-1mm4a3HOo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6458</td>
+      <td><b>מסעדת נובלינו  Novellino</b><div class="muted">Vienna · Austria</div></td>
+      <td>Zirkusgasse 15 1020 Vienna.</td>
+      <td>Novellino</td>
+      <td>Zirkusgasse 15, 1020 Wien, Austria</td>
+      <td>4.6 (923)</td>
+      <td>01 2128169</td>
+      <td class="photo">places/ChIJYQ502gkHbUcRBsSlr3PilOY/photos/AaVGc3nsYyI4c76-yEsq7VWtoGv9LPTME_YsQcpzLP-Ptzenw8Li3fzoLR2AyRI5HxnuIOyrkfMphCIcym_cgaNeVmtOeEK44v6eLlhsa3Oh8AmpSM-h6mS2lSLuCPv_HEpUerUzl82-5FJdiYF09hxaqE56uCx8mGviIRlhV25-ykxd9mPq9XgziUi6BMS46okkaCAaXxDANjRnYQvMgI1GO4iZgSEa1IKgsi0hq9xQPvDQGyPm2Wd8CcqrJ1mUnEgyciJ6pAAKGSi9CZ1FrDMSfhDT3JImHhUmDgLTL51B_9XHUQKS5qdLYFXfNInGgBnlU1EemZXvteu8M_OrivH6Ku0N_QQ7kP-reXzDJAAc099vrrfEK0WJBrQbXy4bPwhs9pJQKC6hhm6uFvPKAKqzewJUuSsio23dZmkP_NeOEc3nH10</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי זהה (Novellino), כתובת זהה לחלוטין (Zirkusgasse 15, 1020), שניהם מסעדות בווינה. ההבדל בכתיב העיר (Vienna vs Wien) הוא ווריאנט שפה אנגלית-גרמנית של אותו מקום.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%A0%D7%95%D7%91%D7%9C%D7%99%D7%A0%D7%95%20%20Novellino%20Zirkusgasse%2015%201020%20Vienna." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYQ502gkHbUcRBsSlr3PilOY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6459</td>
+      <td><b>פיצה פארגו  Pizza Prego</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 43, 1020 Vienna.</td>
+      <td>פיצה פרגו כשר</td>
+      <td>Taborstraße 43/2-6, 1020 Wien, Austria</td>
+      <td>4 (60)</td>
+      <td>01 2163089</td>
+      <td class="photo">places/ChIJu7g95IcHbUcR714z0Q3DAlo/photos/AaVGc3kjNzYOyPtHROSG9pv4y_81haj9v0_BarZ4KbLRGh7NHuRJNNOHwj9tvlfQZlNkAimUg5fr9Rb20PJD4Dbv39HuTuxa6072zs0_nCM-GhIQ_HOF7XEoeu2tJ9doUw8ywlRI4VWsgAup1_t8qfYrYKBlptPCsAWlYNC6nk682SoJBuFoZjFBkEF1s1T5bEzIi9PKDMwLFgc9opofux2dE8Kc4E6T9dfT-v5PofKXmzPHDelPGjwWMcJ34AhhxUHpHM2OFv00XWSap9Vv9R1D9B49c9b07jypkudRV055W3_rH4xJhpKzDE8bW-tADbsMjR7fJw51pohfEokRhyoqQU-c20p4dgiKq1qg8njVgMm0JdZH5s5AuR81VdwrWGwte_1jld7UggJyCy01UpiioNiVXrIDrjgZi7x_lYkRZBqCGKWG</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%A4%D7%90%D7%A8%D7%92%D7%95%20%20Pizza%20Prego%20Taborstra%C3%9Fe%2043%2C%201020%20Vienna." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJu7g95IcHbUcR714z0Q3DAlo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6461</td>
+      <td><b>אהל משה Ohel Moshe</b><div class="muted">Vienna · Austria</div></td>
+      <td>Lilienbrunngasse 18, 1020 Wien, Austria</td>
+      <td>אהל משה</td>
+      <td>Lilienbrunngasse 19, 1020 Wien, Austria</td>
+      <td>4.7 (91)</td>
+      <td>01 268864</td>
+      <td class="photo">places/ChIJR9GO3KYHbUcRNCOUC8jZ0FM/photos/AaVGc3mA5qMIXE8OWKgt12E3BRxKDvJ4Yw211IXZSprf2ZOpMBRNeVbx7PCy4ziNKF3rBQ_lc6BdRKdJIlMX2WXBtZU3BnuW4HVf3QO_V-kdltfjetHXJI6EpiinDbaxpByp_HcnWY9h-QvWENFKGpvvqMfwHYjVHSi-C26SsP1047JvHMooNcf3gEux4r2M2ZH-mezpdWsQEIiYEcCX_CdHx2am5fSM0-pZgryCpF9Urnf64fJtXIl9bnubsT8n5FwxNeVXpq2hE5FNdmTe-cCTi2UDWw8CdFuaJwDLfsvPlQPkfJ2WUHZ_2E_siFD1B8u-RIbP2kZJ_fkb-JOdMwKB2-N_fjsr761st7EiRDFJFuHFr8qpPzhZS4tW-Yn6Feg2mwdNKAV2821wScIGLnZQue_62nUc74EokLZ-gQhOqbBq050_YEcJ3nwLE1lT3A</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%94%D7%9C%20%D7%9E%D7%A9%D7%94%20Ohel%20Moshe%20Lilienbrunngasse%2018%2C%201020%20Wien%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJR9GO3KYHbUcRNCOUC8jZ0FM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6462</td>
+      <td><b>שפע מרקט  Shefa markt</b><div class="muted">Vienna · Austria</div></td>
+      <td>Heinestraße 24, 1020 Wien, Austria.</td>
+      <td>Shefa Kosher Supermarket &amp; Restaurant</td>
+      <td>Heinestraße 24, 1020 Wien, Austria</td>
+      <td>4.6 (1345)</td>
+      <td>01 2646159</td>
+      <td class="photo">places/ChIJWTS6kwcHbUcRcrWMfUU8IDg/photos/AaVGc3lzOgGWNAy14HtQTG9KuHvKU7sjAvM1k5uy8ZmJAmhRnN1NP_TKZwV8etfx8xTJpYempd_EgrYFvZTSENiOG74bVPzw6fN-KLncGFi7PFKVf9k-REaqShWsNnpbV--ZBPTu8bUoK6wAbbF-GGMZDF05jVox28nvoK1chi-NGzoAzdUqC2rkO5mzaZHEpbicQFWBBrBshi_btIGwlcKFVcqrnRJGermNUBA30LiA_G4Ienk1SPYJvu6jSJKZ5Ylr9PUvSNyVU3P6YaO9b4xm3JFYo5noroNGQZEUvSg73Ln-q-OOKdcAZSrb_sq6Djs5Up3FeaedxVSKnugA7dB61MAUBznIQpJjRoWIhIxrGXRqgP6qdTRJdydSAkSZWVO8FHJsagB7e6TqZGD8dPFts1GS89VxgiV4pDwZ3In81d0dvA</td>
+      <td class="reason">LLM אישר (0.95): Same address (Heinestraße 24, 1020 Wien), same city Vienna, kosher food business. 'Shefa' is transliteration of 'שפע'. Both are supermarket + restaurant. House and street match exactly.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%A4%D7%A2%20%D7%9E%D7%A8%D7%A7%D7%98%20%20Shefa%20markt%20Heinestra%C3%9Fe%2024%2C%201020%20Wien%2C%20Austria." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJWTS6kwcHbUcRcrWMfUU8IDg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6463</td>
+      <td><b>בית קפה מילאנו  Milano CAFÉ &amp; GELATO</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 41, 1020 Wien, Austria</td>
+      <td>Milano Cafe &amp; Gelato Koscher</td>
+      <td>Taborstraße 41, 1020 Wien, Austria</td>
+      <td>4.4 (252)</td>
+      <td>0676 847564444</td>
+      <td class="photo">places/ChIJETQbFrwHbUcR7zxbyY056hs/photos/AaVGc3kMvKSWn_Hh9UNXW3jJSiW8xP2u6RXk4-hb0q4eNe4-Myk-cmhCpTvssf3nGxYiAyOpXUHPRD5vWxq8romkEW_b9sdSeSF4cmnqHW_gFbPORJsSQxRjNOZbnXpOzKdc7K1jXkdjvBtO8KOr-vhF3aiC_usErDHyk6wry6KEuIuUCL8F7P1Fga9eKuoP3aevh_GDX2DxXsrMiod9bHloIAY-zO1S-sEIN3iYiYWBIc2d4tHP0Wfba6BTmnEDI90W_qlVFEGiKltrzJqSuYcBFWzOR8g_WmPDEZfFeQeOBPfQiMxNxRl_CtBnZ4l1DSlUuZLcneB98vaFPPCX_GZ0eTVb2BdKtdQOrzpAkcHan6zj5zsjxZOG2xTHojYYbXYYCrwiI2i_hPGHbK3vfsMkCxrlP1gOy-dCt4X0UvRXSGdh1A</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%A7%D7%A4%D7%94%20%D7%9E%D7%99%D7%9C%D7%90%D7%A0%D7%95%20%20Milano%20CAF%C3%89%20%26%20GELATO%20Taborstra%C3%9Fe%2041%2C%201020%20Wien%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJETQbFrwHbUcR7zxbyY056hs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8308</td>
+      <td><b>Alef Alef</b><div class="muted">Vienna · Austria</div></td>
+      <td>Seitenstettengasse 2, Vienna, 1010, Austria</td>
+      <td>Alef Alef Kosher Restaurant</td>
+      <td>Seitenstettengasse 2, 1010 Wien, Austria</td>
+      <td>4.6 (847)</td>
+      <td>0676 3352530</td>
+      <td class="photo">places/ChIJVW_PkaEHbUcRmLMiPg9jghE/photos/AaVGc3ljQ7EHbsfD7Ut1tag7DyK_p3bG5Yox2u2P3mrKfthOzW9IS6I0ioZD57xRhydKaecr6Zu9J0v5HjPD1AqPmEThx7VeuSJ03WBXg75Sa0chGKhHHOkdB8V_XpCjifln8psVrz3hwdVbFmSvIfVk0jQtLEkbyMcV5nTv5s3AsvwUC4CC4z-Hu12XEXfZCnGOG3C8PzriHGb9uozG0HXazAX8-5_vWvWnbJrSusP5EZIBvhHI6MX5PZLYe1NUvLNkF-YySYpEWv2oyGZfGvesBrxkwurJ5wQ-nRgxiudV0x3cgcdrMehYQZ1-N14y9Hzsxbq7-794AoqeX5YfRp5viEJ-1XU5bCNNt6D4XVcabA32N-kb2Xm-HFYs_axZiYQFPjt_C7Z0ts8iYu6RBOnH_9hOVuTyk3ua94bbjZ7MCSvmtTWE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Alef%20Alef%20Seitenstettengasse%202%2C%20Vienna%2C%201010%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJVW_PkaEHbUcRmLMiPg9jghE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8309</td>
+      <td><b>Bahur Tov</b><div class="muted">Vienna · Austria</div></td>
+      <td>19 Taborstraße,, Vienna, Austria</td>
+      <td>Bahur Tov</td>
+      <td>Taborstraße 19, 1020 Wien, Austria</td>
+      <td>4.6 (1351)</td>
+      <td>0660 7051033</td>
+      <td class="photo">places/ChIJfYBJBqcHbUcRHrfiI6y8q5U/photos/AaVGc3kbCRvDrY4vX0-3Y8iwxq80yBeipD8RdnW1qBvb_r4F2TshQaRyd42fBDCRyUNLeucn90NH3zLpEaoIiqtAwY1ohhM3N2P9MeGGhRIWj2he7wC262geBCrQ8cAgCkwXRyosulATQvWfFE8FDprEml-5Ynhe0E4-ztxNtePvmOJTHASLQ61tLuxNx02VVniv0VFz0ohAc9ephE6d3V-EJP3aeJKRCzElaPVxCmMfbzzbXuPZm1WeNDaFcfd1koRK_Egx_QguVLbyYUakbyFsSgBM2TBwxC-RZVnMPDXtij_KdzXmYSsWG6QQy10a9FuZ6SmFAtFNHKm1IVnkv1_1csCaFffN1q-dDtVOtL8fXgq-bIAIbsB7Ih1gvBUc3tnoCFg1b1Vs804m4QUXjak7p6sLcNtOHDGVfvaB7YH1hwE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bahur%20Tov%2019%20Taborstra%C3%9Fe%2C%2C%20Vienna%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfYBJBqcHbUcRHrfiI6y8q5U" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8310</td>
+      <td><b>Gelato Milano</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 41,  1020 Wien , Austria</td>
+      <td>Milano Cafe &amp; Gelato Koscher</td>
+      <td>Taborstraße 41, 1020 Wien, Austria</td>
+      <td>4.4 (252)</td>
+      <td>0676 847564444</td>
+      <td class="photo">places/ChIJETQbFrwHbUcR7zxbyY056hs/photos/AaVGc3kMvKSWn_Hh9UNXW3jJSiW8xP2u6RXk4-hb0q4eNe4-Myk-cmhCpTvssf3nGxYiAyOpXUHPRD5vWxq8romkEW_b9sdSeSF4cmnqHW_gFbPORJsSQxRjNOZbnXpOzKdc7K1jXkdjvBtO8KOr-vhF3aiC_usErDHyk6wry6KEuIuUCL8F7P1Fga9eKuoP3aevh_GDX2DxXsrMiod9bHloIAY-zO1S-sEIN3iYiYWBIc2d4tHP0Wfba6BTmnEDI90W_qlVFEGiKltrzJqSuYcBFWzOR8g_WmPDEZfFeQeOBPfQiMxNxRl_CtBnZ4l1DSlUuZLcneB98vaFPPCX_GZ0eTVb2BdKtdQOrzpAkcHan6zj5zsjxZOG2xTHojYYbXYYCrwiI2i_hPGHbK3vfsMkCxrlP1gOy-dCt4X0UvRXSGdh1A</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gelato%20Milano%20Taborstra%C3%9Fe%2041%2C%20%201020%20Wien%20%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJETQbFrwHbUcR7zxbyY056hs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8311</td>
+      <td><b>GOLDA - The Ice Cream Boutiqe</b><div class="muted">Vienna · Austria</div></td>
+      <td>694F+4V  Seilerstätte 16, Vienna, 1010, Austria</td>
+      <td>GOLDA - The Kosher Ice Cream &amp; Coffee Shop Boutiqe</td>
+      <td>Seilerstätte 16, 1010 Wien, Austria</td>
+      <td>4.4 (14)</td>
+      <td>0660 3908304</td>
+      <td class="photo">places/ChIJB6ldr2wHbUcRUCWcVqrmkNI/photos/AaVGc3l7Nu3aDeV5JQgwT_kwUAIg3JF413lBQ3yhVCKbaKct_-0zcWDQu3QNVfIsFSNQ8I7eAykLXcXogV0hoziqkvCZ8Xk4MmA5HuPkjNHk8Y8aZyUQGDaoZVh9CxQoLs54EbzOhukTyrCR1gmWt9jI3JDjrkTgN5TeKCNFKFHqtFWAkM6GsirOBRBbvsbEeRRl1UKNEvffciOPR_VbqGWwxCOuRNseJQ0ubori7GHd0azUY3bKncHidIY7HFjBg6aUalulpkV1E18i4zEWFtjYMh_zcOw5tK-msy8xk2vfMqbjLDN9vKAvwvu7BNUarrYDc4WJaeI1jYEddC8BLF66nFJoFnr787BZKOUpxmMeYVL62lkpjjPGvMpSAjQ8OOJPmar_nc4JALzO_BYsB09-kGll0CJvtGbk0jwtgA3xoO5qypj2MWiBe174K4i7HgHn</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=GOLDA%20-%20The%20Ice%20Cream%20Boutiqe%20694F%2B4V%20%20Seilerst%C3%A4tte%2016%2C%20Vienna%2C%201010%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJB6ldr2wHbUcRUCWcVqrmkNI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8312</td>
+      <td><b>Hager Kosher Butcher and Restaurant</b><div class="muted">Vienna · Austria</div></td>
+      <td>Große Stadtgutgasse 7, Vienna, 1020, Austria</td>
+      <td>Yitzy Hager</td>
+      <td>Große Stadtgutgasse 7, 1020 Wien, Austria</td>
+      <td>4.8 (62)</td>
+      <td>01 2145621</td>
+      <td class="photo">places/ChIJLQ8C9agHbUcRYLyTdMJOzfQ/photos/AaVGc3lDa-ApMH1t2W-f_IyTUOEabA6gvwXTzw48nDYyXxb5mgiGh0DXYNgh1soP6jnS_uO-keaAETtWlhyXVu13CCiXvQpjzNfaOFtx7kiTi91i1oo6zYse0YnunUajtYLGinSzs7ek8jWQ4uB0LYeCxbY8MNLeQlJWHx_a5JCRDfSRg58BguYgWPqCRsA31xdAXS6sTpWi6Smmex6UAeJMr5aIPHk01PCE6BIRxTKnAv6y1LRYjsV8kMlxXGU9AFU9fMkwgi8FAwkaKMM5-lM3LFDVFXLDZ742uQtVGD9CXmkWQSYHwpJxtilsbNpr8DAkOxDx2WVVo57ELTnK6FZKdxuv6e2Dbh8op251ilfSpYO-5k12y8Wd9F5p3QrOsIAzRRpnnjsTiaaofsPUZhaP06KIphTyy8UjwgVesBPQ_sc</td>
+      <td class="reason">LLM אישר (0.92): Same exact address (Große Stadtgutgasse 7, 1020 Wien), kosher butcher business, 'Yitzy Hager' is likely the owner's name of 'Hager Kosher Butcher' - common naming pattern where owner's first name is used in Google Places. Operational status confirms active business.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hager%20Kosher%20Butcher%20and%20Restaurant%20Gro%C3%9Fe%20Stadtgutgasse%207%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJLQ8C9agHbUcRYLyTdMJOzfQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8313</td>
+      <td><b>Koscher Minimarkt Vienna</b><div class="muted">Vienna · Austria</div></td>
+      <td>Hollandstraße 10, Vienna, 1020, Austria</td>
+      <td>Koscher Minimarkt</td>
+      <td>Hollandstraße 10, 1020 Wien, Austria</td>
+      <td>4.5 (4)</td>
+      <td></td>
+      <td class="photo">places/ChIJXa3qu6YHbUcRjlIfTB8eqKo/photos/AaVGc3kotAUeEFhogXMFY-Eyl30IZvAHaArgRHBzFUM1HLQAA1MCoZJZVL9BRQZZW_lFzMYlUc9YeKDtg8gS06VQ3gFH1upnzRYYB9RX2ng-oOIGqWX0DL6atOaQa00Ze_63nT7h6X-shYigVBaEkaHQLZBZ2MqubyhJVzciO4_6m9UhXG5ctOKFEFDRTxyCzrODUkT9DXcSPLdhdqcoHn72mmEhfPGQg45rkXyz0AFoCKestVvrcwPUPl33DvOoQhRlSRMw39_qpwENlHeZocCt5BXGhE31fOgHzA-3q0PH5v9U0smD8LkiVJehqi3DePZ4NxxZV0iSdX7WM43dN5vKpHrks95GlUPAhD1a7ZlmlBKO91XcDdlcxJ-sWkbxEdulJOQhquKQLnNMcZnfVIIVe6RDTsqSD1W2nEPwrVKl7qb6KVjR</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Koscher%20Minimarkt%20Vienna%20Hollandstra%C3%9Fe%2010%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJXa3qu6YHbUcRjlIfTB8eqKo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8314</td>
+      <td><b>Kosher Deli Catering Vienna</b><div class="muted">Vienna · Austria</div></td>
+      <td>Kleine Sperlgasse 7, Vienna, Austria</td>
+      <td>Kosher deli</td>
+      <td>Kleine Sperlgasse 7, 1020 Wien, Austria</td>
+      <td>4.6 (88)</td>
+      <td>0660 1613266</td>
+      <td class="photo">places/ChIJj2vh4KYHbUcRfwNN_81UBFQ/photos/AaVGc3mprNvNiEWYAjWfhGYtjcM3825dHgH_kbEbr87IwlsHupFKwHnRhx8WNTof_Hw15z6nXTPRrJx3ZT9JnLvP1EWAnzZCOrQECnN-Wx-o88JBgjsOrp9-mb9rxiYpdz8_RwSnpMjoM1N1nEV1YGhOK1VcpnIkN_ZYbjkPxe6BjdQuDyDkhfSXRaDhXtNfEkMNB5_nZefDhG2GDO1IHk4mvUMWBQUncDbE8RVTEvNzZdG0f1IF5iSJJbpV-gUNNvuewOxnUojDTI8YzyOrczBALQ7Rz1WX7q-FBSkcIB0JextYNg0k9XcC6JfRcmWCaXTwUWxMReVp0p8dZl2BLx_WcKn-opTg6tSOk92Xw_PzQFSzHPB3lRazuS9UlhI-_xYppoy0FWnoxIi5BQxq8oYYWQu2WzK885YDmdTwt1-fSk4</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Deli%20Catering%20Vienna%20Kleine%20Sperlgasse%207%2C%20Vienna%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJj2vh4KYHbUcRfwNN_81UBFQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8316</td>
+      <td><b>Mea Shearim</b><div class="muted">Vienna · Austria</div></td>
+      <td>Schmelzgasse 3, Wien, 1020, Austria</td>
+      <td>Mea Shearim Kosher Restaurant</td>
+      <td>Schmelzgasse 3, 1020 Wien, Austria</td>
+      <td>4.7 (1749)</td>
+      <td>01 3999595</td>
+      <td class="photo">places/ChIJ9w16bacHbUcRwhhi4m7jn-Q/photos/AaVGc3mg2J8ts2krvsow_FVuCSj2HZU1ugXkgTGCSzREftuM9cBmZTX9bwpoZVAyzSB7IQf9LZWW94xrUCvnZaSDPT75vKYZI2Zg9o0Zsq6lY8BwE1fVdCt32sIZGzPQokOCoLIVriM5S9d3RPaxTYfOgkkxP6NJeTicE3HjAtYAuBRVmfpMWnIxKb7s_sAiqxSOjev09c15poJc2-U-wt4w7qr_thElhjw2eo6PwagMs3uo5W7ZwAk5Az1fazEmT-FrrOVY6khGrGEJNLP6S8X9UlbAQkOZOPEtQpMgQirNZSryePebp3WLKv-KGHl4Dqj_UsJr-arJAuYASN3-egMd1H32SYstNVgMLfV6rO2mRyytd2xlgp72Y-VxbCzbpSuyTgXDhmQs6M-HhVRONmWedAhjTvedNNEJ9UjpyY2sfinl8Yb7</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mea%20Shearim%20Schmelzgasse%203%2C%20Wien%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9w16bacHbUcRwhhi4m7jn-Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8317</td>
+      <td><b>Novellino</b><div class="muted">Vienna · Austria</div></td>
+      <td>Zirkusgasse 15, Vienna, 1020, Austria</td>
+      <td>Novellino</td>
+      <td>Zirkusgasse 15, 1020 Wien, Austria</td>
+      <td>4.6 (923)</td>
+      <td>01 2128169</td>
+      <td class="photo">places/ChIJYQ502gkHbUcRBsSlr3PilOY/photos/AaVGc3nsYyI4c76-yEsq7VWtoGv9LPTME_YsQcpzLP-Ptzenw8Li3fzoLR2AyRI5HxnuIOyrkfMphCIcym_cgaNeVmtOeEK44v6eLlhsa3Oh8AmpSM-h6mS2lSLuCPv_HEpUerUzl82-5FJdiYF09hxaqE56uCx8mGviIRlhV25-ykxd9mPq9XgziUi6BMS46okkaCAaXxDANjRnYQvMgI1GO4iZgSEa1IKgsi0hq9xQPvDQGyPm2Wd8CcqrJ1mUnEgyciJ6pAAKGSi9CZ1FrDMSfhDT3JImHhUmDgLTL51B_9XHUQKS5qdLYFXfNInGgBnlU1EemZXvteu8M_OrivH6Ku0N_QQ7kP-reXzDJAAc099vrrfEK0WJBrQbXy4bPwhs9pJQKC6hhm6uFvPKAKqzewJUuSsio23dZmkP_NeOEc3nH10</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Novellino%20Zirkusgasse%2015%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYQ502gkHbUcRBsSlr3PilOY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8318</td>
+      <td><b>Ohel Moshe Bakery &amp; Cafe</b><div class="muted">Vienna · Austria</div></td>
+      <td>Lilienbrunngasse 18, Vienna, 1020, Austria</td>
+      <td>אהל משה</td>
+      <td>Lilienbrunngasse 19, 1020 Wien, Austria</td>
+      <td>4.7 (91)</td>
+      <td>01 268864</td>
+      <td class="photo">places/ChIJR9GO3KYHbUcRNCOUC8jZ0FM/photos/AaVGc3mA5qMIXE8OWKgt12E3BRxKDvJ4Yw211IXZSprf2ZOpMBRNeVbx7PCy4ziNKF3rBQ_lc6BdRKdJIlMX2WXBtZU3BnuW4HVf3QO_V-kdltfjetHXJI6EpiinDbaxpByp_HcnWY9h-QvWENFKGpvvqMfwHYjVHSi-C26SsP1047JvHMooNcf3gEux4r2M2ZH-mezpdWsQEIiYEcCX_CdHx2am5fSM0-pZgryCpF9Urnf64fJtXIl9bnubsT8n5FwxNeVXpq2hE5FNdmTe-cCTi2UDWw8CdFuaJwDLfsvPlQPkfJ2WUHZ_2E_siFD1B8u-RIbP2kZJ_fkb-JOdMwKB2-N_fjsr761st7EiRDFJFuHFr8qpPzhZS4tW-Yn6Feg2mwdNKAV2821wScIGLnZQue_62nUc74EokLZ-gQhOqbBq050_YEcJ3nwLE1lT3A</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ohel%20Moshe%20Bakery%20%26%20Cafe%20Lilienbrunngasse%2018%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJR9GO3KYHbUcRNCOUC8jZ0FM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8319</td>
+      <td><b>Pizza Prego &amp; Backshop</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 43, Vienna, 1020, Austria</td>
+      <td>Pizza Prego &amp; Prego Backshop</td>
+      <td>Taborstraße 43/2-6, 1020 Wien, Austria</td>
+      <td>4.1 (295)</td>
+      <td>01 2163089</td>
+      <td class="photo">places/ChIJS4kjBakHbUcRm2H8TMt4eHY/photos/AaVGc3lamDN_9nWmvlM3w6CWblX0ERRrYiBPJiXJt81KufdPwOrB-ZJNQLzVMqUFhjlIoWVpkkN-esvj-MP1dJ6gQgmDeQRq5O1zhHV3PsM1rccqTlAV-i116v2Riwc8V2f-R3nrPEse9HaA5EkQ-vQPlDvzTJtRMuXpUtCDfbqmVGIylxEfbMudZwkCNA94Gg-w8SDXgf8yN6WGEes_f91O_tv97K4cNJ2WZsX9buoyyV4MHQIt77JQfKlis4ydlFDxagK_5rJ8AiJUc4iDSjlxMRrCfmX-Jp2NP8uMXdzIQZjgTegyuHg7QmeWJYDjtvNDnOH2E-Ih_S9WTasgpdg9NL4XxyoPMmUxdjBK6eLW9c6sbVk4O2NdH9cYywTW9QRkElThFj0JAhzQuuEayiQY855Om-kJ7Av0PHTm78tZyGF_UmijbBl3LticmGMECf3i</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza%20Prego%20%26%20Backshop%20Taborstra%C3%9Fe%2043%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJS4kjBakHbUcRm2H8TMt4eHY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8320</td>
+      <td><b>Sababa Kosher Restaurant</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 81 Vienna, 1020, Austria</td>
+      <td>Sababa Kosher Restaurant</td>
+      <td>Taborstraße 81, 1020 Wien, Austria</td>
+      <td>4.5 (788)</td>
+      <td>0676 847761211</td>
+      <td class="photo">places/ChIJqdahfXEHbUcRympb2fhjBsk/photos/AaVGc3mWYMeZo_dn3--xV0HzKeA4-LJq7SkyDYIWOCjs1siaI7MF-aYF-35qebBq6P9tLdX1CubZwwG2ovFAFyrMBwQcO2EWjJgu92x_3iFaVmkgCOUrUJSVib2SGSYdYNJMWAByX2x8nykyuC5xEI7q3dsg2CSuR5AA5HXnz8Yu0QwOZjNP-nprd_tFhNKOzpREi8QFEdkluQ2H6uEtWqw-_PpJoAR2mrntX44DncbPGcn4262N7Wn5Rz_XWLozOLVFNq7ijivmw0MPiFd8AiIiyc59otjqYJmqNf7270uMqRPlvYByEfR9uW9GWfGiSyPQbKLzKsP85-W2fozPYUkQS04a6MvLLtzYGzZQDcki-mSLOCMM4PIZEbu8MYHMcVrp9tj9w6Ihqn3nuUF6Govo7H0E9j3Dg9SXCl8ZJtKRma0N8Q</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sababa%20Kosher%20Restaurant%20Taborstra%C3%9Fe%2081%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJqdahfXEHbUcRympb2fhjBsk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8321</td>
+      <td><b>Schalom Food</b><div class="muted">Vienna · Austria</div></td>
+      <td>Rotensterngasse 16, 1020 Wien, Austria</td>
+      <td>Schalom Food</td>
+      <td>Rotensterngasse 16, 1020 Wien, Austria</td>
+      <td>4.5 (126)</td>
+      <td>01 9346215</td>
+      <td class="photo">places/ChIJw8yFZIgHbUcRqBIdy0qwAnA/photos/AaVGc3nZyTBmLeNaJTEm8OK4CX6ilxRBZTSO6_qetxy3qvIDS7iz47Y5E8WToJGz-wKzcE8gllEdLRt8ASkB3glRnKUMhGVkWnmGP-5zG7St7RTtxkSOkeHu9tKEwO77aBkyIlcIK39OV2em-pMXW1WwU-Vqfvk3X10OkykxHOhIbme3gAxoeLl3_3H4kxMrwtFra8sgraiqjKLcVV0pgJI9au07hSGBqAm81mxRIUu_6kUulhzzXowXmWECxhJ7PGz1Fyt0eS-RrETCsTAeUQhUlYu8F9BzYVwfpzTJPZ-URaMEPse7kOkyevECVdAB7ALBNjCty3Ll92ZOUY_yPiaCOuB0snH-W0du-19vZExM9sO6Nf2lPY-CQ6KpbI1UypYL1K9giL9sz4Kew6Fro1l8mK7HyrEuIfZBcOy-ciFB1zg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Schalom%20Food%20Rotensterngasse%2016%2C%201020%20Wien%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJw8yFZIgHbUcRqBIdy0qwAnA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8322</td>
+      <td><b>Shefa Cafe</b><div class="muted">Vienna · Austria</div></td>
+      <td>Heinestraße 24, Wien, 1020, Austria</td>
+      <td>Shefa Kosher Supermarket &amp; Restaurant</td>
+      <td>Heinestraße 24, 1020 Wien, Austria</td>
+      <td>4.6 (1345)</td>
+      <td>01 2646159</td>
+      <td class="photo">places/ChIJWTS6kwcHbUcRcrWMfUU8IDg/photos/AaVGc3lzOgGWNAy14HtQTG9KuHvKU7sjAvM1k5uy8ZmJAmhRnN1NP_TKZwV8etfx8xTJpYempd_EgrYFvZTSENiOG74bVPzw6fN-KLncGFi7PFKVf9k-REaqShWsNnpbV--ZBPTu8bUoK6wAbbF-GGMZDF05jVox28nvoK1chi-NGzoAzdUqC2rkO5mzaZHEpbicQFWBBrBshi_btIGwlcKFVcqrnRJGermNUBA30LiA_G4Ienk1SPYJvu6jSJKZ5Ylr9PUvSNyVU3P6YaO9b4xm3JFYo5noroNGQZEUvSg73Ln-q-OOKdcAZSrb_sq6Djs5Up3FeaedxVSKnugA7dB61MAUBznIQpJjRoWIhIxrGXRqgP6qdTRJdydSAkSZWVO8FHJsagB7e6TqZGD8dPFts1GS89VxgiV4pDwZ3In81d0dvA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Shefa%20Cafe%20Heinestra%C3%9Fe%2024%2C%20Wien%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJWTS6kwcHbUcRcrWMfUU8IDg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8323</td>
+      <td><b>Simchas Restaurant</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 47, Vienna, 1020 , Austria</td>
+      <td>Kosher Restaurant SIMCHAS מסעדה כשרה</td>
+      <td>Taborstraße 47, 1020 Wien, Austria</td>
+      <td>4.7 (60)</td>
+      <td>0650 3333384</td>
+      <td class="photo">places/ChIJZ6an86gHbUcRq3jV7dg4aW4/photos/AaVGc3kCMtwdwQC3TWbUTfQliC_QOIokflOgCLj90hGn632Lu4cCw-z4IR4QcXZR5fm_Pr2Tg03SdLcBhgXE_AKg75pMhly6oN07KM-O-ttG9c5iirSqLS-Wlu5h1bfybtO9umH6xBmWBXWcPPWUkNuWZ9a17GnDEPgiqqIb3z0L8_PeGEFLemK1PcyBdkitp4t-537TCN1ZWpzsK4Aoarnk0hgOA2bn-Ss0vDy0gr-OxDorZ0lbx7BiQPBp02EbYenW1QsZzFZ2voCwpQdfO4HsnSjL-ePjazBZFKi0aCC7Z53qg399AHqqHPRWgMjUk_9Or8CaY90rfcMHHWox-LrePhyiVUEcj5WHNvrzowmMA7PtCdIw0UQDXqXMozPzZJaqGp9NByA-oD4aZJ--eltygwLwGCLpP7MbwRhxoGG7dCtLM2KT</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Simchas%20Restaurant%20Taborstra%C3%9Fe%2047%2C%20Vienna%2C%201020%20%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJZ6an86gHbUcRq3jV7dg4aW4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8324</td>
+      <td><b>Tzfas Kosher Restaurant</b><div class="muted">Vienna · Austria</div></td>
+      <td>Kleine Sperlgasse 6, Vienna, 1020, Austria</td>
+      <td>מסעדת צפת Tzfas Kosher Restaurant</td>
+      <td>Kleine Sperlgasse 6, 1020 Wien, Austria</td>
+      <td>4.9 (37)</td>
+      <td>01 9568025</td>
+      <td class="photo">places/ChIJ3yIxsgcHbUcRL7bRTxxcwJI/photos/AaVGc3m8BNYG6RCifZJXqJ6ZQ7PysDqIWEmZ_TqoNDnt2L6ZHGo2SutkjjBGBsfc1y-T7tLTVjkf6UBYq1RvxxqDTaDSWuab4wYgk3xHDMahNeyleGbVl4_hlSDUVLdHN6okQ1K3zbB0rt8tUms6xVK4LdVdVDBVvnUg9soYhR_6g1zidzc9MwOQhlyW7VZXDrRpAmHnfWF7RZFceg1whCPxMvxxbCZOcq3BQIsfAsdAzMahgcVGG94fR4q5ltWxdZvGAFo026uqhp2di3My7ildHyglF_ciIzVf6uERDRi-od_dZ2PFAJNKZF4_uXDIqEcdaR0sPB0jA3gBLe2Unx682IVg6Bg3_xVyw1i2v41R--Xjoz_xCfV47RjnlOf6wkfh0ues7dpLUSpDw8FK_KUfcxc4_Yro5YXbOmonF4tp4UXI0tRBonfy-H4IIoRK5sqG</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tzfas%20Kosher%20Restaurant%20Kleine%20Sperlgasse%206%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ3yIxsgcHbUcRL7bRTxxcwJI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8325</td>
+      <td><b>VeAhavta - Kosher Bistro</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 20A, Vienna, 1020, Austria</td>
+      <td>VeAhavta - Kosher Bistro ואהבת - ביסטרו כשר</td>
+      <td>Taborstraße 20A, 1020 Wien, Austria</td>
+      <td>4.8 (193)</td>
+      <td>01 2265566</td>
+      <td class="photo">places/ChIJe8A-760HbUcRE-1mm4a3HOo/photos/AaVGc3kAY8V8X4EXY-QRiDdEN6eSosTekj8bupwPCtfM47UkcPA58TFJzljbcGMAL90QIBLWq6idfRWVveE7NBdRlLg7Og-kZGD1niofnlKXABgWN46q8lWhGV6hQctv4GBuVgEAlFsoymcX6r8Eu8gVs2GuZg3ROSQnIDw4MY3i8a64YgyzGoEEb9fXgX1JCEicyjomKPFzD9RMHo4YL2i7C9o_3rrDmCTjI_OdSMytoEZNCgGifU_E6m8_F5drIt3GMJJtH-OjtGms_uUc8rn6v5PM-fL-w0INiVFli1wyPfxwCZhfWAV6BBIawnyvGx5qYjCVm1Pvw4hkJhP6CZn0IldVlhWjiZmRm3CHxfCnBH3riQIJChJ5tZT2HjZBg14g-1NcTSYwQB1AEqPkuOe3TmXpqa1HJX7B5oor8ByzlloOGHMb</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=VeAhavta%20-%20Kosher%20Bistro%20Taborstra%C3%9Fe%2020A%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJe8A-760HbUcRE-1mm4a3HOo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8326</td>
+      <td><b>Yudale - Kosher Restaurant</b><div class="muted">Vienna · Austria</div></td>
+      <td>5 Volkertplatz,, Wien, 1020, Austria</td>
+      <td>Catering Yudale - Finest Koscher Catering</td>
+      <td>Franzensbrücke, 1020 Wien, Austria</td>
+      <td>4.2 (866)</td>
+      <td>0676 9525893</td>
+      <td class="photo">places/ChIJAVu9-qkHbUcRTp5VbiCeap4/photos/AaVGc3k1wrQkdxUB_AtMPMrz64DMNLj77mEwOVJ-O464JfyJxI0pa_3eyczOq3GdDhSP6limHnyNJ-xNua1x2SSeVE3FammuBGke5rhuvDMrXn0lEbTjkSr90FAIGqCi1yOv20KwEsV7GNi0C58IeOhGqZboa8IrFr28tSW0OQnrgAmlItWnYWAj4KJ_9Etk1sobIqKu0gd1OaGV9gT_56unToNbkSQyCoHX3X8W9NTOX4raDN4Ctto7IMZCMo7Ou7yyhXdWkFGNeEpmOcGOcfDIZK7EJhAyvZjrrlESEN5MI4ueJULQjSEBlhq08kGpdsSZGTmMTX9Ii-K54GqNU-im0tQ6lOIK4k0kiNBeQlyrfDWZS893iUTZwFGXcb7McJdNpkeKt3xYOSO_89w9-RvZ0BSkn-voMNjAsa3MQvkB1IK0kA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yudale%20-%20Kosher%20Restaurant%205%20Volkertplatz%2C%2C%20Wien%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJAVu9-qkHbUcRTp5VbiCeap4" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 1</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>6450</td>
+      <td><b>מסעדת MAZZES INSEL</b><div class="muted">Vienna · Austria</div></td>
+      <td>Rotensterngasse 16, 1020 Wien.</td>
+      <td>Schalom Food</td>
+      <td>Rotensterngasse 16, 1020 Wien, Austria</td>
+      <td>4.5 (126)</td>
+      <td>01 9346215</td>
+      <td class="photo">places/ChIJw8yFZIgHbUcRqBIdy0qwAnA/photos/AaVGc3nZyTBmLeNaJTEm8OK4CX6ilxRBZTSO6_qetxy3qvIDS7iz47Y5E8WToJGz-wKzcE8gllEdLRt8ASkB3glRnKUMhGVkWnmGP-5zG7St7RTtxkSOkeHu9tKEwO77aBkyIlcIK39OV2em-pMXW1WwU-Vqfvk3X10OkykxHOhIbme3gAxoeLl3_3H4kxMrwtFra8sgraiqjKLcVV0pgJI9au07hSGBqAm81mxRIUu_6kUulhzzXowXmWECxhJ7PGz1Fyt0eS-RrETCsTAeUQhUlYu8F9BzYVwfpzTJPZ-URaMEPse7kOkyevECVdAB7ALBNjCty3Ll92ZOUY_yPiaCOuB0snH-W0du-19vZExM9sO6Nf2lPY-CQ6KpbI1UypYL1K9giL9sz4Kew6Fro1l8mK7HyrEuIfZBcOy-ciFB1zg</td>
+      <td class="reason">LLM לא הכריע (0): unparseable</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20MAZZES%20INSEL%20Rotensterngasse%2016%2C%201020%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJw8yFZIgHbUcRqBIdy0qwAnA" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 4</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>6449</td>
+      <td><b>מסעדת יודלה  Yudale</b><div class="muted">Vienna · Austria</div></td>
+      <td>Volkertpl. 5, 1020 Wien, Austria.</td>
+      <td>Catering Yudale - Finest Koscher Catering</td>
+      <td>Franzensbrücke, 1020 Wien, Austria</td>
+      <td>4.2 (866)</td>
+      <td>0676 9525893</td>
+      <td class="photo">places/ChIJAVu9-qkHbUcRTp5VbiCeap4/photos/AaVGc3k1wrQkdxUB_AtMPMrz64DMNLj77mEwOVJ-O464JfyJxI0pa_3eyczOq3GdDhSP6limHnyNJ-xNua1x2SSeVE3FammuBGke5rhuvDMrXn0lEbTjkSr90FAIGqCi1yOv20KwEsV7GNi0C58IeOhGqZboa8IrFr28tSW0OQnrgAmlItWnYWAj4KJ_9Etk1sobIqKu0gd1OaGV9gT_56unToNbkSQyCoHX3X8W9NTOX4raDN4Ctto7IMZCMo7Ou7yyhXdWkFGNeEpmOcGOcfDIZK7EJhAyvZjrrlESEN5MI4ueJULQjSEBlhq08kGpdsSZGTmMTX9Ii-K54GqNU-im0tQ6lOIK4k0kiNBeQlyrfDWZS893iUTZwFGXcb7McJdNpkeKt3xYOSO_89w9-RvZ0BSkn-voMNjAsa3MQvkB1IK0kA</td>
+      <td class="reason">business_status=CLOSED_TEMPORARILY</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%99%D7%95%D7%93%D7%9C%D7%94%20%20Yudale%20Volkertpl.%205%2C%201020%20Wien%2C%20Austria." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJAVu9-qkHbUcRTp5VbiCeap4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6453</td>
+      <td><b>בית קפה ובר יודלה  Yudale - Café &amp; Bar</b><div class="muted">Vienna · Austria</div></td>
+      <td>Heinestraße 39, 1020 Wien.</td>
+      <td>Yudale</td>
+      <td>Beit Ya'akov St 10, Jerusalem, Israel</td>
+      <td>4.4 (723)</td>
+      <td>02-533-3442</td>
+      <td class="photo">places/ChIJ1dWP6yjWAhUR_V0ABucco30/photos/AaVGc3lpX41PmmA5LOWPw059Xha3C5ADSRBuzvo604bIXq22CXAhklfyLKGt9yVn-rnIINe9bxkoT6FkC7R3vNlxVm_kLM9TE5-NshdxSmrjeuFHcM9fg3FUJvE27k6gFv4CNdfRTC3jUT3X22OBusf2VyXzQ2YUnC0q7cYMwLnPfY3udeidOeGHBmap2uV1iZSVUFwKwpEhIhEVyLmhPdP2GrMW6qYER-LuxzhwfLh2GpVfsjsErtJyyu6Ap67WwNAo_YmJdun19i819jXqYkYxLyR7fl_koNXAj9WFS2wtXb-CdFLmQN-6wRd5tD2P54H5xABcvvqE2Fjypu19uTw-prSbYBn7yPuXEqoJBjrTTipamvwMRezVRa7VgH6kIZjPBMAmCSmI_MyCxWPjMz05RgYNuxo-rUrDPfEFfvnz3F-gUg</td>
+      <td class="reason">LLM דחה (0.98): שתי ערים שונות לחלוטין - וינה אוסטריה מול ירושלים ישראל. אף על פי ששם העסק 'יודלה' זהה, המיקומים הם 2,400+ ק&quot;מ זה מזה. לא יכול להיות אותו מקום.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%A7%D7%A4%D7%94%20%D7%95%D7%91%D7%A8%20%D7%99%D7%95%D7%93%D7%9C%D7%94%20%20Yudale%20-%20Caf%C3%A9%20%26%20Bar%20Heinestra%C3%9Fe%2039%2C%201020%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1dWP6yjWAhUR_V0ABucco30" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>6456</td>
+      <td><b>מסעדת מלכה MALKA</b><div class="muted">Vienna · Austria</div></td>
+      <td>Taborstraße 81, 1020 Wien.</td>
+      <td>Sababa Kosher Restaurant</td>
+      <td>Taborstraße 81, 1020 Wien, Austria</td>
+      <td>4.5 (788)</td>
+      <td>0676 847761211</td>
+      <td class="photo">places/ChIJqdahfXEHbUcRympb2fhjBsk/photos/AaVGc3mWYMeZo_dn3--xV0HzKeA4-LJq7SkyDYIWOCjs1siaI7MF-aYF-35qebBq6P9tLdX1CubZwwG2ovFAFyrMBwQcO2EWjJgu92x_3iFaVmkgCOUrUJSVib2SGSYdYNJMWAByX2x8nykyuC5xEI7q3dsg2CSuR5AA5HXnz8Yu0QwOZjNP-nprd_tFhNKOzpREi8QFEdkluQ2H6uEtWqw-_PpJoAR2mrntX44DncbPGcn4262N7Wn5Rz_XWLozOLVFNq7ijivmw0MPiFd8AiIiyc59otjqYJmqNf7270uMqRPlvYByEfR9uW9GWfGiSyPQbKLzKsP85-W2fozPYUkQS04a6MvLLtzYGzZQDcki-mSLOCMM4PIZEbu8MYHMcVrp9tj9w6Ihqn3nuUF6Govo7H0E9j3Dg9SXCl8ZJtKRma0N8Q</td>
+      <td class="reason">LLM דחה (0.92): שמות שונים לחלוטין - מלכה לעומת סבבא. אותה כתובת בדיוק אך שמות עסקים שונים מעידים על שתי מסעדות קשרות שונות או שינוי שם משמעותי. עם זאת, ייתכן שמלכה סגרה והוחלפה בסבבא באותו מקום.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%9E%D7%9C%D7%9B%D7%94%20MALKA%20Taborstra%C3%9Fe%2081%2C%201020%20Wien." target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJqdahfXEHbUcRympb2fhjBsk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8315</td>
+      <td><b>LaMehadrin Kosher Supermarket</b><div class="muted">Vienna · Austria</div></td>
+      <td>Kleine Sperlgasse 6, Vienna, 1020, Austria</td>
+      <td>מסעדת צפת Tzfas Kosher Restaurant</td>
+      <td>Kleine Sperlgasse 6, 1020 Wien, Austria</td>
+      <td>4.9 (37)</td>
+      <td>01 9568025</td>
+      <td class="photo">places/ChIJ3yIxsgcHbUcRL7bRTxxcwJI/photos/AaVGc3m8BNYG6RCifZJXqJ6ZQ7PysDqIWEmZ_TqoNDnt2L6ZHGo2SutkjjBGBsfc1y-T7tLTVjkf6UBYq1RvxxqDTaDSWuab4wYgk3xHDMahNeyleGbVl4_hlSDUVLdHN6okQ1K3zbB0rt8tUms6xVK4LdVdVDBVvnUg9soYhR_6g1zidzc9MwOQhlyW7VZXDrRpAmHnfWF7RZFceg1whCPxMvxxbCZOcq3BQIsfAsdAzMahgcVGG94fR4q5ltWxdZvGAFo026uqhp2di3My7ildHyglF_ciIzVf6uERDRi-od_dZ2PFAJNKZF4_uXDIqEcdaR0sPB0jA3gBLe2Unx682IVg6Bg3_xVyw1i2v41R--Xjoz_xCfV47RjnlOf6wkfh0ues7dpLUSpDw8FK_KUfcxc4_Yro5YXbOmonF4tp4UXI0tRBonfy-H4IIoRK5sqG</td>
+      <td class="reason">LLM דחה (0.92): שם שונה לגמרי - סופרמרקט לעומת מסעדה. אף שהכתובת זהה, הם עסקים מסוג שונה (supermarket vs restaurant). יכול שהם באותו הבניין אבל לא אותו מקום.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=LaMehadrin%20Kosher%20Supermarket%20Kleine%20Sperlgasse%206%2C%20Vienna%2C%201020%2C%20Austria" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ3yIxsgcHbUcRL7bRTxxcwJI" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

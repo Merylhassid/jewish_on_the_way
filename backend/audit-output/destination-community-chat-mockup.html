@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מוקאפ צ'אט קהילתי ליעד</title>
+<style>
+:root{
+  --page:#eee8dc;
+  --cream:#f8f4ea;
+  --paper:#fffdf8;
+  --card:#fff;
+  --navy:#0b1736;
+  --gold:#c9a84c;
+  --gold2:#b89438;
+  --muted:#7a8494;
+  --soft:#f1eadc;
+  --line:#ebe2d2;
+  --green:#15803d;
+  --blue:#2563eb;
+  --shadow:rgba(9,22,52,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--page);
+  font-family:Rubik,Inter,Arial,sans-serif;
+  color:var(--navy);
+}
+.page{
+  max-width:1180px;
+  margin:0 auto;
+  padding:26px;
+}
+.intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:18px;
+}
+h1{
+  margin:0 0 7px;
+  font-size:24px;
+  font-weight:900;
+}
+.lead{
+  margin:0;
+  max-width:720px;
+  color:#566173;
+  line-height:1.55;
+  font-size:14px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:24px;
+  align-items:start;
+}
+.phone{
+  width:360px;
+  min-height:760px;
+  background:var(--cream);
+  border:1px solid #ded5c4;
+  border-radius:32px;
+  overflow:hidden;
+  box-shadow:0 22px 60px rgba(0,0,0,.18);
+}
+.status{
+  height:26px;
+  background:#fbf8ef;
+  color:#ded5c3;
+  text-align:center;
+  font-size:12px;
+  padding-top:5px;
+}
+.header{
+  background:#fffaf0;
+  border-bottom:1px solid var(--line);
+  padding:13px 16px 12px;
+}
+.top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.iconBtn{
+  width:34px;
+  height:34px;
+  border-radius:17px;
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 4px 12px var(--shadow);
+  display:grid;
+  place-items:center;
+  color:var(--navy);
+  font-weight:900;
+  flex:0 0 auto;
+}
+.home{
+  margin-inline-start:auto;
+  background:#d6c27d;
+  color:#fff;
+  border-color:#d6c27d;
+}
+.titleBlock{
+  min-width:0;
+  flex:1;
+}
+.eyebrow{
+  font-size:9px;
+  letter-spacing:2.1px;
+  color:var(--gold2);
+  font-weight:900;
+  text-transform:uppercase;
+}
+.title{
+  font-size:20px;
+  font-weight:900;
+  line-height:1.08;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.sub{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:3px;
+}
+.liveDot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#22c55e;
+}
+.searchBar{
+  margin-top:12px;
+  height:38px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 12px;
+  color:#7a8494;
+  font-size:12px;
+}
+.searchIcon{font-size:14px;color:var(--gold2)}
+.tabs{
+  display:flex;
+  gap:7px;
+  overflow:hidden;
+  padding:10px 12px;
+  background:#fffdf7;
+  border-bottom:1px solid var(--line);
+}
+.chip{
+  flex:0 0 auto;
+  border:1px solid #eadfcb;
+  background:#fff;
+  color:#596476;
+  border-radius:15px;
+  padding:6px 10px;
+  font-size:10.5px;
+  font-weight:800;
+}
+.chip.on{
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+}
+.board{
+  padding:12px;
+  background:#f6f1e8;
+}
+.pinned{
+  background:#fff;
+  border:1px solid #eee1c7;
+  border-radius:16px;
+  box-shadow:0 5px 14px rgba(9,22,52,.06);
+  padding:11px 12px;
+}
+.pinHead{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:12px;
+  font-weight:900;
+  color:var(--navy);
+}
+.pinText{
+  margin-top:6px;
+  color:#566173;
+  font-size:11.5px;
+  line-height:1.45;
+}
+.quickLinks{
+  display:flex;
+  gap:6px;
+  margin-top:9px;
+}
+.quick{
+  flex:1;
+  text-align:center;
+  border-radius:11px;
+  background:#f8f3e7;
+  border:1px solid #efe4cf;
+  color:#62512b;
+  font-size:10px;
+  font-weight:900;
+  padding:7px 5px;
+}
+.date{
+  text-align:center;
+  color:#8c96a6;
+  font-size:10px;
+  font-weight:800;
+  margin:12px 0 9px;
+}
+.msg{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  margin-bottom:9px;
+  direction:ltr;
+}
+.msg.me{
+  flex-direction:row-reverse;
+}
+.avatar{
+  width:30px;
+  height:30px;
+  border-radius:15px;
+  background:#fff8df;
+  border:1px solid #eadfbd;
+  display:grid;
+  place-items:center;
+  color:#5b4b18;
+  font-size:10px;
+  font-weight:900;
+  flex:0 0 auto;
+}
+.bubble{
+  max-width:78%;
+  background:#fff;
+  border:1px solid rgba(11,23,54,.07);
+  border-radius:16px;
+  border-top-left-radius:6px;
+  padding:9px 11px;
+  box-shadow:0 4px 12px rgba(9,22,52,.06);
+  direction:rtl;
+}
+.me .bubble{
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+  border-top-left-radius:16px;
+  border-top-right-radius:6px;
+}
+.meta{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:4px;
+}
+.name{
+  font-size:11px;
+  font-weight:900;
+}
+.role{
+  color:var(--gold2);
+  background:#fff7df;
+  border-radius:8px;
+  padding:2px 5px;
+  font-size:8.5px;
+  font-weight:900;
+}
+.time{
+  margin-inline-start:auto;
+  color:#97a1b0;
+  font-size:9.5px;
+}
+.me .time{color:rgba(255,255,255,.58)}
+.text{
+  font-size:13px;
+  line-height:1.45;
+}
+.reply{
+  border-right:3px solid var(--gold);
+  background:#f9f4e8;
+  border-radius:9px;
+  padding:6px 8px;
+  margin-bottom:7px;
+  font-size:10.5px;
+  color:#687386;
+}
+.photo{
+  margin-top:8px;
+  width:190px;
+  height:118px;
+  border-radius:13px;
+  background:
+    linear-gradient(135deg,rgba(11,23,54,.12),rgba(201,168,76,.12)),
+    radial-gradient(circle at 78% 20%, #ffd66b 0 10px, transparent 11px),
+    linear-gradient(150deg, #dde8e7 0%, #e7d9c2 48%, #9aa88d 49%, #62725f 100%);
+  border:1px solid rgba(255,255,255,.7);
+  overflow:hidden;
+  position:relative;
+}
+.photo:after{
+  content:"Kosher sign photo";
+  position:absolute;
+  right:12px;
+  bottom:10px;
+  background:rgba(11,23,54,.72);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  border-radius:9px;
+  padding:5px 8px;
+}
+.actions{
+  display:flex;
+  gap:6px;
+  margin-top:7px;
+}
+.action{
+  background:#f5f1e7;
+  border:1px solid #ebe2d2;
+  color:#6b7280;
+  border-radius:12px;
+  padding:4px 7px;
+  font-size:10px;
+  font-weight:800;
+}
+.me .action{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.18);
+  color:rgba(255,255,255,.78);
+}
+.composer{
+  position:relative;
+  background:#fff;
+  border-top:1px solid var(--line);
+  padding:10px 11px 13px;
+}
+.composeTop{
+  display:flex;
+  gap:7px;
+  margin-bottom:8px;
+}
+.tool{
+  width:31px;
+  height:31px;
+  border-radius:12px;
+  background:#f7f2e9;
+  border:1px solid #eadfcb;
+  display:grid;
+  place-items:center;
+  color:#8a6e28;
+  font-weight:900;
+}
+.input{
+  flex:1;
+  min-height:39px;
+  border-radius:18px;
+  border:1.5px solid #e4d7be;
+  background:#fffdf8;
+  color:#8b94a3;
+  display:flex;
+  align-items:center;
+  padding:0 13px;
+  font-size:12px;
+}
+.send{
+  width:40px;
+  height:40px;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  background:var(--navy);
+  color:#fff;
+  font-weight:900;
+}
+.hint{
+  color:#8b94a3;
+  font-size:10px;
+  text-align:center;
+}
+.notes{
+  display:grid;
+  gap:12px;
+}
+.panel{
+  background:#fff;
+  border:1px solid #e5dccb;
+  border-radius:18px;
+  padding:16px 18px;
+  box-shadow:0 7px 18px rgba(9,22,52,.05);
+}
+.panel h2{
+  margin:0 0 9px;
+  font-size:16px;
+}
+.panel p{
+  margin:0;
+  color:#566173;
+  line-height:1.55;
+  font-size:13px;
+}
+.list{
+  margin:10px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:8px;
+}
+.list li{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  color:#4d586a;
+  font-size:13px;
+  line-height:1.4;
+}
+.mark{
+  width:18px;
+  height:18px;
+  border-radius:9px;
+  background:#f4ecd9;
+  color:#8a6e28;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:900;
+  flex:0 0 auto;
+}
+@media(max-width:900px){
+  .page{padding:16px}
+  .intro{display:block}
+  .layout{grid-template-columns:1fr}
+  .phone{width:min(100%,390px);margin:auto}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="intro">
+    <div>
+      <h1>מוקאפ: צ'אט יעד כקהילת שאלות והמלצות</h1>
+      <p class="lead">הכיוון: פחות "חדר צ'אט של משחק", יותר מקום שימושי להתייעצות לפני ובזמן נסיעה. המסך משלב חיפוש, קטגוריות, מידע נעוץ, הודעות עם תמונות ופעולות כמו Reply ו-Useful.</p>
+    </div>
+  </section>
+
+  <section class="layout">
+    <div class="phone">
+      <div class="status">19:26</div>
+
+      <header class="header">
+        <div class="top">
+          <div class="iconBtn">‹</div>
+          <div class="titleBlock">
+            <div class="eyebrow">Destination Community</div>
+            <div class="title">Afula Questions & Tips</div>
+            <div class="sub"><span class="liveDot"></span><span>Live · 7 online · 128 members</span></div>
+          </div>
+          <div class="iconBtn">⌕</div>
+          <div class="iconBtn home">⌂</div>
+        </div>
+        <div class="searchBar"><span class="searchIcon">⌕</span><span>Search "minyan", "pizza", "bus", "Shabbat"</span></div>
+      </header>
+
+      <nav class="tabs">
+        <span class="chip on">All</span>
+        <span class="chip">Food</span>
+        <span class="chip">Minyan</span>
+        <span class="chip">Shabbat</span>
+        <span class="chip">Transport</span>
+        <span class="chip">Photos</span>
+      </nav>
+
+      <section class="board">
+        <div class="pinned">
+          <div class="pinHead"><span>★</span><span>Pinned for Afula</span></div>
+          <div class="pinText">Before asking, check nearby kosher food, minyans and saved local tips. Helpful answers can be marked Useful so travelers find them later.</div>
+          <div class="quickLinks">
+            <div class="quick">Restaurants</div>
+            <div class="quick">Minyans</div>
+            <div class="quick">Synagogues</div>
+          </div>
+        </div>
+
+        <div class="date">Today</div>
+
+        <article class="msg">
+          <div class="avatar">MH</div>
+          <div class="bubble">
+            <div class="meta">
+              <span class="name">Meryl Hassid</span>
+              <span class="role">Local helper</span>
+              <span class="time">4:01 PM</span>
+            </div>
+            <div class="text">Does anyone know if there is a reliable kosher pizza place open near the station tonight?</div>
+            <div class="actions">
+              <span class="action">Reply</span>
+              <span class="action">Useful · 3</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="msg">
+          <div class="avatar">DY</div>
+          <div class="bubble">
+            <div class="meta">
+              <span class="name">Da Ye</span>
+              <span class="time">4:04 PM</span>
+            </div>
+            <div class="reply">Replying to Meryl: kosher pizza near station</div>
+            <div class="text">Yes. There is one about 8 minutes by taxi. I went yesterday. Ask to see the certificate because hours change.</div>
+            <div class="photo"></div>
+            <div class="actions">
+              <span class="action">Reply</span>
+              <span class="action">Useful · 8</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="msg me">
+          <div class="avatar">ME</div>
+          <div class="bubble">
+            <div class="meta">
+              <span class="name">You</span>
+              <span class="time">4:07 PM</span>
+            </div>
+            <div class="text">Perfect. Is it walking distance from the central bus station, or better to take a taxi?</div>
+            <div class="actions">
+              <span class="action">Seen by 4</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="msg">
+          <div class="avatar">SB</div>
+          <div class="bubble">
+            <div class="meta">
+              <span class="name">Sarah B.</span>
+              <span class="role">Visited recently</span>
+              <span class="time">4:09 PM</span>
+            </div>
+            <div class="text">Taxi is easier at night. During the day it is walkable. For Maariv, check the Chabad listing in the app first.</div>
+            <div class="actions">
+              <span class="action">Reply</span>
+              <span class="action">Useful · 5</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="composer">
+        <div class="composeTop">
+          <div class="tool">＋</div>
+          <div class="tool">▧</div>
+          <div class="input">Ask for recommendations, minyan info, kosher food...</div>
+          <div class="send">➤</div>
+        </div>
+        <div class="hint">Attach photos, reply to a message, or search old tips before asking.</div>
+      </footer>
+    </div>
+
+    <aside class="notes">
+      <div class="panel">
+        <h2>מה השתנה בתחושה</h2>
+        <p>המסך כבר לא מציג סתם רצף הודעות קצרות. הוא מרגיש כמו קהילה של יעד: יש מידע נעוץ, קטגוריות, חיפוש, והודעות שאפשר לחזור אליהן כי הן מסודרות ושימושיות.</p>
+      </div>
+
+      <div class="panel">
+        <h2>פיצ'רים שמופיעים במוקאפ</h2>
+        <ul class="list">
+          <li><span class="mark">1</span><span>חיפוש בצ'אט מהכותרת, עם דוגמאות למילים שאנשים באמת יחפשו.</span></li>
+          <li><span class="mark">2</span><span>קטגוריות כמו Food, Minyan, Shabbat ו-Transport כדי להפוך את השיחה לידע מסודר.</span></li>
+          <li><span class="mark">3</span><span>תמונות בתוך הודעות, עם caption או הקשר, למשל שלט כשרות או מקום פיזי.</span></li>
+          <li><span class="mark">4</span><span>Reply ו-Useful כדי שהמלצות טובות יבלטו ולא ילכו לאיבוד.</span></li>
+          <li><span class="mark">5</span><span>אזור נעוץ שמחבר למסעדות, מניינים ובתי כנסת של אותו יעד.</span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>הכיוון הטכני</h2>
+        <p>שלב ראשון: לעצב את המסך מחדש בלי לשבור את ה-socket הקיים. אחר כך להוסיף pagination וחיפוש בצד שרת. אחרי זה להרחיב את הודעת הצ'אט ל-imageUrl, messageType, replyToId ו-category.</p>
+      </div>
+    </aside>
+  </section>
+</main>
+</body>
+</html>

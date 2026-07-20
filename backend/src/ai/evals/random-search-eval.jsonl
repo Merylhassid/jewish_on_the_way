@@ -1,0 +1,1000 @@
+{"query":"מסעדה יפני","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בתי כנסת ליד באר שבע","exp":{"category":"synagogue","denom":null,"destText":"באר שבע","scope":"il"}}
+{"query":"קפריסין","exp":{"category":"destination","destText":"קפריסין","scope":"country"}}
+{"query":"בתי כנתס תימני","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"מסעדה מקסיקני","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה מקסיקני עם ילדים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"הודו","exp":{"category":"destination","destText":"הודו","scope":"country"}}
+{"query":"מסעדה ים תיכוני מומלץ בספרד","exp":{"category":"restaurant","destText":"ספרד","scope":"country"}}
+{"query":"מסדעה צמחוני בונציה","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"להתארח בשבת באזור","exp":{"category":"hosting","destText":null,"scope":"abroad"}}
+{"query":"מניין שחרית ברעננה","exp":{"category":"minyan","denom":null,"destText":"רעננה","scope":"il"}}
+{"query":"סעוה שלישית ליד הבית","exp":{"category":"hosting","destText":"ברצלונה","scope":"abroad"}}
+{"query":"בית כנסת חב״ד בנתניה","exp":{"category":"synagogue","denom":"chabad","destText":"נתניה","scope":"il"}}
+{"query":"ארוחת שבת בחולון","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"מניין מנחה במרקש","exp":{"category":"minyan","denom":null,"destText":"מרקש","scope":"abroad"}}
+{"query":"בית כנסת בהוד השרון","exp":{"category":"synagogue","denom":null,"destText":"הוד השרון","scope":"il"}}
+{"query":"מסעדה בשרי רבנות בבואנוס איירס","exp":{"category":"restaurant","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"בית כנסת בלאדי","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"לזניה באתונה","exp":{"category":"restaurant","destText":"אתונה","scope":"abroad"}}
+{"query":"להתארח בשבת בקרית שמונה","exp":{"category":"hosting","destText":"קרית שמונה","scope":"il"}}
+{"query":"שניצל מהדרין ליד קרית שמונה","exp":{"category":"restaurant","destText":"קרית שמונה","scope":"il"}}
+{"query":"מקום טוב לאכול בנס ציונה","exp":{"category":"restaurant","destText":"נס ציונה","scope":"il"}}
+{"query":"מסעדה פרווה בטבריה","exp":{"category":"restaurant","destText":"טבריה","scope":"il"}}
+{"query":"כשר","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה פרווה מהדרין פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת נוסח תימן ליד גרבה","exp":{"category":"synagogue","denom":"teimanim","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"מסעדה מקסיקני בספרד","exp":{"category":"restaurant","destText":"ספרד","scope":"country"}}
+{"query":"צרפת","exp":{"category":"destination","destText":"צרפת","scope":"country"}}
+{"query":"פסה מהדרין","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה טבעוני בנס ציונה פתוח עכשיו","exp":{"category":"restaurant","destText":"נס ציונה","scope":"il"}}
+{"query":"בית כנסת מרוקאי בבאר שבע","exp":{"category":"synagogue","denom":"sfarad","destText":"באר שבע","scope":"il"}}
+{"query":"אנטריקוט במיאמי","exp":{"category":"restaurant","destText":"מיאמי","scope":"abroad"}}
+{"query":"לזניה שווה לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת ספרדי","exp":{"category":"synagogue","denom":"sfarad","destText":null,"scope":"none"}}
+{"query":"ראש העין","exp":{"category":"destination","destText":"ראש העין","scope":"il"}}
+{"query":"בתי כנסת בבאר שעב","exp":{"category":"synagogue","denom":null,"destText":"באר שבע","scope":"il"}}
+{"query":"מניין נץ עדות המזרח כאן","exp":{"category":"minyan","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"קרואסון יוקרתי גלא ליד גדרה","exp":{"category":"restaurant","destText":"גדרה","scope":"il"}}
+{"query":"מניין שחרית עדות המזרח בברלין","exp":{"category":"minyan","denom":"sfarad","destText":"ברלין","scope":"abroad"}}
+{"query":"מניין נץ ליטאי במרוקו","exp":{"category":"minyan","denom":"ashkenaz","destText":"מרוקו","scope":"country"}}
+{"query":"בית כנסת חב״ד בארו יהודה","exp":{"category":"synagogue","denom":"chabad","destText":"אור יהודה","scope":"il"}}
+{"query":"לוד","exp":{"category":"destination","destText":"לוד","scope":"il"}}
+{"query":"מניין מנחה וערבית בניו יורק","exp":{"category":"minyan","denom":null,"destText":"ניו יורק","scope":"abroad"}}
+{"query":"מגדל העמק","exp":{"category":"destination","destText":"מגדל העמק","scope":"il"}}
+{"query":"מחפש מנגל טוב במרקש","exp":{"category":"restaurant","destText":"מרקש","scope":"abroad"}}
+{"query":"מעלה אדומים","exp":{"category":"destination","destText":"מעלה אדומים","scope":"il"}}
+{"query":"מסעדה איטלקי מהדרין בבאר שבע רומנטי","exp":{"category":"restaurant","destText":"באר שבע","scope":"il"}}
+{"query":"מקום טוב לאכול בברזיל","exp":{"category":"restaurant","destText":"ברזיל","scope":"country"}}
+{"query":"מסעדה איטלקי רבנות באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה צמחוני גלאט ליד פראג רומנטי","exp":{"category":"restaurant","destText":"פראג","scope":"abroad"}}
+{"query":"בית כסנת","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"none"}}
+{"query":"ליהנ לשבת לידי","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"מסעדה סיני בוינה פתוח עכשיו","exp":{"category":"restaurant","destText":"וינה","scope":"abroad"}}
+{"query":"מחפש טאקו טוב בחולון","exp":{"category":"restaurant","destText":"חולון","scope":"il"}}
+{"query":"ארוחת ליל שבת בוינה","exp":{"category":"hosting","destText":null,"scope":"abroad"}}
+{"query":"מסעדה איטלקי מומלץ גלאט בציריך","exp":{"category":"restaurant","destText":"ציריך","scope":"abroad"}}
+{"query":"מסעדה אסייתי רבנות פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מה יש לאכול","exp":{"category":"any","scope":"vague"}}
+{"query":"קרואסון כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה סיני ליד ניו יורק למשפחות","exp":{"category":"restaurant","destText":"ניו יורק","scope":"abroad"}}
+{"query":"מסעדה יפני שווה פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"קינוח בירושלים","exp":{"category":"restaurant","destText":"ירושלים","scope":"il"}}
+{"query":"בי כנסת ספרדי בהוד השרון","exp":{"category":"synagogue","denom":"sfarad","destText":"הוד השרון","scope":"il"}}
+{"query":"מקסיקו סיטי","exp":{"category":"destination","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"מסעהד טבעוני בחדרה","exp":{"category":"restaurant","destText":"חדרה","scope":"il"}}
+{"query":"גלאט","exp":{"category":"any","scope":"vague"}}
+{"query":"חולון","exp":{"category":"destination","destText":"חולון","scope":"il"}}
+{"query":"לזניה קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"איטליה","exp":{"category":"destination","destText":"איטליה","scope":"country"}}
+{"query":"אירוח לשבת בבודפשט","exp":{"category":"hosting","destText":null,"scope":"abroad"}}
+{"query":"קובה לא יקר גלאט ליד מילאנו","exp":{"category":"restaurant","destText":"מילאנו","scope":"abroad"}}
+{"query":"שקשוקה בקפריסין לארוחת ערב","exp":{"category":"restaurant","destText":"קפריסין","scope":"country"}}
+{"query":"מסעדה ים תיכוני ליד וינה","exp":{"category":"restaurant","destText":"וינה","scope":"abroad"}}
+{"query":"קרואסון רבנות ליד הים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"סטייק רבנות בוינה","exp":{"category":"restaurant","destText":"וינה","scope":"abroad"}}
+{"query":"נס ציונה","exp":{"category":"destination","destText":"נס ציונה","scope":"il"}}
+{"query":"קובה רבנות בנתניה","exp":{"category":"restaurant","destText":"נתניה","scope":"il"}}
+{"query":"מרק שווה גלאט בלוד","exp":{"category":"restaurant","destText":"לוד","scope":"il"}}
+{"query":"מסעדה בשרי פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה איטלקי בד״ץ פתוח עכשיו","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בית כנסת ליטאי קרוב אליי","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"מסעדה פרווה גלאט ברמלה","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"לזניה זול בראש העין","exp":{"category":"restaurant","destText":"ראש העין","scope":"il"}}
+{"query":"מסעדה חלבי מהדרין בחיפה","exp":{"category":"restaurant","destText":"חיפה","scope":"il"}}
+{"query":"מסעהד סיני גלאט פה למשפחות","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה כשרה בטורונטו","exp":{"category":"restaurant","destText":"טורונטו","scope":"abroad"}}
+{"query":"זכרון יעקב","exp":{"category":"destination","destText":"זכרון יעקב","scope":"il"}}
+{"query":"מחפש פרגית טב בחדרה","exp":{"category":"restaurant","destText":"חדרה","scope":"il"}}
+{"query":"מסעדה פרווה מהדרין ליד אנגליה","exp":{"category":"restaurant","destText":"אנגליה","scope":"country"}}
+{"query":"אירוח","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה יפני הכי וטב רבנות","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מנחה וערבית ספרדי באזור","exp":{"category":"minyan","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"קבב יוקרתי ליד ארה״ב","exp":{"category":"restaurant","destText":"ארה״ב","scope":"country"}}
+{"query":"הוד השרון","exp":{"category":"destination","destText":"הוד השרון","scope":"il"}}
+{"query":"פרגית גלאט בטוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"ארוחת לי שבת בנס ציונה","exp":{"category":"hosting","destText":"נס ציונה","scope":"il"}}
+{"query":"נודלס בברלצונה למשפחות","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"סטייק זול מהדרין ליד רעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"ניו יורק","exp":{"category":"destination","destText":"ניו יורק","scope":"abroad"}}
+{"query":"מסעדה טבעוני ליד","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בלגיה","exp":{"category":"destination","destText":"בלגיה","scope":"country"}}
+{"query":"מניין שחרית באשקלון","exp":{"category":"minyan","denom":null,"destText":"אשקלון","scope":"il"}}
+{"query":"יקנעם","exp":{"category":"destination","destText":"יקנעם","scope":"il"}}
+{"query":"מסעדה ים תיכוני בבואנוס איירס","exp":{"category":"restaurant","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"מניין נץ באור יהודה","exp":{"category":"minyan","denom":null,"destText":"אור יהודה","scope":"il"}}
+{"query":"מחפש פרגית טוב בבנגקוק","exp":{"category":"restaurant","destText":"בנגקוק","scope":"abroad"}}
+{"query":"בית כנסת ליד הרצליה","exp":{"category":"synagogue","denom":null,"destText":"הרצליה","scope":"il"}}
+{"query":"בית כנסת שאמי בברלין","exp":{"category":"synagogue","denom":"teimanim","destText":"ברלין","scope":"abroad"}}
+{"query":"מעורב ירושלמי מומלץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה בשרי רבנות באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"אור יהודה","exp":{"category":"destination","destText":"אור יהודה","scope":"il"}}
+{"query":"מניין שחרית במרוקו","exp":{"category":"minyan","denom":null,"destText":"מרוקו","scope":"country"}}
+{"query":"מחפש דיגם טוב באנטוורפן","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"חביתה בלוס אנג׳לס","exp":{"category":"restaurant","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"פראג","exp":{"category":"destination","destText":"פראג","scope":"abroad"}}
+{"query":"בתי כנסת שאמי במרוקו","exp":{"category":"synagogue","denom":"teimanim","destText":"מרוקו","scope":"country"}}
+{"query":"מקום טוב לאכול בטורונטו","exp":{"category":"restaurant","destText":"טורונטו","scope":"abroad"}}
+{"query":"מסעדה בשרי שווה בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה אמריקא","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בית כנסת תימני","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"מסעדה מקסיקני פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין ערבית נוסח אשכנז לידי","exp":{"category":"minyan","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"איפה אפשר לאכול מעורב ירושלמי בבת ים","exp":{"category":"restaurant","destText":"בת ים","scope":"il"}}
+{"query":"באר שבע","exp":{"category":"destination","destText":"באר שבע","scope":"il"}}
+{"query":"סלט רבנות בטורקיה","exp":{"category":"restaurant","destText":"טורקיה","scope":"country"}}
+{"query":"פסטה אבזור רומנטי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"שקשוקה מהדרין ברעננה לארוחת בוקר","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"טאקו ליד מדריד","exp":{"category":"restaurant","destText":"מדריד","scope":"abroad"}}
+{"query":"מניין מוסף נוסח ספרד בג׳רבה","exp":{"category":"minyan","denom":"sfarad","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"בית כנס חב״ד בראשון לציון","exp":{"category":"synagogue","denom":"chabad","destText":"ראשון לציון","scope":"il"}}
+{"query":"לינה לשבת ליד הבית","exp":{"category":"hosting","destText":"אתונה","scope":"abroad"}}
+{"query":"מסעדה פרווה בלוד","exp":{"category":"restaurant","destText":"לוד","scope":"il"}}
+{"query":"מסעדה צמחוני זול בברצלונה","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"בית כנסת בלאדי בנהריה","exp":{"category":"synagogue","denom":"teimanim","destText":"נהריה","scope":"il"}}
+{"query":"מסעדה אמריקאי זול קרוב אליי עם ילדים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"תל אביב","exp":{"category":"destination","destText":"תל אביב","scope":"il"}}
+{"query":"מניין מנחה וערבית פה","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"סטייק בראשון לציון","exp":{"category":"restaurant","destText":"ראשון לציון","scope":"il"}}
+{"query":"חומוס גלאט ליד יוון","exp":{"category":"restaurant","destText":"יוון","scope":"country"}}
+{"query":"מסעדה פרווה שווה גלאט בטבריה","exp":{"category":"restaurant","destText":"טבריה","scope":"il"}}
+{"query":"איפה אפשר לאכול ג׳חנון בהרצליה","exp":{"category":"restaurant","destText":"הרצליה","scope":"il"}}
+{"query":"מסעדה מרוקאי שווה ליד אנטוורפן","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"בתי כנסת נוסח אשכנז פה","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"מחפש פרגית טוב בניו יורק","exp":{"category":"restaurant","destText":"ניו יורק","scope":"abroad"}}
+{"query":"ארוחת שבת בטורקיה","exp":{"category":"hosting","destText":"טורקיה","scope":"near"}}
+{"query":"מסעדה פרווה בד״ץ באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"סושי לא יקר ליד יוון","exp":{"category":"restaurant","destText":"יוון","scope":"country"}}
+{"query":"מסעדה פרווה ליד הבית ליד הים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה תאילנדי הכי טוב רבנות בקזבלנקה","exp":{"category":"restaurant","destText":"קזבלנקה","scope":"abroad"}}
+{"query":"מניין נץ תימני","exp":{"category":"minyan","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"אסאדו ליד ברלין","exp":{"category":"restaurant","destText":"ברלין","scope":"abroad"}}
+{"query":"אנטריקוט בירושלים רומנטי","exp":{"category":"restaurant","destText":"ירושלים","scope":"il"}}
+{"query":"שניצל קרוב אליי לארות בוקר","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה טורקי מומלץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה הודי ליד רעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"מניין ערבית בבית שמש","exp":{"category":"minyan","denom":null,"destText":"בית שמש","scope":"il"}}
+{"query":"אמסטרדם","exp":{"category":"destination","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"בתי כנסת אשכנזי בבלגיה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"בלגיה","scope":"country"}}
+{"query":"וופל ליד קרית שמונה עם ילדים","exp":{"category":"restaurant","destText":"קרית שמונה","scope":"il"}}
+{"query":"מניין מוסף באזור","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"רעב","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה חלבי זול גלאט בארה״ב","exp":{"category":"restaurant","destText":"ארה״ב","scope":"country"}}
+{"query":"מניין נץ ביבנה","exp":{"category":"minyan","denom":null,"destText":"יבנה","scope":"il"}}
+{"query":"בקלאווה מהדרין באילת","exp":{"category":"restaurant","destText":"אילת","scope":"il"}}
+{"query":"שניצל לא יקר בבואנו איירס","exp":{"category":"restaurant","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"מניין ערבית אשמי בברלין","exp":{"category":"minyan","denom":"teimanim","destText":"ברלין","scope":"abroad"}}
+{"query":"מסעדה צמחוני ליד ג׳רבה","exp":{"category":"restaurant","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"בית כנסת בנתניה","exp":{"category":"synagogue","denom":null,"destText":"נתניה","scope":"il"}}
+{"query":"ביגל זול למשפחות","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בורקס יוקרתי רבנות ליד רמלה","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"בית כנסת ליטאי ברמלה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"רמלה","scope":"il"}}
+{"query":"טורונטו","exp":{"category":"destination","destText":"טורונטו","scope":"abroad"}}
+{"query":"בית כנסת בלאדי ברעננה","exp":{"category":"synagogue","denom":"teimanim","destText":"רעננה","scope":"il"}}
+{"query":"חביתה מומלץ רבנות ליד מונטריאול","exp":{"category":"restaurant","destText":"מונטריאול","scope":"abroad"}}
+{"query":"מסעדה בשרי יוקרתי רבנות בברצלונה","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"חביתה מומלץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בית כנסת כאן","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"near"}}
+{"query":"בית כנסת בוד","exp":{"category":"synagogue","denom":null,"destText":"לוד","scope":"il"}}
+{"query":"יבת כנסת ספרדי בנאפולי","exp":{"category":"synagogue","denom":"sfarad","destText":"נאפולי","scope":"abroad"}}
+{"query":"אנטריקוט לא יקר בלוס אנג׳לס ליד הים","exp":{"category":"restaurant","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"מסעדה חלבי בונציה","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"מסעדה טבעוני שווה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה הודי בניו יורק","exp":{"category":"restaurant","destText":"ניו יורק","scope":"abroad"}}
+{"query":"מסעדה יפני בברצלונה","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"אנגליה","exp":{"category":"destination","destText":"אנגליה","scope":"country"}}
+{"query":"אירוח שבת בדימונה","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"בית כנסת בלאדי ברומא","exp":{"category":"synagogue","denom":"teimanim","destText":"רומא","scope":"abroad"}}
+{"query":"פורטוגל","exp":{"category":"destination","destText":"פורטוגל","scope":"country"}}
+{"query":"מסעדה פרווה ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה תאילנדי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה צמחונ באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"ארוחת שבת בלוס אנג׳לס","exp":{"category":"hosting","destText":"לוס אנג׳לס","scope":"near"}}
+{"query":"בית כנסת ליטאי ליד בואנוס איירס","exp":{"category":"synagogue","denom":"ashkenaz","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"מסעדה טורקי הכי טוב באיטליה רומנטי","exp":{"category":"restaurant","destText":"איטליה","scope":"country"}}
+{"query":"מניין מנחה וערבית בכפר סבא","exp":{"category":"minyan","denom":null,"destText":"כפר סבא","scope":"il"}}
+{"query":"מניין מנחה נוסח תימן באיטליה","exp":{"category":"minyan","denom":"teimanim","destText":"איטליה","scope":"country"}}
+{"query":"בית כנסת ספרדי קרוב אליי","exp":{"category":"synagogue","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"ארוחת שב באיטליה","exp":{"category":"hosting","destText":"איטליה","scope":"near"}}
+{"query":"קובה מומלץ ליד מילאנו","exp":{"category":"restaurant","destText":"מילאנו","scope":"abroad"}}
+{"query":"מסעדה תאילנדי זול רבנות קרוב אליי לארוחת ערב","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"ברצלונה","exp":{"category":"destination","destText":"ברצלונה","scope":"abroad"}}
+{"query":"מניין מנחה וערבי בזכרון יעקב","exp":{"category":"minyan","denom":null,"destText":"זכרון יעקב","scope":"il"}}
+{"query":"מסעדה תאילנדי בלוד","exp":{"category":"restaurant","destText":"לוד","scope":"il"}}
+{"query":"חיפה","exp":{"category":"destination","destText":"חיפה","scope":"il"}}
+{"query":"יבת כנסת","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"none"}}
+{"query":"מניין מנחה וערבית באזור","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"בית כנסת שאמי בהרצליה","exp":{"category":"synagogue","denom":"teimanim","destText":"הרצליה","scope":"il"}}
+{"query":"מסעדה אסייתי רבנות","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה פרווה מומלץ באזור ליד הים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה תאילנדי בג׳רבה למשפחות","exp":{"category":"restaurant","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"מסעדה בשרי בלוס אנג׳לס","exp":{"category":"restaurant","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"אסאדו באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה הודי בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה תימני","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מחפש שניצ טוב בהוד השרון","exp":{"category":"restaurant","destText":"הוד השרון","scope":"il"}}
+{"query":"מסעדה אסייתי שווה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה כשרה ברמת השרון","exp":{"category":"restaurant","destText":"רמת השרון","scope":"il"}}
+{"query":"בית כנסת ליטאי","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"none"}}
+{"query":"פוקה בקזבלנקה","exp":{"category":"restaurant","destText":"קזבלנקה","scope":"abroad"}}
+{"query":"מניין ערבית במעלה אדומים","exp":{"category":"minyan","denom":null,"destText":"מעלה אדומים","scope":"il"}}
+{"query":"מחפש סושי טוב בזכרון יעקב","exp":{"category":"restaurant","destText":"זכרון יעקב","scope":"il"}}
+{"query":"מניין ערבית בבני ברק","exp":{"category":"minyan","denom":null,"destText":"בני ברק","scope":"il"}}
+{"query":"מסעדה איטלקי הכי טוב בקנדה","exp":{"category":"restaurant","destText":"קנדה","scope":"country"}}
+{"query":"מניין מנחה נוסח אשכנז ליד הבית","exp":{"category":"minyan","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"ארוחת בשת בשדרות","exp":{"category":"hosting","destText":"שדרות","scope":"il"}}
+{"query":"סעודה שלישית פה","exp":{"category":"hosting","destText":"אשדוד","scope":"il"}}
+{"query":"בתי כנסת חסידי במדריד","exp":{"category":"synagogue","denom":"chabad","destText":"מדריד","scope":"abroad"}}
+{"query":"מניין מנחה באור יהודה","exp":{"category":"minyan","denom":null,"destText":"אור יהודה","scope":"il"}}
+{"query":"בית כנסת תימני בירושלים","exp":{"category":"synagogue","denom":"teimanim","destText":"ירושלים","scope":"il"}}
+{"query":"קרואסון באנטוורפן ליד הים","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"בקלאווה ליד לוד","exp":{"category":"restaurant","destText":"לוד","scope":"il"}}
+{"query":"פרגית יוקרתי רומנטי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה סיני מהדרין בציריך","exp":{"category":"restaurant","destText":"ציריך","scope":"abroad"}}
+{"query":"מלבי מומלץ מהדרין בכפר סבא למשפחות","exp":{"category":"restaurant","destText":"כפר סבא","scope":"il"}}
+{"query":"מלבי באזור לארוחת בוקר","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה חלבי רבנות קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"שקשוקה רבנות","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"שווארמה ליד ציריך","exp":{"category":"restaurant","destText":"ציריך","scope":"abroad"}}
+{"query":"איפה אפשר לאכול","exp":{"category":"any","scope":"vague"}}
+{"query":"מניין ערבית מרוקאי בלונדון","exp":{"category":"minyan","denom":"sfarad","destText":"לונדון","scope":"abroad"}}
+{"query":"ארגנטינה","exp":{"category":"destination","destText":"ארגנטינה","scope":"country"}}
+{"query":"מסעדה ים תיכוני גלאט ליד הים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מנחה וערבית שאמ בברצלונה","exp":{"category":"minyan","denom":"teimanim","destText":"ברצלונה","scope":"abroad"}}
+{"query":"מניין מנחה ליטאי פה","exp":{"category":"minyan","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"מסעדה טבעוני","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"ניוקי בארה״ב","exp":{"category":"restaurant","destText":"ארה״ב","scope":"country"}}
+{"query":"פרגית כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"ארוחת שבת ליד הבית","exp":{"category":"hosting","destText":"לונדון","scope":"abroad"}}
+{"query":"מרוקו","exp":{"category":"destination","destText":"מרוקו","scope":"country"}}
+{"query":"מרק הכי טוב ליד בודפשט למשפחות","exp":{"category":"restaurant","destText":"בודפשט","scope":"abroad"}}
+{"query":"בית כנסת נוסח ספרד ליד הרצלהי","exp":{"category":"synagogue","denom":"sfarad","destText":"הרצליה","scope":"il"}}
+{"query":"פלאפל גלאט ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"רומא","exp":{"category":"destination","destText":"רומא","scope":"abroad"}}
+{"query":"כנאפה מומלץ לארוחת בוקר","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"עכו","exp":{"category":"destination","destText":"עכו","scope":"il"}}
+{"query":"זול","exp":{"category":"any","scope":"vague"}}
+{"query":"אירוח שבת באתונה","exp":{"category":"hosting","destText":"אתונה","scope":"near"}}
+{"query":"מסעד אמריקאי בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"להתארח בשבת במודיעין","exp":{"category":"hosting","destText":"מודיעין","scope":"near"}}
+{"query":"מניין מוסף ברחובו","exp":{"category":"minyan","denom":null,"destText":"רחובות","scope":"il"}}
+{"query":"מסעדה צמחוני זול","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה כשרה ברומא","exp":{"category":"restaurant","destText":"רומא","scope":"abroad"}}
+{"query":"מניין נץ נוסח אשכנז פה","exp":{"category":"minyan","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"המבורגר גלאט בונציה","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"אנטריקוט","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"גלידה מומלץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין שחרי אשכנזי ברמת השרון","exp":{"category":"minyan","denom":"ashkenaz","destText":"רמת השרון","scope":"il"}}
+{"query":"חביתה מומלץ קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה תאילנדי במונטריאול","exp":{"category":"restaurant","destText":"מונטריאול","scope":"abroad"}}
+{"query":"פנקייק מומל בבלגיה","exp":{"category":"restaurant","destText":"בלגיה","scope":"country"}}
+{"query":"אנטריקוט בד״ץ ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"לזניה לא יקר","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעהד סיני יוקרתי מהדרין ליד ליון","exp":{"category":"restaurant","destText":"ליון","scope":"abroad"}}
+{"query":"מסעדה כשרה בקזבלנקה","exp":{"category":"restaurant","destText":"קזבלנקה","scope":"abroad"}}
+{"query":"מקום לשבת בתניה","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"מסעדה תאילנדי ליד רומא","exp":{"category":"restaurant","destText":"רומא","scope":"abroad"}}
+{"query":"בוריטו בראש העין","exp":{"category":"restaurant","destText":"ראש העין","scope":"il"}}
+{"query":"מניין נץ שאמי בראש העין","exp":{"category":"minyan","denom":"teimanim","destText":"ראש העין","scope":"il"}}
+{"query":"מניין מנחה וערבית בנתניה","exp":{"category":"minyan","denom":null,"destText":"נתניה","scope":"il"}}
+{"query":"ראשון לציון","exp":{"category":"destination","destText":"ראשון לציון","scope":"il"}}
+{"query":"מסעדה סיני בד״ץ ליד טבריה רומנטי","exp":{"category":"restaurant","destText":"טבריה","scope":"il"}}
+{"query":"איפה אפשר לאול מלאווח בבת ים","exp":{"category":"restaurant","destText":"בת ים","scope":"il"}}
+{"query":"מקום טוב","exp":{"category":"any","scope":"vague"}}
+{"query":"בית כנסת בלאדי בכפר סבא","exp":{"category":"synagogue","denom":"teimanim","destText":"כפר סבא","scope":"il"}}
+{"query":"מלבי בראשון לציון","exp":{"category":"restaurant","destText":"ראשון לציון","scope":"il"}}
+{"query":"פרגית רבנות","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"אסאדו זול בד״ץ במעלה אדומים","exp":{"category":"restaurant","destText":"מעלה אדומים","scope":"il"}}
+{"query":"מסעדה בשרי מהדרין בצרפת","exp":{"category":"restaurant","destText":"צרפת","scope":"country"}}
+{"query":"מסעדה סיני ביוון","exp":{"category":"restaurant","destText":"יוון","scope":"country"}}
+{"query":"אשדוד","exp":{"category":"destination","destText":"אשדוד","scope":"il"}}
+{"query":"מסעדה הודי זול בתל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"מסעדה סיני שווה מהדרין ליד נס ציונה","exp":{"category":"restaurant","destText":"נס ציונה","scope":"il"}}
+{"query":"פיצה זול רבנות באמסטרדם","exp":{"category":"restaurant","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"פלאפל בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מנחה בקפריסין","exp":{"category":"minyan","denom":null,"destText":"קפריסין","scope":"country"}}
+{"query":"מסעדה אמריקאי ליד מרקש","exp":{"category":"restaurant","destText":"מרקש","scope":"abroad"}}
+{"query":"מסעדה צמחוני יוקרתי בדץ״ במילאנו","exp":{"category":"restaurant","destText":"מילאנו","scope":"abroad"}}
+{"query":"בית כנסת נוסח ספרד ליד טורקיה","exp":{"category":"synagogue","denom":"sfarad","destText":"טורקיה","scope":"country"}}
+{"query":"מסעדה מרוקאי בגדרה","exp":{"category":"restaurant","destText":"גדרה","scope":"il"}}
+{"query":"מסעדה מרוקאי ליד פראג למשפחות","exp":{"category":"restaurant","destText":"פראג","scope":"abroad"}}
+{"query":"ג׳חנון וממלץ בציריך פתוח עכשיו","exp":{"category":"restaurant","destText":"ציריך","scope":"abroad"}}
+{"query":"סטייק יוקרתי במקסיקו סיטי","exp":{"category":"restaurant","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"פלאפל בד״ץ באור יהודה","exp":{"category":"restaurant","destText":"אור יהודה","scope":"il"}}
+{"query":"מניין שחרית ספרדי בבית שמש","exp":{"category":"minyan","denom":"sfarad","destText":"בית שמש","scope":"il"}}
+{"query":"בית כנסת נוסח אשכנז","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"none"}}
+{"query":"מניין מנחה וערבית בליון","exp":{"category":"minyan","denom":null,"destText":"ליון","scope":"abroad"}}
+{"query":"אירוח לשבת בראש העין","exp":{"category":"hosting","destText":"ראש העין","scope":"il"}}
+{"query":"מסעדה בשרי זול מהדרין באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"לינה לשבת פה","exp":{"category":"hosting","destText":"מעלה אדומים","scope":"il"}}
+{"query":"בית כנסת ליד אשקלון","exp":{"category":"synagogue","denom":null,"destText":"אשקלון","scope":"il"}}
+{"query":"בית כנסת ספרדי בלוד","exp":{"category":"synagogue","denom":"sfarad","destText":"לוד","scope":"il"}}
+{"query":"מסעדה אמריקאי ליד ארה״ב","exp":{"category":"restaurant","destText":"ארה״ב","scope":"country"}}
+{"query":"מסעדה פרווה באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה ים תיכוני ברמת גן","exp":{"category":"restaurant","destText":"רמת גן","scope":"il"}}
+{"query":"מניין ערבית בוינה","exp":{"category":"minyan","denom":null,"destText":"וינה","scope":"abroad"}}
+{"query":"דגים מומל בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מסוף אשכנזי בראשון לציון","exp":{"category":"minyan","denom":"ashkenaz","destText":"ראשון לציון","scope":"il"}}
+{"query":"קרואסון כאן רומניט","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה אמריקאי ליד רחובות","exp":{"category":"restaurant","destText":"רחובות","scope":"il"}}
+{"query":"בית כנסת נוסח תימן ליד בנגקוק","exp":{"category":"synagogue","denom":"teimanim","destText":"בנגקוק","scope":"abroad"}}
+{"query":"פריז","exp":{"category":"destination","destText":"פריז","scope":"abroad"}}
+{"query":"מקום טוב לאכול בטורקיה","exp":{"category":"restaurant","destText":"טורקיה","scope":"country"}}
+{"query":"מחפש מעורב ירושלמי טוב ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"קרית שמונה","exp":{"category":"destination","destText":"קרית שמונה","scope":"il"}}
+{"query":"לוס אנג׳לס","exp":{"category":"destination","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"מניין מנחה","exp":{"category":"minyan","denom":null,"destText":null,"scope":"none"}}
+{"query":"בתי כנסת","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"none"}}
+{"query":"מניין נץ בבואנוס איירס","exp":{"category":"minyan","denom":null,"destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"מסעדה איטלקי מומלץ במרוקו","exp":{"category":"restaurant","destText":"מרוקו","scope":"country"}}
+{"query":"בית כנסת נוסח אשכנז ליד באר שבע","exp":{"category":"synagogue","denom":"ashkenaz","destText":"באר שבע","scope":"il"}}
+{"query":"בית כנסת חסידי בהולנד","exp":{"category":"synagogue","denom":"chabad","destText":"הולנד","scope":"country"}}
+{"query":"מסעדה מקסיקני גלאט פה רומנטי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"גרמניה","exp":{"category":"destination","destText":"גרמניה","scope":"country"}}
+{"query":"בית כנסת מרוקאי באזור","exp":{"category":"synagogue","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"ארוחת ליל שבת בפתח תקווה","exp":{"category":"hosting","destText":"פתח תקווה","scope":"near"}}
+{"query":"מלאווח ברמלה עם ילדים","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"מניין ערבית ספרדי ביבנה","exp":{"category":"minyan","denom":"sfarad","destText":"יבנה","scope":"il"}}
+{"query":"מניין ערבית באשקלון","exp":{"category":"minyan","denom":null,"destText":"אשקלון","scope":"il"}}
+{"query":"מסעדה בשרי מומלץ ליד פתח תקווה","exp":{"category":"restaurant","destText":"פתח תקווה","scope":"il"}}
+{"query":"חומוס במדל העמק","exp":{"category":"restaurant","destText":"מגדל העמק","scope":"il"}}
+{"query":"מסעדה כשרה בדימונה","exp":{"category":"restaurant","destText":"דימונה","scope":"il"}}
+{"query":"אירוח לשבת בנס ציונה","exp":{"category":"hosting","destText":"נס ציונה","scope":"il"}}
+{"query":"אירוח שבת בבודפשט","exp":{"category":"hosting","destText":"בודפשט","scope":"abroad"}}
+{"query":"מניין מנחה במונטריאול","exp":{"category":"minyan","denom":null,"destText":"מונטריאול","scope":"abroad"}}
+{"query":"מסעדה מרוקאי שווה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין נץ עדות המזרח בפתח תקווה","exp":{"category":"minyan","denom":"sfarad","destText":"פתח תקווה","scope":"il"}}
+{"query":"מניין ערבי בלאדי במודיעין","exp":{"category":"minyan","denom":"teimanim","destText":"מודיעין","scope":"il"}}
+{"query":"וופל מומלץ בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה חלב בבואנוס איירס","exp":{"category":"restaurant","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"מחפש מרק טוב בקרית גת","exp":{"category":"restaurant","destText":"קרית גת","scope":"il"}}
+{"query":"ליד הים","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה מרוקאי שווה מהדרין בבנגקוק פתוח עכשיו","exp":{"category":"restaurant","destText":"בנגקוק","scope":"abroad"}}
+{"query":"עוגה ליד פריז","exp":{"category":"restaurant","destText":"פריז","scope":"abroad"}}
+{"query":"פתוח עכשיו","exp":{"category":"any","scope":"vague"}}
+{"query":"בית נכסת ליד יקנעם","exp":{"category":"synagogue","denom":null,"destText":"יקנעם","scope":"il"}}
+{"query":"מניין נץ כאן","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"סטייק בד״ץ באילת עם ילדים","exp":{"category":"restaurant","destText":"אילת","scope":"il"}}
+{"query":"מניין מנחה וערבית אשכנזי בגרמניה","exp":{"category":"minyan","denom":"ashkenaz","destText":"גרמניה","scope":"country"}}
+{"query":"ונציה","exp":{"category":"destination","destText":"ונציה","scope":"abroad"}}
+{"query":"מניין מוסף","exp":{"category":"minyan","denom":null,"destText":null,"scope":"none"}}
+{"query":"מסעדה טבעוני לא יקר מהדרין בברצלונה","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"בית כנסת בקזבלנקה","exp":{"category":"synagogue","denom":null,"destText":"קזבלנקה","scope":"abroad"}}
+{"query":"איפה יש אוכל כשר בבודפשט","exp":{"category":"restaurant","destText":"בודפשט","scope":"abroad"}}
+{"query":"בית כנסת נוסח אשכנז בטורקיה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"טורקיה","scope":"country"}}
+{"query":"מסעדה איטלקי באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בורקס בראשון לציון עם משלוחים","exp":{"category":"restaurant","destText":"ראשון לציון","scope":"il"}}
+{"query":"מסעדה סיני מהדרין באזור עם ילדים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"להתאר בשבת כאן","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"חומוס בד״","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה טבעוני במקסיקו סיטי","exp":{"category":"restaurant","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"אירוח לשבת באילת","exp":{"category":"hosting","destText":"אילת","scope":"il"}}
+{"query":"סעודה שלישית כאן","exp":{"category":"hosting","destText":"שדרות","scope":"il"}}
+{"query":"איפה אפשר לאכול פרגית בטוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"מניין מנחה מרוקאי בגבעתיים","exp":{"category":"minyan","denom":"sfarad","destText":"גבעתיים","scope":"il"}}
+{"query":"דגים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה פרווה גלאט בבלגיה","exp":{"category":"restaurant","destText":"בלגיה","scope":"country"}}
+{"query":"מסעדה סיני לא יקר לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין שחרית באנטוורפן","exp":{"category":"minyan","denom":null,"destText":"אנטוורפן","scope":"abroad"}}
+{"query":"מחפש פוקה טוב בבודפשט","exp":{"category":"restaurant","destText":"בודפשט","scope":"abroad"}}
+{"query":"בית כנסת ליד אמסטרדם","exp":{"category":"synagogue","denom":null,"destText":"אמסטרדם","scope":"abroad"}}
+{"query":"מעורב ירושלמי לא יקר ליד הולנד","exp":{"category":"restaurant","destText":"הולנד","scope":"country"}}
+{"query":"מסעדה תימני גלאט פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בשרי","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה איטלקי קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בורקס בלוד פתוח עכשיו","exp":{"category":"restaurant","destText":"לוד","scope":"il"}}
+{"query":"בתי כנסת שאמי","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"בייגל בפורטוגל","exp":{"category":"restaurant","destText":"פורטוגל","scope":"country"}}
+{"query":"כנאפה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בית כנסת אשכנזי ליד גן יבנה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"גן יבנה","scope":"il"}}
+{"query":"מניין נץ בבית שמש","exp":{"category":"minyan","denom":null,"destText":"בית שמש","scope":"il"}}
+{"query":"בית כנסת בארה״ב","exp":{"category":"synagogue","denom":null,"destText":"ארה״ב","scope":"country"}}
+{"query":"מניין ערבית במילאנו","exp":{"category":"minyan","denom":null,"destText":"מילאנו","scope":"abroad"}}
+{"query":"מניין ערבית ליד הבית","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"בית כנסת אשכנזי","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"none"}}
+{"query":"איפה אפשר לאכול קובה בכפר סבא","exp":{"category":"restaurant","destText":"כפר סבא","scope":"il"}}
+{"query":"מסעדה אסייתי מומלץ מהדרין","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"קנדה","exp":{"category":"destination","destText":"קנדה","scope":"country"}}
+{"query":"בית כנסת פה","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"near"}}
+{"query":"מסעדה סיני","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה כשרה ברחובות","exp":{"category":"restaurant","destText":"רחובות","scope":"il"}}
+{"query":"טאקו פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"אירוח שבת בקרית גת","exp":{"category":"hosting","destText":"קרית גת","scope":"il"}}
+{"query":"מניין מוסף כאן","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"פיצה ליד בית שמש פתוח עכשיו","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"שוקול פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"קרואסון בד״ץ באשדוד","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"מסעדה בשרי הכי טוב בד״ץ ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"קינוח גלאט פתוח עכשיו","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"ארוחת שבת בברלין","exp":{"category":"hosting","destText":"ברלין","scope":"abroad"}}
+{"query":"מסעדה טבעוני יוקרתי רומנט","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"אסאדו בד״ץ בליון","exp":{"category":"restaurant","destText":"ליון","scope":"abroad"}}
+{"query":"מניין מוס בבלגיה","exp":{"category":"minyan","denom":null,"destText":"בלגיה","scope":"country"}}
+{"query":"מונטריאול","exp":{"category":"destination","destText":"מונטריאול","scope":"abroad"}}
+{"query":"שניצל שווה מהדרין במילאנו עם ילדים","exp":{"category":"restaurant","destText":"מילאנו","scope":"abroad"}}
+{"query":"בית כנס בבלגיה","exp":{"category":"synagogue","denom":null,"destText":"בלגיה","scope":"country"}}
+{"query":"מסעדה טבעוני בד״ץ בספרד","exp":{"category":"restaurant","destText":"ספרד","scope":"country"}}
+{"query":"מסעדה","exp":{"category":"any","scope":"vague"}}
+{"query":"קינוח יוקרתי ליד לונדון","exp":{"category":"restaurant","destText":"לונדון","scope":"abroad"}}
+{"query":"מסעדה חלבי מהדרין בג׳רבה","exp":{"category":"restaurant","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"אירוח שבת באיטליה","exp":{"category":"hosting","destText":"איטליה","scope":"near"}}
+{"query":"איפה יש אוכל כשר בבאר שבע","exp":{"category":"restaurant","destText":"באר שבע","scope":"il"}}
+{"query":"מסעדה איטקלי יוקרתי גלאט בקרית שמונה רומנטי","exp":{"category":"restaurant","destText":"קרית שמונה","scope":"il"}}
+{"query":"מניין ערבית בנתניה","exp":{"category":"minyan","denom":null,"destText":"נתניה","scope":"il"}}
+{"query":"בורקס מומלץ רבנות ליד ברצלונה לארוחת בוקר","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"בית כנסת נוסח ספרד ליד אמסטרדם","exp":{"category":"synagogue","denom":"sfarad","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"מקום טוב לאכול בחיפה","exp":{"category":"restaurant","destText":"חיפה","scope":"il"}}
+{"query":"יאפה יש אוכל כשר במיאמי","exp":{"category":"restaurant","destText":"מיאמי","scope":"abroad"}}
+{"query":"ארוחת שבת בברזיל","exp":{"category":"hosting","destText":null,"scope":"country"}}
+{"query":"סעודה שלישית בראש העי","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"מסעדה סיני במילאנו","exp":{"category":"restaurant","destText":"מילאנו","scope":"abroad"}}
+{"query":"מלאווח ליד תל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"אנטריקוט באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"מסעדה בשרי בחולון","exp":{"category":"restaurant","destText":"חולון","scope":"il"}}
+{"query":"מסעדה אמריקאי בנתניה עם ילדים","exp":{"category":"restaurant","destText":"נתניה","scope":"il"}}
+{"query":"מסעד צמחוני","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"שניצל רבנות בקנדה עם ילדים","exp":{"category":"restaurant","destText":"קנדה","scope":"country"}}
+{"query":"אסאדו גלאט","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בת ים","exp":{"category":"destination","destText":"בת ים","scope":"il"}}
+{"query":"נתניה","exp":{"category":"destination","destText":"נתניה","scope":"il"}}
+{"query":"מניין נץ בגן יבנה","exp":{"category":"minyan","denom":null,"destText":"גן יבנה","scope":"il"}}
+{"query":"בייגל רבנות בכפר סבא","exp":{"category":"restaurant","destText":"כפר סבא","scope":"il"}}
+{"query":"איפה יש אוכל כשר באנטוורפן","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"ליון","exp":{"category":"destination","destText":"ליון","scope":"abroad"}}
+{"query":"מניין נץ במרקש","exp":{"category":"minyan","denom":null,"destText":"מרקש","scope":"abroad"}}
+{"query":"מסעדה הודי ליד וינה","exp":{"category":"restaurant","destText":"וינה","scope":"abroad"}}
+{"query":"מניין ערבית חב״ד","exp":{"category":"minyan","denom":"chabad","destText":null,"scope":"none"}}
+{"query":"מסעדה טורקי הכי טוב באזור פתוח עכשיו","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"פוקה ביוון","exp":{"category":"restaurant","destText":"יוון","scope":"country"}}
+{"query":"מסעדה יפני לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"אירוח שבת במונטריאול","exp":{"category":"hosting","destText":"מונטריאול","scope":"near"}}
+{"query":"מסעדה כשר בבאר שבע","exp":{"category":"restaurant","destText":"באר שבע","scope":"il"}}
+{"query":"מקום לשבת פה","exp":{"category":"hosting","destText":"ליון","scope":"abroad"}}
+{"query":"אירוח לשבת פה","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"בית כנסת ליד הבית","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"near"}}
+{"query":"בית כנסת חב״ד במדריד","exp":{"category":"synagogue","denom":"chabad","destText":"מדריד","scope":"abroad"}}
+{"query":"מעורב ירושלמי ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בתי כנסת ברומא","exp":{"category":"synagogue","denom":null,"destText":"רומא","scope":"abroad"}}
+{"query":"מסעדה בשרי לא יקר","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"וופל ליד פריז לארוחת בוקר","exp":{"category":"restaurant","destText":"פריז","scope":"abroad"}}
+{"query":"מסעדה איטלקי בצפת","exp":{"category":"restaurant","destText":"צפת","scope":"il"}}
+{"query":"מניין ערבי ליטאי בציריך","exp":{"category":"minyan","denom":"ashkenaz","destText":"ציריך","scope":"abroad"}}
+{"query":"מסעדה תימני כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה חלבי יוקרתי מהדרין בארה״ב לארוחת ערב","exp":{"category":"restaurant","destText":"ארה״ב","scope":"country"}}
+{"query":"מנין שחרית ביבנה","exp":{"category":"minyan","denom":null,"destText":"יבנה","scope":"il"}}
+{"query":"פרגית זול בגבעתיים ליד הים","exp":{"category":"restaurant","destText":"גבעתיים","scope":"il"}}
+{"query":"מחפש פיצה טוב בוינה","exp":{"category":"restaurant","destText":"וינה","scope":"abroad"}}
+{"query":"מסעדה אמריקאי זול","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בית כנסת חב״ד ליד נס ציונה","exp":{"category":"synagogue","denom":"chabad","destText":"נס ציונה","scope":"il"}}
+{"query":"פרגית לדי ראש העין","exp":{"category":"restaurant","destText":"ראש העין","scope":"il"}}
+{"query":"מקום לשבת כאן","exp":{"category":"hosting","destText":"מרוקו","scope":"country"}}
+{"query":"לינה לשבת כאן","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"מחפש לזניה טוב ברומא","exp":{"category":"restaurant","destText":"רומא","scope":"abroad"}}
+{"query":"מסעדה מרוקאי בד״ץ ליד רמת השרון לארוחת בוקר","exp":{"category":"restaurant","destText":"רמת השרון","scope":"il"}}
+{"query":"אירוח שבת בצפת","exp":{"category":"hosting","destText":"צפת","scope":"il"}}
+{"query":"מסעד בשרי בד״ץ למשפחות","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה צמחוני בפראג","exp":{"category":"restaurant","destText":"פראג","scope":"abroad"}}
+{"query":"מסעדה אסייתי בחולון פתוח עכשיו","exp":{"category":"restaurant","destText":"חולון","scope":"il"}}
+{"query":"מניין שחרית בהודו","exp":{"category":"minyan","denom":null,"destText":"הודו","scope":"country"}}
+{"query":"מסעד אסייתי מומלץ גלאט רומנטי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בית כנסת ספרדי בנהריה","exp":{"category":"synagogue","denom":"sfarad","destText":"נהריה","scope":"il"}}
+{"query":"מסעדה חלבי בקפריסין","exp":{"category":"restaurant","destText":"קפריסין","scope":"country"}}
+{"query":"שניצל זול ליד נהריה","exp":{"category":"restaurant","destText":"נהריה","scope":"il"}}
+{"query":"לינה לשבת בקרית גת","exp":{"category":"hosting","destText":"קרית גת","scope":"il"}}
+{"query":"איפה יש אוכל כשר ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"בית כנסת ליטאי בלוד","exp":{"category":"synagogue","denom":"ashkenaz","destText":"לוד","scope":"il"}}
+{"query":"ארוחת ליל שבת באמסטרדם","exp":{"category":"hosting","destText":null,"scope":"abroad"}}
+{"query":"מלבי שווה באשדוד פתוח עכשיו","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"מסעדה פרווה רבנות כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת בארגנטינה","exp":{"category":"synagogue","denom":null,"destText":"ארגנטינה","scope":"country"}}
+{"query":"מסעדה תימני רבנות ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"בתי כנסת נוסח אשכנז בטבריה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"טבריה","scope":"il"}}
+{"query":"מהדרין","exp":{"category":"any","scope":"vague"}}
+{"query":"אנטריקוט מומלץ בדימונה","exp":{"category":"restaurant","destText":"דימונה","scope":"il"}}
+{"query":"אשקלון","exp":{"category":"destination","destText":"אשקלון","scope":"il"}}
+{"query":"בייגל בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מנחה בברזיל","exp":{"category":"minyan","denom":null,"destText":"ברזיל","scope":"country"}}
+{"query":"מסעדה איטלקי בצפת ליד הים","exp":{"category":"restaurant","destText":"צפת","scope":"il"}}
+{"query":"פנקייק עם משלוחים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין ערבית נוסח יתמן","exp":{"category":"minyan","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"חביתה פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה איטלקי מומלץ בתאילנד","exp":{"category":"restaurant","destText":"תאילנד","scope":"country"}}
+{"query":"אירוח לשבת ברחובות","exp":{"category":"hosting","destText":"רחובות","scope":"near"}}
+{"query":"אירוח לשבת בוינה","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"פסטה שווה רבנות קרוב אליי למשפחות","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת חסידי במרוקו","exp":{"category":"synagogue","denom":"chabad","destText":"מרוקו","scope":"country"}}
+{"query":"מסעדה צמחוני עם משלוחים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"שקשוקה לא יקר","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"אילת","exp":{"category":"destination","destText":"אילת","scope":"il"}}
+{"query":"מניין נץ בברצלונה","exp":{"category":"minyan","denom":null,"destText":"ברצלונה","scope":"abroad"}}
+{"query":"מסעדה אסייתי בבני ברק","exp":{"category":"restaurant","destText":"בני ברק","scope":"il"}}
+{"query":"מסעדה צחמוני מהדרין","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"סלט גלאט ביוון","exp":{"category":"restaurant","destText":"יוון","scope":"country"}}
+{"query":"ראמן בפתח תקווה רומנטי","exp":{"category":"restaurant","destText":"פתח תקווה","scope":"il"}}
+{"query":"מדריד","exp":{"category":"destination","destText":"מדריד","scope":"abroad"}}
+{"query":"מסעדה בשרי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין נץ בלונדון","exp":{"category":"minyan","denom":null,"destText":"לונדון","scope":"abroad"}}
+{"query":"רעננה","exp":{"category":"destination","destText":"רעננה","scope":"il"}}
+{"query":"מניי נץ נוסח אשכנז כאן","exp":{"category":"minyan","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"מסעדה טבעוני זול בעפולה","exp":{"category":"restaurant","destText":"עפולה","scope":"il"}}
+{"query":"בתי כנסת בציריך","exp":{"category":"synagogue","denom":null,"destText":"ציריך","scope":"abroad"}}
+{"query":"מסעדה טבעוני לא יקר בד״ץ ליד מדריד","exp":{"category":"restaurant","destText":"מדריד","scope":"abroad"}}
+{"query":"שניצל גלאט כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין מוסף בהוד","exp":{"category":"minyan","denom":null,"destText":"הודו","scope":"country"}}
+{"query":"מיאמי","exp":{"category":"destination","destText":"מיאמי","scope":"abroad"}}
+{"query":"מסעדה בשרי ליד ארגנטינה","exp":{"category":"restaurant","destText":"ארגנטינה","scope":"country"}}
+{"query":"טוסט בד״ץ ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"מסעדה ים תיכוני שווה באילת","exp":{"category":"restaurant","destText":"אילת","scope":"il"}}
+{"query":"גלידה שווה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה כשרה בכפר סבא","exp":{"category":"restaurant","destText":"כפר סבא","scope":"il"}}
+{"query":"שוקולד מהדרין ליד הים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה סיני לא יקר גלאט בלוס אנג׳לס","exp":{"category":"restaurant","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"בייגל בזכרון יעקב","exp":{"category":"restaurant","destText":"זכרון יעקב","scope":"il"}}
+{"query":"מסעדה טבעוני לא יקר בדימונה","exp":{"category":"restaurant","destText":"דימונה","scope":"il"}}
+{"query":"מסעדה איטלקי בד״ץ בלונדון","exp":{"category":"restaurant","destText":"לונדון","scope":"abroad"}}
+{"query":"בית כנתס ליטאי ביבנה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"יבנה","scope":"il"}}
+{"query":"מניין ערבית","exp":{"category":"minyan","denom":null,"destText":null,"scope":"none"}}
+{"query":"נודלס שווה ברומא","exp":{"category":"restaurant","destText":"רומא","scope":"abroad"}}
+{"query":"מסעדה צמחוני מהדרין לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"דגים מהדרין בפראג","exp":{"category":"restaurant","destText":"פראג","scope":"abroad"}}
+{"query":"מסעדה בשרי שווה מהדרין ליד תל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"מסעדה סיני ברמלה","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"בית כנסת תימני קרוב אליי","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"near"}}
+{"query":"מניין שחרית בהולנד","exp":{"category":"minyan","denom":null,"destText":"הולנד","scope":"country"}}
+{"query":"לינה לשבת בנאפולי","exp":{"category":"hosting","destText":"נאפולי","scope":"abroad"}}
+{"query":"בתי כנסת סרפדי באיטליה","exp":{"category":"synagogue","denom":"sfarad","destText":"איטליה","scope":"country"}}
+{"query":"בית כנסת במודיעין","exp":{"category":"synagogue","denom":null,"destText":"מודיעין","scope":"il"}}
+{"query":"מניין ערבית נוסח אשכנז באמסטרדם","exp":{"category":"minyan","denom":"ashkenaz","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"בתי כנסת עדות המזרח לידי","exp":{"category":"synagogue","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"פוקה בארה״ב","exp":{"category":"restaurant","destText":"ארה״ב","scope":"country"}}
+{"query":"הולנד","exp":{"category":"destination","destText":"הולנד","scope":"country"}}
+{"query":"מניין מנחה בברלין","exp":{"category":"minyan","denom":null,"destText":"ברלין","scope":"abroad"}}
+{"query":"מסעדה כשרה בחיפה","exp":{"category":"restaurant","destText":"חיפה","scope":"il"}}
+{"query":"בית כנסת ליד לוד","exp":{"category":"synagogue","denom":null,"destText":"לוד","scope":"il"}}
+{"query":"לזניה בפראג","exp":{"category":"restaurant","destText":"פראג","scope":"abroad"}}
+{"query":"קרית גת","exp":{"category":"destination","destText":"קרית גת","scope":"il"}}
+{"query":"מסעדה חלבי בעפולה","exp":{"category":"restaurant","destText":"עפולה","scope":"il"}}
+{"query":"מניין ערבית ליטאי ברמת גן","exp":{"category":"minyan","denom":"ashkenaz","destText":"רמת גן","scope":"il"}}
+{"query":"פיצה הכי טוב ליד הוד השרון","exp":{"category":"restaurant","destText":"הוד השרון","scope":"il"}}
+{"query":"מסעדה טבעוני מהדרין באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"ארוחת ליל שבת בנהריה","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"בית כנסת מרוקאי ליד רומא","exp":{"category":"synagogue","denom":"sfarad","destText":"רומא","scope":"abroad"}}
+{"query":"מלבי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בי כנסת נוסח אשכנז בגן יבנה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"גן יבנה","scope":"il"}}
+{"query":"מסעדה כשרה במיאמי","exp":{"category":"restaurant","destText":"מיאמי","scope":"abroad"}}
+{"query":"איפה יש אוכל כשר בשדרות","exp":{"category":"restaurant","destText":"שדרות","scope":"il"}}
+{"query":"ניוקי קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בתי כנסת במעלה אדומים","exp":{"category":"synagogue","denom":null,"destText":"מעלה אדומים","scope":"il"}}
+{"query":"פנקייק","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בת כנסת בלאדי","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"מחפש טוסט טוב בארגנטינה","exp":{"category":"restaurant","destText":"ארגנטינה","scope":"country"}}
+{"query":"בית כנסת בפריז","exp":{"category":"synagogue","denom":null,"destText":"פריז","scope":"abroad"}}
+{"query":"סעודה שלישית בברזיל","exp":{"category":"hosting","destText":null,"scope":"country"}}
+{"query":"מניין מנחה וערבית אשכנזי בלוד","exp":{"category":"minyan","denom":"ashkenaz","destText":"לוד","scope":"il"}}
+{"query":"מסעדה חלבי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"ליד המלון","exp":{"category":"any","scope":"vague"}}
+{"query":"בית כנסת ליטאי בברזיל","exp":{"category":"synagogue","denom":"ashkenaz","destText":"ברזיל","scope":"country"}}
+{"query":"מניין מנחה וערבית לידי","exp":{"category":"minyan","denom":null,"destText":null,"scope":"near"}}
+{"query":"בית כנסת ליטאי באור יהודה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"אור יהודה","scope":"il"}}
+{"query":"קובה הכי טוב ליד ניו יורק","exp":{"category":"restaurant","destText":"ניו יורק","scope":"abroad"}}
+{"query":"מסעדה חלבי ליד בני ברק ליד הים","exp":{"category":"restaurant","destText":"בני ברק","scope":"il"}}
+{"query":"אתונה","exp":{"category":"destination","destText":"אתונה","scope":"abroad"}}
+{"query":"אוכל","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה פרווה במונטריאול","exp":{"category":"restaurant","destText":"מונטריאול","scope":"abroad"}}
+{"query":"מסעדה סיני בחדרה","exp":{"category":"restaurant","destText":"חדרה","scope":"il"}}
+{"query":"בתי כנסת ספרדי ברומא","exp":{"category":"synagogue","denom":"sfarad","destText":"רומא","scope":"abroad"}}
+{"query":"גן יבנה","exp":{"category":"destination","destText":"גן יבנה","scope":"il"}}
+{"query":"איפה יש אוכל כשר בתאילנד","exp":{"category":"restaurant","destText":"תאילנד","scope":"country"}}
+{"query":"ארה״ב","exp":{"category":"destination","destText":"ארה״ב","scope":"country"}}
+{"query":"מניין מנחה וערבית","exp":{"category":"minyan","denom":null,"destText":null,"scope":"none"}}
+{"query":"פרגית בתב ים","exp":{"category":"restaurant","destText":"בת ים","scope":"il"}}
+{"query":"בתי כנסת נוסח ספרד באילת","exp":{"category":"synagogue","denom":"sfarad","destText":"אילת","scope":"il"}}
+{"query":"מרקש","exp":{"category":"destination","destText":"מרקש","scope":"abroad"}}
+{"query":"בית כנסת בבואנוס אייר","exp":{"category":"synagogue","denom":null,"destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"מניין מנחה חב״ד בהוד השרון","exp":{"category":"minyan","denom":"chabad","destText":"הוד השרון","scope":"il"}}
+{"query":"מסעדה טבעוני גלאט לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה פרווה רבנות בארגנטינה לארוחת בוקר","exp":{"category":"restaurant","destText":"ארגנטינה","scope":"country"}}
+{"query":"בית כנסת נוסח תימן ליד צרפת","exp":{"category":"synagogue","denom":"teimanim","destText":"צרפת","scope":"country"}}
+{"query":"בית כנסת נוסח אשכנז בהרצליה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"הרצליה","scope":"il"}}
+{"query":"מחפש פרגית טוב בבת ים","exp":{"category":"restaurant","destText":"בת ים","scope":"il"}}
+{"query":"בית כנסת אשכנזי פה","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"איפה אפשר לאכול פסטה במקסיקו סיטי","exp":{"category":"restaurant","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"גלידה שוו","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מנחה בספרד","exp":{"category":"minyan","denom":null,"destText":"ספרד","scope":"country"}}
+{"query":"מסעדה טורקי בד״ץ ליד ליון","exp":{"category":"restaurant","destText":"ליון","scope":"abroad"}}
+{"query":"איפ אפשר לאכול סלט בונציה","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"סושי ביקנעם פוח עכשיו","exp":{"category":"restaurant","destText":"יקנעם","scope":"il"}}
+{"query":"פיצה זול גלאט ליד ברצלונה","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"קבב מהדרין פתוח עכשיו","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין מוסף עדות המזרח לידי","exp":{"category":"minyan","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"בואנוס איירס","exp":{"category":"destination","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"בית כנסת ליטאי ליד יבנה","exp":{"category":"synagogue","denom":"ashkenaz","destText":"יבנה","scope":"il"}}
+{"query":"פנקייק ליד תל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"בית כנסת נוסח אשכנז בבית שמש","exp":{"category":"synagogue","denom":"ashkenaz","destText":"בית שמש","scope":"il"}}
+{"query":"בייגל יוקרתי בד״ץ עם משלוחים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"ברזיל","exp":{"category":"destination","destText":"ברזיל","scope":"country"}}
+{"query":"בני ברק","exp":{"category":"destination","destText":"בני ברק","scope":"il"}}
+{"query":"מקום טוב לאכול בתל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"דגים בגבעתיים","exp":{"category":"restaurant","destText":"גבעתיים","scope":"il"}}
+{"query":"מסעדה אסייתי באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"מסעדה פרווה בכפר סבא","exp":{"category":"restaurant","destText":"כפר סבא","scope":"il"}}
+{"query":"רמלה","exp":{"category":"destination","destText":"רמלה","scope":"il"}}
+{"query":"לינה לשבת באזור","exp":{"category":"hosting","destText":"גדרה","scope":"il"}}
+{"query":"בית כנסת נוסח אשכנז קרו אליי","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"בית כנסת עדות המזרח בעכו","exp":{"category":"synagogue","denom":"sfarad","destText":"עכו","scope":"il"}}
+{"query":"קבב מהדרין בפראג","exp":{"category":"restaurant","destText":"פראג","scope":"abroad"}}
+{"query":"שווארמה זול בבית שמש לארוחת בוקר","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"טאקו ליד מונטריאול","exp":{"category":"restaurant","destText":"מונטריאול","scope":"abroad"}}
+{"query":"מסעדה הודי בד״ץ בעפולה","exp":{"category":"restaurant","destText":"עפולה","scope":"il"}}
+{"query":"ירושלים","exp":{"category":"destination","destText":"ירושלים","scope":"il"}}
+{"query":"מסעדה אמריקאי פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת אשכנזי ליד יקנעם","exp":{"category":"synagogue","denom":"ashkenaz","destText":"יקנעם","scope":"il"}}
+{"query":"בית כנסת תימני באמסטרדם","exp":{"category":"synagogue","denom":"teimanim","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"ארוחת ליל שבת בניו יורק","exp":{"category":"hosting","destText":null,"scope":"abroad"}}
+{"query":"מנגל מומלץ ליד רעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"מחפש אנטריקוט טוב בברלין","exp":{"category":"restaurant","destText":"ברלין","scope":"abroad"}}
+{"query":"דימונה","exp":{"category":"destination","destText":"דימונה","scope":"il"}}
+{"query":"מסעדה פרווה לד מקסיקו סיטי","exp":{"category":"restaurant","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"מסעדה אסייתי בהולנד","exp":{"category":"restaurant","destText":"הולנד","scope":"country"}}
+{"query":"מניין מוסף ליטאי במקסיקו סיטי","exp":{"category":"minyan","denom":"ashkenaz","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"המבורגר לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת באשקלון","exp":{"category":"synagogue","denom":null,"destText":"אשקלון","scope":"il"}}
+{"query":"בודפשט","exp":{"category":"destination","destText":"בודפשט","scope":"abroad"}}
+{"query":"מסעדה טבעוני רבנות ליד תאילנד לארוחת בוקר","exp":{"category":"restaurant","destText":"תאילנד","scope":"country"}}
+{"query":"הרצליה","exp":{"category":"destination","destText":"הרצליה","scope":"il"}}
+{"query":"בייגל לא יקר מהדרין בהוד השרון","exp":{"category":"restaurant","destText":"הוד השרון","scope":"il"}}
+{"query":"בתי כנסת במיאמי","exp":{"category":"synagogue","denom":null,"destText":"מיאמי","scope":"abroad"}}
+{"query":"מסעדה צמחוני מומלץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"טוסט יוקרתי רבנות ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין מנחה נוסח אשכנ בראש העין","exp":{"category":"minyan","denom":"ashkenaz","destText":"ראש העין","scope":"il"}}
+{"query":"אנטוורפן","exp":{"category":"destination","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"אנטריקוט ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בורקס שווה רבנות בתאילנד","exp":{"category":"restaurant","destText":"תאילנד","scope":"country"}}
+{"query":"מסעדה טבעוני זול לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"שווארמה מומלץ ברמלה","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"מסעדה ים תיכוני שווה בבנגקוק","exp":{"category":"restaurant","destText":"בנגקוק","scope":"abroad"}}
+{"query":"מניין נץ במרוקו","exp":{"category":"minyan","denom":null,"destText":"מרוקו","scope":"country"}}
+{"query":"מילאנו","exp":{"category":"destination","destText":"מילאנו","scope":"abroad"}}
+{"query":"בית כנסת נוסח אשכנז בנס ציונ","exp":{"category":"synagogue","denom":"ashkenaz","destText":"נס ציונה","scope":"il"}}
+{"query":"שוקולד","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"שוקולד גלאט בפתח תקווה","exp":{"category":"restaurant","destText":"פתח תקווה","scope":"il"}}
+{"query":"פוקה מהדרין פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת בזכרון יעקב","exp":{"category":"synagogue","denom":null,"destText":"זכרון יעקב","scope":"il"}}
+{"query":"בתי כנסת ביבנה","exp":{"category":"synagogue","denom":null,"destText":"יבנה","scope":"il"}}
+{"query":"מניין מנחה וערבית באשקלון","exp":{"category":"minyan","denom":null,"destText":"אשקלון","scope":"il"}}
+{"query":"תאילנד","exp":{"category":"destination","destText":"תאילנד","scope":"country"}}
+{"query":"בית כנסת בברצלונה","exp":{"category":"synagogue","denom":null,"destText":"ברצלונה","scope":"abroad"}}
+{"query":"טוסט בבני ברק ליד הים","exp":{"category":"restaurant","destText":"בני ברק","scope":"il"}}
+{"query":"בית כנסת ספרדי בהוד השרון","exp":{"category":"synagogue","denom":"sfarad","destText":"הוד השרון","scope":"il"}}
+{"query":"מניין מנחה וערבית באיטליה","exp":{"category":"minyan","denom":null,"destText":"איטליה","scope":"country"}}
+{"query":"מסעדה תימני גלאט כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"ארוחת שבת בבואנוס איירס","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"ארוחת ליל שבת ליד הבית","exp":{"category":"hosting","destText":"הוד השרון","scope":"near"}}
+{"query":"מסעדה תימני ברמת השרון","exp":{"category":"restaurant","destText":"רמת השרון","scope":"il"}}
+{"query":"מסעדה מקסיקני זול ליד תאילנד","exp":{"category":"restaurant","destText":"תאילנד","scope":"country"}}
+{"query":"מניין ערבית בראשון לציון","exp":{"category":"minyan","denom":null,"destText":"ראשון לציון","scope":"il"}}
+{"query":"בקלאווה בד״ץ במגדל העמק","exp":{"category":"restaurant","destText":"מגדל העמק","scope":"il"}}
+{"query":"גלידה באשקלון","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"פתח תקווה","exp":{"category":"destination","destText":"פתח תקווה","scope":"il"}}
+{"query":"אסאדו יוקרתי במודיעין פתוח עכשיו","exp":{"category":"restaurant","destText":"מודיעין","scope":"il"}}
+{"query":"בית כנסת ליד ירושלים","exp":{"category":"synagogue","denom":null,"destText":"ירושלים","scope":"il"}}
+{"query":"ניוקי גלאט ליד ראשון לציון","exp":{"category":"restaurant","destText":"ראשון לציון","scope":"il"}}
+{"query":"מחפש מלאווח טוב במדריד","exp":{"category":"restaurant","destText":"מדריד","scope":"abroad"}}
+{"query":"מקום טוב לאכול בנהריה","exp":{"category":"restaurant","destText":"נהריה","scope":"il"}}
+{"query":"שוקולד קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"נאפולי","exp":{"category":"destination","destText":"נאפולי","scope":"abroad"}}
+{"query":"מסעדה מקסיקני ליד ראש העין","exp":{"category":"restaurant","destText":"ראש העין","scope":"il"}}
+{"query":"מסעדה סיני יוקרתי ליד מדריד","exp":{"category":"restaurant","destText":"מדריד","scope":"abroad"}}
+{"query":"מסעדה תאילנדי הכי טוב","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה מקסיקני לא יקר בחולון","exp":{"category":"restaurant","destText":"חולון","scope":"il"}}
+{"query":"מסעדה מרוקאי הכי טוב מהדרי בבני ברק","exp":{"category":"restaurant","destText":"בני ברק","scope":"il"}}
+{"query":"מסעדה בשרי יוקרתי בלונדון","exp":{"category":"restaurant","destText":"לונדון","scope":"abroad"}}
+{"query":"מסעדה ים תיכוני ליד בודפשט","exp":{"category":"restaurant","destText":"בודפשט","scope":"abroad"}}
+{"query":"מניין מוסף בטורקיה","exp":{"category":"minyan","denom":null,"destText":"טורקיה","scope":"country"}}
+{"query":"מסעדה תימני כהי טוב בד״ץ קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"אירוח לשבת לידי","exp":{"category":"hosting","destText":"נאפולי","scope":"near"}}
+{"query":"בית כנסת ספרדי בשדרות","exp":{"category":"synagogue","denom":"sfarad","destText":"שדרות","scope":"il"}}
+{"query":"ארוחת שבת בבית שמש","exp":{"category":"hosting","destText":"בית שמש","scope":"near"}}
+{"query":"איפה יש אוכל כשר בנס ציונה","exp":{"category":"restaurant","destText":"נס ציונה","scope":"il"}}
+{"query":"אנטריקוט בד״ץ פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"פרגית במגדל העמק","exp":{"category":"restaurant","destText":"מגדל העמק","scope":"il"}}
+{"query":"ברלין","exp":{"category":"destination","destText":"ברלין","scope":"abroad"}}
+{"query":"דגים פתוח עכשיו","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מרק ליד איטליה","exp":{"category":"restaurant","destText":"איטליה","scope":"country"}}
+{"query":"מסעדה סיני בקרית גת","exp":{"category":"restaurant","destText":"קרית גת","scope":"il"}}
+{"query":"פלאפל","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין ערבית ספרדי לידי","exp":{"category":"minyan","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"פנקייק בנתניה","exp":{"category":"restaurant","destText":"נתניה","scope":"il"}}
+{"query":"בתי כנסת חב״ד בלונדון","exp":{"category":"synagogue","denom":"chabad","destText":"לונדון","scope":"abroad"}}
+{"query":"איפה אפשר לאכול המבורגר באשדוד","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"בית כנסת מרוקאי ליד ציריך","exp":{"category":"synagogue","denom":"sfarad","destText":"ציריך","scope":"abroad"}}
+{"query":"גלידה גלאט ליד טוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"בתי כנסת ליטאי","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"none"}}
+{"query":"איפה אפשר לאכול חביתה בשדרות","exp":{"category":"restaurant","destText":"שדרות","scope":"il"}}
+{"query":"גלידה ליד תל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"ניוקי לארוחת ערב","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בתי כנסת בראשון לציון","exp":{"category":"synagogue","denom":null,"destText":"ראשון לציון","scope":"il"}}
+{"query":"ציריך","exp":{"category":"destination","destText":"ציריך","scope":"abroad"}}
+{"query":"מסעדה טבעוני יוקרתי בבלגיה","exp":{"category":"restaurant","destText":"בלגיה","scope":"country"}}
+{"query":"מסעדה מקסיקני באשדוד","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"ארוחת ליל שבת ליד הית","exp":{"category":"hosting","destText":"נהריה","scope":"il"}}
+{"query":"בייגל","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"אסאדו לא יקר ליד לוס אנג׳לס","exp":{"category":"restaurant","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"בית כנסת שאמי","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"גלידה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"סעודה שלישית לידי","exp":{"category":"hosting","destText":"נהריה","scope":"il"}}
+{"query":"בית כנסת מרוקאי קרוב אליי","exp":{"category":"synagogue","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"לינה לשבת בבנגקוק","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"טוקיו","exp":{"category":"destination","destText":"טוקיו","scope":"abroad"}}
+{"query":"לזניה רבנות ליד מונטריאול לארוחת ערב","exp":{"category":"restaurant","destText":"מונטריאול","scope":"abroad"}}
+{"query":"מסעדה בשרי מומלץ בד״ץ ליד בודפשט","exp":{"category":"restaurant","destText":"בודפשט","scope":"abroad"}}
+{"query":"מחפש ריזוטו טוב בקזבלנקה","exp":{"category":"restaurant","destText":"קזבלנקה","scope":"abroad"}}
+{"query":"מסעדה תימני הכי טוב בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בתי כנסת נוסח אשכנז ליד הבית","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"מסעדה אסייתי גלאט ליד הבית ליד הים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין שחרית במודיעין","exp":{"category":"minyan","denom":null,"destText":"מודיעין","scope":"il"}}
+{"query":"פוקה בגן יבנה","exp":{"category":"restaurant","destText":"גן יבנה","scope":"il"}}
+{"query":"מסעדה טבעוני באיסטנבול ליד הים","exp":{"category":"restaurant","destText":"איסטנבול","scope":"abroad"}}
+{"query":"בית שמש","exp":{"category":"destination","destText":"בית שמש","scope":"il"}}
+{"query":"מסעדה תאילנדי גלאט ליד רעננה עם משלוחים","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"בת כנסת ברמת גן","exp":{"category":"synagogue","denom":null,"destText":"רמת גן","scope":"il"}}
+{"query":"מסעדה יפני באנטוורפן למשפחות","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"גדרה","exp":{"category":"destination","destText":"גדרה","scope":"il"}}
+{"query":"ריזוטו בברצלונה","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"מאפים מהדרין בפתח תקווה","exp":{"category":"restaurant","destText":"פתח תקווה","scope":"il"}}
+{"query":"מסעדה איטלקי זול בבני ברק","exp":{"category":"restaurant","destText":"בני ברק","scope":"il"}}
+{"query":"פרגית בהוד השרון","exp":{"category":"restaurant","destText":"הוד השרון","scope":"il"}}
+{"query":"מסעדה ים תיכוני לא יקר בטוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"מסעדה חלי בד״ץ","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"אירוח שבת קרוב אליי","exp":{"category":"hosting","destText":"ונציה","scope":"abroad"}}
+{"query":"שניצל ליד זכרון יעקב","exp":{"category":"restaurant","destText":"זכרון יעקב","scope":"il"}}
+{"query":"מניין מנחה וערבית עדות המזרח","exp":{"category":"minyan","denom":"sfarad","destText":null,"scope":"none"}}
+{"query":"דגים בד״ בירושלים","exp":{"category":"restaurant","destText":"ירושלים","scope":"il"}}
+{"query":"מסעדה פרווה גלאט בנאפולי","exp":{"category":"restaurant","destText":"נאפולי","scope":"abroad"}}
+{"query":"כפר סבא","exp":{"category":"destination","destText":"כפר סבא","scope":"il"}}
+{"query":"איפה יש אוכל כשר בברצלונ","exp":{"category":"restaurant","destText":"ברצלונה","scope":"abroad"}}
+{"query":"מניין מנחה וערבית במגדל העמק","exp":{"category":"minyan","denom":null,"destText":"מגדל העמק","scope":"il"}}
+{"query":"ניוקי בנהריה למשפחות","exp":{"category":"restaurant","destText":"נהריה","scope":"il"}}
+{"query":"אירוח לשבת בהודו","exp":{"category":"hosting","destText":"הודו","scope":"country"}}
+{"query":"בית כנסת בוינה","exp":{"category":"synagogue","denom":null,"destText":"וינה","scope":"abroad"}}
+{"query":"בית כנסת תימני ביוון","exp":{"category":"synagogue","denom":"teimanim","destText":"יוון","scope":"country"}}
+{"query":"פנקייק כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מחפש בוריטו טוב בבית שמש","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"מסעדה תימני לא יקר באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"אנטריקוט ליד מעלה אדומים","exp":{"category":"restaurant","destText":"מעלה אדומים","scope":"il"}}
+{"query":"מניין מוסף בבודפשט","exp":{"category":"minyan","denom":null,"destText":"בודפשט","scope":"abroad"}}
+{"query":"מסעדה אסייתי ליד צרפת","exp":{"category":"restaurant","destText":"צרפת","scope":"country"}}
+{"query":"מקום לשבת לידי","exp":{"category":"hosting","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"סעודה שלישית במקסיק סיטי","exp":{"category":"hosting","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"מסעדה פרווה שווה גלאט באשדוד","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"אסאדו הכי טוב בד״ץ ליד ספרד","exp":{"category":"restaurant","destText":"ספרד","scope":"country"}}
+{"query":"בייגל גלאט ליד אילת","exp":{"category":"restaurant","destText":"אילת","scope":"il"}}
+{"query":"בייג","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"ארוחת ליל שבת לידי","exp":{"category":"hosting","destText":"אשדוד","scope":"near"}}
+{"query":"מעדה הודי בבלגיה","exp":{"category":"restaurant","destText":"בלגיה","scope":"country"}}
+{"query":"מסעדה הויד","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מלבי ליד בודפשט","exp":{"category":"restaurant","destText":"בודפשט","scope":"abroad"}}
+{"query":"לינה לשבת בנהריה","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"דים גלאט כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה הודי הכי טוב מהדרין פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"אירוח שבת במרוקו","exp":{"category":"hosting","destText":null,"scope":"country"}}
+{"query":"מסעדה מקסיקני מהדרין ליד חדרה","exp":{"category":"restaurant","destText":"חדרה","scope":"il"}}
+{"query":"מניין מנחה אשכזי במונטריאול","exp":{"category":"minyan","denom":"ashkenaz","destText":"מונטריאול","scope":"abroad"}}
+{"query":"מניין מנחה וערבית בבואנוס איירס","exp":{"category":"minyan","denom":null,"destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"שווארמה הכי טוב ברמלה למשפחות","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"להתאר בשבת לידי","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"מסעדה יפני בדימונה פתוח עכשיו","exp":{"category":"restaurant","destText":"דימונה","scope":"il"}}
+{"query":"מסעדה פרווה שווה ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"אוכל כשר","exp":{"category":"any","scope":"vague"}}
+{"query":"וינה","exp":{"category":"destination","destText":"וינה","scope":"abroad"}}
+{"query":"מסעדה אסייתי כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"קרואסון","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"נודלס בקזבלנקה","exp":{"category":"restaurant","destText":"קזבלנקה","scope":"abroad"}}
+{"query":"מניין מנחה וערבית נוסח אשכנז","exp":{"category":"minyan","denom":"ashkenaz","destText":null,"scope":"none"}}
+{"query":"איפה יש אוכל כשר בגבעתיים","exp":{"category":"restaurant","destText":"גבעתיים","scope":"il"}}
+{"query":"מניין מנחה בנהריה","exp":{"category":"minyan","denom":null,"destText":"נהריה","scope":"il"}}
+{"query":"סושי זול","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"פנקיק במרקש","exp":{"category":"restaurant","destText":"מרקש","scope":"abroad"}}
+{"query":"מסעדה צמחוני מהדרין ליד פתח תקווה","exp":{"category":"restaurant","destText":"פתח תקווה","scope":"il"}}
+{"query":"מסעדה טבעוני בקרית שמונה","exp":{"category":"restaurant","destText":"קרית שמונה","scope":"il"}}
+{"query":"בית כנסת נוסח אשכנז בטוקיו","exp":{"category":"synagogue","denom":"ashkenaz","destText":"טוקיו","scope":"abroad"}}
+{"query":"מסעדה כשרה בטבריה","exp":{"category":"restaurant","destText":"טבריה","scope":"il"}}
+{"query":"בתי כנס תימני בהולנד","exp":{"category":"synagogue","denom":"teimanim","destText":"הולנד","scope":"country"}}
+{"query":"מסעדה איטלקי בניו יורק","exp":{"category":"restaurant","destText":"ניו יורק","scope":"abroad"}}
+{"query":"בקלאווה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"סטייק גלאט ליד אמסטרדם","exp":{"category":"restaurant","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"בית כנסת בלאדי בבני ברק","exp":{"category":"synagogue","denom":"teimanim","destText":"בני ברק","scope":"il"}}
+{"query":"מסעדה אמריקאי כאן למשפחות","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה חלבי בגן יבנה","exp":{"category":"restaurant","destText":"גן יבנה","scope":"il"}}
+{"query":"יבת כנסת באילת","exp":{"category":"synagogue","denom":null,"destText":"אילת","scope":"il"}}
+{"query":"ניוקי שווה מהדרין ביטליה","exp":{"category":"restaurant","destText":"איטליה","scope":"country"}}
+{"query":"בתי כנסת ברמלה","exp":{"category":"synagogue","denom":null,"destText":"רמלה","scope":"il"}}
+{"query":"עפולה","exp":{"category":"destination","destText":"עפולה","scope":"il"}}
+{"query":"ארוחת ליל שבת בבני ברק","exp":{"category":"hosting","destText":null,"scope":"il"}}
+{"query":"בית כנסת נוסח תימן ליד גבעתיים","exp":{"category":"synagogue","denom":"teimanim","destText":"גבעתיים","scope":"il"}}
+{"query":"מניין מנחה במיאמי","exp":{"category":"minyan","denom":null,"destText":"מיאמי","scope":"abroad"}}
+{"query":"מסעדה פרווה בפורטוגל","exp":{"category":"restaurant","destText":"פורטוגל","scope":"country"}}
+{"query":"להתארח בשבת ברחובות","exp":{"category":"hosting","destText":"רחובות","scope":"near"}}
+{"query":"מלבי בגדרה למשפחתו","exp":{"category":"restaurant","destText":"גדרה","scope":"il"}}
+{"query":"מסעדה כשרה באנטוורפן","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"מניין","exp":{"category":"any","scope":"vague"}}
+{"query":"מסעדה יפני רבנות בעכו","exp":{"category":"restaurant","destText":"עכו","scope":"il"}}
+{"query":"מסעדה סיני מומלץ גלאט כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה טבעוני זול ליד יקנעם","exp":{"category":"restaurant","destText":"יקנעם","scope":"il"}}
+{"query":"בנגקוק","exp":{"category":"destination","destText":"בנגקוק","scope":"abroad"}}
+{"query":"מסעדה טבעוני מומלץ מהדרין","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בתי כנסת ליטאי ברומא","exp":{"category":"synagogue","denom":"ashkenaz","destText":"רומא","scope":"abroad"}}
+{"query":"איסטנבול","exp":{"category":"destination","destText":"איסטנבול","scope":"abroad"}}
+{"query":"מניין מנחה וערבית בזכרון עיקב","exp":{"category":"minyan","denom":null,"destText":"זכרון יעקב","scope":"il"}}
+{"query":"מסעדה איטלקי גלאט באור יהודה","exp":{"category":"restaurant","destText":"אור יהודה","scope":"il"}}
+{"query":"בית כנסת קרוב אליי","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"near"}}
+{"query":"עוגה כאן ליד הים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"סעודה שלישית בטוקיו","exp":{"category":"hosting","destText":"טוקיו","scope":"abroad"}}
+{"query":"מסעדה חלבי שווה במגדל העמק","exp":{"category":"restaurant","destText":"מגדל העמק","scope":"il"}}
+{"query":"טבריה","exp":{"category":"destination","destText":"טבריה","scope":"il"}}
+{"query":"מסעדה איטלקי","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה כשרה באור יהודה","exp":{"category":"restaurant","destText":"אור יהודה","scope":"il"}}
+{"query":"בית כנסת שאמי בלוד","exp":{"category":"synagogue","denom":"teimanim","destText":"לוד","scope":"il"}}
+{"query":"פנקייק ליד הבית","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בקלאווה מהדרין בארגנטינה","exp":{"category":"restaurant","destText":"ארגנטינה","scope":"country"}}
+{"query":"קינוח שווה ליד לונדון","exp":{"category":"restaurant","destText":"לונדון","scope":"abroad"}}
+{"query":"מניין שחרית נוסח ספרד בדימונה","exp":{"category":"minyan","denom":"sfarad","destText":"דימונה","scope":"il"}}
+{"query":"בוריטו באזור ליד הים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה טורקי יוקרתי כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"חלבי","exp":{"category":"any","scope":"vague"}}
+{"query":"ארוחת ליל שבת בספרד","exp":{"category":"hosting","destText":"ספרד","scope":"country"}}
+{"query":"מעדה חלבי כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בתי כנסת ליטאי ליד ליון","exp":{"category":"synagogue","denom":"ashkenaz","destText":"ליון","scope":"abroad"}}
+{"query":"מסעדה פרווה רבנות בבית שמש","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"אירוח לשבת בנאפולי","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"מאפים גלאט כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"לינה לשבת באנטורופן","exp":{"category":"hosting","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"מקום טוב לאכול בראשון לציון","exp":{"category":"restaurant","destText":"ראשון לציון","scope":"il"}}
+{"query":"מסעדה חלבי דב״ץ בבית שמש","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"מסעדה טבעוני יוקרתי מהדרין","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מקום טוב לאכול בליון","exp":{"category":"restaurant","destText":"ליון","scope":"abroad"}}
+{"query":"קרואסון בד״ץ באזור רומנטי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"משהו טעים","exp":{"category":"any","scope":"vague"}}
+{"query":"בקלאווה שווה כאן עם ילדים","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מקום טוב לאכול ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"בית כנסת שאמי בגרמניה","exp":{"category":"synagogue","denom":"teimanim","destText":"גרמניה","scope":"country"}}
+{"query":"בייגל יוקרתי ליד מקסיקו סיטי","exp":{"category":"restaurant","destText":"מקסיקו סיטי","scope":"abroad"}}
+{"query":"פוקה גלאט באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה טורקי מהדרין בגדרה","exp":{"category":"restaurant","destText":"גדרה","scope":"il"}}
+{"query":"בית כנסת מרוקאי במיאמי","exp":{"category":"synagogue","denom":"sfarad","destText":"מיאמי","scope":"abroad"}}
+{"query":"מחפש פוקה טוב בטוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"שוקולד שווה בד״ץ קרוב אליי למשפחות","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"ניוקי פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה בשרי זול לידי","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת ליטאי ליד הוד השרון","exp":{"category":"synagogue","denom":"ashkenaz","destText":"הוד השרון","scope":"il"}}
+{"query":"מקום לשבת בלונדון","exp":{"category":"hosting","destText":"לונדון","scope":"near"}}
+{"query":"אנטריקוט גלאט לדי ניו יורק","exp":{"category":"restaurant","destText":"ניו יורק","scope":"abroad"}}
+{"query":"נהריה","exp":{"category":"destination","destText":"נהריה","scope":"il"}}
+{"query":"סטייק לא יקר ליד רמת גן עם משלוחים","exp":{"category":"restaurant","destText":"רמת גן","scope":"il"}}
+{"query":"שקשוקה מומלץ רבנות כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין מנחה וערבית חסידי בטורונטו","exp":{"category":"minyan","denom":"chabad","destText":"טורונטו","scope":"abroad"}}
+{"query":"מניין שרחית","exp":{"category":"minyan","denom":null,"destText":null,"scope":"none"}}
+{"query":"אירוח לשבת בלוס אנג׳לס","exp":{"category":"hosting","destText":"לוס אנג׳לס","scope":"abroad"}}
+{"query":"מסעדה בשרי ליד זכרון יעקב","exp":{"category":"restaurant","destText":"זכרון יעקב","scope":"il"}}
+{"query":"בית כנסת ספרדי ליד ונציה","exp":{"category":"synagogue","denom":"sfarad","destText":"ונציה","scope":"abroad"}}
+{"query":"מסעדה כשרה בצפת","exp":{"category":"restaurant","destText":"צפת","scope":"il"}}
+{"query":"בית כנסת ליטאי ליד תל אביב","exp":{"category":"synagogue","denom":"ashkenaz","destText":"תל אביב","scope":"il"}}
+{"query":"ארוחת ליל שבת בליון","exp":{"category":"hosting","destText":"ליון","scope":"near"}}
+{"query":"בית כנסת בגן יבנה","exp":{"category":"synagogue","denom":null,"destText":"גן יבנה","scope":"il"}}
+{"query":"סלט כאן","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מניין מסף בראשון לציון","exp":{"category":"minyan","denom":null,"destText":"ראשון לציון","scope":"il"}}
+{"query":"חביתה בהוד השרון","exp":{"category":"restaurant","destText":"הוד השרון","scope":"il"}}
+{"query":"מסעדה הודי לא יקר ליד הים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"איפה יש אוכל כשר בנהריה","exp":{"category":"restaurant","destText":"נהריה","scope":"il"}}
+{"query":"פסטה במודיעין","exp":{"category":"restaurant","destText":"מודיעין","scope":"il"}}
+{"query":"מסעדה אסייתי זול בד״ץ בציריך","exp":{"category":"restaurant","destText":"ציריך","scope":"abroad"}}
+{"query":"רמת השרון","exp":{"category":"destination","destText":"רמת השרון","scope":"il"}}
+{"query":"בית כנסת חב״ד בחדרה","exp":{"category":"synagogue","denom":"chabad","destText":"חדרה","scope":"il"}}
+{"query":"חדרה","exp":{"category":"destination","destText":"חדרה","scope":"il"}}
+{"query":"מסעדה טבעוני יוקרתי באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"מסעדה ים תיכוני יוקרתי בבנגקוק פתוח עכשיו","exp":{"category":"restaurant","destText":"בנגקוק","scope":"abroad"}}
+{"query":"מחפש בוריטו טב באנטוורפן","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"מסעדה הודי מומלץ גלאט","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מסעדה טורקי שווה כאן למשפחות","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"ארוחת לי שבת בראש העין","exp":{"category":"hosting","destText":"ראש העין","scope":"il"}}
+{"query":"בית כנסת ספרדי בהודו","exp":{"category":"synagogue","denom":"sfarad","destText":"הודו","scope":"country"}}
+{"query":"פוקה ברומא","exp":{"category":"restaurant","destText":"רומא","scope":"abroad"}}
+{"query":"בית כנסת ליד טבריה","exp":{"category":"synagogue","denom":null,"destText":"טבריה","scope":"il"}}
+{"query":"שוקולד לא יקר בדימונה פתוח עכשיו","exp":{"category":"restaurant","destText":"דימונה","scope":"il"}}
+{"query":"מרק שווה פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"בית כנסת ליטאי ליד הבית","exp":{"category":"synagogue","denom":"ashkenaz","destText":null,"scope":"near"}}
+{"query":"גלידה מומלץ בבואנוס איירס","exp":{"category":"restaurant","destText":"בואנוס איירס","scope":"abroad"}}
+{"query":"בית כנסת בדימונה","exp":{"category":"synagogue","denom":null,"destText":"דימונה","scope":"il"}}
+{"query":"מנגל הכי טו רבנות ליד חדרה","exp":{"category":"restaurant","destText":"חדרה","scope":"il"}}
+{"query":"מסעדה הודי בפורטוגל","exp":{"category":"restaurant","destText":"פורטוגל","scope":"country"}}
+{"query":"גלידה מהדרין ליד גבעתיים","exp":{"category":"restaurant","destText":"גבעתיים","scope":"il"}}
+{"query":"ריזוטו בונציה עם ילדים","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"מקום טוב לאכול בנוציה","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"אנטריקוט בטוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"גלידה ליד פריז","exp":{"category":"restaurant","destText":"פריז","scope":"abroad"}}
+{"query":"מסעדה תאילנדי מומלץ בתל אביב עם ילדים","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"מסעדה תימני רבנות בפריז","exp":{"category":"restaurant","destText":"פריז","scope":"abroad"}}
+{"query":"מסעדה פרווה זול רבנות בתאילנד","exp":{"category":"restaurant","destText":"תאילנד","scope":"country"}}
+{"query":"בית כנסת","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"none"}}
+{"query":"טאקו ליד שדרות לי הים","exp":{"category":"restaurant","destText":"שדרות","scope":"il"}}
+{"query":"מסעדה חלבי הכי טוב ברחובות","exp":{"category":"restaurant","destText":"רחובות","scope":"il"}}
+{"query":"מסעדה חבלי מומלץ בלוד","exp":{"category":"restaurant","destText":"לוד","scope":"il"}}
+{"query":"מניין ערבית בהרצליה","exp":{"category":"minyan","denom":null,"destText":"הרצליה","scope":"il"}}
+{"query":"מסעדה אסייתי מומלץ ביבנה","exp":{"category":"restaurant","destText":"יבנה","scope":"il"}}
+{"query":"מסעדה בשרי בפורטוגל עם משלוחים","exp":{"category":"restaurant","destText":"פורטוגל","scope":"country"}}
+{"query":"רמת גן","exp":{"category":"destination","destText":"רמת גן","scope":"il"}}
+{"query":"להתארח בשבת בארה״ב","exp":{"category":"hosting","destText":"ארה״ב","scope":"country"}}
+{"query":"יבנה","exp":{"category":"destination","destText":"יבנה","scope":"il"}}
+{"query":"מסעדה פרווה","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"שניצל בונציה","exp":{"category":"restaurant","destText":"ונציה","scope":"abroad"}}
+{"query":"מסעדה טבעוני שווה רנבות באנטוורפן","exp":{"category":"restaurant","destText":"אנטוורפן","scope":"abroad"}}
+{"query":"קזבלנקה","exp":{"category":"destination","destText":"קזבלנקה","scope":"abroad"}}
+{"query":"קובה בטוקיו","exp":{"category":"restaurant","destText":"טוקיו","scope":"abroad"}}
+{"query":"להתארח בשבת ברמת גן","exp":{"category":"hosting","destText":"רמת גן","scope":"near"}}
+{"query":"ארוחת ליל שבת קרוב אליי","exp":{"category":"hosting","destText":null,"scope":"near"}}
+{"query":"מניין נץ נוסח תימן באנגליה","exp":{"category":"minyan","denom":"teimanim","destText":"אנגליה","scope":"country"}}
+{"query":"נודלס מהדרין באשקלון רומנטי","exp":{"category":"restaurant","destText":"אשקלון","scope":"il"}}
+{"query":"פלאפל ליד מדריד","exp":{"category":"restaurant","destText":"מדריד","scope":"abroad"}}
+{"query":"מסעדה טבעוני בד״ץ באשדוד","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"מסעדה הודי ליד הים","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"בייגל בטבריה לארוחת ערב","exp":{"category":"restaurant","destText":"טבריה","scope":"il"}}
+{"query":"פרגית ברמת גן","exp":{"category":"restaurant","destText":"רמת גן","scope":"il"}}
+{"query":"מלואוח פה","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"שבת","exp":{"category":"any","scope":"vague"}}
+{"query":"טורקיה","exp":{"category":"destination","destText":"טורקיה","scope":"country"}}
+{"query":"מניין נץ","exp":{"category":"minyan","denom":null,"destText":null,"scope":"none"}}
+{"query":"ריזוטו גלאט ליד נהריה ליד הים","exp":{"category":"restaurant","destText":"נהריה","scope":"il"}}
+{"query":"לפאפל בד״ץ באיסטנבול","exp":{"category":"restaurant","destText":"איסטנבול","scope":"abroad"}}
+{"query":"אירוח לשבת במעלה אדומים","exp":{"category":"hosting","destText":"מעלה אדומים","scope":"il"}}
+{"query":"מסעדה טורקי לא יקר רבנות בטורונטו למשפחות","exp":{"category":"restaurant","destText":"טורונטו","scope":"abroad"}}
+{"query":"לונדון","exp":{"category":"destination","destText":"לונדון","scope":"abroad"}}
+{"query":"בתי כנסת באזור","exp":{"category":"synagogue","denom":null,"destText":null,"scope":"near"}}
+{"query":"איפה אפשר לאכול נודלס ברמלה","exp":{"category":"restaurant","destText":"רמלה","scope":"il"}}
+{"query":"כנאפה ביבנה","exp":{"category":"restaurant","destText":"יבנה","scope":"il"}}
+{"query":"בית כנסת נוסח אשכנז ליד תאילנד","exp":{"category":"synagogue","denom":"ashkenaz","destText":"תאילנד","scope":"country"}}
+{"query":"שדרות","exp":{"category":"destination","destText":"שדרות","scope":"il"}}
+{"query":"צפת","exp":{"category":"destination","destText":"צפת","scope":"il"}}
+{"query":"איפה אפשר לאכול לזניה באתונ","exp":{"category":"restaurant","destText":"אתונה","scope":"abroad"}}
+{"query":"חומוס בזכרון יעקב ליד הים","exp":{"category":"restaurant","destText":"זכרון יעקב","scope":"il"}}
+{"query":"דגים זול ברעננה","exp":{"category":"restaurant","destText":"רעננה","scope":"il"}}
+{"query":"מודיעין","exp":{"category":"destination","destText":"מודיעין","scope":"il"}}
+{"query":"סלט יוקרתי באתונה","exp":{"category":"restaurant","destText":"אתונה","scope":"abroad"}}
+{"query":"מלבי ליד הרצליה עם משלוחים","exp":{"category":"restaurant","destText":"הרצליה","scope":"il"}}
+{"query":"מקום לשבת בבלגיה","exp":{"category":"hosting","destText":"בלגיה","scope":"country"}}
+{"query":"קואסון","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"ראמן מהדרין במילאנו עם משלוחים","exp":{"category":"restaurant","destText":"מילאנו","scope":"abroad"}}
+{"query":"מסעדה פרווה מהדרין בליון","exp":{"category":"restaurant","destText":"ליון","scope":"abroad"}}
+{"query":"בית כנסת באשדוד","exp":{"category":"synagogue","denom":null,"destText":"אשדוד","scope":"il"}}
+{"query":"ניוקי שווה לי חיפה","exp":{"category":"restaurant","destText":"חיפה","scope":"il"}}
+{"query":"ראמן רבנות בבית שמש","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"ג׳חנון בד״ץ לארוחת בוקר","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מניין נץ עדות המזרח באתונה","exp":{"category":"minyan","denom":"sfarad","destText":"אתונה","scope":"abroad"}}
+{"query":"מסעדה כשרה בג׳רבה","exp":{"category":"restaurant","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"בית כנסת עדות המזרח כאן","exp":{"category":"synagogue","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"מניין מוסף בעפולה","exp":{"category":"minyan","denom":null,"destText":"עפולה","scope":"il"}}
+{"query":"ניוקי ליד איסטנבלו","exp":{"category":"restaurant","destText":"איסטנבול","scope":"abroad"}}
+{"query":"מסעדה יפני לא יקר גבן יבנה","exp":{"category":"restaurant","destText":"גן יבנה","scope":"il"}}
+{"query":"מניין מוסף עדות המזרח באזור","exp":{"category":"minyan","denom":"sfarad","destText":null,"scope":"near"}}
+{"query":"בתי כנסת נוסח תימן","exp":{"category":"synagogue","denom":"teimanim","destText":null,"scope":"none"}}
+{"query":"מסעדה תאילנדי הכי טוב בד״ץ בהרצליה","exp":{"category":"restaurant","destText":"הרצליה","scope":"il"}}
+{"query":"מינין מוסף בנאפולי","exp":{"category":"minyan","denom":null,"destText":"נאפולי","scope":"abroad"}}
+{"query":"בייגל רבנות באור יהודה","exp":{"category":"restaurant","destText":"אור יהודה","scope":"il"}}
+{"query":"נודלס","exp":{"category":"restaurant","destText":null,"scope":"none"}}
+{"query":"מקום טוב לאכול בארגנטינה","exp":{"category":"restaurant","destText":"ארגנטינה","scope":"country"}}
+{"query":"ארוחת שבת פה","exp":{"category":"hosting","destText":"אמסטרדם","scope":"abroad"}}
+{"query":"סעודה שלישית באזור","exp":{"category":"hosting","destText":"רעננה","scope":"near"}}
+{"query":"ארוחת שבת בוינה","exp":{"category":"hosting","destText":"וינה","scope":"abroad"}}
+{"query":"בית כנסת בלאדי בבית שמש","exp":{"category":"synagogue","denom":"teimanim","destText":"בית שמש","scope":"il"}}
+{"query":"מלאווח לי אשדוד","exp":{"category":"restaurant","destText":"אשדוד","scope":"il"}}
+{"query":"בית כנסת חסידי קרוב אליי","exp":{"category":"synagogue","denom":"chabad","destText":null,"scope":"near"}}
+{"query":"מעורב ירושלמי בבלגיה עם משלוחים","exp":{"category":"restaurant","destText":"בלגיה","scope":"country"}}
+{"query":"מסעדה ים תיכוני גלאט בדימונה","exp":{"category":"restaurant","destText":"דימונה","scope":"il"}}
+{"query":"מסעדה מרוקאי במיאמי לארוחת ערב","exp":{"category":"restaurant","destText":"מיאמי","scope":"abroad"}}
+{"query":"מסעדה צמחוני בצרפת","exp":{"category":"restaurant","destText":"צרפת","scope":"country"}}
+{"query":"פיצה באזור","exp":{"category":"restaurant","destText":null,"scope":"near"}}
+{"query":"יוון","exp":{"category":"destination","destText":"יוון","scope":"country"}}
+{"query":"ג׳רבה","exp":{"category":"destination","destText":"ג׳רבה","scope":"abroad"}}
+{"query":"מסעד מקסיקני בבית שמש","exp":{"category":"restaurant","destText":"בית שמש","scope":"il"}}
+{"query":"מניי שחרית בעכו","exp":{"category":"minyan","denom":null,"destText":"עכו","scope":"il"}}
+{"query":"מסעדה תימני הכי טוב בד״ץ בתל אביב","exp":{"category":"restaurant","destText":"תל אביב","scope":"il"}}
+{"query":"מסעדה אמריקאי קרוב אליי","exp":{"category":"restaurant","destText":null,"scope":"near"}}

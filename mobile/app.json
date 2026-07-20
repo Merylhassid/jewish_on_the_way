@@ -1,19 +1,33 @@
 {
   "expo": {
-    "name": "JewishOnTheWay",
+    "name": "Jewish On The Way",
     "slug": "jewish-on-the-way",
+    "owner": "jewish-on-the-way",
+    "version": "1.0.0",
+    "icon": "./assets/images/app-icon.png",
     "scheme": "jewishontheway",
     "ios": {
-      "bundleIdentifier": "com.jewishontheway.app"
+      "bundleIdentifier": "com.jewishontheway.app",
+      "buildNumber": "1",
+      "supportsTablet": false
     },
     "android": {
-      "package": "com.jewishontheway.app"
+      "package": "com.jewishontheway.app",
+      "versionCode": 1,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "plugins": [
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow Jewish On The Way to access your photos to update your profile picture."
+          "photosPermission": "Allow Jewish On The Way to access your photos to update your profile picture.",
+          "microphonePermission": false
         }
       ],
       [
@@ -25,13 +39,26 @@
       "@react-native-community/datetimepicker",
       "expo-secure-store",
       [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/app-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#f7f7f7"
+        }
+      ],
+      [
         "expo-notifications",
         {
-          "icon": "./assets/icon.png",
           "color": "#1a3a6b",
           "sounds": []
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ddd12a9b-78cb-4666-bbb8-480457037790"
+      }
+    }
   }
 }

@@ -13,6 +13,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { Image } from 'expo-image';
 import {
   AlertTriangle, ArrowLeft, ChevronRight, Clock, Info, MapPin,
   Navigation, Search, Sparkles, Utensils, X,
@@ -29,27 +30,40 @@ interface Restaurant {
   restaurantType: string | null;
   kashrutLevel: string;
   address?: string;
+  originalAddress?: string;
   openingHours?: string;
   distanceMeters?: number;
   destinationCity?: string;
+  verificationStatus?: string;
+  googleRating?: number | string | null;
+  googleRatingCount?: number | null;
+  googleMapsUri?: string | null;
+  photoUrl?: string | null;
 }
 
-// ── Design tokens ─────────────────────────────────────────────────────────────
+// ── Design tokens (muted modern palette) ──────────────────────────────────────
 const TYPE_COLOR: Record<string, string> = {
-  meat:    '#DC2626',
-  dairy:   '#2563EB',
-  parve:   '#059669',
-  pareve:  '#059669',
+  meat:    C.typeMeat,
+  dairy:   C.typeDairy,
+  parve:   C.typeParve,
+  pareve:  C.typeParve,
   unknown: '#9CA3AF',
 };
+const TYPE_BG: Record<string, string> = {
+  meat:    C.typeMeatBg,
+  dairy:   C.typeDairyBg,
+  parve:   C.typeParveBg,
+  pareve:  C.typeParveBg,
+  unknown: '#F4F4F5',
+};
 const TYPE_LABEL: Record<string, string> = {
-  meat: 'Meat', dairy: 'Dairy', parve: 'Pareve', pareve: 'Pareve', unknown: 'Kosher',
+  meat: 'בשרי', dairy: 'חלבי', parve: 'פרווה', pareve: 'פרווה', unknown: 'כשר',
 };
 const KASHRUT: Record<string, { label: string; color: string; bg: string }> = {
-  rabbinate: { label: 'Rabbinate', color: '#6B7280', bg: '#F3F4F6' },
-  mehadrin:  { label: 'Mehadrin',  color: '#2563EB', bg: '#EFF6FF' },
-  badatz:    { label: 'Badatz',    color: '#059669', bg: '#F0FDF4' },
-  unknown:   { label: 'Kosher',    color: '#9CA3AF', bg: '#F9FAFB' },
+  rabbinate: { label: 'רבנות', color: C.kashrutNeutral, bg: C.kashrutNeutralBg },
+  mehadrin:  { label: 'מהדרין', color: C.kashrutGold,    bg: C.kashrutGoldBg },
+  badatz:    { label: 'בד"ץ',  color: C.kashrutGold,    bg: C.kashrutGoldBg },
+  unknown:   { label: 'כשר',   color: '#9CA3AF',        bg: '#F9FAFB' },
 };
 
 const TYPE_FILTERS    = ['all', 'meat', 'dairy', 'parve'];
@@ -57,10 +71,27 @@ const KASHRUT_FILTERS = ['all', 'rabbinate', 'mehadrin', 'badatz'];
 
 const fmt = (m: number) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
 const cap = (s: string | null | undefined) => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Unknown';
+const firstParam = (value: string | string[] | undefined): string => Array.isArray(value) ? (value[0] ?? '') : (value ?? '');
 
 export default function RestaurantsScreen() {
-  const { destinationId, city, type: typeParam, kashrut: kashrutParam, fromParent, q: qParam, lat: latParam, lng: lngParam } =
-    useLocalSearchParams<{ destinationId: string; city?: string; type?: string; kashrut?: string; fromParent?: string; q?: string; lat?: string; lng?: string }>();
+  const params = useLocalSearchParams<{
+    destinationId: string | string[];
+    city?: string | string[];
+    type?: string | string[];
+    kashrut?: string | string[];
+    fromParent?: string | string[];
+    q?: string | string[];
+    lat?: string | string[];
+    lng?: string | string[];
+  }>();
+  const destinationId = firstParam(params.destinationId);
+  const city = firstParam(params.city);
+  const typeParam = firstParam(params.type);
+  const kashrutParam = firstParam(params.kashrut);
+  const fromParent = firstParam(params.fromParent);
+  const qParam = firstParam(params.q);
+  const latParam = firstParam(params.lat);
+  const lngParam = firstParam(params.lng);
   const isCountryMode = fromParent === 'true';
   const { t } = useTranslation();
 
@@ -246,7 +277,13 @@ export default function RestaurantsScreen() {
       if (typeFilter    !== 'all') params.type    = typeFilter;
       if (kashrutFilter !== 'all') params.kashrut = kashrutFilter;
       const res = await client.get('/restaurants', { params });
-      setRestaurants(p => [...p, ...(Array.isArray(res.data.data) ? res.data.data : [])]);
+      // Offset pages can overlap (distance-sort ties / filter change mid-scroll)
+      // — dedupe by id so FlatList keys stay unique.
+      const page: Restaurant[] = Array.isArray(res.data.data) ? res.data.data : [];
+      setRestaurants(p => {
+        const seen = new Set(p.map(x => x.id));
+        return [...p, ...page.filter(x => !seen.has(x.id))];
+      });
       setOffset(nextOffset);
     } catch (err) {
       logApiError('restaurants.loadMore', err);
@@ -289,9 +326,10 @@ export default function RestaurantsScreen() {
       <View style={s.header}>
         <View style={s.headerRow}>
           <Pressable style={s.backBtn} onPress={() => router.back()} hitSlop={12}>
-            <ArrowLeft size={20} color="#fff" strokeWidth={2.5} />
+            <ArrowLeft size={20} color={C.navy} strokeWidth={2.5} />
           </Pressable>
           <View style={{ flex: 1 }}>
+            <Text style={s.headerEyebrow}>{t('nearby.restaurants')}</Text>
             <Text style={s.headerTitle} numberOfLines={1}>
               {cityLabel ? cityLabel : 'Restaurants'}
             </Text>
@@ -305,12 +343,12 @@ export default function RestaurantsScreen() {
         <View style={[s.searchBar, aiMode && s.searchBarAi]}>
           {aiMode
             ? <Sparkles size={16} color={C.gold} strokeWidth={2} />
-            : <Search size={16} color="rgba(255,255,255,0.5)" strokeWidth={2} />
+            : <Search size={16} color={C.textMuted} strokeWidth={2} />
           }
           <TextInput
             style={s.searchInput}
             placeholder={aiMode ? 'מה תרצה לאכול? באיזו עיר?' : 'Search restaurants…'}
-            placeholderTextColor="rgba(255,255,255,0.35)"
+            placeholderTextColor={C.textMuted}
             value={search}
             onChangeText={onSearchChange}
             onSubmitEditing={aiMode ? doAiSearch : undefined}
@@ -318,7 +356,7 @@ export default function RestaurantsScreen() {
           />
           {search.length > 0 && (
             <Pressable hitSlop={8} onPress={() => setSearch('')}>
-              <X size={15} color="rgba(255,255,255,0.5)" strokeWidth={2} />
+              <X size={15} color={C.textMuted} strokeWidth={2} />
             </Pressable>
           )}
           <View style={s.searchDivider} />
@@ -417,22 +455,39 @@ function RestaurantCard({ item, onPress }: { item: Restaurant; onPress: () => vo
   const typeColor = TYPE_COLOR[item.restaurantType ?? 'unknown'] ?? TYPE_COLOR.unknown;
   const typeLabel = TYPE_LABEL[item.restaurantType ?? 'unknown'] ?? 'Kosher';
   const kashrut   = KASHRUT[item.kashrutLevel] ?? KASHRUT.unknown;
+  const isVerified = item.verificationStatus === 'verified';
+  const rating = item.googleRating != null ? Number(item.googleRating) : null;
+  const hasGoogleRating = isVerified && rating != null && Number.isFinite(rating);
 
   return (
     <Pressable
       style={({ pressed }) => [s.card, pressed && s.cardPressed]}
       onPress={onPress}
     >
-      <View style={[s.cardAccent, { backgroundColor: typeColor }]} />
-
       <View style={s.cardBody}>
         <View style={s.cardTop}>
-          <View style={[s.typeIcon, { backgroundColor: typeColor + '15' }]}>
-            <Utensils size={16} color={typeColor} strokeWidth={2} />
-          </View>
+          {item.photoUrl ? (
+            <Image source={{ uri: item.photoUrl }} style={s.thumbnail} contentFit="cover" transition={180} />
+          ) : (
+            <View style={[s.typeIcon, { backgroundColor: TYPE_BG[item.restaurantType ?? 'unknown'] ?? TYPE_BG.unknown }]}>
+              <Utensils size={16} color={typeColor} strokeWidth={2} />
+            </View>
+          )}
           <View style={{ flex: 1 }}>
             <Text style={s.cardName} numberOfLines={1}>{item.name}</Text>
-            <Text style={[s.cardType, { color: typeColor }]}>{typeLabel}</Text>
+            <View style={s.typeLabelRow}>
+              <View style={[s.typeDot, { backgroundColor: typeColor }]} />
+              <Text style={[s.cardType, { color: typeColor }]}>{typeLabel}</Text>
+            </View>
+            {hasGoogleRating && (
+              <View style={s.ratingRow}>
+                <Text style={s.ratingStar}>★</Text>
+                <Text style={s.ratingScore}>{rating!.toFixed(1)}</Text>
+                <Text style={s.ratingCount}>
+                  {item.googleRatingCount ? `(${item.googleRatingCount} · Google)` : '(Google)'}
+                </Text>
+              </View>
+            )}
           </View>
           <View style={[s.kashrutBadge, { backgroundColor: kashrut.bg }]}>
             <Text style={[s.kashrutText, { color: kashrut.color }]}>{kashrut.label}</Text>
@@ -477,40 +532,57 @@ function RestaurantCard({ item, onPress }: { item: Restaurant; onPress: () => vo
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 const s = StyleSheet.create({
-  root:   { flex: 1, backgroundColor: '#F7F5F0' },
+  root:   { flex: 1, backgroundColor: C.cream },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 60 },
 
   header: {
-    backgroundColor: C.navy,
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 58 : 38,
-    paddingHorizontal: 20, paddingBottom: 16,
-    gap: 14,
+    paddingHorizontal: 20, paddingBottom: 18,
+    gap: 16,
   },
   headerRow:  { flexDirection: 'row', alignItems: 'center', gap: 14 },
   backBtn: {
     width: 38, height: 38, borderRadius: 19,
-    backgroundColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: C.card,
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
     justifyContent: 'center', alignItems: 'center',
   },
-  headerTitle: { fontSize: 20, fontWeight: '800', color: '#fff', letterSpacing: -0.3 },
-  headerSub:   { fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 2, fontWeight: '500' },
+  headerEyebrow: {
+    fontSize: 10,
+    fontFamily: 'Inter-Bold', fontWeight: '700',
+    color: C.goldEyebrow,
+    letterSpacing: 2.5,
+    marginBottom: 4,
+  },
+  headerTitle: { fontSize: 28, fontFamily: 'Inter-Black', fontWeight: '900', color: C.navy, letterSpacing: -0.6 },
+  headerSub:   { fontSize: 13, color: C.textMuted, marginTop: 3, fontFamily: 'Inter-Medium', fontWeight: '500' },
 
   searchBar: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
-    backgroundColor: 'rgba(255,255,255,0.10)',
-    borderRadius: 14, paddingHorizontal: 14, paddingVertical: 11,
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: C.card,
+    borderRadius: 16, paddingHorizontal: 14, paddingVertical: 12,
+    borderWidth: 1, borderColor: '#ECE7DE',
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.06,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
   },
-  searchBarAi: { borderColor: C.gold + '60', backgroundColor: 'rgba(201,168,76,0.08)' },
-  searchInput: { flex: 1, fontSize: 14, color: '#fff', padding: 0 },
-  searchDivider: { width: 1, height: 16, backgroundColor: 'rgba(255,255,255,0.15)' },
+  searchBarAi: { borderColor: C.goldBorder, backgroundColor: C.card },
+  searchInput: { flex: 1, fontSize: 14, color: C.textPrimary, padding: 0 },
+  searchDivider: { width: 1, height: 16, backgroundColor: '#EEE9E0' },
   aiPill: {
     flexDirection: 'row', alignItems: 'center', gap: 4,
     paddingHorizontal: 10, paddingVertical: 5, borderRadius: 10,
-    backgroundColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: C.goldFaint,
   },
   aiPillOn:   { backgroundColor: C.gold },
-  aiPillText: { fontSize: 11, fontWeight: '800', color: '#fff', letterSpacing: 0.5 },
+  aiPillText: { fontSize: 11, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: '#fff', letterSpacing: 0.5 },
 
   aiBar: {
     flexDirection: 'row', alignItems: 'center',
@@ -523,13 +595,13 @@ const s = StyleSheet.create({
     backgroundColor: C.goldFaint, borderRadius: 10,
     paddingHorizontal: 10, paddingVertical: 5,
   },
-  chipHintText: { fontSize: 12, fontWeight: '700', color: C.gold },
+  chipHintText: { fontSize: 12, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.gold },
   searchBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 5,
     backgroundColor: C.navy, borderRadius: 10,
     paddingHorizontal: 14, paddingVertical: 7,
   },
-  searchBtnText: { fontSize: 13, fontWeight: '700', color: '#fff' },
+  searchBtnText: { fontSize: 13, fontFamily: 'Inter-Bold', fontWeight: '700', color: '#fff' },
 
   metaBanner:     { paddingHorizontal: 16, paddingVertical: 10, borderBottomWidth: 1 },
   metaBannerInfo: { backgroundColor: '#e8f4fd', borderBottomColor: '#bee3f8' },
@@ -540,29 +612,37 @@ const s = StyleSheet.create({
   filterRow:   { paddingHorizontal: 16, paddingVertical: 10, gap: 8 },
   chip: {
     paddingHorizontal: 14, paddingVertical: 7, borderRadius: 20,
-    borderWidth: 1.5, borderColor: '#E5E7EB', backgroundColor: '#fff',
+    borderWidth: 1, borderColor: '#ECE7DE', backgroundColor: '#fff',
   },
   chipOn:     { borderColor: C.navy, backgroundColor: C.navy },
-  chipText:   { fontSize: 13, fontWeight: '600', color: C.textSecondary },
+  chipText:   { fontSize: 13, fontFamily: 'Inter-SemiBold', fontWeight: '600', color: C.textSecondary },
   chipTextOn: { color: '#fff' },
 
   list: { padding: 16, gap: 10, paddingBottom: 40 },
 
   card: {
-    flexDirection: 'row', backgroundColor: '#fff', borderRadius: 18, overflow: 'hidden',
-    shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 }, elevation: 3,
+    flexDirection: 'row', backgroundColor: '#fff', borderRadius: 20, overflow: 'hidden',
+    shadowColor: C.cardShadow, shadowOpacity: 0.06, shadowRadius: 14,
+    shadowOffset: { width: 0, height: 4 }, elevation: 2,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
   },
   cardPressed: { opacity: 0.88, transform: [{ scale: 0.985 }] },
-  cardAccent:  { width: 4 },
   cardBody:    { flex: 1, padding: 14, gap: 10 },
 
   cardTop:  { flexDirection: 'row', alignItems: 'center', gap: 12 },
   typeIcon: { width: 36, height: 36, borderRadius: 10, justifyContent: 'center', alignItems: 'center' },
-  cardName: { fontSize: 15, fontWeight: '700', color: C.textPrimary, letterSpacing: -0.1 },
-  cardType: { fontSize: 12, fontWeight: '600', marginTop: 1 },
+  thumbnail: { width: 52, height: 52, borderRadius: 12, backgroundColor: '#EEF2F6' },
+  cardName: { fontSize: 16, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.navy, letterSpacing: -0.1 },
+  typeLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 3 },
+  typeDot: { width: 7, height: 7, borderRadius: 4 },
+  cardType: { fontSize: 12, fontFamily: 'Inter-SemiBold', fontWeight: '600', marginTop: 1 },
+  ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 5 },
+  ratingStar: { fontSize: 12.5, color: C.gold, fontFamily: 'Inter-Bold', fontWeight: '700' },
+  ratingScore: { fontSize: 12.5, color: C.navy, fontFamily: 'Inter-Bold', fontWeight: '700' },
+  ratingCount: { fontSize: 12, color: C.textMuted },
   kashrutBadge: { paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8 },
-  kashrutText:  { fontSize: 11, fontWeight: '700' },
+  kashrutText:  { fontSize: 11, fontFamily: 'Inter-Bold', fontWeight: '700' },
 
   cardMeta:   { gap: 5 },
   metaRow:    { flexDirection: 'row', alignItems: 'center', gap: 6 },
@@ -574,7 +654,7 @@ const s = StyleSheet.create({
     backgroundColor: 'rgba(201,168,76,0.10)',
     borderRadius: 10, paddingHorizontal: 8, paddingVertical: 4,
   },
-  distText: { fontSize: 11, fontWeight: '700', color: C.gold },
+  distText: { fontSize: 11, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.gold },
 
   empty:     { alignItems: 'center', paddingTop: 60, gap: 10 },
   emptyText: { fontSize: 14, color: '#BBC3D4' },

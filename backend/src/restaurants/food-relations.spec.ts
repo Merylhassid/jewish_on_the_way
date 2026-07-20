@@ -19,6 +19,17 @@ describe('restaurant food relations', () => {
     expect(lookupFoodRelation('נודלס')?.searchTags).toContain('noodles');
   });
 
+  it('matches safe one-letter food typos and short-but-clear prefixes', () => {
+    expect(lookupFoodRelation('המבןרגר')?.searchTags).toContain('burger');
+    expect(lookupFoodRelation('המבורג')?.searchTags).toContain('burger');
+    expect(lookupFoodRelation('פיצ')?.searchTags).toContain('pizza');
+    expect(lookupFoodRelation('סוש')?.searchTags).toContain('sushi');
+  });
+
+  it('does not fuzzy-match very short fragments', () => {
+    expect(lookupFoodRelation('פי')).toBeUndefined();
+  });
+
   it('extracts tags from descriptive restaurant names', () => {
     expect(tagsFromName('District Bagel')).toContain('bagel');
     expect(tagsFromName('Deli 365')).toContain('deli');

@@ -1,12 +1,11 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Location from 'expo-location';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
   FlatList,
   KeyboardAvoidingView,
-  Modal,
   Platform,
   Pressable,
   RefreshControl,
@@ -26,6 +25,8 @@ import {
 import client from '@/src/api/client';
 import SwipeableSheet from '@/src/components/SwipeableSheet';
 import { getPrayerConfig } from '@/src/utils/prayerIcons';
+import { C } from '@/constants/theme';
+import { useRequireAuth } from '@/src/auth/auth-gates';
 
 interface Minyan {
   id: number;
@@ -38,7 +39,7 @@ interface Minyan {
   almostFull: boolean;
   isFull: boolean;
   distanceMeters?: number;
-  creator: { id: number; firstName: string; lastName: string } | null;
+  creator: { id?: number; firstName: string; lastName: string } | null;
 }
 
 const PRAYER_TYPES = ['shacharit', 'mincha', 'maariv', 'musaf', 'other'];
@@ -59,7 +60,7 @@ function PrayerTypeChip({ type, label, active }: { type: string; label: string; 
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
       <cfg.Icon size={12} color={active ? '#fff' : cfg.color} strokeWidth={2} />
-      <Text style={{ fontSize: 13, color: active ? '#fff' : '#555', fontWeight: '500' }}>{label}</Text>
+      <Text style={{ fontSize: 13, color: active ? '#fff' : C.textSecondary, fontFamily: 'Inter-SemiBold', fontWeight: '600' }}>{label}</Text>
     </View>
   );
 }
@@ -149,13 +150,13 @@ function CreateMinyanModal({
               {/* @ts-ignore */}
               <input type="date" value={dateStr} min={new Date().toISOString().split('T')[0]}
                 onChange={(e: any) => { if (e.target.value) setDateObj(new Date(e.target.value)); }}
-                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', fontWeight: '500', outline: 'none', width: '100%', cursor: 'pointer' }} />
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', fontFamily: 'Inter-Medium', fontWeight: '500', outline: 'none', width: '100%', cursor: 'pointer' }} />
             </View>
           ) : (
             <>
               <Pressable style={styles.pickerBtn} onPress={() => setShowDatePicker(true)}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Calendar size={16} color="#1a3a6b" strokeWidth={2} />
+                  <Calendar size={16} color={C.navy} strokeWidth={2} />
                   <Text style={styles.pickerBtnText}>{dateStr}</Text>
                 </View>
               </Pressable>
@@ -173,13 +174,13 @@ function CreateMinyanModal({
               {/* @ts-ignore */}
               <input type="time" value={timeStr}
                 onChange={(e: any) => { if (e.target.value) { const [h, m] = e.target.value.split(':'); const t = new Date(); t.setHours(+h, +m, 0, 0); setTimeObj(t); } }}
-                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', fontWeight: '500', outline: 'none', width: '100%', cursor: 'pointer' }} />
+                style={{ border: 'none', background: 'transparent', fontSize: 15, color: '#1a1a2e', fontFamily: 'Inter-Medium', fontWeight: '500', outline: 'none', width: '100%', cursor: 'pointer' }} />
             </View>
           ) : (
             <>
               <Pressable style={styles.pickerBtn} onPress={() => setShowTimePicker(true)}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                  <Clock size={16} color="#1a3a6b" strokeWidth={2} />
+                  <Clock size={16} color={C.navy} strokeWidth={2} />
                   <Text style={styles.pickerBtnText}>{timeStr}</Text>
                 </View>
               </Pressable>
@@ -215,7 +216,7 @@ function CreateMinyanModal({
 export default function MinyansScreen() {
   const { destinationId, city } = useLocalSearchParams<{ destinationId: string; city?: string }>();
   const { t } = useTranslation();
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- stable
+  const requireAuth = useRequireAuth();
   const PRAYER_LABEL: Record<string, string> = {
     shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
     maariv: t('minyans.maariv'), musaf: t('minyans.musaf'), other: t('minyans.other'),
@@ -265,21 +266,27 @@ export default function MinyansScreen() {
       {/* Header */}
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
+          <ArrowLeft size={20} color={C.navy} strokeWidth={2.5} />
         </Pressable>
         <View style={styles.headerCenter}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            <Users size={18} color="#fff" strokeWidth={2} />
+            <Users size={18} color={C.goldMuted} strokeWidth={2} />
             <Text style={styles.headerTitle}>{t('minyans.title')}{city ? ` — ${city}` : ''}</Text>
           </View>
           <Text style={styles.headerSub}>
             {minyans.length} {t('minyans.upcoming')}
           </Text>
         </View>
-        <TouchableOpacity style={styles.myBtn} onPress={() => router.push('/minyans/my-minyans')}>
+        <TouchableOpacity
+          style={styles.myBtn}
+          onPress={() => requireAuth(() => router.push('/minyans/my-minyans'), { reason: 'account' })}
+        >
           <Text style={styles.myBtnText}>{t('minyans.my')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.addBtn} onPress={() => setCreateVisible(true)}>
+        <TouchableOpacity
+          style={styles.addBtn}
+          onPress={() => requireAuth(() => setCreateVisible(true), { reason: 'minyanCreate' })}
+        >
           <Text style={styles.addBtnText}>{t('minyans.newBtn')}</Text>
         </TouchableOpacity>
       </View>
@@ -298,7 +305,7 @@ export default function MinyansScreen() {
       </ScrollView>
 
       {loading ? (
-        <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
+        <View style={styles.center}><ActivityIndicator size="large" color={C.gold} /></View>
       ) : fetchError ? (
         <View style={styles.center}>
           <View style={{ marginBottom: 12 }}>
@@ -306,11 +313,11 @@ export default function MinyansScreen() {
           </View>
           <Text style={{ fontSize: 15, color: '#888', marginBottom: 16 }}>שגיאה בטעינת הנתונים</Text>
           <Pressable
-            style={{ backgroundColor: '#1a3a6b', paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12, flexDirection: 'row', alignItems: 'center', gap: 8 }}
+            style={{ backgroundColor: C.navy, paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12, flexDirection: 'row', alignItems: 'center', gap: 8 }}
             onPress={() => fetchMinyans(typeFilter)}
           >
             <RefreshCw size={14} color="#fff" strokeWidth={2} />
-            <Text style={{ color: '#fff', fontWeight: '700' }}>נסה שוב</Text>
+            <Text style={{ color: '#fff', fontFamily: 'Inter-Bold', fontWeight: '700' }}>נסה שוב</Text>
           </Pressable>
         </View>
       ) : (
@@ -323,8 +330,8 @@ export default function MinyansScreen() {
             <RefreshControl
               refreshing={refreshing}
               onRefresh={() => { setRefreshing(true); fetchMinyans(typeFilter); }}
-              colors={['#1a3a6b']}
-              tintColor="#1a3a6b"
+              colors={[C.gold]}
+              tintColor={C.gold}
             />
           }
           renderItem={({ item }) => {
@@ -337,8 +344,8 @@ export default function MinyansScreen() {
                 <View style={styles.cardBody}>
                   <View style={styles.cardTopRow}>
                     <Text style={styles.cardPrayer}>{PRAYER_LABEL[item.prayerType]}</Text>
-                    {item.isFull && <View style={[styles.badge, { backgroundColor: '#4caf50' }]}><Text style={styles.badgeText}>{t('minyans.full')}</Text></View>}
-                    {item.almostFull && !item.isFull && <View style={[styles.badge, { backgroundColor: '#ff9800' }]}><Text style={styles.badgeText}>{t('minyans.almostFull')}</Text></View>}
+                    {item.isFull && <View style={[styles.badge, styles.badgeFull]}><Text style={[styles.badgeText, styles.badgeTextFull]}>{t('minyans.full')}</Text></View>}
+                    {item.almostFull && !item.isFull && <View style={[styles.badge, styles.badgeAlmost]}><Text style={[styles.badgeText, styles.badgeTextAlmost]}>{t('minyans.almostFull')}</Text></View>}
                   </View>
                   <Text style={styles.cardDate}>{formatDate(item.date)} • {item.time}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
@@ -347,7 +354,7 @@ export default function MinyansScreen() {
                   </View>
                   <View style={styles.cardBottomRow}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                      <Users size={12} color="#1a3a6b" strokeWidth={2} />
+                      <Users size={12} color={C.navy} strokeWidth={2} />
                       <Text style={styles.cardCount}>{item.participantsCount} / 10</Text>
                     </View>
                     {item.distanceMeters !== undefined && (
@@ -383,54 +390,93 @@ export default function MinyansScreen() {
 }
 
 const styles = StyleSheet.create({
-  container:          { flex: 1, backgroundColor: '#f0f4ff' },
+  container:          { flex: 1, backgroundColor: C.cream },
   center:             { flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 60 },
-  header:             { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 20, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
-  backBtn:            { marginRight: 12 },
+  header:             {
+    backgroundColor: C.cream,
+    paddingTop: 60,
+    paddingBottom: 18,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EDE6',
+  },
+  backBtn:            {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: C.card,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
   headerCenter:       { flex: 1 },
-  headerTitle:        { fontSize: 20, fontWeight: '700', color: '#fff' },
-  headerSub:          { fontSize: 13, color: '#a8c4e8', marginTop: 2 },
-  myBtn:              { backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 20, paddingHorizontal: 12, paddingVertical: 7, marginRight: 8 },
-  myBtnText:          { color: '#fff', fontWeight: '600', fontSize: 13 },
-  addBtn:             { backgroundColor: '#fff', borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7, marginRight: 44 },
-  addBtnText:         { color: '#1a3a6b', fontWeight: '700', fontSize: 14 },
-  filterRow:          { maxHeight: 48, backgroundColor: '#fff' },
+  headerTitle:        { fontSize: 22, fontFamily: 'Inter-Black', fontWeight: '900', color: C.navy, letterSpacing: -0.4 },
+  headerSub:          { fontSize: 13, color: C.textMuted, marginTop: 3 },
+  myBtn:              { backgroundColor: C.card, borderRadius: 20, paddingHorizontal: 12, paddingVertical: 7, marginRight: 8, borderWidth: 1, borderColor: '#ECE7DE' },
+  myBtnText:          { color: C.navy, fontFamily: 'Inter-Bold', fontWeight: '700', fontSize: 13 },
+  addBtn:             { backgroundColor: C.navy, borderRadius: 20, paddingHorizontal: 14, paddingVertical: 7, marginRight: 44 },
+  addBtnText:         { color: '#fff', fontFamily: 'Inter-ExtraBold', fontWeight: '800', fontSize: 14 },
+  filterRow:          { maxHeight: 50, backgroundColor: C.card, borderBottomWidth: 1, borderBottomColor: '#F0EDE6' },
   filterContent:      { paddingHorizontal: 12, paddingVertical: 8, gap: 8, flexDirection: 'row' },
-  chip:               { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  chipActive:         { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  chipText:           { fontSize: 13, color: '#555', fontWeight: '500' },
+  chip:               { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: C.cream, borderWidth: 1, borderColor: '#ECE7DE' },
+  chipActive:         { backgroundColor: C.navy, borderColor: C.navy },
+  chipText:           { fontSize: 13, color: C.textSecondary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
   chipTextActive:     { color: '#fff' },
   list:               { padding: 16, gap: 12 },
-  card:               { backgroundColor: '#fff', borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 1 },
+  card:               {
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.06,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
+  },
   cardIconBox:        { width: 46, height: 46, borderRadius: 12, marginRight: 14, justifyContent: 'center', alignItems: 'center' },
   cardBody:           { flex: 1, gap: 3 },
   cardTopRow:         { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  cardPrayer:         { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
+  cardPrayer:         { fontSize: 16, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
   badge:              { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
-  badgeText:          { color: '#fff', fontSize: 11, fontWeight: '600' },
-  cardDate:           { fontSize: 13, color: '#555' },
-  cardLocation:       { fontSize: 13, color: '#777' },
+  badgeFull:          { backgroundColor: C.typeParveBg },
+  badgeAlmost:        { backgroundColor: '#FBF6E9' },
+  badgeText:          { fontSize: 11, fontFamily: 'Inter-Bold', fontWeight: '700' },
+  badgeTextFull:      { color: C.typeParve },
+  badgeTextAlmost:    { color: C.kashrutGold },
+  cardDate:           { fontSize: 13, color: C.textSecondary },
+  cardLocation:       { fontSize: 13, color: C.textMuted },
   cardBottomRow:      { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 2 },
-  cardCount:          { fontSize: 13, color: '#1a3a6b', fontWeight: '600' },
-  cardDistance:       { fontSize: 13, color: '#555', fontWeight: '500' },
-  arrow:              { fontSize: 22, color: '#bbb', marginLeft: 8 },
+  cardCount:          { fontSize: 13, color: C.navy, fontFamily: 'Inter-Bold', fontWeight: '700' },
+  cardDistance:       { fontSize: 13, color: C.textSecondary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
+  arrow:              { fontSize: 22, color: '#D1D5DB', marginLeft: 8 },
   empty:              { alignItems: 'center', marginTop: 60, gap: 12 },
-  emptyText:          { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
+  emptyText:          { fontSize: 15, color: C.textMuted, textAlign: 'center', lineHeight: 22 },
   // Modal
   overlay:            { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
-  sheet:              { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
+  sheet:              { backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40 },
   sheetHeader:        { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
-  sheetTitle:         { fontSize: 20, fontWeight: '700', color: '#1a3a6b' },
-  closeBtn:           { fontSize: 18, color: '#999' },
-  label:              { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6 },
-  input:              { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, fontSize: 15, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0', color: '#1a1a2e' },
-  typeChip:           { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  typeChipActive:     { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  typeChipText:       { fontSize: 13, color: '#555', fontWeight: '500' },
+  sheetTitle:         { fontSize: 20, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
+  closeBtn:           { fontSize: 18, color: C.textMuted },
+  label:              { fontSize: 13, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.navy, marginBottom: 6 },
+  input:              { backgroundColor: C.cream, borderRadius: 12, padding: 14, fontSize: 15, marginBottom: 14, borderWidth: 1, borderColor: '#ECE7DE', color: C.textPrimary },
+  typeChip:           { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20, backgroundColor: C.cream, borderWidth: 1, borderColor: '#ECE7DE' },
+  typeChipActive:     { backgroundColor: C.navy, borderColor: C.navy },
+  typeChipText:       { fontSize: 13, color: C.textSecondary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
   typeChipTextActive: { color: '#fff' },
-  locationNote:       { fontSize: 12, color: '#888', fontStyle: 'italic', marginBottom: 12 },
-  pickerBtn:          { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0' },
-  pickerBtnText:      { fontSize: 15, color: '#1a1a2e', fontWeight: '500' },
-  submitBtn:          { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
-  submitText:         { color: '#fff', fontSize: 16, fontWeight: '600' },
+  locationNote:       { fontSize: 12, color: C.textMuted, fontStyle: 'italic', marginBottom: 12 },
+  pickerBtn:          { backgroundColor: C.cream, borderRadius: 12, padding: 14, marginBottom: 14, borderWidth: 1, borderColor: '#ECE7DE' },
+  pickerBtnText:      { fontSize: 15, color: C.textPrimary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
+  submitBtn:          { backgroundColor: C.navy, borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
+  submitText:         { color: '#fff', fontSize: 16, fontFamily: 'Inter-Bold', fontWeight: '700' },
 });

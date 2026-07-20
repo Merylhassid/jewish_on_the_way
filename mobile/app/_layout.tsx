@@ -10,18 +10,20 @@ import NetInfo from '@react-native-community/netinfo';
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Home } from 'lucide-react-native';
+import { useFonts } from 'expo-font';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
-  useFonts,
-  Inter_400Regular,
-  Inter_500Medium,
-  Inter_600SemiBold,
-  Inter_700Bold,
-  Inter_800ExtraBold,
-  Inter_900Black,
-} from '@expo-google-fonts/inter';
+  Rubik_400Regular,
+  Rubik_500Medium,
+  Rubik_600SemiBold,
+  Rubik_700Bold,
+  Rubik_800ExtraBold,
+  Rubik_900Black,
+} from '@expo-google-fonts/rubik';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { AuthProvider } from '@/src/store/auth';
+import { AuthPromptProvider } from '@/src/auth/auth-gates';
 import ErrorBoundary from '@/src/components/ErrorBoundary';
 import { C } from '@/constants/theme';
 
@@ -29,7 +31,7 @@ SplashScreen.preventAutoHideAsync();
 
 // Screens where HomeButton should NOT appear
 const NO_HOME_PATHS = new Set([
-  '/', '/compass', '/nearby', '/shabbat', '/profile',
+  '/', '/compass', '/nearby', '/profile',
   '/login', '/register', '/forgot-password', '/reset-password', '/onboarding',
 ]);
 
@@ -57,13 +59,22 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [isOffline, setIsOffline] = useState(false);
 
+  // Brand font: Rubik. Mapped onto the existing Inter-* keys so the whole app
+  // renders Rubik without changing the 250+ existing fontFamily references.
+  // New code can use the Rubik-* aliases directly.
   const [fontsLoaded] = useFonts({
-    'Inter-Regular':   Inter_400Regular,
-    'Inter-Medium':    Inter_500Medium,
-    'Inter-SemiBold':  Inter_600SemiBold,
-    'Inter-Bold':      Inter_700Bold,
-    'Inter-ExtraBold': Inter_800ExtraBold,
-    'Inter-Black':     Inter_900Black,
+    'Inter-Regular':   Rubik_400Regular,
+    'Inter-Medium':    Rubik_500Medium,
+    'Inter-SemiBold':  Rubik_600SemiBold,
+    'Inter-Bold':      Rubik_700Bold,
+    'Inter-ExtraBold': Rubik_800ExtraBold,
+    'Inter-Black':     Rubik_900Black,
+    'Rubik-Regular':   Rubik_400Regular,
+    'Rubik-Medium':    Rubik_500Medium,
+    'Rubik-SemiBold':  Rubik_600SemiBold,
+    'Rubik-Bold':      Rubik_700Bold,
+    'Rubik-ExtraBold': Rubik_800ExtraBold,
+    'Rubik-Black':     Rubik_900Black,
   });
 
   useEffect(() => {
@@ -79,7 +90,11 @@ export default function RootLayout() {
     if (Platform.OS === 'web') return;
     const sub = Notifications.addNotificationResponseReceivedListener(response => {
       const data = response.notification.request.content.data as any;
-      if (data?.requestId) {
+      if (data?.needId && data?.destinationId) {
+        router.push(`/hosting/${data.destinationId}?mode=host` as any);
+      } else if (data?.offerId && data?.destinationId) {
+        router.push(`/hosting/${data.destinationId}?mode=guest` as any);
+      } else if (data?.requestId) {
         router.push('/hosting/my-requests');
       }
     });
@@ -91,7 +106,9 @@ export default function RootLayout() {
   return (
     <ErrorBoundary>
       <AuthProvider>
+        <AuthPromptProvider>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <GestureHandlerRootView style={{ flex: 1 }}>
           <View style={{ flex: 1 }}>
             {isOffline && (
               <View style={s.offlineBanner}>
@@ -115,6 +132,7 @@ export default function RootLayout() {
               <Stack.Screen name="restaurants/[destinationId]"   options={{ headerShown: false }} />
               <Stack.Screen name="restaurant/[id]"               options={{ headerShown: false }} />
               <Stack.Screen name="chat/[destinationId]"          options={{ headerShown: false }} />
+              <Stack.Screen name="chat/post/[messageId]"         options={{ headerShown: false }} />
               <Stack.Screen name="minyans/[destinationId]"       options={{ headerShown: false }} />
               <Stack.Screen name="minyan/[id]"                   options={{ headerShown: false }} />
               <Stack.Screen name="hosting/[destinationId]"       options={{ headerShown: false }} />
@@ -122,6 +140,7 @@ export default function RootLayout() {
               <Stack.Screen name="hosting/my-offers"             options={{ headerShown: false }} />
               <Stack.Screen name="hosting/chat/[requestId]"      options={{ headerShown: false }} />
               <Stack.Screen name="saved"                          options={{ headerShown: false }} />
+              <Stack.Screen name="blocked-users"                  options={{ headerShown: false }} />
               <Stack.Screen name="map/[destinationId]"           options={{ headerShown: false }} />
             </Stack>
 
@@ -129,7 +148,9 @@ export default function RootLayout() {
             <FloatingHomeButton />
             <StatusBar style="auto" />
           </View>
+          </GestureHandlerRootView>
         </ThemeProvider>
+        </AuthPromptProvider>
       </AuthProvider>
     </ErrorBoundary>
   );

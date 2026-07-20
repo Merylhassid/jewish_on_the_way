@@ -1,0 +1,783 @@
+{
+  "takenAt": "2026-07-07T11:16:14.325Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T11-12-59-123Z.csv",
+  "count": 97,
+  "rows": [
+    {
+      "id": 7428,
+      "name": "17 Restaurant and Sushi Bar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7430,
+      "name": "Asiatiko",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7431,
+      "name": "Azumare",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7432,
+      "name": "Bagel Boss Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7433,
+      "name": "Bagel Boss Surfside",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7434,
+      "name": "Baguette Nir",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7435,
+      "name": "Bambu Pan Asian (North Miami Beach)",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7437,
+      "name": "Ben Yehuda Grill",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7438,
+      "name": "BobaBurger",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7439,
+      "name": "BobaTbot",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7440,
+      "name": "Brickell Kosher Deli",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7441,
+      "name": "Cafe Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7442,
+      "name": "Cafe Vert",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7443,
+      "name": "Capas Burger",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7444,
+      "name": "Carmel Market Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7445,
+      "name": "Carvel North Miami Beach #1657",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7446,
+      "name": "Chai Berry",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7447,
+      "name": "Chai Wok",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7448,
+      "name": "Chill-N Nitrogen Ice Cream",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7449,
+      "name": "China Beach - Wok On The Beach",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7450,
+      "name": "Chlew Delishop Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7451,
+      "name": "Dixie BBQ Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7452,
+      "name": "Dolci Peccati Gelato",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7454,
+      "name": "Feed Me Kosher Bistro",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7455,
+      "name": "Fialkoff's Miami Beach",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7456,
+      "name": "Fialkoff's Surfside",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7457,
+      "name": "Flame Mediterranean",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7459,
+      "name": "Fleisch 41",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7460,
+      "name": "Florida Girl Juicery",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7461,
+      "name": "Foozo Artisan Pizza",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7462,
+      "name": "Fresko Miami - Kosher Restaurant",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7463,
+      "name": "Fuego by Mana",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7464,
+      "name": "Gallery of Cakes",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7465,
+      "name": "Grand Cafe Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7466,
+      "name": "Hadekel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7468,
+      "name": "Hikari",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7469,
+      "name": "Holy Toast Surfside",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7470,
+      "name": "Holy Toast Wynwood",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7471,
+      "name": "In & Out Bagels",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7472,
+      "name": "J Cafe Group/Elsie's Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7473,
+      "name": "Jajaja Mexicana Wynwood",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7474,
+      "name": "Jerusalem Pizza",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7475,
+      "name": "Josh's Deli",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7476,
+      "name": "JZ Steakhouse Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7477,
+      "name": "Kosh Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7480,
+      "name": "Krispy Kreme #1049",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7481,
+      "name": "Krispy Kreme #1177",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7482,
+      "name": "La Matera Argentinian Fusion",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7483,
+      "name": "La Pistachio",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7484,
+      "name": "La Vita E Bella - TEMPORARILY CLOSED",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7485,
+      "name": "Le Chocolatier Fine Handmade Chocolate",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7486,
+      "name": "Levy's Shawarma",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7487,
+      "name": "Luna Sunny Isles",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7488,
+      "name": "Maison Ostrow",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7489,
+      "name": "Mama Pizza & Coffee Shop",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7490,
+      "name": "Mamale Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7491,
+      "name": "Meat Bar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7493,
+      "name": "Miami N' Ice",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7494,
+      "name": "Milano's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7495,
+      "name": "Miri's Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7498,
+      "name": "Moran Patisserie Bakery Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7499,
+      "name": "Morelia Gourmet Paletas",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7500,
+      "name": "Mutra Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7502,
+      "name": "New York Bakeries Inc",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7503,
+      "name": "Neya",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7504,
+      "name": "Oki Miami by Fuego",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7505,
+      "name": "Otoro Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7506,
+      "name": "OVO at the Altair Hotel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7508,
+      "name": "Pita Hut (North Miami Beach)",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7509,
+      "name": "Pita Hut Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7510,
+      "name": "Playa Bowls Coral Gables",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7511,
+      "name": "Playa Bowls Miami Midtown",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7512,
+      "name": "Playa Bowls North Miami Beach",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7513,
+      "name": "Pokado",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7514,
+      "name": "Pressed Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7515,
+      "name": "Pure Green - Juice Bar Sunset Harbour",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7516,
+      "name": "Pure Green Juice & Smoothie Bar Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7517,
+      "name": "Roast",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7518,
+      "name": "Rustiko",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7519,
+      "name": "Serendipity Creamery & Yogurt Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7520,
+      "name": "Shalom Haifa",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7521,
+      "name": "Shibolim Bakery Aventura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7522,
+      "name": "Silan Fusion Cuisine",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7523,
+      "name": "Skoops",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7524,
+      "name": "Slice Kosher Pizzeria",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7525,
+      "name": "Smash House Burgers Miami",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7526,
+      "name": "Street Bar Surfside",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7527,
+      "name": "STREET Kitchen",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7528,
+      "name": "Tanur Mafia Bakery",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7529,
+      "name": "Tasty Beach Café",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7530,
+      "name": "TENDS",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7531,
+      "name": "The Fresh Carrot of Surfside",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7532,
+      "name": "The Harbour Grill",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7533,
+      "name": "The Ice Cream Factory",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7535,
+      "name": "Yalla!!! Delicious",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7536,
+      "name": "Yo Bassar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7537,
+      "name": "Zak the Baker",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

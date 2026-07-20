@@ -1,0 +1,150 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run ES</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — ES</h1>
+<div class="sum">
+שורות שנבדקו: <b>9</b> מתוך 9<br>
+✅ בטוח נכון: <b>7</b> · ❓ אולי: <b>0</b> · ❌ לא נמצא/לא נכון: <b>2</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 22 · Details: 19 (19 חדשים, 4 cache) · Google estimate max: ~$0.32 · LLM: $0.001 (1)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 7</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>8384</td>
+      <td><b>Ben Ben Kosher House</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Carrer d'Aribau, 257, Barcelona, 08021, Spain</td>
+      <td>BenBen Kosher House</td>
+      <td>Carrer d'Aribau, 257, Sarrià-Sant Gervasi, 08021 Barcelona, Spain</td>
+      <td>4.3 (235)</td>
+      <td>932 00 33 75</td>
+      <td class="photo">places/ChIJxSDNNJ6ipBIRycgF7X9iVmA/photos/AaVGc3nhgdpf2XDoIwTojMpbA7rPP85Nm-OVrpSh-5iSlWLKKQ_w9AaC9oCv4YOg7-maripWXoxFtF_UgHNYSTvD5j3HvAO-DlBzqyCNfutxDVMlazcLfCtckxeJJ_1q4PGsGRBKUbAMJqWK8codap3JPWv05zqMQHsFbQa2nF6b0PWMvMswnp5SO8WlnCSEdptWcoOs4fZqJoTDOoxUIUmmGQLQfKpeunZTyfs3buSQdQvH5ckW-tpIcIQ-Cln8azCaDdhJ88KYgTrW2HvFz9tW7HenyxBJV39KouZOEkNUQHqAciPuEITbcJbppNKE3GIVhd4xzZgGoq6MpdMCJHLDFzjIRupQY7hG8lD-EhujH_-p69UyoDH0JHpPLOzIAJGAPd8RBIDqMtjSMlkOqs3Ob3-J1qE1CwYmu_l30CT4ZtiIirzD</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ben%20Ben%20Kosher%20House%20Carrer%20d'Aribau%2C%20257%2C%20Barcelona%2C%2008021%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJxSDNNJ6ipBIRycgF7X9iVmA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8385</td>
+      <td><b>Chabad Barcelona Tourist Center</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Carrer de Sant Honorat, 9, Barcelona, 08002, Spain</td>
+      <td>Chabad Barcelona</td>
+      <td>Carrer del Montnegre, 14, Les Corts, 08029 Barcelona, Spain</td>
+      <td>4.7 (502)</td>
+      <td>934 10 06 85</td>
+      <td class="photo">places/ChIJFTi28mSYpBIR1sW0NBkZ3Oc/photos/AaVGc3mV5jd4e6dLALAIwbPrnu4tC131DbGAMaanQEbweDAlvuHE1sZ-apLzl8Qw4-fjSVeYsRIa04K6P5WqjqzAAZOqqnCwAWc-UgyLr0bCRqZ3KmSYOePmIZUHqPS-s8mY2dZEKwLDVRSqFA0rkREwIeog2GxywJ5teJa8zv_ZKJWgesdi2274x5_wBYVHYMIONv8_6z2fanTuTcTAaDk-hcoSfbifqFMEQiVCHxouihj5LmL22DeBT47YYlK0s3mdcau8j1dkEnNzNarNtlhnsrap0YwigyrLRrZ4UFVjfntoszOmlyYhrnivjRKs_2bNA6N_cVjaUYnCFYCytwztRwaU-s3CJJg6e8BpFdcVxJaXCaUJsBrIUhtd-3Ay-heBV6sIAh_C1Z0BSvHv8262jP7pm1QB9fo8wlKlMskqx9xqaxcZ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Barcelona%20Tourist%20Center%20Carrer%20de%20Sant%20Honorat%2C%209%2C%20Barcelona%2C%2008002%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJFTi28mSYpBIR1sW0NBkZ3Oc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8387</td>
+      <td><b>El Falafel de Shani</b><div class="muted">Barcelona · Spain</div></td>
+      <td>La Boqueria food market, La Rambla, 91 Mercat de la Boqueria, Barcelona, 08001, Spain</td>
+      <td>El falafel d'en Shani</td>
+      <td>La Rambla, 91 Mercat de la Boqueria, 133-134, Ciutat Vella, 08011 Barcelona, Spain</td>
+      <td>4.5 (289)</td>
+      <td>692 96 72 97</td>
+      <td class="photo">places/ChIJfxYtFPiipBIRblESF7UVaHs/photos/AaVGc3lTDWCNW_Vuex_q2KXblieY7JP0Dz9SPGJ4I7yrDYbo0jgL-r_sS9Qds6UwjAMkYdPh2A3drOZntjBx8rJPZyfX7igS2XvLsfv2CeSveT_pkyj-Yat2dNunZFPlIraCEb3zk1ZnEQGGNzEStIH6xL1EfA8c8DFz_Hw-Ux2kwW_rhaZ5DxCeMwwr7RuP5eEof-vPxWogWhhllJRcPQwEdm9GV8j0QfOLyfebayXIiI3YA9OnNLs9eRg2zKeBomntxVjd5nLAuAY3EsFtJsqftmporVCufpS1nn77d_da93GAM2_fgYm-xuigyt8JAe0jPmb0_eoetP0wZPABhWV9bG_HcEWuqO8qC6rHdz0L1oW61KZIDkeaoMpYOTZv1byKTetirBJi30jPMIf9t9DeXE_DPAMgWdPFg5_aDGDEpfKOpQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Falafel%20de%20Shani%20La%20Boqueria%20food%20market%2C%20La%20Rambla%2C%2091%20Mercat%20de%20la%20Boqueria%2C%20Barcelona%2C%2008001%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfxYtFPiipBIRblESF7UVaHs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8388</td>
+      <td><b>Kosher Babait Supermarket</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Carrer de l'Avenir, 22 , Barcelona, 08021, Spain</td>
+      <td>KOSHER BABAIT</td>
+      <td>Carrer de l'Avenir, 22, Sarrià-Sant Gervasi, 08021 Barcelona, Spain</td>
+      <td>4.7 (88)</td>
+      <td>624 02 82 05</td>
+      <td class="photo">places/ChIJcasac1qjpBIR_-oADVUA56c/photos/AaVGc3nqW_lIv7Dc6eNH8YVF28t8Rk7hL5QcBX7Fj3PLmtd8y4FGs9QpI_tT-jzLWR4fN8JzLfVojCe1tHUBB5qQrWSozVqxworOCzLzxCUTI3-Y5HfqQTQQ3Qqm9DOtP2LTKVBAOWpRlDz_3siw-uCQUGxiqTBUNw3ETYT_L1ZNwI-JN6BFE9AgxQ8WTWVmhGOa8s9xs2oTW_jqUHzKY0Wv88-44nRh7wd5VOvDz_sMsYxo6a9xtblkYdkwAANMuGE5kuhUFD3Y4iOxa6LMlVPKkwMA18AxYq49ZkOFktdc7pKd-kZD6VAiLOmCsQeL8YdBVyCgYFQIZSjXnLp_BBhvj4tcalakXNgJA9kXByY2WHVse-yuYyb7WAWQCI8YL3DGnHcGoAbZS3Z3UP7zdgGs7XkNjmb8fBuj8DfipBV64pzHxDQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Babait%20Supermarket%20Carrer%20de%20l'Avenir%2C%2022%20%2C%20Barcelona%2C%2008021%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJcasac1qjpBIR_-oADVUA56c" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8389</td>
+      <td><b>Shabbat &amp; Holidays at Chabad Barcelona</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Carrer del Montnegre, 14, Barcelona, 08029, Spain</td>
+      <td>Chabad Barcelona</td>
+      <td>Carrer del Montnegre, 14, Les Corts, 08029 Barcelona, Spain</td>
+      <td>4.7 (502)</td>
+      <td>934 10 06 85</td>
+      <td class="photo">places/ChIJFTi28mSYpBIR1sW0NBkZ3Oc/photos/AaVGc3mV5jd4e6dLALAIwbPrnu4tC131DbGAMaanQEbweDAlvuHE1sZ-apLzl8Qw4-fjSVeYsRIa04K6P5WqjqzAAZOqqnCwAWc-UgyLr0bCRqZ3KmSYOePmIZUHqPS-s8mY2dZEKwLDVRSqFA0rkREwIeog2GxywJ5teJa8zv_ZKJWgesdi2274x5_wBYVHYMIONv8_6z2fanTuTcTAaDk-hcoSfbifqFMEQiVCHxouihj5LmL22DeBT47YYlK0s3mdcau8j1dkEnNzNarNtlhnsrap0YwigyrLRrZ4UFVjfntoszOmlyYhrnivjRKs_2bNA6N_cVjaUYnCFYCytwztRwaU-s3CJJg6e8BpFdcVxJaXCaUJsBrIUhtd-3Ay-heBV6sIAh_C1Z0BSvHv8262jP7pm1QB9fo8wlKlMskqx9xqaxcZ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Shabbat%20%26%20Holidays%20at%20Chabad%20Barcelona%20Carrer%20del%20Montnegre%2C%2014%2C%20Barcelona%2C%2008029%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJFTi28mSYpBIR1sW0NBkZ3Oc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8390</td>
+      <td><b>Taim Kosher Catering</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Local, Carrer del Taquígraf Garriga, 87, Distrito de Les Corts, Barcelona, 08029, Spain</td>
+      <td>TAÍM BARCELONA</td>
+      <td>Local, Carrer del Taquígraf Garriga, 87, Les Corts, 08029 Barcelona, Spain</td>
+      <td>4.6 (233)</td>
+      <td>934 61 96 42</td>
+      <td class="photo">places/ChIJW3zhZRajpBIRTa7_egn4HeI/photos/AaVGc3mmVpRqiiZhpKGsubQGe73Qt9T5mEPRv9DainReSHuOP4m7zrl_KIqUusjXcACxXdajoXOgfownwSnO_YawwpDcFjkv5NBPoqS3NcqcFG8V_XvlNwvLjmgQxdkrIYT-oaE3sotEmKs3zDwgnXoDPvHqOclHOJqWDIU_rftJuZFbk4z-vWtRfIyRRi-__Xv7VtfbElK8VgACqulkx3EzlvWfNHw0IZxO7thd4U1J7NdwQ2r8eLlqri6YDiuF6BgQT4Ue8kPv0acFIF2qqeei0IncL-WNiOohmqcMKkvU0KAoucecWJ_kQEmpaJccGbQumzC4nhWbUzmfX0LVwGMKZgJmv2UjDxbbzl3PnU58qXeQC807OdHjXN3U8M-Jb5DBIblhbw918bNEDsRkQ_rlUeGfvSGQWE1MroC4pW78Q3h9NWGRgstZmF_SW25xvpqr</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Taim%20Kosher%20Catering%20Local%2C%20Carrer%20del%20Taqu%C3%ADgraf%20Garriga%2C%2087%2C%20Distrito%20de%20Les%20Corts%2C%20Barcelona%2C%2008029%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJW3zhZRajpBIRTa7_egn4HeI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8391</td>
+      <td><b>Xerta - Kosher dining room must be booked in advance</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Ohla Eixample Hotel, Còrsega 289, 08008 Barcelona, Spain</td>
+      <td>Xerta Restaurant</td>
+      <td>Carrer de Còrsega, 289, Eixample, 08008 Barcelona, Spain</td>
+      <td>4.4 (1608)</td>
+      <td>937 37 90 80</td>
+      <td class="photo">places/ChIJEycdDdejpBIRIU2-I7NsC9U/photos/AaVGc3n-UwwQJUtvIG6WBbxTfkAZzWHXFuL_you3JLADoGr4u_skm7fo2PBcrrN7hZxgdO3944t3zh82RZm5YkfjXLtRoBUtYqLHNFRWq57m7Cye6hhFTrAeLYRM6DL6963q8K_zgaowG0VWcJVmGGiY5Kq_w6Hswb-s8drSFEC9cHSV4ik7O7ypeUaIddpfGs6zc39fWTlPPbK2k6f3VV6Cm0q-xt_D1gXZypqn1Rww0M4XLnGvdnsT1fIKgkkwAUcdbdCfZ6OaJctSk6ZlEq55SjOekwscJu6miY1jIkB7tqgeFHAgK5WpVEZcSukIFTBynoE34f0wTbN_YalEMvCkuxKv9bVE4panHFFi0UmAABPvRDgKz7OaDYBUyXchiiG_gdiQ8607MlH86VVTZ5qMpiRGp_YDmpqZnS650kevRS0</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Xerta%20-%20Kosher%20dining%20room%20must%20be%20booked%20in%20advance%20Ohla%20Eixample%20Hotel%2C%20C%C3%B2rsega%20289%2C%2008008%20Barcelona%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJEycdDdejpBIRIU2-I7NsC9U" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 2</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7331</td>
+      <td><b>מכבי</b><div class="muted">Barcelona · Spain</div></td>
+      <td>La Rambla, 79, 08002 Barcelona, Spain</td>
+      <td>Maccabi Healthcare Services</td>
+      <td>Sderot Yerushalayim 18, Netivot, Israel</td>
+      <td>3.5 (23)</td>
+      <td>08-993-9400</td>
+      <td class="photo">places/ChIJAUDHcd99AhURj2w_zqW01NQ/photos/AaVGc3m-j-C6w51k1MUTVcP5Pmzxn4mKfNPJHkT6p8U5HIFKiPzztYxcnLL_SdpHCd6OMIHEhM5Hz_k5H9cnsIQtX_5t4YWHoocPOKvu_Y1vC9dR4o97H7gAkxEdm08RiT5auC-PVyQrPsJbxEgnXbqfv45JKtduX9fYKFEGyGjtzBHv1-Mg121kWMFSg_uwUAFw6L05bQrVfAJaWqbQ_o70CiIx6-9GAFCC-UdA1N9B7ltSs-3fn7SH1M8kwgpvCYrKFdUSkHdyaAvmQagpehTBh4C6-A1VQB0uO3QGyePrHDgWf0gPfzYkjdvQp6yJ7GZ3F94mA2cY_QxrMLhpPKcm1fAXnqkS4jyAZAZTtJ_B_KkGu5FeUW9KUe64vb7SON4IzEvjpinqaS4OM9CPxnNH1iR3x74RAfIkq6-uuRR4FkyfuoP8</td>
+      <td class="reason">weak name/address match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%9B%D7%91%D7%99%20La%20Rambla%2C%2079%2C%2008002%20Barcelona%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJAUDHcd99AhURj2w_zqW01NQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8386</td>
+      <td><b>Comunidad Israelita de Barcelona Catering</b><div class="muted">Barcelona · Spain</div></td>
+      <td>Carrer De L'Avenir 24, Barcelona, Spain</td>
+      <td>Synagogue of Barcelona</td>
+      <td>Carrer de l'Avenir, 24, Sarrià-Sant Gervasi, 08021 Barcelona, Spain</td>
+      <td>4.5 (130)</td>
+      <td>932 00 85 13</td>
+      <td class="photo">places/ChIJV2i0hJ6ipBIRnAFhwRpk6f0/photos/AaVGc3mi-skEjeBOSMG-2vx1DOqzjE1zUfWycQLIVcjIRrawZ4IBELMUoBTipOIerD1qDe8ygG4YIFsJH7avNr0Ub0DUQDqTrxZ0lT_fppCGo7oAZsz3vtf2yjPPDgO9iGc3nE8_eG7k6oypLwgEwfwUf92XwxpgGLaR8inHdbEoNzPCAetW93fp_mQMm5nd_VpbU4-D_lyDEpRtnOfhpkbTnOXKlnNQzDYVRALT689f9i26wgLqbVgvNeaZwrjpzLzjsIVsFe46XSSGBOIzV2Xrx6i1JxIpDKz4JCDT56Ppu2-DFyHeHsfGk1svUh-E38FfOuGz5T4jT2g3NS2tsDWiEqp5xe0YwLtE8CVSaGpOPeYN5brwS6lkJiD8YHVuUwWVwQ1611fk4io26gMSZEV4AEBkHTcPYMeNArcxRDlKyrpGQQ</td>
+      <td class="reason">LLM דחה (0.85): A is a catering service (כשרות קייטרינג), B is a synagogue (בית כנסת). Different business types. Same address confirms they're at the same location, but A is the catering operation of the religious community, not the synagogue itself. For kosher restaurant matching, B is not a restaurant.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Comunidad%20Israelita%20de%20Barcelona%20Catering%20Carrer%20De%20L'Avenir%2024%2C%20Barcelona%2C%20Spain" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV2i0hJ6ipBIRnAFhwRpk6f0" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

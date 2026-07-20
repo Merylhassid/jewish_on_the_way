@@ -41,6 +41,7 @@ export class MinyansService {
   async findUpcoming(
     destinationId: number,
     filters: { date?: string; prayerType?: string; lat?: number; lng?: number },
+    includeFullCreatorName = false,
   ) {
     // Raw SQL so we can pull destination lat/lng from PostGIS in one query
     let sql = `
@@ -115,11 +116,12 @@ export class MinyansService {
         createdAt: row['createdAt'],
         distanceMeters,
         creator: row['creatorId']
-          ? {
-              id: Number(row['creatorId']),
-              firstName: row['creatorFirstName'],
-              lastName: row['creatorLastName'],
-            }
+          ? this.formatCreator(
+              Number(row['creatorId']),
+              String(row['creatorFirstName'] ?? ''),
+              String(row['creatorLastName'] ?? ''),
+              includeFullCreatorName,
+            )
           : null,
       };
     });
@@ -182,22 +184,27 @@ export class MinyansService {
   }
 
   // req 6.1 — single minyan + registration status
-  async findOne(id: number, userId: number) {
+  async findOne(id: number, userId?: number) {
     const minyan = await this.minyansRepo.findOne({
       where: { id },
       relations: ['creator', 'destination'],
     });
     if (!minyan) throw new NotFoundException(`Minyan #${id} not found`);
 
-    const isRegistered = await this.registrationsRepo
-      .createQueryBuilder('r')
-      .where('r.userId = :userId AND r.minyanId = :minyanId', {
-        userId,
-        minyanId: id,
-      })
-      .getOne();
+    const isRegistered = userId
+      ? await this.registrationsRepo
+          .createQueryBuilder('r')
+          .where('r.userId = :userId AND r.minyanId = :minyanId', {
+            userId,
+            minyanId: id,
+          })
+          .getOne()
+      : null;
 
-    return { ...this.format(minyan), isRegistered: !!isRegistered };
+    return {
+      ...this.format(minyan, Boolean(userId)),
+      isRegistered: Boolean(isRegistered),
+    };
   }
 
   // req 6.3 + 6.3.1 — create minyan, auto-register creator
@@ -367,7 +374,12 @@ export class MinyansService {
   }
 
   // מניינים בטווח גיאוגרפי (ללא קשר ליעד)
-  async findNearby(lat: number, lng: number, radiusKm: number) {
+  async findNearby(
+    lat: number,
+    lng: number,
+    radiusKm: number,
+    includeFullCreatorName = false,
+  ) {
     const rows: Record<string, unknown>[] = await this.minyansRepo.query(
       `SELECT
          m.id, m.prayer_type AS "prayerType", m.date, m.time,
@@ -408,7 +420,12 @@ export class MinyansService {
           distanceMeters: Math.round(row['_dist'] as number),
           destination: { id: Number(row['destinationId']), city: row['destinationCity'] },
           creator: row['creatorId']
-            ? { id: Number(row['creatorId']), firstName: row['creatorFirstName'], lastName: row['creatorLastName'] }
+            ? this.formatCreator(
+                Number(row['creatorId']),
+                String(row['creatorFirstName'] ?? ''),
+                String(row['creatorLastName'] ?? ''),
+                includeFullCreatorName,
+              )
             : null,
         };
       });
@@ -447,7 +464,7 @@ export class MinyansService {
     return { deleted: true };
   }
 
-  private format(m: Minyan) {
+  private format(m: Minyan, includeFullCreatorName = true) {
     const count = m.participantsCount;
     return {
       id: m.id,
@@ -461,15 +478,36 @@ export class MinyansService {
       isFull: count >= MINYAN_FULL,
       createdAt: m.createdAt,
       creator: m.creator
-        ? {
-            id: m.creator.id,
-            firstName: m.creator.firstName,
-            lastName: m.creator.lastName,
-          }
+        ? this.formatCreator(
+            m.creator.id,
+            m.creator.firstName,
+            m.creator.lastName,
+            includeFullCreatorName,
+          )
         : null,
       destination: m.destination
         ? { id: m.destination.id, city: m.destination.city }
         : null,
+    };
+  }
+
+  private formatCreator(
+    id: number,
+    firstName: string,
+    lastName: string,
+    includeFullName: boolean,
+  ) {
+    const trimmedLastName = lastName.trim();
+    const lastInitial = Array.from(trimmedLastName)[0];
+
+    return {
+      ...(includeFullName ? { id } : {}),
+      firstName,
+      lastName: includeFullName
+        ? trimmedLastName
+        : lastInitial
+          ? `${lastInitial}.`
+          : '',
     };
   }
 }

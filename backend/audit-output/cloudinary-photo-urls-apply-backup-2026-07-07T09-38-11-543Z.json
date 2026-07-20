@@ -1,0 +1,31 @@
+{
+  "takenAt": "2026-07-07T09:38:11.551Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T09-37-33-047Z.csv",
+  "count": 3,
+  "rows": [
+    {
+      "id": 6311,
+      "name": "hummusbar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7540,
+      "name": "Dairy Star Ice Cream of Lincolnwood",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7573,
+      "name": "YOKO",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import { C } from '@/constants/theme';
 import { calculateHaversineDistance, formatDistance } from '@/src/utils/distance';
 import ErrorState from '@/src/components/ErrorState';
 import { SynagogueCardSkeleton } from '@/src/components/Skeleton';
+import SynagogueIcon, { SYNAGOGUE_ICON_BG } from '@/src/components/SynagogueIcon';
 
 interface Synagogue {
   id: number; name: string; address?: string;
@@ -20,11 +21,13 @@ interface Synagogue {
   distanceMeters?: number;
 }
 
+const SYN_PURPLE_BG = SYNAGOGUE_ICON_BG;
+
 const DENOM: Record<string, { label: string; color: string; bg: string }> = {
-  ashkenaz: { label: 'Ashkenaz', color: '#3B4FC8', bg: '#EEF2FF' },
-  sfarad:   { label: 'Sfarad',   color: '#0F766E', bg: '#F0FDFA' },
-  chabad:   { label: "Chabad",   color: '#C2410C', bg: '#FFF7ED' },
-  teimanim: { label: 'Teimanim', color: '#15803D', bg: '#F0FDF4' },
+  ashkenaz: { label: 'Ashkenaz', color: '#5E6FA8', bg: '#F0F2FA' },
+  sfarad:   { label: 'Sfarad',   color: '#5F847D', bg: '#EEF5F3' },
+  chabad:   { label: "Chabad",   color: '#A06A4E', bg: '#F7F1EE' },
+  teimanim: { label: 'Teimanim', color: '#6B8E6B', bg: '#EEF3EE' },
 };
 
 const ASHKENAZ = ['אשכנז','אשכנזי','ליטאי','ashkenaz','ashkenazi','orthodox'];
@@ -122,7 +125,11 @@ export default function SynagoguesScreen() {
       const raw = res.data;
       const list = Array.isArray(raw) ? raw : (raw?.data ?? []);
       if (list.length === 0) { setHasMore(false); return; }
-      setSynagogues(p => [...p, ...list]);
+      // Dedupe by id — overlapping offset pages would break FlatList keys.
+      setSynagogues(p => {
+        const seen = new Set(p.map((x: any) => x.id));
+        return [...p, ...list.filter((x: any) => !seen.has(x.id))];
+      });
       setOffset(next);
       setHasMore(list.length === 50);
     } catch {} finally { setLoadingMore(false); }
@@ -147,9 +154,10 @@ export default function SynagoguesScreen() {
       <View style={s.header}>
         <View style={s.headerRow}>
           <Pressable style={s.back} onPress={() => router.back()} hitSlop={12}>
-            <ArrowLeft size={20} color="#fff" strokeWidth={2.5} />
+            <ArrowLeft size={20} color={C.navy} strokeWidth={2.5} />
           </Pressable>
           <View style={{ flex: 1 }}>
+            <Text style={s.headerEyebrow}>{t('synagogues.title')}</Text>
             <Text style={s.headerTitle} numberOfLines={1}>{cityLabel || 'Synagogues'}</Text>
             <Text style={s.headerSub}>
               {loading ? t('synagogues.loading') : `${count} ${t('synagogues.title')}${gps ? `  ·  ${t('synagogues.sortedByDist')}` : ''}`}
@@ -213,13 +221,10 @@ function SynagogueCard({ item, gps }: { item: Synagogue; gps: { lat: number; lng
       style={({ pressed }) => [s.card, pressed && { opacity: 0.86, transform: [{ scale: 0.985 }] }]}
       onPress={() => router.push(`/synagogue/${item.id}`)}
     >
-      {/* Purple left accent */}
-      <View style={s.cardAccent} />
-
       <View style={s.cardBody}>
         <View style={s.cardTop}>
-          <View style={[s.cardIcon, { backgroundColor: '#F5F3FF' }]}>
-            <Globe size={18} color="#7C3AED" strokeWidth={2} />
+          <View style={s.cardIcon}>
+            <SynagogueIcon />
           </View>
           <View style={{ flex: 1 }}>
             <Text style={s.cardName} numberOfLines={1}>{item.name}</Text>
@@ -268,39 +273,65 @@ function SynagogueCard({ item, gps }: { item: Synagogue; gps: { lat: number; lng
 }
 
 const s = StyleSheet.create({
-  root:   { flex: 1, backgroundColor: C.bg },
+  root:   { flex: 1, backgroundColor: C.cream },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
   header: {
-    backgroundColor: C.navy,
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 58 : 38,
-    paddingHorizontal: 20, paddingBottom: 16, gap: 12,
+    paddingHorizontal: 20, paddingBottom: 18, gap: 14,
   },
   headerRow:  { flexDirection: 'row', alignItems: 'center', gap: 14 },
   back: {
     width: 38, height: 38, borderRadius: 19,
-    backgroundColor: 'rgba(255,255,255,0.12)',
+    backgroundColor: C.card,
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
     justifyContent: 'center', alignItems: 'center',
   },
-  headerTitle: { fontFamily: 'Inter-ExtraBold', fontSize: 20, color: '#fff', letterSpacing: -0.3 },
-  headerSub:   { fontFamily: 'Inter-Regular', fontSize: 12, color: 'rgba(255,255,255,0.50)', marginTop: 2 },
+  headerEyebrow: {
+    fontFamily: 'Inter-Bold',
+    fontSize: 10,
+    color: C.goldEyebrow,
+    letterSpacing: 2.5,
+    marginBottom: 4,
+  },
+  headerTitle: { fontFamily: 'Inter-Black', fontSize: 28, color: C.navy, letterSpacing: -0.6 },
+  headerSub:   { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textMuted, marginTop: 3 },
 
-  denomBanner: { borderRadius: 12, paddingHorizontal: 14, paddingVertical: 8 },
+  denomBanner: {
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: '#ECE7DE',
+  },
   denomLabel:  { fontFamily: 'Inter-SemiBold', fontSize: 13 },
 
   list: { padding: 16, gap: 10, paddingBottom: 40 },
 
   card: {
-    flexDirection: 'row', backgroundColor: '#fff', borderRadius: 18, overflow: 'hidden',
-    shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 10,
-    shadowOffset: { width: 0, height: 3 }, elevation: 3,
+    flexDirection: 'row', backgroundColor: '#fff', borderRadius: 20, overflow: 'hidden',
+    shadowColor: C.cardShadow, shadowOpacity: 0.06, shadowRadius: 14,
+    shadowOffset: { width: 0, height: 4 }, elevation: 2,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
   },
-  cardAccent: { width: 4, backgroundColor: '#7C3AED' },
   cardBody:   { flex: 1, padding: 14, gap: 8 },
 
   cardTop:   { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
-  cardIcon:  { width: 36, height: 36, borderRadius: 10, justifyContent: 'center', alignItems: 'center' },
-  cardName:  { fontFamily: 'Inter-Bold', fontSize: 15, color: C.textPrimary, letterSpacing: -0.1, flex: 1 },
+  cardIcon:  {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: SYN_PURPLE_BG,
+  },
+  cardName:  { fontFamily: 'Inter-Bold', fontSize: 16, color: C.navy, letterSpacing: -0.1, flex: 1 },
 
   denomPill:     { alignSelf: 'flex-start', borderRadius: 8, paddingHorizontal: 7, paddingVertical: 3, marginTop: 3 },
   denomPillText: { fontFamily: 'Inter-SemiBold', fontSize: 11 },

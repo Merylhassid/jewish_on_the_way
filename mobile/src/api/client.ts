@@ -80,8 +80,14 @@ client.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    // No refresh token — nothing to try, log out immediately
+    // Anonymous requests can legitimately receive 401 from account-only APIs.
+    // Reject them without mutating the current guest/signed-out session.
     if (!_refreshToken) {
+      const hadAuthorization = Boolean(
+        original.headers?.Authorization ?? original.headers?.authorization,
+      );
+      if (!hadAuthorization) return Promise.reject(error);
+
       await storage.remove(ACCESS_TOKEN_KEY);
       _forcedLogout?.();
       return Promise.reject(error);

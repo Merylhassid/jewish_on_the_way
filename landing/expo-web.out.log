@@ -1,0 +1,12 @@
+
+> mobile@1.0.0 web
+> expo start --web --port 8081
+
+env: load .env
+env: export EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID
+Starting project at C:\Users\User\jewish_on_the_way\mobile
+Starting Metro Bundler
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+Web Bundled 2275ms node_modules\expo-router\entry.js (3458 modules)
+ LOG  [web] Logs will appear in the browser console

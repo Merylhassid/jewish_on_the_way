@@ -1,0 +1,999 @@
+{
+  "takenAt": "2026-07-07T05:26:06.358Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T05-21-58-568Z.csv",
+  "count": 124,
+  "rows": [
+    {
+      "id": 7399,
+      "name": "Möye",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7400,
+      "name": "Bekef 26 Cannes",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7402,
+      "name": "Moshe Lait",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7404,
+      "name": "Robin's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7405,
+      "name": "Rouvi",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7406,
+      "name": "Bozen Cannes",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7407,
+      "name": "Dr Sandwich",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8180,
+      "name": "Abaita Paris 17",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8181,
+      "name": "Adassim Paris 17",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8182,
+      "name": "Aiko Paris 17",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8183,
+      "name": "Alfi Paris 4",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8184,
+      "name": "Aroma",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8185,
+      "name": "Aux Delices D'Abraham",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8186,
+      "name": "Baba Café",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8187,
+      "name": "Bayit Traiteur Paris 16",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8188,
+      "name": "Benson Kfe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8189,
+      "name": "Bistrattoria Nonna Rita",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8190,
+      "name": "Bozen Iéna",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8192,
+      "name": "Bozen Trocadéro",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8193,
+      "name": "Bozen Villiers",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8194,
+      "name": "Bozen Voltaire",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8195,
+      "name": "Canal Grill",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8196,
+      "name": "Chabad Champs Elysees Shabbat",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8197,
+      "name": "Chef Ruth Paris 16",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8198,
+      "name": "Chez Akol",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8199,
+      "name": "Chez Beno",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8200,
+      "name": "Chez Francois",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8201,
+      "name": "Chez Giulia",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8202,
+      "name": "Chez Isaac",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8203,
+      "name": "Chez Victor",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8204,
+      "name": "Chicken Delice",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8205,
+      "name": "Chlew Delishop Paris 17",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8206,
+      "name": "Chlew Delishop Paris 19",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8207,
+      "name": "Chlew Delishop Paris 4",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8208,
+      "name": "Chlew Delishop Paris 8",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8209,
+      "name": "Chlew Delishop Victor Hugo",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8210,
+      "name": "Cook",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8211,
+      "name": "Cosy Fresh",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8212,
+      "name": "Darima",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8213,
+      "name": "Dav and Jo \"GUICHI\"",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8214,
+      "name": "David-Zapp's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8215,
+      "name": "Dizengoff 17e",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8216,
+      "name": "Doron 17e",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8217,
+      "name": "Doron Spontini 16e",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8218,
+      "name": "Douieb Montmartre",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8219,
+      "name": "Flavio",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8220,
+      "name": "Friday Night Great Synagogue",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8221,
+      "name": "Fumé",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8222,
+      "name": "Gabrielli",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8223,
+      "name": "Grill Bar 16th",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8225,
+      "name": "Il Nuovo",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8226,
+      "name": "Il Palazzo",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8228,
+      "name": "Japan Eat",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8229,
+      "name": "Kavod",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8230,
+      "name": "Kavod Halavi",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8231,
+      "name": "Kifolie",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8232,
+      "name": "Korcarz",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8233,
+      "name": "Kosher Pizza",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8234,
+      "name": "L'Aile ou la Cuisse - Rue Greuze",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8235,
+      "name": "L'as du Falafel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8236,
+      "name": "L'Inté Caffe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8237,
+      "name": "La Délicieuse Belleville",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8238,
+      "name": "La Délicieuse Voltaire",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8239,
+      "name": "La Kave du Fromager",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8240,
+      "name": "La Libanaise",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8241,
+      "name": "La Maison de Doudou",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8242,
+      "name": "La Stella",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8243,
+      "name": "La Villa K",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8244,
+      "name": "Le Beverly",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8245,
+      "name": "Le Comptoir de Simon",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8246,
+      "name": "Le Manhattan",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8247,
+      "name": "Le XXV 16th",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8248,
+      "name": "Le XXV 8th",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8249,
+      "name": "Leolam Villiers",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8250,
+      "name": "Les 4 Aromes",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8251,
+      "name": "Les Garçons Bouchers",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8252,
+      "name": "Les Jardins du Belvedere",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8253,
+      "name": "L’Aile ou la Cuisse - Rue Jean Mermoz",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8254,
+      "name": "Maestro 16e",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8255,
+      "name": "Maestro 17e",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8256,
+      "name": "Marceau Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8257,
+      "name": "Mille Delices",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8258,
+      "name": "Mimi Traiteur",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8259,
+      "name": "Missada",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8260,
+      "name": "Mr & Mrs Bond Restaurant",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8261,
+      "name": "Ness Deli's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8262,
+      "name": "Nina Sushi Longchamps",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8263,
+      "name": "Nina Sushi Manin",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8264,
+      "name": "Nina Sushi Montparnasse",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8266,
+      "name": "Nini",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8267,
+      "name": "Novela",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8268,
+      "name": "O Gusto",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8269,
+      "name": "O P’tit Gusto",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8270,
+      "name": "O'Woks 19",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8271,
+      "name": "Papy Youda by Shirel's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8272,
+      "name": "Patistory",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8273,
+      "name": "Pearlin",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8274,
+      "name": "Safrane",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8275,
+      "name": "Sareden Halavi",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8276,
+      "name": "Saïko Restaurant",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8277,
+      "name": "Setaï 19",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8278,
+      "name": "Shen-Thai",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8279,
+      "name": "Shinzzo Manin",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8280,
+      "name": "Shinzzo Voltaire",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8281,
+      "name": "SoumSoum Voltaire",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8282,
+      "name": "Sozo",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8283,
+      "name": "Sushizz",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8285,
+      "name": "Tayim",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8286,
+      "name": "TenBis (by halaech)",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8287,
+      "name": "Tib's Manin",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8288,
+      "name": "Tikoun Olam",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8289,
+      "name": "Toda l'Akel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8291,
+      "name": "Wang's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8292,
+      "name": "Le Kineret",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8293,
+      "name": "Le Tavlyn",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8294,
+      "name": "Lechem Chamaym",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8295,
+      "name": "Ma Poule Rotisserie",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8296,
+      "name": "Tali Nice",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8298,
+      "name": "Casa Bianca",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8299,
+      "name": "Chabad House",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8300,
+      "name": "Chez Gilou - TEMPORARILY CLOSED",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8301,
+      "name": "Ktoun Traiteur Kosher Catering French Riviera",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8302,
+      "name": "OKLM",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8303,
+      "name": "Pizza Yam",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

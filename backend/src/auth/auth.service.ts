@@ -6,11 +6,13 @@ import {
   Logger,
   UnauthorizedException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { JwtService } from '@nestjs/jwt';
+import { OAuth2Client } from 'google-auth-library';
 
 import { User } from '../users/user.entity';
 import { RegisterDto } from './dto/register.dto';
@@ -19,17 +21,20 @@ import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { MailService } from '../mail/mail.service';
 import { AuditService } from '../audit/audit.service';
+import { isCommonPassword } from './password-policy';
 
 const REFRESH_TOKEN_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 @Injectable()
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
+  private readonly googleClient = new OAuth2Client();
 
   constructor(
     @InjectRepository(User) private usersRepo: Repository<User>,
     private dataSource: DataSource,
     private jwtService: JwtService,
+    private configService: ConfigService,
     private mailService: MailService,
     private audit: AuditService,
   ) {}
@@ -38,8 +43,35 @@ export class AuthService {
     return Math.floor(100000 + Math.random() * 900000).toString();
   }
 
+  private async issueSession(user: User) {
+    const payload = { sub: user.id, email: user.email };
+    const access_token = await this.jwtService.signAsync(payload);
+
+    const rawRefreshToken = crypto.randomBytes(64).toString('hex');
+    const refreshTokenHash = crypto.createHash('sha256').update(rawRefreshToken).digest('hex');
+
+    user.refreshToken = refreshTokenHash;
+    user.refreshTokenExpiresAt = new Date(Date.now() + REFRESH_TOKEN_TTL_MS);
+    await this.usersRepo.save(user);
+
+    return {
+      access_token,
+      refresh_token: rawRefreshToken,
+      user: {
+        id: user.id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        hasPassword: Boolean(user.passwordHash),
+      },
+    };
+  }
+
   async register(dto: RegisterDto) {
     const email = dto.email.toLowerCase();
+    if (isCommonPassword(dto.password)) {
+      throw new BadRequestException('Password is too common');
+    }
 
     try {
       const code = this.generateVerificationCode();
@@ -67,7 +99,7 @@ export class AuthService {
       });
 
       await this.mailService.sendVerificationCode(email, code);
-      this.audit.log('USER_REGISTERED', saved.id, { email: saved.email });
+      this.audit.log('USER_REGISTERED', saved.id);
       return {
         id: saved.id,
         email: saved.email,
@@ -100,7 +132,7 @@ export class AuthService {
     user.emailVerificationCode = null;
     user.emailVerificationExpires = null;
     await this.usersRepo.save(user);
-    this.audit.log('EMAIL_VERIFIED', user.id, { email: user.email });
+    this.audit.log('EMAIL_VERIFIED', user.id);
 
     const payload = { sub: user.id, email: user.email };
     const access_token = await this.jwtService.signAsync(payload);
@@ -124,16 +156,22 @@ export class AuthService {
 
   async login(dto: LoginDto) {
     const email = dto.email.toLowerCase();
+    const emailFingerprint = this.audit.fingerprintEmail(email);
 
     const user = await this.usersRepo.findOne({ where: { email } });
-    if (!user || !user.isActive) {
-      this.audit.log('USER_LOGIN_FAILED', null, { email });
+    if (!user || !user.isActive || user.isDisabled) {
+      this.audit.log('USER_LOGIN_FAILED', null, { emailFingerprint });
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    if (!user.passwordHash) {
+      this.audit.log('USER_LOGIN_FAILED', user.id, { emailFingerprint });
       throw new UnauthorizedException('Invalid credentials');
     }
 
     const ok = await bcrypt.compare(dto.password, user.passwordHash);
     if (!ok) {
-      this.audit.log('USER_LOGIN_FAILED', user.id, { email });
+      this.audit.log('USER_LOGIN_FAILED', user.id, { emailFingerprint });
       throw new UnauthorizedException('Invalid credentials');
     }
 
@@ -147,7 +185,7 @@ export class AuthService {
     user.refreshTokenExpiresAt = new Date(Date.now() + REFRESH_TOKEN_TTL_MS);
     await this.usersRepo.save(user);
 
-    this.audit.log('USER_LOGIN', user.id, { email: user.email });
+    this.audit.log('USER_LOGIN', user.id);
 
     return {
       access_token,
@@ -157,8 +195,71 @@ export class AuthService {
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
+        hasPassword: Boolean(user.passwordHash),
       },
     };
+  }
+
+  async googleLogin(idToken: string) {
+    const clientId = this.configService.get<string>('GOOGLE_WEB_CLIENT_ID');
+    if (!clientId) {
+      throw new InternalServerErrorException('Google login is not configured');
+    }
+
+    let payload;
+    try {
+      const ticket = await this.googleClient.verifyIdToken({
+        idToken,
+        audience: clientId,
+      });
+      payload = ticket.getPayload();
+    } catch {
+      throw new UnauthorizedException('Invalid Google token');
+    }
+
+    const googleId = payload?.sub;
+    const email = payload?.email?.toLowerCase();
+    const emailVerified = payload?.email_verified;
+    if (!googleId || !email || !emailVerified) {
+      throw new UnauthorizedException('Google account email is not verified');
+    }
+
+    const user = await this.dataSource.transaction(async (manager) => {
+      const byGoogleId = await manager.findOne(User, { where: { googleId } });
+      if (byGoogleId) {
+        if (!byGoogleId.isActive || byGoogleId.isDisabled) throw new UnauthorizedException('Account is inactive');
+        return byGoogleId;
+      }
+
+      const byEmail = await manager.findOne(User, { where: { email } });
+      if (byEmail?.isActive) {
+        byEmail.googleId = googleId;
+        byEmail.emailVerificationCode = null;
+        byEmail.emailVerificationExpires = null;
+        return manager.save(byEmail);
+      }
+      if (byEmail) {
+        await manager.delete(User, { id: byEmail.id });
+      }
+
+      const firstName = payload.given_name?.trim() || payload.name?.split(' ')[0] || 'Google';
+      const lastName = payload.family_name?.trim() || 'User';
+
+      const newUser = manager.create(User, {
+        email,
+        passwordHash: null,
+        googleId,
+        firstName,
+        lastName,
+        isActive: true,
+        emailVerificationCode: null,
+        emailVerificationExpires: null,
+      });
+      return manager.save(newUser);
+    });
+
+    this.audit.log('USER_LOGIN', user.id, { provider: 'google' });
+    return this.issueSession(user);
   }
 
   async refresh(rawRefreshToken: string) {
@@ -169,6 +270,7 @@ export class AuthService {
     if (
       !user ||
       !user.isActive ||
+      user.isDisabled ||
       !user.refreshTokenExpiresAt ||
       user.refreshTokenExpiresAt < new Date()
     ) {
@@ -191,9 +293,13 @@ export class AuthService {
 
   async forgotPassword(dto: ForgotPasswordDto): Promise<void> {
     const email = dto.email.toLowerCase();
+    const emailFingerprint = this.audit.fingerprintEmail(email);
     const user = await this.usersRepo.findOne({ where: { email } });
 
-    if (!user) return;
+    if (!user) {
+      this.audit.log('PASSWORD_RESET_REQUESTED', null, { emailFingerprint });
+      return;
+    }
 
     const rawToken = crypto.randomBytes(32).toString('hex');
     const expires = new Date(Date.now() + 60 * 60 * 1000);
@@ -206,21 +312,12 @@ export class AuthService {
     user.resetPasswordToken = tokenHash;
     user.resetPasswordExpires = expires;
     await this.usersRepo.save(user);
-    this.audit.log('PASSWORD_RESET_REQUESTED', user.id, { email });
-
-    if (process.env.NODE_ENV === 'development') {
-      this.logger.warn(`\n========================================`);
-      this.logger.warn(`  PASSWORD RESET TOKEN (dev only)`);
-      this.logger.warn(`  Email : ${email}`);
-      this.logger.warn(`  Token : ${rawToken}`);
-      this.logger.warn(`  Paste this token in the app's Reset Password screen`);
-      this.logger.warn(`========================================\n`);
-    }
+    this.audit.log('PASSWORD_RESET_REQUESTED', user.id, { emailFingerprint });
 
     try {
       await this.mailService.sendPasswordReset(email, rawToken);
     } catch (err) {
-      this.logger.error(`Failed to send reset email to ${email}: ${err}`);
+      this.logger.error(`Failed to send password reset email for userId=${user.id}`);
       user.resetPasswordToken = null;
       user.resetPasswordExpires = null;
       await this.usersRepo.save(user);

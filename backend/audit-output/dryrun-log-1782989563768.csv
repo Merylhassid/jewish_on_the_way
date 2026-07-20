@@ -1,0 +1,21 @@
+﻿id,status,confidence,name_sim,distance_m,old_name,google_name,name_updated,old_address,new_address,coords_fixed,reason
+1218,no_match,0.2,0.500,557,קפה אופרה,Opera Cafe,no,"קנאים 27, קניון ערד, Israel",,no,dist=557m name=0.50 no-match
+1219,verified,0.88,1.000,91,הלב הרחב,הלב הרחב,yes,"חיל ההנדסה 6, אילת, Israel","Heil HaHandasa St 6, Eilat, Israel",yes,dist=91m name=1.00 near+name
+1220,flagged,0.7,1.000,422,MOOD,מסעדת מוד באילת | mood restaurant eilat,no,"הים 5, אילת, Israel",,no,dist=422m name=1.00 needs-review
+1221,flagged,0.7,1.000,820,קפרזה,קפרזה,no,"דרך הדרום 20, קריית גת, Israel",,no,dist=820m name=1.00 needs-review
+1222,verified,0.88,1.000,112,איטליקה,איטליקה אילת,yes,"קאמפן 8, אילת, Israel","Kampen St 6, Eilat, Israel",yes,dist=112m name=1.00 near+name
+1223,verified,0.88,1.000,109,בום בר,עגלת קפה בום בר - מושב מבקיעים,yes,"מבקיעים, Israel","שדרת עצי הזית, Mavki'im, Israel",yes,dist=109m name=1.00 near+name
+1224,flagged,0.7,0.250,153,השיפודיה של שופן,Shufan,no,"נורדאו מקס 5, באר שבע, Israel",,no,dist=153m name=0.25 needs-review
+1225,flagged,0.7,1.000,624,טעם העמק,טעם העמק,no,"יפה נוף 5, אשקלון, Israel",,no,dist=624m name=1.00 needs-review
+1226,flagged,0.6,0.273,73,קפה גרג מתחם ביג אילת,Greg Coffee,no,"הסתת 20, ביג אילת, Israel",,no,dist=73m name=0.27 proximity-name-mismatch
+1227,verified,0.88,0.833,104,ניסו הדייג,Nisso HaDayag,no,"בת גלים 3, אשקלון, Israel","מתחם המרינה, בת גלים 1, אשקלון, Israel",yes,dist=104m name=0.83 near+name
+1228,no_match,0.2,0.600,1853,לורנס,Lawrence,no,"אילת, Israel",,no,dist=1853m name=0.60 no-match
+1229,flagged,0.7,1.000,618,אושי אושי,אושי אושי דימונה,no,"דימונה, Israel",,no,dist=618m name=1.00 needs-review
+1230,verified,0.95,0.583,28,בית החצ'אפורי באר שבע,בית החצ'פורי,no,"החלוץ 53, באר שבע, Israel","He-Khaluts St 53, Be'er Sheva, 8421431, Israel",yes,dist=28m name=0.58 close-proximity
+1231,flagged,0.7,1.000,269,"ג'אספר 08 JASPER, ישרוטל אגמים",ג'אספר 08 - Jasper 08,no,"קאמפן 7, אילת, Israel",,no,dist=269m name=1.00 needs-review
+1232,flagged,0.7,0.750,530,באביס',BABBI'S,no,"הבנאים 3, אשדוד, Israel",,no,dist=530m name=0.75 needs-review
+1234,no_match,0.2,0.182,343,ביגה במרכז פריז,Biga Bakery,no,"בעלי המלאכה 203, נתיבות, Israel",,no,dist=343m name=0.18 no-match
+1235,flagged,0.7,0.286,88,ללוש בראסרי באר שבע,Cafe La Lush,no,"חיטה 1, באר שבע, Israel",,no,dist=88m name=0.29 needs-review
+1236,verified,0.88,1.000,184,ריבר אשקלון,ריבר אשקלון - River,yes,"רחבעם זאבי 4, אשקלון, Israel","Rehavam Ze'evi St 4, Ashkelon, Israel",yes,dist=184m name=1.00 near+name
+1237,verified,0.88,0.667,102,HAVAS,מסעדת חבס,no,"יוסף טרומפלדור 73, באר שבע, Israel","Trumpeldor Joseph St 73, Be'er Sheva, Israel",yes,dist=102m name=0.67 near+name
+1238,no_match,0.2,1.000,1872,בית הפול והשווארמה נווה זאב,"בית הפול והשווארמה - נווה זאב באר שבע | ב""ש | חומוס | פלאפל | סביח | שניצל | שווארמה | משלוחים",no,"שד' יוהנה ז'בוטינסקי 11, באר שבע, Israel",,no,dist=1872m name=1.00 no-match

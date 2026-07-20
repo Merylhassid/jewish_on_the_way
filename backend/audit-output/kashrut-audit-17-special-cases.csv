@@ -1,0 +1,18 @@
+﻿id,name,category,dest,country,address,primary_type,note
+7343,"חב""ד לימסול",chabad,Limassol,Cyprus,"Porfyriou Dikaiou 5, Limasol 3095, Cyprus, Limassol",synagogue,"בית חב""ד לימסול — Google הותאם כ-synagogue. ארוחת שישי מתחילה בכניסת שבת בכוונה — זה סימן להקפדה, לא הפרה. לא לשלוח ל-LLM."
+8445,Kosher Food at the Chabad Latchi,chabad,Paphos,Cyprus,"Box 66091, Latchi CY, E713, Polis Crysochous, Cyprus",synagogue,"Chabad Latchi (פפוס) — אותו הסבר: בית חב""ד, matched כ-synagogue."
+8220,Friday Night Great Synagogue,chabad,Paris,France,"Synagogue de la Victoire 44, rue de la Victoire  , Paris, 75009, France",synagogue,"""Friday Night Great Synagogue"" (פריז) — כנראה תוכנית ארוחת שישי בבית הכנסת הגדול, לא מסעדה עצמאית. שקול אם בכלל צריך רשומת מסעדה נפרדת."
+6423,"בית חב""ד ברלין לישראלים – אלכסנדרפלאץ",chabad,Berlin,Germany,"Karl-Liebknecht Str. 34, 10178 Berlin.",synagogue,"בית חב""ד ברלין אלכסנדרפלאץ — matched כ-synagogue."
+8385,Chabad Barcelona Tourist Center,chabad,Barcelona,Spain,"Carrer de Sant Honorat, 9, Barcelona, 08002, Spain",synagogue,Chabad Barcelona Tourist Center — matched כ-synagogue.
+2196,תחנה 4,events,Afula,Israel,"זלמן הוז 1, עפולה, Israel",event_venue,"""תחנה 4"" עפולה — matched ל-""Station 4"" event_venue. שם תואם, כנראה אולם/בר אירועים אמיתי — שעות ""פתיחה"" לא משקפות הגשת אוכל."
+4014,סקיצה,events,Kfar Saba,Israel,"דרך האורנים 13, רינתיה, Israel",event_venue,"""סקיצה"" כפר סבא — matched ל-""סקיצה אירועים וקייטרינג"". שם העסק עצמו כולל ""אירועים וקייטרינג"" — קייטרינג לפי הזמנה, לא שעות קבועות."
+5990,הכרם אירועים,events,Netanya,Israel,"גד מכנס 6, נתניה, Israel",event_venue,"""הכרם אירועים"" נתניה — matched ל-""הכרם - אירועים מול הים"". שם תואם, אולם אירועים אמיתי."
+4126,קסאנאדו Xanadu,events,Petah Tikva,Israel,"בן ציון גליס 50, פתח תקווה, Israel",event_venue,"""קסאנאדו Xanadu"" פתח תקווה — matched נכון ל-Xanadu event_venue."
+5466,אורו,events,Yavne,Israel,"גאליה, Israel",event_venue,"""אורו"" יבנה — matched נכון ל-אולם אירועים."
+1928,T-MIX,retail,Ashdod,Israel,"העצמאות 4, אשדוד, Israel",grocery_store,"T-MIX אשדוד — matched ל-""Mix Markt"" grocery_store. דוכן/מדף כשר בתוך סופר כללי — פתוח שבת לא בהכרח לא-כשר (התעודה מכסה את ההכנה, לא שעות החנות)."
+6415,סופרמרקט ג'מבו  Jumbo,retail,Amsterdam,Netherlands,"Kastelenstraat 70, Amsterdam.",supermarket,"סופרמרקט ג'מבו אמסטרדם — supermarket, אותו הסבר כמו T-MIX."
+8131,M&S Muswell Hill,retail,London,United Kingdom,"Simply Food, The, 126-138 Muswell Hill Broadway, Muswell Hill, London, N10 3RU, UK",convenience_store,"M&S Muswell Hill לונדון — matched ל-""M&S Foodhall"" convenience_store. דוכן כשר בתוך Marks & Spencer."
+7713,"Tom Thumb Bakery, Kosher Deli and Fresh Meat Market",retail,Dallas,United States,"The Market at Preston Forest 11920 Preston Road, Dallas, TX  75230",grocery_store,"Tom Thumb Bakery/Kosher Deli/Meat Market דאלאס — matched ל-""Tom Thumb"" (רשת סופרים). דוכן כשר בתוך סופר."
+7616,Julie's Bakery and Catering,retail,Los Angeles,United States,"9030 Owensmouth Ave, Canoga Park, CA, 91304, USA",grocery_store,"Julie's Bakery and Catering LA — matched ל-""Julie's Meat Market & Bakery"" grocery_store."
+4705,El Galpon,special,Buenos Aires,Argentina,"Av. Corrientes 2900, Buenos Aires",concert_hall,"El Galpon בואנוס איירס — matched בטעות ל-""Galpón B"" concert_hall. השעות ""24 שעות"" חסרות משמעות (זה אולם קונצרטים, לא המסעדה). MA כבר ידוע is_kosher=false ומועמד למחיקה בכל מקרה — לא קשור לטעות ההתאמה הזו."
+5300,מזנון רוקפלר,special,Jerusalem,Israel,"סולטן סולימן, ירושלים העתיקה, Israel",park,"מזנון רוקפלר ירושלים — matched בטעות ל-""Rockefeller Garden"" park. שעות הפארק, לא הדוכן. צריך התאמת מקום ידנית נפרדת (חיפוש place_id נכון), לא בדיקת כשרות."

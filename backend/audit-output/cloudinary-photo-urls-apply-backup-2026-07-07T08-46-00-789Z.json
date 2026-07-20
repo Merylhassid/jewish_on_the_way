@@ -1,0 +1,551 @@
+{
+  "takenAt": "2026-07-07T08:46:00.792Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T08-43-49-112Z.csv",
+  "count": 68,
+  "rows": [
+    {
+      "id": 6303,
+      "name": "קפה תמר Cafe Tamar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6304,
+      "name": "קפה תל אביב  Tel Aviv Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6305,
+      "name": "ברוקלין בייגל  Brooklyn Bagel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6306,
+      "name": "ממילא  Mamilla",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6309,
+      "name": "חדש! מסעדת מרקש  Marrakesh",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6310,
+      "name": "חדש! שוק הכרמל  Shuk HaCarmel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6312,
+      "name": "מסעדת ניטאבלו  Nitavalo",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6313,
+      "name": "מסעדת חנה  Hanna",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6314,
+      "name": "מסעדת כרמל  Carmel",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6315,
+      "name": "פלאפל בר  Falafel Bar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6318,
+      "name": "מסעדת אשיז׳ Ashis",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 6319,
+      "name": "מסעדת קאצ'אפ Catchup",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7358,
+      "name": "באגטו מילקי",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7359,
+      "name": "בלהקרנה",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7360,
+      "name": "סה פסטה אה פסטה",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7363,
+      "name": "יטבתה",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7538,
+      "name": "B'sari Burger Bar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7539,
+      "name": "Crunch",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7542,
+      "name": "Dunkin Donuts Skokie",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7543,
+      "name": "Dunkin Donuts/Baskin Robbins",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7544,
+      "name": "EJ's Pizzeria",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7545,
+      "name": "Emma's Bagel Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7546,
+      "name": "Evita Argentinian Steakhouse",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7547,
+      "name": "Graeter's Ice Cream",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7548,
+      "name": "Gratzia Bakery (Tel Aviv)",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7549,
+      "name": "Great Chicago Food & Beverage Co.",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7550,
+      "name": "Hamachi Sushi Bar",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7551,
+      "name": "Ken's Diner and Grill (Kens Diner)",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7552,
+      "name": "KoseherstandZ LLC at Wrigley Field",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7554,
+      "name": "Main Pizza Chalavi",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7555,
+      "name": "Milt's BBQ For the Perplexed",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7556,
+      "name": "Nuovo Chicago",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7557,
+      "name": "Nut & Candy",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7558,
+      "name": "Rita's Ices of West Ridge",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7559,
+      "name": "Rita's Italian Ice of Park Ridge",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7560,
+      "name": "Rocket Slice",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7561,
+      "name": "Sandwich Club",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7563,
+      "name": "Sarah's Tent Kosher Market",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7564,
+      "name": "Shallots Bistro",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7565,
+      "name": "Shanghai Kosher",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7568,
+      "name": "Starr Kosher Catering/Chicago Tailgators",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7569,
+      "name": "Taboun Grill",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7570,
+      "name": "Tacos Gingi",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7571,
+      "name": "Tel Aviv Slices Pizza",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7572,
+      "name": "The Lincoln Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7574,
+      "name": "Zalman's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7575,
+      "name": "Zelda's Table",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8342,
+      "name": "Hummus Bar Budapest",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8346,
+      "name": "Piac-Kosher Market Budapest",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8348,
+      "name": "Uptown Kosher Bakery",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8349,
+      "name": "Yafo Deli & Kosher Food",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8353,
+      "name": "Bona Pizza Romana",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8355,
+      "name": "C'è Pasta e Pizza",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8356,
+      "name": "Casalino Osteria Kosher",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8357,
+      "name": "Chabad Piazza Bologna Shabbat Meals by Families",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8358,
+      "name": "Dolce Kosher",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8359,
+      "name": "Flour Bakery and Café",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8360,
+      "name": "Fonzie The Burger's House",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8361,
+      "name": "Kasher Roma 5778 (Wholesale Bakery)",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8362,
+      "name": "Kosher Cakes",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8364,
+      "name": "Le Bon Ton Catering",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8366,
+      "name": "Little Tripoli",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8367,
+      "name": "Marlene's Gelataria",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8368,
+      "name": "Mondo di Laura",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8369,
+      "name": "Oriental Fonzie",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8370,
+      "name": "Pasticceria Boccione",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8371,
+      "name": "Renato al Ghetto",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8372,
+      "name": "Su Ghetto",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

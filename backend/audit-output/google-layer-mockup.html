@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מוקאפ — שכבת Google בעיצוב הקיים</title>
+<style>
+  /* ══ Exact app tokens (mobile/constants/theme.ts) ══ */
+  :root{
+    --navy:#0B1736; --gold:#D4AF37; --gold-muted:#A8882A; --gold-eyebrow:#A8882A;
+    --gold-faint:rgba(212,175,55,.10); --gold-border:rgba(212,175,55,.25);
+    --cream:#FAF8F3; --card:#FFFFFF;
+    --text:#111827; --text2:#6B7280; --muted:#9CA3AF;
+    --meat:#B4544A; --meat-bg:#F7EEEC; --dairy:#5B7C99; --dairy-bg:#EEF2F6;
+    --parve:#6B8E6B; --parve-bg:#EEF3EE;
+    --k-gold:#9A7B22; --k-gold-bg:#FBF6E9; --k-neutral:#6B7280; --k-neutral-bg:#F4F4F5;
+    --border:#F3EFE7; --border2:#F0EDE6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif;background:#E9E5DC;color:var(--text);padding:28px 14px}
+  .pagehead{text-align:center;margin-bottom:26px}
+  .pagehead h1{font-size:20px;color:var(--navy)}
+  .pagehead p{font-size:12.5px;color:var(--text2);margin-top:4px}
+  .pagehead .new-hint{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:11.5px;color:var(--gold-muted);
+    background:var(--gold-faint);border:1px dashed var(--gold-border);border-radius:10px;padding:4px 12px}
+  .frames{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:flex-start}
+  .phone{width:392px;background:var(--cream);border-radius:34px;box-shadow:0 12px 34px rgba(6,14,36,.20);overflow:hidden;
+         border:6px solid #0B1736}
+  .screen-tag{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--gold-eyebrow);text-align:center;padding:10px 0 0}
+
+  /* helper: mark NEW google elements */
+  .g-new{position:relative;outline:1.5px dashed var(--gold-border);outline-offset:2px;border-radius:8px}
+  .g-flag{position:absolute;top:-9px;left:-4px;font-size:8.5px;font-weight:800;background:var(--gold);color:#fff;
+          border-radius:6px;padding:1px 5px;letter-spacing:.5px;z-index:5}
+
+  /* ═════════ SCREEN 1 — restaurants list (exact current design) ═════════ */
+  .lhead{padding:22px 20px 16px;background:var(--cream)}
+  .lhead .row{display:flex;align-items:center;gap:14px}
+  .backbtn{width:38px;height:38px;border-radius:19px;background:var(--card);display:flex;align-items:center;justify-content:center;
+           box-shadow:0 2px 8px rgba(11,23,54,.08);font-size:15px;color:var(--navy)}
+  .eyebrow{font-size:10px;font-weight:700;color:var(--gold-eyebrow);letter-spacing:2.5px;margin-bottom:3px}
+  .ltitle{font-size:26px;font-weight:900;color:var(--navy);letter-spacing:-.6px}
+  .lsub{font-size:12.5px;color:var(--muted);margin-top:3px;font-weight:500}
+  .searchbar{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:16px;padding:12px 14px;
+             border:1px solid var(--gold-border);margin-top:14px;box-shadow:0 4px 12px rgba(11,23,54,.06);font-size:13.5px;color:var(--muted)}
+  .ai-pill{margin-inline-start:auto;background:var(--gold);color:#fff;font-size:11px;font-weight:800;border-radius:10px;padding:4px 10px;letter-spacing:.5px}
+  .filters{background:#fff;border-bottom:1px solid var(--border2);padding:10px 16px;display:flex;gap:8px}
+  .fchip{font-size:12.5px;font-weight:600;color:var(--text2);border:1px solid #ECE7DE;border-radius:20px;padding:6px 14px;background:#fff}
+  .fchip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  .list{padding:16px;display:flex;flex-direction:column;gap:10px}
+
+  /* card — current structure + google additions */
+  .card{background:#fff;border-radius:20px;border:1px solid var(--border);box-shadow:0 4px 14px rgba(11,23,54,.06);padding:14px;display:flex;flex-direction:column;gap:10px}
+  .ctop{display:flex;align-items:center;gap:12px}
+  /* NEW: photo thumb replaces the 36px type icon box when a Google photo exists */
+  .thumb{flex:none;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;
+         background:linear-gradient(135deg,#122048,#0B1736 60%,#060E24);color:rgba(255,255,255,.6);position:relative}
+  .typeicon{flex:none;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .cmain{flex:1;min-width:0}
+  .cname{font-size:16px;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .typerow{display:flex;align-items:center;gap:6px;margin-top:3px}
+  .typedot{width:7px;height:7px;border-radius:4px}
+  .typelabel{font-size:12px;font-weight:600}
+  .kbadge{flex:none;font-size:11px;font-weight:700;border-radius:8px;padding:4px 8px}
+  .cmeta{display:flex;flex-direction:column;gap:5px}
+  .mrow{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);min-width:0}
+  .mrow .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* NEW: google rating row inside meta */
+  .grate{display:flex;align-items:center;gap:5px;font-size:12.5px}
+  .grate .star{color:var(--gold);font-size:13px}
+  .grate b{color:var(--text)}
+  .grate .cnt{color:var(--muted);font-size:11.5px}
+  .cbottom{display:flex;align-items:center}
+  .distpill{display:flex;align-items:center;gap:4px;background:rgba(201,168,76,.10);border-radius:10px;padding:4px 8px;
+            font-size:11px;font-weight:700;color:var(--gold)}
+  .chev{margin-inline-start:auto;color:#E5E7EB;font-size:15px;font-weight:800}
+
+  /* ═════════ SCREEN 2 — restaurant detail (exact current design) ═════════ */
+  .dhead{padding:26px 24px 30px;display:flex;flex-direction:column;align-items:center;border-bottom:1px solid var(--border2);position:relative}
+  .dhead .backbtn{position:absolute;top:18px;right:18px}
+  .iconring{width:72px;height:72px;border-radius:36px;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;
+            border:4px solid #fff;box-shadow:0 4px 12px rgba(11,23,54,.10);margin-bottom:14px}
+  .dcard{width:100%;background:#fff;border-radius:20px;border:1px solid var(--border2);padding:14px 16px;text-align:center;
+         box-shadow:0 4px 14px rgba(11,23,54,.08)}
+  .dname{font-size:23px;font-weight:900;color:var(--navy);letter-spacing:-.3px}
+  .dgname{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .dsub{font-size:13px;color:var(--text2);margin-top:5px}
+  .dratepill{display:inline-flex;align-items:center;gap:5px;margin-top:10px;background:var(--gold-faint);border:1px solid var(--gold-border);
+             border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;color:var(--navy)}
+  .dratepill .star{color:var(--gold)}
+  .dratepill .cnt{font-weight:500;color:var(--text2)}
+  .distp2{display:inline-flex;align-items:center;gap:4px;margin-top:8px;margin-inline-start:6px;background:var(--gold-faint);
+          border:1px solid var(--gold-border);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;color:var(--navy)}
+  .dbody{padding:18px;display:flex;flex-direction:column;gap:12px}
+  /* NEW: photo banner card */
+  .photobanner{position:relative;height:150px;border-radius:20px;overflow:hidden;border:1px solid var(--border);
+               background:linear-gradient(135deg,#122048,#0B1736 55%,#060E24);display:flex;align-items:center;justify-content:center;
+               color:rgba(255,255,255,.55);flex-direction:column;gap:6px}
+  .photobanner .ic{font-size:36px}
+  .photobanner .t{font-size:11px;letter-spacing:.3px}
+  .photobanner .gsrc{position:absolute;bottom:8px;right:10px;font-size:10px;background:rgba(6,14,36,.55);color:#fff;border-radius:12px;padding:3px 9px}
+  .typecard{border-radius:20px;border:1px solid var(--border2);padding:16px;display:flex;flex-direction:column;gap:10px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip2{display:inline-flex;align-items:center;gap:5px;border:1px solid;border-radius:18px;padding:5px 12px;font-size:12px;font-weight:700;
+         background:rgba(255,255,255,.72)}
+  .kdesc{font-size:12.5px;color:var(--text2);line-height:1.5}
+  .infocard{display:flex;gap:12px;background:#fff;border-radius:18px;border:1px solid var(--border);padding:15px;
+            box-shadow:0 4px 12px rgba(11,23,54,.06);align-items:flex-start}
+  .infocard .iic{color:var(--gold);font-size:16px;margin-top:1px}
+  .ilabel{font-size:10px;font-weight:800;color:var(--muted);letter-spacing:1.2px;margin-bottom:4px}
+  .ivalue{font-size:14.5px;color:var(--text);line-height:1.5}
+  .ivalue small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+  .actionbtn{display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;border:1px solid var(--border);
+             padding:13px 14px;box-shadow:0 4px 12px rgba(11,23,54,.06)}
+  .abox{flex:none;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .atitle{font-size:14.5px;font-weight:700;color:var(--text)}
+  .asub{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .achev{margin-inline-start:auto;color:var(--muted);font-size:15px}
+  .hours-reserved{display:flex;gap:12px;border:1.5px dashed rgba(11,23,54,.15);border-radius:18px;padding:14px;align-items:center;
+                  font-size:12px;color:var(--muted)}
+  .note{font-size:11px;color:var(--muted);line-height:1.55;padding:2px 6px}
+
+  /* legend */
+  .legend{max-width:840px;margin:30px auto 0;background:#fff;border-radius:14px;padding:16px 20px;font-size:13px;line-height:1.85;
+          box-shadow:0 4px 14px rgba(11,23,54,.08)}
+  .legend h3{font-size:14px;color:var(--navy);margin-bottom:6px}
+  .legend b{color:var(--gold-muted)}
+</style>
+</head>
+<body dir="rtl">
+
+<div class="pagehead">
+  <h1>שכבת Google — משולבת בעיצוב הקיים של האפליקציה</h1>
+  <p>מוקאפ סטטי · נתונים אמיתיים מה-CSV · העיצוב משוכפל מ-restaurants/[destinationId].tsx ו-restaurant/[id].tsx</p>
+  <span class="new-hint">✨ כל מה שמסומן במסגרת זהב מקווקוות = תוספת חדשה מגוגל. כל השאר = בדיוק כמו היום.</span>
+</div>
+
+<div class="frames">
+
+  <!-- ════════════ SCREEN 1: LIST (current design + google) ════════════ -->
+  <div>
+  <div class="screen-tag">רשימת מסעדות ביעד</div>
+  <div class="phone" dir="ltr">
+    <div class="lhead" dir="rtl">
+      <div class="row">
+        <div class="backbtn">←</div>
+        <div style="flex:1">
+          <div class="eyebrow">RESTAURANTS</div>
+          <div class="ltitle">תל אביב</div>
+          <div class="lsub">384 מסעדות · ממוין לפי מרחק</div>
+        </div>
+      </div>
+      <div class="searchbar">✨ מה תרצה לאכול? באיזו עיר? <span class="ai-pill">AI</span></div>
+    </div>
+    <div class="filters" dir="rtl">
+      <span class="fchip on">הכל</span><span class="fchip">בשרי</span><span class="fchip">חלבי</span><span class="fchip">פרווה</span>
+    </div>
+
+    <div class="list" dir="rtl">
+
+      <!-- #8 full: photo + rating -->
+      <div class="card">
+        <div class="ctop">
+          <div class="thumb g-new"><span class="g-flag">NEW</span>🍽️</div>
+          <div class="cmain">
+            <div class="cname">פטרוזיליה</div>
+            <div class="typerow"><span class="typedot" style="background:var(--meat)"></span><span class="typelabel" style="color:var(--meat)">בשרי</span></div>
+          </div>
+          <div class="kbadge" style="background:var(--k-gold-bg);color:var(--k-gold)">מהדרין</div>
+        </div>
+        <div class="cmeta">
+          <div class="grate g-new"><span class="g-flag">NEW</span><span class="star">★</span><b>4.4</b><span class="cnt">(1,045 · Google)</span></div>
+          <div class="mrow">📍<span class="txt">מתחם שרונה, Aluf Kalman Magen 3, תל אביב</span></div>
+        </div>
+        <div class="cbottom">
+          <div class="distpill">🧭 1.2 km</div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <!-- #89 full -->
+      <div class="card">
+        <div class="ctop">
+          <div class="thumb">🍕</div>
+          <div class="cmain">
+            <div class="cname">פיצה דומינו</div>
+            <div class="typerow"><span class="typedot" style="background:var(--dairy)"></span><span class="typelabel" style="color:var(--dairy)">חלבי</span></div>
+          </div>
+          <div class="kbadge" style="background:var(--k-neutral-bg);color:var(--k-neutral)">רבנות</div>
+        </div>
+        <div class="cmeta">
+          <div class="grate"><span class="star">★</span><b>4.6</b><span class="cnt">(847 · Google)</span></div>
+          <div class="mrow">📍<span class="txt">לסקוב חיים 4, תל אביב</span></div>
+        </div>
+        <div class="cbottom">
+          <div class="distpill">🧭 650 m</div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <!-- #1196 NO photo: falls back to the CURRENT type icon box -->
+      <div class="card">
+        <div class="ctop">
+          <div class="typeicon" style="background:var(--meat-bg);color:var(--meat)">🍴</div>
+          <div class="cmain">
+            <div class="cname">רוזה אשדוד כשרות מהדרין מחפוד</div>
+            <div class="typerow"><span class="typedot" style="background:var(--meat)"></span><span class="typelabel" style="color:var(--meat)">בשרי</span></div>
+          </div>
+          <div class="kbadge" style="background:var(--k-gold-bg);color:var(--k-gold)">מהדרין</div>
+        </div>
+        <div class="cmeta">
+          <div class="grate"><span class="star">★</span><b>4.2</b><span class="cnt">(244 · Google)</span></div>
+          <div class="mrow">📍<span class="txt">ז'בוטינסקי 45, סטאר סנטר, אשדוד</span></div>
+        </div>
+        <div class="cbottom">
+          <div class="distpill">🧭 2.8 km</div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <!-- #1595 NO rating: rating row simply absent — card = exactly today's card -->
+      <div class="card">
+        <div class="ctop">
+          <div class="thumb">🧆</div>
+          <div class="cmain">
+            <div class="cname">פלאפל רץ</div>
+            <div class="typerow"><span class="typedot" style="background:var(--parve)"></span><span class="typelabel" style="color:var(--parve)">פרווה</span></div>
+          </div>
+          <div class="kbadge" style="background:var(--k-neutral-bg);color:var(--k-neutral)">רבנות</div>
+        </div>
+        <div class="cmeta">
+          <div class="mrow">📍<span class="txt">העבודה 14, אשקלון</span></div>
+        </div>
+        <div class="cbottom">
+          <div class="distpill">🧭 900 m</div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <!-- #1558 long address: ellipsis, unchanged behavior -->
+      <div class="card">
+        <div class="ctop">
+          <div class="thumb">🥐</div>
+          <div class="cmain">
+            <div class="cname">בליקר בייקרי</div>
+            <div class="typerow"><span class="typedot" style="background:var(--dairy)"></span><span class="typelabel" style="color:var(--dairy)">חלבי</span></div>
+          </div>
+          <div class="kbadge" style="background:var(--k-neutral-bg);color:var(--k-neutral)">רבנות</div>
+        </div>
+        <div class="cmeta">
+          <div class="grate"><span class="star">★</span><b>3.9</b><span class="cnt">(342 · Google)</span></div>
+          <div class="mrow">📍<span class="txt">עופר גראנד קניון באר שבע, David Tuviyahu Ave 125, באר שבע</span></div>
+        </div>
+        <div class="cbottom">
+          <div class="distpill">🧭 4.1 km</div>
+          <span class="chev">›</span>
+        </div>
+      </div>
+
+      <div class="note">מה נוסף לכרטיס: (1) thumbnail 52px במקום אייקון הסוג — רק כשיש תמונה, אחרת נשאר אייקון הסוג כמו היום. (2) שורת ★ Google מעל הכתובת — נעלמת כשאין דירוג. הכל השאר זהה 1:1 להיום.</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ════════════ SCREEN 2: DETAIL (current design + google) ════════════ -->
+  <div>
+  <div class="screen-tag">מסך מסעדה ספציפית</div>
+  <div class="phone" dir="ltr">
+    <!-- header: type-tinted bg exactly like today (meat) -->
+    <div class="dhead" style="background:var(--meat-bg)" dir="rtl">
+      <div class="backbtn">←</div>
+      <div class="iconring" style="background:var(--meat)">🍴</div>
+      <div class="dcard">
+        <div class="dname">ג'אפן ג'אפן מצפה רמון</div>
+        <div class="dgname g-new" style="display:inline-block;padding:1px 8px"><span class="g-flag">NEW</span>בגוגל: Japan Japan</div>
+        <div class="dsub">מצפה רמון, ישראל</div>
+        <div>
+          <span class="dratepill g-new"><span class="g-flag">NEW</span><span class="star">★</span>4.1 <span class="cnt">(662 ביקורות)</span></span>
+          <span class="distp2">📍 2.3 km</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dbody" dir="rtl">
+
+      <!-- NEW: photo banner (first card in body) -->
+      <div class="photobanner g-new"><span class="g-flag">NEW</span>
+        <span class="ic">🍱</span><span class="t">תמונה מ-Google תוצג כאן (שלב 2 — לא מורידים עדיין)</span>
+        <span class="gsrc">📷 Google</span>
+      </div>
+
+      <!-- type + kashrut card — exactly today -->
+      <div class="typecard" style="background:var(--meat-bg)">
+        <div class="chips">
+          <span class="chip2" style="border-color:var(--meat);color:var(--meat)">🍴 בשרי</span>
+          <span class="chip2" style="border-color:var(--k-gold-bg);background:var(--k-gold-bg);color:var(--k-gold)">רבנות</span>
+        </div>
+        <div class="kdesc">כשרות בהשגחת הרבנות המקומית.</div>
+      </div>
+
+      <!-- address info card — today, value unchanged (original address) -->
+      <div class="infocard">
+        <span class="iic">📍</span>
+        <div style="flex:1">
+          <div class="ilabel">כתובת</div>
+          <div class="ivalue">שד' בן גוריון 2, מצפה רמון</div>
+        </div>
+      </div>
+
+      <!-- NEW: reserved hours slot (dashed, not active yet) -->
+      <div class="hours-reserved g-new"><span class="g-flag">NEW</span>
+        🕐 <span>שעות פתיחה (Google) — מקום שמור, יופעל כשנאשר את הפורמט</span>
+      </div>
+
+      <!-- actions — same row style as today -->
+      <div class="actionbtn">
+        <div class="abox" style="background:var(--parve-bg)">📞</div>
+        <div style="flex:1">
+          <div class="atitle">התקשרות</div>
+          <div class="asub g-new" style="display:inline-block;padding:1px 6px"><span class="g-flag">NEW</span>054-222-5852 · מספר מ-Google</div>
+        </div>
+        <span class="achev">›</span>
+      </div>
+
+      <div class="actionbtn">
+        <div class="abox" style="background:var(--gold-faint)">🗺️</div>
+        <div style="flex:1">
+          <div class="atitle">הצג במפה</div>
+          <div class="asub g-new" style="display:inline-block;padding:1px 6px"><span class="g-flag">NEW</span>נפתח בפין המדויק של Google Maps</div>
+        </div>
+        <span class="achev">›</span>
+      </div>
+
+      <div class="note">אין googlePhone → כפתור ההתקשרות לא מוצג (כמו היום כשאין phone). אין דירוג → ה-pill לא מוצג. אין תמונה → אין באנר, המסך נראה בדיוק כמו היום. שם Google מוצג רק אם שונה מהותית מהשם שלנו.</div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<!-- ════ Decisions ════ -->
+<div class="legend">
+  <h3>מה בדיוק נוסף (מסומן NEW) — והכל בשפת העיצוב הקיימת</h3>
+  <b>רשימה (3 שינויים בלבד):</b> ① thumbnail 52px מעוגל במקום אייקון הסוג — רק כשיש תמונת Google; בלעדיה נשאר אייקון הסוג הצבעוני כמו היום. ② שורת דירוג ★ זהב + כמות בתוך אזור המטא הקיים. ③ זהו. בלי כפתורים, בלי "בגוגל", בלי שינוי מבנה — הכרטיס, התגיות, ה-pill של המרחק והשברון נשארים 1:1.<br>
+  <b>מסך מסעדה (4 תוספות):</b> ① pill דירוג ★ בכרטיס ה-header, לצד ה-pill של המרחק (אותו סגנון בדיוק). ② שורת "בגוגל: X" קטנה מתחת לשם — רק כשהשם שונה. ③ באנר תמונה ככרטיס ראשון בגוף (רדיוס 20 וגבול כמו כל כרטיס) — placeholder עד שלב 2. ④ מקום שמור לשעות (מסגרת מקווקוות). כפתורי התקשרות/מפה הקיימים נשארים — רק הערך משתדרג: טלפון מגוגל כשאין לנו, והמפה נפתחת בפין המדויק (google_maps_uri) במקום geocoding שגוי.<br>
+  <b>עיקרון:</b> שום אלמנט קיים לא זז ולא משנה צבע. נתון חסר = האלמנט לא מוצג, בדיוק כמו ההתנהגות היום.
+</div>
+
+</body>
+</html>

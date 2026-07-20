@@ -8,6 +8,7 @@ import { SearchController } from './search.controller';
 import { DestinationIndexService } from './destination-index.service';
 import { Destination } from '../destination.entity';
 import { QueryParserService } from './query-parser.service';
+import { SearchFeedbackRetentionService } from './search-feedback-retention.service';
 
 @Global()
 @Module({
@@ -18,6 +19,7 @@ import { QueryParserService } from './query-parser.service';
     DenominationClassifierService,
     DestinationIndexService,
     QueryParserService,
+    SearchFeedbackRetentionService,
   ],
   controllers: [SearchController],
   exports: [

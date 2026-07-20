@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+  ReviewSection — light frosted-glass minimal rating (mockup).
+  Gold stars + soft emoji + optional free text. No strong colors. Edit live; apply to .tsx after approval.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>ReviewSection — light</title>
+<style>
+  :root{
+    --navy:#0B1736; --gold:#D4AF37; --goldB:#E8C84A; --goldM:#A8882A; --bg:#FAF8F3; --card:#FFFFFF;
+    --tPrimary:#111827; --tSecondary:#6B7280; --tMuted:#9CA3AF;
+    --rubik:'Rubik',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;font-family:var(--rubik);}
+  body{background:#1c1c1e;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px 12px;}
+  .caption{color:#8a8a8e;font-size:12px;text-align:center;}
+  .phone{width:390px;height:830px;border-radius:44px;overflow:hidden;border:10px solid #0a0a0c;box-shadow:0 30px 80px rgba(0,0,0,.55);
+    /* soft cream backdrop so the frosted glass reads */
+    background:radial-gradient(120% 60% at 50% 0%, #FFFDF8, #F3EFE6 70%);}
+  .screen{height:100%;overflow-y:auto;padding:18px 18px 40px;}
+  .screen::-webkit-scrollbar{width:0;}
+  svg{display:block;}
+  .sectionTitle{font-size:14px;font-weight:800;color:var(--tSecondary);letter-spacing:.5px;margin-bottom:10px;}
+
+  .summary{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.8);border-radius:16px;padding:14px 16px;box-shadow:0 4px 14px rgba(11,23,54,.05);}
+  .avg{font-size:20px;font-weight:900;color:var(--tPrimary);letter-spacing:-.5px;}
+  .cnt{flex:1;font-size:13px;color:var(--tMuted);font-weight:500;}
+
+  /* ── light frosted-glass rating card ── */
+  .rate{border-radius:28px;padding:30px 22px 24px;margin-top:14px;text-align:center;
+    background:rgba(255,255,255,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 12px 36px rgba(11,23,54,.07);}
+  .rTitle{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.3px;}
+  .rSub{font-size:13px;color:var(--tMuted);margin-top:5px;margin-bottom:22px;}
+  .starsRow{display:flex;justify-content:center;gap:11px;margin-bottom:18px;}
+  .starBtn{cursor:pointer;transition:transform .12s;}
+  .starBtn:active{transform:scale(.82);}
+  .starBtn.on svg{filter:drop-shadow(0 2px 6px rgba(212,175,55,.45));}
+  .emojiWrap{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:22px;}
+  .emojiBadge{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.6);border:1px solid rgba(11,23,54,.06);}
+  .emoji{font-size:40px;line-height:1;}
+  .emojiLabel{font-size:14px;font-weight:700;color:var(--tSecondary);}
+  .note{width:100%;background:rgba(255,255,255,.55);border:1px solid rgba(11,23,54,.10);border-radius:16px;
+    padding:14px;font-size:14px;color:var(--tMuted);text-align:right;min-height:74px;margin-bottom:20px;}
+  .submit{display:flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--navy);border-radius:16px;padding:16px;color:#fff;font-weight:800;font-size:15px;
+    box-shadow:0 8px 22px rgba(11,23,54,.16);cursor:pointer;letter-spacing:.2px;}
+  .later{margin-top:14px;font-size:13px;color:var(--tMuted);cursor:pointer;font-weight:500;}
+
+  /* reviews */
+  .review{background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.8);
+    border-radius:18px;padding:15px;display:flex;flex-direction:column;gap:9px;margin-top:11px;box-shadow:0 2px 10px rgba(11,23,54,.04);}
+  .rHead{display:flex;align-items:center;gap:10px;}
+  .rAvatar{width:34px;height:34px;border-radius:50%;background:rgba(212,175,55,.16);display:flex;align-items:center;justify-content:center;color:var(--goldM);font-weight:800;font-size:13px;flex:0 0 auto;}
+  .rName{font-size:14px;font-weight:700;color:var(--tPrimary);flex:1;}
+  .rComment{font-size:14px;color:var(--tSecondary);line-height:1.5;}
+  .rDate{font-size:11px;color:var(--tMuted);}
+</style>
+</head>
+<body>
+  <div class="caption">דירוג בהיר ושקוף (frosted glass) — לחץ על הכוכבים</div>
+  <div class="phone"><div class="screen" id="screen"></div></div>
+
+<script>
+  const starSvg=(filled,sz,empty='#DAD4C6')=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="${filled?'#D4AF37':'none'}" stroke="${filled?'#D4AF37':empty}" stroke-width="1.5" stroke-linejoin="round"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>`;
+  const starsStatic=(val,sz)=>`<div style="display:flex;gap:2px">${[1,2,3,4,5].map(i=>starSvg(i<=Math.round(val),sz)).join('')}</div>`;
+  // neutral labels, no loud colors
+  const FACES={1:['😞','גרוע'],2:['😕','בסדר'],3:['🙂','טוב'],4:['😊','טוב מאוד'],5:['🤩','מעולה']};
+
+  let rating=4;
+  const REVIEWS=[
+    {name:'David K.', stars:5, comment:'פיצה מעולה, שירות מהיר ומקום נעים למשפחות. נחזור בהחלט.', date:'24 Jun 2026'},
+    {name:'Sarah L.', stars:4, comment:'אוכל טעים ואווירה נעימה, קצת יקר אבל שווה.', date:'19 Jun 2026'},
+    {name:'Yossi M.', stars:5, comment:'', date:'11 Jun 2026'},
+  ];
+
+  function render(){
+    const [emoji,label]=FACES[rating];
+    document.getElementById('screen').innerHTML=`
+      <div class="sectionTitle">ביקורות</div>
+
+      <div class="summary">
+        ${starSvg(true,22)}
+        <div class="avg">4.6</div>
+        <div class="cnt">23 ביקורות</div>
+        ${starsStatic(4.6,15)}
+      </div>
+
+      <div class="rate">
+        <div class="rTitle">איך הייתה החוויה?</div>
+        <div class="rSub">הדירוג שלך עוזר למטיילים אחרים</div>
+        <div class="starsRow">
+          ${[1,2,3,4,5].map(i=>`<div class="starBtn ${i<=rating?'on':''}" onclick="setRating(${i})">${starSvg(i<=rating,44)}</div>`).join('')}
+        </div>
+        <div class="emojiWrap">
+          <div class="emojiBadge"><span class="emoji">${emoji}</span></div>
+          <div class="emojiLabel">${label}</div>
+        </div>
+        <div class="note">ספר/י לאחרים על החוויה… (לא חובה)</div>
+        <div class="submit">שלח דירוג <span style="font-size:17px">→</span></div>
+        <div class="later">אולי מאוחר יותר</div>
+      </div>
+
+      ${REVIEWS.map(r=>`
+        <div class="review">
+          <div class="rHead"><div class="rAvatar">${r.name[0]}</div><div class="rName">${r.name}</div>${starsStatic(r.stars,14)}</div>
+          ${r.comment?`<div class="rComment">${r.comment}</div>`:''}
+          <div class="rDate">${r.date}</div>
+        </div>`).join('')}
+    `;
+  }
+  window.setRating=(i)=>{rating=i;render();};
+  render();
+</script>
+</body>
+</html>

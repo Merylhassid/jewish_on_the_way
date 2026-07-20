@@ -34,6 +34,18 @@ export const C = {
   error:         '#EF4444',
   warning:       '#F59E0B',
 
+  // ── Restaurant / dish type — muted modern palette (new design) ───────────────
+  typeMeat:    '#B4544A',  typeMeatBg:  '#F7EEEC',
+  typeDairy:   '#5B7C99',  typeDairyBg: '#EEF2F6',
+  typeParve:   '#6B8E6B',  typeParveBg: '#EEF3EE',
+
+  // ── Kashrut accents (new design) ─────────────────────────────────────────────
+  kashrutNeutral:   '#6B7280',  kashrutNeutralBg: '#F4F4F5',
+  kashrutGold:      '#9A7B22',  kashrutGoldBg:    '#FBF6E9',
+
+  // ── Eyebrow / muted gold for light headers ───────────────────────────────────
+  goldEyebrow:   '#A8882A',
+
   // ── Aliases (backwards compat) ───────────────────────────────────────────────
   midnight:      '#060E24',
   navyDeepAlias: '#060E24',
@@ -55,6 +67,20 @@ const LOCAL_COUNTRY_IMAGES: Record<string, any> = {
   US: require('../assets/images/countries/etats unis.jpg'),
   HU: require('../assets/images/countries/hongrie.jpg'),
   NL: require('../assets/images/countries/pays bas.avif'),
+  GR: require('../assets/images/countries/greece.jpg'),
+  RO: require('../assets/images/countries/romania.jpg'),
+  GE: require('../assets/images/countries/georgia.jpg'),
+};
+
+// ── Local city images (user-supplied, highest priority for specific cities) ──
+const LOCAL_CITY_IMAGES: Record<string, any> = {
+  miami: require('../assets/images/destinations/miami.jpg'),
+  greece: require('../assets/images/countries/greece.jpg'),
+  athens: require('../assets/images/destinations/athens.jpg'),
+  romania: require('../assets/images/countries/romania.jpg'),
+  bucharest: require('../assets/images/destinations/bucharest.jpg'),
+  georgia: require('../assets/images/countries/georgia.jpg'),
+  tbilisi: require('../assets/images/destinations/tbilisi.jpg'),
 };
 
 // Hero carousel — cycles through these images on the home screen
@@ -477,15 +503,144 @@ const COUNTRY_FALLBACK: Record<string, string> = {
   SN: P('dakar-senegal'),
 };
 
+// ── Per-city images (Wikipedia/Wikimedia, curated 2026-07) ───────────────────
+// Indexed by `city.toLowerCase()`. Country destinations keep their country
+// photo (their `city` field equals the country name, so no key here matches).
+const CITY_IMAGES: Record<string, string> = {
+  // ── Israel ──
+  "afula": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Afula_IMG_0889.JPG/1280px-Afula_IMG_0889.JPG',
+  "akko": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Acre_-_Akko_6_-_the_fishing_port_%286658890981%29.jpg/1280px-Acre_-_Akko_6_-_the_fishing_port_%286658890981%29.jpg',
+  "ariel": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Ariel085.jpg/1280px-Ariel085.jpg',
+  "ashdod": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg/1280px-%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg',
+  "ashkelon": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/93439_marina_ashkelon_PikiWiki_Israel.jpg/1280px-93439_marina_ashkelon_PikiWiki_Israel.jpg',
+  "bat yam": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/City_Park_Bat_Yam_05.jpg/1280px-City_Park_Bat_Yam_05.jpg',
+  "be'er sheva": 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Beersheba_City_Hall_6.jpg/1280px-Beersheba_City_Hall_6.jpg',
+  "be'er yaakov": 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/PikiWiki_Israel_9327_square_in_beer_yaakov.jpg/1280px-PikiWiki_Israel_9327_square_in_beer_yaakov.jpg',
+  "beit she'an": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Beit_shean.jpg/1280px-Beit_shean.jpg',
+  "beit shemesh": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg/1280px-%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg',
+  "binyamina": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Israel_Railway_Benyamina_23-06-2017b.jpg/1280px-Israel_Railway_Benyamina_23-06-2017b.jpg',
+  "bnei brak": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BBC_and_Nahalat_Ganim_01.jpg/1280px-BBC_and_Nahalat_Ganim_01.jpg',
+  "caesarea": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg/1280px-%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg',
+  "dimona": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Dimona_Aerial_View.jpg/1280px-Dimona_Aerial_View.jpg',
+  "eilat": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Eilat_night_hotels_2016.jpg/1280px-Eilat_night_hotels_2016.jpg',
+  "gan yavne": 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Gan-yavne_local_council_3.jpg',
+  "gedera": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/View_of_Gedera_from_Tel_Qatra.jpg/1280px-View_of_Gedera_from_Tel_Qatra.jpg',
+  "givat shmuel": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/PikiWiki_Israel_8994_Cities_in_Israel.jpg/1280px-PikiWiki_Israel_8994_Cities_in_Israel.jpg',
+  "givatayim": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Givatayim_City_02.jpg/1280px-Givatayim_City_02.jpg',
+  "hadera": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/WikiAir_IL-13-10_A031.jpg/1280px-WikiAir_IL-13-10_A031.jpg',
+  "haifa": 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/The_Hanging_Gardens_of_Haifa%2C_Israel_%2850099173503%29_%28cropped%29.jpg/1280px-The_Hanging_Gardens_of_Haifa%2C_Israel_%2850099173503%29_%28cropped%29.jpg',
+  "herzliya": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg/1280px-%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg',
+  "hod hasharon": 'https://upload.wikimedia.org/wikipedia/commons/8/85/4seasonspark.JPG',
+  "holon": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/94765_holon_from_the_drone_PikiWiki_Israel.jpg/1280px-94765_holon_from_the_drone_PikiWiki_Israel.jpg',
+  "jerusalem": 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Dome_of_the_Rock_seen_from_the_Mount_of_Olives_%2812395649153%29_%28cropped%29.jpg/1280px-Dome_of_the_Rock_seen_from_the_Mount_of_Olives_%2812395649153%29_%28cropped%29.jpg',
+  "karmiel": 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Karmiel_-_Israel_2008.jpg/1280px-Karmiel_-_Israel_2008.jpg',
+  "katzrin": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Katzrinlibrary.jpg/1280px-Katzrinlibrary.jpg',
+  "kfar saba": 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/PikiWiki_Israel_61144_kfar_saba_at_night.jpg/1280px-PikiWiki_Israel_61144_kfar_saba_at_night.jpg',
+  "kiryat ata": 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kiryat_ata.jpg/1280px-Kiryat_ata.jpg',
+  "kiryat bialik": 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg/1280px-PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg',
+  "kiryat gat": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/PikiWiki_Israel_16194_kiryat_gat.jpg/1280px-PikiWiki_Israel_16194_kiryat_gat.jpg',
+  "kiryat motzkin": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg/1280px-PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg',
+  "kiryat ono": 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG/1280px-PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG',
+  "kiryat shmona": 'https://upload.wikimedia.org/wikipedia/commons/4/46/Qiryat_Shemona_2007.JPG',
+  "lod": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/LodJune132022_01.jpg/1280px-LodJune132022_01.jpg',
+  "ma'ale adumim": 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Maaleadumim_009.jpg/1280px-Maaleadumim_009.jpg',
+  "mazkeret batya": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg/1280px-%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg',
+  "migdal haemek": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG/1280px-PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG',
+  "modiin": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/93658_central_modi%27in_PikiWiki_Israel.jpg/1280px-93658_central_modi%27in_PikiWiki_Israel.jpg',
+  "nahariya": 'https://upload.wikimedia.org/wikipedia/commons/d/db/Nahariya_-_Port.jpg',
+  "nesher": 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG/1280px-Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG',
+  "ness ziona": 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Ness_Ziona_Aerial_View.jpg/1280px-Ness_Ziona_Aerial_View.jpg',
+  "netanya": 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg/1280px-20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg',
+  "netivot": 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg/1280px-PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg',
+  "ofakim": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Ofaqim_4.jpg/1280px-Ofaqim_4.jpg',
+  "or yehuda": 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IsraelOrYehuda_FromAir.JPG/1280px-IsraelOrYehuda_FromAir.JPG',
+  "pardes hanna": 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/WikiAir_Flight_IL-13-09_070.jpg/1280px-WikiAir_Flight_IL-13-09_070.jpg',
+  "petah tikva": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Jabotinsky_Skyline_Petah_Tikva_01.jpg/1280px-Jabotinsky_Skyline_Petah_Tikva_01.jpg',
+  "ra'anana": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Raanana_city.JPG/1280px-Raanana_city.JPG',
+  "ramat gan": 'https://upload.wikimedia.org/wikipedia/commons/d/de/Ramat_Gan_City_Images.png',
+  "ramat hasharon": 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Canada_Stadium_Israel_2008_4.jpg/1280px-Canada_Stadium_Israel_2008_4.jpg',
+  "ramla": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%98%D7%A8%D7%94_%D7%A1%D7%A0%D7%98%D7%94_%D7%91%D7%9E%D7%91%D7%98_%D7%9E%D7%94%D7%9E%D7%92%D7%93%D7%9C_%D7%94%D7%9C%D7%91%D7%9F_-_%D7%9E%D7%A9%D7%9E%D7%90%D7%9C_%D7%A7%D7%A8%D7%99%D7%99%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94%2C_%D7%9E%D7%99%D7%9E%D7%99%D7%9F_%D7%94%D7%9E%D7%A1%D7%92%D7%93_%D7%94%D7%9C%D7%91%D7%9F_%D7%95%D7%91%D7%A8%D7%A7%D7%A2_%D7%94%D7%A2%D7%99%D7%A8_%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F.JPG/1280px-thumbnail.jpg',
+  "rehovot": 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Rehovot_Aerial_View.jpg/1280px-Rehovot_Aerial_View.jpg',
+  "rishon lezion": 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Rishon-LeZion-Gan-Moshava-0002.jpg/1280px-Rishon-LeZion-Gan-Moshava-0002.jpg',
+  "rosh haayin": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/RoshHaAyinDec052022_08.jpg/1280px-RoshHaAyinDec052022_08.jpg',
+  "rosh pina": 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/PikiWiki_Israel_17512_Cities_in_Israel.JPG/1280px-PikiWiki_Israel_17512_Cities_in_Israel.JPG',
+  "savion": 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Entrance_to_Savyon.JPG/1280px-Entrance_to_Savyon.JPG',
+  "sderot": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG/1280px-PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG',
+  "shoham": 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/IsraelShoham_FromAir.JPG/1280px-IsraelShoham_FromAir.JPG',
+  "tel aviv": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sarona_CBD_01_%28cropped%29.jpg/1280px-Sarona_CBD_01_%28cropped%29.jpg',
+  "tel mond": 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Tel_Mond_enterance.jpg/1280px-Tel_Mond_enterance.jpg',
+  "tiberias": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/92250_tiberias_PikiWiki_Israel.jpg/1280px-92250_tiberias_PikiWiki_Israel.jpg',
+  "tzfat": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Safed1.jpg/1280px-Safed1.jpg',
+  "yavne": 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Yavne_panoramic_view2.JPG/1280px-Yavne_panoramic_view2.JPG',
+  "yehud": 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Entrance_sign_to_Yehud%2C_January_2024_03.jpg/1280px-Entrance_sign_to_Yehud%2C_January_2024_03.jpg',
+  "yokneam": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Elias-Pano2.jpg/1280px-Elias-Pano2.jpg',
+  "zichron yaakov": 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg/1280px-PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg',
+  // ── Thailand ──
+  "bangkok": 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/4Y1A1159_Bangkok_%2833536795515%29.jpg/1280px-4Y1A1159_Bangkok_%2833536795515%29.jpg',
+  "chiang mai": 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg/1280px-0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg',
+  "ko samui": 'https://upload.wikimedia.org/wikipedia/commons/8/80/Koh_Samui_Lipa_Noi2.jpg',
+  "koh phangan": 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Koh_Phangan01.jpg',
+  "pai": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/View_of_Pai_3.jpg/1280px-View_of_Pai_3.jpg',
+  "phuket": 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Phuket_City.jpg/1280px-Phuket_City.jpg',
+  // ── United States ──
+  "chicago": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1280px-Chicago_River_ferry_b.jpg',
+  "dallas": 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg/1280px-View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg',
+  "las vegas": 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Las_Vegas_from_above_%2840064746644%29.jpg/1280px-Las_Vegas_from_above_%2840064746644%29.jpg',
+  "los angeles": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/1280px-Hollywood_Sign_%28Zuschnitt%29.jpg',
+  "miami": 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Villa_Vizcaya_20110228.jpg/1280px-Villa_Vizcaya_20110228.jpg',
+  "new york": 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg/1280px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg',
+  // ── Cyprus ──
+  "larnaca": 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Larnaca_01-2017_img27_Finikoudes.jpg/1280px-Larnaca_01-2017_img27_Finikoudes.jpg',
+  "limassol": 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Skyscrapers_in_Limassol.jpg/1280px-Skyscrapers_in_Limassol.jpg',
+  "paphos": 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Paphos_Marine%2C_Cyprus_-_panoramio.jpg/1280px-Paphos_Marine%2C_Cyprus_-_panoramio.jpg',
+  // ── France ──
+  "cannes": 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Cannes_from_Suquet_Tower_03.jpg/1280px-Cannes_from_Suquet_Tower_03.jpg',
+  "nice": 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Promenade_des_Anglais_Nice_IMG_1255.jpg/1280px-Promenade_des_Anglais_Nice_IMG_1255.jpg',
+  "paris": 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1280px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg',
+  // ── Argentina ──
+  "buenos aires": 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg/1280px-Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg',
+  // ── Austria ──
+  "vienna": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Schoenbrunn_philharmoniker_2012.jpg/1280px-Schoenbrunn_philharmoniker_2012.jpg',
+  // ── Canada ──
+  "montreal": 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Montreal%2C_Quebec_skyline.jpg/1280px-Montreal%2C_Quebec_skyline.jpg',
+  // ── Czech Republic ──
+  "prague": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Prague_%286365119737%29.jpg/1280px-Prague_%286365119737%29.jpg',
+  // ── Germany ──
+  "berlin": 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg/1280px-Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg',
+  // ── Hungary ──
+  "budapest": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg/1280px-View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg',
+  // ── Ireland ──
+  "dublin": 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Dublin_-_aerial_-_2025-07-07_01.jpg/1280px-Dublin_-_aerial_-_2025-07-07_01.jpg',
+  // ── Italy ──
+  "rome": 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg/1280px-Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg',
+  // ── Morocco ──
+  "marrakech": 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Pavillon_Menarag%C3%A4rten.jpg',
+  // ── Netherlands ──
+  "amsterdam": 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png/1280px-Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png',
+  // ── Portugal ──
+  "porto": 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG/1280px-Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG',
+  // ── Spain ──
+  "barcelona": 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Evening_light_over_Barcelona.jpg/1280px-Evening_light_over_Barcelona.jpg',
+  // ── UAE ──
+  "dubai": 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Burj_Khalifa_2021.jpg/1280px-Burj_Khalifa_2021.jpg',
+  // ── United Kingdom ──
+  "london": 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1280px-London_Skyline_%28125508655%29.jpeg',
+};
+
 // Returns an expo-image compatible source:
 // - local require() → number (for LOCAL_COUNTRY_IMAGES)
 // - remote URL      → { uri: string }
 export function getDestinationImageUrl(city: string, countryCode: string): any {
   const cc = (countryCode ?? '').toUpperCase();
-  // 1. User-supplied local photo (highest priority) — require() returns a number
-  if (cc && LOCAL_COUNTRY_IMAGES[cc]) return LOCAL_COUNTRY_IMAGES[cc];
-  // 2. City-level landmark (URL string)
   const key = (city ?? '').toLowerCase().trim();
+  // 0. User-supplied city photo — must win over all remote city/country photos.
+  if (key && LOCAL_CITY_IMAGES[key]) return LOCAL_CITY_IMAGES[key];
+  // 1. City-specific photo — must win over the country photo so every city
+  //    in a country list gets its own image
+  if (key && CITY_IMAGES[key]) return { uri: CITY_IMAGES[key] };
+  // 2. User-supplied local country photo — require() returns a number
+  if (cc && LOCAL_COUNTRY_IMAGES[cc]) return LOCAL_COUNTRY_IMAGES[cc];
+  // 3. City-level landmark (URL string)
   if (key && LANDMARK[key]) return { uri: LANDMARK[key] };
   // 3. Country-level fallback (URL string)
   if (cc && COUNTRY_FALLBACK[cc]) return { uri: COUNTRY_FALLBACK[cc] };

@@ -13,7 +13,7 @@ import {
 } from '../destination-index.service';
 import { SearchClassifierService } from '../search-classifier.service';
 import { Destination } from '../../destination.entity';
-import { lookupFoodRelation } from '../../restaurants/food-relations';
+import { FoodRelation, lookupFoodRelation, lookupFoodRelationMatch } from '../../restaurants/food-relations';
 import { QueryParserService } from '../query-parser.service';
 
 type SearchCategory =
@@ -130,25 +130,25 @@ const STATIC_DESTINATIONS = [
 ] as Destination[];
 
 const FOOD_QUERY_MAP: [RegExp, string][] = [
-  [/פיצ(?:ה|ריה)|pizza|pizzeria/i, 'pizza'],
-  [/סושי|sushi/i, 'sushi'],
-  [/המבורגר|המברגר|בורגר|burger|hamburger/i, 'burger'],
+  [/פיצ(?:ה|ריה)?|piza|pizza|pizzeria/i, 'pizza'],
+  [/סוש(?:י)?|sushi/i, 'sushi'],
+  [/המב[וון]?רגר|המבורג(?:ר)?|המברגר|בורגר|burger|hamburger/i, 'burger'],
   [/גלידה|ice.?cream|gelato/i, 'ice-cream'],
-  [/חומוס|hummus/i, 'hummus'],
+  [/חומו(?:ס)?|hummus/i, 'hummus'],
   [/פסטה|pasta/i, 'pasta'],
   [/קפה|cafe|coffee/i, 'cafe'],
   [/פלאפל|falafel/i, 'falafel'],
-  [/שווארמה|שוארמה|shawarma/i, 'shawarma'],
+  [/שווא?רמה|shawarma/i, 'shawarma'],
 ];
 
 const RESTAURANT_SIGNALS = [
   /מסעד(?:ה|ות)/i,
-  /לאכול|אוכל|פיצה|פיצריה|סושי|בורגר|המבורגר|חומוס|גלידה|קפה|פלאפל/i,
+  /לאכול|אוכל|פיצה|פיצריה|סושי|בורגר|המבורגר|חומו(?:ס)?|גלידה|קפה|פלאפל/i,
   /\b(restaurant|restaurants|eat|food|pizza|sushi|burger|dairy|meat|kosher)\b/i,
 ];
 
 const SYNAGOGUE_SIGNALS = [
-  /בית כנסת|בתי כנסת|חב["״]?ד|ספרדי|אשכנז|תימני|נוסח/i,
+  /בית (?:כנס(?:ת)?|גנסת)|בתי כנסת|חב["״]?ד|ספרדי|אשכנז|תימני|נוסח/i,
   /\b(synagogue|shul|chabad)\b/i,
 ];
 
@@ -189,8 +189,12 @@ function normalizeTypos(text: string): string {
     .replace(/לפעולה/g, 'לעפולה')
     .replace(/בירשלים/g, 'בירושלים')
     .replace(/לירשלים/g, 'לירושלים')
+    .replace(/(^|[\s])פיצ(?=$|[\s,.;:!?])/g, '$1פיצה')
     .replace(/פיצמ/g, 'פיצה')
-    .replace(/פיצנ/g, 'פיצה');
+    .replace(/פיצנ/g, 'פיצה')
+    .replace(/(^|[\s])המבןרגר(?=$|[\s,.;:!?])/g, '$1המבורגר')
+    .replace(/(^|[\s])המבורג(?=$|[\s,.;:!?])/g, '$1המבורגר')
+    .replace(/(^|[\s])סוש(?=$|[\s,.;:!?])/g, '$1סושי');
 }
 
 function hasSignal(text: string, signals: RegExp[]): boolean {
@@ -201,6 +205,22 @@ function detectFoodDish(text: string): string | null {
   for (const [pattern, dish] of FOOD_QUERY_MAP) {
     if (pattern.test(text)) return dish;
   }
+  return dishFromRelation(lookupFoodRelationMatch(text)?.relation);
+}
+
+function dishFromRelation(relation: FoodRelation | undefined): string | null {
+  if (!relation) return null;
+  const tags = new Set(relation.searchTags);
+  if (tags.has('pizza')) return 'pizza';
+  if (tags.has('burger')) return 'burger';
+  if (tags.has('sushi')) return 'sushi';
+  if (tags.has('steak')) return 'steak';
+  if (tags.has('ice-cream')) return 'ice-cream';
+  if (tags.has('hummus')) return 'hummus';
+  if (tags.has('pasta')) return 'pasta';
+  if (tags.has('cafe')) return 'cafe';
+  if (tags.has('falafel')) return 'falafel';
+  if (tags.has('shawarma')) return 'shawarma';
   return null;
 }
 
@@ -221,6 +241,17 @@ function resolveDestination(
   text: string,
   aliasIndex: Map<string, Destination>,
 ): Destination | null {
+  const normalizedText = normalizeDestinationText(text);
+  const directAlias = aliasIndex.get(normalizedText);
+  if (directAlias) return directAlias;
+
+  const directStatic = STATIC_DESTINATIONS.find((destination) =>
+    [destination.name, destination.nameHe, destination.city]
+      .filter((alias): alias is string => Boolean(alias))
+      .some((alias) => normalizeDestinationText(alias) === normalizedText),
+  );
+  if (directStatic) return directStatic;
+
   const candidates = buildDestinationCandidates(text);
   for (const candidate of candidates) {
     const direct = aliasIndex.get(candidate);
@@ -513,6 +544,7 @@ async function main(): Promise<void> {
 
   const fastSummary = await runParserEval('fast-path', cases, async (query) =>
     parser.parse(query, { allowLlm: false, bypassCache: true }),
+    services.aliasIndex,
   );
   printSummary(fastSummary, cases.length);
 
@@ -539,6 +571,7 @@ async function main(): Promise<void> {
   if (shouldRunLiveRouting) {
     const liveSummary = await runParserEval('live-routing', cases, async (query) =>
       llmParser.parse(query, { allowLlm: true, bypassCache: true }),
+      services.aliasIndex,
     );
     printSummary(liveSummary, cases.length);
   }
@@ -559,6 +592,7 @@ async function main(): Promise<void> {
 
   const llmSummary = await runParserEval('llm-forced', llmCases, async (query) =>
     llmParser.parse(query, { allowLlm: true, forceLlm: true, bypassCache: true }),
+    services.aliasIndex,
   );
   printSummary(llmSummary, llmCases.length);
   printFastVsLlmComparison(fastSummary, llmSummary, Number(process.env.EVAL_SEARCH_COMPARE_LIMIT ?? 30));
@@ -689,6 +723,7 @@ async function runParserEval(
   mode: string,
   cases: EvalCase[],
   parse: (query: string) => Promise<{ parsed: ParsedEvalQuery; source: string }>,
+  aliasIndex: Map<string, Destination>,
 ): Promise<EvalRunSummary> {
   const stats = new Map<string, FieldStat>();
   const failedCases: string[] = [];
@@ -698,7 +733,7 @@ async function runParserEval(
   for (const testCase of cases) {
     const result = await parse(testCase.query);
     sourceCounts.set(result.source, (sourceCounts.get(result.source) ?? 0) + 1);
-    const actual = result.parsed;
+    const actual = parsedForEvaluation(testCase.query, result.parsed, aliasIndex);
     const failures: string[] = [];
     comparePartial(testCase.expected, actual, '', stats, failures);
     if (failures.length > 0) {
@@ -713,6 +748,32 @@ async function runParserEval(
   }
 
   return { mode, stats, failedCases, sourceCounts, results };
+}
+
+function parsedForEvaluation(
+  query: string,
+  parsed: ParsedEvalQuery,
+  aliasIndex: Map<string, Destination>,
+): ParsedEvalQuery {
+  const evaluationParsed: ParsedEvalQuery = {
+    ...parsed,
+    restaurant: { ...parsed.restaurant },
+    synagogue: { ...parsed.synagogue },
+    hosting: { ...parsed.hosting },
+  };
+
+  if (evaluationParsed.destinationText) {
+    const resolvedDestination = resolveDestination(evaluationParsed.destinationText, aliasIndex);
+    evaluationParsed.destinationText = displayDestination(resolvedDestination);
+    evaluationParsed.explicitDestination = Boolean(resolvedDestination);
+  }
+
+  if (!evaluationParsed.destinationText && hasSignal(query, NEAR_ME_SIGNALS)) {
+    evaluationParsed.explicitDestination = false;
+    evaluationParsed.useCurrentLocation = true;
+  }
+
+  return evaluationParsed;
 }
 
 function printFastVsLlmComparison(

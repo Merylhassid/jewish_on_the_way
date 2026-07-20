@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google layer mockup - list vs detail</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');
+    :root {
+      --navy: #0a1e3f;
+      --gold: #c9a84c;
+      --gold-soft: rgba(201,168,76,.12);
+      --gold-border: rgba(201,168,76,.28);
+      --cream: #f7f2e8;
+      --card: #fffaf2;
+      --text: #172033;
+      --muted: #7b8190;
+      --line: #ece4d6;
+      --shadow: 0 14px 32px rgba(10,30,63,.10);
+      --meat: #B4544A;
+      --meat-bg: #F7EEEC;
+      --dairy: #5B7C99;
+      --dairy-bg: #EEF2F6;
+      --parve: #6B8E6B;
+      --parve-bg: #EEF3EE;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Rubik, Arial, "Noto Sans Hebrew", sans-serif;
+      background: #f4efe6;
+      color: var(--text);
+    }
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 28px 18px 44px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: var(--navy);
+    }
+    .intro {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(340px, 390px));
+      gap: 28px;
+      align-items: start;
+    }
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .phone {
+      width: 390px;
+      max-width: 100%;
+      min-height: 780px;
+      border-radius: 34px;
+      overflow: hidden;
+      background: var(--cream);
+      border: 10px solid #172033;
+      box-shadow: var(--shadow);
+    }
+    .top {
+      padding: 28px 20px 16px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .back {
+      width: 38px;
+      height: 38px;
+      border-radius: 19px;
+      display: grid;
+      place-items: center;
+      background: var(--card);
+      color: var(--navy);
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(10,30,63,.08);
+    }
+    h2 {
+      margin: 0;
+      flex: 1;
+      color: var(--navy);
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+    .sub {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .search {
+      margin-top: 16px;
+      height: 46px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .filters {
+      padding: 10px 16px;
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .chip {
+      white-space: nowrap;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 12px;
+      color: #4d5566;
+      background: #fff;
+      font-weight: 700;
+    }
+    .chip.on {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .list {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #f1eadf;
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 6px 18px rgba(10,30,63,.06);
+    }
+    .card-head {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .thumb,
+    .type-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+    .thumb {
+      background:
+        linear-gradient(135deg, rgba(201,168,76,.85), rgba(10,30,63,.72)),
+        url("https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=200&q=60");
+      background-size: cover;
+      color: #fff;
+      font-size: 10px;
+      text-shadow: 0 1px 3px rgba(0,0,0,.35);
+    }
+    .type-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-size: 17px;
+    }
+    .type-icon.meat { background: var(--meat-bg); color: var(--meat); }
+    .type-icon.dairy { background: var(--dairy-bg); color: var(--dairy); }
+    .type-icon.parve { background: var(--parve-bg); color: var(--parve); }
+    .name {
+      color: var(--navy);
+      font-size: 16px;
+      font-weight: 800;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .type {
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .type.meat { color: var(--meat); }
+    .type.dairy { color: var(--dairy); }
+    .type.parve { color: var(--parve); }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .kosher {
+      border-radius: 8px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #8c6b13;
+      background: rgba(201,168,76,.12);
+    }
+    .meta {
+      margin-top: 10px;
+      display: grid;
+      gap: 5px;
+      font-size: 12px;
+      color: #9aa0ad;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+    .row span:last-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .star {
+      color: var(--gold);
+      font-weight: 900;
+    }
+    .rating {
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .bottom {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .distance {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .chev {
+      color: #d6d9e0;
+      font-size: 22px;
+    }
+    .hero-top {
+      background: #e9f5ef;
+      padding: 46px 24px 30px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-top.meat { background: var(--meat-bg); }
+    .hero-top.dairy { background: var(--dairy-bg); }
+    .hero-top.parve { background: var(--parve-bg); }
+    .hero-icon {
+      margin: 0 auto 14px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      background: #0c8a51;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 30px;
+      box-shadow: 0 8px 18px rgba(10,30,63,.12);
+    }
+    .hero-icon.meat { background: var(--meat); }
+    .hero-icon.dairy { background: var(--dairy); }
+    .hero-icon.parve { background: var(--parve); }
+    .header-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(10,30,63,.08);
+    }
+    .detail-name {
+      color: var(--navy);
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+    .google-name {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .pill-row {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-border);
+      background: var(--gold-soft);
+      padding: 6px 12px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .distance-row {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .rating-row {
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+    }
+    .body {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+    .photo-hero {
+      height: 150px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(10,30,63,.08), rgba(201,168,76,.12)),
+        url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=70");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #f1eadf;
+    }
+    .photo-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(10,30,63,.84);
+      color: #fff;
+      border-radius: 10px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .info,
+    .actions .action,
+    .decision {
+      background: #fff;
+      border: 1px solid #f1eadf;
+      border-radius: 18px;
+      padding: 15px;
+      box-shadow: 0 6px 18px rgba(10,30,63,.05);
+    }
+    .info-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+    .info-value {
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .actions {
+      display: grid;
+      gap: 10px;
+    }
+    .action {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .action.primary {
+      border-color: rgba(10,30,63,.16);
+    }
+    .box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+    }
+    .box.map { background: var(--gold-soft); color: var(--gold); }
+    .box.call { background: #e8f7ef; color: #0c8a51; }
+    .action-title {
+      color: var(--text);
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .action-sub {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      direction: ltr;
+      text-align: right;
+    }
+    .decision {
+      background: rgba(10,30,63,.035);
+      color: #4d5566;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .decision strong {
+      color: var(--navy);
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; justify-items: center; }
+      .section-title { width: 390px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>מוקאפ שכבת Google - הפרדה בין רשימה למסך מסעדה</h1>
+    <p class="intro">
+      המטרה: לפני חיבור אמיתי למובייל, לראות מה מוצג ברשימת יעד ומה מוצג אחרי כניסה למסעדה.
+      במוקאפ הזה אין שינוי דאטה ואין קריאות API. הוא מדגים שימוש בשדות Google שכבר נשמרו.
+    </p>
+
+    <div class="grid">
+      <section>
+        <h3 class="section-title">1. רשימת מסעדות ביעד - סריקה והשוואה</h3>
+        <div class="phone">
+          <div class="top">
+            <div class="title-row">
+              <div class="back">‹</div>
+              <div>
+                <div class="eyebrow">מסעדות כשרות</div>
+                <h2>תל אביב</h2>
+                <div class="sub">42 מסעדות · ממוין לפי מרחק</div>
+              </div>
+            </div>
+            <div class="search">🔍 מה תרצה לאכול?</div>
+          </div>
+          <div class="filters">
+            <span class="chip on">כל הסוגים</span>
+            <span class="chip">בשרי</span>
+            <span class="chip">חלבי</span>
+            <span class="chip">מהדרין</span>
+          </div>
+          <div class="list">
+            <article class="card">
+              <div class="card-head">
+                <div class="thumb">תמונה</div>
+                <div>
+                  <div class="name">פטרוזיליה</div>
+                  <div class="type parve"><span class="dot"></span><span>פרווה</span></div>
+                </div>
+                <div class="kosher">מהדרין</div>
+              </div>
+              <div class="meta">
+                <div class="row"><span class="star">★</span><b class="rating">4.4</b><span>(1,045 · Google)</span></div>
+                <div class="row"><span>📍</span><span>אבן גבירול 22, תל אביב</span></div>
+              </div>
+              <div class="bottom">
+                <span class="distance">⌖ 420 מ׳</span>
+                <span class="chev">›</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <div class="type-icon meat">🍽</div>
+                <div>
+                  <div class="name">קנסאי</div>
+                  <div class="type meat"><span class="dot"></span><span>בשרי</span></div>
+                </div>
+                <div class="kosher">כשר</div>
+              </div>
+              <div class="meta">
+                <div class="row"><span class="star">★</span><b class="rating">4.2</b><span>(312 · Google)</span></div>
+                <div class="row"><span>📍</span><span>דיזנגוף 145, תל אביב</span></div>
+              </div>
+              <div class="bottom">
+                <span class="distance">⌖ 1.1 ק״מ</span>
+                <span class="chev">›</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <div class="type-icon dairy">☕</div>
+                <div>
+                  <div class="name">בליקר בייקרי</div>
+                  <div class="type dairy"><span class="dot"></span><span>חלבי</span></div>
+                </div>
+                <div class="kosher">רבנות</div>
+              </div>
+              <div class="meta">
+                <div class="row"><span>📍</span><span>המלך ג׳ורג׳ 38, תל אביב</span></div>
+                <div class="row"><span>🕒</span><span>פתוח עד 21:00</span></div>
+              </div>
+              <div class="bottom">
+                <span class="distance">⌖ 1.7 ק״מ</span>
+                <span class="chev">›</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="decision">
+          <strong>החלטה לרשימה:</strong> מציגים שם מקורי, תמונה קטנה רק אם יש photoUrl, דירוג וכמות ביקורות.
+          המרחק נשאר בשורת התחתית הקיימת של הכרטיס, מתחת לכל הפרטים. לא מציגים "בגוגל:",
+          לא כפתורי התקשרות/מפה, לא שעות מלאות ולא types.
+        </div>
+      </section>
+
+      <section>
+        <h3 class="section-title">2. מסך מסעדה - החלטה ופעולה</h3>
+        <div class="phone">
+          <div class="hero-top meat">
+            <div class="hero-icon meat">🍽</div>
+            <div class="header-card">
+              <div class="detail-name">ג׳אפן ג׳אפן מצפה רמון</div>
+              <div class="google-name">בגוגל: Japan Japan Mitzpe Ramon</div>
+              <div class="distance-row">
+                <span class="pill">📍 850 מ׳</span>
+              </div>
+              <div class="rating-row">
+                <span class="pill"><span class="star">★</span> 4.1 (662 ביקורות)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="body">
+            <div class="photo-hero">
+              <span class="photo-badge">Google</span>
+            </div>
+
+            <div class="info">
+              <div class="info-label">כתובת</div>
+              <div class="info-value">מרכז מסחרי, שדרות בן גוריון 2, מצפה רמון</div>
+            </div>
+
+            <div class="info">
+              <div class="info-label">כשרות</div>
+              <div class="info-value">כשר · בשרי</div>
+            </div>
+
+            <div class="actions">
+              <div class="action primary">
+                <div class="box map">🗺</div>
+                <div>
+                  <div class="action-title">הצג במפה</div>
+                  <div class="action-sub">פותח את הפין המדויק של Google</div>
+                </div>
+                <div class="chev">›</div>
+              </div>
+
+              <div class="action">
+                <div class="box call">☎</div>
+                <div>
+                  <div class="action-title">התקשר</div>
+                  <div class="action-sub">08-123-4567</div>
+                </div>
+                <div class="chev">›</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="decision">
+          <strong>החלטה למסך מסעדה:</strong> כאן כן מציגים "בגוגל" כששונה מהשם המקורי,
+          דירוג מלא, תמונה גדולה כשיהיה photoUrl, טלפון fallback מ-Google, ומפה לפי google_maps_uri.
+          שעות פתיחה ו-primary_type/types נשארים לשלב מאוחר יותר.
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,1122 @@
+{
+  "takenAt": "2026-07-06T15:08:57.111Z",
+  "count": 124,
+  "rows": [
+    {
+      "id": 64,
+      "name": "קפה קפה",
+      "address": "יורדי הסירה 1, נמל תל-אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 570,
+      "name": "המקסיקני",
+      "address": "בית שמש, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 584,
+      "name": "המאפה הצרפתי",
+      "address": "נתניה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1208,
+      "name": "קפה קפה",
+      "address": "שד' דוד טוביהו 125, באר שבע, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1228,
+      "name": "לורנס",
+      "address": "אילת, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1304,
+      "name": "פיצה פרגו",
+      "address": "אנפה 1, אילת, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1316,
+      "name": "פיצריית המושבה",
+      "address": "עוצם, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1319,
+      "name": "cofix",
+      "address": "ככר פז 62, קריית גת, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1376,
+      "name": "פלאפל'ס",
+      "address": "מ\"ד המעפילים 11, דימונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1403,
+      "name": "Pizz stop עומר",
+      "address": "רותם 17, מרכז מסחרי עומר, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1469,
+      "name": "קייטרינג שף",
+      "address": "באר שבע, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1590,
+      "name": "סינטה",
+      "address": "האורגים 9, טופ סנטר אשדוד, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1634,
+      "name": "פיציריקה",
+      "address": "נתיבות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1661,
+      "name": "עוגלנד",
+      "address": "שד' התמרים, אילת, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1663,
+      "name": "קפה קפה",
+      "address": "שד' יגאל אלון 31, דימונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1707,
+      "name": "חומוס אליהו",
+      "address": "ירוחם, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1796,
+      "name": "בורגראנץ'",
+      "address": "הרצל 31, שדרות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 1826,
+      "name": "בי 10",
+      "address": "דרך השלום 907, דימונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2062,
+      "name": "VITA FOOD",
+      "address": "הבנים 36, עפולה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2081,
+      "name": "קפה גרג",
+      "address": "טשרניחובסקי 4, קניון 8 סנטר, קריית שמונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2092,
+      "name": "פיצה שמש",
+      "address": "תל חי 92, קריית שמונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2118,
+      "name": "שיפודי הטלה",
+      "address": "דגניה 30, קריית חיים, חיפה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2124,
+      "name": "מקדונלד'ס",
+      "address": "טשרניחובסקי 4, קניון 8 סנטר, קריית שמונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2126,
+      "name": "59 בשדרה",
+      "address": "שד' בן גוריון 59, המושבה הגרמנית, חיפה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2228,
+      "name": "קונדיטוריה ענבל",
+      "address": "חצור הגלילית, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2254,
+      "name": "מקדונלד'ס",
+      "address": "דרך חיפה 30, קניון שער הצפון, קרית אתא, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2317,
+      "name": "סושי בר",
+      "address": "הרצל 73, נהריה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2426,
+      "name": "קפה גרג",
+      "address": "אירית 2, נהריה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2436,
+      "name": "פיצה פדאל חיפה קרית אליעזר",
+      "address": "ככר מאירהוף 3, חיפה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2477,
+      "name": "מאמא פיצה קרית אתא",
+      "address": "העצמאות 71, קרית אתא, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2507,
+      "name": "רולדין",
+      "address": "נחום חת 5, טירת כרמל, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2527,
+      "name": "טו פיצה",
+      "address": "גוט לוין 2, חיפה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2654,
+      "name": "קפה קפה",
+      "address": "שד' שאול עמור 77, פרץ סנטר מגדל העמק, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2665,
+      "name": "פיצה דומינו",
+      "address": "בן עמי 44, עכו העתיקה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2673,
+      "name": "פלאפל איצקו",
+      "address": "אודם 6, חריש, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2713,
+      "name": "שיפודי הקריה",
+      "address": "תל חי 3, קריית שמונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2724,
+      "name": "קפה קפה",
+      "address": "יהודה הלוי 1, ביג פאשן דנילוף טבריה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2732,
+      "name": "אחוזת סימיטה",
+      "address": "המלאכה 6, קניון דרכים יקנעם, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2736,
+      "name": "שיפודי רון",
+      "address": "חושן 14, קריית שמונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2753,
+      "name": "ROLADIN",
+      "address": "ויצמן 66, נהריה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2759,
+      "name": "נישנוש",
+      "address": "מרחביה (קיבוץ), Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2839,
+      "name": "השף גדסי",
+      "address": "רשות החולה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2874,
+      "name": "מריאנה בוטיק עוגות",
+      "address": "דולב 14, קיסריה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2886,
+      "name": "הקבב העירקי",
+      "address": "השיחרור 16, טירת כרמל, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2889,
+      "name": "caffe nuna קפה נונה",
+      "address": "חיפה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 2893,
+      "name": "סבא חביב טבריה",
+      "address": "ברץ 1, טבריה עילית, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3025,
+      "name": "שיפודי התקווה ראש פינה",
+      "address": "ראש פינה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3220,
+      "name": "בורגראנץ'",
+      "address": "רוטשילד 35, קניון G רוטשילד, ראשון לציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3224,
+      "name": "שיפודי שמש",
+      "address": "שד' הרצל 66, רמלה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3276,
+      "name": "השקשוקה של אפי משנת 1994",
+      "address": "יחזקאל קזז 12, אור יהודה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3351,
+      "name": "פסטה בר",
+      "address": "דרך מנחם בגין 132, קניון עזריאלי, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3356,
+      "name": "מלכה",
+      "address": "דפנה 2, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3381,
+      "name": "חומוס אור יהודה",
+      "address": "הראשונים 5, אור יהודה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3396,
+      "name": "בראל",
+      "address": "רוטשילד 113, ראשון לציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3455,
+      "name": "המטבחון של סימה",
+      "address": "עמק זבולון 24, קייזר סנטר, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3495,
+      "name": "חומוס אליהו",
+      "address": "גולדה מאיר 7, קניון חולון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3539,
+      "name": "ארומה",
+      "address": "עמל 1, פארק תעשיות אפק, ראש העין, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3547,
+      "name": "קפה קפה",
+      "address": "סוקולוב נחום 48, חולון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3553,
+      "name": "ארומה",
+      "address": "יוספטל 92, קניון בת ים, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3611,
+      "name": "פיצה שמש",
+      "address": "ויצמן 44, יהוד, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3634,
+      "name": "פיצה האט",
+      "address": "שד' עמק איילון 161, מרכז מסחרי שהם, שוהם, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3651,
+      "name": "שיפודי הכרם",
+      "address": "נחליאל 28, שוק הכרמל, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3718,
+      "name": "ארומה",
+      "address": "תל השומר, רמת גן, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3724,
+      "name": "פיצה האט",
+      "address": "עמק החולה 32, מודיעין והסביבה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3754,
+      "name": "שיפודי התקוה",
+      "address": "דרך אבא הלל סילבר 301, קניון איילון, רמת גן, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3860,
+      "name": "יואלי'ס מסעדה וקייטרינג",
+      "address": "בן גוריון 11, גבעת שמואל, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3870,
+      "name": "גבריאל פלאפל",
+      "address": "טרומפלדור 20, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 3878,
+      "name": "ארומה",
+      "address": "לב העיר 2, קניון מודיעין, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4034,
+      "name": "קפה לנדוור",
+      "address": "יהדות קנדה 1, אור יהודה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4039,
+      "name": "cofix",
+      "address": "שד' הרצל 91, קניון קרית רמלה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4066,
+      "name": "מדנס פיצה",
+      "address": "עליית הנוער 47, גבעתיים, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4145,
+      "name": "סלטים",
+      "address": "הארבעה 10, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4151,
+      "name": "מאפית הכהנים",
+      "address": "תפוצות ישראל 2, גבעתיים, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4161,
+      "name": "פיתה בשוק",
+      "address": "הרצל 34, ראשון לציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4210,
+      "name": "בייקריה",
+      "address": "איינשטיין 10, צפון תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4224,
+      "name": "רולדין",
+      "address": "דרך משה דיין 3, קניון סביונים, יהוד, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4262,
+      "name": "שיפודי ציפורה",
+      "address": "סחרוב דוד 26, ראשון לציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4295,
+      "name": "מסעדת הלובי",
+      "address": "אליעזר פרי 10, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4370,
+      "name": "מיטאו",
+      "address": "הפלד 46, חולון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4400,
+      "name": "סלט ישראלי",
+      "address": "אבן גבירול 61, תל אביב, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4406,
+      "name": "שניצל בר",
+      "address": "המפעל 4, אור יהודה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4407,
+      "name": "שופרא רומה",
+      "address": "ויצמן 17, יהוד, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4456,
+      "name": "בורגראנץ' רמלה",
+      "address": "דרך משה דיין 3, קניון סביונים, יהוד, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4515,
+      "name": "NEW YORK STEAK HOUSE",
+      "address": "המאה ועשרים 4, ראשון לציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4559,
+      "name": "Burger King גבעת שמואל",
+      "address": "הערבה 1, גבעת שמואל, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4668,
+      "name": "מקדונלד'ס",
+      "address": "לב העיר 2, קניון מודיעין, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4774,
+      "name": "מאפיות אנג'ל",
+      "address": "יד חרוצים 18, קניון ישראל תלפיות, ירושלים, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4775,
+      "name": "מקדונלד'ס",
+      "address": "שד' יגאל אלון 2, בית שמש, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4887,
+      "name": "פיצה האט",
+      "address": "החוצבים 10, מבשרת ציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 4979,
+      "name": "ביג אפל פיצה",
+      "address": "החוצבים 3, מבשרת ציון, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5069,
+      "name": "בורגראנץ' ירושלים (קניון מלחה)",
+      "address": "בן יהודה 5, ירושלים, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5079,
+      "name": "ניו דלי ירושלים מרכז העיר",
+      "address": "הלל 24, ירושלים, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5212,
+      "name": "נאיה",
+      "address": "שביל הלולים 142, בית נקופה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5267,
+      "name": "וופל בר",
+      "address": "שד' יגאל אלון 6, בית שמש, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5416,
+      "name": "הקציצה",
+      "address": "יקינטון 6, נס ציונה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5435,
+      "name": "ILAN'S",
+      "address": "רחובות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5488,
+      "name": "קפה מדע",
+      "address": "פארק המדע רחובות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5494,
+      "name": "סופרא",
+      "address": "הנחשול, יבנה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5556,
+      "name": "בהדונס חומוס",
+      "address": "דרך מאיר ויסגל 2, רחובות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5560,
+      "name": "בורגרים",
+      "address": "אסיף 1, קריית מלאכי, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5592,
+      "name": "שיפודי האחים",
+      "address": "הרצל 132, רחובות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5600,
+      "name": "cofix",
+      "address": "הרצל 149, רחובות, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5643,
+      "name": "פורטבלו",
+      "address": "הירמוך 1, יבנה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5655,
+      "name": "רולדין",
+      "address": "הרצל 10, גדרה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5733,
+      "name": "הבית בעולש",
+      "address": "סמטת הבית, עולש, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5761,
+      "name": "שניצל 20 טעמים כפ\"ס",
+      "address": "ויצמן 42, כפר סבא, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5857,
+      "name": "שניצל פאפא",
+      "address": "סוקולוב 73, הרצליה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 5988,
+      "name": "קפה קפה",
+      "address": "יורדי ים 1, מרינה הרצליה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6019,
+      "name": "אמנון ורחל",
+      "address": "התע\"ש 21, כפר סבא, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6104,
+      "name": "שניצל 20 טעמים",
+      "address": "הרברט סמואל 89, חדרה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6136,
+      "name": "אצל קמליה",
+      "address": "דרך לב השרון 42, צורן, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6144,
+      "name": "בן חמו",
+      "address": "האומן 10, חדרה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6184,
+      "name": "סושי בוקס",
+      "address": "משכית 27, הרצליה פיתוח, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6268,
+      "name": "מאפיית מודה אני",
+      "address": "ביאליק 54, חדרה, Israel",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6634,
+      "name": "ארקפה ביג אשדוד",
+      "address": "דרך הרכבת 1, אשדוד",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 6789,
+      "name": "גרג נשר",
+      "address": "בר יהודה 111, חיפה",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7067,
+      "name": "קלרה ראשון לציון - שיפודים מבית טוב",
+      "address": "גבעתי 1, ראשון לציון",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7084,
+      "name": "Greg ראש פינה",
+      "address": "התפוח 5, ראש פינה",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7103,
+      "name": "Greg קניון השרון",
+      "address": "הרצל 60, נתניה",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7119,
+      "name": "B-FRESH - קניון איילון",
+      "address": "דרך אבא הלל 301, רמת גן",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7184,
+      "name": "לחמשה | תקוע",
+      "address": "רחוב עוזיה 1, תקוע",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7190,
+      "name": "שיפודי כינור דוד",
+      "address": "הנשיא ויצמן 23, עפולה",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7223,
+      "name": "ארקפה בית אסיה - כשר",
+      "address": "ויצמן 4, תל אביב",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    },
+    {
+      "id": 7257,
+      "name": "Greg רעננה",
+      "address": "המלאכה 2, רעננה",
+      "google_display_name_he": null,
+      "google_formatted_address_he": null,
+      "google_display_name_en": null,
+      "google_formatted_address_en": null
+    }
+  ]
+}

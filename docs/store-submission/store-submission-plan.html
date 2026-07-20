@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תוכנית העלאה לחנויות — Jewish On The Way</title>
+<style>
+  :root {
+    --brand: #1a3a6b;
+    --brand-light: #eaf0fa;
+    --ok: #1a7f3c;
+    --warn: #b07d00;
+    --bad: #c0392b;
+    --info: #2563a8;
+    --border: #dde3ec;
+    --text: #22303f;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", "Heebo", Arial, sans-serif;
+    color: var(--text);
+    background: #f6f8fb;
+    margin: 0;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+  header.hero {
+    background: linear-gradient(135deg, var(--brand), #2a5aa8);
+    color: #fff;
+    border-radius: 16px;
+    padding: 28px 28px 22px;
+    margin-bottom: 28px;
+  }
+  header.hero h1 { margin: 0 0 6px; font-size: 1.7em; }
+  header.hero p { margin: 0; opacity: .9; }
+  h2 {
+    color: var(--brand);
+    border-bottom: 3px solid var(--brand-light);
+    padding-bottom: 6px;
+    margin-top: 44px;
+    font-size: 1.35em;
+  }
+  h3 { color: var(--brand); margin-top: 26px; font-size: 1.1em; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  table { border-collapse: collapse; width: 100%; background: #fff; border-radius: 10px; overflow: hidden; }
+  th, td { border: 1px solid var(--border); padding: 9px 12px; text-align: right; font-size: .95em; }
+  th { background: var(--brand-light); color: var(--brand); }
+  .overflow { overflow-x: auto; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .82em; font-weight: 600; white-space: nowrap; }
+  .tag.ok   { background: #e4f5ea; color: var(--ok); }
+  .tag.warn { background: #fdf3d7; color: var(--warn); }
+  .tag.bad  { background: #fde8e4; color: var(--bad); }
+  .tag.info { background: #e3edf9; color: var(--info); }
+  .alert {
+    border-right: 5px solid var(--bad);
+    background: #fff5f3;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .note {
+    border-right: 5px solid var(--brand);
+    background: var(--brand-light);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .decision {
+    border-right: 5px solid var(--warn);
+    background: #fffaf0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  code, pre {
+    font-family: Consolas, "Courier New", monospace;
+    background: #f0f3f8;
+    border-radius: 6px;
+    direction: ltr;
+    text-align: left;
+  }
+  code { padding: 1px 6px; font-size: .9em; }
+  pre { padding: 14px 16px; overflow-x: auto; border: 1px solid var(--border); }
+  ul.check { list-style: none; padding-right: 0; }
+  ul.check li { padding: 6px 0; }
+  ul.check li::before { content: "☐ "; color: var(--brand); font-weight: bold; margin-left: 8px; }
+  .draft {
+    background: #fbfcfe;
+    border: 1px dashed var(--brand);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+  }
+  .draft b { color: var(--brand); }
+  .muted { color: var(--muted); font-size: .9em; }
+  .stepnum {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--brand); color: #fff; font-weight: 700; margin-left: 8px; font-size: .85em;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>📱 תוכנית העלאה לחנויות — Jewish On The Way</h1>
+  <p>לפי מסמך הדרישות של המכללה (Google Play &amp; App Store) · עדכון: 19.07.2026 · v2 — לאחר אימות מול הקוד</p>
+</header>
+
+<h2>מצב נוכחי — טבלת פערים</h2>
+<div class="overflow">
+<table>
+  <tr><th>נושא</th><th>סטטוס</th><th>הערה</th></tr>
+  <tr><td>שרת ב-HTTPS</td><td><span class="tag warn">בתהליך</span></td><td>דומיין <code>jewishontheway.com</code> נרכש; <code>api.jewishontheway.com</code> → 49.12.189.108 (DNS אומת). ממתין למכללה: Nginx + Let's Encrypt</td></tr>
+  <tr><td>תיאום בעלויות מול המכללה</td><td><span class="tag bad">לפני הכל</span></td><td>חשבון Expo/EAS, מזהי חבילה, keystore, Apple Team — לסגור לפני <code>eas init</code></td></tr>
+  <tr><td>פרויקט EAS + eas.json</td><td><span class="tag ok">הושלם ✓</span></td><td>הפרויקט מחובר ל-@jewish-on-the-way/jewish-on-the-way; פרופילי APK לבדיקה, AAB לאנדרואיד ו-iOS לחנות נוצרו ואומתו</td></tr>
+  <tr><td>app.json מלא</td><td><span class="tag ok">הושלם ✓</span></td><td>שם תצוגה, version, אייקון, splash, versionCode, buildNumber וחסימת הרשאת מיקרופון מיותרת הוגדרו ואומתו</td></tr>
+  <tr><td>מחיקת חשבון אמיתית</td><td><span class="tag warn">מוכן בקוד</span></td><td>מומשה מחיקה מלאה ונבדקה מקומית; נותר לפרוס ולבצע בדיקת קצה על משתמש ייעודי בפרודקשן</td></tr>
+  <tr><td>Google Sign-In</td><td><span class="tag ok">נדחה לגרסה עתידית ✓</span></td><td>החלטה מאושרת: גרסה 1.0 תושק עם אימייל וסיסמה בלבד. <code>ENABLE_GOOGLE_AUTH = false</code> והכפתור אינו מוצג</td></tr>
+  <tr><td>Apple Sign-In</td><td><span class="tag ok">לא נדרש ב-1.0 ✓</span></td><td>אין בגרסה 1.0 התחברות באמצעות Google או ספק צד שלישי אחר; ייבחן יחד עם Google בגרסה עתידית</td></tr>
+  <tr><td>פושים ב-standalone</td><td><span class="tag ok">נדחה לגרסה 1.1 ✓</span></td><td><code>ENABLE_PUSH_NOTIFICATIONS = false</code>; גרסה 1.0 לא מבקשת הרשאה ולא יוצרת Push Token. הקוד נשמר להפעלה עתידית עם FCM ו-APNs</td></tr>
+  <tr><td>פרטיות לוגי אבטחה</td><td><span class="tag warn">מוכן בקוד</span></td><td>אימייל גולמי הוסר; ניסיונות כניסה ואיפוס משתמשים ב-HMAC fingerprint. בפריסה יש להגדיר מפתח ייעודי ו-logrotate ל-90 יום</td></tr>
+  <tr><td>מסך זמני שבת / Hebcal</td><td><span class="tag ok">הוסר מגרסה 1.0 ✓</span></td><td>המסך המוסתר, הנתיב והתרגומים הוסרו. האפליקציה אינה שולחת עוד מיקום ל-Hebcal; אירוח שבת נשאר פעיל</td></tr>
+  <tr><td>שמירת נתוני חיפוש</td><td><span class="tag warn">מוכן בקוד</span></td><td>רשומות search_feedback ישנות מ-365 ימים נמחקות בעליית השרת ופעם ביום; בפריסה נדרשים משתנה סביבה ו-migration אינדקס</td></tr>
+  <tr><td>מחיקת חשבון ציבורית</td><td><span class="tag warn">מוכן מקומית</span></td><td>דף דו-לשוני, אימות באימייל וטוקן חד-פעמי מוכנים; בפריסה נדרשים migration, HTTPS, CORS, משתני סביבה והעלאת הדף</td></tr>
+  <tr><td>Metadata (שם, תיאורים)</td><td><span class="tag ok">הושלם ✓</span></td><td>שם, תיאורים, keywords, קטגוריה ואימייל תמיכה אושרו</td></tr>
+  <tr><td>קבצי Build (.aab / iOS)</td><td><span class="tag bad">תלוי בתשתית</span></td><td></td></tr>
+  <tr><td>גרפיקה במידות הנדרשות</td><td><span class="tag warn">חלקי</span></td><td>הצילומים ב-landing/shots הם 780×1688 — לא מתאימים לאפל, מתחת למומלץ לגוגל</td></tr>
+  <tr><td>מדיניות פרטיות (URL)</td><td><span class="tag warn">טיוטה דו-לשונית הושלמה</span></td><td><code>privacy-policy-draft.md</code> ו-<code>privacy-policy-draft.html</code> מוכנים לבדיקה; הפרסום ממתין ל-HTTPS, תיקוני שמירה ולוגים ו-URL ציבורי</td></tr>
+  <tr><td>חשבון בדיקה (Demo)</td><td><span class="tag bad">ליצור</span></td><td>יש Login באפליקציה → חובה לספק</td></tr>
+  <tr><td>מסמך חתום של עדי</td><td><span class="tag bad">עליך</span></td><td>לחתום ולשלוח מיד</td></tr>
+  <tr><td>מחרוזות הרשאות iOS</td><td><span class="tag ok">קיים ✓</span></td><td>photos + location מוגדרים. <b>אין</b> שימוש במצלמה (רק גלריה) → לא מוסיפים הרשאת מצלמה</td></tr>
+</table>
+</div>
+
+<h2>⏳ החלטות פתוחות (שלך)</h2>
+<div class="decision">
+  <p>אין כרגע החלטות פתוחות בשלב 0.</p>
+</div>
+
+<h2><span class="stepnum">0</span>תשתית טכנית — לפני הכל</h2>
+
+<div class="note">
+  <b>0.1 HTTPS לשרת — 🔄 בתהליך (עדכון 19.07):</b><br>
+  ✅ דומיין נרכש: <code>jewishontheway.com</code><br>
+  ✅ DNS מוגדר: <code>api.jewishontheway.com</code> → 49.12.189.108 (אומת מול 8.8.8.8)<br>
+  ⏳ נשלח מייל למארק במכללה: Nginx כ-reverse proxy לפורט 3000 + Let's Encrypt (למשתמש student אין sudo)<br><br>
+  <b>כשהמכללה תסיים:</b> לוודא ש-<code>https://api.jewishontheway.com/restaurants</code> עונה → לעדכן <code>mobile/src/api/client.ts</code> → לוודא socket.io על wss → לעדכן CORS_ORIGINS.<br>
+  <b>גיבוי אם אין מענה:</b> העברת DNS ל-Cloudflare — proxy + Origin Rule לפורט 3000, בלי הרשאות בשרת.<br>
+  <span class="muted">בעתיד אפשר לשדרג ל-support@jewishontheway.com. למדיניות הפרטיות אפשר להשתמש ב-jewishontheway.com/privacy.</span>
+</div>
+
+<div class="card">
+  <h3>0.2 תיאום בעלויות מול המכללה — לפני eas init!</h3>
+  <ul class="check">
+    <li>חשבון Expo/EAS — שלך או שלהם? מי משלם על builds</li>
+    <li>מזהה חבילה <code>com.jewishontheway.app</code> — מוסכם? (אי אפשר לשנות אחרי פרסום; יירשם תחת החשבונות שלהם)</li>
+    <li>Keystore אנדרואיד — מי מחזיק/בעל גישה</li>
+    <li>Apple Developer — איך מקבלים גישה ל-build (צירוף ל-Team / API key / העברת .ipa)</li>
+  </ul>
+
+  <h3>0.3 הקמת EAS</h3>
+  <p><b>סטטוס 19.07.2026:</b> ✅ הושלם. EAS CLI הותקן, החשבון <code>jewishontheway</code> מחובר והקוד המקומי חובר לפרויקט <code>@jewish-on-the-way/jewish-on-the-way</code> (Project ID: <code>ddd12a9b-78cb-4666-bbb8-480457037790</code>). נוצר <code>mobile/eas.json</code> עם פרופיל preview ל-APK ופרופיל production ל-AAB ולגרסת iOS לחנות; שלוש התצורות אומתו.</p>
+  <pre>npm install -g eas-cli
+eas login          # חשבון Expo (לפי החלטת 0.2)
+cd mobile
+eas init           # יוצר projectId
+eas credentials    # keystore לאנדרואיד</pre>
+  <p>✅ <code>mobile/eas.json</code> נוצר עם פרופילי preview ו-production.</p>
+
+  <h3>0.4 השלמת app.json — ✅ הושלם (19.07.2026)</h3>
+  <ul class="check">
+    <li>הוגדרו שם התצוגה, גרסה 1.0.0, אייקון, splash, versionCode 1 ו-buildNumber 1</li>
+    <li>הוגדר במפורש <code>ios.supportsTablet: false</code> — גרסה 1.0 מיועדת ל-iPhone</li>
+    <li>הרשאת RECORD_AUDIO המיותרת נחסמה; נשארו רק הרשאות המיקום הנדרשות</li>
+    <li><code>expo config</code> ו-<code>npx tsc --noEmit</code> עברו בהצלחה</li>
+  </ul>
+
+  <h3>0.5 מחיקת חשבון אמיתית — 🔄 מוכן בקוד, טרם נפרס (19.07.2026)</h3>
+  <ul class="check">
+    <li>DELETE /users/me מבצע hard delete בטרנזקציה במקום isActive=false</li>
+    <li>נמחקים מועדפים, ביקורות, בקשות/דיווחי מקום, chat cursors, פניות צור קשר ובקשות אירוח משני הצדדים; יתר הקשרים ב-CASCADE</li>
+    <li>תמונת הפרופיל ותמונות הפוסטים נמחקות מ-Cloudinary אחרי commit, עם שלושה ניסיונות ולוג במקרה כשל</li>
+    <li>פוסטים, תגובות, תמונות וביקורות נמחקים; מחיקת פוסט ראשי מוחקת גם את התגובות שמתחתיו</li>
+    <li>access token ו-refresh token נפסלים לאחר המחיקה</li>
+    <li>הודעת האישור עודכנה בעברית, אנגלית וצרפתית</li>
+    <li>בניית backend, בדיקת TypeScript במובייל וכל בדיקות Jest עברו מקומית</li>
+    <li>⏳ לאחר פריסה: בדיקת קצה עם משתמש ייעודי ואימות במסד וב-Cloudinary</li>
+  </ul>
+
+  <h3>0.6 Google Sign-In — נדחה לגרסה עתידית</h3>
+  <p>החלטה מאושרת: גרסה 1.0 תושק עם אימייל וסיסמה בלבד. נבדקו כל מסכי האימות; רק ב-login וב-register קיים קוד Google, ובשניהם <code>ENABLE_GOOGLE_AUTH = false</code>, ולכן הכפתור אינו מוצג. הקוד נשאר כבוי לצורך אפשרות הפעלה עתידית.<br>
+  בהפעלה עתידית יידרשו Android client ID (עם SHA-1 של keystore ה-EAS), iOS client ID, התאמת backend audience וטיפול גם בסעיף 0.7.</p>
+
+  <h3>0.7 Apple Sign-In — לא נדרש בגרסה 1.0</h3>
+  <p>גרסה 1.0 אינה מציעה Google Sign-In או התחברות באמצעות ספק צד שלישי אחר, ולכן לא מוסיפים כרגע Sign in with Apple. אם Google יופעל בעתיד, ייבדקו מחדש דרישות החנות ויוגדרו המימוש וה-Capability הנדרשים.</p>
+
+  <h3>0.8 פושים — נדחה לגרסה 1.1</h3>
+  <p>החלטה מאושרת: גרסה 1.0 תושק ללא התראות Push. <code>ENABLE_PUSH_NOTIFICATIONS = false</code> מונע בקשת הרשאה ויצירת Push Token; כשל ברישום כבר מטופל כ-best-effort ואינו מפיל את האפליקציה.<br>
+  הקוד נשמר להפעלה עתידית. בגרסה 1.1 יידרשו Firebase ו-<code>google-services.json</code> באנדרואיד, ו-APNs key דרך חשבון המפתח ב-iOS.</p>
+
+  <h3>0.9 פרטיות ושמירת לוגי אבטחה — מוכן בקוד, דורש הגדרת שרת בפריסה</h3>
+  <ul class="check">
+    <li>אירועי Audit אינם שומרים אימייל קריא; אירועים רגילים נשמרים עם userId בלבד</li>
+    <li>ניסיונות כניסה ובקשות איפוס סיסמה נשמרים עם HMAC-SHA256 email fingerprint</li>
+    <li>המפתח המועדף הוא <code>AUDIT_FINGERPRINT_SECRET</code>; fallback ל-<code>JWT_SECRET</code> קיים לתאימות בלבד</li>
+    <li>AuditService מסיר שדה email גולמי אם יועבר בטעות בעתיד</li>
+    <li>כתובות אימייל גלויות וטוקן איפוס הוסרו גם מלוגי MailService ו-AuthService; שגיאת איפוס מזוהה באמצעות userId בלבד</li>
+  </ul>
+  <p><b>צ'קליסט חד-פעמי בפריסה:</b></p>
+  <ol>
+    <li>להגדיר <code>AUDIT_FINGERPRINT_SECRET</code> קבוע וסודי בפרודקשן</li>
+    <li><code>pm2 install pm2-logrotate</code></li>
+    <li><code>pm2 set pm2-logrotate:rotateInterval "0 0 * * *"</code></li>
+    <li><code>pm2 set pm2-logrotate:retain 90</code></li>
+    <li><code>pm2 set pm2-logrotate:compress true</code></li>
+    <li>לאמת באמצעות <code>pm2 conf</code>; הלוגים הקיימים ייצאו מהמחזור אוטומטית ואין למחוק אותם ידנית</li>
+  </ol>
+
+  <h3>0.10 הסרת מסך זמני שבת ו-Hebcal — הושלם</h3>
+  <ul class="check">
+    <li>נמחק המסך המוסתר <code>/shabbat</code>, כולל הקריאה שהעבירה קואורדינטות מדויקות ל-Hebcal</li>
+    <li>הוסרו רישום הנתיב והתרגומים הייעודיים בעברית, אנגלית וצרפתית</li>
+    <li>אירוח לשבתות ולחגים הוא פיצ'ר נפרד ונשאר פעיל</li>
+    <li>הרשאת המיקום נשארת עבור “קרוב אליי”, מפה ומצפן ויש להצהיר עליה בפרטיות</li>
+  </ul>
+
+  <h3>0.11 שמירת נתוני החיפוש — מוכן בקוד, דורש הפעלה בפריסה</h3>
+  <ul class="check">
+    <li>SearchFeedbackRetentionService מנקה בעליית השרת ולאחר מכן פעם ב-24 שעות</li>
+    <li>ברירת המחדל היא 365 ימים וניתנת לשינוי באמצעות <code>SEARCH_FEEDBACK_RETENTION_DAYS</code></li>
+    <li>הרשומות הישנות נמחקות במלואן; לוג הניקוי כולל רק את מספר הרשומות שנמחקו</li>
+    <li>הוכן migration שמוסיף אינדקס ל-<code>search_feedback.created_at</code></li>
+    <li>בפריסה: להגדיר 365 ימים, להריץ <code>npm run migration:run</code>, לפרוס ולאמת את הניקוי</li>
+  </ul>
+
+  <h3>0.12 מחיקת חשבון ציבורית — מוכן מקומית, דורש פריסה</h3>
+  <ul class="check">
+    <li>הוכן דף דו-לשוני ב-<code>landing/delete-account/index.html</code> עבור <code>jewishontheway.com/delete-account</code></li>
+    <li>בקשת קישור מחזירה תשובה כללית; הטוקן אקראי, חד-פעמי, נשמר כ-hash ופג לאחר שעה</li>
+    <li>פתיחת הקישור אינה מוחקת חשבון; נדרש אישור POST מפורש שמפעיל את המחיקה המלאה הקיימת</li>
+    <li>הוגדרו מגבלות קצב והוכן migration לטבלת account_deletion_requests</li>
+    <li>בפריסה: migrations, PUBLIC_WEB_URL, CORS, API ב-HTTPS והעלאת הדף לדומיין</li>
+  </ul>
+</div>
+
+<h2><span class="stepnum">1</span>Metadata — טיוטה מוצעת</h2>
+<div class="card">
+  <div class="draft"><b>שם (עד 30 תווים):</b> Jewish On The Way <span class="tag ok">אושר ✓</span> <span class="muted">(17 תווים)</span></div>
+  <div class="draft"><b>תיאור קצר — Google Play (עד 80):</b> <span class="tag ok">אושר ✓</span><br>כל מה שמטייל יהודי צריך — כשרות, תפילות, שבת וקהילה</div>
+  <div class="draft"><b>Subtitle — App Store (עד 30):</b> <span class="tag ok">אושר ✓</span><br>כל מה שמטייל יהודי צריך</div>
+  <div class="draft"><b>תיאור מלא (עד 4,000):</b> <span class="tag ok">אושר ✓</span>
+    <h3>Jewish On The Way — כל מה שמטייל יהודי צריך</h3>
+    <p>נוסעים לחו״ל, מטיילים בארץ או מתכננים את היעד הבא? Jewish On The Way מרכזת במקום אחד את המידע והכלים שיעזרו לכם לשמור על אורח החיים היהודי גם כשאתם רחוקים מהבית.</p>
+    <p><b>מסעדות כשרות ברחבי העולם</b></p>
+    <p>גלו מסעדות כשרות לפי המיקום הנוכחי שלכם או לפי יעד שתבחרו. צפו בכתובת, בסוג האוכל ובמידע על הכשרות, סננו לפי בשרי, חלבי או פרווה ונווטו ישירות למקום.</p>
+    <p><b>אלפי בתי כנסת ומניינים</b></p>
+    <p>מצאו אלפי בתי כנסת בארץ ובעולם לפי מיקום, קהילה ונוסח תפילה. קבלו מידע על המקום ונווטו אליו בקלות. מחפשים מניין באזור? תוכלו למצוא מניינים קיימים או ליצור מניין ולהזמין מתפללים נוספים בסביבה.</p>
+    <p><b>קהילה יהודית בכל יעד</b></p>
+    <p>הצטרפו לפיד הקהילתי של היעד, שתפו המלצות, שאלו שאלות וקבלו מידע ממטיילים ומאנשי הקהילה המקומית.</p>
+    <p><b>חיפוש חכם בשפה חופשית</b></p>
+    <p>פשוט כתבו מה אתם מחפשים, למשל: „מסעדה חלבית פתוחה עכשיו בפריז” או „בית כנסת ספרדי קרוב אליי”. החיפוש החכם יבין את הבקשה ויעזור לכם למצוא את האפשרויות המתאימות.</p>
+    <p><b>אירוח לשבתות ולחגים</b></p>
+    <p>מחפשים מקום להתארח בו בשבת או בחג? רוצים לפתוח את הבית למטיילים? האפליקציה מאפשרת למארחים ולאורחים למצוא זה את זה ולהתחבר.</p>
+    <p><b>הכול נשמר במקום אחד</b></p>
+    <p>שמרו מקומות מועדפים, נהלו פרופיל אישי והשתמשו באפליקציה בעברית, באנגלית או בצרפתית.</p>
+    <p><b>מצפן לכיוון ירושלים</b></p>
+    <p>לא משנה היכן אתם נמצאים — המצפן המובנה יציג לכם את כיוון התפילה לירושלים.</p>
+    <p>מהטיול הגדול ועד לנסיעת עסקים קצרה — Jewish On The Way עוזרת לכם למצוא כשרות, תפילה וקהילה ולהרגיש מחוברים בכל מקום בעולם.</p>
+    <p><b>Jewish On The Way — כל מה שמטייל יהודי צריך.</b></p>
+  </div>
+  <div class="draft"><b>Keywords — App Store, עברית (עד 100 תווים):</b> <span class="tag ok">אושר ✓</span><br><code>כשר,יהדות,טיולים,מסעדות,בתי כנסת,מניין,תפילה,קהילה,אירוח,שבת,ירושלים,ניווט,מטיילים,יהודי,חו״ל,עולם</code></div>
+  <div class="draft"><b>קטגוריה ראשית:</b> Travel <span class="tag ok">אושר ✓</span></div>
+  <div class="draft"><b>Support Email:</b> jewishontheway@gmail.com <span class="tag ok">אושר ✓</span> <span class="muted">— יוצג פומבית בחנות</span></div>
+</div>
+
+<h2><span class="stepnum">2</span>קבצי Build</h2>
+<div class="card">
+  <h3>אנדרואיד — .aab חתום</h3>
+  <pre>cd mobile
+eas build --platform android --profile production</pre>
+  <p>מורידים את ה-.aab מדשבורד Expo ומצרפים לתיקיית ההגשה.</p>
+
+  <h3>iOS — לתאם עם המכללה (חלק מ-0.2)</h3>
+  <p>המסמך מבקש דחיפה מ-Xcode, אבל הפרויקט הוא Expo managed (אין Xcode project מקומי). שתי אפשרויות:</p>
+  <ol>
+    <li><code>eas build --platform ios</code> + <code>eas submit</code> — דורש צירוף ל-Apple Developer Team שלהם או API key של App Store Connect</li>
+    <li>הפקת .ipa והעלאה על-ידם דרך Transporter</li>
+  </ol>
+  <div class="note"><b>שאלה למכללה:</b> איך הם מעדיפים לקבל גרסת iOS מפרויקט Expo?</div>
+</div>
+
+<h2><span class="stepnum">3</span>גרפיקה ומדיה</h2>
+<div class="overflow">
+<table>
+  <tr><th>פריט</th><th>מידה נדרשת</th><th>מה לעשות</th></tr>
+  <tr><td>אייקון Google Play</td><td>512×512 PNG, רקע אטום, עד 1MB</td><td>ליצור גרסת 512×512 מתוך mobile/assets/images/app-icon.png</td></tr>
+  <tr><td>אייקון App Store</td><td>1024×1024 PNG, <b>בלי שקיפות</b></td><td>✅ נוצר mobile/assets/images/app-icon.png — ממותג ואטום</td></tr>
+  <tr><td>Feature Graphic (גוגל)</td><td>1024×500 PNG/JPEG</td><td>לעצב — לוגו + סלוגן על רקע <code>#1a3a6b</code></td></tr>
+  <tr><td>צילומי מסך טלפון (גוגל)</td><td>לפחות 4, PNG/JPEG</td><td>הקיימים (780×1688) קבילים טכנית אך מתחת ל-1080 המומלץ — עדיף לצלם מחדש</td></tr>
+  <tr><td>צילומי מסך iPhone 6.5"</td><td>1242×2688 או 1284×2778</td><td>הקיימים לא מתאימים — סימולטור iPhone 11 Pro Max או ייצור במידה מדויקת</td></tr>
+  <tr><td>צילומי מסך iPhone 5.5"</td><td>1242×2208</td><td>סימולטור iPhone 8 Plus</td></tr>
+  <tr><td>iPad 12.9" (אופציונלי)</td><td>2048×2732</td><td>לדלג בשלב ראשון</td></tr>
+</table>
+</div>
+<p class="muted">מסכים מומלצים: הבית, מסעדות בעיר, בתי כנסת + מפה, מצפן, חיפוש חכם, פיד קהילה.</p>
+
+<h2><span class="stepnum">4</span>מדיניות פרטיות — חובה מוחלטת</h2>
+<div class="card">
+  <ol>
+    <li><b>לכתוב מסמך</b> (עברית + אנגלית) — הושלם כטיוטה ב-<code>privacy-policy-draft.md</code> וב-<code>privacy-policy-draft.html</code>. הטיוטה מכסה את סוגי המידע, Anthropic, ספקים, אבטחה, שמירה ומחיקה. אין לפרסם לפני השלמת התנאים הרשומים בראש הקובץ.</li>
+    <li><b>להעלות כדף נגיש</b> — GitHub Pages, עמוד privacy.html לצד עמוד הנחיתה הקיים.</li>
+    <li><b>להקים דף מחיקת חשבון ציבורי:</b> הקוד והדף הושלמו מקומית; בפריסה יש להפעיל API ומיגרציה ולהעלות את <code>landing/delete-account/</code> לכתובת היעד.</li>
+    <li>לצרף את כתובות ה-privacy והמחיקה ל-Metadata ולטופס Data Safety.</li>
+  </ol>
+  <div class="note">להכין מראש גם תשובות לטפסי <b>Data Safety</b> (גוגל) ו-<b>App Privacy</b> (אפל) — המכללה תצטרך אותן.</div>
+</div>
+
+<h2><span class="stepnum">5</span>חשבון בדיקה</h2>
+<div class="card">
+  <ul class="check">
+    <li>ליצור משתמש ייעודי בפרודקשן (מייל ייעודי, סיסמה חזקה — לא האישית שלך)</li>
+    <li>לוודא אימות אימייל הושלם</li>
+    <li>לוודא שהחשבון רואה את כל הפיצ'רים (אירוח, צ'אט, פיד)</li>
+    <li>לצרף שם משתמש + סיסמה לקובץ ה-Metadata</li>
+  </ul>
+</div>
+
+<h2><span class="stepnum">6</span>בירוקרטיה</h2>
+<div class="alert">לחתום על מסמך הוויתור/הסכמה של עדי ולשלוח <b>מיד</b> — בלעדיו לא מעלים כלום. לא תלוי בשום שלב טכני.</div>
+
+<h2><span class="stepnum">7</span>אריזת תיקיית ההגשה (Drive)</h2>
+<pre dir="ltr">📁 JewishOnTheWay - Store Submission/
+├── 1-metadata.docx            (name, descriptions, keywords, category, support email, demo account, privacy URL)
+├── 2-builds/
+│   └── jewish-on-the-way-v1.0.0.aab
+├── 3-graphics/
+│   ├── icon-googleplay-512.png
+│   ├── icon-appstore-1024.png
+│   ├── feature-graphic-1024x500.png
+│   ├── screenshots-android/   (4+)
+│   ├── screenshots-ios-6.5/   (1242×2688)
+│   └── screenshots-ios-5.5/   (1242×2208)
+├── 4-privacy-policy-url.txt
+└── 6-signed-waiver.pdf</pre>
+
+<h2>🗓️ סדר עבודה מומלץ</h2>
+<div class="card">
+  <ol>
+    <li><b>מיד (לא תלוי בכלום):</b> חתימה על מסמך עדי · סגירת 3 ההחלטות הפתוחות · תיאום בעלויות מול המכללה (0.2) · כתיבת Metadata · כתיבת מדיניות פרטיות</li>
+    <li><b>תשתית:</b> HTTPS לשרת → עדכון client.ts → בדיקה ב-Expo Go → הגדרת <code>AUDIT_FINGERPRINT_SECRET</code> ו-pm2-logrotate ל-90 יום לפי סעיף 0.9 → migrations לפי סעיפים 0.11–0.12 → CORS והעלאת דפי הפרטיות והמחיקה</li>
+    <li><b>קוד:</b> מימוש מחיקת חשבון אמיתית (0.5)</li>
+    <li><b>EAS:</b> init + app.json מלא + אייקונים</li>
+    <li><b>אנדרואיד קודם:</b> build ראשון → בדיקה במכשיר → צילומי מסך → .aab סופי</li>
+    <li><b>iOS:</b> תיאום תהליך ה-build מול המכללה → build → צילומי מסך</li>
+    <li><b>אריזה והגשה</b> לתיקיית Drive</li>
+  </ol>
+</div>
+
+</div>
+</body>
+</html>

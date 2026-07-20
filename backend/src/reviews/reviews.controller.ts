@@ -13,7 +13,6 @@ import { CreateRequestDto } from './dto/create-request.dto';
 import { ResolveReportDto } from './dto/resolve-report.dto';
 import { ResolveRequestDto } from './dto/resolve-request.dto';
 
-@UseGuards(JwtAuthGuard)
 @Controller('reviews')
 export class ReviewsController {
   constructor(private readonly service: ReviewsService) {}
@@ -21,6 +20,7 @@ export class ReviewsController {
   // ── Static / admin routes first (before dynamic :type/:id params) ──────────
 
   // POST /reviews/requests  → suggest a new place
+  @UseGuards(JwtAuthGuard)
   @Post('requests')
   createRequest(
     @Request() req: any,
@@ -29,13 +29,13 @@ export class ReviewsController {
     return this.service.createRequest(req.user.sub, dto);
   }
 
-  @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Get('admin/reports')
   listReports(@Query('status') status?: string) {
     return this.service.listReports(status);
   }
 
-  @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Post('admin/reports/:id/resolve')
   resolveReport(
     @Param('id', ParseIntPipe) id: number,
@@ -44,13 +44,13 @@ export class ReviewsController {
     return this.service.resolveReport(id, dto.status, dto.adminNote);
   }
 
-  @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Get('admin/requests')
   listRequests(@Query('status') status?: string) {
     return this.service.listRequests(status);
   }
 
-  @UseGuards(AdminGuard)
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @Post('admin/requests/:id/resolve')
   resolveRequest(
     @Param('id', ParseIntPipe) id: number,
@@ -72,6 +72,7 @@ export class ReviewsController {
   }
 
   // POST /reviews/:type/:id  → add or update own review
+  @UseGuards(JwtAuthGuard)
   @Post(':type/:id')
   upsertReview(
     @Request() req: any,
@@ -83,6 +84,7 @@ export class ReviewsController {
   }
 
   // DELETE /reviews/:type/:id  → remove own review
+  @UseGuards(JwtAuthGuard)
   @Delete(':type/:id')
   deleteReview(
     @Request() req: any,
@@ -93,6 +95,7 @@ export class ReviewsController {
   }
 
   // POST /reviews/:type/:id/report  → report a place
+  @UseGuards(JwtAuthGuard)
   @Post(':type/:id/report')
   createReport(
     @Request() req: any,

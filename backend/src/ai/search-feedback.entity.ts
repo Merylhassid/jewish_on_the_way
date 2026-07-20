@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Index,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -13,6 +14,7 @@ export type SearchParserSource = 'fast' | 'llm' | 'fallback' | 'cache';
  * making the classifier genuinely learn from user behaviour.
  */
 @Entity('search_feedback')
+@Index('IDX_search_feedback_created_at', ['createdAt'])
 export class SearchFeedback {
   @PrimaryGeneratedColumn()
   id: number;

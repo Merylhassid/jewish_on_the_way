@@ -33,6 +33,10 @@ export class HostingNeed {
   @Column({ default: false })
   for_shabbat: boolean;
 
+  // stay|meals
+  @Column({ type: 'varchar', length: 10, default: 'stay' })
+  hosting_type: 'stay' | 'meals';
+
   @Column({ type: 'text', nullable: true })
   notes: string | null;
 

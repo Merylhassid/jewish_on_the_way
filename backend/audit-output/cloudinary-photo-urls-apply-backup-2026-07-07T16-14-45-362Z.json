@@ -1,0 +1,31 @@
+{
+  "takenAt": "2026-07-07T16:14:45.370Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T16-14-32-849Z.csv",
+  "count": 3,
+  "rows": [
+    {
+      "id": 6421,
+      "name": "מלון כשר בברלין",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7355,
+      "name": "המלך דוד – חלבי",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8458,
+      "name": "Hilton Habtoor City Hotel Dubai Kosher Meals",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import { ContactModule } from './contact/contact.module';
 import { AuditModule } from './audit/audit.module';
 import { AiModule } from './ai/ai.module';
 import { SynagoguesModule } from './synagogues/synagogues.module';
+import { ReportsModule } from './reports/reports.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -104,6 +105,8 @@ import { PlacesModule } from './places/places.module';
     FavoritesModule,
 
     ContactModule,
+
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [

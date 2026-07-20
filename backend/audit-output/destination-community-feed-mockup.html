@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מוקאפ פיד קהילתי ליעד</title>
+<style>
+:root{
+  --page:#eee8dc;
+  --cream:#f8f4ea;
+  --paper:#fffdf8;
+  --card:#fff;
+  --navy:#0b1736;
+  --gold:#c9a84c;
+  --goldDark:#9b7a24;
+  --muted:#7b8493;
+  --text:#1b2538;
+  --soft:#f4eddf;
+  --line:#ebe2d2;
+  --purple:#6d5bd0;
+  --purpleBg:#f0edff;
+  --green:#15803d;
+  --greenBg:#eaf7ef;
+  --blue:#2563eb;
+  --blueBg:#eaf1ff;
+  --orange:#b45309;
+  --orangeBg:#fff4e5;
+  --shadow:rgba(9,22,52,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--page);
+  font-family:Rubik,Inter,Arial,sans-serif;
+  color:var(--navy);
+}
+.page{
+  max-width:1180px;
+  margin:0 auto;
+  padding:26px;
+}
+.intro{
+  margin-bottom:18px;
+}
+h1{
+  margin:0 0 7px;
+  font-size:24px;
+  font-weight:900;
+}
+.lead{
+  margin:0;
+  max-width:760px;
+  color:#566173;
+  line-height:1.55;
+  font-size:14px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:370px 1fr;
+  gap:24px;
+  align-items:start;
+}
+.phone{
+  width:370px;
+  min-height:780px;
+  background:var(--cream);
+  border:1px solid #ded5c4;
+  border-radius:32px;
+  overflow:hidden;
+  box-shadow:0 22px 60px rgba(0,0,0,.18);
+}
+.status{
+  height:26px;
+  background:#fbf8ef;
+  color:#ded5c3;
+  text-align:center;
+  font-size:12px;
+  padding-top:5px;
+}
+.header{
+  background:#fffaf0;
+  border-bottom:1px solid var(--line);
+  padding:13px 16px 12px;
+}
+.top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.iconBtn{
+  width:34px;
+  height:34px;
+  border-radius:17px;
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 4px 12px var(--shadow);
+  display:grid;
+  place-items:center;
+  color:var(--navy);
+  font-weight:900;
+  flex:0 0 auto;
+}
+.home{
+  margin-inline-start:auto;
+  background:#d6c27d;
+  color:#fff;
+  border-color:#d6c27d;
+}
+.titleBlock{min-width:0;flex:1}
+.eyebrow{
+  font-size:9px;
+  letter-spacing:2.1px;
+  color:var(--goldDark);
+  font-weight:900;
+  text-transform:uppercase;
+}
+.title{
+  font-size:20px;
+  font-weight:900;
+  line-height:1.08;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.sub{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--muted);
+  font-size:11px;
+  margin-top:3px;
+}
+.liveDot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#22c55e;
+}
+.searchBar{
+  margin-top:12px;
+  height:38px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 12px;
+  color:#7a8494;
+  font-size:12px;
+}
+.tabs{
+  display:flex;
+  gap:7px;
+  overflow:hidden;
+  padding:10px 12px;
+  background:#fffdf7;
+  border-bottom:1px solid var(--line);
+}
+.chip{
+  flex:0 0 auto;
+  border:1px solid #eadfcb;
+  background:#fff;
+  color:#596476;
+  border-radius:15px;
+  padding:6px 10px;
+  font-size:10.5px;
+  font-weight:800;
+}
+.chip.on{
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+}
+.composer{
+  padding:12px;
+  background:#f6f1e8;
+  border-bottom:1px solid var(--line);
+}
+.askBox{
+  background:#fff;
+  border:1px solid #eadfcb;
+  border-radius:18px;
+  padding:11px;
+  box-shadow:0 5px 14px rgba(9,22,52,.06);
+}
+.askTop{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:17px;
+  background:#fff8df;
+  border:1px solid #eadfbd;
+  display:grid;
+  place-items:center;
+  color:#5b4b18;
+  font-size:11px;
+  font-weight:900;
+  flex:0 0 auto;
+  overflow:hidden;
+}
+.photoAvatar{
+  background:
+    radial-gradient(circle at 50% 38%, #283447 0 9px, transparent 10px),
+    radial-gradient(circle at 50% 100%, #c9a84c 0 19px, #f7efd7 20px);
+}
+.askInput{
+  flex:1;
+  height:36px;
+  border-radius:18px;
+  background:#f9f5ed;
+  color:#8a94a6;
+  display:flex;
+  align-items:center;
+  padding:0 13px;
+  font-size:12px;
+}
+.askActions{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+.askAction{
+  flex:1;
+  text-align:center;
+  border-radius:12px;
+  background:#fffaf0;
+  border:1px solid #efe4cf;
+  color:#62512b;
+  font-size:10.5px;
+  font-weight:900;
+  padding:7px 5px;
+}
+.feed{
+  padding:12px;
+  background:#f6f1e8;
+}
+.post{
+  background:#fff;
+  border:1px solid #eee1c7;
+  border-radius:19px;
+  box-shadow:0 7px 18px rgba(9,22,52,.07);
+  margin-bottom:12px;
+  overflow:hidden;
+}
+.postBody{padding:13px}
+.postHead{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  direction:ltr;
+}
+.postHead .avatar{direction:rtl}
+.author{
+  flex:1;
+  min-width:0;
+  direction:rtl;
+}
+.authorName{
+  font-size:12.5px;
+  font-weight:900;
+  color:var(--navy);
+}
+.authorMeta{
+  font-size:10.5px;
+  color:#8a94a6;
+  margin-top:2px;
+}
+.badge{
+  display:inline-flex;
+  margin-top:6px;
+  border-radius:10px;
+  padding:4px 8px;
+  font-size:10px;
+  font-weight:900;
+}
+.food{color:var(--orange);background:var(--orangeBg)}
+.hotel{color:var(--purple);background:var(--purpleBg)}
+.transport{color:var(--blue);background:var(--blueBg)}
+.synagogue{color:var(--green);background:var(--greenBg)}
+.more{
+  color:#9aa3b1;
+  font-weight:900;
+  letter-spacing:2px;
+  direction:rtl;
+}
+.postTitle{
+  margin:11px 0 7px;
+  font-size:18px;
+  line-height:1.25;
+  font-weight:900;
+  color:#10192b;
+}
+.postText{
+  color:#3d4757;
+  font-size:12.5px;
+  line-height:1.5;
+  margin-bottom:10px;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+.image{
+  aspect-ratio:1;
+  border-radius:13px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(255,255,255,.65);
+}
+.img1{
+  background:
+    linear-gradient(180deg,rgba(20,14,8,.12),rgba(20,14,8,.45)),
+    radial-gradient(circle at 24% 28%, #f4c86b 0 8px, transparent 9px),
+    linear-gradient(135deg,#1c1713 0%,#3d2b18 52%,#0f172a 100%);
+}
+.img2{
+  background:
+    radial-gradient(circle at 35% 45%, #9c5b2e 0 18px, transparent 19px),
+    radial-gradient(circle at 64% 37%, #cf8a49 0 15px, transparent 16px),
+    radial-gradient(circle at 56% 68%, #36572d 0 8px, transparent 9px),
+    #eee0c8;
+}
+.img3{
+  background:
+    linear-gradient(180deg,rgba(8,14,20,.08),rgba(8,14,20,.42)),
+    linear-gradient(90deg,#f6efe3 0 18%,#1f2937 19% 27%,#f6efe3 28% 70%,#111827 71% 80%,#f6efe3 81%),
+    linear-gradient(#ddd0bf,#ddd0bf);
+}
+.img4{
+  background:
+    radial-gradient(circle at 76% 20%,#ffd66b 0 10px,transparent 11px),
+    linear-gradient(150deg,#dce8ee 0%,#c8d6df 45%,#81946d 46%,#42513e 100%);
+}
+.img5{
+  background:
+    linear-gradient(135deg,rgba(11,23,54,.12),rgba(201,168,76,.12)),
+    linear-gradient(90deg,#f9fafb 0 20%,#1f2937 21% 34%,#f9fafb 35% 70%,#1f2937 71% 82%,#f9fafb 83%);
+}
+.img6{
+  background:
+    radial-gradient(circle at 30% 32%,#e6d3ab 0 16px,transparent 17px),
+    radial-gradient(circle at 60% 57%,#9c7c44 0 20px,transparent 21px),
+    #2f251c;
+}
+.postStats{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#8a94a6;
+  font-size:10.5px;
+  padding:9px 13px 0;
+}
+.postActions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #f0e7d8;
+  margin-top:9px;
+}
+.action{
+  min-height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:#647083;
+  font-size:11.5px;
+  font-weight:800;
+}
+.action + .action{border-right:1px solid #f0e7d8}
+.action.on{color:var(--goldDark)}
+.commentPreview{
+  margin-top:10px;
+  background:#f8f4ed;
+  border:1px solid #efe5d4;
+  border-radius:13px;
+  padding:8px 9px;
+}
+.commentName{
+  font-size:10.5px;
+  font-weight:900;
+  color:var(--navy);
+}
+.commentText{
+  font-size:11px;
+  color:#566173;
+  line-height:1.4;
+  margin-top:2px;
+}
+.notes{
+  display:grid;
+  gap:12px;
+}
+.panel{
+  background:#fff;
+  border:1px solid #e5dccb;
+  border-radius:18px;
+  padding:16px 18px;
+  box-shadow:0 7px 18px rgba(9,22,52,.05);
+}
+.panel h2{
+  margin:0 0 9px;
+  font-size:16px;
+}
+.panel p{
+  margin:0;
+  color:#566173;
+  line-height:1.55;
+  font-size:13px;
+}
+.list{
+  margin:10px 0 0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:8px;
+}
+.list li{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  color:#4d586a;
+  font-size:13px;
+  line-height:1.4;
+}
+.mark{
+  width:18px;
+  height:18px;
+  border-radius:9px;
+  background:#f4ecd9;
+  color:#8a6e28;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:900;
+  flex:0 0 auto;
+}
+@media(max-width:900px){
+  .page{padding:16px}
+  .layout{grid-template-columns:1fr}
+  .phone{width:min(100%,390px);margin:auto}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="intro">
+    <h1>מוקאפ: קבוצת יעד עם פוסטים, לייקים ותגובות</h1>
+    <p class="lead">הכיוון כאן הוא לא צ'אט רציף אלא פיד קהילתי לכל יעד. כל שאלה או המלצה היא פוסט שאפשר להגיב עליו, לסמן כמועיל, לשמור ולחפש אחר כך.</p>
+  </section>
+
+  <section class="layout">
+    <div class="phone">
+      <div class="status">19:26</div>
+
+      <header class="header">
+        <div class="top">
+          <div class="iconBtn">‹</div>
+          <div class="titleBlock">
+            <div class="eyebrow">Destination Group</div>
+            <div class="title">Paris Tips & Questions</div>
+            <div class="sub"><span class="liveDot"></span><span>1,248 members · 42 posts this week</span></div>
+          </div>
+          <div class="iconBtn">⌕</div>
+          <div class="iconBtn home">⌂</div>
+        </div>
+        <div class="searchBar"><span>⌕</span><span>Search posts: restaurant, hotel, metro, synagogue...</span></div>
+      </header>
+
+      <nav class="tabs">
+        <span class="chip on">הכל</span>
+        <span class="chip">אוכל</span>
+        <span class="chip">מלונות</span>
+        <span class="chip">אטרקציות</span>
+        <span class="chip">בתי כנסת</span>
+        <span class="chip">טיסות</span>
+        <span class="chip">בילויים</span>
+        <span class="chip">תחבורה</span>
+      </nav>
+
+      <section class="composer">
+        <div class="askBox">
+          <div class="askTop">
+            <div class="avatar">ME</div>
+            <div class="askInput">Ask a question or share a recommendation...</div>
+          </div>
+          <div class="askActions">
+            <div class="askAction">＋ פוסט</div>
+            <div class="askAction">▧ תמונות</div>
+            <div class="askAction">⌑ קטגוריה</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="feed">
+        <article class="post">
+          <div class="postBody">
+            <div class="postHead">
+              <div class="avatar photoAvatar"></div>
+              <div class="author">
+                <div class="authorName">Daniel L.</div>
+                <div class="authorMeta">לפני 3 שעות · מטייל תדיר</div>
+                <span class="badge food">מסעדות</span>
+              </div>
+              <div class="more">•••</div>
+            </div>
+            <h2 class="postTitle">איפה אוכלים כשר בפריז אחרי 22:00?</h2>
+            <div class="postText">נחיתה מאוחרת בשבת, מחפש מקום כשר שפתוח בערב באזור האופרה. תודה!</div>
+            <div class="gallery">
+              <div class="image img1"></div>
+              <div class="image img2"></div>
+              <div class="image img3"></div>
+            </div>
+            <div class="postStats">
+              <span>18 סימנו כמועיל</span>
+              <span>23 תגובות</span>
+            </div>
+            <div class="commentPreview">
+              <div class="commentName">Sarah B.</div>
+              <div class="commentText">ממליצה לבדוק את המקום ברחוב Richer. בדרך כלל פתוח מאוחר, אבל כדאי להתקשר קודם.</div>
+            </div>
+          </div>
+          <div class="postActions">
+            <div class="action on">♡ מועיל</div>
+            <div class="action">💬 תגובה</div>
+            <div class="action">🔖 שמור</div>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="postBody">
+            <div class="postHead">
+              <div class="avatar">RK</div>
+              <div class="author">
+                <div class="authorName">Rivka K.</div>
+                <div class="authorMeta">אתמול · ביקרה לאחרונה</div>
+                <span class="badge hotel">מלונות</span>
+              </div>
+              <div class="more">•••</div>
+            </div>
+            <h2 class="postTitle">מלון נוח ליד בית כנסת ומטרו?</h2>
+            <div class="postText">מחפשת אזור נוח לזוג עם תינוק. עדיפות למרחק הליכה לבית כנסת בשבת, אבל גם שיהיה קל להגיע למרכז.</div>
+            <div class="postStats">
+              <span>9 סימנו כמועיל</span>
+              <span>11 תגובות</span>
+            </div>
+          </div>
+          <div class="postActions">
+            <div class="action">♡ מועיל</div>
+            <div class="action">💬 תגובה</div>
+            <div class="action">🔖 שמור</div>
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="postBody">
+            <div class="postHead">
+              <div class="avatar">AM</div>
+              <div class="author">
+                <div class="authorName">Avi M.</div>
+                <div class="authorMeta">לפני יומיים</div>
+                <span class="badge transport">תחבורה</span>
+              </div>
+              <div class="more">•••</div>
+            </div>
+            <h2 class="postTitle">מה הדרך הכי פשוטה משדה התעופה לאזור ה-17?</h2>
+            <div class="postText">מתלבט בין רכבת, מונית או Bolt. מגיע בלילה עם מזוודות.</div>
+            <div class="gallery">
+              <div class="image img4"></div>
+              <div class="image img5"></div>
+              <div class="image img6"></div>
+            </div>
+            <div class="postStats">
+              <span>14 סימנו כמועיל</span>
+              <span>8 תגובות</span>
+            </div>
+          </div>
+          <div class="postActions">
+            <div class="action">♡ מועיל</div>
+            <div class="action">💬 תגובה</div>
+            <div class="action">🔖 שמור</div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <aside class="notes">
+      <div class="panel">
+        <h2>למה זה חזק יותר מצ'אט רגיל</h2>
+        <p>בצ'אט רגיל מידע טוב נעלם מהר. בפיד, כל שאלה הופכת לפריט ידע שאפשר להגיב עליו, לחפש, לשמור ולסמן כמועיל. זה הרבה יותר דומה לקבוצות יעד בפייסבוק, אבל בתוך האפליקציה שלך.</p>
+      </div>
+
+      <div class="panel">
+        <h2>איך זה עובד באפליקציה</h2>
+        <ul class="list">
+          <li><span class="mark">1</span><span>לכל יעד יש פיד אחד מרכזי, לא שבעה צ'אטים נפרדים.</span></li>
+          <li><span class="mark">2</span><span>כל פוסט מקבל קטגוריה: אוכל, מלונות, אטרקציות, בתי כנסת, טיסות, בילויים או תחבורה.</span></li>
+          <li><span class="mark">3</span><span>הקטגוריות למעלה הן פילטרים. הן לא מפצלות את הקהילה.</span></li>
+          <li><span class="mark">4</span><span>תגובות נשמרות תחת הפוסט, אז תשובות לא מתערבבות עם שאלות אחרות.</span></li>
+          <li><span class="mark">5</span><span>לייק או Useful עוזר להבליט תשובות ופוסטים שבאמת עזרו למטיילים.</span></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>מה הייתי מממש קודם</h2>
+        <p>שלב ראשון: פוסטים, תגובות, לייקים ושמירה בלי תמונות. שלב שני: העלאת תמונות. שלב שלישי: חיפוש בפוסטים ובתגובות. שלב רביעי: התראות כשמישהו מגיב לפוסט שלך.</p>
+      </div>
+    </aside>
+  </section>
+</main>
+</body>
+</html>

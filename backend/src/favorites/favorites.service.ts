@@ -48,11 +48,27 @@ export class FavoritesService {
     ]);
 
     return {
-      restaurants: restaurants.map(r => ({
-        id: r.id, name: r.name, address: r.address,
-        kashrutLevel: r.kashrutLevel, restaurantType: r.restaurantType,
-        destination: r.destination ? { id: r.destination.id, city: r.destination.city } : null,
-      })),
+      restaurants: restaurants.map(r => {
+        const verified = r.verificationStatus === 'verified';
+        const displayAddress = verified
+          ? (r.googleFormattedAddressHe || r.googleFormattedAddressEn || r.googleFormattedAddress || r.address)
+          : r.address;
+
+        return {
+          id: r.id,
+          name: r.name,
+          address: displayAddress,
+          originalAddress: r.address,
+          kashrutLevel: r.kashrutLevel,
+          restaurantType: r.restaurantType,
+          verificationStatus: r.verificationStatus,
+          googleRating: r.googleRating,
+          googleRatingCount: r.googleRatingCount,
+          googleMapsUri: r.googleMapsUri,
+          photoUrl: r.photoUrl,
+          destination: r.destination ? { id: r.destination.id, city: r.destination.city } : null,
+        };
+      }),
       synagogues: synagogues.map(s => ({
         id: s.id, name: s.name, address: s.address, denomination: s.denomination,
       })),

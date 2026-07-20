@@ -1,0 +1,21 @@
+﻿id,status,confidence,name_sim,distance_m,old_name,google_name,name_updated,old_address,new_address,coords_fixed,reason
+8,no_match,0.2,0.714,1641,פטרוזיליה,Petrozilia,no,"תל אביב, Israel",,no,dist=1641m name=0.71 no-match
+64,no_match,0.2,0.111,8350,קפה קפה,Café Café,no,"יורדי הסירה 1, נמל תל-אביב, Israel",,no,dist=8350m name=0.11 no-match
+67,verified,0.95,0.182,11,Resto,החשמונאים T Lab,no,"החשמונאים 105, תל אביב, Israel","HaHashmonaim St 103, Tel Aviv-Yafo, Israel",yes,dist=11m name=0.18 close-proximity
+78,flagged,0.6,0.000,9,פביאנו,La Lasagna,no,"דיזנגוף 177, תל אביב, Israel",,no,dist=9m name=0.00 proximity-name-mismatch
+85,no_match,0.2,0.571,1239,ניו דלי,ניודלי Newdeli,no,"דרך מנחם בגין 132, קניון עזריאלי, תל אביב, Israel",,no,dist=1239m name=0.57 no-match
+87,no_match,0.2,0.057,419,cofix,דפוס - C-COPY | שיא קופי - סניף כיכר רבין,no,"אבן גבירול 92, תל אביב, Israel",,no,dist=419m name=0.06 no-match
+89,no_match,0.2,0.111,8196,פיצה דומינו,Domino Pizza,no,"לסקוב חיים 4, תל אביב, Israel",,no,dist=8196m name=0.11 no-match
+103,no_match,0.2,0.167,570,קפה עלית-אספרסו בר,Elite Cafe,no,"לוינסקי 108, תחנה מרכזית חדשה תל אביב, Israel",,no,dist=570m name=0.17 no-match
+140,verified,0.95,0.375,15,קנסאי יגאל אלון,Kansai,no,"רודנסקי שמואל 5, צפון תל אביב, Israel","Yigal Alon St 94, Tel Aviv-Yafo, Israel",yes,dist=15m name=0.38 close-proximity
+162,verified,0.95,1.000,0,בר בשר,בר בשר,yes,"הדר יוסף 12, מעוז אביב, תל אביב, Israel","Hadar Yosef St 12, Tel Aviv-Yafo, Israel",yes,dist=0m name=1.00 close-proximity
+175,verified,0.95,1.000,9,חבש,Habash,yes,"הנגב 10, תל אביב, Israel","Ha-Negev St 10, Tel Aviv-Yafo, Israel",yes,dist=9m name=1.00 close-proximity
+184,flagged,0.7,0.100,140,קופי טיים,Schuster Centre,no,"אבא אחימאיר 27, מרכז שוסטר, תל אביב, Israel",,no,dist=140m name=0.10 needs-review
+195,verified,0.95,0.500,26,שומשום בר בריאות,מכבי שירותי בריאות,no,"אורי צבי גרינברג 25, צפון תל אביב, Israel","Uri Tsvi Grinberg St 25, Tel Aviv-Yafo, Israel",yes,dist=26m name=0.50 close-proximity
+204,no_match,0.2,0.235,2317,רחל המבשלת-אוכל טבעוני,Meshek Barzilay,no,"הקשת 10, תל אביב, Israel",,no,dist=2317m name=0.24 no-match
+210,flagged,0.4,0.333,15,פליים,Flame TLV,no,"אליעזר פרי 10, תל אביב, Israel",,no,dist=15m name=0.33 business=CLOSED_PERMANENTLY (non-operational)
+216,verified,0.95,1.000,6,הבן של הסורי,חומוס הבן של הסורי,yes,"יגאל אלון 121, תל אביב, Israel","Yigal Alon St 121, Tel Aviv-Yafo, Israel",yes,dist=6m name=1.00 close-proximity
+237,no_match,0.2,0.500,563,גולדות,Golda,no,"אלנבי 78, תל אביב, Israel",,no,dist=563m name=0.50 no-match
+275,verified,0.95,1.000,8,אלוף הסביח,אלוף הסביח,yes,"קרליבך 18, תל אביב, Israel","Carlebach St 18, Tel Aviv-Yafo, Israel",yes,dist=8m name=1.00 close-proximity
+279,no_match,0.2,0.667,2388,מסעדת באביקה Babica,BABICA מסעדת שף אותנטית כשרה,no,"שד' רוטשילד 60, תל אביב, Israel",,no,dist=2388m name=0.67 no-match
+292,flagged,0.7,1.000,266,כרמלי'ס בייגל בייקרי,כרמליס בייגל,no,"יצחק שדה 27, תל אביב, Israel",,no,dist=266m name=1.00 needs-review

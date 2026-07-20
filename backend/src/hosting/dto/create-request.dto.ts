@@ -1,6 +1,7 @@
 import {
   IsBoolean,
   IsDateString,
+  IsIn,
   IsInt,
   IsOptional,
   IsString,
@@ -10,6 +11,9 @@ import {
 export class CreateRequestDto {
   @IsInt()
   offerId: number;
+
+  @IsIn(['stay', 'meals'])
+  hostingType: 'stay' | 'meals';
 
   @IsDateString()
   arrivalDate: string;

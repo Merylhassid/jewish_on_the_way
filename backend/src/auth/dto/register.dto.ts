@@ -1,4 +1,5 @@
-import { IsEmail, IsString, MinLength, Matches } from 'class-validator';
+import { IsEmail, IsString, MaxLength, MinLength, Matches } from 'class-validator';
+import { PASSWORD_PATTERN, PERSON_NAME_PATTERN } from '../password-policy';
 
 export class RegisterDto {
   @IsEmail()
@@ -8,17 +9,24 @@ export class RegisterDto {
   @MinLength(8, {
     message: 'Password must be at least 8 characters long',
   })
-  @Matches(/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/, {
+  @MaxLength(128, {
+    message: 'Password must be at most 128 characters long',
+  })
+  @Matches(PASSWORD_PATTERN, {
     message:
-      'Password must contain only English letters and numbers, and include at least one letter and one number',
+      'Password must be 8-128 characters and include at least one letter and one number',
   })
   password: string;
 
   @IsString()
-  @Matches(/^[A-Za-z]+$/)
+  @Matches(PERSON_NAME_PATTERN, {
+    message: 'First name can contain Hebrew or English letters, spaces, apostrophes, and hyphens',
+  })
   firstName: string;
 
   @IsString()
-  @Matches(/^[A-Za-z]+$/)
+  @Matches(PERSON_NAME_PATTERN, {
+    message: 'Last name can contain Hebrew or English letters, spaces, apostrophes, and hyphens',
+  })
   lastName: string;
 }

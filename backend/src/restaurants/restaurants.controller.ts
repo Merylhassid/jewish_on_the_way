@@ -35,7 +35,6 @@ export class RestaurantsController {
 
   // GET /restaurants?destinationId=1&type=meat&kashrut=mehadrin&q=pizza&lat=48.8&lng=2.3
   // GET /restaurants?parentDestinationId=282&type=meat  ← כל מסעדות המדינה
-  @UseGuards(JwtAuthGuard)
   @Get()
   findAll(
     @Query('destinationId') destinationId?: string,
@@ -64,7 +63,6 @@ export class RestaurantsController {
 
   // GET /restaurants/search?destinationId=1&q=I+want+a+badatz+steak+place
   // req 4.3.1/4.3.2 — AI text classifier extracts type/kashrut from free-text
-  @UseGuards(JwtAuthGuard)
   @Get('search')
   async aiSearch(
     @Query('destinationId', ParseIntPipe) destinationId: number,
@@ -133,7 +131,6 @@ export class RestaurantsController {
   }
 
   // GET /restaurants/nearby?lat=X&lng=Y&limit=10&kashrut=mehadrin
-  @UseGuards(JwtAuthGuard)
   @Get('nearby')
   findNearby(
     @Query('lat') lat: string,
@@ -150,7 +147,6 @@ export class RestaurantsController {
   }
 
   // GET /restaurants/:id
-  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<Restaurant> {
     return this.restaurantsService.findOne(id);

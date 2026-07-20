@@ -1,0 +1,2202 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>Pending Right 920 Conflicts</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:20px;margin:0 0 8px}.note{font-size:13px;color:#546e7a;margin:0 0 14px}
+.sum{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}.sum span{background:#12344d;color:white;border-radius:5px;padding:7px 11px;font-size:13px}.sum b{font-size:16px}
+table{border-collapse:collapse;width:100%;font-size:12.2px;background:#fff}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0;z-index:2}
+tr:nth-child(even){background:#f7f9fa}
+.name{font-weight:bold}.addr{max-width:260px}.muted{font-size:11px;color:#607d8b}.bad{color:#b71c1c;font-weight:bold}.v{white-space:nowrap;font-variant-numeric:tabular-nums}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<h1>920 כנראה נכונים - חסימות לפני apply</h1>
+<p class="note">אלה השורות מתוך ה־920 שלא יכולות להיכנס ב־apply רגיל בגלל UNIQUE על google_place_id או כפילות פנימית. לא נכתבה שום שורה ל־DB.</p>
+<div class="sum">
+  <span>סה״כ חסומים: <b>197</b></span>
+  <span>כפילות בתוך ה־920: <b>39</b></span>
+  <span>כבר שייך למסעדה אחרת: <b>171</b></span>
+</div>
+<table>
+<thead><tr>
+<th>#</th><th>ID</th><th>סיבת חסימה</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th><th>מרחק</th><th>בעלים קיימים ב־DB</th><th>קישורים</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="v">1</td>
+<td class="v">451</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בורגרס בר</td>
+<td class="addr">הפלמ&quot;ח 20, אשדוד, Israel</td>
+<td class="name">Burgers bar</td>
+<td class="addr">Ha-Gdud ha-Ivri St 5, Ashdod, Israel</td>
+<td class="v">2.4 ק״מ</td>
+<td><b>#6522</b> Burgers Bar אשדוד<div class="muted">הגדוד העברי 5, גן העיר, אשדוד · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%A1%20%D7%91%D7%A8%20%D7%94%D7%A4%D7%9C%D7%9E%22%D7%97%2020%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13214267079375022024&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">2</td>
+<td class="v">465</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">טוסטאדס</td>
+<td class="addr">כנרת 5, אשדוד, Israel</td>
+<td class="name">sandwich bar</td>
+<td class="addr">מרכזון יא, כנרת 5, אשדוד, Israel</td>
+<td class="v">348 מ׳</td>
+<td><b>#1498</b> סנדביץ בר<div class="muted">כנרת 5, אשדוד, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%95%D7%A1%D7%98%D7%90%D7%93%D7%A1%20%D7%9B%D7%A0%D7%A8%D7%AA%205%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1683487271333224428&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">3</td>
+<td class="v">549</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קבלרו</td>
+<td class="addr">ירושלים, Israel</td>
+<td class="name">Caballero/ קאבלרו</td>
+<td class="addr">Ha-Marpe St 1, Jerusalem, Israel</td>
+<td class="v">2.7 ק״מ</td>
+<td><b>#4711</b> קאבלרו<div class="muted">המרפא 1, הר חוצבים, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%91%D7%9C%D7%A8%D7%95%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6669392091828903222&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">4</td>
+<td class="v">565</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אגדיר</td>
+<td class="addr">בני ברק, Israel</td>
+<td class="name">אגאדיר בורגר בסר בני ברק - כשר</td>
+<td class="addr">Metsada St 7, Bnei Brak, 5126201, Israel</td>
+<td class="v">954 מ׳</td>
+<td><b>#3064</b> אגאדיר<div class="muted">מצדה (כנרת) 7, בני ברק, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%92%D7%93%D7%99%D7%A8%20%D7%91%D7%A0%D7%99%20%D7%91%D7%A8%D7%A7%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11304368951891685075&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">5</td>
+<td class="v">567</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">רוזה אשדוד</td>
+<td class="addr">אשדוד, Israel</td>
+<td class="name">Roza Ashdod - רוזה אשדוד</td>
+<td class="addr">| Star center, Jabotinski St 45, Ashdod, 7721902, Israel</td>
+<td class="v">1.3 ק״מ</td>
+<td><b>#1196</b> רוזה אשדוד כשרות מהדרין מחפוד<div class="muted">ז&#39;בוטינסקי 45, סטאר סנטר, אשדוד, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%95%D7%96%D7%94%20%D7%90%D7%A9%D7%93%D7%95%D7%93%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10473141702648758471&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">6</td>
+<td class="v">577</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מסעדת אמא</td>
+<td class="addr">Ha-Rav Shmuel Barukh St 55, Jerusalem, Israel</td>
+<td class="name">מסעדת אמא</td>
+<td class="addr">Ha-Rav Shmuel Barukh St 55, Jerusalem, Israel</td>
+<td class="v">0 מ׳</td>
+<td><b>#6508</b> אמא - ירושלים<div class="muted">שמואל ברוך 55, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%90%D7%9E%D7%90%20Ha-Rav%20Shmuel%20Barukh%20St%2055%2C%20Jerusalem%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13201570053948672053&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">7</td>
+<td class="v">598</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מסעדת מוסקט</td>
+<td class="addr">ירושלים, Israel</td>
+<td class="name">Muscat</td>
+<td class="addr">Kanfei Nesharim St 24, Jerusalem, Israel</td>
+<td class="v">3.9 ק״מ</td>
+<td><b>#4881</b> מוסקט<div class="muted">כנפי נשרים 24, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%9E%D7%95%D7%A1%D7%A7%D7%98%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13259317901985283716&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">8</td>
+<td class="v">601</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אלונזו</td>
+<td class="addr">נתניה, Israel</td>
+<td class="name">אלונזו | Alonzo</td>
+<td class="addr">Kikar HaAtsmaut 13, Netanya, Israel</td>
+<td class="v">447 מ׳</td>
+<td><b>#6048</b> אלונזו פיצה<div class="muted">ככר העצמאות 13, נתניה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%9C%D7%95%D7%A0%D7%96%D7%95%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9362360832924404274&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">9</td>
+<td class="v">1193</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">אשדוד, Israel</td>
+<td class="name">Biga</td>
+<td class="addr">מתחם BIG FASHION אריאל שרון 1, Ashdod, Israel</td>
+<td class="v">2.6 ק״מ</td>
+<td><b>#6862</b> BIGA אשדוד<div class="muted">אריאל שרון 1, אשדוד · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=3175861701931579069&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">10</td>
+<td class="v">1224</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">השיפודיה של שופן</td>
+<td class="addr">נורדאו מקס 5, באר שבע, Israel</td>
+<td class="name">Shufan</td>
+<td class="addr">Max Nordau St 5, Be&#39;er Sheva, Israel</td>
+<td class="v">153 מ׳</td>
+<td><b>#6512</b> מסעדת שופן<div class="muted">נורדאו 5, באר שבע · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A9%D7%99%D7%A4%D7%95%D7%93%D7%99%D7%94%20%D7%A9%D7%9C%20%D7%A9%D7%95%D7%A4%D7%9F%20%D7%A0%D7%95%D7%A8%D7%93%D7%90%D7%95%20%D7%9E%D7%A7%D7%A1%205%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8375641857879397048&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">11</td>
+<td class="v">1232</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">באביס&#39;</td>
+<td class="addr">הבנאים 3, אשדוד, Israel</td>
+<td class="name">BABBI&#39;S</td>
+<td class="addr">HaBana&#39;im St 3, Ashdod, Israel</td>
+<td class="v">530 מ׳</td>
+<td><b>#6467</b> Babbi&#39;s<div class="muted">הבנאים 3, אשדוד · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%90%D7%91%D7%99%D7%A1&#39;%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%203%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13259125846053307802&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">12</td>
+<td class="v">1234</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה במרכז פריז</td>
+<td class="addr">בעלי המלאכה 203, נתיבות, Israel</td>
+<td class="name">Biga Bakery</td>
+<td class="addr">Ba&#39;alei ha-Melakha St 3, Netivot, Israel</td>
+<td class="v">343 מ׳</td>
+<td><b>#6841</b> BIGA נתיבות<div class="muted">בעלי המלאכה 3, נתיבות · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%91%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A4%D7%A8%D7%99%D7%96%20%D7%91%D7%A2%D7%9C%D7%99%20%D7%94%D7%9E%D7%9C%D7%90%D7%9B%D7%94%20203%2C%20%D7%A0%D7%AA%D7%99%D7%91%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9384316186254713183&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">13</td>
+<td class="v">1242</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ויצמן</td>
+<td class="addr">הבנאים 9, נמל אשדוד, Israel</td>
+<td class="name">מסעדת ויצמן אשדוד</td>
+<td class="addr">HaBana&#39;im St 9, Ashdod, Israel</td>
+<td class="v">1.5 ק״מ</td>
+<td><b>#568</b> מסעדת ויצמן אשדוד<div class="muted">HaBana&#39;im St 9, Ashdod, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%95%D7%99%D7%A6%D7%9E%D7%9F%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%209%2C%20%D7%A0%D7%9E%D7%9C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17577275907754434494&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">14</td>
+<td class="v">1308</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הסושיה</td>
+<td class="addr">שד&#39; יצחק רגר 2, קניון הנגב, Israel</td>
+<td class="name">אושי אושי באר שבע</td>
+<td class="addr">קניון הנגב, Yitzhack I. Rager Blvd 2, Be&#39;er Sheva, Israel</td>
+<td class="v">291 מ׳</td>
+<td><b>#1368</b> אושי אושי באר שבע<div class="muted">שד&#39; יצחק רגר 2, באר שבע, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A1%D7%95%D7%A9%D7%99%D7%94%20%D7%A9%D7%93&#39;%20%D7%99%D7%A6%D7%97%D7%A7%20%D7%A8%D7%92%D7%A8%202%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%94%D7%A0%D7%92%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1296839223057839230&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">15</td>
+<td class="v">1491</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">שד&#39; דוד טוביהו 125, באר שבע, Israel</td>
+<td class="name">Biga</td>
+<td class="addr">עופר גרנד קניון, David Tuviyahu Ave 125, Beersheba, Israel</td>
+<td class="v">839 מ׳</td>
+<td><b>#6513</b> BIGA גרנד באר שבע<div class="muted">שדרות דוד טוביהו 125, באר שבע · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%A9%D7%93&#39;%20%D7%93%D7%95%D7%93%20%D7%98%D7%95%D7%91%D7%99%D7%94%D7%95%20125%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11962477146287544577&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">16</td>
+<td class="v">1533</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בי בי בי</td>
+<td class="addr">דרך הדרום 3, קריית גת, Israel</td>
+<td class="name">BBB</td>
+<td class="addr">מרכז ביג, דרך הדרום 3, קרית גת, Israel</td>
+<td class="v">1.7 ק״מ</td>
+<td><b>#7003</b> BBB קריית גת<div class="muted">דרך הדרום 3, קרית גת · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%20%D7%91%D7%99%20%D7%91%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%93%D7%A8%D7%95%D7%9D%203%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%92%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17119862456077610295&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">17</td>
+<td class="v">1547</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בוטיק הפיצה</td>
+<td class="addr">המלך דוד 20, אשדוד, Israel</td>
+<td class="name">בוטיק הפיתה סניף רובע י&quot;ג</td>
+<td class="addr">David HaMelech St 20, Ashdod, Israel</td>
+<td class="v">71 מ׳</td>
+<td><b>#426</b> בוטיק הפיתה סניף רובע י&quot;ג<div class="muted">David HaMelech St 20, Ashdod, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%98%D7%99%D7%A7%20%D7%94%D7%A4%D7%99%D7%A6%D7%94%20%D7%94%D7%9E%D7%9C%D7%9A%20%D7%93%D7%95%D7%93%2020%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10113981586263337717&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">18</td>
+<td class="v">1566</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הולנד צ&#39;יפס</td>
+<td class="addr">רוגוזין 72, אשדוד, Israel</td>
+<td class="name">Holland Chips</td>
+<td class="addr">Rogozin St 74, Ashdod, Israel</td>
+<td class="v">922 מ׳</td>
+<td><b>#1751</b> HOLLAND CHIPS<div class="muted">רוגוזין 74, אשדוד, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%95%D7%9C%D7%A0%D7%93%20%D7%A6&#39;%D7%99%D7%A4%D7%A1%20%D7%A8%D7%95%D7%92%D7%95%D7%96%D7%99%D7%9F%2072%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17306704693888072040&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">19</td>
+<td class="v">1629</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">גאטוס על המים אשקלון</td>
+<td class="addr">בת גלים 1, אשקלון, Israel</td>
+<td class="name">גאטוס מסעדה איטלקית</td>
+<td class="addr">Bat Galim St, Ashkelon, Israel</td>
+<td class="v">87 מ׳</td>
+<td><b>#1587</b> גאטוס<div class="muted">בת גלים 1, אשקלון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%90%D7%98%D7%95%D7%A1%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%99%D7%9D%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%20%D7%91%D7%AA%20%D7%92%D7%9C%D7%99%D7%9D%201%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8823199711674544851&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">20</td>
+<td class="v">1672</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">באדה בום</td>
+<td class="addr">אשדוד, Israel</td>
+<td class="name">באדה בום -Bada Boom</td>
+<td class="addr">Ha-Gdud ha-Ivri St 5, Ashdod, 7770089, Israel</td>
+<td class="v">1.6 ק״מ</td>
+<td><b>#1217</b> באדה בום גן העיר<div class="muted">Ha-Gdud ha-Ivri St 5, Ashdod, 7770089, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%90%D7%93%D7%94%20%D7%91%D7%95%D7%9D%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8564465724449311763&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">21</td>
+<td class="v">1767</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בורגרס בר</td>
+<td class="addr">הסתת 20, ביג אילת, Israel</td>
+<td class="name">Burgers Bar</td>
+<td class="addr">Ha-Satat St 20, Eilat, Israel</td>
+<td class="v">1.8 ק״מ</td>
+<td><b>#6936</b> Burgers Bar ביג אילת<div class="muted">הסתת 20, מרכז ביג, אילת · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%A1%20%D7%91%D7%A8%20%D7%94%D7%A1%D7%AA%D7%AA%2020%2C%20%D7%91%D7%99%D7%92%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6865484490633891289&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">22</td>
+<td class="v">1786</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בית קפה מסעדה אופרה</td>
+<td class="addr">קנאים 27, קניון ערד, Israel</td>
+<td class="name">Opera Cafe</td>
+<td class="addr">Ha-Kana&#39;im St 27, Arad, Israel</td>
+<td class="v">1.3 ק״מ</td>
+<td><b>#1218</b> קפה אופרה<div class="muted">קנאים 27, קניון ערד, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%A7%D7%A4%D7%94%20%D7%9E%D7%A1%D7%A2%D7%93%D7%94%20%D7%90%D7%95%D7%A4%D7%A8%D7%94%20%D7%A7%D7%A0%D7%90%D7%99%D7%9D%2027%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A2%D7%A8%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7705399648670812798&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">23</td>
+<td class="v">1844</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פסקדו</td>
+<td class="addr">מרטין בובר 1, אשדוד, Israel</td>
+<td class="name">Pescado</td>
+<td class="addr">Martin Buber St 1/12, Ashdod, Israel</td>
+<td class="v">84 מ׳</td>
+<td><b>#6676</b> Pescado<div class="muted">מרטין בובר 1, אשדוד · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%A1%D7%A7%D7%93%D7%95%20%D7%9E%D7%A8%D7%98%D7%99%D7%9F%20%D7%91%D7%95%D7%91%D7%A8%201%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=15997619992655419827&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">24</td>
+<td class="v">1966</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קפה גרג</td>
+<td class="addr">דרך מנחם בגין 1, שדרות, Israel</td>
+<td class="name">Cafe Greg</td>
+<td class="addr">Menachem Begin Rd 1, Sderot, Israel</td>
+<td class="v">151.9 ק״מ</td>
+<td><b>#7246</b> Greg שדרות<div class="muted">שדרות מנחם בגין 1, שדרות · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%92%D7%A8%D7%92%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%A0%D7%97%D7%9D%20%D7%91%D7%92%D7%99%D7%9F%201%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11039224733829548557&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">25</td>
+<td class="v">1968</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">BP ביפי מפרץ חיפה</td>
+<td class="addr">שד&#39; ההסתדרות 157, חיפה, Israel</td>
+<td class="name">BP - ביסטרו כשר במפרץ חיפה</td>
+<td class="addr">HaHistadrut Ave 157, Haifa, 26299, Israel</td>
+<td class="v">1.1 ק״מ</td>
+<td><b>#6918</b> ביסטרו  BP - מפרץ חיפה<div class="muted">שדרות ההסתדרות 157, מפרץ חיפה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=BP%20%D7%91%D7%99%D7%A4%D7%99%20%D7%9E%D7%A4%D7%A8%D7%A5%20%D7%97%D7%99%D7%A4%D7%94%20%D7%A9%D7%93&#39;%20%D7%94%D7%94%D7%A1%D7%AA%D7%93%D7%A8%D7%95%D7%AA%20157%2C%20%D7%97%D7%99%D7%A4%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8506920905653682481&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">26</td>
+<td class="v">1969</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אבן הראשה</td>
+<td class="addr">שטורמן 1, בית שאן, Israel</td>
+<td class="name">יקב אבן הראשה - Keystone Winery</td>
+<td class="addr">שטורמן 1, בית שאן, Israel</td>
+<td class="v">633 מ׳</td>
+<td><b>#6934</b> יקב אבן הראשה<div class="muted">שטורמן 1, בית שאן · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%91%D7%9F%20%D7%94%D7%A8%D7%90%D7%A9%D7%94%20%D7%A9%D7%98%D7%95%D7%A8%D7%9E%D7%9F%201%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=686073493117498790&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">27</td>
+<td class="v">1970</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ארסטו</td>
+<td class="addr">קיסריה, Israel</td>
+<td class="name">Aresto</td>
+<td class="addr">נמל קיסריה, Keisarya, Israel</td>
+<td class="v">1.4 ק״מ</td>
+<td><b>#7162</b> Aresto<div class="muted">נמל קיסריה, קיסריה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A8%D7%A1%D7%98%D7%95%20%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8897859033491067951&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">28</td>
+<td class="v">1980</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">רותס</td>
+<td class="addr">ויצמן 1, עכו העתיקה, Israel</td>
+<td class="name">Roots רותס</td>
+<td class="addr">Weizman St 1, Acre, 2430122, Israel</td>
+<td class="v">107 מ׳</td>
+<td><b>#7236</b> Roots<div class="muted">וייצמן 1, עכו · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%95%D7%AA%D7%A1%20%D7%95%D7%99%D7%A6%D7%9E%D7%9F%201%2C%20%D7%A2%D7%9B%D7%95%20%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2158931044181118667&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">29</td>
+<td class="v">1997</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">דרך עכו 192, קניון הקריון, קריית ביאליק, Israel</td>
+<td class="name">Biga</td>
+<td class="addr">קריון, Derech Akko 192, Kiryat Bialik, Israel</td>
+<td class="v">2.2 ק״מ</td>
+<td><b>#7134</b> BIGA קריון<div class="muted">דרך עכו 192, קריית ביאליק · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%93%D7%A8%D7%9A%20%D7%A2%D7%9B%D7%95%20192%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%94%D7%A7%D7%A8%D7%99%D7%95%D7%9F%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%91%D7%99%D7%90%D7%9C%D7%99%D7%A7%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11242744265168356592&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">30</td>
+<td class="v">2008</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אסתריקה מסעדת בוטיק קריית שמונה</td>
+<td class="addr">הברזל, קריית שמונה, Israel</td>
+<td class="name">Esterika</td>
+<td class="addr">אזור תעשיה דרומי, לשם 37, Qiryat Shemona, Israel</td>
+<td class="v">430 מ׳</td>
+<td><b>#2271</b> אסתריקה<div class="muted">קריית שמונה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A1%D7%AA%D7%A8%D7%99%D7%A7%D7%94%20%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%91%D7%95%D7%98%D7%99%D7%A7%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%A9%D7%9E%D7%95%D7%A0%D7%94%20%D7%94%D7%91%D7%A8%D7%96%D7%9C%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%A9%D7%9E%D7%95%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16561531714781946748&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">31</td>
+<td class="v">2020</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מריפוסה</td>
+<td class="addr">קיסריה, Israel</td>
+<td class="name">Mariposa</td>
+<td class="addr">מגרש הגולף, Caesarea, Israel</td>
+<td class="v">488 מ׳</td>
+<td><b>#7203</b> Mariposa<div class="muted">מגרש הגולף קיסריה, קיסריה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A8%D7%99%D7%A4%D7%95%D7%A1%D7%94%20%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9513787693664514880&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">32</td>
+<td class="v">2021</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה כרמיאל כשר</td>
+<td class="addr">מעלה כמון 2, ביג כרמיאל, Israel</td>
+<td class="name">כשר Biga - ביג כרמיאל</td>
+<td class="addr">ביג כרמיאל Ma&#39;ale, Ma&#39;ale Kamon St 2, Karmiel, Israel</td>
+<td class="v">179 מ׳</td>
+<td><b>#6651</b> BIGA כרמיאל<div class="muted">מעלה כמון 2, כרמיאל · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%9B%D7%A8%D7%9E%D7%99%D7%90%D7%9C%20%D7%9B%D7%A9%D7%A8%20%D7%9E%D7%A2%D7%9C%D7%94%20%D7%9B%D7%9E%D7%95%D7%9F%202%2C%20%D7%91%D7%99%D7%92%20%D7%9B%D7%A8%D7%9E%D7%99%D7%90%D7%9C%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10066189895667063865&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">33</td>
+<td class="v">2032</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">שאלתי אלי</td>
+<td class="addr">יוחאי בן נון 6, חיפה, Israel</td>
+<td class="name">Shaltieli</td>
+<td class="addr">Yohai Ben Nun St 6, Haifa, Israel</td>
+<td class="v">88 מ׳</td>
+<td><b>#6740</b> שאלתיאלי<div class="muted">יוחאי בן נון 6, חיפה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%90%D7%9C%D7%AA%D7%99%20%D7%90%D7%9C%D7%99%20%D7%99%D7%95%D7%97%D7%90%D7%99%20%D7%91%D7%9F%20%D7%A0%D7%95%D7%9F%206%2C%20%D7%97%D7%99%D7%A4%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=822573730754767618&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">34</td>
+<td class="v">2198</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">יקב הזורעים</td>
+<td class="addr">הזורעים, Israel</td>
+<td class="name">הזורעים יקב בוטיק - כשרות מהדרין</td>
+<td class="addr">קיבוץ גלויות 82, Hazor&#39;im, 1520500, Israel</td>
+<td class="v">728 מ׳</td>
+<td><b>#6490</b> יקב הזורעים<div class="muted">קיבוץ גלויות 82, הזורעים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%A7%D7%91%20%D7%94%D7%96%D7%95%D7%A8%D7%A2%D7%99%D7%9D%20%D7%94%D7%96%D7%95%D7%A8%D7%A2%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1897007497248371808&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">35</td>
+<td class="v">2288</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קיסר מיט בר</td>
+<td class="addr">ראש פינה, Israel</td>
+<td class="name">מסעדת קיסר ראש פינה - Caesar Meat Bar - כשר למהדרין</td>
+<td class="addr">Galil road 1, Rosh Pinna, Israel</td>
+<td class="v">606 מ׳</td>
+<td><b>#6963</b> מסעדת קיסר<div class="muted">דרך הגליל 55, ראש פינה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%99%D7%A1%D7%A8%20%D7%9E%D7%99%D7%98%20%D7%91%D7%A8%20%D7%A8%D7%90%D7%A9%20%D7%A4%D7%99%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=15408299908068406783&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">36</td>
+<td class="v">2358</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הפיצרייה</td>
+<td class="addr">משה שרת 6, עפולה, Israel</td>
+<td class="name">הפיצריה The Pizza Place</td>
+<td class="addr">Moshe Sharet St 6, Afula, Israel</td>
+<td class="v">235 מ׳</td>
+<td><b>#2154</b> הפיצריה<div class="muted">משה שרת 6, עפולה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A4%D7%99%D7%A6%D7%A8%D7%99%D7%99%D7%94%20%D7%9E%D7%A9%D7%94%20%D7%A9%D7%A8%D7%AA%206%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=15894355060710560747&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">37</td>
+<td class="v">2679</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">יקבי קיסריה בע&quot;מ</td>
+<td class="addr">קיסריה, Israel</td>
+<td class="name">Caesarea Wineries</td>
+<td class="addr">Caesarea, Israel</td>
+<td class="v">1.2 ק״מ</td>
+<td><b>#1999</b> יקבי קיסריה אירועים<div class="muted">קיסריה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%A7%D7%91%D7%99%20%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94%20%D7%91%D7%A2%22%D7%9E%20%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16480339823765848541&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">38</td>
+<td class="v">3044</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">לוצ&#39;נה</td>
+<td class="addr">שד&#39; המלאכות 1, מודיעין והסביבה, Israel</td>
+<td class="name">לוצ׳נה</td>
+<td class="addr">HaMelahot Blvd 1, Modi&#39;in-Maccabim-Re&#39;ut, Israel</td>
+<td class="v">4.3 ק״מ</td>
+<td><b>#6573</b> Luciana מודיעין<div class="muted">המלאכות 1, מודיעין · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%95%D7%A6&#39;%D7%A0%D7%94%20%D7%A9%D7%93&#39;%20%D7%94%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%201%2C%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%20%D7%95%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1321009121070778436&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">39</td>
+<td class="v">3073</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אושי אושי עזריאלי</td>
+<td class="addr">גולדה מאיר 7, קניון חולון, Israel</td>
+<td class="name">Oshi Oshi</td>
+<td class="addr">סוקולוב 49 (רשמו בווייז שנקר 45, עמוס בשל עבודות הרכבת הקלה סניף נוסף בקניון חולון, Sokolow 7, Holon, 5826803, Israel</td>
+<td class="v">308 מ׳</td>
+<td><b>#3099</b> אושי אושי חולון<div class="muted">סוקולוב 49, חולון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%95%D7%A9%D7%99%20%D7%90%D7%95%D7%A9%D7%99%20%D7%A2%D7%96%D7%A8%D7%99%D7%90%D7%9C%D7%99%20%D7%92%D7%95%D7%9C%D7%93%D7%94%20%D7%9E%D7%90%D7%99%D7%A8%207%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%97%D7%95%D7%9C%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10557681336821189900&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">40</td>
+<td class="v">3110</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">נאו סושי בר</td>
+<td class="addr">כצנלסון 55, גבעתיים, Israel</td>
+<td class="name">Neo Sushi Bar</td>
+<td class="addr">Katzenelson St 55, Giv&#39;atayim, Israel</td>
+<td class="v">9 מ׳</td>
+<td><b>#4450</b> Neo after dark<div class="muted">כצנלסון 55, גבעתיים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%90%D7%95%20%D7%A1%D7%95%D7%A9%D7%99%20%D7%91%D7%A8%20%D7%9B%D7%A6%D7%A0%D7%9C%D7%A1%D7%95%D7%9F%2055%2C%20%D7%92%D7%91%D7%A2%D7%AA%D7%99%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9230468790816700354&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">41</td>
+<td class="v">3114</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">לה מיאל</td>
+<td class="addr">יד חרוצים 14, תל אביב, Israel</td>
+<td class="name">מסעדה צרפתית תל אביב - מסעדת לה מיאל | Le Miel TLV</td>
+<td class="addr">Yad Harutsim St 14, Tel Aviv-Yafo, 6770007, Israel</td>
+<td class="v">28 מ׳</td>
+<td><b>#6986</b> Le Miel<div class="muted">יד חרוצים 14, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%94%20%D7%9E%D7%99%D7%90%D7%9C%20%D7%99%D7%93%20%D7%97%D7%A8%D7%95%D7%A6%D7%99%D7%9D%2014%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8823294267234731865&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">42</td>
+<td class="v">3170</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פיצה מישלנו</td>
+<td class="addr">החמישה 1, פתח תקווה, Israel</td>
+<td class="name">פיצה משלנו</td>
+<td class="addr">Ein Ganim St 69, Petah Tikva, Israel</td>
+<td class="v">1.3 ק״מ</td>
+<td><b>#4535</b> פיצה משלנו<div class="muted">עין גנים 69, פתח תקווה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%9E%D7%99%D7%A9%D7%9C%D7%A0%D7%95%20%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%94%201%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=430058567171334522&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">43</td>
+<td class="v">3463</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ניהון נו-בה שגב יפני כשר</td>
+<td class="addr">פתח תקווה, Israel</td>
+<td class="name">Nihon no-ba</td>
+<td class="addr">Totseret ha-Arets St 3, Petah Tikva, Israel</td>
+<td class="v">2.5 ק״מ</td>
+<td><b>#7218</b> ניהון נו בה - שגב יפני כשר<div class="muted">תוצרת הארץ 3, פתח תקווה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%99%D7%94%D7%95%D7%9F%20%D7%A0%D7%95-%D7%91%D7%94%20%D7%A9%D7%92%D7%91%20%D7%99%D7%A4%D7%A0%D7%99%20%D7%9B%D7%A9%D7%A8%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13921247832026493480&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">44</td>
+<td class="v">3485</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Takumi street food</td>
+<td class="addr">הדקל 30, שוהם, Israel</td>
+<td class="name">Takumi</td>
+<td class="addr">Dekel St 30, Shoham, Israel</td>
+<td class="v">19 מ׳</td>
+<td><b>#7237</b> Takumi shoham<div class="muted">הדקל 30, שוהם · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Takumi%20street%20food%20%D7%94%D7%93%D7%A7%D7%9C%2030%2C%20%D7%A9%D7%95%D7%94%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2947350130450532530&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">45</td>
+<td class="v">3486</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קאסה דל-פפה תל אביב</td>
+<td class="addr">סנפיר 1, תל אביב, Israel</td>
+<td class="name">קאסה דל פפה</td>
+<td class="addr">Snapir St 1, Tel Aviv-Yafo, Israel</td>
+<td class="v">118 מ׳</td>
+<td><b>#4451</b> קאסה דל-פפה<div class="muted">סנפיר 1, תל אביב, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%90%D7%A1%D7%94%20%D7%93%D7%9C-%D7%A4%D7%A4%D7%94%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%20%D7%A1%D7%A0%D7%A4%D7%99%D7%A8%201%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13282183693807241335&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">46</td>
+<td class="v">3530</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">שניצליאנו גבעת שמואל</td>
+<td class="addr">אורנים 1, רמת אילן, גבעת שמואל, Israel</td>
+<td class="name">שניצלאנו</td>
+<td class="addr">Oranim St 1, Giv&#39;at Shmuel, Israel</td>
+<td class="v">52 מ׳</td>
+<td><b>#4331</b> שניצליין<div class="muted">אורנים 1, רמת אילן, גבעת שמואל, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%A0%D7%99%D7%A6%D7%9C%D7%99%D7%90%D7%A0%D7%95%20%D7%92%D7%91%D7%A2%D7%AA%20%D7%A9%D7%9E%D7%95%D7%90%D7%9C%20%D7%90%D7%95%D7%A8%D7%A0%D7%99%D7%9D%201%2C%20%D7%A8%D7%9E%D7%AA%20%D7%90%D7%99%D7%9C%D7%9F%2C%20%D7%92%D7%91%D7%A2%D7%AA%20%D7%A9%D7%9E%D7%95%D7%90%D7%9C%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5776063723173669802&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">47</td>
+<td class="v">3643</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">חיים שווארמה פלאפל</td>
+<td class="addr">רוטשילד 27, בת ים, Israel</td>
+<td class="name">פלאפל שרעבי</td>
+<td class="addr">Rothschild St 42, Bat Yam, Israel</td>
+<td class="v">52 מ׳</td>
+<td><b>#4260</b> פלאפל אריה<div class="muted">רוטשילד 29, בת ים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%99%D7%99%D7%9D%20%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93%2027%2C%20%D7%91%D7%AA%20%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12083539948972854855&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">48</td>
+<td class="v">3681</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">גרקו הכשרה</td>
+<td class="addr">אורי צבי גרינברג 25, צפון תל אביב, Israel</td>
+<td class="name">Greco | Kosher</td>
+<td class="addr">גרינברג 25, תל אביב-יפו, 6937931, Israel</td>
+<td class="v">68 מ׳</td>
+<td><b>#7189</b> גרקו | הכשרה<div class="muted">גרינברג 25, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%A8%D7%A7%D7%95%20%D7%94%D7%9B%D7%A9%D7%A8%D7%94%20%D7%90%D7%95%D7%A8%D7%99%20%D7%A6%D7%91%D7%99%20%D7%92%D7%A8%D7%99%D7%A0%D7%91%D7%A8%D7%92%2025%2C%20%D7%A6%D7%A4%D7%95%D7%9F%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5083026227832257739&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">49</td>
+<td class="v">3707</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מסעדת בר כוכבא</td>
+<td class="addr">בר כוכבא 27, פתח תקווה, Israel</td>
+<td class="name">Bar Kochva - South American Sandwich</td>
+<td class="addr">Bar Kochva St 27, Petah Tikva, Israel</td>
+<td class="v">9 מ׳</td>
+<td><b>#3427</b> ענק הסביח והסמבוסק<div class="muted">בר כוכבא 27, פתח תקווה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%91%D7%A8%20%D7%9B%D7%95%D7%9B%D7%91%D7%90%20%D7%91%D7%A8%20%D7%9B%D7%95%D7%9B%D7%91%D7%90%2027%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8659060397646485352&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">50</td>
+<td class="v">3756</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">חומוס אליהו</td>
+<td class="addr">המפעל 13, אור יהודה, Israel</td>
+<td class="name">חומוס אליהו אור יהודה</td>
+<td class="addr">Ha-Mif&#39;al St 13, Or Yehuda, Israel</td>
+<td class="v">78 מ׳</td>
+<td><b>#3263</b> חומוס אליהו אור יהודה<div class="muted">המפעל 13, אור יהודה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%90%D7%9C%D7%99%D7%94%D7%95%20%D7%94%D7%9E%D7%A4%D7%A2%D7%9C%2013%2C%20%D7%90%D7%95%D7%A8%20%D7%99%D7%94%D7%95%D7%93%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2692065819704127624&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">51</td>
+<td class="v">3810</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הנכד בורקס</td>
+<td class="addr">רמלה, Israel</td>
+<td class="name">בורקס תורכי- רמלה</td>
+<td class="addr">Jabotinski St 3, Ramla, Israel</td>
+<td class="v">1.2 ק״מ</td>
+<td><b>#3680</b> בורקס תורכי אורגינלי<div class="muted">ז&#39;בוטינסקי 3, רמלה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A0%D7%9B%D7%93%20%D7%91%D7%95%D7%A8%D7%A7%D7%A1%20%D7%A8%D7%9E%D7%9C%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10531657870002393104&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">52</td>
+<td class="v">3815</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">שווארמה מילי</td>
+<td class="addr">ארלוזורוב 2, פתח תקווה, Israel</td>
+<td class="name">פיצה מילי פתח תקווה</td>
+<td class="addr">Haim Arlozorov St 2, Petah Tikva, Israel</td>
+<td class="v">17 מ׳</td>
+<td><b>#4004</b> פיצה מילי<div class="muted">ארלוזורוב 2, פתח תקווה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%9E%D7%99%D7%9C%D7%99%20%D7%90%D7%A8%D7%9C%D7%95%D7%96%D7%95%D7%A8%D7%95%D7%91%202%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16133176568747253019&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">53</td>
+<td class="v">3831</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פטו</td>
+<td class="addr">השדרה המרכזית 15, מודיעין והסביבה, Israel</td>
+<td class="name">Geppetto Bar</td>
+<td class="addr">ליגד סנטר 1, HaShdera HaMerkazit 15, Modi&#39;in Makabim-Re&#39;ut, Israel</td>
+<td class="v">4.0 ק״מ</td>
+<td><b>#6721</b> גפטו בר<div class="muted">השדרה המרכזית 15, מודיעין · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%98%D7%95%20%D7%94%D7%A9%D7%93%D7%A8%D7%94%20%D7%94%D7%9E%D7%A8%D7%9B%D7%96%D7%99%D7%AA%2015%2C%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%20%D7%95%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4633537582628636309&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">54</td>
+<td class="v">3869</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ממפיס Memphis תל אביב</td>
+<td class="addr">קרליבך 20, תל אביב, Israel</td>
+<td class="name">Memphis ממפיס תל אביב | המבורגר פרימיום כשר בד&quot;צ בית יוסף</td>
+<td class="addr">Carlebach St 20, Tel Aviv-Yafo, 6473005, Israel</td>
+<td class="v">11 מ׳</td>
+<td><b>#3460</b> ממפיס<div class="muted">קרליבך 20, תל אביב, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%9E%D7%A4%D7%99%D7%A1%20Memphis%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%20%D7%A7%D7%A8%D7%9C%D7%99%D7%91%D7%9A%2020%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=167013855185863458&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">55</td>
+<td class="v">3944</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">לה קרנה</td>
+<td class="addr">תוצרת הארץ, פתח תקווה, Israel</td>
+<td class="name">LaCarne</td>
+<td class="addr">Totseret ha-Arets St 1, Petah Tikva, Israel</td>
+<td class="v">51 מ׳</td>
+<td><b>#7023</b> La Carne<div class="muted">תוצרת הארץ 1, פתח תקווה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%94%20%D7%A7%D7%A8%D7%A0%D7%94%20%D7%AA%D7%95%D7%A6%D7%A8%D7%AA%20%D7%94%D7%90%D7%A8%D7%A5%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17361148657754740502&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">56</td>
+<td class="v">4060</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;ק ביי בלאק ראשונים</td>
+<td class="addr">שד&#39; נים 2, קניון עזריאלי ראשונים, ראשון לציון, Israel</td>
+<td class="name">ג׳ק ביי בלאק</td>
+<td class="addr">Sderot Nim 2, Rishon LeZion, Israel</td>
+<td class="v">1.7 ק״מ</td>
+<td><b>#3432</b> ג&#39;ק ביי בלאק<div class="muted">שד&#39; נים 2, קניון עזריאלי ראשונים, ראשון לציון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A7%20%D7%91%D7%99%D7%99%20%D7%91%D7%9C%D7%90%D7%A7%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%9D%20%D7%A9%D7%93&#39;%20%D7%A0%D7%99%D7%9D%202%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A2%D7%96%D7%A8%D7%99%D7%90%D7%9C%D7%99%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%9D%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5295967646120255404&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">57</td>
+<td class="v">4119</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ברילוצ&#39;ה טוסט נקניק</td>
+<td class="addr">הרא&quot;ה 186, רמת גן, Israel</td>
+<td class="name">Bariloche- מסעדה דרום אמריקאית</td>
+<td class="addr">Haroe St 186, Ramat Gan, Israel</td>
+<td class="v">9 מ׳</td>
+<td><b>#7085</b> Bariloche רמת גן<div class="muted">הרואה 186, רמת גן · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A8%D7%99%D7%9C%D7%95%D7%A6&#39;%D7%94%20%D7%98%D7%95%D7%A1%D7%98%20%D7%A0%D7%A7%D7%A0%D7%99%D7%A7%20%D7%94%D7%A8%D7%90%22%D7%94%20186%2C%20%D7%A8%D7%9E%D7%AA%20%D7%92%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13899642318418224534&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">58</td>
+<td class="v">4130</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ארמון ירושלים</td>
+<td class="addr">דוד רזיאל 18, רמלה, Israel</td>
+<td class="name">מסעדת ארמון ירושלים</td>
+<td class="addr">Sderot David Razi&#39;el 18, Ramla, 72000, Israel</td>
+<td class="v">333 מ׳</td>
+<td><b>#3582</b> ירושלים<div class="muted">דוד רזיאל 18, רמלה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A8%D7%9E%D7%95%D7%9F%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%93%D7%95%D7%93%20%D7%A8%D7%96%D7%99%D7%90%D7%9C%2018%2C%20%D7%A8%D7%9E%D7%9C%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7465276427999115351&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">59</td>
+<td class="v">4343</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בוסי</td>
+<td class="addr">אצ&quot;ל 41, תל אביב, Israel</td>
+<td class="name">בוסי בתקווה</td>
+<td class="addr">Etsel St 41, Tel Aviv-Yafo, Israel</td>
+<td class="v">4 מ׳</td>
+<td><b>#7179</b> בוסי בתקווה<div class="muted">האצ&quot;ל 41, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A1%D7%99%20%D7%90%D7%A6%22%D7%9C%2041%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=14305608572976975689&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">60</td>
+<td class="v">4393</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פינת הצלע</td>
+<td class="addr">השיקמה 2, אזור, Israel</td>
+<td class="name">פינת הצלע</td>
+<td class="addr">השקמה 2, Azor, 00000, Israel</td>
+<td class="v">28.9 ק״מ</td>
+<td><b>#3568</b> פינת הצלע אזור<div class="muted">השיקמה 2, אזור, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A0%D7%AA%20%D7%94%D7%A6%D7%9C%D7%A2%20%D7%94%D7%A9%D7%99%D7%A7%D7%9E%D7%94%202%2C%20%D7%90%D7%96%D7%95%D7%A8%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11922144208421414910&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">61</td>
+<td class="v">4502</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">לב העיר 2, קניון מודיעין, Israel</td>
+<td class="name">Biga Modi&#39;in</td>
+<td class="addr">Lev ha-Ir St 2, Modi&#39;in-Maccabim-Re&#39;ut, Israel</td>
+<td class="v">85 מ׳</td>
+<td><b>#7136</b> BIGA מודיעין<div class="muted">לב העיר 2, עזריאלי מודיעין · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%9C%D7%91%20%D7%94%D7%A2%D7%99%D7%A8%202%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11153062435882694792&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">62</td>
+<td class="v">4508</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">ז&#39;בוטינסקי 72, הקניון הגדול, פתח תקווה, Israel</td>
+<td class="name">BIGA</td>
+<td class="addr">Jabotinsky St 72, Petah Tikva, Israel</td>
+<td class="v">11.3 ק״מ</td>
+<td><b>#7212</b> BIGA פתח תקווה<div class="muted">72 זאב ז&#39;ובטינסקי, פתח תקווה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%96&#39;%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99%2072%2C%20%D7%94%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%94%D7%92%D7%93%D7%95%D7%9C%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11419368019292291180&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">63</td>
+<td class="v">4580</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הכריש</td>
+<td class="addr">אח&quot;י דקר 6, טיילת ראשון לציון, Israel</td>
+<td class="name">Hakarish Pizza</td>
+<td class="addr">Ahi Dakar St 6, Rishon LeZion, Israel</td>
+<td class="v">25 מ׳</td>
+<td><b>#6952</b> הכריש פיצה בר<div class="muted">אח&quot;י דקר 6, ראשון לציון · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9B%D7%A8%D7%99%D7%A9%20%D7%90%D7%97%22%D7%99%20%D7%93%D7%A7%D7%A8%206%2C%20%D7%98%D7%99%D7%99%D7%9C%D7%AA%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7496054792849151976&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">64</td>
+<td class="v">4631</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">דריה</td>
+<td class="addr">תל אביב, Israel</td>
+<td class="name">Darya - דריה</td>
+<td class="addr">HaYarkon St 205, Tel Aviv-Yafo, 6340534, Israel</td>
+<td class="v">1.1 ק״מ</td>
+<td><b>#7056</b> דריה - Darya<div class="muted">הירקון 205, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%93%D7%A8%D7%99%D7%94%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4635974977390595391&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">65</td>
+<td class="v">4674</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">דונר גריל אקספרס</td>
+<td class="addr">אברהם גירון 15, יהוד, Israel</td>
+<td class="name">דונר/שווארמה טורקית ועל האש</td>
+<td class="addr">Avraham Giron St 15, Yehud-Monosson, Israel</td>
+<td class="v">74 מ׳</td>
+<td><b>#3559</b> דונר<div class="muted">אברהם גירון 20, יהוד, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%93%D7%95%D7%A0%D7%A8%20%D7%92%D7%A8%D7%99%D7%9C%20%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1%20%D7%90%D7%91%D7%A8%D7%94%D7%9D%20%D7%92%D7%99%D7%A8%D7%95%D7%9F%2015%2C%20%D7%99%D7%94%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1858446030741405540&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">66</td>
+<td class="v">4716</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">רוזה מודיעין כשרות מהדרין מחפוד</td>
+<td class="addr">שד&#39; המלאכות 222, ישפרו סנטר מודיעין, Israel</td>
+<td class="name">ROZA</td>
+<td class="addr">ישפרו סנטר, שד&#39; המלאכות 1, Modi&#39;in Makabim-Re&#39;ut, Israel</td>
+<td class="v">4.6 ק״מ</td>
+<td><b>#6574</b> רוזה מודיעין<div class="muted">ישפרו סנטר, שד&#39; המלאכות 1, מודיעין · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%95%D7%96%D7%94%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%20%D7%9B%D7%A9%D7%A8%D7%95%D7%AA%20%D7%9E%D7%94%D7%93%D7%A8%D7%99%D7%9F%20%D7%9E%D7%97%D7%A4%D7%95%D7%93%20%D7%A9%D7%93&#39;%20%D7%94%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%20222%2C%20%D7%99%D7%A9%D7%A4%D7%A8%D7%95%20%D7%A1%D7%A0%D7%98%D7%A8%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2984329953532350164&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">67</td>
+<td class="v">4730</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">סושי אנד בייגלס</td>
+<td class="addr">ירמיהו 68, ירושלים, Israel</td>
+<td class="name">SushiNBagels</td>
+<td class="addr">Yirmiyahu St 68, Jerusalem, Israel</td>
+<td class="v">19 מ׳</td>
+<td><b>#6543</b> Sushi N Bagels<div class="muted">ירמיהו 68, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%95%D7%A9%D7%99%20%D7%90%D7%A0%D7%93%20%D7%91%D7%99%D7%99%D7%92%D7%9C%D7%A1%20%D7%99%D7%A8%D7%9E%D7%99%D7%94%D7%95%2068%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1256207389964837578&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">68</td>
+<td class="v">4738</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;וי גריל האוס</td>
+<td class="addr">ממילא 13, שדרות אלרוב ממילא, ירושלים, Israel</td>
+<td class="name">Joy Restaurant</td>
+<td class="addr">Mamilla Rd 13, Jerusalem, Israel</td>
+<td class="v">58 מ׳</td>
+<td><b>#6567</b> Joy Grill House<div class="muted">שדרות ממילא 13, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%95%D7%99%20%D7%92%D7%A8%D7%99%D7%9C%20%D7%94%D7%90%D7%95%D7%A1%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2013%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%90%D7%9C%D7%A8%D7%95%D7%91%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=14784957759792281772&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">69</td>
+<td class="v">4752</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">חומוס הרובע</td>
+<td class="addr">משגב לדך 42, הרובע היהודי, ירושלים, Israel</td>
+<td class="name">חצר ברובע</td>
+<td class="addr">Misgav Ladakh St 36, Jerusalem</td>
+<td class="v">25 מ׳</td>
+<td><b>#4794</b> חצר ברובע<div class="muted">תפארת ישראל 2, הרובע היהודי, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%94%D7%A8%D7%95%D7%91%D7%A2%20%D7%9E%D7%A9%D7%92%D7%91%20%D7%9C%D7%93%D7%9A%2042%2C%20%D7%94%D7%A8%D7%95%D7%91%D7%A2%20%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7320025375688238738&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">70</td>
+<td class="v">4762</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">אגודת ספורט בית&quot;ר 1, קניון ירושלים, Israel</td>
+<td class="name">Biga</td>
+<td class="addr">Derech Agudat Sport Beitar 1, Jerusalem, Israel</td>
+<td class="v">53.3 ק״מ</td>
+<td><b>#6731</b> BIGA ירושלים<div class="muted">אגודת ספורט בית&quot;ר 1, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%90%D7%92%D7%95%D7%93%D7%AA%20%D7%A1%D7%A4%D7%95%D7%A8%D7%98%20%D7%91%D7%99%D7%AA%22%D7%A8%201%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11824158258666695779&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">71</td>
+<td class="v">4768</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">station 9</td>
+<td class="addr">דוד רמז 2, המושבה הגרמנית, ירושלים, Israel</td>
+<td class="name">Station 9</td>
+<td class="addr">מתחם התחנה הראשונה, דוד רמז 4, ירושלים, Israel</td>
+<td class="v">101 מ׳</td>
+<td><b>#6546</b> Station 9 | סטיישן 9<div class="muted">דוד רמז 4, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=station%209%20%D7%93%D7%95%D7%93%20%D7%A8%D7%9E%D7%96%202%2C%20%D7%94%D7%9E%D7%95%D7%A9%D7%91%D7%94%20%D7%94%D7%92%D7%A8%D7%9E%D7%A0%D7%99%D7%AA%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=3725917100213003234&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">72</td>
+<td class="v">4813</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קרייב</td>
+<td class="addr">השקמה 1, מחנה יהודה, ירושלים, Israel</td>
+<td class="name">Crave Gourmet Street Food</td>
+<td class="addr">Ha-Shikma St 1, Jerusalem, 9432301, Israel</td>
+<td class="v">16 מ׳</td>
+<td><b>#6632</b> CRAVE<div class="muted">השיקמה 1, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A8%D7%99%D7%99%D7%91%20%D7%94%D7%A9%D7%A7%D7%9E%D7%94%201%2C%20%D7%9E%D7%97%D7%A0%D7%94%20%D7%99%D7%94%D7%95%D7%93%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=14688418151241344231&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">73</td>
+<td class="v">4855</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">נאדי קפה</td>
+<td class="addr">הלל 44, ירושלים, Israel</td>
+<td class="name">Coffee Nadi</td>
+<td class="addr">מעונות הסטודנטים, הלל 39, ירושלים, Israel</td>
+<td class="v">255 מ׳</td>
+<td><b>#6875</b> נאדי<div class="muted">הלל 39, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%90%D7%93%D7%99%20%D7%A7%D7%A4%D7%94%20%D7%94%D7%9C%D7%9C%2044%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8225620282708986671&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">74</td>
+<td class="v">4880</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בורגר מרקט</td>
+<td class="addr">הערמונים 3, מחנה יהודה, ירושלים, Israel</td>
+<td class="name">Burger Market</td>
+<td class="addr">Agripas St 68, Jerusalem, 9430138, Israel</td>
+<td class="v">32 מ׳</td>
+<td><b>#6859</b> Burger Market מחנה יהודה<div class="muted">אגריפס 68, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%20%D7%9E%D7%A8%D7%A7%D7%98%20%D7%94%D7%A2%D7%A8%D7%9E%D7%95%D7%A0%D7%99%D7%9D%203%2C%20%D7%9E%D7%97%D7%A0%D7%94%20%D7%99%D7%94%D7%95%D7%93%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1731547537046035265&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">75</td>
+<td class="v">4897</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פיצה פלוס מאפה</td>
+<td class="addr">הארזים 13, ירושלים, Israel</td>
+<td class="name">הארזים Pizza Bakery</td>
+<td class="addr">HaArazim St 13, Jerusalem, Israel</td>
+<td class="v">35 מ׳</td>
+<td><b>#4778</b> הארזים פיצה בייקרי ירושלים<div class="muted">הארזים 13, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%A4%D7%9C%D7%95%D7%A1%20%D7%9E%D7%90%D7%A4%D7%94%20%D7%94%D7%90%D7%A8%D7%96%D7%99%D7%9D%2013%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=3751684028276336926&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">76</td>
+<td class="v">4909</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פטו- טאבון איטלקי</td>
+<td class="addr">דפנה 1, צור הדסה, Israel</td>
+<td class="name">Jeppeto Pizza Bar</td>
+<td class="addr">Dafna St 1, Tzur Hadassah, Israel</td>
+<td class="v">172 מ׳</td>
+<td><b>#6943</b> Geppeto טאבון איטלקי<div class="muted">דפנה 1, צור הדסה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%98%D7%95-%20%D7%98%D7%90%D7%91%D7%95%D7%9F%20%D7%90%D7%99%D7%98%D7%9C%D7%A7%D7%99%20%D7%93%D7%A4%D7%A0%D7%94%201%2C%20%D7%A6%D7%95%D7%A8%20%D7%94%D7%93%D7%A1%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6736695935556229444&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">77</td>
+<td class="v">4910</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אנדלוסיה קוקטייל בר</td>
+<td class="addr">מעבר בית הכנסת 12, כיכר המוזיקה, ירושלים, Israel</td>
+<td class="name">Andalucia Cocktail Bar</td>
+<td class="addr">Ze&#39;ev Raban St 2, Jerusalem, Israel</td>
+<td class="v">73 מ׳</td>
+<td><b>#6811</b> אנדלוסיה<div class="muted">זאב רבן 1, זאב רבן 2, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A0%D7%93%D7%9C%D7%95%D7%A1%D7%99%D7%94%20%D7%A7%D7%95%D7%A7%D7%98%D7%99%D7%99%D7%9C%20%D7%91%D7%A8%20%D7%9E%D7%A2%D7%91%D7%A8%20%D7%91%D7%99%D7%AA%20%D7%94%D7%9B%D7%A0%D7%A1%D7%AA%2012%2C%20%D7%9B%D7%99%D7%9B%D7%A8%20%D7%94%D7%9E%D7%95%D7%96%D7%99%D7%A7%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=14159261503662648325&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">78</td>
+<td class="v">4940</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קפה גרג</td>
+<td class="addr">שד&#39; יצחק רבין 10, סינמה סיטי ירושלים, Israel</td>
+<td class="name">קפה גרג - סינמה סיטי ירושלים</td>
+<td class="addr">Sderot Yitshak Rabin 10, Jerusalem, Israel</td>
+<td class="v">57.1 ק״מ</td>
+<td><b>#6770</b> Greg סינמה סיטי ירושלים<div class="muted">שדרות יצחק רבין 10, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%92%D7%A8%D7%92%20%D7%A9%D7%93&#39;%20%D7%99%D7%A6%D7%97%D7%A7%20%D7%A8%D7%91%D7%99%D7%9F%2010%2C%20%D7%A1%D7%99%D7%A0%D7%9E%D7%94%20%D7%A1%D7%99%D7%98%D7%99%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17059270893384037630&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">79</td>
+<td class="v">4963</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פניקה</td>
+<td class="addr">שד&#39; יצחק רבין 10, סינמה סיטי ירושלים, Israel</td>
+<td class="name">Japanika Cinema City Jerusalem</td>
+<td class="addr">Sderot Yitshak Rabin 10, Jerusalem, Israel</td>
+<td class="v">56.4 ק״מ</td>
+<td><b>#6793</b> ג&#39;פניקה סינמא סיטי ירושלים<div class="muted">שדרות יצחק רבין 10, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%A0%D7%99%D7%A7%D7%94%20%D7%A9%D7%93&#39;%20%D7%99%D7%A6%D7%97%D7%A7%20%D7%A8%D7%91%D7%99%D7%9F%2010%2C%20%D7%A1%D7%99%D7%A0%D7%9E%D7%94%20%D7%A1%D7%99%D7%98%D7%99%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2573898492078252428&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">80</td>
+<td class="v">4981</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">לה מוצרלה LAMOZZARELLA ירושלים</td>
+<td class="addr">צביה ויצחק 8, ירושלים, Israel</td>
+<td class="name">פיצה לה מוצרלה la mozzarella</td>
+<td class="addr">Tsviya Ve-Yitshak St 8, Jerusalem</td>
+<td class="v">147 מ׳</td>
+<td><b>#4901</b> לה מוצרלה LAMOZZARELLA<div class="muted">צביה ויצחק 8, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%94%20%D7%9E%D7%95%D7%A6%D7%A8%D7%9C%D7%94%20LAMOZZARELLA%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%A6%D7%91%D7%99%D7%94%20%D7%95%D7%99%D7%A6%D7%97%D7%A7%208%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10101194987416688735&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">81</td>
+<td class="v">5003</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">רימון</td>
+<td class="addr">שד&#39; יגאל אלון 3, ביג פאשן בית שמש, Israel</td>
+<td class="name">Rimon</td>
+<td class="addr">Yig&#39;al Alon Ave 3, Beit Shemesh, Israel</td>
+<td class="v">43.4 ק״מ</td>
+<td><b>#6631</b> קפה רימון  - בית שמש<div class="muted">יגאל אלון 3 קניון ביג פאשן, בית שמש · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%99%D7%9E%D7%95%D7%9F%20%D7%A9%D7%93&#39;%20%D7%99%D7%92%D7%90%D7%9C%20%D7%90%D7%9C%D7%95%D7%9F%203%2C%20%D7%91%D7%99%D7%92%20%D7%A4%D7%90%D7%A9%D7%9F%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1955506220917568927&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">82</td>
+<td class="v">5021</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">1868</td>
+<td class="addr">המלך דוד 10, ירושלים, Israel</td>
+<td class="name">1868</td>
+<td class="addr">King David St 10, Jerusalem, Israel</td>
+<td class="v">26 מ׳</td>
+<td><b>#6502</b> 1868 &amp; זוטא<div class="muted">דוד המלך 10, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=1868%20%D7%94%D7%9E%D7%9C%D7%9A%20%D7%93%D7%95%D7%93%2010%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16938842514764441486&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">83</td>
+<td class="v">5040</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בורגרס בר</td>
+<td class="addr">אגודת ספורט בית&quot;ר 1, קניון ירושלים, Israel</td>
+<td class="name">Burgers Bar</td>
+<td class="addr">קניון, Derech Agudat Sport Beitar 1, Jerusalem, 9695989, Israel</td>
+<td class="v">51.8 ק״מ</td>
+<td><b>#6752</b> Burgers Bar מלחה<div class="muted">דרך אגודת ספורט בית&quot;ר 1, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%A1%20%D7%91%D7%A8%20%D7%90%D7%92%D7%95%D7%93%D7%AA%20%D7%A1%D7%A4%D7%95%D7%A8%D7%98%20%D7%91%D7%99%D7%AA%22%D7%A8%201%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11793712778853117563&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">84</td>
+<td class="v">5048</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Zalmans chef hotdogs</td>
+<td class="addr">לונץ משה 3, ירושלים, Israel</td>
+<td class="name">Zalman&#39;s זלמנ&#39;ס- מדרחוב</td>
+<td class="addr">Lunz St 3, Jerusalem, Israel</td>
+<td class="v">15 מ׳</td>
+<td><b>#6579</b> Zalmans- מדרחוב<div class="muted">לונץ 3, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Zalmans%20chef%20hotdogs%20%D7%9C%D7%95%D7%A0%D7%A5%20%D7%9E%D7%A9%D7%94%203%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=816228376769990600&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">85</td>
+<td class="v">5090</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Denver-דנוור</td>
+<td class="addr">דרך חברון 101, ירושלים, Israel</td>
+<td class="name">Denver Steak House</td>
+<td class="addr">Hebron Rd 101, Jerusalem, 9348001, Israel</td>
+<td class="v">9 מ׳</td>
+<td><b>#6614</b> דנוור סטייק האוס<div class="muted">דרך חברון 101, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Denver-%D7%93%D7%A0%D7%95%D7%95%D7%A8%20%D7%93%D7%A8%D7%9A%20%D7%97%D7%91%D7%A8%D7%95%D7%9F%20101%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16902594261560207924&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">86</td>
+<td class="v">5120</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בלאק איירון</td>
+<td class="addr">אגריפס 80, מחנה יהודה, ירושלים, Israel</td>
+<td class="name">Black Iron</td>
+<td class="addr">Agripas St 80, Jerusalem, 9451304, Israel</td>
+<td class="v">203 מ׳</td>
+<td><b>#6704</b> Black Iron<div class="muted">אגריפס 80, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%9C%D7%90%D7%A7%20%D7%90%D7%99%D7%99%D7%A8%D7%95%D7%9F%20%D7%90%D7%92%D7%A8%D7%99%D7%A4%D7%A1%2080%2C%20%D7%9E%D7%97%D7%A0%D7%94%20%D7%99%D7%94%D7%95%D7%93%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5665525873404835857&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">87</td>
+<td class="v">5223</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">the wine temple</td>
+<td class="addr">עמק רפאים 8, ירושלים, Israel</td>
+<td class="name">Wine Bar</td>
+<td class="addr">Azza St 28, Jerusalem, Israel</td>
+<td class="v">1.0 ק״מ</td>
+<td><b>#4845</b> בר יין<div class="muted">עזה 82, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=the%20wine%20temple%20%D7%A2%D7%9E%D7%A7%20%D7%A8%D7%A4%D7%90%D7%99%D7%9D%208%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=3376034651689211990&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">88</td>
+<td class="v">5227</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פיורי</td>
+<td class="addr">דוד רמז 4, המושבה הגרמנית, ירושלים, Israel</td>
+<td class="name">Pizza Fiori</td>
+<td class="addr">David Remez St 4, Jerusalem, Israel</td>
+<td class="v">43 מ׳</td>
+<td><b>#6640</b> FIORI ירושלים<div class="muted">דוד רמז 4, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%95%D7%A8%D7%99%20%D7%93%D7%95%D7%93%20%D7%A8%D7%9E%D7%96%204%2C%20%D7%94%D7%9E%D7%95%D7%A9%D7%91%D7%94%20%D7%94%D7%92%D7%A8%D7%9E%D7%A0%D7%99%D7%AA%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10270096727077998315&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">89</td>
+<td class="v">5238</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פיצה אופיר בסט</td>
+<td class="addr">אצ&quot;ג 3, ירושלים, Israel</td>
+<td class="name">פיצה פלאפל אופיר בסט</td>
+<td class="addr">Ha Meshorer Azag St 3, Jerusalem</td>
+<td class="v">530 מ׳</td>
+<td><b>#6939</b> אופיר בסט - רמות<div class="muted">המשורר אצ&quot;ג 2, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%90%D7%95%D7%A4%D7%99%D7%A8%20%D7%91%D7%A1%D7%98%20%D7%90%D7%A6%22%D7%92%203%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=715021982458096479&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">90</td>
+<td class="v">5376</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">עלאש</td>
+<td class="addr">שד&#39; הרכס 13, מודיעין והסביבה, Israel</td>
+<td class="name">Ala&#39;esh</td>
+<td class="addr">HaReches Blvd 13, Modi&#39;in-Maccabim-Re&#39;ut, 7178628, Israel</td>
+<td class="v">2.2 ק״מ</td>
+<td><b>#6666</b> עלאש גריל<div class="muted">שדרות הרכס 13, מודיעין · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A2%D7%9C%D7%90%D7%A9%20%D7%A9%D7%93&#39;%20%D7%94%D7%A8%D7%9B%D7%A1%2013%2C%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%20%D7%95%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=773886596017027824&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">91</td>
+<td class="v">5447</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הפינה</td>
+<td class="addr">ויצמן 6, רחובות, Israel</td>
+<td class="name">הפינה</td>
+<td class="addr">Haim Weizman St 6, Rehovot, 7628102, Israel</td>
+<td class="v">8 מ׳</td>
+<td><b>#7092</b> קפה הפינה<div class="muted">חיים ויצמן 6, רחובות · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A4%D7%99%D7%A0%D7%94%20%D7%95%D7%99%D7%A6%D7%9E%D7%9F%206%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17054046060114777180&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">92</td>
+<td class="v">5504</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">HBB המבורגר גדרה</td>
+<td class="addr">הרצל 3, גדרה, Israel</td>
+<td class="name">חביבי המבורגר גדרה - HBB Burger</td>
+<td class="addr">Herzl St 3, Gedera, 7040002, Israel</td>
+<td class="v">1.0 ק״מ</td>
+<td><b>#6684</b> HBB גדרה<div class="muted">הרצל 3, גדרה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=HBB%20%D7%94%D7%9E%D7%91%D7%95%D7%A8%D7%92%D7%A8%20%D7%92%D7%93%D7%A8%D7%94%20%D7%94%D7%A8%D7%A6%D7%9C%203%2C%20%D7%92%D7%93%D7%A8%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8220350357754446728&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">93</td>
+<td class="v">5562</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">עוגות דה לה פה רחובות</td>
+<td class="addr">יעקב 26, רחובות, Israel</td>
+<td class="name">Cakes de la Paix</td>
+<td class="addr">Ya&#39;akov St 26, Rehovot, Israel</td>
+<td class="v">6 מ׳</td>
+<td><b>#5614</b> עוגות דה לה פה<div class="muted">יעקב 26, רחובות, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A2%D7%95%D7%92%D7%95%D7%AA%20%D7%93%D7%94%20%D7%9C%D7%94%20%D7%A4%D7%94%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%20%D7%99%D7%A2%D7%A7%D7%91%2026%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12028361094771408780&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">94</td>
+<td class="v">5616</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה רחובות</td>
+<td class="addr">ביל&quot;ו 2, קניון רחובות, Israel</td>
+<td class="name">Biga Rehovot</td>
+<td class="addr">קניון רחובות, Bilu 2, Rehovot, Israel</td>
+<td class="v">19.9 ק״מ</td>
+<td><b>#7024</b> BIGA רחובות<div class="muted">בילו 2 קניון רחובות, רחובות · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%20%D7%91%D7%99%D7%9C%22%D7%95%202%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1351528244832325834&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">95</td>
+<td class="v">5656</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בוזי-סושי נודלס בר</td>
+<td class="addr">הרצל 185, רחובות, Israel</td>
+<td class="name">Buzzi</td>
+<td class="addr">Herzl St 185, Rehovot, Israel</td>
+<td class="v">9 מ׳</td>
+<td><b>#5396</b> בוזי<div class="muted">הרצל 185, רחובות, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%96%D7%99-%D7%A1%D7%95%D7%A9%D7%99%20%D7%A0%D7%95%D7%93%D7%9C%D7%A1%20%D7%91%D7%A8%20%D7%94%D7%A8%D7%A6%D7%9C%20185%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10693346864901876345&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">96</td>
+<td class="v">5658</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פאפוס בשרים שווארמה ועל האש איזור התעשיה</td>
+<td class="addr">גבריאלוב קלמן 38, רחובות, Israel</td>
+<td class="name">PAPOS</td>
+<td class="addr">Kalman Gavrielov St 38, Rehovot, Israel</td>
+<td class="v">738 מ׳</td>
+<td><b>#5451</b> פאפוס בשרים<div class="muted">גבריאלוב קלמן 38, רחובות, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%90%D7%A4%D7%95%D7%A1%20%D7%91%D7%A9%D7%A8%D7%99%D7%9D%20%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%95%D7%A2%D7%9C%20%D7%94%D7%90%D7%A9%20%D7%90%D7%99%D7%96%D7%95%D7%A8%20%D7%94%D7%AA%D7%A2%D7%A9%D7%99%D7%94%20%D7%92%D7%91%D7%A8%D7%99%D7%90%D7%9C%D7%95%D7%91%20%D7%A7%D7%9C%D7%9E%D7%9F%2038%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=3094469107898982411&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">97</td>
+<td class="v">5721</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פלאפל טובה בתעשייה</td>
+<td class="addr">פנקס דוד 14, נתניה, Israel</td>
+<td class="name">Falafel Tova</td>
+<td class="addr">David Pinkas St 14, Netanya, Israel</td>
+<td class="v">27.1 ק״מ</td>
+<td><b>#5953</b> הפלאפל של טובה<div class="muted">פנקס דוד 14, נתניה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%98%D7%95%D7%91%D7%94%20%D7%91%D7%AA%D7%A2%D7%A9%D7%99%D7%99%D7%94%20%D7%A4%D7%A0%D7%A7%D7%A1%20%D7%93%D7%95%D7%93%2014%2C%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1420654932365300140&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">98</td>
+<td class="v">5781</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מינאטו</td>
+<td class="addr">המנופים 8, הרצליה פיתוח, Israel</td>
+<td class="name">Minato</td>
+<td class="addr">בניין בית אופק, המנופים 8, הרצליה, Israel</td>
+<td class="v">21 מ׳</td>
+<td><b>#6790</b> MINATO | מינאטו<div class="muted">המנופים 8, הרצליה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%99%D7%A0%D7%90%D7%98%D7%95%20%D7%94%D7%9E%D7%A0%D7%95%D7%A4%D7%99%D7%9D%208%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%A4%D7%99%D7%AA%D7%95%D7%97%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17794378557661410389&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">99</td>
+<td class="v">5963</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">סמבוסל&#39;ה</td>
+<td class="addr">חדרה, Israel</td>
+<td class="name">סמבוסלה</td>
+<td class="addr">HaNassi St 46, Hadera, Israel</td>
+<td class="v">1.7 ק״מ</td>
+<td><b>#6038</b> סמבוסלה חדרה<div class="muted">הנשיא וייצמן 48, קניון לב חדרה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%9E%D7%91%D7%95%D7%A1%D7%9C&#39;%D7%94%20%D7%97%D7%93%D7%A8%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17140066302317785708&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">100</td>
+<td class="v">5973</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בורקס בבא</td>
+<td class="addr">התע&quot;ש 10, כפר סבא, Israel</td>
+<td class="name">בורקס בבא</td>
+<td class="addr">HaTa&#39;as St 10, Kefar Sava, Israel</td>
+<td class="v">431 מ׳</td>
+<td><b>#5867</b> בורקסבבא<div class="muted">התע&quot;ש 10, כפר סבא, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%A7%D7%A1%20%D7%91%D7%91%D7%90%20%D7%94%D7%AA%D7%A2%22%D7%A9%2010%2C%20%D7%9B%D7%A4%D7%A8%20%D7%A1%D7%91%D7%90%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13278317964859215988&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">101</td>
+<td class="v">6012</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פניקה</td>
+<td class="addr">אחוזה 95, רעננה, Israel</td>
+<td class="name">ג&#39;פניקה קוויק רעננה כשר | JAPANIKA QUICK RAANANA KOSHER</td>
+<td class="addr">Zarhin St 1ב, Ra&#39;anana, Israel</td>
+<td class="v">1.6 ק״מ</td>
+<td><b>#7155</b> ג&#39;פניקה רעננה-קוויק<div class="muted">זרחין 1 ב&#39;, רעננה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%A0%D7%99%D7%A7%D7%94%20%D7%90%D7%97%D7%95%D7%96%D7%94%2095%2C%20%D7%A8%D7%A2%D7%A0%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16423620581814914914&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">102</td>
+<td class="v">6022</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פרוג&#39;ינו</td>
+<td class="addr">הרצל 2, נתניה, Israel</td>
+<td class="name">Perugino</td>
+<td class="addr">Dizengoff St 30, Netanya, Israel</td>
+<td class="v">775 מ׳</td>
+<td><b>#5914</b> &quot;פרוג&#39;ינו&quot;<div class="muted">הרצל 4, נתניה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%A8%D7%95%D7%92&#39;%D7%99%D7%A0%D7%95%20%D7%94%D7%A8%D7%A6%D7%9C%202%2C%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9628722172555456602&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">103</td>
+<td class="v">6024</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ביגה</td>
+<td class="addr">פרופסור דן שכטמן 10, חדרה, Israel</td>
+<td class="name">Biga</td>
+<td class="addr">פרופ דן שכטמן 10, Hadera, Israel</td>
+<td class="v">4.3 ק״מ</td>
+<td><b>#6524</b> BIGA חדרה<div class="muted">פרופסר דן שכטמן, 10 חדרה, חדרה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%A4%D7%A8%D7%95%D7%A4%D7%A1%D7%95%D7%A8%20%D7%93%D7%9F%20%D7%A9%D7%9B%D7%98%D7%9E%D7%9F%2010%2C%20%D7%97%D7%93%D7%A8%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12484970462957430881&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">104</td>
+<td class="v">6045</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">יקבי בנימינה</td>
+<td class="addr">הנשיא 1, בנימינה, Israel</td>
+<td class="name">Binyamina Winery</td>
+<td class="addr">Ha-Yekev St 6, Binyamina-Giv&#39;at Ada, Israel</td>
+<td class="v">160 מ׳</td>
+<td><b>#6655</b> יקב בנימינה<div class="muted">היקב 2, בנימינה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%A7%D7%91%D7%99%20%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%A0%D7%94%20%D7%94%D7%A0%D7%A9%D7%99%D7%90%201%2C%20%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10608992835038159440&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">105</td>
+<td class="v">6155</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">סנדוויץ&#39; פקטורי</td>
+<td class="addr">אריה שנקר 16, הרצליה פיתוח, Israel</td>
+<td class="name">Sandwich Factory</td>
+<td class="addr">Arye Shenkar St 16, Herzliya, 46725, Israel</td>
+<td class="v">166 מ׳</td>
+<td><b>#6599</b> Sandwich Factory<div class="muted">אריה שנקר 16, הרצליה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%A0%D7%93%D7%95%D7%95%D7%99%D7%A5&#39;%20%D7%A4%D7%A7%D7%98%D7%95%D7%A8%D7%99%20%D7%90%D7%A8%D7%99%D7%94%20%D7%A9%D7%A0%D7%A7%D7%A8%2016%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%A4%D7%99%D7%AA%D7%95%D7%97%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9982247226356955560&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">106</td>
+<td class="v">6172</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קפה פיינברג</td>
+<td class="addr">ז&#39;בוטינסקי 34, חדרה, Israel</td>
+<td class="name">Café Feinberg</td>
+<td class="addr">Jabotinsky St 34, Hadera, Israel</td>
+<td class="v">5 מ׳</td>
+<td><b>#6625</b> קפה בית פיינברג<div class="muted">ז&#39;בוטינסקי 34, חדרה · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%A4%D7%99%D7%99%D7%A0%D7%91%D7%A8%D7%92%20%D7%96&#39;%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99%2034%2C%20%D7%97%D7%93%D7%A8%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=3208858268691299089&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">107</td>
+<td class="v">6228</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ברנר בר יין</td>
+<td class="addr">ברנר 6, רעננה, Israel</td>
+<td class="name">Cafe Brener</td>
+<td class="addr">מתחם קולינר, ברנר 6, רעננה, Israel</td>
+<td class="v">301 מ׳</td>
+<td><b>#5681</b> קפה ברנר<div class="muted">ברנר 6, רעננה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A8%D7%A0%D7%A8%20%D7%91%D7%A8%20%D7%99%D7%99%D7%9F%20%D7%91%D7%A8%D7%A0%D7%A8%206%2C%20%D7%A8%D7%A2%D7%A0%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4957362604833696643&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">108</td>
+<td class="v">6470</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מסעדת O2</td>
+<td class="addr">Ze&#39;ev Jabotinsky St 3, Jerusalem</td>
+<td class="name">מסעדת 02</td>
+<td class="addr">Jabotinski St 3, Jerusalem, Israel</td>
+<td class="v">810 מ׳</td>
+<td><b>#5086</b> מסעדת 02<div class="muted">ז&#39;בוטינסקי 3, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20O2%20Ze&#39;ev%20Jabotinsky%20St%203%2C%20Jerusalem">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=15323284845488634115&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">109</td>
+<td class="v">6481</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Mood Restaurant</td>
+<td class="addr">דרך הים 5, אילת</td>
+<td class="name">מסעדת מוד באילת | mood restaurant eilat</td>
+<td class="addr">Ha-Yam St 5, Eilat, 88000, Israel</td>
+<td class="v">2.0 ק״מ</td>
+<td><b>#1220</b> MOOD<div class="muted">הים 5, אילת, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Mood%20Restaurant%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%99%D7%9D%205%2C%20%D7%90%D7%99%D7%9C%D7%AA">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2695997623555772365&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">110</td>
+<td class="v">6493</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Bardak pizza bar</td>
+<td class="addr">קרן היסוד 38, ירושלים</td>
+<td class="name">Bardak Pizza Bar</td>
+<td class="addr">Keren HaYesod St 38, Jerusalem, Israel</td>
+<td class="v">901 מ׳</td>
+<td><b>#4863</b> ברדק<div class="muted">קרן היסוד 38, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Bardak%20pizza%20bar%20%D7%A7%D7%A8%D7%9F%20%D7%94%D7%99%D7%A1%D7%95%D7%93%2038%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1998441660596053301&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">111</td>
+<td class="v">6537</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Burgers Bar בן יהודה ירושלים</td>
+<td class="addr">בן יהודה 2, ירושלים</td>
+<td class="name">Burgers Bar</td>
+<td class="addr">Ben Yehuda St 2, Jerusalem, 9462201, Israel</td>
+<td class="v">1.6 ק״מ</td>
+<td><b>#6768</b> Burgers Bar הרובע היהודי<div class="muted">תפארת ישראל 12, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Burgers%20Bar%20%D7%91%D7%9F%20%D7%99%D7%94%D7%95%D7%93%D7%94%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%91%D7%9F%20%D7%99%D7%94%D7%95%D7%93%D7%94%202%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13321662233336030691&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">112</td>
+<td class="v">6549</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">White Sushi</td>
+<td class="addr">שידלובסקי 1, יבנה</td>
+<td class="name">סושי וייט</td>
+<td class="addr">Shidlovski St 1, Yavne, Israel</td>
+<td class="v">2.0 ק״מ</td>
+<td><b>#5427</b> וייט<div class="muted">שידלובסקי 1, יבנה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=White%20Sushi%20%D7%A9%D7%99%D7%93%D7%9C%D7%95%D7%91%D7%A1%D7%A7%D7%99%201%2C%20%D7%99%D7%91%D7%A0%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=890803213341058730&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">113</td>
+<td class="v">6550</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">צדקיהו</td>
+<td class="addr">יד חרוצים 21, ירושלים</td>
+<td class="name">מסעדת צדקיהו Tzidkiyahu Resturant</td>
+<td class="addr">Yad Harutsim St 21, Jerusalem, Israel</td>
+<td class="v">2.0 ק״מ</td>
+<td><b>#4722</b> מסעדת צדקיהו<div class="muted">יד חרוצים 21, קניון ישראל תלפיות, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A6%D7%93%D7%A7%D7%99%D7%94%D7%95%20%D7%99%D7%93%20%D7%97%D7%A8%D7%95%D7%A6%D7%99%D7%9D%2021%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2438824802716233335&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">114</td>
+<td class="v">6564</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אחלה - אילת</td>
+<td class="addr">קאמן 1, אילת</td>
+<td class="name">Achla - Platinum Grill</td>
+<td class="addr">קאמן 1 אילת IL 88000, Kamen 1, Eilat, Israel</td>
+<td class="v">1.1 ק״מ</td>
+<td><b>#1329</b> אחלה אילת<div class="muted">קאמן 1, אילת, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%97%D7%9C%D7%94%20-%20%D7%90%D7%99%D7%9C%D7%AA%20%D7%A7%D7%90%D7%9E%D7%9F%201%2C%20%D7%90%D7%99%D7%9C%D7%AA">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12596654298973145531&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">115</td>
+<td class="v">6577</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Sushi N Bagels בית שמש</td>
+<td class="addr">נהר הירקון 38, בית שמש</td>
+<td class="name">Sushi N Bagels</td>
+<td class="addr">Hashdera Mall, Menachem Porush 1, Bet Shemesh, 9964114, Israel</td>
+<td class="v">4.3 ק״מ</td>
+<td><b>#4725</b> סושי אנד בייגלס<div class="muted">בית שמש, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Sushi%20N%20Bagels%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%20%D7%A0%D7%94%D7%A8%20%D7%94%D7%99%D7%A8%D7%A7%D7%95%D7%9F%2038%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=18362895219193039170&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">116</td>
+<td class="v">6592</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">סאנסט קיטצ&#39;ן הרצליה</td>
+<td class="addr">שדרות אלי לנדאו 60, הרצליה פיתוח</td>
+<td class="name">Sunset Kitchen</td>
+<td class="addr">שד&#39; אלי לנדאו 60, Hertsliya, Israel</td>
+<td class="v">4.1 ק״מ</td>
+<td><b>#5680</b> סאנסט קיטצ&#39;ן הרצליה Sunset Kitchen<div class="muted">אלי לנדאו 60, הרצליה פיתוח, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%90%D7%A0%D7%A1%D7%98%20%D7%A7%D7%99%D7%98%D7%A6&#39;%D7%9F%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%90%D7%9C%D7%99%20%D7%9C%D7%A0%D7%93%D7%90%D7%95%2060%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%A4%D7%99%D7%AA%D7%95%D7%97">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5868312301587555567&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">117</td>
+<td class="v">6603</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בייגל קפה עמק רפאים</td>
+<td class="addr">עמק רפאים 54, ירושלים</td>
+<td class="name">Bagel Cafe</td>
+<td class="addr">Emek Refa&#39;im St 54, Jerusalem, Israel</td>
+<td class="v">793 מ׳</td>
+<td><b>#5155</b> בייגל קפה<div class="muted">עמק רפאים 54, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%99%D7%92%D7%9C%20%D7%A7%D7%A4%D7%94%20%D7%A2%D7%9E%D7%A7%20%D7%A8%D7%A4%D7%90%D7%99%D7%9D%20%D7%A2%D7%9E%D7%A7%20%D7%A8%D7%A4%D7%90%D7%99%D7%9D%2054%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17546608289752233535&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">118</td>
+<td class="v">6639</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Berlin burger</td>
+<td class="addr">שדרות ממילא 13, ירושלים</td>
+<td class="name">המבורגר ברלין</td>
+<td class="addr">Mamilla Rd 13, Jerusalem, Israel</td>
+<td class="v">1.5 ק״מ</td>
+<td><b>#4734</b> המבורגר ברלין<div class="muted">ממילא 13, שדרות אלרוב ממילא, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Berlin%20burger%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2013%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13230839120422176061&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">119</td>
+<td class="v">6641</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ארקפה בסר 3</td>
+<td class="addr">כנרת 5, בני ברק</td>
+<td class="name">Arcaffè</td>
+<td class="addr">Kinneret St 5, Bnei Brak, 6515252, Israel</td>
+<td class="v">1.5 ק״מ</td>
+<td><b>#3143</b> ארקפה<div class="muted">מצדה (כנרת) 5, פרדס כץ, בני ברק, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A8%D7%A7%D7%A4%D7%94%20%D7%91%D7%A1%D7%A8%203%20%D7%9B%D7%A0%D7%A8%D7%AA%205%2C%20%D7%91%D7%A0%D7%99%20%D7%91%D7%A8%D7%A7">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16777413923203366075&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">120</td>
+<td class="v">6644</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פלאפל בריבוע - גבעת שמואל</td>
+<td class="addr">יוני נתניהו 23, גבעת שמואל</td>
+<td class="name">Falafel Baribua</td>
+<td class="addr">Yoni Netanyahu St 23, Giv&#39;at Shmuel, Israel</td>
+<td class="v">949 מ׳</td>
+<td><b>#4019</b> פלאפל בריבוע<div class="muted">יוני נתניהו 23, קניון עופר הגבעה, גבעת שמואל, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%D7%99%D7%91%D7%95%D7%A2%20-%20%D7%92%D7%91%D7%A2%D7%AA%20%D7%A9%D7%9E%D7%95%D7%90%D7%9C%20%D7%99%D7%95%D7%A0%D7%99%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95%2023%2C%20%D7%92%D7%91%D7%A2%D7%AA%20%D7%A9%D7%9E%D7%95%D7%90%D7%9C">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11609846033329139320&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">121</td>
+<td class="v">6650</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">אישטבח ירושלים</td>
+<td class="addr">השקמה 1 מחנה יהודה, ירושלים</td>
+<td class="name">Ishtabach</td>
+<td class="addr">השקמה פינת, Beit Ya&#39;akov St 1, Jerusalem, Israel</td>
+<td class="v">1.9 ק״מ</td>
+<td><b>#5326</b> אישטבח<div class="muted">השקמה 1, מחנה יהודה, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%99%D7%A9%D7%98%D7%91%D7%97%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%A7%D7%9E%D7%94%201%20%D7%9E%D7%97%D7%A0%D7%94%20%D7%99%D7%94%D7%95%D7%93%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=1702997159882302509&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">122</td>
+<td class="v">6660</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">מנדרין סינמול</td>
+<td class="addr">ההסתדרות 55, חיפה</td>
+<td class="name">קפה מנדרין</td>
+<td class="addr">HaHistadrut Ave 55, Haifa, Israel</td>
+<td class="v">4.5 ק״מ</td>
+<td><b>#2625</b> מנדרין<div class="muted">שד&#39; ההסתדרות 55, קניון סינמול, חיפה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A0%D7%93%D7%A8%D7%99%D7%9F%20%D7%A1%D7%99%D7%A0%D7%9E%D7%95%D7%9C%20%D7%94%D7%94%D7%A1%D7%AA%D7%93%D7%A8%D7%95%D7%AA%2055%2C%20%D7%97%D7%99%D7%A4%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9719948483390495856&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">123</td>
+<td class="v">6664</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">יענקלה</td>
+<td class="addr">חבצלת השרון 36, הרצליה</td>
+<td class="name">Yankele</td>
+<td class="addr">Khavatselet ha-Sharon St 36, Herzliya, Israel</td>
+<td class="v">4.0 ק״מ</td>
+<td><b>#6247</b> יענקל&#39;ה בית קפה<div class="muted">חבצלת השרון 36, הרצליה פיתוח, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%A2%D7%A0%D7%A7%D7%9C%D7%94%20%D7%97%D7%91%D7%A6%D7%9C%D7%AA%20%D7%94%D7%A9%D7%A8%D7%95%D7%9F%2036%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4652714351369790211&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">124</td>
+<td class="v">6675</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Super Hamizrah</td>
+<td class="addr">דרך בית לחם 34, ירושלים</td>
+<td class="name">Super HaMizrah</td>
+<td class="addr">Beit Lehem Rd 34, Jerusalem, 9350401, Israel</td>
+<td class="v">1.1 ק״מ</td>
+<td><b>#5357</b> סופר המזרח<div class="muted">ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Hamizrah%20%D7%93%D7%A8%D7%9A%20%D7%91%D7%99%D7%AA%20%D7%9C%D7%97%D7%9D%2034%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9209551029354723126&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">125</td>
+<td class="v">6695</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Greg גן העיר אשדוד</td>
+<td class="addr">הגדוד העברי 5 גן העיר, אשדוד</td>
+<td class="name">גרג קיטשן סניף גן העיר אשדוד</td>
+<td class="addr">גן העיר, הגדוד העברי 1, אשדוד, 7745511, Israel</td>
+<td class="v">2.2 ק״מ</td>
+<td><b>#1837</b> גרג קיטשן<div class="muted">הגדוד העברי 1, אשדוד, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Greg%20%D7%92%D7%9F%20%D7%94%D7%A2%D7%99%D7%A8%20%D7%90%D7%A9%D7%93%D7%95%D7%93%20%D7%94%D7%92%D7%93%D7%95%D7%93%20%D7%94%D7%A2%D7%91%D7%A8%D7%99%205%20%D7%92%D7%9F%20%D7%94%D7%A2%D7%99%D7%A8%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4614424565595669467&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">126</td>
+<td class="v">6696</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">300 גרם</td>
+<td class="addr">מושב בוסתן הגליל, גליל מערבי</td>
+<td class="name">300 גרם - מסעדת בשרים כשרה</td>
+<td class="addr">33°00&#39;26.6&quot;N 35°13&#39;15.1&quot;E, Bustan HaGalil, Israel</td>
+<td class="v">6.0 ק״מ</td>
+<td><b>#2336</b> 300 גרם<div class="muted">שדרות האקליפטוס 13, בוסתן הגליל, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=300%20%D7%92%D7%A8%D7%9D%20%D7%9E%D7%95%D7%A9%D7%91%20%D7%91%D7%95%D7%A1%D7%AA%D7%9F%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%2C%20%D7%92%D7%9C%D7%99%D7%9C%20%D7%9E%D7%A2%D7%A8%D7%91%D7%99">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13491342006151281033&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">127</td>
+<td class="v">6700</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">B-FRESH - גירון אשקלון</td>
+<td class="addr">בן גוריון 21, אשקלון</td>
+<td class="name">B-FRESH</td>
+<td class="addr">HaNamal St, Ashkelon, Israel</td>
+<td class="v">2.2 ק״מ</td>
+<td><b>#6912</b> B-FRESH - מרינה אשקלון<div class="muted">הנמל 9, אשקלון · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=B-FRESH%20-%20%D7%92%D7%99%D7%A8%D7%95%D7%9F%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%20%D7%91%D7%9F%20%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F%2021%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=384273828964404548&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">128</td>
+<td class="v">6720</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">נחמן</td>
+<td class="addr">יואל משה סלומון 10, ירושלים</td>
+<td class="name">נחמן מסעדה חלבית</td>
+<td class="addr">Ze&#39;ev Raban St, Jerusalem, Israel</td>
+<td class="v">1.5 ק״מ</td>
+<td><b>#5163</b> מסעדת נחמן<div class="muted">מעבר בית הכנסת 8, כיכר המוזיקה, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%97%D7%9E%D7%9F%20%D7%99%D7%95%D7%90%D7%9C%20%D7%9E%D7%A9%D7%94%20%D7%A1%D7%9C%D7%95%D7%9E%D7%95%D7%9F%2010%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9471088710616254923&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">129</td>
+<td class="v">6729</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פאפאגאיו הרצליה</td>
+<td class="addr">השונית 2, הרצליה</td>
+<td class="name">Papagaio</td>
+<td class="addr">Ha-Shunit St 2, Herzliya, 4655502, Israel</td>
+<td class="v">4.4 ק״מ</td>
+<td><b>#6032</b> פאפאגאיו<div class="muted">השונית 2, מרינה הרצליה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%90%D7%A4%D7%90%D7%92%D7%90%D7%99%D7%95%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%94%D7%A9%D7%95%D7%A0%D7%99%D7%AA%202%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2699224091306636932&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">130</td>
+<td class="v">6734</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פלאפל בריבוע - יבנה</td>
+<td class="addr">הדוגית 16, יבנה</td>
+<td class="name">פלאפל בריבוע - יבנה</td>
+<td class="addr">מרכז רוגובין, הדוגית 16, יבנה, Israel</td>
+<td class="v">1.3 ק״מ</td>
+<td><b>#5515</b> פלאפל בריבוע<div class="muted">הדוגית 16, יבנה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%D7%99%D7%91%D7%95%D7%A2%20-%20%D7%99%D7%91%D7%A0%D7%94%20%D7%94%D7%93%D7%95%D7%92%D7%99%D7%AA%2016%2C%20%D7%99%D7%91%D7%A0%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4500655511541286442&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">131</td>
+<td class="v">6744</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פניקה צ&#39;ק פוסט</td>
+<td class="addr">דרך בר יהודה 111, חיפה</td>
+<td class="name">Japanika</td>
+<td class="addr">Israel bar Yehuda Road 111, Haifa, Israel</td>
+<td class="v">3.9 ק״מ</td>
+<td><b>#2371</b> ג&#39;פניקה<div class="muted">דרך בר יהודה 111, צ&#39;ק פוסט, חיפה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%A0%D7%99%D7%A7%D7%94%20%D7%A6&#39;%D7%A7%20%D7%A4%D7%95%D7%A1%D7%98%20%D7%93%D7%A8%D7%9A%20%D7%91%D7%A8%20%D7%99%D7%94%D7%95%D7%93%D7%94%20111%2C%20%D7%97%D7%99%D7%A4%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2265201244180768463&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">132</td>
+<td class="v">6753</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Kiara Lounge Bar</td>
+<td class="addr">ברוך קטינקא 2, באר שבע</td>
+<td class="name">קיארה לאונג׳ בר Kiara Lounge Bar</td>
+<td class="addr">ברוך קטינקא 2, Beersheba, Israel</td>
+<td class="v">3.3 ק״מ</td>
+<td><b>#1473</b> קיארה<div class="muted">קטינקא ברוך 2, באר שבע, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Kiara%20Lounge%20Bar%20%D7%91%D7%A8%D7%95%D7%9A%20%D7%A7%D7%98%D7%99%D7%A0%D7%A7%D7%90%202%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16679074433187390733&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">133</td>
+<td class="v">6759</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Greg באר שבע</td>
+<td class="addr">דרך טוביהו 125, באר שבע</td>
+<td class="name">קפה גרג גרנד קניון באר שבע</td>
+<td class="addr">גרנד קניון, שדרות דוד טוביהו 125, באר שבע, 8424351, Israel</td>
+<td class="v">1.9 ק״מ</td>
+<td><b>#1877</b> קפה גרג<div class="muted">שד&#39; דוד טוביהו 125, באר שבע, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Greg%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%20%D7%93%D7%A8%D7%9A%20%D7%98%D7%95%D7%91%D7%99%D7%94%D7%95%20125%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13590894373181745756&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">134</td>
+<td class="v">6795</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Sushi Tokyo -  The Jewish Quarter</td>
+<td class="addr">תפארת ישראל 7, ירושלים</td>
+<td class="name">Tokyo Sushi</td>
+<td class="addr">Agripas St 111, Jerusalem, Israel</td>
+<td class="v">1.8 ק״מ</td>
+<td><b>#6832</b> Sushi Tokyo -  Agripas<div class="muted">אגריפס 111, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Sushi%20Tokyo%20-%20%20The%20Jewish%20Quarter%20%D7%AA%D7%A4%D7%90%D7%A8%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%207%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9810999953346789404&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">135</td>
+<td class="v">6822</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">המקסיקנית ⏐ כשר למהדרין בד&quot;ץ הרב מחפוד</td>
+<td class="addr">אח&quot;י אילת 59, חיפה</td>
+<td class="name">The Mexican</td>
+<td class="addr">Sderot Achi Eilat 59, Haifa, 2626948, Israel</td>
+<td class="v">8.5 ק״מ</td>
+<td><b>#2892</b> המקסיקנית | כשר למהדרין<div class="muted">אח&quot;י אילת 59, קריית חיים, חיפה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%A7%D7%A1%D7%99%D7%A7%D7%A0%D7%99%D7%AA%20%E2%8F%90%20%D7%9B%D7%A9%D7%A8%20%D7%9C%D7%9E%D7%94%D7%93%D7%A8%D7%99%D7%9F%20%D7%91%D7%93%22%D7%A5%20%D7%94%D7%A8%D7%91%20%D7%9E%D7%97%D7%A4%D7%95%D7%93%20%D7%90%D7%97%22%D7%99%20%D7%90%D7%99%D7%9C%D7%AA%2059%2C%20%D7%97%D7%99%D7%A4%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5497355406077141592&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">136</td>
+<td class="v">6873</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Kitchen Mamila | קיטשן ממילא</td>
+<td class="addr">יצחק קריב 3, ממילא, ירושלים</td>
+<td class="name">מסעדת קיטשן ממילא ירושלים</td>
+<td class="addr">בתוך הקניון הסגור, שדרות אלרוב, Derech Mamilla 8, Jerusalem, 9414904, Israel</td>
+<td class="v">1.4 ק״מ</td>
+<td><b>#4746</b> קיטשן בראסרי<div class="muted">ממילא 13, שדרות אלרוב ממילא, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Kitchen%20Mamila%20%7C%20%D7%A7%D7%99%D7%98%D7%A9%D7%9F%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%20%D7%99%D7%A6%D7%97%D7%A7%20%D7%A7%D7%A8%D7%99%D7%91%203%2C%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=8007006077012870653&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">137</td>
+<td class="v">6888</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פלאפל בריבוע - חולון</td>
+<td class="addr">פנחס איילון 13, חולון</td>
+<td class="name">Falafel Square</td>
+<td class="addr">Pinkhas Eilon St 13, Holon, Israel</td>
+<td class="v">934 מ׳</td>
+<td><b>#4196</b> פלאפל בריבוע<div class="muted">פנחס אילון 13, חולון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%D7%99%D7%91%D7%95%D7%A2%20-%20%D7%97%D7%95%D7%9C%D7%95%D7%9F%20%D7%A4%D7%A0%D7%97%D7%A1%20%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F%2013%2C%20%D7%97%D7%95%D7%9C%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=5917308063945755192&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">138</td>
+<td class="v">6908</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">AG- Jasper 08</td>
+<td class="addr">קמפאן 7, אילת</td>
+<td class="name">ג&#39;אספר 08 - Jasper 08</td>
+<td class="addr">Kampen St 7, Eilat, 88000, Israel</td>
+<td class="v">1.5 ק״מ</td>
+<td><b>#1231</b> ג&#39;אספר 08 JASPER, ישרוטל אגמים<div class="muted">קאמפן 7, אילת, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=AG-%20Jasper%2008%20%D7%A7%D7%9E%D7%A4%D7%90%D7%9F%207%2C%20%D7%90%D7%99%D7%9C%D7%AA">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=14521448333488203429&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">139</td>
+<td class="v">6913</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">קפה זריפה</td>
+<td class="addr">הורקניה 8, ירושלים</td>
+<td class="name">Zariffa - בית קפה ירושלמי</td>
+<td class="addr">Horkanya St 8, Jerusalem, Israel</td>
+<td class="v">1.7 ק״מ</td>
+<td><b>#4951</b> zariffa<div class="muted">הורקניה 8, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%96%D7%A8%D7%99%D7%A4%D7%94%20%D7%94%D7%95%D7%A8%D7%A7%D7%A0%D7%99%D7%94%208%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=4375651827083955501&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">140</td>
+<td class="v">6921</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Blendiz Jaffa St 226</td>
+<td class="addr">יפו 226, ירושלים</td>
+<td class="name">Blendiz</td>
+<td class="addr">Jaffa St 43, Jerusalem, Israel</td>
+<td class="v">1.6 ק״מ</td>
+<td><b>#6511</b> Blendiz Jaffa St 43<div class="muted">יפו 43, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Blendiz%20Jaffa%20St%20226%20%D7%99%D7%A4%D7%95%20226%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=54298585744740117&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">141</td>
+<td class="v">6924</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Anthony&#39;s pizza</td>
+<td class="addr">שושן 44, ירושלים</td>
+<td class="name">Anthony&#39;s Pizza</td>
+<td class="addr">Shoshan St 4, Jerusalem, Israel</td>
+<td class="v">1.6 ק״מ</td>
+<td><b>#4742</b> אנטוני&#39;ס פיצה<div class="muted">שושן 4, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Anthony&#39;s%20pizza%20%D7%A9%D7%95%D7%A9%D7%9F%2044%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=18131350343001967240&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">142</td>
+<td class="v">6932</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">הולי בייגל - בית שמש</td>
+<td class="addr">נחל דולב 19, בית שמש</td>
+<td class="name">Holy Bagel RBS</td>
+<td class="addr">Nachal Dolev St 19, Bet Shemesh, Israel</td>
+<td class="v">3.9 ק״מ</td>
+<td><b>#5105</b> הולי בייגל<div class="muted">נחל דולב 19, בית שמש, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%95%D7%9C%D7%99%20%D7%91%D7%99%D7%99%D7%92%D7%9C%20-%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%20%D7%A0%D7%97%D7%9C%20%D7%93%D7%95%D7%9C%D7%91%2019%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6591370994179041462&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">143</td>
+<td class="v">6944</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">סורנטו</td>
+<td class="addr">ברשבסקי 8, ראשון לציון</td>
+<td class="name">Sorento</td>
+<td class="addr">Barshavski St 8, Rishon LeZion, Israel</td>
+<td class="v">1.6 ק״מ</td>
+<td><b>#3086</b> סורנטו Sorento<div class="muted">ברשבסקי 8, ראשון לציון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%95%D7%A8%D7%A0%D7%98%D7%95%20%D7%91%D7%A8%D7%A9%D7%91%D7%A1%D7%A7%D7%99%208%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13391276354184450347&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">144</td>
+<td class="v">6950</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">BIGA ראשונים</td>
+<td class="addr">שדרות נים 2, ראשון לציון</td>
+<td class="name">ביגה ראשונים</td>
+<td class="addr">Sderot Nim 2, Rishon LeZion, Israel</td>
+<td class="v">2.7 ק״מ</td>
+<td><b>#3106</b> ביגה<div class="muted">שד&#39; נים 2, קניון עזריאלי ראשונים, ראשון לציון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=BIGA%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%9D%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%A0%D7%99%D7%9D%202%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6661867006859542127&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">145</td>
+<td class="v">6955</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פניקה עפולה</td>
+<td class="addr">קהילת ציון 26, עפולה</td>
+<td class="name">Japanika</td>
+<td class="addr">Kehilat Tsiyon St 26, Afula, 1830126, Israel</td>
+<td class="v">813 מ׳</td>
+<td><b>#2269</b> ג&#39;פניקה<div class="muted">קהילת ציון 26, עפולה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%A0%D7%99%D7%A7%D7%94%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94%20%D7%A7%D7%94%D7%99%D7%9C%D7%AA%20%D7%A6%D7%99%D7%95%D7%9F%2026%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11826881380841531028&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">146</td>
+<td class="v">6961</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">ג&#39;פניקה ראש פינה</td>
+<td class="addr">הגליל 1, ראש פינה</td>
+<td class="name">ג׳פניקה ראש פינה כשר | JAPANIKA ROSH PINA KOSHER</td>
+<td class="addr">Derech HaGalil 1, Rosh Pina, Israel</td>
+<td class="v">1.4 ק״מ</td>
+<td><b>#2259</b> ג&#39;פניקה<div class="muted">דרך הגליל 1, ראש פינה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%A4%D7%A0%D7%99%D7%A7%D7%94%20%D7%A8%D7%90%D7%A9%20%D7%A4%D7%99%D7%A0%D7%94%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%201%2C%20%D7%A8%D7%90%D7%A9%20%D7%A4%D7%99%D7%A0%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2500919057521003702&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">147</td>
+<td class="v">6978</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">פלאפל בריבוע - ראש העין</td>
+<td class="addr">בזק 1, ראש העין</td>
+<td class="name">Falafel Square</td>
+<td class="addr">מרכז מסחרי לב אפר, מבצע בזק 1, ראש העין, 4863087, Israel</td>
+<td class="v">1.5 ק״מ</td>
+<td><b>#3349</b> פלאפל בריבוע<div class="muted">בזק 1, מרכז G אפק (לב אפק), ראש העין, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%D7%99%D7%91%D7%95%D7%A2%20-%20%D7%A8%D7%90%D7%A9%20%D7%94%D7%A2%D7%99%D7%9F%20%D7%91%D7%96%D7%A7%201%2C%20%D7%A8%D7%90%D7%A9%20%D7%94%D7%A2%D7%99%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13994051514820738595&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">148</td>
+<td class="v">6990</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Sekai</td>
+<td class="addr">הברזל 10 בניין C, תל אביב</td>
+<td class="name">Sekai סקאי</td>
+<td class="addr">HaBarzel St 10, Tel Aviv-Yafo, 6971014, Israel</td>
+<td class="v">5.8 ק״מ</td>
+<td><b>#4538</b> סקאי<div class="muted">הברזל 10, רמת החייל, תל אביב, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Sekai%20%D7%94%D7%91%D7%A8%D7%96%D7%9C%2010%20%D7%91%D7%A0%D7%99%D7%99%D7%9F%20C%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=990620195631049354&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">149</td>
+<td class="v">7022</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Luciana ראשון לציון</td>
+<td class="addr">לח&quot;י 2, ראשון לציון</td>
+<td class="name">לוצ׳נה ראשון לציון</td>
+<td class="addr">הלח״י 2, ראשון לציון, 7570686, Israel</td>
+<td class="v">2.8 ק״מ</td>
+<td><b>#3083</b> לוצ&#39;נה ראשון לציון<div class="muted">לח&quot;י 2, ראשון לציון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Luciana%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%20%D7%9C%D7%97%22%D7%99%202%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11582790268283501814&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">150</td>
+<td class="v">7087</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">באזל בר</td>
+<td class="addr">הרצל 29, שדרות</td>
+<td class="name">באזל בר מסעדה שדרות</td>
+<td class="addr">איילים, שדרות, Israel</td>
+<td class="v">256 מ׳</td>
+<td><b>#1799</b> באזל בר שדרות<div class="muted">הרצל 3, שדרות, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%90%D7%96%D7%9C%20%D7%91%D7%A8%20%D7%94%D7%A8%D7%A6%D7%9C%2029%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10199902589217980584&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">151</td>
+<td class="v">7138</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">שיפודי התקווה ראשון לציון</td>
+<td class="addr">רוזנסקי 11, ראשון לציון</td>
+<td class="name">שיפודי התקווה ראשון לציון</td>
+<td class="addr">Rozhanski St 11, Rishon LeZion, 7574516, Israel</td>
+<td class="v">2.4 ק״מ</td>
+<td><b>#3047</b> שיפודי התקווה<div class="muted">רוז&#39;נסקי 11, ראשון לציון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%99%D7%A4%D7%95%D7%93%D7%99%20%D7%94%D7%AA%D7%A7%D7%95%D7%95%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%20%D7%A8%D7%95%D7%96%D7%A0%D7%A1%D7%A7%D7%99%2011%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=18390808537608705386&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">152</td>
+<td class="v">7206</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Kyoto nei</td>
+<td class="addr">ילדי טהרן 7, ראשון לציון</td>
+<td class="name">קיוטו נאי</td>
+<td class="addr">Yaldei Teheran St 7, Rishon LeZion, 7565843, Israel</td>
+<td class="v">2.7 ק״מ</td>
+<td><b>#3150</b> קיוטו נאי ראשל&quot;צ<div class="muted">ילדי טהרן 7, ראשון לציון, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Kyoto%20nei%20%D7%99%D7%9C%D7%93%D7%99%20%D7%98%D7%94%D7%A8%D7%9F%207%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=975105310038269647&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">153</td>
+<td class="v">7210</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">BIGA פ&quot;ת כפר גנים</td>
+<td class="addr">העצמאות 63, פתח תקווה</td>
+<td class="name">ביגה כפר גנים - קניון הכיכר | כשר למהדרין</td>
+<td class="addr">HaAtsmaut St 63, Petah Tikva, Israel</td>
+<td class="v">1.9 ק״מ</td>
+<td><b>#3992</b> ביגה BIGA כפר גנים<div class="muted">העצמאות 63, פתח תקווה, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=BIGA%20%D7%A4%22%D7%AA%20%D7%9B%D7%A4%D7%A8%20%D7%92%D7%A0%D7%99%D7%9D%20%D7%94%D7%A2%D7%A6%D7%9E%D7%90%D7%95%D7%AA%2063%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17197331173102610513&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">154</td>
+<td class="v">7225</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">Frenchy Marche</td>
+<td class="addr">שינקין 54, תל אביב</td>
+<td class="name">Frenchy Tlv</td>
+<td class="addr">Sheinkin St 54, Tel Aviv-Yafo, 6713212, Israel</td>
+<td class="v">1.9 ק״מ</td>
+<td><b>#7181</b> Frenchy Kiosk<div class="muted">שינקין 54, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Frenchy%20Marche%20%D7%A9%D7%99%D7%A0%D7%A7%D7%99%D7%9F%2054%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=18156903266010468076&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">155</td>
+<td class="v">7260</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">רפאלו - קריון (כשר)</td>
+<td class="addr">דרך עכו 192, קריית ביאליק</td>
+<td class="name">Raffaello</td>
+<td class="addr">קניון קריון, דרך עכו 192, קריית ביאליק, Israel</td>
+<td class="v">2.1 ק״מ</td>
+<td><b>#2104</b> רפאלו קריית ביאליק<div class="muted">דרך עכו 192, קניון הקריון, קריית ביאליק, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%A4%D7%90%D7%9C%D7%95%20-%20%D7%A7%D7%A8%D7%99%D7%95%D7%9F%20(%D7%9B%D7%A9%D7%A8)%20%D7%93%D7%A8%D7%9A%20%D7%A2%D7%9B%D7%95%20192%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%91%D7%99%D7%90%D7%9C%D7%99%D7%A7">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7184976976306693063&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">156</td>
+<td class="v">7302</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">בהדונס חומוס</td>
+<td class="addr">יד חרוצים 11, תל אביב, Israel</td>
+<td class="name">Bahadunas</td>
+<td class="addr">Yad Harutsim St 11, Tel Aviv-Yafo, Israel</td>
+<td class="v">8 מ׳</td>
+<td><b>#3350</b> בהדונס חומוס<div class="muted">יד חרוצים 11, תל אביב, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%94%D7%93%D7%95%D7%A0%D7%A1%20%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%99%D7%93%20%D7%97%D7%A8%D7%95%D7%A6%D7%99%D7%9D%2011%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=901582927528853227&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">157</td>
+<td class="v">7309</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">לחם ארטיזן</td>
+<td class="addr">הנחושת 3, רמת החייל, תל אביב, Israel</td>
+<td class="name">לחם ארטיזן</td>
+<td class="addr">HaNechoshet St 3, Tel Aviv-Yafo, Israel</td>
+<td class="v">65 מ׳</td>
+<td><b>#4355</b> לחם ארטיזן<div class="muted">הנחושת 3, רמת החייל, תל אביב, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%97%D7%9D%20%D7%90%D7%A8%D7%98%D7%99%D7%96%D7%9F%20%D7%94%D7%A0%D7%97%D7%95%D7%A9%D7%AA%203%2C%20%D7%A8%D7%9E%D7%AA%20%D7%94%D7%97%D7%99%D7%99%D7%9C%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2061521866878537309&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">158</td>
+<td class="v">7325</td>
+<td class="bad">כבר שייך למסעדה אחרת</td>
+<td class="name">חומוס כספי</td>
+<td class="addr">יהודה המכבי 61, תל אביב, Israel</td>
+<td class="name">Hummus 616</td>
+<td class="addr">Yehuda HaMakkabbi St 61, Tel Aviv-Yafo, Israel</td>
+<td class="v">8 מ׳</td>
+<td><b>#3688</b> חומוס כספי<div class="muted">יהודה המכבי 61, תל אביב, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%9B%D7%A1%D7%A4%D7%99%20%D7%99%D7%94%D7%95%D7%93%D7%94%20%D7%94%D7%9E%D7%9B%D7%91%D7%99%2061%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=2802360641009043448&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">159</td>
+<td class="v">1226</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">קפה גרג מתחם ביג אילת</td>
+<td class="addr">הסתת 20, ביג אילת, Israel</td>
+<td class="name">Greg Coffee</td>
+<td class="addr">Ha-Satat St 20, Eilat, Israel</td>
+<td class="v">73 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%92%D7%A8%D7%92%20%D7%9E%D7%AA%D7%97%D7%9D%20%D7%91%D7%99%D7%92%20%D7%90%D7%99%D7%9C%D7%AA%20%D7%94%D7%A1%D7%AA%D7%AA%2020%2C%20%D7%91%D7%99%D7%92%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11402048654834925566&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">160</td>
+<td class="v">1274</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">פיצה דון פדרו</td>
+<td class="addr">שבט לוי 14, אשדוד, Israel</td>
+<td class="name">פיצה דון פדרו אשדוד pizza don pedro</td>
+<td class="addr">Shevet Levi St 14, Ashdod, Israel</td>
+<td class="v">208 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%93%D7%95%D7%9F%20%D7%A4%D7%93%D7%A8%D7%95%20%D7%A9%D7%91%D7%98%20%D7%9C%D7%95%D7%99%2014%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11508468365132671515&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">161</td>
+<td class="v">1605</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">שווארמה פאשה אשקלון</td>
+<td class="addr">ברל כצנלסון 13, אשקלון, Israel</td>
+<td class="name">שווארמה פאשה אשקלון</td>
+<td class="addr">Berl Katsnelson St 5, Ashkelon, Israel</td>
+<td class="v">119 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%A4%D7%90%D7%A9%D7%94%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%20%D7%91%D7%A8%D7%9C%20%D7%9B%D7%A6%D7%A0%D7%9C%D7%A1%D7%95%D7%9F%2013%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10992482429560495213&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">162</td>
+<td class="v">1618</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">פיצה דון פדרו- אשדוד</td>
+<td class="addr">שבט לוי 14, אשדוד, Israel</td>
+<td class="name">פיצה דון פדרו אשדוד pizza don pedro</td>
+<td class="addr">Shevet Levi St 14, Ashdod, Israel</td>
+<td class="v">208 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%93%D7%95%D7%9F%20%D7%A4%D7%93%D7%A8%D7%95-%20%D7%90%D7%A9%D7%93%D7%95%D7%93%20%D7%A9%D7%91%D7%98%20%D7%9C%D7%95%D7%99%2014%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11508468365132671515&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">163</td>
+<td class="v">1659</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">פאשה</td>
+<td class="addr">ברל כצנלסון 13, אשקלון, Israel</td>
+<td class="name">שווארמה פאשה אשקלון</td>
+<td class="addr">Berl Katsnelson St 5, Ashkelon, Israel</td>
+<td class="v">119 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%90%D7%A9%D7%94%20%D7%91%D7%A8%D7%9C%20%D7%9B%D7%A6%D7%A0%D7%9C%D7%A1%D7%95%D7%9F%2013%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10992482429560495213&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">164</td>
+<td class="v">1701</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">בי בי בי</td>
+<td class="addr">אשקלון, Israel</td>
+<td class="name">BBB אשקלון</td>
+<td class="addr">Israel</td>
+<td class="v">4.6 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%20%D7%91%D7%99%20%D7%91%D7%99%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6902680184750939479&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">165</td>
+<td class="v">2616</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">קפה קפה</td>
+<td class="addr">שד&#39; הגעתון 35, נהריה, Israel</td>
+<td class="name">קפה קפה נהריה</td>
+<td class="addr">Sderot HaGa&#39;aton 35, Nahariya, 2244028, Israel</td>
+<td class="v">134 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%A7%D7%A4%D7%94%20%D7%A9%D7%93&#39;%20%D7%94%D7%92%D7%A2%D7%AA%D7%95%D7%9F%2035%2C%20%D7%A0%D7%94%D7%A8%D7%99%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6196207121247204614&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">166</td>
+<td class="v">3055</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">ביגה איילון</td>
+<td class="addr">דרך אבא הלל סילבר 301, רמת גן, Israel</td>
+<td class="name">Biga Ayalon Mall</td>
+<td class="addr">קניון איילון, Ramat Gan, Israel</td>
+<td class="v">872 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%D7%94%20%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F%20%D7%93%D7%A8%D7%9A%20%D7%90%D7%91%D7%90%20%D7%94%D7%9C%D7%9C%20%D7%A1%D7%99%D7%9C%D7%91%D7%A8%20301%2C%20%D7%A8%D7%9E%D7%AA%20%D7%92%D7%9F%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10440451064810267422&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">167</td>
+<td class="v">3469</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">יוסף דדון</td>
+<td class="addr">קהילת לודג&#39; 32, צפון תל אביב, Israel</td>
+<td class="name">Yosef Dadon</td>
+<td class="addr">Kehilat Lodz St 32, Tel Aviv-Yafo, Israel</td>
+<td class="v">5.4 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%95%D7%A1%D7%A3%20%D7%93%D7%93%D7%95%D7%9F%20%D7%A7%D7%94%D7%99%D7%9C%D7%AA%20%D7%9C%D7%95%D7%93%D7%92&#39;%2032%2C%20%D7%A6%D7%A4%D7%95%D7%9F%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13613445907083216990&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">168</td>
+<td class="v">3859</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">פלאפל בריבוע</td>
+<td class="addr">יד חרוצים 15, תל אביב, Israel</td>
+<td class="name">פלאפל בריבוע - יד חרוצים</td>
+<td class="addr">Yad Harutsim St 15, Tel Aviv-Yafo, Israel</td>
+<td class="v">10 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%99%D7%93%20%D7%97%D7%A8%D7%95%D7%A6%D7%99%D7%9D%2015%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9775166657057959808&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">169</td>
+<td class="v">4022</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">קפה לנדוור</td>
+<td class="addr">דרך מנחם בגין 132, קניון עזריאלי, תל אביב, Israel</td>
+<td class="name">Landwer</td>
+<td class="addr">Azrieli Center, Menakhem Begin Rd 132, Tel Aviv-Yafo, Israel</td>
+<td class="v">5.6 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%9C%D7%A0%D7%93%D7%95%D7%95%D7%A8%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%A0%D7%97%D7%9D%20%D7%91%D7%92%D7%99%D7%9F%20132%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A2%D7%96%D7%A8%D7%99%D7%90%D7%9C%D7%99%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17130888445176372703&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">170</td>
+<td class="v">4170</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">Cofizz</td>
+<td class="addr">רמב&quot;ם 26, תל אביב, Israel</td>
+<td class="name">cofizz</td>
+<td class="addr">Rambam St 26, Tel Aviv-Yafo, Israel</td>
+<td class="v">11 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Cofizz%20%D7%A8%D7%9E%D7%91%22%D7%9D%2026%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12962917831734444441&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">171</td>
+<td class="v">4519</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">לחם וחברים</td>
+<td class="addr">בוגרשוב 27, תל אביב, Israel</td>
+<td class="name">Lehem Vehaverim</td>
+<td class="addr">Bograshov St 27, Tel Aviv-Yafo, Israel</td>
+<td class="v">4 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%97%D7%9D%20%D7%95%D7%97%D7%91%D7%A8%D7%99%D7%9D%20%D7%91%D7%95%D7%92%D7%A8%D7%A9%D7%95%D7%91%2027%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6774165005224562138&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">172</td>
+<td class="v">4659</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">טעמים</td>
+<td class="addr">השרון 21, תל אביב, Israel</td>
+<td class="name">טעמים</td>
+<td class="addr">HaSharon St 21, Tel Aviv-Yafo, 6618511, Israel</td>
+<td class="v">5 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%A2%D7%9E%D7%99%D7%9D%20%D7%94%D7%A9%D7%A8%D7%95%D7%9F%2021%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10490670061770085818&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">173</td>
+<td class="v">5585</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">א.מ.א.פ בורגרים בעמ</td>
+<td class="addr">משה לרר 1, נס ציונה, Israel</td>
+<td class="name">Burgerim</td>
+<td class="addr">עמי בוטיק סנטר, משה לרר 1, נס ציונה, Israel</td>
+<td class="v">30 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90.%D7%9E.%D7%90.%D7%A4%20%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%99%D7%9D%20%D7%91%D7%A2%D7%9E%20%D7%9E%D7%A9%D7%94%20%D7%9C%D7%A8%D7%A8%201%2C%20%D7%A0%D7%A1%20%D7%A6%D7%99%D7%95%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13930088453259280856&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">174</td>
+<td class="v">5675</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">בורגרים נס ציונה</td>
+<td class="addr">משה לרר 1, נס ציונה, Israel</td>
+<td class="name">Burgerim</td>
+<td class="addr">עמי בוטיק סנטר, משה לרר 1, נס ציונה, Israel</td>
+<td class="v">30 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%99%D7%9D%20%D7%A0%D7%A1%20%D7%A6%D7%99%D7%95%D7%A0%D7%94%20%D7%9E%D7%A9%D7%94%20%D7%9C%D7%A8%D7%A8%201%2C%20%D7%A0%D7%A1%20%D7%A6%D7%99%D7%95%D7%A0%D7%94%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13930088453259280856&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">175</td>
+<td class="v">6471</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">קפה קפה נהריה</td>
+<td class="addr">הגעתון 35, נהריה</td>
+<td class="name">קפה קפה נהריה</td>
+<td class="addr">Sderot HaGa&#39;aton 35, Nahariya, 2244028, Israel</td>
+<td class="v">448 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%A7%D7%A4%D7%94%20%D7%A0%D7%94%D7%A8%D7%99%D7%94%20%D7%94%D7%92%D7%A2%D7%AA%D7%95%D7%9F%2035%2C%20%D7%A0%D7%94%D7%A8%D7%99%D7%94">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6196207121247204614&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">176</td>
+<td class="v">6509</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">BBB אשקלון</td>
+<td class="addr">מתחם גלובוס סנטר מבקיעים, אשקלון</td>
+<td class="name">BBB אשקלון</td>
+<td class="addr">Israel</td>
+<td class="v">4.7 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=BBB%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%20%D7%9E%D7%AA%D7%97%D7%9D%20%D7%92%D7%9C%D7%95%D7%91%D7%95%D7%A1%20%D7%A1%D7%A0%D7%98%D7%A8%20%D7%9E%D7%91%D7%A7%D7%99%D7%A2%D7%99%D7%9D%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6902680184750939479&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">177</td>
+<td class="v">6588</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">Greg  ביג אילת</td>
+<td class="addr">הסתת 20, אילת</td>
+<td class="name">Greg Coffee</td>
+<td class="addr">Ha-Satat St 20, Eilat, Israel</td>
+<td class="v">1.4 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Greg%20%20%D7%91%D7%99%D7%92%20%D7%90%D7%99%D7%9C%D7%AA%20%D7%94%D7%A1%D7%AA%D7%AA%2020%2C%20%D7%90%D7%99%D7%9C%D7%AA">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=11402048654834925566&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">178</td>
+<td class="v">7146</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">BIGA איילון</td>
+<td class="addr">אבא הלל 301, רמת גן</td>
+<td class="name">Biga Ayalon Mall</td>
+<td class="addr">קניון איילון, Ramat Gan, Israel</td>
+<td class="v">3.7 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=BIGA%20%D7%90%D7%99%D7%99%D7%9C%D7%95%D7%9F%20%D7%90%D7%91%D7%90%20%D7%94%D7%9C%D7%9C%20301%2C%20%D7%A8%D7%9E%D7%AA%20%D7%92%D7%9F">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10440451064810267422&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">179</td>
+<td class="v">7308</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">Cofizz</td>
+<td class="addr">רמב&quot;ם 26, תל אביב, Israel</td>
+<td class="name">cofizz</td>
+<td class="addr">Rambam St 26, Tel Aviv-Yafo, Israel</td>
+<td class="v">11 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Cofizz%20%D7%A8%D7%9E%D7%91%22%D7%9D%2026%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12962917831734444441&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">180</td>
+<td class="v">7315</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">יוסף דדון</td>
+<td class="addr">קהילת לודג&#39; 32, צפון תל אביב, Israel</td>
+<td class="name">Yosef Dadon</td>
+<td class="addr">Kehilat Lodz St 32, Tel Aviv-Yafo, Israel</td>
+<td class="v">5.4 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%95%D7%A1%D7%A3%20%D7%93%D7%93%D7%95%D7%9F%20%D7%A7%D7%94%D7%99%D7%9C%D7%AA%20%D7%9C%D7%95%D7%93%D7%92&#39;%2032%2C%20%D7%A6%D7%A4%D7%95%D7%9F%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13613445907083216990&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">181</td>
+<td class="v">7321</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">פלאפל בריבוע</td>
+<td class="addr">יד חרוצים 15, תל אביב, Israel</td>
+<td class="name">פלאפל בריבוע - יד חרוצים</td>
+<td class="addr">Yad Harutsim St 15, Tel Aviv-Yafo, Israel</td>
+<td class="v">10 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%91%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%99%D7%93%20%D7%97%D7%A8%D7%95%D7%A6%D7%99%D7%9D%2015%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=9775166657057959808&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">182</td>
+<td class="v">7326</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">לחם וחברים</td>
+<td class="addr">בוגרשוב 27, תל אביב, Israel</td>
+<td class="name">Lehem Vehaverim</td>
+<td class="addr">Bograshov St 27, Tel Aviv-Yafo, Israel</td>
+<td class="v">4 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%97%D7%9D%20%D7%95%D7%97%D7%91%D7%A8%D7%99%D7%9D%20%D7%91%D7%95%D7%92%D7%A8%D7%A9%D7%95%D7%91%2027%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=6774165005224562138&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">183</td>
+<td class="v">7327</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">טעמים</td>
+<td class="addr">השרון 21, תל אביב, Israel</td>
+<td class="name">טעמים</td>
+<td class="addr">HaSharon St 21, Tel Aviv-Yafo, 6618511, Israel</td>
+<td class="v">5 מ׳</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%A2%D7%9E%D7%99%D7%9D%20%D7%94%D7%A9%D7%A8%D7%95%D7%9F%2021%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10490670061770085818&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">184</td>
+<td class="v">7329</td>
+<td class="bad">כפילות בתוך ה־920</td>
+<td class="name">קפה לנדוור</td>
+<td class="addr">דרך מנחם בגין 132, קניון עזריאלי, תל אביב, Israel</td>
+<td class="name">Landwer</td>
+<td class="addr">Azrieli Center, Menakhem Begin Rd 132, Tel Aviv-Yafo, Israel</td>
+<td class="v">5.6 ק״מ</td>
+<td><span class="muted">אין בעלים קיים</span></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%9C%D7%A0%D7%93%D7%95%D7%95%D7%A8%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%A0%D7%97%D7%9D%20%D7%91%D7%92%D7%99%D7%9F%20132%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A2%D7%96%D7%A8%D7%99%D7%90%D7%9C%D7%99%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=17130888445176372703&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">185</td>
+<td class="v">578</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">לוצ&#39;ינה</td>
+<td class="addr">ירושלים, Israel</td>
+<td class="name">Luciana</td>
+<td class="addr">ממילא 8, קניון ממילא, Jerusalem</td>
+<td class="v">154 מ׳</td>
+<td><b>#6542</b> Luciana ממילא<div class="muted">שד&#39; ממילא 8, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%95%D7%A6&#39;%D7%99%D7%A0%D7%94%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13238598513867539445&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">186</td>
+<td class="v">4485</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">מיתוס</td>
+<td class="addr">ויצמן 2, תל אביב, Israel</td>
+<td class="name">Meatos</td>
+<td class="addr">מגדל אמות השקעות, ויצמן‬ 2, תל אביב-יפו, Israel</td>
+<td class="v">31 מ׳</td>
+<td><b>#7036</b> Meatos ויצמן<div class="muted">וייצמן 2, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%99%D7%AA%D7%95%D7%A1%20%D7%95%D7%99%D7%A6%D7%9E%D7%9F%202%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16047288391578039168&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">187</td>
+<td class="v">4727</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">לוצ&#39;נה</td>
+<td class="addr">ממילא 8, שדרות אלרוב ממילא, ירושלים, Israel</td>
+<td class="name">Luciana</td>
+<td class="addr">ממילא 8, קניון ממילא, Jerusalem</td>
+<td class="v">53 מ׳</td>
+<td><b>#6542</b> Luciana ממילא<div class="muted">שד&#39; ממילא 8, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%95%D7%A6&#39;%D7%A0%D7%94%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%208%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%90%D7%9C%D7%A8%D7%95%D7%91%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=13238598513867539445&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">188</td>
+<td class="v">4747</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">מיס אנד מר</td>
+<td class="addr">יואל משה סלומון 12, כיכר המוזיקה, ירושלים, Israel</td>
+<td class="name">Miss &amp; Mr</td>
+<td class="addr">Yo&#39;el Moshe Salomon St 12, Jerusalem, 9463312, Israel</td>
+<td class="v">15 מ׳</td>
+<td><b>#6867</b> Miss &amp; Mr<div class="muted">יואל משה סלומון 12, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%99%D7%A1%20%D7%90%D7%A0%D7%93%20%D7%9E%D7%A8%20%D7%99%D7%95%D7%90%D7%9C%20%D7%9E%D7%A9%D7%94%20%D7%A1%D7%9C%D7%95%D7%9E%D7%95%D7%9F%2012%2C%20%D7%9B%D7%99%D7%9B%D7%A8%20%D7%94%D7%9E%D7%95%D7%96%D7%99%D7%A7%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16724611740607668211&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">189</td>
+<td class="v">4874</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">הפי פיש ממילא</td>
+<td class="addr">ממילא 14, שדרות אלרוב ממילא, ירושלים, Israel</td>
+<td class="name">Happy Fish</td>
+<td class="addr">Mamilla Rd 14, Jerusalem, Israel</td>
+<td class="v">94 מ׳</td>
+<td><b>#573</b> הפי פיש<div class="muted">Mamilla Rd 14, Jerusalem, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A4%D7%99%20%D7%A4%D7%99%D7%A9%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2014%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%90%D7%9C%D7%A8%D7%95%D7%91%20%D7%9E%D7%9E%D7%99%D7%9C%D7%90%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12638508322914610798&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">190</td>
+<td class="v">4950</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">בורגרס בר</td>
+<td class="addr">שד&#39; נהר הירדן 26, בית שמש, Israel</td>
+<td class="name">Burgers Bar</td>
+<td class="addr">Derech Yitshak Rabin 19, Beit Shemesh, Israel</td>
+<td class="v">498 מ׳</td>
+<td><b>#6761</b> Burgers Bar בית שמש<div class="muted">דרך יצחק רבין 19, בית שמש · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%A1%20%D7%91%D7%A8%20%D7%A9%D7%93&#39;%20%D7%A0%D7%94%D7%A8%20%D7%94%D7%99%D7%A8%D7%93%D7%9F%2026%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7241808635776325213&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">191</td>
+<td class="v">4997</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">בומרנג טוסט בר</td>
+<td class="addr">דרך יצחק רבין 17, בית שמש, Israel</td>
+<td class="name">Burgers Bar</td>
+<td class="addr">Derech Yitshak Rabin 19, Beit Shemesh, Israel</td>
+<td class="v">498 מ׳</td>
+<td><b>#6761</b> Burgers Bar בית שמש<div class="muted">דרך יצחק רבין 19, בית שמש · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%9E%D7%A8%D7%A0%D7%92%20%D7%98%D7%95%D7%A1%D7%98%20%D7%91%D7%A8%20%D7%93%D7%A8%D7%9A%20%D7%99%D7%A6%D7%97%D7%A7%20%D7%A8%D7%91%D7%99%D7%9F%2017%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7241808635776325213&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">192</td>
+<td class="v">5061</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">מיסיס מוריס</td>
+<td class="addr">ירושלים, Israel</td>
+<td class="name">Miss &amp; Mr</td>
+<td class="addr">Yo&#39;el Moshe Salomon St 12, Jerusalem, 9463312, Israel</td>
+<td class="v">604 מ׳</td>
+<td><b>#6867</b> Miss &amp; Mr<div class="muted">יואל משה סלומון 12, ירושלים · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%99%D7%A1%D7%99%D7%A1%20%D7%9E%D7%95%D7%A8%D7%99%D7%A1%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16724611740607668211&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">193</td>
+<td class="v">6489</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">Tommy&#39;s | ירושלים</td>
+<td class="addr">הקרן הקיימת לישראל 21, ירושלים</td>
+<td class="name">Tommy&#39;s - טומי&#39;ס</td>
+<td class="addr">HaKeren HaKayemet Le-Israel St 21, Jerusalem, Israel</td>
+<td class="v">918 מ׳</td>
+<td><b>#4928</b> טומיס&#39;<div class="muted">קרן קיימת לישראל 21, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Tommy&#39;s%20%7C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%94%D7%A7%D7%A8%D7%9F%20%D7%94%D7%A7%D7%99%D7%99%D7%9E%D7%AA%20%D7%9C%D7%99%D7%A9%D7%A8%D7%90%D7%9C%2021%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10229194523983805098&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">194</td>
+<td class="v">6836</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">Tommy&#39;s Deli</td>
+<td class="addr">קק&quot;ל 21, ירושלים</td>
+<td class="name">Tommy&#39;s - טומי&#39;ס</td>
+<td class="addr">HaKeren HaKayemet Le-Israel St 21, Jerusalem, Israel</td>
+<td class="v">918 מ׳</td>
+<td><b>#4928</b> טומיס&#39;<div class="muted">קרן קיימת לישראל 21, ירושלים, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Tommy&#39;s%20Deli%20%D7%A7%D7%A7%22%D7%9C%2021%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=10229194523983805098&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">195</td>
+<td class="v">6849</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">Burgers Bar רמת בית שמש</td>
+<td class="addr">הרב שלמה זלמן אורבך 68, בית שמש</td>
+<td class="name">Burgers Bar</td>
+<td class="addr">Derech Yitshak Rabin 19, Beit Shemesh, Israel</td>
+<td class="v">493 מ׳</td>
+<td><b>#6761</b> Burgers Bar בית שמש<div class="muted">דרך יצחק רבין 19, בית שמש · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Burgers%20Bar%20%D7%A8%D7%9E%D7%AA%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%20%D7%94%D7%A8%D7%91%20%D7%A9%D7%9C%D7%9E%D7%94%20%D7%96%D7%9C%D7%9E%D7%9F%20%D7%90%D7%95%D7%A8%D7%91%D7%9A%2068%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=7241808635776325213&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">196</td>
+<td class="v">6914</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">Mamilla-Happy Fish</td>
+<td class="addr">שלמה המלך 11, ירושלים</td>
+<td class="name">Happy Fish</td>
+<td class="addr">Mamilla Rd 14, Jerusalem, Israel</td>
+<td class="v">1.4 ק״מ</td>
+<td><b>#573</b> הפי פיש<div class="muted">Mamilla Rd 14, Jerusalem, Israel · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Mamilla-Happy%20Fish%20%D7%A9%D7%9C%D7%9E%D7%94%20%D7%94%D7%9E%D7%9C%D7%9A%2011%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=12638508322914610798&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr><tr>
+<td class="v">197</td>
+<td class="v">7064</td>
+<td class="bad">כפילות בתוך ה־920 + כבר שייך למסעדה אחרת</td>
+<td class="name">Meatos Grill Bar</td>
+<td class="addr">שאול המלך 33, תל אביב</td>
+<td class="name">Meatos</td>
+<td class="addr">מגדל אמות השקעות, ויצמן‬ 2, תל אביב-יפו, Israel</td>
+<td class="v">1.1 ק״מ</td>
+<td><b>#7036</b> Meatos ויצמן<div class="muted">וייצמן 2, תל אביב · verified</div></td>
+<td><a target="_blank" href="https://www.google.com/maps/search/?api=1&amp;query=Meatos%20Grill%20Bar%20%D7%A9%D7%90%D7%95%D7%9C%20%D7%94%D7%9E%D7%9C%D7%9A%2033%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91">שלנו</a> · <a target="_blank" href="https://maps.google.com/?cid=16047288391578039168&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA">פין גוגל</a></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

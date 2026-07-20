@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+  Jewish On The Way — DESIGN MOCKUP (restaurants screen)
+  This is a standalone visual prototype. It does NOT touch the real app code.
+  Colors taken 1:1 from mobile/constants/theme.ts and the real screen StyleSheet.
+  Open in VSCode "Simple Browser" side-by-side and we edit live.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jewish On The Way — Restaurants mockup</title>
+<style>
+  :root{
+    /* ── brand (from theme.ts) ── */
+    --navy:#0B1736; --gold:#D4AF37; --goldFaint:rgba(212,175,55,0.10);
+    --bg:#F7F5F0; --card:#FFFFFF;
+    --textPrimary:#111827; --textSecondary:#6B7280; --textMuted:#9CA3AF;
+    /* ── type colors (from screen) ── */
+    --meat:#DC2626; --dairy:#2563EB; --parve:#059669; --unknown:#9CA3AF;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{
+    font-family:var(--sans); background:#1c1c1e;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    gap:14px; padding:24px 12px;
+  }
+  .caption{color:#8a8a8e;font-size:12px;letter-spacing:.3px;}
+  /* ── phone frame ── */
+  .phone{
+    width:390px; height:844px; background:var(--bg); border-radius:44px;
+    overflow:hidden; position:relative; box-shadow:0 30px 80px rgba(0,0,0,.55);
+    border:10px solid #0a0a0c; display:flex; flex-direction:column;
+  }
+  .screen{flex:1; overflow-y:auto; overflow-x:hidden;}
+  .screen::-webkit-scrollbar{width:0;}
+
+  /* ── header (navy) ── */
+  .header{background:var(--navy); padding:54px 20px 16px; display:flex; flex-direction:column; gap:14px;}
+  .headerRow{display:flex; align-items:center; gap:14px;}
+  .backBtn{width:38px;height:38px;border-radius:19px;background:rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .headerTitle{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px;}
+  .headerSub{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;font-weight:500;}
+
+  /* ── search bar (AI mode) ── */
+  .searchBar{display:flex;align-items:center;gap:10px;border-radius:14px;
+    padding:11px 14px;border:1px solid rgba(212,175,55,.38);background:rgba(201,168,76,.08);}
+  .searchInput{flex:1;font-size:14px;color:rgba(255,255,255,.45);}
+  .searchDivider{width:1px;height:16px;background:rgba(255,255,255,.15);}
+  .aiPill{padding:5px 10px;border-radius:10px;background:var(--gold);}
+  .aiPill span{font-size:11px;font-weight:800;color:var(--navy);letter-spacing:.5px;}
+
+  /* ── filters ── */
+  .filters{background:#fff;border-bottom:1px solid #F0EDE6;}
+  .filterRow{display:flex;gap:8px;padding:10px 16px;overflow-x:auto;}
+  .filterRow::-webkit-scrollbar{display:none;}
+  .chip{padding:7px 14px;border-radius:20px;border:1.5px solid #E5E7EB;background:#fff;
+    font-size:13px;font-weight:600;color:var(--textSecondary);white-space:nowrap;}
+  .chip.on{border-color:var(--navy);background:var(--navy);color:#fff;}
+
+  /* ── list ── */
+  .list{padding:16px;display:flex;flex-direction:column;gap:10px;}
+  .card{display:flex;background:#fff;border-radius:18px;overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,.07);}
+  .cardAccent{width:4px;flex:0 0 auto;}
+  .cardBody{flex:1;padding:14px;display:flex;flex-direction:column;gap:10px;}
+  .cardTop{display:flex;align-items:center;gap:12px;}
+  .typeIcon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .cardName{font-size:15px;font-weight:700;color:var(--textPrimary);letter-spacing:-.1px;}
+  .cardType{font-size:12px;font-weight:600;margin-top:1px;}
+  .kashrutBadge{padding:4px 8px;border-radius:8px;flex:0 0 auto;}
+  .kashrutBadge span{font-size:11px;font-weight:700;}
+  .cardMeta{display:flex;flex-direction:column;gap:5px;}
+  .metaRow{display:flex;align-items:center;gap:6px;}
+  .metaText{font-size:12px;color:var(--textMuted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .cardBottom{display:flex;align-items:center;}
+  .distPill{display:flex;align-items:center;gap:4px;background:var(--goldFaint);border-radius:10px;padding:4px 8px;}
+  .distPill span{font-size:11px;font-weight:700;color:var(--gold);}
+  .spacer{flex:1;}
+  svg{display:block;}
+</style>
+</head>
+<body>
+  <div class="caption">דמה עיצובי — מסך מסעדות · נערוך את זה ביחד לייב</div>
+  <div class="phone">
+    <div class="screen">
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="headerRow">
+          <div class="backBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </div>
+          <div style="flex:1">
+            <div class="headerTitle">פתח תקווה</div>
+            <div class="headerSub">6 מסעדות&nbsp;&nbsp;·&nbsp;&nbsp;ממוינות לפי מרחק</div>
+          </div>
+        </div>
+        <div class="searchBar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+          <div class="searchInput">מה תרצה לאכול? באיזו עיר?</div>
+          <div class="searchDivider"></div>
+          <div class="aiPill"><span>AI</span></div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters">
+        <div class="filterRow">
+          <div class="chip on">הכל</div>
+          <div class="chip">בשרי</div>
+          <div class="chip">חלבי</div>
+          <div class="chip">פרווה</div>
+        </div>
+        <div class="filterRow">
+          <div class="chip on">הכל</div>
+          <div class="chip">רבנות</div>
+          <div class="chip">מהדרין</div>
+          <div class="chip">בד"ץ</div>
+        </div>
+      </div>
+
+      <!-- LIST -->
+      <div class="list" id="list"></div>
+
+    </div>
+  </div>
+
+<script>
+  // ── sample data (mock only) ──
+  const TYPE = {
+    meat:  {color:'#DC2626', label:'בשרי'},
+    dairy: {color:'#2563EB', label:'חלבי'},
+    parve: {color:'#059669', label:'פרווה'},
+  };
+  const KASHRUT = {
+    rabbinate:{label:'רבנות', color:'#6B7280', bg:'#F3F4F6'},
+    mehadrin: {label:'מהדרין',color:'#2563EB', bg:'#EFF6FF'},
+    badatz:   {label:'בד"ץ',  color:'#059669', bg:'#F0FDF4'},
+  };
+  const DATA = [
+    {name:'פיצה שמיים',     type:'dairy', kashrut:'mehadrin',  addr:'חיים עוזר 12, פתח תקווה', hours:'11:00–23:00', dist:'400 m'},
+    {name:'שיפודי הבירה',   type:'meat',  kashrut:'rabbinate', addr:'מוטה גור 8, פתח תקווה',   hours:'12:00–24:00', dist:'0.9 km'},
+    {name:'פלאפל הזהב',     type:'parve', kashrut:'badatz',    addr:'ז\'בוטינסקי 45, פתח תקווה',hours:'09:00–22:00', dist:'1.2 km'},
+    {name:'קפה ארומה',      type:'dairy', kashrut:'rabbinate', addr:'רוטשילד 30, פתח תקווה',   hours:'07:00–22:00', dist:'1.6 km'},
+    {name:'גריל בר אנגוס',  type:'meat',  kashrut:'mehadrin',  addr:'העצמאות 5, פתח תקווה',     hours:'12:00–23:30', dist:'2.1 km'},
+    {name:'סושי באר',       type:'parve', kashrut:'rabbinate', addr:'הרצל 22, פתח תקווה',      hours:'12:00–22:30', dist:'2.8 km'},
+  ];
+
+  const ICON = {
+    utensils:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',
+    pin:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    clock:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    nav:'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
+    chev:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E5E7EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  };
+
+  const hex = (h,a)=>{const n=h.replace('#','');const r=parseInt(n.slice(0,2),16),g=parseInt(n.slice(2,4),16),b=parseInt(n.slice(4,6),16);return `rgba(${r},${g},${b},${a})`;};
+
+  document.getElementById('list').innerHTML = DATA.map(r=>{
+    const t=TYPE[r.type], k=KASHRUT[r.kashrut];
+    return `
+    <div class="card">
+      <div class="cardAccent" style="background:${t.color}"></div>
+      <div class="cardBody">
+        <div class="cardTop">
+          <div class="typeIcon" style="background:${hex(t.color,.09)}">${ICON.utensils.replace('{c}',t.color)}</div>
+          <div style="flex:1;min-width:0">
+            <div class="cardName">${r.name}</div>
+            <div class="cardType" style="color:${t.color}">${t.label}</div>
+          </div>
+          <div class="kashrutBadge" style="background:${k.bg}"><span style="color:${k.color}">${k.label}</span></div>
+        </div>
+        <div class="cardMeta">
+          <div class="metaRow">${ICON.pin}<div class="metaText">${r.addr}</div></div>
+          <div class="metaRow">${ICON.clock}<div class="metaText">${r.hours}</div></div>
+        </div>
+        <div class="cardBottom">
+          <div class="distPill">${ICON.nav}<span>${r.dist}</span></div>
+          <div class="spacer"></div>
+          ${ICON.chev}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+</script>
+</body>
+</html>

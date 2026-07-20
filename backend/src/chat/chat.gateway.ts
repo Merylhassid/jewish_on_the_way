@@ -11,14 +11,16 @@ import {
 import { Server, Socket } from 'socket.io';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, IsNull, Repository } from 'typeorm';
 import { Logger, OnModuleDestroy } from '@nestjs/common';
 import { ChatMessage } from './chat-message.entity';
+import { ChatMessageLike } from './chat-message-like.entity';
 import { ChatCursor } from './chat-cursor.entity';
 import { User } from '../users/user.entity';
 import { Destination } from '../destination.entity';
 import { Minyan } from '../minyan.entity';
 import { AuditService } from '../audit/audit.service';
+import { ReportsService } from '../reports/reports.service';
 
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10_000;
@@ -33,6 +35,26 @@ const CORS_ORIGIN =
     : '*';
 
 type SimpleUser = { userId: number; firstName: string; lastName: string };
+type CommunityCategory =
+  | 'hotels'
+  | 'attractions'
+  | 'food'
+  | 'flights'
+  | 'entertainment'
+  | 'transport'
+  | 'synagogues'
+  | 'general';
+
+const COMMUNITY_CATEGORIES = new Set<CommunityCategory>([
+  'hotels',
+  'attractions',
+  'food',
+  'flights',
+  'entertainment',
+  'transport',
+  'synagogues',
+  'general',
+]);
 
 @WebSocketGateway({
   cors: { origin: CORS_ORIGIN },
@@ -64,12 +86,15 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     private jwtService: JwtService,
     @InjectRepository(ChatMessage)
     private messagesRepo: Repository<ChatMessage>,
+    @InjectRepository(ChatMessageLike)
+    private likesRepo: Repository<ChatMessageLike>,
     @InjectRepository(ChatCursor)
     private cursorsRepo: Repository<ChatCursor>,
     @InjectRepository(User) private usersRepo: Repository<User>,
     @InjectRepository(Destination)
     private destinationsRepo: Repository<Destination>,
     private audit: AuditService,
+    private reports: ReportsService,
   ) {
     this.cleanupInterval = setInterval(() => {
       const cutoff = Date.now() - RATE_LIMIT_STALE_MS;
@@ -158,11 +183,12 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     this.broadcastOnline(room);
 
     const history = await this.messagesRepo.find({
-      where: { destination: { id: destination.id } },
-      order: { createdAt: 'ASC' },
+      where: { destination: { id: destination.id }, parentMessage: IsNull() },
+      order: { createdAt: 'DESC' },
       take: 50,
+      relations: ['comments', 'comments.user'],
     });
-    client.emit('chat:history', history.map(this.formatMessage));
+    client.emit('chat:history', await this.formatCommunityMessages(history, (client as any).userId));
 
     // Send current read cursors
     const cursors = await this.getCursors(room);
@@ -191,7 +217,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
   @SubscribeMessage('chat:sendMessage')
   async handleMessage(
     @ConnectedSocket() client: Socket,
-    @MessageBody() data: { destinationId: number; content: string },
+    @MessageBody() data: { destinationId: number; content: string; category?: string; parentMessageId?: number; imageUrl?: string },
   ) {
     const userId = (client as any).userId;
     if (!userId) throw new WsException('Unauthorized');
@@ -204,17 +230,40 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const cachedDestinationId = (client as any).destinationId as number;
     if (!cachedUser || !cachedDestinationId) throw new WsException('Invalid destination');
 
+    const category = this.normalizeCommunityCategory(data.category);
+    const parentMessageId = Number(data.parentMessageId || 0) || null;
+    let parentMessage: ChatMessage | null = null;
+    if (parentMessageId) {
+      parentMessage = await this.messagesRepo.findOne({
+        where: {
+          id: parentMessageId,
+          destination: { id: cachedDestinationId },
+          parentMessage: IsNull(),
+        },
+      });
+      if (!parentMessage) throw new WsException('Parent post not found');
+    }
+
     const message = this.messagesRepo.create({
       content,
+      category: parentMessage ? parentMessage.category : category,
+      imageUrl: parentMessage ? null : (data.imageUrl ?? null),
       user: cachedUser,
       destination: { id: cachedDestinationId } as Destination,
+      parentMessage,
     });
     const saved = await this.messagesRepo.save(message);
     saved.user = cachedUser;
 
-    const formatted = this.formatMessage(saved);
     const room = `destination:${cachedDestinationId}`;
-    this.server.to(room).emit('chat:newMessage', formatted);
+    if (parentMessage) {
+      saved.parentMessage = parentMessage;
+      const formatted = this.formatMessage(saved);
+      this.server.to(room).emit('chat:newComment', { parentMessageId: parentMessage.id, comment: formatted });
+    } else {
+      const formatted = (await this.formatCommunityMessages([saved], userId))[0];
+      this.server.to(room).emit('chat:newMessage', formatted);
+    }
 
     // Auto-mark sender as read
     await this.upsertCursor(room, userId, cachedUser.firstName, cachedUser.lastName, saved.id);
@@ -222,7 +271,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     this.server.to(room).emit('chat:cursors', { cursors });
 
     this.audit.log('CHAT_MESSAGE_SENT', userId, { destinationId: cachedDestinationId });
-    return formatted;
+    return this.formatMessage(saved);
   }
 
   // ── City Chat: Mark Read ──
@@ -240,6 +289,165 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const cursors = await this.getCursors(room);
     this.server.to(room).emit('chat:cursors', { cursors });
     return { ok: true };
+  }
+
+  @SubscribeMessage('chat:toggleLike')
+  async handleToggleLike(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number; messageId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedUser = (client as any).cachedUser as User;
+    const cachedDestinationId = (client as any).destinationId as number;
+    if (!userId || !cachedUser || !cachedDestinationId) throw new WsException('Unauthorized');
+    this.checkRateLimit(userId);
+
+    const message = await this.messagesRepo.findOne({
+      where: {
+        id: data.messageId,
+        destination: { id: cachedDestinationId },
+        parentMessage: IsNull(),
+      },
+    });
+    if (!message) throw new WsException('Post not found');
+
+    const existing = await this.likesRepo.findOne({
+      where: { message: { id: message.id }, user: { id: userId } },
+    });
+    if (existing) {
+      await this.likesRepo.remove(existing);
+    } else {
+      await this.likesRepo.save(this.likesRepo.create({ message, user: cachedUser }));
+    }
+
+    const engagement = await this.getLikesForMessages([message.id], userId);
+    const likes = engagement.get(message.id) ?? { likeCount: 0, likedByMe: false, likedBy: [] };
+    const room = `destination:${cachedDestinationId}`;
+    this.server.to(room).emit('chat:likesUpdated', { messageId: message.id, ...likes });
+    return { messageId: message.id, ...likes };
+  }
+
+  @SubscribeMessage('chat:updatePost')
+  async handleUpdatePost(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number; messageId: number; content: string },
+  ) {
+    const userId = (client as any).userId;
+    const cachedDestinationId = (client as any).destinationId as number;
+    if (!userId || !cachedDestinationId) throw new WsException('Unauthorized');
+    this.checkRateLimit(userId);
+
+    const content = (data.content ?? '').trim();
+    if (!content || content.length > 500) throw new WsException('Post must be 1–500 characters');
+
+    const message = await this.messagesRepo.findOne({
+      where: {
+        id: data.messageId,
+        destination: { id: cachedDestinationId },
+        user: { id: userId },
+        parentMessage: IsNull(),
+      },
+      relations: ['comments', 'comments.user'],
+    });
+    if (!message) throw new WsException('Post not found');
+
+    message.content = content;
+    const saved = await this.messagesRepo.save(message);
+    const formatted = (await this.formatCommunityMessages([saved], userId))[0];
+    const room = `destination:${cachedDestinationId}`;
+    this.server.to(room).emit('chat:postUpdated', { message: formatted });
+    return formatted;
+  }
+
+  @SubscribeMessage('chat:deletePost')
+  async handleDeletePost(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number; messageId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedDestinationId = (client as any).destinationId as number;
+    if (!userId || !cachedDestinationId) throw new WsException('Unauthorized');
+    this.checkRateLimit(userId);
+
+    const message = await this.messagesRepo.findOne({
+      where: {
+        id: data.messageId,
+        destination: { id: cachedDestinationId },
+        user: { id: userId },
+        parentMessage: IsNull(),
+      },
+    });
+    if (!message) throw new WsException('Post not found');
+
+    await this.messagesRepo.remove(message);
+    const room = `destination:${cachedDestinationId}`;
+    this.server.to(room).emit('chat:postDeleted', { messageId: data.messageId });
+    return { ok: true, messageId: data.messageId };
+  }
+
+  @SubscribeMessage('chat:updateComment')
+  async handleUpdateComment(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number; commentId: number; content: string },
+  ) {
+    const userId = (client as any).userId;
+    const cachedDestinationId = (client as any).destinationId as number;
+    if (!userId || !cachedDestinationId) throw new WsException('Unauthorized');
+    this.checkRateLimit(userId);
+
+    const content = (data.content ?? '').trim();
+    if (!content || content.length > 500) throw new WsException('Comment must be 1–500 characters');
+
+    const comment = await this.messagesRepo.findOne({
+      where: {
+        id: data.commentId,
+        destination: { id: cachedDestinationId },
+        user: { id: userId },
+      },
+      relations: ['parentMessage'],
+    });
+    if (!comment?.parentMessage) throw new WsException('Comment not found');
+
+    comment.content = content;
+    const saved = await this.messagesRepo.save(comment);
+    saved.parentMessage = comment.parentMessage;
+    const formatted = this.formatMessage(saved);
+    const room = `destination:${cachedDestinationId}`;
+    this.server.to(room).emit('chat:commentUpdated', {
+      parentMessageId: comment.parentMessage.id,
+      comment: formatted,
+    });
+    return formatted;
+  }
+
+  @SubscribeMessage('chat:deleteComment')
+  async handleDeleteComment(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { destinationId: number; commentId: number },
+  ) {
+    const userId = (client as any).userId;
+    const cachedDestinationId = (client as any).destinationId as number;
+    if (!userId || !cachedDestinationId) throw new WsException('Unauthorized');
+    this.checkRateLimit(userId);
+
+    const comment = await this.messagesRepo.findOne({
+      where: {
+        id: data.commentId,
+        destination: { id: cachedDestinationId },
+        user: { id: userId },
+      },
+      relations: ['parentMessage'],
+    });
+    if (!comment?.parentMessage) throw new WsException('Comment not found');
+
+    const parentMessageId = comment.parentMessage.id;
+    await this.messagesRepo.remove(comment);
+    const room = `destination:${cachedDestinationId}`;
+    this.server.to(room).emit('chat:commentDeleted', {
+      parentMessageId,
+      commentId: data.commentId,
+    });
+    return { ok: true, parentMessageId, commentId: data.commentId };
   }
 
   // ── Minyan Chat: Join ──
@@ -399,6 +607,16 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     const userId = (client as any).userId;
     if (!userId) throw new WsException('Unauthorized');
     this.logger.warn(`Message #${data.messageId} reported by user #${userId}`);
+    this.audit.log('CHAT_MESSAGE_REPORTED', userId, { messageId: data.messageId });
+
+    const message = await this.messagesRepo.findOne({
+      where: { id: data.messageId },
+      relations: ['user'],
+    });
+    if (message?.user && message.user.id !== userId) {
+      await this.reports.createDirect(userId, message.user.id, 'community', data.messageId);
+    }
+
     return { ok: true };
   }
 
@@ -468,10 +686,72 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect, On
     }));
   }
 
+  private normalizeCommunityCategory(value?: string): CommunityCategory {
+    if (value && COMMUNITY_CATEGORIES.has(value as CommunityCategory)) {
+      return value as CommunityCategory;
+    }
+    return 'general';
+  }
+
+  private async getLikesForMessages(messageIds: number[], currentUserId: number) {
+    const map = new Map<
+      number,
+      {
+        likeCount: number;
+        likedByMe: boolean;
+        likedBy: { id: number; firstName: string; lastName: string; profileImageUrl: string | null }[];
+      }
+    >();
+    if (messageIds.length === 0) return map;
+
+    const likes = await this.likesRepo.find({
+      where: { message: { id: In(messageIds) } },
+      relations: ['message', 'user'],
+      order: { createdAt: 'ASC' },
+    });
+
+    for (const like of likes) {
+      const messageId = like.message.id;
+      if (!map.has(messageId)) {
+        map.set(messageId, { likeCount: 0, likedByMe: false, likedBy: [] });
+      }
+      const entry = map.get(messageId)!;
+      entry.likeCount++;
+      if (like.user.id === currentUserId) entry.likedByMe = true;
+      entry.likedBy.push({
+        id: like.user.id,
+        firstName: like.user.firstName,
+        lastName: like.user.lastName,
+        profileImageUrl: like.user.profileImageUrl,
+      });
+    }
+
+    return map;
+  }
+
+  private async formatCommunityMessages(messages: ChatMessage[], currentUserId: number) {
+    const likes = await this.getLikesForMessages(messages.map((message) => message.id), currentUserId);
+    return messages.map((message) => {
+      const engagement = likes.get(message.id) ?? { likeCount: 0, likedByMe: false, likedBy: [] };
+      return {
+        ...this.formatMessage(message),
+        category: this.normalizeCommunityCategory(message.category ?? undefined),
+        comments: (message.comments ?? [])
+          .slice()
+          .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
+          .map((comment) => this.formatMessage(comment)),
+        ...engagement,
+      };
+    });
+  }
+
   private formatMessage(msg: ChatMessage) {
     return {
       id: msg.id,
       content: msg.content,
+      category: msg.category ?? null,
+      imageUrl: msg.imageUrl ?? null,
+      parentMessageId: msg.parentMessage?.id ?? null,
       createdAt: msg.createdAt,
       user: {
         id: msg.user.id,

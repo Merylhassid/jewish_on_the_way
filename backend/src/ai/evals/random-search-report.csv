@@ -1,0 +1,1001 @@
+﻿query,expectedCategory,gotCategory,expectedDenom,gotDenom,expectedDest,gotDest,resultCount,error,status,note
+מסעדה יפני,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בתי כנסת ליד באר שבע,synagogue,synagogue,,,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+קפריסין,destination,,,,קפריסין,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בתי כנתס תימני,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה מקסיקני,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה מקסיקני עם ילדים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+הודו,destination,,,,הודו,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה ים תיכוני מומלץ בספרד,restaurant,restaurant,,,ספרד,Spain,,,✅ OK?,לא נספר
+מסדעה צמחוני בונציה,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+להתארח בשבת באזור,hosting,hosting,,,,Tel Aviv,,,✅ OK,hosting
+מניין שחרית ברעננה,minyan,minyan,,,רעננה,Ra'anana,,,✅ OK,minyan
+סעוה שלישית ליד הבית,hosting,synagogue,,,ברצלונה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת חב״ד בנתניה,synagogue,synagogue,chabad,chabad,נתניה,Netanya,,,✅ OK?,לא נספר
+ארוחת שבת בחולון,hosting,hosting,,,,Holon,,,✅ OK,hosting
+מניין מנחה במרקש,minyan,minyan,,,מרקש,Marrakech,,,✅ OK,minyan
+בית כנסת בהוד השרון,synagogue,synagogue,,,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מסעדה בשרי רבנות בבואנוס איירס,restaurant,restaurant,,,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+בית כנסת בלאדי,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+לזניה באתונה,restaurant,restaurant,,,אתונה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+להתארח בשבת בקרית שמונה,hosting,hosting,,,קרית שמונה,Kiryat Shmona,,,✅ OK,hosting
+שניצל מהדרין ליד קרית שמונה,restaurant,restaurant,,,קרית שמונה,Kiryat Shmona,,,✅ OK?,לא נספר
+מקום טוב לאכול בנס ציונה,restaurant,restaurant,,,נס ציונה,Ness Ziona,,,✅ OK?,לא נספר
+מסעדה פרווה בטבריה,restaurant,restaurant,,,טבריה,Tiberias,,,✅ OK?,לא נספר
+כשר,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה פרווה מהדרין פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת נוסח תימן ליד גרבה,synagogue,synagogue,teimanim,teimanim,ג׳רבה,Lod,,,✅ OK?,לא נספר
+מסעדה מקסיקני בספרד,restaurant,restaurant,,,ספרד,Spain,,,✅ OK?,לא נספר
+צרפת,destination,,,,צרפת,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פסה מהדרין,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה טבעוני בנס ציונה פתוח עכשיו,restaurant,restaurant,,,נס ציונה,Ness Ziona,,,✅ OK?,לא נספר
+בית כנסת מרוקאי בבאר שבע,synagogue,synagogue,sfarad,sfarad,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+אנטריקוט במיאמי,restaurant,restaurant,,,מיאמי,Miami,,,✅ OK?,לא נספר
+לזניה שווה לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת ספרדי,synagogue,synagogue,sfarad,sfarad,,Tel Aviv,,,✅ OK?,לא נספר
+ראש העין,destination,minyan,,,ראש העין,Rosh HaAyin,,,✅ OK,minyan
+בתי כנסת בבאר שעב,synagogue,synagogue,,,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+מניין נץ עדות המזרח כאן,minyan,minyan,sfarad,sfarad,,Tel Aviv,,,✅ OK,minyan
+קרואסון יוקרתי גלא ליד גדרה,restaurant,restaurant,,,גדרה,Gedera,,,✅ OK?,לא נספר
+מניין שחרית עדות המזרח בברלין,minyan,minyan,sfarad,sfarad,ברלין,Berlin,,,✅ OK,minyan
+מניין נץ ליטאי במרוקו,minyan,minyan,ashkenaz,ashkenaz,מרוקו,Morocco,,,✅ OK,minyan
+בית כנסת חב״ד בארו יהודה,synagogue,synagogue,chabad,chabad,אור יהודה,Be'er Sheva,,,✅ OK?,לא נספר
+לוד,destination,destination,,,לוד,Lod,,,✅ OK,destination
+מניין מנחה וערבית בניו יורק,minyan,minyan,,,ניו יורק,New York,,,✅ OK,minyan
+מגדל העמק,destination,destination,,,מגדל העמק,Migdal HaEmek,,,✅ OK,destination
+מחפש מנגל טוב במרקש,restaurant,restaurant,,,מרקש,Marrakech,,,✅ OK?,לא נספר
+מעלה אדומים,destination,destination,,,מעלה אדומים,Ma'ale Adumim,,,✅ OK,destination
+מסעדה איטלקי מהדרין בבאר שבע רומנטי,restaurant,restaurant,,,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+מקום טוב לאכול בברזיל,restaurant,restaurant,,,ברזיל,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה איטלקי רבנות באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה צמחוני גלאט ליד פראג רומנטי,restaurant,restaurant,,,פראג,Prague,,,✅ OK?,לא נספר
+בית כסנת,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+ליהנ לשבת לידי,hosting,hosting,,,,Vienna,,,✅ OK,hosting
+מסעדה סיני בוינה פתוח עכשיו,restaurant,restaurant,,,וינה,Vienna,,,✅ OK?,לא נספר
+מחפש טאקו טוב בחולון,restaurant,restaurant,,,חולון,Holon,,,✅ OK?,לא נספר
+ארוחת ליל שבת בוינה,hosting,hosting,,,,Vienna,,,✅ OK,hosting
+מסעדה איטלקי מומלץ גלאט בציריך,restaurant,restaurant,,,ציריך,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה אסייתי רבנות פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מה יש לאכול,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+קרואסון כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה סיני ליד ניו יורק למשפחות,restaurant,restaurant,,,ניו יורק,New York,,,✅ OK?,לא נספר
+מסעדה יפני שווה פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+קינוח בירושלים,restaurant,restaurant,,,ירושלים,Jerusalem,,,✅ OK?,לא נספר
+בי כנסת ספרדי בהוד השרון,synagogue,synagogue,sfarad,sfarad,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מקסיקו סיטי,destination,minyan,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעהד טבעוני בחדרה,restaurant,restaurant,,,חדרה,Hadera,,,✅ OK?,לא נספר
+גלאט,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+חולון,destination,destination,,,חולון,Holon,,,✅ OK,destination
+לזניה קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+איטליה,destination,,,,איטליה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אירוח לשבת בבודפשט,hosting,hosting,,,,Budapest,,,✅ OK,hosting
+קובה לא יקר גלאט ליד מילאנו,restaurant,restaurant,,,מילאנו,Lod,,,✅ OK?,לא נספר
+שקשוקה בקפריסין לארוחת ערב,restaurant,restaurant,,,קפריסין,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה ים תיכוני ליד וינה,restaurant,restaurant,,,וינה,Vienna,,,✅ OK?,לא נספר
+קרואסון רבנות ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+סטייק רבנות בוינה,restaurant,restaurant,,,וינה,Vienna,,,✅ OK?,לא נספר
+נס ציונה,destination,destination,,,נס ציונה,Ness Ziona,,,✅ OK,destination
+קובה רבנות בנתניה,restaurant,restaurant,,,נתניה,Netanya,,,✅ OK?,לא נספר
+מרק שווה גלאט בלוד,restaurant,restaurant,,,לוד,Lod,,,✅ OK?,לא נספר
+מסעדה בשרי פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה איטלקי בד״ץ פתוח עכשיו,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת ליטאי קרוב אליי,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה פרווה גלאט ברמלה,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+לזניה זול בראש העין,restaurant,restaurant,,,ראש העין,Rosh HaAyin,,,✅ OK?,לא נספר
+מסעדה חלבי מהדרין בחיפה,restaurant,restaurant,,,חיפה,Haifa,,,✅ OK?,לא נספר
+מסעהד סיני גלאט פה למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה כשרה בטורונטו,restaurant,restaurant,,,טורונטו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+זכרון יעקב,destination,destination,,,זכרון יעקב,Zichron Yaakov,,,✅ OK,destination
+מחפש פרגית טב בחדרה,restaurant,restaurant,,,חדרה,Hadera,,,✅ OK?,לא נספר
+מסעדה פרווה מהדרין ליד אנגליה,restaurant,restaurant,,,אנגליה,United Kingdom,,,✅ OK?,לא נספר
+אירוח,any,hosting,,,,Tel Aviv,,,✅ OK,hosting
+מסעדה יפני הכי וטב רבנות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה וערבית ספרדי באזור,minyan,minyan,sfarad,sfarad,,Tel Aviv,,,✅ OK,minyan
+קבב יוקרתי ליד ארה״ב,restaurant,restaurant,,,ארה״ב,Lod,,,✅ OK?,לא נספר
+הוד השרון,destination,destination,,,הוד השרון,Hod HaSharon,,,✅ OK,destination
+פרגית גלאט בטוקיו,restaurant,restaurant,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+ארוחת לי שבת בנס ציונה,hosting,hosting,,,נס ציונה,Ness Ziona,,,✅ OK,hosting
+נודלס בברלצונה למשפחות,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+סטייק זול מהדרין ליד רעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+ניו יורק,destination,destination,,,ניו יורק,New York,,,✅ OK,destination
+מסעדה טבעוני ליד,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+בלגיה,destination,,,,בלגיה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין שחרית באשקלון,minyan,minyan,,,אשקלון,Ashkelon,,,✅ OK,minyan
+יקנעם,destination,destination,,,יקנעם,Yokneam,,,✅ OK,destination
+מסעדה ים תיכוני בבואנוס איירס,restaurant,restaurant,,,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+מניין נץ באור יהודה,minyan,minyan,,,אור יהודה,Or Yehuda,,,✅ OK,minyan
+מחפש פרגית טוב בבנגקוק,restaurant,restaurant,,,בנגקוק,Bangkok,,,✅ OK?,לא נספר
+בית כנסת ליד הרצליה,synagogue,synagogue,,,הרצליה,Herzliya,,,✅ OK?,לא נספר
+בית כנסת שאמי בברלין,synagogue,synagogue,teimanim,teimanim,ברלין,Berlin,,,✅ OK?,לא נספר
+מעורב ירושלמי מומלץ,restaurant,restaurant,,,,Jerusalem,,,✅ OK?,לא נספר
+מסעדה בשרי רבנות באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+אור יהודה,destination,destination,,,אור יהודה,Or Yehuda,,,✅ OK,destination
+מניין שחרית במרוקו,minyan,minyan,,,מרוקו,Morocco,,,✅ OK,minyan
+מחפש דיגם טוב באנטוורפן,restaurant,,,,אנטוורפן,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+חביתה בלוס אנג׳לס,restaurant,restaurant,,,לוס אנג׳לס,Los Angeles,,,✅ OK?,לא נספר
+פראג,destination,destination,,,פראג,Prague,,,✅ OK,destination
+בתי כנסת שאמי במרוקו,synagogue,synagogue,teimanim,teimanim,מרוקו,Morocco,,,✅ OK?,לא נספר
+מקום טוב לאכול בטורונטו,restaurant,restaurant,,,טורונטו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה בשרי שווה בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה אמריקא,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת תימני,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה מקסיקני פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין ערבית נוסח אשכנז לידי,minyan,minyan,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK,minyan
+איפה אפשר לאכול מעורב ירושלמי בבת ים,restaurant,restaurant,,,בת ים,Bat Yam,,,✅ OK?,לא נספר
+באר שבע,destination,restaurant,,,באר שבע,Be'er Sheva,,,✅ OK,restaurant
+סלט רבנות בטורקיה,restaurant,restaurant,,,טורקיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פסטה אבזור רומנטי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שקשוקה מהדרין ברעננה לארוחת בוקר,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+טאקו ליד מדריד,restaurant,restaurant,,,מדריד,Lod,,,✅ OK?,לא נספר
+מניין מוסף נוסח ספרד בג׳רבה,minyan,minyan,sfarad,sfarad,ג׳רבה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנס חב״ד בראשון לציון,synagogue,synagogue,chabad,chabad,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+לינה לשבת ליד הבית,hosting,hosting,,,אתונה,Vienna,,,✅ OK,hosting
+מסעדה פרווה בלוד,restaurant,restaurant,,,לוד,Lod,,,✅ OK?,לא נספר
+מסעדה צמחוני זול בברצלונה,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+בית כנסת בלאדי בנהריה,synagogue,synagogue,teimanim,teimanim,נהריה,Nahariya,,,✅ OK?,לא נספר
+מסעדה אמריקאי זול קרוב אליי עם ילדים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+תל אביב,destination,restaurant,,,תל אביב,Tel Aviv,,,✅ OK,restaurant
+מניין מנחה וערבית פה,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+סטייק בראשון לציון,restaurant,restaurant,,,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+חומוס גלאט ליד יוון,restaurant,restaurant,,,יוון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה פרווה שווה גלאט בטבריה,restaurant,restaurant,,,טבריה,Tiberias,,,✅ OK?,לא נספר
+איפה אפשר לאכול ג׳חנון בהרצליה,restaurant,restaurant,,,הרצליה,Herzliya,,,✅ OK?,לא נספר
+מסעדה מרוקאי שווה ליד אנטוורפן,restaurant,restaurant,,,אנטוורפן,Lod,,,✅ OK?,לא נספר
+בתי כנסת נוסח אשכנז פה,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+מחפש פרגית טוב בניו יורק,restaurant,restaurant,,,ניו יורק,New York,,,✅ OK?,לא נספר
+ארוחת שבת בטורקיה,hosting,hosting,,,טורקיה,,,destination_not_found,❌ NO_RESULT,destination_not_found
+מסעדה פרווה בד״ץ באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+סושי לא יקר ליד יוון,restaurant,restaurant,,,יוון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה פרווה ליד הבית ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+מסעדה תאילנדי הכי טוב רבנות בקזבלנקה,restaurant,restaurant,,,קזבלנקה,Thailand,,,✅ OK?,לא נספר
+מניין נץ תימני,minyan,minyan,teimanim,teimanim,,Tel Aviv,,,✅ OK,minyan
+אסאדו ליד ברלין,restaurant,restaurant,,,ברלין,Berlin,,,✅ OK?,לא נספר
+אנטריקוט בירושלים רומנטי,restaurant,restaurant,,,ירושלים,Jerusalem,,,✅ OK?,לא נספר
+שניצל קרוב אליי לארות בוקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה טורקי מומלץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה הודי ליד רעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+מניין ערבית בבית שמש,minyan,minyan,,,בית שמש,Beit Shemesh,,,✅ OK,minyan
+אמסטרדם,destination,destination,,,אמסטרדם,Amsterdam,,,✅ OK,destination
+בתי כנסת אשכנזי בבלגיה,synagogue,synagogue,ashkenaz,ashkenaz,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+וופל ליד קרית שמונה עם ילדים,restaurant,restaurant,,,קרית שמונה,Kiryat Shmona,,,✅ OK?,לא נספר
+מניין מוסף באזור,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+רעב,any,restaurant,,,,,,destination_not_found,⚠ VAGUE,עמום
+מסעדה חלבי זול גלאט בארה״ב,restaurant,restaurant,,,ארה״ב,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין נץ ביבנה,minyan,minyan,,,יבנה,Yavne,,,✅ OK,minyan
+בקלאווה מהדרין באילת,restaurant,restaurant,,,אילת,Eilat,,,✅ OK?,לא נספר
+שניצל לא יקר בבואנו איירס,restaurant,restaurant,,,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+מניין ערבית אשמי בברלין,minyan,minyan,teimanim,,ברלין,Berlin,,,✅ OK,minyan
+מסעדה צמחוני ליד ג׳רבה,restaurant,restaurant,,,ג׳רבה,Lod,,,✅ OK?,לא נספר
+בית כנסת בנתניה,synagogue,synagogue,,,נתניה,Netanya,,,✅ OK?,לא נספר
+ביגל זול למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בורקס יוקרתי רבנות ליד רמלה,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+בית כנסת ליטאי ברמלה,synagogue,synagogue,ashkenaz,ashkenaz,רמלה,Ramla,,,✅ OK?,לא נספר
+טורונטו,destination,,,,טורונטו,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת בלאדי ברעננה,synagogue,synagogue,teimanim,teimanim,רעננה,Ra'anana,,,✅ OK?,לא נספר
+חביתה מומלץ רבנות ליד מונטריאול,restaurant,restaurant,,,מונטריאול,Montreal,,,✅ OK?,לא נספר
+מסעדה בשרי יוקרתי רבנות בברצלונה,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+חביתה מומלץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת כאן,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת בוד,synagogue,synagogue,,,לוד,Lod,,,✅ OK?,לא נספר
+יבת כנסת ספרדי בנאפולי,synagogue,synagogue,sfarad,sfarad,נאפולי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אנטריקוט לא יקר בלוס אנג׳לס ליד הים,restaurant,restaurant,,,לוס אנג׳לס,Los Angeles,,,✅ OK?,לא נספר
+מסעדה חלבי בונציה,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה טבעוני שווה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה הודי בניו יורק,restaurant,restaurant,,,ניו יורק,New York,,,✅ OK?,לא נספר
+מסעדה יפני בברצלונה,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+אנגליה,destination,,,,אנגליה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אירוח שבת בדימונה,hosting,hosting,,,,Dimona,,,✅ OK,hosting
+בית כנסת בלאדי ברומא,synagogue,synagogue,teimanim,teimanim,רומא,Rome,,,✅ OK?,לא נספר
+פורטוגל,destination,,,,פורטוגל,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה פרווה ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה תאילנדי,restaurant,restaurant,,,,Thailand,,,✅ OK?,לא נספר
+מסעדה צמחונ באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+ארוחת שבת בלוס אנג׳לס,hosting,hosting,,,לוס אנג׳לס,Los Angeles,,,✅ OK,hosting
+בית כנסת ליטאי ליד בואנוס איירס,synagogue,synagogue,ashkenaz,ashkenaz,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+מסעדה טורקי הכי טוב באיטליה רומנטי,restaurant,restaurant,,,איטליה,Italy,,,✅ OK?,לא נספר
+מניין מנחה וערבית בכפר סבא,minyan,minyan,,,כפר סבא,Kfar Saba,,,✅ OK,minyan
+מניין מנחה נוסח תימן באיטליה,minyan,minyan,teimanim,teimanim,איטליה,Italy,,,✅ OK,minyan
+בית כנסת ספרדי קרוב אליי,synagogue,synagogue,sfarad,sfarad,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת שב באיטליה,hosting,hosting,,,איטליה,Italy,,,✅ OK,hosting
+קובה מומלץ ליד מילאנו,restaurant,restaurant,,,מילאנו,Lod,,,✅ OK?,לא נספר
+מסעדה תאילנדי זול רבנות קרוב אליי לארוחת ערב,restaurant,restaurant,,,,Thailand,,,✅ OK?,לא נספר
+ברצלונה,destination,destination,,,ברצלונה,Barcelona,,,✅ OK,destination
+מניין מנחה וערבי בזכרון יעקב,minyan,minyan,,,זכרון יעקב,Zichron Yaakov,,,✅ OK,minyan
+מסעדה תאילנדי בלוד,restaurant,restaurant,,,לוד,Lod,,,✅ OK?,לא נספר
+חיפה,destination,destination,,,חיפה,Haifa,,,✅ OK,destination
+יבת כנסת,synagogue,synagogue,,,,,,destination_not_found,❌ NO_RESULT,destination_not_found
+מניין מנחה וערבית באזור,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+בית כנסת שאמי בהרצליה,synagogue,synagogue,teimanim,teimanim,הרצליה,Herzliya,,,✅ OK?,לא נספר
+מסעדה אסייתי רבנות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה פרווה מומלץ באזור ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+מסעדה תאילנדי בג׳רבה למשפחות,restaurant,restaurant,,,ג׳רבה,Thailand,,,✅ OK?,לא נספר
+מסעדה בשרי בלוס אנג׳לס,restaurant,restaurant,,,לוס אנג׳לס,Los Angeles,,,✅ OK?,לא נספר
+אסאדו באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה הודי בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה תימני,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מחפש שניצ טוב בהוד השרון,restaurant,restaurant,,,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מסעדה אסייתי שווה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה כשרה ברמת השרון,restaurant,restaurant,,,רמת השרון,Ramat HaSharon,,,✅ OK?,לא נספר
+בית כנסת ליטאי,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+פוקה בקזבלנקה,restaurant,restaurant,,,קזבלנקה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין ערבית במעלה אדומים,minyan,minyan,,,מעלה אדומים,Ma'ale Adumim,,,✅ OK,minyan
+מחפש סושי טוב בזכרון יעקב,restaurant,restaurant,,,זכרון יעקב,Zichron Yaakov,,,✅ OK?,לא נספר
+מניין ערבית בבני ברק,minyan,minyan,,,בני ברק,Bnei Brak,,,✅ OK,minyan
+מסעדה איטלקי הכי טוב בקנדה,restaurant,restaurant,,,קנדה,Canada,,,✅ OK?,לא נספר
+מניין מנחה נוסח אשכנז ליד הבית,minyan,minyan,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK,minyan
+ארוחת בשת בשדרות,hosting,hosting,,,שדרות,Sderot,,,✅ OK,hosting
+סעודה שלישית פה,hosting,hosting,,,אשדוד,Tel Aviv,,,✅ OK,hosting
+בתי כנסת חסידי במדריד,synagogue,synagogue,chabad,chabad,מדריד,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה באור יהודה,minyan,minyan,,,אור יהודה,Or Yehuda,,,✅ OK,minyan
+בית כנסת תימני בירושלים,synagogue,synagogue,teimanim,teimanim,ירושלים,Jerusalem,,,✅ OK?,לא נספר
+קרואסון באנטוורפן ליד הים,restaurant,restaurant,,,אנטוורפן,Lod,,,✅ OK?,לא נספר
+בקלאווה ליד לוד,restaurant,restaurant,,,לוד,Lod,,,✅ OK?,לא נספר
+פרגית יוקרתי רומנטי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה סיני מהדרין בציריך,restaurant,restaurant,,,ציריך,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מלבי מומלץ מהדרין בכפר סבא למשפחות,restaurant,restaurant,,,כפר סבא,Kfar Saba,,,✅ OK?,לא נספר
+מלבי באזור לארוחת בוקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה חלבי רבנות קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שקשוקה רבנות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שווארמה ליד ציריך,restaurant,restaurant,,,ציריך,Lod,,,✅ OK?,לא נספר
+איפה אפשר לאכול,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין ערבית מרוקאי בלונדון,minyan,minyan,sfarad,sfarad,לונדון,London,,,✅ OK,minyan
+ארגנטינה,destination,,,,ארגנטינה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה ים תיכוני גלאט ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+מניין מנחה וערבית שאמ בברצלונה,minyan,minyan,teimanim,,ברצלונה,Barcelona,,,✅ OK,minyan
+מניין מנחה ליטאי פה,minyan,minyan,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK,minyan
+מסעדה טבעוני,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ניוקי בארה״ב,restaurant,restaurant,,,ארה״ב,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פרגית כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת שבת ליד הבית,hosting,hosting,,,לונדון,Tel Aviv,,,✅ OK,hosting
+מרוקו,destination,synagogue,,,מרוקו,Morocco,,,✅ OK,synagogue
+מרק הכי טוב ליד בודפשט למשפחות,restaurant,restaurant,,,בודפשט,Budapest,,,✅ OK?,לא נספר
+בית כנסת נוסח ספרד ליד הרצלהי,synagogue,synagogue,sfarad,sfarad,הרצליה,Lod,,,✅ OK?,לא נספר
+פלאפל גלאט ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+רומא,destination,destination,,,רומא,Rome,,,✅ OK,destination
+כנאפה מומלץ לארוחת בוקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+עכו,destination,destination,,,עכו,Akko,,,✅ OK,destination
+זול,any,,,,,,,low_confidence,⚠ VAGUE,עמום
+אירוח שבת באתונה,hosting,hosting,,,אתונה,,,destination_not_found,❌ NO_RESULT,destination_not_found
+מסעד אמריקאי בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+להתארח בשבת במודיעין,hosting,hosting,,,מודיעין,Modiin,,,✅ OK,hosting
+מניין מוסף ברחובו,minyan,minyan,,,רחובות,Rehovot,,,✅ OK,minyan
+מסעדה צמחוני זול,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה כשרה ברומא,restaurant,restaurant,,,רומא,Rome,,,✅ OK?,לא נספר
+מניין נץ נוסח אשכנז פה,minyan,minyan,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK,minyan
+המבורגר גלאט בונציה,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אנטריקוט,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+גלידה מומלץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין שחרי אשכנזי ברמת השרון,minyan,minyan,ashkenaz,ashkenaz,רמת השרון,Ramat HaSharon,,,✅ OK,minyan
+חביתה מומלץ קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה תאילנדי במונטריאול,restaurant,restaurant,,,מונטריאול,Montreal,,,✅ OK?,לא נספר
+פנקייק מומל בבלגיה,restaurant,restaurant,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אנטריקוט בד״ץ ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+לזניה לא יקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעהד סיני יוקרתי מהדרין ליד ליון,restaurant,restaurant,,,ליון,Lod,,,✅ OK?,לא נספר
+מסעדה כשרה בקזבלנקה,restaurant,restaurant,,,קזבלנקה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מקום לשבת בתניה,hosting,hosting,,,,Netanya,,,✅ OK,hosting
+מסעדה תאילנדי ליד רומא,restaurant,restaurant,,,רומא,Rome,,,✅ OK?,לא נספר
+בוריטו בראש העין,restaurant,restaurant,,,ראש העין,Rosh HaAyin,,,✅ OK?,לא נספר
+מניין נץ שאמי בראש העין,minyan,minyan,teimanim,teimanim,ראש העין,Rosh HaAyin,,,✅ OK,minyan
+מניין מנחה וערבית בנתניה,minyan,minyan,,,נתניה,Netanya,,,✅ OK,minyan
+ראשון לציון,destination,minyan,,,ראשון לציון,Rishon LeZion,,,✅ OK,minyan
+מסעדה סיני בד״ץ ליד טבריה רומנטי,restaurant,restaurant,,,טבריה,Tiberias,,,✅ OK?,לא נספר
+איפה אפשר לאול מלאווח בבת ים,restaurant,restaurant,,,בת ים,Bat Yam,,,✅ OK?,לא נספר
+מקום טוב,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת בלאדי בכפר סבא,synagogue,synagogue,teimanim,teimanim,כפר סבא,Kfar Saba,,,✅ OK?,לא נספר
+מלבי בראשון לציון,restaurant,restaurant,,,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+פרגית רבנות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אסאדו זול בד״ץ במעלה אדומים,restaurant,restaurant,,,מעלה אדומים,Ma'ale Adumim,,,✅ OK?,לא נספר
+מסעדה בשרי מהדרין בצרפת,restaurant,restaurant,,,צרפת,France,,,✅ OK?,לא נספר
+מסעדה סיני ביוון,restaurant,restaurant,,,יוון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אשדוד,destination,destination,,,אשדוד,Ashdod,,,✅ OK,destination
+מסעדה הודי זול בתל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה סיני שווה מהדרין ליד נס ציונה,restaurant,restaurant,,,נס ציונה,Ness Ziona,,,✅ OK?,לא נספר
+פיצה זול רבנות באמסטרדם,restaurant,restaurant,,,אמסטרדם,Amsterdam,,,✅ OK?,לא נספר
+פלאפל בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה בקפריסין,minyan,minyan,,,קפריסין,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה אמריקאי ליד מרקש,restaurant,restaurant,,,מרקש,Lod,,,✅ OK?,לא נספר
+מסעדה צמחוני יוקרתי בדץ״ במילאנו,restaurant,restaurant,,,מילאנו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת נוסח ספרד ליד טורקיה,synagogue,synagogue,sfarad,sfarad,טורקיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה מרוקאי בגדרה,restaurant,restaurant,,,גדרה,Gedera,,,✅ OK?,לא נספר
+מסעדה מרוקאי ליד פראג למשפחות,restaurant,restaurant,,,פראג,Prague,,,✅ OK?,לא נספר
+ג׳חנון וממלץ בציריך פתוח עכשיו,restaurant,restaurant,,,ציריך,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+סטייק יוקרתי במקסיקו סיטי,restaurant,restaurant,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פלאפל בד״ץ באור יהודה,restaurant,restaurant,,,אור יהודה,Or Yehuda,,,✅ OK?,לא נספר
+מניין שחרית ספרדי בבית שמש,minyan,minyan,sfarad,sfarad,בית שמש,Beit Shemesh,,,✅ OK,minyan
+בית כנסת נוסח אשכנז,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה וערבית בליון,minyan,minyan,,,ליון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אירוח לשבת בראש העין,hosting,hosting,,,ראש העין,Rosh HaAyin,,,✅ OK,hosting
+מסעדה בשרי זול מהדרין באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+לינה לשבת פה,hosting,hosting,,,מעלה אדומים,Vienna,,,✅ OK,hosting
+בית כנסת ליד אשקלון,synagogue,synagogue,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+בית כנסת ספרדי בלוד,synagogue,synagogue,sfarad,sfarad,לוד,Lod,,,✅ OK?,לא נספר
+מסעדה אמריקאי ליד ארה״ב,restaurant,restaurant,,,ארה״ב,Lod,,,✅ OK?,לא נספר
+מסעדה פרווה באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה ים תיכוני ברמת גן,restaurant,restaurant,,,רמת גן,Ramat Gan,,,✅ OK?,לא נספר
+מניין ערבית בוינה,minyan,minyan,,,וינה,Vienna,,,✅ OK,minyan
+דגים מומל בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מסוף אשכנזי בראשון לציון,minyan,minyan,ashkenaz,ashkenaz,ראשון לציון,Rishon LeZion,,,✅ OK,minyan
+קרואסון כאן רומניט,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה אמריקאי ליד רחובות,restaurant,restaurant,,,רחובות,Rehovot,,,✅ OK?,לא נספר
+בית כנסת נוסח תימן ליד בנגקוק,synagogue,synagogue,teimanim,teimanim,בנגקוק,Bangkok,,,✅ OK?,לא נספר
+פריז,destination,destination,,,פריז,Paris,,,✅ OK,destination
+מקום טוב לאכול בטורקיה,restaurant,restaurant,,,טורקיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מחפש מעורב ירושלמי טוב ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+קרית שמונה,destination,destination,,,קרית שמונה,Kiryat Shmona,,,✅ OK,destination
+לוס אנג׳לס,destination,destination,,,לוס אנג׳לס,Los Angeles,,,✅ OK,destination
+מניין מנחה,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+בתי כנסת,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין נץ בבואנוס איירס,minyan,minyan,,,בואנוס איירס,Buenos Aires,,,✅ OK,minyan
+מסעדה איטלקי מומלץ במרוקו,restaurant,restaurant,,,מרוקו,Morocco,,,✅ OK?,לא נספר
+בית כנסת נוסח אשכנז ליד באר שבע,synagogue,synagogue,ashkenaz,ashkenaz,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+בית כנסת חסידי בהולנד,synagogue,synagogue,chabad,chabad,הולנד,Netherlands,,,✅ OK?,לא נספר
+מסעדה מקסיקני גלאט פה רומנטי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+גרמניה,destination,,,,גרמניה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת מרוקאי באזור,synagogue,synagogue,sfarad,sfarad,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת ליל שבת בפתח תקווה,hosting,hosting,,,פתח תקווה,Petah Tikva,,,✅ OK,hosting
+מלאווח ברמלה עם ילדים,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+מניין ערבית ספרדי ביבנה,minyan,minyan,sfarad,sfarad,יבנה,Yavne,,,✅ OK,minyan
+מניין ערבית באשקלון,minyan,minyan,,,אשקלון,Ashkelon,,,✅ OK,minyan
+מסעדה בשרי מומלץ ליד פתח תקווה,restaurant,restaurant,,,פתח תקווה,Petah Tikva,,,✅ OK?,לא נספר
+חומוס במדל העמק,restaurant,restaurant,,,מגדל העמק,Migdal HaEmek,,,✅ OK?,לא נספר
+מסעדה כשרה בדימונה,restaurant,restaurant,,,דימונה,Dimona,,,✅ OK?,לא נספר
+אירוח לשבת בנס ציונה,hosting,hosting,,,נס ציונה,Ness Ziona,,,✅ OK,hosting
+אירוח שבת בבודפשט,hosting,hosting,,,בודפשט,Budapest,,,✅ OK,hosting
+מניין מנחה במונטריאול,minyan,minyan,,,מונטריאול,Montreal,,,✅ OK,minyan
+מסעדה מרוקאי שווה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין נץ עדות המזרח בפתח תקווה,minyan,minyan,sfarad,sfarad,פתח תקווה,Petah Tikva,,,✅ OK,minyan
+מניין ערבי בלאדי במודיעין,minyan,minyan,teimanim,teimanim,מודיעין,Modiin,,,✅ OK,minyan
+וופל מומלץ בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה חלב בבואנוס איירס,restaurant,restaurant,,,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+מחפש מרק טוב בקרית גת,restaurant,restaurant,,,קרית גת,Kiryat Gat,,,✅ OK?,לא נספר
+ליד הים,any,,,,,,,low_confidence,⚠ VAGUE,עמום
+מסעדה מרוקאי שווה מהדרין בבנגקוק פתוח עכשיו,restaurant,restaurant,,,בנגקוק,Bangkok,,,✅ OK?,לא נספר
+עוגה ליד פריז,restaurant,restaurant,,,פריז,Paris,,,✅ OK?,לא נספר
+פתוח עכשיו,any,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית נכסת ליד יקנעם,synagogue,synagogue,,,יקנעם,Yokneam,,,✅ OK?,לא נספר
+מניין נץ כאן,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+סטייק בד״ץ באילת עם ילדים,restaurant,restaurant,,,אילת,Eilat,,,✅ OK?,לא נספר
+מניין מנחה וערבית אשכנזי בגרמניה,minyan,minyan,ashkenaz,ashkenaz,גרמניה,Germany,,,✅ OK,minyan
+ונציה,destination,,,,ונציה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מוסף,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+מסעדה טבעוני לא יקר מהדרין בברצלונה,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+בית כנסת בקזבלנקה,synagogue,synagogue,,,קזבלנקה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+איפה יש אוכל כשר בבודפשט,restaurant,restaurant,,,בודפשט,Budapest,,,✅ OK?,לא נספר
+בית כנסת נוסח אשכנז בטורקיה,synagogue,synagogue,ashkenaz,ashkenaz,טורקיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה איטלקי באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בורקס בראשון לציון עם משלוחים,restaurant,restaurant,,,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+מסעדה סיני מהדרין באזור עם ילדים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+להתאר בשבת כאן,hosting,hosting,,,,Tel Aviv,,,✅ OK,hosting
+חומוס בד״,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה טבעוני במקסיקו סיטי,restaurant,restaurant,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אירוח לשבת באילת,hosting,hosting,,,אילת,Eilat,,,✅ OK,hosting
+סעודה שלישית כאן,hosting,hosting,,,שדרות,Tel Aviv,,,✅ OK,hosting
+איפה אפשר לאכול פרגית בטוקיו,restaurant,restaurant,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה מרוקאי בגבעתיים,minyan,minyan,sfarad,sfarad,גבעתיים,Givatayim,,,✅ OK,minyan
+דגים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה פרווה גלאט בבלגיה,restaurant,restaurant,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה סיני לא יקר לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין שחרית באנטוורפן,minyan,minyan,,,אנטוורפן,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מחפש פוקה טוב בבודפשט,restaurant,restaurant,,,בודפשט,Budapest,,,✅ OK?,לא נספר
+בית כנסת ליד אמסטרדם,synagogue,synagogue,,,אמסטרדם,Amsterdam,,,✅ OK?,לא נספר
+מעורב ירושלמי לא יקר ליד הולנד,restaurant,restaurant,,,הולנד,Netherlands,,,✅ OK?,לא נספר
+מסעדה תימני גלאט פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בשרי,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה איטלקי קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בורקס בלוד פתוח עכשיו,restaurant,restaurant,,,לוד,Lod,,,✅ OK?,לא נספר
+בתי כנסת שאמי,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+בייגל בפורטוגל,restaurant,restaurant,,,פורטוגל,Portugal,,,✅ OK?,לא נספר
+כנאפה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת אשכנזי ליד גן יבנה,synagogue,synagogue,ashkenaz,ashkenaz,גן יבנה,Gan Yavne,,,✅ OK?,לא נספר
+מניין נץ בבית שמש,minyan,minyan,,,בית שמש,Beit Shemesh,,,✅ OK,minyan
+בית כנסת בארה״ב,synagogue,synagogue,,,ארה״ב,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין ערבית במילאנו,minyan,minyan,,,מילאנו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין ערבית ליד הבית,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+בית כנסת אשכנזי,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+איפה אפשר לאכול קובה בכפר סבא,restaurant,restaurant,,,כפר סבא,Kfar Saba,,,✅ OK?,לא נספר
+מסעדה אסייתי מומלץ מהדרין,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+קנדה,destination,,,,קנדה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת פה,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה סיני,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה כשרה ברחובות,restaurant,restaurant,,,רחובות,Rehovot,,,✅ OK?,לא נספר
+טאקו פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אירוח שבת בקרית גת,hosting,hosting,,,קרית גת,Kiryat Gat,,,✅ OK,hosting
+מניין מוסף כאן,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+פיצה ליד בית שמש פתוח עכשיו,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+שוקול פה,restaurant,,,,,,,low_confidence,❌ NO_RESULT,low_confidence
+קרואסון בד״ץ באשדוד,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+מסעדה בשרי הכי טוב בד״ץ ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+קינוח גלאט פתוח עכשיו,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת שבת בברלין,hosting,hosting,,,ברלין,Berlin,,,✅ OK,hosting
+מסעדה טבעוני יוקרתי רומנט,restaurant,restaurant,,,,,,destination_not_found,❌ NO_RESULT,destination_not_found
+אסאדו בד״ץ בליון,restaurant,restaurant,,,ליון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מוס בבלגיה,minyan,minyan,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מונטריאול,destination,destination,,,מונטריאול,Montreal,,,✅ OK,destination
+שניצל שווה מהדרין במילאנו עם ילדים,restaurant,restaurant,,,מילאנו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנס בבלגיה,synagogue,synagogue,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה טבעוני בד״ץ בספרד,restaurant,restaurant,,,ספרד,Spain,,,✅ OK?,לא נספר
+מסעדה,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+קינוח יוקרתי ליד לונדון,restaurant,restaurant,,,לונדון,London,,,✅ OK?,לא נספר
+מסעדה חלבי מהדרין בג׳רבה,restaurant,restaurant,,,ג׳רבה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אירוח שבת באיטליה,hosting,hosting,,,איטליה,Italy,,,✅ OK,hosting
+איפה יש אוכל כשר בבאר שבע,restaurant,restaurant,,,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+מסעדה איטקלי יוקרתי גלאט בקרית שמונה רומנטי,restaurant,restaurant,,,קרית שמונה,Kiryat Shmona,,,✅ OK?,לא נספר
+מניין ערבית בנתניה,minyan,minyan,,,נתניה,Netanya,,,✅ OK,minyan
+בורקס מומלץ רבנות ליד ברצלונה לארוחת בוקר,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+בית כנסת נוסח ספרד ליד אמסטרדם,synagogue,synagogue,sfarad,sfarad,אמסטרדם,Amsterdam,,,✅ OK?,לא נספר
+מקום טוב לאכול בחיפה,restaurant,restaurant,,,חיפה,Haifa,,,✅ OK?,לא נספר
+יאפה יש אוכל כשר במיאמי,restaurant,restaurant,,,מיאמי,Miami,,,✅ OK?,לא נספר
+ארוחת שבת בברזיל,hosting,hosting,,,,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+סעודה שלישית בראש העי,hosting,hosting,,,,Rosh HaAyin,,,✅ OK,hosting
+מסעדה סיני במילאנו,restaurant,restaurant,,,מילאנו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מלאווח ליד תל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+אנטריקוט באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+מסעדה בשרי בחולון,restaurant,restaurant,,,חולון,Holon,,,✅ OK?,לא נספר
+מסעדה אמריקאי בנתניה עם ילדים,restaurant,restaurant,,,נתניה,Netanya,,,✅ OK?,לא נספר
+מסעד צמחוני,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שניצל רבנות בקנדה עם ילדים,restaurant,restaurant,,,קנדה,Canada,,,✅ OK?,לא נספר
+אסאדו גלאט,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בת ים,destination,restaurant,,,בת ים,Bat Yam,,,✅ OK,restaurant
+נתניה,destination,destination,,,נתניה,Netanya,,,✅ OK,destination
+מניין נץ בגן יבנה,minyan,minyan,,,גן יבנה,Gan Yavne,,,✅ OK,minyan
+בייגל רבנות בכפר סבא,restaurant,restaurant,,,כפר סבא,Kfar Saba,,,✅ OK?,לא נספר
+איפה יש אוכל כשר באנטוורפן,restaurant,restaurant,,,אנטוורפן,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+ליון,destination,,,,ליון,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין נץ במרקש,minyan,minyan,,,מרקש,Marrakech,,,✅ OK,minyan
+מסעדה הודי ליד וינה,restaurant,restaurant,,,וינה,Vienna,,,✅ OK?,לא נספר
+מניין ערבית חב״ד,minyan,minyan,chabad,chabad,,Tel Aviv,,,✅ OK,minyan
+מסעדה טורקי הכי טוב באזור פתוח עכשיו,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+פוקה ביוון,restaurant,restaurant,,,יוון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה יפני לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אירוח שבת במונטריאול,hosting,hosting,,,מונטריאול,Montreal,,,✅ OK,hosting
+מסעדה כשר בבאר שבע,restaurant,restaurant,,,באר שבע,Be'er Sheva,,,✅ OK?,לא נספר
+מקום לשבת פה,hosting,hosting,,,ליון,Tel Aviv,,,✅ OK,hosting
+אירוח לשבת פה,hosting,hosting,,,,Tel Aviv,,,✅ OK,hosting
+בית כנסת ליד הבית,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת חב״ד במדריד,synagogue,synagogue,chabad,chabad,מדריד,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מעורב ירושלמי ליד הבית,restaurant,restaurant,,,,Jerusalem,,,✅ OK?,לא נספר
+בתי כנסת ברומא,synagogue,synagogue,,,רומא,Rome,,,✅ OK?,לא נספר
+מסעדה בשרי לא יקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+וופל ליד פריז לארוחת בוקר,restaurant,restaurant,,,פריז,Paris,,,✅ OK?,לא נספר
+מסעדה איטלקי בצפת,restaurant,restaurant,,,צפת,Tzfat,,,✅ OK?,לא נספר
+מניין ערבי ליטאי בציריך,minyan,minyan,ashkenaz,ashkenaz,ציריך,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה תימני כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה חלבי יוקרתי מהדרין בארה״ב לארוחת ערב,restaurant,restaurant,,,ארה״ב,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מנין שחרית ביבנה,minyan,minyan,,,יבנה,Yavne,,,✅ OK,minyan
+פרגית זול בגבעתיים ליד הים,restaurant,restaurant,,,גבעתיים,Givatayim,,,✅ OK?,לא נספר
+מחפש פיצה טוב בוינה,restaurant,restaurant,,,וינה,Vienna,,,✅ OK?,לא נספר
+מסעדה אמריקאי זול,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת חב״ד ליד נס ציונה,synagogue,synagogue,chabad,chabad,נס ציונה,Ness Ziona,,,✅ OK?,לא נספר
+פרגית לדי ראש העין,restaurant,restaurant,,,ראש העין,Rosh HaAyin,,,✅ OK?,לא נספר
+מקום לשבת כאן,hosting,hosting,,,מרוקו,Tel Aviv,,,✅ OK,hosting
+לינה לשבת כאן,hosting,hosting,,,,Vienna,,,✅ OK,hosting
+מחפש לזניה טוב ברומא,restaurant,restaurant,,,רומא,Rome,,,✅ OK?,לא נספר
+מסעדה מרוקאי בד״ץ ליד רמת השרון לארוחת בוקר,restaurant,restaurant,,,רמת השרון,Ramat HaSharon,,,✅ OK?,לא נספר
+אירוח שבת בצפת,hosting,hosting,,,צפת,Tzfat,,,✅ OK,hosting
+מסעד בשרי בד״ץ למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה צמחוני בפראג,restaurant,restaurant,,,פראג,Prague,,,✅ OK?,לא נספר
+מסעדה אסייתי בחולון פתוח עכשיו,restaurant,restaurant,,,חולון,Holon,,,✅ OK?,לא נספר
+מניין שחרית בהודו,minyan,minyan,,,הודו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעד אסייתי מומלץ גלאט רומנטי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת ספרדי בנהריה,synagogue,synagogue,sfarad,sfarad,נהריה,Nahariya,,,✅ OK?,לא נספר
+מסעדה חלבי בקפריסין,restaurant,restaurant,,,קפריסין,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+שניצל זול ליד נהריה,restaurant,restaurant,,,נהריה,Nahariya,,,✅ OK?,לא נספר
+לינה לשבת בקרית גת,hosting,hosting,,,קרית גת,Kiryat Gat,,,✅ OK,hosting
+איפה יש אוכל כשר ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+בית כנסת ליטאי בלוד,synagogue,synagogue,ashkenaz,ashkenaz,לוד,Lod,,,✅ OK?,לא נספר
+ארוחת ליל שבת באמסטרדם,hosting,hosting,,,,Amsterdam,,,✅ OK,hosting
+מלבי שווה באשדוד פתוח עכשיו,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+מסעדה פרווה רבנות כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת בארגנטינה,synagogue,synagogue,,,ארגנטינה,Argentina,,,✅ OK?,לא נספר
+מסעדה תימני רבנות ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+בתי כנסת נוסח אשכנז בטבריה,synagogue,synagogue,ashkenaz,ashkenaz,טבריה,Tiberias,,,✅ OK?,לא נספר
+מהדרין,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אנטריקוט מומלץ בדימונה,restaurant,restaurant,,,דימונה,Dimona,,,✅ OK?,לא נספר
+אשקלון,destination,destination,,,אשקלון,Ashkelon,,,✅ OK,destination
+בייגל בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה בברזיל,minyan,minyan,,,ברזיל,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה איטלקי בצפת ליד הים,restaurant,restaurant,,,צפת,Tzfat,,,✅ OK?,לא נספר
+פנקייק עם משלוחים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין ערבית נוסח יתמן,minyan,minyan,teimanim,teimanim,,Tel Aviv,,,✅ OK,minyan
+חביתה פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה איטלקי מומלץ בתאילנד,restaurant,restaurant,,,תאילנד,Thailand,,,✅ OK?,לא נספר
+אירוח לשבת ברחובות,hosting,hosting,,,רחובות,Rehovot,,,✅ OK,hosting
+אירוח לשבת בוינה,hosting,hosting,,,,Vienna,,,✅ OK,hosting
+פסטה שווה רבנות קרוב אליי למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת חסידי במרוקו,synagogue,synagogue,chabad,chabad,מרוקו,Morocco,,,✅ OK?,לא נספר
+מסעדה צמחוני עם משלוחים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שקשוקה לא יקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אילת,destination,destination,,,אילת,Eilat,,,✅ OK,destination
+מניין נץ בברצלונה,minyan,minyan,,,ברצלונה,Barcelona,,,✅ OK,minyan
+מסעדה אסייתי בבני ברק,restaurant,restaurant,,,בני ברק,Bnei Brak,,,✅ OK?,לא נספר
+מסעדה צחמוני מהדרין,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+סלט גלאט ביוון,restaurant,restaurant,,,יוון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+ראמן בפתח תקווה רומנטי,restaurant,restaurant,,,פתח תקווה,Petah Tikva,,,✅ OK?,לא נספר
+מדריד,destination,,,,מדריד,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה בשרי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין נץ בלונדון,minyan,minyan,,,לונדון,London,,,✅ OK,minyan
+רעננה,destination,destination,,,רעננה,Ra'anana,,,✅ OK,destination
+מניי נץ נוסח אשכנז כאן,minyan,minyan,ashkenaz,ashkenaz,,New York,,,✅ OK,minyan
+מסעדה טבעוני זול בעפולה,restaurant,restaurant,,,עפולה,Afula,,,✅ OK?,לא נספר
+בתי כנסת בציריך,synagogue,synagogue,,,ציריך,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה טבעוני לא יקר בד״ץ ליד מדריד,restaurant,restaurant,,,מדריד,Lod,,,✅ OK?,לא נספר
+שניצל גלאט כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מוסף בהוד,minyan,minyan,,,הודו,Hod HaSharon,,,✅ OK,minyan
+מיאמי,destination,destination,,,מיאמי,Miami,,,✅ OK,destination
+מסעדה בשרי ליד ארגנטינה,restaurant,restaurant,,,ארגנטינה,Argentina,,,✅ OK?,לא נספר
+טוסט בד״ץ ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+מסעדה ים תיכוני שווה באילת,restaurant,restaurant,,,אילת,Eilat,,,✅ OK?,לא נספר
+גלידה שווה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה כשרה בכפר סבא,restaurant,restaurant,,,כפר סבא,Kfar Saba,,,✅ OK?,לא נספר
+שוקולד מהדרין ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+מסעדה סיני לא יקר גלאט בלוס אנג׳לס,restaurant,restaurant,,,לוס אנג׳לס,Los Angeles,,,✅ OK?,לא נספר
+בייגל בזכרון יעקב,restaurant,restaurant,,,זכרון יעקב,Zichron Yaakov,,,✅ OK?,לא נספר
+מסעדה טבעוני לא יקר בדימונה,restaurant,restaurant,,,דימונה,Dimona,,,✅ OK?,לא נספר
+מסעדה איטלקי בד״ץ בלונדון,restaurant,restaurant,,,לונדון,London,,,✅ OK?,לא נספר
+בית כנתס ליטאי ביבנה,synagogue,synagogue,ashkenaz,ashkenaz,יבנה,Yavne,,,✅ OK?,לא נספר
+מניין ערבית,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+נודלס שווה ברומא,restaurant,restaurant,,,רומא,Rome,,,✅ OK?,לא נספר
+מסעדה צמחוני מהדרין לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+דגים מהדרין בפראג,restaurant,restaurant,,,פראג,Prague,,,✅ OK?,לא נספר
+מסעדה בשרי שווה מהדרין ליד תל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה סיני ברמלה,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+בית כנסת תימני קרוב אליי,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+מניין שחרית בהולנד,minyan,minyan,,,הולנד,Netherlands,,,✅ OK,minyan
+לינה לשבת בנאפולי,hosting,hosting,,,נאפולי,Vienna,,,✅ OK,hosting
+בתי כנסת סרפדי באיטליה,synagogue,synagogue,sfarad,,איטליה,Italy,,,✅ OK?,לא נספר
+בית כנסת במודיעין,synagogue,synagogue,,,מודיעין,Modiin,,,✅ OK?,לא נספר
+מניין ערבית נוסח אשכנז באמסטרדם,minyan,minyan,ashkenaz,ashkenaz,אמסטרדם,Amsterdam,,,✅ OK,minyan
+בתי כנסת עדות המזרח לידי,synagogue,synagogue,sfarad,sfarad,,Tel Aviv,,,✅ OK?,לא נספר
+פוקה בארה״ב,restaurant,restaurant,,,ארה״ב,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+הולנד,destination,,,,הולנד,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה בברלין,minyan,minyan,,,ברלין,Berlin,,,✅ OK,minyan
+מסעדה כשרה בחיפה,restaurant,restaurant,,,חיפה,Haifa,,,✅ OK?,לא נספר
+בית כנסת ליד לוד,synagogue,synagogue,,,לוד,Lod,,,✅ OK?,לא נספר
+לזניה בפראג,restaurant,restaurant,,,פראג,Prague,,,✅ OK?,לא נספר
+קרית גת,destination,destination,,,קרית גת,Kiryat Gat,,,✅ OK,destination
+מסעדה חלבי בעפולה,restaurant,restaurant,,,עפולה,Afula,,,✅ OK?,לא נספר
+מניין ערבית ליטאי ברמת גן,minyan,minyan,ashkenaz,ashkenaz,רמת גן,Ramat Gan,,,✅ OK,minyan
+פיצה הכי טוב ליד הוד השרון,restaurant,restaurant,,,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מסעדה טבעוני מהדרין באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+ארוחת ליל שבת בנהריה,hosting,hosting,,,,Nahariya,,,✅ OK,hosting
+בית כנסת מרוקאי ליד רומא,synagogue,synagogue,sfarad,sfarad,רומא,Rome,,,✅ OK?,לא נספר
+מלבי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בי כנסת נוסח אשכנז בגן יבנה,synagogue,synagogue,ashkenaz,ashkenaz,גן יבנה,Gan Yavne,,,✅ OK?,לא נספר
+מסעדה כשרה במיאמי,restaurant,restaurant,,,מיאמי,Miami,,,✅ OK?,לא נספר
+איפה יש אוכל כשר בשדרות,restaurant,restaurant,,,שדרות,Sderot,,,✅ OK?,לא נספר
+ניוקי קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בתי כנסת במעלה אדומים,synagogue,synagogue,,,מעלה אדומים,Ma'ale Adumim,,,✅ OK?,לא נספר
+פנקייק,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בת כנסת בלאדי,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+מחפש טוסט טוב בארגנטינה,restaurant,restaurant,,,ארגנטינה,Argentina,,,✅ OK?,לא נספר
+בית כנסת בפריז,synagogue,synagogue,,,פריז,Paris,,,✅ OK?,לא נספר
+סעודה שלישית בברזיל,hosting,hosting,,,,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה וערבית אשכנזי בלוד,minyan,minyan,ashkenaz,ashkenaz,לוד,Lod,,,✅ OK,minyan
+מסעדה חלבי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ליד המלון,any,synagogue,,,,Lod,,,✅ OK?,לא נספר
+בית כנסת ליטאי בברזיל,synagogue,synagogue,ashkenaz,ashkenaz,ברזיל,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה וערבית לידי,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+בית כנסת ליטאי באור יהודה,synagogue,synagogue,ashkenaz,ashkenaz,אור יהודה,Or Yehuda,,,✅ OK?,לא נספר
+קובה הכי טוב ליד ניו יורק,restaurant,restaurant,,,ניו יורק,New York,,,✅ OK?,לא נספר
+מסעדה חלבי ליד בני ברק ליד הים,restaurant,restaurant,,,בני ברק,Bnei Brak,,,✅ OK?,לא נספר
+אתונה,destination,,,,אתונה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אוכל,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה פרווה במונטריאול,restaurant,restaurant,,,מונטריאול,Montreal,,,✅ OK?,לא נספר
+מסעדה סיני בחדרה,restaurant,restaurant,,,חדרה,Hadera,,,✅ OK?,לא נספר
+בתי כנסת ספרדי ברומא,synagogue,synagogue,sfarad,sfarad,רומא,Rome,,,✅ OK?,לא נספר
+גן יבנה,destination,synagogue,,,גן יבנה,Gan Yavne,,,✅ OK,synagogue
+איפה יש אוכל כשר בתאילנד,restaurant,restaurant,,,תאילנד,Thailand,,,✅ OK?,לא נספר
+ארה״ב,destination,,,,ארה״ב,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה וערבית,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+פרגית בתב ים,restaurant,restaurant,,,בת ים,Bat Yam,,,✅ OK?,לא נספר
+בתי כנסת נוסח ספרד באילת,synagogue,synagogue,sfarad,sfarad,אילת,Eilat,,,✅ OK?,לא נספר
+מרקש,destination,minyan,,,מרקש,Marrakech,,,✅ OK,minyan
+בית כנסת בבואנוס אייר,synagogue,synagogue,,,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+מניין מנחה חב״ד בהוד השרון,minyan,minyan,chabad,chabad,הוד השרון,Hod HaSharon,,,✅ OK,minyan
+מסעדה טבעוני גלאט לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה פרווה רבנות בארגנטינה לארוחת בוקר,restaurant,restaurant,,,ארגנטינה,Argentina,,,✅ OK?,לא נספר
+בית כנסת נוסח תימן ליד צרפת,synagogue,synagogue,teimanim,teimanim,צרפת,France,,,✅ OK?,לא נספר
+בית כנסת נוסח אשכנז בהרצליה,synagogue,synagogue,ashkenaz,ashkenaz,הרצליה,Herzliya,,,✅ OK?,לא נספר
+מחפש פרגית טוב בבת ים,restaurant,restaurant,,,בת ים,Bat Yam,,,✅ OK?,לא נספר
+בית כנסת אשכנזי פה,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+איפה אפשר לאכול פסטה במקסיקו סיטי,restaurant,restaurant,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+גלידה שוו,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה בספרד,minyan,minyan,,,ספרד,Spain,,,✅ OK,minyan
+מסעדה טורקי בד״ץ ליד ליון,restaurant,restaurant,,,ליון,Lod,,,✅ OK?,לא נספר
+איפ אפשר לאכול סלט בונציה,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+סושי ביקנעם פוח עכשיו,restaurant,restaurant,,,יקנעם,Yokneam,,,✅ OK?,לא נספר
+פיצה זול גלאט ליד ברצלונה,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+קבב מהדרין פתוח עכשיו,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מוסף עדות המזרח לידי,minyan,minyan,sfarad,sfarad,,Tel Aviv,,,✅ OK,minyan
+בואנוס איירס,destination,destination,,,בואנוס איירס,Buenos Aires,,,✅ OK,destination
+בית כנסת ליטאי ליד יבנה,synagogue,synagogue,ashkenaz,ashkenaz,יבנה,Yavne,,,✅ OK?,לא נספר
+פנקייק ליד תל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת נוסח אשכנז בבית שמש,synagogue,synagogue,ashkenaz,ashkenaz,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+בייגל יוקרתי בד״ץ עם משלוחים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ברזיל,destination,,,,ברזיל,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בני ברק,destination,minyan,,,בני ברק,Bnei Brak,,,✅ OK,minyan
+מקום טוב לאכול בתל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+דגים בגבעתיים,restaurant,restaurant,,,גבעתיים,Givatayim,,,✅ OK?,לא נספר
+מסעדה אסייתי באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+מסעדה פרווה בכפר סבא,restaurant,restaurant,,,כפר סבא,Kfar Saba,,,✅ OK?,לא נספר
+רמלה,destination,destination,,,רמלה,Ramla,,,✅ OK,destination
+לינה לשבת באזור,hosting,hosting,,,גדרה,Vienna,,,✅ OK,hosting
+בית כנסת נוסח אשכנז קרו אליי,synagogue,synagogue,ashkenaz,ashkenaz,,,,destination_not_found,❌ NO_RESULT,destination_not_found
+בית כנסת עדות המזרח בעכו,synagogue,synagogue,sfarad,sfarad,עכו,Akko,,,✅ OK?,לא נספר
+קבב מהדרין בפראג,restaurant,restaurant,,,פראג,Prague,,,✅ OK?,לא נספר
+שווארמה זול בבית שמש לארוחת בוקר,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+טאקו ליד מונטריאול,restaurant,restaurant,,,מונטריאול,Montreal,,,✅ OK?,לא נספר
+מסעדה הודי בד״ץ בעפולה,restaurant,restaurant,,,עפולה,Afula,,,✅ OK?,לא נספר
+ירושלים,destination,destination,,,ירושלים,Jerusalem,,,✅ OK,destination
+מסעדה אמריקאי פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת אשכנזי ליד יקנעם,synagogue,synagogue,ashkenaz,ashkenaz,יקנעם,Yokneam,,,✅ OK?,לא נספר
+בית כנסת תימני באמסטרדם,synagogue,synagogue,teimanim,teimanim,אמסטרדם,Amsterdam,,,✅ OK?,לא נספר
+ארוחת ליל שבת בניו יורק,hosting,hosting,,,,New York,,,✅ OK,hosting
+מנגל מומלץ ליד רעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+מחפש אנטריקוט טוב בברלין,restaurant,restaurant,,,ברלין,Berlin,,,✅ OK?,לא נספר
+דימונה,destination,destination,,,דימונה,Dimona,,,✅ OK,destination
+מסעדה פרווה לד מקסיקו סיטי,restaurant,restaurant,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה אסייתי בהולנד,restaurant,restaurant,,,הולנד,Netherlands,,,✅ OK?,לא נספר
+מניין מוסף ליטאי במקסיקו סיטי,minyan,minyan,ashkenaz,ashkenaz,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+המבורגר לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת באשקלון,synagogue,synagogue,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+בודפשט,destination,destination,,,בודפשט,Budapest,,,✅ OK,destination
+מסעדה טבעוני רבנות ליד תאילנד לארוחת בוקר,restaurant,restaurant,,,תאילנד,Thailand,,,✅ OK?,לא נספר
+הרצליה,destination,destination,,,הרצליה,Herzliya,,,✅ OK,destination
+בייגל לא יקר מהדרין בהוד השרון,restaurant,restaurant,,,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+בתי כנסת במיאמי,synagogue,synagogue,,,מיאמי,Miami,,,✅ OK?,לא נספר
+מסעדה צמחוני מומלץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+טוסט יוקרתי רבנות ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה נוסח אשכנ בראש העין,minyan,minyan,ashkenaz,,ראש העין,Rosh HaAyin,,,✅ OK,minyan
+אנטוורפן,destination,,,,אנטוורפן,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אנטריקוט ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בורקס שווה רבנות בתאילנד,restaurant,restaurant,,,תאילנד,Thailand,,,✅ OK?,לא נספר
+מסעדה טבעוני זול לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שווארמה מומלץ ברמלה,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+מסעדה ים תיכוני שווה בבנגקוק,restaurant,restaurant,,,בנגקוק,Bangkok,,,✅ OK?,לא נספר
+מניין נץ במרוקו,minyan,minyan,,,מרוקו,Morocco,,,✅ OK,minyan
+מילאנו,destination,,,,מילאנו,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת נוסח אשכנז בנס ציונ,synagogue,synagogue,ashkenaz,ashkenaz,נס ציונה,Bnei Brak,,,✅ OK?,לא נספר
+שוקולד,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שוקולד גלאט בפתח תקווה,restaurant,restaurant,,,פתח תקווה,Petah Tikva,,,✅ OK?,לא נספר
+פוקה מהדרין פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת בזכרון יעקב,synagogue,synagogue,,,זכרון יעקב,Zichron Yaakov,,,✅ OK?,לא נספר
+בתי כנסת ביבנה,synagogue,synagogue,,,יבנה,Yavne,,,✅ OK?,לא נספר
+מניין מנחה וערבית באשקלון,minyan,minyan,,,אשקלון,Ashkelon,,,✅ OK,minyan
+תאילנד,destination,minyan,,,תאילנד,Thailand,,,✅ OK,minyan
+בית כנסת בברצלונה,synagogue,synagogue,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+טוסט בבני ברק ליד הים,restaurant,restaurant,,,בני ברק,Bnei Brak,,,✅ OK?,לא נספר
+בית כנסת ספרדי בהוד השרון,synagogue,synagogue,sfarad,sfarad,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מניין מנחה וערבית באיטליה,minyan,minyan,,,איטליה,Italy,,,✅ OK,minyan
+מסעדה תימני גלאט כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת שבת בבואנוס איירס,hosting,hosting,,,,Buenos Aires,,,✅ OK,hosting
+ארוחת ליל שבת ליד הבית,hosting,hosting,,,הוד השרון,Tel Aviv,,,✅ OK,hosting
+מסעדה תימני ברמת השרון,restaurant,restaurant,,,רמת השרון,Ramat HaSharon,,,✅ OK?,לא נספר
+מסעדה מקסיקני זול ליד תאילנד,restaurant,restaurant,,,תאילנד,Thailand,,,✅ OK?,לא נספר
+מניין ערבית בראשון לציון,minyan,minyan,,,ראשון לציון,Rishon LeZion,,,✅ OK,minyan
+בקלאווה בד״ץ במגדל העמק,restaurant,restaurant,,,מגדל העמק,Migdal HaEmek,,,✅ OK?,לא נספר
+גלידה באשקלון,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+פתח תקווה,destination,destination,,,פתח תקווה,Petah Tikva,,,✅ OK,destination
+אסאדו יוקרתי במודיעין פתוח עכשיו,restaurant,restaurant,,,מודיעין,Modiin,,,✅ OK?,לא נספר
+בית כנסת ליד ירושלים,synagogue,synagogue,,ashkenaz,ירושלים,Jerusalem,,,✅ OK?,לא נספר
+ניוקי גלאט ליד ראשון לציון,restaurant,restaurant,,,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+מחפש מלאווח טוב במדריד,restaurant,restaurant,,,מדריד,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מקום טוב לאכול בנהריה,restaurant,restaurant,,,נהריה,Nahariya,,,✅ OK?,לא נספר
+שוקולד קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+נאפולי,destination,,,,נאפולי,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה מקסיקני ליד ראש העין,restaurant,restaurant,,,ראש העין,Rosh HaAyin,,,✅ OK?,לא נספר
+מסעדה סיני יוקרתי ליד מדריד,restaurant,restaurant,,,מדריד,Lod,,,✅ OK?,לא נספר
+מסעדה תאילנדי הכי טוב,restaurant,restaurant,,,,Thailand,,,✅ OK?,לא נספר
+מסעדה מקסיקני לא יקר בחולון,restaurant,restaurant,,,חולון,Holon,,,✅ OK?,לא נספר
+מסעדה מרוקאי הכי טוב מהדרי בבני ברק,restaurant,restaurant,,,בני ברק,Bnei Brak,,,✅ OK?,לא נספר
+מסעדה בשרי יוקרתי בלונדון,restaurant,restaurant,,,לונדון,London,,,✅ OK?,לא נספר
+מסעדה ים תיכוני ליד בודפשט,restaurant,restaurant,,,בודפשט,Budapest,,,✅ OK?,לא נספר
+מניין מוסף בטורקיה,minyan,minyan,,,טורקיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה תימני כהי טוב בד״ץ קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אירוח לשבת לידי,hosting,hosting,,,נאפולי,Tel Aviv,,,✅ OK,hosting
+בית כנסת ספרדי בשדרות,synagogue,synagogue,sfarad,sfarad,שדרות,Sderot,,,✅ OK?,לא נספר
+ארוחת שבת בבית שמש,hosting,hosting,,,בית שמש,Beit Shemesh,,,✅ OK,hosting
+איפה יש אוכל כשר בנס ציונה,restaurant,restaurant,,,נס ציונה,Ness Ziona,,,✅ OK?,לא נספר
+אנטריקוט בד״ץ פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+פרגית במגדל העמק,restaurant,restaurant,,,מגדל העמק,Migdal HaEmek,,,✅ OK?,לא נספר
+ברלין,destination,destination,,,ברלין,Berlin,,,✅ OK,destination
+דגים פתוח עכשיו,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מרק ליד איטליה,restaurant,restaurant,,,איטליה,Italy,,,✅ OK?,לא נספר
+מסעדה סיני בקרית גת,restaurant,restaurant,,,קרית גת,Kiryat Gat,,,✅ OK?,לא נספר
+פלאפל,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין ערבית ספרדי לידי,minyan,minyan,sfarad,sfarad,,Tel Aviv,,,✅ OK,minyan
+פנקייק בנתניה,restaurant,restaurant,,,נתניה,Netanya,,,✅ OK?,לא נספר
+בתי כנסת חב״ד בלונדון,synagogue,synagogue,chabad,chabad,לונדון,London,,,✅ OK?,לא נספר
+איפה אפשר לאכול המבורגר באשדוד,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+בית כנסת מרוקאי ליד ציריך,synagogue,synagogue,sfarad,sfarad,ציריך,Lod,,,✅ OK?,לא נספר
+גלידה גלאט ליד טוקיו,restaurant,restaurant,,,טוקיו,Lod,,,✅ OK?,לא נספר
+בתי כנסת ליטאי,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+איפה אפשר לאכול חביתה בשדרות,restaurant,restaurant,,,שדרות,Sderot,,,✅ OK?,לא נספר
+גלידה ליד תל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+ניוקי לארוחת ערב,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בתי כנסת בראשון לציון,synagogue,synagogue,,,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+ציריך,destination,,,,ציריך,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה טבעוני יוקרתי בבלגיה,restaurant,restaurant,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה מקסיקני באשדוד,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+ארוחת ליל שבת ליד הית,hosting,hosting,,,נהריה,Lod,,,✅ OK,hosting
+בייגל,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אסאדו לא יקר ליד לוס אנג׳לס,restaurant,restaurant,,,לוס אנג׳לס,Los Angeles,,,✅ OK?,לא נספר
+בית כנסת שאמי,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+גלידה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+סעודה שלישית לידי,hosting,hosting,,,נהריה,Tel Aviv,,,✅ OK,hosting
+בית כנסת מרוקאי קרוב אליי,synagogue,synagogue,sfarad,sfarad,,Tel Aviv,,,✅ OK?,לא נספר
+לינה לשבת בבנגקוק,hosting,hosting,,,,Bangkok,,,✅ OK,hosting
+טוקיו,destination,,,,טוקיו,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+לזניה רבנות ליד מונטריאול לארוחת ערב,restaurant,restaurant,,,מונטריאול,Montreal,,,✅ OK?,לא נספר
+מסעדה בשרי מומלץ בד״ץ ליד בודפשט,restaurant,restaurant,,,בודפשט,Budapest,,,✅ OK?,לא נספר
+מחפש ריזוטו טוב בקזבלנקה,restaurant,restaurant,,,קזבלנקה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה תימני הכי טוב בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בתי כנסת נוסח אשכנז ליד הבית,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה אסייתי גלאט ליד הבית ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+מניין שחרית במודיעין,minyan,minyan,,,מודיעין,Modiin,,,✅ OK,minyan
+פוקה בגן יבנה,restaurant,restaurant,,,גן יבנה,Gan Yavne,,,✅ OK?,לא נספר
+מסעדה טבעוני באיסטנבול ליד הים,restaurant,restaurant,,,איסטנבול,Lod,,,✅ OK?,לא נספר
+בית שמש,destination,synagogue,,,בית שמש,Beit Shemesh,,,✅ OK,synagogue
+מסעדה תאילנדי גלאט ליד רעננה עם משלוחים,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+בת כנסת ברמת גן,synagogue,synagogue,,,רמת גן,Ramat Gan,,,✅ OK?,לא נספר
+מסעדה יפני באנטוורפן למשפחות,restaurant,restaurant,,,אנטוורפן,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+גדרה,destination,destination,,,גדרה,Gedera,,,✅ OK,destination
+ריזוטו בברצלונה,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+מאפים מהדרין בפתח תקווה,restaurant,restaurant,,,פתח תקווה,Petah Tikva,,,✅ OK?,לא נספר
+מסעדה איטלקי זול בבני ברק,restaurant,restaurant,,,בני ברק,Bnei Brak,,,✅ OK?,לא נספר
+פרגית בהוד השרון,restaurant,restaurant,,,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מסעדה ים תיכוני לא יקר בטוקיו,restaurant,restaurant,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה חלי בד״ץ,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אירוח שבת קרוב אליי,hosting,hosting,,,ונציה,Tel Aviv,,,✅ OK,hosting
+שניצל ליד זכרון יעקב,restaurant,restaurant,,,זכרון יעקב,Zichron Yaakov,,,✅ OK?,לא נספר
+מניין מנחה וערבית עדות המזרח,minyan,minyan,sfarad,sfarad,,Tel Aviv,,,✅ OK,minyan
+דגים בד״ בירושלים,restaurant,restaurant,,,ירושלים,Jerusalem,,,✅ OK?,לא נספר
+מסעדה פרווה גלאט בנאפולי,restaurant,restaurant,,,נאפולי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+כפר סבא,destination,destination,,,כפר סבא,Kfar Saba,,,✅ OK,destination
+איפה יש אוכל כשר בברצלונ,restaurant,restaurant,,,ברצלונה,Barcelona,,,✅ OK?,לא נספר
+מניין מנחה וערבית במגדל העמק,minyan,minyan,,,מגדל העמק,Migdal HaEmek,,,✅ OK,minyan
+ניוקי בנהריה למשפחות,restaurant,restaurant,,,נהריה,Nahariya,,,✅ OK?,לא נספר
+אירוח לשבת בהודו,hosting,hosting,,,הודו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת בוינה,synagogue,synagogue,,,וינה,Vienna,,,✅ OK?,לא נספר
+בית כנסת תימני ביוון,synagogue,synagogue,teimanim,teimanim,יוון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פנקייק כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מחפש בוריטו טוב בבית שמש,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+מסעדה תימני לא יקר באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אנטריקוט ליד מעלה אדומים,restaurant,restaurant,,,מעלה אדומים,Ma'ale Adumim,,,✅ OK?,לא נספר
+מניין מוסף בבודפשט,minyan,minyan,,,בודפשט,Budapest,,,✅ OK,minyan
+מסעדה אסייתי ליד צרפת,restaurant,restaurant,,,צרפת,France,,,✅ OK?,לא נספר
+מקום לשבת לידי,hosting,hosting,,,ג׳רבה,Tel Aviv,,,✅ OK,hosting
+סעודה שלישית במקסיק סיטי,hosting,hosting,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה פרווה שווה גלאט באשדוד,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+אסאדו הכי טוב בד״ץ ליד ספרד,restaurant,restaurant,,,ספרד,Spain,,,✅ OK?,לא נספר
+בייגל גלאט ליד אילת,restaurant,restaurant,,,אילת,Eilat,,,✅ OK?,לא נספר
+בייג,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת ליל שבת לידי,hosting,hosting,,,אשדוד,Tel Aviv,,,✅ OK,hosting
+מעדה הודי בבלגיה,restaurant,,,,בלגיה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה הויד,restaurant,restaurant,,,,Hod HaSharon,,,✅ OK?,לא נספר
+מלבי ליד בודפשט,restaurant,restaurant,,,בודפשט,Budapest,,,✅ OK?,לא נספר
+לינה לשבת בנהריה,hosting,hosting,,,,Nahariya,,,✅ OK,hosting
+דים גלאט כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה הודי הכי טוב מהדרין פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אירוח שבת במרוקו,hosting,hosting,,,,Morocco,,,✅ OK,hosting
+מסעדה מקסיקני מהדרין ליד חדרה,restaurant,restaurant,,,חדרה,Hadera,,,✅ OK?,לא נספר
+מניין מנחה אשכזי במונטריאול,minyan,minyan,ashkenaz,,מונטריאול,Montreal,,,✅ OK,minyan
+מניין מנחה וערבית בבואנוס איירס,minyan,minyan,,,בואנוס איירס,Buenos Aires,,,✅ OK,minyan
+שווארמה הכי טוב ברמלה למשפחות,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+להתאר בשבת לידי,hosting,hosting,,,,Tel Aviv,,,✅ OK,hosting
+מסעדה יפני בדימונה פתוח עכשיו,restaurant,restaurant,,,דימונה,Dimona,,,✅ OK?,לא נספר
+מסעדה פרווה שווה ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+אוכל כשר,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+וינה,destination,destination,,,וינה,Vienna,,,✅ OK,destination
+מסעדה אסייתי כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+קרואסון,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+נודלס בקזבלנקה,restaurant,restaurant,,,קזבלנקה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה וערבית נוסח אשכנז,minyan,minyan,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK,minyan
+איפה יש אוכל כשר בגבעתיים,restaurant,restaurant,,,גבעתיים,Givatayim,,,✅ OK?,לא נספר
+מניין מנחה בנהריה,minyan,minyan,,,נהריה,Nahariya,,,✅ OK,minyan
+סושי זול,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+פנקיק במרקש,restaurant,restaurant,,,מרקש,Marrakech,,,✅ OK?,לא נספר
+מסעדה צמחוני מהדרין ליד פתח תקווה,restaurant,restaurant,,,פתח תקווה,Petah Tikva,,,✅ OK?,לא נספר
+מסעדה טבעוני בקרית שמונה,restaurant,restaurant,,,קרית שמונה,Kiryat Shmona,,,✅ OK?,לא נספר
+בית כנסת נוסח אשכנז בטוקיו,synagogue,synagogue,ashkenaz,ashkenaz,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה כשרה בטבריה,restaurant,restaurant,,,טבריה,Tiberias,,,✅ OK?,לא נספר
+בתי כנס תימני בהולנד,synagogue,,teimanim,,הולנד,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה איטלקי בניו יורק,restaurant,restaurant,,,ניו יורק,New York,,,✅ OK?,לא נספר
+בקלאווה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+סטייק גלאט ליד אמסטרדם,restaurant,restaurant,,,אמסטרדם,Amsterdam,,,✅ OK?,לא נספר
+בית כנסת בלאדי בבני ברק,synagogue,synagogue,teimanim,teimanim,בני ברק,Bnei Brak,,,✅ OK?,לא נספר
+מסעדה אמריקאי כאן למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה חלבי בגן יבנה,restaurant,restaurant,,,גן יבנה,Gan Yavne,,,✅ OK?,לא נספר
+יבת כנסת באילת,synagogue,synagogue,,,אילת,Eilat,,,✅ OK?,לא נספר
+ניוקי שווה מהדרין ביטליה,restaurant,restaurant,,,איטליה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בתי כנסת ברמלה,synagogue,synagogue,,,רמלה,Ramla,,,✅ OK?,לא נספר
+עפולה,destination,destination,,,עפולה,Afula,,,✅ OK,destination
+ארוחת ליל שבת בבני ברק,hosting,hosting,,,,Bnei Brak,,,✅ OK,hosting
+בית כנסת נוסח תימן ליד גבעתיים,synagogue,synagogue,teimanim,teimanim,גבעתיים,Givatayim,,,✅ OK?,לא נספר
+מניין מנחה במיאמי,minyan,minyan,,,מיאמי,Miami,,,✅ OK,minyan
+מסעדה פרווה בפורטוגל,restaurant,restaurant,,,פורטוגל,Portugal,,,✅ OK?,לא נספר
+להתארח בשבת ברחובות,hosting,hosting,,,רחובות,Rehovot,,,✅ OK,hosting
+מלבי בגדרה למשפחתו,restaurant,restaurant,,,גדרה,Gedera,,,✅ OK?,לא נספר
+מסעדה כשרה באנטוורפן,restaurant,restaurant,,,אנטוורפן,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין,any,minyan,,,,Tel Aviv,,,✅ OK,minyan
+מסעדה יפני רבנות בעכו,restaurant,restaurant,,,עכו,Akko,,,✅ OK?,לא נספר
+מסעדה סיני מומלץ גלאט כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה טבעוני זול ליד יקנעם,restaurant,restaurant,,,יקנעם,Yokneam,,,✅ OK?,לא נספר
+בנגקוק,destination,destination,,,בנגקוק,Bangkok,,,✅ OK,destination
+מסעדה טבעוני מומלץ מהדרין,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בתי כנסת ליטאי ברומא,synagogue,synagogue,ashkenaz,ashkenaz,רומא,Rome,,,✅ OK?,לא נספר
+איסטנבול,destination,,,,איסטנבול,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין מנחה וערבית בזכרון עיקב,minyan,minyan,,,זכרון יעקב,Zichron Yaakov,,,✅ OK,minyan
+מסעדה איטלקי גלאט באור יהודה,restaurant,restaurant,,,אור יהודה,Or Yehuda,,,✅ OK?,לא נספר
+בית כנסת קרוב אליי,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+עוגה כאן ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+סעודה שלישית בטוקיו,hosting,hosting,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה חלבי שווה במגדל העמק,restaurant,restaurant,,,מגדל העמק,Migdal HaEmek,,,✅ OK?,לא נספר
+טבריה,destination,destination,,,טבריה,Tiberias,,,✅ OK,destination
+מסעדה איטלקי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה כשרה באור יהודה,restaurant,restaurant,,,אור יהודה,Or Yehuda,,,✅ OK?,לא נספר
+בית כנסת שאמי בלוד,synagogue,synagogue,teimanim,teimanim,לוד,Lod,,,✅ OK?,לא נספר
+פנקייק ליד הבית,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בקלאווה מהדרין בארגנטינה,restaurant,restaurant,,,ארגנטינה,Argentina,,,✅ OK?,לא נספר
+קינוח שווה ליד לונדון,restaurant,restaurant,,,לונדון,London,,,✅ OK?,לא נספר
+מניין שחרית נוסח ספרד בדימונה,minyan,minyan,sfarad,sfarad,דימונה,Dimona,,,✅ OK,minyan
+בוריטו באזור ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+מסעדה טורקי יוקרתי כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+חלבי,any,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת ליל שבת בספרד,hosting,hosting,,,ספרד,Spain,,,✅ OK,hosting
+מעדה חלבי כאן,restaurant,restaurant,,,,Ma'ale Adumim,,,✅ OK?,לא נספר
+בתי כנסת ליטאי ליד ליון,synagogue,synagogue,ashkenaz,ashkenaz,ליון,Lod,,,✅ OK?,לא נספר
+מסעדה פרווה רבנות בבית שמש,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+אירוח לשבת בנאפולי,hosting,hosting,,,,,,destination_not_found,❌ NO_RESULT,destination_not_found
+מאפים גלאט כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+לינה לשבת באנטורופן,hosting,hosting,,,אנטוורפן,Vienna,,,✅ OK,hosting
+מקום טוב לאכול בראשון לציון,restaurant,restaurant,,,ראשון לציון,Rishon LeZion,,,✅ OK?,לא נספר
+מסעדה חלבי דב״ץ בבית שמש,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+מסעדה טבעוני יוקרתי מהדרין,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מקום טוב לאכול בליון,restaurant,restaurant,,,ליון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+קרואסון בד״ץ באזור רומנטי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+משהו טעים,any,restaurant,,,,,,destination_not_found,⚠ VAGUE,עמום
+בקלאווה שווה כאן עם ילדים,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מקום טוב לאכול ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+בית כנסת שאמי בגרמניה,synagogue,synagogue,teimanim,teimanim,גרמניה,Germany,,,✅ OK?,לא נספר
+בייגל יוקרתי ליד מקסיקו סיטי,restaurant,restaurant,,,מקסיקו סיטי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פוקה גלאט באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה טורקי מהדרין בגדרה,restaurant,restaurant,,,גדרה,Gedera,,,✅ OK?,לא נספר
+בית כנסת מרוקאי במיאמי,synagogue,synagogue,sfarad,sfarad,מיאמי,Miami,,,✅ OK?,לא נספר
+מחפש פוקה טוב בטוקיו,restaurant,restaurant,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+שוקולד שווה בד״ץ קרוב אליי למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ניוקי פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה בשרי זול לידי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת ליטאי ליד הוד השרון,synagogue,synagogue,ashkenaz,ashkenaz,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מקום לשבת בלונדון,hosting,hosting,,,לונדון,London,,,✅ OK,hosting
+אנטריקוט גלאט לדי ניו יורק,restaurant,restaurant,,,ניו יורק,New York,,,✅ OK?,לא נספר
+נהריה,destination,destination,,,נהריה,Nahariya,,,✅ OK,destination
+סטייק לא יקר ליד רמת גן עם משלוחים,restaurant,restaurant,,,רמת גן,Ramat Gan,,,✅ OK?,לא נספר
+שקשוקה מומלץ רבנות כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מנחה וערבית חסידי בטורונטו,minyan,minyan,chabad,chabad,טורונטו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין שרחית,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+אירוח לשבת בלוס אנג׳לס,hosting,hosting,,,לוס אנג׳לס,Los Angeles,,,✅ OK,hosting
+מסעדה בשרי ליד זכרון יעקב,restaurant,restaurant,,,זכרון יעקב,Zichron Yaakov,,,✅ OK?,לא נספר
+בית כנסת ספרדי ליד ונציה,synagogue,synagogue,sfarad,sfarad,ונציה,Lod,,,✅ OK?,לא נספר
+מסעדה כשרה בצפת,restaurant,restaurant,,,צפת,Tzfat,,,✅ OK?,לא נספר
+בית כנסת ליטאי ליד תל אביב,synagogue,synagogue,ashkenaz,ashkenaz,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת ליל שבת בליון,hosting,hosting,,,ליון,,,destination_not_found,❌ NO_RESULT,destination_not_found
+בית כנסת בגן יבנה,synagogue,synagogue,,,גן יבנה,Gan Yavne,,,✅ OK?,לא נספר
+סלט כאן,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מסף בראשון לציון,minyan,minyan,,,ראשון לציון,Rishon LeZion,,,✅ OK,minyan
+חביתה בהוד השרון,restaurant,restaurant,,,הוד השרון,Hod HaSharon,,,✅ OK?,לא נספר
+מסעדה הודי לא יקר ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+איפה יש אוכל כשר בנהריה,restaurant,restaurant,,,נהריה,Nahariya,,,✅ OK?,לא נספר
+פסטה במודיעין,restaurant,restaurant,,,מודיעין,Modiin,,,✅ OK?,לא נספר
+מסעדה אסייתי זול בד״ץ בציריך,restaurant,restaurant,,,ציריך,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+רמת השרון,destination,destination,,,רמת השרון,Ramat HaSharon,,,✅ OK,destination
+בית כנסת חב״ד בחדרה,synagogue,synagogue,chabad,chabad,חדרה,Hadera,,,✅ OK?,לא נספר
+חדרה,destination,destination,,,חדרה,Hadera,,,✅ OK,destination
+מסעדה טבעוני יוקרתי באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה ים תיכוני יוקרתי בבנגקוק פתוח עכשיו,restaurant,restaurant,,,בנגקוק,Bangkok,,,✅ OK?,לא נספר
+מחפש בוריטו טב באנטוורפן,restaurant,restaurant,,,אנטוורפן,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה הודי מומלץ גלאט,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה טורקי שווה כאן למשפחות,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+ארוחת לי שבת בראש העין,hosting,hosting,,,ראש העין,Rosh HaAyin,,,✅ OK,hosting
+בית כנסת ספרדי בהודו,synagogue,synagogue,sfarad,sfarad,הודו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+פוקה ברומא,restaurant,restaurant,,,רומא,Rome,,,✅ OK?,לא נספר
+בית כנסת ליד טבריה,synagogue,synagogue,,,טבריה,Tiberias,,,✅ OK?,לא נספר
+שוקולד לא יקר בדימונה פתוח עכשיו,restaurant,restaurant,,,דימונה,Dimona,,,✅ OK?,לא נספר
+מרק שווה פה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+בית כנסת ליטאי ליד הבית,synagogue,synagogue,ashkenaz,ashkenaz,,Tel Aviv,,,✅ OK?,לא נספר
+גלידה מומלץ בבואנוס איירס,restaurant,restaurant,,,בואנוס איירס,Buenos Aires,,,✅ OK?,לא נספר
+בית כנסת בדימונה,synagogue,synagogue,,,דימונה,Dimona,,,✅ OK?,לא נספר
+מנגל הכי טו רבנות ליד חדרה,restaurant,restaurant,,,חדרה,Hadera,,,✅ OK?,לא נספר
+מסעדה הודי בפורטוגל,restaurant,restaurant,,,פורטוגל,Portugal,,,✅ OK?,לא נספר
+גלידה מהדרין ליד גבעתיים,restaurant,restaurant,,,גבעתיים,Givatayim,,,✅ OK?,לא נספר
+ריזוטו בונציה עם ילדים,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מקום טוב לאכול בנוציה,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אנטריקוט בטוקיו,restaurant,restaurant,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+גלידה ליד פריז,restaurant,restaurant,,,פריז,Paris,,,✅ OK?,לא נספר
+מסעדה תאילנדי מומלץ בתל אביב עם ילדים,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה תימני רבנות בפריז,restaurant,restaurant,,,פריז,Paris,,,✅ OK?,לא נספר
+מסעדה פרווה זול רבנות בתאילנד,restaurant,restaurant,,,תאילנד,Thailand,,,✅ OK?,לא נספר
+בית כנסת,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+טאקו ליד שדרות לי הים,restaurant,restaurant,,,שדרות,Sderot,,,✅ OK?,לא נספר
+מסעדה חלבי הכי טוב ברחובות,restaurant,restaurant,,,רחובות,Rehovot,,,✅ OK?,לא נספר
+מסעדה חבלי מומלץ בלוד,restaurant,restaurant,,,לוד,Lod,,,✅ OK?,לא נספר
+מניין ערבית בהרצליה,minyan,minyan,,,הרצליה,Herzliya,,,✅ OK,minyan
+מסעדה אסייתי מומלץ ביבנה,restaurant,restaurant,,,יבנה,Yavne,,,✅ OK?,לא נספר
+מסעדה בשרי בפורטוגל עם משלוחים,restaurant,restaurant,,,פורטוגל,Portugal,,,✅ OK?,לא נספר
+רמת גן,destination,synagogue,,,רמת גן,Ramat Gan,,,✅ OK,synagogue
+להתארח בשבת בארה״ב,hosting,hosting,,,ארה״ב,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+יבנה,destination,destination,,,יבנה,Yavne,,,✅ OK,destination
+מסעדה פרווה,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+שניצל בונציה,restaurant,restaurant,,,ונציה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה טבעוני שווה רנבות באנטוורפן,restaurant,restaurant,,,אנטוורפן,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+קזבלנקה,destination,,,,קזבלנקה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+קובה בטוקיו,restaurant,restaurant,,,טוקיו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+להתארח בשבת ברמת גן,hosting,hosting,,,רמת גן,Ramat Gan,,,✅ OK,hosting
+ארוחת ליל שבת קרוב אליי,hosting,hosting,,,,Tel Aviv,,,✅ OK,hosting
+מניין נץ נוסח תימן באנגליה,minyan,minyan,teimanim,teimanim,אנגליה,United Kingdom,,,✅ OK,minyan
+נודלס מהדרין באשקלון רומנטי,restaurant,restaurant,,,אשקלון,Ashkelon,,,✅ OK?,לא נספר
+פלאפל ליד מדריד,restaurant,restaurant,,,מדריד,Lod,,,✅ OK?,לא נספר
+מסעדה טבעוני בד״ץ באשדוד,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+מסעדה הודי ליד הים,restaurant,restaurant,,,,Lod,,,✅ OK?,לא נספר
+בייגל בטבריה לארוחת ערב,restaurant,restaurant,,,טבריה,Tiberias,,,✅ OK?,לא נספר
+פרגית ברמת גן,restaurant,restaurant,,,רמת גן,Ramat Gan,,,✅ OK?,לא נספר
+מלואוח פה,restaurant,,,,,,,low_confidence,❌ NO_RESULT,low_confidence
+שבת,any,hosting,,,,Tel Aviv,,,✅ OK,hosting
+טורקיה,destination,,,,טורקיה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מניין נץ,minyan,minyan,,,,Tel Aviv,,,✅ OK,minyan
+ריזוטו גלאט ליד נהריה ליד הים,restaurant,restaurant,,,נהריה,Nahariya,,,✅ OK?,לא נספר
+לפאפל בד״ץ באיסטנבול,restaurant,restaurant,,,איסטנבול,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+אירוח לשבת במעלה אדומים,hosting,hosting,,,מעלה אדומים,Ma'ale Adumim,,,✅ OK,hosting
+מסעדה טורקי לא יקר רבנות בטורונטו למשפחות,restaurant,restaurant,,,טורונטו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+לונדון,destination,destination,,,לונדון,London,,,✅ OK,destination
+בתי כנסת באזור,synagogue,synagogue,,,,Tel Aviv,,,✅ OK?,לא נספר
+איפה אפשר לאכול נודלס ברמלה,restaurant,restaurant,,,רמלה,Ramla,,,✅ OK?,לא נספר
+כנאפה ביבנה,restaurant,restaurant,,,יבנה,Yavne,,,✅ OK?,לא נספר
+בית כנסת נוסח אשכנז ליד תאילנד,synagogue,synagogue,ashkenaz,ashkenaz,תאילנד,Thailand,,,✅ OK?,לא נספר
+שדרות,destination,destination,,,שדרות,Sderot,,,✅ OK,destination
+צפת,destination,destination,,,צפת,Tzfat,,,✅ OK,destination
+איפה אפשר לאכול לזניה באתונ,restaurant,restaurant,,,אתונה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+חומוס בזכרון יעקב ליד הים,restaurant,restaurant,,,זכרון יעקב,Zichron Yaakov,,,✅ OK?,לא נספר
+דגים זול ברעננה,restaurant,restaurant,,,רעננה,Ra'anana,,,✅ OK?,לא נספר
+מודיעין,destination,destination,,,מודיעין,Modiin,,,✅ OK,destination
+סלט יוקרתי באתונה,restaurant,restaurant,,,אתונה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מלבי ליד הרצליה עם משלוחים,restaurant,restaurant,,,הרצליה,Herzliya,,,✅ OK?,לא נספר
+מקום לשבת בבלגיה,hosting,hosting,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+קואסון,restaurant,,,,,,,low_confidence,❌ NO_RESULT,low_confidence
+ראמן מהדרין במילאנו עם משלוחים,restaurant,restaurant,,,מילאנו,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה פרווה מהדרין בליון,restaurant,restaurant,,,ליון,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת באשדוד,synagogue,synagogue,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+ניוקי שווה לי חיפה,restaurant,restaurant,,,חיפה,Haifa,,,✅ OK?,לא נספר
+ראמן רבנות בבית שמש,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+ג׳חנון בד״ץ לארוחת בוקר,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מניין נץ עדות המזרח באתונה,minyan,minyan,sfarad,sfarad,אתונה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה כשרה בג׳רבה,restaurant,restaurant,,,ג׳רבה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בית כנסת עדות המזרח כאן,synagogue,synagogue,sfarad,sfarad,,Tel Aviv,,,✅ OK?,לא נספר
+מניין מוסף בעפולה,minyan,minyan,,,עפולה,Afula,,,✅ OK,minyan
+ניוקי ליד איסטנבלו,restaurant,restaurant,,,איסטנבול,Lod,,,✅ OK?,לא נספר
+מסעדה יפני לא יקר גבן יבנה,restaurant,restaurant,,,גן יבנה,Yavne,,,✅ OK?,לא נספר
+מניין מוסף עדות המזרח באזור,minyan,minyan,sfarad,sfarad,,Tel Aviv,,,✅ OK,minyan
+בתי כנסת נוסח תימן,synagogue,synagogue,teimanim,teimanim,,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה תאילנדי הכי טוב בד״ץ בהרצליה,restaurant,restaurant,,,הרצליה,Herzliya,,,✅ OK?,לא נספר
+מינין מוסף בנאפולי,minyan,minyan,,,נאפולי,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+בייגל רבנות באור יהודה,restaurant,restaurant,,,אור יהודה,Or Yehuda,,,✅ OK?,לא נספר
+נודלס,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+מקום טוב לאכול בארגנטינה,restaurant,restaurant,,,ארגנטינה,Argentina,,,✅ OK?,לא נספר
+ארוחת שבת פה,hosting,hosting,,,אמסטרדם,Tel Aviv,,,✅ OK,hosting
+סעודה שלישית באזור,hosting,hosting,,,רעננה,,,destination_not_found,❌ NO_RESULT,destination_not_found
+ארוחת שבת בוינה,hosting,hosting,,,וינה,Vienna,,,✅ OK,hosting
+בית כנסת בלאדי בבית שמש,synagogue,synagogue,teimanim,teimanim,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+מלאווח לי אשדוד,restaurant,restaurant,,,אשדוד,Ashdod,,,✅ OK?,לא נספר
+בית כנסת חסידי קרוב אליי,synagogue,synagogue,chabad,chabad,,Tel Aviv,,,✅ OK?,לא נספר
+מעורב ירושלמי בבלגיה עם משלוחים,restaurant,restaurant,,,בלגיה,,,destination_not_found,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעדה ים תיכוני גלאט בדימונה,restaurant,restaurant,,,דימונה,Dimona,,,✅ OK?,לא נספר
+מסעדה מרוקאי במיאמי לארוחת ערב,restaurant,restaurant,,,מיאמי,Miami,,,✅ OK?,לא נספר
+מסעדה צמחוני בצרפת,restaurant,restaurant,,,צרפת,France,,,✅ OK?,לא נספר
+פיצה באזור,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר
+יוון,destination,,,,יוון,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+ג׳רבה,destination,,,,ג׳רבה,,,low_confidence,⚠ ABROAD_NONE,חו״ל—ייתכן שאין
+מסעד מקסיקני בבית שמש,restaurant,restaurant,,,בית שמש,Beit Shemesh,,,✅ OK?,לא נספר
+מניי שחרית בעכו,minyan,minyan,,,עכו,Akko,,,✅ OK,minyan
+מסעדה תימני הכי טוב בד״ץ בתל אביב,restaurant,restaurant,,,תל אביב,Tel Aviv,,,✅ OK?,לא נספר
+מסעדה אמריקאי קרוב אליי,restaurant,restaurant,,,,Tel Aviv,,,✅ OK?,לא נספר

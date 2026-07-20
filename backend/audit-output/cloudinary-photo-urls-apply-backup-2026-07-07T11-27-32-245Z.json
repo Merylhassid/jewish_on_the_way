@@ -1,0 +1,23 @@
+{
+  "takenAt": "2026-07-07T11:27:32.252Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T11-27-23-218Z.csv",
+  "count": 2,
+  "rows": [
+    {
+      "id": 7496,
+      "name": "Miro's",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7501,
+      "name": "New Time - Catering, Takeout and Bakery",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

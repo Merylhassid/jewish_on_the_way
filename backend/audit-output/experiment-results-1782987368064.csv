@@ -1,0 +1,56 @@
+﻿id,orig_status,name,winner_strategy,winner_status,winner_candidate,distance_m,name_sim,branch_assessment
+1969,flagged,אבן הראשה,S1_bias,flagged,יקב אבן הראשה - Keystone Winery,633,1.00,other-branch?
+1747,no_match,פיצה גלעד,S5_addr,flagged,שקף,97,0.00,different-place
+2001,flagged,המסעדה של אבי,S1_bias,verified,המסעדה של אבי - Avi's Restaurant,105,1.00,same
+2002,verified,סמוראיו,S1_bias,verified,סמוראיו סושי-בר,12,1.00,same
+2020,flagged,מריפוסה,S1_bias,flagged,מריפוסה,488,1.00,other-branch?
+2098,verified,נשנש,S1_bias,verified,נשנש מסעדה חלבית- פיצה עפולה | פיצות | פסטות | סלטים,15,1.00,same
+2123,flagged,בליסימו,S1_bias,flagged,בליסימו מוצקין,434,1.00,other-branch?
+2242,flagged,שיפודי שמחה ובניו,S1_bias,flagged,שיפודי רחמים שמחה ובניו,325,1.00,other-branch?
+2307,no_match,חומוס אליהו,S1_bias,no_match,חומוס אליהו יוקנעם,1975,1.00,other-branch?
+2523,no_match,סנדוויץ' בר סמי הגדול,S5_addr,flagged,השקדים 2,113,0.21,different-place
+1400,no_match,ארומה,S2_restrict,verified,ארומה קניון סי מול אשדוד,4,1.00,same
+1224,flagged,השיפודיה של שופן,S1_bias,verified,המסעדה של שופן,153,0.67,same
+1238,no_match,בית הפול והשווארמה נווה זאב,S1_bias,no_match,"בית הפול והשווארמה - נווה זאב באר שבע | ב""ש | חומוס | פלאפל | סביח | שניצל | שווארמה | משלוחים",1872,1.00,other-branch?
+1240,no_match,שלומי שיפודין,S1_bias,no_match,שלומי שיפודין,2571,1.00,other-branch?
+1246,no_match,פיצה שמש נווה זאב,S1_bias,no_match,פיצה שמש נווה זאב,1759,1.00,other-branch?
+1264,verified,שווארמה סבן,S1_bias,verified,מרכז השווארמה דימונה,47,0.62,same
+1302,verified,גן עדן,S1_bias,verified,מסעדת גן עדן,57,1.00,same
+1314,no_match,ג'ט לק שדרות,S1_bias,no_match,ג'ט לק שדרות Jetlek,1289,1.00,other-branch?
+1356,no_match,מאפה נאמן,S1_bias,no_match,מאפה נאמן קניון סיטי אשדוד,1463,1.00,other-branch?
+1432,flagged,פיצה האיטלקיה,S1_bias,flagged,פיצה האיטלקיה אשקלון,1030,1.00,other-branch?
+1444,no_match,קמפאי סטריט ווק,S5_addr,flagged,דב גור 13,7,0.20,different-place
+1476,no_match,שניצל סאן,S1_bias,flagged,מרכז קניות רחבעם זאבי,77,0.25,different-place
+1491,flagged,ביגה,S1_bias,flagged,ביגה,839,1.00,other-branch?
+1533,no_match,בי בי בי,S1_bias,no_match,BBB קרית גת,1736,0.38,different-place
+1547,verified,בוטיק הפיצה,S1_bias,verified,"בוטיק הפיתה סניף רובע י""ג",71,0.58,unclear
+1591,verified,מקדונלד'ס,S1_bias,verified,מקדונלד'ס - דימונה - פרץ סנטר (כשר),70,1.00,same
+1634,no_match,פיציריקה,S1_bias,no_match,פיצה נתיבות,1217,0.17,different-place
+1646,verified,פיצה כמעט חינם,S1_bias,verified,פיצה כמעט חינם,68,1.00,same
+1672,no_match,באדה בום,S1_bias,no_match,באדה בום -Bada Boom,1573,1.00,other-branch?
+1709,no_match,עמק המטבח,S1_bias,no_match,המטבח,1979,1.00,other-branch?
+1929,flagged,פיצה צ'ולו,S1_bias,flagged,פיצה צ'ולו,510,1.00,other-branch?
+1930,flagged,אזורה,S6_top5,verified,מספרת אבי אזורה,82,1.00,same
+1957,verified,האיטלקיה,S1_bias,verified,האיטלקיה,191,1.00,same
+2638,no_match,הרופטופ של עכותיקה,S1_bias,no_match,מסעדת רופטופ עכותיקה,16464,0.93,other-branch?
+3194,flagged,ג'אפו,S1_bias,flagged,ג'אפו בסר בני ברק- Japo,1119,1.00,other-branch?
+2871,no_match,קפה גרג,S2_restrict,flagged,גרג פוריה,401,1.00,other-branch?
+2929,verified,"קפה גלריה קמ""ה",S1_bias,verified,קפה קמה,178,1.00,same
+2959,flagged,ערמונים,S1_bias,flagged,שדרות הגעתון 33,91,0.18,different-place
+3029,flagged,מקסיקניז,S1_bias,flagged,Mexicaneez- מקסיקניז קריות,547,1.00,other-branch?
+3134,flagged,פיתה היט,S1_bias,flagged,פיתה היט,669,1.00,other-branch?
+3188,no_match,שומשום בר בריאות,S1_bias,no_match,בר שומשום,2624,1.00,other-branch?
+3190,flagged,דני בתי מאפה,S1_bias,flagged,דני בתי מאפה Danni's Bakery,252,1.00,other-branch?
+3205,flagged,בא לי קובה,S1_bias,flagged,בא לי קובה,700,1.00,other-branch?
+1244,verified,פינצ'יטו,S1_bias,verified,פינצ׳יטו pinchito,63,1.00,same
+1344,verified,מסעדת אבו,S1_bias,verified,אבו מסעדת בשרים,42,1.00,same
+1583,verified,המזנון של ישראל,S1_bias,verified,המזנון של ישראל אילת,171,1.00,same
+1520,no_match,קפה הילה,S1_bias,no_match,קפה הילה,1862,1.00,other-branch?
+2050,verified,מיסטר פיצה,S1_bias,verified,מיסטר פיצה נהריה,225,1.00,same
+1304,verified,פיצה פרגו,S1_bias,verified,פרגו פיצה באילת,116,1.00,same
+1229,flagged,אושי אושי,S1_bias,flagged,אושי אושי דימונה,618,1.00,other-branch?
+1291,no_match,מקדונלד'ס,S2_restrict,verified,"מקדונלד'ס - דוידי סנטר, אשקלון",8,1.00,same
+1688,verified,"מאפיית אדום אילת בע""מ",S1_bias,verified,מאפיית אדום דודו אילת בע״מ,36,1.00,same
+2167,flagged,פיאצה פינה,S5_addr,verified,אמות סנטר הגליל ראש פינה,86,0.50,unclear
+2454,flagged,מאפיית ברכת משה,S1_bias,flagged,מאפיית ברכת משה,315,1.00,other-branch?
+3055,flagged,ביגה איילון,S1_bias,flagged,ביגה,872,1.00,other-branch?

@@ -201,7 +201,18 @@ export const DESTINATION_STOP_WORDS = new Set([
   'אוכל', 'לאכול', 'ארוחה', 'ארוחת', 'מניין', 'מנין', 'שחרית', 'מנחה', 'מעריב',
   'תפילה', 'תפילת', 'אירוח', 'שבת', 'משפחה', 'מחפש', 'מחפשת', 'צריך',
   'צריכה', 'איפה', 'אפשר', 'קרוב', 'קרובה', 'אליי', 'לידי', 'באזור',
-  'נוסח', 'קהילה', 'יהודית', 'מקום', 'טוב', 'טובה', 'כשרה', 'מומלצת',
+  'נוסח', 'בנוסח', 'לנוסח', 'הנוסח', 'קהילה', 'יהודית', 'מקום', 'טוב', 'טובה', 'כשרה', 'מומלצת',
+  // Denomination adjectives — never city/country names. Excluded so "בית כנסת תימני/אשכנזי/ספרדי"
+  // isn't mistaken for an (unresolvable) destination, and "ספרדי" doesn't fuzzy-match "ספרד"/Spain.
+  // NOTE: "ספרד" (the country noun) is intentionally NOT here — handled by hasSfaradDenominationSignal.
+  'ספרדי', 'ספרדית', 'ספרדים', 'ספרדיות',
+  'תימני', 'תימנית', 'תימנים', 'תימניות',
+  'אשכנזי', 'אשכנזית', 'אשכנזים', 'אשכנזיות', 'אשכנז',
+  'חבד', 'חבדי', 'ליובאוויטש', 'ליטאי', 'ליטאית',
+  'מרוקאי', 'מרוקאית', 'פרסי', 'פרסית', 'תוניסאי', 'עדני', 'בוכרי', 'קווקזי', 'אתיופי',
+  // Nusach nouns/aliases the denomination classifier recognizes (none is a destination — only
+  // "ספרד" is both a nusach and a country, and it is intentionally kept out of this list).
+  'תימן', 'חסידי', 'חסידית', 'שאמי', 'בלאדי', 'הודי', 'עדות', 'המזרח', 'בוכרה',
   // Prayer / action verbs — not city names
   'להתפלל', 'להתארח', 'מתפלל', 'מתפללים', 'מארח', 'מארחת', 'מתארח', 'מתארחים',
   // Hebrew food / kashrut terms — not city names; prevent GPS-fallback block
@@ -215,7 +226,7 @@ export const DESTINATION_STOP_WORDS = new Set([
   'עוף', 'מנגל', 'בשר', 'סלט', 'עוגה', 'חלב', 'פרווה', 'פרוה', 'מהדרין', 'בדץ', 'רבנות',
   'צמחוני', 'צמחונית', 'גלוטן', 'ללא', 'מטבח', 'אסיאתי', 'אסייתי',
   // Additional kashrut / quality adjectives that aren't cities
-  'מהדרין', 'בדץ', 'רבנות',
+  'מהדרין', 'בדץ', 'רבנות', 'גלאט', 'כשרות', 'ליל', 'סעודה', 'סעודת', 'שלישית',
   // English food/restaurant terms — prevent GPS-fallback block
   'synagogue', 'restaurant', 'kosher', 'minyan', 'hosting', 'host',
   'near', 'nearby', 'me', 'in', 'at', 'the',
@@ -223,10 +234,16 @@ export const DESTINATION_STOP_WORDS = new Set([
   'schnitzel', 'pasta', 'cafe', 'coffee', 'grill', 'bbq', 'falafel', 'hummus',
   'chicken', 'steak', 'vegan', 'salad', 'bakery', 'fish', 'meat', 'dairy', 'pareve',
   'vegetarian', 'dinner', 'breakfast', 'lunch', 'waffle', 'ice', 'cream',
+  // Quality / price / modifier words — not city names. Prevents a bare adjective
+  // ("גלידה מומלץ", "סושי זול", "מסעדה מקסיקני עם ילדים") from being mistaken for an
+  // unresolvable destination and returning a false destination_not_found.
+  'מומלץ', 'מומלצת', 'זול', 'זולה', 'יקר', 'יקרה', 'יוקרתי', 'שווה', 'מפנק', 'משתלם',
+  'מדהים', 'נהדר', 'נחמד', 'מעולה', 'גרוע', 'ילדים', 'ילד', 'רומנטי', 'פתוח', 'עכשיו',
+  'משלוחים', 'חניה', 'הכי', 'מאוד', 'בוקר', 'ערב', 'צהריים', 'לילה', 'למשפחות', 'משפחות',
 ]);
 
 const SFARAD_DENOMINATION_PATTERNS = [
-  /(?:^|[\s,.;:!?])נוסח\s+ספרד(?:$|[\s,.;:!?])/,
+  /(?:^|[\s,.;:!?])(?:ב|ל|ה)?נוסח\s+ספרד(?:$|[\s,.;:!?])/,
   /(?:^|[\s,.;:!?])ספרדי(?:$|[\s,.;:!?])/,
   /(?:^|[\s,.;:!?])ספרדית(?:$|[\s,.;:!?])/,
   /(?:^|[\s,.;:!?])ספרדים(?:$|[\s,.;:!?])/,

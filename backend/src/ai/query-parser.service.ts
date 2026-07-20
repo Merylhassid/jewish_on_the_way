@@ -22,7 +22,7 @@ import {
   SearchCategory,
 } from './parsed-query.types';
 import { SearchParserSource } from './search-feedback.entity';
-import { lookupFoodRelation } from '../restaurants/food-relations';
+import { FoodRelation, lookupFoodRelation, lookupFoodRelationMatch } from '../restaurants/food-relations';
 
 interface CacheEntry {
   expiresAt: number;
@@ -48,16 +48,16 @@ const DENOMINATION_VALUES = ['ashkenaz', 'sfarad', 'chabad', 'teimanim'] as cons
 const HOSTING_VALUES = ['meal', 'stay', 'either'] as const;
 
 const FOOD_QUERY_MAP: [RegExp, string][] = [
-  [/פיצ(?:ה|ריה)|pizza|pizzeria/i, 'pizza'],
-  [/סושי|sushi/i, 'sushi'],
-  [/המבורגר|המברגר|בורגר|burger|hamburger/i, 'burger'],
+  [/פיצ(?:ה|ריה)?|piza|pizza|pizzeria/i, 'pizza'],
+  [/סוש(?:י)?|sushi/i, 'sushi'],
+  [/המב[וון]?רגר|המבורג(?:ר)?|המברגר|בורגר|burger|hamburger/i, 'burger'],
   [/סטייק|steak/i, 'steak'],
   [/גלידה|ice.?cream|gelato/i, 'ice cream'],
-  [/חומוס|hummus/i, 'hummus'],
+  [/חומו(?:ס)?|hummus/i, 'hummus'],
   [/פסטה|pasta/i, 'pasta'],
   [/קפה|cafe|coffee/i, 'cafe'],
   [/פלאפל|falafel/i, 'falafel'],
-  [/שווארמה|שוארמה|shawarma/i, 'shawarma'],
+  [/שווא?רמה|shawarma/i, 'shawarma'],
 ];
 
 const HOSTING_SIGNALS = [
@@ -70,9 +70,9 @@ const MINYAN_SIGNALS = [
   /מניין|מנין|שחרית|מנחה|ערבית|תפילה|תפילת|מתפללים|מתפלל|להתפלל/i,
   /\b(minyan|shacharit|shacharis|mincha|maariv|arvit|prayer|pray)\b/i,
 ];
-const SYNAGOGUE_SIGNALS = [/בית\s+כנסת|בתי\s+כנסת|בתי\s+כנסיות/i, /\b(synagogue|shul)\b/i];
+const SYNAGOGUE_SIGNALS = [/בית\s+(?:כנס(?:ת)?|גנסת)|בתי\s+כנסת|בתי\s+כנסיות/i, /\b(synagogue|shul)\b/i];
 const RESTAURANT_SIGNALS = [
-  /מסעד(?:ה|ת|ות)|לאכול|אוכל|ארוח(?:ה|ת)|פיצה|פיצריה|סושי|בורגר|המבורגר|חומוס|גלידה|קפה|פלאפל/i,
+  /מסעד(?:ה|ת|ות)|לאכול|אוכל|ארוח(?:ה|ת)|פיצה|פיצריה|סושי|בורגר|המבורגר|חומו(?:ס)?|גלידה|קפה|פלאפל/i,
   /\b(restaurant|restaurants|eat|food|pizza|sushi|burger|dairy|meat|kosher)\b/i,
 ];
 const NEAR_ME_SIGNALS = [
@@ -397,8 +397,12 @@ export class QueryParserService {
 
   private normalizeTypos(text: string): string {
     return text
+      .replace(/(^|[\s])פיצ(?=$|[\s,.;:!?])/g, '$1פיצה')
       .replace(/(^|[\s])פיצמ([\s]|$)/g, '$1פיצה$2')
       .replace(/(^|[\s])פיצנ([\s]|$)/g, '$1פיצה$2')
+      .replace(/(^|[\s])המבןרגר(?=$|[\s,.;:!?])/g, '$1המבורגר')
+      .replace(/(^|[\s])המבורג(?=$|[\s,.;:!?])/g, '$1המבורגר')
+      .replace(/(^|[\s])סוש(?=$|[\s,.;:!?])/g, '$1סושי')
       .replace(/(^|[\s])בפעולה(?=$|[\s,.;:!?])/g, '$1בעפולה')
       .replace(/(^|[\s])לפעולה(?=$|[\s,.;:!?])/g, '$1לעפולה')
       .replace(/(^|[\s])בירשלים(?=$|[\s,.;:!?])/g, '$1בירושלים')
@@ -418,6 +422,22 @@ export class QueryParserService {
     for (const [pattern, dish] of FOOD_QUERY_MAP) {
       if (pattern.test(text)) return dish;
     }
+    return this.dishFromRelation(lookupFoodRelationMatch(text)?.relation);
+  }
+
+  private dishFromRelation(relation: FoodRelation | undefined): string | null {
+    if (!relation) return null;
+    const tags = new Set(relation.searchTags);
+    if (tags.has('pizza')) return 'pizza';
+    if (tags.has('burger')) return 'burger';
+    if (tags.has('sushi')) return 'sushi';
+    if (tags.has('steak')) return 'steak';
+    if (tags.has('ice-cream')) return 'ice cream';
+    if (tags.has('hummus')) return 'hummus';
+    if (tags.has('pasta')) return 'pasta';
+    if (tags.has('cafe')) return 'cafe';
+    if (tags.has('falafel')) return 'falafel';
+    if (tags.has('shawarma')) return 'shawarma';
     return null;
   }
 

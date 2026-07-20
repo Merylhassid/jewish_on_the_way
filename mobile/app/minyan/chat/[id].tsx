@@ -16,8 +16,10 @@ import {
 import { io, Socket } from 'socket.io-client';
 import { ArrowLeft, MessageCircle, Send } from 'lucide-react-native';
 import { useAuth } from '@/src/store/auth';
+import { withProtectedRoute } from '@/src/auth/auth-gates';
 import { API_URL } from '@/src/api/client';
 import { getPrayerConfig } from '@/src/utils/prayerIcons';
+import { C } from '@/constants/theme';
 
 interface ChatMsg {
   id: number;
@@ -37,7 +39,7 @@ const PRAYER_LABEL: Record<string, string> = {
   shacharit: 'Shacharit', mincha: 'Mincha', maariv: "Ma'ariv", musaf: 'Musaf', other: 'Other',
 };
 
-export default function MinyanChatScreen() {
+function MinyanChatScreen() {
   const { id, prayerType, city } = useLocalSearchParams<{ id: string; prayerType?: string; city?: string }>();
   const { user, getValidToken } = useAuth();
   const { t } = useTranslation();
@@ -262,10 +264,10 @@ export default function MinyanChatScreen() {
     >
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
+          <ArrowLeft size={22} color={C.navy} strokeWidth={2.5} />
         </Pressable>
-        <View style={[styles.headerIconBox, { backgroundColor: prayerCfg.color + '30' }]}>
-          <prayerCfg.Icon size={18} color="#fff" strokeWidth={2} />
+        <View style={[styles.headerIconBox, { backgroundColor: prayerCfg.bg }]}>
+          <prayerCfg.Icon size={18} color={prayerCfg.color} strokeWidth={2} />
         </View>
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle}>{label} Chat{city ? ` — ${city}` : ''}</Text>
@@ -279,7 +281,7 @@ export default function MinyanChatScreen() {
       </View>
 
       {loading ? (
-        <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>
+        <View style={styles.center}><ActivityIndicator size="large" color={C.gold} /></View>
       ) : (
         <FlatList
           ref={listRef}
@@ -311,7 +313,7 @@ export default function MinyanChatScreen() {
           value={text}
           onChangeText={handleTextChange}
           placeholder={t('minyans.chatPlaceholder')}
-          placeholderTextColor="#999"
+          placeholderTextColor={C.textMuted}
           multiline
           maxLength={500}
           returnKeyType="send"
@@ -330,40 +332,76 @@ export default function MinyanChatScreen() {
   );
 }
 
+export default withProtectedRoute(MinyanChatScreen, 'minyanChat');
+
 const styles = StyleSheet.create({
-  container:    { flex: 1, backgroundColor: '#f0f4ff' },
+  container:    { flex: 1, backgroundColor: C.bg },
   center:       { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  header:       { backgroundColor: '#1a3a6b', paddingTop: Platform.OS === 'ios' ? 60 : 42, paddingBottom: 16, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center' },
-  backBtn:      { marginRight: 12 },
-  headerIconBox:{ width: 34, height: 34, borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginRight: 10 },
+  header:       {
+    backgroundColor: C.cream,
+    paddingTop: Platform.OS === 'ios' ? 60 : 42,
+    paddingBottom: 18,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: C.goldBorder,
+  },
+  backBtn:      {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: C.goldBorder,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+    shadowColor: C.navy,
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  headerIconBox:{ width: 34, height: 34, borderRadius: 10, borderWidth: 1, borderColor: C.goldBorder, justifyContent: 'center', alignItems: 'center', marginRight: 10 },
   headerCenter: { flex: 1 },
-  headerTitle:  { fontSize: 17, fontWeight: '700', color: '#fff' },
+  headerTitle:  { fontFamily: 'Inter-Black', fontSize: 18, color: C.navy },
   statusRow:    { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
   dot:          { width: 8, height: 8, borderRadius: 4, marginRight: 6 },
-  statusText:   { fontSize: 12, color: '#a8c4e8' },
+  statusText:   { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textSecondary },
   messageList:  { padding: 16, gap: 4, flexGrow: 1 },
   msgRow:       { flexDirection: 'row', alignItems: 'flex-end', gap: 8 },
   msgRowMe:     { flexDirection: 'row-reverse' },
-  avatar:       { width: 32, height: 32, borderRadius: 16, backgroundColor: '#a8c4e8', justifyContent: 'center', alignItems: 'center' },
-  avatarText:   { fontSize: 12, fontWeight: '700', color: '#1a3a6b' },
+  avatar:       { width: 32, height: 32, borderRadius: 16, backgroundColor: C.goldFaint, borderWidth: 1, borderColor: C.goldBorder, justifyContent: 'center', alignItems: 'center' },
+  avatarText:   { fontFamily: 'Inter-Bold', fontSize: 12, color: C.navy },
   bubble:       { maxWidth: '75%', borderRadius: 18, paddingHorizontal: 14, paddingVertical: 10 },
-  bubbleOther:  { backgroundColor: '#fff', borderBottomLeftRadius: 4 },
-  bubbleMe:     { backgroundColor: '#1a3a6b', borderBottomRightRadius: 4 },
-  senderName:   { fontSize: 12, fontWeight: '700', color: '#1a3a6b', marginBottom: 4 },
-  msgText:      { fontSize: 15, color: '#1a1a2e', lineHeight: 20 },
+  bubbleOther:  {
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(11,23,54,0.08)',
+    shadowColor: C.navy,
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 1 },
+    elevation: 1,
+  },
+  bubbleMe:     { backgroundColor: C.navy, borderBottomRightRadius: 4 },
+  senderName:   { fontFamily: 'Inter-Bold', fontSize: 12, color: C.navy, marginBottom: 4 },
+  msgText:      { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary, lineHeight: 20 },
   msgTextMe:    { color: '#fff' },
-  msgTime:      { fontSize: 11, color: '#aaa', marginTop: 4, textAlign: 'right' },
+  msgTime:      { fontFamily: 'Inter-Regular', fontSize: 11, color: C.textMuted, marginTop: 4, textAlign: 'right' },
   msgTimeMe:    { color: 'rgba(255,255,255,0.6)' },
   readersRow:   { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingRight: 6, marginTop: 2, marginBottom: 4, gap: 3 },
-  readerAvatar: { width: 18, height: 18, borderRadius: 9, backgroundColor: '#a8c4e8', justifyContent: 'center', alignItems: 'center', borderWidth: 1.5, borderColor: '#f0f4ff' },
-  readerInitials:{ fontSize: 8, fontWeight: '800', color: '#1a3a6b' },
-  readerMore:   { fontSize: 10, color: '#888', marginLeft: 2 },
+  readerAvatar: { width: 18, height: 18, borderRadius: 9, backgroundColor: C.goldFaint, justifyContent: 'center', alignItems: 'center', borderWidth: 1.5, borderColor: C.bg },
+  readerInitials:{ fontSize: 8, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
+  readerMore:   { fontSize: 10, color: C.textMuted, marginLeft: 2 },
   empty:        { flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 80, gap: 12 },
-  emptyText:    { fontSize: 15, color: '#888', textAlign: 'center', lineHeight: 22 },
-  inputBar:     { flexDirection: 'row', alignItems: 'flex-end', padding: 12, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#eee', gap: 10 },
-  input:        { flex: 1, backgroundColor: '#f0f4ff', borderRadius: 22, paddingHorizontal: 16, paddingVertical: 10, fontSize: 15, color: '#1a1a2e', maxHeight: 100 },
-  sendBtn:      { width: 44, height: 44, borderRadius: 22, backgroundColor: '#1a3a6b', justifyContent: 'center', alignItems: 'center' },
-  sendBtnDisabled: { backgroundColor: '#ccc' },
-  typingBar:    { paddingHorizontal: 20, paddingVertical: 4, backgroundColor: '#fff' },
-  typingText:   { fontSize: 12, color: '#888', fontStyle: 'italic' },
+  emptyText:    { fontFamily: 'Inter-Regular', fontSize: 15, color: C.textMuted, textAlign: 'center', lineHeight: 22 },
+  inputBar:     { flexDirection: 'row', alignItems: 'flex-end', padding: 12, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: 'rgba(11,23,54,0.07)', gap: 10 },
+  input:        { flex: 1, backgroundColor: C.bg, borderRadius: 22, paddingHorizontal: 16, paddingVertical: 10, fontFamily: 'Inter-Regular', fontSize: 15, color: C.textPrimary, maxHeight: 100, borderWidth: 1.5, borderColor: C.goldBorder },
+  sendBtn:      { width: 44, height: 44, borderRadius: 22, backgroundColor: C.navy, justifyContent: 'center', alignItems: 'center' },
+  sendBtnDisabled: { backgroundColor: '#D1D5DB' },
+  typingBar:    { paddingHorizontal: 20, paddingVertical: 4, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: 'rgba(11,23,54,0.05)' },
+  typingText:   { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textMuted, fontStyle: 'italic' },
 });

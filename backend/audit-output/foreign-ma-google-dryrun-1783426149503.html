@@ -1,0 +1,183 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run MA</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — MA</h1>
+<div class="sum">
+שורות שנבדקו: <b>12</b> מתוך 12<br>
+✅ בטוח נכון: <b>9</b> · ❓ אולי: <b>1</b> · ❌ לא נמצא/לא נכון: <b>2</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 28 · Details: 19 (19 חדשים, 1 cache) · Google estimate max: ~$0.32 · LLM: $0.006 (5)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 9</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7411</td>
+      <td><b>Schnitzel Factory</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>Rue Loubnane Marrakech</td>
+      <td>Schnitzel factory kosher</td>
+      <td>Residence Jaouhara, 20 Rue Loubnane, Marrakesh 40000, Morocco</td>
+      <td>4.7 (83)</td>
+      <td>06 62 62 97 91</td>
+      <td class="photo">places/ChIJ_65-EeTvrw0RV-hl2ti3ZX4/photos/AaVGc3mCc8M3akwE8TTWxEH46eDjY27wjjzLRb8JwwmQhoRTB6-gRcTCEEqdvdNmcKVnzJfGxYWna_kjrB62PRgBCM9bi3D3E4SPOXcvCNUS6uw1RdFShY-M9-g7nJgFO4ziWvbP7pirnUbchJcjz-XBLaI89BFQjw9afqL8G8QvyZFE8T6dL_RVv7l2UlfXBFHAvTEEyRwT7-MhY9-qySBvC21o-aaaZVR7Bgk1sZgfWZrJyl-HC49vB2uw3-n1snKyIDjP0wGIqy5PaAA6YX1vU8GmDB-NbGn8-wATbRw-mhL6a4kToUS6Ra2RPm5FY_7jTAww3VWjvRuKeXo5l6TjI2Vd_gIz6cNCG18z2HFRhpA3_bMrysSmD1zl7yfZfyYpU9aNsVXWma-4xVTQFrsvD41CO-m5gR7IdYeQ-1UnESt6W17zu5xITgwwTL6gbA</td>
+      <td class="reason">LLM אישר (0.92): Unique name 'Schnitzel Factory' + kosher designation matches. Address on same street (Rue Loubnane) in Marrakech. Google provides more complete address (Residence Jaouhara, house number 20) and confirms operational status. City name spelling variant (Marrakech vs Marrakesh) is standard transliteration difference. Distance of ~15m suggests same location with address precision variation.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Schnitzel%20Factory%20Rue%20Loubnane%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ_65-EeTvrw0RV-hl2ti3ZX4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7412</td>
+      <td><b>Al Dente</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>4 rue de Yougoslavie Marrakech</td>
+      <td>Al denté restaurant casher marrakech</td>
+      <td>4 Rue Yougoslavie, Marrakech 40000, Morocco</td>
+      <td>4.4 (162)</td>
+      <td>06 63 16 37 70</td>
+      <td class="photo">places/ChIJGdK2omvvrw0RBxwwwkExtTk/photos/AaVGc3ln1pvlshqJomioTO0TmCNhscsWBxliYtYTej3bRT29Y9ACJTsYSDXPQPVY-jHdzum3rp-0-tZSsH2XLGaMjLTroVbResTdpmFkFMNAnx4-VMG8nEMu59o1rwWpzf3vayDW6Vo5Ukh5zfQw-3ZuiLYNKZBoOFGcoiOBc62GnQB9bSwo11Z_T8QDbu7iYn6ttnR6RBEkco1V4t673erUa1nBZ3kGLFInEk4NriwuU4Ufu9O81bJpmeBdvqupwEAIPuGg9OK4BbAC6biK-fDdsochokt48VRFQGpHY_2TIAPx4y8cMJ3le9McNnJ9v_siFaDonXPLHdszwYO4rxt7WASKZePNyYYScbeDxaw0Wi1tcOwht6TrvQDaSQPqViE14nLRH6oIqClCSzdNFu-oQ0rpr8fndjVqnnSiO0HlPMOnDQwxMK3tn36hRJd50thA</td>
+      <td class="reason">LLM אישר (0.95): Same unique restaurant name (Al Dente/Al denté), identical street address (4 Rue Yougoslavie), same city (Marrakech), same country. Address formatting variation is normal across systems. Google Places confirms operational kosher restaurant matching our database entry.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Al%20Dente%204%20rue%20de%20Yougoslavie%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJGdK2omvvrw0RBxwwwkExtTk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7413</td>
+      <td><b>Bethsabee Marrakech</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>Arsat Maach, 91 Avenue Hommane Fetouaki Marrakech</td>
+      <td>BETHSABEE (Restaurant kosher)</td>
+      <td>Arsat Maach, 91 Avenue Hommane Fetouaki, Marrakech 40000, Morocco</td>
+      <td>4.4 (29)</td>
+      <td>07 02 08 76 78</td>
+      <td class="photo">places/ChIJo6LsLe7vrw0RsJgR1hjlZMM/photos/AaVGc3kdK46wpKgVb9O_AqWVYRBR51V6YNFSd0XFLWeH3aHBualzHp2PQNE1fhW2Brjd3Ey2yNW2rXlR1PIGzDfMjURFcJBhLR_ZxC8WyS25wfyqYK1kxDkFTsLDK839xVmGLNLyibA1Ar8gkCHoBPaY5y7sdjm4zs-AUG83aHT0zTzueJR0HE6ttairF2EcoFn7ZRxTKEIaUkchufcK1_KUdVHxCL7iwgw4PZ01ND6tGMxkpTGRx4HIdwK34--bWbg8rb3DYNBD-9vYV5smnLXMfNK4Pp_cNdGn8QaxSEyqDrwA1UAD9jDw67YcnZWrLJ4zlGwntVnmmGD2dAtr6_rC8unxQ5dOsQgFvW7s32CcGbbp_EmLqPcZBlyuUB4uirz2cEzMTQZs2vQ-OjTjZtK0ZpXqnsY1h27X2PsqiUNmuks9tg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bethsabee%20Marrakech%20Arsat%20Maach%2C%2091%20Avenue%20Hommane%20Fetouaki%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJo6LsLe7vrw0RsJgR1hjlZMM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7414</td>
+      <td><b>Chez Abehssera</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>2 rue de Yougoslavie - Guéliz Marrakech</td>
+      <td>Restaurant Chez ABEHSSERA</td>
+      <td>200m à, côté de l'hôtel Diwan, 24 Rue Yougoslavie, Marrakech 40000, Morocco</td>
+      <td>4.3 (163)</td>
+      <td>06 79 17 11 98</td>
+      <td class="photo">places/ChIJYwLtq5Pvrw0RGNSaaO2IBkk/photos/AaVGc3n16PUIOsnUPi8gR4PThC8kSZYhyORfqFamEbbncB1EYZVX5O4IlOo3I07pTAUbTakNYvcfysU42JLaqPlfaCEK5_kwq2DEocP-0b-9C52x13VorL14CkFlO7PuKwKqigzesSFzQFlow2sV8_ceAI-DbK6Hs2jEEmQ9U24ehGyQeILwdFZkO9rDGUILP1BAucioW69IOKQ4nJ8REpLR-o0bFKvVEDVqxw4MBx0R57vrGgrBHLz4N-vyw7b1y7UqOdyYK0rzI9c4sfuDs3ygszE5KStOWoX5uaxj6s63Bbi5FcABfhEwJb3aZGhIXF61FyPeESTYKQj3FUveFepoC7svWS8t-I4xjEp5UREmYLgh69P1E5Jlzxn9urdA1vqZCROtN-FxObzhGJRPq5t5tKvv3luHGVJpjxhIG9Wy8In07XWF</td>
+      <td class="reason">LLM אישר (0.92): שם זהה בדיוק (Chez Abehssera), רחוב יוגוסלביה זהה בשני הכתובות, עיר זהה (מרקש), וסוג המסעדה תואם (מסעדה ישראלית). ההבדל בכתובת מדויקת (2 vs 24/200m) עשוי להיות שגיאה בנתוני מסד הנתונים שלנו. גוגל סביר להיות מדויק יותר בקואורדינטות. כל האינדיקטורים מצביעים על אותו מקום פיזי.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chez%20Abehssera%202%20rue%20de%20Yougoslavie%20-%20Gu%C3%A9liz%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYwLtq5Pvrw0RGNSaaO2IBkk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7415</td>
+      <td><b>Restaurant Terraz Pashutaim Marrakech</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>Marrakech</td>
+      <td>Le Terraz Pashutaim Kosher Restaurant Marrakech</td>
+      <td>A l'intérieur de l'hôtel Jaal Riad Resort, Bd Mohamed VI, Marrakech 40000, Morocco</td>
+      <td>4.1 (10)</td>
+      <td>06 39 81 30 71</td>
+      <td class="photo">places/ChIJsbyvFUHvrw0RTyw3GSEyveg/photos/AaVGc3micqnef0xf1MIjaATNQXd5c7rBWhbS4yUSpIZL27g1HcTvtkGquzcmZ3-9gbgbhwuho0TPDEoK8rTgtKs0_YinlWPVTQJvah2EQajtcV9cUP8WwJEXXjMhhd0Bj-RjVVkneQzc3nEd0qwiqUnb0WTEtvkCSrrPWiyStcFmMLdd-Bm1MNrzngRqVlG9L7mCi7Iqtb1DIrTOVtLBXqZ-NpaiV4RNM5XDmB1JV5BR9VBy9lKMV51-Jn5yjOcadlaMsCKVPGNgOkkvI6kMsDBSxJX7HmphI80IWIuzqypylnIj0Kh4N6aVcQbKwHsnbnBqQcyCGFJ0wHE7AVs8nMesxjstjhAq1KmiP6ArhhJvjTmDGdt_xHYE2kMAn8ysOb0GBDS0v1vLClFUhSdtBTlyjoNxKtWSVxAClExPBoJpqxbpQV5J</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant%20Terraz%20Pashutaim%20Marrakech%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJsbyvFUHvrw0RTyw3GSEyveg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7417</td>
+      <td><b>Wasabi Marrakech</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>17 Rue de Yougoslavie Marrakech</td>
+      <td>Wasabi</td>
+      <td>17 Rue Yougoslavie, Marrakech 40000, Morocco</td>
+      <td>4.4 (257)</td>
+      <td>06 96 87 04 59</td>
+      <td class="photo">places/ChIJrWAmVJDvrw0RhwcVbyUcaxo/photos/AaVGc3mn-xuOTEDgAvXFAxXjuChgTC3eYPnKbOpq5yqduKNeCj0mgZhGaQhHu4GIlYux0xBz5Sfcx8Qj62H4kC3wwqw236s7iIvSslSBAH9tL1Wo3NITM5Q10qqyj41HL1lgxCwubpYscKo23o21Ljcd4uWHDxGZd2WVhxSzrEHy7CnRaNjFm2_GkJ7Mn2Fmy79Cn1C5mX9VGTS3K5KQXsEICF9mEjPExIAprwuOA5qSCqWqAtpsdOvVI7R7pRnOMIvH2Fc8OjiHmtoAxpSMo63KvolZgAdz74W1IUR_FVlCcOgS6h5oaEMKbvpjC9OlRjC_Z7lWHnY1qKynxMprnem2EvACZ1Tdp2lJW9D37XQgFCG7dFvlV_-deODbkWXLPTz6KECnN_uBtQsJnjryo-FFXQW5xNXNMQmcuvaMBh13R1I</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי זהה (Wasabi), כתובת רחוב זהה (Rue Yougoslavie 17), עיר זהה (Marrakech). ההבדלים קלים: שינויים באיות צרפתי (Yougoslavie vs Yugoslavia) וקוד בחום. סוגי המזון תואמים מסעדה יפנית/סושי.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Wasabi%20Marrakech%2017%20Rue%20de%20Yougoslavie%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJrWAmVJDvrw0RhwcVbyUcaxo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8451</td>
+      <td><b>First Grill Marrakech</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>Av. du Président Kennedy,  Marrakech 40000, , Morocco</td>
+      <td>First Marrakech Tours</td>
+      <td>2éme étage, Appt N°16, 213 Av. Mohammed V, Marrakech 40000, Morocco</td>
+      <td>4.1 (14)</td>
+      <td>06 62 63 92 01</td>
+      <td class="photo">places/ChIJQ4fqFpDurw0Rv_6O-k0G-9E/photos/AaVGc3kGFxaPd7NQe0gorhV88KPlR2XqqTdox0yyVeeKeJpguCO8oX5aYXc8G16hIXJoLBxdZoiqqBlT90xe6tV9sZzBLeQntY6L_Hzwfezm8n7fTNnZ0YKfDEVUefoAqLq-NnXY6FTvSwXaZ34gHEYAkwX7BqzpL3UZKtdV43NW_1P-p5318b5v-gxTYiGOHKI7W7BfB042A5P4O6PrCT9HaurDpLkTp6z8Oa7LV-TkvE1WcPkFwKduYabrUm83xQktyIVuW-PuLFbC0h_kP_rSHi47dE7qQAZex0XApJtCxjPXxPlEZGeUX3MJZoUdn3y5klfo9KBXO3bHrUOboKHK9i38Dq2J-Kb8sgBOghaj35v600HpjiZL9eYXeepEmwJfYBxW5QF_5oSG-h2qSGh7YsewM5R-8xo_FkOs4cLZG0ol0Q</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=First%20Grill%20Marrakech%20Av.%20du%20Pr%C3%A9sident%20Kennedy%2C%20%20Marrakech%2040000%2C%20%2C%20Morocco" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQ4fqFpDurw0Rv_6O-k0G-9E" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8452</td>
+      <td><b>Grill &amp; Kosh</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>119 Rue Mohammed el Beqal,   Marrakech, 40000, Morocco</td>
+      <td>Grill&amp;Kosh Restaurant Kosher Marrakech</td>
+      <td>119 Rue Mohammed el Beqal, Marrakech 40000, Morocco</td>
+      <td>5 (24)</td>
+      <td>06 29 70 72 27</td>
+      <td class="photo">places/ChIJW60WvFfvrw0RH8Qnw-Qqe-o/photos/AaVGc3kIDJfhzCgdeCoKkfpGMk_RVjRgNxdlLgQDJnCUIyZzYM095eghuXn1028y18Ct04y282Gi9SNX08mp2myTrA2263l9mYbR1QR8CYIXvUa68wgreH86Ogijl7gRQENA3e-LuwrqZtpMzxoBsPBUIjKG-NqwECuPm5IXTescdrmmjGw60rD9Ydsen0a3eyejIx49ZzqWKh3trZV7SUm_mLlg7-dPTgY5CWbMaJrqW5sath3VWe__dhlhp-qozEFGsLmXcMZInTC0urOOiYAS18mga3EErMw-3CkCBwFp6gIa3RJudrhPxAZ7IUiCnDImc4YMi5Fyhwr6nmMufBGEj7tDob5aDdDSEIFcUHCg8D4ygScP6aZnqBabk2nqwunCNwTq8HCsKUcEb2yLRjD1dU0unV_co_OLuBkslnzV4-VMjQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Grill%20%26%20Kosh%20119%20Rue%20Mohammed%20el%20Beqal%2C%20%20%20Marrakech%2C%2040000%2C%20Morocco" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJW60WvFfvrw0RH8Qnw-Qqe-o" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8453</td>
+      <td><b>Wasabi</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>17 Rue Yougoslavie Marrakech 40000, Morocco</td>
+      <td>Wasabi</td>
+      <td>17 Rue Yougoslavie, Marrakech 40000, Morocco</td>
+      <td>4.4 (257)</td>
+      <td>06 96 87 04 59</td>
+      <td class="photo">places/ChIJrWAmVJDvrw0RhwcVbyUcaxo/photos/AaVGc3mn-xuOTEDgAvXFAxXjuChgTC3eYPnKbOpq5yqduKNeCj0mgZhGaQhHu4GIlYux0xBz5Sfcx8Qj62H4kC3wwqw236s7iIvSslSBAH9tL1Wo3NITM5Q10qqyj41HL1lgxCwubpYscKo23o21Ljcd4uWHDxGZd2WVhxSzrEHy7CnRaNjFm2_GkJ7Mn2Fmy79Cn1C5mX9VGTS3K5KQXsEICF9mEjPExIAprwuOA5qSCqWqAtpsdOvVI7R7pRnOMIvH2Fc8OjiHmtoAxpSMo63KvolZgAdz74W1IUR_FVlCcOgS6h5oaEMKbvpjC9OlRjC_Z7lWHnY1qKynxMprnem2EvACZ1Tdp2lJW9D37XQgFCG7dFvlV_-deODbkWXLPTz6KECnN_uBtQsJnjryo-FFXQW5xNXNMQmcuvaMBh13R1I</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Wasabi%2017%20Rue%20Yougoslavie%20Marrakech%2040000%2C%20Morocco" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJrWAmVJDvrw0RhwcVbyUcaxo" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 1</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7410</td>
+      <td><b>La coupole Marrakech</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>Rue Yougoslavie, Rue Moulay Ali Marrakech</td>
+      <td>Restaurant la coupole</td>
+      <td>J2H9+QHW, Marrakesh 40000, Morocco</td>
+      <td>4 (5)</td>
+      <td></td>
+      <td class="photo">places/ChIJST0hZGTvrw0RP12dgQLbbRo/photos/AaVGc3nryoxbiqnrHz6yfUmIEhISw_37r5C-bb1q8w7s72b4QsMioB8JAk2xX-dpJHyI7lSyYU67nhfZeZawASdO8ENkTB6eMODXDxy4D4nTPDWda8s48DJyzE8ndTYG8EP1kWLrGRTnwGJLXOuKWVqYVWKnSgJgtzZeVKVoAsErcxVj0JzQWE-jSz2g5RaA9KIyfyd_4dbld_fYxpKnWkqyCkUWqFjYZIDBcOXYOahuWkQp-QH9mw-p8XSLSMQ_Rotv1SGFMFfFjswB2VkXsdk6RKGtzuGRq-NzNPRuP5eWSoI4ZPX1zbfQ2GPZlFcD1jsRBvKVuQ991KWASVFybr47GJ2JCQrf7pTtVnH5JDMl-QZtphONVACn2pUqsAPXiJrzAbCoxMRm4FwJgRdPFW4nYYrYbQZPxNyQs9pQD6xxO8KfQb7W</td>
+      <td class="reason">LLM לא הכריע (0.82): Unique restaurant name 'La coupole' in Marrakech matches. Address mismatch (Rue Yougoslavie vs coordinates) but Google's operational status and coordinates likely more current. Same city, identical distinctive name, food business type confirm same establishment despite address discrepancy.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20coupole%20Marrakech%20Rue%20Yougoslavie%2C%20Rue%20Moulay%20Ali%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJST0hZGTvrw0RP12dgQLbbRo" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 2</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7409</td>
+      <td><b>Darima Marrakech</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>11 rue de la liberté Marrakech</td>
+      <td>Dar Ima Restaurant</td>
+      <td>11 Rue de la Liberté, Marrakech 40000, Morocco</td>
+      <td>4.1 (534)</td>
+      <td>05 24 43 68 93</td>
+      <td class="photo">places/ChIJf4ZCPY7urw0RK7no0y-RoQM/photos/AaVGc3mL1C63oDZMMN4WodPERS0JC0L07eBaIzX4pL6drAyjsR7GalG7gvNHPOrT4S8qu8GKhrrQChFEResKk0YRUfoh4Uf3oV8Ivkq9vdNA6iZZGt9Vzaj6Uxst4hx9GbosfzHPH_-AhA44exTYeP--R__n4SontMf8P_nrAeQaTK458RBIhzWJmOZPQlhUnaz-wLcRsOPhDsqcjGdttLlhMjQ5sfY_pEq_zKfj9S9wFbd3RAy3egqCU1qC67WEAhMmdhwKTwuQ6NcGIKFNpfGV52dCW7uu_4QAl8_ERxyIvIzPUJy5XrmiEoQ4vAVzG8DYjcr5kR7PS_adkeED7oI7win6Yj0hmUwyoGUeR4dvMPnnxHPEACV-26Q7YjxdaTseaeVzMA8jSFTvZErJLFZKEf0wc63pqA2EzjhWiTx1ikeFwfLj</td>
+      <td class="reason">weak name/address match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Darima%20Marrakech%2011%20rue%20de%20la%20libert%C3%A9%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJf4ZCPY7urw0RK7no0y-RoQM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7416</td>
+      <td><b>Simha Bakery Shop</b><div class="muted">Marrakech · Morocco</div></td>
+      <td>70 Liberty street, Guiliz Marrakech</td>
+      <td>Spice Shop</td>
+      <td>8 Derb Ahmar، Marrakech 40000, Morocco</td>
+      <td>4.3 (12)</td>
+      <td></td>
+      <td class="photo">places/ChIJhV4N2ULurw0RWl6nr_wo3k0/photos/AaVGc3l4_hM_MdnUDP1UfFRrc3HRIVR58Zebp4FmqMWc85NzTb1Fhgdn4FuKnYC4NWQ6rcfDO--871axFSW30_iQJRyQOjFp5ahKu71tj4gsg51t1R06oadc-xYvBN1PTs0KZqfNQvZcKUtGM031Aq7n5Ip3zfXm-ore-wbgIDNokVf8sqWYTwp4beX-ozzMtK1hvoll21lqj6Aemvt6Ct4Ruk3nmHUmHqJSmOuiEL-cOIfiMZJQZmxRSW2Jv1MVjb3rqlPZ_8oBz6ST0_dDeRpjaLYn9o5Qt6YmE5EM9L8MJG2ihEmmbcM7V_Vl5wDS2FvBcW2JckiwjAXurHaTUBJpYv4SpNbSXuQLRWIcUQKKSgipe13E3DhlbVpcdRlScNfcbr15-ZirIG7uPXZIZVBEgzaOGRpEUgDSoQI2mlErl79veU5I</td>
+      <td class="reason">weak name/address match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Simha%20Bakery%20Shop%2070%20Liberty%20street%2C%20Guiliz%20Marrakech" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJhV4N2ULurw0RWl6nr_wo3k0" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

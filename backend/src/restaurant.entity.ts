@@ -144,6 +144,117 @@ export class Restaurant {
   @Column({ name: 'kosher_validated_at', type: 'timestamptz', nullable: true })
   kosherValidatedAt?: Date;
 
+  // ── Google Places verification / enrichment (shadow fields) ────────────────
+  // Google data is stored alongside existing fields; the enrichment pipeline
+  // gates overwrites of name/address/phone/etc. by verification confidence.
+
+  @Column({ name: 'google_display_name', type: 'text', nullable: true })
+  googleDisplayName?: string;
+
+  @Column({ name: 'google_formatted_address', type: 'text', nullable: true })
+  googleFormattedAddress?: string;
+
+  @Column({ name: 'google_display_name_he', type: 'text', nullable: true })
+  googleDisplayNameHe?: string;
+
+  @Column({ name: 'google_formatted_address_he', type: 'text', nullable: true })
+  googleFormattedAddressHe?: string;
+
+  @Column({ name: 'google_display_name_en', type: 'text', nullable: true })
+  googleDisplayNameEn?: string;
+
+  @Column({ name: 'google_formatted_address_en', type: 'text', nullable: true })
+  googleFormattedAddressEn?: string;
+
+  @Column({ name: 'google_lat', type: 'double precision', nullable: true })
+  googleLat?: number;
+
+  @Column({ name: 'google_lng', type: 'double precision', nullable: true })
+  googleLng?: number;
+
+  @Column({
+    name: 'google_business_status',
+    type: 'varchar',
+    length: 32,
+    nullable: true,
+  })
+  googleBusinessStatus?: string;
+
+  @Column({ name: 'google_maps_uri', type: 'text', nullable: true })
+  googleMapsUri?: string;
+
+  @Column({ name: 'google_rating_count', type: 'int', nullable: true })
+  googleRatingCount?: number;
+
+  @Column({ name: 'google_synced_at', type: 'timestamptz', nullable: true })
+  googleSyncedAt?: Date;
+
+  // Added by 1783300000000 — Google shadow values kept separate from originals.
+  @Column({
+    name: 'google_rating',
+    type: 'decimal',
+    precision: 2,
+    scale: 1,
+    nullable: true,
+  })
+  googleRating?: number;
+
+  @Column({ name: 'google_phone', type: 'varchar', length: 32, nullable: true })
+  googlePhone?: string;
+
+  @Column({ name: 'google_opening_hours', type: 'text', nullable: true })
+  googleOpeningHours?: string;
+
+  @Column({ name: 'google_photo_name', type: 'text', nullable: true })
+  googlePhotoName?: string;
+
+  @Column({ name: 'google_photo_attribution', type: 'text', nullable: true })
+  googlePhotoAttribution?: string;
+
+  @Column({
+    name: 'google_primary_type',
+    type: 'varchar',
+    length: 64,
+    nullable: true,
+  })
+  googlePrimaryType?: string;
+
+  @Column({ name: 'google_types', type: 'text', nullable: true })
+  googleTypes?: string;
+
+  // 'pending' | 'verified' | 'flagged' | 'no_match' | 'error'
+  @Column({
+    name: 'verification_status',
+    type: 'varchar',
+    length: 16,
+    default: 'pending',
+  })
+  verificationStatus: string;
+
+  @Column({
+    name: 'verification_confidence',
+    type: 'decimal',
+    precision: 4,
+    scale: 3,
+    nullable: true,
+  })
+  verificationConfidence?: number;
+
+  @Column({ name: 'verification_reason', type: 'text', nullable: true })
+  verificationReason?: string;
+
+  @Column({ name: 'photo_url', type: 'text', nullable: true })
+  photoUrl?: string;
+
+  @Column({ name: 'photo_attribution', type: 'text', nullable: true })
+  photoAttribution?: string;
+
+  @Column({ name: 'photo_source', type: 'varchar', length: 32, nullable: true })
+  photoSource?: string;
+
+  @Column({ name: 'photo_fetched_at', type: 'timestamptz', nullable: true })
+  photoFetchedAt?: Date;
+
   // Food-concept tags derived from name + category — used for tiered smart search
   @Column({ type: 'text', array: true, default: '{}' })
   tags: string[];

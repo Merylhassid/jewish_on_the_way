@@ -61,7 +61,11 @@ export class ReviewsService {
         stars: r.stars,
         comment: r.comment,
         createdAt: r.createdAt,
-        user: { firstName: r.user.firstName, lastName: r.user.lastName },
+        user: {
+          firstName: r.user.firstName,
+          // Reviews are public: expose only the last-name initial, never the full surname.
+          lastName: Array.from(r.user.lastName.trim())[0] ?? '',
+        },
       })),
     };
   }

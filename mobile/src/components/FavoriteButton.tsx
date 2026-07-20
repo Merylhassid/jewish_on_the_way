@@ -3,6 +3,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import client from '@/src/api/client';
+import { useAuth } from '@/src/store/auth';
 
 interface Props {
   entityType: 'restaurant' | 'synagogue';
@@ -28,21 +29,33 @@ async function setLocalFavorite(key: string, value: boolean) {
 }
 
 export default function FavoriteButton({ entityType, entityId, size = 24, color = '#DC2626' }: Props) {
+  const { isAuthenticated } = useAuth();
   const [saved, setSaved] = useState(false);
   const [loading, setLoading] = useState(false);
   const key = `${entityType}:${entityId}`;
 
   useEffect(() => {
-    // קודם טוען מ-AsyncStorage (מיידי)
-    getLocalFavorites().then(favs => setSaved(!!favs[key]));
-    // אחר כך מנסה לסנכרן מהשרת
-    client.get(`/favorites/${entityType}/${entityId}`)
-      .then(r => {
-        setSaved(r.data.saved);
-        setLocalFavorite(key, r.data.saved);
-      })
-      .catch(() => {}); // שרת לא זמין — נשאר עם הערך המקומי
-  }, [entityType, entityId]);
+    let active = true;
+    (async () => {
+      const localFavorites = await getLocalFavorites();
+      const locallySaved = Boolean(localFavorites[key]);
+      if (active) setSaved(locallySaved);
+      if (!isAuthenticated) return;
+
+      try {
+        const response = await client.get(`/favorites/${entityType}/${entityId}`);
+        const serverSaved = Boolean(response.data.saved);
+        if (locallySaved && !serverSaved) {
+          await client.post(`/favorites/${entityType}/${entityId}`);
+        }
+        const unionSaved = locallySaved || serverSaved;
+        if (active) setSaved(unionSaved);
+        await setLocalFavorite(key, unionSaved);
+      } catch {} // שרת לא זמין — נשאר עם הערך המקומי
+    })();
+
+    return () => { active = false; };
+  }, [entityType, entityId, isAuthenticated, key]);
 
   const toggle = async () => {
     if (loading) return;
@@ -51,9 +64,14 @@ export default function FavoriteButton({ entityType, entityId, size = 24, color 
     // עדכון מיידי ב-UI + AsyncStorage
     setSaved(newValue);
     await setLocalFavorite(key, newValue);
-    // מנסה לסנכרן לשרת (אופציונלי)
-    client.post(`/favorites/${entityType}/${entityId}`)
-      .catch(() => {}); // שרת לא זמין — לא נורא, נשמר מקומית
+    if (isAuthenticated) {
+      try {
+        const response = await client.get(`/favorites/${entityType}/${entityId}`);
+        if (Boolean(response.data.saved) !== newValue) {
+          await client.post(`/favorites/${entityType}/${entityId}`);
+        }
+      } catch {} // שרת לא זמין — לא נורא, נשמר מקומית
+    }
     setLoading(false);
   };
 

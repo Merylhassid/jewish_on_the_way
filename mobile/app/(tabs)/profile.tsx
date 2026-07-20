@@ -106,7 +106,7 @@ function EditProfileModal({
             value={firstName}
             onChangeText={setFirstName}
             placeholder={t('profile.edit.firstNamePlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             autoCapitalize="words"
           />
 
@@ -116,7 +116,7 @@ function EditProfileModal({
             value={lastName}
             onChangeText={setLastName}
             placeholder={t('profile.edit.lastNamePlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             autoCapitalize="words"
           />
 
@@ -217,7 +217,7 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
             value={currentPassword}
             onChangeText={setCurrentPassword}
             placeholder={t('profile.password.currentPlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             secureTextEntry
             editable={!loading}
           />
@@ -228,7 +228,7 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
             value={newPassword}
             onChangeText={setNewPassword}
             placeholder={t('profile.password.newPlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             secureTextEntry
             editable={!loading}
           />
@@ -239,7 +239,7 @@ function ChangePasswordModal({ visible, onClose }: { visible: boolean; onClose: 
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             placeholder={t('profile.password.confirmPlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             secureTextEntry
             editable={!loading}
           />
@@ -329,7 +329,7 @@ function ContactModal({ visible, onClose }: { visible: boolean; onClose: () => v
             value={subject}
             onChangeText={setSubject}
             placeholder={t('contact.subjectPlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             maxLength={100}
             editable={!loading && !sent}
           />
@@ -340,7 +340,7 @@ function ContactModal({ visible, onClose }: { visible: boolean; onClose: () => v
             value={message}
             onChangeText={setMessage}
             placeholder={t('contact.messagePlaceholder')}
-            placeholderTextColor="#9AA8C0"
+            placeholderTextColor={C.textMuted}
             multiline
             maxLength={2000}
             editable={!loading && !sent}
@@ -379,7 +379,7 @@ function ContactModal({ visible, onClose }: { visible: boolean; onClose: () => v
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
-  const { user, logout, updateUser, getValidToken } = useAuth();
+  const { user, logout, updateUser, getValidToken, isGuest } = useAuth();
   const [editVisible, setEditVisible]       = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [avatarLoading, setAvatarLoading]   = useState(false);
@@ -394,11 +394,47 @@ export default function ProfileScreen() {
   const [myNeeds,         setMyNeeds]         = useState<number>(0);
 
   useEffect(() => {
+    if (isGuest) return;
     client.get('/minyans/mine').then((res) => setMyMinyans(res.data)).catch(() => {});
     client.get('/hosting/offers/mine').then((res) => setMyOffers(Array.isArray(res.data) ? res.data.length : 0)).catch(() => {});
     client.get('/hosting/requests/mine').then((res) => setMyHostRequests(Array.isArray(res.data) ? res.data.length : 0)).catch(() => {});
     client.get('/hosting/needs/mine').then((res) => setMyNeeds(Array.isArray(res.data) ? res.data.length : 0)).catch(() => {});
-  }, []);
+  }, [isGuest]);
+
+  if (isGuest) {
+    return (
+      <ScrollView style={styles.container} contentContainerStyle={styles.guestContainer}>
+        <View style={styles.guestIcon}>
+          <MaterialIcons name="person-outline" size={42} color={C.goldMuted} />
+        </View>
+        <Text style={styles.guestTitle}>{t('profile.guestTitle')}</Text>
+        <Text style={styles.guestBody}>{t('profile.guestBody')}</Text>
+
+        <View style={styles.guestBenefits}>
+          {(['favorite-border', 'groups', 'home'] as const).map((icon, index) => (
+            <View key={icon} style={styles.guestBenefitRow}>
+              <MaterialIcons name={icon} size={20} color={C.navy} />
+              <Text style={styles.guestBenefitText}>
+                {t(`profile.guestBenefit${index + 1}` as any)}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <Pressable style={styles.guestPrimary} onPress={() => router.push('/(auth)/register')}>
+          <Text style={styles.guestPrimaryText}>{t('profile.guestRegister')}</Text>
+        </Pressable>
+        <Pressable style={styles.guestSecondary} onPress={() => router.push('/(auth)/login')}>
+          <Text style={styles.guestSecondaryText}>{t('profile.guestLogin')}</Text>
+        </Pressable>
+
+        <View style={styles.guestLanguageRow}>
+          <Text style={styles.guestLanguageLabel}>{t('profile.language')}</Text>
+          <LanguageSwitcher />
+        </View>
+      </ScrollView>
+    );
+  }
 
   const handleLogout = async () => { await logout(); };
 
@@ -537,19 +573,31 @@ export default function ProfileScreen() {
 
         <View style={styles.divider} />
 
-        <Pressable style={styles.row} onPress={() => setPasswordVisible(true)}>
-          <View style={[styles.iconBox, { backgroundColor: 'rgba(212,175,55,0.12)' }]}>
-            <MaterialIcons name="lock-outline" size={20} color={GOLD} />
+        {user?.hasPassword ? (
+          <Pressable style={styles.row} onPress={() => setPasswordVisible(true)}>
+            <View style={[styles.iconBox, { backgroundColor: 'rgba(212,175,55,0.12)' }]}>
+              <MaterialIcons name="lock-outline" size={20} color={GOLD} />
+            </View>
+            <Text style={styles.rowLabel}>{t('profile.changePassword')}</Text>
+            <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+          </Pressable>
+        ) : (
+          <View style={styles.row}>
+            <View style={[styles.iconBox, { backgroundColor: C.typeDairyBg }]}>
+              <MaterialIcons name="verified-user" size={20} color={C.typeDairy} />
+            </View>
+            <View style={styles.rowBody}>
+              <Text style={styles.rowLabel}>Google account</Text>
+              <Text style={styles.rowSub}>Password is managed by Google</Text>
+            </View>
           </View>
-          <Text style={styles.rowLabel}>{t('profile.changePassword')}</Text>
-          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
-        </Pressable>
+        )}
 
         <View style={styles.divider} />
 
         <View style={styles.row}>
-          <View style={[styles.iconBox, { backgroundColor: 'rgba(74,158,108,0.12)' }]}>
-            <MaterialIcons name="language" size={20} color="#4A9E6C" />
+          <View style={[styles.iconBox, { backgroundColor: C.typeParveBg }]}>
+            <MaterialIcons name="language" size={20} color={C.typeParve} />
           </View>
           <Text style={styles.rowLabel}>{t('profile.language')}</Text>
           <LanguageSwitcher />
@@ -560,8 +608,8 @@ export default function ProfileScreen() {
       <Text style={styles.sectionEyebrow}>{t('profile.sectionContribute')}</Text>
       <View style={styles.card}>
         <Pressable style={styles.row} onPress={() => { setSuggestType('restaurant'); setSuggestVisible(true); }}>
-          <View style={[styles.iconBox, { backgroundColor: 'rgba(22,163,74,0.10)' }]}>
-            <MaterialIcons name="restaurant" size={20} color="#16A34A" />
+          <View style={[styles.iconBox, { backgroundColor: C.typeMeatBg }]}>
+            <MaterialIcons name="restaurant" size={20} color={C.typeMeat} />
           </View>
           <Text style={styles.rowLabel}>{t('destination.suggestRestaurant')}</Text>
           <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
@@ -570,8 +618,8 @@ export default function ProfileScreen() {
         <View style={styles.divider} />
 
         <Pressable style={styles.row} onPress={() => { setSuggestType('synagogue'); setSuggestVisible(true); }}>
-          <View style={[styles.iconBox, { backgroundColor: 'rgba(124,58,237,0.10)' }]}>
-            <MaterialIcons name="place" size={20} color="#7C3AED" />
+          <View style={[styles.iconBox, { backgroundColor: '#F2F0F7' }]}>
+            <MaterialIcons name="place" size={20} color="#7A6B9D" />
           </View>
           <Text style={styles.rowLabel}>{t('destination.suggestSynagogue')}</Text>
           <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
@@ -604,10 +652,10 @@ export default function ProfileScreen() {
             ))}
             <View style={styles.divider} />
             <Pressable style={styles.row} onPress={() => router.push('/minyans/my-minyans' as any)}>
-              <View style={[styles.iconBox, { backgroundColor: 'rgba(79,70,229,0.08)' }]}>
-                <MaterialIcons name="groups" size={20} color="#4F46E5" />
+              <View style={[styles.iconBox, { backgroundColor: C.goldFaint }]}>
+                <MaterialIcons name="groups" size={20} color={C.goldMuted} />
               </View>
-              <Text style={[styles.rowLabel, { color: '#4F46E5' }]}>
+              <Text style={[styles.rowLabel, { color: C.goldMuted }]}>
                 {t('minyans.seeAll')} ({myMinyans.length})
               </Text>
               <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
@@ -624,8 +672,8 @@ export default function ProfileScreen() {
             {myOffers > 0 && (
               <>
                 <Pressable style={styles.row} onPress={() => router.push('/hosting/my-offers' as any)}>
-                  <View style={[styles.iconBox, { backgroundColor: 'rgba(22,163,74,0.10)' }]}>
-                    <MaterialIcons name="home" size={20} color="#16A34A" />
+                  <View style={[styles.iconBox, { backgroundColor: C.typeParveBg }]}>
+                    <MaterialIcons name="home" size={20} color={C.typeParve} />
                   </View>
                   <View style={styles.rowBody}>
                     <Text style={styles.rowLabel}>{t('profile.myOffers')}</Text>
@@ -655,8 +703,8 @@ export default function ProfileScreen() {
               <>
                 {(myOffers > 0 || myHostRequests > 0) && <View style={styles.divider} />}
                 <Pressable style={styles.row} onPress={() => router.push('/hosting/my-needs' as any)}>
-                  <View style={[styles.iconBox, { backgroundColor: 'rgba(124,58,237,0.10)' }]}>
-                    <MaterialIcons name="people-outline" size={20} color="#7C3AED" />
+                  <View style={[styles.iconBox, { backgroundColor: '#F2F0F7' }]}>
+                    <MaterialIcons name="people-outline" size={20} color="#7A6B9D" />
                   </View>
                   <View style={styles.rowBody}>
                     <Text style={styles.rowLabel}>{t('profile.myPostedNeeds')}</Text>
@@ -704,6 +752,16 @@ export default function ProfileScreen() {
             <MaterialIcons name="info-outline" size={20} color={GOLD} />
           </View>
           <Text style={styles.rowLabel}>{t('about.title')}</Text>
+          <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
+        </Pressable>
+
+        <View style={styles.divider} />
+
+        <Pressable style={styles.row} onPress={() => router.push('/blocked-users' as any)}>
+          <View style={[styles.iconBox, { backgroundColor: 'rgba(239,68,68,0.10)' }]}>
+            <MaterialIcons name="block" size={20} color="#EF4444" />
+          </View>
+          <Text style={styles.rowLabel}>Blocked Users</Text>
           <MaterialIcons name="chevron-right" size={20} color="#BBC3D4" />
         </Pressable>
       </View>
@@ -757,73 +815,91 @@ const GOLD = C.gold;
 const NAVY = C.navy;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F4F6FC' },
+  container: { flex: 1, backgroundColor: C.bg },
+  guestContainer: { flexGrow: 1, paddingHorizontal: 24, paddingTop: Platform.OS === 'ios' ? 92 : 68, paddingBottom: 40, alignItems: 'center' },
+  guestIcon: { width: 92, height: 92, borderRadius: 46, backgroundColor: C.goldFaint, borderWidth: 1.5, borderColor: C.goldBorder, justifyContent: 'center', alignItems: 'center', marginBottom: 20 },
+  guestTitle: { fontFamily: 'Inter-ExtraBold', fontSize: 24, color: C.navy, textAlign: 'center', marginBottom: 10 },
+  guestBody: { fontFamily: 'Inter-Regular', fontSize: 15, lineHeight: 23, color: C.textSecondary, textAlign: 'center', maxWidth: 340, marginBottom: 24 },
+  guestBenefits: { width: '100%', backgroundColor: '#fff', borderRadius: 18, borderWidth: 1, borderColor: 'rgba(11,23,54,0.08)', padding: 16, gap: 14, marginBottom: 24 },
+  guestBenefitRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  guestBenefitText: { flex: 1, fontFamily: 'Inter-Medium', fontSize: 14, color: C.textPrimary },
+  guestPrimary: { width: '100%', backgroundColor: C.navy, borderRadius: 14, paddingVertical: 16, alignItems: 'center', marginBottom: 10 },
+  guestPrimaryText: { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 16 },
+  guestSecondary: { width: '100%', borderWidth: 1.5, borderColor: C.navy, borderRadius: 14, paddingVertical: 15, alignItems: 'center' },
+  guestSecondaryText: { fontFamily: 'Inter-Bold', color: C.navy, fontSize: 15 },
+  guestLanguageRow: { width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 28, paddingHorizontal: 4 },
+  guestLanguageLabel: { fontFamily: 'Inter-SemiBold', color: C.textSecondary, fontSize: 14 },
 
   // ── Header ──
   header: {
-    backgroundColor: NAVY,
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 70 : 50,
     paddingBottom: 32,
     alignItems: 'center',
     paddingHorizontal: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: C.goldBorder,
   },
   avatarWrapper: { position: 'relative', marginBottom: 16 },
   avatarRing: {
     width: 100, height: 100, borderRadius: 50,
     borderWidth: 2.5, borderColor: GOLD,
     justifyContent: 'center', alignItems: 'center', overflow: 'hidden',
+    backgroundColor: '#fff',
   },
-  avatarFallback: { backgroundColor: 'rgba(212,175,55,0.15)' },
+  avatarFallback: { backgroundColor: C.goldFaint },
   avatarImage:    { width: 95, height: 95, borderRadius: 47.5 },
   avatarInitials: {
     fontFamily: 'Inter-Bold', fontSize: 34, color: GOLD,
   },
   cameraPin: {
     position: 'absolute', bottom: 2, right: 2,
-    backgroundColor: NAVY, borderRadius: 14,
+    backgroundColor: '#fff', borderRadius: 14,
     width: 28, height: 28,
     justifyContent: 'center', alignItems: 'center',
     borderWidth: 2, borderColor: GOLD,
   },
   name: {
     fontFamily: 'Inter-ExtraBold',
-    fontSize: 22, color: '#fff', marginBottom: 4, letterSpacing: -0.3,
+    fontSize: 22, color: C.navy, marginBottom: 4,
   },
   email: {
     fontFamily: 'Inter-Regular',
-    fontSize: 13, color: 'rgba(255,255,255,0.45)',
+    fontSize: 13, color: C.textSecondary,
   },
   kashrutBadge: {
     marginTop: 12,
-    backgroundColor: 'rgba(212,175,55,0.18)',
+    backgroundColor: C.kashrutGoldBg,
     borderRadius: 20, paddingHorizontal: 14, paddingVertical: 5,
-    borderWidth: 1, borderColor: 'rgba(212,175,55,0.35)',
+    borderWidth: 1, borderColor: C.goldBorder,
   },
   kashrutBadgeText: {
     fontFamily: 'Inter-SemiBold',
-    color: GOLD, fontSize: 12, letterSpacing: 0.5,
+    color: C.kashrutGold, fontSize: 12,
   },
   removePhotoBtn: { marginTop: 10 },
   removePhotoText: {
     fontFamily: 'Inter-Regular',
-    color: 'rgba(255,255,255,0.35)', fontSize: 12, textDecorationLine: 'underline',
+    color: C.textMuted, fontSize: 12, textDecorationLine: 'underline',
   },
 
   // ── Sections ──
   sectionEyebrow: {
     fontFamily: 'Inter-Bold',
-    fontSize: 10, color: '#BBC3D4',
+    fontSize: 10, color: C.goldEyebrow,
     letterSpacing: 1.8, marginLeft: 20, marginTop: 24, marginBottom: 8,
   },
   card: {
     backgroundColor: '#fff',
     borderRadius: 20, marginHorizontal: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(11,23,54,0.08)',
     shadowColor: NAVY, shadowOpacity: 0.06,
     shadowRadius: 14, shadowOffset: { width: 0, height: 3 }, elevation: 3,
     overflow: 'hidden',
   },
   row: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 18, paddingVertical: 16 },
-  divider: { height: 1, backgroundColor: '#F4F6FC', marginHorizontal: 18 },
+  divider: { height: 1, backgroundColor: 'rgba(11,23,54,0.07)', marginHorizontal: 18 },
   iconBox: {
     width: 38, height: 38, borderRadius: 11,
     justifyContent: 'center', alignItems: 'center', marginRight: 14,
@@ -872,51 +948,54 @@ const styles = StyleSheet.create({
   deleteConfirmText: { fontFamily: 'Inter-Bold', fontSize: 14, color: '#fff' },
 
   // ── Modals ──
-  sheetInner: { paddingHorizontal: 24, paddingBottom: 44 },
+  sheetInner: { paddingHorizontal: 24, paddingBottom: 44, backgroundColor: C.bg },
   modalHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 },
-  modalTitle: { fontSize: 20, fontWeight: '800', color: '#0C1A2E' },
+  modalTitle: { fontFamily: 'Inter-Black', fontSize: 21, color: C.navy },
   modalCloseBtn: {
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: '#F2F5FB',
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: C.goldBorder,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  modalCloseText: { fontSize: 14, color: '#556080' },
+  modalCloseText: { fontSize: 14, color: C.textSecondary },
 
   inputLabel: {
+    fontFamily: 'Inter-Bold',
     fontSize: 11,
-    fontWeight: '700',
-    color: '#556080',
+    color: C.goldEyebrow,
     letterSpacing: 0.8,
     textTransform: 'uppercase',
     marginBottom: 8,
   },
   input: {
-    backgroundColor: '#F2F5FB',
+    backgroundColor: '#fff',
     borderRadius: 14,
     paddingHorizontal: 16,
     paddingVertical: 15,
+    fontFamily: 'Inter-Regular',
     fontSize: 15,
-    color: '#0C1A2E',
+    color: C.textPrimary,
     marginBottom: 18,
     borderWidth: 1.5,
-    borderColor: '#E1E8F5',
+    borderColor: 'rgba(11,23,54,0.10)',
   },
   primaryBtn: {
-    backgroundColor: '#0C2461',
+    backgroundColor: C.navy,
     borderRadius: 14,
     paddingVertical: 17,
     alignItems: 'center',
     marginTop: 4,
-    shadowColor: '#0C2461',
-    shadowOpacity: 0.28,
+    shadowColor: C.navy,
+    shadowOpacity: 0.18,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
-  primaryBtnText: { color: '#fff', fontSize: 16, fontWeight: '700', letterSpacing: 0.3 },
+  primaryBtnText: { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 16 },
 
   errorContainer: {
     backgroundColor: '#FEE2E2',
@@ -929,20 +1008,22 @@ const styles = StyleSheet.create({
   errorText: {
     color: '#DC2626',
     fontSize: 14,
+    fontFamily: 'Inter-Medium',
     fontWeight: '500',
     lineHeight: 20,
   },
   successContainer: {
-    backgroundColor: '#ECFDF5',
+    backgroundColor: C.typeParveBg,
     borderRadius: 12,
     padding: 14,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#D1FAE5',
+    borderColor: 'rgba(107,142,107,0.24)',
   },
   successText: {
-    color: '#059669',
+    color: C.typeParve,
     fontSize: 14,
+    fontFamily: 'Inter-SemiBold',
     fontWeight: '600',
   },
 
@@ -951,28 +1032,28 @@ const styles = StyleSheet.create({
 
 const contactStyles = StyleSheet.create({
   senderBox: {
-    backgroundColor: '#F2F5FB',
+    backgroundColor: '#fff',
     borderRadius: 12,
     padding: 14,
     marginBottom: 18,
     borderWidth: 1,
-    borderColor: '#E1E8F5',
+    borderColor: C.goldBorder,
   },
   senderLabel: {
     fontFamily: 'Inter-Bold',
     fontSize: 10,
-    color: '#9AA8C0',
+    color: C.goldEyebrow,
     letterSpacing: 1,
     textTransform: 'uppercase',
     marginBottom: 4,
   },
-  senderName:  { fontFamily: 'Inter-SemiBold', fontSize: 14, color: '#0C1A2E' },
-  senderEmail: { fontFamily: 'Inter-Regular',  fontSize: 12, color: '#556080', marginTop: 1 },
+  senderName:  { fontFamily: 'Inter-SemiBold', fontSize: 14, color: C.textPrimary },
+  senderEmail: { fontFamily: 'Inter-Regular',  fontSize: 12, color: C.textSecondary, marginTop: 1 },
   messageInput: { height: 130, paddingTop: 14 },
   charCount: {
     fontFamily: 'Inter-Regular',
     fontSize: 11,
-    color: '#9AA8C0',
+    color: C.textMuted,
     textAlign: 'right',
     marginTop: -12,
     marginBottom: 16,
@@ -981,11 +1062,11 @@ const contactStyles = StyleSheet.create({
     paddingHorizontal: 13,
     paddingVertical: 8,
     borderRadius: 10,
-    backgroundColor: '#F2F5FB',
+    backgroundColor: '#fff',
     borderWidth: 1.5,
-    borderColor: '#E1E8F5',
+    borderColor: C.goldBorder,
   },
-  kashrutChipActive: { backgroundColor: '#0C2461', borderColor: '#0C2461' },
-  kashrutChipText: { fontSize: 13, color: '#556080', fontWeight: '500' },
-  kashrutChipTextActive: { color: '#fff', fontWeight: '700' },
+  kashrutChipActive: { backgroundColor: C.navy, borderColor: C.navy },
+  kashrutChipText: { fontSize: 13, color: C.textSecondary, fontFamily: 'Inter-Medium', fontWeight: '500' },
+  kashrutChipTextActive: { color: '#fff', fontFamily: 'Inter-Bold', fontWeight: '700' },
 });

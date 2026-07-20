@@ -3,6 +3,11 @@ export interface FoodRelation {
   fallbackType?: 'meat' | 'dairy' | 'pareve';
 }
 
+export interface FoodRelationMatch {
+  key: string;
+  relation: FoodRelation;
+}
+
 /**
  * Maps a user's food query term to the tags we should search for in the DB,
  * plus a fallback kashrut type for Tier-3 broad search.
@@ -236,17 +241,96 @@ export const NAME_TO_TAG: [RegExp, string][] = [
   [/juice|smoothie|מיץ|שייק|ג.?וס|organic|אורגני/i, 'healthy'],
 ];
 
+function normalizeFoodText(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[׳'״"]/g, '')
+    .replace(/[-_]/g, ' ')
+    .replace(/[.,;:!?()[\]{}]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function levenshteinDistance(a: string, b: string): number {
+  const left = Array.from(a);
+  const right = Array.from(b);
+  const dp = Array.from({ length: left.length + 1 }, () => Array(right.length + 1).fill(0));
+
+  for (let i = 0; i <= left.length; i += 1) dp[i][0] = i;
+  for (let j = 0; j <= right.length; j += 1) dp[0][j] = j;
+
+  for (let i = 1; i <= left.length; i += 1) {
+    for (let j = 1; j <= right.length; j += 1) {
+      const cost = left[i - 1] === right[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost,
+      );
+    }
+  }
+
+  return dp[left.length][right.length];
+}
+
+function fuzzyDistanceLimit(value: string): number {
+  const length = Array.from(value).length;
+  if (length >= 7) return 2;
+  if (length >= 4) return 1;
+  return 0;
+}
+
+function foodCandidates(text: string): string[] {
+  const normalized = normalizeFoodText(text);
+  if (!normalized) return [];
+  const parts = normalized.split(' ').filter((part) => part.length >= 3);
+  return Array.from(new Set([normalized, ...parts]));
+}
+
+function isSafePartialMatch(candidate: string, key: string): boolean {
+  if (candidate.length < 3 || key.length < 3) return false;
+  return candidate.includes(key) || key.startsWith(candidate);
+}
+
+function isSafeFuzzyMatch(candidate: string, key: string): boolean {
+  const limit = Math.min(fuzzyDistanceLimit(candidate), fuzzyDistanceLimit(key));
+  if (limit <= 0) return false;
+  return levenshteinDistance(candidate, key) <= limit;
+}
+
 /**
  * Look up a food relation for a user keyword.
- * Tries exact match first, then partial containment.
+ * Tries exact match, safe partial containment, then a conservative typo match.
  */
-export function lookupFoodRelation(keyword: string): FoodRelation | undefined {
-  const kw = keyword.toLowerCase().trim();
-  if (FOOD_RELATIONS[kw]) return FOOD_RELATIONS[kw];
-  // partial: any dict key contained in keyword, or keyword contained in key
-  for (const [key, rel] of Object.entries(FOOD_RELATIONS)) {
-    const k = key.toLowerCase();
-    if (kw.includes(k) || k.includes(kw)) return rel;
+export function lookupFoodRelationMatch(keyword: string): FoodRelationMatch | undefined {
+  const candidates = foodCandidates(keyword);
+  if (candidates.length === 0) return undefined;
+
+  for (const candidate of candidates) {
+    const relation = FOOD_RELATIONS[candidate];
+    if (relation) return { key: candidate, relation };
   }
+
+  const entries = Object.entries(FOOD_RELATIONS).map(([key, relation]) => ({
+    key: normalizeFoodText(key),
+    relation,
+  }));
+
+  for (const candidate of candidates) {
+    for (const { key, relation } of entries) {
+      if (isSafePartialMatch(candidate, key)) return { key, relation };
+    }
+  }
+
+  for (const candidate of candidates) {
+    for (const { key, relation } of entries) {
+      if (isSafeFuzzyMatch(candidate, key)) return { key, relation };
+    }
+  }
+
   return undefined;
+}
+
+export function lookupFoodRelation(keyword: string): FoodRelation | undefined {
+  return lookupFoodRelationMatch(keyword)?.relation;
 }

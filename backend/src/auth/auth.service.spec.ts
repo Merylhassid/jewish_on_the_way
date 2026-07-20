@@ -3,6 +3,7 @@ import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
 import * as bcrypt from 'bcrypt';
 import { AuthService } from './auth.service';
 import { User } from '../users/user.entity';
@@ -19,8 +20,9 @@ describe('AuthService', () => {
   let usersRepo: { findOne: jest.Mock; save: jest.Mock; create: jest.Mock; delete: jest.Mock };
   let dataSource: { transaction: jest.Mock };
   let jwtService: { signAsync: jest.Mock };
+  let configService: { get: jest.Mock };
   let mailService: { sendPasswordReset: jest.Mock; sendVerificationCode: jest.Mock };
-  let audit: { log: jest.Mock };
+  let audit: { log: jest.Mock; fingerprintEmail: jest.Mock };
 
   const makeUser = (overrides: Partial<User> = {}): User =>
     ({
@@ -57,8 +59,12 @@ describe('AuthService', () => {
       transaction: jest.fn().mockImplementation((cb: any) => cb(mockManager)),
     };
     jwtService = { signAsync: jest.fn() };
+    configService = { get: jest.fn().mockReturnValue('google-client-id') };
     mailService = { sendPasswordReset: jest.fn(), sendVerificationCode: jest.fn().mockResolvedValue(undefined) };
-    audit = { log: jest.fn() };
+    audit = {
+      log: jest.fn(),
+      fingerprintEmail: jest.fn().mockReturnValue('email-fingerprint'),
+    };
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
@@ -66,6 +72,7 @@ describe('AuthService', () => {
         { provide: getRepositoryToken(User), useValue: usersRepo },
         { provide: DataSource,               useValue: dataSource },
         { provide: JwtService,               useValue: jwtService },
+        { provide: ConfigService,            useValue: configService },
         { provide: MailService,              useValue: mailService },
         { provide: AuditService,             useValue: audit },
       ],
@@ -79,7 +86,7 @@ describe('AuthService', () => {
 
   describe('register', () => {
     it('creates a new user and returns only public fields (no passwordHash)', async () => {
-      const dto = { email: 'NEW@Example.com', password: 'pass123', firstName: 'New', lastName: 'User' };
+      const dto = { email: 'NEW@Example.com', password: 'Fresh123!', firstName: 'New', lastName: 'User' };
       const saved = makeUser({ id: 5, email: 'new@example.com', firstName: 'New', lastName: 'User' });
 
       usersRepo.findOne.mockResolvedValue(null);
@@ -93,15 +100,22 @@ describe('AuthService', () => {
       expect(result).toMatchObject({ id: 5, email: 'new@example.com', firstName: 'New', lastName: 'User', requiresVerification: true });
       expect(result).not.toHaveProperty('passwordHash');
       expect(mailService.sendVerificationCode).toHaveBeenCalledWith('new@example.com', expect.stringMatching(/^\d{6}$/));
-      expect(audit.log).toHaveBeenCalledWith('USER_REGISTERED', 5, expect.any(Object));
+      expect(audit.log).toHaveBeenCalledWith('USER_REGISTERED', 5);
     });
 
     it('throws BadRequestException when email already exists and is active', async () => {
       usersRepo.findOne.mockResolvedValue(makeUser({ isActive: true }));
 
       await expect(
-        service.register({ email: 'test@example.com', password: 'x', firstName: 'A', lastName: 'B' }),
+        service.register({ email: 'test@example.com', password: 'Fresh123!', firstName: 'A', lastName: 'B' }),
       ).rejects.toThrow(BadRequestException);
+    });
+
+    it('throws BadRequestException when password is too common', async () => {
+      await expect(
+        service.register({ email: 'test@example.com', password: 'password123', firstName: 'A', lastName: 'B' }),
+      ).rejects.toThrow(BadRequestException);
+      expect(usersRepo.findOne).not.toHaveBeenCalled();
     });
 
     it('deletes the soft-deleted account so the same email can re-register', async () => {
@@ -114,7 +128,7 @@ describe('AuthService', () => {
       usersRepo.create.mockReturnValue(fresh);
       usersRepo.save.mockResolvedValue(fresh);
 
-      await service.register({ email: 'test@example.com', password: 'pass', firstName: 'A', lastName: 'B' });
+      await service.register({ email: 'test@example.com', password: 'Fresh123!', firstName: 'A', lastName: 'B' });
 
       expect(usersRepo.delete).toHaveBeenCalledWith({ id: 2 });
       expect(usersRepo.save).toHaveBeenCalled();
@@ -134,8 +148,14 @@ describe('AuthService', () => {
 
       expect(usersRepo.findOne).toHaveBeenCalledWith({ where: { email: 'test@example.com' } });
       expect(result.access_token).toBe('jwt-token');
-      expect(result.user).toEqual({ id: 1, email: 'test@example.com', firstName: 'Test', lastName: 'User' });
-      expect(audit.log).toHaveBeenCalledWith('USER_LOGIN', 1, expect.any(Object));
+      expect(result.user).toEqual({
+        id: 1,
+        email: 'test@example.com',
+        firstName: 'Test',
+        lastName: 'User',
+        hasPassword: true,
+      });
+      expect(audit.log).toHaveBeenCalledWith('USER_LOGIN', 1);
     });
 
     it('throws UnauthorizedException when user is not found', async () => {
@@ -144,6 +164,10 @@ describe('AuthService', () => {
       await expect(service.login({ email: 'nobody@example.com', password: 'pass' })).rejects.toThrow(
         UnauthorizedException,
       );
+      expect(audit.fingerprintEmail).toHaveBeenCalledWith('nobody@example.com');
+      expect(audit.log).toHaveBeenCalledWith('USER_LOGIN_FAILED', null, {
+        emailFingerprint: 'email-fingerprint',
+      });
     });
 
     it('throws UnauthorizedException when user account is inactive', async () => {
@@ -161,7 +185,81 @@ describe('AuthService', () => {
       await expect(service.login({ email: 'test@example.com', password: 'wrong' })).rejects.toThrow(
         UnauthorizedException,
       );
-      expect(audit.log).toHaveBeenCalledWith('USER_LOGIN_FAILED', 1, expect.any(Object));
+      expect(audit.log).toHaveBeenCalledWith('USER_LOGIN_FAILED', 1, {
+        emailFingerprint: 'email-fingerprint',
+      });
+    });
+  });
+
+  // --- googleLogin ---
+
+  describe('googleLogin', () => {
+    const mockGooglePayload = (payload: Record<string, unknown>) => {
+      jest.spyOn((service as any).googleClient, 'verifyIdToken').mockResolvedValue({
+        getPayload: () => ({
+          sub: 'google-123',
+          email: 'google@example.com',
+          email_verified: true,
+          given_name: 'Google',
+          family_name: 'User',
+          ...payload,
+        }),
+      });
+    };
+
+    it('logs in an existing active Google user without creating a duplicate', async () => {
+      const existing = makeUser({ passwordHash: null, googleId: 'google-123' });
+      mockGooglePayload({});
+      usersRepo.findOne.mockResolvedValueOnce(existing);
+      usersRepo.save.mockResolvedValue(existing);
+      jwtService.signAsync.mockResolvedValue('jwt-token');
+
+      const result = await service.googleLogin('id-token');
+
+      expect(usersRepo.create).not.toHaveBeenCalled();
+      expect(result).toMatchObject({
+        access_token: 'jwt-token',
+        refresh_token: expect.any(String),
+        user: { id: 1, email: 'test@example.com', hasPassword: false },
+      });
+      expect(audit.log).toHaveBeenCalledWith('USER_LOGIN', 1, expect.objectContaining({ provider: 'google' }));
+    });
+
+    it('does not attach Google login to an inactive account with the same email', async () => {
+      const inactive = makeUser({ id: 2, email: 'google@example.com', isActive: false });
+      const created = makeUser({ id: 3, email: 'google@example.com', passwordHash: null, googleId: 'google-123' });
+      mockGooglePayload({});
+      usersRepo.findOne.mockResolvedValueOnce(null).mockResolvedValueOnce(inactive);
+      usersRepo.delete.mockResolvedValue({ affected: 1 });
+      usersRepo.create.mockReturnValue(created);
+      usersRepo.save.mockResolvedValue(created);
+      jwtService.signAsync.mockResolvedValue('jwt-token');
+
+      const result = await service.googleLogin('id-token');
+
+      expect(usersRepo.delete).toHaveBeenCalledWith({ id: 2 });
+      expect(usersRepo.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          email: 'google@example.com',
+          passwordHash: null,
+          googleId: 'google-123',
+          isActive: true,
+        }),
+      );
+      expect(result.user).toMatchObject({ id: 3, email: 'google@example.com', hasPassword: false });
+    });
+  });
+
+  // --- refresh ---
+
+  describe('refresh', () => {
+    it('rejects a refresh token after its user account no longer exists', async () => {
+      usersRepo.findOne.mockResolvedValue(null);
+
+      await expect(service.refresh('deleted-user-token')).rejects.toThrow(
+        UnauthorizedException,
+      );
+      expect(jwtService.signAsync).not.toHaveBeenCalled();
     });
   });
 
@@ -173,6 +271,9 @@ describe('AuthService', () => {
 
       await expect(service.forgotPassword({ email: 'unknown@example.com' })).resolves.toBeUndefined();
       expect(mailService.sendPasswordReset).not.toHaveBeenCalled();
+      expect(audit.log).toHaveBeenCalledWith('PASSWORD_RESET_REQUESTED', null, {
+        emailFingerprint: 'email-fingerprint',
+      });
     });
 
     it('saves a hashed reset token and sends the raw token by email', async () => {
@@ -190,7 +291,49 @@ describe('AuthService', () => {
         }),
       );
       expect(mailService.sendPasswordReset).toHaveBeenCalledWith('test@example.com', expect.any(String));
-      expect(audit.log).toHaveBeenCalledWith('PASSWORD_RESET_REQUESTED', 1, expect.any(Object));
+      expect(audit.log).toHaveBeenCalledWith('PASSWORD_RESET_REQUESTED', 1, {
+        emailFingerprint: 'email-fingerprint',
+      });
+    });
+
+    it('does not write an email or reset token to development logs', async () => {
+      const previousNodeEnv = process.env.NODE_ENV;
+      process.env.NODE_ENV = 'development';
+      const user = makeUser();
+      usersRepo.findOne.mockResolvedValue(user);
+      usersRepo.save.mockResolvedValue(user);
+      mailService.sendPasswordReset.mockResolvedValue(undefined);
+      const warnSpy = jest
+        .spyOn((service as any).logger, 'warn')
+        .mockImplementation(() => undefined);
+
+      try {
+        await service.forgotPassword({ email: 'test@example.com' });
+        expect(warnSpy).not.toHaveBeenCalled();
+      } finally {
+        process.env.NODE_ENV = previousNodeEnv;
+      }
+    });
+
+    it('logs only userId when password reset email delivery fails', async () => {
+      const user = makeUser();
+      usersRepo.findOne.mockResolvedValue(user);
+      usersRepo.save.mockResolvedValue(user);
+      mailService.sendPasswordReset.mockRejectedValue(
+        new Error('SMTP rejected test@example.com'),
+      );
+      const errorSpy = jest
+        .spyOn((service as any).logger, 'error')
+        .mockImplementation(() => undefined);
+
+      await expect(
+        service.forgotPassword({ email: 'test@example.com' }),
+      ).rejects.toThrow('Unable to send password reset email');
+
+      expect(errorSpy).toHaveBeenCalledWith(
+        'Failed to send password reset email for userId=1',
+      );
+      expect(JSON.stringify(errorSpy.mock.calls)).not.toContain('test@example.com');
     });
   });
 

@@ -113,7 +113,7 @@ export default function MapScreen() {
       {/* Header */}
       <View style={s.header}>
         <Pressable onPress={() => router.back()} hitSlop={12} style={s.backBtn}>
-          <MaterialIcons name="arrow-back" size={22} color="#fff" />
+          <MaterialIcons name="arrow-back" size={22} color={C.navy} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text style={s.headerTitle}>{cityName}</Text>
@@ -147,7 +147,7 @@ export default function MapScreen() {
             <Marker
               key={`${p.type}-${p.id}`}
               coordinate={{ latitude: p.lat, longitude: p.lng }}
-              pinColor={p.type === 'restaurant' ? '#16A34A' : '#7C3AED'}
+              pinColor={p.type === 'restaurant' ? C.typeMeat : '#7A6B9D'}
             >
               <Callout>
                 <View style={s.callout}>
@@ -155,9 +155,9 @@ export default function MapScreen() {
                   {p.address ? <Text style={s.calloutSub}>{p.address}</Text> : null}
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                     {p.type === 'restaurant'
-                      ? <Utensils size={12} color="#16A34A" strokeWidth={2} />
-                      : <Building2 size={12} color="#7C3AED" strokeWidth={2} />}
-                    <Text style={[s.calloutType, { color: p.type === 'restaurant' ? '#16A34A' : '#7C3AED' }]}>
+                      ? <Utensils size={12} color={C.typeMeat} strokeWidth={2} />
+                      : <Building2 size={12} color="#7A6B9D" strokeWidth={2} />}
+                    <Text style={[s.calloutType, { color: p.type === 'restaurant' ? C.typeMeat : '#7A6B9D' }]}>
                       {p.type === 'restaurant' ? 'Restaurant' : 'Synagogue'}
                     </Text>
                   </View>
@@ -172,11 +172,11 @@ export default function MapScreen() {
       {!loading && (
         <View style={s.legend}>
           <View style={s.legendItem}>
-            <View style={[s.dot, { backgroundColor: '#16A34A' }]} />
+            <View style={[s.dot, { backgroundColor: C.typeMeat }]} />
             <Text style={s.legendText}>Restaurants</Text>
           </View>
           <View style={s.legendItem}>
-            <View style={[s.dot, { backgroundColor: '#7C3AED' }]} />
+            <View style={[s.dot, { backgroundColor: '#7A6B9D' }]} />
             <Text style={s.legendText}>Synagogues</Text>
           </View>
         </View>
@@ -192,18 +192,25 @@ const s = StyleSheet.create({
 
   header: {
     flexDirection: 'row', alignItems: 'center', gap: 14,
-    backgroundColor: C.navy,
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 56 : 38,
     paddingBottom: 16, paddingHorizontal: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: C.goldBorder,
   },
   backBtn: {
     width: 38, height: 38, borderRadius: 19,
-    backgroundColor: 'rgba(255,255,255,0.14)',
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.20)',
+    backgroundColor: '#fff',
+    borderWidth: 1, borderColor: C.goldBorder,
     justifyContent: 'center', alignItems: 'center',
+    shadowColor: C.navy,
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
-  headerTitle: { fontFamily: 'Inter-ExtraBold', fontSize: 18, color: '#fff' },
-  headerSub:   { fontFamily: 'Inter-Regular', fontSize: 12, color: 'rgba(255,255,255,0.55)', marginTop: 2 },
+  headerTitle: { fontFamily: 'Inter-ExtraBold', fontSize: 20, color: C.navy },
+  headerSub:   { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textSecondary, marginTop: 2 },
 
   callout: { minWidth: 160, padding: 4 },
   calloutTitle: { fontFamily: 'Inter-Bold', fontSize: 14, color: C.textPrimary, marginBottom: 2 },
@@ -213,8 +220,8 @@ const s = StyleSheet.create({
   legend: {
     flexDirection: 'row', gap: 20, justifyContent: 'center',
     backgroundColor: '#fff', paddingVertical: 12, paddingHorizontal: 20,
-    borderTopWidth: 1, borderTopColor: '#F0EDE6',
-    shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 4, elevation: 3,
+    borderTopWidth: 1, borderTopColor: C.goldBorder,
+    shadowColor: C.navy, shadowOpacity: 0.05, shadowRadius: 4, elevation: 3,
   },
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   dot:        { width: 10, height: 10, borderRadius: 5 },

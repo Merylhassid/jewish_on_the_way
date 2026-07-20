@@ -187,7 +187,8 @@ export default function HomeScreen() {
       }
       const cityParam = detectedCity ? `${route.includes('?') ? '&' : '?'}city=${encodeURIComponent(detectedCity)}` : '';
       const fullRoute = route + cityParam;
-      const qParam = category === 'restaurant' && query
+      const routeAlreadyHasQuery = /[?&]q=/.test(fullRoute);
+      const qParam = category === 'restaurant' && query && !routeAlreadyHasQuery
         ? `${fullRoute.includes('?') ? '&' : '?'}q=${encodeURIComponent(query)}`
         : '';
       const sep = (fullRoute + qParam).includes('?') ? '&' : '?';

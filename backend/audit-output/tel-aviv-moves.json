@@ -1,0 +1,485 @@
+[
+ {
+  "restaurantId": 2544,
+  "name": "המקום של שימי",
+  "cityToken": "מועצה אזורית הגליל התחתון",
+  "targetId": 421,
+  "targetName": "טבריה"
+ },
+ {
+  "restaurantId": 3189,
+  "name": "קפה לוגאנו",
+  "cityToken": "רמת גן",
+  "targetId": 370,
+  "targetName": "רמת גן"
+ },
+ {
+  "restaurantId": 3319,
+  "name": "קופי דון",
+  "cityToken": "פתח תקווה",
+  "targetId": 346,
+  "targetName": "פתח תקווה"
+ },
+ {
+  "restaurantId": 3330,
+  "name": "בורגרים",
+  "cityToken": "פתח תקווה",
+  "targetId": 346,
+  "targetName": "פתח תקווה"
+ },
+ {
+  "restaurantId": 3568,
+  "name": "פינת הצלע אזור",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 3659,
+  "name": "סבתא לינה",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 3912,
+  "name": "האופה מבגדד",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4470,
+  "name": "חומוס אליהו",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4610,
+  "name": "ארוגולה שף אזור",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4795,
+  "name": "פיצה גבעת יערים",
+  "cityToken": "גבעת יערים",
+  "targetId": 378,
+  "targetName": "Mevaseret Zion"
+ },
+ {
+  "restaurantId": 4817,
+  "name": "הצריף",
+  "cityToken": "בית מאיר",
+  "targetId": 374,
+  "targetName": "בית שמש"
+ },
+ {
+  "restaurantId": 4945,
+  "name": "חומוס יאלי",
+  "cityToken": "שער בנימין",
+  "targetId": 343,
+  "targetName": "מעלה אדומים"
+ },
+ {
+  "restaurantId": 5051,
+  "name": "דרך הגפן",
+  "cityToken": "בית זית",
+  "targetId": 378,
+  "targetName": "Mevaseret Zion"
+ },
+ {
+  "restaurantId": 5088,
+  "name": "ג'וחא",
+  "cityToken": "הר גילה",
+  "targetId": 331,
+  "targetName": "ירושלים"
+ },
+ {
+  "restaurantId": 5089,
+  "name": "עין חמד קפה ביער",
+  "cityToken": "בית נקופה",
+  "targetId": 378,
+  "targetName": "Mevaseret Zion"
+ },
+ {
+  "restaurantId": 5212,
+  "name": "נאיה",
+  "cityToken": "בית נקופה",
+  "targetId": 378,
+  "targetName": "Mevaseret Zion"
+ },
+ {
+  "restaurantId": 5361,
+  "name": "פיצ'ונקה",
+  "cityToken": "נס הרים",
+  "targetId": 374,
+  "targetName": "בית שמש"
+ },
+ {
+  "restaurantId": 5408,
+  "name": "צ'ופצ'ולה",
+  "cityToken": "עשרת",
+  "targetId": 310,
+  "targetName": "גדרה"
+ },
+ {
+  "restaurantId": 5410,
+  "name": "קיושי סושי בר",
+  "cityToken": "גבעת ברנר",
+  "targetId": 290,
+  "targetName": "מזכרת בתיה"
+ },
+ {
+  "restaurantId": 5420,
+  "name": "פיאצה",
+  "cityToken": "בית חשמונאי",
+  "targetId": 379,
+  "targetName": "רמלה"
+ },
+ {
+  "restaurantId": 5436,
+  "name": "בליקר בייקרי",
+  "cityToken": "גדרה",
+  "targetId": 310,
+  "targetName": "גדרה"
+ },
+ {
+  "restaurantId": 5455,
+  "name": "הבית של זוהרה",
+  "cityToken": "לוזית",
+  "targetId": 374,
+  "targetName": "בית שמש"
+ },
+ {
+  "restaurantId": 5466,
+  "name": "אורו",
+  "cityToken": "גאליה",
+  "targetId": 355,
+  "targetName": "יבנה"
+ },
+ {
+  "restaurantId": 5468,
+  "name": "חוות אלנבי",
+  "cityToken": "נצר סרני",
+  "targetId": 303,
+  "targetName": "באר יעקב"
+ },
+ {
+  "restaurantId": 5521,
+  "name": "ג'ילברט",
+  "cityToken": "נען",
+  "targetId": 379,
+  "targetName": "רמלה"
+ },
+ {
+  "restaurantId": 5525,
+  "name": "פיצה כפרית בטאבון",
+  "cityToken": "ברכיה",
+  "targetId": 293,
+  "targetName": "אשקלון"
+ },
+ {
+  "restaurantId": 5566,
+  "name": "ארוחות קטנות",
+  "cityToken": "קדרון",
+  "targetId": 310,
+  "targetName": "גדרה"
+ },
+ {
+  "restaurantId": 5593,
+  "name": "נועם שירותים לקייטרינג",
+  "cityToken": "ניצנים",
+  "targetId": 293,
+  "targetName": "אשקלון"
+ },
+ {
+  "restaurantId": 5621,
+  "name": "שניצל בגדדי",
+  "cityToken": "כפר ביל\"ו",
+  "targetId": 290,
+  "targetName": "מזכרת בתיה"
+ },
+ {
+  "restaurantId": 5623,
+  "name": "המסעדה של יפה",
+  "cityToken": "נגבה",
+  "targetId": 292,
+  "targetName": "קרית גת"
+ },
+ {
+  "restaurantId": 5629,
+  "name": "ערמונים",
+  "cityToken": "שדה יואב",
+  "targetId": 292,
+  "targetName": "קרית גת"
+ },
+ {
+  "restaurantId": 5640,
+  "name": "קפה בעגלא",
+  "cityToken": "גמזו",
+  "targetId": 289,
+  "targetName": "לוד"
+ },
+ {
+  "restaurantId": 5745,
+  "name": "פיצה לה ורה",
+  "cityToken": "בנימינה גבעת עדה",
+  "targetId": 390,
+  "targetName": "Binyamina"
+ },
+ {
+  "restaurantId": 5786,
+  "name": "העוגות של שושנה",
+  "cityToken": "כפר הרא\"ה",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 5910,
+  "name": "בי בריא",
+  "cityToken": "כפר הס",
+  "targetId": 536,
+  "targetName": "תל מונד"
+ },
+ {
+  "restaurantId": 5967,
+  "name": "פורטו בלה פיצה ירחיב",
+  "cityToken": "ירחיב",
+  "targetId": 326,
+  "targetName": "ראש העין"
+ },
+ {
+  "restaurantId": 6011,
+  "name": "הרואה בקפה",
+  "cityToken": "כפר הרא\"ה",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 6092,
+  "name": "ביר בשר",
+  "cityToken": "גבעת חיים איחוד",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 6216,
+  "name": "מור עוגות בוטיק",
+  "cityToken": "מגל",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 6263,
+  "name": "ווק אנד ווק כשר קניון דרורים",
+  "cityToken": "בני דרור",
+  "targetId": 536,
+  "targetName": "תל מונד"
+ },
+ {
+  "restaurantId": 6297,
+  "name": "פיצה פאפנו",
+  "cityToken": "כפר הרא\"ה",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 1747,
+  "name": "פיצה גלעד",
+  "cityToken": "שקף",
+  "targetId": 292,
+  "targetName": "קרית גת"
+ },
+ {
+  "restaurantId": 3552,
+  "name": "ארומה",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4275,
+  "name": "באראטו",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4393,
+  "name": "פינת הצלע",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4666,
+  "name": "ציקן & ביף",
+  "cityToken": "אזור",
+  "targetId": 301,
+  "targetName": "הולון"
+ },
+ {
+  "restaurantId": 4800,
+  "name": "מיטוסט",
+  "cityToken": "אשתאול",
+  "targetId": 374,
+  "targetName": "בית שמש"
+ },
+ {
+  "restaurantId": 5084,
+  "name": "אושה אוניגירי",
+  "cityToken": "נווה אילן",
+  "targetId": 378,
+  "targetName": "Mevaseret Zion"
+ },
+ {
+  "restaurantId": 5111,
+  "name": "פיצה אלון שבות",
+  "cityToken": "אלון שבות",
+  "targetId": 331,
+  "targetName": "ירושלים"
+ },
+ {
+  "restaurantId": 5186,
+  "name": "עזאזל Azazel",
+  "cityToken": "קדר",
+  "targetId": 343,
+  "targetName": "מעלה אדומים"
+ },
+ {
+  "restaurantId": 5437,
+  "name": "דורי על הדרך",
+  "cityToken": "בן שמן (מושב)",
+  "targetId": 289,
+  "targetName": "לוד"
+ },
+ {
+  "restaurantId": 5440,
+  "name": "קייטרינג שף בטבע",
+  "cityToken": "גן הדרום",
+  "targetId": 329,
+  "targetName": "גן יבנה"
+ },
+ {
+  "restaurantId": 5443,
+  "name": "לוז-קייטרינג בוטיק",
+  "cityToken": "עין צורים",
+  "targetId": 329,
+  "targetName": "גן יבנה"
+ },
+ {
+  "restaurantId": 5477,
+  "name": "צ'מנדי",
+  "cityToken": "אביעזר",
+  "targetId": 374,
+  "targetName": "בית שמש"
+ },
+ {
+  "restaurantId": 5497,
+  "name": "לוציאנוס",
+  "cityToken": "מבוא מודיעים",
+  "targetId": 345,
+  "targetName": "Modiin"
+ },
+ {
+  "restaurantId": 5516,
+  "name": "מקום בכפר",
+  "cityToken": "כפר הנוער בן-שמן",
+  "targetId": 361,
+  "targetName": "שוהם"
+ },
+ {
+  "restaurantId": 5565,
+  "name": "פיצה יו-יו",
+  "cityToken": "יד בנימין",
+  "targetId": 310,
+  "targetName": "גדרה"
+ },
+ {
+  "restaurantId": 5578,
+  "name": "אושיקורו",
+  "cityToken": "מועצה אזורית גזר",
+  "targetId": 379,
+  "targetName": "רמלה"
+ },
+ {
+  "restaurantId": 5596,
+  "name": "פיצה מכלוף",
+  "cityToken": "שדות מיכה",
+  "targetId": 374,
+  "targetName": "בית שמש"
+ },
+ {
+  "restaurantId": 5606,
+  "name": "שוקו קפה",
+  "cityToken": "ניצן ב'",
+  "targetId": 364,
+  "targetName": "אשדוד"
+ },
+ {
+  "restaurantId": 5607,
+  "name": "מטעמים",
+  "cityToken": "עד הלום",
+  "targetId": 364,
+  "targetName": "אשדוד"
+ },
+ {
+  "restaurantId": 5663,
+  "name": "שחר",
+  "cityToken": "פארק תעשיות כנות",
+  "targetId": 310,
+  "targetName": "גדרה"
+ },
+ {
+  "restaurantId": 5828,
+  "name": "גריל וקינוחים ברזילאים",
+  "cityToken": "מכמורת",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 5882,
+  "name": "פיצה יששכר",
+  "cityToken": "מאור",
+  "targetId": 451,
+  "targetName": "פרדס חנה כרכור"
+ },
+ {
+  "restaurantId": 5899,
+  "name": "פיצה במושב",
+  "cityToken": "צור משה",
+  "targetId": 536,
+  "targetName": "תל מונד"
+ },
+ {
+  "restaurantId": 5924,
+  "name": "מור וקינמון",
+  "cityToken": "כפר הרא\"ה",
+  "targetId": 311,
+  "targetName": "חדרה"
+ },
+ {
+  "restaurantId": 6064,
+  "name": "ארול",
+  "cityToken": "משמרות",
+  "targetId": 451,
+  "targetName": "פרדס חנה כרכור"
+ },
+ {
+  "restaurantId": 6089,
+  "name": "קפה חמד",
+  "cityToken": "שדי חמד",
+  "targetId": 298,
+  "targetName": "כפר סבא"
+ },
+ {
+  "restaurantId": 6122,
+  "name": "שווארמה שאולי",
+  "cityToken": "חופית",
+  "targetId": 311,
+  "targetName": "חדרה"
+ }
+]

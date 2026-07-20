@@ -1,5 +1,5 @@
-import { Link, router } from 'expo-router';
-import { useState } from 'react';
+import { Link, router, useLocalSearchParams } from 'expo-router';
+import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -14,10 +14,22 @@ import {
   View,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
 import { Eye, EyeOff, Lock, Mail, MapPin, User } from 'lucide-react-native';
 import { useAuth } from '@/src/store/auth';
-import { isValidEmail, passwordStrength, formatApiError } from '@/src/utils/validation';
+import {
+  formatApiError,
+  isCommonPassword,
+  isValidEmail,
+  isValidPersonName,
+  isValidRegistrationPassword,
+  passwordStrength,
+} from '@/src/utils/validation';
 import { C } from '@/constants/theme';
+import { safeReturnTo } from '@/src/auth/auth-gates';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const BG      = '#EAF1FF';
 const P       = '#2468E8';
@@ -26,10 +38,14 @@ const SUB     = '#64748B';
 const MUT     = '#94A3B8';
 const LIN     = '#E8EEF8';
 const PIN_CLR = 'rgba(100,149,255,0.30)';
+const ENABLE_GOOGLE_AUTH = false;
+const GOOGLE_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? '';
 
 export default function RegisterScreen() {
   const { t } = useTranslation();
-  const { register } = useAuth();
+  const { register, googleLogin } = useAuth();
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+  const postAuthRoute = safeReturnTo(returnTo);
 
   const [firstName, setFirstName] = useState('');
   const [lastName,  setLastName]  = useState('');
@@ -37,7 +53,15 @@ export default function RegisterScreen() {
   const [password,  setPassword]  = useState('');
   const [showPw,    setShowPw]    = useState(false);
   const [loading,   setLoading]   = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [error,     setError]     = useState<string | null>(null);
+  const [googleRequest, googleResponse, promptGoogle] = Google.useIdTokenAuthRequest({
+    clientId: GOOGLE_CLIENT_ID,
+    webClientId: GOOGLE_CLIENT_ID,
+    iosClientId: GOOGLE_CLIENT_ID,
+    androidClientId: GOOGLE_CLIENT_ID,
+    selectAccount: true,
+  });
 
   const pwStrength    = password ? passwordStrength(password) : null;
   const strengthBars  = pwStrength === 'weak' ? 1 : pwStrength === 'medium' ? 2 : 3;
@@ -48,18 +72,47 @@ export default function RegisterScreen() {
     if (!firstName.trim() || !lastName.trim() || !email || !password) {
       setError(t('auth.errFillAll')); return;
     }
+    if (!isValidPersonName(firstName) || !isValidPersonName(lastName)) {
+      setError(t('auth.errInvalidName')); return;
+    }
     if (!isValidEmail(email)) { setError(t('auth.errValidEmail')); return; }
-    if (password.length < 6)  { setError(t('auth.errMinPassword')); return; }
+    if (!isValidRegistrationPassword(password)) { setError(t('auth.errPasswordRequirements')); return; }
+    if (isCommonPassword(password)) { setError(t('auth.errCommonPassword')); return; }
     try {
       setError(null); setLoading(true);
       await register(email.trim(), password, firstName.trim(), lastName.trim());
-      router.replace({ pathname: '/(auth)/verify-email', params: { email: email.trim() } } as any);
+      router.replace({
+        pathname: '/(auth)/verify-email',
+        params: { email: email.trim(), ...(returnTo ? { returnTo } : {}) },
+      } as any);
     } catch (e) {
       setError(formatApiError(e));
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (googleResponse?.type !== 'success') return;
+    const idToken = googleResponse.params.id_token;
+    if (!idToken) {
+      setError('Google signup failed');
+      return;
+    }
+
+    (async () => {
+      try {
+        setError(null);
+        setGoogleLoading(true);
+        await googleLogin(idToken);
+        router.replace(postAuthRoute as any);
+      } catch (e) {
+        setError(formatApiError(e));
+      } finally {
+        setGoogleLoading(false);
+      }
+    })();
+  }, [googleResponse, googleLogin, postAuthRoute]);
 
   return (
     <View style={s.root}>
@@ -153,9 +206,9 @@ export default function RegisterScreen() {
               <Text style={s.label}>{t('auth.password')}</Text>
               <View style={s.field}>
                 <View style={s.iconWrap}><Lock size={15} color={MUT} strokeWidth={2} /></View>
-                <TextInput
-                  style={s.input}
-                  placeholder="Min. 6 characters"
+                  <TextInput
+                    style={s.input}
+                    placeholder={t('auth.minChars')}
                   placeholderTextColor={MUT}
                   value={password}
                   onChangeText={v => { setPassword(v); setError(null); }}
@@ -196,10 +249,36 @@ export default function RegisterScreen() {
               }
             </Pressable>
 
+            {ENABLE_GOOGLE_AUTH && (
+              <>
+                <View style={s.orRow}>
+                  <View style={s.orLine} />
+                  <Text style={s.orText}>{t('auth.or')}</Text>
+                  <View style={s.orLine} />
+                </View>
+
+                <Pressable
+                  style={({ pressed }) => [s.socialBtn, pressed && !googleLoading && s.btnPressed]}
+                  onPress={() => {
+                    if (!GOOGLE_CLIENT_ID) {
+                      setError('Google signup is not configured');
+                      return;
+                    }
+                    void promptGoogle();
+                  }}
+                  disabled={!googleRequest || googleLoading}
+                >
+                  {googleLoading
+                    ? <ActivityIndicator color={INK} size="small" />
+                    : <Text style={s.socialBtnText}>Continue with Google</Text>}
+                </Pressable>
+              </>
+            )}
+
             {/* Footer */}
             <View style={s.footer}>
               <Text style={s.footerMuted}>{t('auth.alreadyAccount')}  </Text>
-              <Link href="/(auth)/login" asChild>
+              <Link href={{ pathname: '/(auth)/login', params: returnTo ? { returnTo } : {} }} asChild>
                 <Pressable><Text style={s.footerLink}>{t('auth.signIn')}</Text></Pressable>
               </Link>
             </View>
@@ -300,6 +379,21 @@ const s = StyleSheet.create({
   btnDim:     { opacity: 0.68 },
   btnPressed: { opacity: 0.88, transform: [{ scale: 0.984 }] },
   btnText:    { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 16, letterSpacing: 0.3 },
+
+  orRow:  { flexDirection: 'row', alignItems: 'center', marginBottom: 18 },
+  orLine: { flex: 1, height: 1, backgroundColor: LIN },
+  orText: { fontFamily: 'Inter-SemiBold', fontSize: 11, color: MUT, marginHorizontal: 12, letterSpacing: 1.6 },
+
+  socialBtn: {
+    borderRadius: 14,
+    paddingVertical: 14,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: LIN,
+    backgroundColor: '#fff',
+    marginBottom: 18,
+  },
+  socialBtnText: { fontFamily: 'Inter-Bold', color: INK, fontSize: 15 },
 
   footer:     { flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
   footerMuted:{ fontFamily: 'Inter-Regular', color: SUB, fontSize: 14 },

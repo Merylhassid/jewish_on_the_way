@@ -1,8 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(*)",
-      "PowerShell(*)"
+      "Bash",
+      "PowerShell",
+      "WebSearch",
+      "Bash(node -e ' *)",
+      "Bash(npx tsc *)"
     ]
+  },
+  "sandbox": {
+    "enabled": false
   }
 }

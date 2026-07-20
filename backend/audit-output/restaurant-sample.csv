@@ -1,0 +1,161 @@
+﻿id,name,address,city,phone,rating,kashrutLevel,restaurantType,destinationId
+175,חבש,"הנגב 10, תל אביב, Israel",,,,rabbinate,,348
+553,רשל,"תל אביב, Israel",,,,mehadrin,meat,348
+570,המקסיקני,"בית שמש, Israel",,,,mehadrin,meat,374
+577,אמא,"ירושלים, Israel",,,,mehadrin,meat,331
+1203,טעם העמק,"בעלי המלאכה 5, צים סנטר נתיבות, Israel",,,,rabbinate,meat,354
+1342,אפטר פיצה בר,"שלושת בני עין חרוד 85, באר שבע, Israel",,,,rabbinate,dairy,321
+1365,אצה,"הע""ל 30, מול 7 MALL, באר שבע, Israel",,,,rabbinate,,321
+1436,טריפוליטנה,"החלוץ 120, באר שבע, Israel",,,,rabbinate,meat,321
+1524,דרך האוכל,"שדרות, Israel",,,,rabbinate,,369
+1580,פלאפל כיד המלך,"הרמב""ם 1, מרכז מסחרי נתיבות, Israel",,,,rabbinate,pareve,354
+1589,אצה,"דרך הדרום 3, קריית גת, Israel",,,,rabbinate,,292
+1633,נורדאו 24,"נורדאו 24, אשדוד, Israel",,,,rabbinate,meat,364
+1660,פיצה לול,"שיבת ציון 19, אשקלון, Israel",,,,rabbinate,dairy,293
+1666,מזל,"בלגרד 2, שדרות, Israel",,,,rabbinate,meat,369
+1669,B2,"שד' מלכי ישראל 178, ישפרו סנטר קרית גת, Israel",,,,rabbinate,dairy,292
+1892,מקדונלד'ס,"בלפור 14, קניון לב אשדוד, Israel",,,,rabbinate,meat,364
+1934,בלחמניה,"הסתת 20, ביג אילת, Israel",,,,rabbinate,,399
+2003,גבו,"שד' הציונות 1, קרית אתא, Israel",,,,rabbinate,,446
+2011,אצה,"שד' הגעתון 42, נהריה, Israel",,,,rabbinate,,397
+2126,59 בשדרה,"שד' בן גוריון 59, המושבה הגרמנית, חיפה, Israel",,,,rabbinate,,395
+2235,פיצה האט,"שד' הנשיא, חיפה, Israel",,,,rabbinate,dairy,395
+2300,אצה,"קריית שמונה, Israel",,,,rabbinate,,439
+2412,המנגל של מוטי,"כפר חושן, Israel",,,,rabbinate,,397
+2413,אצה,"העמל 7, בית שאן, Israel",,,,rabbinate,,382
+2425,לחם ארז,"דרך שמחה גולן 54, גרנד קניון חיפה, Israel",,,,rabbinate,dairy,395
+2430,שני,"העצמאות 37, קרית אתא, Israel",,,,rabbinate,dairy,446
+2438,פיצה פורת,"קהילת ציון 4, שפר, Israel",,,,rabbinate,dairy,385
+2511,פיתה אקספרס,"האיצטדיון 4, חיפה, Israel",,,,rabbinate,pareve,395
+2561,נפו,"התמר 2, קניון דרכים יקנעם, Israel",,,,rabbinate,pareve,409
+2867,אסתרנה,"העמל 7, בית שאן, Israel",,,,rabbinate,meat,382
+2900,אצה,"אח""י אילת 8, קריית חיים, חיפה, Israel",,,,rabbinate,,395
+2916,רנה,"שד' קפלן אליעזר, טבריה, Israel",,,,rabbinate,dairy,421
+2966,דקס,"דרך גדוד ברק, טבריה, Israel",,,,rabbinate,meat,421
+3048,Who,"הטיילת 1, טיילת ראשון לציון, Israel",,,,rabbinate,,367
+3068,בלה,"איינשטיין 10, צפון תל אביב, Israel",,,,rabbinate,,348
+3070,מיה,"איינשטיין 10, צפון תל אביב, Israel",,,,rabbinate,pareve,348
+3095,לה ברצ'ה,"תוצרת הארץ 3, פתח תקווה, Israel",,,,rabbinate,meat,346
+3167,שמש,"התקוה 13, שכונת התקווה, תל אביב, Israel",,,,rabbinate,meat,348
+3168,גשן,"נחלת בנימין 30, תל אביב, Israel",,,,rabbinate,meat,348
+3178,די,"הירקון 99, תל אביב, Israel",,,,rabbinate,dairy,348
+3208,BAR,"ש""י עגנון 5, ראשון לציון, Israel",,,,rabbinate,,367
+3222,קפה גרג,"ביאליק 76, קניון ביאליק, רמת גן, Israel",,,,rabbinate,dairy,370
+3264,מאפיית גנים,"נגבה 24, ראשון לציון, Israel",,,,rabbinate,dairy,367
+3313,מסי,"השרון 10, תל אביב, Israel",,,,rabbinate,,348
+3332,פיתה בסטה,"דרך בן גוריון 2, רמת גן, Israel",,,,rabbinate,,370
+3358,רולדין,"יוני נתניהו 23, קניון עופר הגבעה, גבעת שמואל, Israel",,,,rabbinate,dairy,327
+3365,MOR 66,"שד' הרצל 66, רמלה, Israel",,,,rabbinate,meat,379
+3465,רגע,"שיינקין 57, מתחם שינקין, תל אביב, Israel",,,,rabbinate,,348
+3566,רולדין,"בזק 1, מרכז G אפק (לב אפק), ראש העין, Israel",,,,rabbinate,dairy,326
+3588,איטאלי פסטה,"היצירה 3, מתחם הבורסה, רמת גן, Israel",,,,rabbinate,pareve,370
+3649,ננה,"בוגרשוב 43, תל אביב, Israel",,,,rabbinate,meat,348
+3665,נון,"תובל 30, מתחם הבורסה, רמת גן, Israel",,,,rabbinate,,370
+3688,חומוס כספי,"יהודה המכבי 61, תל אביב, Israel",,,,rabbinate,pareve,298
+3786,אצה,"מרדכי בן דרור 4, פתח תקווה, Israel",,,,rabbinate,,346
+3876,פיצה שמש,"שד' דב הוז 63, חולון, Israel",,,,rabbinate,dairy,301
+3914,אליזבת,"השדרה המרכזית 15, מודיעין והסביבה, Israel",,,,rabbinate,,345
+3995,פיצה דומינו,"הרב קוק 14, בני ברק, Israel",,,,rabbinate,dairy,334
+4057,שלום פלאפל,"שד' המלאכות, מודיעין והסביבה, Israel",,,,rabbinate,,345
+4092,ווק אווי,"בוגרשוב 41, תל אביב, Israel",,,,rabbinate,dairy,362
+4124,פיצריית האומנים,"עוזי חיטמן 44, רמלה, Israel",,,,rabbinate,dairy,379
+4157,אצה,"שלמה המלך 37, קניון קרית אונו, Israel",,,,rabbinate,,449
+4184,בייקריה,"חיים ויצמן 58, חולון, Israel",,,,rabbinate,dairy,301
+4192,פיצה Dream,"הגדוד העברי 56, ראשון לציון, Israel",,,,rabbinate,dairy,367
+4206,פלאפל חתוכה,"שד' עמק איילון 30, שוהם, Israel",,,,rabbinate,,361
+4321,שמש,"אריק איינשטיין 1, אור יהודה, Israel",,,,rabbinate,meat,381
+4337,לה,"היצירה 22, מתחם הבורסה, רמת גן, Israel",,,,rabbinate,meat,370
+4407,שופרא רומה,"ויצמן 17, יהוד, Israel",,,,rabbinate,meat,317
+4459,פיצה טיו ארנסטו,"חיים בר לב 10, אור יהודה, Israel",,,,rabbinate,dairy,381
+4488,פיצה קיטשן,"דרך מנחם בגין 132, קניון עזריאלי, תל אביב, Israel",,,,rabbinate,dairy,348
+4498,ברייק טיים,"סוקולוב נחום 58, חולון, Israel",,,,rabbinate,meat,301
+4539,פיצה היורש,"קפלן 43, פתח תקווה, Israel",,,,rabbinate,dairy,346
+4593,צמרת הלאפה,"שד' המלך דוד 9, לוד, Israel",,,,rabbinate,meat,289
+4597,לובי מלון כפר המכביה,"ברנשטיין פרץ 7, רמת גן, Israel",,,,rabbinate,dairy,370
+4744,רודריגז,"קרית מדע 3, הר חוצבים, ירושלים, Israel",,,,rabbinate,meat,331
+4812,שווארמה סקורי,"שד' יגאל אלון 1, ביג פאשן בית שמש, Israel",,,,rabbinate,meat,374
+4852,אצה,"שד' יגאל אלון 1, ביג פאשן בית שמש, Israel",,,,rabbinate,,374
+4907,vigo,"הלל 28, ירושלים, Israel",,,,rabbinate,,331
+4911,פרש,"אורוגואי 1, ירושלים, Israel",,,,rabbinate,dairy,331
+4925,נעם,"מאה שערים 32, שכונת גאולה, ירושלים, Israel",,,,rabbinate,,331
+4932,נגילה,"ברוכוף משיח 5, ירושלים, Israel",,,,rabbinate,,331
+4941,אצה,"ירמיהו 9, ירושלים, Israel",,,,rabbinate,,331
+5122,מפגש השייח',"החוצבים 5, מבשרת ציון, Israel",,,,rabbinate,dairy,378
+5206,חבה,"יפו 119, מחנה יהודה, ירושלים, Israel",,,,rabbinate,dairy,331
+5257,אנה,"הרב אג""ן 10, ירושלים, Israel",,,,rabbinate,,331
+5270,קינג ג'ורג' 41,"המלך ג'ורג' 41, ירושלים, Israel",,,,rabbinate,meat,331
+5271,ימה,"קרית מדע 1, הר חוצבים, ירושלים, Israel",,,,rabbinate,pareve,331
+5391,קפה גיטה,"אמונים, Israel",,,,rabbinate,dairy,312
+5403,פיצה דומינו,"הרצל 42, גן יבנה, Israel",,,,rabbinate,dairy,329
+5407,דני בתי מאפה,"רוטשילד 48, מזכרת בתיה, Israel",,,,rabbinate,dairy,290
+5409,פלאפל ושווארמה של אבאל'ה,"בית הפועלים 9, רחובות, Israel",,,,rabbinate,pareve,312
+5517,שיפודי לב המושבה,"הבנים 87, נס ציונה, Israel",,,,rabbinate,meat,330
+5538,טרי,"הרצל 194, רחובות, Israel",,,,rabbinate,dairy,312
+5569,אצל שלמה,"ביל""ויים 22, גדרה, Israel",,,,rabbinate,dairy,310
+5570,ניושי,"משה לרר 1, נס ציונה, Israel",,,,rabbinate,,330
+5588,מרכז הפלאפל והשווארמה הבוכרי,"שד' בן גוריון 2, קריית מלאכי, Israel",,,,rabbinate,pareve,364
+5595,קונדיטורית אזולאי ובניו,"שד' דואני 50, יבנה, Israel",,,,rabbinate,dairy,355
+5627,BAR,"היצירה 31, רחובות, Israel",,,,rabbinate,pareve,312
+5628,שיר,"צריפין, Israel",,,,rabbinate,meat,379
+5663,שחר,"אדום, פארק תעשיות כנות, Israel",,,,rabbinate,meat,348
+5722,נתי,"ש""י עגנון 2, נתניה, Israel",,,,rabbinate,dairy,358
+5807,מאפה נאמן,"סוקולוב 14, הרצליה, Israel",,,,rabbinate,dairy,309
+5868,דשי,"הרצל 1, נתניה, Israel",,,,rabbinate,,358
+5871,חומוס אליהו הרצליה,"משכית 32, הרצליה פיתוח, Israel",,,,rabbinate,pareve,359
+5884,פאי,"ראט 21, נתניה, Israel",,,,rabbinate,meat,358
+5958,לה,"זנגביל 14, נתניה, Israel",,,,rabbinate,dairy,358
+6087,פיתה בשרים על האש,"שד' ויצמן 11, נתניה, Israel",,,,rabbinate,meat,358
+6115,קונדיטורית וילהיים,"דרך רמתיים 48, הוד השרון, Israel",,,,rabbinate,dairy,366
+6123,zoi,"ויצמן 125, כפר סבא, Israel",,,,rabbinate,,298
+6131,מפגש הבוריקה,"זנגביל 6, נתניה, Israel",,,,rabbinate,,358
+6256,בנדורה,"שד' אבא אבן 12, הרצליה פיתוח, Israel",,,,rabbinate,meat,359
+6287,מאפה נאמן,"צה""ל 5, חדרה, Israel",,,,rabbinate,dairy,311
+6289,אצה,"צה""ל 5, חדרה, Israel",,,,rabbinate,,311
+6359,חדש!  Omi Sushi,"750 Finchley Rd, London NW11 7TH. [map: https://maps.app.goo.gl/ggGZ9bCdyYW1dvPu6;]",,,,rabbinate,dairy,333
+6377,מסעדת זאב וכבש  Wolf & Lamb Steakhouse,"16 E 48th St, New York.",,,,rabbinate,meat,463
+6499,קפה יוענה,"דרך סטון יוסף 1, באר יעקב",,,,rabbinate,,303
+6516,Greenz הוד השרון,"הנגר 24, הוד השרון",,,,rabbinate,,366
+6573,Luciana מודיעין,"המלאכות 1, מודיעין",,,,rabbinate,,345
+6655,יקב בנימינה,"היקב 2, בנימינה",,,,rabbinate,,390
+6658,LAGO פנים,"פארק שמיר, מעלה אדומים",,,,rabbinate,,343
+6668,Casa Lavi,"דרך בית לחם 41, ירושלים",,,,rabbinate,,331
+6683,B-FRESH - אריאל,"הבנאי 1 קניון מגה אור, אריאל",,,,rabbinate,,357
+6689,בריא לי בנימינה,"השחר 2, בנימינה",,,,rabbinate,,390
+6727,Luna Sushi,"החשמונאים 20, גן יבנה",,,,rabbinate,,329
+6757,Upper market,"אריאל שרון 4, גבעתיים",,,,rabbinate,,320
+6816,עשר,"הרב אג""ן 10, ירושלים",,,,rabbinate,,331
+6854,B-FRESH - בת ים,"יוספטל 92 בת ים, בת ים",,,,rabbinate,,339
+6892,King's Court Restaurant,"אגרון 26, ירושלים",,,,rabbinate,,331
+6895,בוקה גדרה,"מנחם בגין 36, גדרה",,,,rabbinate,,310
+7039,קרספלה - Crespella,"נחל ירקון 147, קריית גת",,,,rabbinate,,292
+7061,נולי עגלת קפה סביון,"פארק הציפורים, סביון",,,,rabbinate,,322
+7104,ארקפה קיסריה - כשר,"הרקיע 1, קיסריה",,,,rabbinate,,434
+7155,ג'פניקה רעננה-קוויק,"זרחין 1 ב', רעננה",,,,rabbinate,,309
+7192,יאשקה טאגור,"טאגור 32, תל אביב",,,,rabbinate,,348
+7204,קפה 99,"הירקון 99, תל אביב",,,,rabbinate,,348
+7235,Lotem Deree Bakery and Bistro,"שכניה, שכניה",,,,rabbinate,,529
+7261,יקב כמיסה,"פארק תעשיות, רמת דלתון",,,,rabbinate,,529
+7337,טובל,"3 Rue Gérard Monod, 06400 Cannes, France",,,,rabbinate,meat,325
+7343,"חב""ד לימסול","Porfyriou Dikaiou 5, Limasol 3095, Cyprus, Limassol",,,,rabbinate,meat,315
+7344,כתר,"41 Avenue Georges Clemenceau, 06000 Nice, France",,,,rabbinate,dairy,353
+7350,"מסעדת ירושלים – 
+חב""ד פאפוס","Othelou 5, Kato Paphos 8042, Cyprus",,,,mehadrin,meat,316
+7391,La Fille du Boucher,20 rue Cardinet Paris 17ème 75017,,,,rabbinate,meat,294
+7417,Wasabi Marrakech,17 Rue de Yougoslavie Marrakech,,,,rabbinate,meat,375
+7552,KoseherstandZ LLC at Wrigley Field,"1060 W Addison Street, Chicago, IL, 60613, USA",,,,rabbinate,meat,466
+7566,Smoke by Crunch,"6255 N McCormick Blvd,  Chicago, IL , 60659, United States",,,,rabbinate,meat,466
+7678,The Holy Grill,"8975 W. Pico Blvd, Los Angeles, 90035-3332, California",,,,rabbinate,meat,465
+7991,Moshe's Falafel Food Truck,"7th Avenue & W 39th St New York, NY, 10018, USA",,,,mehadrin,,463
+8011,Broadway Pizza,"6965 Decarie Blvd,  Montreal, Quebec , H3W 0B6, Canada",,,,rabbinate,dairy,479
+8127,Kosher Food London,"London, United Kingdom (UK)",,,,rabbinate,meat,333
+8293,Le Tavlyn,"19 Av. Auber Nice, 06000, France",,,,rabbinate,meat,353
+8302,OKLM,"14 Rue Marceau, Cannes, 06400, France",,,,rabbinate,meat,325
+8319,Pizza Prego & Backshop,"Taborstraße 43, Vienna, 1020, Austria",,,,rabbinate,dairy,484
+8358,Dolce Kosher,"Via Fonteiana,18, Rome, 00152, Italy",,,,rabbinate,,373
+8375,Heimishe Trdelaich,"Široká 4, 110 00, Czechia",,,,rabbinate,,323
+8378,Mizlala Prague,"Hybernská 26 Prague, 110 00, Czech Republic",,,,rabbinate,meat,323
+8387,El Falafel de Shani,"La Boqueria food market, La Rambla, 91 Mercat de la Boqueria, Barcelona, 08001, Spain",,,,rabbinate,dairy,356
+8394,Le J Restaurant,"R. de Vale Formoso 314, Porto, 4200-509, Portugal",,,,rabbinate,meat,297
+8397,Deli 613 - Chabad of Ireland,"89 Rathmines Road Upper,  Dublin 6, Ireland",,,,mehadrin,meat,307
+8435,Sambation Cyprus,"Apollodorou 4, Larnaca, 6020, Cyprus",,,,rabbinate,meat,363
+8465,Treat Kosher - Kosher Catering,"Al Quoz Industrial Area 3 9b Warehouse 5 & 6, Building 1, Dubai, United Arab Emirates",,,,rabbinate,meat,340

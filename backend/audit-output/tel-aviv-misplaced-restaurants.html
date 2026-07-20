@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>דוח: מסעדות לא שייכות לתל אביב</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; margin: 0; background: #f4f6f9; color: #1e293b; }
+  .wrap { max-width: 1250px; margin: 0 auto; padding: 24px 16px 64px; }
+  header h1 { margin: 0 0 4px; font-size: 26px; }
+  header .sub { color: #64748b; margin-bottom: 20px; }
+  .cards { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 22px; min-width: 150px; }
+  .card .num { font-size: 28px; font-weight: 700; }
+  .card .lbl { color: #64748b; font-size: 13px; }
+  .card.move .num { color: #b91c1c; }
+  .card.ok .num { color: #16803c; }
+  .card.warn2 .num { color: #a16207; }
+  .notice { background: #fff8e6; border: 1px solid #f4d88a; border-radius: 10px; padding: 12px 18px; margin: 16px 0 28px; font-size: 14.5px; }
+  .group { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 4px 18px 14px; margin-bottom: 22px; overflow-x: auto; }
+  .group.warn { border-color: #f4d88a; }
+  h2 { font-size: 18px; margin: 14px 0 10px; }
+  h2 .arrow { color: #b91c1c; font-size: 14px; font-weight: 600; margin-inline-end: 4px; }
+  h2 .destid { color: #94a3b8; font-weight: 400; font-size: 14px; }
+  h2 .count { float: inline-end; background: #eef2f7; color: #475569; border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: right; color: #64748b; font-weight: 600; padding: 8px 10px; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
+  td { padding: 8px 10px; border-bottom: 1px solid #eef2f7; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .mono { font-family: Consolas, monospace; white-space: nowrap; }
+  .name { font-weight: 600; min-width: 130px; }
+  .addr { color: #475569; max-width: 330px; }
+  .src { color: #94a3b8; font-size: 11.5px; margin-top: 2px; }
+  .how { color: #475569; font-size: 12.5px; max-width: 180px; }
+  .badge { border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  a { text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🍽️ מסעדות המשויכות לתל אביב אך שייכות ליעד אחר</h1>
+    <div class="sub">יעד מקור: תל אביב (#348) · הופק: 6 ביולי 2026 בשעה 20:40</div>
+  </header>
+
+  <div class="cards">
+    <div class="card"><div class="num">602</div><div class="lbl">סה״כ מסעדות בתל אביב</div></div>
+    <div class="card ok"><div class="num">533</div><div class="lbl">תקינות — נשארות בתל אביב</div></div>
+    <div class="card move"><div class="num">69</div><div class="lbl">מוצע להעביר ליעד אחר</div></div>
+    <div class="card warn2"><div class="num">0</div><div class="lbl">דורש החלטה ידנית</div></div>
+  </div>
+
+  <div class="notice">
+    <b>דוח בלבד — שום שינוי לא בוצע במסד הנתונים.</b><br>
+    זיהוי העיר נעשה לפי הכתובת (עדיפות לכתובת Google המאומתת). כשהעיר בכתובת קיימת כיעד במערכת — זה היעד המוצע.
+    כשאין יעד לעיר (מושבים/יישובים קטנים) — היישוב גואוקד והיעד המוצע הוא היעד הקרוב ביותר אליו. "מרחק מהיעד" = מרחק המסעדה ממרכז היעד המוצע.
+  </div>
+
+  
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> הולון <span class="destid">#301</span> <span class="count">9 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">3552</td>
+        <td class="name">ארומה</td>
+        <td class="addr">העלייה השנייה 43, אזור, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">6.6 ק״מ</td>
+        <td class="mono">2.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.0282087,34.802593" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">3568</td>
+        <td class="name">פינת הצלע אזור</td>
+        <td class="addr">השקמה 2, אזור, 00000<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">6.4 ק״מ</td>
+        <td class="mono">2.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.0296948,34.798460899999995" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">3659</td>
+        <td class="name">סבתא לינה</td>
+        <td class="addr">העלייה השנייה 43, אזור, 5800239<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">7.0 ק״מ</td>
+        <td class="mono">2.8 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.024743,34.802744499999996" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">3912</td>
+        <td class="name">האופה מבגדד</td>
+        <td class="addr">המצודה 5, אזור<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">6.4 ק״מ</td>
+        <td class="mono">2.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.029648699999996,34.7975959" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">4275</td>
+        <td class="name">באראטו</td>
+        <td class="addr">העלייה השנייה 43, אזור, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">6.6 ק״מ</td>
+        <td class="mono">2.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.0282087,34.802593" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">4393</td>
+        <td class="name">פינת הצלע</td>
+        <td class="addr">השיקמה 2, אזור, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">6.6 ק״מ</td>
+        <td class="mono">2.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.0282087,34.802593" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">4470</td>
+        <td class="name">חומוס אליהו</td>
+        <td class="addr">המצודה 8, אזור<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">6.4 ק״מ</td>
+        <td class="mono">2.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.0294296,34.7981443" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">4610</td>
+        <td class="name">ארוגולה שף אזור</td>
+        <td class="addr">השיקמה 5, אזור<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">6.3 ק״מ</td>
+        <td class="mono">2.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.030246,34.7979578" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">4666</td>
+        <td class="name">ציקן &amp; ביף</td>
+        <td class="addr">המצודה 10, אזור, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אזור</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">6.6 ק״מ</td>
+        <td class="mono">2.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.0282087,34.802593" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> חדרה <span class="destid">#311</span> <span class="count">8 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5786</td>
+        <td class="name">העוגות של שושנה</td>
+        <td class="addr">שבטי ישראל 19, כפר הרא"ה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>כפר הרא"ה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">36.4 ק״מ</td>
+        <td class="mono">4.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.3929671,34.9152458" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5828</td>
+        <td class="name">גריל וקינוחים ברזילאים</td>
+        <td class="addr">מכמורת, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>מכמורת</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">36.7 ק״מ</td>
+        <td class="mono">5.3 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.4062774,34.8728998" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5924</td>
+        <td class="name">מור וקינמון</td>
+        <td class="addr">כפר הרא"ה, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>כפר הרא"ה</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">36.0 ק״מ</td>
+        <td class="mono">5.0 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.3897506,34.9118525" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6011</td>
+        <td class="name">הרואה בקפה</td>
+        <td class="addr">שבטי ישראל 1, כפר הרא"ה, 38955<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>כפר הרא"ה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">36.5 ק״מ</td>
+        <td class="mono">4.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.393170399999995,34.915361499999996" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6092</td>
+        <td class="name">ביר בשר</td>
+        <td class="addr">מתחם לב הפרדס, גבעת חיים איחוד<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>גבעת חיים איחוד</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">37.4 ק״מ</td>
+        <td class="mono">4.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.3953595,34.9353628" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6122</td>
+        <td class="name">שווארמה שאולי</td>
+        <td class="addr">חופית, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>חופית</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">34.5 ק״מ</td>
+        <td class="mono">6.8 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.3856586,34.8755505" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6216</td>
+        <td class="name">מור עוגות בוטיק</td>
+        <td class="addr">מגל<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>מגל</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">41.1 ק״מ</td>
+        <td class="mono">12.3 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.3853855,35.0362633" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6297</td>
+        <td class="name">פיצה פאפנו</td>
+        <td class="addr">כפר הרא״ה KFAR HAROE, כפר הרא"ה, 38955<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>כפר הרא"ה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">35.8 ק״מ</td>
+        <td class="mono">5.1 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.3900581,34.904784299999996" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> בית שמש <span class="destid">#374</span> <span class="count">6 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">4800</td>
+        <td class="name">מיטוסט</td>
+        <td class="addr">שוהדה 10, אשתאול, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אשתאול</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">40.2 ק״מ</td>
+        <td class="mono">4.1 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.7801952,35.0097885" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">4817</td>
+        <td class="name">הצריף</td>
+        <td class="addr">27, בית מאיר<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בית מאיר</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">40.3 ק״מ</td>
+        <td class="mono">6.7 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.794151199999998,35.0352786" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5361</td>
+        <td class="name">פיצ'ונקה</td>
+        <td class="addr">נס הרים, 9988500<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>נס הרים</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">46.7 ק״מ</td>
+        <td class="mono">7.3 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.741877199999998,35.066138599999995" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5455</td>
+        <td class="name">הבית של זוהרה</td>
+        <td class="addr">8, לוזית<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>לוזית</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">45.6 ק״מ</td>
+        <td class="mono">12.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.6848808,34.884533399999995" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5477</td>
+        <td class="name">צ'מנדי</td>
+        <td class="addr">אביעזר, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אביעזר</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">50.2 ק״מ</td>
+        <td class="mono">7.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.6811888,35.0177211" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5596</td>
+        <td class="name">פיצה מכלוף</td>
+        <td class="addr">שדות מיכה, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>שדות מיכה</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">42.5 ק״מ</td>
+        <td class="mono">7.2 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.7214757,34.9206369" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> Mevaseret Zion <span class="destid">#378</span> <span class="count">5 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">4795</td>
+        <td class="name">פיצה גבעת יערים</td>
+        <td class="addr">מרבד הקסמים 4, גבעת יערים, 9097000<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>גבעת יערים</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">44.7 ק״מ</td>
+        <td class="mono">5.4 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.784863,35.09614440000001" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5051</td>
+        <td class="name">דרך הגפן</td>
+        <td class="addr">דרך הגפן 1, בית זית<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בית זית</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">49.4 ק״מ</td>
+        <td class="mono">2.5 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.779954699999994,35.1613904" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5084</td>
+        <td class="name">אושה אוניגירי</td>
+        <td class="addr">נווה אילן, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>נווה אילן</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">41.4 ק״מ</td>
+        <td class="mono">7.1 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.808,35.075" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5089</td>
+        <td class="name">עין חמד קפה ביער</td>
+        <td class="addr">יער עין חמד, בית נקופה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בית נקופה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">45.6 ק״מ</td>
+        <td class="mono">2.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.797553399999998,35.1266293" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5212</td>
+        <td class="name">נאיה</td>
+        <td class="addr">בית נקופה, 9083000<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בית נקופה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">45.3 ק״מ</td>
+        <td class="mono">2.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.801479599999997,35.1262653" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> גדרה <span class="destid">#310</span> <span class="count">5 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5408</td>
+        <td class="name">צ'ופצ'ולה</td>
+        <td class="addr">הרימון 3, עשרת<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>עשרת</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">28.9 ק״מ</td>
+        <td class="mono">3.4 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.8271208,34.7463323" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5436</td>
+        <td class="name">בליקר בייקרי</td>
+        <td class="addr">שדרות בן גוריון 105, גדרה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>גדרה</b></td>
+        <td class="how">עיר קיימת במערכת</td>
+        <td class="mono">31.3 ק״מ</td>
+        <td class="mono">1.0 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.8042301,34.7838441" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5565</td>
+        <td class="name">פיצה יו-יו</td>
+        <td class="addr">עובדיה 1, יד בנימין, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>יד בנימין</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">32.2 ק״מ</td>
+        <td class="mono">4.5 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.7978401,34.8216119" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5566</td>
+        <td class="name">ארוחות קטנות</td>
+        <td class="addr">הדר 94, קדרון, 70795<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>קדרון</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">29.8 ק״מ</td>
+        <td class="mono">2.4 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.817686,34.8013" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5663</td>
+        <td class="name">שחר</td>
+        <td class="addr">אדום, פארק תעשיות כנות, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>פארק תעשיות כנות</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">32.9 ק״מ</td>
+        <td class="mono">3.1 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.79,34.755" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> רמלה <span class="destid">#379</span> <span class="count">3 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5420</td>
+        <td class="name">פיאצה</td>
+        <td class="addr">יונתן 1, בית חשמונאי<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בית חשמונאי</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">25.2 ק״מ</td>
+        <td class="mono">5.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.8896882,34.91766" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5521</td>
+        <td class="name">ג'ילברט</td>
+        <td class="addr">פנימי, נען, 7682900<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>נען</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">23.5 ק״מ</td>
+        <td class="mono">4.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.8837919,34.8575401" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5578</td>
+        <td class="name">אושיקורו</td>
+        <td class="addr">מועצה אזורית גזר, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>מועצה אזורית גזר</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">25.3 ק״מ</td>
+        <td class="mono">5.7 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.88865,34.9173382" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> קרית גת <span class="destid">#292</span> <span class="count">3 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">1747</td>
+        <td class="name">פיצה גלעד</td>
+        <td class="addr">שקף, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>שקף</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">65.0 ק״מ</td>
+        <td class="mono">18.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.5156708,34.9377978" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5623</td>
+        <td class="name">המסעדה של יפה</td>
+        <td class="addr">0, נגבה, 79856<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>נגבה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">48.1 ק״מ</td>
+        <td class="mono">10.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.6614416,34.682659" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5629</td>
+        <td class="name">ערמונים</td>
+        <td class="addr">שדה יואב, 7935100<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>שדה יואב</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">49.8 ק״מ</td>
+        <td class="mono">9.0 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.644628499999996,34.6853141" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> תל מונד <span class="destid">#536</span> <span class="count">3 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5899</td>
+        <td class="name">פיצה במושב</td>
+        <td class="addr">צור משה, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>צור משה</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">26.7 ק״מ</td>
+        <td class="mono">3.5 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.2978073,34.9135462" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5910</td>
+        <td class="name">בי בריא</td>
+        <td class="addr">כפר הס<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>כפר הס</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">23.1 ק״מ</td>
+        <td class="mono">2.7 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.2476324,34.9351419" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6263</td>
+        <td class="name">ווק אנד ווק כשר קניון דרורים</td>
+        <td class="addr">גלבוע 1, בני דרור, 4581500<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בני דרור</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">22.1 ק״מ</td>
+        <td class="mono">2.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.2601829,34.894053299999996" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> פתח תקווה <span class="destid">#346</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">3319</td>
+        <td class="name">קופי דון</td>
+        <td class="addr">שפיגל זוסיה 1, פתח תקווה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>פתח תקווה</b></td>
+        <td class="how">עיר קיימת במערכת</td>
+        <td class="mono">9.9 ק״מ</td>
+        <td class="mono">0.4 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.08796960000001,34.8873666" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">3330</td>
+        <td class="name">בורגרים</td>
+        <td class="addr">מתחם B סנטר, בן ציון גליס 30, פתח תקווה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>פתח תקווה</b></td>
+        <td class="how">עיר קיימת במערכת</td>
+        <td class="mono">10.6 ק״מ</td>
+        <td class="mono">2.4 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.1056568,34.891991499999996" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> מעלה אדומים <span class="destid">#343</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">4945</td>
+        <td class="name">חומוס יאלי</td>
+        <td class="addr">תל מרים 206, איזור תעשייה שער בנימין, שער בנימין<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>שער בנימין</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">51.4 ק״מ</td>
+        <td class="mono">10.4 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.865242100000003,35.261384899999996" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5186</td>
+        <td class="name">עזאזל Azazel</td>
+        <td class="addr">זריחה 1, קדר, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>קדר</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">62.1 ק״מ</td>
+        <td class="mono">3.4 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.747,35.305" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> ירושלים <span class="destid">#331</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5088</td>
+        <td class="name">ג'וחא</td>
+        <td class="addr">משעול החלמונית 3, הר גילה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>הר גילה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">54.8 ק״מ</td>
+        <td class="mono">6.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.720804100000002,35.171862499999996" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5111</td>
+        <td class="name">פיצה אלון שבות</td>
+        <td class="addr">אלון שבות, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>אלון שבות</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">57.9 ק״מ</td>
+        <td class="mono">15.1 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.6544,35.1268" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> מזכרת בתיה <span class="destid">#290</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5410</td>
+        <td class="name">קיושי סושי בר</td>
+        <td class="addr">מתחם צ'מפיון מוטורס, גבעת ברנר<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>גבעת ברנר</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">25.0 ק״מ</td>
+        <td class="mono">2.8 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.861097199999996,34.8066636" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5621</td>
+        <td class="name">שניצל בגדדי</td>
+        <td class="addr">כפר ביל"ו<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>כפר ביל"ו</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">24.2 ק״מ</td>
+        <td class="mono">2.5 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.8697317,34.8207466" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> אשקלון <span class="destid">#293</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5525</td>
+        <td class="name">פיצה כפרית בטאבון</td>
+        <td class="addr">רחוב חבצלת השרון, ברכיה, 79852<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>ברכיה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">48.6 ק״מ</td>
+        <td class="mono">5.0 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.668521799999997,34.6267851" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5593</td>
+        <td class="name">נועם שירותים לקייטרינג</td>
+        <td class="addr">ניצנים, 7929000<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>ניצנים</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">43.2 ק״מ</td>
+        <td class="mono">7.9 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.717511899999998,34.6347218" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> לוד <span class="destid">#289</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5437</td>
+        <td class="name">דורי על הדרך</td>
+        <td class="addr">בן שמן (מושב), Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>בן שמן (מושב)</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">19.8 ק״מ</td>
+        <td class="mono">3.7 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.9522788,34.921944" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5640</td>
+        <td class="name">קפה בעגלא</td>
+        <td class="addr">הברוש 73, גמזו<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>גמזו</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">22.9 ק״מ</td>
+        <td class="mono">5.8 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.9284441,34.939104199999996" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> גן יבנה <span class="destid">#329</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5440</td>
+        <td class="name">קייטרינג שף בטבע</td>
+        <td class="addr">גן הדרום, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>גן הדרום</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">32.3 ק״מ</td>
+        <td class="mono">2.8 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.803614,34.6997994" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5443</td>
+        <td class="name">לוז-קייטרינג בוטיק</td>
+        <td class="addr">ויצמן 62, עין צורים, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>עין צורים</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">43.9 ק״מ</td>
+        <td class="mono">9.9 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.6940539,34.7200879" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> אשדוד <span class="destid">#364</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5606</td>
+        <td class="name">שוקו קפה</td>
+        <td class="addr">נתיב הציפורים 107, ניצן ב', Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>ניצן ב'</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">41.2 ק״מ</td>
+        <td class="mono">7.8 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.7361186,34.6359688" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">5607</td>
+        <td class="name">מטעמים</td>
+        <td class="addr">אודם 14, עד הלום, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>עד הלום</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">37.6 ק״מ</td>
+        <td class="mono">4.6 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.7627706,34.663125" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> פרדס חנה כרכור <span class="destid">#451</span> <span class="count">2 מסעדות</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5882</td>
+        <td class="name">פיצה יששכר</td>
+        <td class="addr">מאור, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>מאור</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">43.2 ק״מ</td>
+        <td class="mono">7.6 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.4239237,35.006394" target="_blank">📍</a></td>
+      </tr><tr>
+        <td class="mono">6064</td>
+        <td class="name">ארול</td>
+        <td class="addr">משמרות, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>משמרות</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">48.6 ק״מ</td>
+        <td class="mono">1.8 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.4874752,34.9850386" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> טבריה <span class="destid">#421</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">2544</td>
+        <td class="name">המקום של שימי</td>
+        <td class="addr">ישראל<div class="src">כתובת מקורית</div></td>
+        <td><b>מועצה אזורית הגליל התחתון</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">101.3 ק״מ</td>
+        <td class="mono">5.9 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.7879273,35.4684186" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> רמת גן <span class="destid">#370</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">3189</td>
+        <td class="name">קפה לוגאנו</td>
+        <td class="addr">החוגה 2, רמת גן, 5290370<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>רמת גן</b></td>
+        <td class="how">עיר קיימת במערכת</td>
+        <td class="mono">6.6 ק״מ</td>
+        <td class="mono">2.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.046102399999995,34.8347507" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> יבנה <span class="destid">#355</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5466</td>
+        <td class="name">אורו</td>
+        <td class="addr">גאליה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>גאליה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">23.3 ק״מ</td>
+        <td class="mono">1.6 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.876702,34.761358099999995" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> באר יעקב <span class="destid">#303</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5468</td>
+        <td class="name">חוות אלנבי</td>
+        <td class="addr">נצר סרני<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>נצר סרני</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">18.3 ק״מ</td>
+        <td class="mono">1.0 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=31.9256334,34.8270984" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> Binyamina <span class="destid">#390</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5745</td>
+        <td class="name">פיצה לה ורה</td>
+        <td class="addr">רחוב חי 67, בנימינה גבעת עדה<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>בנימינה גבעת עדה</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">52.4 ק״מ</td>
+        <td class="mono">5.3 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.517110599999995,35.0063434" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> ראש העין <span class="destid">#326</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5967</td>
+        <td class="name">פורטו בלה פיצה ירחיב</td>
+        <td class="addr">68, ירחיב, 45860<div class="src">כתובת Google (עברית)</div></td>
+        <td><b>ירחיב</b></td>
+        <td class="how">היעד הקרוב ביותר (אין יעד לעיר בכתובת)</td>
+        <td class="mono">19.1 ק״מ</td>
+        <td class="mono">6.2 ק״מ</td>
+        <td><span class="badge" style="color:#16803c;background:#e7f6ec">מאומת Google</span></td>
+        <td><a href="https://www.google.com/maps?q=32.1501276,34.969258499999995" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> Modiin <span class="destid">#345</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5497</td>
+        <td class="name">לוציאנוס</td>
+        <td class="addr">מבוא מודיעים, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>מבוא מודיעים</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">25.6 ק״מ</td>
+        <td class="mono">4.6 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.9344938,34.9871687" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> שוהם <span class="destid">#361</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">5516</td>
+        <td class="name">מקום בכפר</td>
+        <td class="addr">כפר הנוער בן-שמן, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>כפר הנוער בן-שמן</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">19.7 ק״מ</td>
+        <td class="mono">3.3 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=31.9593427,34.9292611" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+    <section class="group">
+      <h2><span class="arrow">⟵ מעבר אל</span> כפר סבא <span class="destid">#298</span> <span class="count">מסעדה אחת</span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>שם</th><th>כתובת</th><th>העיר שזוהתה</th><th>איך נקבע היעד</th><th>מרחק מת״א</th><th>מרחק מהיעד</th><th>אימות</th><th>מפה</th></tr></thead>
+        <tbody><tr>
+        <td class="mono">6089</td>
+        <td class="name">קפה חמד</td>
+        <td class="addr">שדי חמד, Israel<div class="src">כתובת מקורית</div></td>
+        <td><b>שדי חמד</b></td>
+        <td class="how">היעד הקרוב ביותר (היישוב גואוקד עכשיו)</td>
+        <td class="mono">17.3 ק״מ</td>
+        <td class="mono">4.0 ק״מ</td>
+        <td><span class="badge" style="color:#475569;background:#eef2f7">ממתין</span></td>
+        <td><a href="https://www.google.com/maps?q=32.1598443,34.9435452" target="_blank">📍</a></td>
+      </tr></tbody></table></section>
+  
+</div>
+</body>
+</html>

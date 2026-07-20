@@ -86,6 +86,7 @@ describe('ReviewsService', () => {
       expect(result.totalCount).toBe(1);
       expect(result.averageStars).toBe(4);
       expect(result.reviews[0].stars).toBe(4);
+      expect(result.reviews[0].user).toEqual({ firstName: 'Dani', lastName: 'C' });
       expect(result.reviews[0].user.firstName).toBe('Dani');
     });
 

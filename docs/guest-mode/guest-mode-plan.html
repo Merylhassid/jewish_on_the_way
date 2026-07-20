@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תוכנית מצב אורח — Jewish On The Way</title>
+<style>
+  :root {
+    --brand:#173866; --brand2:#2b63ad; --brand-soft:#eaf1fb;
+    --ok:#14733b; --ok-bg:#e7f6ec; --warn:#966800; --warn-bg:#fff4d6;
+    --bad:#b7352b; --bad-bg:#fff0ee; --ink:#202d3d; --muted:#66758a;
+    --line:#dce4ef; --paper:#fff; --page:#f5f7fb;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:"Segoe UI","Heebo",Arial,sans-serif;line-height:1.65}
+  .wrap{max-width:980px;margin:auto;padding:24px 20px 80px}
+  .hero{padding:30px;border-radius:18px;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 14px 35px rgba(23,56,102,.18)}
+  .hero h1{margin:0 0 6px;font-size:1.85rem}.hero p{margin:0;opacity:.92}.hero .status{margin-top:14px;display:inline-block;padding:5px 12px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:.88rem}
+  h2{color:var(--brand);margin:42px 0 14px;padding-bottom:7px;border-bottom:3px solid var(--brand-soft);font-size:1.35rem}
+  h3{color:var(--brand);margin:24px 0 8px;font-size:1.08rem}
+  .card,.note,.warn{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:18px 22px;margin:14px 0}
+  .note{border-right:5px solid var(--brand);background:var(--brand-soft)}
+  .warn{border-right:5px solid var(--warn);background:var(--warn-bg)}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid .card{margin:0}
+  .principle{font-weight:750;color:var(--brand);font-size:1.04rem}
+  .overflow{overflow-x:auto;border-radius:12px}
+  table{width:100%;border-collapse:collapse;background:#fff;font-size:.94rem}
+  th,td{padding:10px 12px;border:1px solid var(--line);text-align:right;vertical-align:top}
+  th{background:var(--brand-soft);color:var(--brand);white-space:nowrap}
+  .tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.8rem;font-weight:700;white-space:nowrap}
+  .public{background:var(--ok-bg);color:var(--ok)}.locked{background:var(--bad-bg);color:var(--bad)}.optional{background:var(--warn-bg);color:var(--warn)}
+  code,pre{direction:ltr;text-align:left;font-family:Consolas,"Courier New",monospace;background:#f0f3f8;border-radius:7px}code{padding:1px 5px}pre{padding:13px 15px;overflow:auto;border:1px solid var(--line)}
+  ul,ol{padding-right:22px}li{margin:5px 0}.check{list-style:none;padding:0}.check li:before{content:"☐";color:var(--brand);font-weight:bold;margin-left:9px}
+  .step{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:50%;background:var(--brand);color:#fff;margin-left:8px;font-size:.86rem}
+  .flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;direction:rtl}.flow span{padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-weight:650}.flow b{color:var(--brand)}
+  .muted{color:var(--muted);font-size:.9rem}.decision{border-right:4px solid var(--ok);padding-right:12px}
+  @media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:14px 12px 60px}.hero{padding:23px}th,td{font-size:.88rem;padding:8px}}
+  @media print{body{background:#fff}.wrap{max-width:none}.hero{box-shadow:none}h2{break-after:avoid}.card,table{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <h1>מצב אורח — תוכנית ביצוע מתוקנת</h1>
+    <p>ערך מיידי ללא חשבון · אכיפה אמיתית במסכים ובשרת · פרטיות כברירת מחדל</p>
+    <span class="status">יושם, נפרס ואומת ידנית ואוטומטית · 20.07.2026</span>
+  </header>
+
+  <div class="note"><b>סטטוס ביצוע:</b> חוזה ההרשאות, Optional JWT, מצב ה־session, שערי הפעולה והנתיבים, קהילה לקריאה בלבד, מועדפים ו־returnTo יושמו ונבדקו ידנית. 235 בדיקות backend, 32 בדיקות חוזה HTTP, build ו־mobile typecheck עברו. חיפוש מוגבל ל־30 בקשות בדקה ואומת בייצור.</div>
+  <div class="warn"><b>נותר לפני שחרור:</b> להעביר את ה־API ל־HTTPS באמצעות reverse proxy ותעודה. כרגע Nest חשוף ישירות בפורט 3000 ולכן אין להפעיל trust proxy; לאחר התקנת ה־proxy יש להגדיר trusted hops מצומצם ולאמת שוב את זיהוי ה־IP.</div>
+
+  <h2>עקרונות מחייבים</h2>
+  <div class="grid">
+    <div class="card"><div class="principle">תוכן ציבורי פתוח</div>יעדים, מסעדות, בתי כנסת, מפה, ביקורות לקריאה ופרטי מניין בסיסיים.</div>
+    <div class="card"><div class="principle">זהות והשתתפות דורשות חשבון</div>אורח יכול לקרוא קהילה מצומצמת; כתיבה, לייקים, תגובות, אירוח, צ'אטים ונתונים אישיים נשארים מוגנים.</div>
+    <div class="card"><div class="principle">אכיפה בשתי שכבות</div>Action guard בתוך מסך ציבורי וגם route guard לכל מסך פרטי.</div>
+    <div class="card"><div class="principle">אורח אינו משתמש מדומה</div>אין user אנונימי בשרת, אין JWT זמני ואין refresh token לאורח.</div>
+  </div>
+  <div class="note"><b>החלטת מוצר:</b> מועדפים מקומיים נשארים פתוחים לאורח. חשבון נדרש לסנכרון בין מכשירים, לא לשמירה במכשיר.</div>
+
+  <h2>מטריצת הרשאות לגרסה 1.0</h2>
+  <div class="overflow"><table>
+    <tr><th>יכולת</th><th>אורח</th><th>חשבון</th><th>שכבת אכיפה</th></tr>
+    <tr><td>יעדים, מסעדות, בתי כנסת</td><td><span class="tag public">פתוח</span></td><td>פתוח</td><td>API ציבורי</td></tr>
+    <tr><td>מפה, ניווט ומצפן</td><td><span class="tag public">פתוח</span></td><td>פתוח</td><td>ללא שער חשבון</td></tr>
+    <tr><td>חיפוש חכם</td><td><span class="tag optional">פתוח ומוגבל</span></td><td>פתוח ומוגבל</td><td>Throttle בבקאנד</td></tr>
+    <tr><td>קריאת ביקורות</td><td><span class="tag public">פתוח</span></td><td>פתוח</td><td>API ציבורי</td></tr>
+    <tr><td>כתיבת ביקורת / דיווח / הצעת מקום</td><td><span class="tag locked">מודאל התחברות</span></td><td>פתוח</td><td>Action guard + JWT</td></tr>
+    <tr><td>מועדפים במכשיר</td><td><span class="tag public">פתוח מקומית</span></td><td>פתוח + סנכרון</td><td>Local storage / JWT לסנכרון</td></tr>
+    <tr><td>רשימת מניינים ופרטי אירוע</td><td><span class="tag public">פתוח</span> · יוצר בשם פרטי + אות</td><td>פתוח · שם מלא</td><td>Public + Optional JWT + DTO מותאם</td></tr>
+    <tr><td>שמות משתתפי מניין</td><td><span class="tag locked">חסום</span></td><td>פתוח</td><td>API מוגן</td></tr>
+    <tr><td>יצירה / הרשמה / צ'אט מניין</td><td><span class="tag locked">חסום</span></td><td>פתוח</td><td>Action/route guard + JWT</td></tr>
+    <tr><td>קהילה ופוסטים</td><td><span class="tag public">צפייה בלבד</span> · שם פרטי + אות</td><td>פתוח ומשתתף</td><td>Public REST DTO · כתיבה ו־socket עם JWT</td></tr>
+    <tr><td>אירוח</td><td><span class="tag optional">טיזר גלוי</span> · התוכן חסום</td><td>פתוח</td><td>Entry teaser + route guard + JWT</td></tr>
+    <tr><td>פרופיל</td><td>מסך אורח</td><td>פרופיל מלא</td><td>תצוגה מותנית</td></tr>
+    <tr><td>“שלי”, חסומים, צ'אטים וניהול</td><td><span class="tag locked">חסום</span></td><td>לפי הרשאה</td><td>Route guard + JWT/role</td></tr>
+  </table></div>
+
+  <h2><span class="step">0</span>חוזה ובדיקות לפני שינוי</h2>
+  <div class="card">
+    <ol>
+      <li>בדיקות integration ל־<code>200 ללא token</code> מול <code>401 ללא token</code>.</li>
+      <li>DTO ציבורי לכל תשובה שמכילה מידע של משתמש.</li>
+      <li>בדיקה שמסך ציבורי אינו קורא endpoint מוגן בזמן mount.</li>
+      <li>תיעוד build, typecheck וטסטים לפני השינוי.</li>
+    </ol>
+    <ul class="check"><li>אין Authorization ריק או שבור</li><li>token פג אינו הופך בשקט למצב אורח</li><li>משתמש מחובר ממשיך לקבל את כל היכולות הקיימות</li></ul>
+  </div>
+
+  <h2><span class="step">א</span>בקאנד</h2>
+  <div class="card">
+    <h3>לפתוח לציבור</h3>
+    <ul>
+      <li><code>GET /destinations</code>, <code>GET /destinations/:id</code></li>
+      <li><code>GET /restaurants</code>, <code>/search</code>, <code>/nearby</code>, <code>/:id</code></li>
+      <li><code>GET /reviews/:type/:id</code></li>
+      <li><code>GET /minyans</code>, <code>/nearby</code>, <code>/:id</code></li>
+      <li>בתי הכנסת כבר ציבוריים — בדיקות regression בלבד.</li>
+    </ul>
+    <h3>להשאיר מוגן</h3>
+    <p>כל הכתיבות, admin, favorites, hosting, users, contact, reports, כתיבות community וכל WebSocket של chat וכן <code>/minyans/mine</code> ו־<code>/minyans/:id/participants</code>.</p>
+    <h3>Optional JWT במניין בודד</h3>
+    <p>מחובר מקבל <code>isRegistered</code> אמיתי; אורח מקבל <code>false</code>. אין לגשת ל־<code>req.user.sub</code> כשאין משתמש. token פגום שנשלח יידחה.</p>
+    <h3>פרטיות מניינים</h3>
+    <p>האורח רואה את מספר המשתתפים, לא את שמותיהם. בכל רשימות ופרטי המניין שם היוצר יוצג לאורח כשם פרטי + האות הראשונה של שם המשפחה; משתמש מחובר יכול לקבל שם מלא דרך Optional JWT.</p>
+  </div>
+
+  <h2><span class="step">ב</span>מצב session במובייל</h2>
+  <div class="card">
+    <pre>type SessionMode =
+  | 'loading'
+  | 'signedOut'
+  | 'guest'
+  | 'authenticated';</pre>
+    <p>מצב יחיד מונע סתירה בין <code>token</code> לבין <code>isGuest</code>. התחברות מנקה דגל אורח; logout ו־forced logout עוברים ל־<code>signedOut</code>.</p>
+    <div class="flow"><span>פתיחה</span><b>←</b><span>loading</span><b>←</b><span>signedOut / guest / authenticated</span></div>
+    <h3>מסך ההתחברות</h3>
+    <p>כפתור משני “המשך כאורח”, שמירה ב־AsyncStorage וניווט ל־tabs. להוסיף מחרוזות בעברית, אנגלית וצרפתית.</p>
+  </div>
+
+  <h2><span class="step">ג</span>אכיפה בשתי שכבות</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Action guard</h3>
+      <p><code>AuthPromptProvider</code> + <code>useRequireAuth()</code> במסכים ציבוריים.</p>
+      <ul><li>פתיחת טופס ביקורת</li><li>דיווח והצעת מקום</li><li>יצירה והרשמה למניין</li><li>כניסה לצ'אט מניין</li></ul>
+      <p class="muted">השער מופיע לפני מילוי הטופס, לא רק בעת submit.</p>
+    </div>
+    <div class="card">
+      <h3>Route guard</h3>
+      <p>חובה גם בכניסה דרך deep link, התראה או ניווט ישיר.</p>
+      <ul><li>כל hosting</li><li>צ'אט מניין ואירוח</li><li>my-minyans</li><li>blocked-users ו־admin</li></ul>
+      <p class="muted">לא מרנדרים מסך פרטי מאחורי modal.</p>
+    </div>
+  </div>
+  <div class="note"><b><code>saved.tsx</code> נשאר פתוח:</b> הוא מציג את המועדפים המקומיים של האורח באמצעות פרטי מסעדות ובתי כנסת מה־API הציבורי.</div>
+  <div class="note"><b>אירוח נשאר גלוי כטיזר:</b> כניסת האירוח במסך היעד אינה נעלמת. לחיצת אורח מציגה ערך קצר וכפתורי הרשמה/התחברות, בלי לנווט למסך האירוח ובלי לטעון <code>/hosting/*</code>. Deep links והתראות עדיין נחסמים ב־route guard.</div>
+
+  <h2><span class="step">ד</span>מועדפים וסנכרון</h2>
+  <div class="card">
+    <h3>אורח</h3><p>קריאה וכתיבה רק ל־AsyncStorage. אין בקשות שקטות ל־<code>/favorites</code> במצב guest.</p>
+    <h3>מחובר</h3><p>סנכרון עם השרת. לאחר התחברות מבצעים union של המקומי והשרת, בלי למחוק מועדפי שרת. cache מקומי נשאר שימושי ל־offline.</p>
+  </div>
+
+  <h2><span class="step">ה</span>חזרה להקשר לאחר התחברות</h2>
+  <div class="card">
+    <p><code>returnTo</code> פנימי ובטוח צריך לשרוד login, register, verify-email ו־onboarding.</p>
+    <ul>
+      <li>לאחר הצלחה חוזרים למסך המקורי.</li>
+      <li>הפעולה המקורית אינה מתבצעת אוטומטית ב־1.0; המשתמש לוחץ שוב.</li>
+      <li>URL חיצוני או route לא מאושר נדחים.</li>
+      <li>fallback: <code>/(tabs)</code>.</li>
+    </ul>
+  </div>
+
+  <h2><span class="step">ו</span>401, refresh וחיפוש</h2>
+  <div class="grid">
+    <div class="card"><h3>Interceptor</h3><ul><li>401 אנונימי: reject בלבד</li><li>401 עם token: refresh פעם אחת</li><li>refresh נכשל: ניקוי session ו־signedOut</li><li>אין refresh לנתיבי auth</li></ul></div>
+    <div class="card"><h3>חיפוש חכם</h3><ul><li>30 בקשות בדקה ל־POST /search — נפרס ואומת</li><li>תקציב LLM נפרד: 50 ניסיונות ביום</li><li>PM2 רץ בתהליך יחיד; בהרחבה נדרש מונה משותף</li><li>אין proxy כרגע; trusted proxy יוגדר רק לאחר Nginx</li><li>429 ידידותי ו־retention גם לאורחים</li></ul></div>
+  </div>
+
+  <h2><span class="step">ז</span>פרטיות ו־App Review</h2>
+  <div class="card">
+    <ul>
+      <li>למפות שאילתה, מיקום, IP ולוגים שנוצרים בחיפוש אורח.</li>
+      <li>לא להבטיח “אורח אינו שומר מידע בשרת” לפני אימות.</li>
+      <li>לבדוק מחדש App Privacy עבור מיקום וחיפוש ללא חשבון.</li>
+      <li>לספק ל־App Review חשבון פעיל לבדיקת הפיצ'רים המוגנים.</li>
+      <li>ב־Review Notes להסביר שהתוכן הציבורי נגיש דרך “המשך כאורח”.</li>
+    </ul>
+  </div>
+
+  <h2><span class="step">ח</span>QA ושערי שחרור</h2>
+  <div class="card">
+    <p><b>סטטוס:</b> הושלם ידנית ב־20.07.2026 ללא כשלים פתוחים. בדיקת 5,000 שורות הלוג האחרונות לא מצאה 401 חריגים, Unauthorized או Authorization ריק.</p>
+    <h3>אורח</h3>
+    <ul class="check"><li>עיון מלא ביעדים ובמקומות</li><li>חיפוש ו־429 תקינים</li><li>ביקורות לקריאה; כתיבה נעצרת לפני הטופס</li><li>מועדפים נשמרים לאחר restart</li><li>אין חשיפת שמות משתתפי מניין</li><li>מסכים פרטיים חסומים גם ב־deep link</li><li>פרופיל אורח אינו שולח בקשות “שלי”</li></ul>
+    <h3>משתמש מחובר</h3>
+    <ul class="check"><li>כל היכולות הקיימות נשמרות</li><li>מועדפים מתמזגים ללא מחיקה</li><li>isRegistered נכון</li><li>קהילה, אירוח וצ'אטים עובדים</li><li>token פג מחזיר ל־login</li></ul>
+    <h3>שערים טכניים</h3>
+    <p>Backend build וטסטים · Mobile TypeScript · ESLint ממוקד · iOS ו־Android אמיתיים · deep links והתראות · בדיקת לוגים ל־401 ו־Authorization.</p>
+  </div>
+
+  <h2>סדר ביצוע</h2>
+  <div class="card">
+    <ol>
+      <li>בדיקות חוזה ומצב בסיס.</li>
+      <li>API ציבורי, Optional JWT והקשחת חיפוש.</li>
+      <li>Session state וכפתור אורח.</li>
+      <li>Action guards, route guards ופרופיל אורח.</li>
+      <li>מועדפים מקומיים ו־merge.</li>
+      <li><code>returnTo</code>, interceptor ופרטיות.</li>
+      <li>QA מלא ופריסה מדורגת.</li>
+    </ol>
+    <p class="decision"><b>כלל פריסה:</b> לא פורסים backend פתוח לפני שהמובייל המתאים מוכן, ולא בונים גרסת חנויות לפני מעבר מסלול אורח ומסלול משתמש מחובר.</p>
+  </div>
+</main>
+</body>
+</html>

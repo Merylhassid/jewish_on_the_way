@@ -1,6 +1,6 @@
 import { Transform, Type } from 'class-transformer';
 import {
-  IsBoolean, IsDateString, IsInt, IsOptional, Max, Min,
+  IsBoolean, IsDateString, IsIn, IsInt, IsOptional, Max, Min,
 } from 'class-validator';
 
 export class SearchOffersQueryDto {
@@ -8,6 +8,10 @@ export class SearchOffersQueryDto {
   @IsInt()
   @Min(1)
   destinationId: number;
+
+  @IsOptional()
+  @IsIn(['stay', 'meals'])
+  hostingType?: 'stay' | 'meals';
 
   @IsOptional()
   @IsDateString()

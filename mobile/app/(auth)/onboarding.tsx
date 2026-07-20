@@ -1,19 +1,22 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import {
   Pressable, ScrollView, StyleSheet, Text, View, Platform,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { C } from '@/constants/theme';
-import { setLanguage, Language, LANGUAGE_LABELS } from '@/src/i18n';
+import { setLanguage, Language } from '@/src/i18n';
 import { useAuth } from '@/src/store/auth';
 import client from '@/src/api/client';
+import { safeReturnTo } from '@/src/auth/auth-gates';
 
 const KASHRUT_OPTIONS = ['none', 'rabbinate', 'mehadrin', 'badatz'] as const;
 
 export default function OnboardingScreen() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { updateUser } = useAuth();
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+  const postAuthRoute = safeReturnTo(returnTo);
   const [step,    setStep]    = useState<'lang' | 'kashrut'>('lang');
   const [kashrut, setKashrut] = useState('none');
   const [saving,  setSaving]  = useState(false);
@@ -30,7 +33,7 @@ export default function OnboardingScreen() {
       updateUser({ kashrutLevel: kashrut });
     } catch {}
     setSaving(false);
-    router.replace('/(tabs)');
+    router.replace(postAuthRoute as any);
   };
 
   return (

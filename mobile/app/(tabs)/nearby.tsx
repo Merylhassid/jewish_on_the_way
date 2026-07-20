@@ -4,23 +4,58 @@ import {
   ActivityIndicator, Platform, Pressable,
   RefreshControl, ScrollView, StyleSheet, Text, View,
 } from 'react-native';
+import { Image } from 'expo-image';
 import { useLocation } from '@/src/hooks/useLocation';
-import { ChevronRight, Flame, Globe, MapPin, Navigation, Utensils } from 'lucide-react-native';
+import { ChevronRight, Flame, MapPin, Navigation, Utensils } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C } from '@/constants/theme';
 import ErrorState from '@/src/components/ErrorState';
 import { getPrayerConfig } from '@/src/utils/prayerIcons';
+import SynagogueIcon, { SYNAGOGUE_ICON_BG } from '@/src/components/SynagogueIcon';
 
-interface NearbyRestaurant { id: number; name: string; address?: string; kashrutLevel: string; restaurantType: string | null; distanceMeters: number; city?: string; }
+interface NearbyRestaurant {
+  id: number;
+  name: string;
+  address?: string;
+  kashrutLevel: string;
+  restaurantType: string | null;
+  distanceMeters: number;
+  city?: string;
+  verificationStatus?: string | null;
+  googleRating?: number | string | null;
+  googleRatingCount?: number | null;
+  photoUrl?: string | null;
+}
 interface NearbySynagogue  { id: number; name: string; address?: string; denomination?: string; distanceMeters: number; }
 interface NearbyMinyan     { id: number; prayerType: string; date: string; time: string; locationText: string; participantsCount: number; almostFull: boolean; isFull: boolean; distanceMeters: number; destination: { id: number; city: string } | null; }
 
-const KASHRUT: Record<string, { color: string; bg: string }> = {
-  rabbinate: { color: '#6B7280', bg: '#F3F4F6' },
-  mehadrin:  { color: '#2563EB', bg: '#EFF6FF' },
-  badatz:    { color: '#16A34A', bg: '#F0FDF4' },
-  unknown:   { color: '#9CA3AF', bg: '#F9FAFB' },
+const TYPE_COLOR: Record<string, string> = {
+  meat: C.typeMeat,
+  dairy: C.typeDairy,
+  parve: C.typeParve,
+  pareve: C.typeParve,
+  unknown: '#9CA3AF',
+};
+const TYPE_BG: Record<string, string> = {
+  meat: C.typeMeatBg,
+  dairy: C.typeDairyBg,
+  parve: C.typeParveBg,
+  pareve: C.typeParveBg,
+  unknown: '#F4F4F5',
+};
+const TYPE_LABEL: Record<string, string> = {
+  meat: 'בשרי',
+  dairy: 'חלבי',
+  parve: 'פרווה',
+  pareve: 'פרווה',
+  unknown: 'כשר',
+};
+const KASHRUT: Record<string, { label: string; color: string; bg: string }> = {
+  rabbinate: { label: 'רבנות', color: C.kashrutNeutral, bg: C.kashrutNeutralBg },
+  mehadrin:  { label: 'מהדרין', color: C.kashrutGold,    bg: C.kashrutGoldBg },
+  badatz:    { label: 'בד"ץ',  color: C.kashrutGold,    bg: C.kashrutGoldBg },
+  unknown:   { label: 'כשר',   color: '#9CA3AF',        bg: '#F9FAFB' },
 };
 
 function fmtDate(iso: string) {
@@ -136,29 +171,62 @@ export default function NearbyScreen() {
               <View style={s.cards}>
                 {restaurants.map(r => {
                   const k = KASHRUT[r.kashrutLevel] ?? KASHRUT.unknown;
+                  const typeColor = TYPE_COLOR[r.restaurantType ?? 'unknown'] ?? TYPE_COLOR.unknown;
+                  const typeLabel = TYPE_LABEL[r.restaurantType ?? 'unknown'] ?? TYPE_LABEL.unknown;
+                  const typeBg = TYPE_BG[r.restaurantType ?? 'unknown'] ?? TYPE_BG.unknown;
+                  const isVerified = r.verificationStatus === 'verified';
+                  const rating = r.googleRating != null ? Number(r.googleRating) : null;
+                  const hasGoogleRating = isVerified && rating != null && Number.isFinite(rating);
                   return (
                     <Pressable
                       key={r.id}
                       style={({ pressed }) => [s.card, pressed && { opacity: 0.85, transform: [{ scale: 0.985 }] }]}
                       onPress={() => router.push(`/restaurant/${r.id}` as any)}
                     >
-                      <View style={[s.cardIcon, { backgroundColor: '#FEF9EC' }]}>
-                        <Utensils size={18} color={C.gold} strokeWidth={2} />
-                      </View>
                       <View style={s.cardBody}>
-                        <Text style={s.cardName} numberOfLines={1}>{r.name}</Text>
-                        {r.city && <Text style={s.cardSub}>{r.city}</Text>}
-                      </View>
-                      <View style={s.cardRight}>
-                        <View style={[s.badge, { backgroundColor: k.bg }]}>
-                          <Text style={[s.badgeText, { color: k.color }]}>{r.kashrutLevel}</Text>
+                        <View style={s.cardTop}>
+                          {r.photoUrl ? (
+                            <Image source={{ uri: r.photoUrl }} style={s.thumbnail} contentFit="cover" transition={180} />
+                          ) : (
+                            <View style={[s.typeIcon, { backgroundColor: typeBg }]}>
+                              <Utensils size={16} color={typeColor} strokeWidth={2} />
+                            </View>
+                          )}
+                          <View style={{ flex: 1 }}>
+                            <Text style={s.cardName} numberOfLines={1}>{r.name}</Text>
+                            <View style={s.typeLabelRow}>
+                              <View style={[s.typeDot, { backgroundColor: typeColor }]} />
+                              <Text style={[s.cardType, { color: typeColor }]}>{typeLabel}</Text>
+                            </View>
+                            {hasGoogleRating && (
+                              <View style={s.ratingRow}>
+                                <Text style={s.ratingStar}>★</Text>
+                                <Text style={s.ratingScore}>{rating!.toFixed(1)}</Text>
+                                <Text style={s.ratingCount}>
+                                  {r.googleRatingCount ? `(${r.googleRatingCount} · Google)` : '(Google)'}
+                                </Text>
+                              </View>
+                            )}
+                          </View>
+                          <View style={[s.badge, { backgroundColor: k.bg }]}>
+                            <Text style={[s.badgeText, { color: k.color }]}>{k.label}</Text>
+                          </View>
                         </View>
-                        <View style={s.distPill}>
-                          <Navigation size={10} color={C.gold} strokeWidth={2.5} />
-                          <Text style={s.distText}>{fmt(r.distanceMeters)}</Text>
+                        {(r.address || r.city) && (
+                          <View style={s.cardMeta}>
+                            <MapPin size={12} color="#9CA3AF" strokeWidth={2} />
+                            <Text style={s.metaText} numberOfLines={1}>{r.address || r.city}</Text>
+                          </View>
+                        )}
+                        <View style={s.cardBottom}>
+                          <View style={s.distPill}>
+                            <Navigation size={10} color={C.gold} strokeWidth={2.5} />
+                            <Text style={s.distText}>{fmt(r.distanceMeters)}</Text>
+                          </View>
+                          <View style={{ flex: 1 }} />
+                          <ChevronRight size={16} color="#E5E7EB" strokeWidth={2.5} />
                         </View>
                       </View>
-                      <ChevronRight size={16} color="#E5E7EB" strokeWidth={2.5} />
                     </Pressable>
                   );
                 })}
@@ -176,8 +244,8 @@ export default function NearbyScreen() {
                     style={({ pressed }) => [s.card, pressed && { opacity: 0.85, transform: [{ scale: 0.985 }] }]}
                     onPress={() => router.push(`/synagogue/${sg.id}` as any)}
                   >
-                    <View style={[s.cardIcon, { backgroundColor: '#F5F3FF' }]}>
-                      <Globe size={18} color="#7C3AED" strokeWidth={2} />
+                    <View style={[s.cardIcon, { backgroundColor: SYNAGOGUE_ICON_BG }]}>
+                      <SynagogueIcon size={20} />
                     </View>
                     <View style={s.cardBody}>
                       <Text style={s.cardName} numberOfLines={1}>{sg.name}</Text>
@@ -218,13 +286,13 @@ export default function NearbyScreen() {
                     </View>
                     <View style={s.cardRight}>
                       {mn.isFull && (
-                        <View style={[s.badge, { backgroundColor: '#F0FDF4' }]}>
-                          <Text style={[s.badgeText, { color: '#15803D' }]}>{t('minyans.full')}</Text>
+                        <View style={[s.badge, s.badgeFull]}>
+                          <Text style={[s.badgeText, s.badgeTextFull]}>{t('minyans.full')}</Text>
                         </View>
                       )}
                       {mn.almostFull && !mn.isFull && (
-                        <View style={[s.badge, { backgroundColor: '#FFF7ED', flexDirection: 'row', alignItems: 'center', gap: 3 }]}>
-                          <Flame size={10} color="#C2410C" strokeWidth={2} />
+                        <View style={[s.badge, s.badgeAlmost, { flexDirection: 'row', alignItems: 'center', gap: 3 }]}>
+                          <Flame size={10} color={C.kashrutGold} strokeWidth={2} />
                         </View>
                       )}
                       <View style={s.distPill}>
@@ -279,18 +347,36 @@ const s = StyleSheet.create({
   cards:   { gap: 10 },
 
   card: {
-    flexDirection: 'row', alignItems: 'center', gap: 12,
-    backgroundColor: '#fff', borderRadius: 16, padding: 14,
-    shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 }, elevation: 2,
+    flexDirection: 'row',
+    backgroundColor: '#fff', borderRadius: 20, padding: 14,
+    shadowColor: C.cardShadow, shadowOpacity: 0.06, shadowRadius: 14,
+    shadowOffset: { width: 0, height: 4 }, elevation: 2,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
   },
   cardIcon:  { width: 42, height: 42, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
-  cardBody:  { flex: 1 },
-  cardName:  { fontFamily: 'Inter-SemiBold', fontSize: 15, color: C.textPrimary },
+  cardBody:  { flex: 1, gap: 10 },
+  cardTop: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  typeIcon: { width: 36, height: 36, borderRadius: 10, justifyContent: 'center', alignItems: 'center' },
+  thumbnail: { width: 52, height: 52, borderRadius: 12, backgroundColor: '#EEF2F6' },
+  cardName:  { fontFamily: 'Inter-Bold', fontSize: 16, color: C.navy, letterSpacing: -0.1 },
   cardSub:   { fontFamily: 'Inter-Regular', fontSize: 12, color: C.textMuted, marginTop: 2 },
+  typeLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 3 },
+  typeDot: { width: 7, height: 7, borderRadius: 4 },
+  cardType: { fontFamily: 'Inter-SemiBold', fontSize: 12, marginTop: 1 },
+  ratingRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 5 },
+  ratingStar: { fontFamily: 'Inter-Bold', fontSize: 12.5, color: C.gold },
+  ratingScore: { fontFamily: 'Inter-Bold', fontSize: 12.5, color: C.navy },
+  ratingCount: { fontSize: 12, color: C.textMuted },
+  cardMeta: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  metaText: { fontSize: 12, color: '#9CA3AF', flex: 1 },
+  cardBottom: { flexDirection: 'row', alignItems: 'center' },
   cardRight: { alignItems: 'flex-end', gap: 4 },
   badge:     { borderRadius: 8, paddingHorizontal: 7, paddingVertical: 3 },
-  badgeText: { fontFamily: 'Inter-Bold', fontSize: 10, textTransform: 'capitalize' },
+  badgeText: { fontFamily: 'Inter-Bold', fontSize: 10 },
+  badgeFull: { backgroundColor: C.typeParveBg },
+  badgeAlmost: { backgroundColor: C.kashrutGoldBg },
+  badgeTextFull: { color: C.typeParve },
   distPill:  { flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: C.goldFaint, borderRadius: 8, paddingHorizontal: 7, paddingVertical: 3 },
   distText:  { fontFamily: 'Inter-Bold', fontSize: 11, color: C.gold },
 });

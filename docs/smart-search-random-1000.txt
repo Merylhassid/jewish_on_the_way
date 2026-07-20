@@ -1,0 +1,1000 @@
+sq0001	restaurant	should_route_and_try_results	פסתה מהדרין בלרנקה
+sq0002	restaurant	should_route_and_try_results	looking for סושיי near me in Buenos Aires
+sq0003	restaurant	should_route_and_try_results	איפה יש שוורמה באזור שלי
+sq0004	restaurant	should_route_and_try_results	איפה יש פלאפל באזור שלי
+sq0005	restaurant	should_route_and_try_results	איפה יש קפה באזור שלי
+sq0006	restaurant	should_route_and_try_results	המבורגר לידי
+sq0007	restaurant	should_route_and_try_results	kosher פיצ in Cannes
+sq0008	restaurant	should_route_and_try_results	קפה קרוב אלי
+sq0009	restaurant	should_route_and_try_results	איפה יש humus באזור שלי
+sq0010	restaurant	should_route_and_try_results	מחפש מאפיה כשר בנתניה
+sq0011	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה פסטה באילת
+sq0012	restaurant	should_route_and_try_results	find kosher מאפיה near me
+sq0013	restaurant	should_route_and_try_results	איפה יש שווארמה באזור שלי
+sq0014	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה קפא בקאן
+sq0015	restaurant	should_route_and_try_results	kosher meat restaurant in Eilat
+sq0016	restaurant	should_route_and_try_results	איפה יש פסתה באזור שלי
+sq0017	restaurant	should_route_and_try_results	sushii קרוב אלי
+sq0018	restaurant	should_route_and_try_results	פיש מהדרין באמסטרדם
+sq0019	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה bagel בפתח תקווה
+sq0020	restaurant	should_route_and_try_results	איפה יש פלפל באזור שלי
+sq0021	restaurant	should_route_and_try_results	המבןרגר קרוב אלי
+sq0022	restaurant	should_route_and_try_results	fish לידי
+sq0023	restaurant	should_route_and_try_results	find kosher pizzeria near me
+sq0024	restaurant	should_route_and_try_results	מחפש hambuger כשר בלוס אנג׳לס
+sq0025	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פיצנ באתונה
+sq0026	restaurant	should_route_and_try_results	איפה אפשר לאכול פלפל בקריית גת?
+sq0027	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה hummus באתונה
+sq0028	restaurant	should_route_and_try_results	איפה אפשר לאכול בשרי בברצלונה?
+sq0029	restaurant	should_route_and_try_results	מחפש חמס כשר בקוסמוי
+sq0030	restaurant	should_route_and_try_results	מחפש pasta כשר בירושלים
+sq0031	restaurant	should_route_and_try_results	איפה אפשר לאכול פיש בניס?
+sq0032	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה חומוס באילת
+sq0033	restaurant	should_route_and_try_results	איפה יש fish באזור שלי
+sq0034	restaurant	should_route_and_try_results	סוש מהדרין בטורונטו
+sq0035	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה bakery בציריך
+sq0036	restaurant	should_route_and_try_results	bakery קרוב אלי
+sq0037	restaurant	should_route_and_try_results	פיש לידי
+sq0038	restaurant	should_route_and_try_results	מחפש חמס כשר בטורונטו
+sq0039	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה bakery במיאמי
+sq0040	restaurant	should_route_and_try_results	פסתה במיאמי
+sq0041	restaurant	should_route_and_try_results	שווארמה קרוב אלי
+sq0042	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה מאפיה בבני ברק
+sq0043	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה שוורמה בבואנוס איירס
+sq0044	restaurant	should_route_and_try_results	meat restaurant בניו יורק
+sq0045	restaurant	should_route_and_try_results	מחפש פיש כשר בבנגקוק
+sq0046	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פלאפל בחיפה
+sq0047	restaurant	should_route_and_try_results	פלפל מהדרין במרקש
+sq0048	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה פלפל בלוס אנג׳לס
+sq0049	restaurant	should_route_and_try_results	kosher coffee in Tiberias
+sq0050	restaurant	should_route_and_try_results	kosher falafel in Petah Tikva
+sq0051	restaurant	should_route_and_try_results	איפה יש cafe באזור שלי
+sq0052	restaurant	should_route_and_try_results	איפה אפשר לאכול גלידה בברלין?
+sq0053	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה מאפייה בקאן
+sq0054	restaurant	should_route_and_try_results	looking for hummus near me in Lisbon
+sq0055	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה hambuger באמסטרדם
+sq0056	restaurant	should_route_and_try_results	גלידה לידי
+sq0057	restaurant	should_route_and_try_results	פסטה מהדרין בלוס אנג׳לס
+sq0058	restaurant	should_route_and_try_results	humus מהדרין בקוסמוי
+sq0059	restaurant	should_route_and_try_results	בשרי מהדרין בטוקיו
+sq0060	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה shwarma במילאנו
+sq0061	restaurant	should_route_and_try_results	looking for סוש near me in Paphos
+sq0062	restaurant	should_route_and_try_results	איפה יש סטייק באזור שלי
+sq0063	restaurant	should_route_and_try_results	שווארמה בקזבלנקה
+sq0064	restaurant	should_route_and_try_results	looking for sushi near me in Paphos
+sq0065	restaurant	should_route_and_try_results	fish מהדרין בפראג
+sq0066	restaurant	should_route_and_try_results	סטייק בבואנוס איירס
+sq0067	restaurant	should_route_and_try_results	hummus בניס
+sq0068	restaurant	should_route_and_try_results	בית קפה לידי
+sq0069	restaurant	should_route_and_try_results	איפה יש pasta באזור שלי
+sq0070	restaurant	should_route_and_try_results	looking for בשר near me in Buenos Aires
+sq0071	restaurant	should_route_and_try_results	find kosher מאפייה near me
+sq0072	restaurant	should_route_and_try_results	פלפל קרוב אלי
+sq0073	restaurant	should_route_and_try_results	פיצה בז׳נבה
+sq0074	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה shawarma בפאפוס
+sq0075	restaurant	should_route_and_try_results	איפה יש גליד באזור שלי
+sq0076	restaurant	should_route_and_try_results	hamburger קרוב אלי
+sq0077	restaurant	should_route_and_try_results	find kosher pizza near me
+sq0078	restaurant	should_route_and_try_results	kosher בורגר in Koh Samui
+sq0079	restaurant	should_route_and_try_results	kosher המבןרגר in Toronto
+sq0080	restaurant	should_route_and_try_results	kosher ice cream in Nice
+sq0081	restaurant	should_route_and_try_results	מחפש גלידה כשר במרקש
+sq0082	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה falafel place במיאמי
+sq0083	restaurant	should_route_and_try_results	איפה יש מאפייה באזור שלי
+sq0084	restaurant	should_route_and_try_results	looking for burger near me in Tiberias
+sq0085	restaurant	should_route_and_try_results	דגים קרוב אלי
+sq0086	restaurant	should_route_and_try_results	מאפייה באילת
+sq0087	restaurant	should_route_and_try_results	looking for פיצה near me in Paphos
+sq0088	restaurant	should_route_and_try_results	shawarma לידי
+sq0089	restaurant	should_route_and_try_results	איפה אפשר לאכול בורקס בקאן?
+sq0090	restaurant	should_route_and_try_results	איפה אפשר לאכול humus בניו יורק?
+sq0091	restaurant	should_route_and_try_results	מאפיה קרוב אלי
+sq0092	restaurant	should_route_and_try_results	meat restaurant קרוב אלי
+sq0093	restaurant	should_route_and_try_results	דגים לידי
+sq0094	restaurant	should_route_and_try_results	פיצה בלוס אנג׳לס
+sq0095	restaurant	should_route_and_try_results	pasta קרוב אלי
+sq0096	restaurant	should_route_and_try_results	looking for פלאפל near me in Kiryat Gat
+sq0097	restaurant	should_route_and_try_results	find kosher שוארמה near me
+sq0098	restaurant	should_route_and_try_results	בשרי קרוב אלי
+sq0099	restaurant	should_route_and_try_results	מחפש בשר כשר בפראג
+sq0100	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה sushii בבנגקוק
+sq0101	restaurant	should_route_and_try_results	meat restaurant לידי
+sq0102	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה בית קפה בבואנוס איירס
+sq0103	restaurant	should_route_and_try_results	פלפל בטוקיו
+sq0104	restaurant	should_route_and_try_results	חומוס מהדרין בפריז
+sq0105	restaurant	should_route_and_try_results	bagel מהדרין בלימסול
+sq0106	restaurant	should_route_and_try_results	איפה אפשר לאכול דגים בפראג?
+sq0107	restaurant	should_route_and_try_results	שוארמה קרוב אלי
+sq0108	restaurant	should_route_and_try_results	kosher פסתה in Budapest
+sq0109	restaurant	should_route_and_try_results	kosher hummus in Miami
+sq0110	restaurant	should_route_and_try_results	pasta בפאפוס
+sq0111	restaurant	should_route_and_try_results	kosher בשר in Nice
+sq0112	restaurant	should_route_and_try_results	kosher cafe in Porto
+sq0113	restaurant	should_route_and_try_results	looking for בורקס near me in Buenos Aires
+sq0114	restaurant	should_route_and_try_results	פיצה קרוב אלי
+sq0115	restaurant	should_route_and_try_results	איפה אפשר לאכול גליד בטורונטו?
+sq0116	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה סוש בקזבלנקה
+sq0117	restaurant	should_route_and_try_results	איפה אפשר לאכול fish בציריך?
+sq0118	restaurant	should_route_and_try_results	shwarma בוינה
+sq0119	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה gelato במילאנו
+sq0120	restaurant	should_route_and_try_results	kosher פלאפל in Haifa
+sq0121	restaurant	should_route_and_try_results	בשרי לידי
+sq0122	restaurant	should_route_and_try_results	find kosher falafel place near me
+sq0123	restaurant	should_route_and_try_results	sushii לידי
+sq0124	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה שוארמה בפוקט
+sq0125	restaurant	should_route_and_try_results	kosher פיצנ in London
+sq0126	restaurant	should_route_and_try_results	find kosher shwarma near me
+sq0127	restaurant	should_route_and_try_results	shwarma קרוב אלי
+sq0128	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה humus בליסבון
+sq0129	restaurant	should_route_and_try_results	המבןרגר מהדרין בציריך
+sq0130	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה humus במרקש
+sq0131	restaurant	should_route_and_try_results	קפא לידי
+sq0132	restaurant	should_route_and_try_results	איפה יש pizzeria באזור שלי
+sq0133	restaurant	should_route_and_try_results	kosher שווארמה in Rome
+sq0134	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פיצריה במיאמי
+sq0135	restaurant	should_route_and_try_results	שוורמה מהדרין בטבריה
+sq0136	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פיצ בקוסמוי
+sq0137	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה gelato בפאפוס
+sq0138	restaurant	should_route_and_try_results	find kosher פסטה near me
+sq0139	restaurant	should_route_and_try_results	המבןרגר מהדרין בליסבון
+sq0140	restaurant	should_route_and_try_results	pasta מהדרין במרקש
+sq0141	restaurant	should_route_and_try_results	קפא בקוסמוי
+sq0142	restaurant	should_route_and_try_results	איפה אפשר לאכול burger בפאפוס?
+sq0143	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה pasta בבנגקוק
+sq0144	restaurant	should_route_and_try_results	coffee בברלין
+sq0145	restaurant	should_route_and_try_results	steak מהדרין באמסטרדם
+sq0146	restaurant	should_route_and_try_results	איפה אפשר לאכול sushii בלוס אנג׳לס?
+sq0147	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה גלידה בעפולה
+sq0148	restaurant	should_route_and_try_results	איפה יש פיש באזור שלי
+sq0149	restaurant	should_route_and_try_results	humus בפאפוס
+sq0150	restaurant	should_route_and_try_results	kosher burger in Los Angeles
+sq0151	restaurant	should_route_and_try_results	איפה אפשר לאכול fish בברלין?
+sq0152	restaurant	should_route_and_try_results	bakery לידי
+sq0153	restaurant	should_route_and_try_results	humus לידי
+sq0154	restaurant	should_route_and_try_results	hamburger באנטוורפן
+sq0155	restaurant	should_route_and_try_results	איפה יש gelato באזור שלי
+sq0156	restaurant	should_route_and_try_results	פלפל מהדרין ברומא
+sq0157	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה מאפיה בלרנקה
+sq0158	restaurant	should_route_and_try_results	looking for סושי near me in Jerusalem
+sq0159	restaurant	should_route_and_try_results	בורקס בפאפוס
+sq0160	restaurant	should_route_and_try_results	find kosher פיצריה near me
+sq0161	restaurant	should_route_and_try_results	מחפש גלידה כשר באנטוורפן
+sq0162	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה fish בפורטו
+sq0163	restaurant	should_route_and_try_results	looking for pasta near me in Phuket
+sq0164	restaurant	should_route_and_try_results	find kosher גליד near me
+sq0165	restaurant	should_route_and_try_results	kosher המבורג in Phuket
+sq0166	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה shwarma בברצלונה
+sq0167	restaurant	should_route_and_try_results	hambuger בברלין
+sq0168	restaurant	should_route_and_try_results	find kosher קפא near me
+sq0169	restaurant	should_route_and_try_results	מחפש פיש כשר במילאנו
+sq0170	restaurant	should_route_and_try_results	looking for פסטה near me in Kiryat Gat
+sq0171	restaurant	should_route_and_try_results	איפה אפשר לאכול גליד בעפולה?
+sq0172	restaurant	should_route_and_try_results	shwarma לידי
+sq0173	restaurant	should_route_and_try_results	find kosher hambuger near me
+sq0174	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פיצה בפראג
+sq0175	restaurant	should_route_and_try_results	kosher steak in Tel Aviv
+sq0176	restaurant	should_route_and_try_results	המבורגר בקריית גת
+sq0177	restaurant	should_route_and_try_results	looking for פלפל near me in Vienna
+sq0178	restaurant	should_route_and_try_results	looking for פלפל near me in Eilat
+sq0179	restaurant	should_route_and_try_results	coffee קרוב אלי
+sq0180	restaurant	should_route_and_try_results	המבורג לידי
+sq0181	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה בשרי במרקש
+sq0182	restaurant	should_route_and_try_results	find kosher shawarma near me
+sq0183	restaurant	should_route_and_try_results	kosher פסטה in Bnei Brak
+sq0184	restaurant	should_route_and_try_results	פיצריה לידי
+sq0185	restaurant	should_route_and_try_results	kosher piza in Limassol
+sq0186	restaurant	should_route_and_try_results	find kosher hamburger near me
+sq0187	restaurant	should_route_and_try_results	מחפש fish כשר בקריית גת
+sq0188	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה humus בבית שמש
+sq0189	restaurant	should_route_and_try_results	בשר בלוס אנג׳לס
+sq0190	restaurant	should_route_and_try_results	קפא קרוב אלי
+sq0191	restaurant	should_route_and_try_results	find kosher cafe near me
+sq0192	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה פיצה בעפולה
+sq0193	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה steak במונטריאול
+sq0194	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה bakery בפוקט
+sq0195	restaurant	should_route_and_try_results	find kosher steak near me
+sq0196	restaurant	should_route_and_try_results	בורגר קרוב אלי
+sq0197	restaurant	should_route_and_try_results	איפה אפשר לאכול פיש באמסטרדם?
+sq0198	restaurant	should_route_and_try_results	איפה אפשר לאכול gelato בלונדון?
+sq0199	restaurant	should_route_and_try_results	looking for בורגר near me in New York
+sq0200	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה בשרי בלרנקה
+sq0201	restaurant	should_route_and_try_results	איפה יש hummus באזור שלי
+sq0202	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה המבורג בפתח תקווה
+sq0203	restaurant	should_route_and_try_results	מחפש fish כשר באנטוורפן
+sq0204	restaurant	should_route_and_try_results	find kosher שווארמה near me
+sq0205	restaurant	should_route_and_try_results	looking for pasta near me in Kiryat Gat
+sq0206	restaurant	should_route_and_try_results	פסטה לידי
+sq0207	restaurant	should_route_and_try_results	cafe מהדרין במיאמי
+sq0208	restaurant	should_route_and_try_results	kosher בית קפה in Buenos Aires
+sq0209	restaurant	should_route_and_try_results	גליד קרוב אלי
+sq0210	restaurant	should_route_and_try_results	גליד בבני ברק
+sq0211	restaurant	should_route_and_try_results	שוורמה בבנגקוק
+sq0212	restaurant	should_route_and_try_results	איפה יש coffee באזור שלי
+sq0213	restaurant	should_route_and_try_results	שוארמה מהדרין בלרנקה
+sq0214	restaurant	should_route_and_try_results	looking for fish near me in Miami
+sq0215	restaurant	should_route_and_try_results	kosher coffee in Paris
+sq0216	restaurant	should_route_and_try_results	falafel place לידי
+sq0217	restaurant	should_route_and_try_results	kosher מאפיה in New York
+sq0218	restaurant	should_route_and_try_results	איפה יש מאפיה באזור שלי
+sq0219	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פסטה במילאנו
+sq0220	restaurant	should_route_and_try_results	גליד מהדרין במילאנו
+sq0221	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה sushi בקוסמוי
+sq0222	restaurant	should_route_and_try_results	בורגר בפורטו
+sq0223	restaurant	should_route_and_try_results	פסטה בטבריה
+sq0224	restaurant	should_route_and_try_results	מחפש מאפיה כשר באנטוורפן
+sq0225	restaurant	should_route_and_try_results	חומוס קרוב אלי
+sq0226	restaurant	should_route_and_try_results	גליד בציריך
+sq0227	restaurant	should_route_and_try_results	hummus במילאנו
+sq0228	restaurant	should_route_and_try_results	בורקס מהדרין בפורטו
+sq0229	restaurant	should_route_and_try_results	fish קרוב אלי
+sq0230	restaurant	should_route_and_try_results	ice cream קרוב אלי
+sq0231	restaurant	should_route_and_try_results	בשרי מהדרין בפורטו
+sq0232	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה פלאפל בפתח תקווה
+sq0233	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה גליד בתל אביב
+sq0234	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה meat restaurant בפראג
+sq0235	restaurant	should_route_and_try_results	kosher פסתה in Vienna
+sq0236	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה המבורג בעפולה
+sq0237	restaurant	should_route_and_try_results	kosher פלפל in Madrid
+sq0238	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה בית קפה במרקש
+sq0239	restaurant	should_route_and_try_results	מחפש שווארמה כשר במילאנו
+sq0240	restaurant	should_route_and_try_results	מאפיה מהדרין בירושלים
+sq0241	restaurant	should_route_and_try_results	בורקס מהדרין בפאפוס
+sq0242	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה shawarma בטורונטו
+sq0243	restaurant	should_route_and_try_results	steak קרוב אלי
+sq0244	restaurant	should_route_and_try_results	שוארמה מהדרין בפראג
+sq0245	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה בשר בדובאי
+sq0246	restaurant	should_route_and_try_results	looking for פלאפל near me in Buenos Aires
+sq0247	restaurant	should_route_and_try_results	find kosher דגים near me
+sq0248	restaurant	should_route_and_try_results	looking for פלפל near me in Marrakech
+sq0249	restaurant	should_route_and_try_results	מחפש דגים כשר בטורונטו
+sq0250	restaurant	should_route_and_try_results	איפה יש piza באזור שלי
+sq0251	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה בשרי בתל אביב
+sq0252	restaurant	should_route_and_try_results	פסטה מהדרין במונטריאול
+sq0253	restaurant	should_route_and_try_results	kosher שוורמה in Limassol
+sq0254	restaurant	should_route_and_try_results	גליד באתונה
+sq0255	restaurant	should_route_and_try_results	looking for fish near me in Larnaca
+sq0256	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה fish בז׳נבה
+sq0257	restaurant	should_route_and_try_results	איפה יש פסטה באזור שלי
+sq0258	restaurant	should_route_and_try_results	find kosher ice cream near me
+sq0259	restaurant	should_route_and_try_results	pasta מהדרין באתונה
+sq0260	restaurant	should_route_and_try_results	looking for hamburger near me in Larnaca
+sq0261	restaurant	should_route_and_try_results	מחפש בית קפה כשר בפראג
+sq0262	restaurant	should_route_and_try_results	kosher סטייק in Limassol
+sq0263	restaurant	should_route_and_try_results	פיצריה מהדרין בטוקיו
+sq0264	restaurant	should_route_and_try_results	looking for pasta near me in Tokyo
+sq0265	restaurant	should_route_and_try_results	looking for קפא near me in Paris
+sq0266	restaurant	should_route_and_try_results	בשר ברומא
+sq0267	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה fish בתל אביב
+sq0268	restaurant	should_route_and_try_results	מחפש pasta כשר באילת
+sq0269	restaurant	should_route_and_try_results	falafel place מהדרין ברומא
+sq0270	restaurant	should_route_and_try_results	בית קפה קרוב אלי
+sq0271	restaurant	should_route_and_try_results	kosher פלאפל in Buenos Aires
+sq0272	restaurant	should_route_and_try_results	humus קרוב אלי
+sq0273	restaurant	should_route_and_try_results	המבורגר מהדרין בציריך
+sq0274	restaurant	should_route_and_try_results	איפה אפשר לאכול cafe בלוס אנג׳לס?
+sq0275	restaurant	should_route_and_try_results	פלאפל לידי
+sq0276	restaurant	should_route_and_try_results	חומוס מהדרין בלונדון
+sq0277	restaurant	should_route_and_try_results	מחפש מאפיה כשר באילת
+sq0278	restaurant	should_route_and_try_results	בשר בראשון לציון
+sq0279	restaurant	should_route_and_try_results	איפה אפשר לאכול gelato בניס?
+sq0280	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה gelato בברצלונה
+sq0281	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה בשר בניס
+sq0282	restaurant	should_route_and_try_results	מחפש פיש כשר באתונה
+sq0283	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה גלידה באתונה
+sq0284	restaurant	should_route_and_try_results	איפה אפשר לאכול בשרי בלונדון?
+sq0285	restaurant	should_route_and_try_results	מחפש בשרי כשר בדובאי
+sq0286	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פיצנ בטורונטו
+sq0287	restaurant	should_route_and_try_results	kosher fish in Antwerp
+sq0288	restaurant	should_route_and_try_results	איפה יש בורקס באזור שלי
+sq0289	restaurant	should_route_and_try_results	kosher פלאפל in Bangkok
+sq0290	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה fish בפראג
+sq0291	restaurant	should_route_and_try_results	איפה אפשר לאכול דגים בראשון לציון?
+sq0292	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה shawarma בקריית גת
+sq0293	restaurant	should_route_and_try_results	שווארמה לידי
+sq0294	restaurant	should_route_and_try_results	סטייק לידי
+sq0295	restaurant	should_route_and_try_results	בשרי בראשון לציון
+sq0296	restaurant	should_route_and_try_results	איפה אפשר לאכול falafel בטבריה?
+sq0297	restaurant	should_route_and_try_results	איפה יש חמס באזור שלי
+sq0298	restaurant	should_route_and_try_results	איפה יש פיצנ באזור שלי
+sq0299	restaurant	should_route_and_try_results	שוורמה לידי
+sq0300	restaurant	should_route_and_try_results	פסתה מהדרין בבית שמש
+sq0301	restaurant	should_route_and_try_results	find kosher hummus near me
+sq0302	restaurant	should_route_and_try_results	איפה אפשר לאכול cafe בבואנוס איירס?
+sq0303	restaurant	should_route_and_try_results	איפה אפשר לאכול burger בבית שמש?
+sq0304	restaurant	should_route_and_try_results	שוארמה באמסטרדם
+sq0305	restaurant	should_route_and_try_results	sushii מהדרין בפורטו
+sq0306	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פלאפל בבית שמש
+sq0307	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה pasta בנתניה
+sq0308	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה coffee באילת
+sq0309	restaurant	should_route_and_try_results	מחפש פסתה כשר בליסבון
+sq0310	restaurant	should_route_and_try_results	מחפש גליד כשר בניו יורק
+sq0311	restaurant	should_route_and_try_results	שוארמה לידי
+sq0312	restaurant	should_route_and_try_results	looking for piza near me in Madrid
+sq0313	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה בשרי בחיפה
+sq0314	restaurant	should_route_and_try_results	איפה אפשר לאכול pasta באמסטרדם?
+sq0315	restaurant	should_route_and_try_results	hambuger בז׳נבה
+sq0316	restaurant	should_route_and_try_results	kosher בשר in Geneva
+sq0317	restaurant	should_route_and_try_results	סטייק קרוב אלי
+sq0318	restaurant	should_route_and_try_results	איפה יש שוארמה באזור שלי
+sq0319	restaurant	should_route_and_try_results	מחפש cafe כשר בבואנוס איירס
+sq0320	restaurant	should_route_and_try_results	find kosher בורקס near me
+sq0321	restaurant	should_route_and_try_results	מחפש meat restaurant כשר בפאפוס
+sq0322	restaurant	should_route_and_try_results	איפה יש סושי באזור שלי
+sq0323	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה bagel בקאן
+sq0324	restaurant	should_route_and_try_results	meat restaurant בקוסמוי
+sq0325	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה דגים בקאן
+sq0326	restaurant	should_route_and_try_results	מאפייה מהדרין בבית שמש
+sq0327	restaurant	should_route_and_try_results	looking for falafel near me in Montreal
+sq0328	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה pizza בפוקט
+sq0329	restaurant	should_route_and_try_results	hambuger קרוב אלי
+sq0330	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה גליד באנטוורפן
+sq0331	restaurant	should_route_and_try_results	מחפש בורקס כשר בבית שמש
+sq0332	restaurant	should_route_and_try_results	pasta לידי
+sq0333	restaurant	should_route_and_try_results	איפה אפשר לאכול coffee בעפולה?
+sq0334	restaurant	should_route_and_try_results	פיש קרוב אלי
+sq0335	restaurant	should_route_and_try_results	מחפש פלאפל כשר בניו יורק
+sq0336	restaurant	should_route_and_try_results	איפה אפשר לאכול קפה בלרנקה?
+sq0337	restaurant	should_route_and_try_results	looking for סושי near me in Casablanca
+sq0338	restaurant	should_route_and_try_results	חמס לידי
+sq0339	restaurant	should_route_and_try_results	kosher בורקס in Larnaca
+sq0340	restaurant	should_route_and_try_results	איפה יש bagel באזור שלי
+sq0341	restaurant	should_route_and_try_results	איפה אפשר לאכול shwarma באמסטרדם?
+sq0342	restaurant	should_route_and_try_results	שווארמה בקוסמוי
+sq0343	restaurant	should_route_and_try_results	בורגר במילאנו
+sq0344	restaurant	should_route_and_try_results	איפה אפשר לאכול hummus בקזבלנקה?
+sq0345	restaurant	should_route_and_try_results	איפה אפשר לאכול pizzeria במילאנו?
+sq0346	restaurant	should_route_and_try_results	looking for pizza near me in Haifa
+sq0347	restaurant	should_route_and_try_results	איפה אפשר לאכול bagel בתל אביב?
+sq0348	restaurant	should_route_and_try_results	קפה מהדרין במונטריאול
+sq0349	restaurant	should_route_and_try_results	looking for coffee near me in Bnei Brak
+sq0350	restaurant	should_route_and_try_results	steak בניו יורק
+sq0351	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה piza בבני ברק
+sq0352	restaurant	should_route_and_try_results	looking for שוורמה near me in Petah Tikva
+sq0353	restaurant	should_route_and_try_results	pizzeria מהדרין בז׳נבה
+sq0354	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה fish בחיפה
+sq0355	restaurant	should_route_and_try_results	looking for פיצה near me in Vienna
+sq0356	restaurant	should_route_and_try_results	looking for burger near me in New York
+sq0357	restaurant	should_route_and_try_results	looking for גלידה near me in Tel Aviv
+sq0358	restaurant	should_route_and_try_results	סושי קרוב אלי
+sq0359	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה hambuger בז׳נבה
+sq0360	restaurant	should_route_and_try_results	פיצריה מהדרין בוינה
+sq0361	restaurant	should_route_and_try_results	kosher שוורמה in Marrakech
+sq0362	restaurant	should_route_and_try_results	מחפש המבןרגר כשר בחיפה
+sq0363	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה פיצ במדריד
+sq0364	restaurant	should_route_and_try_results	חומו לידי
+sq0365	restaurant	should_route_and_try_results	find kosher פלאפל near me
+sq0366	restaurant	should_route_and_try_results	מחפש חומו כשר בבודפשט
+sq0367	restaurant	should_route_and_try_results	find kosher המבורג near me
+sq0368	restaurant	should_route_and_try_results	בורגר לידי
+sq0369	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה חומו בחיפה
+sq0370	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה בשר בפראג
+sq0371	restaurant	should_route_and_try_results	kosher pasta in Los Angeles
+sq0372	restaurant	should_route_and_try_results	מחפש פלאפל כשר בלוס אנג׳לס
+sq0373	restaurant	should_route_and_try_results	find kosher bagel near me
+sq0374	restaurant	should_route_and_try_results	איפה יש steak באזור שלי
+sq0375	restaurant	should_route_and_try_results	kosher דגים in Phuket
+sq0376	restaurant	should_route_and_try_results	מחפש בשרי כשר בניס
+sq0377	restaurant	should_route_and_try_results	חומו מהדרין בטוקיו
+sq0378	restaurant	should_route_and_try_results	איפה יש פיצ באזור שלי
+sq0379	restaurant	should_route_and_try_results	שווארמה בבית שמש
+sq0380	restaurant	should_route_and_try_results	מחפש פיש כשר בליסבון
+sq0381	restaurant	should_route_and_try_results	מחפש גלידה כשר בניו יורק
+sq0382	restaurant	should_route_and_try_results	איפה יש bakery באזור שלי
+sq0383	restaurant	should_route_and_try_results	אני נמצא בישראל ורוצה cafe בתל אביב
+sq0384	restaurant	should_route_and_try_results	kosher גלידה in Athens
+sq0385	restaurant	should_route_and_try_results	looking for חומוס near me in Tel Aviv
+sq0386	restaurant	should_route_and_try_results	shawarma מהדרין בבואנוס איירס
+sq0387	restaurant	should_route_and_try_results	איפה יש קפא באזור שלי
+sq0388	restaurant	should_route_and_try_results	looking for גלידה near me in Porto
+sq0389	restaurant	should_route_and_try_results	איפה אפשר לאכול המבורג באתונה?
+sq0390	restaurant	should_route_and_try_results	looking for בורגר near me in Jerusalem
+sq0391	restaurant	should_route_and_try_results	אני בתל אביב אבל רוצה falafel place בלוס אנג׳לס
+sq0392	restaurant	should_route_and_try_results	איפה אפשר לאכול פיצנ בקאן?
+sq0393	restaurant	should_route_and_try_results	איפה יש סוש באזור שלי
+sq0394	restaurant	should_route_and_try_results	looking for חומו near me in Tiberias
+sq0395	restaurant	should_route_and_try_results	איפה יש shwarma באזור שלי
+sq0396	restaurant	should_route_and_try_results	איפה אפשר לאכול דגים בנתניה?
+sq0397	restaurant	should_route_and_try_results	איפה אפשר לאכול חומו בלרנקה?
+sq0398	restaurant	should_route_and_try_results	looking for גליד near me in Madrid
+sq0399	restaurant	should_route_and_try_results	איפה אפשר לאכול burger במדריד?
+sq0400	restaurant	should_route_and_try_results	ice cream מהדרין באתונה
+sq0401	synagogue	should_route_and_try_results	nearest teimani synagogue in Zurich
+sq0402	synagogue	should_route_and_try_results	בית כנסת ספרדי בבואנוס איירס
+sq0403	synagogue	should_route_and_try_results	synagogue in Barcelona
+sq0404	synagogue	should_route_and_try_results	find synagoge near me
+sq0405	synagogue	should_route_and_try_results	nearest chabad house in Netanya
+sq0406	synagogue	should_route_and_try_results	find chabad synagogue near me
+sq0407	synagogue	should_route_and_try_results	shul in Tiberias
+sq0408	synagogue	should_route_and_try_results	בית כנס לידי
+sq0409	synagogue	should_route_and_try_results	nearest teimani synagogue in London
+sq0410	synagogue	should_route_and_try_results	find ashkenaz synagogue near me
+sq0411	synagogue	should_route_and_try_results	find teimani synagogue near me
+sq0412	synagogue	should_route_and_try_results	synagoge in Jerusalem
+sq0413	synagogue	should_route_and_try_results	בית כנסת תימני לידי
+sq0414	synagogue	should_route_and_try_results	find synagogue near me
+sq0415	synagogue	should_route_and_try_results	בית כנסת תימני עם מניין בלרנקה
+sq0416	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון בנתניה
+sq0417	synagogue	should_route_and_try_results	find chabad house near me
+sq0418	synagogue	should_route_and_try_results	מחפש בית כנסת קרוב למלון בבני ברק
+sq0419	synagogue	should_route_and_try_results	בית כנסת אשכנזי באילת
+sq0420	synagogue	should_route_and_try_results	מחפש בית כנסת אשכנזי קרוב למלון בקריית גת
+sq0421	synagogue	should_route_and_try_results	בית כנסת תימני קרוב אלי
+sq0422	synagogue	should_route_and_try_results	בית כנסת חבד בקזבלנקה
+sq0423	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון בציריך
+sq0424	synagogue	should_route_and_try_results	בית כנסת ספרדי לידי
+sq0425	synagogue	should_route_and_try_results	בית כנס עם מניין באנטוורפן
+sq0426	synagogue	should_route_and_try_results	בית כנסת חבד בציריך
+sq0427	synagogue	should_route_and_try_results	בית כנסת לידי
+sq0428	synagogue	should_route_and_try_results	synagogue in Vienna
+sq0429	synagogue	should_route_and_try_results	מחפש בית כנסת חבד קרוב למלון בברצלונה
+sq0430	synagogue	should_route_and_try_results	מחפש בית כנסת ספרדי קרוב למלון בבני ברק
+sq0431	synagogue	should_route_and_try_results	nearest synagogue in Prague
+sq0432	synagogue	should_route_and_try_results	מחפש בית כנסת חבד קרוב למלון במרקש
+sq0433	synagogue	should_route_and_try_results	synagogue in Eilat
+sq0434	synagogue	should_route_and_try_results	בית גנסת בניו יורק
+sq0435	synagogue	should_route_and_try_results	בית כנסת אשכנזי קרוב אלי
+sq0436	synagogue	should_route_and_try_results	בית כנסת ספרדי בבית שמש
+sq0437	synagogue	should_route_and_try_results	teimani synagogue in Barcelona
+sq0438	synagogue	should_route_and_try_results	בית כנסת ספרדי קרוב אלי
+sq0439	synagogue	should_route_and_try_results	nearest chabad synagogue in Tel Aviv
+sq0440	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון בבני ברק
+sq0441	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון במיאמי
+sq0442	synagogue	should_route_and_try_results	nearest synagoge in Zurich
+sq0443	synagogue	should_route_and_try_results	shul in Eilat
+sq0444	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון בראשון לציון
+sq0445	synagogue	should_route_and_try_results	בית כנסת חבד לידי
+sq0446	synagogue	should_route_and_try_results	בית כנסת בתל אביב
+sq0447	synagogue	should_route_and_try_results	בית כנס עם מניין בנתניה
+sq0448	synagogue	should_route_and_try_results	בית כנס בלימסול
+sq0449	synagogue	should_route_and_try_results	בית כנס עם מניין בטורונטו
+sq0450	synagogue	should_route_and_try_results	בית חבד קרוב אלי
+sq0451	synagogue	should_route_and_try_results	בית גנסת קרוב אלי
+sq0452	synagogue	should_route_and_try_results	sfarad synagogue in Buenos Aires
+sq0453	synagogue	should_route_and_try_results	בית כנסת קרוב אלי
+sq0454	synagogue	should_route_and_try_results	teimani synagogue in Netanya
+sq0455	synagogue	should_route_and_try_results	בית כנסת עם מניין בפראג
+sq0456	synagogue	should_route_and_try_results	nearest synagogue in Casablanca
+sq0457	synagogue	should_route_and_try_results	nearest sfarad synagogue in Limassol
+sq0458	synagogue	should_route_and_try_results	בית חבד עם מניין בבנגקוק
+sq0459	synagogue	should_route_and_try_results	find shul near me
+sq0460	synagogue	should_route_and_try_results	בית כנסת בוינה
+sq0461	synagogue	should_route_and_try_results	בית כנס קרוב אלי
+sq0462	synagogue	should_route_and_try_results	בית חבד בבני ברק
+sq0463	synagogue	should_route_and_try_results	find sfarad synagogue near me
+sq0464	synagogue	should_route_and_try_results	shul in Rishon LeZion
+sq0465	synagogue	should_route_and_try_results	sfarad synagogue in Bangkok
+sq0466	synagogue	should_route_and_try_results	בית כנסת ספרדי בקריית גת
+sq0467	synagogue	should_route_and_try_results	בית כנסת תימני בלוס אנג׳לס
+sq0468	synagogue	should_route_and_try_results	בית גנסת לידי
+sq0469	synagogue	should_route_and_try_results	ashkenaz synagogue in Tiberias
+sq0470	synagogue	should_route_and_try_results	בית חבד לידי
+sq0471	synagogue	should_route_and_try_results	teimani synagogue in Beit Shemesh
+sq0472	synagogue	should_route_and_try_results	מחפש בית כנסת חבד קרוב למלון בלונדון
+sq0473	synagogue	should_route_and_try_results	nearest sfarad synagogue in Phuket
+sq0474	synagogue	should_route_and_try_results	מחפש בית חבד קרוב למלון באילת
+sq0475	synagogue	should_route_and_try_results	nearest ashkenaz synagogue in Budapest
+sq0476	synagogue	should_route_and_try_results	מחפש בית כנסת חבד קרוב למלון בקזבלנקה
+sq0477	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון בטוקיו
+sq0478	synagogue	should_route_and_try_results	בית כנסת חבד קרוב אלי
+sq0479	synagogue	should_route_and_try_results	teimani synagogue in Casablanca
+sq0480	synagogue	should_route_and_try_results	chabad synagogue in Budapest
+sq0481	synagogue	should_route_and_try_results	sfarad synagogue in Barcelona
+sq0482	synagogue	should_route_and_try_results	shul in Larnaca
+sq0483	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון במילאנו
+sq0484	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון בדובאי
+sq0485	synagogue	should_route_and_try_results	nearest chabad synagogue in Vienna
+sq0486	synagogue	should_route_and_try_results	בית כנס עם מניין בפריז
+sq0487	synagogue	should_route_and_try_results	מחפש בית כנסת קרוב למלון במדריד
+sq0488	synagogue	should_route_and_try_results	מחפש בית כנסת קרוב למלון בפריז
+sq0489	synagogue	should_route_and_try_results	בית כנסת אשכנזי עם מניין בניו יורק
+sq0490	synagogue	should_route_and_try_results	nearest synagogue in Antwerp
+sq0491	synagogue	should_route_and_try_results	בית חבד עם מניין בעפולה
+sq0492	synagogue	should_route_and_try_results	teimani synagogue in Bangkok
+sq0493	synagogue	should_route_and_try_results	nearest teimani synagogue in Miami
+sq0494	synagogue	should_route_and_try_results	מחפש בית כנסת אשכנזי קרוב למלון בראשון לציון
+sq0495	synagogue	should_route_and_try_results	nearest chabad synagogue in Prague
+sq0496	synagogue	should_route_and_try_results	בית כנסת ספרדי באמסטרדם
+sq0497	synagogue	should_route_and_try_results	בית כנסת עם מניין בבנגקוק
+sq0498	synagogue	should_route_and_try_results	בית כנסת ספרדי עם מניין בקזבלנקה
+sq0499	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון באמסטרדם
+sq0500	synagogue	should_route_and_try_results	nearest chabad house in Tokyo
+sq0501	synagogue	should_route_and_try_results	מחפש בית חבד קרוב למלון באנטוורפן
+sq0502	synagogue	should_route_and_try_results	chabad house in Netanya
+sq0503	synagogue	should_route_and_try_results	מחפש בית חבד קרוב למלון במיאמי
+sq0504	synagogue	should_route_and_try_results	מחפש בית חבד קרוב למלון בז׳נבה
+sq0505	synagogue	should_route_and_try_results	synagogue in Tel Aviv
+sq0506	synagogue	should_route_and_try_results	בית גנסת עם מניין בוינה
+sq0507	synagogue	should_route_and_try_results	nearest shul in Athens
+sq0508	synagogue	should_route_and_try_results	nearest synagogue in Nice
+sq0509	synagogue	should_route_and_try_results	בית חבד במונטריאול
+sq0510	synagogue	should_route_and_try_results	nearest sfarad synagogue in Koh Samui
+sq0511	synagogue	should_route_and_try_results	nearest synagoge in Amsterdam
+sq0512	synagogue	should_route_and_try_results	בית כנסת תימני בקאן
+sq0513	synagogue	should_route_and_try_results	מחפש בית כנסת קרוב למלון בטבריה
+sq0514	synagogue	should_route_and_try_results	מחפש בית כנסת קרוב למלון בחיפה
+sq0515	synagogue	should_route_and_try_results	synagoge in Tel Aviv
+sq0516	synagogue	should_route_and_try_results	בית כנסת חבד בתל אביב
+sq0517	synagogue	should_route_and_try_results	בית כנסת אשכנזי בציריך
+sq0518	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון בדובאי
+sq0519	synagogue	should_route_and_try_results	מחפש בית כנסת ספרדי קרוב למלון בברלין
+sq0520	synagogue	should_route_and_try_results	בית כנס באנטוורפן
+sq0521	synagogue	should_route_and_try_results	nearest shul in Casablanca
+sq0522	synagogue	should_route_and_try_results	synagogue in Berlin
+sq0523	synagogue	should_route_and_try_results	בית כנס עם מניין בלימסול
+sq0524	synagogue	should_route_and_try_results	בית כנסת תימני בלרנקה
+sq0525	synagogue	should_route_and_try_results	מחפש בית כנסת אשכנזי קרוב למלון בחיפה
+sq0526	synagogue	should_route_and_try_results	בית כנסת אשכנזי בבית שמש
+sq0527	synagogue	should_route_and_try_results	בית כנסת חבד עם מניין בדובאי
+sq0528	synagogue	should_route_and_try_results	nearest shul in Phuket
+sq0529	synagogue	should_route_and_try_results	בית גנסת עם מניין בתל אביב
+sq0530	synagogue	should_route_and_try_results	chabad house in Phuket
+sq0531	synagogue	should_route_and_try_results	מחפש בית כנסת תימני קרוב למלון בטוקיו
+sq0532	synagogue	should_route_and_try_results	synagoge in Porto
+sq0533	synagogue	should_route_and_try_results	בית גנסת עם מניין בלוס אנג׳לס
+sq0534	synagogue	should_route_and_try_results	nearest sfarad synagogue in Tiberias
+sq0535	synagogue	should_route_and_try_results	בית כנסת אשכנזי במיאמי
+sq0536	synagogue	should_route_and_try_results	בית כנסת עם מניין בניו יורק
+sq0537	synagogue	should_route_and_try_results	מחפש בית כנסת אשכנזי קרוב למלון בטבריה
+sq0538	synagogue	should_route_and_try_results	nearest shul in Bnei Brak
+sq0539	synagogue	should_route_and_try_results	בית כנסת תימני עם מניין במיאמי
+sq0540	synagogue	should_route_and_try_results	בית כנס עם מניין באילת
+sq0541	synagogue	should_route_and_try_results	בית גנסת עם מניין באמסטרדם
+sq0542	synagogue	should_route_and_try_results	בית כנסת תימני עם מניין בלונדון
+sq0543	synagogue	should_route_and_try_results	בית כנסת אשכנזי לידי
+sq0544	synagogue	should_route_and_try_results	ashkenaz synagogue in Larnaca
+sq0545	synagogue	should_route_and_try_results	nearest ashkenaz synagogue in Larnaca
+sq0546	synagogue	should_route_and_try_results	בית כנס עם מניין במיאמי
+sq0547	synagogue	should_route_and_try_results	shul in Bangkok
+sq0548	synagogue	should_route_and_try_results	בית כנסת תימני עם מניין במדריד
+sq0549	synagogue	should_route_and_try_results	בית כנסת ספרדי בעפולה
+sq0550	synagogue	should_route_and_try_results	מחפש בית כנסת חבד קרוב למלון בלוס אנג׳לס
+sq0551	synagogue	should_route_and_try_results	ashkenaz synagogue in Tokyo
+sq0552	synagogue	should_route_and_try_results	nearest synagoge in Bangkok
+sq0553	synagogue	should_route_and_try_results	nearest ashkenaz synagogue in London
+sq0554	synagogue	should_route_and_try_results	מחפש בית כנסת אשכנזי קרוב למלון בניס
+sq0555	synagogue	should_route_and_try_results	בית כנסת בדובאי
+sq0556	synagogue	should_route_and_try_results	nearest shul in Los Angeles
+sq0557	synagogue	should_route_and_try_results	בית כנסת עם מניין בציריך
+sq0558	synagogue	should_route_and_try_results	בית כנס עם מניין בטוקיו
+sq0559	synagogue	should_route_and_try_results	בית כנסת ספרדי בטורונטו
+sq0560	synagogue	should_route_and_try_results	chabad synagogue in Paris
+sq0561	synagogue	should_route_and_try_results	nearest chabad house in Zurich
+sq0562	synagogue	should_route_and_try_results	teimani synagogue in Amsterdam
+sq0563	synagogue	should_route_and_try_results	בית גנסת בחיפה
+sq0564	synagogue	should_route_and_try_results	nearest chabad house in Haifa
+sq0565	synagogue	should_route_and_try_results	מחפש בית כנסת ספרדי קרוב למלון במרקש
+sq0566	synagogue	should_route_and_try_results	shul in Beit Shemesh
+sq0567	synagogue	should_route_and_try_results	chabad synagogue in Tel Aviv
+sq0568	synagogue	should_route_and_try_results	בית כנסת תימני עם מניין בברלין
+sq0569	synagogue	should_route_and_try_results	בית כנסת חבד באילת
+sq0570	synagogue	should_route_and_try_results	nearest synagogue in Paphos
+sq0571	synagogue	should_route_and_try_results	בית כנסת חבד עם מניין בחיפה
+sq0572	synagogue	should_route_and_try_results	ashkenaz synagogue in Montreal
+sq0573	synagogue	should_route_and_try_results	nearest chabad house in Buenos Aires
+sq0574	synagogue	should_route_and_try_results	chabad synagogue in Bnei Brak
+sq0575	synagogue	should_route_and_try_results	nearest shul in Paphos
+sq0576	synagogue	should_route_and_try_results	בית גנסת עם מניין בבני ברק
+sq0577	synagogue	should_route_and_try_results	chabad house in Toronto
+sq0578	synagogue	should_route_and_try_results	shul in Los Angeles
+sq0579	synagogue	should_route_and_try_results	בית כנסת חבד עם מניין בבית שמש
+sq0580	synagogue	should_route_and_try_results	בית כנסת אשכנזי עם מניין בנתניה
+sq0581	synagogue	should_route_and_try_results	sfarad synagogue in Montreal
+sq0582	synagogue	should_route_and_try_results	בית גנסת עם מניין במונטריאול
+sq0583	synagogue	should_route_and_try_results	בית כנסת חבד עם מניין בקאן
+sq0584	synagogue	should_route_and_try_results	nearest chabad synagogue in Porto
+sq0585	synagogue	should_route_and_try_results	teimani synagogue in Bnei Brak
+sq0586	synagogue	should_route_and_try_results	chabad synagogue in Porto
+sq0587	synagogue	should_route_and_try_results	מחפש בית חבד קרוב למלון בפריז
+sq0588	synagogue	should_route_and_try_results	ashkenaz synagogue in Kiryat Gat
+sq0589	synagogue	should_route_and_try_results	sfarad synagogue in Tiberias
+sq0590	synagogue	should_route_and_try_results	nearest ashkenaz synagogue in Tokyo
+sq0591	synagogue	should_route_and_try_results	ashkenaz synagogue in Paphos
+sq0592	synagogue	should_route_and_try_results	בית כנסת עם מניין בטורונטו
+sq0593	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון בברלין
+sq0594	synagogue	should_route_and_try_results	nearest chabad house in Larnaca
+sq0595	synagogue	should_route_and_try_results	nearest sfarad synagogue in Bangkok
+sq0596	synagogue	should_route_and_try_results	מחפש בית כנסת ספרדי קרוב למלון בחיפה
+sq0597	synagogue	should_route_and_try_results	shul in Petah Tikva
+sq0598	synagogue	should_route_and_try_results	בית כנס בראשון לציון
+sq0599	synagogue	should_route_and_try_results	chabad house in Dubai
+sq0600	synagogue	should_route_and_try_results	מחפש בית כנס קרוב למלון ברומא
+sq0601	synagogue	should_route_and_try_results	בית כנסת חבד עם מניין בניו יורק
+sq0602	synagogue	should_route_and_try_results	nearest chabad house in Tiberias
+sq0603	synagogue	should_route_and_try_results	nearest chabad synagogue in Tiberias
+sq0604	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון ברומא
+sq0605	synagogue	should_route_and_try_results	בית כנס עם מניין בבנגקוק
+sq0606	synagogue	should_route_and_try_results	בית כנסת חבד בבואנוס איירס
+sq0607	synagogue	should_route_and_try_results	בית כנסת ספרדי עם מניין בדובאי
+sq0608	synagogue	should_route_and_try_results	nearest teimani synagogue in Netanya
+sq0609	synagogue	should_route_and_try_results	sfarad synagogue in Prague
+sq0610	synagogue	should_route_and_try_results	בית כנס עם מניין בקאן
+sq0611	synagogue	should_route_and_try_results	בית כנסת תימני בבני ברק
+sq0612	synagogue	should_route_and_try_results	בית כנסת חבד עם מניין בז׳נבה
+sq0613	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון בקוסמוי
+sq0614	synagogue	should_route_and_try_results	chabad synagogue in Buenos Aires
+sq0615	synagogue	should_route_and_try_results	nearest ashkenaz synagogue in Madrid
+sq0616	synagogue	should_route_and_try_results	nearest chabad house in Beit Shemesh
+sq0617	synagogue	should_route_and_try_results	בית גנסת במילאנו
+sq0618	synagogue	should_route_and_try_results	בית כנסת חבד בבני ברק
+sq0619	synagogue	should_route_and_try_results	מחפש בית גנסת קרוב למלון באנטוורפן
+sq0620	synagogue	should_route_and_try_results	nearest ashkenaz synagogue in Petah Tikva
+sq0621	minyan	should_route_and_try_results	מנחה לידי
+sq0622	minyan	should_route_and_try_results	ערבית בנתניה
+sq0623	minyan	should_route_and_try_results	מניין שחרית קרוב למלון בעפולה
+sq0624	minyan	should_route_and_try_results	sfarad minyan in Vienna
+sq0625	minyan	should_route_and_try_results	מנין היום בבנגקוק
+sq0626	minyan	should_route_and_try_results	תפילה עכשיו לידי
+sq0627	minyan	should_route_and_try_results	מנין עכשיו באזור שלי
+sq0628	minyan	should_route_and_try_results	shacharit minyan in Haifa
+sq0629	minyan	should_route_and_try_results	מניין שחרית קרוב למלון בטורונטו
+sq0630	minyan	should_route_and_try_results	מניין אשכנז בלונדון
+sq0631	minyan	should_route_and_try_results	ערבית קרוב למלון בקריית גת
+sq0632	minyan	should_route_and_try_results	where is minyn tonight in Toronto
+sq0633	minyan	should_route_and_try_results	mincha in Porto
+sq0634	minyan	should_route_and_try_results	minyn near me
+sq0635	minyan	should_route_and_try_results	מניין ספרדי עכשיו באזור שלי
+sq0636	minyan	should_route_and_try_results	מניין אשכנז בתל אביב
+sq0637	minyan	should_route_and_try_results	מניין אשכנז בפראג
+sq0638	minyan	should_route_and_try_results	מניין שחרית לידי
+sq0639	minyan	should_route_and_try_results	מניין אשכנז בבואנוס איירס
+sq0640	minyan	should_route_and_try_results	מניין אשכנז לידי
+sq0641	minyan	should_route_and_try_results	where is shacharit minyan tonight in Prague
+sq0642	minyan	should_route_and_try_results	מניין אשכנז היום בלרנקה
+sq0643	minyan	should_route_and_try_results	sfarad minyan near me
+sq0644	minyan	should_route_and_try_results	shacharit minyan near me
+sq0645	minyan	should_route_and_try_results	minyan in Toronto
+sq0646	minyan	should_route_and_try_results	ערבית לידי
+sq0647	minyan	should_route_and_try_results	מניין שחרית עכשיו באזור שלי
+sq0648	minyan	should_route_and_try_results	מניין שחרית היום בפתח תקווה
+sq0649	minyan	should_route_and_try_results	תפילה עכשיו עכשיו באזור שלי
+sq0650	minyan	should_route_and_try_results	where is sfarad minyan tonight in Bangkok
+sq0651	minyan	should_route_and_try_results	מנין קרוב למלון בציריך
+sq0652	minyan	should_route_and_try_results	מניין אשכנז בברצלונה
+sq0653	minyan	should_route_and_try_results	מנין בלונדון
+sq0654	minyan	should_route_and_try_results	mincha in Nice
+sq0655	minyan	should_route_and_try_results	where is maariv tonight in Buenos Aires
+sq0656	minyan	should_route_and_try_results	sfarad minyan in Bnei Brak
+sq0657	minyan	should_route_and_try_results	מניין קרוב למלון בניו יורק
+sq0658	minyan	should_route_and_try_results	ערבית קרוב למלון בבית שמש
+sq0659	minyan	should_route_and_try_results	מנין קרוב למלון בפראג
+sq0660	minyan	should_route_and_try_results	ashkenaz minyan near me
+sq0661	minyan	should_route_and_try_results	pray near me in Cannes
+sq0662	minyan	should_route_and_try_results	מניין במונטריאול
+sq0663	minyan	should_route_and_try_results	מנין קרוב למלון בקזבלנקה
+sq0664	minyan	should_route_and_try_results	מניין ספרדי היום בראשון לציון
+sq0665	minyan	should_route_and_try_results	ערבית בראשון לציון
+sq0666	minyan	should_route_and_try_results	mincha in Berlin
+sq0667	minyan	should_route_and_try_results	sfarad minyan in Marrakech
+sq0668	minyan	should_route_and_try_results	ashkenaz minyan in Jerusalem
+sq0669	minyan	should_route_and_try_results	מניין שחרית היום באתונה
+sq0670	minyan	should_route_and_try_results	pray near me near me
+sq0671	minyan	should_route_and_try_results	maariv in Kiryat Gat
+sq0672	minyan	should_route_and_try_results	מניין שחרית קרוב למלון באמסטרדם
+sq0673	minyan	should_route_and_try_results	ערבית היום בלרנקה
+sq0674	minyan	should_route_and_try_results	pray near me in Los Angeles
+sq0675	minyan	should_route_and_try_results	מניין שחרית בלימסול
+sq0676	minyan	should_route_and_try_results	where is ashkenaz minyan tonight in Tiberias
+sq0677	minyan	should_route_and_try_results	מניין קרוב למלון באמסטרדם
+sq0678	minyan	should_route_and_try_results	מנין לידי
+sq0679	minyan	should_route_and_try_results	where is mincha tonight in Koh Samui
+sq0680	minyan	should_route_and_try_results	מניין עכשיו באזור שלי
+sq0681	minyan	should_route_and_try_results	מניין ספרדי קרוב למלון בבני ברק
+sq0682	minyan	should_route_and_try_results	where is minyan tonight in Nice
+sq0683	minyan	should_route_and_try_results	where is minyan tonight in Amsterdam
+sq0684	minyan	should_route_and_try_results	where is shacharit minyan tonight in Jerusalem
+sq0685	minyan	should_route_and_try_results	ערבית קרוב למלון בראשון לציון
+sq0686	minyan	should_route_and_try_results	mincha in Zurich
+sq0687	minyan	should_route_and_try_results	מנין בקוסמוי
+sq0688	minyan	should_route_and_try_results	maariv in Bnei Brak
+sq0689	minyan	should_route_and_try_results	where is minyan tonight in Netanya
+sq0690	minyan	should_route_and_try_results	מנחה קרוב למלון בקוסמוי
+sq0691	minyan	should_route_and_try_results	מנין היום בלוס אנג׳לס
+sq0692	minyan	should_route_and_try_results	מניין ספרדי לידי
+sq0693	minyan	should_route_and_try_results	minyn in Zurich
+sq0694	minyan	should_route_and_try_results	מניין במרקש
+sq0695	minyan	should_route_and_try_results	מניין היום בטבריה
+sq0696	minyan	should_route_and_try_results	minyan near me
+sq0697	minyan	should_route_and_try_results	maariv in Koh Samui
+sq0698	minyan	should_route_and_try_results	minyn in Rome
+sq0699	minyan	should_route_and_try_results	ערבית קרוב למלון בברלין
+sq0700	minyan	should_route_and_try_results	מניין קרוב למלון באתונה
+sq0701	minyan	should_route_and_try_results	מניין אשכנז קרוב למלון בניס
+sq0702	minyan	should_route_and_try_results	מניין שחרית בפאפוס
+sq0703	minyan	should_route_and_try_results	ashkenaz minyan in Dubai
+sq0704	minyan	should_route_and_try_results	מנחה קרוב למלון בלוס אנג׳לס
+sq0705	minyan	should_route_and_try_results	מנין בפוקט
+sq0706	minyan	should_route_and_try_results	shacharit minyan in Milan
+sq0707	minyan	should_route_and_try_results	ashkenaz minyan in Budapest
+sq0708	minyan	should_route_and_try_results	מניין לידי
+sq0709	minyan	should_route_and_try_results	where is minyan tonight in Budapest
+sq0710	minyan	should_route_and_try_results	mincha in Kiryat Gat
+sq0711	minyan	should_route_and_try_results	where is shacharit minyan tonight in Tel Aviv
+sq0712	minyan	should_route_and_try_results	מנין היום במונטריאול
+sq0713	minyan	should_route_and_try_results	תפילה עכשיו קרוב למלון בפראג
+sq0714	minyan	should_route_and_try_results	מנחה בבית שמש
+sq0715	minyan	should_route_and_try_results	where is shacharit minyan tonight in Geneva
+sq0716	minyan	should_route_and_try_results	מניין ספרדי קרוב למלון בתל אביב
+sq0717	minyan	should_route_and_try_results	מניין שחרית היום בדובאי
+sq0718	minyan	should_route_and_try_results	pray near me in Bnei Brak
+sq0719	minyan	should_route_and_try_results	מניין ספרדי היום בבואנוס איירס
+sq0720	minyan	should_route_and_try_results	מניין ספרדי במיאמי
+sq0721	minyan	should_route_and_try_results	מנחה היום באתונה
+sq0722	minyan	should_route_and_try_results	מניין היום בבני ברק
+sq0723	minyan	should_route_and_try_results	מניין שחרית קרוב למלון בראשון לציון
+sq0724	minyan	should_route_and_try_results	ערבית קרוב למלון בדובאי
+sq0725	minyan	should_route_and_try_results	מניין בניו יורק
+sq0726	minyan	should_route_and_try_results	מניין שחרית בחיפה
+sq0727	minyan	should_route_and_try_results	ashkenaz minyan in Geneva
+sq0728	minyan	should_route_and_try_results	ערבית היום בפורטו
+sq0729	minyan	should_route_and_try_results	מניין ספרדי בברלין
+sq0730	minyan	should_route_and_try_results	מניין אשכנז היום בוינה
+sq0731	minyan	should_route_and_try_results	מנין היום בטוקיו
+sq0732	minyan	should_route_and_try_results	where is sfarad minyan tonight in Antwerp
+sq0733	minyan	should_route_and_try_results	מניין ספרדי היום בפריז
+sq0734	minyan	should_route_and_try_results	מניין ספרדי היום בירושלים
+sq0735	minyan	should_route_and_try_results	where is ashkenaz minyan tonight in Larnaca
+sq0736	minyan	should_route_and_try_results	מניין שחרית קרוב למלון בלימסול
+sq0737	minyan	should_route_and_try_results	ערבית בבית שמש
+sq0738	minyan	should_route_and_try_results	מניין אשכנז בפורטו
+sq0739	minyan	should_route_and_try_results	תפילה עכשיו קרוב למלון בקאן
+sq0740	minyan	should_route_and_try_results	where is mincha tonight in Montreal
+sq0741	minyan	should_route_and_try_results	maariv in Tokyo
+sq0742	minyan	should_route_and_try_results	מניין אשכנז קרוב למלון בליסבון
+sq0743	minyan	should_route_and_try_results	where is sfarad minyan tonight in Porto
+sq0744	minyan	should_route_and_try_results	מניין שחרית היום בטבריה
+sq0745	minyan	should_route_and_try_results	where is mincha tonight in Vienna
+sq0746	minyan	should_route_and_try_results	where is shacharit minyan tonight in Kiryat Gat
+sq0747	minyan	should_route_and_try_results	מניין בציריך
+sq0748	minyan	should_route_and_try_results	מניין שחרית בניס
+sq0749	minyan	should_route_and_try_results	where is pray near me tonight in Milan
+sq0750	minyan	should_route_and_try_results	pray near me in Toronto
+sq0751	minyan	should_route_and_try_results	מנחה קרוב למלון בלרנקה
+sq0752	minyan	should_route_and_try_results	pray near me in Tiberias
+sq0753	minyan	should_route_and_try_results	sfarad minyan in Rishon LeZion
+sq0754	minyan	should_route_and_try_results	מניין שחרית היום במונטריאול
+sq0755	minyan	should_route_and_try_results	maariv near me
+sq0756	minyan	should_route_and_try_results	מנין בוינה
+sq0757	minyan	should_route_and_try_results	where is shacharit minyan tonight in Marrakech
+sq0758	minyan	should_route_and_try_results	where is ashkenaz minyan tonight in Athens
+sq0759	minyan	should_route_and_try_results	מניין ספרדי במילאנו
+sq0760	minyan	should_route_and_try_results	pray near me in Bangkok
+sq0761	minyan	should_route_and_try_results	where is minyan tonight in Tel Aviv
+sq0762	minyan	should_route_and_try_results	where is mincha tonight in Cannes
+sq0763	minyan	should_route_and_try_results	minyn in Marrakech
+sq0764	minyan	should_route_and_try_results	pray near me in Montreal
+sq0765	minyan	should_route_and_try_results	מניין ספרדי קרוב למלון בקאן
+sq0766	minyan	should_route_and_try_results	ערבית היום בניו יורק
+sq0767	minyan	should_route_and_try_results	מנחה בבנגקוק
+sq0768	minyan	should_route_and_try_results	מניין קרוב למלון בפאפוס
+sq0769	minyan	should_route_and_try_results	מניין היום בקאן
+sq0770	minyan	should_route_and_try_results	מניין אשכנז במיאמי
+sq0771	minyan	should_route_and_try_results	where is shacharit minyan tonight in Tokyo
+sq0772	minyan	should_route_and_try_results	מניין אשכנז עכשיו באזור שלי
+sq0773	minyan	should_route_and_try_results	מניין אשכנז היום בציריך
+sq0774	minyan	should_route_and_try_results	מנחה היום בראשון לציון
+sq0775	minyan	should_route_and_try_results	minyn in Netanya
+sq0776	minyan	should_route_and_try_results	מניין שחרית בקאן
+sq0777	minyan	should_route_and_try_results	מניין אשכנז קרוב למלון באתונה
+sq0778	minyan	should_route_and_try_results	ערבית קרוב למלון במילאנו
+sq0779	minyan	should_route_and_try_results	מניין אשכנז קרוב למלון בפריז
+sq0780	minyan	should_route_and_try_results	מניין ספרדי בבואנוס איירס
+sq0781	hosting	should_route_and_try_results	לינה לשבת בברלין
+sq0782	hosting	should_route_and_try_results	איפה להתארח במיאמי
+sq0783	hosting	should_route_and_try_results	להתארח לשבת בז׳נבה
+sq0784	hosting	should_route_and_try_results	מחפש מחפש סעודה אצל משפחה באנטוורפן
+sq0785	hosting	should_route_and_try_results	looking for meal near me
+sq0786	hosting	should_route_and_try_results	shabbat hosting near me
+sq0787	hosting	should_route_and_try_results	מחפש סעודה לידי
+sq0788	hosting	should_route_and_try_results	shabbat stay near me
+sq0789	hosting	should_route_and_try_results	stay with family in Cannes
+sq0790	hosting	should_route_and_try_results	משפחה מארחת לידי
+sq0791	hosting	should_route_and_try_results	אירוח שבת לידי
+sq0792	hosting	should_route_and_try_results	need hosting in Beit Shemesh
+sq0793	hosting	should_route_and_try_results	need where to stay for shabbat in Toronto
+sq0794	hosting	should_route_and_try_results	להתארח אצל משפחה בבית שמש
+sq0795	hosting	should_route_and_try_results	need where to stay for shabbat in Cannes
+sq0796	hosting	should_route_and_try_results	stay with family in Zurich
+sq0797	hosting	should_route_and_try_results	where to stay for shabbat near me
+sq0798	hosting	should_route_and_try_results	מחפש סעודה לשבת בבנגקוק
+sq0799	hosting	should_route_and_try_results	להתארח לשבת בבנגקוק
+sq0800	hosting	should_route_and_try_results	hosting near me
+sq0801	hosting	should_route_and_try_results	stay with family in Toronto
+sq0802	hosting	should_route_and_try_results	need shabbat meal in Rishon LeZion
+sq0803	hosting	should_route_and_try_results	מחפש סעודה לשבת בקוסמוי
+sq0804	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה בבנגקוק
+sq0805	hosting	should_route_and_try_results	משפחה מארחת בפוקט
+sq0806	hosting	should_route_and_try_results	need looking for meal in Paris
+sq0807	hosting	should_route_and_try_results	איפה אפשר מחפש סעודה באזור שלי
+sq0808	hosting	should_route_and_try_results	לינה לשבת לידי
+sq0809	hosting	should_route_and_try_results	איפה להתארח לידי
+sq0810	hosting	should_route_and_try_results	אירוח שבת לשבת בפריז
+sq0811	hosting	should_route_and_try_results	looking for meal in Zurich
+sq0812	hosting	should_route_and_try_results	need host family in Jerusalem
+sq0813	hosting	should_route_and_try_results	need hosting in Tel Aviv
+sq0814	hosting	should_route_and_try_results	מחפש סעודה לשבת בפראג
+sq0815	hosting	should_route_and_try_results	need stay with family in Barcelona
+sq0816	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה אצל משפחה בקזבלנקה
+sq0817	hosting	should_route_and_try_results	host family in Larnaca
+sq0818	hosting	should_route_and_try_results	need host family in Tokyo
+sq0819	hosting	should_route_and_try_results	להתארח לידי
+sq0820	hosting	should_route_and_try_results	need shabbat hosting in Berlin
+sq0821	hosting	should_route_and_try_results	need where to stay for shabbat in Marrakech
+sq0822	hosting	should_route_and_try_results	shabbat hosting in Casablanca
+sq0823	hosting	should_route_and_try_results	אירוח שבת לשבת בקוסמוי
+sq0824	hosting	should_route_and_try_results	host family near me
+sq0825	hosting	should_route_and_try_results	where to stay for shabbat in Toronto
+sq0826	hosting	should_route_and_try_results	shabbat hosting in Phuket
+sq0827	hosting	should_route_and_try_results	need stay with family in Eilat
+sq0828	hosting	should_route_and_try_results	להתארח בפורטו
+sq0829	hosting	should_route_and_try_results	איפה אפשר ארוחת שבת באזור שלי
+sq0830	hosting	should_route_and_try_results	need hosting in Haifa
+sq0831	hosting	should_route_and_try_results	need stay with family in Haifa
+sq0832	hosting	should_route_and_try_results	where to stay for shabbat in Kiryat Gat
+sq0833	hosting	should_route_and_try_results	need looking for meal in Kiryat Gat
+sq0834	hosting	should_route_and_try_results	host family in Budapest
+sq0835	hosting	should_route_and_try_results	איפה להתארח בלונדון
+sq0836	hosting	should_route_and_try_results	להתארח בברלין
+sq0837	hosting	should_route_and_try_results	אירוח שבת בפאפוס
+sq0838	hosting	should_route_and_try_results	shabbat stay in Tiberias
+sq0839	hosting	should_route_and_try_results	מחפש איפה להתארח אצל משפחה בברצלונה
+sq0840	hosting	should_route_and_try_results	need shabbat stay in Beit Shemesh
+sq0841	hosting	should_route_and_try_results	need looking for meal in Beit Shemesh
+sq0842	hosting	should_route_and_try_results	need stay with family in Berlin
+sq0843	hosting	should_route_and_try_results	need shabbat hosting in Athens
+sq0844	hosting	should_route_and_try_results	need shabbat meal in Tiberias
+sq0845	hosting	should_route_and_try_results	להתארח לשבת בירושלים
+sq0846	hosting	should_route_and_try_results	איפה להתארח לשבת בטוקיו
+sq0847	hosting	should_route_and_try_results	hosting in Tiberias
+sq0848	hosting	should_route_and_try_results	להתארח באתונה
+sq0849	hosting	should_route_and_try_results	ארוחת שבת לידי
+sq0850	hosting	should_route_and_try_results	ארוחת שבת בפריז
+sq0851	hosting	should_route_and_try_results	אירוח שבת בלוס אנג׳לס
+sq0852	hosting	should_route_and_try_results	לינה לשבת בפורטו
+sq0853	hosting	should_route_and_try_results	איפה אפשר איפה להתארח באזור שלי
+sq0854	hosting	should_route_and_try_results	איפה אפשר להתארח באזור שלי
+sq0855	hosting	should_route_and_try_results	איפה אפשר משפחה מארחת באזור שלי
+sq0856	hosting	should_route_and_try_results	איפה להתארח בקזבלנקה
+sq0857	hosting	should_route_and_try_results	shabbat hosting in Madrid
+sq0858	hosting	should_route_and_try_results	מחפש לינה לשבת אצל משפחה במילאנו
+sq0859	hosting	should_route_and_try_results	איפה אפשר לינה לשבת באזור שלי
+sq0860	hosting	should_route_and_try_results	need stay with family in Limassol
+sq0861	hosting	should_route_and_try_results	מחפש משפחה מארחת אצל משפחה באילת
+sq0862	hosting	should_route_and_try_results	להתארח אצל משפחה לשבת בעפולה
+sq0863	hosting	should_route_and_try_results	משפחה מארחת לשבת באנטוורפן
+sq0864	hosting	should_route_and_try_results	איפה אפשר להתארח אצל משפחה באזור שלי
+sq0865	hosting	should_route_and_try_results	איפה אפשר אירוח שבת באזור שלי
+sq0866	hosting	should_route_and_try_results	מחפש אירוח שבת אצל משפחה בבני ברק
+sq0867	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה במיאמי
+sq0868	hosting	should_route_and_try_results	מחפש איפה להתארח אצל משפחה בקזבלנקה
+sq0869	hosting	should_route_and_try_results	stay with family in Madrid
+sq0870	hosting	should_route_and_try_results	stay with family near me
+sq0871	hosting	should_route_and_try_results	אירוח שבת לשבת בקאן
+sq0872	hosting	should_route_and_try_results	לינה לשבת בדובאי
+sq0873	hosting	should_route_and_try_results	אירוח שבת בבודפשט
+sq0874	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה בירושלים
+sq0875	hosting	should_route_and_try_results	need looking for meal in Larnaca
+sq0876	hosting	should_route_and_try_results	need hosting in Montreal
+sq0877	hosting	should_route_and_try_results	מחפש סעודה לשבת בטבריה
+sq0878	hosting	should_route_and_try_results	shabbat hosting in Eilat
+sq0879	hosting	should_route_and_try_results	need hosting in Vienna
+sq0880	hosting	should_route_and_try_results	מחפש איפה להתארח אצל משפחה בתל אביב
+sq0881	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה אצל משפחה בירושלים
+sq0882	hosting	should_route_and_try_results	looking for meal in Nice
+sq0883	hosting	should_route_and_try_results	מחפש סעודה בלונדון
+sq0884	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה אצל משפחה בברלין
+sq0885	hosting	should_route_and_try_results	מחפש מחפש סעודה אצל משפחה בפראג
+sq0886	hosting	should_route_and_try_results	need host family in Porto
+sq0887	hosting	should_route_and_try_results	need where to stay for shabbat in London
+sq0888	hosting	should_route_and_try_results	איפה להתארח בוינה
+sq0889	hosting	should_route_and_try_results	host family in Athens
+sq0890	hosting	should_route_and_try_results	need looking for meal in Tiberias
+sq0891	hosting	should_route_and_try_results	מחפש איפה להתארח אצל משפחה ברומא
+sq0892	hosting	should_route_and_try_results	מחפש להתארח אצל משפחה אצל משפחה בבני ברק
+sq0893	hosting	should_route_and_try_results	להתארח לשבת בנתניה
+sq0894	hosting	should_route_and_try_results	where to stay for shabbat in Afula
+sq0895	hosting	should_route_and_try_results	shabbat hosting in Marrakech
+sq0896	hosting	should_route_and_try_results	להתארח אצל משפחה לידי
+sq0897	hosting	should_route_and_try_results	להתארח אצל משפחה לשבת בקריית גת
+sq0898	hosting	should_route_and_try_results	אירוח שבת בלימסול
+sq0899	hosting	should_route_and_try_results	מחפש איפה להתארח אצל משפחה בבני ברק
+sq0900	hosting	should_route_and_try_results	מחפש ארוחת שבת אצל משפחה בברלין
+sq0901	destination	destination_or_overview_ok	מה יש לעשות בעפולה
+sq0902	destination	destination_or_overview_ok	יעד ניו יורק
+sq0903	destination	destination_or_overview_ok	kosher options around Athens
+sq0904	destination	destination_or_overview_ok	Jewish info in Buenos Aires
+sq0905	destination	destination_or_overview_ok	מידע על טורונטו
+sq0906	destination	destination_or_overview_ok	מידע על מדריד
+sq0907	destination	destination_or_overview_ok	kosher options around New York
+sq0908	destination	destination_or_overview_ok	יעד בודפשט
+sq0909	destination	destination_or_overview_ok	מה יש לעשות במיאמי
+sq0910	destination	destination_or_overview_ok	יעד מילאנו
+sq0911	destination	destination_or_overview_ok	kosher options around Eilat
+sq0912	destination	destination_or_overview_ok	Jewish info in Lisbon
+sq0913	destination	destination_or_overview_ok	Jewish info in Phuket
+sq0914	destination	destination_or_overview_ok	יעד תל אביב
+sq0915	destination	destination_or_overview_ok	kosher options around Netanya
+sq0916	destination	destination_or_overview_ok	יעד ציריך
+sq0917	destination	destination_or_overview_ok	Jewish info in Paris
+sq0918	destination	destination_or_overview_ok	kosher options around Nice
+sq0919	destination	destination_or_overview_ok	מה יש לעשות בניו יורק
+sq0920	destination	destination_or_overview_ok	מה יש לעשות באמסטרדם
+sq0921	destination	destination_or_overview_ok	מה יש לעשות בלוס אנג׳לס
+sq0922	destination	destination_or_overview_ok	מידע על דובאי
+sq0923	destination	destination_or_overview_ok	יעד וינה
+sq0924	destination	destination_or_overview_ok	kosher options around Rishon LeZion
+sq0925	destination	destination_or_overview_ok	יעד אנטוורפן
+sq0926	destination	destination_or_overview_ok	Jewish info in Prague
+sq0927	destination	destination_or_overview_ok	יעד פאפוס
+sq0928	destination	destination_or_overview_ok	יעד פתח תקווה
+sq0929	destination	destination_or_overview_ok	מה יש לעשות בז׳נבה
+sq0930	destination	destination_or_overview_ok	מה יש לעשות בבואנוס איירס
+sq0931	destination	destination_or_overview_ok	מה יש לעשות בחיפה
+sq0932	destination	destination_or_overview_ok	מידע על פאפוס
+sq0933	destination	destination_or_overview_ok	מידע על וינה
+sq0934	destination	destination_or_overview_ok	Jewish info in Vienna
+sq0935	destination	destination_or_overview_ok	kosher options around Buenos Aires
+sq0936	destination	destination_or_overview_ok	מידע על ז׳נבה
+sq0937	destination	destination_or_overview_ok	יעד פוקט
+sq0938	destination	destination_or_overview_ok	kosher options around Koh Samui
+sq0939	destination	destination_or_overview_ok	Jewish info in Beit Shemesh
+sq0940	destination	destination_or_overview_ok	יעד לוס אנג׳לס
+sq0941	destination	destination_or_overview_ok	יעד אמסטרדם
+sq0942	destination	destination_or_overview_ok	kosher options around Bnei Brak
+sq0943	destination	destination_or_overview_ok	מה יש לעשות בקוסמוי
+sq0944	destination	destination_or_overview_ok	יעד אילת
+sq0945	destination	destination_or_overview_ok	kosher options around Miami
+sq0946	destination	destination_or_overview_ok	יעד פריז
+sq0947	destination	destination_or_overview_ok	מידע על מיאמי
+sq0948	destination	destination_or_overview_ok	Jewish info in Barcelona
+sq0949	destination	destination_or_overview_ok	מה יש לעשות בפוקט
+sq0950	destination	destination_or_overview_ok	מה יש לעשות בפאפוס
+sq0951	unknown	clarification_or_safe_no_results_ok	סתם בדיקה בלי משמעות
+sq0952	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בלוס אנג׳לס
+sq0953	unknown	clarification_or_safe_no_results_ok	אני רוצה משהו יהודי
+sq0954	unknown	clarification_or_safe_no_results_ok	abc xyz qqq
+sq0955	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה במיאמי
+sq0956	unknown	clarification_or_safe_no_results_ok	איפה הכי יפה בעולם
+sq0957	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין בתל אביב
+sq0958	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין באנטוורפן
+sq0959	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בליסבון
+sq0960	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בתל אביב
+sq0961	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בבני ברק
+sq0962	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין בניו יורק
+sq0963	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בדובאי
+sq0964	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בבואנוס איירס
+sq0965	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בחיפה
+sq0966	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין באילת
+sq0967	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה באתונה
+sq0968	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין בפורטו
+sq0969	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול במונטריאול
+sq0970	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בלונדון
+sq0971	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בבית שמש
+sq0972	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בפאפוס
+sq0973	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בפאפוס
+sq0974	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בטבריה
+sq0975	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בעפולה
+sq0976	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין במיאמי
+sq0977	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בלימסול
+sq0978	unknown	clarification_or_safe_no_results_ok	בית כנסת או מסעדה בבית שמש
+sq0979	unknown	clarification_or_safe_no_results_ok	להתארח או לאכול בטורונטו
+sq0980	unknown	clarification_or_safe_no_results_ok	מסעדה בית כנסת מניין בברצלונה
+sq0981	unknown	safe_no_results_ok	פיצה באי ירח
+sq0982	unknown	safe_no_results_ok	להתארח בגן עדן
+sq0983	unknown	safe_no_results_ok	kosher burger in עיר שלא קיימת
+sq0984	unknown	safe_no_results_ok	פיצה בNowhere Land
+sq0985	unknown	safe_no_results_ok	kosher burger in Nowhere Land
+sq0986	unknown	safe_no_results_ok	מניין בגן עדן
+sq0987	unknown	safe_no_results_ok	בית כנסת בNowhere Land
+sq0988	unknown	safe_no_results_ok	פיצה בMoon Base
+sq0989	unknown	safe_no_results_ok	בית כנסת בMoon Base
+sq0990	unknown	safe_no_results_ok	להתארח באי ירח
+sq0991	unknown	safe_no_results_ok	מניין באי ירח
+sq0992	unknown	safe_no_results_ok	kosher burger in אי ירח
+sq0993	unknown	safe_no_results_ok	פיצה בגן עדן
+sq0994	unknown	safe_no_results_ok	בית כנסת באי ירח
+sq0995	unknown	safe_no_results_ok	kosher burger in Atlantis City
+sq0996	unknown	safe_no_results_ok	מניין בעיר שלא קיימת
+sq0997	unknown	safe_no_results_ok	מניין בMoon Base
+sq0998	unknown	safe_no_results_ok	kosher burger in Moon Base
+sq0999	unknown	safe_no_results_ok	מניין בAtlantis City
+sq1000	unknown	safe_no_results_ok	פיצה בAtlantis City

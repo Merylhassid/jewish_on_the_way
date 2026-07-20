@@ -1,4 +1,4 @@
-import { Link, router } from 'expo-router';
+import { Link, router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -15,9 +15,14 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
+import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
 import { Eye, EyeOff, Lock, Mail, MapPin } from 'lucide-react-native';
 import { useAuth } from '@/src/store/auth';
 import { isValidEmail, formatApiError } from '@/src/utils/validation';
+import { safeReturnTo } from '@/src/auth/auth-gates';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const BG      = '#EAF1FF';
 const P       = '#2468E8';
@@ -25,20 +30,54 @@ const INK     = '#0F172A';
 const SUB     = '#64748B';
 const MUT     = '#94A3B8';
 const PIN_CLR = 'rgba(100,149,255,0.32)';
+const ENABLE_GOOGLE_AUTH = false;
+const GOOGLE_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? '';
 
 export default function LoginScreen() {
   const { t } = useTranslation();
-  const { login, token, loading: authLoading } = useAuth();
+  const { login, googleLogin, enterGuestMode, sessionMode } = useAuth();
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+  const postAuthRoute = safeReturnTo(returnTo);
 
   const [email,    setEmail]    = useState('');
   const [password, setPassword] = useState('');
   const [showPw,   setShowPw]   = useState(false);
   const [loading,  setLoading]  = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [error,    setError]    = useState<string | null>(null);
+  const [googleRequest, googleResponse, promptGoogle] = Google.useIdTokenAuthRequest({
+    clientId: GOOGLE_CLIENT_ID,
+    webClientId: GOOGLE_CLIENT_ID,
+    iosClientId: GOOGLE_CLIENT_ID,
+    androidClientId: GOOGLE_CLIENT_ID,
+    selectAccount: true,
+  });
 
   useEffect(() => {
-    if (!authLoading && token) router.replace('/(tabs)');
-  }, [token, authLoading]);
+    if (sessionMode === 'authenticated') router.replace(postAuthRoute as any);
+  }, [sessionMode, postAuthRoute]);
+
+  useEffect(() => {
+    if (googleResponse?.type !== 'success') return;
+    const idToken = googleResponse.params.id_token;
+    if (!idToken) {
+      setError('Google login failed');
+      return;
+    }
+
+    (async () => {
+      try {
+        setError(null);
+        setGoogleLoading(true);
+        await googleLogin(idToken);
+        router.replace(postAuthRoute as any);
+      } catch (e) {
+        setError(formatApiError(e));
+      } finally {
+        setGoogleLoading(false);
+      }
+    })();
+  }, [googleResponse, googleLogin, postAuthRoute]);
 
   const handleLogin = async () => {
     if (!email.trim() || !password) { setError(t('auth.errFillAll')); return; }
@@ -52,6 +91,17 @@ export default function LoginScreen() {
       setError(formatApiError(e));
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGuest = async () => {
+    try {
+      Haptics.selectionAsync().catch(() => {});
+      setError(null);
+      await enterGuestMode();
+      router.replace(postAuthRoute as any);
+    } catch {
+      setError(t('auth.guestModeError'));
     }
   };
 
@@ -160,17 +210,45 @@ export default function LoginScreen() {
               }
             </Pressable>
 
-            {/* OR */}
-            <View style={s.orRow}>
-              <View style={s.orLine} />
-              <Text style={s.orText}>{t('auth.or')}</Text>
-              <View style={s.orLine} />
-            </View>
+            <Pressable
+              style={({ pressed }) => [s.guestBtn, pressed && s.btnPressed]}
+              onPress={handleGuest}
+              disabled={loading || googleLoading}
+            >
+              <Text style={s.guestBtnText}>{t('auth.continueAsGuest')}</Text>
+            </Pressable>
+
+            {ENABLE_GOOGLE_AUTH && (
+              <>
+                {/* OR */}
+                <View style={s.orRow}>
+                  <View style={s.orLine} />
+                  <Text style={s.orText}>{t('auth.or')}</Text>
+                  <View style={s.orLine} />
+                </View>
+
+                <Pressable
+                  style={({ pressed }) => [s.socialBtn, pressed && !googleLoading && s.btnPressed]}
+                  onPress={() => {
+                    if (!GOOGLE_CLIENT_ID) {
+                      setError('Google login is not configured');
+                      return;
+                    }
+                    void promptGoogle();
+                  }}
+                  disabled={!googleRequest || googleLoading}
+                >
+                  {googleLoading
+                    ? <ActivityIndicator color={INK} size="small" />
+                    : <Text style={s.socialBtnText}>Continue with Google</Text>}
+                </Pressable>
+              </>
+            )}
 
             {/* Footer */}
             <View style={s.footer}>
               <Text style={s.footerMuted}>{t('auth.noAccount')}  </Text>
-              <Link href="/(auth)/register" asChild>
+              <Link href={{ pathname: '/(auth)/register', params: returnTo ? { returnTo } : {} }} asChild>
                 <Pressable><Text style={s.footerLink}>{t('auth.register')}</Text></Pressable>
               </Link>
             </View>
@@ -264,15 +342,37 @@ const s = StyleSheet.create({
     shadowColor: P,
     shadowOpacity: 0.38, shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 }, elevation: 7,
-    marginBottom: 24,
+    marginBottom: 12,
   },
   btnDim:     { opacity: 0.68 },
   btnPressed: { opacity: 0.88, transform: [{ scale: 0.984 }] },
   btnText:    { fontFamily: 'Inter-Bold', color: '#fff', fontSize: 16, letterSpacing: 0.3 },
 
+  guestBtn: {
+    borderRadius: 14,
+    paddingVertical: 15,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: P,
+    backgroundColor: '#fff',
+    marginBottom: 24,
+  },
+  guestBtnText: { fontFamily: 'Inter-Bold', color: P, fontSize: 15 },
+
   orRow:  { flexDirection: 'row', alignItems: 'center', marginBottom: 22 },
   orLine: { flex: 1, height: 1, backgroundColor: '#E8EEF8' },
   orText: { fontFamily: 'Inter-SemiBold', fontSize: 11, color: MUT, marginHorizontal: 12, letterSpacing: 1.6 },
+
+  socialBtn: {
+    borderRadius: 14,
+    paddingVertical: 14,
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: '#E8EEF8',
+    backgroundColor: '#fff',
+    marginBottom: 18,
+  },
+  socialBtnText: { fontFamily: 'Inter-Bold', color: INK, fontSize: 15 },
 
   footer:     { flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
   footerMuted:{ fontFamily: 'Inter-Regular', color: SUB, fontSize: 14 },

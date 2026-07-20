@@ -19,6 +19,8 @@ import { CreateDestinationDto } from './dto/create-destination.dto';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { ManualSynagogueBulkRowDto } from './dto/manual-synagogue-bulk-row.dto';
 import { ManualSynagogueImportService } from './manual-synagogue-import.service';
+import { ReportsService } from '../reports/reports.service';
+import { ResolveReportDto } from '../reports/dto/resolve-report.dto';
 
 @UseGuards(JwtAuthGuard, AdminGuard)
 @Controller('admin')
@@ -26,7 +28,32 @@ export class AdminController {
   constructor(
     private readonly adminService: AdminService,
     private readonly manualSynagogueImportService: ManualSynagogueImportService,
+    private readonly reportsService: ReportsService,
   ) {}
+
+  // --- User reports (hosting safety) ---
+  @Get('user-reports')
+  listUserReports(@Query('status') status?: 'open' | 'resolved') {
+    return this.reportsService.listReports(status);
+  }
+
+  @Post('user-reports/:id/resolve')
+  @HttpCode(HttpStatus.OK)
+  resolveUserReport(@Param('id', ParseIntPipe) id: number, @Body() dto: ResolveReportDto) {
+    return this.reportsService.resolveReport(id, dto.status);
+  }
+
+  @Post('users/:id/disable')
+  @HttpCode(HttpStatus.OK)
+  disableUser(@Param('id', ParseIntPipe) id: number) {
+    return this.reportsService.disableUser(id);
+  }
+
+  @Post('users/:id/enable')
+  @HttpCode(HttpStatus.OK)
+  enableUser(@Param('id', ParseIntPipe) id: number) {
+    return this.reportsService.enableUser(id);
+  }
 
   // --- Destinations ---
   @Post('destinations')

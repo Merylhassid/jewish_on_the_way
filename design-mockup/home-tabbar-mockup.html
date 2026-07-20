@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Tab Bar Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1736;
+      --gold: #D4AF37;
+      --cream: #FAF8F3;
+      --card: #FFFFFF;
+      --muted: #BBC3D4;
+      --line: #F0EDE6;
+      --text: #111827;
+      --sub: #6B7280;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: #E9EDF4;
+      font-family: Rubik, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+
+    .phone {
+      width: 390px;
+      height: 844px;
+      border: 10px solid #151923;
+      border-radius: 38px;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 28px 70px rgba(11, 23, 54, 0.30);
+      position: relative;
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 104px;
+      height: 28px;
+      border-radius: 0 0 18px 18px;
+      background: #151923;
+      z-index: 20;
+    }
+
+    .screen {
+      height: 100%;
+      overflow: hidden;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .content {
+      height: calc(100% - 88px);
+      overflow: auto;
+      padding-bottom: 22px;
+    }
+
+    .hero {
+      height: 438px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(6,14,36,0.45), rgba(6,14,36,0.82)),
+        url("https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 58px 22px 28px;
+      color: white;
+    }
+
+    .hero-top {
+      position: absolute;
+      top: 58px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: ltr;
+    }
+
+    .brand {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+    }
+
+    .saved {
+      width: 38px;
+      height: 38px;
+      border-radius: 19px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.20);
+      font-size: 17px;
+    }
+
+    .headline {
+      margin: 0;
+      font-size: 36px;
+      line-height: 40px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-align: right;
+    }
+
+    .headline.gold {
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.68);
+      font-size: 13px;
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .search {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.20);
+      overflow: hidden;
+      direction: rtl;
+    }
+
+    .search-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+      flex: 1;
+    }
+
+    .ai {
+      align-self: stretch;
+      display: grid;
+      place-items: center;
+      padding: 0 15px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .body {
+      padding: 28px 20px 20px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .see-all {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .city-card {
+      height: 160px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(6,14,36,0.15), rgba(6,14,36,0.72)),
+        url("https://images.unsplash.com/photo-1499856845926-5d5b0ddd4c46?auto=format&fit=crop&w=600&q=80");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+
+    .city-card:nth-child(2) {
+      background:
+        linear-gradient(180deg, rgba(6,14,36,0.15), rgba(6,14,36,0.72)),
+        url("https://images.unsplash.com/photo-1485739240762-91b0b37e2fd2?auto=format&fit=crop&w=600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .country {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      border-radius: 7px;
+      padding: 4px 7px;
+      background: rgba(0,0,0,0.42);
+      color: white;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+    }
+
+    .city-name {
+      position: absolute;
+      right: 12px;
+      left: 12px;
+      bottom: 14px;
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .tabbar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 88px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 10px 6px 28px;
+      background: var(--card);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+      direction: ltr;
+    }
+
+    .tab {
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .tab.active {
+      color: var(--navy);
+    }
+
+    .tab-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .tab-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 82px;
+    }
+
+    .callout {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 102px;
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(11,23,54,0.86);
+      color: #fff;
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(11,23,54,0.22);
+    }
+
+    @media (max-width: 450px) {
+      body { padding: 0; background: var(--cream); }
+      .phone {
+        width: 100vw;
+        height: 100vh;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .phone::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone">
+    <div class="screen">
+      <div class="content">
+        <section class="hero">
+          <div class="hero-top">
+            <div class="brand">JEWISH ON THE WAY</div>
+            <div class="saved">♡</div>
+          </div>
+
+          <h1 class="headline">גלה חיים יהודיים</h1>
+          <h1 class="headline gold">בכל מקום</h1>
+          <p class="tagline">אוכל כשר · בתי כנסת · קהילה</p>
+
+          <div class="search">
+            <div class="search-text">✦ “מסעדה כשרה בפריז…”</div>
+            <div class="ai">AI</div>
+          </div>
+        </section>
+
+        <section class="body">
+          <div class="section-head">
+            <h2 class="section-title">יעדים פופולריים</h2>
+            <div class="see-all">כל היעדים ›</div>
+          </div>
+          <div class="cards">
+            <div class="city-card">
+              <div class="country">FR</div>
+              <div class="city-name">פריז</div>
+            </div>
+            <div class="city-card">
+              <div class="country">US</div>
+              <div class="city-name">ניו יורק</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="callout">מוקאפ של הבר התחתון: 4 טאבים גלויים כמו בקוד האמיתי.</div>
+
+      <nav class="tabbar" aria-label="Bottom tabs">
+        <div class="tab active">
+          <div class="tab-icon">📍</div>
+          <div class="tab-label">גלה</div>
+        </div>
+        <div class="tab">
+          <div class="tab-icon">🧭</div>
+          <div class="tab-label">כיוון תפילה</div>
+        </div>
+        <div class="tab">
+          <div class="tab-icon">➤</div>
+          <div class="tab-label">קרוב אליי</div>
+        </div>
+        <div class="tab">
+          <div class="tab-icon">👤</div>
+          <div class="tab-label">פרופיל</div>
+        </div>
+      </nav>
+    </div>
+  </main>
+</body>
+</html>

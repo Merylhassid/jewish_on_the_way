@@ -1,0 +1,381 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run IT</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — IT</h1>
+<div class="sum">
+שורות שנבדקו: <b>30</b> מתוך 30<br>
+✅ בטוח נכון: <b>27</b> · ❓ אולי: <b>0</b> · ❌ לא נמצא/לא נכון: <b>3</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 70 · Details: 48 (48 חדשים, 21 cache) · Google estimate max: ~$0.82 · LLM: $0.008 (6)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 27</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7358</td>
+      <td><b>באגטו מילקי</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 2/A, 00186 Roma RM, Italy, Rome</td>
+      <td>BaGhetto Milky</td>
+      <td>Via del Portico d'Ottavia, 2/A, 00186 Roma RM, Italy</td>
+      <td>3.9 (1254)</td>
+      <td>06 9480 1372</td>
+      <td class="photo">places/ChIJ1dUtz-JhLxMR646lrcfW_vE/photos/AaVGc3mGpQ9twbQE_GhbvoNgCqHJ1DLjAGj0sCYoQ2JweOmikwbTxPnNz-NEBjM1MkYagoPavtDHOTX-pcMJrsEapWGW5Rc81Tp2cNtfwgJL2ZTEMQLusqHxhB9lD_fDJQr76rBc1qQwBwZwJxCfkgpBAlZkLE4XwNXRf-HnHPeC2vgpO-6_kFBB4DjGag9dGGAa9wXiEo8R9c-zecD-bbXXiVMSA2XkUpjU7hZZ66KBF22WCJh8BuwCq0xziW4YccTdDVYD8cswvx0huRQiio1x2tIsZmht6axhaWfWNbX9Hk_aeJDTbD9Uf5rg3oZ2b0NFK8DGBo4ZZ_qdPk3HY1tV-ePNkrgP0_Ooo88JA4B1k6HRLie-NnEBb-ju7XBGki5XdzJrrqyS_UyusxArKNOH3dCYy8Q0f7SW__c8MiCU0flmAU1L</td>
+      <td class="reason">LLM אישר (0.95): באגטו מילקי (BaGhetto Milky) - שם ייחודי זהה, כתובת זהה בדיוק (Via del Portico d'Ottavia 2/A, Rome), אותו מקום כשר בג'טו בעיר העתיקה של רומא. Google ממצא תקין</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%90%D7%92%D7%98%D7%95%20%D7%9E%D7%99%D7%9C%D7%A7%D7%99%20Via%20del%20Portico%20d'Ottavia%2C%202%2FA%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1dUtz-JhLxMR646lrcfW_vE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7359</td>
+      <td><b>בלהקרנה</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 51, 00186 Roma RM, Italy, Rome</td>
+      <td>BellaCarne Kosher Restaurant</td>
+      <td>Via del Portico d'Ottavia, 51, 00186 Roma RM, Italy</td>
+      <td>4.1 (1934)</td>
+      <td>06 683 3104</td>
+      <td class="photo">places/ChIJzQT_30tgLxMR_RSwPOBOnwg/photos/AaVGc3npk53dgFuUYqu-SyXL1Vu0N3DOPt2Vwe8ub8CyCmJyKRpYft2UYM8s1TplLbrC9847Zob4ujGn7-zYK6B62mT3Q5EQCE8VArIIRtU6kRZqrwe-wopOfVf-OI3G2ZHEBmEFqX7rJ3H17LHACAf5OXumNocmWyobg5VRSDOKQ3ZwYpsOpRbVxXMcxZKJjpqVvAIuhCqi-j1g71KcSeMNGvYZd1BfeFx6eEEtqoCWisBsoio-FkYgS1JAq3sZRDjB6RBVB3zzjiyeHWK13hXXgGe1KGYt4Tjl_TJDP7qmup1VgRFA2wiJqWdzuwcR7sjbaDP6YWZePeir5NfuPiSGJzvfSHKYVft7C0BgQDNh3aNw890e8qRLYaxXv8kDKtY6o9OedHRATIRLNjYVOGc0Jh4aQeQHXJPYkhF2GsWHbuoNnw</td>
+      <td class="reason">LLM אישר (0.92): בלהקרנה (Bella Carne) - identical exact address Via del Portico d'Ottavia 51, Rome. Same kosher restaurant, Hebrew name vs Italian transliteration variant. Address match is definitive despite name difference.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%9C%D7%94%D7%A7%D7%A8%D7%A0%D7%94%20Via%20del%20Portico%20d'Ottavia%2C%2051%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJzQT_30tgLxMR_RSwPOBOnwg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7360</td>
+      <td><b>סה פסטה אה פסטה</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Ettore Rolli, 29, 00153 Roma RM, Italy, Rome</td>
+      <td>C'è pasta... E pasta!</td>
+      <td>Via Ettore Rolli, 29/35, 00153 Roma RM, Italy</td>
+      <td>4.4 (469)</td>
+      <td>06 5832 0125</td>
+      <td class="photo">places/ChIJk9hVxyZgLxMRG--Sa5ZZvYM/photos/AaVGc3kj9wnQWHaKYSPnJV-hQhGF5D3fa6_C7yyzf0xEjzgQD2OFg_m_m2QLDAXohc16uGMmLgIR5QwOMzRZEIcvBUHAV5CTFmSbtpnA8sajWwzPEYWwiY_J-gtdskQ6uD4IWlpxzMGnBa9bODtdB4hs5jQgLbZH-9xKkWO9eT0EVCS_fYpiKJ1KRHCyF6MK06OphnpiYinJXmP8PcFJe-1XUuow3cMzytRO1OlYPQiz0pP64Pp4Wfz9QsebIBFQTE7GqzZ9qwpSMNPUkRhMJgGz8nwkN7w-vPwQt5EIO21isw-e7P-Q3M3nMvqnLUpxgK--FBP3Kk5Znsl1oVs8oMwNF2IUWliVOkJVLauogdsa_7O-4m118CeGuAhEgsinx6Xm8MzmoZiOCgFsSJoaFQMKvrIXN2T1uhcCtjiztfmT45kvDUUx</td>
+      <td class="reason">LLM אישר (0.92): שם דומה מאוד (סה פסטה אה פסטה vs C'è pasta... E pasta!) - שניהם משחקים על משחק מילים של 'פסטה'. כתובת זהה בדיוק (Via Ettore Rolli 29/35, Rome). שניהם מסעדות/חנויות מזון. הסטטוס פעיל. ההבדל בשם הוא תרגום/תעתיק מאיטלקית להברה דומה בעברית. הכתובת תואמת במדויק.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%94%20%D7%A4%D7%A1%D7%98%D7%94%20%D7%90%D7%94%20%D7%A4%D7%A1%D7%98%D7%94%20Via%20Ettore%20Rolli%2C%2029%2C%2000153%20Roma%20RM%2C%20Italy%2C%20Rome" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJk9hVxyZgLxMRG--Sa5ZZvYM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7363</td>
+      <td><b>יטבתה</b><div class="muted">Rome · Italy</div></td>
+      <td>Piazza Cenci, 70, 00186 Roma RM, Italy, Rome</td>
+      <td>Yotvata</td>
+      <td>Piazza Cenci, 70, 00186 Roma RM, Italy</td>
+      <td>4.3 (1633)</td>
+      <td>06 6813 4481</td>
+      <td class="photo">places/ChIJL--PHklgLxMRoVGT5rcpets/photos/AaVGc3nDKFYhuykPFCLmB8PwqdjfILVx5PO2po-wS12US78elMEd58YsDtxdqXCCqNZPdAqQTrdCHnYv69oquOUSt_M6anBBzcvOEI8FN1lOhyy6sM8PTP51xZ_LJ7My3a5TCmbrEX_63vFWr1r8xBP18ugJyDCjqZPEkdJgy7oRPRHv_HWO5jOjDKiZoixqSw38-CYRCiyEHvlsKvDjp4Ra22B3Uw9yIh6rG-uHifO0zfU6DZn4WLWuZVRQQ5q49f-DO7UTzmakJXCoaNB5DOS-pZw7gk9-fve5as2w5Uq4Ys3sO1jmUzRZEMn6gagdrnqGeyCigP_IM_Cnx1hW0_MJq4xYtvme84WmMLLtTha4VwLGao1fWPhMr4oDRWfkcXEEuFs2ll-iXvqBdpfImDFLi9qnYt6GkSzIqS0k_9X9Cbam6L3y</td>
+      <td class="reason">LLM אישר (0.95): יטבתה (Yotvata) - same exact address (Piazza Cenci 70, Rome), same food business type, Hebrew name transliteration match. City match issue in deterministic analysis is a false negative (Rome is clearly the city for both). Unique kosher restaurant name with identical precise coordinates confirms same physical location.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%98%D7%91%D7%AA%D7%94%20Piazza%20Cenci%2C%2070%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJL--PHklgLxMRoVGT5rcpets" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8350</td>
+      <td><b>Ba'Ghetto Meat</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 57, Rome, 00186, Italy</td>
+      <td>BaGhetto Milky</td>
+      <td>Via del Portico d'Ottavia, 2/A, 00186 Roma RM, Italy</td>
+      <td>3.9 (1254)</td>
+      <td>06 9480 1372</td>
+      <td class="photo">places/ChIJ1dUtz-JhLxMR646lrcfW_vE/photos/AaVGc3mGpQ9twbQE_GhbvoNgCqHJ1DLjAGj0sCYoQ2JweOmikwbTxPnNz-NEBjM1MkYagoPavtDHOTX-pcMJrsEapWGW5Rc81Tp2cNtfwgJL2ZTEMQLusqHxhB9lD_fDJQr76rBc1qQwBwZwJxCfkgpBAlZkLE4XwNXRf-HnHPeC2vgpO-6_kFBB4DjGag9dGGAa9wXiEo8R9c-zecD-bbXXiVMSA2XkUpjU7hZZ66KBF22WCJh8BuwCq0xziW4YccTdDVYD8cswvx0huRQiio1x2tIsZmht6axhaWfWNbX9Hk_aeJDTbD9Uf5rg3oZ2b0NFK8DGBo4ZZ_qdPk3HY1tV-ePNkrgP0_Ooo88JA4B1k6HRLie-NnEBb-ju7XBGki5XdzJrrqyS_UyusxArKNOH3dCYy8Q0f7SW__c8MiCU0flmAU1L</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ba'Ghetto%20Meat%20Via%20del%20Portico%20d'Ottavia%2C%2057%2C%20Rome%2C%2000186%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1dUtz-JhLxMR646lrcfW_vE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8351</td>
+      <td><b>Ba'Ghetto Milky</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico D’Ottavia, 2/a, Rome, Italy</td>
+      <td>BaGhetto Milky</td>
+      <td>Via del Portico d'Ottavia, 2/A, 00186 Roma RM, Italy</td>
+      <td>3.9 (1254)</td>
+      <td>06 9480 1372</td>
+      <td class="photo">places/ChIJ1dUtz-JhLxMR646lrcfW_vE/photos/AaVGc3mGpQ9twbQE_GhbvoNgCqHJ1DLjAGj0sCYoQ2JweOmikwbTxPnNz-NEBjM1MkYagoPavtDHOTX-pcMJrsEapWGW5Rc81Tp2cNtfwgJL2ZTEMQLusqHxhB9lD_fDJQr76rBc1qQwBwZwJxCfkgpBAlZkLE4XwNXRf-HnHPeC2vgpO-6_kFBB4DjGag9dGGAa9wXiEo8R9c-zecD-bbXXiVMSA2XkUpjU7hZZ66KBF22WCJh8BuwCq0xziW4YccTdDVYD8cswvx0huRQiio1x2tIsZmht6axhaWfWNbX9Hk_aeJDTbD9Uf5rg3oZ2b0NFK8DGBo4ZZ_qdPk3HY1tV-ePNkrgP0_Ooo88JA4B1k6HRLie-NnEBb-ju7XBGki5XdzJrrqyS_UyusxArKNOH3dCYy8Q0f7SW__c8MiCU0flmAU1L</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ba'Ghetto%20Milky%20Via%20del%20Portico%20D%E2%80%99Ottavia%2C%202%2Fa%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1dUtz-JhLxMR646lrcfW_vE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8352</td>
+      <td><b>Bellacarne</b><div class="muted">Rome · Italy</div></td>
+      <td>via Portico d'Ottavia 51, Rome, Italy</td>
+      <td>BellaCarne Kosher Restaurant</td>
+      <td>Via del Portico d'Ottavia, 51, 00186 Roma RM, Italy</td>
+      <td>4.1 (1934)</td>
+      <td>06 683 3104</td>
+      <td class="photo">places/ChIJzQT_30tgLxMR_RSwPOBOnwg/photos/AaVGc3npk53dgFuUYqu-SyXL1Vu0N3DOPt2Vwe8ub8CyCmJyKRpYft2UYM8s1TplLbrC9847Zob4ujGn7-zYK6B62mT3Q5EQCE8VArIIRtU6kRZqrwe-wopOfVf-OI3G2ZHEBmEFqX7rJ3H17LHACAf5OXumNocmWyobg5VRSDOKQ3ZwYpsOpRbVxXMcxZKJjpqVvAIuhCqi-j1g71KcSeMNGvYZd1BfeFx6eEEtqoCWisBsoio-FkYgS1JAq3sZRDjB6RBVB3zzjiyeHWK13hXXgGe1KGYt4Tjl_TJDP7qmup1VgRFA2wiJqWdzuwcR7sjbaDP6YWZePeir5NfuPiSGJzvfSHKYVft7C0BgQDNh3aNw890e8qRLYaxXv8kDKtY6o9OedHRATIRLNjYVOGc0Jh4aQeQHXJPYkhF2GsWHbuoNnw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bellacarne%20via%20Portico%20d'Ottavia%2051%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJzQT_30tgLxMR_RSwPOBOnwg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8353</td>
+      <td><b>Bona Pizza Romana</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 7, 00186 Roma RM, Italy, Rome, 00186, Italy</td>
+      <td>Bona | Pizza Roma [ Ottaviano ]</td>
+      <td>Via Ottaviano, 13/15, 00192 Roma RM, Italy</td>
+      <td>3.6 (1375)</td>
+      <td>06 4559 7654</td>
+      <td class="photo">places/ChIJWdalkethLxMRF1zuYCUWNDg/photos/AaVGc3nQnA5ONMoRLMClfJrTWRQ2g4jV2t2QW5MdUzaP05mWQGXz8QPL4ZcVy7BuqBfEnAyV0B_JLigtpGlTf5GOzsD_2snvc8bPFyfuJd78E9twdaRxIxhkjZdZ78mLhs7uWFH18bv3E2OJzZC0a2qQeQal8U65pAlav2C1QXSkUuLsnrngrRixV-UW_9Qrm-f7vPxG0kBlYLnSNsBqXhbfrTEwcaF3yxbnfKz3BFllrJndAv2ktNJW6qNO1TtUp2Zc2ffhJfypUwCCaa_RaxANNV2XxmsvUyVi4BQ76CTLAtYbyt8f0dKXSXDonaAe2vwT1yQEU1wrzsdQcLgemtqEvuE4w0wtm2ATFTYX-EQhdob78qA_8UDnLfOLVT-Hiv_UqSXlx-r6d_H88hEpMHbrvLi4ZT-za7zEZcCzJUO2OxYJ_A</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bona%20Pizza%20Romana%20Via%20del%20Portico%20d'Ottavia%2C%207%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome%2C%2000186%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJWdalkethLxMRF1zuYCUWNDg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8354</td>
+      <td><b>C'e Pasta e Pasta</b><div class="muted">Rome · Italy</div></td>
+      <td>via Ettore Roli 29/31, Rome, Italy</td>
+      <td>C'è pasta... E pasta!</td>
+      <td>Via Ettore Rolli, 29/35, 00153 Roma RM, Italy</td>
+      <td>4.4 (469)</td>
+      <td>06 5832 0125</td>
+      <td class="photo">places/ChIJk9hVxyZgLxMRG--Sa5ZZvYM/photos/AaVGc3kj9wnQWHaKYSPnJV-hQhGF5D3fa6_C7yyzf0xEjzgQD2OFg_m_m2QLDAXohc16uGMmLgIR5QwOMzRZEIcvBUHAV5CTFmSbtpnA8sajWwzPEYWwiY_J-gtdskQ6uD4IWlpxzMGnBa9bODtdB4hs5jQgLbZH-9xKkWO9eT0EVCS_fYpiKJ1KRHCyF6MK06OphnpiYinJXmP8PcFJe-1XUuow3cMzytRO1OlYPQiz0pP64Pp4Wfz9QsebIBFQTE7GqzZ9qwpSMNPUkRhMJgGz8nwkN7w-vPwQt5EIO21isw-e7P-Q3M3nMvqnLUpxgK--FBP3Kk5Znsl1oVs8oMwNF2IUWliVOkJVLauogdsa_7O-4m118CeGuAhEgsinx6Xm8MzmoZiOCgFsSJoaFQMKvrIXN2T1uhcCtjiztfmT45kvDUUx</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=C'e%20Pasta%20e%20Pasta%20via%20Ettore%20Roli%2029%2F31%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJk9hVxyZgLxMRG--Sa5ZZvYM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8355</td>
+      <td><b>C'è Pasta e Pizza</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Giuseppe Massari, 8 Rome, 00152, Italy</td>
+      <td>C'è Pasta e Pizza - Kosher</td>
+      <td>Via Giuseppe Massari, 4/10, 00152 Roma RM, Italy</td>
+      <td>4.5 (411)</td>
+      <td>06 580 6517</td>
+      <td class="photo">places/ChIJT1AiEQFhLxMRphgT4fRrceU/photos/AaVGc3kQVGvcY6toI3MAmgCq8GMG23-hsA0J0ynXkDyJOuoqgJ_2dlhgGZP-OPn_87O7miDE5PdhB_hNz4-kNjbDR9gvXs4Esiv_gzROfDKsWHX9WL_wqkztHyrHji02yPgVKE5pljk-pel4vPGC7EoL4Ejoovp8UUP4xI0r8jv027hlnmwHujHgzIMYcVbVWM0cmKJBHm8e8ZKMHXPNBYQ1usAF3MK3DgMeBrp7TzpuYWnnZj7e_N3wD5KdygJSuOEgZT7RmbI5rkSSZSouOTdYvV0gjpRNcT7XMca0SBokYgyYG2-DfyfpKRd8GvmoBEdtUCJrzrwUsZsbq3-Ig3ZuSIbBuiPbR7jWDwLcXcQxCkAsQncb3262NTKMs1oWU0vopWj6zSFlyHK9-n0I2E8jDUpMp7Xv2XbWlyPXXir50gxp2SM</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=C'%C3%A8%20Pasta%20e%20Pizza%20Via%20Giuseppe%20Massari%2C%208%20Rome%2C%2000152%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJT1AiEQFhLxMRphgT4fRrceU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8356</td>
+      <td><b>Casalino Osteria Kosher</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 1e, 00186 Roma RM,, Italy</td>
+      <td>Casalino Osteria Kosher</td>
+      <td>Via del Portico d'Ottavia, 1e, 00186 Roma RM, Italy</td>
+      <td>4.2 (913)</td>
+      <td>06 7978 1514</td>
+      <td class="photo">places/ChIJVd3Z1qxhLxMRv8fKCJW3eBo/photos/AaVGc3ks1WNE6eKrclbwRpo01EuevT3eqgJSoY3DS8MgRelVZoVxu9yVjI-2ltHEw3WpmgDXxTy5AEQhPvl_KAxKEag9NYOuEV7R515nyeehz9hN8aTWuc9q7JifF6CvTqXrqxAVqFphApTSoy9bLYzmEaQlEaMryZmjyU3KFrlYqI1cn-TaYW4ZYXzuCF63-53hl8-9deQX5wRvbOHGRxcsQ0oniZiOKCTUCoJ5VdicoCHmwtXtBYQz5YfJ_lTAVc9HlpVqsc9k5RBw3Hfif-Izzr6yMJorqyrVNNZqn3wwwmHF5ecqcZnDNud8mgIzIKn-9A5Jfe6Y-dM9vbzSOEtMqjoAn3KtfoPfWce-KOkF31VurnaLg6w1GobJofnvp734LNXgtft0ICQBYszuK3XvFsBDFFnWaVDSiVDEpYJe47w3YXjh</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Casalino%20Osteria%20Kosher%20Via%20del%20Portico%20d'Ottavia%2C%201e%2C%2000186%20Roma%20RM%2C%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJVd3Z1qxhLxMRv8fKCJW3eBo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8357</td>
+      <td><b>Chabad Piazza Bologna Shabbat Meals by Families</b><div class="muted">Rome · Italy</div></td>
+      <td>Viale di Villa Massimo, 39, Roma, RM 00161, Italy</td>
+      <td>Chabad Piazza Bologna, Roma</td>
+      <td>Viale di Villa Massimo, 39, 00161 Roma RM, Italy</td>
+      <td>4.9 (324)</td>
+      <td>333 813 0919</td>
+      <td class="photo">places/ChIJOf69onthLxMR_qAYRSBMNp8/photos/AaVGc3mdc8P91lyfpTb-gsZIyYYBrvbKD5nTlE5hLuBeO60oHH0cdKwZ2q-wC-xgguBBDTJJNBAxYx9Qngw8eXVkJGzquyWcqAePf9lEGLUKpKpf_hxl0-Hm0LvxllVGvMkeSDZ8wEU7X2gkGh1DPuMlFLJ1BopVMdH3jtc6w_ueyGHjGXm3m45OmknL8HdF2uxRriI_gjdPtp6LfNEVvVyyYfEmJ5M9iIzznUh7Rk18bOUrjYBLRvaXpMGYBufjTbjYrmP3hCB23Xk6Jf5XR2QkoRNKTjW8bIXjrLO2zicJ2PRcv6IoCNVOcI5Q4iQyXk_iMTe9K7FE22uDciVvDXOWrTMVbItld8RXZi9-ZYje1hpsKTpOmmmUwPT0R1uRfUQMQknKMIspW0aN2QSRIvmXBXk99gEGkwJzERDYyuksjsWp2s3_ooeh207z6C9Olw</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Piazza%20Bologna%20Shabbat%20Meals%20by%20Families%20Viale%20di%20Villa%20Massimo%2C%2039%2C%20Roma%2C%20RM%2000161%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJOf69onthLxMR_qAYRSBMNp8" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8358</td>
+      <td><b>Dolce Kosher</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Fonteiana,18, Rome, 00152, Italy</td>
+      <td>Dolce Kosher</td>
+      <td>Via Fonteiana, 18, 00152 Roma RM, Italy</td>
+      <td>4.2 (468)</td>
+      <td>06 580 9940</td>
+      <td class="photo">places/ChIJQR_yzBBgLxMR-vjBVogPSbE/photos/AaVGc3lYg5Ws-_f9zZpMi_K86IzhXSe8IMxyLItJlJ-91Gm1RFnIgYkoj1VsXaIi65IIFroqQXuzu3mkk5f2dN8lNCkxc92yNI7crvbdCkRoXXN9OaxeGac68og8_B2rKuRAyvfZraRui33X3j9HHXEjKblT07n_p7bf-ijZLjZPEx5VW7jewiBUf-Hqjzv1P-KFvsUYxEkEaw7-2FDlgSyMVaGdzxDJQy5j_4eHbXX4kPneC1nTa4zK_ZEUi88E2hI8NE-vuU1Z2WSqDptVECc_uvmFy3hHHaTsAEybTL9RSP5YQo1r3Kr3WQ0OYNOrTLz3cDBKRmwu36dyPzaXIZy-eLCJlvitcPc0OPKy6AlKbDQ0XDqAIh597qbeqcEnlgh5BJ1bP87Ou1sK-8GjRQKPdxwMUp1FnzZD61YP-cNHFmyxg2-1dhpxEzelliLYkgz0</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dolce%20Kosher%20Via%20Fonteiana%2C18%2C%20Rome%2C%2000152%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQR_yzBBgLxMR-vjBVogPSbE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8359</td>
+      <td><b>Flour Bakery and Café</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Padova 78, Rome, Italy</td>
+      <td>Flour Farina e Cucina</td>
+      <td>Via Padova, 78, 00161 Roma RM, Italy</td>
+      <td>4.4 (1276)</td>
+      <td>06 4423 6816</td>
+      <td class="photo">places/ChIJNTJHZnphLxMRoWp-FgKEnBA/photos/AaVGc3lMoEcRNi8HpTHIdVqvGP4fJyti_-cp_QFoqawCqL90Mv_PMxCzRAoXOMiSTY_R4qvXx00wPam5zyL4_hgt-6p5vnwvHe60sbvoJNZiScwE7ZbyTzB96BESMhhM6Rtzfo-4XM4n8vEReF1Hdvm4EpJGD1abDJ-lQA5REMGxw9Wn-lsopsJqeskuTfVKsB52BBGUPCRGevxWJPy7B3GvqNw7bhA_bwWDneCjlqvnVxU2yYGfCbU_VPP3igERNoQPT3hhx6WVEpEk9vnISjpgH_uvtUgDRXuVjNPEMI5pIJGrkOv6YpvCLAst_2as5YpO34pQBhXlKzWRwPOtka0KlFCnnQFfe6Z8kz64SMmzdKPIXazv5lk8XYAjquNM-39LbfyMnkHYtktqA1g4MBPqBzo4XRpjud2wvbr5OsFf6h5hF8CA07B2uoD1gLC1yQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Flour%20Bakery%20and%20Caf%C3%A9%20Via%20Padova%2078%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJNTJHZnphLxMRoWp-FgKEnBA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8360</td>
+      <td><b>Fonzie The Burger's House</b><div class="muted">Rome · Italy</div></td>
+      <td>Via S. Maria del Pianto, 13, Rome, Italy</td>
+      <td>Fonzie The Burger's House | Santa Maria del Pianto</td>
+      <td>Via di S. Maria del Pianto, 13, 00186 Roma RM, Italy</td>
+      <td>4.4 (1788)</td>
+      <td>06 6889 2029</td>
+      <td class="photo">places/ChIJ-d-jOklgLxMRJTAIJReByM8/photos/AaVGc3m8qeaktwsg0T5vtk-AU6HNUHsfOByv3W92pfiVTz7LoNAYwn5Je8NPib2JdoHAA1TcO_h_M9HaT0gZfrGWMMuRWYhitFxbDfnI5s3UrHd_Jzi_ZL6tFfLvyGfP5pG0RySGTX6-sZcJL16zoFiIrUdERg0-yNARd_RFo_MdSVbSSYU-5jM11Ua_HqK3vJwy_sUsyU3UnG5j4tXeEmM3KQrFHyQGsTpz5H__LW7ABNuBIcXbw66ygo55Evc-YNPhHoTdLs4DsM6yczxsCtGD8hjPnSR8L8tvxwWQHUF4AZ8nydENnFiUBaLIgfbdhYYtd09It19tUv0z6rvWM3dP8WzQ27V5wK1J9btpxhMLzZh_ocdFilVowEuQgNDWQnG4iYSZ5kymyOx6JPHY4IXrdXGt-0hQFxh4s3Mxdo0In7A</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Fonzie%20The%20Burger's%20House%20Via%20S.%20Maria%20del%20Pianto%2C%2013%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-d-jOklgLxMRJTAIJReByM8" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8361</td>
+      <td><b>Kasher Roma 5778 (Wholesale Bakery)</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Avicenna, 15, Roma, RM 00146, Italy</td>
+      <td>Kasher Roma 5778 Panificio Pizza Pasticceria &amp; Pietanze Pronte</td>
+      <td>Via Avicenna, 15/15a, 00146 Roma RM, Italy</td>
+      <td>4.5 (84)</td>
+      <td>06 3032 8965</td>
+      <td class="photo">places/ChIJmwIXWzOLJRMR-pUeqiE_R5c/photos/AaVGc3kskXs3G-ypRqgw-wrtWyia0X1RkCQaXEZ-2glIxJUEvHpxfu6-Lf7SP11sXPX2_y21lysFeaVxmotkFIzXr8tqoXahCe4OhFLIMkmpp8oByGXSEMDdzLtnn0N1Z0-h9L3xhiYXmY7ICGAZkzy9fm-c7kE75Ok_RdY_GqIbt2mblDFT57HoxbY5FU-Qp-o78d1AkcBjm2a8WsgHXixCVqUcbIOs2pIJY-ydsYaYFv8xqjYHhD_9AGch5Ozkl4MOdjwOY_sIP0C9_FkPHHNMrnEFfCUqzfATeojXHnwzs1IvbEZ5T5GkvDVXNgScv69ng3zAHHeO3vsFPO8S36Mx243ds09XbZSXRXBogK5RDO_UFA0KehTK7UzlhAOTJ3dkj7bL_aw9-pNjjizkzWk-jBK2P6afNIQeqG4mc0g4Pn0</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kasher%20Roma%205778%20(Wholesale%20Bakery)%20Via%20Avicenna%2C%2015%2C%20Roma%2C%20RM%2000146%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJmwIXWzOLJRMR-pUeqiE_R5c" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8362</td>
+      <td><b>Kosher Cakes</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia 1A, Rome, Italy</td>
+      <td>Kosher cakes</td>
+      <td>Via del Portico d'Ottavia, 1a, 00186 Roma RM, Italy</td>
+      <td>4.2 (32)</td>
+      <td>06 6830 9396</td>
+      <td class="photo">places/ChIJV01CpilhLxMR-n4e9EPfxrQ/photos/AaVGc3kFm6ZCwLN98WZAtOy8qys98tz5EPheJ2oCkj-ukwGGb96dqgDjLBzO7AJ9mwpwWGhS5ahwKphDYQ7B9e7YbvHxPI0hqX0dtNwtspwU8Q9ipya-w7JPmQDokyOBRQA_Y7rV_5cNTUDQpdRZzf-zLHQmQMKCEPL8aWme6m4nkC02Hq9zc07Bex7AHejnzbfqEkW_R2ByygOfYjRLGOv_SfmRqgD8UCUAdJ1RVJ_HDQYBe8IRFTTFP5a1O5d7Sl5YImzI74ZnWGz6Y0kmKjQtfd8_09aSqQcYFWa-xL3bE6DtJUQ5VeRhS1FSHBiiXVQeorzxNel_wiXty-mRMipqGafmgKXSaS6wkWhjHHVxOcOSwlS3WM5RgYavYG38h4bWRVL-2WP105Gv8RagQfHZoTDqO6inHh35GHMkMcpitn6rE6o</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Cakes%20Via%20del%20Portico%20d'Ottavia%201A%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV01CpilhLxMR-n4e9EPfxrQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8363</td>
+      <td><b>Kosher Cakes Bakery</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Michelangelo Pinto 10/16 00149 , Rome, Italy</td>
+      <td>Kosher cakes</td>
+      <td>Via del Portico d'Ottavia, 1a, 00186 Roma RM, Italy</td>
+      <td>4.2 (32)</td>
+      <td>06 6830 9396</td>
+      <td class="photo">places/ChIJV01CpilhLxMR-n4e9EPfxrQ/photos/AaVGc3kFm6ZCwLN98WZAtOy8qys98tz5EPheJ2oCkj-ukwGGb96dqgDjLBzO7AJ9mwpwWGhS5ahwKphDYQ7B9e7YbvHxPI0hqX0dtNwtspwU8Q9ipya-w7JPmQDokyOBRQA_Y7rV_5cNTUDQpdRZzf-zLHQmQMKCEPL8aWme6m4nkC02Hq9zc07Bex7AHejnzbfqEkW_R2ByygOfYjRLGOv_SfmRqgD8UCUAdJ1RVJ_HDQYBe8IRFTTFP5a1O5d7Sl5YImzI74ZnWGz6Y0kmKjQtfd8_09aSqQcYFWa-xL3bE6DtJUQ5VeRhS1FSHBiiXVQeorzxNel_wiXty-mRMipqGafmgKXSaS6wkWhjHHVxOcOSwlS3WM5RgYavYG38h4bWRVL-2WP105Gv8RagQfHZoTDqO6inHh35GHMkMcpitn6rE6o</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Cakes%20Bakery%20Via%20Michelangelo%20Pinto%2010%2F16%2000149%20%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV01CpilhLxMR-n4e9EPfxrQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8364</td>
+      <td><b>Le Bon Ton Catering</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Casoria, 19, Roma, RM 00182, Italy</td>
+      <td>Le Bon Ton Catering</td>
+      <td>Via Casoria, 24, 00182 Roma RM, Italy</td>
+      <td>4.8 (31)</td>
+      <td>06 702 6889</td>
+      <td class="photo">places/ChIJlWMC4uxhLxMRNW5UGqNsK-Q/photos/AaVGc3kvAsjG_hrjnGZwsUjTUfNKR18Xwn5DM0Utofh7Q8jiMm5UHb2Ma8_KxvnDsFgHVDmKOckj9xsSpsVQ_I2AaIj9Vu2S3b0_z5tL_VXP36tmxAcWuHqxBW21H0xF7NEeN2yk8riduPqN0ZnGnz2KfSitA0a9iI6ydC7TBfoLSotml-ZU47U-8SgaI9pOpB00CgRpJIyhSM6RLeDFbT6hPQxPRZQri4_ovNDgkrOQ_VfM9j-CVz3EZHKdMKyTHozvlK4UBPCc4WLHlAibraiin7oyLz96L9RyZnkDg5icoApXzIPPg33JbPOG8JzgafCLf6G_TRMJV9dCiamV_HunBBsZ4z93r8J56JXyx_zEkQJkFuFolqURo4_seq4eDh__489_Ta7ttZhAhNyokgYP4kdXveFzrJZUT8eQhZzMi0OirD0</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Bon%20Ton%20Catering%20Via%20Casoria%2C%2019%2C%20Roma%2C%20RM%2000182%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJlWMC4uxhLxMRNW5UGqNsK-Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8366</td>
+      <td><b>Little Tripoli</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Cremona, 42, Rome, 00161 , Italy</td>
+      <td>Little Tripoli</td>
+      <td>Via Cremona, 42, 00161 Roma RM, Italy</td>
+      <td>4.7 (518)</td>
+      <td>06 6422 0481</td>
+      <td class="photo">places/ChIJm3IUj3BhLxMRIBKKZb2zn9s/photos/AaVGc3m_8hLQnA76x0Q3_Ba9rMuSnybPjzu763y5MhqhqPHdBcXkoQn9iyDYaG2rrImwj2uPsUVgOeQLfsGrTbGQ4dxzWsgMra-dykW95pDsXlB2kvbHlN9vyJlEj3aJaC8cfAzIs8H7IYFYdlD22rSqvdGrs32It0G88UwIKSE0_za0lSQxin6b9hyUhNoEeFXCtKljMDtPPx3kdi3nyX8tjTEA2NXYvE6ETaD0b1W6xGrMdoUhdZ7ZEL8yt4BVDMZtQ6wOIP4bgN-AK_SynU039eBg-BjWP2nv0HwmeIWjZ-NRvXOqQg5xphywG9h5eFL1_YdCAaBrrnhrJ3nced5bUhWk9_H30afEXSz-qKd-qayvUvFCm2PHZLYuA_H1WbDnaFWjO23FAfzRvSJaYRS8ias23arSO28qdEvh5OjmcuQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Little%20Tripoli%20Via%20Cremona%2C%2042%2C%20Rome%2C%2000161%20%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJm3IUj3BhLxMRIBKKZb2zn9s" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8367</td>
+      <td><b>Marlene's Gelataria</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 1/B, 00186 Roma RM, Italy, Rome, Italy</td>
+      <td>Marlene's Gelateria</td>
+      <td>Via del Portico d'Ottavia, 1/B, 00186 Roma RM, Italy</td>
+      <td>4.4 (197)</td>
+      <td>06 4423 3067</td>
+      <td class="photo">places/ChIJJal4huJhLxMRjM71L2WLPkU/photos/AaVGc3lPoWSP54rFZaK8T1rV6Z7WM5nTx-0IEwtMRbp30sMjunmuXPPJstVPUOXQcDzlEgoLKFp6quhLz2dJ9CBggLuM2Y3eNEYWVbSPODtgkb_ekY_QOw7ZMvzGMnrrIATHU2Bk6iSr3nb5PTsDCTd405j7qO_CM3isWHkDfHqQuG-DMxtcnBErF_idw5ag_kjrhxtw1FPB5DNCx3nOLwP0aj0d8JTLkbc97XyXu7EJ4siRhKJCF0c3oImZ9AWSk68umhjjhelsjuucDQMFCNTBHyeqDyZtzWG4yvgTtZkeehEbt6YfKgDCERHc-SObDJ1WMpUARAXC1Qpb3Bzb-U_wt6fdzxjVbyATrcoU8aPOLPJBRe508lhTX09hDWPfqdSAeFd2Rmry2zMbSLVdGcMSoM2_ICeg7B_jG2q52QkwmRzaPQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Marlene's%20Gelataria%20Via%20del%20Portico%20d'Ottavia%2C%201%2FB%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJJal4huJhLxMRjM71L2WLPkU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8368</td>
+      <td><b>Mondo di Laura</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Tiburtina, 261, Rome, 00162, Italy</td>
+      <td>Mondo di Laura</td>
+      <td>Via Tiburtina, 263, 00162 Roma RM, Italy</td>
+      <td>4.5 (64)</td>
+      <td>06 588 0966</td>
+      <td class="photo">places/ChIJEXIRSXlhLxMRrU8HiYyqma0/photos/AaVGc3lV-DJEDuDveQ_3wx-nyVmjJWGgQmElrcxzulmJF1-g2UJfNRQ3wpQUqMHC0Vkp9FxSNsG1YUI3pbK2ac8bDnkTPh66FFvN7f5YyCQ4n-7zz_2KFEiwhpMw5UposDvEVNsH8oXEY0aF0QGNqpxbvm2mx3_92ag8JLksXR4OBy28f5R3baUKAD6xalerSW-HJnFumQcHn_2LZ1hZy9hw-1U2-dI-Fudak-7ewf-sDXDfr3tsU6cu83Wm8poKlZGHEBFZDyUA4h4utmH5_WYc92mvHrUgQRO2kuq8EUDY9sg7gkiKySb1QoR4uNKc8tLLFFzuiQVPxEEG1_xhYzWUR8QV8CqDgQYTKWZJtDlJ2XbxzAbW0qP6hlTFLCYqNV4o5ShJu04EIAJ-YbM-DrRYTQhgGjQ7lHkM3_KFNbDEXRDb6csH</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mondo%20di%20Laura%20Via%20Tiburtina%2C%20261%2C%20Rome%2C%2000162%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJEXIRSXlhLxMRrU8HiYyqma0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8369</td>
+      <td><b>Oriental Fonzie</b><div class="muted">Rome · Italy</div></td>
+      <td>Via di S. Maria del Pianto, 65, 00186 Roma RM, Italy</td>
+      <td>Oriental Fonzie</td>
+      <td>Via di S. Maria del Pianto, 65, 00186 Roma RM, Italy</td>
+      <td>4.1 (438)</td>
+      <td>06 683 2673</td>
+      <td class="photo">places/ChIJDz7YcXBhLxMRmy7irKKvcgE/photos/AaVGc3lo2sGiwM0KXBC0FVUdhyPxdaUyS_7bfyiXjB30IKXQ7wN90ur_dkbA69CEU3XDuzF9LyT9gfHbRlSMmIUWYtAcTKckezAOENbc-FhXMcJVJPKbqsDvSz9cO4KJ9R1B7JBJ1sJoWNeaQxQ0Vpx-MqXouc6BTnOaD6HU0CCkW86f6NpLIwNUuoDvw_oeb75-7nHs9ytr7RNt4fgudQiopN26PPVpnWCl3nYENxNUsmb2SCx4N4K0w7RM-l3Mi-C7J9kGMV1cboKy59GHl6nMyLmXHX0FdlcuTgFFuVJKQp9X3BGw1hO5xnMCxiIAYzff2Eglzcc_ZCVKotPJS1hmT4RpGV8mbHADxd__wXSQW9j-qmg1IdLjRk9wcKfjXNVcPOiXt4uEVIha7lKIsvvDak9faXoIJjeFyZY1DNaKT7o</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Oriental%20Fonzie%20Via%20di%20S.%20Maria%20del%20Pianto%2C%2065%2C%2000186%20Roma%20RM%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJDz7YcXBhLxMRmy7irKKvcgE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8370</td>
+      <td><b>Pasticceria Boccione</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 1, Roma, RM 00186, Italy</td>
+      <td>Boccione</td>
+      <td>Via del Portico d'Ottavia, 1, 00186 Roma RM, Italy</td>
+      <td>4.2 (1477)</td>
+      <td>06 687 8637</td>
+      <td class="photo">places/ChIJQZsHR0lgLxMRxMojow0zSI4/photos/AaVGc3lO2TVI4NV22bkD79oCKvfvFN5CZq_oaQlWMaCsP7qCtpycXMfsdlt_UzJBXkevvt3kWp-zoLOJdzeQJANo0Q2_Ugwj03_Dbx5gwUqKJgX22it_MwxxINEskOiCa3emEWbNt7Vbb3jImzQEuTHofZM6BA90pWdkl03OEjlWIoe-Lh8L3AL-wsmxZ4Z5vRNv15ZPI5ppr1dmQEhb6hYig_fN7eUCxfmRwcvo4vgkzbkqpG0ZhPkc5l624eNQmNqELJnUn91CTAITbWS4v1adZSNyhvl4FmGyk5-_UPtpHu8wXQjCiKJS7WV9kC7pErIZ_Ud5b2ruBLKqyFO1ewDiAsO-WE9DpbvJnQe04GrggRHVB1COyoli6oCri2zfC2xF1nmpHmjwfOinlGL0pe9oZsvOrtkz_kdIjYJL9Vyt-Ki7gg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pasticceria%20Boccione%20Via%20del%20Portico%20d'Ottavia%2C%201%2C%20Roma%2C%20RM%2000186%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQZsHR0lgLxMRxMojow0zSI4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8371</td>
+      <td><b>Renato al Ghetto</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 5, Roma, RM 00186, Italy</td>
+      <td>Renato al Ghetto - Hostaria Kosher</td>
+      <td>Via del Portico d'Ottavia, 5, 00186 Roma RM, Italy</td>
+      <td>4.2 (1656)</td>
+      <td>06 4754 5830</td>
+      <td class="photo">places/ChIJGY3GivNhLxMRZKwWoPcOS0Y/photos/AaVGc3nePqSEVDMLSyMAUEKCcYc1bXHVGSHEHRNvcmrOZHXvbFOMh3Z5BA1x3SorkUvTD6wPDNfGutsVlwiwEWXul5HW2NpKx5fOeBz6npQ4rdFJzby0-J-Co1jidHDuCGWaDPYriWRulJ4_Wt-Y-Og8Q3OTiQ8hiWwFX0zs5IfpSe2CYy8-wWk4Y0o3EjemwCo4_XxIYS6KEuy7vxrtRSZyb9FLb9SxtaLCto7A1flZRkcMZTWuO42m2nyM__0v4saqvkZ7PZwO7_NsDyQQ-f3rlEwle-s_LcYVhwlKrp3alw1qoDPL4ptTSBO0fVtwXfoBWHgf4lxN8YnyLTx_3LQhQMzN4436gxxprDb22jFsDqsKwAmldw0PHKq6_yGi2r_SJAFqk5dIy436IW8yKE8yiTg3Uo2XyTvVo3pzGza6g0g</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Renato%20al%20Ghetto%20Via%20del%20Portico%20d'Ottavia%2C%205%2C%20Roma%2C%20RM%2000186%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJGY3GivNhLxMRZKwWoPcOS0Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8372</td>
+      <td><b>Su Ghetto</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico D'Ottavia, 1 C, Rome, 00186  , Italy</td>
+      <td>Su Ghetto Kosher Restaurant</td>
+      <td>Via del Portico d'Ottavia, 1C, 00186 Roma RM, Italy</td>
+      <td>4.1 (1436)</td>
+      <td>06 6889 2868</td>
+      <td class="photo">places/ChIJf0MMR0lgLxMRkpoF7fIWeq4/photos/AaVGc3mH5ial6AZen8yY1GETLbG_GvnRgf58v05DocXwU41JwIpuSISiZkIouGkugjChzzZFPRx3hugtqrWJTjJ4JoLkKdG0Vsh1Mq1Ywz1SoRuvDGPeA57EvNyR5QxbR0OSDa1ormfo6BbpNi8q73hNZVW4LrvvNlGl81BaWn6QnIJv4vB8UAYixrWdZBkVmoGW-MptFmOTAHYzHj9UrSxq85fF-TWuLDH8kJANJ1b637m4e2QSam_Zg8eqVKTH-bWC44M9C_mtnDQJQI1tfGKGj-H66jX9BwPAKETG_nQVsvkuOZ4T3WGb5EkfxR4prDdUWSl7AfTsq3gKOyDMpWYTQvnBa7WEhNcor2oRFaCRbaCcddpqWyn5Dei6eCQ6rUvsZdDJ4AKphpopmBKv-MwMFu6eHpro168ZC7V67QCQBBDuxVw5GPqZUZeFdUzykA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Su%20Ghetto%20Via%20del%20Portico%20D'Ottavia%2C%201%20C%2C%20Rome%2C%2000186%20%20%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJf0MMR0lgLxMRkpoF7fIWeq4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8373</td>
+      <td><b>Yotvata</b><div class="muted">Rome · Italy</div></td>
+      <td>70 Piazza Cenci Main Synagogue, Ghetto area, Rome, Italy</td>
+      <td>Yotvata</td>
+      <td>Piazza Cenci, 70, 00186 Roma RM, Italy</td>
+      <td>4.3 (1633)</td>
+      <td>06 6813 4481</td>
+      <td class="photo">places/ChIJL--PHklgLxMRoVGT5rcpets/photos/AaVGc3nDKFYhuykPFCLmB8PwqdjfILVx5PO2po-wS12US78elMEd58YsDtxdqXCCqNZPdAqQTrdCHnYv69oquOUSt_M6anBBzcvOEI8FN1lOhyy6sM8PTP51xZ_LJ7My3a5TCmbrEX_63vFWr1r8xBP18ugJyDCjqZPEkdJgy7oRPRHv_HWO5jOjDKiZoixqSw38-CYRCiyEHvlsKvDjp4Ra22B3Uw9yIh6rG-uHifO0zfU6DZn4WLWuZVRQQ5q49f-DO7UTzmakJXCoaNB5DOS-pZw7gk9-fve5as2w5Uq4Ys3sO1jmUzRZEMn6gagdrnqGeyCigP_IM_Cnx1hW0_MJq4xYtvme84WmMLLtTha4VwLGao1fWPhMr4oDRWfkcXEEuFs2ll-iXvqBdpfImDFLi9qnYt6GkSzIqS0k_9X9Cbam6L3y</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yotvata%2070%20Piazza%20Cenci%20Main%20Synagogue%2C%20Ghetto%20area%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJL--PHklgLxMRoVGT5rcpets" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 3</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7361</td>
+      <td><b>ליטל טריפולי</b><div class="muted">Rome · Italy</div></td>
+      <td>Via Polesine, 16/18, 00161 Roma RM, Italy, Rome</td>
+      <td>Little Tripoli</td>
+      <td>Via Cremona, 42, 00161 Roma RM, Italy</td>
+      <td>4.7 (518)</td>
+      <td>06 6422 0481</td>
+      <td class="photo">places/ChIJm3IUj3BhLxMRIBKKZb2zn9s/photos/AaVGc3m_8hLQnA76x0Q3_Ba9rMuSnybPjzu763y5MhqhqPHdBcXkoQn9iyDYaG2rrImwj2uPsUVgOeQLfsGrTbGQ4dxzWsgMra-dykW95pDsXlB2kvbHlN9vyJlEj3aJaC8cfAzIs8H7IYFYdlD22rSqvdGrs32It0G88UwIKSE0_za0lSQxin6b9hyUhNoEeFXCtKljMDtPPx3kdi3nyX8tjTEA2NXYvE6ETaD0b1W6xGrMdoUhdZ7ZEL8yt4BVDMZtQ6wOIP4bgN-AK_SynU039eBg-BjWP2nv0HwmeIWjZ-NRvXOqQg5xphywG9h5eFL1_YdCAaBrrnhrJ3nced5bUhWk9_H30afEXSz-qKd-qayvUvFCm2PHZLYuA_H1WbDnaFWjO23FAfzRvSJaYRS8ias23arSO28qdEvh5OjmcuQ</td>
+      <td class="reason">LLM דחה (0.85): שם דומה אך כתובות שונות משמעותית - Via Polesine 16/18 לעומת Via Cremona 42, מרחק של 3.6 ק״מ בין הכתובות. אולם שתיהן באותו קוד דואר (00161 Roma). השם 'Little Tripoli'/'ליטל טריפולי' תואם, אך המיקום הפיזי שונה מספיק כדי להיות שני עסקים נפרדים. אפשר שעסק אחד עבר לכתובת חדשה, אך זה דורש אישור נוסף.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9C%D7%99%D7%98%D7%9C%20%D7%98%D7%A8%D7%99%D7%A4%D7%95%D7%9C%D7%99%20Via%20Polesine%2C%2016%2F18%2C%2000161%20Roma%20RM%2C%20Italy%2C%20Rome" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJm3IUj3BhLxMRIBKKZb2zn9s" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7362</td>
+      <td><b>פסטיצריה בוציאונה</b><div class="muted">Rome · Italy</div></td>
+      <td>Via del Portico d'Ottavia, 1, 00186 Roma RM, Italy, Rome</td>
+      <td>De Santis Santa Croce</td>
+      <td>V. Santa Croce in Gerusalemme, 17/21, 00185 Roma RM, Italy</td>
+      <td>4.3 (1561)</td>
+      <td>06 7030 1912</td>
+      <td class="photo">places/ChIJm9lD75NhLxMRsGLL1wA3yJI/photos/AaVGc3nMW_O8RJJzvX-Xfi8jomAsqUsKvSEpH_kC-sa37p0o7zhKZWk57sM8atOd11sInMuBx-BtnG_r8voMlp0-j2pIpHEcCxWRsEu5LgskWtSKyNwDDfnRMMRHjb8LIr8moHnT9RTF7Akwvo_liAAWSmsBgvYYC-1lZ56b-1J4DEPzI2RZ5wrBHMNiaUN9QMOJpkwhcphGPLPYRTdNk4GKRBtf1UIJ3ZyvNjlIX_ZnLK_PVsvROg99AV278xPv1z_koi93qPxIN0JgcvzSX4B2-BHdvZ9SsZkXcr_ic6n-GYca6zHC-dI-a3PxTYUvQ9913m1S89q1n8JzxnKjbNYfVft6U3OKyRmN7H6zOkWvXJH3Wkdfzovky3MBIrur9820PyjZAVAnO-B_eVcKF7KGF3hAHVp8zLJbsMqDKpZmUOTlFA</td>
+      <td class="reason">weak name/address match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%A1%D7%98%D7%99%D7%A6%D7%A8%D7%99%D7%94%20%D7%91%D7%95%D7%A6%D7%99%D7%90%D7%95%D7%A0%D7%94%20Via%20del%20Portico%20d'Ottavia%2C%201%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJm9lD75NhLxMRsGLL1wA3yJI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8365</td>
+      <td><b>Lisa Kosher (Eat In or Take Away)</b><div class="muted">Rome · Italy</div></td>
+      <td>Piazza Bologna, Rome, Italy</td>
+      <td>Casalino Osteria Kosher</td>
+      <td>Via del Portico d'Ottavia, 1e, 00186 Roma RM, Italy</td>
+      <td>4.2 (913)</td>
+      <td>06 7978 1514</td>
+      <td class="photo">places/ChIJVd3Z1qxhLxMRv8fKCJW3eBo/photos/AaVGc3ks1WNE6eKrclbwRpo01EuevT3eqgJSoY3DS8MgRelVZoVxu9yVjI-2ltHEw3WpmgDXxTy5AEQhPvl_KAxKEag9NYOuEV7R515nyeehz9hN8aTWuc9q7JifF6CvTqXrqxAVqFphApTSoy9bLYzmEaQlEaMryZmjyU3KFrlYqI1cn-TaYW4ZYXzuCF63-53hl8-9deQX5wRvbOHGRxcsQ0oniZiOKCTUCoJ5VdicoCHmwtXtBYQz5YfJ_lTAVc9HlpVqsc9k5RBw3Hfif-Izzr6yMJorqyrVNNZqn3wwwmHF5ecqcZnDNud8mgIzIKn-9A5Jfe6Y-dM9vbzSOEtMqjoAn3KtfoPfWce-KOkF31VurnaLg6w1GobJofnvp734LNXgtft0ICQBYszuK3XvFsBDFFnWaVDSiVDEpYJe47w3YXjh</td>
+      <td class="reason">LLM דחה (0.95): שם שונה לחלוטין (Lisa Kosher vs Casalino Osteria Kosher), כתובות שונות בעיר (Piazza Bologna vs Via del Portico d'Ottavia), מרחק של 489 מטרים. אלו שני מסעדות כשרות שונות ברומא.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lisa%20Kosher%20(Eat%20In%20or%20Take%20Away)%20Piazza%20Bologna%2C%20Rome%2C%20Italy" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJVd3Z1qxhLxMRv8fKCJW3eBo" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

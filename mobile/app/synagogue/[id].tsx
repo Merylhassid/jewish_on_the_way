@@ -13,17 +13,21 @@ import {
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { ArrowLeft, Building2, Clock, Globe, Map, MapPin, Phone } from 'lucide-react-native';
 import client from '@/src/api/client';
+import { C } from '@/constants/theme';
 import HomeButton from '@/src/components/HomeButton';
 import ReviewSection from '@/src/components/ReviewSection';
 import ReportModal from '@/src/components/ReportModal';
 import SuggestPlaceModal from '@/src/components/SuggestPlaceModal';
 import FavoriteButton from '@/src/components/FavoriteButton';
+import SynagogueIcon, { SYNAGOGUE_ICON_BG, SYNAGOGUE_ICON_COLOR } from '@/src/components/SynagogueIcon';
+import { useRequireAuth } from '@/src/auth/auth-gates';
+import { useTranslation } from 'react-i18next';
 
-const DENOM_DISPLAY: Record<string, { label: string; color: string }> = {
-  ashkenaz: { label: 'אשכנז', color: '#3949AB' },
-  sfarad:   { label: 'ספרד',  color: '#00897B' },
-  chabad:   { label: 'חב"ד', color: '#E65100' },
-  teimanim: { label: 'תימן',  color: '#558B2F' },
+const DENOM_DISPLAY: Record<string, { color: string; bg: string }> = {
+  ashkenaz: { color: '#5E6FA8', bg: '#F0F2FA' },
+  sfarad:   { color: '#5F847D', bg: '#EEF5F3' },
+  chabad:   { color: '#A06A4E', bg: '#F7F1EE' },
+  teimanim: { color: '#6B8E6B', bg: '#EEF3EE' },
 };
 
 const ASHKENAZ_VALS = ['אשכנז', 'אשכנזי', 'ליטאי', 'ליטאית', 'ashkenaz', 'ashkenazi', 'orthodox'];
@@ -57,6 +61,8 @@ interface Synagogue {
 
 export default function SynagogueDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useTranslation();
+  const requireAuth = useRequireAuth();
   const [synagogue, setSynagogue] = useState<Synagogue | null>(null);
   const [loading, setLoading] = useState(true);
   const [reportVisible, setReportVisible] = useState(false);
@@ -68,7 +74,7 @@ export default function SynagogueDetailsScreen() {
         setLoading(true);
         const res = await client.get(`/synagogues/${id}`);
         setSynagogue(res.data);
-      } catch (error) {
+      } catch {
         // silent
       } finally {
         setLoading(false);
@@ -100,14 +106,17 @@ export default function SynagogueDetailsScreen() {
   const HeaderBar = ({ showHome }: { showHome?: boolean }) => (
     <View style={styles.header}>
       <Pressable style={styles.backBtn} onPress={() => router.back()}>
-        <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
+        <ArrowLeft size={20} color={C.navy} strokeWidth={2.5} />
       </Pressable>
       {showHome && <HomeButton />}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <View style={styles.headerBrand}>
         <View style={styles.headerIconRing}>
-          <Building2 size={28} color="#fff" strokeWidth={1.8} />
+          <SynagogueIcon size={28} />
         </View>
-        <Text style={styles.headerTitle}>Synagogue</Text>
+        <View>
+          <Text style={styles.headerEyebrow}>{t('synagogues.detailEyebrow')}</Text>
+          <Text style={styles.headerTitle}>{t('synagogues.singular')}</Text>
+        </View>
       </View>
     </View>
   );
@@ -117,7 +126,7 @@ export default function SynagogueDetailsScreen() {
       <View style={styles.container}>
         <HeaderBar />
         <View style={styles.center}>
-          <ActivityIndicator size="large" color="#5E35B1" />
+          <ActivityIndicator size="large" color={C.gold} />
         </View>
       </View>
     );
@@ -128,7 +137,7 @@ export default function SynagogueDetailsScreen() {
       <View style={styles.container}>
         <HeaderBar />
         <View style={styles.center}>
-          <Text style={styles.notFound}>Synagogue not found</Text>
+          <Text style={styles.notFound}>{t('synagogues.notFound')}</Text>
         </View>
       </View>
     );
@@ -142,9 +151,11 @@ export default function SynagogueDetailsScreen() {
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {/* Name + Favorite */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Text style={[styles.name, { flex: 1 }]}>{synagogue.name}</Text>
-          <FavoriteButton entityType="synagogue" entityId={synagogue.id} size={26} />
+        <View style={styles.titleCard}>
+          <View style={styles.nameRow}>
+            <Text style={styles.name} numberOfLines={2}>{synagogue.name}</Text>
+            <FavoriteButton entityType="synagogue" entityId={synagogue.id} size={26} color={C.gold} />
+          </View>
         </View>
 
         {/* Denomination */}
@@ -153,9 +164,9 @@ export default function SynagogueDetailsScreen() {
           const d = key ? DENOM_DISPLAY[key] : null;
           if (!synagogue.denomination) return null;
           return (
-            <View style={[styles.denominationBadge, d ? { backgroundColor: d.color } : {}]}>
-              <Text style={styles.denominationText}>
-                {d ? `נוסח ${d.label}` : synagogue.denomination}
+            <View style={[styles.denominationBadge, d ? { backgroundColor: d.bg, borderColor: d.bg } : {}]}>
+              <Text style={[styles.denominationText, d ? { color: d.color } : {}]}>
+                {d ? t('synagogues.riteLabel', { denomination: t(`synagogues.denominations.${key}`) }) : synagogue.denomination}
               </Text>
             </View>
           );
@@ -164,7 +175,7 @@ export default function SynagogueDetailsScreen() {
         {/* About */}
         {aboutText && (
           <View style={styles.section}>
-            <Text style={styles.sectionLabel}>About</Text>
+            <Text style={styles.sectionLabel}>{t('synagogues.about')}</Text>
             <Text style={styles.sectionValue}>{aboutText}</Text>
           </View>
         )}
@@ -173,8 +184,8 @@ export default function SynagogueDetailsScreen() {
         {synagogue.address && (
           <View style={styles.section}>
             <View style={styles.sectionLabelRow}>
-              <MapPin size={13} color="#8A96B0" strokeWidth={2} />
-              <Text style={styles.sectionLabel}>Address</Text>
+              <MapPin size={13} color={C.goldMuted} strokeWidth={2} />
+              <Text style={styles.sectionLabel}>{t('synagogues.address')}</Text>
             </View>
             <Text style={styles.sectionValue}>{synagogue.address}</Text>
           </View>
@@ -184,8 +195,8 @@ export default function SynagogueDetailsScreen() {
         {synagogue.operator && (
           <View style={styles.section}>
             <View style={styles.sectionLabelRow}>
-              <Building2 size={13} color="#8A96B0" strokeWidth={2} />
-              <Text style={styles.sectionLabel}>Operator</Text>
+              <Building2 size={13} color={C.goldMuted} strokeWidth={2} />
+              <Text style={styles.sectionLabel}>{t('synagogues.operator')}</Text>
             </View>
             <Text style={styles.sectionValue}>{synagogue.operator}</Text>
           </View>
@@ -195,8 +206,8 @@ export default function SynagogueDetailsScreen() {
         {synagogue.openingHours && (
           <View style={styles.section}>
             <View style={styles.sectionLabelRow}>
-              <Clock size={13} color="#8A96B0" strokeWidth={2} />
-              <Text style={styles.sectionLabel}>Hours</Text>
+              <Clock size={13} color={C.goldMuted} strokeWidth={2} />
+              <Text style={styles.sectionLabel}>{t('synagogues.hours')}</Text>
             </View>
             <Text style={styles.sectionValue}>{synagogue.openingHours}</Text>
           </View>
@@ -205,15 +216,15 @@ export default function SynagogueDetailsScreen() {
         {/* Contact Actions */}
         {(synagogue.phone || synagogue.website) && (
           <View style={styles.section}>
-            <Text style={styles.sectionLabel}>Contact</Text>
+            <Text style={styles.sectionLabel}>{t('synagogues.contact')}</Text>
             <View style={styles.actions}>
               {synagogue.phone && (
                 <Pressable style={styles.actionBtnLarge} onPress={() => handleCall(synagogue.phone!)}>
-                  <View style={[styles.actionIconBox, { backgroundColor: 'rgba(5,150,105,0.10)' }]}>
-                    <Phone size={20} color="#059669" strokeWidth={2} />
+                  <View style={[styles.actionIconBox, { backgroundColor: C.typeParveBg }]}>
+                    <Phone size={20} color={C.typeParve} strokeWidth={2} />
                   </View>
                   <View style={styles.actionContent}>
-                    <Text style={styles.actionTitle}>Call</Text>
+                    <Text style={styles.actionTitle}>{t('synagogues.call')}</Text>
                     <Text style={styles.actionValue}>{synagogue.phone}</Text>
                   </View>
                   <MaterialIcons name="chevron-right" size={20} color="#D1D5DB" />
@@ -221,11 +232,11 @@ export default function SynagogueDetailsScreen() {
               )}
               {synagogue.website && (
                 <Pressable style={styles.actionBtnLarge} onPress={() => handleWebsite(synagogue.website!)}>
-                  <View style={[styles.actionIconBox, { backgroundColor: 'rgba(94,53,177,0.10)' }]}>
-                    <Globe size={20} color="#5E35B1" strokeWidth={2} />
+                  <View style={[styles.actionIconBox, { backgroundColor: SYNAGOGUE_ICON_BG }]}>
+                    <Globe size={20} color={SYNAGOGUE_ICON_COLOR} strokeWidth={2} />
                   </View>
                   <View style={styles.actionContent}>
-                    <Text style={styles.actionTitle}>Visit Website</Text>
+                    <Text style={styles.actionTitle}>{t('synagogues.visitWebsite')}</Text>
                     <Text style={styles.actionValue} numberOfLines={1}>{synagogue.website}</Text>
                   </View>
                   <MaterialIcons name="chevron-right" size={20} color="#D1D5DB" />
@@ -240,26 +251,32 @@ export default function SynagogueDetailsScreen() {
           <View style={styles.section}>
             <Pressable style={styles.mapButton} onPress={() => handleMaps(synagogue.location!.coordinates)}>
               <Map size={18} color="#fff" strokeWidth={2} />
-              <Text style={styles.mapButtonText}>View on Map</Text>
+              <Text style={styles.mapButtonText}>{t('synagogues.viewOnMap')}</Text>
             </Pressable>
           </View>
         )}
 
         {/* Reviews */}
         <View style={styles.section}>
-          <Text style={styles.sectionLabel}>Reviews</Text>
+          <Text style={styles.sectionLabel}>{t('synagogues.reviews')}</Text>
           <ReviewSection entityType="synagogue" entityId={Number(id)} />
         </View>
 
         {/* Report + Suggest */}
         <View style={styles.bottomActions}>
-          <Pressable style={styles.ghostBtn} onPress={() => setReportVisible(true)}>
+          <Pressable
+            style={styles.ghostBtn}
+            onPress={() => requireAuth(() => setReportVisible(true), { reason: 'report' })}
+          >
             <MaterialIcons name="flag" size={16} color="#DC2626" />
-            <Text style={[styles.ghostBtnText, { color: '#DC2626' }]}>Report issue</Text>
+            <Text style={[styles.ghostBtnText, { color: '#DC2626' }]}>{t('synagogues.reportIssue')}</Text>
           </Pressable>
-          <Pressable style={styles.ghostBtn} onPress={() => setSuggestVisible(true)}>
-            <MaterialIcons name="add-circle-outline" size={16} color="#5E35B1" />
-            <Text style={[styles.ghostBtnText, { color: '#5E35B1' }]}>Suggest a place</Text>
+          <Pressable
+            style={styles.ghostBtn}
+            onPress={() => requireAuth(() => setSuggestVisible(true), { reason: 'suggestPlace' })}
+          >
+            <MaterialIcons name="add-circle-outline" size={16} color={SYNAGOGUE_ICON_COLOR} />
+            <Text style={[styles.ghostBtnText, { color: SYNAGOGUE_ICON_COLOR }]}>{t('synagogues.suggestPlace')}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -283,71 +300,130 @@ export default function SynagogueDetailsScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f8f6fa' },
+  container: { flex: 1, backgroundColor: C.cream },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  notFound: { fontSize: 15, color: '#999' },
+  notFound: { fontSize: 15, color: C.textMuted },
 
   header: {
-    backgroundColor: '#5E35B1',
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 60 : 42,
     paddingBottom: 20,
     paddingHorizontal: 20,
     gap: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EDE6',
   },
-  backBtn: { alignSelf: 'flex-start' },
+  backBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: C.card,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  headerBrand: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   headerIconRing: {
-    width: 52, height: 52, borderRadius: 26,
-    backgroundColor: 'rgba(255,255,255,0.18)',
+    width: 52,
+    height: 52,
+    borderRadius: 18,
+    backgroundColor: SYNAGOGUE_ICON_BG,
     justifyContent: 'center', alignItems: 'center',
-    borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.30)',
+    borderWidth: 1,
+    borderColor: '#E8E2F3',
   },
-  headerTitle: { fontSize: 22, fontWeight: '800', color: '#fff' },
+  headerEyebrow: {
+    fontSize: 10,
+    fontFamily: 'Inter-ExtraBold', fontWeight: '800',
+    color: C.goldEyebrow,
+    letterSpacing: 2.5,
+    marginBottom: 3,
+  },
+  headerTitle: { fontSize: 24, fontFamily: 'Inter-Black', fontWeight: '900', color: C.navy, letterSpacing: -0.4 },
 
-  content: { paddingHorizontal: 20, paddingTop: 24, paddingBottom: 32 },
+  content: { paddingHorizontal: 18, paddingTop: 18, paddingBottom: 32 },
 
+  titleCard: {
+    backgroundColor: C.card,
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.06,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+  },
+  nameRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   name: {
-    fontSize: 28, fontWeight: '800', color: '#1a1a1a', marginBottom: 12,
+    flex: 1,
+    fontSize: 25,
+    fontFamily: 'Inter-Black', fontWeight: '900',
+    color: C.navy,
+    letterSpacing: -0.3,
   },
 
   denominationBadge: {
-    backgroundColor: '#5E35B1',
+    backgroundColor: SYNAGOGUE_ICON_BG,
     paddingVertical: 6, paddingHorizontal: 12,
-    borderRadius: 8, alignSelf: 'flex-start', marginBottom: 20,
+    borderRadius: 14, alignSelf: 'flex-start', marginBottom: 14,
+    borderWidth: 1,
+    borderColor: SYNAGOGUE_ICON_BG,
   },
-  denominationText: { fontSize: 12, fontWeight: '600', color: '#fff' },
+  denominationText: { fontSize: 12, fontFamily: 'Inter-Bold', fontWeight: '700', color: SYNAGOGUE_ICON_COLOR },
 
-  section: { marginBottom: 24 },
+  section: {
+    marginBottom: 12,
+    backgroundColor: C.card,
+    borderRadius: 18,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 1,
+  },
   sectionLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 8 },
   sectionLabel: {
-    fontSize: 12, fontWeight: '700', color: '#8A96B0',
+    fontSize: 12, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.textMuted,
     textTransform: 'uppercase', letterSpacing: 0.5,
   },
-  sectionValue: { fontSize: 15, color: '#1a1a1a', lineHeight: 22 },
+  sectionValue: { fontSize: 15, color: C.textPrimary, lineHeight: 22 },
 
   actions: { gap: 12 },
   actionBtnLarge: {
-    flexDirection: 'row', backgroundColor: '#fff',
+    flexDirection: 'row', backgroundColor: C.card,
     borderRadius: 16, padding: 14, alignItems: 'center',
-    shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 10,
-    shadowOffset: { width: 0, height: 2 }, elevation: 2, gap: 14,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
+    gap: 14,
   },
   actionIconBox: { width: 44, height: 44, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
   actionContent: { flex: 1 },
-  actionTitle: { fontSize: 15, fontWeight: '700', color: '#1a1a1a' },
-  actionValue: { fontSize: 12, color: '#666', marginTop: 2 },
+  actionTitle: { fontSize: 15, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.textPrimary },
+  actionValue: { fontSize: 12, color: C.textMuted, marginTop: 2 },
 
   mapButton: {
-    flexDirection: 'row', backgroundColor: '#5E35B1',
+    flexDirection: 'row', backgroundColor: C.navy,
     paddingVertical: 14, paddingHorizontal: 16,
     borderRadius: 12, alignItems: 'center', justifyContent: 'center', gap: 8,
   },
-  mapButtonText: { fontSize: 15, fontWeight: '600', color: '#fff' },
+  mapButtonText: { fontSize: 15, fontFamily: 'Inter-SemiBold', fontWeight: '600', color: '#fff' },
 
   bottomActions: { flexDirection: 'row', gap: 10, marginTop: 8, marginBottom: 8 },
   ghostBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    gap: 6, borderWidth: 1.5, borderRadius: 12, paddingVertical: 12,
-    borderColor: 'rgba(0,0,0,0.10)', backgroundColor: '#fff',
+    gap: 6, borderWidth: 1, borderRadius: 14, paddingVertical: 12,
+    borderColor: '#F0EDE6', backgroundColor: C.card,
   },
-  ghostBtnText: { fontSize: 13, fontWeight: '700' },
+  ghostBtnText: { fontSize: 13, fontFamily: 'Inter-Bold', fontWeight: '700' },
 });

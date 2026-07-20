@@ -1,0 +1,15 @@
+{
+  "takenAt": "2026-07-07T16:23:23.628Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T16-23-17-550Z.csv",
+  "count": 1,
+  "rows": [
+    {
+      "id": 7562,
+      "name": "Eve's Garden Cafe",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

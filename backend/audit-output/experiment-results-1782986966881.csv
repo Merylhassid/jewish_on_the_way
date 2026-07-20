@@ -1,0 +1,36 @@
+﻿id,orig_status,name,winner_strategy,winner_status,winner_candidate,distance_m,name_sim,branch_assessment
+1980,verified,רותס,S1_bias,verified,Roots רותס,107,1.00,same
+2007,verified,פיצרל'ה,S1_bias,verified,פיצרלה,122,1.00,same
+2048,no_match,מאנצ'יז פיצה,S1_bias,no_match,מאנציז פיצה דישון,4140,1.00,other-branch?
+2352,no_match,אמריקן פיצה,S2_restrict,verified,אמריקן פיצה זכרון יעקב,5,1.00,same
+2318,verified,מפגש גיל,S1_bias,verified,Mifgash Gil,21,0.86,same
+2390,no_match,פיצה לצ'ה,S5_addr,flagged,ניר יפה,81,0.25,different-place
+2432,no_match,אביב- בעיר,S1_bias,no_match,אביב בעיר,3047,1.00,other-branch?
+2544,no_match,המקום של שימי,S1_bias,no_match,המקום של שימי,36205,1.00,other-branch?
+1370,verified,אקספרס החבית,S1_bias,verified,החבית,15,1.00,same
+1230,verified,בית החצ'אפורי באר שבע,S1_bias,verified,בית החצ'פורי,28,0.58,unclear
+1302,verified,גן עדן,S1_bias,verified,מסעדת גן עדן,57,1.00,same
+1326,verified,בורגרים,S1_bias,verified,בורגרים באר שבע העתיקה- כשר בשר חלק,21,1.00,same
+1533,no_match,בי בי בי,S1_bias,no_match,BBB קרית גת,1736,0.38,different-place
+1557,no_match,רוקפור,S1_bias,no_match,מסעדת רוקפור דימונה,1215,1.00,other-branch?
+1634,no_match,פיציריקה,S2_restrict,flagged,פיצה סופר נתיבות,210,0.18,different-place
+1672,no_match,באדה בום,S1_bias,no_match,באדה בום -Bada Boom,1573,1.00,other-branch?
+1730,verified,שווארמה נובי,S1_bias,verified,נובי | שווארמה אשקלון,149,1.00,same
+1758,no_match,הבגאט של אדל,S5_addr,flagged,נחמן אביגד 10,84,0.29,different-place
+1765,verified,סן-שיי סושי בר,S1_bias,verified,סן שיי באר שבע,86,0.67,same
+1779,no_match,קמילה,S1_bias,no_match,קמילה - גריל בשרים ישראלי,1812,1.00,other-branch?
+1817,no_match,איציק שווארמה,S1_bias,no_match,איציק שווארמה ובשרים על האש,1744,1.00,other-branch?
+1831,verified,פיצה מזל,S1_bias,verified,פיצה מזל,23,1.00,same
+2022,no_match,לנדוור קריית ביאליק – כשר,S2_restrict,verified,קפה לנדוור,101,1.00,same
+1873,verified,חומוס אליהו,S1_bias,verified,חומוס אליהו אשדוד,66,1.00,same
+1889,verified,הקוסקוס של ז'קלין,S1_bias,verified,הקוסקוס של ז'קלין,193,1.00,same
+1892,verified,מקדונלד'ס,S1_bias,verified,מקדונלד'ס - קניון הסיטי אשדוד,22,1.00,same
+3210,no_match,קיורטוש,S1_bias,no_match,קיורטוש,9348,1.00,other-branch?
+2871,no_match,קפה גרג,S2_restrict,flagged,גרג פוריה,401,1.00,other-branch?
+3044,no_match,לוצ'נה,S1_bias,no_match,לוצ׳נה,4340,1.00,other-branch?
+3174,no_match,פיצה שמש רמלה,S1_bias,no_match,פיצה שמש רמלה מבצע יונתן 8,5448,1.00,other-branch?
+1244,verified,פינצ'יטו,S1_bias,verified,פינצ׳יטו pinchito,63,1.00,same
+1331,verified,פיצה דהרי,S1_bias,verified,דהרי,156,1.00,same
+1251,no_match,סטקיית עמרם ליברטי באר שבע,S5_addr,flagged,באר שבע,894,1.00,other-branch?
+1960,no_match,הטאבון -אפייה של פעם,S1_bias,no_match,הטאבון,1864,1.00,other-branch?
+3031,no_match,ויינר איטליאנו,S1_bias,no_match,ויינר איטליאנו - Vainer Italiano,5584,1.00,other-branch?

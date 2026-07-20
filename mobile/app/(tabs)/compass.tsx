@@ -463,9 +463,9 @@ const s = StyleSheet.create({
     alignItems: 'center', backgroundColor: '#FFFFFF',
     borderBottomWidth: 1, borderBottomColor: 'rgba(12,36,97,0.08)',
   },
-  eyebrow:  { fontSize: 9, fontWeight: '700', color: ACCENT, letterSpacing: 3.2, marginBottom: 8 },
+  eyebrow:  { fontSize: 9, fontFamily: 'Inter-Bold', fontWeight: '700', color: ACCENT, letterSpacing: 3.2, marginBottom: 8 },
   logo:     { width: 38, height: 38, resizeMode: 'contain', borderRadius: 19, marginBottom: 8 },
-  title:    { fontSize: 23, fontWeight: '800', color: NAVY, letterSpacing: 0.4, marginBottom: 2 },
+  title:    { fontSize: 23, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: NAVY, letterSpacing: 0.4, marginBottom: 2 },
   subtitle: { fontSize: 11, color: 'rgba(0,0,0,0.38)' },
 
   // States
@@ -476,9 +476,9 @@ const s = StyleSheet.create({
     borderWidth: 1.5, borderColor: 'rgba(58,123,213,0.28)',
     justifyContent: 'center', alignItems: 'center', marginBottom: 24,
   },
-  stateTitle:  { fontSize: 19, fontWeight: '700', color: NAVY, marginBottom: 10, textAlign: 'center' },
+  stateTitle:  { fontSize: 19, fontFamily: 'Inter-Bold', fontWeight: '700', color: NAVY, marginBottom: 10, textAlign: 'center' },
   stateSub:    { fontSize: 14, color: 'rgba(0,0,0,0.5)', textAlign: 'center', lineHeight: 22 },
-  loadingText: { fontSize: 15, color: 'rgba(0,0,0,0.45)', fontWeight: '500' },
+  loadingText: { fontSize: 15, color: 'rgba(0,0,0,0.45)', fontFamily: 'Inter-Medium', fontWeight: '500' },
 
   // Compass scene
   scene: {
@@ -575,7 +575,7 @@ const s = StyleSheet.create({
     backgroundColor: 'rgba(22,163,74,0.06)',
     borderColor: 'rgba(22,163,74,0.18)',
   },
-  alignText: { fontSize: 13, fontWeight: '600', color: NAVY },
+  alignText: { fontSize: 13, fontFamily: 'Inter-SemiBold', fontWeight: '600', color: NAVY },
   alignTextFacing: { color: '#16A34A' },
 
   // Three stat cards
@@ -590,9 +590,9 @@ const s = StyleSheet.create({
     backgroundColor: 'rgba(58,123,213,0.07)',
     borderColor: 'rgba(58,123,213,0.25)',
   },
-  cardValue:   { fontSize: 20, fontWeight: '800', color: NAVY, marginBottom: 3 },
+  cardValue:   { fontSize: 20, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: NAVY, marginBottom: 3 },
   cardValueHL: { color: ACCENT },
-  cardLabel:   { fontSize: 9, color: 'rgba(0,0,0,0.38)', fontWeight: '600', letterSpacing: 0.7, textAlign: 'center' },
+  cardLabel:   { fontSize: 9, color: 'rgba(0,0,0,0.38)', fontFamily: 'Inter-SemiBold', fontWeight: '600', letterSpacing: 0.7, textAlign: 'center' },
 
   // Smart location card
   locationCard: {
@@ -605,15 +605,15 @@ const s = StyleSheet.create({
   locationCardHeader: {
     flexDirection: 'row', alignItems: 'center', marginBottom: 12,
   },
-  locationCardTitle: { fontSize: 12, fontWeight: '700', color: NAVY, flex: 1, letterSpacing: 0.3 },
-  locationCardUpdated: { fontSize: 10, color: 'rgba(0,0,0,0.3)', fontWeight: '500' },
+  locationCardTitle: { fontSize: 12, fontFamily: 'Inter-Bold', fontWeight: '700', color: NAVY, flex: 1, letterSpacing: 0.3 },
+  locationCardUpdated: { fontSize: 10, color: 'rgba(0,0,0,0.3)', fontFamily: 'Inter-Medium', fontWeight: '500' },
   locationDivider: { height: 1, backgroundColor: 'rgba(12,36,97,0.06)', marginBottom: 12 },
   locationRow: {
     flexDirection: 'row', justifyContent: 'space-between',
     alignItems: 'center', marginBottom: 10,
   },
-  locationLabel: { fontSize: 12, color: 'rgba(0,0,0,0.45)', fontWeight: '500' },
-  locationValue: { fontSize: 12, fontWeight: '700', color: NAVY, textAlign: 'right', flexShrink: 1, marginLeft: 12 },
+  locationLabel: { fontSize: 12, color: 'rgba(0,0,0,0.45)', fontFamily: 'Inter-Medium', fontWeight: '500' },
+  locationValue: { fontSize: 12, fontFamily: 'Inter-Bold', fontWeight: '700', color: NAVY, textAlign: 'right', flexShrink: 1, marginLeft: 12 },
 
   // Footer
   footer:      { marginTop: 28, alignItems: 'center', paddingHorizontal: 32 },

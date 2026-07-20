@@ -1,0 +1,2948 @@
+{
+ "flagged": [
+  {
+   "r": {
+    "id": 2544,
+    "name": "המקום של שימי",
+    "address": "מועצה אזורית הגליל התחתון, Israel",
+    "google_formatted_address": "Israel",
+    "google_formatted_address_he": "ישראל",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.7879273,
+    "google_lng": 35.4684186,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.7879273,
+   "lng": 35.4684186,
+   "coordSrc": "google",
+   "distTA": 101.2722904086927,
+   "cityToken": "מועצה אזורית הגליל התחתון",
+   "citySrc": "address",
+   "target": {
+    "id": 421,
+    "name": "Tiberias",
+    "name_he": "טבריה",
+    "city": "Tiberias",
+    "country": "Israel",
+    "lat": 32.7922,
+    "lng": 35.5312
+   },
+   "targetKm": 5.887828418693887,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 3189,
+    "name": "קפה לוגאנו",
+    "address": "החוגה 2, רמת אפעל, Israel",
+    "google_formatted_address": "Hahuga St 2, Ramat Gan, 5290370, Israel",
+    "google_formatted_address_he": "החוגה 2, רמת גן, 5290370",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.046102399999995,
+    "google_lng": 34.8347507,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.046102399999995,
+   "lng": 34.8347507,
+   "coordSrc": "google",
+   "distTA": 6.625198660877064,
+   "cityToken": "רמת גן",
+   "citySrc": "google_he",
+   "target": {
+    "id": 370,
+    "name": "Ramat Gan",
+    "name_he": "רמת גן",
+    "city": "Ramat Gan",
+    "country": "Israel",
+    "lat": 32.0678,
+    "lng": 34.8243
+   },
+   "targetKm": 2.6059394191964484,
+   "how": "עיר קיימת במערכת"
+  },
+  {
+   "r": {
+    "id": 3319,
+    "name": "קופי דון",
+    "address": "שפיגל זוסיה 1, קניון כיכר העיר פתח תקווה, Israel",
+    "google_formatted_address": "Spiegel Zosia St 1, Petah Tikva, Israel",
+    "google_formatted_address_he": "שפיגל זוסיה 1, פתח תקווה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.08796960000001,
+    "google_lng": 34.8873666,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.08796960000001,
+   "lng": 34.8873666,
+   "coordSrc": "google",
+   "distTA": 9.949799046480015,
+   "cityToken": "פתח תקווה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 346,
+    "name": "Petah Tikva",
+    "name_he": "פתח תקווה",
+    "city": "Petah Tikva",
+    "country": "Israel",
+    "lat": 32.0841,
+    "lng": 34.8878
+   },
+   "targetKm": 0.43221282174453945,
+   "how": "עיר קיימת במערכת"
+  },
+  {
+   "r": {
+    "id": 3330,
+    "name": "בורגרים",
+    "address": "בן ציון גליס 30, B סנטר פתח תקווה, Israel",
+    "google_formatted_address": "מתחם B סנטר, Ben Zion Galis 30, Petah Tikva, Israel",
+    "google_formatted_address_he": "מתחם B סנטר, בן ציון גליס 30, פתח תקווה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.1056568,
+    "google_lng": 34.891991499999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.1056568,
+   "lng": 34.891991499999996,
+   "coordSrc": "google",
+   "distTA": 10.62401545828548,
+   "cityToken": "פתח תקווה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 346,
+    "name": "Petah Tikva",
+    "name_he": "פתח תקווה",
+    "city": "Petah Tikva",
+    "country": "Israel",
+    "lat": 32.0841,
+    "lng": 34.8878
+   },
+   "targetKm": 2.429309111375635,
+   "how": "עיר קיימת במערכת"
+  },
+  {
+   "r": {
+    "id": 3568,
+    "name": "פינת הצלע אזור",
+    "address": "השיקמה 2, אזור, Israel",
+    "google_formatted_address": "השקמה 2, Azor, 00000, Israel",
+    "google_formatted_address_he": "השקמה 2, אזור, 00000",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.0296948,
+    "google_lng": 34.798460899999995,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.0296948,
+   "lng": 34.798460899999995,
+   "coordSrc": "google",
+   "distTA": 6.379259134976974,
+   "cityToken": "אזור",
+   "citySrc": "google_he",
+   "target": {
+    "id": 301,
+    "name": "Holon",
+    "name_he": "הולון",
+    "city": "Holon",
+    "country": "Israel",
+    "lat": 32.0167,
+    "lng": 34.775
+   },
+   "targetKm": 2.6419366409353198,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 3659,
+    "name": "סבתא לינה",
+    "address": "העלייה השנייה 43, אזור, Israel",
+    "google_formatted_address": "Ha-Aliya ha-Shinya St 43, Azor, 5800239, Israel",
+    "google_formatted_address_he": "העלייה השנייה 43, אזור, 5800239",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.024743,
+    "google_lng": 34.802744499999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.024743,
+   "lng": 34.802744499999996,
+   "coordSrc": "google",
+   "distTA": 7.016970812871961,
+   "cityToken": "אזור",
+   "citySrc": "google_he",
+   "target": {
+    "id": 301,
+    "name": "Holon",
+    "name_he": "הולון",
+    "city": "Holon",
+    "country": "Israel",
+    "lat": 32.0167,
+    "lng": 34.775
+   },
+   "targetKm": 2.7643468390620995,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 3912,
+    "name": "האופה מבגדד",
+    "address": "המצודה 5, אזור, Israel",
+    "google_formatted_address": "Ha-Metsuda St 5, Azor, Israel",
+    "google_formatted_address_he": "המצודה 5, אזור",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.029648699999996,
+    "google_lng": 34.7975959,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.029648699999996,
+   "lng": 34.7975959,
+   "coordSrc": "google",
+   "distTA": 6.364670178606646,
+   "cityToken": "אזור",
+   "citySrc": "google_he",
+   "target": {
+    "id": 301,
+    "name": "Holon",
+    "name_he": "הולון",
+    "city": "Holon",
+    "country": "Israel",
+    "lat": 32.0167,
+    "lng": 34.775
+   },
+   "targetKm": 2.571179538899968,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 4470,
+    "name": "חומוס אליהו",
+    "address": "המצודה 8, אזור, Israel",
+    "google_formatted_address": "Ha-Metsuda St 8, Azor, Israel",
+    "google_formatted_address_he": "המצודה 8, אזור",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.0294296,
+    "google_lng": 34.7981443,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.0294296,
+   "lng": 34.7981443,
+   "coordSrc": "google",
+   "distTA": 6.4006001186533155,
+   "cityToken": "אזור",
+   "citySrc": "google_he",
+   "target": {
+    "id": 301,
+    "name": "Holon",
+    "name_he": "הולון",
+    "city": "Holon",
+    "country": "Israel",
+    "lat": 32.0167,
+    "lng": 34.775
+   },
+   "targetKm": 2.6008367769675087,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 4610,
+    "name": "ארוגולה שף אזור",
+    "address": "השיקמה 5, אזור, Israel",
+    "google_formatted_address": "HaShikma St 5, Azor, Israel",
+    "google_formatted_address_he": "השיקמה 5, אזור",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.030246,
+    "google_lng": 34.7979578,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.030246,
+   "lng": 34.7979578,
+   "coordSrc": "google",
+   "distTA": 6.308258983039728,
+   "cityToken": "אזור",
+   "citySrc": "google_he",
+   "target": {
+    "id": 301,
+    "name": "Holon",
+    "name_he": "הולון",
+    "city": "Holon",
+    "country": "Israel",
+    "lat": 32.0167,
+    "lng": 34.775
+   },
+   "targetKm": 2.6368778228871177,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 4795,
+    "name": "פיצה גבעת יערים",
+    "address": "מרבד הקסמים, גבעת יערים, Israel",
+    "google_formatted_address": "Marvad ha-Ksamim St 4, Giv'at Ye'arim, 9097000, Israel",
+    "google_formatted_address_he": "מרבד הקסמים 4, גבעת יערים, 9097000",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.784863,
+    "google_lng": 35.09614440000001,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.784863,
+   "lng": 35.09614440000001,
+   "coordSrc": "google",
+   "distTA": 44.67587622917015,
+   "cityToken": "גבעת יערים",
+   "citySrc": "google_he",
+   "target": {
+    "id": 378,
+    "name": "Mevaseret Zion",
+    "name_he": null,
+    "city": "Mevaseret Zion",
+    "country": "Israel",
+    "lat": 31.8,
+    "lng": 35.15
+   },
+   "targetKm": 5.36104901273174,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 4817,
+    "name": "הצריף",
+    "address": "בית מאיר, Israel",
+    "google_formatted_address": "27, Beit Meir, Israel",
+    "google_formatted_address_he": "27, בית מאיר",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.794151199999998,
+    "google_lng": 35.0352786,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.794151199999998,
+   "lng": 35.0352786,
+   "coordSrc": "google",
+   "distTA": 40.251455647726125,
+   "cityToken": "בית מאיר",
+   "citySrc": "google_he",
+   "target": {
+    "id": 374,
+    "name": "Beit Shemesh",
+    "name_he": "בית שמש",
+    "city": "Beit Shemesh",
+    "country": "Israel",
+    "lat": 31.7479,
+    "lng": 34.9896
+   },
+   "targetKm": 6.715343930405541,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 4945,
+    "name": "חומוס יאלי",
+    "address": "אזור תעשייה שער בנימין, Israel",
+    "google_formatted_address": "תל מרים 206, איזור תעשייה שער בנימין, שער בנימין",
+    "google_formatted_address_he": "תל מרים 206, איזור תעשייה שער בנימין, שער בנימין",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.865242100000003,
+    "google_lng": 35.261384899999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.865242100000003,
+   "lng": 35.261384899999996,
+   "coordSrc": "google",
+   "distTA": 51.430251045133765,
+   "cityToken": "שער בנימין",
+   "citySrc": "google_he",
+   "target": {
+    "id": 343,
+    "name": "Ma'ale Adumim",
+    "name_he": "מעלה אדומים",
+    "city": "Ma'ale Adumim",
+    "country": "Israel",
+    "lat": 31.7769,
+    "lng": 35.2978
+   },
+   "targetKm": 10.408299781864057,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5051,
+    "name": "דרך הגפן",
+    "address": "דרך הגפן 1, בית זית, Israel",
+    "google_formatted_address": "Derech HaGefen 1, Beit Zait, Israel",
+    "google_formatted_address_he": "דרך הגפן 1, בית זית",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.779954699999994,
+    "google_lng": 35.1613904,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.779954699999994,
+   "lng": 35.1613904,
+   "coordSrc": "google",
+   "distTA": 49.355261729766084,
+   "cityToken": "בית זית",
+   "citySrc": "google_he",
+   "target": {
+    "id": 378,
+    "name": "Mevaseret Zion",
+    "name_he": null,
+    "city": "Mevaseret Zion",
+    "country": "Israel",
+    "lat": 31.8,
+    "lng": 35.15
+   },
+   "targetKm": 2.4753018087830125,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5088,
+    "name": "ג'וחא",
+    "address": "הר גילה, Israel",
+    "google_formatted_address": "Mish'ol HaHelmonit 3, Har Gillo",
+    "google_formatted_address_he": "משעול החלמונית 3, הר גילה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.720804100000002,
+    "google_lng": 35.171862499999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.720804100000002,
+   "lng": 35.171862499999996,
+   "coordSrc": "google",
+   "distTA": 54.75836251318152,
+   "cityToken": "הר גילה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 331,
+    "name": "Jerusalem",
+    "name_he": "ירושלים",
+    "city": "Jerusalem",
+    "country": "Israel",
+    "lat": 31.7683,
+    "lng": 35.2137
+   },
+   "targetKm": 6.598746307327437,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5089,
+    "name": "עין חמד קפה ביער",
+    "address": "עין חמד, Israel",
+    "google_formatted_address": "יער עין חמד, בית נקופה, Israel",
+    "google_formatted_address_he": "יער עין חמד, בית נקופה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.797553399999998,
+    "google_lng": 35.1266293,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.797553399999998,
+   "lng": 35.1266293,
+   "coordSrc": "google",
+   "distTA": 45.63372881804299,
+   "cityToken": "בית נקופה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 378,
+    "name": "Mevaseret Zion",
+    "name_he": null,
+    "city": "Mevaseret Zion",
+    "country": "Israel",
+    "lat": 31.8,
+    "lng": 35.15
+   },
+   "targetKm": 2.2253398854337836,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5212,
+    "name": "נאיה",
+    "address": "שביל הלולים 142, בית נקופה, Israel",
+    "google_formatted_address": "בית נקופה, Beit Nekofa, 9083000, Israel",
+    "google_formatted_address_he": "בית נקופה, 9083000",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.801479599999997,
+    "google_lng": 35.1262653,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.801479599999997,
+   "lng": 35.1262653,
+   "coordSrc": "google",
+   "distTA": 45.30355054721288,
+   "cityToken": "בית נקופה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 378,
+    "name": "Mevaseret Zion",
+    "name_he": null,
+    "city": "Mevaseret Zion",
+    "country": "Israel",
+    "lat": 31.8,
+    "lng": 35.15
+   },
+   "targetKm": 2.2490261492606787,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5361,
+    "name": "פיצ'ונקה",
+    "address": "נס הרים, Israel",
+    "google_formatted_address": "Nes Harim, 9988500, Israel",
+    "google_formatted_address_he": "נס הרים, 9988500",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.741877199999998,
+    "google_lng": 35.066138599999995,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.741877199999998,
+   "lng": 35.066138599999995,
+   "coordSrc": "google",
+   "distTA": 46.674506119367805,
+   "cityToken": "נס הרים",
+   "citySrc": "google_he",
+   "target": {
+    "id": 374,
+    "name": "Beit Shemesh",
+    "name_he": "בית שמש",
+    "city": "Beit Shemesh",
+    "country": "Israel",
+    "lat": 31.7479,
+    "lng": 34.9896
+   },
+   "targetKm": 7.268414179676923,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5408,
+    "name": "צ'ופצ'ולה",
+    "address": "הרימון 3, עשרת, Israel",
+    "google_formatted_address": "Harimon St 3, Aseret, Israel",
+    "google_formatted_address_he": "הרימון 3, עשרת",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.8271208,
+    "google_lng": 34.7463323,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.8271208,
+   "lng": 34.7463323,
+   "coordSrc": "google",
+   "distTA": 28.902567871912083,
+   "cityToken": "עשרת",
+   "citySrc": "google_he",
+   "target": {
+    "id": 310,
+    "name": "Gedera",
+    "name_he": "גדרה",
+    "city": "Gedera",
+    "country": "Israel",
+    "lat": 31.811,
+    "lng": 34.777
+   },
+   "targetKm": 3.4072586488605143,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5410,
+    "name": "קיושי סושי בר",
+    "address": "גבעת ברנר, Israel",
+    "google_formatted_address": "מתחם צ'מפיון מוטורס, גבעת ברנר, Israel",
+    "google_formatted_address_he": "מתחם צ'מפיון מוטורס, גבעת ברנר",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.861097199999996,
+    "google_lng": 34.8066636,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.861097199999996,
+   "lng": 34.8066636,
+   "coordSrc": "google",
+   "distTA": 25.040286135198155,
+   "cityToken": "גבעת ברנר",
+   "citySrc": "google_he",
+   "target": {
+    "id": 290,
+    "name": "Mazkeret Batya",
+    "name_he": "מזכרת בתיה",
+    "city": "Mazkeret Batya",
+    "country": "Israel",
+    "lat": 31.85,
+    "lng": 34.8333
+   },
+   "targetKm": 2.80205514930631,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5420,
+    "name": "פיאצה",
+    "address": "יונתן 1, בית חשמונאי, Israel",
+    "google_formatted_address": "Yonatan St 1, Beit Hashmonai, Israel",
+    "google_formatted_address_he": "יונתן 1, בית חשמונאי",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.8896882,
+    "google_lng": 34.91766,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.8896882,
+   "lng": 34.91766,
+   "coordSrc": "google",
+   "distTA": 25.244493638396893,
+   "cityToken": "בית חשמונאי",
+   "citySrc": "google_he",
+   "target": {
+    "id": 379,
+    "name": "Ramla",
+    "name_he": "רמלה",
+    "city": "Ramla",
+    "country": "Israel",
+    "lat": 31.92,
+    "lng": 34.87
+   },
+   "targetKm": 5.621456714211976,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5436,
+    "name": "בליקר בייקרי",
+    "address": "בן גוריון 105, מרכז מסחרי המושבה, Israel",
+    "google_formatted_address": "Sderot Ben Gurion 105, Gedera, Israel",
+    "google_formatted_address_he": "שדרות בן גוריון 105, גדרה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.8042301,
+    "google_lng": 34.7838441,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.8042301,
+   "lng": 34.7838441,
+   "coordSrc": "google",
+   "distTA": 31.254142029732726,
+   "cityToken": "גדרה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 310,
+    "name": "Gedera",
+    "name_he": "גדרה",
+    "city": "Gedera",
+    "country": "Israel",
+    "lat": 31.811,
+    "lng": 34.777
+   },
+   "targetKm": 0.9924454401087823,
+   "how": "עיר קיימת במערכת"
+  },
+  {
+   "r": {
+    "id": 5455,
+    "name": "הבית של זוהרה",
+    "address": "לוזית, Israel",
+    "google_formatted_address": "8, Luzit, Israel",
+    "google_formatted_address_he": "8, לוזית",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.6848808,
+    "google_lng": 34.884533399999995,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.6848808,
+   "lng": 34.884533399999995,
+   "coordSrc": "google",
+   "distTA": 45.56887857849343,
+   "cityToken": "לוזית",
+   "citySrc": "google_he",
+   "target": {
+    "id": 374,
+    "name": "Beit Shemesh",
+    "name_he": "בית שמש",
+    "city": "Beit Shemesh",
+    "country": "Israel",
+    "lat": 31.7479,
+    "lng": 34.9896
+   },
+   "targetKm": 12.160217667377172,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5466,
+    "name": "אורו",
+    "address": "גאליה, Israel",
+    "google_formatted_address": "Ge'alya, Israel",
+    "google_formatted_address_he": "גאליה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.876702,
+    "google_lng": 34.761358099999995,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.876702,
+   "lng": 34.761358099999995,
+   "coordSrc": "google",
+   "distTA": 23.27503359002758,
+   "cityToken": "גאליה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 355,
+    "name": "Yavne",
+    "name_he": "יבנה",
+    "city": "Yavne",
+    "country": "Israel",
+    "lat": 31.8761,
+    "lng": 34.7444
+   },
+   "targetKm": 1.602676267886953,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5468,
+    "name": "חוות אלנבי",
+    "address": "נצר סרני, Israel",
+    "google_formatted_address": "Netzer Sereni, Israel",
+    "google_formatted_address_he": "נצר סרני",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.9256334,
+    "google_lng": 34.8270984,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.9256334,
+   "lng": 34.8270984,
+   "coordSrc": "google",
+   "distTA": 18.26069017044517,
+   "cityToken": "נצר סרני",
+   "citySrc": "google_he",
+   "target": {
+    "id": 303,
+    "name": "Be'er Yaakov",
+    "name_he": "באר יעקב",
+    "city": "Be'er Yaakov",
+    "country": "Israel",
+    "lat": 31.9333,
+    "lng": 34.8333
+   },
+   "targetKm": 1.0340473403431767,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5521,
+    "name": "ג'ילברט",
+    "address": "נען, Israel",
+    "google_formatted_address": "פנימי, נען, 7682900, Israel",
+    "google_formatted_address_he": "פנימי, נען, 7682900",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.8837919,
+    "google_lng": 34.8575401,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.8837919,
+   "lng": 34.8575401,
+   "coordSrc": "google",
+   "distTA": 23.517805490973196,
+   "cityToken": "נען",
+   "citySrc": "google_he",
+   "target": {
+    "id": 379,
+    "name": "Ramla",
+    "name_he": "רמלה",
+    "city": "Ramla",
+    "country": "Israel",
+    "lat": 31.92,
+    "lng": 34.87
+   },
+   "targetKm": 4.1944491156096895,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5525,
+    "name": "פיצה כפרית בטאבון",
+    "address": "ברכיה, Israel",
+    "google_formatted_address": "רחוב חבצלת השרון, ברכיה, 79852, Israel",
+    "google_formatted_address_he": "רחוב חבצלת השרון, ברכיה, 79852",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.668521799999997,
+    "google_lng": 34.6267851,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.668521799999997,
+   "lng": 34.6267851,
+   "coordSrc": "google",
+   "distTA": 48.60019814169227,
+   "cityToken": "ברכיה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 293,
+    "name": "Ashkelon",
+    "name_he": "אשקלון",
+    "city": "Ashkelon",
+    "country": "Israel",
+    "lat": 31.6688,
+    "lng": 34.5743
+   },
+   "targetKm": 4.967171941735543,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5566,
+    "name": "ארוחות קטנות",
+    "address": "ההדר 94, קדרון, Israel",
+    "google_formatted_address": "Hadar St 94, Kidron, 70795, Israel",
+    "google_formatted_address_he": "הדר 94, קדרון, 70795",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.817686,
+    "google_lng": 34.8013,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.817686,
+   "lng": 34.8013,
+   "coordSrc": "google",
+   "distTA": 29.81413884153297,
+   "cityToken": "קדרון",
+   "citySrc": "google_he",
+   "target": {
+    "id": 310,
+    "name": "Gedera",
+    "name_he": "גדרה",
+    "city": "Gedera",
+    "country": "Israel",
+    "lat": 31.811,
+    "lng": 34.777
+   },
+   "targetKm": 2.413446082087787,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5593,
+    "name": "נועם שירותים לקייטרינג",
+    "address": "ניצנים, Israel",
+    "google_formatted_address": "Nitzanim, 7929000, Israel",
+    "google_formatted_address_he": "ניצנים, 7929000",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.717511899999998,
+    "google_lng": 34.6347218,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.717511899999998,
+   "lng": 34.6347218,
+   "coordSrc": "google",
+   "distTA": 43.18871889211051,
+   "cityToken": "ניצנים",
+   "citySrc": "google_he",
+   "target": {
+    "id": 293,
+    "name": "Ashkelon",
+    "name_he": "אשקלון",
+    "city": "Ashkelon",
+    "country": "Israel",
+    "lat": 31.6688,
+    "lng": 34.5743
+   },
+   "targetKm": 7.875218271286898,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5621,
+    "name": "שניצל בגדדי",
+    "address": "כפר ביל\"ו, Israel",
+    "google_formatted_address": "Kfar Bilu, Israel",
+    "google_formatted_address_he": "כפר ביל\"ו",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.8697317,
+    "google_lng": 34.8207466,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.8697317,
+   "lng": 34.8207466,
+   "coordSrc": "google",
+   "distTA": 24.24995694432862,
+   "cityToken": "כפר ביל\"ו",
+   "citySrc": "google_he",
+   "target": {
+    "id": 290,
+    "name": "Mazkeret Batya",
+    "name_he": "מזכרת בתיה",
+    "city": "Mazkeret Batya",
+    "country": "Israel",
+    "lat": 31.85,
+    "lng": 34.8333
+   },
+   "targetKm": 2.493893979716965,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5623,
+    "name": "המסעדה של יפה",
+    "address": "נגבה, Israel",
+    "google_formatted_address": "0, Negba, 79856, Israel",
+    "google_formatted_address_he": "0, נגבה, 79856",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.6614416,
+    "google_lng": 34.682659,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.6614416,
+   "lng": 34.682659,
+   "coordSrc": "google",
+   "distTA": 48.051676144388566,
+   "cityToken": "נגבה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 292,
+    "name": "Kiryat Gat",
+    "name_he": "קרית גת",
+    "city": "Kiryat Gat",
+    "country": "Israel",
+    "lat": 31.61,
+    "lng": 34.7717
+   },
+   "targetKm": 10.187130180540965,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5629,
+    "name": "ערמונים",
+    "address": "שדה יואב, Israel",
+    "google_formatted_address": "Sde Yoav, 7935100, Israel",
+    "google_formatted_address_he": "שדה יואב, 7935100",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.644628499999996,
+    "google_lng": 34.6853141,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.644628499999996,
+   "lng": 34.6853141,
+   "coordSrc": "google",
+   "distTA": 49.84042349911577,
+   "cityToken": "שדה יואב",
+   "citySrc": "google_he",
+   "target": {
+    "id": 292,
+    "name": "Kiryat Gat",
+    "name_he": "קרית גת",
+    "city": "Kiryat Gat",
+    "country": "Israel",
+    "lat": 31.61,
+    "lng": 34.7717
+   },
+   "targetKm": 9.040058782076061,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5640,
+    "name": "קפה בעגלא",
+    "address": "הברוש 73, גמזו, Israel",
+    "google_formatted_address": "Ha-Brosh St 73, Gimzo, Israel",
+    "google_formatted_address_he": "הברוש 73, גמזו",
+    "lat": null,
+    "lng": null,
+    "google_lat": 31.9284441,
+    "google_lng": 34.939104199999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 31.9284441,
+   "lng": 34.939104199999996,
+   "coordSrc": "google",
+   "distTA": 22.895639136175877,
+   "cityToken": "גמזו",
+   "citySrc": "google_he",
+   "target": {
+    "id": 289,
+    "name": "Lod",
+    "name_he": "לוד",
+    "city": "Lod",
+    "country": "Israel",
+    "lat": 31.95,
+    "lng": 34.8833
+   },
+   "targetKm": 5.785606037069323,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5745,
+    "name": "פיצה לה ורה",
+    "address": "גבעת עדה, Israel",
+    "google_formatted_address": "Rehov Hai 67, Binyamina Giv'at Ada, Israel",
+    "google_formatted_address_he": "רחוב חי 67, בנימינה גבעת עדה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.517110599999995,
+    "google_lng": 35.0063434,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.517110599999995,
+   "lng": 35.0063434,
+   "coordSrc": "google",
+   "distTA": 52.448457594464216,
+   "cityToken": "בנימינה גבעת עדה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 390,
+    "name": "Binyamina",
+    "name_he": null,
+    "city": "Binyamina",
+    "country": "Israel",
+    "lat": 32.5167,
+    "lng": 34.95
+   },
+   "targetKm": 5.283135716101809,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5786,
+    "name": "העוגות של שושנה",
+    "address": "כפר הרא\"ה, Israel",
+    "google_formatted_address": "Shivtei Israel St 19, Kfar Haroeh, Israel",
+    "google_formatted_address_he": "שבטי ישראל 19, כפר הרא\"ה",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.3929671,
+    "google_lng": 34.9152458,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.3929671,
+   "lng": 34.9152458,
+   "coordSrc": "google",
+   "distTA": 36.440587575932696,
+   "cityToken": "כפר הרא\"ה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 311,
+    "name": "Hadera",
+    "name_he": "חדרה",
+    "city": "Hadera",
+    "country": "Israel",
+    "lat": 32.4341,
+    "lng": 34.919
+   },
+   "targetKm": 4.58732635331276,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5910,
+    "name": "בי בריא",
+    "address": "כפר הס, Israel",
+    "google_formatted_address": "Kfar Hess, Israel",
+    "google_formatted_address_he": "כפר הס",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.2476324,
+    "google_lng": 34.9351419,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.2476324,
+   "lng": 34.9351419,
+   "coordSrc": "google",
+   "distTA": 23.111707789944596,
+   "cityToken": "כפר הס",
+   "citySrc": "google_he",
+   "target": {
+    "id": 536,
+    "name": "Tel Mond",
+    "name_he": "תל מונד",
+    "city": "Tel Mond",
+    "country": "Israel",
+    "lat": 32.2667,
+    "lng": 34.9167
+   },
+   "targetKm": 2.7390901769192837,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 5967,
+    "name": "פורטו בלה פיצה ירחיב",
+    "address": "ירחיב, Israel",
+    "google_formatted_address": "68, Yarhiv, 45860, Israel",
+    "google_formatted_address_he": "68, ירחיב, 45860",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.1501276,
+    "google_lng": 34.969258499999995,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.1501276,
+   "lng": 34.969258499999995,
+   "coordSrc": "google",
+   "distTA": 19.06930675384803,
+   "cityToken": "ירחיב",
+   "citySrc": "google_he",
+   "target": {
+    "id": 326,
+    "name": "Rosh HaAyin",
+    "name_he": "ראש העין",
+    "city": "Rosh HaAyin",
+    "country": "Israel",
+    "lat": 32.0953,
+    "lng": 34.9577
+   },
+   "targetKm": 6.192959165775847,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 6011,
+    "name": "הרואה בקפה",
+    "address": "כפר הרא\"ה, Israel",
+    "google_formatted_address": "Shivtei Israel St 1, Kfar Haroeh, 38955, Israel",
+    "google_formatted_address_he": "שבטי ישראל 1, כפר הרא\"ה, 38955",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.393170399999995,
+    "google_lng": 34.915361499999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.393170399999995,
+   "lng": 34.915361499999996,
+   "coordSrc": "google",
+   "distTA": 36.46555349531085,
+   "cityToken": "כפר הרא\"ה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 311,
+    "name": "Hadera",
+    "name_he": "חדרה",
+    "city": "Hadera",
+    "country": "Israel",
+    "lat": 32.4341,
+    "lng": 34.919
+   },
+   "targetKm": 4.563961898607847,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 6092,
+    "name": "ביר בשר",
+    "address": "גבעת חיים איחוד, Israel",
+    "google_formatted_address": "מתחם לב הפרדס, גבעת חיים איחוד, Israel",
+    "google_formatted_address_he": "מתחם לב הפרדס, גבעת חיים איחוד",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.3953595,
+    "google_lng": 34.9353628,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.3953595,
+   "lng": 34.9353628,
+   "coordSrc": "google",
+   "distTA": 37.379893434455504,
+   "cityToken": "גבעת חיים איחוד",
+   "citySrc": "google_he",
+   "target": {
+    "id": 311,
+    "name": "Hadera",
+    "name_he": "חדרה",
+    "city": "Hadera",
+    "country": "Israel",
+    "lat": 32.4341,
+    "lng": 34.919
+   },
+   "targetKm": 4.573389317856489,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 6216,
+    "name": "מור עוגות בוטיק",
+    "address": "מגל, Israel",
+    "google_formatted_address": "Magal, Israel",
+    "google_formatted_address_he": "מגל",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.3853855,
+    "google_lng": 35.0362633,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.3853855,
+   "lng": 35.0362633,
+   "coordSrc": "google",
+   "distTA": 41.063899946410714,
+   "cityToken": "מגל",
+   "citySrc": "google_he",
+   "target": {
+    "id": 311,
+    "name": "Hadera",
+    "name_he": "חדרה",
+    "city": "Hadera",
+    "country": "Israel",
+    "lat": 32.4341,
+    "lng": 34.919
+   },
+   "targetKm": 12.268637124081703,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 6263,
+    "name": "ווק אנד ווק כשר קניון דרורים",
+    "address": "בני דרור, Israel",
+    "google_formatted_address": "Gilboa St 1, Bnei Dror, 4581500, Israel",
+    "google_formatted_address_he": "גלבוע 1, בני דרור, 4581500",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.2601829,
+    "google_lng": 34.894053299999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.2601829,
+   "lng": 34.894053299999996,
+   "coordSrc": "google",
+   "distTA": 22.130900607398825,
+   "cityToken": "בני דרור",
+   "citySrc": "google_he",
+   "target": {
+    "id": 536,
+    "name": "Tel Mond",
+    "name_he": "תל מונד",
+    "city": "Tel Mond",
+    "country": "Israel",
+    "lat": 32.2667,
+    "lng": 34.9167
+   },
+   "targetKm": 2.249325927353615,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  },
+  {
+   "r": {
+    "id": 6297,
+    "name": "פיצה פאפנו",
+    "address": "כפר הרא\"ה, Israel",
+    "google_formatted_address": "כפר הרא״ה KFAR HAROE, Kfar HaRo'e, 38955, Israel",
+    "google_formatted_address_he": "כפר הרא״ה KFAR HAROE, כפר הרא\"ה, 38955",
+    "lat": null,
+    "lng": null,
+    "google_lat": 32.3900581,
+    "google_lng": 34.904784299999996,
+    "verification_status": "verified",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "lat": 32.3900581,
+   "lng": 34.904784299999996,
+   "coordSrc": "google",
+   "distTA": 35.807307312537795,
+   "cityToken": "כפר הרא\"ה",
+   "citySrc": "google_he",
+   "target": {
+    "id": 311,
+    "name": "Hadera",
+    "name_he": "חדרה",
+    "city": "Hadera",
+    "country": "Israel",
+    "lat": 32.4341,
+    "lng": 34.919
+   },
+   "targetKm": 5.075796281109589,
+   "how": "היעד הקרוב ביותר (אין יעד לעיר בכתובת)"
+  }
+ ],
+ "suspicious": [],
+ "unresolved": [
+  {
+   "r": {
+    "id": 1747,
+    "name": "פיצה גלעד",
+    "address": "שקף, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "שקף",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 3552,
+    "name": "ארומה",
+    "address": "העלייה השנייה 43, אזור, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אזור",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 4275,
+    "name": "באראטו",
+    "address": "העלייה השנייה 43, אזור, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אזור",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 4393,
+    "name": "פינת הצלע",
+    "address": "השיקמה 2, אזור, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אזור",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 4666,
+    "name": "ציקן & ביף",
+    "address": "המצודה 10, אזור, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אזור",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 4800,
+    "name": "מיטוסט",
+    "address": "שוהדה 10, אשתאול, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אשתאול",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5084,
+    "name": "אושה אוניגירי",
+    "address": "נווה אילן, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "נווה אילן",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5111,
+    "name": "פיצה אלון שבות",
+    "address": "אלון שבות, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אלון שבות",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5186,
+    "name": "עזאזל Azazel",
+    "address": "זריחה 1, קדר, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "קדר",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5437,
+    "name": "דורי על הדרך",
+    "address": "בן שמן (מושב), Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "בן שמן (מושב)",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5440,
+    "name": "קייטרינג שף בטבע",
+    "address": "גן הדרום, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "גן הדרום",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5443,
+    "name": "לוז-קייטרינג בוטיק",
+    "address": "ויצמן 62, עין צורים, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "עין צורים",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5477,
+    "name": "צ'מנדי",
+    "address": "אביעזר, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "אביעזר",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5497,
+    "name": "לוציאנוס",
+    "address": "מבוא מודיעים, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "מבוא מודיעים",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5516,
+    "name": "מקום בכפר",
+    "address": "כפר הנוער בן-שמן, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "כפר הנוער בן-שמן",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5565,
+    "name": "פיצה יו-יו",
+    "address": "עובדיה 1, יד בנימין, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "יד בנימין",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5578,
+    "name": "אושיקורו",
+    "address": "מועצה אזורית גזר, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "מועצה אזורית גזר",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5596,
+    "name": "פיצה מכלוף",
+    "address": "שדות מיכה, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "שדות מיכה",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5606,
+    "name": "שוקו קפה",
+    "address": "נתיב הציפורים 107, ניצן ב', Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "ניצן ב'",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5607,
+    "name": "מטעמים",
+    "address": "אודם 14, עד הלום, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "עד הלום",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5663,
+    "name": "שחר",
+    "address": "אדום, פארק תעשיות כנות, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "פארק תעשיות כנות",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5828,
+    "name": "גריל וקינוחים ברזילאים",
+    "address": "מכמורת, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "מכמורת",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5882,
+    "name": "פיצה יששכר",
+    "address": "מאור, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "מאור",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5899,
+    "name": "פיצה במושב",
+    "address": "צור משה, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "צור משה",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 5924,
+    "name": "מור וקינמון",
+    "address": "כפר הרא\"ה, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "כפר הרא\"ה",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 6064,
+    "name": "ארול",
+    "address": "משמרות, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "משמרות",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 6089,
+    "name": "קפה חמד",
+    "address": "שדי חמד, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "שדי חמד",
+   "citySrc": "address"
+  },
+  {
+   "r": {
+    "id": 6122,
+    "name": "שווארמה שאולי",
+    "address": "חופית, Israel",
+    "google_formatted_address": null,
+    "google_formatted_address_he": null,
+    "lat": null,
+    "lng": null,
+    "google_lat": null,
+    "google_lng": null,
+    "verification_status": "pending",
+    "kashrut_level": "rabbinate",
+    "category": null
+   },
+   "cityToken": "חופית",
+   "citySrc": "address"
+  }
+ ],
+ "okCount": 533,
+ "total": 602,
+ "dests": [
+  {
+   "id": 278,
+   "name": "Italy",
+   "name_he": "איטליה",
+   "city": "Italy",
+   "country": "Italy",
+   "lat": 41.9028,
+   "lng": 12.4964
+  },
+  {
+   "id": 279,
+   "name": "UAE",
+   "name_he": "איחוד האמירויות",
+   "city": "UAE",
+   "country": "UAE",
+   "lat": 25.2048,
+   "lng": 55.2708
+  },
+  {
+   "id": 280,
+   "name": "Spain",
+   "name_he": "ספרד",
+   "city": "Spain",
+   "country": "Spain",
+   "lat": 40.4168,
+   "lng": -3.7038
+  },
+  {
+   "id": 281,
+   "name": "Portugal",
+   "name_he": "פורטוגל",
+   "city": "Portugal",
+   "country": "Portugal",
+   "lat": 38.7223,
+   "lng": -9.1393
+  },
+  {
+   "id": 282,
+   "name": "France",
+   "name_he": "צרפת",
+   "city": "France",
+   "country": "France",
+   "lat": 48.8566,
+   "lng": 2.3522
+  },
+  {
+   "id": 284,
+   "name": "Cyprus",
+   "name_he": "קפריסין",
+   "city": "Cyprus",
+   "country": "Cyprus",
+   "lat": 35.1264,
+   "lng": 33.4299
+  },
+  {
+   "id": 285,
+   "name": "Morocco",
+   "name_he": "מרוקו",
+   "city": "Morocco",
+   "country": "Morocco",
+   "lat": 31.6295,
+   "lng": -7.9811
+  },
+  {
+   "id": 286,
+   "name": "Czech Republic",
+   "name_he": "צ׳כיה",
+   "city": "Czech Republic",
+   "country": "Czech Republic",
+   "lat": 50.0755,
+   "lng": 14.4378
+  },
+  {
+   "id": 287,
+   "name": "United Kingdom",
+   "name_he": "אנגליה",
+   "city": "United Kingdom",
+   "country": "United Kingdom",
+   "lat": 51.5074,
+   "lng": -0.1278
+  },
+  {
+   "id": 288,
+   "name": "Ireland",
+   "name_he": null,
+   "city": "Ireland",
+   "country": "Ireland",
+   "lat": 53.3498,
+   "lng": -6.2603
+  },
+  {
+   "id": 289,
+   "name": "Lod",
+   "name_he": "לוד",
+   "city": "Lod",
+   "country": "Israel",
+   "lat": 31.95,
+   "lng": 34.8833
+  },
+  {
+   "id": 290,
+   "name": "Mazkeret Batya",
+   "name_he": "מזכרת בתיה",
+   "city": "Mazkeret Batya",
+   "country": "Israel",
+   "lat": 31.85,
+   "lng": 34.8333
+  },
+  {
+   "id": 292,
+   "name": "Kiryat Gat",
+   "name_he": "קרית גת",
+   "city": "Kiryat Gat",
+   "country": "Israel",
+   "lat": 31.61,
+   "lng": 34.7717
+  },
+  {
+   "id": 293,
+   "name": "Ashkelon",
+   "name_he": "אשקלון",
+   "city": "Ashkelon",
+   "country": "Israel",
+   "lat": 31.6688,
+   "lng": 34.5743
+  },
+  {
+   "id": 294,
+   "name": "Paris",
+   "name_he": "פריז",
+   "city": "Paris",
+   "country": "France",
+   "lat": 48.8566,
+   "lng": 2.3522
+  },
+  {
+   "id": 297,
+   "name": "Porto",
+   "name_he": null,
+   "city": "Porto",
+   "country": "Portugal",
+   "lat": 41.1579,
+   "lng": -8.6291
+  },
+  {
+   "id": 298,
+   "name": "Kfar Saba",
+   "name_he": "כפר סבא",
+   "city": "Kfar Saba",
+   "country": "Israel",
+   "lat": 32.1784,
+   "lng": 34.907
+  },
+  {
+   "id": 301,
+   "name": "Holon",
+   "name_he": "הולון",
+   "city": "Holon",
+   "country": "Israel",
+   "lat": 32.0167,
+   "lng": 34.775
+  },
+  {
+   "id": 303,
+   "name": "Be'er Yaakov",
+   "name_he": "באר יעקב",
+   "city": "Be'er Yaakov",
+   "country": "Israel",
+   "lat": 31.9333,
+   "lng": 34.8333
+  },
+  {
+   "id": 307,
+   "name": "Dublin",
+   "name_he": null,
+   "city": "Dublin",
+   "country": "Ireland",
+   "lat": 53.3498,
+   "lng": -6.2603
+  },
+  {
+   "id": 309,
+   "name": "Ra'anana",
+   "name_he": "רעננה",
+   "city": "Ra'anana",
+   "country": "Israel",
+   "lat": 32.184,
+   "lng": 34.871
+  },
+  {
+   "id": 310,
+   "name": "Gedera",
+   "name_he": "גדרה",
+   "city": "Gedera",
+   "country": "Israel",
+   "lat": 31.811,
+   "lng": 34.777
+  },
+  {
+   "id": 311,
+   "name": "Hadera",
+   "name_he": "חדרה",
+   "city": "Hadera",
+   "country": "Israel",
+   "lat": 32.4341,
+   "lng": 34.919
+  },
+  {
+   "id": 312,
+   "name": "Rehovot",
+   "name_he": "רחובות",
+   "city": "Rehovot",
+   "country": "Israel",
+   "lat": 31.8948,
+   "lng": 34.8117
+  },
+  {
+   "id": 315,
+   "name": "Limassol",
+   "name_he": "לימסול",
+   "city": "Limassol",
+   "country": "Cyprus",
+   "lat": 34.6786,
+   "lng": 33.0413
+  },
+  {
+   "id": 316,
+   "name": "Paphos",
+   "name_he": "פאפוס",
+   "city": "Paphos",
+   "country": "Cyprus",
+   "lat": 34.7754,
+   "lng": 32.4243
+  },
+  {
+   "id": 317,
+   "name": "Yehud",
+   "name_he": "יהוד",
+   "city": "Yehud",
+   "country": "Israel",
+   "lat": 32.0333,
+   "lng": 34.8833
+  },
+  {
+   "id": 320,
+   "name": "Givatayim",
+   "name_he": "גבעתיים",
+   "city": "Givatayim",
+   "country": "Israel",
+   "lat": 32.07,
+   "lng": 34.81
+  },
+  {
+   "id": 321,
+   "name": "Be'er Sheva",
+   "name_he": "באר שבע",
+   "city": "Be'er Sheva",
+   "country": "Israel",
+   "lat": 31.2528,
+   "lng": 34.7915
+  },
+  {
+   "id": 322,
+   "name": "Savion",
+   "name_he": null,
+   "city": "Savion",
+   "country": "Israel",
+   "lat": 32.05,
+   "lng": 34.9167
+  },
+  {
+   "id": 323,
+   "name": "Prague",
+   "name_he": "פראג",
+   "city": "Prague",
+   "country": "Czech Republic",
+   "lat": 50.0755,
+   "lng": 14.4378
+  },
+  {
+   "id": 325,
+   "name": "Cannes",
+   "name_he": null,
+   "city": "Cannes",
+   "country": "France",
+   "lat": 43.5528,
+   "lng": 7.0174
+  },
+  {
+   "id": 326,
+   "name": "Rosh HaAyin",
+   "name_he": "ראש העין",
+   "city": "Rosh HaAyin",
+   "country": "Israel",
+   "lat": 32.0953,
+   "lng": 34.9577
+  },
+  {
+   "id": 327,
+   "name": "Givat Shmuel",
+   "name_he": "גבעת שמואל",
+   "city": "Givat Shmuel",
+   "country": "Israel",
+   "lat": 32.0833,
+   "lng": 34.85
+  },
+  {
+   "id": 329,
+   "name": "Gan Yavne",
+   "name_he": "גן יבנה",
+   "city": "Gan Yavne",
+   "country": "Israel",
+   "lat": 31.7833,
+   "lng": 34.7167
+  },
+  {
+   "id": 330,
+   "name": "Ness Ziona",
+   "name_he": null,
+   "city": "Ness Ziona",
+   "country": "Israel",
+   "lat": 31.9299,
+   "lng": 34.8
+  },
+  {
+   "id": 331,
+   "name": "Jerusalem",
+   "name_he": "ירושלים",
+   "city": "Jerusalem",
+   "country": "Israel",
+   "lat": 31.7683,
+   "lng": 35.2137
+  },
+  {
+   "id": 333,
+   "name": "London",
+   "name_he": "לונדון",
+   "city": "London",
+   "country": "United Kingdom",
+   "lat": 51.5074,
+   "lng": -0.1278
+  },
+  {
+   "id": 334,
+   "name": "Bnei Brak",
+   "name_he": "בני ברק",
+   "city": "Bnei Brak",
+   "country": "Israel",
+   "lat": 32.0833,
+   "lng": 34.8333
+  },
+  {
+   "id": 339,
+   "name": "Bat Yam",
+   "name_he": "בת ים",
+   "city": "Bat Yam",
+   "country": "Israel",
+   "lat": 32.016,
+   "lng": 34.7505
+  },
+  {
+   "id": 340,
+   "name": "Dubai",
+   "name_he": "דובאי",
+   "city": "Dubai",
+   "country": "UAE",
+   "lat": 25.2048,
+   "lng": 55.2708
+  },
+  {
+   "id": 343,
+   "name": "Ma'ale Adumim",
+   "name_he": "מעלה אדומים",
+   "city": "Ma'ale Adumim",
+   "country": "Israel",
+   "lat": 31.7769,
+   "lng": 35.2978
+  },
+  {
+   "id": 345,
+   "name": "Modiin",
+   "name_he": null,
+   "city": "Modiin",
+   "country": "Israel",
+   "lat": 31.898,
+   "lng": 35.01
+  },
+  {
+   "id": 346,
+   "name": "Petah Tikva",
+   "name_he": "פתח תקווה",
+   "city": "Petah Tikva",
+   "country": "Israel",
+   "lat": 32.0841,
+   "lng": 34.8878
+  },
+  {
+   "id": 348,
+   "name": "Tel Aviv",
+   "name_he": "תל אביב",
+   "city": "Tel Aviv",
+   "country": "Israel",
+   "lat": 32.0853,
+   "lng": 34.7818
+  },
+  {
+   "id": 353,
+   "name": "Nice",
+   "name_he": null,
+   "city": "Nice",
+   "country": "France",
+   "lat": 43.7102,
+   "lng": 7.262
+  },
+  {
+   "id": 354,
+   "name": "Netivot",
+   "name_he": "נתיבות",
+   "city": "Netivot",
+   "country": "Israel",
+   "lat": 31.4167,
+   "lng": 34.5833
+  },
+  {
+   "id": 355,
+   "name": "Yavne",
+   "name_he": "יבנה",
+   "city": "Yavne",
+   "country": "Israel",
+   "lat": 31.8761,
+   "lng": 34.7444
+  },
+  {
+   "id": 356,
+   "name": "Barcelona",
+   "name_he": "ברצלונה",
+   "city": "Barcelona",
+   "country": "Spain",
+   "lat": 36.51,
+   "lng": -4.8825
+  },
+  {
+   "id": 357,
+   "name": "Ariel",
+   "name_he": "אריאל",
+   "city": "Ariel",
+   "country": "Israel",
+   "lat": 32.1061,
+   "lng": 35.1669
+  },
+  {
+   "id": 358,
+   "name": "Netanya",
+   "name_he": "נתניה",
+   "city": "Netanya",
+   "country": "Israel",
+   "lat": 32.3226,
+   "lng": 34.8528
+  },
+  {
+   "id": 359,
+   "name": "Herzliya",
+   "name_he": "הרצליה",
+   "city": "Herzliya",
+   "country": "Israel",
+   "lat": 32.1653,
+   "lng": 34.8435
+  },
+  {
+   "id": 361,
+   "name": "Shoham",
+   "name_he": "שוהם",
+   "city": "Shoham",
+   "country": "Israel",
+   "lat": 31.9833,
+   "lng": 34.95
+  },
+  {
+   "id": 362,
+   "name": "Ramat HaSharon",
+   "name_he": "רמת השרון",
+   "city": "Ramat HaSharon",
+   "country": "Israel",
+   "lat": 32.15,
+   "lng": 34.84
+  },
+  {
+   "id": 363,
+   "name": "Larnaca",
+   "name_he": "לרנקה",
+   "city": "Larnaca",
+   "country": "Cyprus",
+   "lat": 34.9229,
+   "lng": 33.6233
+  },
+  {
+   "id": 364,
+   "name": "Ashdod",
+   "name_he": "אשדוד",
+   "city": "Ashdod",
+   "country": "Israel",
+   "lat": 31.804,
+   "lng": 34.6552
+  },
+  {
+   "id": 366,
+   "name": "Hod HaSharon",
+   "name_he": "הוד השרון",
+   "city": "Hod HaSharon",
+   "country": "Israel",
+   "lat": 32.151,
+   "lng": 34.8878
+  },
+  {
+   "id": 367,
+   "name": "Rishon LeZion",
+   "name_he": "ראשון לציון",
+   "city": "Rishon LeZion",
+   "country": "Israel",
+   "lat": 31.973,
+   "lng": 34.7925
+  },
+  {
+   "id": 369,
+   "name": "Sderot",
+   "name_he": "שדרות",
+   "city": "Sderot",
+   "country": "Israel",
+   "lat": 31.5241,
+   "lng": 34.5965
+  },
+  {
+   "id": 370,
+   "name": "Ramat Gan",
+   "name_he": "רמת גן",
+   "city": "Ramat Gan",
+   "country": "Israel",
+   "lat": 32.0678,
+   "lng": 34.8243
+  },
+  {
+   "id": 373,
+   "name": "Rome",
+   "name_he": "רומא",
+   "city": "Rome",
+   "country": "Italy",
+   "lat": 43.55,
+   "lng": 10.6167
+  },
+  {
+   "id": 374,
+   "name": "Beit Shemesh",
+   "name_he": "בית שמש",
+   "city": "Beit Shemesh",
+   "country": "Israel",
+   "lat": 31.7479,
+   "lng": 34.9896
+  },
+  {
+   "id": 375,
+   "name": "Marrakech",
+   "name_he": null,
+   "city": "Marrakech",
+   "country": "Morocco",
+   "lat": 31.6295,
+   "lng": -7.9811
+  },
+  {
+   "id": 378,
+   "name": "Mevaseret Zion",
+   "name_he": null,
+   "city": "Mevaseret Zion",
+   "country": "Israel",
+   "lat": 31.8,
+   "lng": 35.15
+  },
+  {
+   "id": 379,
+   "name": "Ramla",
+   "name_he": "רמלה",
+   "city": "Ramla",
+   "country": "Israel",
+   "lat": 31.92,
+   "lng": 34.87
+  },
+  {
+   "id": 381,
+   "name": "Or Yehuda",
+   "name_he": "אור יהודה",
+   "city": "Or Yehuda",
+   "country": "Israel",
+   "lat": 32.0333,
+   "lng": 34.8667
+  },
+  {
+   "id": 382,
+   "name": "Beit She'an",
+   "name_he": null,
+   "city": "Beit She'an",
+   "country": "Israel",
+   "lat": 32.5,
+   "lng": 35.5
+  },
+  {
+   "id": 385,
+   "name": "Karmiel",
+   "name_he": null,
+   "city": "Karmiel",
+   "country": "Israel",
+   "lat": 32.9167,
+   "lng": 35.2833
+  },
+  {
+   "id": 390,
+   "name": "Binyamina",
+   "name_he": null,
+   "city": "Binyamina",
+   "country": "Israel",
+   "lat": 32.5167,
+   "lng": 34.95
+  },
+  {
+   "id": 395,
+   "name": "Haifa",
+   "name_he": "חיפה",
+   "city": "Haifa",
+   "country": "Israel",
+   "lat": 32.794,
+   "lng": 34.9896
+  },
+  {
+   "id": 397,
+   "name": "Nahariya",
+   "name_he": "נהריה",
+   "city": "Nahariya",
+   "country": "Israel",
+   "lat": 33.0044,
+   "lng": 35.0972
+  },
+  {
+   "id": 399,
+   "name": "Eilat",
+   "name_he": "אילת",
+   "city": "Eilat",
+   "country": "Israel",
+   "lat": 29.5581,
+   "lng": 34.9482
+  },
+  {
+   "id": 406,
+   "name": "Zichron Yaakov",
+   "name_he": "זכרון יעקב",
+   "city": "Zichron Yaakov",
+   "country": "Israel",
+   "lat": 32.5714,
+   "lng": 34.9465
+  },
+  {
+   "id": 409,
+   "name": "Yokneam",
+   "name_he": "יקנעם",
+   "city": "Yokneam",
+   "country": "Israel",
+   "lat": 32.6667,
+   "lng": 35.1
+  },
+  {
+   "id": 413,
+   "name": "Dimona",
+   "name_he": "דימונה",
+   "city": "Dimona",
+   "country": "Israel",
+   "lat": 31.0667,
+   "lng": 35.0333
+  },
+  {
+   "id": 416,
+   "name": "Migdal HaEmek",
+   "name_he": null,
+   "city": "Migdal HaEmek",
+   "country": "Israel",
+   "lat": 32.6833,
+   "lng": 35.2333
+  },
+  {
+   "id": 421,
+   "name": "Tiberias",
+   "name_he": "טבריה",
+   "city": "Tiberias",
+   "country": "Israel",
+   "lat": 32.7922,
+   "lng": 35.5312
+  },
+  {
+   "id": 427,
+   "name": "Kiryat Motzkin",
+   "name_he": "קריית מוצקין",
+   "city": "Kiryat Motzkin",
+   "country": "Israel",
+   "lat": 32.8333,
+   "lng": 35.0833
+  },
+  {
+   "id": 430,
+   "name": "Afula",
+   "name_he": "עפולה",
+   "city": "Afula",
+   "country": "Israel",
+   "lat": 32.6053,
+   "lng": 35.2883
+  },
+  {
+   "id": 434,
+   "name": "Caesarea",
+   "name_he": "קיסריה",
+   "city": "Caesarea",
+   "country": "Israel",
+   "lat": 32.5056,
+   "lng": 34.8981
+  },
+  {
+   "id": 439,
+   "name": "Kiryat Shmona",
+   "name_he": "קרית שמונה",
+   "city": "Kiryat Shmona",
+   "country": "Israel",
+   "lat": 33.2081,
+   "lng": 35.5689
+  },
+  {
+   "id": 444,
+   "name": "Kiryat Bialik",
+   "name_he": "קרית ביאליק",
+   "city": "Kiryat Bialik",
+   "country": "Israel",
+   "lat": 32.8294,
+   "lng": 35.0758
+  },
+  {
+   "id": 445,
+   "name": "Rosh Pina",
+   "name_he": null,
+   "city": "Rosh Pina",
+   "country": "Israel",
+   "lat": 32.9667,
+   "lng": 35.5333
+  },
+  {
+   "id": 446,
+   "name": "Kiryat Ata",
+   "name_he": "קרית אתא",
+   "city": "Kiryat Ata",
+   "country": "Israel",
+   "lat": 32.8099,
+   "lng": 35.1031
+  },
+  {
+   "id": 449,
+   "name": "Kiryat Ono",
+   "name_he": "קריית אונו",
+   "city": "Kiryat Ono",
+   "country": "Israel",
+   "lat": 32.0544,
+   "lng": 34.8647
+  },
+  {
+   "id": 451,
+   "name": "Pardes Hanna",
+   "name_he": "פרדס חנה כרכור",
+   "city": "Pardes Hanna",
+   "country": "Israel",
+   "lat": 32.4833,
+   "lng": 34.9667
+  },
+  {
+   "id": 454,
+   "name": "Akko",
+   "name_he": "עכו",
+   "city": "Akko",
+   "country": "Israel",
+   "lat": 32.9232,
+   "lng": 35.0818
+  },
+  {
+   "id": 462,
+   "name": "United States",
+   "name_he": "ארצות הברית",
+   "city": "United States",
+   "country": "United States",
+   "lat": 39.8283,
+   "lng": -98.5795
+  },
+  {
+   "id": 463,
+   "name": "New York",
+   "name_he": "ניו יורק",
+   "city": "New York",
+   "country": "United States",
+   "lat": 40.7128,
+   "lng": -74.006
+  },
+  {
+   "id": 464,
+   "name": "Miami",
+   "name_he": "מיאמי",
+   "city": "Miami",
+   "country": "United States",
+   "lat": 25.7617,
+   "lng": -80.1918
+  },
+  {
+   "id": 465,
+   "name": "Los Angeles",
+   "name_he": "לוס אנג׳לס",
+   "city": "Los Angeles",
+   "country": "United States",
+   "lat": 34.0522,
+   "lng": -118.2437
+  },
+  {
+   "id": 466,
+   "name": "Chicago",
+   "name_he": "שיקגו",
+   "city": "Chicago",
+   "country": "United States",
+   "lat": 41.8781,
+   "lng": -87.6298
+  },
+  {
+   "id": 467,
+   "name": "Dallas",
+   "name_he": null,
+   "city": "Dallas",
+   "country": "United States",
+   "lat": 32.7767,
+   "lng": -96.797
+  },
+  {
+   "id": 468,
+   "name": "Las Vegas",
+   "name_he": null,
+   "city": "Las Vegas",
+   "country": "United States",
+   "lat": 36.1699,
+   "lng": -115.1398
+  },
+  {
+   "id": 469,
+   "name": "Thailand",
+   "name_he": "תאילנד",
+   "city": "Thailand",
+   "country": "Thailand",
+   "lat": 15.87,
+   "lng": 100.9925
+  },
+  {
+   "id": 470,
+   "name": "Bangkok",
+   "name_he": "בנגקוק",
+   "city": "Bangkok",
+   "country": "Thailand",
+   "lat": 13.7563,
+   "lng": 100.5018
+  },
+  {
+   "id": 471,
+   "name": "Phuket",
+   "name_he": null,
+   "city": "Phuket",
+   "country": "Thailand",
+   "lat": 7.8804,
+   "lng": 98.3923
+  },
+  {
+   "id": 472,
+   "name": "Ko Samui",
+   "name_he": null,
+   "city": "Ko Samui",
+   "country": "Thailand",
+   "lat": 9.512,
+   "lng": 100.0136
+  },
+  {
+   "id": 473,
+   "name": "Chiang Mai",
+   "name_he": null,
+   "city": "Chiang Mai",
+   "country": "Thailand",
+   "lat": 18.7883,
+   "lng": 98.9853
+  },
+  {
+   "id": 476,
+   "name": "Koh Phangan",
+   "name_he": null,
+   "city": "Koh Phangan",
+   "country": "Thailand",
+   "lat": 9.7439,
+   "lng": 100.023
+  },
+  {
+   "id": 477,
+   "name": "Pai",
+   "name_he": null,
+   "city": "Pai",
+   "country": "Thailand",
+   "lat": 19.358,
+   "lng": 98.4367
+  },
+  {
+   "id": 478,
+   "name": "Buenos Aires",
+   "name_he": "בואנוס איירס",
+   "city": "Buenos Aires",
+   "country": "Argentina",
+   "lat": -34.6037,
+   "lng": -58.3816
+  },
+  {
+   "id": 479,
+   "name": "Montreal",
+   "name_he": "מונטריאול",
+   "city": "Montreal",
+   "country": "Canada",
+   "lat": 45.5017,
+   "lng": -73.5673
+  },
+  {
+   "id": 481,
+   "name": "Budapest",
+   "name_he": "בודפשט",
+   "city": "Budapest",
+   "country": "Hungary",
+   "lat": 47.4979,
+   "lng": 19.0402
+  },
+  {
+   "id": 482,
+   "name": "Amsterdam",
+   "name_he": "אמסטרדם",
+   "city": "Amsterdam",
+   "country": "Netherlands",
+   "lat": 52.3676,
+   "lng": 4.9041
+  },
+  {
+   "id": 483,
+   "name": "Berlin",
+   "name_he": "ברלין",
+   "city": "Berlin",
+   "country": "Germany",
+   "lat": 52.52,
+   "lng": 13.405
+  },
+  {
+   "id": 484,
+   "name": "Vienna",
+   "name_he": "וינה",
+   "city": "Vienna",
+   "country": "Austria",
+   "lat": 48.2082,
+   "lng": 16.3738
+  },
+  {
+   "id": 494,
+   "name": "Ofakim",
+   "name_he": "אופקים",
+   "city": "Ofakim",
+   "country": "Israel",
+   "lat": 31.3145,
+   "lng": 34.6123
+  },
+  {
+   "id": 506,
+   "name": "Nesher",
+   "name_he": "נשר",
+   "city": "Nesher",
+   "country": "Israel",
+   "lat": 32.7667,
+   "lng": 35.0333
+  },
+  {
+   "id": 529,
+   "name": "Tzfat",
+   "name_he": null,
+   "city": "Tzfat",
+   "country": "Israel",
+   "lat": 32.9648,
+   "lng": 35.4969
+  },
+  {
+   "id": 533,
+   "name": "Katzrin",
+   "name_he": "קצרין",
+   "city": "Katzrin",
+   "country": "Israel",
+   "lat": 32.9833,
+   "lng": 35.6961
+  },
+  {
+   "id": 536,
+   "name": "Tel Mond",
+   "name_he": "תל מונד",
+   "city": "Tel Mond",
+   "country": "Israel",
+   "lat": 32.2667,
+   "lng": 34.9167
+  },
+  {
+   "id": 545,
+   "name": "Israel",
+   "name_he": "ישראל",
+   "city": "Israel",
+   "country": "Israel",
+   "lat": 31.5,
+   "lng": 34.75
+  },
+  {
+   "id": 546,
+   "name": "Netherlands",
+   "name_he": "הולנד",
+   "city": "Netherlands",
+   "country": "Netherlands",
+   "lat": 52.3676,
+   "lng": 4.9041
+  },
+  {
+   "id": 547,
+   "name": "Germany",
+   "name_he": "גרמניה",
+   "city": "Germany",
+   "country": "Germany",
+   "lat": 52.52,
+   "lng": 13.405
+  },
+  {
+   "id": 548,
+   "name": "Austria",
+   "name_he": "אוסטריה",
+   "city": "Austria",
+   "country": "Austria",
+   "lat": 47.8095,
+   "lng": 13.055
+  },
+  {
+   "id": 549,
+   "name": "Hungary",
+   "name_he": "הונגריה",
+   "city": "Hungary",
+   "country": "Hungary",
+   "lat": 47.4979,
+   "lng": 19.0402
+  },
+  {
+   "id": 550,
+   "name": "Canada",
+   "name_he": "קנדה",
+   "city": "Canada",
+   "country": "Canada",
+   "lat": 45.5017,
+   "lng": -73.5673
+  },
+  {
+   "id": 551,
+   "name": "Argentina",
+   "name_he": "ארגנטינה",
+   "city": "Argentina",
+   "country": "Argentina",
+   "lat": -34.6037,
+   "lng": -58.3816
+  }
+ ],
+ "ta": {
+  "id": 348,
+  "name": "Tel Aviv",
+  "name_he": "תל אביב",
+  "city": "Tel Aviv",
+  "country": "Israel",
+  "lat": 32.0853,
+  "lng": 34.7818
+ }
+}

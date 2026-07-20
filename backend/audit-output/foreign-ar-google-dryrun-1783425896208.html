@@ -1,0 +1,359 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run AR</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — AR</h1>
+<div class="sum">
+שורות שנבדקו: <b>28</b> מתוך 28<br>
+✅ בטוח נכון: <b>25</b> · ❓ אולי: <b>0</b> · ❌ לא נמצא/לא נכון: <b>3</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 72 · Details: 78 (78 חדשים, 8 cache) · Google estimate max: ~$1.33 · LLM: $0.006 (6)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 25</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>4705</td>
+      <td><b>El Galpon</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Av. Corrientes 2900, Buenos Aires</td>
+      <td>Galpón B</td>
+      <td>Cochabamba 2536, C1247 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.4 (1977)</td>
+      <td></td>
+      <td class="photo">places/ChIJnTfQ0R3LvJURAyGldkw9Q4I/photos/AaVGc3nDBHh7NZ1kAlQpJpBP74HbUwBxh_rXM05thkA2KKLHWwuKrsYV59rnaVr4zVfS7VAUbkqImRPsuyt15tP-klm8E6z4bD-Buw7eCylw5G-YzXpoTQFFpoYaVz_vLQax6GHzxn5pbmoP7PALSTbddB6Szma8UlICSzw2Wa3vp1SYilrMGeAipfoAq1iDhUAMV8HMnZCZ-0ixnnpRmHodjrqXf-CZHi7qA9K-jcJ5ZvQz07phP2EHVXXt6pZATHf9XIua44dhbKWNXO42QaeT_1WEe0JonhF1KD6xj7fKe206lue9lEIz7WvxH9Fwo1XLcY-ADZLNakpNiaewhgulmp-J98xrPTsh_8uCCgB5rIicYWJN-6CbJoIsGfQNdqQKU_RJ3WHd9iEtQanD7dn_DEei_HQlJ9rm_jeXuSeTfDaNpQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Galpon%20Av.%20Corrientes%202900%2C%20Buenos%20Aires" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJnTfQ0R3LvJURAyGldkw9Q4I" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8067</td>
+      <td><b>Al Galope</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Tucumán 2633, Buenos Aires, C1052, Argentina</td>
+      <td>Al Galope</td>
+      <td>Tucumán 2633, C1052 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4 (1269)</td>
+      <td>011 4963-6888</td>
+      <td class="photo">places/ChIJUeur8ZLKvJUR_87bSG2zlGw/photos/AaVGc3l2OkRlOUIpnz-QkOZak5Afzc0EYj5v3-IS8D92ncWnpaqqeWiCVvHIIGr9SylzrPt_Fo8_eD3TVuCk2NK0Oc4G3zqVImCdaoKcOBl591we4NYvH84htwnMJxBtGnHZKeE3qjgr7uiNrmNSXkAPh6kRvRlGejcp1Q3f81L_6pN7uSDNO1v5eLGUYYm6CsiGGQ9SFZ1GqxTOPCtFotMfnBDwCowmLMuawnYp3SFT_yinUgKkxAJ4v-4FQ4iSqVfIUYL0i1ffs8hKVjXFxg7z07MPlEPQhHW81u9C9kX93mqeu6rTECq_sZ-tTbKahTVpHJFL9CLD5XDD31uicK9BtqWgp-A95pQQxmxO13XViK2bEphGahdATt2W7WJlbTSTCuVbl8hgdW9TCjd86mdBuNEIosr7SQR0XfUiLDPkdoDEIg3UsVRotVAKoi6Hpw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Al%20Galope%20Tucum%C3%A1n%202633%2C%20Buenos%20Aires%2C%20C1052%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJUeur8ZLKvJUR_87bSG2zlGw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8068</td>
+      <td><b>Bali Heladería Kosher Vegano</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>9HXV+7Q Tucumán 2774 C1189AAB Buenos Aires, C1189AAB , Argentina</td>
+      <td>Bali Heladería Kosher Vegano</td>
+      <td>Tucumán 2774 C1189AAB, C1189AAB Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.4 (207)</td>
+      <td>011 15-3918-6000</td>
+      <td class="photo">places/ChIJw5PPVzzLvJURDDXP83s4_24/photos/AaVGc3n5AcZ8G3OFeh3vYjx-pK1SCDelKt40esKHOeAzDGiRwGLgJAAMR99XpZwtFPzK99ofi8RZa2XbFjm4KAoKOlH5a9Jt_24SJB_8b4oyjtni37U8sgP6u6HsmVxIpDbkeZnixOOkNqBsiQ3bGvAdxCjm52XfKTBe7PprchCRz5oCuMK52JrsL_JTvD6GWRcjumqbvHpz7zR-LUOBiYPJC9C1rrg7HVf11T5eCojCzNJoHilJfj2jEBCX5Fxtq8m_jrtW-GkNlGATu79SkODZpr8t7XsaUCXStKfBhblUt3jhVelM7TkjiFBdWCR6XdVC4wVXA5r0pYWLKUOTocdJXSYcySkuK0sbraSifOUZIwAxZ2o5mnezXPn-ixtyzhIOEaGm__sSHd0pI8by06UP9JvTouTKDhUou5wPqgGpQhELXRSJ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bali%20Helader%C3%ADa%20Kosher%20Vegano%209HXV%2B7Q%20Tucum%C3%A1n%202774%20C1189AAB%20Buenos%20Aires%2C%20C1189AAB%20%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJw5PPVzzLvJURDDXP83s4_24" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8069</td>
+      <td><b>Confiteria Malena</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>880 Av Pueyrredon, Buenos Aires, C1032ABV, Argentina</td>
+      <td>Malena Panadería- Confitería &amp; Catering Kosher</td>
+      <td>Av. Pueyrredón 880, C1032ABV Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.3 (481)</td>
+      <td>011 5876-2382</td>
+      <td class="photo">places/ChIJ2Uz9PpLKvJUR3eCyYZi6BEQ/photos/AaVGc3nfW5jemX26k9H5pBoPoQlsWnsoOtLhQC7Z0mB7zQKMDuXKUuyoNrCoGvmE84rI1--coABOsUf7ifl3dqPG3umwpL6ZuzXQQvrFZTV9PLbQiwCMPiRAgrKoWpoWl_I2m-rnNf6w8p-ZJ51e7HMLND-gZ_LnCzA0wJSHnD_4tx8SlpU7Ic0J5pEeY8wACLciGsE7ZqFbQOOPg6tBSbqJgFfXRYLFGHehycE80bjGi__nkBBk4B2BC3Ik_YF4wq0cz0KHv72cZZbEvF7GuhgriT3HXBFl5p3jzcyjgjvbM5plNsxs8ixa0i_BNBbLVoYDfX1WHOBk5SlHdmd5qBkKwv6BrQK2ZiqTOLFe3ZfY9KqGAG8q2ovq-w0KMwBR_ut3qrpPadRWyLjE-QBRxsPBeGbbLz-IykIOuOdNbj9Mc55J_8_mX2QFEZu578v0C0kr</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Confiteria%20Malena%20880%20Av%20Pueyrredon%2C%20Buenos%20Aires%2C%20C1032ABV%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ2Uz9PpLKvJUR3eCyYZi6BEQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8070</td>
+      <td><b>Fuego Lento</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Jean Jaures 746, Buenos Aires, C1214, Argentina</td>
+      <td>Fuego Lento kosher</td>
+      <td>Jean Jaures 746, C1214 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.7 (333)</td>
+      <td>011 5113-7211</td>
+      <td class="photo">places/ChIJ1chZDH3LvJURJelx686NeO0/photos/AaVGc3nAj3mlkHJtV7kaTCsWAirLpcD-MANRS8hK7ywSOawl4kdKzYqfEm5VImf2RwXmMniUcfmfa7YlpdkRm-iQeNtN-rOg5H0yL2TrjAKiPQP-3TJVOb90baLDb2kDldEsR8kDGKXNqQGsItUY2lUJ82024Acno1qM-b6hfkDTNf46btVM7WLlulY_g0kqnOccRoj2dWwnVSs_hOiXcrb_lBcSEwPydXmz8OQgL2-1ppOAeofpIm0rkwJDzC8X_LrrYJS5FO454o0cDjbcnQDPUvghXVJTWBn4-gJsZrWLk1im92VEmhIaa3DixDrE8Zfwog3Jg5sv63AJkP3psKOidxJfU2_nX-CZieWCv6IoPECTsXfSb0FeJTQQ9byLdsJNJQpmPkmHS1eOWKtk-zSZ5BIIFEmXDJfHPmAeK-3h92CtoA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Fuego%20Lento%20Jean%20Jaures%20746%2C%20Buenos%20Aires%2C%20C1214%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1chZDH3LvJURJelx686NeO0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8071</td>
+      <td><b>Glitter Restaurant</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>1130 Aimé Painé St. Puerto Madero, Buenos Aires, C1107CFB, Argentina</td>
+      <td>Glitter Restaurant Glatt Kosher</td>
+      <td>Aimé Painé 1130 piso 2, C1107 C1107CFB, Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.5 (94)</td>
+      <td>011 4114-0900</td>
+      <td class="photo">places/ChIJ2cENWws1o5URYseMcHeet2o/photos/AaVGc3n1v5rZHzQiQbPXdzGJR9i7gKdYS4TYYb5IDMoJ2tB5m3X423BduUzxDkzyJrY7tldyDrkesIqQ6lZdlq8UH_DkXoxta6ja48jn0TIqoUGk419hRUc0quOjMdIqP9cvbwV8Bu25NW-uF95jOwl1XTOgwgHnlFQ5EhyjufBDTQZ7THhdnU5NFPBA-Rk4cVm_p9yi9YU2pt-PiDJ7ERKmMfgGTNJXiwU0vJpNjRcP2H33kxPzbh7PSYneje8TlPj-AMEnLfwdVKcgI72IgoQFPypabqh93PJzYzUmTlNPMPl5gpq6-zn9wGvPE26eMQUNAkWGzBRs5876dOm4pMwCHrnXMQXdW9_RVmDwEf9hYmkCtNJZV1igpY40JeKuDm5h4p5_bYWS4AFN_wqdthdQpgT6rGGt-2s30PdyJ7Thw355_Q</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Glitter%20Restaurant%201130%20Aim%C3%A9%20Pain%C3%A9%20St.%20Puerto%20Madero%2C%20Buenos%20Aires%2C%20C1107CFB%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ2cENWws1o5URYseMcHeet2o" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8072</td>
+      <td><b>Kokush</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Tucuman 2663, Buenos Aires, Once, Argentina</td>
+      <td>Kokush</td>
+      <td>Tucumán 2663, C1052ABE Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.6 (199)</td>
+      <td>011 4966-2227</td>
+      <td class="photo">places/ChIJ4Rf185LKvJURTSoLCMxTX2g/photos/AaVGc3k-9-KKsXynznycAfqUjSH9aCcObQgcD8Mo-qq6OVIDZvobt-molN0_OVUzB1lWmKeMYRYRK9jEyIZzTOHNkzxH0q7tJLyJg_-vJhJemqhkvhoptPEtTnrdurfS4-vbglzqU5tKWJCWqDJu2YnLlwUMP3nRFwDo0GQEoECUSCR696vRyxIlr0U8IjqFWH_2SVKhKG5HAguJvQ4LV2F7yW6au2MkWLrOGknEtdbknn235iPrG2WUcVCDVI980nK-50cZiHxIUfUgRj93xx5K2IxCvq63-rkzHljo9yfAdI4FWEdYwjGcAnJ8Mv2TlDgG-ykCg9ov3aR9pIZcCdzYkckInn5RauKvgn2kfwXx8io9Z6sCX6-cM3yRjk9z8A6nCIWqyrDsXTATpJneNNGB-n2Vu-anQEisdJfyPbBtg793ZQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kokush%20Tucuman%202663%2C%20Buenos%20Aires%2C%20Once%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ4Rf185LKvJURTSoLCMxTX2g" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8073</td>
+      <td><b>L'harmonie Bakery</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Juan Francisco Segui 3611,  Buenos Aires,  Argentina</td>
+      <td>Lharmonie</td>
+      <td>Av. del Libertador 3118, C1425ABR Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.3 (1297)</td>
+      <td></td>
+      <td class="photo">places/ChIJx3R2gAW1vJURalNI5EZBWi4/photos/AaVGc3kN3vp4SSenhd1YStaJcQOKPwbJ176Baf5Y2XNVMEAdjQGa3KAL_meSUBpgGTnmreE9WMqCPvFudLSV0uIN8n2F7CbZ76hvBUWvI0JiTF60PEYFsPe0QopNZXDDagm7n464j2rvr4U5GKpgomqHTl6R7_NjWt3ZuHw1BniERIjwH8S9UdPvJSQzuphk5Muy-pT_ng73U6uoD8lNQ6YVMgMts_A0yhUoVDit2TawFTkDQGP2G0iNTZayU4ctk92jlcX6rkQrO26iFg13HxVuhmcmTYYAu-nlnMmi211ZEhwrZPVAq3EBSF5jkemE0SuZuHVJPYIxerNuXEZHT7ScxIe0s0In2emNCL2YDq4Ghhyz2hdvSQm29EvxSq7GMRdA3F1_7jZjI-1Oi_MM3LYNDYv47mFv3eOykdzkOL02nFTQ3QYI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=L'harmonie%20Bakery%20Juan%20Francisco%20Segui%203611%2C%20%20Buenos%20Aires%2C%20%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJx3R2gAW1vJURalNI5EZBWi4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8074</td>
+      <td><b>L'harmonie Bakery &amp; Cafe</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Nicaragua 6068, Buenos Aires, Argentina</td>
+      <td>Lharmonie</td>
+      <td>Nicaragua 6068, C1414NWB Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.4 (408)</td>
+      <td></td>
+      <td class="photo">places/ChIJq-aUR7m1vJUR84RdnMVJw-E/photos/AaVGc3mu4oBxkDN8kz5Sa2x9F5oBB330gEmJI6kqeZiLo8p8OXJGunTBv625hpDwbxn8gnbq-niwH4oR1frw4__Xwnwpd5KGg6x5sBYcIbxpaO_JLtgrRY48gch4kv5SF--FUY2UrQ7Jz3RxQFCxAgKTE7zKqTqoZOcGdc-yt8zAM_ZqMm7bmMqapRUTN1_V-I-8eN9v2ClakwKzEgUxJi0ro7WQusVDmKGDp5wxYBKNNV5aXlu5CRfq49Gg6UT_gXgeDH7kDfPddLuP1wIXABkHcrWn9QFZaCU6KOEKXt6Vk084cxhwiqLeMzQttuC6wYqSbRX4BnQizJmWkMWl1YJrGLly_ikeF2oD4yRsmgdzi8svaATuNRyZGGufqp4vgImz6CFGA5_iuFtc2B4LRPjMGAJxULGuAkljhyNByaXlZ249jEw1</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=L'harmonie%20Bakery%20%26%20Cafe%20Nicaragua%206068%2C%20Buenos%20Aires%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJq-aUR7m1vJUR84RdnMVJw-E" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8075</td>
+      <td><b>La Bakery Panificados - Abasto</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Guardia Vieja 3540, Buenos Aires, C1192 AAF, Argentina</td>
+      <td>Bakery</td>
+      <td>Tte. Gral. Juan Domingo Perón 4139, C1199 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>3.9 (38)</td>
+      <td>011 6054-3296</td>
+      <td class="photo"></td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Bakery%20Panificados%20-%20Abasto%20Guardia%20Vieja%203540%2C%20Buenos%20Aires%2C%20C1192%20AAF%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJieBtaADLvJURIpeyeLG05-w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8077</td>
+      <td><b>La Empanaderia Kosher</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Tucumán 2620, Buenos Aires, C1031 DF, Argentina</td>
+      <td>Empanaderia</td>
+      <td>Tucumán 2620, C1031 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>3.7 (3)</td>
+      <td>011 7003-1100</td>
+      <td class="photo"></td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Empanaderia%20Kosher%20Tucum%C3%A1n%202620%2C%20Buenos%20Aires%2C%20C1031%20DF%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJTf2XuAPLvJURRUfNPE_NYJo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8078</td>
+      <td><b>Luba Cafe Store</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Ayacucho 1412, CABA, C1112AAB, Argentina</td>
+      <td>Luba Cafe Kosher (Some vegan options)</td>
+      <td>Ayacucho 1412, C1112AAB Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.3 (751)</td>
+      <td>4805-2253</td>
+      <td class="photo">places/ChIJH43h4JfKvJURH-V7UyTQJxQ/photos/AaVGc3lyWmdnCs6xw3JMHGMUyXh2nBzHgM30PEGo3Wqd1bY4g2xfGrnsdJHcjAiCWDaGxmRlgEjDxS7MnGBLZ_Y9RvAoY4vu61bG7T53wyKzvwaQfXGCKRZJgAy8gvjBJT-ZyeK2ssdspQ_Q7i-hYTz4uRwpb79pEPhPUb6tpHlQoiCShSXQ1AJhzit2DCk44etRjGnmQ14cFWBQaH0JteF7hNl2Ss2WuNdYM2SbOFcBZxiNfaVpsD1j4G_xbPR8zmuaQWx0WRrgpZ7x-Da-u483yE-RiQVsPYKA70AaB04VR8BeE84C2XwZEg0mpibX7w0O02UYhQdjEgV4R5NBJozE6z19plbPz93sBC4VoKColAdfIL7WbFSAjnx46OYTeIyILna1wTOd-y8gAtRPFmXj7_aAZn2RTwqY7_15DalU3yFS4J6A</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי זהה (Luba Cafe), כתובת מדויקת זהה (Ayacucho 1412), עיר זהה (Buenos Aires), שניהם כשר. B מוסיף פרטים (Kosher, vegan options) אך זה אותו מקום.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Luba%20Cafe%20Store%20Ayacucho%201412%2C%20CABA%2C%20C1112AAB%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJH43h4JfKvJURH-V7UyTQJxQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8079</td>
+      <td><b>McDonalds</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Av. Corrientes 3247, Buenos Aires, Buenos Aires, C1193 CABA, Argentina</td>
+      <td>McDonald's</td>
+      <td>Av. Corrientes 3247, C1193 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>3.8 (4155)</td>
+      <td></td>
+      <td class="photo">places/ChIJM-ffg4zKvJURcGFGDzHyl-M/photos/AaVGc3lOwqIVGQbFOKkCrp---se1TVgQwBLeioHsrFci3wi3oVq6zZEPNlAKG3c2uH0MahpIylrTrIltrHk4wYnEy3k0Xv0BwEzfYRRkCw1m5E-LFQudR7xRcvyE4bKrGyc6dqdSjC6l3kApLelrLUhJz22AFW3UeImVwuZsXt23wHIT-OKQQftKz2bfkMq9qz4jlHJYR95Clj7Rc_P5Lb9ckLSpQTQXsQ0JA9uzgJ3-F5DwnqmuLlICdVcZbeRFhJkEMPleQtapvQxeJ53H7jCpOZ27E1Lp6MbXQvebUP9Xq47r79-_tuJjTXjr831k9FrKxNlLsxvMgpci4cUa4JFHhezAdi1AaZ-7SVoNKAaJX2GOsBTh-T5M5yteWk4q2cI6K1pGiK3V6lY57gQBVHP6D-5l6FQW6XvaLCIfwzOSIKT6Xw</td>
+      <td class="reason">chain name + exact branch address</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=McDonalds%20Av.%20Corrientes%203247%2C%20Buenos%20Aires%2C%20Buenos%20Aires%2C%20C1193%20CABA%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJM-ffg4zKvJURcGFGDzHyl-M" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8080</td>
+      <td><b>Milk &amp; Co. Sushi Bar</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>AIMÉ PAINÉ 1130 Puerto Madero, Buenos Aires, Argentina</td>
+      <td>Milk &amp; Co</td>
+      <td>Aimé Painé 1130, C1107 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.5 (39)</td>
+      <td>011 4114-0944</td>
+      <td class="photo">places/ChIJhXFw3kw1o5UR90erTUPw8kk/photos/AaVGc3kcXxbTL12mwC1-TcIeT9eVo4ghPOnbQz2gtRGyam7VfbDYLNujs2PGGp5gcad_eP81OevY7K9yr_cBuWkOiBcrnDCueezWVLxhIKO2Z6WqlGqa9ejk0gfLtWKkxd-QV5bqdlRVNlWAHm0F9eSp0dKkoe0BblMV7d_KsZ6KQCSsTNeRVtmqVBvpOa2jdRfZlidV1M_k7a1R0ZCbozOqJRNNESWMisnChoGiEb47ESlXa95UdF4Cgyr3Z9DPH4ofCbioF1mfK3kkodd-wJQZes2RQXGS7qtsRLxll9L7StgzU-NkSU_r13jkciLVtI1M7v0g2nr1k03rxMaZaWotMbz205kuWuiClLxgjBHYt8p1vtR1yNMFSZyF_KCnw1cD7SRqKtZ1ykvpdHmGP8VV8P_jLhg8xS9yTRnouNUtF6PMew</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Milk%20%26%20Co.%20Sushi%20Bar%20AIM%C3%89%20PAIN%C3%89%201130%20Puerto%20Madero%2C%20Buenos%20Aires%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJhXFw3kw1o5UR90erTUPw8kk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8081</td>
+      <td><b>Mozart Kosher Once</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Larrea 715, CABA, C1030AAO, Argentina</td>
+      <td>Mozart Kosher Once</td>
+      <td>Larrea 715, C1030 Once, Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.5 (324)</td>
+      <td>011 4962-4567</td>
+      <td class="photo">places/ChIJC2U0ppPKvJURzMgQNcylz6Q/photos/AaVGc3mdzjqX-5TAmh5mvxgE36GID9b6ydJJmpTxpxv8-rH9BQdKFboWRzf2KXF-zkPzN-Y8E2bj47WTln9tYCJWbsEEKoeZyezHfyfQaQTlFlKlMrjHhMEKAwLA6sxhY8coEBsJp4N3WIu583X0o0cWhPgFWJuTGan9vwVeYMGDtWE2FUA-ujRe9YawCdW6CWQeIPwUdeiFHklmXnNiBRL2UEDjjNX7Lw7B0gMScQeWSBwHpU97obBxa-F6jP2SU_FhrRbpKKGr53kPS0R4rd9ajWL8Fnrnfo4ginGRjA6fUo0hnxwmvGbuj_8-HkAtuoEgMb1xRmwCUqRbctCNeHkHws6E4MDk5uGEM2Rp9ljPKON2Uq49ToSKUF_9idOdkB5mdlzf5Tm7Fm5OBJy_73FosNVXV7JGROM8ocQ3AMBV_wDL32iq5iKYAlUpx2NcD3K3</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mozart%20Kosher%20Once%20Larrea%20715%2C%20CABA%2C%20C1030AAO%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJC2U0ppPKvJURzMgQNcylz6Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8082</td>
+      <td><b>My Bagel</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Azcuénaga 758, CABA, C1056, Argentina</td>
+      <td>My Bagel</td>
+      <td>Azcuénaga 758, C1029 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.5 (796)</td>
+      <td>011 6703-3100</td>
+      <td class="photo">places/ChIJ1YwSm5PKvJUR3uks71mRgp0/photos/AaVGc3mW_4OZ_jcfKDVk0Ke6J9IZaw1tLxKYJtucjC1AwcpZlfRZlChZ7Q-U9At7SS4MVngVhnRJYRd4TFIP634f3n-s_U3dtw-m7qepM_ZAGY8FEW7WMWScPic9EagtfV2P99_S-xuorR6PDoJb_Qu37xOgFN-F_-fSunEgyl0bG2DBOzhfhpqZjNBTrWLBaMBjweB6iJBmYnlnse94g9elZ8-7kQ6g8ZMyATi1tBbigRRc6B5Bg2GlVPbC3QbxDCeZMle28fWLs8tNzhFKBEoTaeuRYyYyf3CpVWGdBAUtxiVSdoCS9KvB-UzKZ750x8gLQ1ASqqEpiaynJpztaYl2fvmQ7ZAlyqVvqrFUIq9e0fLuSk2SlcQQ4xKY1yA3PMIJ-sxJGblHosca4319n_3Fj5mgcTrJRexI5qQYzPYgEzjfEmUr</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=My%20Bagel%20Azcu%C3%A9naga%20758%2C%20CABA%2C%20C1056%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1YwSm5PKvJUR3uks71mRgp0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8083</td>
+      <td><b>Parrilla Kosher Lo de Victor</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Paso 610, Buenos Aires, C1031ABN, Argentina</td>
+      <td>Victor's Kosher Amazing BBQ Parrilla</td>
+      <td>Paso 610, C1031ABN C1031ABN, Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.6 (343)</td>
+      <td>011 4961-6073</td>
+      <td class="photo">places/ChIJIZNT-pLKvJURgGMVLdUuc0A/photos/AaVGc3npEh_28o0-QZiHU3NEzVaKO_28DRcJVibByLCLh5RRdX13KCoc8HIleOZR7PgeotjInkWALEs22o9fQfVLYndBO0AJg1ikp4dl1d00y59Jki0XA4owWJCjkr70THfdKL8QdhHlWPaRo7bAW4g6RaAMMoK9paCjr8exVVkgZT61klj3CmTObF44hnDBkVjYVtHm-ohjdie42bQBe-cceqK8HTANpl1frIK8GxxKAs73M4ZgRTDXBC3_vE5ctTcbgPVcxTv4v_qpwNXNqGVSprSfivKxvQGAi0J9ozxfjfQtvr3wJ8i0stisWvHEoRdbgpnQ4b27QdJRlHP6Gz1iszuNpJk5uSzrxiER-p5T02tKkWX97UEoROj_qM0pKMDdR_vuz_IxJElByZYac9oJjIlc6OHK1UKXPHhq1kB7bPN67RLbpwvpP10MwRkOk7ZI</td>
+      <td class="reason">LLM אישר (0.95): Same unique address (Paso 610, C1031ABN, Buenos Aires), same kosher parrilla business, name variants are transliteration/translation of same restaurant (Victor's/Lo de Victor both refer to owner Victor, Parrilla is the business type). Exact house and street match, operational status confirmed.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Parrilla%20Kosher%20Lo%20de%20Victor%20Paso%20610%2C%20Buenos%20Aires%2C%20C1031ABN%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJIZNT-pLKvJURgGMVLdUuc0A" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8084</td>
+      <td><b>Pizzeria Venecia</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Tucumán 2640 CABA, Buenos Aires, 1052ABF , Argentina</td>
+      <td>Pizzería Venecia Kosher</td>
+      <td>Paso 622, C1052ABF Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.1 (275)</td>
+      <td>4964-5370</td>
+      <td class="photo">places/ChIJYYK78ZLKvJURdbWKcNkZ8As/photos/AaVGc3k-vPmZxSAQo0uLNe2N6HHKWIoNWNKTa0ai_pqxfDnutHYWPIcmzGtteXWEZlrU06NLfnXvLFubPWI-5PVOHs55zsMbp5Hj2dEzesLXFFts1gg5mVcDAcHBn_1uf6gp5q8umPWIilgEU9JbJZP2gdaxM62J_LhMiRqgHfAOrGqorgZWbt7ku-eKBqPX5mL4RwvXTShB1tQXdAbLYWSGAqD7FZQdeIBZ1808KsEj_lf9HQuh2k9pywL3DZLa27pDyhXkxl2gMSwqsKrMHzgYCMXdqS_YoX96qOgQ8CuXvosrEE02cbWId6GPt_BN0_Tw71MdWh93MOs1sPHrxGdzbAR5qZjb1g9DpZ-VHyBY8APbuEOCOKxBFGnRH3vQPRvPgprJ32VDjB0GehDRvdkebaeraEVUMJP_rg4n5MVrjUQfaQOa</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizzeria%20Venecia%20Tucum%C3%A1n%202640%20CABA%2C%20Buenos%20Aires%2C%201052ABF%20%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYYK78ZLKvJURdbWKcNkZ8As" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8085</td>
+      <td><b>Pizzería Soultani</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>San Luis 2652, C1056AAF Buenos Aires, Argentina</td>
+      <td>Soultani Kosher Pizza Place</td>
+      <td>San Luis 2652, C1056AAF Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.1 (816)</td>
+      <td>011 4962-2699</td>
+      <td class="photo">places/ChIJz1R_SpLKvJURDmZG1wfRQwc/photos/AaVGc3lBhPdV1PrGCVpAc3h22aAZ6x4AUvvSY9RKRLvrkxMWyMfmNE_tGw_c3x57TCRkcDVVzH-hgRMm9fd0d0O4EIM3nNGT1wfFpDKzD9uxQSv4eiLOGSZ-9MpI-uSDAd5uC9E8JpJXNOu6YLevchjWEbuNd_rpgyWE188Tzel6zg2eiOVnHeRJV9JJyb_Rdhb2P2X6VCPXXluILQZn3V2k-qEpHHvfrhfz-vXqGiXJN1D0vJ3hGp3NrOtHqflHGKrBlJVsG7oSaN7KOceRWWLdEEfa5jHVSKNIRjUNXxsTzV4Ha3Rjc9Go1GTC456RD3_f5TjEyylIVV18kWXWzNair4qybXsE3hIy9vbj7cQnzJTBZJX2C1N42FDgzIQO_uyBJoyeH4f3CUaAceHXRSY72IP1jAc-zt-_9QjytKPqaUTn9w</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizzer%C3%ADa%20Soultani%20San%20Luis%202652%2C%20C1056AAF%20Buenos%20Aires%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJz1R_SpLKvJURDmZG1wfRQwc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8086</td>
+      <td><b>Salemttino</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Paso 751, CABA, C1031ABO, Argentina</td>
+      <td>Salemttino</td>
+      <td>Paso 751, C1031ABO Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.6 (172)</td>
+      <td>011 4962-7992</td>
+      <td class="photo">places/ChIJTZlfNZLKvJURteXHmsRXu7M/photos/AaVGc3nEZgnguVNuKEflorxUDNv-7Pbn1JsqW2QI2EDH19ncwPdAeDJnAjt7w5Mqn9-GXywwLlyz0afno-MLhp121x6XYJXWwGCPVPRb2UDLQJD8WK37Drhg_6bKffi4m_4xac1e6av7MOrjvkOLxgL5Vegfdme9oMZxUizJMnKOFLOKR5agOCjc5rinENFXZu7IJy5pHZ5CLWf6DJMQdvX2eM613Uw4OZjTnAGyj0eltVEiRpVzRSY3EJZCrZtep-aL5rnBFWUDR-YAMCD1xDo8ZLzPlY37oJjSCvD3qgRk5cG4GTRGvMKpzBX0HuOnebPMjEznpMdHww2Roed2I_jHWxgbFYeXOdNnYz3orAu3DV64FQaVrrwfqzNUALv98xlU-PblV2NMtV5sV1Hw0U0d9edDdj9s14pFOiISy9kssp6Kb-fS</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Salemttino%20Paso%20751%2C%20CABA%2C%20C1031ABO%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJTZlfNZLKvJURteXHmsRXu7M" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8087</td>
+      <td><b>Sushi KO Argerich</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Argerich 915, CABA, C1406AMO, Argentina</td>
+      <td>Sushiko</td>
+      <td>Argerich 915, C1406AMO Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.2 (176)</td>
+      <td>011 4611-5511</td>
+      <td class="photo">places/ChIJp1W8ce3JvJURhl3DQnM68fw/photos/AaVGc3lrycewK73ObrMfUjzjeyfOIKbF4yMNJa7Eiar_HeulijQfypoVfK27_-B-cZ67v4_i-SEKaxwNHTfX36qHorS_9bNchpGLHtQD0y2W4oTfSwSmks8uxdV704yTGOe676gAKrrDa115OtXlba16wuUe4Ch4KpVDz4xOEBpl-u_OhIJ7zR6JD-tv0jLsJdqUYuCGcfgSF_W4R03ynVxKIccZ9DARNr07D81GR0F1Mmq7w0wl622kVE3eocp5zep5d4hB844BxAAazoM0HEI5wbrgywsuJmGNO25DE4RJEbKewvuEu81ixKdL_bEGmE59KFvPZVTPcvN5_aGggMdXzjd_jsME5U4lYhL8JF31go9Wg2CzfOeYUZhFX7_CEmO3NbZqkbfID7YPj8yhpcs-vOsfm5-xm8mqvA9tvm8sRtudlmA</td>
+      <td class="reason">LLM אישר (0.92): Same address (Argerich 915, C1406AMO, Buenos Aires), same sushi restaurant category. Name variant: 'Sushi KO' vs 'Sushiko' - likely transliteration/branding difference. KO is common in Japanese restaurant naming. House number exact match, street exact match, city exact match, address exact match. Operational status confirms active business.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sushi%20KO%20Argerich%20Argerich%20915%2C%20CABA%2C%20C1406AMO%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJp1W8ce3JvJURhl3DQnM68fw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8088</td>
+      <td><b>Sushi Ko Tucuman</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Tucumán 617, CABA, C1049AAM, Argentina</td>
+      <td>Sushi 2x1 - San Miguel de Tucumán</td>
+      <td>Pcia de Salta 392, T4000 San Miguel de Tucumán, Tucumán, Argentina</td>
+      <td>4.8 (397)</td>
+      <td>0381 15-367-7872</td>
+      <td class="photo">places/ChIJ-c_E1oNdIpQRUi9zUYMldQM/photos/AaVGc3m39KVYGQHILKjneI9EXDne4yFrOnqnrfzGy7l9B0oMHKaCkIoZUOznLoJR5YqtIHqMtJyv_TCDysMQtPREDnFcAlcXogHlEW7zsVs8ivTbKZSQktc3beKqqkHT-qpMAkx_L59QTf4P-3kRR93UWVgZ5t-oxyoIqJIlLUGeIu1wB7nNnIjqnIXa_dkk0lL1j-c8DRCNHFBmFoJN_U9DPr_nMd-BMdQ4WftqmLc5XetmE6mAw7zTCa5A7FfUmhwbJumWw-X1G9oxSKSNOWOehnomPkPQxOoZ2k4Z4pSQkX99F8pojUHU-dRyigVaU9IOEGjiT00PHA2cFzttjTq_KSo5a0jGyoNGPbdSl0G--XXIvc1W5Ptw1urdF4cWdWAckOgc_KmkcMUuVR1dFbu3aEzXWLHIpiarvDJp6424uk_NNSCXOJyiSHf8t5cG66eZ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sushi%20Ko%20Tucuman%20Tucum%C3%A1n%20617%2C%20CABA%2C%20C1049AAM%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-c_E1oNdIpQRUi9zUYMldQM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8089</td>
+      <td><b>Tuttim (icecream)</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>San Luis 2901, Buenos Aires, C1186ACE, Argentina</td>
+      <td>Tuttim Kosher ice cream</td>
+      <td>San Luis 2901, C1186ACE Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.2 (54)</td>
+      <td>011 3114-8395</td>
+      <td class="photo">places/ChIJPVEBB47KvJUR4pEDwNpkfyk/photos/AaVGc3mCngUyIJ3V8vC9rl3wG0s0SUW7DGOHYyKrDEpKhBDDapH9PZZ4USTQOvzzaNG4cXFShn3XGAJbmIJZiY8xKkk24uImle8JClVmgK0flPgQL0yUdWJarulIqwWWdlzFhz8RMjPVPUabbMCZh-Dz2IMQ9drmGskw9Xa072AtKtsVjf-uSfvndAO0CSMhtM650L-rXnDxz4EqPJmvKZkiAn4FCX6r7QLytQe9Zrj9M3SiA80-9aLPBTq69uXiO5wFNlouxv37RQz56jPEliBE9BhdEqqmkhUgpUan3NDNo-eUWIPLixy5214a7KqJPKMS0mQ_fR_v1ixhkOdcQMKVrXn1g5Hg8ufwsiFVPfCwXso-ajsEqRp0Az69iOXxjA0ZDHU16otagdanWtwLeNecqfU9AYYqkQv79LqGXGLgiJ9_klbZ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tuttim%20(icecream)%20San%20Luis%202901%2C%20Buenos%20Aires%2C%20C1186ACE%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJPVEBB47KvJUR4pEDwNpkfyk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8090</td>
+      <td><b>Wafflemania</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Tucumán 2769, CABA, C1189AAA , Argentina</td>
+      <td>Wafflemanía &amp; Cía Kosher</td>
+      <td>Tucumán 2769, C1189 AAA, Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.5 (85)</td>
+      <td>011 4963-8866</td>
+      <td class="photo">places/ChIJg05xfpLKvJURS-f1zseaTbY/photos/AaVGc3nEvFgPw--_U6QBq7NH5Sr7q9llKzqQ7uR9lcagDF7PZrTxMGbUoO4Pf3XyZ1oc2YRDTxz9xHiDnGFdIuLNWIa49Ubgo-pSqj_03Z9vzwkHnE1BcBB-O2flm2kf7AUK79tPJrV7NmYFkPwe-66QpwpfWgd61aKs7mD45LljsJskA4sIbFXRK9qfuh5tgA3yPn-GLardU30_eLSP3oaeALRmkvsTjaw5y0n0VQRFj5yebPcHihZfN43TUDImiVAM7_ZFosoGyeqm8jn0OHLhwi3ukGNHmGd5YN7YL3_PHlBVUdGWU-ei_cMGVX1NszmXxel6XoKdBMUO2e30YsSwuytFtqucgwrGLgLHWNGA36K1eewsMIE1ngzYNnFlXLB6D0BDVvlDx8nDmSQtFKQbWbl3stF2Dy-pr-zOO8aMFwkcJw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Wafflemania%20Tucum%C3%A1n%202769%2C%20CABA%2C%20C1189AAA%20%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJg05xfpLKvJURS-f1zseaTbY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8091</td>
+      <td><b>Yafo Kosher</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>San Luis 2741, CABA, C1031ABO, Argentina</td>
+      <td>Yafo Kosher</td>
+      <td>San Luis 2741, C1031ABO Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.2 (446)</td>
+      <td>011 4966-0551</td>
+      <td class="photo">places/ChIJVTVzS5LKvJUREoUJg0GQ2rg/photos/AaVGc3klxaN-4x8jl-izRwSrzc15YM91pOeKsfSS9VBPtzfIr8y71w_bRvyc_4ks64v7f6_1hBVWLIb3D5H6jOl9ohiod5obL-NMbGfhk0ZrYEt2kbuz0F6ra7M-qSgRLKKCeXlr8rF-NjkTmao8VbM_X5tSDVygt1_QV4oTa-iF9NkuYOneAWohLCQKBxUa7Yq1FjzC8ScwaDdSL0FbBu9zQaue4YdbLm9UdEolk6trTOg68iESdBe_RvYbibv3VqHbblKv4HDow0545SwoqxCO08SBDYPh_HjMcUmU31s-AU0nyOEH9gTvRWelXgC0SU7mERm_smV8qPMQSnXUFFtzvwVYhRdnUiyLM8YkmAMk0nwBHunceIuV6IPnOdRsBiT0dyF0AtoUVVVLOpamZxH2quZ8stDRlB7frE0CxOpGDPUTyg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yafo%20Kosher%20San%20Luis%202741%2C%20CABA%2C%20C1031ABO%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJVTVzS5LKvJUREoUJg0GQ2rg" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 3</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>4706</td>
+      <td><b>La Berenjena</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Araoz 2260, Palermo</td>
+      <td>La Poesía</td>
+      <td>Chile 502, C1098AAL Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.4 (11825)</td>
+      <td>4300-7340</td>
+      <td class="photo">places/ChIJoyuClSrLvJURNjm1ra7PeL4/photos/AaVGc3nsilyUFWxobPnP4sorv_Lb6toLGfy-DImECfGW-0GB8erUnVKjIsS5ECzimNBbWToPlDqyHv8JjTlnbee-QG5YucZmwOFYdOLYOsEwfdiNcqeGgadEDdhf2wh_Aj6fuAFuRbFtBJQB2RpPJvFHT5dnx2bzH_fa_tVHXGNMRjwJJ0fnNkzublVDA8GfW_RahYYJ38KQTisz9_YV-1va4ZiSr8-P_95MDDQhfIeT_HQW5lSsNmlJymCNCMdUQWSQKT9OzVdecFtW6OzTVcvv3OB_N_onq8FC-2oyHLj5LLGemKw35pcIwuf1iL-R1Jy97aH91ovbYkjutGiDLBTwhpKA-dQeSgYNpF4qg8_hYvlju1HndD7K-YdG9giuzj3aWqwh1yycZ60X4LIX8nKJxHH2KK05yXMfkFmuT9PnPMEx-zM</td>
+      <td class="reason">LLM דחה (0.95): Different names (La Berenjena vs La Poesía), different addresses in different Buenos Aires neighborhoods (Araoz 2260 Palermo vs Chile 502 San Telmo), 5.4km apart. No matching identifiers.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Berenjena%20Araoz%202260%2C%20Palermo" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJoyuClSrLvJURNjm1ra7PeL4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>4707</td>
+      <td><b>Mishná</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Scalabrini Ortiz 2555, Palermo</td>
+      <td>Café Mishiguene</td>
+      <td>Cabello 3181, C1425APC Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.3 (1786)</td>
+      <td>011 15-7216-1227</td>
+      <td class="photo">places/ChIJC8Q-MUC1vJURUjET2Z0NJSI/photos/AaVGc3mP3b0ghxKyRA_TlIk25XRLI5DaeCsnSv9BwQgXM4Jyo5jR37cxHIg-1JWloD6Q1182EwBLKcuZUzbJTk_3ou6WKVItyMM608jsmE9xH4HV1TpzANiYP_JVguJFlui3zlkl4WMk2zjUzktKsAjZJIxLpgXEYqN2vzqjBJtvSE7traS-8fCnT1b39DFbWhCSVKoC1mFHmQ7_d08zYQ3tKUGMW5dCWAhyEky1Khhu6aCyqTTYEXGUvbtDQPxv65P2dmBiKywjtGLsWBuJ31MEuJMDj6rbpERwikUFN3FNXWYCVJmEb42dqHpcRzKOMHKlWbDe_ffQXDDVs2OsYPj3LVJMrNk26QF4rJnaKtmtcdN3SNim5lITl3fbbHH9bmg5a1L_2QW7a2zH6SFjw4QbQz3EI2V2aYy0nZRuSnNLoFgXAgGZmagg20DXzp189YD1</td>
+      <td class="reason">LLM דחה (0.95): Different names (Mishná vs Café Mishiguene), different streets (Scalabrini Ortiz vs Cabello), 1.8km apart in Buenos Aires. No meaningful overlap despite both being food establishments.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mishn%C3%A1%20Scalabrini%20Ortiz%202555%2C%20Palermo" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJC8Q-MUC1vJURUjET2Z0NJSI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8076</td>
+      <td><b>La Bakery Panificados - Belgrano</b><div class="muted">Buenos Aires · Argentina</div></td>
+      <td>Blanco Encalada 2883, CABA, C1428DDU, Argentina</td>
+      <td>La Antigua Belgrano</td>
+      <td>Av. Cabildo 2077, B1428 Cdad. Autónoma de Buenos Aires, Argentina</td>
+      <td>4.4 (1708)</td>
+      <td>011 6451-2601</td>
+      <td class="photo">places/ChIJg0GXmtO1vJUR_y6HcftTNK8/photos/AaVGc3lwak1BjRxz5suwx9A3GDbS_SEHZQpDuiZRayBWE4-ZZVYXgOTx7oyRk8-XmchqcjFrAQYhn9cd0iA1yQ_z9BU1nA8j2DeL6CkI-svoZ9smYL1oHxSmlM47J1ty5M1Xq_IJ2ZX4snSPDR6zp9qGtW6LD3eTo7zdlDTcJSbodX0eqv_mKWCrSRApMO13uVptpiiksZ5pR4nXE6HoNEcZMPB0dKsPvAfZ2e0gvK0tkNkmthdHUZdLTZAVuuHh6pV1NxJ80SoY330C5r4kPq8tro894Pih-z9CefZXWXYXI2949tTmoMj5Lo9NN4tP_skU1Z8eeKWFv3FTdBrbzExSBGoU1oTRTW9wNHco2sB8loo5WaB8gO-juWiB2ZcjOfpJ9Od6LScKiqy1WmyzjBUQwzYlkOiWvu9NyskZnIzti10hf1s</td>
+      <td class="reason">LLM דחה (0.95): שמות שונים לחלוטין (La Bakery Panificados vs La Antigua Belgrano), כתובות שונות בעיר (Blanco Encalada 2883 vs Av. Cabildo 2077), מרחק של כ-8 ק״מ בין המקומות. למרות ששניהם בBelgrano וקשורים למזון, אלו וודאי שני עסקים שונים.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Bakery%20Panificados%20-%20Belgrano%20Blanco%20Encalada%202883%2C%20CABA%2C%20C1428DDU%2C%20Argentina" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJg0GXmtO1vJUR_y6HcftTNK8" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

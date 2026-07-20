@@ -14,6 +14,7 @@ import {
 import { ChevronRight } from 'lucide-react-native';
 import client from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
+import { withProtectedRoute } from '@/src/auth/auth-gates';
 import { C } from '@/constants/theme';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -44,14 +45,32 @@ interface PlaceRequest {
   destination?: { city: string } | null;
 }
 
-type Tab = 'reports' | 'requests';
+interface UserReport {
+  id: number;
+  context: 'hosting_chat' | 'hosting_offer' | 'community';
+  entityId: number;
+  reason?: string | null;
+  status: 'open' | 'resolved';
+  createdAt: string;
+  reporter?: { id: number; firstName: string; lastName: string; email: string } | null;
+  reportedUser?: { id: number; firstName: string; lastName: string; email: string } | null;
+}
+
+type Tab = 'reports' | 'requests' | 'users';
 
 const STATUS_COLOR: Record<string, string> = {
-  pending:  '#F59E0B',
-  reviewed: '#3B82F6',
-  resolved: '#10B981',
-  approved: '#10B981',
-  rejected: '#EF4444',
+  pending:  C.goldMuted,
+  open:     C.goldMuted,
+  reviewed: C.typeDairy,
+  resolved: C.typeParve,
+  approved: C.typeParve,
+  rejected: C.error,
+};
+
+const CONTEXT_LABEL: Record<string, string> = {
+  hosting_chat:  'Hosting Chat',
+  hosting_offer: 'Hosting Offer',
+  community:     'Community Post',
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -72,11 +91,12 @@ function StatusBadge({ status }: { status: string }) {
 
 // ── Main Screen ───────────────────────────────────────────────────────────────
 
-export default function AdminScreen() {
+function AdminScreen() {
   const { user } = useAuth();
   const [tab, setTab] = useState<Tab>('reports');
   const [reports, setReports] = useState<Report[]>([]);
   const [requests, setRequests] = useState<PlaceRequest[]>([]);
+  const [userReports, setUserReports] = useState<UserReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -87,12 +107,14 @@ export default function AdminScreen() {
   const load = async (isRefresh = false) => {
     if (isRefresh) setRefreshing(true); else setLoading(true);
     try {
-      const [reps, reqs] = await Promise.all([
+      const [reps, reqs, userReps] = await Promise.all([
         client.get('/reviews/admin/reports'),
         client.get('/reviews/admin/requests'),
+        client.get('/admin/user-reports'),
       ]);
       setReports(reps.data);
       setRequests(reqs.data);
+      setUserReports(userReps.data);
     } catch {
       Alert.alert('Error', 'Could not load admin data');
     } finally {
@@ -142,15 +164,50 @@ export default function AdminScreen() {
     );
   };
 
+  const resolveUserReport = (id: number) => {
+    Alert.alert('Mark resolved', `Set report #${id} as resolved?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Confirm',
+        onPress: async () => {
+          try {
+            await client.post(`/admin/user-reports/${id}/resolve`, { status: 'resolved' });
+            setUserReports(prev => prev.map(r => r.id === id ? { ...r, status: 'resolved' } : r));
+          } catch { Alert.alert('Error', 'Could not update report'); }
+        },
+      },
+    ]);
+  };
+
+  const disableUser = (userId: number, name: string) => {
+    Alert.alert(
+      'Disable user',
+      `Disable ${name}? They will be immediately signed out and unable to log back in.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Disable', style: 'destructive',
+          onPress: async () => {
+            try {
+              await client.post(`/admin/users/${userId}/disable`);
+              Alert.alert('Done', `${name} has been disabled.`);
+            } catch { Alert.alert('Error', 'Could not disable user'); }
+          },
+        },
+      ],
+    );
+  };
+
   const pendingReports   = reports.filter(r => r.status === 'pending').length;
   const pendingRequests  = requests.filter(r => r.status === 'pending').length;
+  const pendingUserReports = userReports.filter(r => r.status === 'open').length;
 
   return (
     <View style={s.container}>
       {/* Header */}
       <View style={s.header}>
         <Pressable onPress={() => router.back()} style={s.backBtn} hitSlop={12}>
-          <ChevronRight size={20} color="#fff" strokeWidth={2.5} style={{ transform: [{ rotate: '180deg' }] }} />
+          <ChevronRight size={20} color={C.navy} strokeWidth={2.5} style={{ transform: [{ rotate: '180deg' }] }} />
         </Pressable>
         <View style={{ flex: 1 }}>
           <Text style={s.eyebrow}>ADMIN</Text>
@@ -174,6 +231,14 @@ export default function AdminScreen() {
         >
           <Text style={[s.tabText, tab === 'requests' && s.tabTextActive]}>
             Suggestions{pendingRequests > 0 ? ` (${pendingRequests})` : ''}
+          </Text>
+        </Pressable>
+        <Pressable
+          style={[s.tab, tab === 'users' && s.tabActive]}
+          onPress={() => setTab('users')}
+        >
+          <Text style={[s.tabText, tab === 'users' && s.tabTextActive]}>
+            Users{pendingUserReports > 0 ? ` (${pendingUserReports})` : ''}
           </Text>
         </Pressable>
       </View>
@@ -265,47 +330,100 @@ export default function AdminScreen() {
                 </View>
               ))
           )}
+
+          {tab === 'users' && (
+            userReports.length === 0
+              ? <Text style={s.empty}>No user reports yet</Text>
+              : userReports.map(r => (
+                <View key={r.id} style={s.card}>
+                  <View style={s.cardHeader}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={s.cardTitle}>
+                        🚩 {r.reportedUser?.firstName} {r.reportedUser?.lastName}
+                      </Text>
+                      <Text style={s.cardSub}>
+                        Reported by {r.reporter?.firstName} {r.reporter?.lastName} · {fmtDate(r.createdAt)}
+                      </Text>
+                    </View>
+                    <StatusBadge status={r.status} />
+                  </View>
+
+                  <View style={s.tagRow}>
+                    <View style={s.typeTag}><Text style={s.typeTagText}>{CONTEXT_LABEL[r.context] ?? r.context}</Text></View>
+                  </View>
+
+                  {r.reason ? <Text style={s.description}>{r.reason}</Text> : null}
+
+                  <View style={s.actionRow}>
+                    {r.status === 'open' && (
+                      <Pressable style={[s.actionBtn, s.btnBlue]} onPress={() => resolveUserReport(r.id)}>
+                        <Text style={s.actionBtnText}>Mark Resolved</Text>
+                      </Pressable>
+                    )}
+                    {r.reportedUser && (
+                      <Pressable
+                        style={[s.actionBtn, s.btnRed]}
+                        onPress={() => disableUser(r.reportedUser!.id, `${r.reportedUser!.firstName} ${r.reportedUser!.lastName}`)}
+                      >
+                        <Text style={s.actionBtnText}>Disable User</Text>
+                      </Pressable>
+                    )}
+                  </View>
+                </View>
+              ))
+          )}
         </ScrollView>
       )}
     </View>
   );
 }
 
+export default withProtectedRoute(AdminScreen, 'account');
+
 const s = StyleSheet.create({
   container: { flex: 1, backgroundColor: C.bg },
   center:    { flex: 1, justifyContent: 'center', alignItems: 'center' },
 
   header: {
-    backgroundColor: C.navy,
+    backgroundColor: C.cream,
     paddingTop: Platform.OS === 'ios' ? 56 : 38,
-    paddingBottom: 16, paddingHorizontal: 20,
+    paddingBottom: 18, paddingHorizontal: 20,
     flexDirection: 'row', alignItems: 'flex-end', gap: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: C.goldBorder,
   },
   backBtn: {
     width: 36, height: 36, borderRadius: 18,
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)',
+    backgroundColor: '#fff',
+    borderWidth: 1, borderColor: C.goldBorder,
     justifyContent: 'center', alignItems: 'center', marginBottom: 2,
+    shadowColor: C.navy,
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
-  eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.gold, letterSpacing: 2.5, marginBottom: 2 },
-  headerTitle: { fontFamily: 'Inter-Black', fontSize: 22, color: '#fff', letterSpacing: -0.5 },
+  eyebrow:     { fontFamily: 'Inter-Bold', fontSize: 10, color: C.goldEyebrow, letterSpacing: 2.5, marginBottom: 2 },
+  headerTitle: { fontFamily: 'Inter-Black', fontSize: 26, color: C.navy },
 
   tabRow: {
     flexDirection: 'row',
     backgroundColor: '#fff',
-    borderBottomWidth: 1, borderBottomColor: '#E5E7EB',
+    borderBottomWidth: 1, borderBottomColor: 'rgba(11,23,54,0.07)',
   },
   tab: {
     flex: 1, paddingVertical: 14, alignItems: 'center',
     borderBottomWidth: 2, borderBottomColor: 'transparent',
   },
-  tabActive:     { borderBottomColor: C.navy },
-  tabText:       { fontFamily: 'Inter-SemiBold', fontSize: 14, color: '#9CA3AF' },
+  tabActive:     { borderBottomColor: C.goldMuted },
+  tabText:       { fontFamily: 'Inter-SemiBold', fontSize: 14, color: C.textMuted },
   tabTextActive: { color: C.navy },
 
   card: {
-    backgroundColor: '#fff', borderRadius: 16,
+    backgroundColor: '#fff', borderRadius: 20,
     padding: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(11,23,54,0.08)',
     shadowColor: C.navy, shadowOpacity: 0.06,
     shadowRadius: 8, shadowOffset: { width: 0, height: 2 }, elevation: 2,
   },
@@ -317,8 +435,8 @@ const s = StyleSheet.create({
   badgeText: { fontFamily: 'Inter-Bold', fontSize: 10, letterSpacing: 0.5 },
 
   tagRow:      { flexDirection: 'row', marginBottom: 8 },
-  typeTag:     { backgroundColor: '#F3F4F6', borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3 },
-  typeTagText: { fontFamily: 'Inter-SemiBold', fontSize: 12, color: '#374151' },
+  typeTag:     { backgroundColor: C.kashrutNeutralBg, borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3, borderWidth: 1, borderColor: 'rgba(107,114,128,0.14)' },
+  typeTagText: { fontFamily: 'Inter-SemiBold', fontSize: 12, color: C.kashrutNeutral },
 
   description: { fontFamily: 'Inter-Regular', fontSize: 13, color: '#6B7280', marginBottom: 10, lineHeight: 19 },
 
@@ -328,9 +446,9 @@ const s = StyleSheet.create({
   actionRow: { flexDirection: 'row', gap: 8, marginTop: 4 },
   actionBtn: { flex: 1, paddingVertical: 9, borderRadius: 10, alignItems: 'center' },
   actionBtnText: { fontFamily: 'Inter-Bold', fontSize: 13, color: '#fff' },
-  btnBlue:  { backgroundColor: '#3B82F6' },
-  btnGreen: { backgroundColor: '#10B981' },
-  btnRed:   { backgroundColor: '#EF4444' },
+  btnBlue:  { backgroundColor: C.typeDairy },
+  btnGreen: { backgroundColor: C.typeParve },
+  btnRed:   { backgroundColor: C.error },
 
   empty: { fontFamily: 'Inter-Regular', color: '#9CA3AF', fontSize: 15, textAlign: 'center', marginTop: 60 },
 });

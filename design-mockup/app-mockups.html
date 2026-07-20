@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<!--
+  Jewish On The Way — FULL APP DESIGN MOCKUP (multi-screen)
+  Standalone visual prototype. Does NOT touch real app code.
+  Colors 1:1 from mobile/constants/theme.ts.
+  Use the top buttons to switch screens. Open in VSCode "Live Preview" side-by-side.
+-->
+<html lang="he">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet">
+<title>Jewish On The Way — App Mockups</title>
+<style>
+  :root{
+    --navy:#0B1736; --navyLight:#1A2D5A; --gold:#D4AF37; --goldFaint:rgba(212,175,55,0.10);
+    --bg:#F7F5F0; --card:#FFFFFF;
+    --textPrimary:#111827; --textSecondary:#6B7280; --textMuted:#9CA3AF;
+    --meat:#DC2626; --dairy:#2563EB; --parve:#059669;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--sans);background:#161618;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 12px;}
+  .switcher{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:760px;}
+  .switcher button{font-family:var(--sans);font-size:13px;font-weight:600;color:#cfcfd2;
+    background:#2a2a2e;border:1px solid #3a3a3e;border-radius:999px;padding:8px 14px;cursor:pointer;}
+  .switcher button.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+  .phone{width:390px;height:844px;background:var(--bg);border-radius:44px;overflow:hidden;
+    position:relative;box-shadow:0 30px 80px rgba(0,0,0,.55);border:10px solid #0a0a0c;display:flex;flex-direction:column;}
+  .screen{flex:1;overflow-y:auto;overflow-x:hidden;}
+  .screen::-webkit-scrollbar{width:0;}
+  svg{display:block;flex:0 0 auto;}
+  #tabbar{height:64px;background:#fff;border-top:1px solid #F0EDE6;box-shadow:0 -4px 12px rgba(0,0,0,.05);flex:0 0 auto;}
+
+  /* shared header */
+  .hdr{background:var(--navy);padding:54px 20px 16px;display:flex;flex-direction:column;gap:14px;}
+  .hdrRow{display:flex;align-items:center;gap:14px;}
+  .backBtn{width:38px;height:38px;border-radius:19px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .hTitle{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px;}
+  .hSub{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;font-weight:500;}
+  .searchBar{display:flex;align-items:center;gap:10px;border-radius:14px;padding:11px 14px;border:1px solid rgba(212,175,55,.38);background:rgba(201,168,76,.08);}
+  .searchBar .ph{flex:1;font-size:14px;color:rgba(255,255,255,.45);}
+  .aiPill{padding:5px 10px;border-radius:10px;background:var(--gold);font-size:11px;font-weight:800;color:var(--navy);letter-spacing:.5px;}
+
+  /* cards / lists */
+  .list{padding:16px;display:flex;flex-direction:column;gap:10px;}
+  .card{display:flex;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.07);}
+  .accent{width:4px;flex:0 0 auto;}
+  .cBody{flex:1;padding:14px;display:flex;flex-direction:column;gap:10px;}
+  .cTop{display:flex;align-items:center;gap:12px;}
+  .ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .cName{font-size:15px;font-weight:700;color:var(--textPrimary);}
+  .cType{font-size:12px;font-weight:600;margin-top:1px;}
+  .badge{padding:4px 8px;border-radius:8px;font-size:11px;font-weight:700;flex:0 0 auto;}
+  .meta{display:flex;flex-direction:column;gap:5px;}
+  .mRow{display:flex;align-items:center;gap:6px;}
+  .mTxt{font-size:12px;color:var(--textMuted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cBot{display:flex;align-items:center;}
+  .dist{display:flex;align-items:center;gap:4px;background:var(--goldFaint);border-radius:10px;padding:4px 8px;font-size:11px;font-weight:700;color:var(--gold);}
+  .sp{flex:1;}
+  .filters{background:#fff;border-bottom:1px solid #F0EDE6;}
+  .fRow{display:flex;gap:8px;padding:10px 16px;overflow-x:auto;}
+  .fRow::-webkit-scrollbar{display:none;}
+  .chip{padding:7px 14px;border-radius:20px;border:1.5px solid #E5E7EB;background:#fff;font-size:13px;font-weight:600;color:var(--textSecondary);white-space:nowrap;}
+  .chip.on{border-color:var(--navy);background:var(--navy);color:#fff;}
+
+  /* sections */
+  .secTitle{font-size:16px;font-weight:800;color:var(--textPrimary);padding:18px 16px 8px;}
+
+  /* login */
+  .login{flex:1;background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:32px 26px;gap:18px;}
+  .logoWrap{align-items:center;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+  .logoBadge{width:74px;height:74px;border-radius:22px;background:linear-gradient(135deg,var(--gold),#b9942f);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(212,175,55,.35);}
+  .brand{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.3px;}
+  .brandSub{font-size:13px;color:rgba(255,255,255,.55);text-align:center;}
+  .field{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+  .field .ph{font-size:14px;color:rgba(255,255,255,.45);}
+  .btnGold{background:var(--gold);border-radius:14px;padding:15px;text-align:center;font-size:15px;font-weight:800;color:var(--navy);margin-top:4px;}
+  .linkRow{text-align:center;font-size:13px;color:rgba(255,255,255,.55);}
+  .linkRow b{color:var(--gold);font-weight:700;}
+
+  /* home */
+  .hero{height:170px;position:relative;}
+  .hero img{width:100%;height:100%;object-fit:cover;}
+  .heroShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,23,54,.15),rgba(11,23,54,.85));}
+  .heroTxt{position:absolute;left:20px;bottom:16px;right:20px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 20px;}
+  .cityCard{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.07);}
+  .cityCard img{width:100%;height:96px;object-fit:cover;display:block;}
+  .cityCard .cc{padding:10px 12px;}
+  .cityCard .cn{font-size:14px;font-weight:700;color:var(--textPrimary);}
+  .cityCard .ck{font-size:12px;color:var(--textMuted);margin-top:1px;}
+
+  /* destination services */
+  .svc{display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 3px 10px rgba(0,0,0,.07);}
+  .svcIco{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .svcName{font-size:16px;font-weight:700;color:var(--textPrimary);}
+  .svcCount{font-size:12px;color:var(--textMuted);margin-top:2px;}
+
+  /* detail */
+  .detailHero{height:150px;background:var(--navy);position:relative;}
+  .detailBody{padding:18px 16px;display:flex;flex-direction:column;gap:14px;}
+  .dName{font-size:22px;font-weight:800;color:var(--textPrimary);letter-spacing:-.3px;}
+  .badgeRow{display:flex;gap:8px;flex-wrap:wrap;}
+  .infoRow{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #F0EDE6;}
+  .infoTxt{font-size:14px;color:var(--textPrimary);}
+  .actions{display:flex;gap:10px;margin-top:6px;}
+  .actBtn{flex:1;border-radius:14px;padding:13px;text-align:center;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;}
+  .actNavy{background:var(--navy);color:#fff;}
+  .actGhost{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
+  .desc{font-size:14px;line-height:1.6;color:var(--textSecondary);}
+</style>
+</head>
+<body>
+  <div class="switcher" id="switcher"></div>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;max-width:760px">
+    <span style="color:#8a8a8e;font-size:12px">פונט:</span>
+    <div class="switcher" id="fontSwitcher" style="gap:6px"></div>
+  </div>
+  <style id="fontOverride"></style>
+  <div class="phone"><div class="screen" id="screen"></div><div id="tabbar"></div></div>
+
+<script>
+/* ───────── icons ───────── */
+const I = {
+  back:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
+  spark:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>',
+  utensils:(c)=>`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`,
+  syn:(c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M12 3v6"/><path d="M9 9h6"/></svg>`,
+  pray:(c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7H6l6 10 6-10h-3V5a3 3 0 0 0-3-3z"/></svg>`,
+  home:(c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 21V12h6v9"/></svg>`,
+  map:(c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/></svg>`,
+  chat:(c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg>`,
+  pin:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  pinG:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  clock:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  phone:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
+  nav:'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
+  navW:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
+  heart:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.5 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
+  chev:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E5E7EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  chevG:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+  star:'<svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37" stroke="#D4AF37" stroke-width="1"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>',
+};
+const hex=(h,a)=>{const n=h.replace('#','');return `rgba(${parseInt(n.slice(0,2),16)},${parseInt(n.slice(2,4),16)},${parseInt(n.slice(4,6),16)},${a})`;};
+const TYPE={meat:{c:'#DC2626',l:'בשרי'},dairy:{c:'#2563EB',l:'חלבי'},parve:{c:'#059669',l:'פרווה'}};
+const KASH={rabbinate:{l:'רבנות',c:'#6B7280',bg:'#F3F4F6'},mehadrin:{l:'מהדרין',c:'#2563EB',bg:'#EFF6FF'},badatz:{l:'בד"ץ',c:'#059669',bg:'#F0FDF4'}};
+const IMG=u=>`https://images.unsplash.com/photo-${u}?auto=format&fit=crop&w=900&q=80`;
+
+const RESTOS=[
+  {name:'פיצה שמיים',type:'dairy',k:'mehadrin',addr:'חיים עוזר 12, פתח תקווה',hours:'11:00–23:00',dist:'400 m'},
+  {name:'שיפודי הבירה',type:'meat',k:'rabbinate',addr:'מוטה גור 8, פתח תקווה',hours:'12:00–24:00',dist:'0.9 km'},
+  {name:'פלאפל הזהב',type:'parve',k:'badatz',addr:'ז\'בוטינסקי 45, פתח תקווה',hours:'09:00–22:00',dist:'1.2 km'},
+  {name:'קפה ארומה',type:'dairy',k:'rabbinate',addr:'רוטשילד 30, פתח תקווה',hours:'07:00–22:00',dist:'1.6 km'},
+  {name:'גריל בר אנגוס',type:'meat',k:'mehadrin',addr:'העצמאות 5, פתח תקווה',hours:'12:00–23:30',dist:'2.1 km'},
+];
+const DENOM2={ashkenaz:{l:'Ashkenaz',c:'#3B4FC8',bg:'#EEF2FF'},sfarad:{l:'Sfarad',c:'#0F766E',bg:'#F0FDFA'},chabad:{l:'Chabad',c:'#C2410C',bg:'#FFF7ED'},teimanim:{l:'Teimanim',c:'#15803D',bg:'#F0FDF4'}};
+const SYNS=[
+  {name:'בית הכנסת הגדול',k:'ashkenaz',addr:'הרב קוק 3, ירושלים',dist:'350 m',phone:true},
+  {name:'אהל יעקב',k:'sfarad',addr:'מוהליבר 14, ירושלים',dist:'700 m',phone:true},
+  {name:'חב"ד מרכז',k:'chabad',addr:'חובבי ציון 21, ירושלים',dist:'1.1 km',phone:false},
+  {name:'בית כנסת תימני',k:'teimanim',addr:'הנביאים 9, ירושלים',dist:'1.5 km',phone:false},
+];
+
+/* ───────── screen renderers ───────── */
+const restoCard=r=>{const t=TYPE[r.type],k=KASH[r.k];return `
+  <div class="card"><div class="accent" style="background:${t.c}"></div><div class="cBody">
+    <div class="cTop"><div class="ico" style="background:${hex(t.c,.09)}">${I.utensils(t.c)}</div>
+      <div style="flex:1;min-width:0"><div class="cName">${r.name}</div><div class="cType" style="color:${t.c}">${t.l}</div></div>
+      <div class="badge" style="background:${k.bg};color:${k.c}">${k.l}</div></div>
+    <div class="meta"><div class="mRow">${I.pin}<div class="mTxt">${r.addr}</div></div>
+      <div class="mRow">${I.clock}<div class="mTxt">${r.hours}</div></div></div>
+    <div class="cBot"><div class="dist">${I.nav}<span>${r.dist}</span></div><div class="sp"></div>${I.chev}</div>
+  </div></div>`;};
+
+const globeP=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+const phoneG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>`;
+const synCard=s=>{const d=DENOM2[s.k];return `
+  <div style="display:flex;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.06);font-family:'Inter',var(--sans)">
+    <div style="width:4px;background:#7C3AED;flex:0 0 auto"></div>
+    <div style="flex:1;padding:14px;display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="width:36px;height:36px;border-radius:10px;background:#F5F3FF;display:flex;align-items:center;justify-content:center;flex:0 0 auto">${globeP}</div>
+        <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:15px;color:#111827">${s.name}</div>
+          ${d?`<div style="display:inline-block;border-radius:8px;padding:3px 7px;margin-top:3px;background:${d.bg};color:${d.c};font-weight:600;font-size:11px">${d.l}</div>`:''}</div>
+        <div style="display:flex;align-items:center;gap:3px;background:var(--goldFaint);border-radius:10px;padding:4px 7px;flex:0 0 auto">${I.nav}<span style="font-weight:700;font-size:11px;color:#D4AF37">${s.dist}</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">${I.pin}<div style="font-size:12px;color:#9CA3AF;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.addr}</div></div>
+      ${s.phone?`<div style="display:flex;gap:8px;margin-top:2px"><div style="display:flex;align-items:center;gap:5px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:10px;padding:6px 10px;font-size:12px;color:#6B7280;font-weight:500">${phoneG} Call</div></div>`:''}
+    </div>
+    <div style="display:flex;align-items:center;padding-right:14px">${I.chev}</div>
+  </div>`;};
+
+const SCREENS={
+  login:()=>{
+    const pin=(sz)=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="rgba(100,149,255,0.32)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const mail=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>`;
+    const lock=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+    const eye=`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    return `
+    <div style="flex:1;background:#FAF8F3;position:relative;overflow:hidden;font-family:'Inter',var(--sans);display:flex;flex-direction:column">
+      <div style="position:absolute;top:80px;left:-30px;width:200px;border-top:1.5px dashed rgba(100,149,255,.28);transform:rotate(26deg)"></div>
+      <div style="position:absolute;top:140px;right:-20px;width:170px;border-top:1.5px dashed rgba(100,149,255,.28);transform:rotate(-20deg)"></div>
+      <div style="position:absolute;top:58px;left:36px">${pin(22)}</div>
+      <div style="position:absolute;top:44px;right:52px">${pin(28)}</div>
+      <div style="position:absolute;top:130px;left:14px">${pin(14)}</div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;padding:60px 0 24px">
+        <img src="../mobile/assets/images/logo.jpeg" style="width:116px;height:116px;border-radius:28px;margin-bottom:12px;object-fit:contain;background:#fff" alt="logo"
+             onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=&quot;width:116px;height:116px;border-radius:28px;background:#2468E8;display:flex;align-items:center;justify-content:center;margin-bottom:12px&quot;><svg width=46 height=46 viewBox=\\'0 0 24 24\\' fill=none stroke=white stroke-width=2><path d=\\'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\\'/><circle cx=12 cy=10 r=3/></svg></div>')">
+        <div style="font-weight:800;font-size:11px;color:#2468E8;letter-spacing:4.5px">JEWISH ON THE WAY</div>
+      </div>
+
+      <div style="flex:1;background:#fff;border-top-left-radius:32px;border-top-right-radius:32px;padding:30px 26px 48px;box-shadow:0 -4px 20px rgba(26,58,107,.10)">
+        <div style="font-weight:900;font-size:26px;color:#0F172A;letter-spacing:-.5px;margin-bottom:24px">התחברות</div>
+
+        <div style="margin-bottom:16px">
+          <div style="font-weight:700;font-size:11px;color:#0F172A;letter-spacing:1.3px;margin-bottom:8px">אימייל</div>
+          <div style="display:flex;align-items:center;background:#F1F5FF;border-radius:13px;padding:0 14px;gap:10px">
+            ${mail}<div style="flex:1;font-size:15px;color:#94A3B8;padding:14px 0">name@email.com</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <div style="font-weight:700;font-size:11px;color:#0F172A;letter-spacing:1.3px;margin-bottom:8px">סיסמה</div>
+          <div style="display:flex;align-items:center;background:#F1F5FF;border-radius:13px;padding:0 14px;gap:10px">
+            ${lock}<div style="flex:1;font-size:15px;color:#94A3B8;padding:14px 0">••••••••</div>${eye}
+          </div>
+        </div>
+
+        <div style="text-align:left;margin:-4px 0 20px;font-weight:600;font-size:13px;color:#2468E8">שכחת סיסמה?</div>
+        <div style="background:#2468E8;border-radius:14px;padding:16px;text-align:center;font-weight:700;color:#fff;font-size:16px;letter-spacing:.3px;box-shadow:0 6px 16px rgba(36,104,232,.38);margin-bottom:24px">התחברות&nbsp;&nbsp;→</div>
+
+        <div style="display:flex;align-items:center;margin-bottom:22px"><div style="flex:1;height:1px;background:#E8EEF8"></div><div style="font-weight:600;font-size:11px;color:#94A3B8;margin:0 12px;letter-spacing:1.6px">או</div><div style="flex:1;height:1px;background:#E8EEF8"></div></div>
+
+        <div style="display:flex;justify-content:center;align-items:center"><span style="color:#64748B;font-size:14px">אין לך חשבון?&nbsp;</span><span style="color:#2468E8;font-weight:700;font-size:14px">הרשמה</span></div>
+      </div>
+    </div>`;},
+
+  home:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const L="../mobile/assets/images/countries/";
+    const bookmark=`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+    const spark=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>`;
+    const navG=(c,sz)=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`;
+    const chevN=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+    const pop=(city,country,id)=>`<div style="position:relative;flex:0 0 auto;width:200px;height:240px;border-radius:20px;overflow:hidden;background:#0B1736">
+      <img src="${id}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="">
+      <div style="position:absolute;inset:0;background:rgba(5,10,30,.45)"></div>
+      <div style="position:absolute;bottom:18px;left:16px"><div style="font-weight:900;font-size:20px;color:#fff;letter-spacing:-.4px">${city}</div><div style="font-weight:500;font-size:12px;color:rgba(255,255,255,.65);margin-top:2px">${country}</div></div></div>`;
+    const dcard=(city,cc,id,dist)=>`<div style="position:relative;width:calc(50% - 6px);height:160px;border-radius:20px;overflow:hidden;background:#0B1736">
+      <img src="${id}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="">
+      <div style="position:absolute;inset:0;background:rgba(5,10,30,.42)"></div>
+      <div style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:3px 6px;font-weight:700;font-size:9px;color:#fff;letter-spacing:.8px">${cc}</div>
+      <div style="position:absolute;bottom:12px;left:12px;right:12px"><div style="font-weight:800;font-size:16px;color:#fff;letter-spacing:-.2px">${city}</div>
+        <div style="display:flex;align-items:center;gap:3px;margin-top:3px">${navG('#E8C84A',9)}<span style="font-weight:700;font-size:10px;color:#E8C84A">${dist}</span></div></div></div>`;
+    const dots=[0,1,2,3,4].map(i=>`<div style="height:6px;border-radius:3px;background:${i===0?'#D4AF37':'rgba(255,255,255,.4)'};width:${i===0?'20px':'6px'}"></div>`).join('');
+    return `
+    <div style="${F};background:#FAF8F3">
+      <!-- HERO -->
+      <div style="position:relative;height:440px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end">
+        <img src="../mobile/assets/images/countries/israel.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="">
+        <div style="position:absolute;top:0;left:0;right:0;height:160px;background:rgba(5,10,30,.50)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:220px;background:linear-gradient(to top,rgba(5,10,30,.85),rgba(5,10,30,0))"></div>
+        <div style="position:absolute;top:40px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700;font-size:10px;color:#D4AF37;letter-spacing:2.5px">JEWISH ON THE WAY</div>
+          <div style="width:38px;height:38px;border-radius:19px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center">${bookmark}</div>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;gap:6px;padding-bottom:12px;position:relative;z-index:2">${dots}</div>
+        <div style="padding:0 22px 28px;position:relative;z-index:2">
+          <div style="font-weight:900;font-size:36px;color:#fff;letter-spacing:-1px;line-height:40px">גלה חיים יהודיים</div>
+          <div style="font-weight:900;font-size:36px;color:#D4AF37;letter-spacing:-1px;line-height:40px;margin-bottom:8px">בכל מקום</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.65);margin-bottom:18px">אוכל כשר · בתי כנסת · קהילה</div>
+          <div style="display:flex;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:16px;overflow:hidden">
+            <div style="flex:1;display:flex;align-items:center;gap:10px;padding:14px 16px">${spark}<span style="font-size:14px;color:rgba(255,255,255,.65)">"מסעדה כשרה בפריז…"</span></div>
+            <div style="padding:14px;border-left:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.12);font-weight:700;font-size:12px;color:#D4AF37">AI</div>
+          </div>
+        </div>
+      </div>
+      <!-- BODY -->
+      <div style="padding-bottom:24px">
+        <div style="padding:28px 20px 0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <div style="font-weight:800;font-size:20px;color:#111827;letter-spacing:-.4px">יעדים פופולריים</div>
+            <div style="display:flex;align-items:center;gap:2px;font-weight:600;font-size:13px;color:#0B1736">כל היעדים ${chevN}</div>
+          </div>
+          <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:4px">
+            ${pop('תל אביב','ישראל',L+'israel.webp')}${pop('פריז','צרפת',L+'france.jpg')}${pop('ניו יורק','ארה"ב',L+'etats%20unis.jpg')}${pop('אמסטרדם','הולנד',L+'pays%20bas.avif')}
+          </div>
+        </div>
+        <div style="padding:28px 20px 0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <div style="font-weight:800;font-size:20px;color:#111827;letter-spacing:-.4px">כל היעדים</div>
+            <div style="display:flex;align-items:center;gap:4px;background:rgba(212,175,55,.10);border-radius:12px;padding:4px 8px;font-weight:700;font-size:10px;color:#D4AF37">${navG('#D4AF37',10)} קרוב ראשון</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            ${dcard('תל אביב','IL',L+'israel.webp','מיקומך')}${dcard('פריז','FR',L+'france.jpg','3,300km')}${dcard('ניו יורק','US',L+'etats%20unis.jpg','9,100km')}${dcard('ברלין','DE',L+'allemagne.jpg','2,900km')}${dcard('טורונטו','CA',L+'canada.jpg','8,800km')}${dcard('וינה','AT',L+'autriche.webp','2,600km')}
+          </div>
+        </div>
+      </div>
+    </div>`;},
+
+  destination:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const back=`<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+    const spark=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>`;
+    const search=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
+    const sv=(w,inner)=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${w}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+    const ic={
+      utensils:c=>sv(c,'<path d="M3 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>'),
+      globe:c=>sv(c,'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>'),
+      users:c=>sv(c,'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
+      home:c=>sv(c,'<path d="M3 10l9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 21V12h6v9"/>'),
+      chat:c=>sv(c,'<path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z"/>'),
+      map:c=>sv(c,'<polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/>'),
+    };
+    const svc=(icon,bg,name,sub)=>`<div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+      <div style="width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:${bg};flex:0 0 auto">${icon}</div>
+      <div style="flex:1"><div style="font-weight:600;font-size:15px;color:#111827">${name}</div><div style="font-size:12px;color:#9CA3AF;margin-top:1px">${sub}</div></div></div>`;
+    const pill=(val,col,label)=>`<div style="flex:1;border:1px solid ${hex(col,.3)};background:${hex(col,.08)};border-radius:14px;padding:12px 0;text-align:center">
+      <div style="font-weight:900;font-size:22px;color:${col};letter-spacing:-.5px">${val}</div><div style="font-size:11px;color:#9CA3AF;margin-top:2px">${label}</div></div>`;
+    return `
+    <div style="${F};background:#FAF8F3">
+      <div style="position:relative;height:300px">
+        <img src="../mobile/assets/images/countries/israel.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="">
+        <div style="position:absolute;top:0;left:0;right:0;height:120px;background:rgba(5,10,30,.40)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to top,rgba(5,10,30,.65),rgba(5,10,30,0))"></div>
+        <div style="position:absolute;top:40px;left:18px;width:38px;height:38px;border-radius:19px;background:rgba(0,0,0,.30);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center">${back}</div>
+        <div style="position:absolute;top:44px;right:18px;background:rgba(0,0,0,.30);border:1px solid rgba(212,175,55,.25);border-radius:8px;padding:4px 10px;font-weight:700;font-size:10px;color:#E8C84A;letter-spacing:1.5px">IL</div>
+        <div style="position:absolute;bottom:24px;left:22px"><div style="font-weight:900;font-size:34px;color:#fff;letter-spacing:-.8px">ירושלים</div><div style="font-weight:500;font-size:14px;color:rgba(255,255,255,.6);margin-top:4px">ישראל</div></div>
+      </div>
+      <div style="padding:0 20px">
+        <div style="display:flex;gap:10px;padding:18px 0 4px">${pill('42','#16A34A','מסעדות')}${pill('514','#7C3AED','בתי כנסת')}</div>
+        <div style="display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;margin-top:16px;padding:12px 16px;box-shadow:0 2px 10px rgba(0,0,0,.06)">
+          ${spark}<div style="flex:1;font-size:14px;color:#BBC3D4">שאל כל שאלה על העיר הזו…</div>
+          <div style="width:32px;height:32px;border-radius:10px;background:#0B1736;display:flex;align-items:center;justify-content:center">${search}</div>
+        </div>
+        <div style="font-weight:700;font-size:11px;color:#D1D5DB;letter-spacing:2px;margin:26px 0 14px">גלה</div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding-bottom:30px">
+          ${svc(ic.utensils('#16A34A'),'#F0FDF4','מסעדות','אוכל כשר')}
+          ${svc(ic.globe('#7C3AED'),'#F5F3FF','בתי כנסת','שעות ומניינים')}
+          ${svc(ic.users('#D97706'),'#FFFBEB','מניינים','לוחות תפילה')}
+          ${svc(ic.home('#DB2777'),'#FDF2F8','אירוח','שולחן שבת')}
+          ${svc(ic.chat('#0891B2'),'#F0F9FF','קהילה','צ\'אט נוסעים')}
+          ${svc(ic.map('#0F766E'),'#F0FDFA','מפה','כל המקומות על המפה')}
+        </div>
+      </div>
+    </div>`;},
+
+  restaurants:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const T={meat:{c:'#B4544A',bg:'#F7EEEC',l:'בשרי'},dairy:{c:'#5B7C99',bg:'#EEF2F6',l:'חלבי'},parve:{c:'#6B8E6B',bg:'#EEF3EE',l:'פרווה'}};
+    const KB={rabbinate:{l:'רבנות',c:'#6B7280',bg:'#F4F4F5'},mehadrin:{l:'מהדרין',c:'#9A7B22',bg:'#FBF6E9'},badatz:{l:'בד"ץ',c:'#9A7B22',bg:'#FBF6E9'}};
+    const back=`<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+    const spark=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A8882A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>`;
+    const pin=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const clock=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+    const nav=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#A8882A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`;
+    const chev=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+    const uten=c=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`;
+    const chip=(l,on)=>`<div style="padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap;flex:0 0 auto;${on?'background:#0B1736;color:#fff':'background:#fff;color:#6B7280;border:1px solid #ECE7DE'}">${l}</div>`;
+    const data=[
+      {name:'פיצה שמיים',type:'dairy',k:'mehadrin',addr:'חיים עוזר 12, ירושלים',hours:'11:00–23:00',dist:'400 m'},
+      {name:'שיפודי הבירה',type:'meat',k:'rabbinate',addr:'מוטה גור 8, ירושלים',hours:'12:00–24:00',dist:'0.9 km'},
+      {name:'פלאפל הזהב',type:'parve',k:'badatz',addr:'יפו 45, ירושלים',hours:'09:00–22:00',dist:'1.2 km'},
+      {name:'קפה ארומה',type:'dairy',k:'rabbinate',addr:'בן יהודה 30, ירושלים',hours:'07:00–22:00',dist:'1.6 km'},
+      {name:'גריל בר אנגוס',type:'meat',k:'mehadrin',addr:'המלך ג\'ורג\' 5, ירושלים',hours:'12:00–23:30',dist:'2.1 km'},
+    ];
+    const card=r=>{const t=T[r.type],k=KB[r.k];return `<div style="background:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 16px rgba(11,23,54,.05);display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:42px;height:42px;border-radius:14px;background:${t.bg};display:flex;align-items:center;justify-content:center;flex:0 0 auto">${uten(t.c)}</div>
+        <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:16px;color:#0B1736">${r.name}</div>
+          <div style="display:inline-flex;align-items:center;gap:5px;margin-top:3px"><span style="width:6px;height:6px;border-radius:3px;background:${t.c}"></span><span style="font-size:12px;font-weight:600;color:${t.c}">${t.l}</span></div></div>
+        <div style="display:flex;align-items:center;gap:3px;background:rgba(212,175,55,.10);border-radius:10px;padding:4px 8px;flex:0 0 auto">${nav}<span style="font-weight:700;font-size:11px;color:#A8882A">${r.dist}</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div style="display:flex;align-items:center;gap:6px">${pin}<span style="font-size:12px;color:#9CA3AF;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.addr}</span></div>
+        <div style="display:flex;align-items:center;gap:6px">${clock}<span style="font-size:12px;color:#9CA3AF">${r.hours}</span></div>
+      </div>
+      <div style="display:flex;align-items:center"><div style="border-radius:8px;padding:4px 9px;background:${k.bg};color:${k.c};font-weight:700;font-size:11px">${k.l}</div><div style="flex:1"></div>${chev}</div>
+    </div>`;};
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%">
+      <div style="background:#FAF8F3;padding:44px 20px 14px">
+        <div style="display:flex;align-items:center;margin-bottom:14px">
+          <div style="width:38px;height:38px;border-radius:19px;background:#fff;box-shadow:0 2px 8px rgba(11,23,54,.08);display:flex;align-items:center;justify-content:center">${back}</div>
+        </div>
+        <div style="font-weight:700;font-size:10px;color:#A8882A;letter-spacing:2.5px;margin-bottom:4px">מסעדות כשרות</div>
+        <div style="font-weight:900;font-size:28px;color:#0B1736;letter-spacing:-.6px">ירושלים</div>
+        <div style="font-size:13px;color:#9CA3AF;margin-top:3px">42 מסעדות · ממוין לפי מרחק</div>
+        <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #ECE7DE;border-radius:16px;padding:13px 16px;margin-top:16px;box-shadow:0 2px 10px rgba(11,23,54,.04)">
+          ${spark}<div style="flex:1;font-size:14px;color:#9CA3AF">מה תרצה לאכול?</div>
+          <div style="background:rgba(212,175,55,.14);border-radius:10px;padding:4px 10px;font-weight:800;font-size:11px;color:#A8882A;letter-spacing:.5px">AI</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;overflow-x:auto">${chip('הכל',true)}${chip('בשרי',false)}${chip('חלבי',false)}${chip('פרווה',false)}</div>
+      </div>
+      <div style="padding:6px 16px 40px;display:flex;flex-direction:column;gap:12px">${data.map(card).join('')}</div>
+    </div>`;},
+
+  restaurant:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const tint='#5B7C99', lightBg='#EEF2F6'; // dairy (muted)
+    const cup=(c,sz)=>`<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`;
+    const back=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+    const heart=`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.5 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>`;
+    const place=`<svg width="12" height="12" viewBox="0 0 24 24" fill="#E8C84A" stroke="#E8C84A" stroke-width="1"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>`;
+    const locG=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const clockG=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+    const star=`<svg width="13" height="13" viewBox="0 0 24 24" fill="#D4AF37" stroke="#D4AF37"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>`;
+    const callI=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>`;
+    const mapI=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/></svg>`;
+    const flag=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>`;
+    const chevM=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+    const info=(ic,label,val)=>`<div style="display:flex;align-items:flex-start;gap:12px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(11,23,54,.06)">${ic}<div style="flex:1"><div style="font-weight:800;font-size:10px;color:#9CA3AF;letter-spacing:1.2px;margin-bottom:4px">${label}</div><div style="font-size:15px;color:#111827">${val}</div></div></div>`;
+    const act=(box,ic,title,sub)=>`<div style="display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 10px rgba(11,23,54,.06)"><div style="width:44px;height:44px;border-radius:12px;background:${box};display:flex;align-items:center;justify-content:center;flex:0 0 auto">${ic}</div><div style="flex:1"><div style="font-weight:700;font-size:15px;color:#111827">${title}</div><div style="font-size:12px;color:#9CA3AF;margin-top:2px">${sub}</div></div>${chevM}</div>`;
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%">
+      <div style="background:${tint};padding:48px 24px 32px;text-align:center;position:relative">
+        <div style="position:absolute;top:44px;left:18px;width:36px;height:36px;border-radius:18px;background:rgba(0,0,0,.20);display:flex;align-items:center;justify-content:center">${back}</div>
+        <div style="width:72px;height:72px;border-radius:36px;background:rgba(255,255,255,.20);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">${cup('#fff',32)}</div>
+        <div style="font-family:Georgia,serif;font-weight:800;font-size:22px;color:#fff;margin-bottom:6px">פיצה שמיים</div>
+        <div style="display:flex;justify-content:center;margin-bottom:8px">${heart}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7)">ירושלים, ישראל</div>
+        <div style="display:inline-flex;align-items:center;gap:4px;margin-top:10px;background:rgba(0,0,0,.20);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:5px 12px">${place}<span style="font-size:12px;color:#E8C84A;font-weight:600">400 m</span></div>
+      </div>
+      <div style="padding:18px;display:flex;flex-direction:column;gap:12px">
+        <div style="background:${lightBg};border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <div style="display:flex;align-items:center;gap:5px;border:1px solid ${tint};border-radius:20px;padding:5px 12px;background:rgba(255,255,255,.6)">${cup(tint,14)}<span style="font-weight:700;font-size:12px;color:${tint}">חלבי</span></div>
+            <div style="display:flex;align-items:center;gap:5px;background:#FBF6E9;border-radius:20px;padding:5px 12px"><span style="font-weight:700;font-size:12px;color:#9A7B22">מהדרין</span></div>
+          </div>
+          <div style="font-size:13px;color:#6B7280;line-height:1.5">בהשגחת מהדרין — פיקוח כשרות מחמיר</div>
+        </div>
+        ${info(locG,'כתובת','חיים עוזר 12, ירושלים')}
+        ${info(clockG,'שעות','פתוח · 11:00–23:00')}
+        <div style="font-weight:800;font-size:14px;color:#6B7280;letter-spacing:.5px;margin-top:2px">ביקורות</div>
+        <div style="background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 10px rgba(11,23,54,.06)">
+          <div style="display:flex;align-items:center;gap:2px;margin-bottom:6px">${star}${star}${star}${star}${star}<span style="font-size:12px;color:#9CA3AF;margin-right:6px">4.6 · 23 ביקורות</span></div>
+          <div style="font-size:13px;color:#374151;line-height:1.5">"פיצה מעולה, שירות מהיר ומקום נעים למשפחות."</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          ${act('rgba(5,150,105,.12)',callI,'התקשר','03-9123456')}
+          ${act('rgba(37,99,235,.12)',mapI,'הצג במפה','פתח ב-Maps')}
+        </div>
+        <div style="display:flex;gap:10px;padding-top:4px"><div style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:1.5px solid rgba(0,0,0,.1);border-radius:12px;padding:12px;background:#fff;font-weight:700;font-size:13px;color:#DC2626">${flag} דווח על בעיה</div></div>
+      </div>
+    </div>`;},
+
+  synagogues:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const D={ashkenaz:{c:'#5B7C99',l:'אשכנז'},sfarad:{c:'#4F857E',l:'ספרד'},chabad:{c:'#B07A45',l:'חב"ד'},teimanim:{c:'#6B8E6B',l:'תימני'}};
+    const back=`<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+    const globe=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A6B9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    const pin=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const nav=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#A8882A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`;
+    const phone=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>`;
+    const chev=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+    const card=s=>{const d=D[s.k];return `<div style="background:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 16px rgba(11,23,54,.05);display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:42px;height:42px;border-radius:14px;background:#F2EFF6;display:flex;align-items:center;justify-content:center;flex:0 0 auto">${globe}</div>
+        <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:16px;color:#0B1736">${s.name}</div>
+          ${d?`<div style="display:inline-flex;align-items:center;gap:5px;margin-top:3px"><span style="width:6px;height:6px;border-radius:3px;background:${d.c}"></span><span style="font-size:12px;font-weight:600;color:${d.c}">${d.l}</span></div>`:''}</div>
+        <div style="display:flex;align-items:center;gap:3px;background:rgba(212,175,55,.10);border-radius:10px;padding:4px 8px;flex:0 0 auto">${nav}<span style="font-weight:700;font-size:11px;color:#A8882A">${s.dist}</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">${pin}<span style="font-size:12px;color:#9CA3AF;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.addr}</span></div>
+      <div style="display:flex;align-items:center">${s.phone?`<div style="display:flex;align-items:center;gap:5px;background:#F7F6F2;border:1px solid #ECE7DE;border-radius:10px;padding:6px 11px;font-size:12px;color:#6B7280;font-weight:600">${phone} התקשר</div>`:''}<div style="flex:1"></div>${chev}</div>
+    </div>`;};
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%">
+      <div style="padding:44px 20px 14px">
+        <div style="display:flex;align-items:center;margin-bottom:14px"><div style="width:38px;height:38px;border-radius:19px;background:#fff;box-shadow:0 2px 8px rgba(11,23,54,.08);display:flex;align-items:center;justify-content:center">${back}</div></div>
+        <div style="font-weight:700;font-size:10px;color:#A8882A;letter-spacing:2.5px;margin-bottom:4px">בתי כנסת</div>
+        <div style="font-weight:900;font-size:28px;color:#0B1736;letter-spacing:-.6px">ירושלים</div>
+        <div style="font-size:13px;color:#9CA3AF;margin-top:3px">4 בתי כנסת · ממוין לפי מרחק</div>
+      </div>
+      <div style="padding:6px 16px 40px;display:flex;flex-direction:column;gap:12px">${SYNS.map(card).join('')}</div>
+    </div>`;},
+
+  nearby:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const KB={rabbinate:{c:'#6B7280',bg:'#F4F4F5',l:'Rabbinate'},mehadrin:{c:'#9A7B22',bg:'#FBF6E9',l:'Mehadrin'},badatz:{c:'#9A7B22',bg:'#FBF6E9',l:'Badatz'}};
+    const uGold=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`;
+    const globeP=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    const sun=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>`;
+    const dist=d=>`<div style="display:flex;align-items:center;gap:3px;background:var(--goldFaint);border-radius:8px;padding:3px 7px">${I.nav}<span style="font-weight:700;font-size:11px;color:#D4AF37">${d}</span></div>`;
+    const kb=k=>`<div style="border-radius:8px;padding:3px 7px;background:${KB[k].bg};color:${KB[k].c};font-weight:700;font-size:10px">${KB[k].l}</div>`;
+    const sec=t=>`<div style="font-weight:700;font-size:11px;color:#BBC3D4;letter-spacing:2px">${t}</div>`;
+    const row=(ibg,icon,name,sub,right)=>`<div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="width:42px;height:42px;border-radius:12px;background:${ibg};display:flex;align-items:center;justify-content:center;flex:0 0 auto">${icon}</div><div style="flex:1;min-width:0"><div style="font-weight:600;font-size:15px;color:#111827;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${name}</div><div style="font-size:12px;color:#9CA3AF;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${sub}</div></div>${right}${I.chev}</div>`;
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;padding:40px 20px 16px;border-bottom:1px solid #F3F4F6">
+        <div><div style="font-weight:700;font-size:10px;color:#D4AF37;letter-spacing:2.5px;margin-bottom:3px">קרוב אליי</div><div style="font-weight:900;font-size:30px;color:#111827;letter-spacing:-.8px">בסביבה</div></div>
+        <div style="display:flex;align-items:center;gap:5px;background:var(--goldFaint);border:1px solid rgba(212,175,55,.25);border-radius:12px;padding:6px 10px">${I.pin}<span style="font-weight:700;font-size:11px;color:#D4AF37">GPS פעיל</span></div>
+      </div>
+      <div style="padding:24px 20px 40px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:12px">${sec('מסעדות כשרות · 2')}<div style="display:flex;flex-direction:column;gap:10px">
+          ${row('#FEF9EC',uGold,'פיצה שמיים','ירושלים',`<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">${kb('mehadrin')}${dist('400 m')}</div>`)}
+          ${row('#FEF9EC',uGold,'שיפודי הבירה','ירושלים',`<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">${kb('rabbinate')}${dist('900 m')}</div>`)}
+        </div></div>
+        <div style="display:flex;flex-direction:column;gap:12px">${sec('בתי כנסת · 2')}<div style="display:flex;flex-direction:column;gap:10px">
+          ${row('#F5F3FF',globeP,'בית הכנסת הגדול','הרב קוק 3, ירושלים',dist('350 m'))}
+          ${row('#F5F3FF',globeP,'אהל יעקב','מוהליבר 14, ירושלים',dist('700 m'))}
+        </div></div>
+        <div style="display:flex;flex-direction:column;gap:12px">${sec('מניינים קרובים · 1')}<div style="display:flex;flex-direction:column;gap:10px">
+          ${row('#FFFBEB',sun,'שחרית','Sun, Jun 22 · 06:05 · ירושלים',dist('300 m'))}
+        </div></div>
+      </div>
+    </div>`;},
+
+  saved:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const KB={rabbinate:{c:'#6B7280',bg:'#F4F4F5',l:'Rabbinate'},mehadrin:{c:'#9A7B22',bg:'#FBF6E9',l:'Mehadrin'},badatz:{c:'#9A7B22',bg:'#FBF6E9',l:'Badatz'}};
+    const uGold=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>`;
+    const globeP=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+    const x=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+    const bm=`<svg width="18" height="18" viewBox="0 0 24 24" fill="#D4AF37" stroke="#D4AF37" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+    const kb=k=>`<div style="border-radius:8px;padding:4px 8px;background:${KB[k].bg};color:${KB[k].c};font-weight:700;font-size:10px">${KB[k].l}</div>`;
+    const sec=t=>`<div style="font-weight:700;font-size:11px;color:#BBC3D4;letter-spacing:2px">${t}</div>`;
+    const xb=`<div style="padding:4px">${x}</div>`;
+    const row=(ibg,icon,name,sub,trail)=>`<div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="width:40px;height:40px;border-radius:12px;background:${ibg};display:flex;align-items:center;justify-content:center;flex:0 0 auto">${icon}</div><div style="flex:1;min-width:0"><div style="font-weight:600;font-size:15px;color:#111827;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${name}</div><div style="font-size:12px;color:#9CA3AF;margin-top:2px">${sub}</div></div>${trail}</div>`;
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%">
+      <div style="padding:44px 20px 14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="width:38px;height:38px;border-radius:19px;background:#fff;box-shadow:0 2px 8px rgba(11,23,54,.08);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
+          <div style="width:38px;height:38px;border-radius:19px;background:#fff;box-shadow:0 2px 8px rgba(11,23,54,.08);display:flex;align-items:center;justify-content:center">${bm}</div>
+        </div>
+        <div style="font-weight:700;font-size:10px;color:#A8882A;letter-spacing:2.5px;margin-bottom:4px">מועדפים</div>
+        <div style="font-weight:900;font-size:28px;color:#0B1736;letter-spacing:-.6px">מקומות שמורים</div>
+        <div style="font-size:13px;color:#9CA3AF;margin-top:3px">3 שמורים</div>
+      </div>
+      <div style="padding:24px 20px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:12px">${sec('מסעדות · 2')}<div style="display:flex;flex-direction:column;gap:10px">
+          ${row('#FEF9EC',uGold,'פיצה שמיים','ירושלים',`<div style="display:flex;align-items:center;gap:8px">${kb('mehadrin')}${xb}</div>`)}
+          ${row('#FEF9EC',uGold,'גריל בר אנגוס','ירושלים',`<div style="display:flex;align-items:center;gap:8px">${kb('badatz')}${xb}</div>`)}
+        </div></div>
+        <div style="display:flex;flex-direction:column;gap:12px">${sec('בתי כנסת · 1')}<div style="display:flex;flex-direction:column;gap:10px">
+          ${row('#F5F3FF',globeP,'חב"ד מרכז','חובבי ציון 21, ירושלים',xb)}
+        </div></div>
+      </div>
+    </div>`;},
+  minyans:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const PR={shacharit:{c:'#B8863D',bg:'#F8F1E3',l:'שחרית'},mincha:{c:'#B4674A',bg:'#F7EDE9',l:'מנחה'},maariv:{c:'#6A6597',bg:'#F0EFF6',l:'מעריב'},musaf:{c:'#4F857E',bg:'#EDF4F2',l:'מוסף'}};
+    const back=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+    const usersW=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+    const usersB=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+    const pinm=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+    const navm=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`;
+    const picon=k=>{const c=PR[k].c;const inner=k==='maariv'?'<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>':'<circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>';return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;};
+    const chip=(l,on)=>`<div style="padding:6px 12px;border-radius:20px;border:1px solid ${on?'#0B1736':'#dde3f0'};background:${on?'#0B1736':'#FAF8F3'};color:${on?'#fff':'#555'};font-size:13px;font-weight:500;white-space:nowrap;flex:0 0 auto">${l}</div>`;
+    const fullB=`<div style="padding:3px 8px;border-radius:10px;background:#5B8C5E;color:#fff;font-size:11px;font-weight:600">מלא</div>`;
+    const almostB=`<div style="padding:3px 8px;border-radius:10px;background:#C39A3D;color:#fff;font-size:11px;font-weight:600">כמעט מלא</div>`;
+    const card=(k,date,loc,count,dist,badge)=>`<div style="display:flex;align-items:center;background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05)">
+      <div style="width:46px;height:46px;border-radius:12px;background:${PR[k].bg};display:flex;align-items:center;justify-content:center;margin-right:14px;flex:0 0 auto">${picon(k)}</div>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+        <div style="display:flex;align-items:center;gap:8px"><span style="font-size:16px;font-weight:700;color:#1a1a2e">${PR[k].l}</span>${badge}</div>
+        <div style="font-size:13px;color:#555">${date}</div>
+        <div style="display:flex;align-items:center;gap:4px">${pinm}<span style="font-size:13px;color:#777;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${loc}</span></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:2px"><div style="display:flex;align-items:center;gap:4px">${usersB}<span style="font-size:13px;color:#0B1736;font-weight:600">${count} / 10</span></div><div style="display:flex;align-items:center;gap:4px">${navm}<span style="font-size:13px;color:#555;font-weight:500">${dist}</span></div></div>
+      </div>
+      <span style="font-size:22px;color:#bbb;margin-left:8px">›</span></div>`;
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%">
+      <div style="padding:44px 20px 12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="width:38px;height:38px;border-radius:19px;background:#fff;box-shadow:0 2px 8px rgba(11,23,54,.08);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div>
+          <div style="display:flex;gap:8px"><div style="background:#fff;border:1px solid #ECE7DE;border-radius:20px;padding:7px 14px;color:#0B1736;font-weight:600;font-size:13px">שלי</div><div style="background:#0B1736;border-radius:20px;padding:7px 16px;color:#fff;font-weight:700;font-size:14px">+ חדש</div></div>
+        </div>
+        <div style="font-weight:700;font-size:10px;color:#A8882A;letter-spacing:2.5px;margin-bottom:4px">מניינים</div>
+        <div style="font-weight:900;font-size:28px;color:#0B1736;letter-spacing:-.6px">ירושלים</div>
+        <div style="font-size:13px;color:#9CA3AF;margin-top:3px">3 מניינים קרובים</div>
+      </div>
+      <div style="background:#fff;padding:8px 12px;display:flex;gap:8px;overflow-x:auto">${chip('הכל',true)}${chip('שחרית',false)}${chip('מנחה',false)}${chip('מעריב',false)}${chip('מוסף',false)}</div>
+      <div style="padding:16px;display:flex;flex-direction:column;gap:12px">
+        ${card('shacharit','Sun, Jun 22 • 06:05','בית הכנסת הגדול, ירושלים','8','300 m',almostB)}
+        ${card('mincha','Sun, Jun 22 • 13:30','ישיבת מרכז הרב, ירושלים','4','600 m','')}
+        ${card('maariv','Sun, Jun 22 • 20:15','חב"ד מרכז, ירושלים','10','1.1 km',fullB)}
+      </div>
+    </div>`;},
+  hosting:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const back=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+    const cal=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`;
+    const homeI=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DB2777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 21V12h6v9"/></svg>`;
+    const field=(label,val)=>`<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:600;color:#0B1736;margin-bottom:6px">${label}</div><div style="display:flex;align-items:center;gap:8px;background:#F2F5FB;border:1px solid #E1E8F5;border-radius:12px;padding:13px 14px">${cal}<span style="font-size:15px;color:#1a1a2e;font-weight:500">${val}</span></div></div>`;
+    const tog=(label,on)=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 0"><span style="font-size:14px;color:#374151">${label}</span><div style="width:44px;height:26px;border-radius:13px;background:${on?'#0B1736':'#D1D5DB'};position:relative"><div style="position:absolute;top:3px;${on?'right:3px':'left:3px'};width:20px;height:20px;border-radius:10px;background:#fff"></div></div></div>`;
+    const tag=x=>`<div style="background:var(--goldFaint);border:1px solid rgba(212,175,55,.3);border-radius:8px;padding:3px 9px;font-size:11px;font-weight:600;color:#A8882A">${x}</div>`;
+    const offer=(name,guests,tags)=>`<div style="background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:42px;height:42px;border-radius:21px;background:#FDF2F8;display:flex;align-items:center;justify-content:center;flex:0 0 auto">${homeI}</div><div style="flex:1"><div style="font-weight:700;font-size:16px;color:#111827">${name}</div><div style="font-size:13px;color:#6B7280;margin-top:1px">עד ${guests} אורחים</div></div></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">${tags.map(tag).join('')}</div>
+      <div style="background:#0B1736;border-radius:12px;padding:11px;text-align:center;font-weight:700;font-size:14px;color:#fff">שלח בקשה</div></div>`;
+    return `
+    <div style="${F};background:#F4F6FC;min-height:100%">
+      <div style="padding:44px 20px 12px">
+        <div style="display:flex;align-items:center;margin-bottom:14px"><div style="width:38px;height:38px;border-radius:19px;background:#fff;box-shadow:0 2px 8px rgba(11,23,54,.08);display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B1736" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></div></div>
+        <div style="font-weight:700;font-size:10px;color:#A8882A;letter-spacing:2.5px;margin-bottom:4px">אירוח שבת</div>
+        <div style="font-weight:900;font-size:28px;color:#0B1736;letter-spacing:-.6px">ירושלים</div>
+        <div style="font-size:13px;color:#9CA3AF;margin-top:3px">מצא משפחה מארחת או הצע אירוח</div>
+      </div>
+      <div style="display:flex;background:#EEF0F5;border-radius:14px;padding:4px;margin:16px">
+        <div style="flex:1;text-align:center;padding:10px;border-radius:11px;background:#0B1736;color:#fff;font-weight:700;font-size:14px">אני אורח</div>
+        <div style="flex:1;text-align:center;padding:10px;border-radius:11px;color:#6B7280;font-weight:600;font-size:14px">אני מארח</div>
+      </div>
+      <div style="margin:0 16px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 3px 14px rgba(11,23,54,.06)">
+        <div style="font-weight:800;font-size:16px;color:#111827;margin-bottom:14px">חפש משפחה מארחת</div>
+        ${field('תאריך הגעה','2026-07-03')}
+        ${field('תאריך עזיבה','2026-07-05')}
+        <div style="margin-bottom:6px"><div style="font-size:13px;font-weight:600;color:#0B1736;margin-bottom:6px">מספר אורחים</div><div style="background:#F2F5FB;border:1px solid #E1E8F5;border-radius:12px;padding:13px 14px;font-size:15px;color:#1a1a2e;font-weight:500">2</div></div>
+        ${tog('אירוח שבת',true)}
+        ${tog('עם ילדים',false)}
+        <div style="background:#0B1736;border-radius:12px;padding:14px;text-align:center;font-weight:700;font-size:15px;color:#fff;margin-top:12px">חפש מארחים</div>
+      </div>
+      <div style="padding:20px 16px 8px;font-weight:700;font-size:13px;color:#8A96B0">2 מארחים זמינים</div>
+      <div style="padding:0 16px 40px;display:flex;flex-direction:column;gap:12px">
+        ${offer('משפחת כהן','4',['שבת','ילדים בסדר'])}
+        ${offer('משפחת לוי','2',['שבת'])}
+      </div>
+    </div>`;},
+  profile:()=>{
+    const F="font-family:'Inter',var(--sans)";
+    const ic=(inner,c)=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+    const person='<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>';
+    const lock='<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>';
+    const globe='<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>';
+    const uten='<path d="M3 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>';
+    const pin='<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>';
+    const headset='<path d="M3 14v-2a9 9 0 0 1 18 0v2"/><path d="M21 16a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2z"/><path d="M3 16a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2z"/>';
+    const info='<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>';
+    const chev=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BBC3D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+    const row=(ibg,icon,label,trail)=>`<div style="display:flex;align-items:center;padding:16px 18px"><div style="width:38px;height:38px;border-radius:11px;background:${ibg};display:flex;align-items:center;justify-content:center;margin-right:14px;flex:0 0 auto">${icon}</div><div style="flex:1;font-weight:600;font-size:15px;color:#111827">${label}</div>${trail||chev}</div>`;
+    const dv=`<div style="height:1px;background:#F4F6FC;margin:0 18px"></div>`;
+    const eyebrow=t=>`<div style="font-weight:700;font-size:10px;color:#BBC3D4;letter-spacing:1.8px;margin:24px 20px 8px">${t}</div>`;
+    const card=inner=>`<div style="background:#fff;border-radius:20px;margin:0 16px;box-shadow:0 3px 14px rgba(11,23,54,.06);overflow:hidden">${inner}</div>`;
+    return `
+    <div style="${F};background:#FAF8F3;min-height:100%;padding-bottom:40px">
+      <div style="background:#FAF8F3;padding:50px 24px 28px;display:flex;flex-direction:column;align-items:center">
+        <div style="position:relative;margin-bottom:16px">
+          <div style="width:100px;height:100px;border-radius:50px;border:2.5px solid #D4AF37;background:rgba(212,175,55,.15);display:flex;align-items:center;justify-content:center"><span style="font-weight:700;font-size:34px;color:#A8882A">ד"י</span></div>
+          <div style="position:absolute;bottom:2px;right:2px;width:28px;height:28px;border-radius:14px;background:#0B1736;border:2px solid #D4AF37;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        </div>
+        <div style="font-weight:800;font-size:22px;color:#0B1736;letter-spacing:-.3px">דניאל יהודאי</div>
+        <div style="font-size:13px;color:#9CA3AF;margin-top:4px">daniyehudai@gmail.com</div>
+        <div style="margin-top:12px;background:#FBF6E9;border:1px solid rgba(212,175,55,.35);border-radius:20px;padding:5px 14px;color:#9A7B22;font-weight:600;font-size:12px">מהדרין</div>
+      </div>
+      ${eyebrow('חשבון')}
+      ${card(`${row('rgba(11,23,54,.08)',ic(person,'#0B1736'),'ערוך פרופיל')}${dv}${row('rgba(212,175,55,.12)',ic(lock,'#D4AF37'),'שנה סיסמה')}${dv}${row('rgba(74,158,108,.12)',ic(globe,'#4A9E6C'),'שפה',`<span style="font-size:13px;color:#8A96B0;font-weight:600">עברית</span>`)}`)}
+      ${eyebrow('תרומה לקהילה')}
+      ${card(`${row('rgba(22,163,74,.10)',ic(uten,'#16A34A'),'הצע מסעדה')}${dv}${row('rgba(124,58,237,.10)',ic(pin,'#7C3AED'),'הצע בית כנסת')}`)}
+      ${eyebrow('תמיכה')}
+      ${card(`${row('rgba(11,23,54,.08)',ic(headset,'#0B1736'),'צור קשר')}${dv}${row('rgba(212,175,55,.12)',ic(info,'#D4AF37'),'אודות')}`)}
+      <div style="margin:20px 16px 0;background:#fff;border:1.5px solid #FFCDD2;border-radius:16px;padding:16px;text-align:center;font-weight:700;font-size:15px;color:#D93025">התנתק</div>
+      <div style="text-align:center;padding:14px;color:#BBC3D4;font-size:13px;text-decoration:underline">מחק חשבון</div>
+    </div>`;},
+};
+
+const TABS=[['login','התחברות'],['home','בית'],['destination','דף יעד'],['restaurants','מסעדות'],['restaurant','דף מסעדה'],['synagogues','בתי כנסת'],['nearby','ליד אותך'],['saved','מועדפים'],['minyans','מניינים'],['hosting','אירוח'],['profile','פרופיל']];
+const sw=document.getElementById('switcher'), sc=document.getElementById('screen');
+const TAB_ICONS={
+  home:c=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  compass:c=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`,
+  nearby:c=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`,
+  profile:c=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+};
+function renderTab(active){
+  const tb=document.getElementById('tabbar');
+  const isTab=['home','nearby','profile'].includes(active);
+  tb.style.display=isTab?'flex':'none';
+  if(!isTab)return;
+  const items=[['home','גלה'],['compass','כיוון תפילה'],['nearby','קרוב אליי'],['profile','פרופיל']];
+  tb.innerHTML=items.map(([k,label])=>{const on=k===active;const col=on?'#0B1736':'#BBC3D4';const clk=(k==='home'||k==='nearby'||k==='profile')?`onclick="show('${k}')"`:'';return `<div ${clk} style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer">${TAB_ICONS[k](col)}<span style="font-size:10px;font-weight:600;color:${col};font-family:'Inter',var(--sans)">${label}</span></div>`;}).join('');
+}
+function show(key){sc.innerHTML=SCREENS[key]();[...sw.children].forEach(b=>b.classList.toggle('active',b.dataset.k===key));sc.scrollTop=0;renderTab(key);}
+TABS.forEach(([k,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.k=k;b.onclick=()=>show(k);sw.appendChild(b);});
+show('home');
+
+// ── Font switcher (live compare) ──
+const FONTS=[['Inter','Inter (נוכחי)'],['Rubik','Rubik'],['Heebo','Heebo'],['Assistant','Assistant'],['"Frank Ruhl Libre"','Frank Ruhl (serif)']];
+const fsw=document.getElementById('fontSwitcher'), fo=document.getElementById('fontOverride');
+function setFont(f){ fo.textContent = (f==='Inter') ? '' : `.phone, .phone *{font-family:${f}, sans-serif !important}`; [...fsw.children].forEach(b=>b.classList.toggle('active', b.dataset.f===f)); }
+FONTS.forEach(([f,label])=>{const b=document.createElement('button');b.textContent=label;b.dataset.f=f;b.onclick=()=>setFont(f);fsw.appendChild(b);});
+setFont('Rubik');
+</script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מוקאפ עיצוב - קהילה ואירוח</title>
+<style>
+:root{
+  --page:#ebe6dd;
+  --phone:#f7f2e9;
+  --paper:#fffdf8;
+  --card:#fff;
+  --navy:#0b1736;
+  --text:#1b2538;
+  --muted:#707b8d;
+  --soft:#f2eadc;
+  --line:#e7dac6;
+  --gold:#c5a24a;
+  --goldDark:#8b681c;
+  --green:#147447;
+  --greenBg:#e8f7ee;
+  --blue:#2563eb;
+  --blueBg:#edf3ff;
+  --rose:#b82d69;
+  --roseBg:#fff0f6;
+  --purple:#6551b3;
+  --purpleBg:#f0edff;
+  --orange:#a85e10;
+  --orangeBg:#fff2df;
+  --shadow:rgba(9,22,52,.12);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--navy);
+  font-family:Rubik,Inter,Arial,sans-serif;
+}
+.page{max-width:1230px;margin:0 auto;padding:26px 22px 44px}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:18px}
+h1{margin:0 0 6px;font-size:25px;font-weight:900}
+.lead{margin:0;max-width:780px;color:#566173;font-size:14px;line-height:1.55}
+.legend{min-width:300px;background:#fffaf1;border:1px solid #e2d4be;border-radius:16px;padding:11px 13px;color:#596273;font-size:12px;line-height:1.5}
+.layout{display:grid;grid-template-columns:390px 1fr;gap:24px;align-items:start}
+.phone{
+  width:390px;
+  height:812px;
+  overflow:hidden;
+  border-radius:32px;
+  background:var(--phone);
+  border:1px solid #ded3c0;
+  box-shadow:0 24px 64px rgba(0,0,0,.20);
+  position:sticky;
+  top:18px;
+}
+.status{height:26px;background:#fbf8f0;color:#d7cebf;text-align:center;font-size:12px;padding-top:5px}
+.screen{display:none;height:786px;overflow:auto;scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.screen.active{display:block}
+.header{background:#fffaf0;border-bottom:1px solid var(--line);padding:13px 16px 12px;position:sticky;top:0;z-index:4}
+.top{display:flex;align-items:center;gap:10px}
+.iconBtn{
+  width:36px;height:36px;border-radius:18px;border:1px solid var(--line);background:#fff;
+  box-shadow:0 4px 12px rgba(9,22,52,.08);display:grid;place-items:center;color:var(--navy);
+  font-weight:900;cursor:pointer;flex:0 0 auto;
+}
+.titleBlock{min-width:0;flex:1}
+.eyebrow{font-size:9px;letter-spacing:2.2px;color:var(--goldDark);font-weight:900;text-transform:uppercase}
+.title{font-size:22px;line-height:1.1;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub{margin-top:3px;color:var(--muted);font-size:11px;line-height:1.35}
+.body{padding:16px 15px 24px}
+.hero{
+  min-height:154px;
+  border-radius:8px;
+  background:linear-gradient(180deg,rgba(11,23,54,.08),rgba(11,23,54,.54)),url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=70');
+  background-size:cover;
+  background-position:center;
+  padding:18px;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  margin-bottom:14px;
+}
+.hero h2{margin:0;font-size:27px;line-height:1.05;font-weight:900;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero p{margin:5px 0 0;font-size:13px;color:rgba(255,255,255,.85)}
+.serviceGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.service{
+  background:#fff;border:1px solid rgba(11,23,54,.08);border-radius:8px;padding:12px;min-height:96px;
+  box-shadow:0 6px 17px rgba(9,22,52,.06);cursor:pointer;
+}
+.serviceIcon{width:38px;height:38px;border-radius:8px;display:grid;place-items:center;font-size:20px;margin-bottom:8px}
+.service strong{display:block;font-size:14px;color:var(--text)}
+.service span{display:block;margin-top:3px;color:var(--muted);font-size:11px;line-height:1.35}
+.sectionTitle{margin:16px 2px 10px;color:var(--goldDark);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.communityComposer{
+  background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px;display:flex;align-items:center;gap:9px;
+  box-shadow:0 5px 15px rgba(9,22,52,.05);margin-bottom:12px;
+}
+.avatar{width:34px;height:34px;border-radius:17px;background:var(--gold);color:#fff;display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+.composerText{flex:1;color:#7d8798;font-size:13px}
+.chips{display:flex;gap:7px;overflow:hidden;margin:0 -15px 12px;padding:0 15px}
+.chip{
+  border:1px solid #e3d7c3;background:#fff;border-radius:999px;color:#647086;font-size:12px;font-weight:800;
+  padding:8px 11px;white-space:nowrap;
+}
+.chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.hostingBanner{
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #e5d6bf;
+  border-radius:8px;
+  padding:14px 13px 13px;
+  margin-bottom:13px;
+  box-shadow:0 8px 22px rgba(9,22,52,.08);
+  cursor:pointer;
+}
+.hostingBanner:before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:5px;
+  background:linear-gradient(var(--rose),var(--gold));
+}
+.bannerTop{display:flex;align-items:flex-start;gap:10px}
+.bannerIcon{width:42px;height:42px;border-radius:8px;background:var(--roseBg);color:var(--rose);display:grid;place-items:center;font-size:21px;flex:0 0 auto}
+.bannerTitle{font-size:17px;font-weight:900;color:var(--text);margin-bottom:3px}
+.bannerText{font-size:12px;color:#647086;line-height:1.45}
+.bannerCta{margin-top:10px;display:flex;align-items:center;justify-content:space-between;color:var(--navy);font-size:13px;font-weight:900}
+.post{
+  background:#fff;border:1px solid rgba(11,23,54,.08);border-radius:8px;padding:13px;margin-bottom:10px;
+  box-shadow:0 5px 15px rgba(9,22,52,.05);
+}
+.postHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.postName{font-weight:900;font-size:13px;color:var(--text)}
+.postMeta{font-size:11px;color:var(--muted);margin-top:1px}
+.post p{margin:0;color:#384459;font-size:13px;line-height:1.5}
+.tag{display:inline-flex;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:900;margin-top:9px}
+.tag.blue{background:var(--blueBg);color:var(--blue)}
+.tag.gold{background:#fff4d7;color:var(--goldDark)}
+.tag.green{background:var(--greenBg);color:var(--green)}
+.hubHero{
+  background:linear-gradient(135deg,#fff,#fff7e5);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:16px;
+  margin-bottom:12px;
+}
+.hubHero h2{margin:0 0 7px;font-size:24px;line-height:1.1;color:var(--text);font-weight:900}
+.hubHero p{margin:0;color:#5f6878;font-size:13px;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}
+.stat{background:#fff;border:1px solid #eedfc8;border-radius:8px;padding:9px 8px}
+.stat strong{display:block;font-size:18px}.stat span{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+.choice{
+  position:relative;background:#fff;border:1px solid rgba(11,23,54,.08);border-radius:8px;padding:15px 14px 15px 42px;
+  margin-bottom:10px;box-shadow:0 7px 18px rgba(9,22,52,.06);cursor:pointer;
+}
+.choiceIcon{width:46px;height:46px;border-radius:8px;display:grid;place-items:center;font-size:22px;margin-bottom:10px}
+.choice h3{margin:0 0 4px;font-size:18px;color:var(--text)}
+.choice p{margin:0;color:#667084;font-size:13px;line-height:1.45}
+.arrow{position:absolute;left:15px;top:24px;color:#aab2bf;font-weight:900}
+.miniNav{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tile{border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px;min-height:84px;cursor:pointer}
+.tile strong{display:block;font-size:14px;color:var(--text)}.tile span{display:block;font-size:11px;color:var(--muted);line-height:1.35;margin-top:3px}
+.form{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:13px}
+.label{color:#667084;font-size:11px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;margin:10px 0 6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.inputLike{
+  min-height:45px;border:1px solid rgba(11,23,54,.11);border-radius:8px;background:#fffdf9;padding:12px;
+  font-size:14px;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.toggles{display:grid;gap:8px;margin-top:12px}
+.toggle{min-height:42px;background:#faf7f0;border:1px solid #eee2cf;border-radius:8px;padding:9px 11px;display:flex;align-items:center;justify-content:space-between;color:#263348;font-size:13px}
+.switch{width:42px;height:24px;border-radius:12px;background:var(--navy);position:relative}
+.switch:after{content:"";position:absolute;width:18px;height:18px;border-radius:9px;background:#fff;left:3px;top:3px}
+.btn{
+  min-height:48px;border-radius:8px;border:0;background:var(--navy);color:#fff;font-size:15px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;width:100%;padding:0 14px;
+}
+.btn.secondary{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.btn.green{background:var(--green)}.btn.rose{background:var(--rose)}
+.btn.small{min-height:39px;font-size:13px;width:auto;padding:0 13px}
+.card{
+  background:#fff;border:1px solid rgba(11,23,54,.08);border-radius:8px;padding:14px;margin-bottom:11px;
+  box-shadow:0 7px 19px rgba(9,22,52,.06);
+}
+.cardTop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px}
+.name{font-size:16px;font-weight:900;color:var(--text)}
+.mini{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;white-space:nowrap}
+.pill.green{background:var(--greenBg);color:var(--green)}.pill.gold{background:#fff4d7;color:var(--goldDark)}
+.pill.blue{background:var(--blueBg);color:var(--blue)}.pill.rose{background:var(--roseBg);color:var(--rose)}
+.pill.purple{background:var(--purpleBg);color:var(--purple)}
+.cardChips{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.cardChip{border:1px solid #eadfcf;background:#fff9ed;border-radius:7px;color:var(--goldDark);font-size:11px;font-weight:800;padding:4px 8px}
+.note{background:#f7fafc;border:1px solid #e6edf5;border-radius:8px;color:#586477;font-size:12px;line-height:1.45;padding:9px 10px;margin:8px 0 10px}
+.actions{display:flex;gap:8px;margin-top:10px}
+.empty{text-align:center;background:#fff;border:1px dashed #dbcdb7;border-radius:8px;padding:22px 16px;color:#657085}
+.empty strong{display:block;color:var(--text);font-size:16px;margin-bottom:5px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:10px 12px;background:#fffdf8;border-bottom:1px solid var(--line)}
+.tab{min-height:34px;border-radius:8px;border:1px solid #eadfcf;background:#fff;color:#667084;font-size:12px;font-weight:900;cursor:pointer}
+.tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.modalShade{position:absolute;inset:26px 0 0;background:rgba(11,23,54,.24);display:none;align-items:flex-end;z-index:9}
+.modalShade.active{display:flex}
+.sheet{width:100%;max-height:690px;overflow:auto;background:#fff;border-radius:24px 24px 0 0;padding:18px 16px 24px;box-shadow:0 -14px 30px rgba(0,0,0,.16)}
+.sheetHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.sheetTitle{font-size:20px;font-weight:900;color:var(--text)}
+.close{font-size:22px;color:#7a8494;cursor:pointer}
+.success{text-align:center;padding:18px 12px 10px}
+.successIcon{width:66px;height:66px;border-radius:33px;background:var(--greenBg);color:var(--green);display:grid;place-items:center;margin:0 auto 12px;font-size:32px}
+.chatList{padding:14px 14px 90px}.bubble{max-width:78%;border-radius:18px;padding:10px 13px;margin:8px 0;font-size:14px;line-height:1.4}
+.bubble.them{background:#fff;border:1px solid rgba(11,23,54,.08)}.bubble.me{background:var(--navy);color:#fff;margin-right:auto}
+.time{display:block;font-size:10px;color:#97a1b2;margin-top:4px}.bubble.me .time{color:rgba(255,255,255,.58)}
+.composerBar{position:sticky;bottom:0;display:flex;gap:8px;padding:10px 12px;background:#fff;border-top:1px solid var(--line)}
+.composerInput{flex:1;min-height:42px;border-radius:21px;border:1px solid var(--line);background:#f7f2e9;display:flex;align-items:center;color:#7a8494;padding:0 14px;font-size:13px}
+.side{display:grid;gap:14px}.panel{background:#fffdf8;border:1px solid #ded2be;border-radius:16px;padding:16px}
+.panel h2{margin:0 0 8px;font-size:18px}.panel p{margin:0;color:#5f6878;font-size:13px;line-height:1.55}
+.flowBtns{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}
+.flowBtn{border:1px solid #e4d8c4;border-radius:10px;background:#fff;color:var(--navy);min-height:42px;font-weight:900;cursor:pointer}
+.bullets{margin:10px 0 0;padding:0 20px 0 0;color:#4f5a6b;font-size:13px;line-height:1.65}
+@media(max-width:900px){.intro{display:block}.legend{margin-top:12px;min-width:0}.layout{grid-template-columns:1fr}.phone{position:relative;top:auto;margin:0 auto;width:370px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="intro">
+    <div>
+      <h1>מוקאפ מעודכן - קהילה כשער לאירוח</h1>
+      <p class="lead">הגרסה הזו כוללת גם את החלטת הניווט החדשה וגם טיפול עיצובי: אין אריח אירוח בתפריט היעד, אין צ׳יפ אירוח שמפר את חוקי הפיד, ויש באנר קהילתי שמוביל למסך אירוח ייעודי ומלוטש.</p>
+    </div>
+    <div class="legend">לחץ בתוך הטלפון או בכפתורים בצד. זה מוקאפ בלבד ולא משנה את קוד האפליקציה.</div>
+  </div>
+
+  <div class="layout">
+    <div class="phone" id="phone">
+      <div class="status">9:41</div>
+
+      <section class="screen active" data-screen="destination">
+        <div class="header">
+          <div class="top">
+            <button class="iconBtn">‹</button>
+            <div class="titleBlock">
+              <div class="eyebrow">DESTINATION</div>
+              <div class="title">פריז</div>
+              <div class="sub">צרפת · שירותים יהודיים סביבך</div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="hero"><h2>פריז</h2><p>מסעדות, בתי כנסת, מניינים וקהילה מקומית</p></div>
+          <div class="sectionTitle">שירותים ביעד</div>
+          <div class="serviceGrid">
+            <div class="service"><div class="serviceIcon" style="background:var(--greenBg);color:var(--green)">⌘</div><strong>מסעדות כשרות</strong><span>מקומות, כשרות ושעות פתיחה</span></div>
+            <div class="service"><div class="serviceIcon" style="background:var(--purpleBg);color:var(--purple)">⌂</div><strong>בתי כנסת</strong><span>כתובות, נוסחים ופרטי קשר</span></div>
+            <div class="service"><div class="serviceIcon" style="background:var(--orangeBg);color:var(--orange)">◎</div><strong>מניינים</strong><span>תפילות קרובות והצטרפות</span></div>
+            <div class="service" data-go="community"><div class="serviceIcon" style="background:var(--blueBg);color:var(--blue)">◌</div><strong>קהילה</strong><span>שאלות, עדכונים וגם כניסה לאירוח</span></div>
+            <div class="service"><div class="serviceIcon" style="background:#eaf7f5;color:#0f766e">⌖</div><strong>מפה</strong><span>כל המקומות סביבך</span></div>
+            <div class="service"><div class="serviceIcon" style="background:#fff4d7;color:var(--goldDark)">✦</div><strong>שמורים</strong><span>המקומות ששמרת</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="community">
+        <div class="header">
+          <div class="top">
+            <button class="iconBtn" data-go="destination">‹</button>
+            <div class="titleBlock">
+              <div class="eyebrow">COMMUNITY</div>
+              <div class="title">קהילת פריז</div>
+              <div class="sub">פיד שאלות ועדכונים. אירוח נכנס דרך הבאנר, לא דרך פילטר.</div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="communityComposer">
+            <div class="avatar">י</div>
+            <div class="composerText">שאל שאלה או שתף עדכון קהילתי...</div>
+            <button class="btn small" style="width:58px;padding:0">פרסם</button>
+          </div>
+          <div class="hostingBanner" data-go="hostingHub">
+            <div class="bannerTop">
+              <div class="bannerIcon">⌂</div>
+              <div>
+                <div class="bannerTitle">מחפשים אירוח או רוצים לארח?</div>
+                <div class="bannerText">פתח מסלול מסודר עם תאריכים, בקשות, אישורים וצ׳אט פרטי. הפיד נשאר לפוסטים רגילים.</div>
+              </div>
+            </div>
+            <div class="bannerCta"><span>פתח את מרכז האירוח בפריז</span><span>‹</span></div>
+          </div>
+          <div class="chips">
+            <span class="chip active">הכל</span>
+            <span class="chip">שאלות</span>
+            <span class="chip">כשרות</span>
+            <span class="chip">מניינים</span>
+            <span class="chip">עדכונים</span>
+          </div>
+          <div class="post">
+            <div class="postHead"><div class="avatar" style="background:var(--blue)">א</div><div><div class="postName">אבי לוי</div><div class="postMeta">לפני 12 דקות · שאלה</div></div></div>
+            <p>מישהו יודע אם המסעדה ליד הרובע ה־17 פתוחה גם אחרי 21:00 היום?</p>
+            <span class="tag blue">כשרות</span>
+          </div>
+          <div class="post">
+            <div class="postHead"><div class="avatar" style="background:var(--green)">מ</div><div><div class="postName">מרים כהן</div><div class="postMeta">לפני שעה · עדכון</div></div></div>
+            <p>יש מנחה וערבית היום בבית הכנסת הגדול בשעה 19:35. כדאי להגיע כמה דקות לפני.</p>
+            <span class="tag gold">מניינים</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="hostingHub">
+        <div class="header">
+          <div class="top">
+            <button class="iconBtn" data-go="community">‹</button>
+            <div class="titleBlock">
+              <div class="eyebrow">HOSTING</div>
+              <div class="title">אירוח בפריז</div>
+              <div class="sub">מערכת נפרדת מהפיד: בקשות, הצעות, אישורים וצ׳אט</div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="hubHero">
+            <h2>חיבור בין מטיילים למשפחות</h2>
+            <p>בחר מסלול. כל בקשה נשמרת עם סטטוס ברור, ופרטי קשר מלאים נפתחים רק אחרי אישור.</p>
+            <div class="stats">
+              <div class="stat"><strong>4</strong><span>מארחים זמינים</span></div>
+              <div class="stat"><strong>2</strong><span>מחפשים אירוח</span></div>
+              <div class="stat"><strong>1</strong><span>בקשה ממתינה</span></div>
+            </div>
+          </div>
+          <div class="sectionTitle">בחר פעולה</div>
+          <div class="choice" data-go="guest">
+            <div class="choiceIcon" style="background:var(--blueBg);color:var(--blue)">⌕</div>
+            <h3>אני מחפש אירוח</h3>
+            <p>מצא משפחה לפי תאריכים, כמות אורחים, שבת וילדים.</p>
+            <div class="arrow">›</div>
+          </div>
+          <div class="choice" data-go="host">
+            <div class="choiceIcon" style="background:var(--greenBg);color:var(--green)">⌂</div>
+            <h3>אני רוצה לארח</h3>
+            <p>ענה לבקשות פתוחות או פרסם הצעת אירוח למטיילים.</p>
+            <div class="arrow">›</div>
+          </div>
+          <div class="miniNav">
+            <div class="tile" data-go="activity"><strong>מרכז הפעילות שלי</strong><span>בקשות, הצעות וצ׳אטים במקום אחד</span></div>
+            <div class="tile" data-go="chat"><strong>צ׳אט מאושר</strong><span>דוגמה לשיחה אחרי אישור אירוח</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="guest">
+        <div class="header"><div class="top"><button class="iconBtn" data-go="hostingHub">‹</button><div class="titleBlock"><div class="eyebrow">GUEST</div><div class="title">חיפוש אירוח</div><div class="sub">פריז · חיפוש מסודר, לא פוסט חופשי</div></div></div></div>
+        <div class="body">
+          <div class="form">
+            <div class="row2"><div><div class="label">הגעה</div><div class="inputLike">י״ח תמוז <span>▾</span></div></div><div><div class="label">עזיבה</div><div class="inputLike">כ׳ תמוז <span>▾</span></div></div></div>
+            <div class="label">מספר אורחים</div><div class="inputLike">2 מבוגרים <span>−  +</span></div>
+            <div class="toggles"><div class="toggle"><span>אירוח לשבת</span><span class="switch"></span></div><div class="toggle"><span>מגיעים עם ילדים</span><span class="switch"></span></div></div>
+            <button class="btn" data-go="results">חפש מארחים</button>
+          </div>
+          <button class="btn secondary" data-go="postNeed">אין התאמה? פרסם בקשת אירוח</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="results">
+        <div class="header"><div class="top"><button class="iconBtn" data-go="guest">‹</button><div class="titleBlock"><div class="eyebrow">MATCHES</div><div class="title">מארחים זמינים</div><div class="sub">4 התאמות. פרטי קשר אחרי אישור.</div></div></div></div>
+        <div class="body">
+          <div class="card">
+            <div class="cardTop"><div><div class="name">משפחת כהן</div><div class="mini">רובע 16 · עד 4 אורחים</div></div><span class="pill green">מתאים לשבת</span></div>
+            <div class="cardChips"><span class="cardChip">ילדים בסדר</span><span class="cardChip">כשרות ביתית</span><span class="cardChip">קרוב לבית כנסת</span></div>
+            <div class="note">שמחים לארח זוג או משפחה קטנה לסעודת שבת ולינה לפי הצורך.</div>
+            <button class="btn" data-go="requestSheet">שלח בקשה</button>
+          </div>
+          <div class="card">
+            <div class="cardTop"><div><div class="name">דוד וליה</div><div class="mini">לה מארה · עד 2 אורחים</div></div><span class="pill gold">סעודת שבת</span></div>
+            <div class="cardChips"><span class="cardChip">עברית/צרפתית</span><span class="cardChip">כשר למהדרין</span></div>
+            <button class="btn secondary" data-go="requestSheet">בדוק זמינות</button>
+          </div>
+          <button class="btn secondary" data-go="postNeed">לא רואה התאמה? פרסם בקשה פתוחה</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="postNeed">
+        <div class="header"><div class="top"><button class="iconBtn" data-go="guest">‹</button><div class="titleBlock"><div class="eyebrow">NEED</div><div class="title">בקשת אירוח פתוחה</div><div class="sub">הבקשה תוצג למארחים, לא כפוסט בפיד</div></div></div></div>
+        <div class="body">
+          <div class="empty"><strong>כאן הבקשה הופכת לאובייקט מסודר</strong><div>יש לה תאריכים, כמות אורחים, סטטוס ואפשרות אישור וצ׳אט.</div></div>
+          <div class="form" style="margin-top:12px"><div class="label">הודעה למארחים</div><div class="inputLike" style="min-height:92px;align-items:flex-start">אנחנו זוג עם ילד, מחפשים סעודת שבת ולינה ללילה אחד.</div><button class="btn" data-go="needSuccess">פרסם בקשה</button></div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="host">
+        <div class="header"><div class="top"><button class="iconBtn" data-go="hostingHub">‹</button><div class="titleBlock"><div class="eyebrow">HOST</div><div class="title">מארחים בפריז</div><div class="sub">בקשות פתוחות קודם, הצעה פתוחה אחר כך</div></div></div></div>
+        <div class="body">
+          <div class="sectionTitle">משפחות שמחפשות אירוח</div>
+          <div class="card">
+            <div class="cardTop"><div><div class="name">שרה · 3 אורחים</div><div class="mini">י״ח-כ׳ תמוז · שבת · עם ילדים</div></div><span class="pill rose">ממתין למארח</span></div>
+            <div class="note">משפחה מישראל מחפשת סעודת שבת ואפשרות לינה קרובה לקהילה.</div>
+            <button class="btn green" data-go="hostConfirm">אני יכול לארח אותם</button>
+          </div>
+          <div class="sectionTitle">פרסם הצעה פתוחה</div>
+          <div class="form">
+            <div class="row2"><div><div class="label">זמין מ</div><div class="inputLike">י״ח תמוז</div></div><div><div class="label">זמין עד</div><div class="inputLike">כ״ז תמוז</div></div></div>
+            <div class="label">כמה אורחים?</div><div class="inputLike">עד 4 אורחים <span>−  +</span></div>
+            <div class="toggles"><div class="toggle"><span>כולל שבת</span><span class="switch"></span></div><div class="toggle"><span>ילדים מוזמנים</span><span class="switch"></span></div></div>
+            <button class="btn" data-go="offerSuccess">פרסם הצעה</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="activity">
+        <div class="header"><div class="top"><button class="iconBtn" data-go="hostingHub">‹</button><div class="titleBlock"><div class="eyebrow">MY HOSTING</div><div class="title">מרכז אירוח</div><div class="sub">סטטוסים ופעולות במקום אחד</div></div></div></div>
+        <div class="tabs"><button class="tab active">הכל</button><button class="tab">כאורח</button><button class="tab">כמארח</button></div>
+        <div class="body">
+          <div class="card"><div class="cardTop"><div><div class="name">בקשה למשפחת כהן</div><div class="mini">פריז · י״ח-כ׳ תמוז</div></div><span class="pill gold">ממתין לתשובה</span></div><div class="note">אם המארח יאשר, ייפתח צ׳אט פרטי אוטומטית.</div><div class="actions"><button class="btn secondary small">ערוך</button><button class="btn secondary small">בטל</button></div></div>
+          <div class="card"><div class="cardTop"><div><div class="name">שרה ומשפחה</div><div class="mini">אתה מארח · שבת הקרובה</div></div><span class="pill green">מאושר</span></div><div class="note">אפשר לתאם כתובת, שעה ופרטים אישיים בצ׳אט.</div><button class="btn" data-go="chat">פתח צ׳אט פרטי</button></div>
+          <div class="card"><div class="cardTop"><div><div class="name">הצעת אירוח פתוחה</div><div class="mini">עד 4 אורחים · פעילה עד כ״ז תמוז</div></div><span class="pill blue">פעילה</span></div><div class="actions"><button class="btn secondary small">עדכן</button><button class="btn secondary small">השבת</button></div></div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="chat">
+        <div class="header"><div class="top"><button class="iconBtn" data-go="activity">‹</button><div class="titleBlock"><div class="eyebrow">PRIVATE CHAT</div><div class="title">שרה ומשפחת לוי</div><div class="sub">אירוח מאושר · 2 מחוברים עכשיו</div></div><span class="pill green">פעיל</span></div></div>
+        <div class="chatList">
+          <div class="bubble them">שלום! תודה שאישרתם את האירוח. אנחנו מגיעים ביום שישי בצהריים.<span class="time">12:18</span></div>
+          <div class="bubble me">בשמחה. נשלח כתובת ושעת סעודה כאן בצ׳אט.<span class="time">12:20 · נראה</span></div>
+          <div class="bubble them">מעולה. יש משהו להביא?<span class="time">12:21</span></div>
+        </div>
+        <div class="composerBar"><div class="composerInput">כתוב הודעה...</div><button class="btn small" style="width:44px;padding:0">›</button></div>
+      </section>
+
+      <div class="modalShade" id="requestSheet">
+        <div class="sheet">
+          <div class="sheetHead"><div class="sheetTitle">שליחת בקשה למשפחת כהן</div><div class="close" data-close>×</div></div>
+          <div class="note">פרטי קשר מלאים ייחשפו רק אחרי אישור. עד אז זו בקשה מנוהלת עם סטטוס.</div>
+          <div class="row2"><div><div class="label">הגעה</div><div class="inputLike">י״ח תמוז</div></div><div><div class="label">עזיבה</div><div class="inputLike">כ׳ תמוז</div></div></div>
+          <div class="label">הודעה קצרה</div><div class="inputLike" style="min-height:82px;align-items:flex-start">שלום, נשמח להתארח בשבת. אנחנו זוג שמטייל בפריז.</div>
+          <button class="btn" data-go="requestSuccess">שלח בקשה</button>
+        </div>
+      </div>
+
+      <div class="modalShade" id="hostConfirm">
+        <div class="sheet">
+          <div class="sheetHead"><div class="sheetTitle">אישור אירוח</div><div class="close" data-close>×</div></div>
+          <div class="note">אחרי האישור, האורח יקבל התראה וייפתח צ׳אט פרטי לתיאום.</div>
+          <div class="card"><div class="name">שרה · 3 אורחים</div><div class="mini">שבת הקרובה · עם ילדים · מחפשים סעודה ולינה</div></div>
+          <button class="btn green" data-go="hostSuccess">כן, אני יכול לארח</button>
+          <button class="btn secondary" style="margin-top:8px" data-close>עדיין לא</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="panel">
+        <h2>ניווט במוקאפ</h2>
+        <p>הגרסה הזו מדגימה גם את ההסרה של אירוח מתפריט היעד וגם את העיצוב החדש למסכי האירוח.</p>
+        <div class="flowBtns">
+          <button class="flowBtn" data-go="destination">יעד</button>
+          <button class="flowBtn" data-go="community">קהילה</button>
+          <button class="flowBtn" data-go="hostingHub">אירוח</button>
+          <button class="flowBtn" data-go="guest">אורח</button>
+          <button class="flowBtn" data-go="host">מארח</button>
+          <button class="flowBtn" data-go="activity">פעילות</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>החלטות UX שמופיעות כאן</h2>
+        <ul class="bullets">
+          <li>אין אריח אירוח במסך היעד. קהילה היא הכניסה היחידה.</li>
+          <li>באנר האירוח נמצא מעל הפיד, לא בתוך הצ׳יפים.</li>
+          <li>צ׳יפים נשארים פילטרים בלבד, והקומפוזר נשאר לפוסטים בלבד.</li>
+          <li>אירוח עצמו נשאר מנגנון מסודר עם תאריכים, אישורים וצ׳אט.</li>
+          <li>העיצוב של האירוח חם יותר, אבל עדיין צפוי ותפעולי.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>מה לבדוק</h2>
+        <p>נסה: יעד → קהילה → באנר אירוח → אני מחפש אירוח → תוצאות → שליחת בקשה. אחר כך חזור לאירוח ונסה את מסלול המארח.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const screens=[...document.querySelectorAll('.screen')];
+const modals=[...document.querySelectorAll('.modalShade')];
+function showScreen(name){
+  modals.forEach(m=>m.classList.remove('active'));
+  if(name==='requestSheet'||name==='hostConfirm'){document.getElementById(name).classList.add('active');return}
+  if(name==='requestSuccess'){showSuccess('הבקשה נשלחה','היא תופיע במרכז האירוח עד שהמארח יענה.','activity');return}
+  if(name==='needSuccess'){showSuccess('בקשת האירוח פורסמה','מארחים בפריז יוכלו לענות לה מתוך מסך האירוח.','activity');return}
+  if(name==='offerSuccess'){showSuccess('הצעת האירוח פורסמה','מטיילים יוכלו לשלוח בקשה מסודרת אליך.','activity');return}
+  if(name==='hostSuccess'){showSuccess('האירוח אושר','הצ׳אט הפרטי נפתח לתיאום הפרטים.','chat');return}
+  screens.forEach(s=>s.classList.toggle('active',s.dataset.screen===name));
+}
+function showSuccess(title,text,next){
+  const phone=document.getElementById('phone');
+  let modal=document.getElementById('successModal');
+  if(!modal){modal=document.createElement('div');modal.className='modalShade';modal.id='successModal';phone.appendChild(modal)}
+  modal.innerHTML='<div class="sheet"><div class="success"><div class="successIcon">✓</div><div class="sheetTitle">'+title+'</div><p class="lead" style="margin:8px 0 16px">'+text+'</p><button class="btn" data-go="'+next+'">המשך</button></div></div>';
+  modal.classList.add('active');
+}
+document.addEventListener('click',e=>{
+  const go=e.target.closest('[data-go]');
+  if(go)showScreen(go.dataset.go);
+  if(e.target.closest('[data-close]'))modals.forEach(m=>m.classList.remove('active'));
+  const tab=e.target.closest('.tab');
+  if(tab){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active')}
+});
+</script>
+</body>
+</html>

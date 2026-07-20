@@ -5,6 +5,10 @@ import {
   Put,
   Post,
   Delete,
+  Param,
+  ParseIntPipe,
+  HttpCode,
+  HttpStatus,
   UseGuards,
   UseInterceptors,
   Request,
@@ -95,5 +99,25 @@ export class UsersController {
   @Put('me/push-token')
   async savePushToken(@Request() req, @Body() body: { token: string }) {
     return this.usersService.savePushToken(req.user.sub, body.token);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('me/blocked')
+  async listBlocked(@Request() req) {
+    return this.usersService.listBlocked(req.user.sub);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/block')
+  @HttpCode(HttpStatus.OK)
+  async blockUser(@Request() req, @Param('id', ParseIntPipe) id: number) {
+    return this.usersService.blockUser(req.user.sub, id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id/block')
+  @HttpCode(HttpStatus.OK)
+  async unblockUser(@Request() req, @Param('id', ParseIntPipe) id: number) {
+    return this.usersService.unblockUser(req.user.sub, id);
   }
 }

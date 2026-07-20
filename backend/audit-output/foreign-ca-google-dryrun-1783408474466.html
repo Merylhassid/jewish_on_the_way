@@ -1,0 +1,733 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run CA</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — CA</h1>
+<div class="sum">
+שורות שנבדקו: <b>62</b> מתוך 62<br>
+✅ בטוח נכון: <b>54</b> · ❓ אולי: <b>1</b> · ❌ לא נמצא/לא נכון: <b>7</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 155 · Details: 147 (147 חדשים, 10 cache) · Google estimate max: ~$2.50 · LLM: $0.015 (12)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 54</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>4708</td>
+      <td><b>Schwartz's Deli</b><div class="muted">Montreal · Canada</div></td>
+      <td>3895 Boul Saint-Laurent, Montreal</td>
+      <td>Schwartz's Deli</td>
+      <td>3895 Boul. Saint-Laurent, Montréal, QC H2W 1Y4, Canada</td>
+      <td>4.4 (26004)</td>
+      <td>(514) 842-4813</td>
+      <td class="photo">places/ChIJEWsAWDMayUwRQPiLFOWhYdk/photos/AaVGc3nzRnOOzhWUmrkVaTdSYff38Tuw0KM6V8GArOeTyQPSBs2qrr-DMdeh1zAVNy20oqgZ-P0b_lQs0wgNvJJ_5o8S509xRyAOg8RTRLaxGKXQniFF-mW-3hEQobjCecDukiJohrzJ_PqnLUAnJCLhDB2FPP-ydLk1I7TJy6WOaAGoKEw_vb3sX2uHvyaQ5eXM_sNtUi1eQr-RxO-P2VSljIL1q6i-SjTHM1CYPH5EazAmFeAu6eqorVW03HMvQsLGh1q7KqALNbPwVOMRdn117Zy1mtmYXWIO8DtoG8Xe2FHr3uyVeBQgT0RcLlYtURXMKRNRjoVPSHtSfWdvhTBZRIdtpCb524VKuQiNM32MshC_0k58nDKlt3SUO1jq2FI3kdUG6VhA6jFt_wPKpwlRZB5n1clzzCGKX1hldPD08y_xGGF6</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Schwartz's%20Deli%203895%20Boul%20Saint-Laurent%2C%20Montreal" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJEWsAWDMayUwRQPiLFOWhYdk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>4709</td>
+      <td><b>Beauty's Luncheonette</b><div class="muted">Montreal · Canada</div></td>
+      <td>93 Mont-Royal Ave W, Montreal</td>
+      <td>Beauty's Restaurant</td>
+      <td>93 Avenue du Mont-Royal O, Montréal, QC H2T 2S5, Canada</td>
+      <td>4.1 (2143)</td>
+      <td>(514) 849-8883</td>
+      <td class="photo">places/ChIJXRSWOdMbyUwRRUrUymLm4YQ/photos/AaVGc3mAt31r_iL4zkTL38NzJ22VNI_LB2emiEPR9ZHJT3JPVfq1okBqc1ZPykmNqA7ygI26swXtXTP08OGrgWKUY-hC7h2KCzDIvGJ13QmZGYgiAycSG45MND9IcrZSAbXF2kfI0doqNEFB-WcxdPsWpwNab2uBq3_-j36oyhhP7gKxWAq9pZyie5xsXlj59Owb_rwNnGvVyWTfFv-h3d1_8FvAuDFabcLRMOp5BVzd4hbMmeNE7gsIvgdVSZiwWuD-JVcwJuQikKbS-8IhHCxCIqeFBhRWdGPFyNpEsq4iGhGI7nZEKfTpEPTof0sMhcLygCiqt2H-MswV2j-Q_QY4i7CF8AjRVffJBooTqvNl0QoeSUlvscOwzALhdqeZ37wypOzyEVYR6dD_EvgqjDoQmzmfenIN6-CQO-Tiq-pFSjapRbdlyjN2jct7nKdY-CzI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Beauty's%20Luncheonette%2093%20Mont-Royal%20Ave%20W%2C%20Montreal" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJXRSWOdMbyUwRRUrUymLm4YQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>4710</td>
+      <td><b>Snowdon Deli</b><div class="muted">Montreal · Canada</div></td>
+      <td>5265 Décarie Blvd, Montreal</td>
+      <td>Snowdon Deli</td>
+      <td>5265 Bd Décarie, Montréal, QC H3W 3C2, Canada</td>
+      <td>4.5 (1778)</td>
+      <td>(514) 488-9129</td>
+      <td class="photo">places/ChIJ4eLlaFgXyUwRcN5uqsvOxRI/photos/AaVGc3lmST37cKJ5V80_EYoBYPPWdFdmJoWFrqKp3dEBUZP2ULV8eryBZ3b1xZm69CD913Tc_f0QgfQlKW2O_1KSRJaEFDjQfHvIACwJl51hqpocqc_CIPfnTu9ZkyLq4jlzoEarZol0Wv4RFiTNlnDwJTG0LCHImUoCXiky7Zc48WrbnZfZU1nOc9mj-XXr5cUC6TY9Xr9CMUxJHNjR1GuiKlfVgBo71LieB4GsEreQNfM35ugCKPTONIEeZD94TPHW0mAKWAi5arFq6nDxTHvdjZYM266Z4pU9UXziPcPQpQnEpxohVFiuLm3VJ3x9WGLlLD5-aLoJpSYcCWrfvTneq6GXxisV4cmHUYMfOBJQfYvD4TLjufZIpyIlOcRacezka3wAmSpN3D3hDcncKoBYuA-BT0E77vSUAsq3LyDpWRWMwA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Snowdon%20Deli%205265%20D%C3%A9carie%20Blvd%2C%20Montreal" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ4eLlaFgXyUwRcN5uqsvOxRI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8009</td>
+      <td><b>Benny and Fils</b><div class="muted">Montreal · Canada</div></td>
+      <td>4944 Queen Mary Road, Montreal, QC H3W 1X3, Canada</td>
+      <td>Benny &amp; Fils</td>
+      <td>4944 Ch. Queen Mary, Montréal, QC H3W 1X3, Canada</td>
+      <td>4.2 (470)</td>
+      <td>(514) 735-5858</td>
+      <td class="photo">places/ChIJacTcnhIZyUwRN1me5FP5zDA/photos/AaVGc3lv9F2n2RFoG3n7KVH8CJcCpgwRhFNIh7yRxVG0yxAXG7YRXajFcxA_yTEVqr3wc5sZdtSxh676Slk_f2n9OLNVNdhHNEnEcxifun4IJYwZA4AZM1CWX7WFiy2mmaRsVRtCtHwC7S4O-WNBiEwgWLq1z8BXybzS3jT2PCOzRN7MLTNSZuzkh8kNCH_rA1LMEl0IDtBkz3lIjF_5CpyGOlZMz9rI7tf3j8vL-_5pxfS3yE6KNKGXrO7hUL-zwvCwL6luxgJCIPrO9FXE9cGKHMQXS-LqQP4z0UngRPV4U08gHq8hVc7IrkB-DwdKgQ4qO6O4o0gIlUQmEUeu-U-inef3O80s6g--ZXuElY_zlm-_LBq2lWlgXMmcst41g3k4IBcrhD5VPFZ521ZGwErB5Zqxucje6rLHleA3U_U7uwg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Benny%20and%20Fils%204944%20Queen%20Mary%20Road%2C%20Montreal%2C%20QC%20H3W%201X3%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJacTcnhIZyUwRN1me5FP5zDA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8010</td>
+      <td><b>Boucherie Charcuterie Eden</b><div class="muted">Montreal · Canada</div></td>
+      <td>5525 Westminster Montreal,, H4W 2J2, Canada</td>
+      <td>Boucherie Eden MK GLATT KOSHER &amp; KSR GLATT KOSHER</td>
+      <td>5525 Av. Westminster, Côte Saint-Luc, QC H4W 2J2, Canada</td>
+      <td>4.6 (91)</td>
+      <td>(514) 484-7070</td>
+      <td class="photo">places/ChIJN5J4mRkXyUwRjG8nlDYK7w4/photos/AaVGc3kXhsRLci3uupmSkHltHA83UOZrOIQko8x2UDm8Ame5PBtYczBWiCjarcTf2yoXt6cMs52G2v-rTEg5tEKvmnxGJliWzkuFuRjCki-LlWhgdYAA6KA9FEENDOqPFpuh31dPbkB-FBIOtQ6TJDWGJId8RPFD3zB8qtLIzHRT9J1_XoxyemR0Nf7_u6wMsI9NpN4jzYvy4TX098ymOwwTPEdr3wjawNuHPDboxMI7ODKK3vsB7ewxlaN76q_VSfN3oQLxqhl5SwyR7PiQ4XK3fOcBCjPT3nZiBZOrKHNkwFfjgAnYix1qcDiNf0c7rRx-cXXDTa8K8_apRESHQ7v07D-iwORUjCZnzyWrb3zK0R46xQmq-_lpS1v1vFqVd4wZvu2AfeOZjt9fdxMi-2XFRMhsmTzPfqU7HKI-MD4HQ6uk2g</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Boucherie%20Charcuterie%20Eden%205525%20Westminster%20Montreal%2C%2C%20H4W%202J2%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJN5J4mRkXyUwRjG8nlDYK7w4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8011</td>
+      <td><b>Broadway Pizza</b><div class="muted">Montreal · Canada</div></td>
+      <td>6965 Decarie Blvd,  Montreal, Quebec , H3W 0B6, Canada</td>
+      <td>Broadway Pizza (Kosher)</td>
+      <td>6965 Bd Décarie, Montréal, QC H3W 0B6, Canada</td>
+      <td>4.5 (126)</td>
+      <td>(438) 814-7789</td>
+      <td class="photo">places/ChIJnRjBid4ZyUwRATVviAUt__g/photos/AaVGc3mu7GdRAux7mO1yhPNgAOyK5GkMz6Q_t6D__e_plwBuquWRhTm05l3JFn6fSVmRfuMEGF8cPeLo14w2vDZ5ujA1vpnne6nmWcZkqRrtFEO-mfEGeTVQpzc1VZWI7Sezb72zSCm82vRELGOp5oIGHW2nBk7xtF29I2eAOwLSo5QazQ6Pl-lBO6laSDoifTozB7zJ5eHH3KFyodzy-1Hd7SbiORozigCTMNqWp8kmJa9PRIN5FJnIFdzDL_N3smZwAoACJE7Nt6YAjZG7FsPy9kclXXXrL_3nC-hAzhKzNZB5vvkHlFxxp1L0nZxr387KSr1abF40ZUvOcf7_r1BeIr469vuxP_ThdBBslH_kwK1BD4lZi5ArRxfm7TajUHGEQ5iLigEUrCcCotGNdDRcZL6YGJzdS3-LCChg24epWe1y38hDfto0gcv4oCMPDm7z</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Broadway%20Pizza%206965%20Decarie%20Blvd%2C%20%20Montreal%2C%20Quebec%20%2C%20H3W%200B6%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJnRjBid4ZyUwRATVviAUt__g" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8012</td>
+      <td><b>BSTRO</b><div class="muted">Montreal · Canada</div></td>
+      <td>5663 Royalmount Avenue, Mount Royal, QC, Canada</td>
+      <td>BSTRO</td>
+      <td>5663 Av. Royalmount, Mont-Royal, QC H4P 2P9, Canada</td>
+      <td>4.5 (126)</td>
+      <td>(514) 731-1862</td>
+      <td class="photo">places/ChIJReKhWCoYyUwRmF2HPXNbuuE/photos/AaVGc3l3YtHWykqYRKBxezACIZk_W6k0IuspJHbSZQAmUMhvUHay48g7QoYa5YmFBJz1CryfiYyLCi7Y-3SCZtWPkMlv9gbIzn66mDXJfz8y92Ccj7ArTCKbBUq6Bo__rpNJsIofu4ebizy8G_24NGdSfbGsuqq6_P_q7AekA9HAciwjeTmZs2J-WXTv-YNoh5PLaTg870KdWluB_zk8j-geaDr7XyIlEl8OQCNnbX3sU-EJF819bEk6bKl648CpS-rn9wg81YjcoFyRL7tPzpy7keDt_nV7Ca0SWjKXxw7a0ES4YRkS71vQc6yktbDROfL638RHq91BFLXudbv5Lz_wW2WicfGZDR60v826KLSRGvtDbvHIW1i1dsgQkSrU1AtlD1cHWqnQc4aqLLF5iw5OugiRMu2_oI3LVWfZc8rZq697S_vL</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=BSTRO%205663%20Royalmount%20Avenue%2C%20Mount%20Royal%2C%20QC%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJReKhWCoYyUwRmF2HPXNbuuE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8013</td>
+      <td><b>Burger Ranch Montreal</b><div class="muted">Montreal · Canada</div></td>
+      <td>4800 Rue de la Peltrie Montreal, Quebec, H3W1K5, Canada</td>
+      <td>Le Ranch</td>
+      <td>2048 Rue Saint-Timothée, Montréal, QC H2L 3P6, Canada</td>
+      <td>5 (15)</td>
+      <td>06 60 28 44 52</td>
+      <td class="photo">places/ChIJQU3hVWcbyUwRcu-yFF48TmQ/photos/AaVGc3khZJPnz25HNpoFDVEHX4_AgNcT79viJCH-3kUCSDNMfgy7zxGjXsCdxr6BHAkYKjbStSXMzXurxfHvh9NmAEStONEi-OvI0ml0fHKabWNUMnw1cejsJKRbIZQBSfQoAj_v0xVKH-vLtY03_zF-qwf46SsqQcE_p1SVvxbhzMC1YTxdf4HbD3oHN7S69Y9tTbhsytN4hG7cxDOGm7n3a3oOBfd3M24wZswMQ490IiHYpIHoPY4LbRqjiBAJZ2qS-gx411az2dgCv8OHo2O91tKoMYQ5xgNH8kuNrlUXDCYED8k9kxbkBAs-ozq72pa1Uwf9hnekgM9HrN0rR9uVCdsWYP1fpFmCoLtG9CCIeqkbOrFW6oAvjUS89RwRUmReqf8fZCHGOC7KF7mq9R_pHA0Jfm1SmViPdYcWI_PpKqdpog</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Burger%20Ranch%20Montreal%204800%20Rue%20de%20la%20Peltrie%20Montreal%2C%20Quebec%2C%20H3W1K5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQU3hVWcbyUwRcu-yFF48TmQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8014</td>
+      <td><b>Cafe Navire</b><div class="muted">Montreal · Canada</div></td>
+      <td>1273 Ave Van Horne, Montreal, H2V 1K5, Quebec</td>
+      <td>Café Navire</td>
+      <td>1273 Av. Van Horne, Montréal, QC H2V 1K5, Canada</td>
+      <td>4.9 (204)</td>
+      <td>(514) 495-9734</td>
+      <td class="photo">places/ChIJ0XMzvWAZyUwRQh0y2GTqBNo/photos/AaVGc3kVDgDaTiesq50L-0GXjotVHfKK-Gy6Li_gwene_sVOARO5UWaweGSrgYtvDUsmmc2FxR--DcVjkyaY56I5gdOyyK3Cm6mbIG8q5hdyYniHqk-08qPzgDzdkxeeQ6R7_uxDoLd69XexXbhCGzaGWrcnfQUGvUjboBr7G_ve8FdlGrnKooQ4eZzWppdseY2Hilcz4ta1PN0clAm-foA1yHOEERZ1JrLsg_CLO-PHaPGdi6PzwtMhxOxyGWrnVhWAXNFjBuWIrOT6amt9bdtBYm34EzFV6CRkjsNLPcefdS-Wwz9LBAnvDKRCl53o3KJiiEsjxWMGEZS6JROOzzBh2xMOHvD7RmbOcuPM1gL6rTlt24at6_FKmrQZpQ3XYpS5vQ0zTor7JjrxG0Gs-z29wh2AXZf4jIzBIG8yS_zk39Z8rbLl</td>
+      <td class="reason">LLM אישר (0.95): זהו אותו מקום - שם זהה (Café Navire), כתובת זהה לחלוטין (1273 Van Horne), עיר זהה (Montreal), ממצא בית ודרך מדויקים. ההבדלים (Ave vs Av., Montreal vs Montréal) הם וריאציות כתיב בלבד בצרפתית ובאנגלית.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe%20Navire%201273%20Ave%20Van%20Horne%2C%20Montreal%2C%20H2V%201K5%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ0XMzvWAZyUwRQh0y2GTqBNo" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8015</td>
+      <td><b>Café de l'Avenue</b><div class="muted">Montreal · Canada</div></td>
+      <td>5800 Cavendish Boulevard, Côte Saint-Luc, QC H4W 2T5, Canada</td>
+      <td>L'Avenue</td>
+      <td>922 Avenue du Mont-Royal E, Montréal, QC H2J 1X1, Canada</td>
+      <td>4.6 (4888)</td>
+      <td>(514) 523-8780</td>
+      <td class="photo">places/ChIJP2FLcdAbyUwRIsnz3H1nz-k/photos/AaVGc3kh34fOmal4DX-9FKBPgc6k1TK-eH_Y8T88rLvY5bJzsnOC374WB4sd0iQjMb487kNmvAiNUXk2pB3EUo1-b-qfZb22fIikWMC1AyQY30afrYREmxzCYzhcqS3WIKbuCCCHaf5UxGC2LYOjbM5A2HmVMHyGGh6DhWCnhb2UTh5C1tBB-FTigba49a1EBlxL1okQ89JGdYvvTE8BpDc5WGYDP3Tuy-QZjSBjprejnyTMaTdUkvlxAnAxG_qYQAddMwr1hzTTWR8M9WnTD39gfM_rl-5uEs0ol8zYyKPJmHetrx7n9vaBUW2SmmyDeoUHwQqNu_W0V5DjE1EYephkJsHlpvPR4BrdiRXjO64rYJO_gME3Z08pmwQOXhitmmQRTAkeSqubclHpA5UDinUPjkd3JsXujwQrZoAuqbTy4D7V4Q</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20de%20l'Avenue%205800%20Cavendish%20Boulevard%2C%20C%C3%B4te%20Saint-Luc%2C%20QC%20H4W%202T5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJP2FLcdAbyUwRIsnz3H1nz-k" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8016</td>
+      <td><b>Chanoch's Sushi</b><div class="muted">Montreal · Canada</div></td>
+      <td>6947 Avenue Wilderton, Montréal, QC H3S 2M4, Canada</td>
+      <td>Chanoch sushi</td>
+      <td>6947 Av. Wilderton, Montréal, QC H3S 2M4, Canada</td>
+      <td>4.8 (143)</td>
+      <td>(514) 616-3879</td>
+      <td class="photo">places/ChIJ_xfU77wZyUwRtvzejmHYV64/photos/AaVGc3ndnH_sh6IPQrdVXqWJXeIT4jJD5YVoGSqw1wEBC6EeMsepW0kWRDvQdyFmCZamD0pxmdUFsg_EEvFxqZ3NV_QTJ2D_taPUmi4e65_MDbeHPyBEChh1R7Srcba08-LxvH_q6UgzKnCKlJaP_Cc_N685c3qQAbCJ9U3QeDK8e93Nli-QRrrCdro_ptSkGkjC4IXGTUSO7rA28SW8lUXlstMQQLKs4SQjhHvESO1FuJKCjA5XWlGkkcJ75NZxBduenGynsdM4HpGTgzZ_Zw_-n7gfQpZa2oc1Qn3g8sWTGSnJbEeX4wc85UnjDzpWXv_z4VD1Sng147QWcG6Du68OmEdkQidioZz6HNHc2C8-JFbp1SbLG6CXuVJaxCd9MJSX-b1KNzcSg7Qx5EM8MWrg7jNDBYNj7oSH4EeHGJW3P0QRlw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chanoch's%20Sushi%206947%20Avenue%20Wilderton%2C%20Montr%C3%A9al%2C%20QC%20H3S%202M4%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ_xfU77wZyUwRtvzejmHYV64" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8017</td>
+      <td><b>Chez Benny Express</b><div class="muted">Montreal · Canada</div></td>
+      <td>2075 Rue Saint Louis   , Montreal, QC H4M 1P1, Canada</td>
+      <td>Chez Benny Express</td>
+      <td>2159 Rue Saint-Louis, Saint-Laurent, QC H4M 1P1, Canada</td>
+      <td>4.3 (392)</td>
+      <td>(514) 507-2020</td>
+      <td class="photo">places/ChIJ6dBOZiMYyUwRpjJ4EpwMlkU/photos/AaVGc3kxbeJEa48pM480XSPVo-SiPGaSH98DukLGA4HqFqXXmsW8t4GYyhL8gSoqh0ikEAPVb2e4kXkjLMzD6oPNhIkbevcA0upV-nLOjpYLiW46zOIFluBD49fCQPrkpGxCUg8WHZAmm7tIab4oqXbdx6lMmQ4I-FgLH-KgeOgb7CS0Vewqq73bkXfOXEIk57DgTVJr2SGiz_KseC5pmRcMXwDOI8JHjzjlGgxrkQLB3NejMGiPHEgybvfEtOrme3UDOWAKNH87fXRYROaTl-bhWNmUa4WvgielRc_JvhP5NbTiMcB5SAC-wNXl3Kr-frMJ2yjND8ijLu54JKx7zswmun_6WmI67jCpNBFRKBax3LIBFsXhOW8L_kwgztXGtcKIe9ezIvaYDohCwQZdpUfZ3QZtRwO39e9oZGEt-CxeL1JPGiI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chez%20Benny%20Express%202075%20Rue%20Saint%20Louis%20%20%20%2C%20Montreal%2C%20QC%20H4M%201P1%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ6dBOZiMYyUwRpjJ4EpwMlkU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8018</td>
+      <td><b>Chiyoko</b><div class="muted">Montreal · Canada</div></td>
+      <td>2113 St-Louis, Montreal, QC</td>
+      <td>CHIYOKO Sushi Bar &amp; Steakhouse</td>
+      <td>2113 Rue Saint-Louis, Saint-Laurent, QC H4L 1P1, Canada</td>
+      <td>4.3 (481)</td>
+      <td>(514) 225-4222</td>
+      <td class="photo">places/ChIJh5s4gjkYyUwRBQZkzVHMtSs/photos/AaVGc3nlfnpXyB5G24qI94cTbux5vaNVN74ZOTzcfLGZ-rWnQmqNPpyqT9zzmXhsguLgnLnGZ6cFtLl-fkOmafHJPNNaIC0NOCxJPaaPuk8LLpkWhczKuZTA5MKTT1x5pOlihtcsYsyWtyBABAel7if_OC_LGsXXW7LmDqEuleC7V5E4rZclS4zN2RmbYACCLGv-gu5jT53J2Ok2PXru9qvmB24ftEwjdnQ37XJTGv5_yZiVL08lKV4Gz0THRASE3ZgLAg5EKTYIrMvxB8TLgQvI76k2vkdJPGy-xnr-TtKnUukQaBZ-uLOA9ViZe2dJbbXTLyH2p8-RX_aa0cItxfHakP1dSYnC8X7vC6s7TBmhAELUXGd009t5MGEVkpqEVkrOk-65dGEyqyAQFuGjwysBqwQhycbfvjFbvxePmslK25CLdQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chiyoko%202113%20St-Louis%2C%20Montreal%2C%20QC" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJh5s4gjkYyUwRBQZkzVHMtSs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8019</td>
+      <td><b>Chops Resto Bar</b><div class="muted">Montreal · Canada</div></td>
+      <td>5322 Chemin Queen Mary,, Montréal, QC H3X 1T7, Canada</td>
+      <td>Chops Resto Bar</td>
+      <td>5322 Ch. Queen Mary, Montréal, QC H3X 1T7, Canada</td>
+      <td>4.2 (539)</td>
+      <td>(514) 759-4677</td>
+      <td class="photo">places/ChIJ79fsc1cXyUwR_WMMHgoxjYc/photos/AaVGc3mS2Ce3Rtaoqax_ZPIcUM6umbM0SYfxvvUE-GeF9SUS47HKDxdr6t4LaGT2BPoL-w2DnA3-MnGctnMrnnZ4qOp5oill5ZASpYYzTrD0ZH935dokIxZV07cJPT2hNbRUWQuf45dxGVicC1gPSCKvlJLnZkYkSscLyfGHD1PF3pJX_Hb5_CoTkl88Eu5eAgnq_1YKFYHdITeMzv0AKzpdHefTWd4Pv-ANj8IHh5D-OXDnrP73VYqqcL5-0IMIgZz1uQDzhk56YDLv4VtFgZr6siJSOZF4zvydiidN3yJ6TKCsClxNror87c7c-szijuNVWaLS9_w6LfJ1w42xYMv6PglAztz_GpFqVOujbx0FIxuWJl4v8L9RFgzlGW6oVAYjZS1Ek26w8ew_taK9m0_P71GQapJWHOdCm2Rol1UVQxzHoQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chops%20Resto%20Bar%205322%20Chemin%20Queen%20Mary%2C%2C%20Montr%C3%A9al%2C%20QC%20H3X%201T7%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ79fsc1cXyUwR_WMMHgoxjYc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8020</td>
+      <td><b>City Grill</b><div class="muted">Montreal · Canada</div></td>
+      <td>5055 Queen Mary Road, Montreal, QC H3W 1G4, Canada</td>
+      <td>City Grill Kosher Mk</td>
+      <td>5055 Ch. Queen Mary, Montréal, QC H3W 1X4, Canada</td>
+      <td>4 (149)</td>
+      <td>(514) 543-5055</td>
+      <td class="photo">places/ChIJ47bvXv0ZyUwRAdrFsoPfJ40/photos/AaVGc3mHY33BxpqxM1rp-BTzbLDcBE0jJNrPGeqKPWPB6ZiNrqLjHJu4R8X7cPNznezag-mIhlTYaIUwxitlRc1y160cqsDUjbazB6DUcaeNKEY3A9WxsZ8fw4821JdFj9I1Eaica_LEkS54pH7oXHi2W7Xyg22rqao0uTJ-ybN10BdGL08Gr5ZZvp9ZP3jvtBWUMujGH3ce_Vrf45Fd_Pgt6kaboxPmB3RAkldukdBHKlOFK18ZHLKCIglJ1cgMMGOGWg64fAd9j0j36G4H5BXPFzgp3VvshwQ7fzvbscOqoDbqaxFN3KGPRlze71WGJ56P2vrNJSr1WcUsLInVjh6WE7Q9f3qOsYkH7HeAwmhfgnDk2QXyRf6ZhD3g4xs6FQ3lev7jW513r3NZWaPQsLCDmRwks4-PtTT-j8llxYAsT1y4fWE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=City%20Grill%205055%20Queen%20Mary%20Road%2C%20Montreal%2C%20QC%20H3W%201G4%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ47bvXv0ZyUwRAdrFsoPfJ40" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8021</td>
+      <td><b>Coco Pralin</b><div class="muted">Montreal · Canada</div></td>
+      <td>11 Sunnydale, D.D.O., Montreal, Canada</td>
+      <td>Coco Pralin</td>
+      <td>11 Rue Sunnydale, Dollard-des-Ormeaux, QC H9B 1E2, Canada</td>
+      <td>4.2 (46)</td>
+      <td>(514) 685-2626</td>
+      <td class="photo">places/ChIJdSoXx708yUwR_nQ9gcMIMqs/photos/AaVGc3kSlc4mV53RcTuEmDMZcEalm5F2qbhwaWocQL15LXNr5zbN3vqiNU7zLdPttVbCGG1g-VxHJIIZkJlJ66nYScMPL6WyHW4dcObZONoMUg-erkLU0x3C38c0rHIsQ0vp1Hg8FP106ht_siNyDpGf7uyCe6UANhG81C9tn_RD-ydL0g-p35W-kXP5Qha8KGbyRd3qjTZddzoOFwCCK3q2VtC4AN1RhVYwWOJB7NpAFUfGR8K2euARYCubvchoqFoI66THd3f39yyImAqpHADz0aRVbf5ZZkaLros0RLcEDgaI3MvbwkLL-tjohSSvkXEKro4xFHz4aAXV8c2Z_ozu90FnLryc5lqjnMDxtBAyD-b5mP9hKHy-InwwXL1bQRK1R7wOnrqc-xhaRcyoaDy4R1JvpjIC3_jUCi2CoTezcptq_Q</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Coco%20Pralin%2011%20Sunnydale%2C%20D.D.O.%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJdSoXx708yUwR_nQ9gcMIMqs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8022</td>
+      <td><b>Deli 365 (take out)</b><div class="muted">Montreal · Canada</div></td>
+      <td>365 Bernard W., Montreal, Canada</td>
+      <td>DELI 365</td>
+      <td>365 Rue Bernard O, Montréal, QC H2V 4H3, Canada</td>
+      <td>4.2 (409)</td>
+      <td>(514) 544-3354</td>
+      <td class="photo">places/ChIJ27gdM3gZyUwRpYt4QnKD0QY/photos/AaVGc3kALs-Dq7ufcqPacGY7mh57O34tZeevU_mIg-Lse2Q6KUflxtp8WBm_6hOX1KizUfU46lREp4_Dh7vX54Xdjtncb6b3z6OC8wDEs1D9YFi5LYk1eVAFvasabf6cD84sO-GwEQWrmVB2r9VxTIXUQgwSMj2QLbebs2divklJdSPziMlcR_HlWF40-nQkpRQRpXy-9q3hVLBIj4kCJ-bPPen3fRctiKsYOgeMdy6pb_zYjM2gRpj9nR6JqpKHbhHlRY4JyGk8GnIU9aEad1JbN2QtArRUX3FuwKFbe5lTAaCu0rEzMFzrG5YEZFvKrf8BwoQpNyhxeniN3O8aJh8yucLmHnSHuCMYOHbIKKDga43s8RTaZY9GIENQ8A4z1f2qWhGdAQb2y7Th3ExPARoPSBsn-m7cIHLQrLxyfUfU_AsWkg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Deli%20365%20(take%20out)%20365%20Bernard%20W.%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ27gdM3gZyUwRpYt4QnKD0QY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8023</td>
+      <td><b>Deli 770</b><div class="muted">Montreal · Canada</div></td>
+      <td>5193 Av. de Courtrai Montréal, QC , H3W 3E4, Canada</td>
+      <td>Deli 770</td>
+      <td>5193 Av. de Courtrai, Montréal, QC H3W 3E4, Canada</td>
+      <td>4.6 (320)</td>
+      <td>(514) 335-4770</td>
+      <td class="photo">places/ChIJc5fdJSQYyUwRkRPLU4mYha0/photos/AaVGc3lD-RSuPY_zXUtuHaPn8FoknMPBCYeuXoTbEh8YOt6hl37cK2mv3kzNfXyd_3LZuKFLnN6NFccM316gL5JXaDMWfMr7LnmQ8wS6_22NEL_6TuGFFvyxf4_fdlhy96B88czrHJLbUlgHGCghn14ubt9smqw86ckmemEybzIS4jsahJuxt4I1BFampj5xktvZ4IqcwWA2B15XNH4jfROShvmHXreglGy5mPQGEco8zt16sNH5gzvLSkB6Vn8_CP69-rxmplqL1qeBa35ghksgVVmy5gU4DT5ALtGCMskJ_7DQRTTrhoqbyY-9IaNzQGTwBg_Qk1LyjvGDyuZ9LXEBRxpcoNKTUNErkz8UNvFjvb_Wom5zXeajXXgZ2aMYALWz-eGQLDfkl3b1J1MK0VY7jv7rOADsKG9g8n6cp1qEPOEBNKfgMC_nbpN7sI7qZ3tB</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Deli%20770%205193%20Av.%20de%20Courtrai%20Montr%C3%A9al%2C%20QC%20%2C%20H3W%203E4%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJc5fdJSQYyUwRkRPLU4mYha0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8024</td>
+      <td><b>Deli Boyz</b><div class="muted">Montreal · Canada</div></td>
+      <td>5800 Cavendish Boulevard, Côte Saint-Luc, QC H4W 2T5, Canada</td>
+      <td>DELI BOYZ - Kosher</td>
+      <td>5800 Boul. Cavendish, Côte Saint-Luc, QC H4W 0A9, Canada</td>
+      <td>4.1 (121)</td>
+      <td>(514) 303-2699</td>
+      <td class="photo">places/ChIJWYQ2yHMXyUwRMhWl_P8KAt4/photos/AaVGc3mWyPKQhCh25t7E_t4C7jRqQyinwkdIsLlqpTZ9PmZa2gBKmIncpOVAAs351-jXo7G5O5ZwJUbaDEI-YfMiZdfgAC810PTDOvQjdtmAV7lf8kOSS8hIN0nBFgUkQsZvQXUD9Kv1YDIo31HOaXfdFLg2TWNUVsl78jWuDBpnCh6_RNx0z69UE6v1Z5Rm0aMF5BuT-LHhVu-sHwFAxDrJWXEnEUw9YOqw2yTeGVDxbU_RDH6zcnqrqhXXRjS4x0UNaNNIV8Vs9reDjeoAxzFEoCo34jw75LGt8IF5kE4QOkIil81ZV0ORLJ_pGVDy2FcKpKKRpfnEtFJhDf6XhDU6P7vZSD5h7ME5ZoiYgE0fI210HVNXld3svMzCwZonzgGhG7zmeNnZqbuvuyPhMPqxhh5TMOVDYTt1Z5fx1Q1w7Te-yQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Deli%20Boyz%205800%20Cavendish%20Boulevard%2C%20C%C3%B4te%20Saint-Luc%2C%20QC%20H4W%202T5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJWYQ2yHMXyUwRMhWl_P8KAt4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8025</td>
+      <td><b>District Bagel - Jewish General Hospital</b><div class="muted">Montreal · Canada</div></td>
+      <td>3755 Chem. de la Côte-Sainte-Catherine,  Montreal, Quebec, H3T 1E2, Canada</td>
+      <td>District Bagel - JGH</td>
+      <td>Côte-Des-Neiges—Notre-Dame-De-Grâce, Montreal, QC H3T 1E2, Canada</td>
+      <td>4.4 (16)</td>
+      <td>(514) 735-1174</td>
+      <td class="photo">places/ChIJN3D1HwAZyUwRb11d4pEVVEY/photos/AaVGc3kZv5YyMplMqwvBSgvPPCdHbHCjP7baaY8DuiMD67AVqYyrPjdT_YLT4gag_zzrtN7DFKuB9fdID-tWJqfu-vAGRbJZZHYCMZREfIBEi2c3ntDiVA2hu5PH1HI0MyUfiJMfJnfkg0Lj1cg8EnoKAYmAbTLs350B9KuPOLQXuyQEI1OXJcp1kHa1mFuR60ppaD9AIBvCdpAf8QOojOmxwvHkXoUGwkX0z8XJ8gOH3PHdOCVWb6ld8j5TDNbsrSlf84ZGo3qzt8PRy7wHUENOzLfK2BZX2p4MBYPSPkfsHhLdlzsMb7Sd56yAzfJPxsnl3kLQltYZznpQbT8_xgqftCJPRC-DI8rGZweGq_Fpv6PU6uxqNMiAgLgGScn44k7K3ZgRdWom-KVvHhPWpJcbyjcEScy6FjSNnYM04vdxicL60YhPWRE6U3qK1c38czP1</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=District%20Bagel%20-%20Jewish%20General%20Hospital%203755%20Chem.%20de%20la%20C%C3%B4te-Sainte-Catherine%2C%20%20Montreal%2C%20Quebec%2C%20H3T%201E2%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJN3D1HwAZyUwRb11d4pEVVEY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8026</td>
+      <td><b>District Bagel - Parc</b><div class="muted">Montreal · Canada</div></td>
+      <td>5679 Park Avenue Montreal, Quebec, H2V 4S8, Canada</td>
+      <td>District Bagel - Av du Parc</td>
+      <td>5679 Av. du Parc, Montréal, QC H2V 4H2, Canada</td>
+      <td>4.3 (286)</td>
+      <td>(514) 735-1174</td>
+      <td class="photo">places/ChIJB2yeLagZyUwRw5Z1TFtdoCs/photos/AaVGc3kVcKAsk7pqI6bDXOWjgmj7Ui26lGKGhiqOhbsScSeS-3hpqkFaIGlFZfCQNcNC599VlZnkIN5Btev4MOaVgKolZozCdnNj0rzK7JXZk77TxGJb5JOh3z8XbHB_xaVF7YDJsRbS_tEpxnBjNvsJl27zrU99gaWAbvCn1yHSstj7ggE6ptVYQXcc4pBnqvJIpM7Bhti3B_V44HBLZjWZBQ0om9fEBNTtTFp0fZXuruUjo9O1woy64sPcl99NH0NA8Cum7BInknhe82wRLPaiu-zXh0-EU5ojTlcJZAvmnKGhmC2eQr_6RCBRx9MsXhseYeLCJtt-C4SnBP5KtGIl-owqw2SX7w2ti5DVtHWgsWgSiBaLG0SmAIqk8ePUexNVGbMpR8pqFUYVhbXEcq2CkUIw1hzqARt3i3sxcHGo8WE5cI4</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=District%20Bagel%20-%20Parc%205679%20Park%20Avenue%20Montreal%2C%20Quebec%2C%20H2V%204S8%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJB2yeLagZyUwRw5Z1TFtdoCs" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8027</td>
+      <td><b>District Bagel Lucerne</b><div class="muted">Montreal · Canada</div></td>
+      <td>709 Lucerne Rd, Mount Royal, QC H3R 2H7, Canada</td>
+      <td>District Bagel - Lucerne</td>
+      <td>709 Chem. Lucerne, Mont-Royal, QC H3R 2H6, Canada</td>
+      <td>4.6 (683)</td>
+      <td>(514) 735-1174</td>
+      <td class="photo">places/ChIJXUyqCMYZyUwRT_zjJEOcbkw/photos/AaVGc3nEP1hhBdhFSceECanHh7LNp8gfnumC9Q0WOBRcQ3eeT-W1drVA_tRVprqG7DLdIQEN6xTj7zbwd2cSsKlwBpNsBCl1LQkbFZTnOyscHeXcOkSeVSywtr2EU59jpwRC71tWMup2gySFwhbPfpBLdd4D2MJPwGr4TUuatnHBTNivz3tRWEdESjdyc6QgVfnNCpaQQBwGz84KC_-QTLHbf3Zskrc3cKYvKezXU3z-uvMaygQ2POPFB02FBIxgdsJnCLwI-R02LW5mxe4Lo5Jb9QrrT4NxFAJIZyF0hDPbILxs7fvZHDNlV9Y-H3MTR4mGSDLTSNGYWmHQrGa6-uhhoWg18IG0Dn7PfKGOtxax9tar6buUjWYvhDIJCj00Z9_McfWK97OghWo2cahsuf-oWL9B5MSWspRNzrbkPRiWUXtaHg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=District%20Bagel%20Lucerne%20709%20Lucerne%20Rd%2C%20Mount%20Royal%2C%20QC%20H3R%202H7%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJXUyqCMYZyUwRT_zjJEOcbkw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8028</td>
+      <td><b>Farino Pizza and Sweets</b><div class="muted">Montreal · Canada</div></td>
+      <td>6166 Côte Saint Luc Rd,  Montreal, Quebec , H3X 2H1, Canada</td>
+      <td>Farino Pizza</td>
+      <td>6166 Chem. de la Côte St Luc, Montréal, QC H3X 2H1, Canada</td>
+      <td>4.7 (192)</td>
+      <td>(514) 360-8655</td>
+      <td class="photo">places/ChIJoYOYNAAXyUwR1WXi-mOQlJI/photos/AaVGc3kYPDABvZOlWgBcLZ-9DzgyrDcSkkdYIX6-KcZxTvGcGGAdeU-6tztbHML1VbWoTI-jbaeIgsUM_kwLC1IPKKBRzFCljBNLaSogLx7yYi57hZpUgjpE70V9L2O4tBmIGq5hzhTVAvqmJucGBVv1xqg6iXFwt9CGInuk1FVc-lWt5PcotPvN2dJRzj8O37POCaN6Mp8OW5OSzrOXNvqgp9MgmaihnLIpydNiiKJ93NSAZFl4Fm1Z37Q6mk-uAk1kkevg1zWfIl4WWhV7zoYIX7fAevefXfVoXxDFgZB1hpeYxyauoq9XoSJOusrLU4Qaccm-lBeVILvJCfg2fYL8ShyjHz5zXywaRGntP7fjZRibyJKdlK8omnFIPdvzZqzFjHfubcAtmn0ENkoi1oK-2nonzVE-g8GNnaPsh9stfEtFqg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Farino%20Pizza%20and%20Sweets%206166%20C%C3%B4te%20Saint%20Luc%20Rd%2C%20%20Montreal%2C%20Quebec%20%2C%20H3X%202H1%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJoYOYNAAXyUwR1WXi-mOQlJI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8029</td>
+      <td><b>Federation CJA Coffee Shop</b><div class="muted">Montreal · Canada</div></td>
+      <td>1 Carre Cummings, Montreal, Canada</td>
+      <td>Federation CJA</td>
+      <td>5151 Chem. de la Côte-Sainte-Catherine, Montréal, QC H3W 1L5, Canada</td>
+      <td>4.4 (37)</td>
+      <td>(514) 735-3541</td>
+      <td class="photo">places/ChIJh90vpOEZyUwRkhNO11HG58U/photos/AaVGc3l-bxcT8inktQ1UjIIrzRlD2jrEGUSpah0NJprI-o9UJp3ctuGaiIkdfdPydymZsWMtlgsPRKVBn-SF8AnxIjpF01nPreb9TE0I8ZbH4fB9rD6kDiGlh7dTmmmO9KZxd6cjg6T2qBRQYjW88r6hyzRmxFt2gbZwTJoMX8NzU8u_L2DE8zevvGMxWnNKOX0BqoPOM7XOsILSpoBXoGptPdINVOimUkPBsnuEiygdUQlDk6gsxMdpZX4evN3chuerG_sdnRORap3o5Tn6TcjGFrR0iOI_7VRT1YvDKfKTxlvrQDAWeRJa9ma8jPF_jX8mPwNGflhScfcAFRT_6MX69AtEWlXZHmR9EyV4S6kinxG_bkmlO_zYzRTeEXQKp9ILiXnDzA_n4mvWK1vn85BwijKKXiyOKL6hYI3PGX5a254VjPrL</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Federation%20CJA%20Coffee%20Shop%201%20Carre%20Cummings%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJh90vpOEZyUwRkhNO11HG58U" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8030</td>
+      <td><b>Gare 18</b><div class="muted">Montreal · Canada</div></td>
+      <td>5767 Legare Street, Montreal, QC H3T 1E4, Canada</td>
+      <td>Gare Centrale</td>
+      <td>895 Rue De la Gauchetière O, Montréal, QC H3B 4G1, Canada</td>
+      <td>4.3 (1579)</td>
+      <td>(888) 842-7245</td>
+      <td class="photo">places/ChIJH9C8sFwayUwRDNpvTW-PbDE/photos/AaVGc3ngMW-9RqFs8GTrE52gOv0SPWdpyFwsc1PEwMq2J48WNxosdeAMUAq9HB-mFP5uR9w1JatUxUbqcAA0phyq0EIw-Vd6Cthb5GFrf1gU15SOUC-3RwHmTOHHXtJ2nn4ok0ylqWLrKB3QzCjGzXlXBf8We012HxPGy-cexvdJQRxZnsicGLebR_yR_ciL6-iJ99pm3NHPJPul8IgkPS4rNzyZETBmQmXnPD6EX_3Xzg0htzmQNFpxPlvR1BxHoYAwY6YvTiSOQ5HaF1MZnl-R5bcvWNTKHsFwH0-7o8QTVLPC8ji6va-yIzasC4eckK53bNSXDj14Hey-LSC07PurND1qGtYZBqbH54FqrRcLsO-ZKd3a1xVA8tv4fEGKtEPAFjHY-l8zSi8YBisdQmYiDEOE42FjcSsneYiIhJVkqI2z5V0</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gare%2018%205767%20Legare%20Street%2C%20Montreal%2C%20QC%20H3T%201E4%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJH9C8sFwayUwRDNpvTW-PbDE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8031</td>
+      <td><b>Jojo's Pizza</b><div class="muted">Montreal · Canada</div></td>
+      <td>2020 West Broadway, Montreal, Quebec, Canada</td>
+      <td>Jojo pizza</td>
+      <td>355 Rue Bernard O, Montréal, QC H2V 1T6, Canada</td>
+      <td>4.5 (119)</td>
+      <td>(514) 975-2770</td>
+      <td class="photo">places/ChIJARz1VnEZyUwR5sDeAwvMySc/photos/AaVGc3nce79gkxTiFptbXTsfKU1E78rghezdqRfeAiS_arCJlGk2M8EbqXG4Yxe_-gC7X76zurpto2M1JC2uxpWdO5YNIE5y2EBycJUVkUWlCU8kaFy2h9Amawo-ILZatyM6lnJvg8WqI2jk3ZlWwUPpkFEXcXBLZkrKNCpj67NXTNIKqG9hIdo9W2yiYJQJhgjBqLVzCXBx8zONlUFN3nT2ckIjCOVVQC22t1lsgmoKhqrP841CepbTmVcWr1dwEwkZnZE-j3T1UTWE4115euasoRsBw5qifz-mX4XSr_k0el_26PO0HUrpCDsNCIzJgjL_BEMJFOvsmX30CPbgBVdaEYdTWOGBpfVL9KQ3QePtMtQvRvwkeVxtNZZoGvvIzI1f187k55x-NXSJymu0Wwq3_5bicZLkdZLYKATsT-6XpdgKYhDn6yrrolwMc8Z25PyY</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jojo's%20Pizza%202020%20West%20Broadway%2C%20Montreal%2C%20Quebec%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJARz1VnEZyUwR5sDeAwvMySc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8032</td>
+      <td><b>Kebab Shop</b><div class="muted">Montreal · Canada</div></td>
+      <td>3755 Chemin de la Côte-Sainte-Catherine, Montreal, QC H3T 1E2, Canada</td>
+      <td>Le Kebab (côte-des-neiges)</td>
+      <td>5020 Chem. de la Côte-des-Neiges, Montréal, QC H3V 1G8, Canada</td>
+      <td>4.6 (997)</td>
+      <td>(514) 737-3463</td>
+      <td class="photo">places/ChIJNXjNVmoZyUwRMWxICiUgEC0/photos/AaVGc3kJyat2iYk1XWThxk19Gcvv04XGQH-AERRmbRtJ8EmulJDH3M_kWNtVhwSt05gFI3PCVVrGssROryhvy03mvyAfnv_8I2CQdxYnJMWqApq1-T79wEldJy78-JjEjErzHrcgWC9aXrtuAidcUL1Wj6uJkOFj2af6s3LYORTbrETq0n3BeaFuHFuxzON7JUCDDVlfZoemLCEN6OCmDykNA_gDgjPqamIAmEIZQsGKvXS2Lcewmj9NiS5plrHuTJ7z3EbRojm_peTDveLiXnsD69i4cIZTuaE_5DfkBxxDLzrF2k8rl_H7w9sad0YgkJXS_niFX7qVHC6R8zQYCoM8qmsvzY57FaO4BRURG5f6DuzQVTPHf3R6RftnC_b3wHu_0rwFTDen_ZnpX6dZbKFVuh1BcM0e1HBHj_yCJuocT2oAAw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kebab%20Shop%203755%20Chemin%20de%20la%20C%C3%B4te-Sainte-Catherine%2C%20Montreal%2C%20QC%20H3T%201E2%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJNXjNVmoZyUwRMWxICiUgEC0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8034</td>
+      <td><b>Kosher Pizza Bar</b><div class="muted">Montreal · Canada</div></td>
+      <td>5800 Cavendish Blvd, Côte Saint-Luc, Quebec, H4W 2T5, Canada</td>
+      <td>Kosher Pizza Bar</td>
+      <td>5800 Boul. Cavendish, Côte Saint-Luc, QC H4W 2T5, Canada</td>
+      <td>3.8 (83)</td>
+      <td>(514) 488-4444</td>
+      <td class="photo">places/ChIJqYgFt3MXyUwRYornilEDpaQ/photos/AaVGc3kh0d0Lv8uoM5bY_15e9zkpoSlDMNWc924AJR2bRwKs48k_GPzLzuNLoFVmft8xi6R65--8oziUc0uW06BtkulZtP9N9T0uT-neo9QRVh1z4ye4Z6O-YQo-JReP-TpVVYMWxTtLE0iPVY2nZzZHLIOEf_NYqMvddyZk-AKLZYhmijc5vsAoR49u3bwAl31WHK0H3xyYI5pvvJHVSps573rMPqpfI2nga435B96JG-ZxRGKONYbbnQ60eqhIEiRY3TGOZ178fPMuru1gVlEDN48OueaOjoWrfCy09yxVbEL0MUuhAd9yseD8CUMUGwpxVg1mUM0hPBSx2K_yhvELaN0TDgDvJL0bA8CtfJcBW-lge0J6wMke35_mM6xpG24v-_Gji1lAPEbzlc5cDx83FKW_uG-tA_0O8f2CTVsAFeQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Pizza%20Bar%205800%20Cavendish%20Blvd%2C%20C%C3%B4te%20Saint-Luc%2C%20Quebec%2C%20H4W%202T5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJqYgFt3MXyUwRYornilEDpaQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8035</td>
+      <td><b>La Marguerite Catering</b><div class="muted">Montreal · Canada</div></td>
+      <td>6630 Côte Saint Luc Rd, Montreal, Quebec, H4V 1G8, Canada</td>
+      <td>La Marguerite Catering</td>
+      <td>6630 Chem. de la Côte St Luc, Montréal, QC H4V 1G6, Canada</td>
+      <td>4.5 (121)</td>
+      <td>(514) 488-4111</td>
+      <td class="photo">places/ChIJvQLVbkAXyUwRI_ggl0R13Ps/photos/AaVGc3nIYw666qwX29RhezXv1mqmlcP_6d33ZX87qmXbeB-42A6x_jY5CaC7YP0mHNsErowy7WgKmEWsEB4PvHvUXgxIwdKf7aQkpB0vBgJPXgaa4eJPKiuCv6DBTfrPtGyj8xjKpxJKTEHngnQ9ZCM_Q6EbUxVmJcmn4vwtZ1-H5xo9dnmAu4Xm699oZDj0rZ2is6Ob3vB4b6zbS3ZNd-qo-IMsVTAJGxfT72r729BycW4mf4FNVJQ873tTflzpXp7P7HA3FxSGKonUhiSUb8Yq_yqjWNxrZ62RmC5gzwtECFdQpDLbj5LeWVqY4z_3KHKQ5i1AQ0DSQE3rwpwXO5zL8cfFb5EwuDANUzdN94wDr7XRFwBzkwcpN7XXouU8qgjwOpxi04GJvN-CW3BgsoFIID9A-CcNiRGDUmwbVh43S8k</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Marguerite%20Catering%206630%20C%C3%B4te%20Saint%20Luc%20Rd%2C%20Montreal%2C%20Quebec%2C%20H4V%201G8%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJvQLVbkAXyUwRI_ggl0R13Ps" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8037</td>
+      <td><b>Le Bassar Steakhouse Smokehouse</b><div class="muted">Montreal · Canada</div></td>
+      <td>5549 Monkland Ave,  Montreal, Quebec , H4A 1C8, Canada</td>
+      <td>Bassar Steakhouse Smokehouse</td>
+      <td>5549 Av de Monkland, Montréal, QC H4A 1C8, Canada</td>
+      <td>4 (57)</td>
+      <td>(514) 487-5555</td>
+      <td class="photo">places/ChIJrWe0RAAXyUwRytjGMOERe1g/photos/AaVGc3kEl4tqC-L1S4ziI363AUrfHn0TGZuVslA_jP4z6eBk8I-aLX0eq5XFOrgEqut1jMR7ZyiJ1A-fQz8g-VWE2L-vox3qrZ03xLffW8P9Q9Vy6XBB-xQhHc8Wn01C6jCxxmptWU0fxu-QUhlDze7vlD5GA0hbcKcMMklhVMoKEP9vwefE5_uqTIgoi2u_gefCLPE9hF8hHTUBCasm68PwFc69GVsECQUv7iBi0a5u03oB__nf7vSVlrzIJVdFSjjn13FVxgWKWBZm41MbtdZ2ha5XnRqcSG2FmQlYw3HnbBx6YIICXlfbs_DKSaUfazkbejc9RGQqQln6RZhz-qNNA-U1-acrV3lJ-R8tGhkXzdBaFe3PmEuX4C0zVtPmKGE3o8BiX7hAWfDEhossf21OmBHDIRRRp8nPSLkATY5LCn1-_O17ZzjdzgbYRg0hXA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Bassar%20Steakhouse%20Smokehouse%205549%20Monkland%20Ave%2C%20%20Montreal%2C%20Quebec%20%2C%20H4A%201C8%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJrWe0RAAXyUwRytjGMOERe1g" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8038</td>
+      <td><b>Le Plezl</b><div class="muted">Montreal · Canada</div></td>
+      <td>3429 Peel (corner Sherbrooke) Montreal Downtown, Montreal, Quebec</td>
+      <td>Le Plezl</td>
+      <td>3429 Rue Peel, Montréal, QC H3A 1W7, Canada</td>
+      <td>4.3 (58)</td>
+      <td>(514) 400-5147</td>
+      <td class="photo">places/ChIJMfqISkcayUwRsXNmw3xsiHQ/photos/AaVGc3nRhjwkldsCSJEaka2m94-xy-BESGUa0xhM-KrYZkUE0AKj5J1i-5u9kZ4UzimkvtFMHzapb8sbQXmE2nV6qvUC1hNE18GUazrncZ0O83Beu-TP1fbsb6AuK1Lh3SUzZRtDX7mYAayL4juw0B7j7dk1Dr_cpLTfo7KjkNAAxg7Vwdq4klxPiPmnul_xbHxBdYgCAOMSUGNS8KluweQB0jfybOoX5Y6W-lIcJpmHDXfRAbfdkGKb7JbOYuc9udLdFVJWpbH5ooVlyyFGy--PD0b_-1XZruyXIBpT2LFGudvd-BtPbTvSb0UzMXQu21xNxuDslXVdWisuKOQoAqCzdqMPVOrvKgHVwnGgXQS7CR4P9X9is8A3YjbqMIwDbTEHFQoLfEjoXaSIM61WXtzEZDifuPiqqxN4T2mFkp5d9e7CzO2hOvDGU66grpE_OGQS</td>
+      <td class="reason">LLM אישר (0.95): שם ייחודי זהה (Le Plezl), רחוב וביתן תואמים (3429 Rue Peel), עיר זהה (Montreal), מסעדה כשרה ידועה. ההפרש בכתובות הוא סימון פורמלי בלבד (Corner Sherbrooke vs. exact postal). Google Places כנראה מדויק יותר.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Plezl%203429%20Peel%20(corner%20Sherbrooke)%20Montreal%20Downtown%2C%20Montreal%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJMfqISkcayUwRsXNmw3xsiHQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8040</td>
+      <td><b>LeyLey's Bistro</b><div class="muted">Montreal · Canada</div></td>
+      <td>6900 Decarie Boulevard,, Montreal, H3X 2T8, Canada</td>
+      <td>LeyLeyMtl @ Elna</td>
+      <td>6900 Bd Décarie m240, Côte Saint-Luc, QC H3X 2T5, Canada</td>
+      <td>4.1 (74)</td>
+      <td>(514) 736-1700</td>
+      <td class="photo">places/ChIJ5x1iDtkZyUwR0sYJpHGS0PY/photos/AaVGc3kKeLyfECy1kZsmLZFjrG2DeJgmPW79fPUySEcZFx5a1NKcwriREjilqPAhD_hqohtHhyZttuOA3AIk956S5ES8ekJYnTnVn85wSPv212DcKRBIz6ylaxRa3usA4-SB-wqEBxPia64yTVIXoLAP6OyG3Vwkk00Th_EDNA7ePRvaWRxsEbbaTHwd1cMjRZ-gkIIoRZcAt1kaerzKT2e69EDSiImFTeo2NaQK40e-IgmDGxSRIJIYWMvI8fs1X2Ogyh1XbWf-d_gfb-h-o8mNoqqLvsXFRED4Iy_q69jwjhyojcyD8i4MJK318DeCQI3P0bPkEnijcTdEt-zrnxVlOKnqL3Lp8-1Q9nXnLGawIFOiJmmt-x3DAoeD9MK42fZsDiPExyaF4odsTWgZIagfP5yQVSemmgxlj4GiS49hBjpnkQ</td>
+      <td class="reason">LLM אישר (0.92): Same address (6900 Decarie/Bd Décarie), same city (Montreal area/Côte Saint-Luc), unique name 'LeyLey' with variant 'LeyLeyMtl @ Elna' indicating same business with location descriptor. House number exact match, street match confirmed. Minor address format differences (postal code slightly different H3X 2T8 vs H3X 2T5) typical of database variations. Both kosher food establishments.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=LeyLey's%20Bistro%206900%20Decarie%20Boulevard%2C%2C%20Montreal%2C%20H3X%202T8%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ5x1iDtkZyUwR0sYJpHGS0PY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8041</td>
+      <td><b>Luzzatto</b><div class="muted">Montreal · Canada</div></td>
+      <td>6445 Decarie Boulevard,, Montreal, Canada</td>
+      <td>Luzzatto</td>
+      <td>6445 Bd Décarie, Montréal, QC H3W 3E1, Canada</td>
+      <td>3.7 (70)</td>
+      <td>(514) 739-8535</td>
+      <td class="photo">places/ChIJozEV294ZyUwR9UFqeRJRIdc/photos/AaVGc3l3QvNEEnj6ZkP2DVESwM8R9bwCGvvoDC4hcf1uHT7MqIpa8jxlehM0IqrgYJOCvRAsU8QIeQpTw_80vroK5_Ii-1QCvVJ-TX_FXrSARpHpUFTJfW5hDDF9XyZEfrLtTE9vgeH9UhK4gL-c5eJskifpTD25JtXN4r-kHYr-9YSyNOYGjj3CF5E0uUfMU7wTk7dYdHbiRPDnBTSmqrvk_FVdxP0KurI92ZYiQCHpORIydYISNKJ-EsWcaPAC2U_7ukiWkRyvtitwf4WMyrwoH-jGlig9djGEO0Ha2-fxsbDDxgWN8_078iLxKMqd9-1nKK9A6lGOdErQQjAimMVj9mkSdYK9sZIOAUJ7iTZW4g0oFLqzDcLitUjvkWEiTktrR4Ao4tlXGTnacE3oIZohvCawgWaztBX_uFF1g61Gwq3WmA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Luzzatto%206445%20Decarie%20Boulevard%2C%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJozEV294ZyUwR9UFqeRJRIdc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8043</td>
+      <td><b>Massalia Pizza</b><div class="muted">Montreal · Canada</div></td>
+      <td>4175 Rue Jean-Talon O Montréal, QC, H4P 1V5, Canada</td>
+      <td>Massalia Pizza</td>
+      <td>4175 Rue Jean-Talon O, Montréal, QC H4P 1V5, Canada</td>
+      <td>4.9 (263)</td>
+      <td>(438) 531-5526</td>
+      <td class="photo">places/ChIJ1Zzf5r0jyUwR8riIO3UQTm4/photos/AaVGc3l6OPCZ6e_ZsYGf7J0ZR91Xah-G-iNwXeqlWQ6RLBIYfnd-kkeYf1B69XyZdAL1jlpHpKQ6YyqMYnKnB-Y0qcjB_sOO9Jnvi3618xSCMVl3UEJehsE6B0qAXq3BoH2Yfe6EZ1eDNgZsjSjl59u4F7MvjYmDJPBO3gUt9BzNf9fS-_AptcDaNKxHLOTWXfByEmEgP--DPosPxaOjYnSd4boxc-QlLPtf_D8-0wRIHkEgoZrCfTRmtLquBu1eYGmNUWLzeif4S_ii4WWN15lAnvtsJqWTNJjNi24BAKccrzDj7m7N1gL4SqVOGbhaoFRnO5qANRhSe5MGlLTIFT4oXyPomk2KSb6ePxtu7rEd4bjl5vLc7ucahfg0m3TbxtIncW31nNJ383FYwmMaOdJC-X0TpPPv2f2W26se6hiMOq2CwQ-0zYmMdK8mUnsS63tt</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Massalia%20Pizza%204175%20Rue%20Jean-Talon%20O%20Montr%C3%A9al%2C%20QC%2C%20H4P%201V5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ1Zzf5r0jyUwR8riIO3UQTm4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8044</td>
+      <td><b>Metsuyan Sushi Bar</b><div class="muted">Montreal · Canada</div></td>
+      <td>5800 Cavendish Blvd, Montreal, Canada</td>
+      <td>Metsuyan Sushi Express</td>
+      <td>5800 Boul. Cavendish, Côte Saint-Luc, QC H4W 0A9, Canada</td>
+      <td>3.8 (32)</td>
+      <td>(514) 369-1818</td>
+      <td class="photo">places/ChIJCZc1xHMXyUwR1e4LnkRbjE4/photos/AaVGc3lVrYi3ssLicRIhsEBhpPW8V5yKPoR80m2dIVP6PEDc92-lHT7BxyOXi52CDHw6vjqXddj2dcsPVcClkp1AN6xpHm0zN1o1thxovK-6T2ku6qJkQ-8VMKcQs7EFyiOfw8IHHGfi06z0I9gE7Tx3yg0pgg7XkNeAVvv4CQy3tzhkAvOdj8SUMWhRuEL2vaSti5-sBuV9PQ2CXa0DXA7XvwjK7tgzgM8QfLatyCZ8cLBGxNzep5MlNH-hlMfw2649NYP3iIAhbwbvtuUkRKIewe_6hRuxVVHjNjmnvxcSpWBSIROMgrPLBasvXWs6Ht7LnCY8_SePzY4R-2q7fH36G_c8vKhH5mSNxwMg2k41REfDiufi4awlur_qa9vdZON9HT0IMCAC1Pc3VZoLUnnOiQLQQpa6jiBtosHYc73t73K16v8e</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Metsuyan%20Sushi%20Bar%205800%20Cavendish%20Blvd%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJCZc1xHMXyUwR1e4LnkRbjE4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8045</td>
+      <td><b>MimiMelon Catering</b><div class="muted">Montreal · Canada</div></td>
+      <td>2069 Rue Saint-Louis Ville saint Laurent, Montreal, H4M 1P1, Canada</td>
+      <td>Mimimelon</td>
+      <td>2069 Rue Saint-Louis, Saint-Laurent, QC H4M 1P1, Canada</td>
+      <td>4.6 (92)</td>
+      <td>(514) 737-6887</td>
+      <td class="photo">places/ChIJO6e_XywYyUwRRSu_2GTTOew/photos/AaVGc3mv4dFhXpfJZI2svficw5sPlfRHv_7MGoofNquqpi6rsLZVnLqvpyzsTy3ZqXLbXgUACoeGV-cXB-pXhzRD49aAbjyidEdZuKMKEUYSiOorsZpXWbsa-DktIKcupV9TypYXyUEjRaahOTuzKBulbms1QV8cjpDgQsEJlwfvB4GMsw-FnJuaCpUJ02buwihafQmNOdXAakZ1s-5VjanlnMiJlwz_gwDEkdE3Y1R4F60IiEnbnfA6nNPqNETieUviJZIkqy5qxCeHYdeCafikpniM9LAUJrcA8hRRHBH2njkIOKuSisQKyva6X3EZXTJiih00GTZPqz2ZwyBLcdPC1vw9dmZFIbbTLHRpaCFCNNHK6tt8yhVNMnHniC5omwDUpyEYm5cM-7W7RUt8FVBhdHnkr4yrtpzQQZwecbQqbRoddTRx</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=MimiMelon%20Catering%202069%20Rue%20Saint-Louis%20Ville%20saint%20Laurent%2C%20Montreal%2C%20H4M%201P1%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJO6e_XywYyUwRRSu_2GTTOew" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8046</td>
+      <td><b>Mozart Restaurant</b><div class="muted">Montreal · Canada</div></td>
+      <td>5335a Chemin Queen Mary, Montreal, QC H3X 1T9, Canada</td>
+      <td>Mozart Resto Bar</td>
+      <td>5335A Ch. Queen Mary, Montréal, QC H3X 1T9, Canada</td>
+      <td>4.3 (221)</td>
+      <td>(514) 487-1355</td>
+      <td class="photo">places/ChIJUZWucFcXyUwRlmgUKWt93cI/photos/AaVGc3nAru2wM4_t4EjE0v06E0ygrDxiD4Qg32UjNQG5p_PkW0TP9JTDq04_55HLbDAqcp6Tw28KOrlKOrnkBwkkWT3cgZ4YE9ya-Mk3cdUcPqLDi2kkU3Vwnejeiyqt7VIsoLqGh6oQEduBeQ5jD3SByJRYT6NVZFO5dYOKxAZ4m-TPEcMGVHaQ_WiVZh-ZGoVlPDiOYiWCS-iIq7QLdQs5g7hX8jzudhBY3AL8B4pf0nNc-lI1rR2Ke4VpWNB2PWwTke3Fur29oH1z3yhZe11M8iYqElew_CSTrqzQVc9RlrT1T-xOvt6_nPOAA281_a26b2Bkp_1GKgW3SF91NLnwBLiEBt1E9Uh_ILDu5SDgvEQIvRccYV74M74pbl30055SSOUbH_pGWSHKeK1gpQ5QI46lUAnqqFwCbBV7sPnDz--xSiI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mozart%20Restaurant%205335a%20Chemin%20Queen%20Mary%2C%20Montreal%2C%20QC%20H3X%201T9%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJUZWucFcXyUwRlmgUKWt93cI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8047</td>
+      <td><b>NOAM</b><div class="muted">Montreal · Canada</div></td>
+      <td>6647 Boul Décarie  Montreal, QC, H3W 3E3, Canada</td>
+      <td>Nöam Restaurant</td>
+      <td>6647 Bd Décarie, Montréal, QC H3W 3E3, Canada</td>
+      <td>4.8 (431)</td>
+      <td>(514) 564-6626</td>
+      <td class="photo">places/ChIJ9ZIVt5QZyUwREpzHg1GWB6Y/photos/AaVGc3koe-pbnCPX8wVbpFiyJadphiUN2N2_Fycj73bQ0-czRM_-BpBYqaHj4DOXGho5Rb-GlvtsDz6LDPJ_wEemQAB0kRR6G9F9st0tgGBHLOj64n8QFC6n6-FuSqFmUode0nE3-ECP724hkmXt8goAIVCK5YluB8Nf5El0rozR_RwqLZpSLwbjV7vj5tfqzlW6Dw9XhP1HfGeQdMOwN53bviUnklmxt7Yv9H5HHqt8qDgRrL5qUjw_GS_mZUZ2EzcXaifLoZMQ4dhh7ChdHJ_8045EtGkKtYmtvEGUntvGZK-q4VP-w-PogH44m0BD8wzTVn2E52m2_zwAhLF69wJMHhV1wz5bdThiXqk_k2eeQKxo5xSKmVUulXj2inaiuWN-DUT242efBa_1i523EtJZ_TOuwV8sf2j_5D6r1dVT1_g61r8R</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=NOAM%206647%20Boul%20D%C3%A9carie%20%20Montreal%2C%20QC%2C%20H3W%203E3%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9ZIVt5QZyUwREpzHg1GWB6Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8048</td>
+      <td><b>Oineg Kosher</b><div class="muted">Montreal · Canada</div></td>
+      <td>360 St Viateur Street West, Montreal, QC H2V 4G7, Canada</td>
+      <td>Oinegs Kosher</td>
+      <td>360 R. Saint Viateur Ouest, Montréal, QC H2V 4B4, Canada</td>
+      <td>4.5 (142)</td>
+      <td>(514) 277-3600</td>
+      <td class="photo">places/ChIJO_VuxHgZyUwRYv--D5bQmf0/photos/AaVGc3mCoZM1frIDmOf2JxIAzLz0a_7bekq0xVw2UXbs3Tgojawz974Vfxa_m_Qj_MfndBExJEWosQMnHgy1DfdboJboxVqI0Uc5QTpLIDw_TlvFXupvBaZlGHDO-ROssC26pgQnTimzRSpmwINkn75OOypSUd_8dZVeQS_B5HjIc9YSm2M14jH1G-fbYY5xQYMf2EsXI1IbuaSpxc7Yj7T_8xbPEZ1poaKMLR5qx6KVOS8Q9ksR3oAB1UTRsXgI8QFRnBlDWgfUIPImT4MKjhfLA4AR-L-Lv1IdlOdAHPbYY2jZOtkobwVzOSJEAJQxjFtMFzTtKoZmi5CRAudKF11xlX5YNVm_b0cTHs9p3764OuseKrP5iItsL8XC643nT4zFjoL4rDcUARnlXkfVC5tQ2MNzEL0q6FQMKXsvf51RrA6CKT2U</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Oineg%20Kosher%20360%20St%20Viateur%20Street%20West%2C%20Montreal%2C%20QC%20H2V%204G7%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJO_VuxHgZyUwRYv--D5bQmf0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8049</td>
+      <td><b>One Stop Kosher (take out)</b><div class="muted">Montreal · Canada</div></td>
+      <td>6735 Darlington, Montreal, Canada</td>
+      <td>One Stop Kosher Grocery</td>
+      <td>6735 Av. de Darlington, Montréal, QC H3S 2J7, Canada</td>
+      <td>4.6 (116)</td>
+      <td>(514) 738-3207</td>
+      <td class="photo">places/ChIJDUrw170ZyUwRBgdQngkKAe8/photos/AaVGc3ladi4DCNBXEC3GBg1MfmLslWaN9beRzMfgy-IWHpljtqfacqFaXRnEQglgtOektaUGSbRHGBnHWNNzzcxVhYjGZg3azraHRgwDEkjl9CIwvF3Hbf1wkQs5pG6-UnAk7lgDKh8gL44UPgg6oSkXq8OvwOaIIyuSzcdcXitsqwLH6TpNJNsxZYonRUSxYw7PuYoQv9q0n9ZT_dBxYTqEkRulp6GHhhjw0uNTBzm29mfCNwvLH-AxPESnGxfMJ1wtaa14GfsEJxRIUjs2RdlUNGCochpEdMtgFOy-_a9XTx5hV_Mxq-6Wa-Ar1wfvVH_fNc_q8plMo8R6eFdwUgUDppLcsaxExR_Pvtgg44J8ADOBedyN0sJW5oEcMUZLsIbu0kI-sq8HsnAup3tdRXRFusR7gZlCFRLLAA4N9S4H3SYUnkc</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=One%20Stop%20Kosher%20(take%20out)%206735%20Darlington%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJDUrw170ZyUwRBgdQngkKAe8" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8050</td>
+      <td><b>Paradise Cachere (take out)</b><div class="muted">Montreal · Canada</div></td>
+      <td>11608 Boulevard de Salaberry Dollard-des-Ormeaux, Montreal, QC H9B 2R8, Canada</td>
+      <td>Paradise Kosher</td>
+      <td>11608 Bd de Salaberry, Dollard-des-Ormeaux, QC H9B 2R8, Canada</td>
+      <td>4.7 (150)</td>
+      <td>(514) 421-0421</td>
+      <td class="photo">places/ChIJfxs8L5M8yUwRut5ERNbbfmA/photos/AaVGc3m7FIRBxBIwPAmkeTWYt2Mf9yKBoW-zAiXdr3HEBHJuiPn1xy6hhT6ApD5oR3ieWTl2_6E2UBF1ZsOwSuMGFhdKrJ2qz6v1JgnGORJV-5naK4qYKl-Vn6fyQd7HOMZq9uUu3O1UNhtUCKC9c-xNadWPAA3TeRkfdZJfVjjEd8NX6hmVbGixrbAx0yX5F2w3X2OOF5OIihczTo0fKr5iFXaLWKmcimqL7VUBju18L56YTQVIB-t0AzJo9jPzu8QEw_LrCA3Y8dO81hOz2UTjbW8-zXCpRqNckVJ9OdWNQMEDSoxN7QGzP6J6xsZnMNpBROHgBaCJ3DQ8UmqUKP4zHmNxZmkdABHDh3Pz3jTLAqn09wl2VPh5f4S6H2L7q5dKHSCPw_tPJaM01ZCDm2TmHRgm9_x1ej5703Z0vd8eH_pOhz0-</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Paradise%20Cachere%20(take%20out)%2011608%20Boulevard%20de%20Salaberry%20Dollard-des-Ormeaux%2C%20Montreal%2C%20QC%20H9B%202R8%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfxs8L5M8yUwRut5ERNbbfmA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8051</td>
+      <td><b>Paradise Kosher Restaurant</b><div class="muted">Montreal · Canada</div></td>
+      <td>11608 De Salaberry Marche de l'Ouest, Montreal, Canada</td>
+      <td>Paradise Kosher</td>
+      <td>11608 Bd de Salaberry, Dollard-des-Ormeaux, QC H9B 2R8, Canada</td>
+      <td>4.7 (150)</td>
+      <td>(514) 421-0421</td>
+      <td class="photo">places/ChIJfxs8L5M8yUwRut5ERNbbfmA/photos/AaVGc3m7FIRBxBIwPAmkeTWYt2Mf9yKBoW-zAiXdr3HEBHJuiPn1xy6hhT6ApD5oR3ieWTl2_6E2UBF1ZsOwSuMGFhdKrJ2qz6v1JgnGORJV-5naK4qYKl-Vn6fyQd7HOMZq9uUu3O1UNhtUCKC9c-xNadWPAA3TeRkfdZJfVjjEd8NX6hmVbGixrbAx0yX5F2w3X2OOF5OIihczTo0fKr5iFXaLWKmcimqL7VUBju18L56YTQVIB-t0AzJo9jPzu8QEw_LrCA3Y8dO81hOz2UTjbW8-zXCpRqNckVJ9OdWNQMEDSoxN7QGzP6J6xsZnMNpBROHgBaCJ3DQ8UmqUKP4zHmNxZmkdABHDh3Pz3jTLAqn09wl2VPh5f4S6H2L7q5dKHSCPw_tPJaM01ZCDm2TmHRgm9_x1ej5703Z0vd8eH_pOhz0-</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Paradise%20Kosher%20Restaurant%2011608%20De%20Salaberry%20Marche%20de%20l'Ouest%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfxs8L5M8yUwRut5ERNbbfmA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8052</td>
+      <td><b>Patisserie Sfingy’s (Cavendish Mall)</b><div class="muted">Montreal · Canada</div></td>
+      <td>5800 Cavendish Boulevard, Côte Saint-Luc, QC H4W 2T5, Canada</td>
+      <td>Patisserie Sfingy's</td>
+      <td>5800 Boul. Cavendish E-09, Côte Saint-Luc, QC H4W 0A9, Canada</td>
+      <td>4.3 (23)</td>
+      <td>(514) 482-2992</td>
+      <td class="photo">places/ChIJCWWQvAwXyUwRR9eECKBef1Y/photos/AaVGc3n5uZNsS0K10eEMLE8CCDGHhnL5E6tSFsG6-ue2gRjyllkE6EI-GEIOmtaFVoT8YWNpV5M4XSg37-iHcMH_tInGyPJptwPBCoSXreeoG7B4lFCa0wFSPrtGFkmxs7441yR6KbvJPxW7ywptVMEEa32URYzxMTAiez1gtTq7wHXktyB2VANyYMlz7cNRKa7nuoKM1lDr1QUdzVtwnSKalUwEZWzZiacfWcmR9HAbvzxWIyP2sJxC22iuigRw9ulkiGyT4N1ZuaoNaSJL3jOBLQvQX2fNWkC1yaaxEW4yRfevsklp-asBDEQFbqiI9H7IenDJ3lSkgJ0mW4AqcRHfREEIdvL1zJkhvOTlFt04kt1DvlUqBxRFtf5R4vrSelaLN2VElttlSKpG_x-CDvqO-ETM0svvB6WYTpzBYEIXX3Z-6EXA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Patisserie%20Sfingy%E2%80%99s%20(Cavendish%20Mall)%205800%20Cavendish%20Boulevard%2C%20C%C3%B4te%20Saint-Luc%2C%20QC%20H4W%202T5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJCWWQvAwXyUwRR9eECKBef1Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8053</td>
+      <td><b>Pizza Gourmetti</b><div class="muted">Montreal · Canada</div></td>
+      <td>2075 Rue Saint-Louis, Saint-Laurent, QC, Montreal, H4W 1S5, Canada</td>
+      <td>Pizza Gourmetti</td>
+      <td>2075 Rue Saint-Louis, Saint-Laurent, QC H4M 1P1, Canada</td>
+      <td>4.6 (273)</td>
+      <td>(514) 739-7707</td>
+      <td class="photo">places/ChIJkcxn4uYZyUwRwZe4hPpkjSg/photos/AaVGc3lQn1DgJON9bX7dUgYrc5Pgl8ipXo3Wb12Du6wNGRCFvyGkB2W5TpqMaVyvsjIaGVcb5_sqetkNicHZ8CRNz4D8AhkhsENciyMg1Fg3sGiMaU3EmsJdHglDGQKRw9jluiKPR7Wir_O8MnUyXLEMLge9Iur8CiOx71BW7Ivl1qfCgm9HvJyGaK89-RrZ7SLlaVyqKRTqXDr0lGqfjZnJpWQxZr0dtx3-KjSbzDpwWtBdWNaO4fm3MfgxknEZnk07YoLbAtqkBrHmMS5nf0l67sPzamvnLqBX0ITBEq39JqzpMyUljqNJh3902X9xXkgYpmAmZHYA_DA2WeiTUDUmJ8mZRYiTnlW_qgLobdmeK70l4R9GEKngDWK-0rCEyfepUlXZ4cv6PGc8yGfyOS6UC9LnAAGa7ah6FB31TCE6jA_twA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza%20Gourmetti%202075%20Rue%20Saint-Louis%2C%20Saint-Laurent%2C%20QC%2C%20Montreal%2C%20H4W%201S5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJkcxn4uYZyUwRwZe4hPpkjSg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8055</td>
+      <td><b>Poulet Gourmet</b><div class="muted">Montreal · Canada</div></td>
+      <td>6445 Decarie Blvd, Montreal, Quebec, H3W 3E1, Canada</td>
+      <td>Poulet Gourmet | Kosher Restaurant</td>
+      <td>6445 Bd Décarie, Montréal, QC H3W 3E1, Canada</td>
+      <td>4 (4)</td>
+      <td>(514) 739-8535</td>
+      <td class="photo">places/ChIJNQTjRccZyUwRWTKO00q6xbE/photos/AaVGc3m5vm7bAE9bWwQFxV__m39CXImUpbtCLAJofr0StMYyRJMEDcjXvkl3UlBzHsMg4NrAqR4tvjNWDvmBmtPerdGDN0p55UgoQFfUbWUQ8tn-cU_Av6ZAlcjpX2ahRm_8OKOGDrjOcWaToWuY0q86kSmHc0IoecKWi0BwI-xs7ODYbu6EOQGr1ZZSH5liDr8kHZjBsQexuM980DD9fXCeiE3HeHRHLpnTFJXK3DVvx-nBcE6XmYRBfkGk4ZuEelgfBYSgT7qKZ6RJ4dCcNTPTnjZ9Zzs-JMq_ZSTGfH1fiX3MuYDIePAtAsTTOEXTuUYBOVPNIApen2Z1Kgy-OwK5wulinO0MH8gGk9nbIX6489VmgyLb_PZ-3xEE3Y7nnZfp7q1qUzPpOt5yi4Y51EYS8iwYDQs06JGlUrEQ7pVwIcjfuZI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Poulet%20Gourmet%206445%20Decarie%20Blvd%2C%20Montreal%2C%20Quebec%2C%20H3W%203E1%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJNQTjRccZyUwRWTKO00q6xbE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8056</td>
+      <td><b>Pret a Manger</b><div class="muted">Montreal · Canada</div></td>
+      <td>3755 Chemin de la Côte-Sainte-Catherine, Montreal, QC H3T 1E2, Canada</td>
+      <td>Miss Prêt à Manger</td>
+      <td>1104 Rue de Bleury, Montréal, QC H2Z 1N4, Canada</td>
+      <td>4.7 (41)</td>
+      <td>(514) 861-6565</td>
+      <td class="photo">places/ChIJhbUYrFoayUwRqOHnRK5hFPg/photos/AaVGc3lPNODIGVm8RMFYTswQhdYCk9Kf3G7BcbQ6CmAj541TZyKFmCIU68i3erVQMF4gfSifIaGQnsmMse5WEJsBKDqhNFnlhncFfmiXpkxO5Y9p50803d0bFhXkPzA9wlYRKcjlqAmpHEhZZzefl9yrj-yJJLMdc5WaNylYzVc_ahrO9eReL4PZuVABrkgR6QRqrwCqwLtjUDmGs1CG71Iw8u3vM7Obup9YKWF7oHqcjQ4EvFQz3JKITxd6hrXVYVf9VI-Md1OfrIUa4LN9emohx8FRK3yJgniKuxu3NucWuhoOCz1VyN0VA3ZuNwvUigLGuL_VPNhU5iMbg4MUj5AspiOQAGIXNeilm7iRsGd1rYha1Z6MmClNwVV5BBnqnZoi1LvvDzIpq7P9NY_oQKqwViwofUO60RO7aiECTH82iCwu6Q</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pret%20a%20Manger%203755%20Chemin%20de%20la%20C%C3%B4te-Sainte-Catherine%2C%20Montreal%2C%20QC%20H3T%201E2%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJhbUYrFoayUwRqOHnRK5hFPg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8058</td>
+      <td><b>Sababa Resto-Bar</b><div class="muted">Montreal · Canada</div></td>
+      <td>6900 Décarie Blvd #101 Montreal, H3X 2T8, Quebec</td>
+      <td>Sababa</td>
+      <td>6900 Bd Décarie #101, Côte Saint-Luc, QC H3X 2T5, Canada</td>
+      <td>4.3 (46)</td>
+      <td>(514) 303-0390</td>
+      <td class="photo">places/ChIJ7ztv0eUZyUwRnOEjv8ATUCw/photos/AaVGc3lRuMUPHem5Mk2c1J-ZQ8ZmqnmUd8yTZ1Yn1mIqgymJ9OTAqfmojjkGzmEsbVmGTFZwuUIocQOZSQJG_i622j9SSpOTY89_f7GZqletAyozuyfYFwW_4zRMy9f8G9ST47SOz2_qzQXs8U155D0RdYvms5_EPSoBoB3_6hc5C3b3w7EX7MGV6tRdMOa7z7qpA-WzUbWowqFbNCHQPDyE938mYCw9WGAGrJckgOGY3mX8ldtepRuH4KeSwe4ohLK8C4hX_woTwX1dhIkQDd4vhautIgfLMNx45WUzfBxRFLf3oOeNiNWd4gw9kBuaGXrNODGUUtNpvAUZ37E0mIjC4T_0r0VtNY-zPIruqcMi7fuK-RMBzZK9dFraAMwUwIbRSZ3K3M5puR9NDOEmYW_8K5CZFj1jNHlMfDtnDB4IPYw</td>
+      <td class="reason">LLM אישר (0.85): Same unique name 'Sababa', identical street address (6900 Décarie Blvd #101), same postal code H3X 2T5/2T8 (minor variation), same city Montreal area (Côte-Saint-Luc is adjacent to Montreal). The restaurant is closed permanently in Google's records, which explains status difference. Hebrew name 'סבבה' (Sababa) means 'cool/great' - unlikely coincidence with another establishment at exact same address.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sababa%20Resto-Bar%206900%20D%C3%A9carie%20Blvd%20%23101%20Montreal%2C%20H3X%202T8%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ7ztv0eUZyUwRnOEjv8ATUCw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8059</td>
+      <td><b>Saizen Sushi Bar</b><div class="muted">Montreal · Canada</div></td>
+      <td>5177 Decarie Boulevard, Montreal, QC H3W 3C2, Canada</td>
+      <td>Saizen Sushi Bar</td>
+      <td>5177 Bd Décarie, Montréal, QC H3W 3C2, Canada</td>
+      <td>4.3 (529)</td>
+      <td>(514) 903-0505</td>
+      <td class="photo">places/ChIJQwGXI1gXyUwR9eI5WHIsVUM/photos/AaVGc3lOdviseuGKv-xy4nctjM4rWfj52q8x4YHiOy7FwUcTe9cefc9c6raMg5mHW1MEFq6sLfrkayYppyMBuZ5JBa0NJx3VIBOm8M7R6oKvCjIBTBCDNwiBk9SfjuL5zM-KVJdRBopIB-AOFVT_UWbWQvT68NTxF1rhtft4_hKtaCxn7HKSl2VmE-Ss_gz73HXGrICtd-FjdvrbvKOxkd8gYDZIKps41shBwnNtPIXsdtVF84oGbf49Wxl63qbDjyGh8GTy16f-v706r10aPXVuVSltu1UpweI_nCKPE3CgvPyHOrP8LDSO3jfTF7w9cpp_sRIf02TvTxWLhffG4mid4l8wVbxZi6nVKlUWCa1AQ14yOf4xVjer-HQc7UfFuvxP0MS1vYPXQwPADhuPf-Sk3KZVlHLDugMdBecWHKDuUXc6Qn4-</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Saizen%20Sushi%20Bar%205177%20Decarie%20Boulevard%2C%20Montreal%2C%20QC%20H3W%203C2%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJQwGXI1gXyUwR9eI5WHIsVUM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8060</td>
+      <td><b>Smash Mzl</b><div class="muted">Montreal · Canada</div></td>
+      <td>5000 Rue Jean-Talon O #145 Montréal, QC, H4P 1W7, Canada</td>
+      <td>Smash Mzl</td>
+      <td>5000 Rue Jean-Talon O #145, Montréal, QC H4P 1W7, Canada</td>
+      <td>4.8 (124)</td>
+      <td>(514) 736-0626</td>
+      <td class="photo">places/ChIJhfdD8lEZyUwR14SaJH0sR84/photos/AaVGc3nPWL1XJG_x8zw8-V8f8ULaGhj-cBm4U0Vl0hXHVdxkf6lBIdjnGYlNnv05E8ybsIfxv6EQrMVIVem2msl7j_lHDgaz7YcZNKkI93kQiQ9Qch0Y2I5or9MH5JYasiiWBY1-yRSGu5YReQFQN2ER3wC3hW3O1JViJUpaBrgc8k28HVMrcGVATktXAkxq1ti2dRMXxrCvpVQ5jyL-jiordH5PVwrUFC4SIh0Wo2XQX9MUrNxVVDPg12tQIT-uJh98kepqCppFOAmpJrhq9XddF3aUMbJDWyYlAQ0TkwnPSu2wYV97r2G68J9sfSWR1lftSgsJ4jnVrva2eNwCCoJ55iox3Q8EIz-xmkTl8IzyyglSknpLThJipebUwjbadlkGMxxggb-hpvlYgZYJGtaQWCjwbL3qfsx9jLkUN5ynRYjhQ-yHXg_CNzXSI2VsYA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Smash%20Mzl%205000%20Rue%20Jean-Talon%20O%20%23145%20Montr%C3%A9al%2C%20QC%2C%20H4P%201W7%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJhfdD8lEZyUwR14SaJH0sR84" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8062</td>
+      <td><b>Taty's Pizza</b><div class="muted">Montreal · Canada</div></td>
+      <td>6540 Darlington Avenue Outremont, Montreal, Quebec</td>
+      <td>Taty's Pizza</td>
+      <td>6540 Av. de Darlington, Montréal, QC H3S 1L4, Canada</td>
+      <td>4.1 (54)</td>
+      <td>(514) 734-8289</td>
+      <td class="photo">places/ChIJk6gCIr4ZyUwRVmGEEGPE3aM/photos/AaVGc3kR-lf0-U71z-Knd1FAaZT6FO0huHOQRQA485OK_f0c97COwoz_ZpUwcWawWiYlvLHS1D61Ej5AlKphxmwDxwv0eEFI18Y7513NNjWNFc2qWVWlMpacjhkyVKo9glsZIbI2mzAea_RqS-OlF6QI4E_SNCS2Zdwt4YvEJvshb8g0WtlOU_YB8kGCL-BfRDqQL81EL9JtilUz2mOkRtZEZKp6pEV6tYww_6b57wOHXgE6uRzSe6W3Gu_0F1mAgNwx-H5xbkZssMaKbsnzt2fq94jZXV2_soxKSRs7GK8j5fJQ2CeKAQLzXESMaIpbQGrCOEBtExuLVnfdJyDmU1YvM0tRuL2k5J33S1iI7EkFs_wi1Wyxzci27RGRgfsqEDmyGEaHL3hNw8aRRnse_fwvL0kwchaPnPB7pOJ4SsStNMtFL-Pi</td>
+      <td class="reason">LLM אישר (0.98): זהה שם ייחודי (Taty's Pizza), כתובת זהה (6540 Darlington/Av. de Darlington), עיר זהה (Montreal/Montréal), הבדל בעברית/אנגלית בלבד בשמות רחובות וקיצורים. כתובת Google מהימנה יותר עם קוד דואר.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Taty's%20Pizza%206540%20Darlington%20Avenue%20Outremont%2C%20Montreal%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJk6gCIr4ZyUwRVmGEEGPE3aM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8063</td>
+      <td><b>Yakimono Sushi Bar</b><div class="muted">Montreal · Canada</div></td>
+      <td>4210 Decarie Boulevard, Montreal, Canada</td>
+      <td>Yakimono</td>
+      <td>4210 Bd Décarie, Montréal, QC H4A 3K3, Canada</td>
+      <td>4.4 (593)</td>
+      <td>(514) 484-1515</td>
+      <td class="photo">places/ChIJ7X99uqwQyUwRIDr7tQraLLg/photos/AaVGc3nd19_Ihgdb8Ec4BiZkA7bWDftht8P6U8wA1Kc-INGUjY10lwaD7NLKBrt4Yl2FNLQ937dt5nJFvIrR7rMBBPMHx-SK-6lM7OFhCUSfXKRjDztIgdGLwNVvZkha9ZW1D-GNiWUTgqj9bQTyc71y9zyzd8EzjcQAc_Gmx5QmBsy1m41I3RFzF8Uzwh__hJ_g30SNxL9NDWXLRdjpFS9Qr5gn0FRxe8lXjRwCUtWMtiGQoxBhWNCnce2C7yjBeqz3HWbYkIWz3loda510i9q4vXR9Ui_70f-uZUZfDizkenfCAN4pfXtHDA0sjXfGrFz2ecnjU3qQrZbqocPwcuf8GVecu4fZax93CgSvsYoM_dVzsAOf1udBXYHvxn_vbBqZbVCMqISHc7bwMFf_wTD98Jgz8GeSdkH3IhrgvlT0-6miylM03-oASFGd4jdEqPi7</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yakimono%20Sushi%20Bar%204210%20Decarie%20Boulevard%2C%20Montreal%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ7X99uqwQyUwRIDr7tQraLLg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8064</td>
+      <td><b>Yanky's Pizza</b><div class="muted">Montreal · Canada</div></td>
+      <td>6680 Park Ave, Montreal, Quebec , H2V 4H9, Canada</td>
+      <td>Yanky's Pizza</td>
+      <td>6680 Av. du Parc, Montréal, QC H2V 4H9, Canada</td>
+      <td>4.7 (20)</td>
+      <td>(514) 279-3663 ext. 1</td>
+      <td class="photo">places/ChIJYYrN1pgZyUwRezGeAShF85U/photos/AaVGc3moc8fXPSmNA2Sye3HcXGm4S_GzbUfeprhHalCNUH_I4Lmhw4ij558FNwu90d3PNMel2lfKAJVVGLjDK4cTxibFtGARG8KM4vUHDbGPSX5BvHbFfFhTtGI8DNPH6Zj_zyXgSlgionKJqnZQ0dV2pAhsB1k4zPwY_o07t0KBoVtGpaika1t9IbQMIGDbWgw4wG5L7N2x17Uo4SJZRl6RHTlOZ68WtsphWz0a2xmTDFaxNuo2A51LsG7CnSv8O9eYkCDoSpnvnOmo_xstJyhMFCBt0vLzl3cUqvznDAiNfGbyfvbQf9Qf3TPSQB2mbJhR8VKhlD8O88XPVI4om4rkuiSvOaYAv_GmMm23EaboZiERA0nMRaxrAUyCBrN_C3EHAmr0IamOa2i78fL6aFZNEj_TqchVAjMJVM4tVZWKxERIxUZE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yanky's%20Pizza%206680%20Park%20Ave%2C%20Montreal%2C%20Quebec%20%2C%20H2V%204H9%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYYrN1pgZyUwRezGeAShF85U" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8065</td>
+      <td><b>Yanky's Pizza Cote St Luc</b><div class="muted">Montreal · Canada</div></td>
+      <td>5816 Av. Westminster Cote St Luc, QC, H4W 2J9, Canada</td>
+      <td>Yanky's Pizza</td>
+      <td>6680 Av. du Parc, Montréal, QC H2V 4H9, Canada</td>
+      <td>4.7 (20)</td>
+      <td>(514) 279-3663 ext. 1</td>
+      <td class="photo">places/ChIJYYrN1pgZyUwRezGeAShF85U/photos/AaVGc3moc8fXPSmNA2Sye3HcXGm4S_GzbUfeprhHalCNUH_I4Lmhw4ij558FNwu90d3PNMel2lfKAJVVGLjDK4cTxibFtGARG8KM4vUHDbGPSX5BvHbFfFhTtGI8DNPH6Zj_zyXgSlgionKJqnZQ0dV2pAhsB1k4zPwY_o07t0KBoVtGpaika1t9IbQMIGDbWgw4wG5L7N2x17Uo4SJZRl6RHTlOZ68WtsphWz0a2xmTDFaxNuo2A51LsG7CnSv8O9eYkCDoSpnvnOmo_xstJyhMFCBt0vLzl3cUqvznDAiNfGbyfvbQf9Qf3TPSQB2mbJhR8VKhlD8O88XPVI4om4rkuiSvOaYAv_GmMm23EaboZiERA0nMRaxrAUyCBrN_C3EHAmr0IamOa2i78fL6aFZNEj_TqchVAjMJVM4tVZWKxERIxUZE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yanky's%20Pizza%20Cote%20St%20Luc%205816%20Av.%20Westminster%20Cote%20St%20Luc%2C%20QC%2C%20H4W%202J9%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYYrN1pgZyUwRezGeAShF85U" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8066</td>
+      <td><b>Yummies</b><div class="muted">Montreal · Canada</div></td>
+      <td>1859 Rue Saint-Louis, Saint-Laurent, Que, H4M 1S5, Canada</td>
+      <td>Yummies</td>
+      <td>1859 Rue Saint-Louis, Saint-Laurent, QC H4M 1N5, Canada</td>
+      <td>4.7 (92)</td>
+      <td>(514) 744-0441</td>
+      <td class="photo">places/ChIJHTPkm_MZyUwR_apbMXb4QIw/photos/AaVGc3krmpC8dOebxYUsm0xZNY7xfVpDfQCCjp1KTX99BA1S_YaAVYCtsIYm-4ou7Y-Wh5jl-qe2I18PpIM_a2vSdR1pVfkkfPC9OhKckyf08os7jNN5srDMjIttueCX9WW-zIklZNDuPeKlLA8s8yzGpiC5kjlb3uJTuCXBdXS-vkI1aslOHbRHbLuPOmIvoIAi4DvhSr4LSwuNIaFiOa7v9J5jSqtfjZPD4tFhzm2Z8biyEAmHujgBcb0QeO3tPEh0CHU1-3CqL9Y5haBP94dQrkYDMlQLWTIZvYVUZIoEZpWIKaTAjpQx1IMYw843_I_6Mx7_hg4Naoa628HkrjsA2fQSaqvuA9Q8AH8fyVDm7F3GR4ABTjccXoePxeuRVA09r66bE5QYyLOEBk5qd83fC6Bc-2JpgbisuKb8NzI1sYZnlxY</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Yummies%201859%20Rue%20Saint-Louis%2C%20Saint-Laurent%2C%20Que%2C%20H4M%201S5%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJHTPkm_MZyUwR_apbMXb4QIw" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 1</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>8054</td>
+      <td><b>Pizza Pita Prime</b><div class="muted">Montreal · Canada</div></td>
+      <td>5345 Vézina St, Montreal, Quebec, H3X 4A8,, Quebec</td>
+      <td>PIZZA PITA PRIME (Montreal)</td>
+      <td>5345 Rue Vézina, Montréal, QC H3X 4A8, Canada</td>
+      <td>4.3 (1553)</td>
+      <td>(514) 731-7482</td>
+      <td class="photo">places/ChIJJT9N4d4ZyUwRjzs5WT7hNOQ/photos/AaVGc3l1pmfSxW7HT3-ELy9vnL0dEaOUX8RJjbkW8dZccZYkZsjZaOT8PfwQzPpNCGC_cD1hEpQR__ZsPayeMCQdz_Bg-AdsiMqb0iAl5kJjy4GcPATI5qSTQssO0yckRmF1GwfVpUDa6LASXS-g8qcxY4kNxtfYNp8Y_D67Dj4aqnmhVGs7nIoF0gG1Ee4ZrWDvZoc98pHVDWuIz_RZSlDkABT8dp2vQ5rT2SPPgngjZ7OJ_2PU2EKP1JWieW7YCWcx2oVXH80GK1TxDJeUk5l2RYeM2MY1qdhP-fLscbKM1bVAw-cYAri6YzrrIurLPhq0HLi5aK_JGO0LtVNT7akumYIkepMqD39BBVXqmd_7MIYO7icYJ-EqaTXEK_qsxIx410d7M7_wTEAD9-sRC0A3q3yriZpr6tW5wsf-emrPlzhh1S4W</td>
+      <td class="reason">LLM לא הכריע (0): unparseable</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza%20Pita%20Prime%205345%20V%C3%A9zina%20St%2C%20Montreal%2C%20Quebec%2C%20H3X%204A8%2C%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJJT9N4d4ZyUwRjzs5WT7hNOQ" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 7</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>8008</td>
+      <td><b>Atrium Coffee Shop</b><div class="muted">Montreal · Canada</div></td>
+      <td>Jewish General Hospital 5750 Côte-des-Neiges Road, Montreal, QC H3S 1Y9, Canada</td>
+      <td>The Atrium Cafe</td>
+      <td>besides La pino’z pizza, NH 48, Chikhli, Gujarat 396521, India</td>
+      <td>4.9 (1170)</td>
+      <td></td>
+      <td class="photo">places/ChIJE0U5bgDt4DsRrX3dLFxglWQ/photos/AaVGc3n34BYNwQWiJAv8UNSaDwOzVIyfzQ25c0ww4_kkITWOfOteLT6qpYLVqQ7WpuLIRurl_C69ni-OYStcQ7-GeYaUWw4khP5Imhj6SsR_fCZhhJAX8-Q1HuJOiUElib_Pg9LJf4etwhgKMvZyPIAaCHMi7PaUEnnMkBb-UPENE3bgkB32TUtoyTPOxHbNN25-s0z4GqreZ1U9D2r4q2rzTJ9l5mrJ9Ld1XbxDttSAnZSwFmkeuYYw3S745wkfG1YyHes96g7crtEFGByUX-FoZaPEwAYX3-Zuc0byq0vm6pvJW0zJ14NseZ97Wj2dTaikv_FLXprYUJC1RZuWgkofB4yMjno-6yArGGBYTNOGPca13yS2QSVyA7tEa3Y39NJJisMeVV8To0NSfbwrPj1Y_JWaDdwyuHKfm--VevBXUEgbrL20fA0F_hWj0Vu3ypp5</td>
+      <td class="reason">LLM דחה (0.99): Different countries entirely (Canada vs India), different cities (Montreal vs Chikhli), different addresses. Only superficial name similarity ('Atrium'). A is hospital cafeteria, B is standalone cafe in Gujarat.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Atrium%20Coffee%20Shop%20Jewish%20General%20Hospital%205750%20C%C3%B4te-des-Neiges%20Road%2C%20Montreal%2C%20QC%20H3S%201Y9%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJE0U5bgDt4DsRrX3dLFxglWQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8033</td>
+      <td><b>Kosher Afternoon Tea The Ritz Carlton</b><div class="muted">Montreal · Canada</div></td>
+      <td>1228 Sherbrooke Street West, Montreal, QC H3G 1H6, Canada</td>
+      <td>Palm Court</td>
+      <td>1228 Rue Sherbrooke O, Montréal, QC H3G 1H6, Canada</td>
+      <td>4.4 (197)</td>
+      <td>(514) 842-4210</td>
+      <td class="photo">places/ChIJ94Wrfq4byUwRl0WMP2JW-7Q/photos/AaVGc3mAjY-YxybLhVIuH_6vmWDe--x_5JoG7nDoH9QTgAmXZJp9n1_gDwEKQRmLXx8RUqx6jby9jCu11HZoSd3zefIvahvrlsBRbpsIRlOOv_a44f_DHqvD4e5ySDF4TKnRaqk-XCVFsHoFlZnItbcIBZspR33NDkWObKs3R2cj3uHA_sQbBZ9CQbg6MFpDttwEo7ACxuWiWrbXCcE6r027OtfMiWk7o0TgmuZRFeFENMCaJZzJ6LUOec2Pqucar7OZ4zkMFhZuAcah2y7LELRVjaWAOLE5xs724f0fPfRX_mb07yCSZhS0F2Hn_lqj6fCd9ub01LJy4xLyE3dse3lf9v174sOOjsXu0BMVjX3S2m_RdW3k_YKhS7sTsIFTPNKCm4zBD6Y7-MEpldR7xKABllyt0nqQR1LL5Mwa-SqoJi9mrA</td>
+      <td class="reason">LLM דחה (0.85): Different restaurant names at same address. 'Kosher Afternoon Tea The Ritz Carlton' is a specific kosher afternoon tea service, while 'Palm Court' is the main restaurant at the Ritz Carlton. These are distinct dining venues/services within the same hotel property, not the same restaurant.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Afternoon%20Tea%20The%20Ritz%20Carlton%201228%20Sherbrooke%20Street%20West%2C%20Montreal%2C%20QC%20H3G%201H6%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ94Wrfq4byUwRl0WMP2JW-7Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8036</td>
+      <td><b>La Notte</b><div class="muted">Montreal · Canada</div></td>
+      <td>5751 Monkland Ave, Montreal, H4A1E8, Quebec</td>
+      <td>La Nottè</td>
+      <td>5549 Av de Monkland, Montréal, QC H4A 1C8, Canada</td>
+      <td>3.8 (286)</td>
+      <td>(514) 487-5555</td>
+      <td class="photo">places/ChIJj8rk8CkXyUwRzZZFyQDx588/photos/AaVGc3krNNk9eshike2wNnzkWoI4qnbqgOcyEYGed3PSHLYgbYllcD4RUOwf60PiR0dOTbkq-Fyo-UNN1ZvdvZ9p2RUNlwr-I1emK7sYRuT_kleNC-NPrz3S6RyMi93GmQ50MiE1sPS3qbInrb-xBeWLF4EjmZEgv9obgyZN4gk9630zHqd98u0C9PjN_zypIVzhMAjLhSQSJRcf5_GiGCKv_vMi_rnPmj-wOryBgN8F1UiFaEXl1sqP62waVxMYglW841Fk-eRgjMtPWvx0bCAAWuZdymIawtx0RctQkuKNk1ehVOmomcr2ktzY6XqLqrSL2EPg1mZVu1KQwKAbh4by0N2l9Z88mSnCM5lq8Yfeo_QhGdIf0HmJthMRJZU_IdjzypPBNC64CSYnmO0WsOiTKdIZt368Mru9qn7fn3M0RJ-Uj1DOseqi85ZuPZQjUSTf</td>
+      <td class="reason">LLM דחה (0.85): שתי כתובות שונות באופן משמעותי - מרחק של ~345 מטר בין 5751 לבין 5549 ברחוב מונקלנד. למרות שהשם דומה מאוד (La Notte vs La Nottè - הבדל קל בהגייה), כתובות כל כך שונות מצביעות על שתי מקומות שונים או חנות שעברה מיקום משמעותי. בשל המרחק הגדול, סביר להניח שמדובר בשתי עסקים נפרדים.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Notte%205751%20Monkland%20Ave%2C%20Montreal%2C%20H4A1E8%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJj8rk8CkXyUwRzZZFyQDx588" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8039</td>
+      <td><b>Lefalafel</b><div class="muted">Montreal · Canada</div></td>
+      <td>6245 Decarie Blvd, Montreal, Quebec, H3W 3E1, Canada</td>
+      <td>Le Falafel Plus+</td>
+      <td>4677 Av. Van Horne, Montréal, QC H3W 1H8, Canada</td>
+      <td>4.6 (388)</td>
+      <td>(514) 731-1221</td>
+      <td class="photo">places/ChIJW7WMUN4ZyUwRRIcqg7CaOdA/photos/AaVGc3nbjovoDERJHUE-VZMPVgosZvs46HHmm6wGIjz93wOaScJG7HzYjVEVVz1BnL0fg9sYnFK3hrktMIKdal9EBvFQcIOVqIDrH0JOG8_aG08v4Ool1bVt1eVy3RvHK9Y7pX9cyj3gqrUPg1hcB0fFMudewzuCNgun8GrBflgWRtuyFCY4WcSN76oknLzeofcKV7N2fWpOjgj_yY4ac9wmrZBWnACden8M4zqhdZbpcbFEdkOz4V3e7viwBXyIIzqkS2HoY0run0fAFqzAID0h7S1KydOgwV8GtP0B1S5CEST6p6Zws0LQPUDo956WcAurHH5CC7-I4oc9AACK9eF1KfCGWn5m7ZnyZgl0HCAiSPi_12CwuT1YWn4uRk8_-_3V4t7B3DPFek24igEPcBU3jgMe46A1g46lgyYCHuFltrpavqJzoj8xE8-qodSOKg</td>
+      <td class="reason">LLM דחה (0.85): שתי רחובות שונים בהחלט - Decarie Blvd vs Van Horne, עם מרחק של 5.3 ק״מ. שמות דומים אך מיקומים שונים מרמזים על שתי עסקים נפרדים או סניפים שונים. בשרשרות קטנות, זה בדרך כלל לא אותו מקום.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lefalafel%206245%20Decarie%20Blvd%2C%20Montreal%2C%20Quebec%2C%20H3W%203E1%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJW7WMUN4ZyUwRRIcqg7CaOdA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8042</td>
+      <td><b>Maison Ben’Jing</b><div class="muted">Montreal · Canada</div></td>
+      <td>3755 Chemin de la Côte-Sainte-Catherine, Montreal, QC H3T 1E2, Canada</td>
+      <td>Maison Mignon - restaurant taiwanais</td>
+      <td>1440 Rue de l'Église, Saint-Laurent, QC H4L 2H3, Canada</td>
+      <td>4.6 (178)</td>
+      <td>(514) 744-1919</td>
+      <td class="photo">places/ChIJyRhegD8YyUwRS6Ao6L3Cj9Q/photos/AaVGc3ldFLCzFgWKXA6Z-UD3EtyBe7-1S5_1S0ThhqtHJyfpIxDsaAXVzH2lGZdmDBHMZL8hoyxPKelXuieluPMWrmjSy0VCSz1NpkpQQVvM6GUoS21s3g8UPKjgvwnIJODHEDN5j1hzPg4KqZtxCEbA38ADOrQMT4kVYv2c6EozXDyUI2Jp4cYtnf9160Mhd3lZxIIDE1cBLR2ntrHYuHU2lRkDkGdQcnCZE8q1YnVXxHQRHnB3usLkRIYl5_rS-u023PuniSs_gYQDzqEsDXPJctQgQU3n-CvB4sG_Glny7QJESEedIa-y5s-O4yFpZoH2ommXoQPyEysviXF53Z3xrYOpIBt6YcVmYzstmSeonX2kbXGrMg312kIOe6g1v205Rz9FFqu_rj_3svNH1uIjWj5cTDh7yhVjS45xJAi3nHoaipwC</td>
+      <td class="reason">LLM דחה (0.95): שתי מסעדות שונות לחלוטין - שמות שונים (Ben'Jing vs Mignon), כתובות שונות בחלוטין (Côte-Sainte-Catherine vs Rue de l'Église), ערים שונות (Montreal vs Saint-Laurent), והן מוקדות על מטבחים שונים (כללי כשר לעומת טייוואני)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Maison%20Ben%E2%80%99Jing%203755%20Chemin%20de%20la%20C%C3%B4te-Sainte-Catherine%2C%20Montreal%2C%20QC%20H3T%201E2%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJyRhegD8YyUwRS6Ao6L3Cj9Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8057</td>
+      <td><b>Resto Uriel</b><div class="muted">Montreal · Canada</div></td>
+      <td>9297 Rue Tolhurst, Montréal, QC H2N 1X1, Canada</td>
+      <td>Universel Déjeuners et Grillades</td>
+      <td>2055 Rue Peel, Montréal, QC H3A 1V4, Canada</td>
+      <td>4.3 (3500)</td>
+      <td>(514) 840-7136</td>
+      <td class="photo">places/ChIJ4Rl_L0EayUwREWrbitMz5wg/photos/AaVGc3mUZkE809bT0X7OjX1Bh0rEPXAg8YqHdHp0WnO94ef_IaupjUcMCzgRwhIZ8dorWQqTU3vtfVSi5_JjRJw5z224cz454OSRzytv-Vb3Js9wHCIiiLRVReeXEx1SzNCXMZKo_W4cF_nDexodBmUsGlLO7Bch2d3IcC0kQh2HJe6eyt-SaY8HaTISABXJXeod2OLp60D3LGFbXmArKBCvwRhoE232XZai5Z7l3QpUiVHR8LiBdWiswk7vdd9zX48uf5XRP5hNZaqaAsiTzl4xvodJb-PKz4mzxX4w13OYrQI07unbwHat4H_A0cRRZG7-t8HfyeOP5HfuNHxH9jBpB9KfkGn9a4zJFTZU9MJxKHSqY7CTUv5fvR4OULwvqpwhCJb0lJgEcE8FPntz-zumW3h872QuJR6bNuYieEjkOZXnlxA</td>
+      <td class="reason">LLM דחה (0.95): שמות שונים לחלוטין, כתובות שונות בעיר, מרחק של 491 מטר. 'Resto Uriel' ו-'Universel Déjeuners et Grillades' הם עסקים שונים. רק העיר משותפת.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Resto%20Uriel%209297%20Rue%20Tolhurst%2C%20Montr%C3%A9al%2C%20QC%20H2N%201X1%2C%20Canada" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ4Rl_L0EayUwREWrbitMz5wg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8061</td>
+      <td><b>Sofitel Montreal  (packed food only! מזון ארוז )</b><div class="muted">Montreal · Canada</div></td>
+      <td>1155 Sherbrooke Street West, Montreal, Quebec</td>
+      <td>Sofitel Montreal Golden Mile</td>
+      <td>1155 Rue Sherbrooke O, Montréal, QC H3A 2N3, Canada</td>
+      <td>4.5 (2154)</td>
+      <td>(514) 285-9000</td>
+      <td class="photo">places/ChIJbSKD3kAayUwRwpyEz40SSls/photos/AaVGc3k6_NxrmSiYnsmy5u9LuR2SV0MvUaO4vIA5NW7BeYm1eirXy6qGKO2HKA2qUtm8n7hk_BLR3hPJk7fStlPjwca04fEFcccCJqgpXxcJqZ8UzR0Jn5AaizYSyf-dqP-MOTPaEne3s6MpMwA6Z6nPXMyMDemMxI8a0LBOqXeDtP4le5lNN5l5UIytPN_CySX9ONYM70TXlJQlGIk6O2VzKR4Wktn35qiYwzIGfSsEMHT77DRfAaOYhds6NI1H8rLNrfu2CVIQjhHHyHCT-iuI6t3VoQa6rCtbAdz0VF0hIouvWmQRWy4h1rNKG6mIHz_4FdyMywzX7pYMMG9dzynZalPtZJ6T7demBP7CDnwhTTAVbJkFlU4IxO3EloqQ7iI9ufrNBiwBO2nvJQWZztwiBc-qfgBlkEnxrjETGyqO8qlKX0i5</td>
+      <td class="reason">Google candidate is not a food business</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sofitel%20Montreal%20%20(packed%20food%20only!%20%D7%9E%D7%96%D7%95%D7%9F%20%D7%90%D7%A8%D7%95%D7%96%20)%201155%20Sherbrooke%20Street%20West%2C%20Montreal%2C%20Quebec" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJbSKD3kAayUwRwpyEz40SSls" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

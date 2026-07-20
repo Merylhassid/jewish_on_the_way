@@ -16,6 +16,7 @@ import {
 import { HostingService } from './hosting.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateOfferDto } from './dto/create-offer.dto';
+import { UpdateOfferDto } from './dto/update-offer.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
 import { CreateNeedDto } from './dto/create-need.dto';
 import { SearchOffersQueryDto } from './dto/search-offers-query.dto';
@@ -26,6 +27,11 @@ export class HostingController {
   constructor(private readonly hostingService: HostingService) {}
 
   // ── Offers ─────────────────────────────────────────────────────────────────
+
+  @Get('summary')
+  summary(@Query('destinationId') destinationId: string, @Req() req: any) {
+    return this.hostingService.summary(parseInt(destinationId, 10), req.user.sub);
+  }
 
   @Post('offers')
   createOffer(@Body() dto: CreateOfferDto, @Req() req: any) {
@@ -51,9 +57,11 @@ export class HostingController {
 
   // GET /hosting/offers/search?destinationId=1&guestsCount=2&forShabbat=true&arrivalDate=2026-05-01&limit=20&offset=0
   @Get('offers/search')
-  searchOffers(@Query() dto: SearchOffersQueryDto) {
+  searchOffers(@Query() dto: SearchOffersQueryDto, @Req() req: any) {
     return this.hostingService.searchOffers({
       destinationId: dto.destinationId,
+      viewerId: req.user.sub,
+      hostingType: dto.hostingType,
       arrivalDate: dto.arrivalDate,
       departureDate: dto.departureDate,
       guestsCount: dto.guestsCount,
@@ -62,6 +70,16 @@ export class HostingController {
       limit: dto.limit ?? 20,
       offset: dto.offset ?? 0,
     });
+  }
+
+  @Get('offers/:id')
+  getOffer(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
+    return this.hostingService.getOwnOffer(id, req.user.sub);
+  }
+
+  @Patch('offers/:id')
+  updateOffer(@Param('id', ParseIntPipe) id: number, @Body() dto: UpdateOfferDto, @Req() req: any) {
+    return this.hostingService.updateOffer(id, dto, req.user.sub);
   }
 
   // ── Requests ────────────────────────────────────────────────────────────────
@@ -117,8 +135,8 @@ export class HostingController {
   }
 
   @Get('needs')
-  listNeeds(@Query('destinationId') destinationId?: string) {
-    return this.hostingService.listNeeds(destinationId ? parseInt(destinationId, 10) : undefined);
+  listNeeds(@Query('destinationId') destinationId: string | undefined, @Req() req: any) {
+    return this.hostingService.listNeeds(destinationId ? parseInt(destinationId, 10) : undefined, req.user.sub);
   }
 
   @Get('needs/mine')

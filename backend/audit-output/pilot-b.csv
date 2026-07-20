@@ -1,0 +1,101 @@
+﻿group,pool,id,old_name,old_address,new_google_name,new_google_address,new_place_id,reason
+wrong_or_notfound,red,204,רחל המבשלת-אוכל טבעוני,"הקשת 10, תל אביב, Israel",,,,נבדקו 6 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.30))
+wrong_or_notfound,red,4086,דוצ'ה,"השרון 12, תל אביב, Israel",,,,נבדקו 7 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.27))
+wrong_or_notfound,red,2510,VIDA,"יהודה הלוי 1, טבריה, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (לא-מזון)
+still_maybe,red,6006,קראנצ' פיצה,"פנחס בלקני 63, נתניה, Israel",Pizza Crunch,"Sderot Binyamin 12, Netanya, Israel",ChIJxTV2BapqHRURtOGJLULzNe0,"סימנים חלקיים (sim 0.40, addr 1) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,4947,שושקפה,"קרן קיימת לישראל 31, ירושלים, Israel",,,,נבדקו 5 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.38))
+still_maybe,red,3642,Fresh2go,"שד' עמק איילון 30, שוהם, Israel",Fresh2Goo,"Shoham, Israel",ChIJF5OWc2Q1HRURSvpqp13jkws,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+sure_right,red,5022,פאלאס,"אגרון 26, ירושלים, Israel",The Palace Restaurant - מסעדת הפאלאס,"Gershon Agron St 26-28, Jerusalem, 9419009, Israel",ChIJlbjWnu4pAxURxpK0pF-SxXQ,שם ייחודי תואם (sim 0.43) + עיר
+wrong_or_notfound,red,4882,יעלה,"נחל קישון 48, בית שמש, Israel",,,,נבדקו 8 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.29))
+still_maybe,red,3808,ביג באגט,"מודיעין 11, פתח תקווה, Israel",BIGA,"Jabotinsky St 72, Petah Tikva, Israel",ChIJsQxUymA3HRURbIBfDba-eZ4,"סימנים חלקיים (sim 0.40, addr 1) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,1674,דדיס שווארמה בשרים על האש,"דרך הדרום 3, קריית גת, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (סגור)
+still_maybe,red,4569,שווארמה שינקין,"המלך ג'ורג' 1, תל אביב, Israel",Shawarma Bon Taam,"Allenby St 56, Tel Aviv-Yafo, Israel",ChIJOa05aoFMHRURYLK-ctCLKHs,"סימנים חלקיים (sim 0.42, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,3626,מיט קיצ'ן,"יקותיאלי יוסף 4, נמל תל-אביב, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (סגור)
+still_maybe,red,2512,free סנדביץ',"קריית שמונה, Israel",הבן של סימו מסעדת בשרים,"ת.ד 8716, Tel Hai 108, Kiryat Shmona, Israel",ChIJ49H-W1S9HhURYSYMrX8sDD0,"סימנים חלקיים (sim 0.21, addr 2) · [LLM לא זמין - אין קרדיט]"
+still_maybe,red,5836,שווארמה דוידי,"שד' אבא אבן 12, הרצליה פיתוח, Israel",שווארמה בלאדי,Ma'ale Adumim,ChIJhaJoz3MpAxURujCHt_ybyN0,"סימנים חלקיים (sim 0.80, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,2377,לחם גריל,"המשור 3, טבריה, Israel",,,,נבדקו 6 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.20))
+wrong_or_notfound,red,5935,אוקי פוקי,"הרצל 2, נתניה, Israel",,,,נבדקו 5 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.25))
+wrong_or_notfound,red,5244,Street & Wok Market-אסייאתי בשוק,"השזיף 15, מחנה יהודה, ירושלים, Israel",,,,נבדקו 8 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.38))
+wrong_or_notfound,red,6816,עשר,"הרב אג""ן 10, ירושלים",,,,נבדקו 3 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.20))
+still_maybe,red,5905,דנבר,"המייסדים 31, פרדס חנה-כרכור, Israel","דנבר צבעים וציפויים ישראל (2002) בע""מ","Brussel St 7, Sderot, 8714540, Israel",ChIJhwt4xa6GAhUR1zUFku-b5Rs,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,3318,קורו,"לח""י 2, בני ברק, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (לא-מזון)
+wrong_or_notfound,red,3314,סנדוויצ'ון,"ויצמן 44, יהוד, Israel",,,,נבדקו 8 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.33))
+still_maybe,red,1455,מסעדת ספרא,"יוסף הבורסקאי 18, באר שבע, Israel",Sifriya,"מתחם מבנה, Yitshak Nafha 25, Beersheba, Israel",ChIJ3csJR0lmAhURA74odx0Uh-s,"סימנים חלקיים (sim 0.67, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,red,5453,פיצה אונו,"המלאכה 5, קריית מלאכי, Israel",פיצה אונו,"Harei Yehuda St 67, Ganei Tikva, Israel",ChIJSQeUeow1HRURzrbPKt53T4k,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,red,3203,מסעדת בבאי,"דרך יעקב דורי 7, קריית אונו, Israel",Jagger - ג׳אגר קריית אונו,"השדרה האקדמית 1, Kiryat Ono, Israel",ChIJ5wQmPWs1HRURexb4nYizArQ,"סימנים חלקיים (sim 0.09, addr 2) · [LLM לא זמין - אין קרדיט]"
+still_maybe,red,3592,פיצה ברקה,"שד' עמק איילון 30, שוהם, Israel",פיצה ברקה,"Ha-Metsuda St 8, Azor, Israel",ChIJ2XnbvzVLHRURjkLcsZdA8nE,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,3393,ציפורה אקספרס,"מרכז רפואי שיבא, רמת גן, Israel",,,,נבדקו 6 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.18))
+wrong_or_notfound,red,4769,פרנו,"פייר קניג 26, קניון הדר, ירושלים, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (לא-מזון)
+still_maybe,red,4434,שיפודים פלוס,"אבן גבירול 30, תל אביב, Israel",מסעדת שיפוד,"Beit Neta, Meitav 6, Tel Aviv-Jaffa, Israel",ChIJ2d5_QHVLHRURFS3Tc_JwyLs,"סימנים חלקיים (sim 0.50, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,red,2458,אמריקן פיצה,"יהודה הלוי, טבריה, Israel",Pizza Arena,"Ha-Banim St 20, Tiberias, Israel",ChIJea73nUk-HBUR1Unl6CZsMHs,"סימנים חלקיים (sim 0.50, addr 1) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,5039,עין כרם המתוקה,"מבוא השער 3, עין כרם, ירושלים, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (לא-מזון)
+sure_right,red,2300,אצה,"קריית שמונה, Israel",אצה סושי בר - קרית שמונה,"Qiryat Shemona, Israel",ChIJcfjDCKaiHhURFypRZR28RUY,שם ייחודי תואם (sim 1.00) + עיר
+still_maybe,red,1714,קפה גן סיפור,"שד' משה דיין 4, אשדוד, Israel",קפה גן סיפור פתח תקווה הכשר,"Basel St 2, Petah Tikva, Israel",ChIJbeD8RQA3HRURanlHDaCxJ-A,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,3890,Z וזהו,"משה בקר 14, ראשון לציון, Israel",,,,נבדקו 7 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.19))
+wrong_or_notfound,red,5627,BAR,"היצירה 31, רחובות, Israel",,,,נבדקו 8 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.25))
+still_maybe,red,3713,החומוס של טחינה,"אחד העם 33, תל אביב, Israel",החומוס של טחינה,"Ahad Ha'Am St 33, Tel Aviv-Yafo, Israel",ChIJyRssVTpLHRUR6mBmvGien5E,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,5915,הפינה של אדם,"רוזנבך 4, קדימה, Israel",,,,נבדקו 2 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.08))
+still_maybe,red,5111,פיצה אלון שבות,"אלון שבות, Israel",פיצה וי - PIZZA V גוש עציון,"מרכז מסחרי ישן, Alon Shvut",ChIJpzIEfbDdAhURTZK1ZWFR-Oc,"סימנים חלקיים (sim 0.40, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,red,5738,פיצה פומדור,"מוצקין 34, רעננה, Israel",,,,נבדקו 6 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.33))
+wrong_or_notfound,red,5899,פיצה במושב,"צור משה, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.20))
+still_maybe,red,1742,ביג בן,"הדקל 1, קריית גת, Israel",BBB,"מרכז ביג, דרך הדרום 3, קרית גת, Israel",ChIJvXuzL32RAhURN20N6jL4le0,"סימנים חלקיים (sim 0.50, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,5732,קייטרינג הדר,"עמק חפר 10, נתניה, Israel",קייטרינג מזרחי,"David Pinkas St 14, Netanya, Israel",ChIJWW05D1gVHRURksRaTwTwtp4,"סימנים חלקיים (sim 0.71, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,1920,הבגאט של נונו,"אשקלון, Israel",באגט הפעמון,"Ha-Mekhuga St 1, Ashkelon, Israel",ChIJZQRDsc-bAhUROi3bk3YnlgM,"סימנים חלקיים (sim 0.38, addr 2) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,2656,מאפיית אור,"אזור תעשייה דרומי, קריית שמונה, Israel",מאפיית כהן Ma'afiat Cohen,"Ha-Maccabim St 12, Qiryat Shemona, Israel",ChIJ9TDu_Va9HhUR_FmgsoultRY,"סימנים חלקיים (sim 0.50, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,4053,פלאפל סוף הדרך,"שד' הרצל 45, רמלה, Israel",Falafel Sof HaDerech,"72210, HaHagana 2, Ramla, Israel",ChIJS1GOtwXKAhUReymHbugJhGk,"סימנים חלקיים (sim 0.45, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,2387,קייטרינג אורייתא,"שאול המלך 39, בית שאן, Israel",אורייתא אירועים,"HaYetsira St 6, Beit She'an, 1171003, Israel",ChIJWRT3FC9fHBUR6FzdqsNc2M4,"סימנים חלקיים (sim 0.50, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,2701,השניצליה חריש,"אודם 6, חריש, Israel",שניצל 20 טעמים חריש,"Erets Rd 45, Harish, Israel",ChIJ_0XBfRUFHRUR471TgtnO49o,"סימנים חלקיים (sim 0.69, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,6061,פסטה לוקו,"הלל יפה 20, חדרה, Israel",Pasta Loco,"Derech HaBanim 17, Pardes Hana-Karkur, Israel",ChIJsTj7B1ASHRURgwoArCxAwhQ,"סימנים חלקיים (sim 0.50, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,3240,קפה גרג,"רוטשילד 45, קניון G רוטשילד, ראשון לציון, Israel",Greg Cafe,"מתחם G-2, Yaldei Teheran 5, Rishon LeZion, Israel",ChIJubhQoYizAhURIQ5dkHXxi04,"רשת, רחוב לא אומת — אולי סניף אחר · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,3297,פינת הצלע חולון,"שד' ירושלים 168, חולון, Israel",פינת הצלע,"השקמה 2, Azor, 00000, Israel",ChIJ14UWT-tLHRUR_mfwx_32c6U,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,a-wrong,1568,אבא'לה,"רינגלבלום 10, באר שבע, Israel",,,,נבדקו 2 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.13))
+wrong_or_notfound,a-wrong,4513,לחם בלו,"אבן גבירול 98, תל אביב, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.33))
+wrong_or_notfound,a-wrong,4075,צחי בשרים,"הדר יוסף 12, מעוז אביב, תל אביב, Israel",,,,נבדקו 2 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.13))
+still_maybe,a-wrong,5630,פיצה האט בילו סנטר,"קרית עקרון, Israel",Pizza Hut,"70500, הרצל, Kiryat Ekron, Israel",ChIJwabND3-3AhURmVGebe4dJqc,"סימנים חלקיים (sim 0.22, addr 2) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,1645,בורגרים רמות,"הדעת 6, באר שבע, Israel",Burgerim,"Beit Eshel St 21, Be'er Sheva, Israel",ChIJ--6JaBdmAhURCeVveed0-o8,"סימנים חלקיים (sim 0.50, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,6298,פיצה אמירים הרצליה,"השופטים 1, הרצליה, Israel",פיצה אמירים,"Amirim St 4, Herzliya, Israel",ChIJ0cV3B1xJHRURCHEBIk_D5HU,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,6856,DREAMERIE,"הערבה 1, גבעת שמואל",Dreamerie Bakery,"Ha-Sivim St 49, Petah Tikva, Israel",ChIJfYKWO21LHRURy85suTk-UXs,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,5702,פרש דה מרקט חדרה,"פרופסור דן שכטמן 10, חדרה, Israel",Fresh the market hadera,"מול החוף וילאג, Hadera, Israel",ChIJp47WyNoTHRURJFRjQ63FED8,"סימנים חלקיים (sim 0.71, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,3730,קפה עלית-אספרסו בר,"דרך שיבא 64, תל השומר, רמת גן, Israel",אספרסו בר עלית,"Ha-Netsakh St 3, Ramat Hasharon, Israel",ChIJI2m0SfRJHRURbD5OP2scMog,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,5437,דורי על הדרך,"בן שמן (מושב), Israel",דורי על הדרך,"מצפה, מודיעין מכבים רעות, Israel",ChIJuSnT4BzNAhUR4bC9O05B664,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,a-wrong,2150,בלאג'ו פאב מסעדה,"החשמל 9, עפולה, Israel",,,,נבדקו 7 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.29))
+wrong_or_notfound,a-wrong,2400,פיצה אס,"אחד העם 1, עכו, Israel",,,,נבדקו 1 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.13))
+still_maybe,a-wrong,4246,דוצי,"חיבת ציון 45, רמת גן, Israel",דז'יקוב ויז'ניץ,"אמרי נועם 2, בית שמש, Israel",ChIJpbsE6FTFAhURhGxJQXX9vug,"סימנים חלקיים (sim 0.40, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,3906,קפה חמש,"ביאליק 7, רמת גן, Israel",קפה שלנו,"Bialik St 7, Ramat Gan, Israel",ChIJbYjPmbVLHRURM6YwPeVt2sQ,"סימנים חלקיים (sim 0.20, addr 3) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,6137,צארום,"ברל כצנלסון 25, הרצליה, Israel",שווארמה צארום הרצליה,"Sokolov St 73, Herzliya, 4600910, Israel",ChIJvcY6ojpJHRURxyE1ti7PAPg,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,5179,ביפרנה,"בית""ר 2, ירושלים, Israel",Beefrena- Beef & Bread ביפרנה- ביף אנד ברד,"Katzenelson St 53, Giv'atayim, Israel",ChIJ1T0YSW5LHRURsGCXi2W93vU,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,6552,בריא לי זכרון יעקב,"המייסדים 51 א', זכרון יעקב",בריא לי בר,"Ha-Meyasdim St, Zikhron Ya'akov, Israel",ChIJQ4HpIQAJHRUREvvbut9etNM,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,5974,מסעדת דיה,"אוסישקין 63, רמת השרון, Israel",המטבח של חיים מאכלים טריפוליטאים,"63, Ussishkin 61, Ramat HaSharon, Israel",ChIJLcYXqDlIHRURChPTqM053Xg,"סימנים חלקיים (sim 0.06, addr 3) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,1800,וויל וויל טוסט נקניק,"בן יהודה 15, פרץ סנטר שדרות, Israel",ויקטור טוסט נקניק,"ויקטור טוסט נקניק, דרך בן גוריון 97, בת ים, 5955601, Israel",ChIJh0_n_DuzAhUR58bMJtSFRI8,"סימנים חלקיים (sim 0.71, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,5574,"פיצה שפע וברכה בני עי""ש","מנחם בגין 27, בני עי""ש, Israel",פיצה בטאבון - בני עייש כשר למהדרין,"Menachem Begin St 27, Bnei Ayish, Israel",ChIJuyhP-wq9AhURlKDs0Eu3I8I,"סימנים חלקיים (sim 0.26, addr 3) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-wrong,3849,Arcaffe,"תדהר 13, רמת חן, רמת גן, Israel",Arcaffé,"בית הראל מתחם הבורסה, Derech Aba Hillel 3, Ramat Gan, 5252202, Israel",ChIJ7aLQmLhLHRURcryB6L3v8-k,"רשת, רחוב לא אומת — אולי סניף אחר · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,a-maybe,5831,באסטיה,"רננים 43, אזור תעשייה רעננה, Israel",,,,נבדקו 8 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.09))
+still_maybe,a-maybe,1781,בורגרים,"דרך מנחם בגין 1, שדרות, Israel",Burgers Bar,"קניון עזריאלי, Derech Menachem Begin 132, קומה 2, Tel Aviv-Jaffa, Israel",ChIJkaYvb5lLHRURCaN6gbMwRMw,"סימנים חלקיים (sim 0.67, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,5874,הבורקס של גולן,"דרך הבנים 10, פרדס חנה-כרכור, Israel",הסביח של אורן,"Derech HaBanim 5, Pardes Hana-Karkur, Israel",ChIJfzc_PDkQHRURKjW2RBGIFeo,"סימנים חלקיים (sim 0.36, addr 2) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,1363,שניצלוס,"רוגוזין 11, אשדוד, Israel",גט שניצל - GET SCHNITZEL,"HaBana'im St 5, Ashdod, Israel",ChIJuzre9mujAhURaz5EZuoRT1w,"סימנים חלקיים (sim 0.41, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,5932,צ'יינה בר,"הדקלים 125, פרדס חנה-כרכור, Israel",צ'יינה בר - אוכל אסיאתי,"Ha-Dkalim St 150, Pardes Hanna-Karkur, Israel",ChIJCUnnMmgOHRURG54iKBs4Pto,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,6968,MEAT-ING,"תובל 21, רמת גן",Meat Stop,"David Ben Gurion Rd 26, Ramat Gan, Israel",ChIJI67EEDVKHRUR13Ogf6brCzs,"סימנים חלקיים (sim 0.56, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,5662,פלורנטין בורגר,"פתחיה, Israel",Florentin Burger,"Herzl St 68, Rehovot, 7654801, Israel",ChIJFZ8rMwq3AhUR63N10UxKd1w,"סימנים חלקיים (sim 0.75, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,5281,ג'אסט מיט,"אגודת ספורט בית""ר 1, קניון ירושלים, Israel",ג'אסט מיט ירושלים - Just Meat,"Malha mall, floor 3, Jerusalem, Israel",ChIJibG-1Y3XAhURv1NkAwYWykc,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,6211,הנרי'ס,"המנופים 9, הרצליה פיתוח, Israel",הנריס - מזון טבעי ומבושל לכלבים,"HaOrgim St 3, Ashdod, Israel",ChIJ6ZS1DdqjAhUR8wYuT-zUnpU,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,2644,הסושיה עכו,"דרך החרושת 2, עכו, Israel",הסושייה עזריאלי עכו,"HaHaroshet St 2, Acre, 2451705, Israel",ChIJsWvj2mbJHRURuZ0UET1CmEI,"סימנים חלקיים (sim 0.73, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,600,ריקוטה,"ירושלים, Israel",Ricotta Restaurant,"Kiryat HaMada St 3, Jerusalem, Israel",ChIJNz-fkx7WAhURtx1VcITpkdg,"סימנים חלקיים (sim 0.40, addr 2) · [LLM לא זמין - אין קרדיט]"
+sure_right,a-maybe,5425,בא לי פיצה,"יצחק רבין 4, בני עי""ש, Israel",בא לי פיצה,"Yitskhak Rabin St 1, Bnei Ayish, Israel",ChIJ6dNI3Q28AhURQ_TXjcdQbyw,שם ייחודי תואם (sim 1.00) + עיר
+wrong_or_notfound,a-maybe,5989,יוספון,"הצורן 4, נתניה, Israel",,,,נבדקו 4 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.31))
+still_maybe,a-maybe,596,קפה דניה בית הכרם,"ירושלים, Israel",Denya cafe,"Shderot Herzl 102, Jerusalem, Israel",ChIJu3EUDLTXAhURsEFHTrGAs8g,"סימנים חלקיים (sim 0.29, addr 2) · [LLM לא זמין - אין קרדיט]"
+sure_right,a-maybe,4324,שניצליין,"הסיבים 25, פתח תקווה, Israel",שניצליגה,"מרכז חצי חינם, ראשון לציון 1, פתח תקווה, Israel",ChIJc4ZqLDY3HRURkJxlUZiEByA,שם ייחודי תואם (sim 0.75) + עיר
+still_maybe,a-maybe,7072,קנקי לאונג',"28 בוגרשוב, תל אביב",Kanki Sushi Wine Bar,"Bograshov St 23, Tel Aviv-Yafo, Israel",ChIJ8WYTYX5MHRURabUyh6PtKl4,"סימנים חלקיים (sim 0.43, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,5341,עדן לכרמל,"אדניהו הכהן 5, ירושלים, Israel",Eden Carmel,"17 פריגן מעלה אדומים, Ma'ale Adumim",ChIJlWnSFjksAxURemZ4CEQsNJY,"סימנים חלקיים (sim 0.71, addr 0) · [LLM לא זמין - אין קרדיט]"
+still_maybe,a-maybe,1415,שניצל יוסף,"בעלי מלאכה 11, נמל אשדוד, Israel",Schnitzel Yosef,"Ashdod, Israel",ChIJT6Vs6eejAhURcVjp8DaSJ0A,"סימנים חלקיים (sim 0.56, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,a-maybe,4833,מעדני שבת,"אלעזר המודעי 4, ביתר עילית, Israel",,,,נבדקו 4 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.13))
+still_maybe,a-maybe,3781,דני בתי מאפה,"תרמ""ב 20, ראשון לציון, Israel",Dany Bakery,"מתחם תחנת דלק סונול, דרך המכבים 22, ראשון לציון, Israel",ChIJuxkKYvi0AhURtBmtzKd9QEQ,"סימנים חלקיים (sim 0.50, addr 1) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,no-cand,5583,הפסקת אוכל,"הרצל 167, רחובות, Israel",,,,גוגל לא החזיר אף מועמד
+wrong_or_notfound,no-cand,6116,ארומה,"המנופים 11, הרצליה פיתוח, Israel",,,,גוגל לא החזיר אף מועמד
+still_maybe,no-cand,5754,PAU HANA פו האנה רעננה,"זרחין אלכסנדר 3, אזור תעשייה רעננה, Israel",Pau Hana פו האנה,"Zarhin St 3, Ra'anana, Israel",ChIJh_3NgK85HRUREJ6u2ZHM4z0,"סימנים חלקיים (sim 1.00, addr 0) · [LLM לא זמין - אין קרדיט]"
+sure_right,no-cand,5166,בית פרטי,"דרך בית לחם 31, המושבה הגרמנית, ירושלים, Israel",מומנטו - חלל פרטי בממילא,"Mamilla Rd 13, Jerusalem, 9410613, Israel",ChIJn4MUuEApAxURr4ZOJEpc4Jo,שם ייחודי תואם (sim 1.00) + עיר
+wrong_or_notfound,no-cand,5536,מזעקי,"ארלוזורוב 85, רחובות, Israel",,,,גוגל לא החזיר אף מועמד
+wrong_or_notfound,no-cand,1732,מוטי זגרון סדנאות שף,"השושנים 3, אשקלון, Israel",,,,נבדקו 6 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.23))
+wrong_or_notfound,no-cand,3868,קייטרינג קסם הקרמל,"בת שבע 1, לוד, Israel",,,,גוגל לא החזיר אף מועמד
+still_maybe,no-cand,1602,קייטרינג ציון,"מש' קיפוד 3, באר שבע, Israel",קייטרינג זר מעדנים,"יהודי סוריה, Beersheba, Israel",ChIJ0V_FWmlmAhURgS7kwSu0FoY,"סימנים חלקיים (sim 0.55, addr 1) · [LLM לא זמין - אין קרדיט]"
+still_maybe,no-cand,2325,קייטרינג מלכה,"בן עמי 4, קרית אתא, Israel",בר מלכה - מגשי אירוח וקייטרינג חלבי לאירועים,"Gush Halav St 12, Rishon LeZion, 7535220, Israel",ChIJVQDpItS1AhUR_hfwru2gZkM,"סימנים חלקיים (sim 0.50, addr 0) · [LLM לא זמין - אין קרדיט]"
+wrong_or_notfound,no-cand,1943,מונז׳ המטעמים של קטי,"הגדוד העברי 13, אשקלון, Israel",,,,נבדקו 4 מועמדים — אף אחד לא מתאים (אין התאמה (sim 0.24))

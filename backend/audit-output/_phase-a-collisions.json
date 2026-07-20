@@ -1,0 +1,533 @@
+[
+ {
+  "type": "ambiguous_dup",
+  "id": "1988",
+  "name": "Verre Bar",
+  "addr": "השמורה 2, זכרון יעקב, Israel",
+  "gname": "וור בר - VERRE BAR (כשר)",
+  "gaddr": "HaShmura St, Zikhron Ya'akov, 3094071, Israel",
+  "pid": "ChIJ88ofuFALHRURnCUY9t7gdrw",
+  "uri": "https://maps.google.com/?cid=13580288974598448540&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": {
+   "id": 6935,
+   "name": "וור בר",
+   "addr": "השמורה 2, זכרון יעקב",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "owner_wins",
+  "id": "2046",
+  "name": "קפה גרג",
+  "addr": "שטורמן 1, בית שאן, Israel",
+  "gname": "Cafe Greg",
+  "gaddr": "Menachem Begin Blvd 1, Beit She'an, Israel",
+  "pid": "ChIJoQGoY5ReHBURj_Bhlg5UP7U",
+  "uri": "https://maps.google.com/?cid=13060249866027004047&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "16.0",
+  "owner": {
+   "id": 6925,
+   "name": "Greg בית שאן",
+   "addr": "מנחם בגין 1, בית שאן",
+   "score": "36.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "2356",
+  "name": "מאמא בפיתה נהריה",
+  "addr": "שד' הגעתון 52, נהריה, Israel",
+  "gname": "בפיתה נהריה",
+  "gaddr": "Sderot HaGa'aton 19, Nahariya, 2244427, Israel",
+  "pid": "ChIJV_HmcTXPHRURqeK61rZFYEk",
+  "uri": "https://maps.google.com/?cid=5287302614121898665&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": {
+   "id": 2165,
+   "name": "בפיתה נהריה",
+   "addr": "שד' הגעתון 19, נהריה, Israel",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "inset_dup",
+  "id": "3326",
+  "name": "שיפודי בן חולון",
+  "addr": "סוקולוב 138, חולון, Israel",
+  "gname": "שיפודי בן",
+  "gaddr": "Sokolov St 138, Holon, Israel",
+  "pid": "ChIJjVdhUZK1AhURvenQhDZVVAA",
+  "uri": "https://maps.google.com/?cid=23737590688573885&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": null
+ },
+ {
+  "type": "inset_dup",
+  "id": "4081",
+  "name": "שיפודי בן",
+  "addr": "סוקולוב נחום 138, חולון, Israel",
+  "gname": "שיפודי בן",
+  "gaddr": "Sokolov St 138, Holon, Israel",
+  "pid": "ChIJjVdhUZK1AhURvenQhDZVVAA",
+  "uri": "https://maps.google.com/?cid=23737590688573885&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": null
+ },
+ {
+  "type": "inset_dup",
+  "id": "4645",
+  "name": "קפה גרג",
+  "addr": "נמל ת\"א, תל אביב, Israel",
+  "gname": "Cafe Greg",
+  "gaddr": "האנגר 20, Nemal Tel Aviv, Tel Aviv-Jaffa, Israel",
+  "pid": "ChIJc73akwpMHRUR7SUpC0Zscys",
+  "uri": "https://maps.google.com/?cid=3130965214043383277&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": null
+ },
+ {
+  "type": "owner_wins",
+  "id": "6608",
+  "name": "ארטישוק - אוכל אמיתי מהשדה",
+  "addr": "עמק המעיינות, ניר דוד",
+  "gname": "ארטישוק אוכל אמיתי מהשדה - מסעדה חלבית כשרה",
+  "gaddr": "בוויז \"ארטישוק - אוכל אמיתי מהשדה צומת העליה לגלבוע ליד קיבוץ בית אלפא וגן השלושה, Israel",
+  "pid": "ChIJ6SZEI-dZHBUR_VSEaK3L6-E",
+  "uri": "https://maps.google.com/?cid=16279329223704073469&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": {
+   "id": 2173,
+   "name": "ארטישוק",
+   "addr": "בית אלפא, Israel",
+   "score": "26.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "7104",
+  "name": "ארקפה קיסריה - כשר",
+  "addr": "הרקיע 1, קיסריה",
+  "gname": "ארקפה קיסריה Arcaffe Caesarea",
+  "gaddr": "ונוס קיסריה, Ha-Rakia St 1, Caesarea, 3070216, Israel",
+  "pid": "ChIJAXd8r5gNHRURoQCgzhBeBL0",
+  "uri": "https://maps.google.com/?cid=13620114599354302625&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "16.0",
+  "owner": {
+   "id": 2580,
+   "name": "ארקפה",
+   "addr": "הרקיע 1, קיסריה, Israel",
+   "score": "16.0"
+  }
+ },
+ {
+  "type": "inset_dup",
+  "id": "7304",
+  "name": "קפה גרג",
+  "addr": "נמל ת\"א, תל אביב, Israel",
+  "gname": "Cafe Greg",
+  "gaddr": "האנגר 20, Nemal Tel Aviv, Tel Aviv-Jaffa, Israel",
+  "pid": "ChIJc73akwpMHRUR7SUpC0Zscys",
+  "uri": "https://maps.google.com/?cid=3130965214043383277&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "6.0",
+  "owner": null
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "4308",
+  "name": "פיצה פרגו מודיעין",
+  "addr": "לאה אמנו 1, מודיעין והסביבה, Israel",
+  "gname": "פרגו פיצה במודיעין",
+  "gaddr": "Lea Imenu St 1, Modi'in-Maccabim-Re'ut, 7176250, Israel",
+  "pid": "ChIJhwIrWNfNAhURZs1fDUiH08c",
+  "uri": "https://maps.google.com/?cid=14399001177165385062&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "5.5",
+  "owner": {
+   "id": 3633,
+   "name": "פיצה פרגו",
+   "addr": "רחל אמנו 1, מודיעין והסביבה, Israel",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "owner_wins",
+  "id": "4009",
+  "name": "בורגרס בר",
+  "addr": "אודם 21, מודיעין והסביבה, Israel",
+  "gname": "Burgers Bar",
+  "gaddr": "Malibu Shopping Center, Emek Dotan St 23, Modi'in-Maccabim-Re'ut, Israel",
+  "pid": "ChIJAQAwZ5TNAhURwnnMDMUxJoM",
+  "uri": "https://maps.google.com/?cid=9450295590476609986&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "5.0",
+  "owner": {
+   "id": 6824,
+   "name": "Burgers Bar מליבו מודיעין",
+   "addr": "עמק דותן 23, מרכז מליבו, מודיעין",
+   "score": "36.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "4380",
+  "name": "בורגרס בר",
+  "addr": "יגאל אלון 121, תל אביב, Israel",
+  "gname": "Burgers Bar",
+  "gaddr": "קניון עזריאלי, Derech Menachem Begin 132, קומה 2, Tel Aviv-Jaffa, Israel",
+  "pid": "ChIJkaYvb5lLHRURCaN6gbMwRMw",
+  "uri": "https://maps.google.com/?cid=14718943029683200777&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "5.0",
+  "owner": {
+   "id": 6983,
+   "name": "Burgers Bar עזריאלי תל אביב",
+   "addr": "קניון עזריאלי, תל אביב",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "5918",
+  "name": "פיצה שמש נתניה הרצל",
+  "addr": "הרצל 51, נתניה, Israel",
+  "gname": "פיצה שמש נתניה-מרכז העיר",
+  "gaddr": "Herzl St 51, Netanya, Israel",
+  "pid": "ChIJRzlc4KpqHRURTgrMpi2kzBU",
+  "uri": "https://maps.google.com/?cid=1570810886024333902&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "14.7",
+  "owner": {
+   "id": 5839,
+   "name": "פיצה שמש נתניה",
+   "addr": "הרצל 51, נתניה, Israel",
+   "score": "16.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "4051",
+  "name": "ממבו",
+  "addr": "סוקולוב 60, חולון, Israel",
+  "gname": "Mambo",
+  "gaddr": "Sokolov St 60, Holon, Israel",
+  "pid": "ChIJ_bVb3Ke0AhURhanFXauc9ok",
+  "uri": "https://maps.google.com/?cid=9941305487293524357&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.5",
+  "owner": {
+   "id": 4177,
+   "name": "ממבו mambo",
+   "addr": "סוקולוב 60, חולון, Israel",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "7298",
+  "name": "פיצה פרגו",
+  "addr": "הלוחמים 62, תל אביב, Israel",
+  "gname": "Pizza Prego",
+  "gaddr": "Ha-Lokhamim St 62, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJmeOZT1SzAhURM5Zprs8715c",
+  "uri": "https://maps.google.com/?cid=10941279582890333747&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.5",
+  "owner": {
+   "id": 4555,
+   "name": "פיצה פרגו",
+   "addr": "הלוחמים 62, תל אביב, Israel",
+   "score": "4.5"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "2027",
+  "name": "ביגה",
+  "addr": "חיפה, Israel",
+  "gname": "Biga",
+  "gaddr": "Ha-Kharoshet St, Haifa, Israel",
+  "pid": "ChIJGyyrGpWxHRURCbInQfW6vMA",
+  "uri": "https://maps.google.com/?cid=13888180913426641417&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.0",
+  "owner": {
+   "id": 6837,
+   "name": "BIGA חוצות המפרץ",
+   "addr": "החרושת 2, חיפה",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "3067",
+  "name": "הלאלי",
+  "addr": "ולטר מוזס 10, תל אביב, Israel",
+  "gname": "ALALI",
+  "gaddr": "Walter Moses St 10, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJS7IPAABLHRURJzmSKe6XgL8",
+  "uri": "https://maps.google.com/?cid=13799196307418659111&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.0",
+  "owner": {
+   "id": 7017,
+   "name": "ALALI",
+   "addr": "ולטר מוזס 10, תל אביב",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "4211",
+  "name": "זותא פיצה",
+  "addr": "דיזנגוף 177, תל אביב, Israel",
+  "gname": "Zota Pizza",
+  "gaddr": "Dizengoff St 177, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJWdsiL4hLHRURZY3Ea35S5ZE",
+  "uri": "https://maps.google.com/?cid=10512899608093691237&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.0",
+  "owner": {
+   "id": 7147,
+   "name": "Zota Pizza",
+   "addr": "דיזינגוף 177, תל אביב",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "4714",
+  "name": "לוצ'נה מבשרת ציון",
+  "addr": "הראל 5, מבשרת ציון, Israel",
+  "gname": "לוצ׳נה מבשרת - מתחם Country&Park",
+  "gaddr": "Har'el St 5, Mevaseret Zion, 9079101, Israel",
+  "pid": "ChIJ_XlulxHXAhUR0D-ILRARvB0",
+  "uri": "https://maps.google.com/?cid=2142606283902566352&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.0",
+  "owner": {
+   "id": 6772,
+   "name": "Luciana מבשרת ציון",
+   "addr": "שדרות הראל 5, מבשרת ציון",
+   "score": "2.6"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "7328",
+  "name": "אושי אושי",
+  "addr": "האנגר 21, נמל תל-אביב, Israel",
+  "gname": "Oshi Oshi",
+  "gaddr": "Nemal Tel Aviv St 20-22, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJRSrzI_ZLHRUR85v7SxwlwMw",
+  "uri": "https://maps.google.com/?cid=14753833182729837555&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "4.0",
+  "owner": {
+   "id": 3105,
+   "name": "אושי אושי",
+   "addr": "האנגר 21, נמל תל-אביב, Israel",
+   "score": "4.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "5417",
+  "name": "שווארמת התורכי",
+  "addr": "הרצל 99, רחובות, Israel",
+  "gname": "שווארמה התורכי רחובות",
+  "gaddr": "Herzl St 99, Rehovot, Israel",
+  "pid": "ChIJF-RAEgW3AhURFuGsEdEx18I",
+  "uri": "https://maps.google.com/?cid=14039745137365278998&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.7",
+  "owner": {
+   "id": 7216,
+   "name": "התורכי כשר",
+   "addr": "הרצל 99, רחובות",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "2873",
+  "name": "האחוזה",
+  "addr": "החשמל 1, עפולה, Israel",
+  "gname": "Ha'Ahuza Grill-Bar",
+  "gaddr": "HaHashmal St 1, Afula, Israel",
+  "pid": "ChIJaWytfZVRHBUR56-2CMT8MVo",
+  "uri": "https://maps.google.com/?cid=6499253656162316263&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.6",
+  "owner": {
+   "id": 7172,
+   "name": "האחוזה גריל בר",
+   "addr": "החשמל 1, עפולה",
+   "score": "3.6"
+  }
+ },
+ {
+  "type": "owner_wins",
+  "id": "3446",
+  "name": "ג'פניקה",
+  "addr": "דרך אבא הלל סילבר 301, קניון איילון, רמת גן, Israel",
+  "gname": "Japanika",
+  "gaddr": "Jabotinsky St 2, Ramat Gan, Israel",
+  "pid": "ChIJhVipQsdLHRURlW4WmBbqk5k",
+  "uri": "https://maps.google.com/?cid=11066446092141227669&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "13.6",
+  "owner": {
+   "id": 7027,
+   "name": "ג'פניקה בורסה רמת גן",
+   "addr": "ז'בוטינסקי 2, רמת גן",
+   "score": "31.2"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "6538",
+  "name": "Pizza Domino",
+  "addr": "הרצל 42, גן יבנה",
+  "gname": "פיצה דומינו",
+  "gaddr": "Herzl St 42, Gan Yavne, Israel",
+  "pid": "ChIJs2K1ZOy8AhURxC8xIFZ9yMM",
+  "uri": "https://maps.google.com/?cid=14107663641598832580&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.6",
+  "owner": {
+   "id": 5403,
+   "name": "פיצה דומינו",
+   "addr": "הרצל 42, גן יבנה, Israel",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "3443",
+  "name": "בולונז'רי 96",
+  "addr": "יגאל אלון 96, תל אביב, Israel",
+  "gname": "Boulangerie 96",
+  "gaddr": "Yigal Alon St 96, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJ5RIEp59LHRURM1zZZBAFxfs",
+  "uri": "https://maps.google.com/?cid=18141912241901493299&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.4",
+  "owner": {
+   "id": 4359,
+   "name": "ברנצ'יס",
+   "addr": "יגאל אלון 96, תל אביב, Israel",
+   "score": "2.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "2596",
+  "name": "מירון בית מאפה חיפה",
+  "addr": "דרך הים 2, מרכז הכרמל, חיפה, Israel",
+  "gname": "מירון מאפה זהב בע\"מ",
+  "gaddr": "HaYam Rd 2, Haifa, Israel",
+  "pid": "ChIJyWUrBam7HRURhlb08d_N5k4",
+  "uri": "https://maps.google.com/?cid=5685457941322552966&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.3",
+  "owner": {
+   "id": 6657,
+   "name": "Meron Bakery- דרך הים",
+   "addr": "דרך הים 2, חיפה",
+   "score": "2.7"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "3648",
+  "name": "פיצה פרגו יפו",
+  "addr": "הלוחמים 62, קניון וולפסון, חולון, Israel",
+  "gname": "Pizza Prego",
+  "gaddr": "Ha-Lokhamim St 62, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJmeOZT1SzAhURM5Zprs8715c",
+  "uri": "https://maps.google.com/?cid=10941279582890333747&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.0",
+  "owner": {
+   "id": 4555,
+   "name": "פיצה פרגו",
+   "addr": "הלוחמים 62, תל אביב, Israel",
+   "score": "4.5"
+  }
+ },
+ {
+  "type": "inset_dup",
+  "id": "4071",
+  "name": "בורגרים קניון הזהב",
+  "addr": "לזרוב 18, קניון הזהב, ראשון לציון, Israel",
+  "gname": "Burgerim",
+  "gaddr": "קניון הזהב, Rishon LeZion, Israel",
+  "pid": "ChIJQZ4uwGezAhURkTO1jG3Nw4I",
+  "uri": "https://maps.google.com/?cid=9422600715785024401&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.0",
+  "owner": null
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "4378",
+  "name": "פיצה פרגו יפו",
+  "addr": "הלוחמים 62, תל אביב, Israel",
+  "gname": "Pizza Prego",
+  "gaddr": "Ha-Lokhamim St 62, Tel Aviv-Yafo, Israel",
+  "pid": "ChIJmeOZT1SzAhURM5Zprs8715c",
+  "uri": "https://maps.google.com/?cid=10941279582890333747&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "3.0",
+  "owner": {
+   "id": 4555,
+   "name": "פיצה פרגו",
+   "addr": "הלוחמים 62, תל אביב, Israel",
+   "score": "4.5"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "7154",
+  "name": "מאמא גרג רחובות",
+  "addr": "בילו 2, רחובות",
+  "gname": "MAMA greg",
+  "gaddr": "Bilu St 2, Rehovot, Israel",
+  "pid": "ChIJheV41263AhURhq4Q2HpaQyI",
+  "uri": "https://maps.google.com/?cid=2468916504386645638&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "2.7",
+  "owner": {
+   "id": 5632,
+   "name": "מאמא גרג",
+   "addr": "ביל\"ו, רחובות, Israel",
+   "score": "6.0"
+  }
+ },
+ {
+  "type": "ambiguous_dup",
+  "id": "6745",
+  "name": "רובידה מעדנייה",
+  "addr": "המייסדים 6, מזכרת בתיה",
+  "gname": "Rubida",
+  "gaddr": "Ha-Meyasdim St 8, Mazkeret Batya, Israel",
+  "pid": "ChIJm81Bc_-3AhURNqbWzIIod4o",
+  "uri": "https://maps.google.com/?cid=9977488041710102070&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "22.0",
+  "owner": {
+   "id": 6485,
+   "name": "רובידה",
+   "addr": "המייסדים 6, מזכרת בתיה",
+   "score": "23.6"
+  }
+ },
+ {
+  "type": "inset_dup",
+  "id": "3851",
+  "name": "בורגרים ראשל\"צ קניון הזהב",
+  "addr": "סחרוב דוד 21, קניון הזהב, ראשון לציון, Israel",
+  "gname": "Burgerim",
+  "gaddr": "קניון הזהב, Rishon LeZion, Israel",
+  "pid": "ChIJQZ4uwGezAhURkTO1jG3Nw4I",
+  "uri": "https://maps.google.com/?cid=9422600715785024401&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "1.9",
+  "owner": null
+ },
+ {
+  "type": "held_wins_SWAP",
+  "id": "558",
+  "name": "פקורינו",
+  "addr": "טבריה, Israel",
+  "gname": "Pecorino מסעדה חלבית",
+  "gaddr": "Tiberias, Israel",
+  "pid": "ChIJ7Y87Er4_HBURHAB-QMgGG_c",
+  "uri": "https://maps.google.com/?cid=17805833008884613148&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+  "mine": "21.5",
+  "owner": {
+   "id": 2029,
+   "name": "מסעדת פקורינו",
+   "addr": "בן צבי 1, טבריה, Israel",
+   "score": "11.5"
+  }
+ }
+]

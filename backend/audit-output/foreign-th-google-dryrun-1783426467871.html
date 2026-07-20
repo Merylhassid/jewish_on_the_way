@@ -1,0 +1,425 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run TH</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — TH</h1>
+<div class="sum">
+שורות שנבדקו: <b>34</b> מתוך 34<br>
+✅ בטוח נכון: <b>29</b> · ❓ אולי: <b>1</b> · ❌ לא נמצא/לא נכון: <b>3</b> · שגיאות: <b>1</b><br>
+Text Search IDs-only: 82 · Details: 101 (100 חדשים, 34 cache) · Google estimate max: ~$1.70 · LLM: $0.017 (13)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 29</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7338</td>
+      <td><b>כשר פלייס</b><div class="muted">Chiang Mai · Thailand</div></td>
+      <td>189/15 Changklan Rd, Tambon Chang Khlan, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50100, Thailand</td>
+      <td>Chabad of Chiang Mai</td>
+      <td>189 15 Changklan Rd, Tambon Chang Khlan, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50100, Thailand</td>
+      <td>4.7 (583)</td>
+      <td>086 111 1770</td>
+      <td class="photo">places/ChIJ9-1knBYw2jARdPnlo8nsV0Q/photos/AaVGc3ktRpevZ5vmSgySzZuXCvodq8ziDocfsKkTIHQfyoZuuEGOvAwIT95XXNNITdOgwOCqfwMMi3DJ7LZFvN3sMuXH7o6A82UvgVrOp_Y_pl-KPbsYqchAuAUSV5IG5XK9J1mNghk7rYJoIO7XL253dEe8b8VMKWuWizrXu9MHoT3avcESNDGZ7xY17aVwlPgKa5XMIsNE-JPJVKLv5YWXeqI1uyY0K73LXMSbvhtAjky00iMYlpGtxs_lXtDC2PKsfHsXDcNUbPVL8Dp0t-MrOnsNQJxdTmmmUKQRvs2reqQH-Z1ilsXQuyVTDbTAwRh8qj0x6ukmv--1q-BqGwWGUMBe2LuEZFVNhqaOpcCwID1lcZSkkByfw88B8MnxRvShaJKQ2GCDpBe3MdKTMAAbkbYTUpDLlYKoyrxn08p6xYwhAA</td>
+      <td class="reason">LLM אישר (0.85): Same exact address (189/15 Changklan Rd, Chiang Mai). 'כשר פלייס' (Kosher Place) and Chabad of Chiang Mai are different names but likely the same location - Chabad centers often operate kosher restaurants/dining facilities. Google classification confirms it's an Israeli restaurant with synagogue/place_of_worship. Address match is definitive despite name difference.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%A9%D7%A8%20%D7%A4%D7%9C%D7%99%D7%99%D7%A1%20189%2F15%20Changklan%20Rd%2C%20Tambon%20Chang%20Khlan%2C%20Amphoe%20Mueang%20Chiang%20Mai%2C%20Chang%20Wat%20Chiang%20Mai%2050100%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9-1knBYw2jARdPnlo8nsV0Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7339</td>
+      <td><b>הפיצריה חב&quot;ד</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>39/8 Bophut Surrattanni Chaweng Beach Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>Kosher chabad pizza &amp; bakery בית חבד פיצרייה מאפייה חלבית כשרה</td>
+      <td>39 Chaweng Beach Rd, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.6 (42)</td>
+      <td>080 009 5052</td>
+      <td class="photo">places/ChIJZfr15mDxVDARtvXEtpdLsew/photos/AaVGc3nEv1_bHQqBx9t0FNbk6HaKiXGoAvThNXuMzfciT7KiHh7mwv0yXBHAlHpVNjoXPF8h7Wy7W0cildCCyCeaHE2TGfl2wFvLQ9bwxRZ0Yb_ecY5IQzELoFaSHCQFgt4pApbTF__aCAnUlvXrRDGlTuZBes60__Y1tJs1wQiqxydo0LPVtvviadlx67gysQTE4ujBD6I0e1C4YeZiNtnZE8BjwXy4Jizapg9ws0AjinhIPW3pJJffgV6DHqmFGnF_FiHNVhGV1hF6zxPBKTn1ez5rxyx_DZTO1RwgnUIiOXZfUQEGJRYk-1atgRuowrHb5kQvSKXTa2rmynH_TJVWRXaWvGMW9omly5Mi19VFoPUVceCv_Xu3VJlv8VQK3-4A8VzQPPxcnti2iyr8XP0ngDhq04uIUTr57OqJveR3lGTWAw</td>
+      <td class="reason">LLM אישר (0.95): שם חד של בית חבד פיצרייה בקוסמוי, כתובת זהה בעיר, סוג עסק זהה (פיצרייה כשרה), התאמת רחוב וקודי עיר מדויקים</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A4%D7%99%D7%A6%D7%A8%D7%99%D7%94%20%D7%97%D7%91%22%D7%93%2039%2F8%20Bophut%20Surrattanni%20Chaweng%20Beach%20Tambon%20Bo%20Put%2C%20Amphoe%20Ko%20Samui%2C%20Chang%20Wat%20Surat%20Thani%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJZfr15mDxVDARtvXEtpdLsew" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7340</td>
+      <td><b>כשר פלייס</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>Unnamed Road, ตำบล บ่อผุด อำเภอ เกาะสมุย สุราษฎร์ธานี 84320, Thailand, Ko Samui</td>
+      <td>The kosher place Samui</td>
+      <td>Unnamed Road, G3C4+XR3 ตำบล บ่อผุด อำเภอเกาะสมุย สุราษฎร์ธานี 84320, Thailand</td>
+      <td>3.7 (3)</td>
+      <td></td>
+      <td class="photo">places/ChIJk1xqyLbxVDARkKCIWyc1JEM/photos/AaVGc3lbrEnXTNtk4jR-sXkxAsgcwHAymS_nx5k9oSuLkpZFye1j4OGnpw5WttsrQAmFemv1WcAlcJpftR6IXKGgO1FkxLQaSD50MOhc3lWuSxIvHD0qywuH4P3JrXJzrs5Vi9h0rgbmGqsyGzg9itXjibvq1y6IfpUvUBNk3JZ_NjIt7oy0Ro1q8qri2N9oSLp-nhjXTENn2-w0MtF65edy7yPYUB7-Q_Z8CrADc4387CYYajXpMzI56HsfzoZMhZ4n5s30neWSF31RMKe_RjBekSyFFvbIb6pM91gBEj9i7yXbM3a3T6hGG8_ExQKYG13l6vjPQvltxeAeAbKyQf9WHoahi9RTRWJEcPuGuyvkddMio2mIv6yJI7Ui4kPgwVjNYagOd4vurZVDq4E_GkjqRzuri-zlTxVfWwpcBk6EAtL-A_2NtQmKGkobuHk2DnQ8</td>
+      <td class="reason">LLM אישר (0.85): כשר פלייס (Kosher Place) ו-The kosher place Samui הם אותו עסק. שם זהה בעברית ובאנגלית, אותה עיר (קו סמוי), אותו כביש ללא שם, וקואורדינטות קרובות מאוד. ההבדל בשם הוא תרגום/תרגום אותו מקום כשר באותה טאילנד</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%A9%D7%A8%20%D7%A4%D7%9C%D7%99%D7%99%D7%A1%20Unnamed%20Road%2C%20%E0%B8%95%E0%B8%B3%E0%B8%9A%E0%B8%A5%20%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%9C%E0%B8%B8%E0%B8%94%20%E0%B8%AD%E0%B8%B3%E0%B9%80%E0%B8%A0%E0%B8%AD%20%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%B8%E0%B8%A2%20%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2%E0%B8%A9%E0%B8%8E%E0%B8%A3%E0%B9%8C%E0%B8%98%E0%B8%B2%E0%B8%99%E0%B8%B5%2084320%2C%20Thailand%2C%20Ko%20Samui" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJk1xqyLbxVDARkKCIWyc1JEM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8401</td>
+      <td><b>Chabad of Bangkok Dairy Cafe</b><div class="muted">Bangkok · Thailand</div></td>
+      <td>18 Phra Sumen Rd, Talat Yot, Phra Nakhon,, Bangkok, 10200, Thailand</td>
+      <td>Chabad House Bangkok בית חב״ד בנגקוק</td>
+      <td>18 Thanon Phra Athit, Khwaeng Chana Songkhram, Khet Phra Nakhon, Krung Thep Maha Nakhon 10200, Thailand</td>
+      <td>4.8 (1643)</td>
+      <td>02 629 2770</td>
+      <td class="photo">places/ChIJV_wxtBOZ4jARRNum-B74B8M/photos/AaVGc3kecA6Cd3SwoycPu58cdL_BUAqS1I4nK-ALeEo0uAAQKnlcbN1xc25s5T6T_IE5Ejvx_UnTfggCjCGav4pdMLMj77q-UDogqMpTiGIQ3DLMwsL_OCZPCJwMXEaR9cNa55TuDyLu3Jurp88n3N9-z6ZK0yotahPPXKrsAvzzjOSEA4khd6FPwyGoPIwSj4qNVxNBUhxJxtEoM6gG6pok1vaAnLDSAx0RRN1KQXKsk3D8tmpG8q2GwJLw0fzoa7QWUrcfCN7k7CrDEUrm04SA9_FFmvyBU8sc732ilzTlPLwC-A__W-_pfq4M0xWL7MTGCnQRThPHUGtuqRy8WkR63QNoTY0ljeAfuXlq1h-BSj97wTESUGF9JMsLU3WdnXjK0cUxV-enSoeBOXo-1YMNpxc5_21xfeqQzp9vOqb9_x8vVw</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20of%20Bangkok%20Dairy%20Cafe%2018%20Phra%20Sumen%20Rd%2C%20Talat%20Yot%2C%20Phra%20Nakhon%2C%2C%20Bangkok%2C%2010200%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV_wxtBOZ4jARRNum-B74B8M" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8402</td>
+      <td><b>Chabad of Bangkok Kosher Shop</b><div class="muted">Bangkok · Thailand</div></td>
+      <td>18 Phra Sumen Rd,  Talat Yot, Phra Nakhon, Bangkok, 10200, Thailand</td>
+      <td>Chabad House Bangkok בית חב״ד בנגקוק</td>
+      <td>18 Thanon Phra Athit, Khwaeng Chana Songkhram, Khet Phra Nakhon, Krung Thep Maha Nakhon 10200, Thailand</td>
+      <td>4.8 (1643)</td>
+      <td>02 629 2770</td>
+      <td class="photo">places/ChIJV_wxtBOZ4jARRNum-B74B8M/photos/AaVGc3kecA6Cd3SwoycPu58cdL_BUAqS1I4nK-ALeEo0uAAQKnlcbN1xc25s5T6T_IE5Ejvx_UnTfggCjCGav4pdMLMj77q-UDogqMpTiGIQ3DLMwsL_OCZPCJwMXEaR9cNa55TuDyLu3Jurp88n3N9-z6ZK0yotahPPXKrsAvzzjOSEA4khd6FPwyGoPIwSj4qNVxNBUhxJxtEoM6gG6pok1vaAnLDSAx0RRN1KQXKsk3D8tmpG8q2GwJLw0fzoa7QWUrcfCN7k7CrDEUrm04SA9_FFmvyBU8sc732ilzTlPLwC-A__W-_pfq4M0xWL7MTGCnQRThPHUGtuqRy8WkR63QNoTY0ljeAfuXlq1h-BSj97wTESUGF9JMsLU3WdnXjK0cUxV-enSoeBOXo-1YMNpxc5_21xfeqQzp9vOqb9_x8vVw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20of%20Bangkok%20Kosher%20Shop%2018%20Phra%20Sumen%20Rd%2C%20%20Talat%20Yot%2C%20Phra%20Nakhon%2C%20Bangkok%2C%2010200%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV_wxtBOZ4jARRNum-B74B8M" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8403</td>
+      <td><b>Chabad of Bangkok Meat Restaurant</b><div class="muted">Bangkok · Thailand</div></td>
+      <td>18 Phra Sumen Rd, Talat Yot, Phra Nakhon, Bangkok, 10200, Thailand</td>
+      <td>מסעדה בשרית חב״ד בנגקוק Meat Restaurant Chabad Bangkok</td>
+      <td>18 Thanon Phra Sumen, Khwaeng Talat Yot, Khet Phra Nakhon, Krung Thep Maha Nakhon 10200, Thailand</td>
+      <td>4.2 (30)</td>
+      <td>081 869 5164</td>
+      <td class="photo">places/ChIJDXbMzb6Z4jARTwQ9Z9yvFvM/photos/AaVGc3mVfTv7Jx3TK_e1ycvGZgBNYrL2u2PT5-v_cOq2k978kT-aWK7PxbvqO5R4FxREoVWPIs7Q1ZSRTO0-B_HkZU-IfxqjwKBMwvA8XTll5gQihlCVpVLjnGZOK7N3EvmEvXurGMYHDHbYnrq2xp5oQdOH6Sa7dyU7OEGQp77tdTLbwv5tAn7VhhBoLQcAQeeTexjEFztu-pEEYjZ_GhxQ1_63NjXNfpvOMCN-neX2AyEEUf02BTc2JsDYwTJAUPagctrJPYPoeoxIhizVfG7Yort5Y2izMIzWWqA_EvXIMovkoGYE0flnAVno2HXWjBCj0iysfTvRdXAHbtL05-Hpnu4l6X-XalaibddcP7dyASl4iz6o0x5GO8_W_CEuJpONrD1WFmMDmKmQ_p7hRt7nD5betBWh846EPd9tfF8iqO4_3qv-</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20of%20Bangkok%20Meat%20Restaurant%2018%20Phra%20Sumen%20Rd%2C%20Talat%20Yot%2C%20Phra%20Nakhon%2C%20Bangkok%2C%2010200%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJDXbMzb6Z4jARTwQ9Z9yvFvM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8405</td>
+      <td><b>J Deli</b><div class="muted">Bangkok · Thailand</div></td>
+      <td>Sukhumvit 20, Mille Malle 3rd Floor, unit 303, Bangkok, 10110, Thailand</td>
+      <td>J Deli (Kosher)</td>
+      <td>3rd Floor, unit 303, Mille Malle, 66/4 Sukhumvit 20 Alley, Khwaeng Khlong Toei, Khlong Toei, แขวงคลองเตย Khlong Toe, กรุงเทพมหานคร 10110, Thailand</td>
+      <td>4.8 (110)</td>
+      <td>065 953 2670</td>
+      <td class="photo">places/ChIJ6x6zYt2f4jARzCOyuEx7r1c/photos/AaVGc3naFdK0NVVfvv5qrEctAHcZFoGh0mvXD3tdEMunon8QuoAdi30WACuoY4pnacpynI2zsgCApsMJEE6SeiF0SXMwh5VfchhE9fEbxzVL5aED5r5XlxN3DX60pqoh8K8m80IdndPiirsbmTxbSEw4vRJ-aVFQnzC5__55Fvkb-Egu6XOvFjqohpEImXHcrCJnQAMVcK15i99gSpr4RxN6M4TY1ByNxrf-vJzEwd9xKfKln8g7yUicPNOWgej22pD8fgBNSZB9G7EXbYlgRxLt_4HcQSFWOPncYczZB4Gq02_lh84l3sibAdWbg0GN0xXeOYzaTRVLHQDtdHR1mA7-biu6fz-kXKyqXBqaU-3bOjmpRQO-0_lut47Yb8VrUmeIEVAC_4Mq9JGstYVWlxkVdhB3knXM_To8qw6nzDxozFDt7OpJuPnjoAk2SCoowdn3</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=J%20Deli%20Sukhumvit%2020%2C%20Mille%20Malle%203rd%20Floor%2C%20unit%20303%2C%20Bangkok%2C%2010110%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ6x6zYt2f4jARzCOyuEx7r1c" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8406</td>
+      <td><b>Chabad of Chiang Mai Kosher Restaurant</b><div class="muted">Chiang Mai · Thailand</div></td>
+      <td>189/15 Chang-Clan Road  Mueang Chiang Mai District, Chiang Mai, 50100, Thailand</td>
+      <td>Chabad of Chiang Mai</td>
+      <td>189 15 Changklan Rd, Tambon Chang Khlan, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50100, Thailand</td>
+      <td>4.7 (583)</td>
+      <td>086 111 1770</td>
+      <td class="photo">places/ChIJ9-1knBYw2jARdPnlo8nsV0Q/photos/AaVGc3ktRpevZ5vmSgySzZuXCvodq8ziDocfsKkTIHQfyoZuuEGOvAwIT95XXNNITdOgwOCqfwMMi3DJ7LZFvN3sMuXH7o6A82UvgVrOp_Y_pl-KPbsYqchAuAUSV5IG5XK9J1mNghk7rYJoIO7XL253dEe8b8VMKWuWizrXu9MHoT3avcESNDGZ7xY17aVwlPgKa5XMIsNE-JPJVKLv5YWXeqI1uyY0K73LXMSbvhtAjky00iMYlpGtxs_lXtDC2PKsfHsXDcNUbPVL8Dp0t-MrOnsNQJxdTmmmUKQRvs2reqQH-Z1ilsXQuyVTDbTAwRh8qj0x6ukmv--1q-BqGwWGUMBe2LuEZFVNhqaOpcCwID1lcZSkkByfw88B8MnxRvShaJKQ2GCDpBe3MdKTMAAbkbYTUpDLlYKoyrxn08p6xYwhAA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20of%20Chiang%20Mai%20Kosher%20Restaurant%20189%2F15%20Chang-Clan%20Road%20%20Mueang%20Chiang%20Mai%20District%2C%20Chiang%20Mai%2C%2050100%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9-1knBYw2jARdPnlo8nsV0Q" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8408</td>
+      <td><b>Babi Skewers - שיפודי באבי</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>200, 17 moo2, Bo Put, Amphoe  Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>שיפודי באבי Babi skewers</td>
+      <td>200, 17 moo2, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.5 (172)</td>
+      <td>065 628 8705</td>
+      <td class="photo">places/ChIJBYqSFvjxVDARiMO1dlmDlsc/photos/AaVGc3mAfoX-aMiTAxVs902h79meQnBQ6gxjLGka8qzCdBHZDQjJ4YZYIpjk2tm2vD7giblVe9igxb9LyoJMZDUIOS1G0OX2sO4eBoOQ9sHaLHVumGo_jbmWdO2ZYHurfcS7ukC5D771LGtXdFqDkGCwUrI5fJAY3pYPZL7v8PrJedlE6CeTz2iVRYQFuNQxO52sjGW5-6pEVzQEl2HL7phs52fWk3irrc-FeWEG8l8nBNS7uj7DbrfQDCYP0DOu42DTc5o7yKe6rHcBMloQCmIyH5qiZJPsWtlq9u6Sz38skVou-Imi6UGPtEhW0FWyXva2Q-3HlT2zrXmTRyWT_lKf_TKTbmXs_jzhuw_zYqtvkpsTActOeK-wKW0SnF5BCB2zLzjV1E8Wkdu5Q5sF154oBRdQP_oiIbGU4a4dtmOb2hyjlS_qAJ4Wx5X8xeni55V8</td>
+      <td class="reason">LLM אישר (0.95): שם זהה (שיפודי באבי), כתובת זהה (200, 17 moo2, Bo Put, Ko Samui), עיר זהה. הבדלים קלים בפורמט כתובת (Tambon vs Amphoe) - וריאציות תקניות באנגלית של אותו מיקום בתאילנד</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Babi%20Skewers%20-%20%D7%A9%D7%99%D7%A4%D7%95%D7%93%D7%99%20%D7%91%D7%90%D7%91%D7%99%20200%2C%2017%20moo2%2C%20Bo%20Put%2C%20Amphoe%20%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJBYqSFvjxVDARiMO1dlmDlsc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8409</td>
+      <td><b>Baraca Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>43 moo1, Tambon Bo Put, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>Baraca kosher Mediterranean restaurant בארכה מסעדה כשרה</td>
+      <td>43 moo1, Fisherman's village, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.8 (986)</td>
+      <td>096 975 0534</td>
+      <td class="photo">places/ChIJ0Z5h3kf3VDARHW55RsNGybI/photos/AaVGc3kykCYnkru_0hBT2B_VQ8ErixymYvlLCGORREvMRYWBk1pnulTZ7LLDA3gZRGu20fOaW66DHu4OZtMszkZdyKYUGfVcWWX2KE6ID8r7_7V_EZXsbbEQnevBrwAhjpv3XZ2oI4q-GR3ph5SDDd97NnbBAXfQgnw9vmBWEAHVZ_4k3P4b_6gOc9AATEG4YgI9sSMjmFQsPKwIOe_G79LkWnYV5xVK61VTfI_EYUlBwiC2aYGQrx0ih3pD8Qm5aqYn7jQzfAQBVUV9oNcRO5SzHTae_gdQBCtr6M9RDW7hr4aLgDiLPKnm3N46xw5PXEilxbfwt5E9-wPxnh3lg1ECdA7_MhLHFf1rcOoWp4DzsO_JtLwqwW4UIPPLw65P08YKg-y4-S7GVAtvhOzhnVRJ8ivCxH2l2yTrTI9y1xj19k7NXZh1</td>
+      <td class="reason">LLM אישר (0.95): Identical address (43 moo1, Bo Put, Ko Samui, Surat Thani 84320), same city, same kosher Mediterranean restaurant concept. B provides full Hebrew name 'בארכה מסעדה כשרה' (Baraca kosher restaurant) confirming A. Minor address detail variation ('Fisherman's village' vs implicit in coordinates) is negligible. houseExact and addressExact both true.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Baraca%20Koh%20Samui%2043%20moo1%2C%20Tambon%20Bo%20Put%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ0Z5h3kf3VDARHW55RsNGybI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8410</td>
+      <td><b>Burekas Ramle Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>200, 15, Bo Put, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>בורקס רמלה קוסמוי-מסעדה כשרה</td>
+      <td>200, same entrance as al's resort, 15, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.7 (188)</td>
+      <td>083 791 0728</td>
+      <td class="photo">places/ChIJuQGJ0ljxVDARefyz-jpO10E/photos/AaVGc3n9dnggaLQ_Ky2CJy-ZQxipSECjS5cjSq30-OvPy0sr8iWU3_Eo6SI-BEQQDX9tsVUDXzOmcuPJ80rrtnMh93weSu6Ei0R8enB9GfdBcE3rSyEbt1xDYXY18cp4R9CHYkkZJEMvBVG_bA1HQPL6Ayo1GdyhjycUBY7korJbVU4xxAMai4I6QOqGH2LAEryVX5g936kjaD7DNaPMN4tyOGlVM1kfgkwTcwPZVPgieWL44E14eFP-jHwFWF3kieIT7QZq9SJo80_GH1humNvV4rCphRPnY3ixxbydjja_yhxvAwXvjG1GAJVJWtV-fVCOSveGYCJK9ftYiB1KC2ej1qwqQ-ZEJBje8mDJSM2rEox-EOAD580LwnWzrrWBusfeeawMKnTYgmJBFiiFkGLdCngfXL12O1-lEx_WthoVEgYq0Q</td>
+      <td class="reason">LLM אישר (0.95): Same unique restaurant name (Burekas Ramle Koh Samui / בורקס רמלה קוסמוי), identical address coordinates and building reference (200, Bo Put, Ko Samui), same city and country. B provides more detailed address (entrance location, Thai administrative divisions) but refers to same establishment. Operational status confirms active business.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Burekas%20Ramle%20Koh%20Samui%20200%2C%2015%2C%20Bo%20Put%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJuQGJ0ljxVDARefyz-jpO10E" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8411</td>
+      <td><b>Chabad Koh Samui - Dairy Pizzaria</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>39/8 Moo 3 T.Bophut Surrattanni  Koh Samui, 84320, Thailand</td>
+      <td>Chabad House</td>
+      <td>39/8 Tambon Bo Put, Koh samui Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.7 (1140)</td>
+      <td>080 009 5052</td>
+      <td class="photo">places/ChIJmVXzK7_xVDARwF4SyBmUbCc/photos/AaVGc3mAELi3yIs8JqFPT6ow7gTJf1TeK9chBxX4iwSXhYNK0R6LhOHFohBt9RxoakxdehCXhsbUX5gjXawo4LXScY_2ieOtLEY8f0ugky3BFbWd_w2jrVgaxhPyRIccbBlKsQUVQaBPF_Fn2vvBbFiKWFjxuXVn5LEUzY7lbdh4nZZdyrdGj3uA-WimavxOlvZVZgdlJnF-E4XLH15o3FjXy1CIJ2WjFKjvDJW-Cm6yMw1iNolbLsVzz1WWKpag9jqWc7dFXFntSFhKUzR1VdEk3byAiPRA-YuQd0NVz_eONwoqV3xBwEIfEqZiBuRb6g-fAhc2TWxpQSW2-HWEhNc0lENR847htHeR9UGrSQmTg7hWfGwhHWGXLo-Yg8NQlLCg2veMwZxN3FOe3W3jfUh2pdzyUNtlLVjBmcZR27BkQ5nRilDI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Koh%20Samui%20-%20Dairy%20Pizzaria%2039%2F8%20Moo%203%20T.Bophut%20Surrattanni%20%20Koh%20Samui%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJmVXzK7_xVDARwF4SyBmUbCc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8412</td>
+      <td><b>Chabad Koh Samui - Meat  Restaurant</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>39/8 Bophut Surrattanni Chaweng Beach , , Ko Samui, 84320, Thailand</td>
+      <td>Chabad House</td>
+      <td>39/8 Tambon Bo Put, Koh samui Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.7 (1140)</td>
+      <td>080 009 5052</td>
+      <td class="photo">places/ChIJmVXzK7_xVDARwF4SyBmUbCc/photos/AaVGc3mAELi3yIs8JqFPT6ow7gTJf1TeK9chBxX4iwSXhYNK0R6LhOHFohBt9RxoakxdehCXhsbUX5gjXawo4LXScY_2ieOtLEY8f0ugky3BFbWd_w2jrVgaxhPyRIccbBlKsQUVQaBPF_Fn2vvBbFiKWFjxuXVn5LEUzY7lbdh4nZZdyrdGj3uA-WimavxOlvZVZgdlJnF-E4XLH15o3FjXy1CIJ2WjFKjvDJW-Cm6yMw1iNolbLsVzz1WWKpag9jqWc7dFXFntSFhKUzR1VdEk3byAiPRA-YuQd0NVz_eONwoqV3xBwEIfEqZiBuRb6g-fAhc2TWxpQSW2-HWEhNc0lENR847htHeR9UGrSQmTg7hWfGwhHWGXLo-Yg8NQlLCg2veMwZxN3FOe3W3jfUh2pdzyUNtlLVjBmcZR27BkQ5nRilDI</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Koh%20Samui%20-%20Meat%20%20Restaurant%2039%2F8%20Bophut%20Surrattanni%20Chaweng%20Beach%20%2C%20%2C%20Ko%20Samui%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJmVXzK7_xVDARwF4SyBmUbCc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8413</td>
+      <td><b>Japaniko Ko Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>beach, 888 Chaweng Beach Rd, Bo Put, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>סושי כשר ג'פאניקו Japaniko Kosher Sushi Chabad</td>
+      <td>beach, 888 Chaweng Beach Rd, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.8 (1460)</td>
+      <td>094 608 1018</td>
+      <td class="photo">places/ChIJxQTIxX_xVDARoLBioGnA4Mc/photos/AaVGc3nNUgzRqjVdKWP-GAA-KXu5d4GbXRoY0mXbZqcBw2Pk7UegMZFdIyXyv54wL9TkjHOxFmslZ1x6E0FiL_Md46jmrHjzwdRbwI0R17wSkAeyt8G9IQiuldf8XgNuzB6s14nZ_v5d8I5vtdneFZnOx3Kn34tVc4gvjwMDFbZvlWjkOKrKc0Zez65naC-w6Md4j0t2fdKkf5JwIcX9ira0eOtBLwUAGlJOz-hfqwpID5WeOJ247FP2lgfGsSqiGBADyIHORsJXh12UkoSrKuLAwHh2hOptsVOKnl0eaZ9Xx_neIr96X7p6e4tkES1sWWi0ExkOS-Tk0YqqdmVXbNWj85tqI2OAr68DMKl3g4ZxtXZd17QBVLeuYg1A0_xxJMInM1Odw1k3ORsceCj_oPOwBJbWDGwZPkvA-HXAASvvDCca-A</td>
+      <td class="reason">LLM אישר (0.95): Same unique restaurant name (Japaniko), identical address (888 Chaweng Beach Rd, Ko Samui), kosher sushi restaurant, exact house number and street match, operational status confirmed</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Japaniko%20Ko%20Samui%20beach%2C%20888%20Chaweng%20Beach%20Rd%2C%20Bo%20Put%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJxQTIxX_xVDARoLBioGnA4Mc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8414</td>
+      <td><b>Kaponka Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>c7-8 Banana Market, 201 Moo2 Bo Put Surat Thani , 84320, Thailand</td>
+      <td>Kaponka-קפונקה מסעדה כשרה</td>
+      <td>201 Moo2 c7-8 Banana Market, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.9 (97)</td>
+      <td>081 832 0288</td>
+      <td class="photo">places/ChIJRX4U6LfxVDARgHlYJQNVkVI/photos/AaVGc3mEjSofGPZHOUjcbA2nh7voXEv0PAcu_Hft4fl5CGBzUz3mErvndTQsv4bFVCSE3PWkr-14dJ8q-pUv8tSbrXnFyPs3qJskKGzmuNHB2PwBEKip4IEzOPDUZAZeRfMBikqmoEJQrOrH5e3PlaHdCl8xOMkrkB2OGz_iJ4lS3_BV5LHudYuq6tmaceBJ0u_g7KoWM2HP5sJvlJcSPvpGjoGxkcYC5jBMV2N1QTbR4q-glkesXBa4DAOjJ1A2pPKL79mB-zUNxrPTjDw1ig18KEuV-JLtN0SXbwaUENpoBBLqi0_oJ4qIs_pWd4dykQ6dI-ImCW_j5qPIFJWc6zUi2N1S2OcqPG-XpT4ncAeYo9VnkEp21qRDOAAuyH5duUGFFeMfEhK-JpZspxuqZyc25BWZse_TMXuJvdN1MW-movr1ewwijW1P5Gp6rPuz9g</td>
+      <td class="reason">LLM אישר (0.95): זהו אותו המקום - שם משתנה (קפונקה בעברית), כתובת זהה בדיוק (201 Moo2, Banana Market, Bo Put, Ko Samui, Surat Thani 84320), מסעדה כשרה, מצב פעיל. ההבדל הוא רק בתרגום/עברית לעומת רומנית</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kaponka%20Koh%20Samui%20c7-8%20Banana%20Market%2C%20201%20Moo2%20Bo%20Put%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJRX4U6LfxVDARgHlYJQNVkVI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8415</td>
+      <td><b>Machane Yehuda Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>159, 72 soi, Bo Put, Amphoe  Ko Samui, Surat Thani, 84320, Thailand</td>
+      <td>MACHANE YEHUDA KOH SAMUI</td>
+      <td>159, Ark bar, 72 soi, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.6 (223)</td>
+      <td>052-817-2905</td>
+      <td class="photo">places/ChIJLUXKXcPxVDARPgEUP3Lou_w/photos/AaVGc3kAXIAbIzHTTyNsmFK_4xcr26XBnIgKpP9v_pE4B1IT2Cf0wTO6x2YCYiuVa6BlfHE3Oc__xTbLrr7sDhmI0ROimLpI__Sal4v2N9HvgJhywNXhJ_MNMaEjnYToMa479ySR0HogxaRz1bH8BM2TTb8SGjmaEnYFWM-cJs3DpaYmdRwQviD0C2UW6FqxtAbvOOc9TpMw5SRkyu0XwkbNhHhYnnXxZQMfrtL5SgK5CfGjF6G1LUA2pM3B6pEaZBIeSvcCXE4dEw6jFkoNEBKibBABYUo6pAZUoHvfv4zITXk8bsomKu3botjOir7wmPORCgMaJUwSGwfEZwZP5lS9VIBP0-_4HcImzvtRn6rgVEiErdp8XSBRjdqvSfDSwynNiQMoQ4CH9wyNZsv6-axcDzNu3FhhKfZ8V_cdDPMDlL29mME</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Machane%20Yehuda%20Koh%20Samui%20159%2C%2072%20soi%2C%20Bo%20Put%2C%20Amphoe%20%20Ko%20Samui%2C%20Surat%20Thani%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJLUXKXcPxVDARPgEUP3Lou_w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8416</td>
+      <td><b>Mama Mazal</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>G3C4+JW Beach, Chaweng Beach Rd, Bo Put Ko Samui District, Surat Thani, 80000, Thailand</td>
+      <td>Mama Mazal | מאמא מזל</td>
+      <td>Beach, Chaweng Beach Rd, Tambon Bo Put, Amphoe Ko Samui, Nakhon Si Thammarat 80000, Thailand</td>
+      <td>4.8 (378)</td>
+      <td></td>
+      <td class="photo">places/ChIJnVyLxtzxVDARAG_uLcqSRws/photos/AaVGc3l5H3CbF5BeSffxvLgpJVu5_knMO0J9HdGa8Jb0t9-T8B2ltKh_KvVV1wESQrO6M7XR71nou4ZO6f1HWmOZoqoaBrcDaj1f7povYPz3HULnhyaVQRnQ9Oz850qoZL8YacNiuntnrWgCPz6kReunFKQaM3wh9pjYVG7eLmQm5wm4sC_-O3P56-9dEvo2vZDgJqwrzLtEsRV-8fSr77Vytf_mCX9OWVlPjWmYhjv8wQ21wu_VFYc8uL-E_KJzvCRKsRdDGpPJSEp189t9J96QNHoH7umZ8JmeTbz6wNwLdHsk3eWNUbZvk_5msQV1Nmt62adBgY9mYzYx9HdgeqNLphYamWJQpnrV9OmRDTvGe6gVEI3Or9e956uTDN1XWkeU6n9ulPwl1Waa2r8QJsqe9a6sPe_cKMvUYI8ZdUxN8ECmkaC-BrYvn1XCtncgww</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mama%20Mazal%20G3C4%2BJW%20Beach%2C%20Chaweng%20Beach%20Rd%2C%20Bo%20Put%20Ko%20Samui%20District%2C%20Surat%20Thani%2C%2080000%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJnVyLxtzxVDARAG_uLcqSRws" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8417</td>
+      <td><b>Oria'Sweets - Banana Market</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>30 Chaweng Beach Rd, Bo Put Ko Samui District, Surat Thani , 84320, Thailand</td>
+      <td>Banana Market</td>
+      <td>G3F5+648, Chaweng Beach Rd, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.8 (28)</td>
+      <td></td>
+      <td class="photo">places/ChIJr1bkZgDxVDAR9ujZ2mXOkrY/photos/AaVGc3md21a1mfThn2L6vQO2vMUwKmo6pB4mPHtw7pZuruXXt2KkvL16prBh43ADntv_nAtSjO5hMTUsH5fogkGj5Q5imhYvZzaDqoPOt3bqq8cHEjYdrtP_A51QNR2i_8S8rOEP6EwlXG9ZE6ALcCT6Pz91f2O3dU2WJvk26d0dX_BaO9k1gJc1riSoydG8F1pGItb34vTqUTop4SV8nY_N84X308888IflW09XQ1PxNTP6h2uRO3jiJ06Lhc7i2Mznyomh39jQ1YhssVsL-Ga-BUknPmUJ3ObU0mn3kT05DEyF3D5AfeKYurFP_11hAlIRkDkywuEUTMAtszDRFnxBP9H3XMlBdUueMU7HoNAwObNWul7BuXXZIVP-kWCVYmpgxkYQeYpzviD_33ki7MIXTYqWaOjvMZ6ku3gzB1t4yTdM14m6EJZbKBs0Fk-SRlGw</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Oria'Sweets%20-%20Banana%20Market%2030%20Chaweng%20Beach%20Rd%2C%20Bo%20Put%20Ko%20Samui%20District%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJr1bkZgDxVDAR9ujZ2mXOkrY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8418</td>
+      <td><b>Pomodoro Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>3, 210 211, Bo Put, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>pomodoro samui</td>
+      <td>3, 210 211, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.7 (458)</td>
+      <td>085 549 4353</td>
+      <td class="photo">places/ChIJn3s173_xVDARkv1BS9Y_w2A/photos/AaVGc3nmyqLKAEG8MNvUqJCmRdJ3QJ_44gM9-EWcQDI5g8alzD2OEFGWp3scPnXu2uRCYvfX0WNVXccpl_w6_T9t3RC1-1vE1PrNQfFnZDDRfKtyMXRWoEOL9Jrz50zH7L4GDaHgkU4V0IbRSLl4b5lge5F7ZQ15nwoJsNj7YwkUb4j-EBqSV7pvdt56lFM0FJZZ1xq_B4TjKoTr4FaqFPPHI885E9LpJKlvri8fA5-1YYXjVhUCsNiqgc2e0oq3jYMaYMTjRPeMI_32BljdD5VtuIG-VIqOrWo_uhh3nl5FFfoWWDQcSwtwJvu3aD0bHFM4d9eAAxIEE_X3uhO5Nd9RXwmaApPnPiVoZcMF5aRUAayaS4i8tDAN_PbJOSScskCGZcocigPZ76DPu24jrA3uXoAOqgRVvaMYR-cbRuw6rLqHelPj</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pomodoro%20Koh%20Samui%203%2C%20210%20211%2C%20Bo%20Put%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJn3s173_xVDARkv1BS9Y_w2A" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8419</td>
+      <td><b>Tom Yam Asian Restaurant Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>194 Chaweng Beach Rd, Kho samui, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>Tom Yam Thai</td>
+      <td>20 Moo2 Chaweng Cheongmon Road, Bophut Samui, เทศบาลนครเกาะสมุย KOH SAMUI, สุราษฎร์ธานี 84320, Thailand</td>
+      <td>5 (1)</td>
+      <td>077 428 888</td>
+      <td class="photo">places/ChIJ762U7y7wVDARSuYBsYCi_ow/photos/AaVGc3l5aQi66yQSapGAt0XRbUtBSlh8Vn2235T4NnM6VICs-ZwsT6RYwAdhg998wQ1SzLS4CZ8X2EmopVNoD9ltUkQGPxj1sg5f45vuFzfChp2XomucqR2rwJiWiUgMPdyVhDNyXB-XfkBZn7iNxQrkGxqr4mEAHb9UzmyduThKEIDvQe2ftuo-dUkRuylHBJZ459ly8KcnzB1kl1n8cW6CNJ4oHJg9P-l1cBoK8y_ep6BGEl09Zfq5t1-DmgylW-ZKImSs7Ha6eOXOP5LI6OV0oWkybdITCAMnEzQLN4hv4PpcSvHh2dWSjZxQeDf8JnKZNU78fMS7z7WaY0SM0DtS_YmjVSRjGpDpkKz3CRjqCK-LNwi5g6NX_ATHw9MLe6gDFm4s67F0t9IHTRfpof_gLn7V4eUZBZ5BDnCFZRWgKh0vVk5xCZVUklaShBTvGD26</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tom%20Yam%20Asian%20Restaurant%20Koh%20Samui%20194%20Chaweng%20Beach%20Rd%2C%20Kho%20samui%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ762U7y7wVDARSuYBsYCi_ow" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8420</td>
+      <td><b>Zohara Koh Samui</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>194, 21, T.bophut Ko Samui District, Surat Thani, 84320, Thailand</td>
+      <td>זוהרה, Zohara, מסעדה כשרה KOSHER</td>
+      <td>194, 21, Tambon Bo Put, Amphoe Ko Samui, Chang Wat Surat Thani 84320, Thailand</td>
+      <td>4.7 (392)</td>
+      <td>096 651 9657</td>
+      <td class="photo">places/ChIJOQ3q2rrxVDARrZlj7P0JmTw/photos/AaVGc3niTWghjtSWow7uklv_thoODMWVmLrfuhVBiNSAP-LUuXolJwWY_1dY4NXxWLTeQ70k9VWtylhw9OP1BpanF_1XSdJkPlnoGpQ_OeQd6K65j-Buel3ebzXsYN-yOQS8aoZniQ2FPNPijAeNGsAKs6YGttlK4UURfAd7L9yKfCjV41ooH9zfYXrzSuxThYnMi2o62jtI-mJXXxrveQc5xVvCFUlGlplY71gXjhCMs2WOI2on44C8gPI4Tf-rFfDG-mTeWlLLqEmXFBT_5Rilv62RSmi1gG4CxJ7GBsJCMNG-DxeMtmrFA7inIjptX9qlT84I-uUUKYnQBsN3IJZ1RzxJpsYZR_ZfU20loZ2B1hhlOU4Js0gA9WNGqFKjstGa1mzP0ViDrzg_OStoHnf42Oak8jaRdkPlq7ShIrFy3jGJkw</td>
+      <td class="reason">LLM אישר (0.95): Same unique name (Zohara) in same city (Ko Samui, Thailand). Identical house number (194, 21) and postal code (84320). Address variations are Thai administrative divisions (T.bophut/Tambon Bo Put, Amphoe Ko Samui) referring to same location. Google provides more complete Thai address format. Both are kosher Israeli restaurants. Strong match despite address formatting differences.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Zohara%20Koh%20Samui%20194%2C%2021%2C%20T.bophut%20Ko%20Samui%20District%2C%20Surat%20Thani%2C%2084320%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJOQ3q2rrxVDARrZlj7P0JmTw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8421</td>
+      <td><b>Babi's Grill Phuket</b><div class="muted">Phuket · Thailand</div></td>
+      <td>5/35 Haad,  Patong Beach Shortcut Road Pa Tong,  Kathu District, Phuket , 83150, Thailand</td>
+      <td>Babi’s Grill Phuket שיפודי באבי פוקט מסעדה כשרה למהדרין</td>
+      <td>5 35, Tambon Patong, Amphoe Kathu, Chang Wat Phuket 83150, Thailand</td>
+      <td>4.8 (698)</td>
+      <td>094 457 5713</td>
+      <td class="photo">places/ChIJBZ77o_U7UDARlL-pF-_wbWM/photos/AaVGc3myVaF2F3Cx6Hh3_DzzhNObDwvcNnTZXtuBllMjWg1mWM-jmVbOd-BFo2UYb-Es9NMfxbhuKxRrH2Hz9xLqgoJul0RRDVUYbMujsY6MnOAlxRLDzT52_QEtyojtiHPsFtuuHHNdzBGRR6EGih6Se9fI6FVKQbhzJool-fPVnf46HKXy7fvaVCEKq69613de4tkpF_-oBR2wU1sa6W9p2zANsBGJ8tO_Uq_17vmqPiX5RT2GAUD-Z45JYTKGv73oN6zQKGJlitzs6_4nlEx40ptfubQIuc8CP2XxQZXmObBxZKJQh5Q4qflFV_T4Li2oFpXEoqf49NyTeX702lFXAJoF0b9DBD46Nszfv8mXsC0uF9Ni4LzKiKahTp_k0n0nYYJv2ccE_ScJkN_MlAlqDKhNANr8NSjU8IoiLOXSC5Y0sqNxInDH9ZHVW-9VDiIm</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Babi's%20Grill%20Phuket%205%2F35%20Haad%2C%20%20Patong%20Beach%20Shortcut%20Road%20Pa%20Tong%2C%20%20Kathu%20District%2C%20Phuket%20%2C%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJBZ77o_U7UDARlL-pF-_wbWM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8422</td>
+      <td><b>Chabad Phuket</b><div class="muted">Phuket · Thailand</div></td>
+      <td>9/6 Rat-U-Thit 200 Pee Rd Patong, Kathu District, Phuket, Thailand, Phuket, 83150, Thailand</td>
+      <td>בית חב&quot;ד פוקט Chabad House Phuket</td>
+      <td>9 6 ถนน ราษฎร์อุทิศ Tambon Patong, Amphoe Kathu, Chang Wat Phuket 83150, Thailand</td>
+      <td>4.8 (1310)</td>
+      <td>081 848 6680</td>
+      <td class="photo">places/ChIJYQi_tY86UDARL2-VqQrqKG8/photos/AaVGc3mKSfpnVurLMJ9vs6baDo_6ZfNPsvogzdBTfke2ofYiCuE9m0XF7sVuSRohHNVkHrD5oz7XsEGf29uvn33hXjpUM9k7G2cQlLyOnhl3ZS7S8bE6Y-lfBdeSQOgJUs3eGDCBO7Qp5bG5Gwoc8dVS23sMs9hmm9xj5xIOMc_YRUrRxwy_g-8GeuB05v25xeT7YtoE61iAUn6dz8f8b9LNC03ADU6ENKBRFCfCiY4bda6tbUce11scmzmUHHsMkQe5RKTQxIEO0DNmnTxDQO_EJGXmtwM39v0T_m48zZMrxxIUs9wU4FSE0qxIUAL8oqhhIjGn8U4oQ5Gqn9KS--fHPL18HC9Logaw4Pf1cXFRJLjpKTbDzX-1d2mx1ILAumNjgJ2xWubB1evuxyCe62ymezKVltjQ0pmCCDeiK5cagD_SJLKA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Phuket%209%2F6%20Rat-U-Thit%20200%20Pee%20Rd%20Patong%2C%20Kathu%20District%2C%20Phuket%2C%20Thailand%2C%20Phuket%2C%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYQi_tY86UDARL2-VqQrqKG8" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8423</td>
+      <td><b>Japaniko Phuket Kosher Asian Restaurant</b><div class="muted">Phuket · Thailand</div></td>
+      <td>162/7 Thaweewong Rd Pa Tong, Phuket, 83150, Thailand</td>
+      <td>Japaniko Phuket Kosher Asian Restaurant - ג'פניקו פוקט מסעדה כשר למהדרין</td>
+      <td>162/7 Thaweewong Rd, Tambon Patong, phuket, Chang Wat Phuket 83150, Thailand</td>
+      <td>4.8 (149)</td>
+      <td>062 973 0267</td>
+      <td class="photo">places/ChIJzWolT9A7UDARIF3RvmnOK78/photos/AaVGc3m0pSPdTDZUvICUqLArvygLzPAN7OPJiwsahCL4bijhqrEebG7E2GG1kBjtTD1xHv3OBRp_ZfCmMrPBDwhqso0FRNs5dCUB1KI65qu-Kh_woyRDxQhsY1PNDoQbzzw6Pw-pQ2K1eTeL231FjRiyqgAlH0OgjSoByNGzwBjmO6XoJY_Zx4LR3OfCLCF91zoYiUgZkKAd3p8bUFSItGPEoJjpItsumYa306W0csDSW3RvWfoFCKGR9ct42UHJGVrSLcvuAk9Y3kysvb8s8Sy3t2xJ3PyhtXqkzQWpOk88lLNnJlSLhF_0X4g7fW590jyXtcqXmZO4u0QxJqL_sBgfbIMdqYVJjYSIK8LM9byzOwDO7CvkZys608UKuNViA7tvaSvk32L4lPaBIFUAnUHI4dFf0et3W4W0cIjrejbzLIAWhgJodlATUReBn3y9vEyR</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Japaniko%20Phuket%20Kosher%20Asian%20Restaurant%20162%2F7%20Thaweewong%20Rd%20Pa%20Tong%2C%20Phuket%2C%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJzWolT9A7UDARIF3RvmnOK78" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8424</td>
+      <td><b>Makolet Chabad Phuket</b><div class="muted">Phuket · Thailand</div></td>
+      <td>9/6 Rat-U-Thit 200 Pee Rd Patong Kathu District, Phuket, 83150, Thailand</td>
+      <td>בית חב&quot;ד פוקט Chabad House Phuket</td>
+      <td>9 6 ถนน ราษฎร์อุทิศ Tambon Patong, Amphoe Kathu, Chang Wat Phuket 83150, Thailand</td>
+      <td>4.8 (1310)</td>
+      <td>081 848 6680</td>
+      <td class="photo">places/ChIJYQi_tY86UDARL2-VqQrqKG8/photos/AaVGc3mKSfpnVurLMJ9vs6baDo_6ZfNPsvogzdBTfke2ofYiCuE9m0XF7sVuSRohHNVkHrD5oz7XsEGf29uvn33hXjpUM9k7G2cQlLyOnhl3ZS7S8bE6Y-lfBdeSQOgJUs3eGDCBO7Qp5bG5Gwoc8dVS23sMs9hmm9xj5xIOMc_YRUrRxwy_g-8GeuB05v25xeT7YtoE61iAUn6dz8f8b9LNC03ADU6ENKBRFCfCiY4bda6tbUce11scmzmUHHsMkQe5RKTQxIEO0DNmnTxDQO_EJGXmtwM39v0T_m48zZMrxxIUs9wU4FSE0qxIUAL8oqhhIjGn8U4oQ5Gqn9KS--fHPL18HC9Logaw4Pf1cXFRJLjpKTbDzX-1d2mx1ILAumNjgJ2xWubB1evuxyCe62ymezKVltjQ0pmCCDeiK5cagD_SJLKA</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Makolet%20Chabad%20Phuket%209%2F6%20Rat-U-Thit%20200%20Pee%20Rd%20Patong%20Kathu%20District%2C%20Phuket%2C%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYQi_tY86UDARL2-VqQrqKG8" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8425</td>
+      <td><b>Pistachio Restaurant Phuket | Patong</b><div class="muted">Phuket · Thailand</div></td>
+      <td>9 Rat Uthit Song Roi Pi Rd, Pa Tong Kathu District, Phuket , 83150, Thailand</td>
+      <td>Cappadocia Turkish Restaurant Patong Phuket</td>
+      <td>69/2 Soi Koknam, Rat-u-thid 200 Pee Road, ตำบลป่าตอง อำเภอกะทู้ ภูเก็ต 83150, Thailand</td>
+      <td>4.9 (10192)</td>
+      <td>080 236 0078</td>
+      <td class="photo">places/ChIJFawuGwQ7UDARyOMESkIpB6w/photos/AaVGc3k76ZeeXVpobf-_KlNsiY8lHTAS5vfcqQqnuLy7XJajsrM1iQgCLJc_rHBGxZeOD3mLeqDS7wxHB-GQkDdF6qyT4HW6-RbTbxEQU_QAAY3mfI2S7UA8CwFbMOIiowi6rhLWWpBagln2Zp9IbNz77cfbYTZ2kKzMFXyJkkZQMlVYjEwK_M64CKxk_KuAWJO6Zohnmjw7igbldYWclulE7Vwx8P3vSWVgkWDfYyLNLo8Dhbdt2CkTgcxcsOAxrq2DqKKnlHbyltyENgozL_MRkJsDOLS1rotGGF51pOqoF77A2xniu61d6-fb6JCEHe-vdcY41ViljWYYTP07iSBhoT7TLrzvYExN-oUMLOybMUncTXGTjKuKf3f27JdKos38_QOBk9UGUhqzy6xz7ZIVCl-QfK046AdfNUzlpJd_IfbsL-s</td>
+      <td class="reason">name + city + street match</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pistachio%20Restaurant%20Phuket%20%7C%20Patong%209%20Rat%20Uthit%20Song%20Roi%20Pi%20Rd%2C%20Pa%20Tong%20Kathu%20District%2C%20Phuket%20%2C%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJFawuGwQ7UDARyOMESkIpB6w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8426</td>
+      <td><b>Pizza Restaurant Chabad Phuket</b><div class="muted">Phuket · Thailand</div></td>
+      <td>9/6 Rat-U-Thit 200 Pee Rd, Pa Tong, Kathu District, Phuket, Thailand, Kathu District, Thailand</td>
+      <td>בית חב&quot;ד פוקט Chabad House Phuket</td>
+      <td>9 6 ถนน ราษฎร์อุทิศ Tambon Patong, Amphoe Kathu, Chang Wat Phuket 83150, Thailand</td>
+      <td>4.8 (1310)</td>
+      <td>081 848 6680</td>
+      <td class="photo">places/ChIJYQi_tY86UDARL2-VqQrqKG8/photos/AaVGc3mKSfpnVurLMJ9vs6baDo_6ZfNPsvogzdBTfke2ofYiCuE9m0XF7sVuSRohHNVkHrD5oz7XsEGf29uvn33hXjpUM9k7G2cQlLyOnhl3ZS7S8bE6Y-lfBdeSQOgJUs3eGDCBO7Qp5bG5Gwoc8dVS23sMs9hmm9xj5xIOMc_YRUrRxwy_g-8GeuB05v25xeT7YtoE61iAUn6dz8f8b9LNC03ADU6ENKBRFCfCiY4bda6tbUce11scmzmUHHsMkQe5RKTQxIEO0DNmnTxDQO_EJGXmtwM39v0T_m48zZMrxxIUs9wU4FSE0qxIUAL8oqhhIjGn8U4oQ5Gqn9KS--fHPL18HC9Logaw4Pf1cXFRJLjpKTbDzX-1d2mx1ILAumNjgJ2xWubB1evuxyCe62ymezKVltjQ0pmCCDeiK5cagD_SJLKA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza%20Restaurant%20Chabad%20Phuket%209%2F6%20Rat-U-Thit%20200%20Pee%20Rd%2C%20Pa%20Tong%2C%20Kathu%20District%2C%20Phuket%2C%20Thailand%2C%20Kathu%20District%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJYQi_tY86UDARL2-VqQrqKG8" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8427</td>
+      <td><b>Pizza Shemesh Thailand Phuket</b><div class="muted">Phuket · Thailand</div></td>
+      <td>19, 3 Soi Bang Ton Khao Patong, Kathu District, Phuket, 83150, Thailand</td>
+      <td>פיצה שמש תאילנד פוקט - Pizaa Shemesh Thailand Phuket</td>
+      <td>19, 3 Soi Bang Ton Khao, Patong, Amphoe Kathu, Chang Wat Phuket 83150, Thailand</td>
+      <td>4.8 (21)</td>
+      <td>064 771 5549</td>
+      <td class="photo">places/ChIJZy6semI7UDARrSztgXvy7Ao/photos/AaVGc3mZn9HRCV2kugHEpZPGnkxbT8x1OdpKSJL6wnK4dhQgK4jqmKnMJJmY7UY2YWgvV1dymM-GWR9BfaC5Xwm746YhRACabswI2qf1pt47ShGT0aaIk5d2yR-1s35xpDOsJ3e3OvlpgkFZ2nmrqB6pjrg5whxY5kvrXynYTZsBDWWokukVmVIHN95hqaplzd3teE6ElIGyvZShvDd_oyuHteBmjI6I1BoC5kzo2rrK3KQAE6MFxNMOSNdRpEfD7VixHRupQu0GakS8RDq6sGXuBL2wHENNsI07KsfC25Q3nL861i4eNZuKxyYvSQCrZLvaJFhsiJ8YWT_MtWqHPInu-ptpzL87jhy-aAQJm_HR-v0_EvAq0O6yItYX0zZtYHS9pLtuJZGZy1nxqxS4-9nlPen4_v2HWQdl1BXYAg3eObcYBXGO5Rzgq81nwRahtpxP</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza%20Shemesh%20Thailand%20Phuket%2019%2C%203%20Soi%20Bang%20Ton%20Khao%20Patong%2C%20Kathu%20District%2C%20Phuket%2C%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJZy6semI7UDARrSztgXvy7Ao" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8429</td>
+      <td><b>Le Triskel</b><div class="muted">Pai · Thailand</div></td>
+      <td>28, rue Saint-Hilaire, Saint-Maur-des-Fossés, 94210, France</td>
+      <td>Le Trisk'L</td>
+      <td>Rue de la Résistance, 94320 Thiais, France</td>
+      <td>4.1 (1144)</td>
+      <td>01 46 87 07 07</td>
+      <td class="photo">places/ChIJ2Wg2K2p05kcRjHU1_GDF_-s/photos/AaVGc3l6VosxRyY6N-3xRWnUIhqNlMYsFJpWnUqrkZBHwosK0u25TEVB_kT_zXaJ1uXtFnRzls-MBgh98V5Furp36nehZXGpPiDuZmu6o9z-gt8LBQwyZ-8pRG9JRnUQgUfnY1kmxN9q1HJY6NgjkEyoQ5IKC4VVewA0csoO4Lugj4bTuIqKtxpGkY_2NzJ-Iu1hrytVtNiDOM9nQ4W8iRuRS4RNdekk20-Akrp-FGTYbIc4YflZl1mqX7SZ6qC38NSTaqumsw0cbyL0MJ7nVWcpFgwg_fzs3FjBlqTz9pWz16Fx3wwbvH4gmc0DZgIYvtJy9dn_eL9vrkmQ6cFuCBBKkPLncnO7AEKIVSTBNxwF3GmcJuHjBwN3L2xzoCC5ClQz3woqDONedsZXbo3n4zsHPkaEAH03IvUWbydkJ3HUXHk</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Triskel%2028%2C%20rue%20Saint-Hilaire%2C%20Saint-Maur-des-Foss%C3%A9s%2C%2094210%2C%20France" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ2Wg2K2p05kcRjHU1_GDF_-s" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 1</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>8404</td>
+      <td><b>J Cafe Kosher Shoppe</b><div class="muted">Bangkok · Thailand</div></td>
+      <td>66/4 Mille Malle, Sukhumvit 20 Alley, 3rd Floor, unit 302, Bangkok, 10110, Thailand</td>
+      <td>J Deli (Kosher)</td>
+      <td>3rd Floor, unit 303, Mille Malle, 66/4 Sukhumvit 20 Alley, Khwaeng Khlong Toei, Khlong Toei, แขวงคลองเตย Khlong Toe, กรุงเทพมหานคร 10110, Thailand</td>
+      <td>4.8 (110)</td>
+      <td>065 953 2670</td>
+      <td class="photo">places/ChIJ6x6zYt2f4jARzCOyuEx7r1c/photos/AaVGc3naFdK0NVVfvv5qrEctAHcZFoGh0mvXD3tdEMunon8QuoAdi30WACuoY4pnacpynI2zsgCApsMJEE6SeiF0SXMwh5VfchhE9fEbxzVL5aED5r5XlxN3DX60pqoh8K8m80IdndPiirsbmTxbSEw4vRJ-aVFQnzC5__55Fvkb-Egu6XOvFjqohpEImXHcrCJnQAMVcK15i99gSpr4RxN6M4TY1ByNxrf-vJzEwd9xKfKln8g7yUicPNOWgej22pD8fgBNSZB9G7EXbYlgRxLt_4HcQSFWOPncYczZB4Gq02_lh84l3sibAdWbg0GN0xXeOYzaTRVLHQDtdHR1mA7-biu6fz-kXKyqXBqaU-3bOjmpRQO-0_lut47Yb8VrUmeIEVAC_4Mq9JGstYVWlxkVdhB3knXM_To8qw6nzDxozFDt7OpJuPnjoAk2SCoowdn3</td>
+      <td class="reason">LLM לא הכריע (0.75): שם שונה (J Cafe vs J Deli) ויחידה שונה (302 vs 303) באותו בניין. אמנם באותו כתובת וקומה, אך שם עסקי שונה מעיד על עסקים נפרדים.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=J%20Cafe%20Kosher%20Shoppe%2066%2F4%20Mille%20Malle%2C%20Sukhumvit%2020%20Alley%2C%203rd%20Floor%2C%20unit%20302%2C%20Bangkok%2C%2010110%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ6x6zYt2f4jARzCOyuEx7r1c" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 3</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7330</td>
+      <td><b>כשר פלייס</b><div class="muted">Bangkok · Thailand</div></td>
+      <td>96 Ram Buttri Road, Kaosarn Road, Bangalampoo, แขวง ตลาดยอด เขต พระนคร กรุงเทพมหานคร 10200, Thailand, Bangkok</td>
+      <td>The Kosher Place</td>
+      <td>3rd Floor, unit 301, 66/4 Mille Malle Soi Sukhumvit 20, Khwaeng Khlong Toei, Khet Khlong Toei, Krung Thep Maha Nakhon 10110, Thailand</td>
+      <td>5 (6)</td>
+      <td></td>
+      <td class="photo">places/ChIJn8d3dXSf4jARa1pUjSohyXg/photos/AaVGc3mzftlcnii2BLF3P4vxZnGzSRL9Pgfmvom7peAxvEF034Uc3cpOuKxuZJRkHSVSnLs6yOMObNIJAjNHUBFEedmPxVw510Ex8Jw6-ZbCc_mNVrrFaJuq4QWkfw2gjULG78Db9XMnqNxr3jEHZNyJhw_cE-whfCzDtATn1ckX3a8H5VHeVNohSlCa0vT1goxe_TLjkY5jH9TwNQlf3Vou50lmMlsdiqS2yJTK2efLzVPpQJbdIos2Qy9RbOhGOIpmMfDgIDr5EPdRn2pe9aCLaeOUAc-XJPIC6M_dyUIR2jMyIlz_lGDagoVvIVpagAGawGjwljnk2IpoExKFYt__LmIqh7H4Bz2DDDUcqZ6LG2-zVn1oAuFQQH-CD2D7X01vavIVCyktG6Vs3-bmKheTi3leUsByGirMwhurXnbRnxlqe0jnKf2xIA801Lf6Wa_9</td>
+      <td class="reason">LLM דחה (0.92): שתי כתובות שונות לחלוטין בבנגקוק - כ-8 ק״מ ביניהן. A בתלאדיום, B בסוכומווית. למרות שהשמות דומים (כשר פלייס / The Kosher Place), הכתובות אינן תואמות והם מיקומים שונים גיאוגרפיים</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%A9%D7%A8%20%D7%A4%D7%9C%D7%99%D7%99%D7%A1%2096%20Ram%20Buttri%20Road%2C%20Kaosarn%20Road%2C%20Bangalampoo%2C%20%E0%B9%81%E0%B8%82%E0%B8%A7%E0%B8%87%20%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%A2%E0%B8%AD%E0%B8%94%20%E0%B9%80%E0%B8%82%E0%B8%95%20%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%99%E0%B8%84%E0%B8%A3%20%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3%2010200%2C%20Thailand%2C%20Bangkok" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJn8d3dXSf4jARa1pUjSohyXg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7351</td>
+      <td><b>המסעדה הבשרית פוקט</b><div class="muted">Phuket · Thailand</div></td>
+      <td>pee road Tambon Patong, Amphoe Kathu, Chang Wat Phuket 83150, Thailand</td>
+      <td>מסעדת סטאי פוקט - גריל בר כשר למהדרין Setai Restaurant - Phuket | Grill Bar | Kosher</td>
+      <td>52/7, 200 ถ. ราษฏร์อุทิศ 200 ปี ตำบลป่าตอง Patong, ภูเก็ต 83150, Thailand</td>
+      <td>4.9 (86)</td>
+      <td>096 776 6054</td>
+      <td class="photo">places/ChIJ2zK9dOo7UDARszA81Jcz1SY/photos/AaVGc3n6EJpo5k3jV5FpcCdX2IoQ2SXtgAFocCxi7zX_0INWGZjICTRsHgybGdKc5EmSBBU0p_sxTNxlyayg4q93Iji_AQEf4Hczs4dPfbKtU3izlDcn8g-_hbBLmAwouAs9EWXhsmtaZVWWpwfUTYt9d4AhLMYieoLJ2BthHBZCY2TzYgAodzx9FM6sHIcHl8Xu5kEX-Rt_7hueC4Hz6MBw0tFunN8SOgwtTgiIbpC5AchdgE5Zvacx2_7i9OtIOlfs9okwbdgGpQjlTuLUISnHCilwrRnA01jS7kbCn5StjQodeYJH8hcmLNMN9P5e-H40XCRC27roZ8EWUzM-wfSDWsa1yam2QPkqITb-FVNH_gm5LND1Tw7NbeFlJKQx0spV1YZlEVW-anRGUqaEz8qjjINz2GVLFvu0e3ZyMPHYw2kMgKMH5ixfGoWGcT-5fa9H</td>
+      <td class="reason">LLM דחה (0.85): שמות שונים לחלוטין - 'המסעדה הבשרית' vs 'מסעדת סטאי'. למרות ששניהם מסעדות כשרות בפוקט באותו אזור, אלו שתי עסקים שונים עם שמות ייחודיים שונים. סטאי הוא שם ברנד מסוים (סטיק/בשרייה), לא תרגום או וריאציה של 'המסעדה הבשרית'. המרחק של ~7 ק&quot;מ בין הכתובות מחזק את הממצא.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%A1%D7%A2%D7%93%D7%94%20%D7%94%D7%91%D7%A9%D7%A8%D7%99%D7%AA%20%D7%A4%D7%95%D7%A7%D7%98%20pee%20road%20Tambon%20Patong%2C%20Amphoe%20Kathu%2C%20Chang%20Wat%20Phuket%2083150%2C%20Thailand" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ2zK9dOo7UDARszA81Jcz1SY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8428</td>
+      <td><b>Bread'sel</b><div class="muted">Pai · Thailand</div></td>
+      <td>23, rue Saint Hilaire, La Varenne Saint-Hilaire, 94210, France</td>
+      <td>BreaktheFast</td>
+      <td>69 9 Tambon Wiang Tai, Amphoe Pai, Chang Wat Mae Hong Son 58130, Thailand</td>
+      <td>4.7 (442)</td>
+      <td>095 450 9354</td>
+      <td class="photo">places/ChIJy68vDv-B2jARGpLSVRsDNaU/photos/AaVGc3nXArTHMHyOY1IbsZuUVaXbSf_PHBveqA7bG0COTEN4CVtbWLVT40zniBBxeTRRw36HtdSSVbNIJJpBLmpBuw_gUKKgrXcxlQN41Y6EUAT6ZUD2LN7LNySAHNsQ8vZWhkwNxN78MiO8E9Xh8l0GUChhgISGH-Cvma_NL6EH61bcvF9z4A4kcdWrqG7mnMe4MHPlkNAGZhorbX5nhkz5BtMv_Ots-WIIJbY46J3hV8QZycgT4fQxa7jehpY-ow09ht3r6IHUlQPNJgkoowBL9zZp-vaH1jVkqCMfxxIyUdHugua5_GQcajeDDZyOvh6fU17Cdu5x_qIhsA-7jfEfdqbECpsVEG8gMS0OdEBJFggUO8V8Cr2WlmAjTnqd1R6FrXoqcMJ41pPECasOO5UQi6iWGWMBSK85inVYu3vhhtmByg</td>
+      <td class="reason">LLM דחה (0.95): שני מקומות שונים לחלוטין - A בצרפת (La Varenne Saint-Hilaire) וB בתאילנד (Pai, Mae Hong Son). שמות שונים (Bread'sel vs BreaktheFast), כתובות שונות לחלוטין, ערים שונות. אין התאמה אמיתית.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bread'sel%2023%2C%20rue%20Saint%20Hilaire%2C%20La%20Varenne%20Saint-Hilaire%2C%2094210%2C%20France" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJy68vDv-B2jARGpLSVRsDNaU" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 1</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>8407</td>
+      <td><b>Arancini Italian Restaurant</b><div class="muted">Ko Samui · Thailand</div></td>
+      <td>G3J7+RG 194 19, Kho samui, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>—</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="photo"></td>
+      <td class="reason">terminated</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Arancini%20Italian%20Restaurant%20G3J7%2BRG%20194%2019%2C%20Kho%20samui%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">שלנו</a></td>
+    </tr>
+    </tbody></table>
+</body></html>

@@ -1,0 +1,1949 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>תמונות מוצעות לערים — דוח בדיקה</title>
+<style>
+  :root{--navy:#0b1736;--muted:#526070;--line:#dce2ea;--bg:#f7f8fb;--good:#1a7f4e;--goodbg:#e7f5ee;--review:#9a6b00;--reviewbg:#fdf3dc;--missing:#b3261e;--missingbg:#fbeaea}
+  *{box-sizing:border-box}
+  body{font-family:"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:#172033}
+  header{background:var(--navy);color:#fff;padding:20px 24px}
+  header h1{margin:0 0 6px;font-size:22px}
+  header p{margin:0;font-size:13.5px;opacity:.85;line-height:1.5;max-width:900px}
+  .summary{display:flex;flex-wrap:wrap;gap:8px;padding:14px 24px 0}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 14px;font-size:13.5px;cursor:pointer;user-select:none}
+  .pill b{margin-inline-start:4px}
+  .pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .pill.good b{color:var(--good)} .pill.needs_review b{color:var(--review)} .pill.missing b{color:var(--missing)}
+  .pill.active b{color:#fff}
+  main{padding:10px 24px 40px}
+  .country h2{font-size:19px;margin:26px 0 12px;border-bottom:2px solid var(--line);padding-bottom:6px}
+  .country .count{color:var(--muted);font-weight:normal;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 3px 10px rgba(11,23,54,.05)}
+  .card.missing{border-color:#e8b7b4}
+  .card img,.empty{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#e7ebf2}
+  .empty{display:flex;align-items:center;justify-content:center;color:var(--missing);font-size:14px;background:var(--missingbg)}
+  .body{padding:12px 14px 14px}
+  .titlerow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  h3{font-size:15.5px;margin:0}
+  .badge{font-size:11.5px;padding:3px 10px;border-radius:12px;white-space:nowrap}
+  .badge.good{background:var(--goodbg);color:var(--good)}
+  .badge.needs-review{background:var(--reviewbg);color:var(--review)}
+  .badge.missing{background:var(--missingbg);color:var(--missing)}
+  .meta{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.45}
+  .meta.cur.country{color:var(--missing)}
+  .meta.cur.city{color:var(--good)}
+  .links{margin-top:9px;display:flex;flex-wrap:wrap;gap:4px 14px}
+  .links a{color:#1565c0;text-decoration:none;font-size:12.5px}
+  .links a:hover{text-decoration:underline}
+  .country.hidden,.card.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <h1>תמונות מוצעות לערים (100 ערים)</h1>
+  <p>דוח בדיקה ידנית בלבד — שום דבר לא נכתב ל-DB או לקוד האפליקציה. לכל עיר (destination עם parent) מוצעת תמונה ייעודית מוויקיפדיה/ויקישיתוף, כולל קישור למקור. תמונות דגלים/סמלים/מפות נפסלו אוטומטית, וכל תמונה אומתה שהיא נטענת. 86 מהערים מציגות היום את תמונת המדינה שלהן באפליקציה — אלה המקרים שהדוח נועד לפתור.</p>
+</header>
+<div class="summary" id="filters">
+  <span class="pill active" data-filter="all">הכל <b>100</b></span>
+  <span class="pill good" data-filter="good">good <b>99</b></span>
+  <span class="pill needs_review" data-filter="needs_review">needs review <b>0</b></span>
+  <span class="pill missing" data-filter="missing">missing <b>1</b></span>
+</div>
+<main>
+
+  <section class="country" data-country="Israel">
+    <h2>Israel <span class="count">(68)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/86/Dome_of_the_Rock_seen_from_the_Mount_of_Olives_%2812395649153%29_%28cropped%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Dome_of_the_Rock_seen_from_the_Mount_of_Olives_%2812395649153%29_%28cropped%29.jpg/1280px-Dome_of_the_Rock_seen_from_the_Mount_of_Olives_%2812395649153%29_%28cropped%29.jpg" alt="Jerusalem" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Jerusalem · ירושלים</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>331</b> · Israel (IL) · מסעדות: <b>714</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Jerusalem</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Jerusalem" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Dome_of_the_Rock_seen_from_the_Mount_of_Olives_(12395649153)_(cropped).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/86/Dome_of_the_Rock_seen_from_the_Mount_of_Olives_%2812395649153%29_%28cropped%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/69/Sarona_CBD_01_%28cropped%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sarona_CBD_01_%28cropped%29.jpg/1280px-Sarona_CBD_01_%28cropped%29.jpg" alt="Tel Aviv" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Tel Aviv · תל אביב</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>348</b> · Israel (IL) · מסעדות: <b>533</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Tel Aviv</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Tel_Aviv" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Sarona_CBD_01_(cropped).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/69/Sarona_CBD_01_%28cropped%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/d/d8/20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg/1280px-20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg" alt="Netanya" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Netanya · נתניה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>358</b> · Israel (IL) · מסעדות: <b>240</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Netanya</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Netanya" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/d8/20201130_153836_%D7%9E%D7%91%D7%98_%D7%9E%D7%9C%D7%9E%D7%A2%D7%9C%D7%94_%D7%A2%D7%9C_%D7%A9%D7%9C%D7%95%D7%9C%D7%99%D7%AA_%D7%94%D7%97%D7%95%D7%A8%D7%A3_%D7%91%D7%A0%D7%AA%D7%A0%D7%99%D7%94.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/d/dd/The_Hanging_Gardens_of_Haifa%2C_Israel_%2850099173503%29_%28cropped%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/The_Hanging_Gardens_of_Haifa%2C_Israel_%2850099173503%29_%28cropped%29.jpg/1280px-The_Hanging_Gardens_of_Haifa%2C_Israel_%2850099173503%29_%28cropped%29.jpg" alt="Haifa" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Haifa · חיפה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>395</b> · Israel (IL) · מסעדות: <b>232</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Haifa</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Haifa" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:The_Hanging_Gardens_of_Haifa%2C_Israel_(50099173503)_(cropped).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/dd/The_Hanging_Gardens_of_Haifa%2C_Israel_%2850099173503%29_%28cropped%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/8f/Beersheba_City_Hall_6.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Beersheba_City_Hall_6.jpg/1280px-Beersheba_City_Hall_6.jpg" alt="Be'er Sheva" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Be'er Sheva · באר שבע</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>321</b> · Israel (IL) · מסעדות: <b>223</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Beersheba</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Beersheba" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Beersheba_City_Hall_6.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/8f/Beersheba_City_Hall_6.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/56/Jabotinsky_Skyline_Petah_Tikva_01.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Jabotinsky_Skyline_Petah_Tikva_01.jpg/1280px-Jabotinsky_Skyline_Petah_Tikva_01.jpg" alt="Petah Tikva" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Petah Tikva · פתח תקווה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>346</b> · Israel (IL) · מסעדות: <b>213</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Petah Tikva</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Petah_Tikva" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Jabotinsky_Skyline_Petah_Tikva_01.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/56/Jabotinsky_Skyline_Petah_Tikva_01.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/2/2e/Rishon-LeZion-Gan-Moshava-0002.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Rishon-LeZion-Gan-Moshava-0002.jpg/1280px-Rishon-LeZion-Gan-Moshava-0002.jpg" alt="Rishon LeZion" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Rishon LeZion · ראשון לציון</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>367</b> · Israel (IL) · מסעדות: <b>210</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Rishon LeZion</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Rishon_LeZion" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Rishon-LeZion-Gan-Moshava-0002.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/2/2e/Rishon-LeZion-Gan-Moshava-0002.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/33/%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg/1280px-%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg" alt="Ashdod" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ashdod · אשדוד</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>364</b> · Israel (IL) · מסעדות: <b>190</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ashdod</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ashdod" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/33/%D7%A4%D7%90%D7%A8%D7%A7_%D7%95%D7%90%D7%92%D7%9D_%D7%94%D7%9E%D7%A8%D7%99%D7%A0%D7%94_%D7%9C%D7%A7%D7%A8%D7%90%D7%AA_%D7%A1%D7%95%D7%A3_%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA_%D7%94%D7%91%D7%A0%D7%99%D7%99%D7%94%2C_%D7%9E%D7%A8%D7%A5_2024.jpg_03.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/d/de/Ramat_Gan_City_Images.png" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Ramat_Gan_City_Images.png" alt="Ramat Gan" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ramat Gan · רמת גן</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>370</b> · Israel (IL) · מסעדות: <b>168</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ramat Gan</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ramat_Gan" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Ramat_Gan_City_Images.png" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/de/Ramat_Gan_City_Images.png" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/5b/93439_marina_ashkelon_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/93439_marina_ashkelon_PikiWiki_Israel.jpg/1280px-93439_marina_ashkelon_PikiWiki_Israel.jpg" alt="Ashkelon" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ashkelon · אשקלון</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>293</b> · Israel (IL) · מסעדות: <b>138</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ashkelon</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ashkelon" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:93439_marina_ashkelon_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5b/93439_marina_ashkelon_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/69/94765_holon_from_the_drone_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/94765_holon_from_the_drone_PikiWiki_Israel.jpg/1280px-94765_holon_from_the_drone_PikiWiki_Israel.jpg" alt="Holon" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Holon · הולון</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>301</b> · Israel (IL) · מסעדות: <b>128</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Holon</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Holon" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:94765_holon_from_the_drone_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/69/94765_holon_from_the_drone_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/39/WikiAir_IL-13-10_A031.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/WikiAir_IL-13-10_A031.jpg/1280px-WikiAir_IL-13-10_A031.jpg" alt="Hadera" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Hadera · חדרה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>311</b> · Israel (IL) · מסעדות: <b>123</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Hadera</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Hadera" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:WikiAir_IL-13-10_A031.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/39/WikiAir_IL-13-10_A031.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/5a/Eilat_night_hotels_2016.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Eilat_night_hotels_2016.jpg/1280px-Eilat_night_hotels_2016.jpg" alt="Eilat" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Eilat · אילת</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>399</b> · Israel (IL) · מסעדות: <b>118</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Eilat</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Eilat" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Eilat_night_hotels_2016.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5a/Eilat_night_hotels_2016.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/7/75/Rehovot_Aerial_View.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Rehovot_Aerial_View.jpg/1280px-Rehovot_Aerial_View.jpg" alt="Rehovot" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Rehovot · רחובות</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>312</b> · Israel (IL) · מסעדות: <b>113</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Rehovot</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Rehovot" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Rehovot_Aerial_View.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/7/75/Rehovot_Aerial_View.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/1/1c/%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg/1280px-%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg" alt="Herzliya" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Herzliya · הרצליה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>359</b> · Israel (IL) · מסעדות: <b>106</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Herzliya</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Herzliya" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/1/1c/%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%9E%D7%94%D7%90%D7%95%D7%99%D7%A8_%D7%A9%D7%9C_%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_23.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/40/Raanana_city.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Raanana_city.JPG/1280px-Raanana_city.JPG" alt="Ra'anana" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ra'anana · רעננה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>309</b> · Israel (IL) · מסעדות: <b>105</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ra'anana</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ra%27anana" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Raanana_city.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/40/Raanana_city.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/45/93658_central_modi%27in_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/93658_central_modi%27in_PikiWiki_Israel.jpg/1280px-93658_central_modi%27in_PikiWiki_Israel.jpg" alt="Modiin" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Modiin</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>345</b> · Israel (IL) · מסעדות: <b>99</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Modi'in-Maccabim-Re'ut</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Modi%27in-Maccabim-Re%27ut" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:93658_central_modi'in_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/45/93658_central_modi%27in_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/51/BBC_and_Nahalat_Ganim_01.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BBC_and_Nahalat_Ganim_01.jpg/1280px-BBC_and_Nahalat_Ganim_01.jpg" alt="Bnei Brak" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Bnei Brak · בני ברק</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>334</b> · Israel (IL) · מסעדות: <b>96</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Bnei Brak</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Bnei_Brak" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:BBC_and_Nahalat_Ganim_01.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/51/BBC_and_Nahalat_Ganim_01.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/d/db/Nahariya_-_Port.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Nahariya_-_Port.jpg" alt="Nahariya" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Nahariya · נהריה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>397</b> · Israel (IL) · מסעדות: <b>93</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Nahariya</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Nahariya" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Nahariya_-_Port.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/db/Nahariya_-_Port.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/4d/92250_tiberias_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/92250_tiberias_PikiWiki_Israel.jpg/1280px-92250_tiberias_PikiWiki_Israel.jpg" alt="Tiberias" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Tiberias · טבריה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>421</b> · Israel (IL) · מסעדות: <b>90</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Tiberias</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Tiberias" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:92250_tiberias_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/4d/92250_tiberias_PikiWiki_Israel.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/ac/Afula_IMG_0889.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Afula_IMG_0889.JPG/1280px-Afula_IMG_0889.JPG" alt="Afula" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Afula · עפולה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>430</b> · Israel (IL) · מסעדות: <b>88</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Afula</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Afula" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Afula_IMG_0889.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/ac/Afula_IMG_0889.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/5e/%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg/1280px-%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg" alt="Beit Shemesh" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Beit Shemesh · בית שמש</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>374</b> · Israel (IL) · מסעדות: <b>78</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Beit Shemesh</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Beit_Shemesh" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5e/%D7%92%D7%91%D7%A2%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%9E%D7%95%D7%A1%D7%99%D7%9D_03.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/f/ff/PikiWiki_Israel_61144_kfar_saba_at_night.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/PikiWiki_Israel_61144_kfar_saba_at_night.jpg/1280px-PikiWiki_Israel_61144_kfar_saba_at_night.jpg" alt="Kfar Saba" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kfar Saba · כפר סבא</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>298</b> · Israel (IL) · מסעדות: <b>69</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kfar Saba</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kfar_Saba" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_61144_kfar_saba_at_night.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/f/ff/PikiWiki_Israel_61144_kfar_saba_at_night.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/ad/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%98%D7%A8%D7%94_%D7%A1%D7%A0%D7%98%D7%94_%D7%91%D7%9E%D7%91%D7%98_%D7%9E%D7%94%D7%9E%D7%92%D7%93%D7%9C_%D7%94%D7%9C%D7%91%D7%9F_-_%D7%9E%D7%A9%D7%9E%D7%90%D7%9C_%D7%A7%D7%A8%D7%99%D7%99%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94%2C_%D7%9E%D7%99%D7%9E%D7%99%D7%9F_%D7%94%D7%9E%D7%A1%D7%92%D7%93_%D7%94%D7%9C%D7%91%D7%9F_%D7%95%D7%91%D7%A8%D7%A7%D7%A2_%D7%94%D7%A2%D7%99%D7%A8_%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%98%D7%A8%D7%94_%D7%A1%D7%A0%D7%98%D7%94_%D7%91%D7%9E%D7%91%D7%98_%D7%9E%D7%94%D7%9E%D7%92%D7%93%D7%9C_%D7%94%D7%9C%D7%91%D7%9F_-_%D7%9E%D7%A9%D7%9E%D7%90%D7%9C_%D7%A7%D7%A8%D7%99%D7%99%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94%2C_%D7%9E%D7%99%D7%9E%D7%99%D7%9F_%D7%94%D7%9E%D7%A1%D7%92%D7%93_%D7%94%D7%9C%D7%91%D7%9F_%D7%95%D7%91%D7%A8%D7%A7%D7%A2_%D7%94%D7%A2%D7%99%D7%A8_%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F.JPG/1280px-thumbnail.jpg" alt="Ramla" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ramla · רמלה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>379</b> · Israel (IL) · מסעדות: <b>62</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ramla</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ramla" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%98%D7%A8%D7%94_%D7%A1%D7%A0%D7%98%D7%94_%D7%91%D7%9E%D7%91%D7%98_%D7%9E%D7%94%D7%9E%D7%92%D7%93%D7%9C_%D7%94%D7%9C%D7%91%D7%9F_-_%D7%9E%D7%A9%D7%9E%D7%90%D7%9C_%D7%A7%D7%A8%D7%99%D7%99%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94%2C_%D7%9E%D7%99%D7%9E%D7%99%D7%9F_%D7%94%D7%9E%D7%A1%D7%92%D7%93_%D7%94%D7%9C%D7%91%D7%9F_%D7%95%D7%91%D7%A8%D7%A7%D7%A2_%D7%94%D7%A2%D7%99%D7%A8_%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/ad/%D7%9B%D7%A0%D7%A1%D7%99%D7%99%D7%AA_%D7%98%D7%A8%D7%94_%D7%A1%D7%A0%D7%98%D7%94_%D7%91%D7%9E%D7%91%D7%98_%D7%9E%D7%94%D7%9E%D7%92%D7%93%D7%9C_%D7%94%D7%9C%D7%91%D7%9F_-_%D7%9E%D7%A9%D7%9E%D7%90%D7%9C_%D7%A7%D7%A8%D7%99%D7%99%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94%2C_%D7%9E%D7%99%D7%9E%D7%99%D7%9F_%D7%94%D7%9E%D7%A1%D7%92%D7%93_%D7%94%D7%9C%D7%91%D7%9F_%D7%95%D7%91%D7%A8%D7%A7%D7%A2_%D7%94%D7%A2%D7%99%D7%A8_%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/80/Karmiel_-_Israel_2008.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Karmiel_-_Israel_2008.jpg/1280px-Karmiel_-_Israel_2008.jpg" alt="Karmiel" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Karmiel</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>385</b> · Israel (IL) · מסעדות: <b>61</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Karmiel</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Karmiel" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Karmiel_-_Israel_2008.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/80/Karmiel_-_Israel_2008.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/1/11/PikiWiki_Israel_16194_kiryat_gat.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/PikiWiki_Israel_16194_kiryat_gat.jpg/1280px-PikiWiki_Israel_16194_kiryat_gat.jpg" alt="Kiryat Gat" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kiryat Gat · קרית גת</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>292</b> · Israel (IL) · מסעדות: <b>60</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kiryat Gat</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kiryat_Gat" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_16194_kiryat_gat.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/1/11/PikiWiki_Israel_16194_kiryat_gat.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/46/Qiryat_Shemona_2007.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Qiryat_Shemona_2007.JPG" alt="Kiryat Shmona" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kiryat Shmona · קרית שמונה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>439</b> · Israel (IL) · מסעדות: <b>60</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kiryat Shmona</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kiryat_Shmona" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Qiryat_Shemona_2007.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/46/Qiryat_Shemona_2007.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/1/15/City_Park_Bat_Yam_05.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/City_Park_Bat_Yam_05.jpg/1280px-City_Park_Bat_Yam_05.jpg" alt="Bat Yam" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Bat Yam · בת ים</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>339</b> · Israel (IL) · מסעדות: <b>58</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Bat Yam</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Bat_Yam" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:City_Park_Bat_Yam_05.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/1/15/City_Park_Bat_Yam_05.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/9/9c/IsraelOrYehuda_FromAir.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IsraelOrYehuda_FromAir.JPG/1280px-IsraelOrYehuda_FromAir.JPG" alt="Or Yehuda" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Or Yehuda · אור יהודה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>381</b> · Israel (IL) · מסעדות: <b>58</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Or Yehuda</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Or_Yehuda" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:IsraelOrYehuda_FromAir.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/9/9c/IsraelOrYehuda_FromAir.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/1/12/RoshHaAyinDec052022_08.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/RoshHaAyinDec052022_08.jpg/1280px-RoshHaAyinDec052022_08.jpg" alt="Rosh HaAyin" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Rosh HaAyin · ראש העין</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>326</b> · Israel (IL) · מסעדות: <b>56</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Rosh HaAyin</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Rosh_HaAyin" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:RoshHaAyinDec052022_08.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/1/12/RoshHaAyinDec052022_08.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/1/14/PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG/1280px-PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG" alt="Sderot" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Sderot · שדרות</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>369</b> · Israel (IL) · מסעדות: <b>49</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Sderot</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Sderot" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/1/14/PikiWiki_Israel_40924_Yanchik_Hill_near_kibbutz_Nir_Am.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/4e/Acre_-_Akko_6_-_the_fishing_port_%286658890981%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Acre_-_Akko_6_-_the_fishing_port_%286658890981%29.jpg/1280px-Acre_-_Akko_6_-_the_fishing_port_%286658890981%29.jpg" alt="Akko" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Akko · עכו</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>454</b> · Israel (IL) · מסעדות: <b>46</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Acre, Israel</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Acre,_Israel" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Acre_-_Akko_6_-_the_fishing_port_(6658890981).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/4e/Acre_-_Akko_6_-_the_fishing_port_%286658890981%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/a3/Dimona_Aerial_View.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Dimona_Aerial_View.jpg/1280px-Dimona_Aerial_View.jpg" alt="Dimona" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Dimona · דימונה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>413</b> · Israel (IL) · מסעדות: <b>45</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Dimona</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Dimona" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Dimona_Aerial_View.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/a3/Dimona_Aerial_View.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/c/c4/WikiAir_Flight_IL-13-09_070.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/WikiAir_Flight_IL-13-09_070.jpg/1280px-WikiAir_Flight_IL-13-09_070.jpg" alt="Pardes Hanna" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Pardes Hanna · פרדס חנה כרכור</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>451</b> · Israel (IL) · מסעדות: <b>43</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Pardes Hanna-Karkur</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Pardes_Hanna-Karkur" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:WikiAir_Flight_IL-13-09_070.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/c/c4/WikiAir_Flight_IL-13-09_070.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/35/PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg/1280px-PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg" alt="Netivot" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Netivot · נתיבות</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>354</b> · Israel (IL) · מסעדות: <b>42</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Netivot</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Netivot" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/35/PikiWiki_Israel_44401_Aerial_photo_of_Netivot.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/33/Beit_shean.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Beit_shean.jpg/1280px-Beit_shean.jpg" alt="Beit She'an" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Beit She'an</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>382</b> · Israel (IL) · מסעדות: <b>41</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Beit She'an</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Beit_She%27an" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Beit_shean.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/33/Beit_shean.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/30/LodJune132022_01.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/LodJune132022_01.jpg/1280px-LodJune132022_01.jpg" alt="Lod" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Lod · לוד</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>289</b> · Israel (IL) · מסעדות: <b>41</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Lod</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Lod" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:LodJune132022_01.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/30/LodJune132022_01.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/e/e6/Entrance_sign_to_Yehud%2C_January_2024_03.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Entrance_sign_to_Yehud%2C_January_2024_03.jpg/1280px-Entrance_sign_to_Yehud%2C_January_2024_03.jpg" alt="Yehud" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Yehud · יהוד</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>317</b> · Israel (IL) · מסעדות: <b>41</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Yehud-Monosson</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Yehud-Monosson" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Entrance_sign_to_Yehud%2C_January_2024_03.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/e/e6/Entrance_sign_to_Yehud%2C_January_2024_03.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/af/View_of_Gedera_from_Tel_Qatra.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/View_of_Gedera_from_Tel_Qatra.jpg/1280px-View_of_Gedera_from_Tel_Qatra.jpg" alt="Gedera" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Gedera · גדרה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>310</b> · Israel (IL) · מסעדות: <b>40</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Gedera</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Gedera" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:View_of_Gedera_from_Tel_Qatra.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/af/View_of_Gedera_from_Tel_Qatra.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/a4/Givatayim_City_02.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Givatayim_City_02.jpg/1280px-Givatayim_City_02.jpg" alt="Givatayim" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Givatayim · גבעתיים</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>320</b> · Israel (IL) · מסעדות: <b>39</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Givatayim</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Givatayim" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Givatayim_City_02.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/a4/Givatayim_City_02.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/9/9d/Yavne_panoramic_view2.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Yavne_panoramic_view2.JPG/1280px-Yavne_panoramic_view2.JPG" alt="Yavne" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Yavne · יבנה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>355</b> · Israel (IL) · מסעדות: <b>39</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Yavne</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Yavne" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Yavne_panoramic_view2.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/9/9d/Yavne_panoramic_view2.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/3f/PikiWiki_Israel_8994_Cities_in_Israel.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/PikiWiki_Israel_8994_Cities_in_Israel.jpg/1280px-PikiWiki_Israel_8994_Cities_in_Israel.jpg" alt="Givat Shmuel" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Givat Shmuel · גבעת שמואל</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>327</b> · Israel (IL) · מסעדות: <b>36</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Giv'at Shmuel</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Giv%27at_Shmuel" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_8994_Cities_in_Israel.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/3f/PikiWiki_Israel_8994_Cities_in_Israel.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/0/0e/Kiryat_ata.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kiryat_ata.jpg/1280px-Kiryat_ata.jpg" alt="Kiryat Ata" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kiryat Ata · קרית אתא</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>446</b> · Israel (IL) · מסעדות: <b>36</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kiryat Ata</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kiryat_Ata" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Kiryat_ata.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/0/0e/Kiryat_ata.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/b/bc/Ness_Ziona_Aerial_View.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Ness_Ziona_Aerial_View.jpg/1280px-Ness_Ziona_Aerial_View.jpg" alt="Ness Ziona" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ness Ziona</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>330</b> · Israel (IL) · מסעדות: <b>35</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ness Ziona</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ness_Ziona" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Ness_Ziona_Aerial_View.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/b/bc/Ness_Ziona_Aerial_View.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/85/4seasonspark.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/8/85/4seasonspark.JPG" alt="Hod HaSharon" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Hod HaSharon · הוד השרון</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>366</b> · Israel (IL) · מסעדות: <b>32</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: הוד השרון</div>
+        <div class="links">
+          <a href="https://he.wikipedia.org/wiki/%D7%94%D7%95%D7%93_%D7%94%D7%A9%D7%A8%D7%95%D7%9F" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:4seasonspark.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/85/4seasonspark.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card missing" data-status="missing" data-country="Israel">
+      <div class="empty">אין תמונה מוצעת — נדרשת בחירה ידנית</div>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Mevaseret Zion</h3>
+          <span class="badge missing">missing</span>
+        </div>
+        <div class="meta">id: <b>378</b> · Israel (IL) · מסעדות: <b>32</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">לא נמצאה תמונה ייעודית מתאימה בוויקיפדיה</div>
+        <div class="links">
+          
+          
+          
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/a8/Elias-Pano2.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Elias-Pano2.jpg/1280px-Elias-Pano2.jpg" alt="Yokneam" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Yokneam · יקנעם</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>409</b> · Israel (IL) · מסעדות: <b>30</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Yokneam Illit</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Yokneam_Illit" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Elias-Pano2.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/a8/Elias-Pano2.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/b/b7/PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg?utm_source=he.wikipedia.org&amp;utm_campaign=api&amp;utm_content=original" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg/1280px-PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg?utm_source=he.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" alt="Zichron Yaakov" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Zichron Yaakov · זכרון יעקב</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>406</b> · Israel (IL) · מסעדות: <b>30</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: זכרון יעקב</div>
+        <div class="links">
+          <a href="https://he.wikipedia.org/wiki/%D7%96%D7%9B%D7%A8%D7%95%D7%9F_%D7%99%D7%A2%D7%A7%D7%91" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/b/b7/PikiWiki_Israel_73640_glider_photo_of_zichron_yaacov.jpg?utm_source=he.wikipedia.org&amp;utm_campaign=api&amp;utm_content=original" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/f/fd/PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG/1280px-PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG" alt="Kiryat Ono" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kiryat Ono · קריית אונו</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>449</b> · Israel (IL) · מסעדות: <b>29</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kiryat Ono</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kiryat_Ono" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/f/fd/PikiWiki_Israel_42549_Kiryat_Ono_municipality.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/d/d0/PikiWiki_Israel_17512_Cities_in_Israel.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/PikiWiki_Israel_17512_Cities_in_Israel.JPG/1280px-PikiWiki_Israel_17512_Cities_in_Israel.JPG" alt="Rosh Pina" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Rosh Pina</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>445</b> · Israel (IL) · מסעדות: <b>29</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Rosh Pinna</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Rosh_Pinna" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_17512_Cities_in_Israel.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/d0/PikiWiki_Israel_17512_Cities_in_Israel.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/3/3a/%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg?utm_source=he.wikipedia.org&amp;utm_campaign=api&amp;utm_content=original" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg/1280px-%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg?utm_source=he.wikipedia.org&amp;utm_campaign=api&amp;utm_content=thumbnail" alt="Caesarea" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Caesarea · קיסריה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>434</b> · Israel (IL) · מסעדות: <b>25</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה עברית: קיסריה</div>
+        <div class="links">
+          <a href="https://he.wikipedia.org/wiki/%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/3a/%D7%A7%D7%99%D7%A1%D7%A8%D7%99%D7%94_%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94.jpg?utm_source=he.wikipedia.org&amp;utm_campaign=api&amp;utm_content=original" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/7/72/Canada_Stadium_Israel_2008_4.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Canada_Stadium_Israel_2008_4.jpg/1280px-Canada_Stadium_Israel_2008_4.jpg" alt="Ramat HaSharon" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ramat HaSharon · רמת השרון</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>362</b> · Israel (IL) · מסעדות: <b>24</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ramat HaSharon</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ramat_HaSharon" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Canada_Stadium_Israel_2008_4.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/7/72/Canada_Stadium_Israel_2008_4.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/0/0c/Gan-yavne_local_council_3.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Gan-yavne_local_council_3.jpg" alt="Gan Yavne" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Gan Yavne · גן יבנה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>329</b> · Israel (IL) · מסעדות: <b>23</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Gan Yavne</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Gan_Yavne" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Gan-yavne_local_council_3.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/0/0c/Gan-yavne_local_council_3.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/c/c5/IsraelShoham_FromAir.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/IsraelShoham_FromAir.JPG/1280px-IsraelShoham_FromAir.JPG" alt="Shoham" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Shoham · שוהם</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>361</b> · Israel (IL) · מסעדות: <b>23</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Shoham</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Shoham" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:IsraelShoham_FromAir.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/c/c5/IsraelShoham_FromAir.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/8f/PikiWiki_Israel_9327_square_in_beer_yaakov.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/PikiWiki_Israel_9327_square_in_beer_yaakov.jpg/1280px-PikiWiki_Israel_9327_square_in_beer_yaakov.jpg" alt="Be'er Yaakov" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Be'er Yaakov · באר יעקב</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>303</b> · Israel (IL) · מסעדות: <b>16</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Be'er Ya'akov</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Be%27er_Ya%27akov" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_9327_square_in_beer_yaakov.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/8f/PikiWiki_Israel_9327_square_in_beer_yaakov.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/64/PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg/1280px-PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg" alt="Kiryat Motzkin" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kiryat Motzkin · קריית מוצקין</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>427</b> · Israel (IL) · מסעדות: <b>15</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kiryat Motzkin</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kiryat_Motzkin" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/64/PikiWiki_Israel_13473_Mozart_Junction_in_Kiryat_Motzkin.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/55/Israel_Railway_Benyamina_23-06-2017b.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Israel_Railway_Benyamina_23-06-2017b.jpg/1280px-Israel_Railway_Benyamina_23-06-2017b.jpg" alt="Binyamina" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Binyamina</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>390</b> · Israel (IL) · מסעדות: <b>14</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Binyamina-Giv'at Ada</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Binyamina-Giv%27at_Ada" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Israel_Railway_Benyamina_23-06-2017b.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/55/Israel_Railway_Benyamina_23-06-2017b.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/62/PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG/1280px-PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG" alt="Migdal HaEmek" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Migdal HaEmek</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>416</b> · Israel (IL) · מסעדות: <b>14</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Migdal HaEmek</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Migdal_HaEmek" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/62/PikiWiki_Israel_35108_Entrance_circle_to_Migdal_Haemek.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/f/f4/PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg/1280px-PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg" alt="Kiryat Bialik" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Kiryat Bialik · קרית ביאליק</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>444</b> · Israel (IL) · מסעדות: <b>13</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Kiryat Bialik</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Kiryat_Bialik" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/f/f4/PikiWiki_Israel_13470_Dutch_Jewry_Savers_Square_Kiryat_Bialik.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/2/20/Tel_Mond_enterance.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Tel_Mond_enterance.jpg/1280px-Tel_Mond_enterance.jpg" alt="Tel Mond" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Tel Mond · תל מונד</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>536</b> · Israel (IL) · מסעדות: <b>13</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Tel Mond</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Tel_Mond" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Tel_Mond_enterance.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/2/20/Tel_Mond_enterance.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/57/%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg/1280px-%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg" alt="Mazkeret Batya" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Mazkeret Batya · מזכרת בתיה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>290</b> · Israel (IL) · מסעדות: <b>10</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Mazkeret Batya</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Mazkeret_Batya" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/57/%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A7_%D7%94%D7%91%D7%A8%D7%95%D7%9F_%D7%9E%D7%96%D7%9B%D7%A8%D7%AA_%D7%91%D7%AA%D7%99%D7%94.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/c/c4/Maaleadumim_009.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Maaleadumim_009.jpg/1280px-Maaleadumim_009.jpg" alt="Ma'ale Adumim" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ma'ale Adumim · מעלה אדומים</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>343</b> · Israel (IL) · מסעדות: <b>6</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ma'ale Adumim</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ma%27ale_Adumim" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Maaleadumim_009.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/c/c4/Maaleadumim_009.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/ac/Safed1.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Safed1.jpg/1280px-Safed1.jpg" alt="Tzfat" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Tzfat</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>529</b> · Israel (IL) · מסעדות: <b>6</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Safed</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Safed" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Safed1.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/ac/Safed1.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/b/b7/Entrance_to_Savyon.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Entrance_to_Savyon.JPG/1280px-Entrance_to_Savyon.JPG" alt="Savion" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Savion</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>322</b> · Israel (IL) · מסעדות: <b>5</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Savyon</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Savyon" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Entrance_to_Savyon.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/b/b7/Entrance_to_Savyon.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/ad/Ariel085.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Ariel085.jpg/1280px-Ariel085.jpg" alt="Ariel" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ariel · אריאל</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>357</b> · Israel (IL) · מסעדות: <b>3</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ariel (Israeli settlement)</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ariel_(Israeli_settlement)" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Ariel085.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/ad/Ariel085.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/69/Ofaqim_4.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Ofaqim_4.jpg/1280px-Ofaqim_4.jpg" alt="Ofakim" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ofakim · אופקים</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>494</b> · Israel (IL) · מסעדות: <b>3</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ofakim</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ofakim" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Ofaqim_4.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/69/Ofaqim_4.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/63/Katzrinlibrary.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Katzrinlibrary.jpg/1280px-Katzrinlibrary.jpg" alt="Katzrin" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Katzrin · קצרין</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>533</b> · Israel (IL) · מסעדות: <b>2</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Katzrin</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Katzrin" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Katzrinlibrary.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/63/Katzrinlibrary.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Israel">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/0/0a/Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG/1280px-Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG" alt="Nesher" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Nesher · נשר</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>506</b> · Israel (IL) · מסעדות: <b>2</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">תוקן ידנית (הערך &quot;נשר&quot; בעברית הוא הציפור): Nesher</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Nesher" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/0/0a/Nesher%2C_Givat_Nesher%2C_Tel_Hanan_009.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Thailand">
+    <h2>Thailand <span class="count">(6)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Thailand">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/80/Koh_Samui_Lipa_Noi2.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Koh_Samui_Lipa_Noi2.jpg" alt="Ko Samui" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Ko Samui</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>472</b> · Thailand (TH) · מסעדות: <b>16</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ko Samui</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ko_Samui" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Koh_Samui_Lipa_Noi2.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/80/Koh_Samui_Lipa_Noi2.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Thailand">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/2/25/Phuket_City.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Phuket_City.jpg/1280px-Phuket_City.jpg" alt="Phuket" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Phuket</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>471</b> · Thailand (TH) · מסעדות: <b>8</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Phuket (city)</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Phuket_(city)" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Phuket_City.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/2/25/Phuket_City.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Thailand">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/7/7d/4Y1A1159_Bangkok_%2833536795515%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/4Y1A1159_Bangkok_%2833536795515%29.jpg/1280px-4Y1A1159_Bangkok_%2833536795515%29.jpg" alt="Bangkok" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Bangkok · בנגקוק</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>470</b> · Thailand (TH) · מסעדות: <b>6</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Bangkok</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Bangkok" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:4Y1A1159_Bangkok_(33536795515).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/7/7d/4Y1A1159_Bangkok_%2833536795515%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Thailand">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/8/85/0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg/1280px-0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg" alt="Chiang Mai" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Chiang Mai</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>473</b> · Thailand (TH) · מסעדות: <b>2</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Chiang Mai</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Chiang_Mai" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/8/85/0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Thailand">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/4f/View_of_Pai_3.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/View_of_Pai_3.jpg/1280px-View_of_Pai_3.jpg" alt="Pai" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Pai</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>477</b> · Thailand (TH) · מסעדות: <b>2</b></div>
+        <div class="meta cur fallback">היום באפליקציה: fallback כללי (picsum/מדינה)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Pai, Thailand</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Pai,_Thailand" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:View_of_Pai_3.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/4f/View_of_Pai_3.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Thailand">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/f/fd/Koh_Phangan01.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Koh_Phangan01.jpg" alt="Koh Phangan" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Koh Phangan</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>476</b> · Thailand (TH) · מסעדות: <b>0</b></div>
+        <div class="meta cur fallback">היום באפליקציה: fallback כללי (picsum/מדינה)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Ko Pha-ngan</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Ko_Pha-ngan" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Koh_Phangan01.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/f/fd/Koh_Phangan01.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="United States">
+    <h2>United States <span class="count">(6)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="United States">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg/1280px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg" alt="New York" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>New York · ניו יורק</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>463</b> · United States (US) · מסעדות: <b>331</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: New York City</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/New_York_City" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_(cropped).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="United States">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/1280px-Hollywood_Sign_%28Zuschnitt%29.jpg" alt="Los Angeles" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Los Angeles · לוס אנג׳לס</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>465</b> · United States (US) · מסעדות: <b>112</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Los Angeles</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Los_Angeles" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Hollywood_Sign_(Zuschnitt).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="United States">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/2/25/Villa_Vizcaya_20110228.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Villa_Vizcaya_20110228.jpg/1280px-Villa_Vizcaya_20110228.jpg" alt="Miami" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Miami · מיאמי</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>464</b> · United States (US) · מסעדות: <b>110</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Miami</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Miami" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Villa_Vizcaya_20110228.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/2/25/Villa_Vizcaya_20110228.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="United States">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Chicago_River_ferry_b.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1280px-Chicago_River_ferry_b.jpg" alt="Chicago" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Chicago · שיקגו</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>466</b> · United States (US) · מסעדות: <b>38</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Chicago</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Chicago" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Chicago_River_ferry_b.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Chicago_River_ferry_b.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="United States">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/d/da/Las_Vegas_from_above_%2840064746644%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Las_Vegas_from_above_%2840064746644%29.jpg/1280px-Las_Vegas_from_above_%2840064746644%29.jpg" alt="Las Vegas" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Las Vegas</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>468</b> · United States (US) · מסעדות: <b>16</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Las Vegas</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Las_Vegas" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Las_Vegas_from_above_(40064746644).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/da/Las_Vegas_from_above_%2840064746644%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="United States">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/0/03/View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg/1280px-View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg" alt="Dallas" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Dallas</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>467</b> · United States (US) · מסעדות: <b>10</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Dallas</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Dallas" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/0/03/View_of_Dallas_from_Reunion_Tower_August_2015_05.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Cyprus">
+    <h2>Cyprus <span class="count">(3)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Cyprus">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/1/1e/Paphos_Marine%2C_Cyprus_-_panoramio.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Paphos_Marine%2C_Cyprus_-_panoramio.jpg/1280px-Paphos_Marine%2C_Cyprus_-_panoramio.jpg" alt="Paphos" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Paphos · פאפוס</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>316</b> · Cyprus (CY) · מסעדות: <b>11</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Paphos</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Paphos" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Paphos_Marine%2C_Cyprus_-_panoramio.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/1/1e/Paphos_Marine%2C_Cyprus_-_panoramio.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Cyprus">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/9/97/Larnaca_01-2017_img27_Finikoudes.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Larnaca_01-2017_img27_Finikoudes.jpg/1280px-Larnaca_01-2017_img27_Finikoudes.jpg" alt="Larnaca" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Larnaca · לרנקה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>363</b> · Cyprus (CY) · מסעדות: <b>9</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Larnaca</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Larnaca" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Larnaca_01-2017_img27_Finikoudes.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/9/97/Larnaca_01-2017_img27_Finikoudes.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="Cyprus">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/c/cc/Skyscrapers_in_Limassol.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Skyscrapers_in_Limassol.jpg/1280px-Skyscrapers_in_Limassol.jpg" alt="Limassol" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Limassol · לימסול</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>315</b> · Cyprus (CY) · מסעדות: <b>6</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Limassol</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Limassol" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Skyscrapers_in_Limassol.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/c/cc/Skyscrapers_in_Limassol.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="France">
+    <h2>France <span class="count">(3)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="France">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/1280px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg" alt="Paris" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Paris · פריז</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>294</b> · France (FR) · מסעדות: <b>127</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Paris</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Paris" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_(2).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="France">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cannes_from_Suquet_Tower_03.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Cannes_from_Suquet_Tower_03.jpg/1280px-Cannes_from_Suquet_Tower_03.jpg" alt="Cannes" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Cannes</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>325</b> · France (FR) · מסעדות: <b>23</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Cannes</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Cannes" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Cannes_from_Suquet_Tower_03.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cannes_from_Suquet_Tower_03.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card good" data-status="good" data-country="France">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/b/ba/Promenade_des_Anglais_Nice_IMG_1255.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Promenade_des_Anglais_Nice_IMG_1255.jpg/1280px-Promenade_des_Anglais_Nice_IMG_1255.jpg" alt="Nice" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Nice</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>353</b> · France (FR) · מסעדות: <b>15</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Nice</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Nice" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Promenade_des_Anglais_Nice_IMG_1255.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/b/ba/Promenade_des_Anglais_Nice_IMG_1255.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Argentina">
+    <h2>Argentina <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Argentina">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/e/ea/Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg/1280px-Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg" alt="Buenos Aires" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Buenos Aires · בואנוס איירס</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>478</b> · Argentina (AR) · מסעדות: <b>28</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Buenos Aires</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Buenos_Aires" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Avenida_9_de_Julio%2C_Buenos_Aires_(40089810910).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/e/ea/Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Austria">
+    <h2>Austria <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Austria">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/5b/Schoenbrunn_philharmoniker_2012.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Schoenbrunn_philharmoniker_2012.jpg/1280px-Schoenbrunn_philharmoniker_2012.jpg" alt="Vienna" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Vienna · וינה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>484</b> · Austria (AT) · מסעדות: <b>39</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Vienna</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Vienna" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Schoenbrunn_philharmoniker_2012.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/5b/Schoenbrunn_philharmoniker_2012.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Canada">
+    <h2>Canada <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Canada">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/9/9f/Montreal%2C_Quebec_skyline.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Montreal%2C_Quebec_skyline.jpg/1280px-Montreal%2C_Quebec_skyline.jpg" alt="Montreal" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Montreal · מונטריאול</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>479</b> · Canada (CA) · מסעדות: <b>62</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Montreal</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Montreal" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Montreal%2C_Quebec_skyline.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/9/9f/Montreal%2C_Quebec_skyline.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Czech Republic">
+    <h2>Czech Republic <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Czech Republic">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/a7/Prague_%286365119737%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Prague_%286365119737%29.jpg/1280px-Prague_%286365119737%29.jpg" alt="Prague" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Prague · פראג</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>323</b> · Czech Republic (CZ) · מסעדות: <b>16</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Prague</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Prague" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Prague_(6365119737).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/a7/Prague_%286365119737%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Germany">
+    <h2>Germany <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Germany">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/f/f7/Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg/1280px-Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg" alt="Berlin" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Berlin · ברלין</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>483</b> · Germany (DE) · מסעדות: <b>7</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Berlin</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Berlin" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Museumsinsel_Berlin_Juli_2021_1_(cropped)_b.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/f/f7/Museumsinsel_Berlin_Juli_2021_1_%28cropped%29_b.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Hungary">
+    <h2>Hungary <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Hungary">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg/1280px-View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg" alt="Budapest" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Budapest · בודפשט</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>481</b> · Hungary (HU) · מסעדות: <b>31</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Budapest</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Budapest" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_(28493220635).jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/53/View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Ireland">
+    <h2>Ireland <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Ireland">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/9/92/Dublin_-_aerial_-_2025-07-07_01.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Dublin_-_aerial_-_2025-07-07_01.jpg/1280px-Dublin_-_aerial_-_2025-07-07_01.jpg" alt="Dublin" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Dublin</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>307</b> · Ireland (IE) · מסעדות: <b>5</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Dublin</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Dublin" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Dublin_-_aerial_-_2025-07-07_01.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/9/92/Dublin_-_aerial_-_2025-07-07_01.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Italy">
+    <h2>Italy <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Italy">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg/1280px-Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg" alt="Rome" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Rome · רומא</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>373</b> · Italy (IT) · מסעדות: <b>30</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Rome</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Rome" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Morocco">
+    <h2>Morocco <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Morocco">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/9/9c/Pavillon_Menarag%C3%A4rten.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Pavillon_Menarag%C3%A4rten.jpg" alt="Marrakech" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Marrakech</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>375</b> · Morocco (MA) · מסעדות: <b>12</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Marrakesh</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Marrakesh" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Pavillon_Menarag%C3%A4rten.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/9/9c/Pavillon_Menarag%C3%A4rten.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Netherlands">
+    <h2>Netherlands <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Netherlands">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png/1280px-Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png" alt="Amsterdam" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Amsterdam · אמסטרדם</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>482</b> · Netherlands (NL) · מסעדות: <b>20</b></div>
+        <div class="meta cur country">היום באפליקציה: תמונת המדינה (הבעיה שמתקנים)</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Amsterdam</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Amsterdam" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Portugal">
+    <h2>Portugal <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Portugal">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/e/e5/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG/1280px-Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG" alt="Porto" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Porto</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>297</b> · Portugal (PT) · מסעדות: <b>5</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Porto</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Porto" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/e/e5/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="Spain">
+    <h2>Spain <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="Spain">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/a/a6/Evening_light_over_Barcelona.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Evening_light_over_Barcelona.jpg/1280px-Evening_light_over_Barcelona.jpg" alt="Barcelona" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Barcelona · ברצלונה</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>356</b> · Spain (ES) · מסעדות: <b>9</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Barcelona</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Barcelona" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Evening_light_over_Barcelona.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/a/a6/Evening_light_over_Barcelona.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="UAE">
+    <h2>UAE <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="UAE">
+      <a href="https://upload.wikimedia.org/wikipedia/en/c/c7/Burj_Khalifa_2021.jpg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Burj_Khalifa_2021.jpg/1280px-Burj_Khalifa_2021.jpg" alt="Dubai" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>Dubai · דובאי</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>340</b> · UAE (AE) · מסעדות: <b>21</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: Dubai</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/Dubai" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:Burj_Khalifa_2021.jpg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/en/c/c7/Burj_Khalifa_2021.jpg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="country" data-country="United Kingdom">
+    <h2>United Kingdom <span class="count">(1)</span></h2>
+    <div class="grid">
+    <article class="card good" data-status="good" data-country="United Kingdom">
+      <a href="https://upload.wikimedia.org/wikipedia/commons/6/67/London_Skyline_%28125508655%29.jpeg" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1280px-London_Skyline_%28125508655%29.jpeg" alt="London" loading="lazy" /></a>
+      <div class="body">
+        <div class="titlerow">
+          <h3>London · לונדון</h3>
+          <span class="badge good">good</span>
+        </div>
+        <div class="meta">id: <b>333</b> · United Kingdom (GB) · מסעדות: <b>102</b></div>
+        <div class="meta cur city">היום באפליקציה: כבר יש תמונה עירונית באפליקציה</div>
+        <div class="meta">ערך ויקיפדיה ישיר: London</div>
+        <div class="links">
+          <a href="https://en.wikipedia.org/wiki/London" target="_blank" rel="noreferrer">ערך ויקיפדיה</a>
+          <a href="https://commons.wikimedia.org/wiki/File:London_Skyline_(125508655).jpeg" target="_blank" rel="noreferrer">מקור התמונה (Commons)</a>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/6/67/London_Skyline_%28125508655%29.jpeg" target="_blank" rel="noreferrer">תמונה בגודל מלא</a>
+        </div>
+      </div>
+    </article></div>
+  </section>
+</main>
+<script>
+  const pills = document.querySelectorAll('#filters .pill');
+  pills.forEach(p => p.addEventListener('click', () => {
+    pills.forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    const f = p.dataset.filter;
+    document.querySelectorAll('.card').forEach(c => {
+      c.classList.toggle('hidden', f !== 'all' && c.dataset.status !== f);
+    });
+    document.querySelectorAll('.country').forEach(s => {
+      const any = s.querySelectorAll('.card:not(.hidden)').length > 0;
+      s.classList.toggle('hidden', !any);
+    });
+  }));
+</script>
+</body>
+</html>

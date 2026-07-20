@@ -11,6 +11,7 @@ import { AdminService } from './admin.service';
 import { AdminGuard } from './admin.guard';
 import { PlacesModule } from '../places/places.module';
 import { ManualSynagogueImportService } from './manual-synagogue-import.service';
+import { ReportsModule } from '../reports/reports.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ManualSynagogueImportService } from './manual-synagogue-import.service'
       ChatMessage,
     ]),
     PlacesModule,
+    ReportsModule,
   ],
   controllers: [AdminController],
   providers: [AdminService, AdminGuard, ManualSynagogueImportService],

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מוקאפ כרטיסי מסעדות דחוסים</title>
+<style>
+:root{
+  --cream:#f7f3ea;
+  --card:#fff;
+  --navy:#0b1736;
+  --gold:#c9a84c;
+  --muted:#8a94a6;
+  --line:#f0eadf;
+  --shadow:rgba(9,22,52,.08);
+  --meat:#c2410c;
+  --meatBg:#fff1e8;
+  --badge:#f3f4f6;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#efeae0;
+  font-family:Rubik,Inter,Arial,sans-serif;
+  color:var(--navy);
+}
+.page{max-width:1120px;margin:0 auto;padding:24px}
+h1{font-size:22px;margin:0 0 6px;font-weight:900}
+.lead{margin:0 0 20px;color:#5d6677;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(260px,1fr));gap:18px;align-items:start}
+.phone{
+  width:300px;
+  min-height:640px;
+  background:var(--cream);
+  border:1px solid #e3dccd;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.14);
+}
+.bar{height:26px;background:#fbf8f0;color:#e8e0cf;text-align:center;font-size:12px;padding-top:5px}
+.head{padding:12px 16px 14px;border-bottom:1px solid #eee6d8}
+.top{display:flex;align-items:center;gap:10px}
+.back,.home{width:32px;height:32px;border-radius:16px;background:#fff;display:grid;place-items:center;color:var(--navy);box-shadow:0 3px 10px var(--shadow)}
+.home{margin-inline-start:auto;background:#d8c784;color:#fff}
+.eyebrow{font-size:9px;letter-spacing:2px;color:var(--gold);font-weight:800}
+.title{font-size:22px;font-weight:900;line-height:1}
+.sub{font-size:11px;color:var(--muted);margin-top:4px}
+.search{height:34px;margin-top:14px;border-radius:11px;background:#fff;border:1px solid #eee7dc;display:flex;align-items:center;padding:0 10px;color:#7c8494;font-size:11px}
+.ai{margin-inline-start:auto;border-right:1px solid #eee7dc;padding-right:10px;background:#d4af37;color:#07152d;border-radius:8px;padding:4px 8px;font-weight:900;font-size:10px}
+.filters{background:#fff;border-bottom:1px solid #eee7dc;padding:9px 10px;display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid #e8e0d2;border-radius:14px;padding:5px 10px;font-size:10.5px;color:#5d6677;background:#fff;font-weight:700}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.list{padding:12px;display:flex;flex-direction:column;gap:8px}
+.label{font-size:12px;color:#6d7586;font-weight:800;margin:0 0 8px}
+.card{
+  background:#fff;
+  border:1px solid #f2eadf;
+  border-radius:16px;
+  box-shadow:0 5px 14px var(--shadow);
+}
+.body{padding:11px}
+.row{display:flex;align-items:center;gap:10px}
+.thumb{
+  width:52px;height:52px;border-radius:12px;flex:0 0 auto;overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(11,23,54,.20),rgba(201,168,76,.18)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Crect width='90' height='90' fill='%23d8e2e7'/%3E%3Cpath d='M0 61 C20 46 32 48 48 35 C64 22 77 29 90 18 L90 90 L0 90 Z' fill='%238ea4ad'/%3E%3Ccircle cx='66' cy='25' r='10' fill='%23f4d36a'/%3E%3Crect x='12' y='45' width='36' height='24' rx='4' fill='%230b1736' opacity='.75'/%3E%3C/svg%3E");
+  background-size:cover;
+}
+.main{min-width:0;flex:1}
+.name{font-size:13.5px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{font-size:9.5px;border-radius:7px;background:var(--badge);color:#6b7280;padding:3px 7px;font-weight:800;flex:0 0 auto}
+.type{display:flex;align-items:center;gap:4px;color:var(--meat);font-size:10.5px;font-weight:800;margin-top:3px}
+.dot{width:6px;height:6px;border-radius:99px;background:var(--meat)}
+.rating{display:flex;align-items:center;gap:3px;font-size:10.8px;margin-top:4px}
+.star{color:var(--gold);font-weight:900}
+.score{font-weight:900;color:var(--navy)}
+.count{color:var(--muted)}
+.address,.metaLine{display:flex;align-items:center;gap:5px;color:#9aa3b1;font-size:10.2px;min-width:0}
+.address{margin-top:8px}
+.address span,.metaLine span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.dist{display:inline-flex;align-items:center;gap:3px;background:rgba(201,168,76,.10);border-radius:9px;color:var(--gold);font-size:10px;font-weight:900;padding:4px 7px}
+.bottom{display:flex;align-items:center;margin-top:8px}
+.chev{margin-inline-start:auto;color:#d9dee7;font-size:17px}
+
+.current .body{padding:14px}
+.current .address{margin-top:10px}
+.current .bottom{margin-top:9px}
+.current .card{border-radius:18px}
+
+.compact .body{padding:9px 10px}
+.compact .thumb{width:46px;height:46px;border-radius:11px}
+.compact .name{font-size:13px}
+.compact .metaLine{margin-top:6px}
+.compact .topMeta{display:flex;align-items:center;gap:6px;margin-top:4px;min-width:0;flex-wrap:wrap}
+.compact .topMeta .type{margin-top:0}
+.compact .topMeta .rating{margin-top:0}
+.compact .dist{background:transparent;padding:0;color:var(--gold)}
+.compact .chev{font-size:15px}
+
+.tight .body{padding:8px 10px}
+.tight .thumb{width:42px;height:42px;border-radius:10px}
+.tight .name{font-size:12.8px}
+.tight .rating{margin-top:3px}
+.tight .oneLine{margin-top:6px;display:flex;align-items:center;gap:6px;min-width:0}
+.tight .address{margin-top:0;flex:1}
+.tight .dist{flex:0 0 auto;background:transparent;padding:0}
+.tight .type{display:none}
+.note{
+  margin-top:16px;background:#fff;border:1px solid #eee6d8;border-radius:16px;padding:14px 16px;
+  font-size:13px;color:#4f596b;line-height:1.55;
+}
+.note b{color:var(--navy)}
+@media (max-width:980px){.grid{grid-template-columns:1fr}.phone{width:min(100%,390px);margin:auto}.page{padding:16px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <h1>מוקאפ דחיסת כרטיסי מסעדות ברשימה</h1>
+  <p class="lead">המטרה: להראות יותר מסעדות במסך בלי לוותר על תמונה, שם, סוג, דירוג Google, כתובת ומרחק.</p>
+
+  <section class="grid">
+    <div>
+      <p class="label">A. בערך כמו היום</p>
+      <div class="phone current">
+        <div class="bar">19:26</div>
+        <div class="js-header"></div>
+        <div class="js-filters"></div>
+        <div class="list" data-variant="current"></div>
+      </div>
+    </div>
+
+    <div>
+      <p class="label">B. קומפקט מומלץ - כתובת מקבלת שורה מלאה</p>
+      <div class="phone compact">
+        <div class="bar">19:26</div>
+        <div class="js-header"></div>
+        <div class="js-filters"></div>
+        <div class="list" data-variant="compact"></div>
+      </div>
+    </div>
+
+    <div>
+      <p class="label">C. סופר קומפקט</p>
+      <div class="phone tight">
+        <div class="bar">19:26</div>
+        <div class="js-header"></div>
+        <div class="js-filters"></div>
+        <div class="list" data-variant="tight"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    <b>ההמלצה שלי:</b> ללכת על B. היא חוסכת גובה כי המרחק עובר לשורת המטא העליונה יחד עם סוג/דירוג, אבל הכתובת נשארת בשורה מלאה משלה ולא נחתכת בגלל המרחק.
+    C מכניסה הכי הרבה למסך, אבל כבר מתחילה להרגיש קצת צפופה ומעלימה את סוג המסעדה כשורה עצמאית.
+  </div>
+</main>
+
+<template id="header">
+  <div class="head">
+    <div class="top">
+      <div class="back">‹</div>
+      <div>
+        <div class="eyebrow">מסעדות כשרות</div>
+        <div class="title">Limassol</div>
+        <div class="sub">4 מסעדות · ממויין לפי מרחק</div>
+      </div>
+      <div class="home">⌂</div>
+    </div>
+    <div class="search">מה תרצה לאכול? באיזו רמה? <span class="ai">AI</span></div>
+  </div>
+</template>
+<template id="filters">
+  <div class="filters">
+    <span class="chip on">כל הסוגים</span><span class="chip">בשרי</span><span class="chip">חלבי</span><span class="chip">פרווה</span>
+    <span class="chip on">כל הכשרויות</span><span class="chip">רבנות</span><span class="chip">מהדרין</span><span class="chip">בד״ץ</span>
+  </div>
+</template>
+<script>
+function Header(){return document.getElementById('header').innerHTML}
+function Filters(){return document.getElementById('filters').innerHTML}
+function Card({name,address,dist}){return `
+  <div class="card"><div class="body">
+    <div class="row">
+      <div class="thumb"></div>
+      <div class="main">
+        <div class="name">${name}</div>
+        <div class="type"><span class="dot"></span>בשרי</div>
+        <div class="rating"><span class="star">★</span><span class="score">4.8</span><span class="count">(498 · Google)</span></div>
+      </div>
+      <span class="badge">רבנות</span>
+    </div>
+    <div class="address">⌖ <span>${address}</span></div>
+    <div class="bottom"><span class="dist">⌁ ${dist}</span><span class="chev">›</span></div>
+  </div></div>`}
+function CardCompact({name,address,dist}){return `
+  <div class="card"><div class="body">
+    <div class="row">
+      <div class="thumb"></div>
+      <div class="main">
+        <div class="name">${name}</div>
+        <div class="topMeta">
+          <span class="type"><span class="dot"></span>בשרי</span>
+          <span class="rating"><span class="star">★</span><span class="score">4.8</span><span class="count">(498 · Google)</span></span>
+          <span class="dist">⌁ ${dist}</span>
+        </div>
+      </div>
+      <span class="badge">רבנות</span>
+    </div>
+    <div class="metaLine">⌖ <span>${address}</span><span class="chev">›</span></div>
+  </div></div>`}
+function CardTight({name,address,dist}){return `
+  <div class="card"><div class="body">
+    <div class="row">
+      <div class="thumb"></div>
+      <div class="main">
+        <div class="name">${name}</div>
+        <div class="rating"><span class="star">★</span><span class="score">4.8</span><span class="count">(498 · Google)</span></div>
+      </div>
+      <span class="badge">רבנות</span>
+    </div>
+    <div class="oneLine"><div class="address">⌖ <span>${address}</span></div><span class="dist">⌁ ${dist}</span><span class="chev">›</span></div>
+  </div></div>`}
+const restaurants = [
+  { name: 'Delicatese', address: 'Georgiou Griva Digeni 5, Lemesos 3106, Cyprus', dist: '360.9 km' },
+  { name: 'Moses Kosher Cafe', address: 'Theklas Lyssioti 23, Zip 3030, Limassol 3030, Cyprus', dist: '361.7 km' },
+  { name: 'חב״ד לימסול', address: 'Porfyriou Dikaiou 5, Limassol 3095, Cyprus', dist: '361.9 km' },
+  { name: 'ASADO Nice To Meat', address: 'Dimitri Mitropoulou 10, Lemesos 3036, Cyprus', dist: '362.3 km' },
+  { name: 'Kosher Eatery', address: 'Departures Hall, Larnaka International Airport, Cyprus', dist: '418.4 km' },
+  { name: 'Sababa Kosher', address: 'City center, Limassol, Cyprus', dist: '419.1 km' },
+]
+document.querySelectorAll('.js-header').forEach(el=>{ el.innerHTML=Header() })
+document.querySelectorAll('.js-filters').forEach(el=>{ el.innerHTML=Filters() })
+document.querySelectorAll('[data-variant]').forEach(el=>{
+  const variant = el.getAttribute('data-variant')
+  const count = variant === 'current' ? 4 : variant === 'compact' ? 5 : 6
+  const render = variant === 'current' ? Card : variant === 'compact' ? CardCompact : CardTight
+  el.innerHTML = restaurants.slice(0, count).map(render).join('')
+})
+</script>
+</body>
+</html>

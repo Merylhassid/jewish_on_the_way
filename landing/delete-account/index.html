@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.jewishontheway.com; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'self'">
+  <title>מחיקת חשבון — Jewish On The Way</title>
+  <meta name="description" content="בקשה מאובטחת למחיקת חשבון Jewish On The Way והמידע המשויך אליו.">
+  <style>
+    :root {
+      --navy: #0b1736;
+      --navy-soft: #17284e;
+      --gold: #d4af37;
+      --cream: #faf8f3;
+      --card: #fff;
+      --text: #28344a;
+      --muted: #697386;
+      --line: #e7e2d9;
+      --danger: #b42318;
+      --danger-dark: #8f1a12;
+      --danger-bg: #fff1f0;
+      --success: #137a42;
+      --success-bg: #ecfdf3;
+      --shadow: 0 22px 60px rgba(11, 23, 54, .13);
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0, rgba(212, 175, 55, .14), transparent 32%),
+        var(--cream);
+      font-family: Arial, "Noto Sans Hebrew", sans-serif;
+      line-height: 1.65;
+    }
+    button, input { font: inherit; }
+    .shell { width: min(720px, calc(100% - 28px)); margin: 0 auto; padding: 24px 0 56px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; color: var(--navy); font-weight: 800; }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      color: var(--navy);
+      background: var(--gold);
+      border-radius: 13px;
+      font-size: 20px;
+    }
+    .lang-switch { display: flex; padding: 3px; background: #ece8de; border-radius: 999px; }
+    .lang-switch button {
+      min-width: 45px;
+      padding: 6px 10px;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .lang-switch button.active { color: var(--navy); background: #fff; font-weight: 700; }
+    main {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      padding: clamp(27px, 6vw, 48px);
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), var(--navy-soft));
+    }
+    .eyebrow { margin: 0 0 8px; color: #f8da7b; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+    h1 { margin: 0; font-size: clamp(29px, 7vw, 44px); line-height: 1.15; }
+    .hero p { max-width: 570px; margin: 13px 0 0; color: #dce4f2; }
+    .content { padding: clamp(25px, 6vw, 46px); }
+    h2 { margin: 0 0 12px; color: var(--navy); font-size: 23px; }
+    p { margin: 8px 0 16px; }
+    ul { margin: 12px 0 24px; padding-inline-start: 23px; }
+    li { margin: 6px 0; }
+    label { display: block; margin-bottom: 8px; color: var(--navy); font-weight: 700; }
+    input[type="email"] {
+      width: 100%;
+      padding: 13px 14px;
+      color: var(--text);
+      background: #fff;
+      border: 1px solid #cfd5df;
+      border-radius: 11px;
+      outline: none;
+    }
+    input[type="email"]:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(11, 23, 54, .10); }
+    .button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 13px 18px;
+      color: #fff;
+      background: var(--navy);
+      border: 0;
+      border-radius: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .button:hover { background: var(--navy-soft); }
+    .button.danger { background: var(--danger); }
+    .button.danger:hover { background: var(--danger-dark); }
+    .button:disabled { cursor: wait; opacity: .58; }
+    .notice {
+      margin: 18px 0;
+      padding: 15px 17px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+    .notice.danger { color: #7a271a; background: var(--danger-bg); border-color: #f3b7b2; }
+    .notice.success { color: #086136; background: var(--success-bg); border-color: #a6e5c2; }
+    .confirm-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 20px 0 4px;
+      padding: 14px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+    }
+    .confirm-check input { margin-top: 5px; }
+    .confirm-check label { margin: 0; font-weight: 600; cursor: pointer; }
+    .hidden { display: none !important; }
+    .support { margin-top: 24px; color: var(--muted); font-size: 14px; text-align: center; }
+    .support a { color: var(--navy); font-weight: 700; }
+    footer { margin-top: 22px; color: var(--muted); font-size: 13px; text-align: center; }
+    footer a { color: var(--navy); }
+    [dir="ltr"] { text-align: left; }
+    @media (max-width: 540px) {
+      header { align-items: flex-start; }
+      .brand span:last-child { max-width: 150px; line-height: 1.2; }
+      main { border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand"><span class="mark">J</span><span>Jewish On The Way</span></div>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" id="langHe" class="active">עב</button>
+        <button type="button" id="langEn">EN</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow" data-i18n="eyebrow">פרטיות ושליטה במידע</p>
+        <h1 data-i18n="title">מחיקת חשבון</h1>
+        <p data-i18n="intro">כאן ניתן לבקש מחיקה קבועה של חשבון Jewish On The Way ושל המידע המשויך אליו, גם ללא גישה לאפליקציה.</p>
+      </section>
+
+      <section class="content">
+        <div id="requestPanel">
+          <h2 data-i18n="requestTitle">בקשת קישור מאובטח</h2>
+          <p data-i18n="requestText">הזינו את האימייל של החשבון. אם קיים חשבון תישלח אליו הודעה עם קישור חד־פעמי שתקף לשעה.</p>
+          <ul>
+            <li data-i18n="requestPoint1">הזנת האימייל אינה מוחקת את החשבון.</li>
+            <li data-i18n="requestPoint2">נדרש אישור נוסף מתוך הקישור שיישלח.</li>
+            <li data-i18n="requestPoint3">אם לא ביקשתם מחיקה, אפשר להתעלם מההודעה.</li>
+          </ul>
+          <form id="requestForm">
+            <label for="email" data-i18n="emailLabel">כתובת אימייל</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="name@example.com">
+            <button class="button" id="requestButton" type="submit" data-i18n="sendButton">שלחו לי קישור לאישור</button>
+          </form>
+          <div id="requestStatus" class="notice hidden" role="status" aria-live="polite"></div>
+        </div>
+
+        <div id="confirmPanel" class="hidden">
+          <h2 data-i18n="confirmTitle">אישור סופי למחיקה</h2>
+          <div class="notice danger">
+            <strong data-i18n="warningTitle">הפעולה קבועה ואינה ניתנת לביטול.</strong>
+            <p data-i18n="warningText">החשבון, הפרופיל, המועדפים, התוכן הקהילתי, ההודעות, נתוני המניינים והאירוח והתמונות המשויכות יימחקו.</p>
+          </div>
+          <div class="confirm-check">
+            <input id="confirmCheck" type="checkbox">
+            <label for="confirmCheck" data-i18n="confirmCheck">אני מבין/ה שהחשבון והמידע המשויך אליו יימחקו לצמיתות.</label>
+          </div>
+          <button class="button danger" id="confirmButton" type="button" disabled data-i18n="deleteButton">מחקו את החשבון שלי</button>
+          <div id="confirmStatus" class="notice hidden" role="status" aria-live="polite"></div>
+        </div>
+
+        <div id="successPanel" class="hidden">
+          <div class="notice success">
+            <h2 data-i18n="successTitle">החשבון נמחק</h2>
+            <p data-i18n="successText">בקשת המחיקה הושלמה. לא ניתן עוד להתחבר לחשבון שנמחק.</p>
+          </div>
+        </div>
+
+        <p class="support"><span data-i18n="support">זקוקים לעזרה?</span> <a href="mailto:jewishontheway@gmail.com">jewishontheway@gmail.com</a></p>
+      </section>
+    </main>
+
+    <footer>Jewish On The Way · <a href="/privacy" data-i18n="privacy">מדיניות פרטיות</a></footer>
+  </div>
+
+  <script>
+    const API_BASE = 'https://api.jewishontheway.com';
+    const translations = {
+      he: {
+        eyebrow: 'פרטיות ושליטה במידע', title: 'מחיקת חשבון',
+        intro: 'כאן ניתן לבקש מחיקה קבועה של חשבון Jewish On The Way ושל המידע המשויך אליו, גם ללא גישה לאפליקציה.',
+        requestTitle: 'בקשת קישור מאובטח',
+        requestText: 'הזינו את האימייל של החשבון. אם קיים חשבון תישלח אליו הודעה עם קישור חד־פעמי שתקף לשעה.',
+        requestPoint1: 'הזנת האימייל אינה מוחקת את החשבון.',
+        requestPoint2: 'נדרש אישור נוסף מתוך הקישור שיישלח.',
+        requestPoint3: 'אם לא ביקשתם מחיקה, אפשר להתעלם מההודעה.',
+        emailLabel: 'כתובת אימייל', sendButton: 'שלחו לי קישור לאישור',
+        requestSuccess: 'אם קיים חשבון עבור כתובת זו, נשלח אליו קישור לאישור המחיקה.',
+        networkError: 'לא ניתן להתחבר כרגע. נסו שוב מאוחר יותר.',
+        confirmTitle: 'אישור סופי למחיקה', warningTitle: 'הפעולה קבועה ואינה ניתנת לביטול.',
+        warningText: 'החשבון, הפרופיל, המועדפים, התוכן הקהילתי, ההודעות, נתוני המניינים והאירוח והתמונות המשויכות יימחקו.',
+        confirmCheck: 'אני מבין/ה שהחשבון והמידע המשויך אליו יימחקו לצמיתות.',
+        deleteButton: 'מחקו את החשבון שלי', invalidLink: 'הקישור אינו תקין או שפג תוקפו. בקשו קישור חדש.',
+        successTitle: 'החשבון נמחק', successText: 'בקשת המחיקה הושלמה. לא ניתן עוד להתחבר לחשבון שנמחק.',
+        support: 'זקוקים לעזרה?', privacy: 'מדיניות פרטיות'
+      },
+      en: {
+        eyebrow: 'Privacy and data control', title: 'Delete your account',
+        intro: 'Request permanent deletion of your Jewish On The Way account and associated information, even without access to the App.',
+        requestTitle: 'Request a secure link',
+        requestText: 'Enter the account email. If an account exists, we will send a one-time confirmation link valid for one hour.',
+        requestPoint1: 'Entering an email does not delete the account.',
+        requestPoint2: 'A second confirmation is required from the emailed link.',
+        requestPoint3: 'If you did not request deletion, you can ignore the email.',
+        emailLabel: 'Email address', sendButton: 'Send confirmation link',
+        requestSuccess: 'If an account exists for this address, a deletion confirmation link has been sent.',
+        networkError: 'We cannot connect right now. Please try again later.',
+        confirmTitle: 'Final deletion confirmation', warningTitle: 'This action is permanent and cannot be undone.',
+        warningText: 'Your account, profile, favorites, community content, messages, minyan and hosting data, and associated images will be deleted.',
+        confirmCheck: 'I understand that the account and its associated information will be permanently deleted.',
+        deleteButton: 'Delete my account', invalidLink: 'This link is invalid or has expired. Please request a new link.',
+        successTitle: 'Account deleted', successText: 'The deletion request is complete. The deleted account can no longer be used to sign in.',
+        support: 'Need help?', privacy: 'Privacy Policy'
+      }
+    };
+
+    let language = 'he';
+    const params = new URLSearchParams(location.search);
+    const token = params.get('token') || '';
+    const hasValidTokenShape = /^[a-f0-9]{64}$/i.test(token);
+
+    const requestPanel = document.getElementById('requestPanel');
+    const confirmPanel = document.getElementById('confirmPanel');
+    const successPanel = document.getElementById('successPanel');
+    const requestStatus = document.getElementById('requestStatus');
+    const confirmStatus = document.getElementById('confirmStatus');
+    const requestButton = document.getElementById('requestButton');
+    const confirmButton = document.getElementById('confirmButton');
+    const confirmCheck = document.getElementById('confirmCheck');
+
+    function setLanguage(next) {
+      language = next;
+      document.documentElement.lang = next;
+      document.documentElement.dir = next === 'he' ? 'rtl' : 'ltr';
+      document.getElementById('langHe').classList.toggle('active', next === 'he');
+      document.getElementById('langEn').classList.toggle('active', next === 'en');
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.dataset.i18n;
+        if (translations[next][key]) element.textContent = translations[next][key];
+      });
+    }
+
+    function showStatus(element, message, type) {
+      element.textContent = message;
+      element.className = `notice ${type || ''}`.trim();
+    }
+
+    document.getElementById('langHe').addEventListener('click', () => setLanguage('he'));
+    document.getElementById('langEn').addEventListener('click', () => setLanguage('en'));
+
+    if (token) {
+      requestPanel.classList.add('hidden');
+      confirmPanel.classList.remove('hidden');
+      if (!hasValidTokenShape) {
+        confirmCheck.disabled = true;
+        showStatus(confirmStatus, translations[language].invalidLink, 'danger');
+      }
+    }
+
+    confirmCheck.addEventListener('change', () => {
+      confirmButton.disabled = !confirmCheck.checked || !hasValidTokenShape;
+    });
+
+    document.getElementById('requestForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      requestButton.disabled = true;
+      requestStatus.classList.add('hidden');
+      try {
+        const response = await fetch(`${API_BASE}/account-deletion/request`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: document.getElementById('email').value.trim() })
+        });
+        if (!response.ok) throw new Error('Request failed');
+        showStatus(requestStatus, translations[language].requestSuccess, 'success');
+        document.getElementById('requestForm').reset();
+      } catch {
+        showStatus(requestStatus, translations[language].networkError, 'danger');
+      } finally {
+        requestButton.disabled = false;
+      }
+    });
+
+    confirmButton.addEventListener('click', async () => {
+      if (!confirmCheck.checked || !hasValidTokenShape) return;
+      confirmButton.disabled = true;
+      confirmStatus.classList.add('hidden');
+      try {
+        const response = await fetch(`${API_BASE}/account-deletion/confirm`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+        if (!response.ok) {
+          showStatus(confirmStatus, translations[language].invalidLink, 'danger');
+          history.replaceState({}, '', location.pathname);
+          return;
+        }
+        history.replaceState({}, '', location.pathname);
+        confirmPanel.classList.add('hidden');
+        successPanel.classList.remove('hidden');
+      } catch {
+        showStatus(confirmStatus, translations[language].networkError, 'danger');
+        confirmButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

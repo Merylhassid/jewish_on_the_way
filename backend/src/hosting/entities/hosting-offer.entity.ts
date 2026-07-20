@@ -40,11 +40,15 @@ export class HostingOffer {
   @Column({ default: false })
   allows_shabbat: boolean;
 
-  @Column({ nullable: true })
-  kashrut_level: string;
+  // stay|meals|both — offer "contains" a request when its type matches or is 'both'
+  @Column({ type: 'varchar', length: 10, default: 'both' })
+  hosting_type: 'stay' | 'meals' | 'both';
+
+  @Column({ type: 'varchar', nullable: true })
+  kashrut_level: string | null;
 
   @Column({ type: 'text', nullable: true })
-  notes: string;
+  notes: string | null;
 
   @Column({ default: true })
   is_active: boolean;

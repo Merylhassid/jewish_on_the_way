@@ -1,0 +1,101 @@
+﻿id,name,name_he,city,country,country_code,parent_id,parent_name,restaurants,has_local_country_image,has_city_landmark_in_code,current_source,recommended_action
+478,Buenos Aires,בואנוס איירס,Buenos Aires,Argentina,AR,551,Argentina,28,yes,yes,country-local-image,change-priority-to-city-first
+484,Vienna,וינה,Vienna,Austria,AT,548,Austria,39,yes,yes,country-local-image,change-priority-to-city-first
+479,Montreal,מונטריאול,Montreal,Canada,CA,550,Canada,62,yes,yes,country-local-image,change-priority-to-city-first
+363,Larnaca,לרנקה,Larnaca,Cyprus,CY,284,Cyprus,9,yes,yes,country-local-image,change-priority-to-city-first
+315,Limassol,לימסול,Limassol,Cyprus,CY,284,Cyprus,6,yes,yes,country-local-image,change-priority-to-city-first
+316,Paphos,פאפוס,Paphos,Cyprus,CY,284,Cyprus,11,yes,yes,country-local-image,change-priority-to-city-first
+323,Prague,פראג,Prague,Czech Republic,CZ,286,Czech Republic,16,no,yes,city-landmark-url,change-priority-to-city-first
+325,Cannes,,Cannes,France,FR,282,France,23,yes,yes,country-local-image,change-priority-to-city-first
+353,Nice,,Nice,France,FR,282,France,15,yes,yes,country-local-image,change-priority-to-city-first
+294,Paris,פריז,Paris,France,FR,282,France,127,yes,yes,country-local-image,change-priority-to-city-first
+483,Berlin,ברלין,Berlin,Germany,DE,547,Germany,7,yes,yes,country-local-image,change-priority-to-city-first
+481,Budapest,בודפשט,Budapest,Hungary,HU,549,Hungary,31,yes,yes,country-local-image,change-priority-to-city-first
+307,Dublin,,Dublin,Ireland,IE,288,Ireland,5,no,yes,city-landmark-url,change-priority-to-city-first
+430,Afula,עפולה,Afula,Israel,IL,545,Israel,88,yes,no,country-local-image,add-city-image
+454,Akko,עכו,Akko,Israel,IL,545,Israel,46,yes,no,country-local-image,add-city-image
+357,Ariel,אריאל,Ariel,Israel,IL,545,Israel,3,yes,no,country-local-image,add-city-image
+364,Ashdod,אשדוד,Ashdod,Israel,IL,545,Israel,190,yes,no,country-local-image,add-city-image
+293,Ashkelon,אשקלון,Ashkelon,Israel,IL,545,Israel,138,yes,no,country-local-image,add-city-image
+339,Bat Yam,בת ים,Bat Yam,Israel,IL,545,Israel,58,yes,no,country-local-image,add-city-image
+321,Be'er Sheva,באר שבע,Be'er Sheva,Israel,IL,545,Israel,223,yes,no,country-local-image,add-city-image
+303,Be'er Yaakov,באר יעקב,Be'er Yaakov,Israel,IL,545,Israel,16,yes,no,country-local-image,add-city-image
+382,Beit She'an,,Beit She'an,Israel,IL,545,Israel,41,yes,no,country-local-image,add-city-image
+374,Beit Shemesh,בית שמש,Beit Shemesh,Israel,IL,545,Israel,78,yes,no,country-local-image,add-city-image
+390,Binyamina,,Binyamina,Israel,IL,545,Israel,14,yes,no,country-local-image,add-city-image
+334,Bnei Brak,בני ברק,Bnei Brak,Israel,IL,545,Israel,96,yes,no,country-local-image,add-city-image
+434,Caesarea,קיסריה,Caesarea,Israel,IL,545,Israel,25,yes,yes,country-local-image,change-priority-to-city-first
+413,Dimona,דימונה,Dimona,Israel,IL,545,Israel,45,yes,no,country-local-image,add-city-image
+399,Eilat,אילת,Eilat,Israel,IL,545,Israel,118,yes,yes,country-local-image,change-priority-to-city-first
+329,Gan Yavne,גן יבנה,Gan Yavne,Israel,IL,545,Israel,23,yes,no,country-local-image,add-city-image
+310,Gedera,גדרה,Gedera,Israel,IL,545,Israel,40,yes,no,country-local-image,add-city-image
+327,Givat Shmuel,גבעת שמואל,Givat Shmuel,Israel,IL,545,Israel,36,yes,no,country-local-image,add-city-image
+320,Givatayim,גבעתיים,Givatayim,Israel,IL,545,Israel,39,yes,no,country-local-image,add-city-image
+311,Hadera,חדרה,Hadera,Israel,IL,545,Israel,123,yes,no,country-local-image,add-city-image
+395,Haifa,חיפה,Haifa,Israel,IL,545,Israel,232,yes,yes,country-local-image,change-priority-to-city-first
+359,Herzliya,הרצליה,Herzliya,Israel,IL,545,Israel,106,yes,no,country-local-image,add-city-image
+366,Hod HaSharon,הוד השרון,Hod HaSharon,Israel,IL,545,Israel,32,yes,no,country-local-image,add-city-image
+301,Holon,הולון,Holon,Israel,IL,545,Israel,128,yes,no,country-local-image,add-city-image
+331,Jerusalem,ירושלים,Jerusalem,Israel,IL,545,Israel,714,yes,yes,country-local-image,change-priority-to-city-first
+385,Karmiel,,Karmiel,Israel,IL,545,Israel,61,yes,no,country-local-image,add-city-image
+533,Katzrin,קצרין,Katzrin,Israel,IL,545,Israel,2,yes,no,country-local-image,add-city-image
+298,Kfar Saba,כפר סבא,Kfar Saba,Israel,IL,545,Israel,69,yes,no,country-local-image,add-city-image
+446,Kiryat Ata,קרית אתא,Kiryat Ata,Israel,IL,545,Israel,36,yes,no,country-local-image,add-city-image
+444,Kiryat Bialik,קרית ביאליק,Kiryat Bialik,Israel,IL,545,Israel,13,yes,no,country-local-image,add-city-image
+292,Kiryat Gat,קרית גת,Kiryat Gat,Israel,IL,545,Israel,60,yes,no,country-local-image,add-city-image
+427,Kiryat Motzkin,קריית מוצקין,Kiryat Motzkin,Israel,IL,545,Israel,15,yes,no,country-local-image,add-city-image
+449,Kiryat Ono,קריית אונו,Kiryat Ono,Israel,IL,545,Israel,29,yes,no,country-local-image,add-city-image
+439,Kiryat Shmona,קרית שמונה,Kiryat Shmona,Israel,IL,545,Israel,60,yes,no,country-local-image,add-city-image
+289,Lod,לוד,Lod,Israel,IL,545,Israel,41,yes,no,country-local-image,add-city-image
+343,Ma'ale Adumim,מעלה אדומים,Ma'ale Adumim,Israel,IL,545,Israel,6,yes,no,country-local-image,add-city-image
+290,Mazkeret Batya,מזכרת בתיה,Mazkeret Batya,Israel,IL,545,Israel,10,yes,no,country-local-image,add-city-image
+378,Mevaseret Zion,,Mevaseret Zion,Israel,IL,545,Israel,32,yes,no,country-local-image,add-city-image
+416,Migdal HaEmek,,Migdal HaEmek,Israel,IL,545,Israel,14,yes,no,country-local-image,add-city-image
+345,Modiin,,Modiin,Israel,IL,545,Israel,99,yes,no,country-local-image,add-city-image
+397,Nahariya,נהריה,Nahariya,Israel,IL,545,Israel,93,yes,no,country-local-image,add-city-image
+506,Nesher,נשר,Nesher,Israel,IL,545,Israel,2,yes,no,country-local-image,add-city-image
+330,Ness Ziona,,Ness Ziona,Israel,IL,545,Israel,35,yes,no,country-local-image,add-city-image
+358,Netanya,נתניה,Netanya,Israel,IL,545,Israel,240,yes,yes,country-local-image,change-priority-to-city-first
+354,Netivot,נתיבות,Netivot,Israel,IL,545,Israel,42,yes,no,country-local-image,add-city-image
+494,Ofakim,אופקים,Ofakim,Israel,IL,545,Israel,3,yes,no,country-local-image,add-city-image
+381,Or Yehuda,אור יהודה,Or Yehuda,Israel,IL,545,Israel,58,yes,no,country-local-image,add-city-image
+451,Pardes Hanna,פרדס חנה כרכור,Pardes Hanna,Israel,IL,545,Israel,43,yes,no,country-local-image,add-city-image
+346,Petah Tikva,פתח תקווה,Petah Tikva,Israel,IL,545,Israel,213,yes,no,country-local-image,add-city-image
+309,Ra'anana,רעננה,Ra'anana,Israel,IL,545,Israel,105,yes,no,country-local-image,add-city-image
+370,Ramat Gan,רמת גן,Ramat Gan,Israel,IL,545,Israel,168,yes,no,country-local-image,add-city-image
+362,Ramat HaSharon,רמת השרון,Ramat HaSharon,Israel,IL,545,Israel,24,yes,no,country-local-image,add-city-image
+379,Ramla,רמלה,Ramla,Israel,IL,545,Israel,62,yes,no,country-local-image,add-city-image
+312,Rehovot,רחובות,Rehovot,Israel,IL,545,Israel,113,yes,no,country-local-image,add-city-image
+367,Rishon LeZion,ראשון לציון,Rishon LeZion,Israel,IL,545,Israel,210,yes,no,country-local-image,add-city-image
+326,Rosh HaAyin,ראש העין,Rosh HaAyin,Israel,IL,545,Israel,56,yes,no,country-local-image,add-city-image
+445,Rosh Pina,,Rosh Pina,Israel,IL,545,Israel,29,yes,no,country-local-image,add-city-image
+322,Savion,,Savion,Israel,IL,545,Israel,5,yes,no,country-local-image,add-city-image
+369,Sderot,שדרות,Sderot,Israel,IL,545,Israel,49,yes,no,country-local-image,add-city-image
+361,Shoham,שוהם,Shoham,Israel,IL,545,Israel,23,yes,no,country-local-image,add-city-image
+348,Tel Aviv,תל אביב,Tel Aviv,Israel,IL,545,Israel,533,yes,yes,country-local-image,change-priority-to-city-first
+536,Tel Mond,תל מונד,Tel Mond,Israel,IL,545,Israel,13,yes,no,country-local-image,add-city-image
+421,Tiberias,טבריה,Tiberias,Israel,IL,545,Israel,90,yes,yes,country-local-image,change-priority-to-city-first
+529,Tzfat,,Tzfat,Israel,IL,545,Israel,6,yes,no,country-local-image,add-city-image
+355,Yavne,יבנה,Yavne,Israel,IL,545,Israel,39,yes,no,country-local-image,add-city-image
+317,Yehud,יהוד,Yehud,Israel,IL,545,Israel,41,yes,no,country-local-image,add-city-image
+409,Yokneam,יקנעם,Yokneam,Israel,IL,545,Israel,30,yes,no,country-local-image,add-city-image
+406,Zichron Yaakov,זכרון יעקב,Zichron Yaakov,Israel,IL,545,Israel,30,yes,no,country-local-image,add-city-image
+373,Rome,רומא,Rome,Italy,IT,278,Italy,30,no,yes,city-landmark-url,change-priority-to-city-first
+375,Marrakech,,Marrakech,Morocco,MA,285,Morocco,12,no,yes,city-landmark-url,change-priority-to-city-first
+482,Amsterdam,אמסטרדם,Amsterdam,Netherlands,NL,546,Netherlands,20,yes,yes,country-local-image,change-priority-to-city-first
+297,Porto,,Porto,Portugal,PT,281,Portugal,5,no,yes,city-landmark-url,change-priority-to-city-first
+356,Barcelona,ברצלונה,Barcelona,Spain,ES,280,Spain,9,no,yes,city-landmark-url,change-priority-to-city-first
+470,Bangkok,בנגקוק,Bangkok,Thailand,TH,469,Thailand,6,no,yes,city-landmark-url,change-priority-to-city-first
+473,Chiang Mai,,Chiang Mai,Thailand,TH,469,Thailand,2,no,yes,city-landmark-url,change-priority-to-city-first
+472,Ko Samui,,Ko Samui,Thailand,TH,469,Thailand,16,no,yes,city-landmark-url,change-priority-to-city-first
+476,Koh Phangan,,Koh Phangan,Thailand,TH,469,Thailand,0,no,no,country-fallback-or-picsum,add-city-image
+477,Pai,,Pai,Thailand,TH,469,Thailand,2,no,no,country-fallback-or-picsum,add-city-image
+471,Phuket,,Phuket,Thailand,TH,469,Thailand,8,no,yes,city-landmark-url,change-priority-to-city-first
+340,Dubai,דובאי,Dubai,UAE,AE,279,UAE,21,no,yes,city-landmark-url,change-priority-to-city-first
+333,London,לונדון,London,United Kingdom,GB,287,United Kingdom,102,no,yes,city-landmark-url,change-priority-to-city-first
+466,Chicago,שיקגו,Chicago,United States,US,462,United States,38,yes,yes,country-local-image,change-priority-to-city-first
+467,Dallas,,Dallas,United States,US,462,United States,10,yes,yes,country-local-image,change-priority-to-city-first
+468,Las Vegas,,Las Vegas,United States,US,462,United States,16,yes,yes,country-local-image,change-priority-to-city-first
+465,Los Angeles,לוס אנג׳לס,Los Angeles,United States,US,462,United States,112,yes,yes,country-local-image,change-priority-to-city-first
+464,Miami,מיאמי,Miami,United States,US,462,United States,110,yes,yes,country-local-image,change-priority-to-city-first
+463,New York,ניו יורק,New York,United States,US,462,United States,331,yes,yes,country-local-image,change-priority-to-city-first

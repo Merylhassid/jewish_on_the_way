@@ -1,0 +1,936 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>GB user decisions</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#202124}
+h1{font-size:20px}.sum span{display:inline-block;margin:3px;padding:4px 9px;border-radius:4px;background:#eceff1}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}th,td{border:1px solid #ddd;padding:7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.ok{background:#eef8ee}.del{background:#fff1f1}.maybe{background:#fff8e1}
+small{color:#607d8b}a{color:#1565c0;text-decoration:none}
+</style></head><body>
+<h1>החלטות משתמש - GB</h1>
+<div class="sum">
+  <span>apply: 98</span>
+  <span>delete candidates: 3</span>
+  <span>manual: 1</span>
+</div>
+<p>דוח החלטה בלבד. אין כתיבה ל-DB.</p>
+<table><thead><tr><th>החלטה</th><th>ID</th><th>final</th><th>שלנו</th><th>גוגל</th><th>נימוק</th><th>קישור</th></tr></thead><tbody>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>4701</td>
+    <td>verified</td>
+    <td><b>Reubens</b><br>79 Baker St, London W1U 6RG</td>
+    <td><b>Reubens Deli &amp; Restaurant</b><br>79 Baker St, London W1U 6RG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=15009210825300457347&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="maybe">
+    <td>manual_review</td>
+    <td>4702</td>
+    <td>maybe</td>
+    <td><b>Moshikis</b><br>46 Golders Green Rd, London NW11</td>
+    <td><b>46 Golders Green Rd</b><br>46 Golders Green Rd, London NW11 8LL, UK<br><small></small></td>
+    <td>Maybe row requires user decision<br><small>LLM לא הכריע (0.35): B shows only a street address with no business name, while A is 'Moshikis' - a specific restaurant. Address match is exact (46 Golders Green Rd, London NW11), but B's 'premise;street_address' type and missing business name suggest it may be a building/location rather than the restaurant itself. Cannot confirm B is the Moshikis restaurant without B showing the actual business name.</small></td>
+    <td><a href="https://maps.google.com/?cid=9235594655399868189&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>4704</td>
+    <td>no_match</td>
+    <td><b>La Fiesta</b><br>236 Golders Green Rd, London NW11</td>
+    <td><b>PUKUSH</b><br>96 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved this red row by name<br><small>LLM דחה (0.95): שם שונה לחלוטין (La Fiesta vs PUKUSH), כתובות שונות באותו רחוב (236 vs 96), מרחק של 133 מטר בין שתי כתובות. אלו עסקים נפרדים.</small></td>
+    <td><a href="https://maps.google.com/?cid=8927826989669397807&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6349</td>
+    <td>verified</td>
+    <td><b>Tony Page @ Island Grill</b><br>26 Paddington St, London W1U 5QY.</td>
+    <td><b>Tony Page Marylebone</b><br>26 Paddington St, London W1U 5QY, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>name + city + street match</small></td>
+    <td><a href="https://maps.google.com/?cid=10399659307285758886&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6350</td>
+    <td>verified</td>
+    <td><b>מסעדת רובנס Reubens</b><br>79 Baker St, London W1U 6RG.</td>
+    <td><b>Reubens Deli &amp; Restaurant</b><br>79 Baker St, London W1U 6RG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=15009210825300457347&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6351</td>
+    <td>verified</td>
+    <td><b>מסעדת מזל MAZAL - Original Shawarma</b><br>Unit M192 2nd Floor, Hawley Wharf, Second Floor, London NW1 8AA.</td>
+    <td><b>MAZAL London</b><br>Second Floor, Unit M192 2nd Floor, Hawley Wharf, London NW1 8AA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (MAZAL), כתובת זהה לחלוטין (Hawley Wharf, Unit M192, Floor 2, London NW1 8AA), עיר זהה, סוג מזון תואם (mediterranean_restaurant). ההבדלים בעיצוב הכתובת (סדר המילים) הם טריוויאליים. זה אותו מקום.</small></td>
+    <td><a href="https://maps.google.com/?cid=10723476566232971829&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6353</td>
+    <td>verified</td>
+    <td><b>חדש! Moss &amp; Maple</b><br>51 Fairfax Rd, London NW6 4EL. [map: https://maps.app.goo.gl/S9rtvdjTsAzrTwiM9]</td>
+    <td><b>Moss &amp; Maple</b><br>51 Fairfax Rd, London NW6 4EL, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique restaurant name 'Moss &amp; Maple' + exact house number and street match (51 Fairfax Rd) + same postal code (NW6 4EL) + same city (London). The 'חדש!' (New!) prefix in A is just a marketing label. Address formatting differences (UK vs full format) are irrelevant. Google Places status is OPERATIONAL. High confidence match.</small></td>
+    <td><a href="https://maps.google.com/?cid=346901424739325404&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6354</td>
+    <td>verified</td>
+    <td><b>Delicatessen</b><br>46 Rosslyn Hill, London NW3 1NH</td>
+    <td><b>Delicatessen</b><br>46 Rosslyn Hill, London NW3 1NH, UK<br><small>CLOSED_PERMANENTLY</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=4234251981086691775&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6355</td>
+    <td>verified</td>
+    <td><b>TISH</b><br>196-198 Haverstock Hill, London NW3 2AG.</td>
+    <td><b>Tish</b><br>196-198 Haverstock Hill, London NW3 2AG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=8076008962967169648&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6357</td>
+    <td>verified</td>
+    <td><b>חדש!  PUKUSH</b><br>96 Golders Green Rd, London NW11 8HB. [map: https://maps.app.goo.gl/LqSvqV7ZmZh6ctb4A]</td>
+    <td><b>PUKUSH</b><br>96 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (PUKUSH), כתובת וקואורדינטות זהות לחלוטין, שניהם מסעדות בלונדון. ה'חדש!' ב-A הוא רק ציון עדכון, לא חלק מהשם הרשמי.</small></td>
+    <td><a href="https://maps.google.com/?cid=8927826989669397807&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6358</td>
+    <td>no_match</td>
+    <td><b>חדש!  ברכה  BRACHA</b><br>118 Golders Green Rd, London NW11 8HB. [map: https://maps.app.goo.gl/NCPSgRYNnkFqhN3D9]</td>
+    <td><b>BRACHA - Street Food &amp; Neshama</b><br>118 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved this red row by name<br><small>weak name/address match</small></td>
+    <td><a href="https://maps.google.com/?cid=10784857147424255008&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>6359</td>
+    <td>verified</td>
+    <td><b>חדש!  Omi Sushi</b><br>750 Finchley Rd, London NW11 7TH. [map: https://maps.app.goo.gl/ggGZ9bCdyYW1dvPu6;]</td>
+    <td><b>Omi Sushi</b><br>750 Finchley Rd, London NW11 7TH, UK<br><small>CLOSED_PERMANENTLY</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (Omi Sushi), כתובת בדיוק זהה (750 Finchley Rd, London NW11 7TH), עיר זהה. ה-'חדש!' ב-A הוא סימן שינוי/פתיחה חדשה. B סגור לצמיתות אך זהו אותו המקום הפיזי. שם הרסטורן ייחודי מספיק בשילוב כתובת תואמת במדויק.</small></td>
+    <td><a href="https://maps.google.com/?cid=5050055970406578436&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="del">
+    <td>delete_restaurant_candidate</td>
+    <td>6360</td>
+    <td>no_match</td>
+    <td><b>מאפיות כשרות בלונדון - גולדרס גרין</b><br>20, Russell Parade, Golders Green Rd, London NW11 9NN [map: https://maps.app.goo.gl/5fpckgmhVYXXLshe9]</td>
+    <td><b>Hummus Bar Golders</b><br>82 Golders Green Rd, London NW11 8LN, UK<br><small>OPERATIONAL</small></td>
+    <td>Red row not approved by user<br><small>weak name/address match</small></td>
+    <td><a href="https://maps.google.com/?cid=17190520241756978695&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="del">
+    <td>delete_restaurant_candidate</td>
+    <td>6361</td>
+    <td>no_match</td>
+    <td><b>מאפיות כשרות בלונדון - סטמפורד היל</b><br>168-170, 170 Clapton Common, London E5 9AG.טלפון: T +44 20 88024166כשרות: מהדרין כדתיא.</td>
+    <td><b>Deli Ninety Eight</b><br>98 High Rd, London N15 6JR, UK<br><small>OPERATIONAL</small></td>
+    <td>Red row not approved by user<br><small>weak name/address match</small></td>
+    <td><a href="https://maps.google.com/?cid=8651362578077404731&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8092</td>
+    <td>verified</td>
+    <td><b>1070 Kitchen</b><br>400 Oxford Street, London, W1A 1AB, UK</td>
+    <td><b>1070 Kitchen</b><br>137-139 Brent St, London NW4 4DJ, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=7894867338991725185&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8093</td>
+    <td>verified</td>
+    <td><b>Amor's Take-Away</b><br>8 Russell Parade Golders Green Road, London, NW11, United Kingdom (UK)</td>
+    <td><b>Amor's Take Away</b><br>8, Golders Green Rd, London NW11 9NN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical unique name 'Amor's Take Away' with exact house number match (8) and same street (Golders Green Rd) in London. Minor address formatting differences (Russell Parade vs full street name) and postcode addition in B are consistent with database variations. Operational status confirms active business.</small></td>
+    <td><a href="https://maps.google.com/?cid=14708796937758051020&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8094</td>
+    <td>verified</td>
+    <td><b>Asado Mediterranean Bistro</b><br>146 Clapton Common, London, E5 9AG, UK</td>
+    <td><b>Asado Mediterranean Bistro</b><br>146 Clapton Common, London E5 9AG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=401443491880033172&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8095</td>
+    <td>verified</td>
+    <td><b>Aviv Restaurant</b><br>87/89 High Street, Edgware, Middlesex, HA8 7DB, United Kingdom (UK)</td>
+    <td><b>Aviv Restaurant</b><br>87-89 High St, Edgware HA8 7DB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (Aviv Restaurant), כתובת זהה (87-89 High Street, Edgware HA8 7DB), וההבדלים הם רק בפורמט כתיבה (סלאש vs מינוס, High St vs High Street). המיקום הגאוגרפי תואם לחלוטין.</small></td>
+    <td><a href="https://maps.google.com/?cid=13545010509548711614&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8096</td>
+    <td>verified</td>
+    <td><b>Bagels Bar Coffee House</b><br>84 Brent Street, Hendon, London, NW4 2ES, UK</td>
+    <td><b>Bagels Bar Coffee House</b><br>84 Brent St, London NW4 2ES, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=13482856946143820691&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8097</td>
+    <td>verified</td>
+    <td><b>Bagels Bar Grill House</b><br>86 Brent Street Hendon, NW4 2ES, UK</td>
+    <td><b>Bagels Bar Grill House</b><br>86 Brent St, London NW4 2ES, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=385992812347576277&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8098</td>
+    <td>verified</td>
+    <td><b>Beit Cafe</b><br>119 Golders Green Road , London , NW118HR, United Kingdom</td>
+    <td><b>Beit Cafe</b><br>119 Golders Green Rd, London NW11 8HR, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.99): זהו אותו מקום - שם זהה (Beit Cafe), כתובת זהה (119 Golders Green Road/Rd, London NW11 8HR), ההבדלים הם רק בעיצוב הכתובת (Road vs Rd, רווחים). גוגל מספק את אותו מקום עם סטטוס OPERATIONAL. המרחק הגדול (distM) אינו רלוונטי - זה שגיאה בחישוב קואורדינטות. שם ייחודי + עיר זהה + כתובת זהה = בטוח שזה אותו מקום.</small></td>
+    <td><a href="https://maps.google.com/?cid=2203638053432680639&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8099</td>
+    <td>no_match</td>
+    <td><b>Beit Hamadras</b><br>London, United Kingdom</td>
+    <td><b>Beit HaMadras - Kosher Indian Restaurant</b><br>105 Brent St, London NW4 2DX, UK<br><small>CLOSED_PERMANENTLY</small></td>
+    <td>User approved this red row by name<br><small>LLM דחה (0.95): עסק סגור לצמיתות (CLOSED_PERMANENTLY) - אם המסעדה סגורה לצמיתות, היא כבר לא פעילה ולא יכולה להיות אותו מקום. למרות ששם וסוג המזון תואמים, הסטטוס של סגירה קבועה מציין שזה לא מקום פעיל עוד.</small></td>
+    <td><a href="https://maps.google.com/?cid=9732468928565772499&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8100</td>
+    <td>verified</td>
+    <td><b>Bonjour Bakery &amp; Café</b><br>80 Brent Street Hendon, London, , NW4 2ES, United Kingdom (UK)</td>
+    <td><b>Bonjour</b><br>78 -80 Brent St, London NW4 2ES, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (Bonjour), כתובת בדיוק או כמעט זהה (80 vs 78-80 Brent Street), אותו קוד דואר (NW4 2ES), אותו עיר (London), סוג עסק תואם (bakery &amp; café). ההבדל הקטן בספרת הבית (80 vs 78-80) רגיל בכתובות Google המרובות/טווחים.</small></td>
+    <td><a href="https://maps.google.com/?cid=10085261402133820831&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8101</td>
+    <td>verified</td>
+    <td><b>Booya Kosher Gelato</b><br>90 Golders Green Rd, London, NW11 8LN, United Kingdom</td>
+    <td><b>Booya Kosher Gelato</b><br>90 Golders Green Rd, London NW11 8LN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.98): שם זהה לחלוטין (Booya Kosher Gelato), כתובת זהה (90 Golders Green Rd, London NW11 8LN), אותו ביתן מספר, אותו רחוב. ההבדל בכתיבת הכתובת (UK vs United Kingdom) הוא ווריאציה טכנית בלבד. זהו סניף ייחודי של חנות גלידה כשרה בגולדרס גרין.</small></td>
+    <td><a href="https://maps.google.com/?cid=702246083443532887&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8102</td>
+    <td>verified</td>
+    <td><b>Bracha - Street Food &amp; Neshama</b><br>118 Golders Green Rd London, NW11 8HB, United Kingdom</td>
+    <td><b>BRACHA - Street Food &amp; Neshama</b><br>118 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.98): Identical unique name 'BRACHA - Street Food &amp; Neshama', exact house number and street match (118 Golders Green Rd), same postcode (NW11 8HB), same city (London). Minor address formatting differences are irrelevant. Deterministic flags (no-city-match, weak-address-needs-llm) are false positives - both clearly reference London. Google status OPERATIONAL confirms active business.</small></td>
+    <td><a href="https://maps.google.com/?cid=10784857147424255008&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8103</td>
+    <td>verified</td>
+    <td><b>Bread Bakery</b><br>1 Bridge Lane, London, NW11 0EA, UK</td>
+    <td><b>Bread Bakery</b><br>1 Bridge Ln, London NW11 0EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=4271018747001621748&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8104</td>
+    <td>verified</td>
+    <td><b>Burger Bar</b><br>1 Bridge Ln, London , UK, Londin, NW11 0EA, UK</td>
+    <td><b>Burger Bar</b><br>1 Bridge Ln, London NW11 0EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>generic name but exact address</small></td>
+    <td><a href="https://maps.google.com/?cid=12738203403017110602&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8105</td>
+    <td>verified</td>
+    <td><b>Carmelli Bakery Ltd</b><br>126-128 Golders Green Road, London, NW11, United Kingdom (UK)</td>
+    <td><b>Carmelli Bakeries</b><br>126, 128 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same bakery at identical address (126-128 Golders Green Road, London NW11). Name variants 'Carmelli Bakery Ltd' vs 'Carmelli Bakeries' are standard business naming differences. Exact house numbers and street match. Google status operational. Deterministic city mismatch appears to be data quality issue - both clearly reference London NW11 postcode area.</small></td>
+    <td><a href="https://maps.google.com/?cid=12765538114791065677&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8106</td>
+    <td>verified</td>
+    <td><b>Chabad Wimbledon Kosher Shop</b><br>42 St George's Road, Wimbledon, SW19 4ED, London</td>
+    <td><b>Chabad Wimbledon</b><br>42 St George's Rd, London SW19 4ED, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=15173533617276304881&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8107</td>
+    <td>verified</td>
+    <td><b>Coco Bakery</b><br>20 Russell Parade, Golders Green Road,, NW11 9NN, London</td>
+    <td><b>Coco Bakery</b><br>20, Golders Green Rd, London NW11 9NN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=9803308711340787315&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8108</td>
+    <td>verified</td>
+    <td><b>Creme de la Creme</b><br>5 Bridge Lane Temple Fortune, London, NW11 0QN, United Kingdom (UK)</td>
+    <td><b>Crème de la Crème</b><br>5 Temple Fortune Parade, Bridge Ln, London NW11 0QN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name (Crème de la Crème), identical house number (5), same street (Bridge Lane/Temple Fortune area), same postcode (NW11 0QN), same city (London). Address formatting differences are minor variants of the same location. Google's address is more detailed (Temple Fortune Parade) but refers to the same premises. Food business type matches (pastry/bakery/dessert shop).</small></td>
+    <td><a href="https://maps.google.com/?cid=11065602616374981833&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8109</td>
+    <td>verified</td>
+    <td><b>Daniel's Bagel Bakery</b><br>12-14 Hallswelle Parade, Finchley Road, London, NW11, United Kingdom (UK)</td>
+    <td><b>Daniels</b><br>Hallswelle Parade, 12-14 Finchley Rd, London NW11 0DL, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same address (12-14 Hallswelle Parade, Finchley Rd, London NW11), bakery type matches, 'Daniels' is shortened version of 'Daniel's Bagel Bakery'. Minor name variation and Google's simplified naming are consistent with same business. Distance metric appears to be calculation artifact. High confidence match.</small></td>
+    <td><a href="https://maps.google.com/?cid=8672916498515654488&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8110</td>
+    <td>verified</td>
+    <td><b>Deli Ninety Eight</b><br>98 high road Stamford Hill, London, N15 6JR, United Kingdom (UK)</td>
+    <td><b>Deli Ninety Eight</b><br>98 High Rd, London N15 6JR, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.98): Identical name 'Deli Ninety Eight', exact house number match (98), same street (High Road), same postal code (N15 6JR), same city (London). Address formatting differences are trivial (full vs abbreviated). Both operational food establishments. The distance metric (8738m) appears to be a system error as the addresses are identical. Strong match.</small></td>
+    <td><a href="https://maps.google.com/?cid=8651362578077404731&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8111</td>
+    <td>verified</td>
+    <td><b>Eli's Pizza Edgware</b><br>7 Edgwarebury Lane, Edgware, Barnet, HA8 8LH, United Kingdom</td>
+    <td><b>Eli's Pizza (Edgware)</b><br>7 Edgwarebury Ln, Edgware HA8 8LH, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): זהה שם ייחודי, כתובת זהה (7 Edgwarebury Lane), עיר זהה (Edgware), הבדלים קטנים בעיצוב כתובת בלבד</small></td>
+    <td><a href="https://maps.google.com/?cid=15227177465361254175&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8112</td>
+    <td>verified</td>
+    <td><b>Eli's pizza Golders Green</b><br>2a Hoop Ln London, NW11 8JS, United Kingdom</td>
+    <td><b>Elis Pizza Golders Green</b><br>2a Hoop Ln, London NW11 8JS, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical address (2a Hoop Ln, London NW11 8JS), same business name with minor spelling variant (Eli's vs Elis - common transliteration/typo), same city, kosher pizza restaurant in Golders Green (known Jewish area). Address match is exact despite formatting differences. Minor name spelling variation is insignificant.</small></td>
+    <td><a href="https://maps.google.com/?cid=3273445746860283721&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8113</td>
+    <td>verified</td>
+    <td><b>Grodz Bakery Edgware</b><br>4/6 The Promenade Edgwarebury Lane Edgware, London, United Kingdom (UK)</td>
+    <td><b>Grodz</b><br>4-6 The Promenade, Edgwarebury Ln, London, Edgware HA8 7JZ, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique bakery name 'Grodz' + identical address (4-6 The Promenade, Edgwarebury Lane, Edgware) with exact house number and street match. Minor variations in name format (full 'Grodz Bakery Edgware' vs 'Grodz') and address punctuation are standard. Both operational bakeries. Distance metric appears to be a data artifact (likely comparing to wrong reference point). Strong match.</small></td>
+    <td><a href="https://maps.google.com/?cid=28066697080148473&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8114</td>
+    <td>verified</td>
+    <td><b>Grodz Bakery Golders Green</b><br>223 Golders Green Road, London, NW11, United Kingdom (UK)</td>
+    <td><b>Grodz Golders Green</b><br>223 Golders Green Rd, London NW11 9ES, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical unique name 'Grodz', exact house number match (223), same street (Golders Green Rd/Road), same postal code (NW11), same city (London). Minor variations: 'Bakery' in A vs omitted in B, full postcode in B. Google's full address is more complete. Both operational bakeries. High confidence match.</small></td>
+    <td><a href="https://maps.google.com/?cid=7797419348332291825&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8115</td>
+    <td>verified</td>
+    <td><b>Grodzinski Bakery Dunsmure Road</b><br>91 Dunsmure Road Stamford Hill, London, N16 5HT, United Kingdom (UK)</td>
+    <td><b>Grodzinski</b><br>91 Dunsmure Rd, London N16 5HT, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique bakery name (Grodzinski), identical house number (91) and street (Dunsmure Rd/Road), same postal code (N16 5HT), same city (London). Minor address formatting differences are irrelevant. The deterministic 'cityMatch: false' appears to be a data parsing error since both clearly reference London. High confidence this is the same kosher bakery location.</small></td>
+    <td><a href="https://maps.google.com/?cid=8068025823048339959&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8116</td>
+    <td>verified</td>
+    <td><b>Grodzinski Bakery Stamford Hill</b><br>170 Clapton Common Stamford Hill, London, E5 9AG, United Kingdom (UK)</td>
+    <td><b>Grodzinski Stamford Hill bakery</b><br>168-170, 170 Clapton Common, London E5 9AG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (Grodzinski), כתובת זהה בעיקרה (170 Clapton Common, Stamford Hill, London E5 9AG), שניהם מקומות קושר ידועים לאפיית לחם. ההבדל המזערי בחלק הראשון של הכתובת (168-170 vs 170) סביר שמשקף מספור בנייני משותף. המיקום ודפוס התיוג של גוגל מאששים זהות.</small></td>
+    <td><a href="https://maps.google.com/?cid=14269766949995771475&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8117</td>
+    <td>verified</td>
+    <td><b>Habiba's Smokehouse</b><br>1179 Finchley Rd, London, NW11 0AA, United Kingdom</td>
+    <td><b>Habiba's Smokehouse</b><br>1179 Finchley Rd, London NW11 0AA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical restaurant name 'Habiba's Smokehouse', exact house number match (1179), exact street match (Finchley Rd), same postal code (NW11 0AA), same city (London). Address format variations (UK vs United Kingdom) are cosmetic. Operational status confirms active business. High confidence match.</small></td>
+    <td><a href="https://maps.google.com/?cid=1698217175522245988&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8118</td>
+    <td>verified</td>
+    <td><b>Head Room Café</b><br>89 Golders Green Road, London, NW11 8EN, UK</td>
+    <td><b>Head Room café</b><br>87 - 89 Golders Green Rd, London NW11 8EN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=2004835916988366671&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8119</td>
+    <td>verified</td>
+    <td><b>Hendon Bagel Bakery</b><br>55-57 Church Road Hendon, London, NW4 4DU, United Kingdom (UK)</td>
+    <td><b>Hendon Bagel Bakery</b><br>55-57 Church Rd, London NW4 4DU, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.99): Identical business name (Hendon Bagel Bakery), same street address (55-57 Church Road/Rd), same postcode (NW4 4DU), same city (London). Minor address formatting differences (Church Road vs Church Rd, full UK vs UK) are standard Google Places variations. House number and street match exactly. Operational bagel shop/bakery.</small></td>
+    <td><a href="https://maps.google.com/?cid=12455304137836545495&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8120</td>
+    <td>verified</td>
+    <td><b>Hendon Park Café</b><br>3 Queen’s Rd, Hendon, London, NW4 2TG, United Kingdom (UK)</td>
+    <td><b>Hendon Park Cafe</b><br>Hendon Park, Queens Rd, Hendon NW4 2TG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.92): Unique name match (Hendon Park Cafe/Café), same street (Queen's Rd/Queens Rd), same postal code (NW4 2TG), same city area (Hendon, London). Address variants are minor spelling differences (café vs cafe, '3' vs 'Hendon Park' building reference). Google's address is actually more precise (Hendon Park is the location within Queen's Rd). Both are operational food establishments. Distance discrepancy in deterministic scoring is likely a geocoding artifact.</small></td>
+    <td><a href="https://maps.google.com/?cid=14648534886067117959&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8121</td>
+    <td>verified</td>
+    <td><b>Hermolis Catering</b><br>Hermolis House, 276 Abbeydale Rd, London, Wembley, HA0 1TW, UK</td>
+    <td><b>Hermolis &amp; Co</b><br>Hermolis House, 276 Abbeydale Rd, London, Wembley HA0 1TW, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=967973767713557648&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8122</td>
+    <td>verified</td>
+    <td><b>Hot Cut</b><br>98 Golders Green Rd Golders Green, London NW11 8HB, UK</td>
+    <td><b>Hot Cut</b><br>98 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=1353944313920632187&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8123</td>
+    <td>verified</td>
+    <td><b>Hummus Bar Golders Green</b><br>82 Golders Green Road Goders Green, London, NW11 8LN, United Kingdom</td>
+    <td><b>Hummus Bar Golders</b><br>82 Golders Green Rd, London NW11 8LN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same restaurant (Hummus Bar), identical exact address (82 Golders Green Rd), same postal code NW11 8LN, operational status. Name variation 'Golders Green' vs 'Golders' is minor transliteration/abbreviation. Address formatting differences are standard (UK vs Google conventions). High confidence match.</small></td>
+    <td><a href="https://maps.google.com/?cid=17190520241756978695&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8124</td>
+    <td>verified</td>
+    <td><b>Hummus Bar Hendon</b><br>105 Brent Street Hendon, London, NW4 2DX, UK</td>
+    <td><b>Hummus Bar Hendon</b><br>105 Brent St, London NW4 2DX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=16540230530738005282&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8125</td>
+    <td>verified</td>
+    <td><b>Kaifeng</b><br>51 Church Road Hendon, London, United Kingdom (UK)</td>
+    <td><b>Kaifeng Restaurant</b><br>51 Church Rd, London NW4 4DU, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique restaurant name (Kaifeng), identical house number (51) and street (Church Rd/Church Road) in London. Google's full postcode (NW4 4DU) confirms Hendon area. Address format differences are standard UK notation variants. Both are operational Chinese restaurants at same location.</small></td>
+    <td><a href="https://maps.google.com/?cid=6350449017951611583&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8126</td>
+    <td>verified</td>
+    <td><b>Kasa Bar &amp; Grill</b><br>30 Market Place,  London, NW11 6JJ, United Kingdom (UK)</td>
+    <td><b>KASA - Bar &amp; Grill</b><br>30, The, 30 Market Pl, London NW11 6JJ, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי זהה (KASA Bar &amp; Grill), כתובת משפחת זהה (30 Market Place, London NW11 6JJ), מספר בית ורחוב תואמים בדיוק. הפרש קל בעיצוב הכתובת ב-Google (הוספת 'The') הוא שגיאת קלט שגרונית. עסק מזון פעיל בעיר זהה.</small></td>
+    <td><a href="https://maps.google.com/?cid=12860423472151263442&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8127</td>
+    <td>no_match</td>
+    <td><b>Kosher Food London</b><br>London, United Kingdom (UK)</td>
+    <td><b>MAZAL London</b><br>Second Floor, Unit M192 2nd Floor, Hawley Wharf, London NW1 8AA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved this red row by name<br><small>LLM דחה (0.85): Different restaurant names (Kosher Food London vs MAZAL London). 'MAZAL London' is a specific Mediterranean restaurant with a precise address (Hawley Wharf, NW1 8AA), while 'Kosher Food London' is a generic name with only city-level location data. No evidence these are the same establishment.</small></td>
+    <td><a href="https://maps.google.com/?cid=10723476566232971829&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8128</td>
+    <td>verified</td>
+    <td><b>La Brioche Edgware</b><br>2 Canons Corner, London Rd Stanmore, Edgware, HA8 8AE, UK</td>
+    <td><b>La Brioche</b><br>London Rd, Stanmore, Edgware HA8 8AE, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=7802219891884161060&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8129</td>
+    <td>verified</td>
+    <td><b>La Brioche Hendon</b><br>81-83 Brent Street Hendon, NW4 2DY, UK</td>
+    <td><b>La Brioche Kosher Bakery &amp; Coffee</b><br>Brent St, London NW4 2DY, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=4168929234075895340&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8130</td>
+    <td>verified</td>
+    <td><b>Leveyuson (Fish Shop)</b><br>47A Brent Street Hendon, London, NW4, United Kingdom (UK)</td>
+    <td><b>Leveyuson</b><br>47A Brent St, London NW4 2EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): זהו אותו המקום - שם ייחודי 'Leveyuson', כתובת זהה בבדיוק (47A Brent Street/St, London NW4), וסוג עסק תואם (דגנים/חנות מזון). ההבדל בעיצוב הכתובת (Street vs St) הוא וריאציה סטנדרטית של Google Places. אין ספק שזו אותה חנות הדגנים בהנדון.</small></td>
+    <td><a href="https://maps.google.com/?cid=5242045355594198733&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8131</td>
+    <td>verified</td>
+    <td><b>M&amp;S Muswell Hill</b><br>Simply Food, The, 126-138 Muswell Hill Broadway, Muswell Hill, London, N10 3RU, UK</td>
+    <td><b>M&amp;S Foodhall</b><br>126-138 Muswell Hill Broadway, Muswell Hill, London N10 3RU, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical address (126-138 Muswell Hill Broadway, London N10 3RU), same location. A is 'M&amp;S Simply Food' and B is 'M&amp;S Foodhall' - both are M&amp;S food retail formats at the same address. Minor name variation is expected for different M&amp;S food store concepts. Google coordinates/types confirm food retail operation.</small></td>
+    <td><a href="https://maps.google.com/?cid=11633054950527204868&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8132</td>
+    <td>verified</td>
+    <td><b>Manna Deli Catering</b><br>146 Brent Street Hendon, London, NW4 2DR, United Kingdom (UK)</td>
+    <td><b>Manna Deli</b><br>146 Brent St, London NW4 2DR, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical address (146 Brent St, London NW4 2DR), matching name (Manna Deli vs Manna Deli Catering - catering is descriptor), operational status confirmed, multiple food/deli business types align. Minor naming variant ('Catering' added in A) is common for same establishment with different business descriptions.</small></td>
+    <td><a href="https://maps.google.com/?cid=4853284740404119273&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8133</td>
+    <td>verified</td>
+    <td><b>MAZAL - Original Shawarma</b><br>Unit M192 2nd Floor, Hawley Wharf, London, NW1 8AA, United Kingdom</td>
+    <td><b>MAZAL London</b><br>Second Floor, Unit M192 2nd Floor, Hawley Wharf, London NW1 8AA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name (MAZAL), identical address (Unit M192, Second Floor, Hawley Wharf, London NW1 8AA), same operational status. Minor address formatting differences are insignificant. This is clearly the same kosher shawarma restaurant.</small></td>
+    <td><a href="https://maps.google.com/?cid=10723476566232971829&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8134</td>
+    <td>verified</td>
+    <td><b>Met Su Yan Golders Green</b><br>134 Golders Green Rd Golders Green, London, NW11, UK</td>
+    <td><b>Met Su Yan - Golders Green</b><br>134 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=7396220207660163412&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8135</td>
+    <td>verified</td>
+    <td><b>Moss &amp; Maple</b><br>51 Fairfax Rd,  London , NW6 4EL, United Kingdom</td>
+    <td><b>Moss &amp; Maple</b><br>51 Fairfax Rd, London NW6 4EL, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.98): Identical restaurant name, exact house number and street match (51 Fairfax Rd), same London postcode (NW6 4EL). Address formatting differences (UK vs United Kingdom, spacing) are irrelevant. The 'no-city-match' flag appears to be a data quality issue - both clearly reference London. Fine dining restaurant type matches food business category. High confidence this is the same physical location.</small></td>
+    <td><a href="https://maps.google.com/?cid=346901424739325404&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8136</td>
+    <td>verified</td>
+    <td><b>Mr Baker</b><br>119-121 Brent Street, London, NW4 2DX, United Kingdom (UK)</td>
+    <td><b>Mr Baker</b><br>119-121 Brent St, London NW4 2DX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical name 'Mr Baker', exact house number match (119-121), same street (Brent St), same postcode (NW4 2DX), London. Address formatting differences are minor (full vs abbreviated). Google confirms operational bakery/restaurant. High confidence despite deterministic 'maybe' - the address match is sufficiently precise and the name is unique.</small></td>
+    <td><a href="https://maps.google.com/?cid=15086280144052660130&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8137</td>
+    <td>verified</td>
+    <td><b>Munch N Crunch: Tasty Food To Go</b><br>7-9 Russell Parade, Golders Green Rd Golders Green, London, NW11 9NN, United Kingdom (UK)</td>
+    <td><b>Munch N Crunch</b><br>2b, 7 Russell Gardens, Golders Green Rd, London NW11 9NN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.92): Unique name 'Munch N Crunch' match in same city (London). Both on Golders Green Rd area. Minor address discrepancies (Russell Parade vs Russell Gardens, 7-9 vs 2b/7) likely reflect different database entry formats for same location. Operational status confirms active business. Google address appears more precise.</small></td>
+    <td><a href="https://maps.google.com/?cid=8939843324610921204&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8138</td>
+    <td>verified</td>
+    <td><b>Novellino</b><br>103 Golders Green Road, London, NW11 8EN, United Kingdom (UK)</td>
+    <td><b>Novellino</b><br>103 Golders Green Rd, London NW11 8EN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical unique restaurant name 'Novellino', exact house number match (103), street match (Golders Green Road/Rd), and postal code match (NW11 8EN). Address variations are standard formatting differences (Road vs Rd, UK vs United Kingdom). Distance metric appears to be a system error given perfect address alignment. Golders Green is a known kosher area in London.</small></td>
+    <td><a href="https://maps.google.com/?cid=3001799534572881868&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8139</td>
+    <td>verified</td>
+    <td><b>Novellino Bistro</b><br>111a -113 Golders Green Road Golders Green, NW11 8HR, UK</td>
+    <td><b>Novellino Bistro</b><br>111A, 113 Golders Green Rd, London NW11 8HR, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=8461354858779631347&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8140</td>
+    <td>verified</td>
+    <td><b>Omi Sushi</b><br>750 Finchley Rd, London, NW11 7TH, United Kingdom</td>
+    <td><b>Omi Sushi</b><br>750 Finchley Rd, London NW11 7TH, UK<br><small>CLOSED_PERMANENTLY</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name 'Omi Sushi', identical address (750 Finchley Rd, London NW11 7TH), exact house number and street match. Status is CLOSED_PERMANENTLY but this is the same physical location. Minor address formatting differences are insignificant.</small></td>
+    <td><a href="https://maps.google.com/?cid=5050055970406578436&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8141</td>
+    <td>verified</td>
+    <td><b>One Ashbourne</b><br>1255 Finchley Road Temple Fortune, London, NW11 0AD, United Kingdom</td>
+    <td><b>One Ashbourne</b><br>Temple Fortune, 1255 Finchley Rd, London NW11 0AD, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name 'One Ashbourne', identical address (1255 Finchley Road, Temple Fortune, London NW11 0AD), same postcode. Google's address format is just a reordering of the same location. Both are food establishments. The deterministic score's 'no-city-match' flag appears to be a false negative since 'Temple Fortune' and 'London' refer to the same location (Temple Fortune is a district in London). House number and street match exactly.</small></td>
+    <td><a href="https://maps.google.com/?cid=15297924923782282584&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8142</td>
+    <td>verified</td>
+    <td><b>Parkway Patisserie Finchley</b><br>355 Regents Park Road Finchley, London, N3 2LN , United Kingdom (UK)</td>
+    <td><b>Parkway Patisserie</b><br>355 Regents Park Rd, London N3 1DH, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.92): שם ייחודי זהה (Parkway Patisserie), רחוב וביתון זהים (355 Regents Park Rd), עיר זהה (London). ההבדל בקוד הדואר (N3 2LN vs N3 1DH) קטן והוא עלול להיות טעות בנתוני ה-DB שלנו או רישום ישן. Google Places נראה אמין יותר. עסק מזון זהה (מאפייה/קונדיטוריה).</small></td>
+    <td><a href="https://maps.google.com/?cid=9937075170972563356&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8143</td>
+    <td>verified</td>
+    <td><b>Parkway Patisserie Golders Green</b><br>30a North End Road Golders Green, London, NW11, United Kingdom (UK)</td>
+    <td><b>Parkway Patisserie</b><br>30A N End Rd, London NW11 7PT, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name 'Parkway Patisserie', identical street address (30A North End Road), same postal code (NW11 7PT), both in London. Minor address format variations (30a vs 30A, 'North End Road' vs 'N End Rd') are standard. Distance metric appears erroneous given exact address match. Operational pastry/bakery business matches kosher establishment type.</small></td>
+    <td><a href="https://maps.google.com/?cid=12642308292185913807&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8144</td>
+    <td>verified</td>
+    <td><b>Parkway Patisserie Wembley</b><br>204 Preston Road Wembley, London, HA9 8PA, United Kingdom (UK)</td>
+    <td><b>Parkway Patisserie</b><br>204 Preston Rd, Wembley HA9 8PA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name 'Parkway Patisserie', identical street address (204 Preston Road/Rd), same postal code (HA9 8PA), same city (Wembley). Minor address format differences (Road vs Rd) and city name variation (Google shows Wembley, A shows London) are standard formatting variants. Both are operational food establishments. High confidence match.</small></td>
+    <td><a href="https://maps.google.com/?cid=10082656841202981319&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8145</td>
+    <td>verified</td>
+    <td><b>Pita Restaurant</b><br>102 Golders Green Road Golders Green, London, NW11 8HB, UK</td>
+    <td><b>Pita</b><br>102 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=12389364903843620776&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8146</td>
+    <td>verified</td>
+    <td><b>Pizaza (Edgware)</b><br>311 Hale Lane, Edgware, HA8 7AX, UK</td>
+    <td><b>Pizaza</b><br>311 Hale Ln, Edgware HA8 7AX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=11450717142063197395&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8147</td>
+    <td>verified</td>
+    <td><b>Pizaza (Golders Green)</b><br>100 Golders Green Road, London, NW11 8HB, UK</td>
+    <td><b>Pizaza</b><br>100 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=2009202738893113038&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8148</td>
+    <td>verified</td>
+    <td><b>Pizaza (Hendon)</b><br>53 Brent Street Hendon, London, NW4 2EA, United Kingdom (UK)</td>
+    <td><b>Pizaza</b><br>53 Brent St, London NW4 2EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.98): שם ייחודי Pizaza, כתובת זהה לחלוטין (53 Brent St, London NW4 2EA), שנייה כן מופעלת ופעילה כמסעדת פיצה</small></td>
+    <td><a href="https://maps.google.com/?cid=2146949508651538709&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8149</td>
+    <td>verified</td>
+    <td><b>Portoberry London</b><br>106 Brent street,  London, NW4 2HH , United Kingdom</td>
+    <td><b>Portoberry</b><br>106 Brent St, London NW4 2HH, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique name 'Portoberry' with exact house number (106) and street match (Brent St). Address variants are trivial formatting differences (full name 'Portoberry London' vs short 'Portoberry'). Postal code NW4 2HH matches. Operational food establishment. The 'no-city-match' flag in deterministic analysis appears to be a false negative - both clearly reference London.</small></td>
+    <td><a href="https://maps.google.com/?cid=1920218469666358003&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8150</td>
+    <td>verified</td>
+    <td><b>Pukush</b><br>96 Golders Green Rd, London , NW11 8HB, United Kingdom</td>
+    <td><b>PUKUSH</b><br>96 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): זהה שם (PUKUSH), כתובת זהה לגמרי (96 Golders Green Rd, London NW11 8HB), עסק פעיל במסעדה. ההבדל בעיצוב הכתובת (NW11 8HB vs NW11 8HB) והערות 'no-city-match' הם טכניים בלבד - שתי הערכות מצביעות על אותו המקום הפיזי בלונדון.</small></td>
+    <td><a href="https://maps.google.com/?cid=8927826989669397807&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8151</td>
+    <td>verified</td>
+    <td><b>Reich's Catering</b><br>9-10 Princess Parade, Golders Green Rd Golders Green, London, NW11 9PS, United Kingdom (UK)</td>
+    <td><b>Reich's</b><br>9-10 Princes Parade, Golders Green Rd, London NW11 9PS, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם ייחודי 'Reich's' + כתובת זהה בעצם (Princess/Princes - וריאציה כתיב), Golders Green, London NW11 9PS. הבדל בשם (Catering vs ללא) הוא תיאור טיפולוגי כללי. סוגי Google מאשרים עסק קייטרינג ומזון. אותה בנייה ורחוב.</small></td>
+    <td><a href="https://maps.google.com/?cid=620849397830734640&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8152</td>
+    <td>verified</td>
+    <td><b>Renbake Patisserie (Commercial)</b><br>10 Timberwharf Road, London, N16 6DB, United Kingdom (UK)</td>
+    <td><b>Renbake Patisserie</b><br>Unit a, 8-10 Timberwharf Rd, London N16 6DB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique name 'Renbake Patisserie' + same street (Timberwharf Road) + same postal code (N16 6DB) + same city (London). Address variants: A says '10' while B says 'Unit a, 8-10' - these refer to the same building/location with B providing more detail (unit specification). Both operational bakeries. Minor address formatting differences are typical for Google Places vs database records.</small></td>
+    <td><a href="https://maps.google.com/?cid=16368364974561628403&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8153</td>
+    <td>no_match</td>
+    <td><b>Reubens Cafe &amp; Bakery - TEMPORARILY CLOSED</b><br>52 Baker St London, W1U 7BT, United Kingdom</td>
+    <td><b>Reubens Deli &amp; Restaurant</b><br>79 Baker St, London W1U 6RG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved this red row by name<br><small>LLM דחה (0.85): Same street (Baker St, London) and similar kosher food business names, but different house numbers (52 vs 79) are 2430m apart - too far to be the same location. A is 'Cafe &amp; Bakery' (temporarily closed), B is 'Deli &amp; Restaurant' (operational). Different postcodes (W1U 7BT vs W1U 6RG) confirm separate establishments despite both being on Baker St.</small></td>
+    <td><a href="https://maps.google.com/?cid=15009210825300457347&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8154</td>
+    <td>verified</td>
+    <td><b>Reubens Deli &amp; Restaurant</b><br>79 Baker Street Marylebone, London, W1U 6RG, UK</td>
+    <td><b>Reubens Deli &amp; Restaurant</b><br>79 Baker St, London W1U 6RG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=15009210825300457347&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8155</td>
+    <td>verified</td>
+    <td><b>Rodo Meats</b><br>295 Hale Ln, Edgware , HA8 7AX, United Kingdom</td>
+    <td><b>Rodo</b><br>295 Hale Ln, Edgware HA8 7AX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same exact address (295 Hale Ln, Edgware HA8 7AX), same operational kosher meat business. 'Rodo' is shortened version of 'Rodo Meats' - common truncation in Google Places. House number and street match perfectly. Minor city name variation (London vs Edgware) is typical for London boroughs.</small></td>
+    <td><a href="https://maps.google.com/?cid=11327459641307305259&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8156</td>
+    <td>verified</td>
+    <td><b>Sami's Edgware</b><br>313 Hale Lane, Edgware, HA8 7AX, UK</td>
+    <td><b>Sami's Edgware</b><br>313 Hale Ln, Edgware HA8 7AX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=14992466573243228343&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8157</td>
+    <td>verified</td>
+    <td><b>Sami's Hendon</b><br>157 Brent Street Hendon, London, NW4 2DR, United Kingdom (UK)</td>
+    <td><b>Samis Restaurant</b><br>157 Brent St, London NW4 4DJ, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.92): Same unique name (Sami's/Samis), identical street address (157 Brent St), same house number. Postcode variation (NW4 2DR vs NW4 4DJ) likely a database error - both are Hendon, London area. Israeli restaurant type matches kosher profile. Street and house number match is decisive.</small></td>
+    <td><a href="https://maps.google.com/?cid=17381303613532995326&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8158</td>
+    <td>verified</td>
+    <td><b>Shai - Pizza &amp; Coffee - TEMPORARILY CLOSED</b><br>97 Brent St, kiosk 1, Sentinel Square Hendon, London, NW4 2EA, United Kingdom</td>
+    <td><b>Shai- pizza &amp; coffee</b><br>97 Brent St, London NW4 2EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Same unique name 'Shai pizza &amp; coffee', identical street address (97 Brent St, London NW4 2EA), matching kiosk location at Sentinel Square Hendon. Minor spelling/formatting differences and status discrepancy (A: temporarily closed, B: operational) are not determinative of identity. Strong match on name + address coordinates.</small></td>
+    <td><a href="https://maps.google.com/?cid=14811327149399041896&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8159</td>
+    <td>no_match</td>
+    <td><b>Sharon's Bakery</b><br>11 Edgwarebury Lane, Edgware, HA8 8LH, United Kingdom (UK)</td>
+    <td><b>Sharon's Bakery</b><br>Unit 2, Unit 3, Hieratica Works, 12 Argall Ave, London E10 7QE, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved this red row by name<br><small>LLM דחה (0.95): Same name but completely different locations: A is in Edgware (HA8 postcode, North London), B is in Walthamstow (E10 postcode, East London), ~9.15 km apart. Different addresses, different postcodes, different neighborhoods. Two separate bakeries with same name.</small></td>
+    <td><a href="https://maps.google.com/?cid=17651888533759120968&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8160</td>
+    <td>verified</td>
+    <td><b>Slice Dairy Restaurant</b><br>6 Princes Parade Golders Green rd, London, NW9 9PS, United Kingdom</td>
+    <td><b>Slice</b><br>6 Princes Parade, Golders Green Rd, London NW11 9PS, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.92): Same unique name 'Slice', identical street address (6 Princes Parade, Golders Green Rd), same operational restaurant. Postal code discrepancy (NW9 9PS vs NW11 9PS) is minor - likely data entry error in original database. Both are kosher dairy restaurants in same London location.</small></td>
+    <td><a href="https://maps.google.com/?cid=17159302867516508184&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8161</td>
+    <td>verified</td>
+    <td><b>Soyo - Edgware</b><br>307 Hale Lane, Edgware, HA8 7AX, UK</td>
+    <td><b>Soyo</b><br>307 Hale Ln, London, Edgware HA8 7AX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=18047273270468803561&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8162</td>
+    <td>verified</td>
+    <td><b>SOYO Golders Green</b><br>94 Golders Green Road, London, NW11 8HB, UK</td>
+    <td><b>Soyo</b><br>94 Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=2799559635063757966&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8163</td>
+    <td>verified</td>
+    <td><b>SurFin Poke</b><br>98a Golders Green Rd, London, NW11 8HB, United Kingdom</td>
+    <td><b>SurFin Poke</b><br>98a Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical name 'SurFin Poke', same street address (98a Golders Green Rd), same postal code (NW11 8HB), same city (London). Minor formatting differences in address representation are inconsequential. B shows OPERATIONAL status confirming active restaurant.</small></td>
+    <td><a href="https://maps.google.com/?cid=16259955944888677827&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8164</td>
+    <td>verified</td>
+    <td><b>Sushi Haven (Edgware)</b><br>301-303 Hale Lane, Edgware, HA8 7AX, UK</td>
+    <td><b>Sushi Haven @ Hadar Edgware</b><br>299 Hale Ln, Edgware HA8 7AX, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=4103372621492028475&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8165</td>
+    <td>verified</td>
+    <td><b>Sushi Haven (Golders Green)</b><br>114A Golders Green Rd,, London, NW11 8HB, United Kingdom</td>
+    <td><b>Sushi Haven Golders Green</b><br>114A Golders Green Rd, London NW11 8HB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical unique restaurant name 'Sushi Haven Golders Green' + exact house number and street match (114A Golders Green Rd) + same postcode (NW11 8HB) + both operational sushi restaurants in London. Minor address formatting differences are inconsequential. City field mismatch in deterministic analysis appears to be a data processing artifact.</small></td>
+    <td><a href="https://maps.google.com/?cid=1114212311028147854&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8166</td>
+    <td>verified</td>
+    <td><b>Sushi Haven (Hendon)</b><br>57a Brent St, London, NW4 2EA, United Kingdom</td>
+    <td><b>Sushi Haven Hendon</b><br>57a Brent St, London NW4 2EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique name 'Sushi Haven' + identical street address (57a Brent St) + same postal code (NW4 2EA) + same operational sushi restaurant type. Minor variations in address formatting (Hendon vs full postcode) and UK/United Kingdom are standard data entry differences. The deterministic analysis was overly cautious on city matching, but the address is exact and the name is distinctive.</small></td>
+    <td><a href="https://maps.google.com/?cid=2722779922804252664&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8167</td>
+    <td>verified</td>
+    <td><b>Sushi Haven (Kosher Kingdom)</b><br>7-9 Russell Parade Golders Green, London, NW11 9NN, United Kingdom (UK)</td>
+    <td><b>Sushi Haven @ Kosher Kingdom</b><br>7, Golders Green Rd, London NW11 9NN, UK<br><small>CLOSED_TEMPORARILY</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.92): Same unique restaurant name (Sushi Haven @ Kosher Kingdom), same street (Golders Green Rd/Russell Parade both refer to same location), same postal code NW11 9NN, same city London. House number 7-9 vs 7 is minor variation (likely same building). Temporary closure status doesn't change identity. Minor address format differences are expected between sources.</small></td>
+    <td><a href="https://maps.google.com/?cid=2683436450497183534&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8168</td>
+    <td>verified</td>
+    <td><b>Taboon</b><br>17 Russell Parade, Golders Green Road, London, NW11, United Kingdom (UK)</td>
+    <td><b>Taboon</b><br>17, Russell Parade, Golders Green Rd, London NW11 9NN, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique restaurant name 'Taboon' with exact house number match (17 Russell Parade) and street match (Golders Green Road/Golders Green Rd). Address variants are standard formatting differences. Both in London, NW11 postcode area. Google result provides complete postcode (NW11 9NN) and OPERATIONAL status confirms active restaurant. The 'no-city-match' flag appears to be a data processing artifact as both clearly reference London.</small></td>
+    <td><a href="https://maps.google.com/?cid=4263282949797646633&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8169</td>
+    <td>verified</td>
+    <td><b>Tasti Pizza London</b><br>23 Amhurst Parade (Amhurst Park) Stamford Hill, London, N16 5AA, United Kingdom</td>
+    <td><b>Tasti Pizza London</b><br>23 Amhurst Park, London N16 5AA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): שם זהה לחלוטין (Tasti Pizza London), כתובת מתאימה במדויק (23 Amhurst Park, N16 5AA), עיר זהה (London). ההבדל בין 'Amhurst Parade (Amhurst Park)' ל-'Amhurst Park' הוא וריאציה בשם הרחוב, כנראה באותו מיקום. מספר הבית (23) תואם בדיוק.</small></td>
+    <td><a href="https://maps.google.com/?cid=13708634665750366175&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8170</td>
+    <td>verified</td>
+    <td><b>The Churros Factory</b><br>185 Golders Green Rd London, NW11, UK</td>
+    <td><b>The Churros Factory</b><br>100 East Rd, London N1 6AA, UK<br><small>CLOSED_PERMANENTLY</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=9184999513658478775&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8171</td>
+    <td>verified</td>
+    <td><b>The Kanteen Brent Cross</b><br>Unit Z2, Prince Charles Dr, Brent Cross, Hendon, London, NW4 3FD, United Kingdom (UK)</td>
+    <td><b>The Kanteen</b><br>Unit Z2, Prince Charles Dr, Brent Cross, London NW4 3FD, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Unique name 'The Kanteen' + identical address (Unit Z2, Prince Charles Dr, Brent Cross, London NW4 3FD). A includes 'Brent Cross' in name for disambiguation; B omits it but addresses match exactly. Same operational food business. Minor address formatting differences are irrelevant.</small></td>
+    <td><a href="https://maps.google.com/?cid=1810439966473392472&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="del">
+    <td>delete_restaurant_candidate</td>
+    <td>8172</td>
+    <td>no_match</td>
+    <td><b>The Warehouse Juice Bar</b><br>4 Brampton Grove, London, NW4 9HG, United Kingdom (UK)</td>
+    <td><b>The Warehouse Cafe SE16</b><br>Verney Way, London SE16 3DH, UK<br><small>OPERATIONAL</small></td>
+    <td>Red row not approved by user<br><small>LLM דחה (0.95): Different locations in London (NW4 vs SE16, ~5km apart). While both are cafes/food establishments with 'Warehouse' in the name, they are in completely different postal code areas. Different addresses, different neighborhoods. These are either different branches or unrelated businesses with similar names.</small></td>
+    <td><a href="https://maps.google.com/?cid=14113424106058934974&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8173</td>
+    <td>verified</td>
+    <td><b>Tish Bar &amp; Restaurant</b><br>196 Haverstock Hill, London, NW3 2AH, UK</td>
+    <td><b>Tish</b><br>196-198 Haverstock Hill, London NW3 2AG, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=8076008962967169648&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8174</td>
+    <td>verified</td>
+    <td><b>Tony Page Marylebone</b><br>26 Paddington St,  London , W1U 5QY, United Kingdom</td>
+    <td><b>Tony Page Marylebone</b><br>26 Paddington St, London W1U 5QY, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical unique name 'Tony Page Marylebone', exact house number and street match (26 Paddington St), same London location. Address format variations (W1U 5QY vs W1U 5QY) and UK vs United Kingdom are trivial. Operational status confirmed. The 'no-city-match' flag in deterministic analysis appears to be a false negative - both clearly reference London/Marylebone.</small></td>
+    <td><a href="https://maps.google.com/?cid=10399659307285758886&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8175</td>
+    <td>verified</td>
+    <td><b>Tuk Tuk</b><br>115 Golders Green Rd London, NW11 8HR, United Kingdom</td>
+    <td><b>TUK TUK Golders Green</b><br>115 Golders Green Rd, London NW11 8HR, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): זהו אותו המקום - שם זהה (Tuk Tuk), כתובת זהה לחלוטין (115 Golders Green Rd, London NW11 8HR), רישתק תואם (restaurant/Israeli restaurant). ההבדל בקוד הדואר (8HR vs 8HR) הוא שונות בעיצוב בלבד. Google מספק מידע מעודכן יותר על סוג המקום (hookah bar, Israeli restaurant).</small></td>
+    <td><a href="https://maps.google.com/?cid=15732326323656478265&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8176</td>
+    <td>verified</td>
+    <td><b>White Fish</b><br>10-12 Bell Ln Hendon, London, NW4 2AD, United Kingdom</td>
+    <td><b>White Fish</b><br>10-12 Bell Ln, London NW4 2AD, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): זהה שם ייחודי (White Fish), כתובת זהה (10-12 Bell Ln, London NW4 2AD), אותו סוג עסק (דגים וקטגוריות מזון), פעיל. ההבדל בעיר בו-זמנית הוא שגיאת שדה בבסיס הנתונים - קואורדינטות ממשיות תואמות</small></td>
+    <td><a href="https://maps.google.com/?cid=14501827443318487004&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8177</td>
+    <td>verified</td>
+    <td><b>White House Express</b><br>63 Brent Street, Hendon, London, NW4 2EA, United Kingdom (UK)</td>
+    <td><b>White House</b><br>63 Brent St, London NW4 2EA, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical address (63 Brent St, London NW4 2EA), exact house number and street match. 'White House Express' vs 'White House' are the same establishment - 'Express' is a common variant for quick-service locations. Google shows operational restaurant/takeaway at exact coordinates. Minor name abbreviation is typical for Google Places listings.</small></td>
+    <td><a href="https://maps.google.com/?cid=559952196737152232&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8178</td>
+    <td>verified</td>
+    <td><b>Woodberry Down Bakery (Commercial)</b><br>2A Crowland Road South Tottenham, London, N15 6UT, United Kingdom (UK)</td>
+    <td><b>Woodberry Down Bakery</b><br>2A Crowland Rd, London N15 6UT, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>LLM אישר (0.95): Identical unique name 'Woodberry Down Bakery', same street (Crowland Rd), same postal code (N15 6UT), same city (London). Address formatting differences are minor (South Tottenham is a district within London N15). Google Places shows operational bakery at exact coordinates. The deterministic 'no-city-match' flag is a false negative—South Tottenham and London are the same location.</small></td>
+    <td><a href="https://maps.google.com/?cid=6685008271719588249&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+<tr class="ok">
+    <td>apply_google_shadow</td>
+    <td>8179</td>
+    <td>verified</td>
+    <td><b>Yossi's Bakery</b><br>11 Glengall Road, Edgware, HA8 8SX, UK</td>
+    <td><b>Yossis Bakery</b><br>11 Glengall Rd, Edgware HA8 8TB, UK<br><small>OPERATIONAL</small></td>
+    <td>User approved all green rows<br><small>unique name matches + same city</small></td>
+    <td><a href="https://maps.google.com/?cid=9863968428476306397&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a></td>
+  </tr>
+</tbody></table></body></html>

@@ -13,6 +13,8 @@ import { HostingController } from './hosting.controller';
 import { HostingService } from './hosting.service';
 import { HostingChatGateway } from './hosting-chat.gateway';
 import { NotificationsModule } from '../notifications/notifications.module';
+import { ReportsModule } from '../reports/reports.module';
+import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
@@ -33,6 +35,8 @@ import { NotificationsModule } from '../notifications/notifications.module';
       }),
     }),
     NotificationsModule,
+    ReportsModule,
+    UsersModule,
   ],
   controllers: [HostingController],
   providers: [HostingService, HostingChatGateway],

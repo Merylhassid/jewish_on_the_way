@@ -16,7 +16,10 @@ import { Logger, OnModuleDestroy } from '@nestjs/common';
 import { HostingChatMessage } from './entities/hosting-chat-message.entity';
 import { HostingRequest } from './entities/hosting-request.entity';
 import { ChatCursor } from '../chat/chat-cursor.entity';
+import { User } from '../users/user.entity';
 import { AuditService } from '../audit/audit.service';
+import { ReportsService } from '../reports/reports.service';
+import { UsersService } from '../users/users.service';
 
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10_000;
@@ -60,7 +63,11 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     private requestsRepo: Repository<HostingRequest>,
     @InjectRepository(ChatCursor)
     private cursorsRepo: Repository<ChatCursor>,
+    @InjectRepository(User)
+    private usersRepo: Repository<User>,
     private audit: AuditService,
+    private reports: ReportsService,
+    private users: UsersService,
   ) {
     this.cleanupInterval = setInterval(() => {
       const cutoff = Date.now() - RATE_LIMIT_STALE_MS;
@@ -133,6 +140,13 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
       request.host_id === userId;
     if (!isParticipant) throw new WsException('Not a participant of this request');
 
+    const otherId = request.user?.id === userId
+      ? (request.offer?.user?.id ?? request.host_id)
+      : request.user?.id;
+    if (otherId && (await this.users.isBlockedEitherWay(userId, otherId))) {
+      throw new WsException('Chat not available');
+    }
+
     // Store user name from participants for presence
     const participantUser =
       request.user?.id === userId ? request.user : request.offer?.user;
@@ -147,6 +161,15 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
         lastName: participantUser.lastName ?? '',
       };
     }
+
+    // Tell the client who the other participant is (needed for report/block actions)
+    let otherUser = request.user?.id === userId ? request.offer?.user : request.user;
+    if (!otherUser && otherId) {
+      otherUser = (await this.usersRepo.findOne({ where: { id: otherId } })) ?? undefined;
+    }
+    client.emit('hosting-chat:participant', otherUser
+      ? { id: otherUser.id, firstName: otherUser.firstName, lastName: otherUser.lastName }
+      : null);
 
     const room = `hosting-request:${data.requestId}`;
     await client.join(room);
@@ -201,6 +224,13 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
       request.host_id === userId;
     if (!isParticipant) throw new WsException('Not a participant');
 
+    const otherId = request.user?.id === userId
+      ? (request.offer?.user?.id ?? request.host_id)
+      : request.user?.id;
+    if (otherId && (await this.users.isBlockedEitherWay(userId, otherId))) {
+      throw new WsException('Chat unavailable');
+    }
+
     const msg = this.messagesRepo.create({
       content,
       request,
@@ -240,6 +270,26 @@ export class HostingChatGateway implements OnGatewayConnection, OnGatewayDisconn
     await this.upsertCursor(room, userId, cu?.firstName ?? '', cu?.lastName ?? '', data.lastReadId);
     const cursors = await this.getCursors(room);
     this.server.to(room).emit('hosting-chat:cursors', { cursors });
+    return { ok: true };
+  }
+
+  // ── Report ──
+
+  @SubscribeMessage('hosting-chat:report')
+  async handleReport(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: { requestId: number; reason?: string },
+  ) {
+    const userId = (client as any).userId;
+    if (!userId) throw new WsException('Unauthorized');
+
+    await this.reports.create(userId, {
+      context: 'hosting_chat',
+      entityId: data.requestId,
+      reason: data.reason,
+    });
+
+    this.audit.log('CHAT_MESSAGE_REPORTED', userId, { type: 'hosting', requestId: data.requestId });
     return { ok: true };
   }
 

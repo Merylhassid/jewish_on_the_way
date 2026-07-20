@@ -138,6 +138,14 @@
 {"query":"מנין בפריזז","expected":{"category":"minyan","destinationText":"פריז","explicitDestination":true}}
 {"query":"להתרח במיאמי","expected":{"category":"hosting","destinationText":"מיאמי","explicitDestination":true,"hosting":{"mealOrStay":"either"}}}
 {"query":"piza in miami","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"פיצ במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"pizza","type":"dairy"}}}
+{"query":"המבןרגר במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"burger","type":"meat"}}}
+{"query":"המבורג במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"burger","type":"meat"}}}
+{"query":"סוש במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
+{"query":"חומו במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"hummus","type":"pareve"}}}
+{"query":"שוארמה במיאמי","expected":{"category":"restaurant","destinationText":"מיאמי","explicitDestination":true,"restaurant":{"dish":"shawarma","type":"meat"}}}
+{"query":"בית כנס במיאמי","expected":{"category":"synagogue","destinationText":"מיאמי","explicitDestination":true}}
+{"query":"בית גנסת במיאמי","expected":{"category":"synagogue","destinationText":"מיאמי","explicitDestination":true}}
 {"query":"sushii near me","expected":{"category":"restaurant","destinationText":null,"explicitDestination":false,"useCurrentLocation":true,"restaurant":{"dish":"sushi","type":"pareve"}}}
 {"query":"synagoge in london","expected":{"category":"synagogue","destinationText":"לונדון","explicitDestination":true}}
 {"query":"minyn in paris","expected":{"category":"minyan","destinationText":"פריז","explicitDestination":true}}

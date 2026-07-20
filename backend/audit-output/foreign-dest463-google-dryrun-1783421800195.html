@@ -1,0 +1,447 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>Foreign Google dry-run FR</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:18px}.sum{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin:10px 0 16px;font-size:13px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12px;margin-bottom:18px}
+th,td{border:1px solid #e0e0e0;padding:5px 7px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}.muted{color:#607d8b;font-size:11px;margin-top:3px}
+.reason{max-width:320px}.photo{max-width:220px;direction:ltr;text-align:left;word-break:break-all}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>Google dry-run למסעדות חו״ל — FR</h1>
+<div class="sum">
+שורות שנבדקו: <b>36</b> מתוך 36<br>
+✅ בטוח נכון: <b>33</b> · ❓ אולי: <b>0</b> · ❌ לא נמצא/לא נכון: <b>3</b> · שגיאות: <b>0</b><br>
+Text Search IDs-only: 83 · Details: 50 (50 חדשים, 21 cache) · Google estimate max: ~$0.85 · LLM: $0.017 (17)
+<br>לא נכתב כלום ל-DB. נשמר גם google_photo_name בשביל שלב תמונות עתידי.
+</div>
+
+    <h2 style="color:#1b5e20">✅ בטוח נכון — 33</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7972</td>
+      <td><b>Michaeli Bakery Upper East Side</b><div class="muted">New York · United States</div></td>
+      <td>401 East 90th St, New York, NY, 10128, United States</td>
+      <td>Michaeli Bakery</td>
+      <td>401 E 90th St, New York, NY 10128, USA</td>
+      <td>4.8 (243)</td>
+      <td>(646) 454-1466</td>
+      <td class="photo">places/ChIJxeuA8qJZwokRnR2Q5wTO-C4/photos/AaVGc3lkHgF9HS13-QUpQZ7Hbj-Ck985BGi2pJL9Humqlc-tdsmM_3lDFZU8OpORw2kDzpwXG9E4nfJsXa_DNjlUwT-0Ckb0b0i15wN-Wg6rfGUnVQqjafwsMMulEukvPo-s4PPYAgrNHs-qpGJE6AqigezVxH4DpDoroqeBMOe1CoxbyUsBt5dtTFv-PIEEb7BzXXl-JGYTCfmr0dU8535wktPXEAjCqOxSyDRfAasPtQ0TU7YyBoqUs4FVB5bciPs7cJlIPQkToXp7N2F5_LIUcZpVsxIfRMM6VFlmY13lzOZLzZ07m_ad0i-mN5L1xqTRaPnZrOcGerdfGO42-IFZ7JbvNDo4kwU6rDNNwfOZhTnjf-Cf2Do8N0ScJEkZvN-k5KhXJXKSKj3u4eOnOdrwwKR1wPX7Zg2knHgGrhr-R7T50w</td>
+      <td class="reason">LLM אישר (0.95): Same unique name 'Michaeli Bakery', identical address (401 E 90th St), same city New York, same kosher bakery type. Address format variations (East vs E, spacing, zip format) are standard Google normalization. Distance metric error likely due to geocoding precision differences, not actual location mismatch.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Michaeli%20Bakery%20Upper%20East%20Side%20401%20East%2090th%20St%2C%20New%20York%2C%20NY%2C%2010128%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJxeuA8qJZwokRnR2Q5wTO-C4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7973</td>
+      <td><b>Mike's Bistro</b><div class="muted">New York · United States</div></td>
+      <td>127 East 54th St New York, NY, 10022, United States</td>
+      <td>Mike's Bistro</td>
+      <td>127 E 54th St, New York, NY 10022, USA</td>
+      <td>4.7 (1098)</td>
+      <td>(212) 799-3911</td>
+      <td class="photo">places/ChIJfYqvteRYwokR1I0wCpXMG8Y/photos/AaVGc3maH-gQMG6Xusp-xQ0Gh8uTCixwp3kuPma8jmNj9QdbMbz9haQ2cRe1mtXwAZF9Thf7ZEwQhtGwn0cd2Onbw1-UTHzFZU97GVIMceTtjT85QmGkwy06vUCt2YHDYpnxEuQ86C36JUNX2vmnZq2HMaMY5MnoRY7hUqlL1z8M_DGUuKr5gD4Ny_2E9qyLBZIwjCSt_fEz-EO_01NEQa7wuOu-KPd5OGrxCoWuZeqt2n7ZiaBIVncURFakGZ4_LcGkB6m3W5IO46VvUu1fpOJ2qe9iWDMmqk0A9HvawdA6zwjbZ9g_0vqcp9JfcG9UBAxqAKCha8FiWm6t-LDTFJua9ng5iBW758ACRPyqTwAbs5d135kc6ci-DBSHkoF2UfxjVwkwXzRO2DrViwwENQTRTkpRwtAthI2U37QxghF0-KWf78soOldt_bOE8-3djMsM</td>
+      <td class="reason">LLM אישר (0.98): שם ייחודי זהה, כתובת משפחה וביתן בדיוק (127 E 54th St), עיר זהה (New York), סוג עסק תואם (bistro/restaurant). ההבדלים קטנים: East vs E (סטנדרטי), וניסוח כתובת שונה קלות.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mike's%20Bistro%20127%20East%2054th%20St%20New%20York%2C%20NY%2C%2010022%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJfYqvteRYwokR1I0wCpXMG8Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7974</td>
+      <td><b>Mikihana Sushi</b><div class="muted">New York · United States</div></td>
+      <td>101-10 Queens Blvd, Queens, NY, 11375, USA</td>
+      <td>Mikihana Sushi &amp; Poke</td>
+      <td>101-10 Queens Blvd, Forest Hills, NY 11375, USA</td>
+      <td>4.6 (633)</td>
+      <td>(718) 406-9676</td>
+      <td class="photo">places/ChIJv2dTXCVewokRR3_aTNdS_kI/photos/AaVGc3nBb6MSJftogGAsurRSltnDNhkkHKzBeQ-jsk-i3AjbLLrGOtckpm_y20KB62n2vNqToPSeju3CjIUkah3uCX74VwTA8ldqDaUdQzvnHO-0UMK69RXPv1yuC4GQQKLU83CpnLoSQalqiSDYQyspYtCCB4IanUlXA7vEWCBZgpbdlTNexv_N_udGUcRdYWhcXfHe9Ik8c3i6iJO5KSQm-W5VesH1OuISOYenjBuRInV-YHXA8-1yZzZk3tnYvmPSZ1bor6LkK66yq7FE5JX_JLVWxtAFktKHNEbxyHsQCVGhNEs2mLIr1do8chVNs9eR9-Sk2q3tPf2I_syfp2_0nTNdI20j4OCYzmUXwzGvrcdsXTAxVgMzfGl-hy6saODF3RUoDM4xUAhrr_jKuAXK5BKPkpej_19htsuxx0TlSgcZPg</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mikihana%20Sushi%20101-10%20Queens%20Blvd%2C%20Queens%2C%20NY%2C%2011375%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJv2dTXCVewokRR3_aTNdS_kI" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7975</td>
+      <td><b>Milk Crate Coffee</b><div class="muted">New York · United States</div></td>
+      <td>1278 49th St, Brooklyn, NY, 11219, United States</td>
+      <td>Milk Crate Coffee</td>
+      <td>1278 49th St, Brooklyn, NY 11219, USA</td>
+      <td>4.7 (342)</td>
+      <td>(914) 485-7135</td>
+      <td class="photo">places/ChIJKddTiWpFwokRxCFvzjpdO9U/photos/AaVGc3lFjbp3SV-4Jz6nlq5txvNSVZ_vNzRtLG2nMj30lIW47D9WtrIcnRp6fWWWhDvz3_u66L0CWDuKuLwdDoG8S_9TGhm-lqoqXSg1_F1SzrpFqcIgpAoEn6Kd1YRuPuE0YJV7kVlgFfSzO-fuqMjF4jkPaHYiAr3eblUdajP_2qMQfZkCO-2AUQYvQaTpyOZ8F6OHwGcmbroAbudpcdK0SqNiR4Tih6zpCV-9D5vRwNPXR8nWlZ-musjz3-QX1j3qwJG18uXEFbrKm1PQspETmjhe1APP8XEApvLLRJSr-M3J8JiQrBciitpZXeOAxpf2FDJGax2QF2uLmhTEhyjT9l4NBZIjfnXppXVn11eWwR9dCmLkj9PTEX47vEQ0FIDTkLBKcHitdVR6-YlXk6hD86f8MwWiO0KBGnY7NhNMrB5kfetj</td>
+      <td class="reason">LLM אישר (0.95): Identical name (Milk Crate Coffee), exact house number match (1278), exact street match (49th St), same neighborhood (Brooklyn, NY 11219). Minor address formatting differences (comma placement) are insignificant. Google Places shows operational status and food/cafe business type matching. Distance metric anomaly (8704m) appears to be data artifact. High confidence this is the same physical location.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Milk%20Crate%20Coffee%201278%2049th%20St%2C%20Brooklyn%2C%20NY%2C%2011219%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJKddTiWpFwokRxCFvzjpdO9U" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7976</td>
+      <td><b>Milk N Honey</b><div class="muted">New York · United States</div></td>
+      <td>5013 10th Ave Brooklyn, NY, 11219, United States</td>
+      <td>Milk N Honey</td>
+      <td>5013 10th Ave, Brooklyn, NY 11219, USA</td>
+      <td>4.5 (350)</td>
+      <td>(718) 871-4319</td>
+      <td class="photo">places/ChIJAQf5RTNFwokRfzpykx0fCgk/photos/AaVGc3kw9XepdFnZhmovoD-z-QJMYgsoL0gSoMW0TnwfBWvv-tQyU1KtXn7Qb7ys_l02keoZV53U5YzSsMdUXpORtPxTlgWihhtvPSRq4qNakxHIMYOp8N7I5jrL7eBBuAnpDbaskA0239-CMYCRj6vjpDlPbbnoaNQzON53RHoT1djBUUTjrsvVh65beK4zczwZsq_DxErIkFdBmWNyCiRCTOXZiqH6v3xiiKnxNdieDn87tbN037Csq_P_K8umCwsjtSbIm7SL4-8bC3uzKNep2gbclEiKaq-TAoHSfhirSejJHl34Ywl0X5d4spuZGeqcefZY065gv1Q_VG4YrxBv8boEcRx9R-J4GA2vg5VjNITD6H04ZuyhTAbJBTloL6vSXYrVf7L0OeoSRXnkzPp866tySTsoqUmTHegoXi5YvjF0tE0</td>
+      <td class="reason">LLM אישר (0.95): זהה שם ייחודי (Milk N Honey), כתובת מדויקת זהה (5013 10th Ave, Brooklyn, NY 11219), עיר זהה (Brooklyn), סוגים עסקיים תואמים (pizza_restaurant, food). ההבדל בעיצוב הכתובת (10th Ave vs 10th Ave,) הוא טריוויאלי. זה אותו המקום הכשר.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Milk%20N%20Honey%205013%2010th%20Ave%20Brooklyn%2C%20NY%2C%2011219%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJAQf5RTNFwokRfzpykx0fCgk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7978</td>
+      <td><b>Mill Basin Deli</b><div class="muted">New York · United States</div></td>
+      <td>5823 Avenue T Brooklyn, NY, 11234, United States</td>
+      <td>Mill Basin Deli</td>
+      <td>5823 Avenue T, Brooklyn, NY 11234, USA</td>
+      <td>4.3 (733)</td>
+      <td>(718) 241-4910</td>
+      <td class="photo">places/ChIJOfPzdkZDwokRp-inFN4jIeE/photos/AaVGc3k5s1MV9vgsEvezCanRxBq4hJf_yce-n2QsZfAppvyun0kcOJVImHCTfHceN7833-ivQ9yhxfxoKC-ldSz3jcnCZTvCJe4Isv_E-U2UomeQvJUJmg6yVrpQ1OLWnCJJvyDtRdS7-8BnRVyq7ILvx78cJj3D_u9A2KHRT1qxVwuPOczZj58JaZ03_gxstwdUParYaC_IRWJ9jPVkbHYbVBIHDFdCczuM58mAdL5X_CNBH3DXCPEEYXVU2sNr4c3xddqa4O9B7mYOWPb7azow3e2VI5l2xm-wB-aLBRDPTthiVWcpy1dpWV62wTd_zyAzpIwFyAgd3uKhJLRwEJAMFnjNxeLiVerzQU3XsdRwLjTJaaz23cVBn21sdG4g8JFy-J3hMZD_3VZUXBSMTaezMo5nv5DzeWkqsKIHq4bkCapSyg</td>
+      <td class="reason">LLM אישר (0.98): Identical name (Mill Basin Deli), exact house number match (5823), exact street match (Avenue T), same borough (Brooklyn), same ZIP (11234). Minor address formatting differences are inconsequential. Operational kosher deli with food delivery services. High confidence despite deterministic 'maybe' - the address match is definitive.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mill%20Basin%20Deli%205823%20Avenue%20T%20Brooklyn%2C%20NY%2C%2011234%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJOfPzdkZDwokRp-inFN4jIeE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7979</td>
+      <td><b>Mixed Greens</b><div class="muted">New York · United States</div></td>
+      <td>2486 Coney Island Ave Brooklyn, NY, 11223, USA</td>
+      <td>Mixed Greens Event Design</td>
+      <td>211 E 121st St, New York, NY 10035, USA</td>
+      <td>5 (2)</td>
+      <td>(917) 755-5597</td>
+      <td class="photo">places/ChIJjaFY0t31wokRqKLl0MFc3vg/photos/AaVGc3mb1duXs7LA7cigb9QD01lgDTljQUedZ1bmty-mLoYs8d-cLAiKOCA3R8-dcavFTUqHedlAzjqcWgyLPhSFiZy5hM0KAccU0ypPNYtlo6y_1I2Fwf6omdFmHrVht4zgqDEFZI4GpG-FeR8vBc-PdZFFuf2sFT49Dc90xHvkbxIAFoyb6e4O1ljxjPiEptJ2Sk-1Q5YV8XFdFfIeBODEse3NKXk0iX_QAMAG5YDmv_MK49Zt-q5EC6Heggi1YErU2iJe40FIGX3lUtoVQs-lPVZVZ4ySoYrM_N3DrdQaCPvmc31NpOfgrrRrTEXg002vGTbGmWmrK-w9gi09glnPciMvnpN6WVkjFAtg-nHnlZZA3XNB6baaGeV0rRm42x6cv14WQtw4dSbOwhKiHSeuXAK5zQU3vDvEVMIeV7afl2-SJqM</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mixed%20Greens%202486%20Coney%20Island%20Ave%20Brooklyn%2C%20NY%2C%2011223%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJjaFY0t31wokRqKLl0MFc3vg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7980</td>
+      <td><b>Miznon Times Square</b><div class="muted">New York · United States</div></td>
+      <td>1410 Broadway New York, NY, 10018, United States</td>
+      <td>Miznon</td>
+      <td>1410 Broadway, New York, NY 10018, USA</td>
+      <td>4.5 (478)</td>
+      <td>(929) 448-1845</td>
+      <td class="photo">places/ChIJkXVQ1A1ZwokRncZcn4IbWMM/photos/AaVGc3lze18_TJ5pPo_UI2nW_BFRw6yhWeiBID9_CJQTa2a5vjLoKLb7o1vL3NjcsmKKRubO8x2J8iD7k5_KlgH2Jmck3Vhw0krBRVG65JbLyWSUwmld8Msy40WHMW46OpTKzYXyW2_hHDB68s7hLs4577zBDbBNFC0gzMqe-RGNleETp0qbcVN-SULsMACP4BETVBEVqwfQOITZPoODC_1A2vDZLWhXeVpWmakvBG6cCxYM2Lo6JJj0kLvZP7-li1s7wMIMG7WdGiboW_6BKn4IMXsUalVcKPw3twiT1ZQCTu7Va2aP0_GbirWMfje-bl2AqUVVvrNC1H1ArhKd97R7AEO-hoD_szuvgO78fCKExBVDOEc-R51zXK5hYZORKcyltqEWk2v19CQzluK0eurG7H4OxKEd7SXGWxvwYGlC6AXr_shm</td>
+      <td class="reason">LLM אישר (0.98): Unique restaurant name 'Miznon' + exact street address match (1410 Broadway) + exact zip code (10018) + same city (New York) + both operational Israeli/Mediterranean restaurants. The 'Times Square' descriptor in A refers to the neighborhood location. Address format variations are inconsequential.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Miznon%20Times%20Square%201410%20Broadway%20New%20York%2C%20NY%2C%2010018%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJkXVQ1A1ZwokRncZcn4IbWMM" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7981</td>
+      <td><b>Mocha Burger Lux Times Square</b><div class="muted">New York · United States</div></td>
+      <td>4 E 46th St,  New York, NY , 10017, USA</td>
+      <td>Mocha Burger - Times Square</td>
+      <td>4 E 46th St, New York, NY 10017, USA</td>
+      <td>4.3 (453)</td>
+      <td>(212) 517-6353</td>
+      <td class="photo">places/ChIJD-T9sFtZwokRzkOxx2683IQ/photos/AaVGc3m8Od0l9LG5cw4ogrP-prfGWqwXaLxyTsJeq9HTkS8832wRjrAaOWpHQu7dfeE2gRe5BsgA7h6nk5KHvojjY-Rh9MrqKkiXNN9la7QUoEG4t01Zgie06EgzMOoUBMe9pIVKF8Fu0C1FKzIAgTxfPMXNYbEAuPdCdh_3XmKL1ASc96El8ZfifD7Sednm4wXfXBqGGVwGz0z1MwDi6YDBPKQfxlR53-ZlNeLKI5nkp6LNk270jkid6tRQTftJs1Z-sZhVsSJrag4EbuAjcNcPIO7LoGR60ZhnyhPFCiN7cNtptnbxgE8mFoMbjehTpIiYh1DTvdo_9hvAH7-S3BOF0V8RNjN76MjEWeewikIopFrjocJbfPQ0ynRBvUJ3Gu5x7TwgoFikbRjKcx9Bxy7Xm-wLhsrhNBjeRxr6PgH3R19cLKHXAvlrubs4s_QltE_L</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mocha%20Burger%20Lux%20Times%20Square%204%20E%2046th%20St%2C%20%20New%20York%2C%20NY%20%2C%2010017%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJD-T9sFtZwokRzkOxx2683IQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7982</td>
+      <td><b>Mocha Burger Union Square</b><div class="muted">New York · United States</div></td>
+      <td>127 4th Ave New York, NY, 10003, United States</td>
+      <td>Mocha Burger</td>
+      <td>127 4th Ave, New York, NY 10003, USA</td>
+      <td>4.4 (2145)</td>
+      <td>(212) 381-1172</td>
+      <td class="photo">places/ChIJRYidG45ZwokRhvi3p0yHzKg/photos/AaVGc3kxfqFpHIcCdQF2xLbZ9arvc7m5QCTCjJleeDDR8D8aZPe6YV-Ns0xu8R-0KRaVlThmOxZIaOpVCL9865OgkBcowCBBP3O64JfJS2ioXIYnyVTkKq4yeGQeiRiRywTLdUrJJjcg5uG32lz26N1K4RaWuC8nb_mKJs7MvU4047O3QiRzPB9RlFy5MBluQRj9zAJfKuYm5jUDby9qMC0dxQvd2ss2nzK05HTgYG4sq2XtT4ngx6zQV6N0Z5ZJKZQ1tCtcHnKyCaxonjP5GISwwL8ZpLZmzxOdYElp_6EKRjnOBGDh5Mtv-fT21rtXe1-9TfBpOSS4UEi1cUtID9YhRrUlpDKAuFbj6jqzHk828BPDYPY_GRWAsBW0wL-NIwg4SaWBFlkBYTXAKzxTV5P27keApUrNDWer-UhsGKNJMM0W896kjUxzRovLdt7gRA</td>
+      <td class="reason">LLM אישר (0.95): Same unique name 'Mocha Burger', identical address (127 4th Ave, New York, NY 10003), exact house number and street match. 'Union Square' in A is a neighborhood descriptor for the same location. Minor address formatting differences are insignificant. Both operational food establishments.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mocha%20Burger%20Union%20Square%20127%204th%20Ave%20New%20York%2C%20NY%2C%2010003%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJRYidG45ZwokRhvi3p0yHzKg" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7983</td>
+      <td><b>Modern Bread and Bagel Chelsea</b><div class="muted">New York · United States</div></td>
+      <td>139 West 14th St, New York, NY, 10011</td>
+      <td>Modern Bread and Bagel</td>
+      <td>139 W 14th St, New York, NY 10011, USA</td>
+      <td>4.4 (845)</td>
+      <td>(646) 437-7157</td>
+      <td class="photo">places/ChIJ38ApNi1ZwokRtQP2nJLHp-c/photos/AaVGc3m7AiV6iK9akj42_zYObRbvrI-pgw1YisvkwRoZCvy7M46kAVWGCPq6OG0vHGfAZTzbuys0P5yFfx0nKMhRlWt0WVTuVj4plbPJdZ4Pu53yminTLzqkBXIyyBz0_7QJJi7hMDznykAdfQ9UpVC84u1EijEro5UHwcUaOFKBXZt1wO25cNnKUDaliTqeRFPgU9kHFSnh9-FFoW03lzEQNH8V9FOxMumeBJHOHRta6O3FmlJJiJUFEV8ZDer3IrlJTI7t7m3ZZ__yZ3194qamVwSA2iKElebBxEFIA-Ekiiy03yRXxZIXrD1npM7m3VpxA-4IaXIqN9iKpykYUhruLdBpzb2BEY2gFyhAvEepHOLojDWHjHBHX27iAl7WGw5dF7HpQb8V7ywXcWeY4teD6aqHPbMSRTNRz4cUbzexH1g</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20Chelsea%20139%20West%2014th%20St%2C%20New%20York%2C%20NY%2C%2010011" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ38ApNi1ZwokRtQP2nJLHp-c" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7984</td>
+      <td><b>Modern Bread and Bagel Midtown East</b><div class="muted">New York · United States</div></td>
+      <td>630 Lexington Ave, New York, NY 10022, United States</td>
+      <td>Modern Bread and Bagel</td>
+      <td>630 Lexington Ave, New York, NY 10022, USA</td>
+      <td>4.5 (212)</td>
+      <td>(646) 583-3390</td>
+      <td class="photo">places/ChIJV3CwXVhZwokR-yVRey8hZIc/photos/AaVGc3mxcTSdAA6Qbs3qEQqlly4nlJpGS5_qQT7hsVKxVX4e7_Avcz9GNvsgJ9_gyaPBVTnCvPFW92fMRO_LzwkH7lg8eCrN6UspVs92TZdh1tZXzCn9JuzFH-33cXp-acdJyeZ46E2IdY4KySniqd9mzR49Bel46KFO_QkUl3A9-2Lw6fTYLNsz8Ww2Kqj3GziXg_2m1hlvNZKr2W_7Kn9ykG3cxxyOBXJWrCy-1-JPI0PO-nvDJXbpeN56fMa_kkDKTO5KI8CDe9588qEgbsWWVnriAbOc_yjlff454m7QIM7KTM5FYVKtLwwizG6T3y1k8paGqqbNAKVpLz5lXbXjhdjMwc2j1ZeSwT0oDyogxEtAx9jxKttpV-qYkFGeB9ej-lmm175VVE2TP9aQqhWi2iuDJMueFtn0ibawtkZT-NZdvn9eFzyw-SGHj83JPw</td>
+      <td class="reason">LLM אישר (0.95): Identical business name 'Modern Bread and Bagel', exact house number and street match (630 Lexington Ave), same city (New York), same ZIP code (10022). The 'Midtown East' descriptor in A is a neighborhood specification within the same address. Address format differences (USA vs United States) are inconsequential. High confidence this is the same kosher bagel shop.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20Midtown%20East%20630%20Lexington%20Ave%2C%20New%20York%2C%20NY%2010022%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV3CwXVhZwokR-yVRey8hZIc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7985</td>
+      <td><b>Modern Bread and Bagel UES</b><div class="muted">New York · United States</div></td>
+      <td>1427 3rd Ave New York, NY, 10028, United States</td>
+      <td>Modern Bread and Bagel</td>
+      <td>1427 3rd Ave, New York, NY 10028, USA</td>
+      <td>4.1 (259)</td>
+      <td>(646) 443-6658</td>
+      <td class="photo">places/ChIJjct64exZwokRJ_Y1AJFAUuc/photos/AaVGc3kzl3k8iFObz5YM4Xv4hdqCGMHiHo_8mN53IzNlA8w2UAmvJ3dbnFUJfCVMbnQj8ey3Ti7yCWWtih-1nDwdEpOkCzzACRHSz5vnFr-rMrbErVwLx6p-kBfsmtPMWG9FPvhdZr0XigY3vu17Rn1vjN2Y3m5-fkEImtdRa4QzD5DK2z6_mUZtYBwBkN2KaY0EHvPcoXQJ8j7KLEKKVlDOIBisMYNPCq0OVEXkE7Qc7VGBBlHDDkKJ4cKJz6zs2QAp7m3Q2pAeten3Ei1Ks6Qo9zzKtGAG5iaKhcCABWexHAjVqlZ8FSmmN-m9XFfErNusVpecg-fJbLOGbMknjQeTOd32ge-c-DnJoKuWM_KGbcSrJnp7mF_UxKC1KoZT187xKRtC2SRWuasOvLdwEOS18oyqD8QmRrYaqvprrLEQQQCY_Q</td>
+      <td class="reason">LLM אישר (0.95): שם זהה (Modern Bread and Bagel), כתובת זהה לחלוטין (1427 3rd Ave), עיר זהה (New York), מסוג מזון. הפרשי ניסוח בכתובת (NY vs New York) הם וריאציות סטנדרטיות בתבניות כתובות.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20UES%201427%203rd%20Ave%20New%20York%2C%20NY%2C%2010028%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJjct64exZwokRJ_Y1AJFAUuc" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7986</td>
+      <td><b>Modern Bread and Bagel UWS</b><div class="muted">New York · United States</div></td>
+      <td>472 Columbus Avenue, Manhattan, NY 10024, USA</td>
+      <td>Modern Bread and Bagel</td>
+      <td>472 Columbus Ave, New York, NY 10024, USA</td>
+      <td>4.3 (1744)</td>
+      <td>(646) 775-2985</td>
+      <td class="photo">places/ChIJAc9IDW5ZwokR18hDD6ev_j0/photos/AaVGc3lYJMrJn-klZPDNzOLsBweSiUbVoTocvyU7oz8npnpClGISeH9K5mLZN-199d7l5rJNSCMhtJxStETQr28tMff3WtqRHFpnTH1C7HwpZwSA7U6a5iI48_BD5ZCyK8z0e4fNExVyiYYqnkQE5KCI384t8rQ4rjv6TcUCK13QbN3MizmKu5M6JgXJCxhE9X_edppWgVJcOM_XW2Dv8vcuCXIdtbTk67zLeasRhASRfg8QnzFY58LkvdfQ6l3wmUtKlbw1Vgyg9V3QeKy-76jau3Oe8j_K9Q938ize4x5AIJfwmQUdP_cnfaX2upzsiyWLmsaQLXrbD7b9A7W7YH4UBSu6TZdTsVHi2AXeenCMD884BNJH5rim3P40cwJd0VKmI9i1qAn32kakj_Y6sW_6bhWpGV1Rglj-e2iH8TG20GCykA</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20UWS%20472%20Columbus%20Avenue%2C%20Manhattan%2C%20NY%2010024%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJAc9IDW5ZwokR18hDD6ev_j0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7987</td>
+      <td><b>Moishes Place</b><div class="muted">New York · United States</div></td>
+      <td>868 Bedford Ave, Brooklyn, NY 11205, USA</td>
+      <td>Moishe's Place</td>
+      <td>868 Bedford Ave, Brooklyn, NY 11205, USA</td>
+      <td>4.6 (590)</td>
+      <td>(718) 451-4700</td>
+      <td class="photo">places/ChIJR7bwsutbwokRwWg-sjxUwac/photos/AaVGc3n6lL0GYmpVB2wqIAthre2RajFZNvQbIuymmX08LfdXzNjwyXCQ7IkMtAGZc6dIM6ybsEfgdS4KSx5ZRnv3qBM5og4rMH08qXbIxScbhJnINfmBQ27vV3uebiWlP36kwkZtP5VfPi0owb4RsT3shB3hezXhxO2YxFZi7iyMwr7dCADj_3BGLvPpMhenvE5Vcf8pCtUg2kpp0P0cqMys-ZQUVk9gr0E-kl9I318hVJmxOgAuUpjXvvShhIBxTroZRIuv0VeWW_zjRsdJfwZ72abxbW-HpnArPl892sBg1usuUHfsUg10E8_VQUjTcWFXoAmM7Z42xnUhusp5RPh1g9oc0VnQzSX2be9Smny15JV4r6eH58gNb2UCAG_1JPsvG-AZZBSiL_omfnLo55EtZhm1ufKN-y2QixHuQNPL-SIoB6MN</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Moishes%20Place%20868%20Bedford%20Ave%2C%20Brooklyn%2C%20NY%2011205%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJR7bwsutbwokRwWg-sjxUwac" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7988</td>
+      <td><b>Morelia Ice Cream Paletas - Upper East Side</b><div class="muted">New York · United States</div></td>
+      <td>1435 1st Ave,  New York, NY , 10021, United States</td>
+      <td>Morelia Ice Cream Paletas - Upper East Side</td>
+      <td>1435 1st Ave, New York, NY 10021, USA</td>
+      <td>4.9 (457)</td>
+      <td>(646) 678-5932</td>
+      <td class="photo">places/ChIJBU_JUjZZwokRmHRAlpnlQS0/photos/AaVGc3n4kSijqJh4Q8ZOYGOrLgCPvPxbuUTnow6-Vy9jivIUPGk7j2IwVRvIeXdqfsFCk9Z90eh8y69bXlYpXy1Pe0XLeKYGjbq2x-xH0WTeGjcsKDzBWNz-W_sB_7CXUUD4XumZLxJqZcGRbHIFZ0M76rIpvM7WV7tjDVJwXZoO_nc2m6TuWDqjgT2Su0_VpybkjWlrTFHh0MXhVLq6uKpBq4VCKgDqp1Jzidk5oJz8Mn1EEqC3xMpFgc6f1qei5J4AV02noD3CW5A61jju5zZmYHPfUODrex17u15K4dLUzsDb-tAGn0zVed_-_HSU6x6ukFWXD_nB65Dtmkid5XzfUueTgZvjvQz0E-jXJSBH8xjvCLdCu-_AtRMlukPdEVz1lplrEfsJ9qbEnws8gUNvNRuUCPNfQ8uVedDH21gi-l6xBDls60bZeao8_2S93uor</td>
+      <td class="reason">LLM אישר (0.99): Identical unique restaurant name + exact same street address (1435 1st Ave) + same ZIP code (10021) + both operational ice cream shops. Minor address formatting differences (comma placement, 'United States' vs 'USA') are not meaningful. This is clearly the same physical location.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Morelia%20Ice%20Cream%20Paletas%20-%20Upper%20East%20Side%201435%201st%20Ave%2C%20%20New%20York%2C%20NY%20%2C%2010021%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJBU_JUjZZwokRmHRAlpnlQS0" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7989</td>
+      <td><b>Moshe's Falafel</b><div class="muted">New York · United States</div></td>
+      <td>SE Corner of W. 46th and 6th, Manhattan, USA</td>
+      <td>Moshe’s falafel</td>
+      <td>94 W 46th St, New York, NY 10036, USA</td>
+      <td>4.5 (357)</td>
+      <td>(212) 933-7414</td>
+      <td class="photo">places/ChIJnW1xnf9YwokRJCH1FQ1ne_4/photos/AaVGc3lc1I0AHqbDJ6snKf9AB8bdqVucQhmonOxpAu6A1i3CZcjBveN4NexNHJ1tHF8w-DhomBl5rg8lBdF4iky6Gd2MZs3nYbLDd65UHLOYONN3Se3eB5j6XwN0LNMqRocTFIwPEBwecg3HYoT16wxuejNS5Sh035htUC5823ZYvD8cgN5ajMaAUTMninr3fLiIbLjRBcj9Al1av3Dh4YLgdeLLIlmQyzVG164ykxm4XWdWBfOKHIsD8eraWHq9vCgCytgV9gfmjKICbRmvfBrcFsa1LqyTU3SS42zzrfjbFL-aIpwe9gWXsxysFE_BzH256T9W94IIpNfPL4lSwWJnkoxfU0zJWvtPysf5UXFJwWbuPzPaDhk20oAmNR7eqQ1gBIoxjx7QzHCnhSHJvJLF3YuTJ6fX3das4gb4A0ErH9A1ILN2Pxxp4xDRD92yblkn</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Moshe's%20Falafel%20SE%20Corner%20of%20W.%2046th%20and%206th%2C%20Manhattan%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJnW1xnf9YwokRJCH1FQ1ne_4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7990</td>
+      <td><b>Moshe's Falafel (UWS)</b><div class="muted">New York · United States</div></td>
+      <td>142 W 83rd St New York, NY 10024, 10024, United States</td>
+      <td>Moshe's falafel</td>
+      <td>142w W 83rd St, New York, NY 10024, USA</td>
+      <td>4.8 (208)</td>
+      <td>(212) 871-0182</td>
+      <td class="photo">places/ChIJpWnB11lZwokR0L7eQmeOZ8E/photos/AaVGc3n4FLJLl7ZuxiUraDM3xv3Ks6vq_v-CwdvJ6rprX-YCLQdEA_vwrMNTc7qs3XPN7hHj_slhn8OJFjctSiJkvaBxTsdNz9jzSk5Zrwi6t70-mML5YHcDh16tT3hmLMfEpOS_-XeJvSW4Cw8xOdCTR5uZT80Rucq-pCU1bPc5LLN1_HctAx4Xz-It-UdzLxDDZRGMcQ5-LtzKeUDazzIAQKIrrX_zax3jdKrl_VJay7ShrRcV1M_N3dz3EP8td_I8WjJ_Sso0hYFLBpN5CrkbAzvABwTrcdQ0Zdj319I6oEXraPbAOZzDFnYb5abGTSZxvx0QUgHgJA47ZaHzH1Jqzr4jOj7ziDvuFZ-M3lj1S6N_lifl0NSPPrcVzw4qHpfQ0w_vNkhRtLFzj36-o-tBdL7dAs0lxVuwPVzP3cZo1w1QgQy16n1C_0L4VdPDoHal</td>
+      <td class="reason">LLM אישר (0.95): Identical name 'Moshe's falafel' + same street address (142 W 83rd St) + same zip code (10024) + same city New York. Minor address formatting difference ('142w W' vs '142') is a typo. Restaurant types match (falafel, middle eastern, vegetarian). High confidence match despite deterministic system's hesitation.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Moshe's%20Falafel%20(UWS)%20142%20W%2083rd%20St%20New%20York%2C%20NY%2010024%2C%2010024%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJpWnB11lZwokR0L7eQmeOZ8E" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7991</td>
+      <td><b>Moshe's Falafel Food Truck</b><div class="muted">New York · United States</div></td>
+      <td>7th Avenue &amp; W 39th St New York, NY, 10018, USA</td>
+      <td>Moshe's falafel</td>
+      <td>142w W 83rd St, New York, NY 10024, USA</td>
+      <td>4.8 (208)</td>
+      <td>(212) 871-0182</td>
+      <td class="photo">places/ChIJpWnB11lZwokR0L7eQmeOZ8E/photos/AaVGc3n4FLJLl7ZuxiUraDM3xv3Ks6vq_v-CwdvJ6rprX-YCLQdEA_vwrMNTc7qs3XPN7hHj_slhn8OJFjctSiJkvaBxTsdNz9jzSk5Zrwi6t70-mML5YHcDh16tT3hmLMfEpOS_-XeJvSW4Cw8xOdCTR5uZT80Rucq-pCU1bPc5LLN1_HctAx4Xz-It-UdzLxDDZRGMcQ5-LtzKeUDazzIAQKIrrX_zax3jdKrl_VJay7ShrRcV1M_N3dz3EP8td_I8WjJ_Sso0hYFLBpN5CrkbAzvABwTrcdQ0Zdj319I6oEXraPbAOZzDFnYb5abGTSZxvx0QUgHgJA47ZaHzH1Jqzr4jOj7ziDvuFZ-M3lj1S6N_lifl0NSPPrcVzw4qHpfQ0w_vNkhRtLFzj36-o-tBdL7dAs0lxVuwPVzP3cZo1w1QgQy16n1C_0L4VdPDoHal</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Moshe's%20Falafel%20Food%20Truck%207th%20Avenue%20%26%20W%2039th%20St%20New%20York%2C%20NY%2C%2010018%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJpWnB11lZwokR0L7eQmeOZ8E" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7992</td>
+      <td><b>Moss Cafe</b><div class="muted">New York · United States</div></td>
+      <td>3260 Johnson Ave Bronx, NY, 10463, USA</td>
+      <td>Moss Café</td>
+      <td>3260 Johnson Ave, Bronx, NY 10463, USA</td>
+      <td>4.4 (655)</td>
+      <td>(347) 275-5000</td>
+      <td class="photo">places/ChIJj-Dtqb_zwokRYlU6uDe6ya4/photos/AaVGc3mYivNR2MaXfpBbQygGItcTzbxXz6mi-ANhxgR8ukdzSiSz8lDA1B3AxEcpxDOukk5uNtMS45m-vPR8MQnQQCjonjhXy_ZFwYEEj1ISl-6G-i6Mqz64AbsTPWI8CQKg5XhXFRmjh0J4-2kmv0uR65oK9MvNFsOvb2e0LmCgKxW-2DsOJ2kQcXAFWT97koB-p6WvUcZjz-esITnhA9jmlWHGgVqsKNni-8zlRMqyv-bSf-ItRNg2z4Cu7tOq1eKj_LMkqBDcGmEKzd-BCmwV-L4nSK5A-8bVavEtwb4B4a1-KWXbHScNC1P0opl6zhxtqP9J03Oz6NQpSkdTahnE3vSgfYpovDGp9rBpYYAC0H6x7VbCkSytsW3uxjyRvwLde1VqPAzcLlry1ugaSXVpk5EZGVtkB7x_qWuGnM_zw4ZUjBg1</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Moss%20Cafe%203260%20Johnson%20Ave%20Bronx%2C%20NY%2C%2010463%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJj-Dtqb_zwokRYlU6uDe6ya4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7993</td>
+      <td><b>Moti's</b><div class="muted">New York · United States</div></td>
+      <td>5007 16th Ave, Brooklyn, USA</td>
+      <td>Moti's</td>
+      <td>5007 16th Ave, Brooklyn, NY 11204, USA</td>
+      <td>4.5 (194)</td>
+      <td>(718) 438-9833</td>
+      <td class="photo">places/ChIJRxX1CClFwokRhxDzLH1JHTE/photos/AaVGc3ldyOlJQcExtWW-5b8FsaxLeeKkywtP7SwIbm-a7FAmglIEJ-q_s_vZ_4MjfVRypQzaJtSz1eljzEdkP4OuMcbmKf-G-BjIm3rgK3xZrw2i-T2Hf5arke3lJf-YLmqVWM_b6a5OQW9hvF84Pqrfw2BkwAydeJhAhUgy3Wwn9mV2ZYKEC5DeufNqXOnfHWq4YdnVfh2lXCwWGYGUaWfMP3rsZTZLz6grA2ipRWpgZD06xviwXTjFqKzRIfjvIx1YgxA981EsYmM6_ZuduFzNb8wsAXXHviRjib_vGYSZw-YKaJ00sP_od9XjjDodzFUck3JlrUqHmHLg81Qtgzfk0MpEzbb_Il2LnZjdSaF1bMNzzw_J_-9TP9JY9k2HfSj5o1LG3TW0EvXIC_rt_WgtQlt-6yjUghIQQWMliItRAj_RRn8T7mUuaW4K3uDSvpfc</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Moti's%205007%2016th%20Ave%2C%20Brooklyn%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJRxX1CClFwokRhxDzLH1JHTE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7994</td>
+      <td><b>Mozzarella</b><div class="muted">New York · United States</div></td>
+      <td>264 Lee Avenue, Brooklyn, NY 11208, USA</td>
+      <td>Mozzarella Kosher</td>
+      <td>264 Lee Ave, Brooklyn, NY 11206, USA</td>
+      <td>4.5 (673)</td>
+      <td>(718) 783-5555</td>
+      <td class="photo">places/ChIJgUzPzehbwokRAkIhEIPwWDk/photos/AaVGc3kiokFlXqEuVYFWga9wXG-mJlKQzxVOnKCRilIX4gkO42TRYGeNSqyX0kENmIBKiCHbtFU-3TLdFy36RpFrI7E6e4oV0Aa5gNwF-szJ3uwCPoW84JzU0aV1-PJUjmPfRik5mPCXlHR-4ySePAqu7T7-Rjm6KYp8v9AwM2gaCHsc9KwhfqL0ds3gK2apFGleGE_7DTXbkr8Cx1UMTm5GqBCmawS3Eg475hJgbB0Bvd5DLS25Os8_Y4Ok6UFxlmvWJN6e4gwHWcAdSSNeRb8fzZPv3AnFsd0tpbB58_n3r_qEXPMiAXj_D9XWvjkcwX6RwAb2pOSXoO4sdN-MqM5gSSNXn8gvOzuy4CS1aXoWnNzpv-BJDwXN7yP8lPo6WLPGy7rH95syrvVBaBgphu5_J5ZLw0_U9uLwxdlsPYR8EHYg3A</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mozzarella%20264%20Lee%20Avenue%2C%20Brooklyn%2C%20NY%2011208%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJgUzPzehbwokRAkIhEIPwWDk" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7995</td>
+      <td><b>Mr. Broadway</b><div class="muted">New York · United States</div></td>
+      <td>209 W. 38th Street, New York, NY, 10018, USA</td>
+      <td>Mr. Broadway</td>
+      <td>209 W 38th St, New York, NY 10018, USA</td>
+      <td>4.5 (5207)</td>
+      <td>(212) 921-2152</td>
+      <td class="photo">places/ChIJo1t6uatZwokRfS-8XExxTTY/photos/AaVGc3lsrI0BZAp_a9c8RCUssTNZUU1ocbbMfpe341am9wwiHSxhT7qHIBTU73B3BcoCDAbkG8oVDO83Y2zNAeegVCtowUOUqf17o8hDC9Bg6zSPD1hzB1JgBSMRH2uqQg43LUjNLw0I9DKpXBoTUDPGODHxd_dxJt4QD12sjTWsqLnV0JnoLAnFugHLgIViTiCJw8A4GcMoJiRhcJcvmlmnOnsqWA4mh2dGPpREsgIlg7SwRwud8DWVeXSb6F0PraH89jkUDM_lsZcnPC6EUkDlaEXqqERnroZMn2vwr6yQz8FVerxOMVPFIzRlb-Gy7hNkQBrQOOP_WSx-yZ0ZS1C72tXJ31vHfocegbYgANV7Hh79-WU7xxjQd18QS7td4qxWH97E0pi8pqaOG4Iq3NMogpNOO-ep3NDZ4NFsvIU_isUJH3IQb1AdJ9vxe-wBIipS</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mr.%20Broadway%20209%20W.%2038th%20Street%2C%20New%20York%2C%20NY%2C%2010018%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJo1t6uatZwokRfS-8XExxTTY" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7996</td>
+      <td><b>Mr. Broadway Brooklyn</b><div class="muted">New York · United States</div></td>
+      <td>1776 Ocean Ave Brooklyn, NY , 11230, United States</td>
+      <td>Mr Broadway Brooklyn</td>
+      <td>1776 Ocean Ave, Brooklyn, NY 11230, USA</td>
+      <td>4.5 (111)</td>
+      <td>(718) 600-4499</td>
+      <td class="photo">places/ChIJ5fQafQBFwokRMHo_ysRXy7g/photos/AaVGc3nWRerqTygC4bLB4D4d97xLRpFY2rTMDN8qzERN9tSk6XeKOmac1wtlmqBK2k2dsMRImUoWEyPB2bm5hR-ctKW4N9pGp7ySCvBt7dwAFo4AkrKZ25WeqRfu-YGZJRk2k8yanKE1G_mhtsHQmsCRbb2NrXMH--Kx-S7fmBaiRVnptyQRQ-0G2cBKr1C87CilJyybTttiIsMuf8OFATk3GQ59tUQQjlBTh8fyS16yYe2B8P6KwZabs888RwwVZmud84HcK6D5nzYPSy3rLfgvjk9dXK-GJq4ja75U05g0Lr0_dUejm7nWONwJEmdGCLjyoIF-abyDB8Zv6-tOdKvmqgC2-EODUoo1bP4PJ_kHzFmyT8Zw1tzIjetkSUncWRxlYMDtbYyZcq7gw9Rnm3EzAfAJxPevDpab3gefhTRG7ShPJ5dlgIMvCfdguW8mqszp</td>
+      <td class="reason">LLM אישר (0.95): Identical name (Mr Broadway Brooklyn), exact house number and street match (1776 Ocean Ave), same ZIP code (11230), same borough (Brooklyn). Address format variations are minor. Google status OPERATIONAL confirms active business. City field mismatch ('New York' vs 'Brooklyn') is not significant—both refer to same location; NYC includes Brooklyn. High confidence this is the same kosher deli.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mr.%20Broadway%20Brooklyn%201776%20Ocean%20Ave%20Brooklyn%2C%20NY%20%2C%2011230%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ5fQafQBFwokRMHo_ysRXy7g" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7997</td>
+      <td><b>Mr. Nosh</b><div class="muted">New York · United States</div></td>
+      <td>3323 Ave. N, Brooklyn, 11234, NY</td>
+      <td>Mr Nosh</td>
+      <td>3323 Avenue N, Brooklyn, NY 11234, USA</td>
+      <td>3.9 (229)</td>
+      <td>(718) 253-1400</td>
+      <td class="photo">places/ChIJZ-2phqZEwokRSNPRT_IwUpU/photos/AaVGc3klkNax8jFBv9WxCVW85_lTiAbUq9vdKRBOUywLfoj5VsG50Jp5CWtNGvzL1MjWnYdvEvPoY2sSWWcnZuGL-0HDfwob5MyziOWHScDtUpkBujYtxM32S2g7_LAZb6SHVhAWEs11KqGUp677xUTXIU_i93muKU2xt9ZTyKhg1VE1DB-fuBMsGB5THOo1tZWqQzl66v04ee9ufHAPaTv_TjwyQPILtY4leQVrI6w24-RrBP2fEE-HNqYn9K5xDH6wgHNQot-gScMs-3UelAzbt3qNPzaFeEub8ErMOmoruleyYiAENKD7ckm3c81ncnTuq5HEkT9MqPZSTShukmbJc-7PqzgQAkcdq7Q4a-uVEoKIBwWmSKC538QaqzhctaHULqG0i8vKz0eYIIQo6tYEttg0U4c_5fOW2VLvdsqO1gTg-NT3</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mr.%20Nosh%203323%20Ave.%20N%2C%20Brooklyn%2C%2011234%2C%20NY" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJZ-2phqZEwokRSNPRT_IwUpU" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7998</td>
+      <td><b>Munch Heimish</b><div class="muted">New York · United States</div></td>
+      <td>5219 13th Ave, Brooklyn, USA</td>
+      <td>Munch Heimish</td>
+      <td>5219 13th Ave, Brooklyn, NY 11219, USA</td>
+      <td>4.7 (439)</td>
+      <td>(718) 972-0010</td>
+      <td class="photo">places/ChIJV7WtJlpFwokR0QGiZigc4fA/photos/AaVGc3m0NXGvROFZGS-Y7WyriAUjwAS-3ReOTn2xd0xmpBBWT7cly06LJYEofqr8Wxbhrug7JGw66PUXM-GQEfDuydclpSMO1YJGj79msEDVoujC0rJGPBcmTffhQ1WxeI25ZFbZuOw605-6zIDZ4GwRJVluMgV6OdJGjzPIBqqoXBvNvHIUoMyC58HaX8J6KW058ngLuuK-aGqbQO1SIMmRP9N7TrQGonf6pts8t-V7KZauseBr4FqDIHRdnWnMNnig3hLgQxNWgtR7yxRamnsfl1AX8Lc9xLvacsZltQ39q0snoXekXV3kykn1Zp7s2RCIVXhLxAy-3ScYX1bbo5O9zYldYxcayMcmb8nAo-7W39L-YPkY3XxtPnQO9GM146ia3uixPpRWdPmnYre_CYbP10MieBJQ0nbU6ymXxzTfcOgvhXDgz78IWc4Utvats4fW</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Munch%20Heimish%205219%2013th%20Ave%2C%20Brooklyn%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJV7WtJlpFwokR0QGiZigc4fA" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>7999</td>
+      <td><b>Munch Street Food</b><div class="muted">New York · United States</div></td>
+      <td>1376 Coney Island Avenue, Brooklyn, NY, 11230, USA</td>
+      <td>Munch Street Food</td>
+      <td>1376 Coney Island Ave, Brooklyn, NY 11230, USA</td>
+      <td>4.6 (664)</td>
+      <td>(718) 521-2626</td>
+      <td class="photo">places/ChIJf82kWPFFwokRrtKFcvn5zqw/photos/AaVGc3lGOC9klsprcN6gCUFoQf3w0WQvQpFcYGrdueNvb3vyq46yrKPUdiaBmYUBpSlXVRNR8EMgY4jG1LvYPKVzDmZqrfm0avsLjrMK5EH9SFwNVueH-5zcvKXqvc7_imH6_33IBseZERb_Cs5nKJvjACocvZDkgyIFuo4OVASsQ-EI7VsZVMWWoFMOJJlzUw6q_QlD13xaK1QresLw-xADJ-ncxwRyPulwDBq4OVvSmIr7ypZZ1Qiv2l8kU7WH3vxt4Zdnu0fvRYumeMsX03h9ZMBxgLC_Bf8HIjaBTA-32ayLkQEVIQgAw1N3zq3oE5gBgH6XTMvfGVLBq765ZiEV1bmiAslBB5iCWlJtdfQBjFAKVGe-KDx9Akhg0pfI9aD41UeWCSPyHOPMwNjnRV-2JsKp-CaJABthpgeQK98xLS-2QVBX9ZICXzkJHLnbpQ</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Munch%20Street%20Food%201376%20Coney%20Island%20Avenue%2C%20Brooklyn%2C%20NY%2C%2011230%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJf82kWPFFwokRrtKFcvn5zqw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8000</td>
+      <td><b>My Grill Bar</b><div class="muted">New York · United States</div></td>
+      <td>1022 Avenue P, Brooklyn, NY 11230, USA</td>
+      <td>My Grill Bar</td>
+      <td>1022 Avenue P, Brooklyn, NY 11230, USA</td>
+      <td>4.2 (720)</td>
+      <td>(718) 975-7272</td>
+      <td class="photo">places/ChIJ2wZTmetEwokRM9SOdRm-aEw/photos/AaVGc3mXe3o7Ds2QNl45xd3KAi8EIc-78z6osvc1YgcFXk1mQPsVCzKzb1zrZUjWAZlx83cyBBgl_8y77WytkPBeckxl1Bijoymx_TwYdBOuq7Rj7uSKUVF57K6cgxLAII94iRYWKR4U1Cpc4rfbUDTs09--FNgdx2DkGK2GubDRj14LjRl1nl2YRus_a-2zAOBGl1kmi-sjpoI0Cv1O_z_GRaA6HrkOtyLljEwDGYJhfBYi_s2ml8WwZdC0FfM2q4orkzVOKjeoYfAl6OcgI3f9LeixQ_rUwQsHmwwsu4UrFKn4tj9FVLn6KtA8DI5Y_iBO-QFU1pZr8b-OTm3ALesjQEBurm1cRPRvwEaTlde7oabfsSc8ya-JFpMAPDVq_yc-GKUpzIBsPegL3K-bZWUsJzEAxnmLyPHcVCO7PhAHSw3tA0rwp0FSbQnapdAQWEbY</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=My%20Grill%20Bar%201022%20Avenue%20P%2C%20Brooklyn%2C%20NY%2011230%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ2wZTmetEwokRM9SOdRm-aEw" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8002</td>
+      <td><b>Naim Pizza</b><div class="muted">New York · United States</div></td>
+      <td>3904 15th Avenue  Brooklyn, NY, 11218, United States</td>
+      <td>Naim Kosher Pizza</td>
+      <td>3904 15th Ave, Brooklyn, NY 11218, USA</td>
+      <td>4.7 (224)</td>
+      <td>(718) 438-3569</td>
+      <td class="photo">places/ChIJLQ5xmipbwokRbnKvZfcml1Y/photos/AaVGc3md_8N0eMwo18LG_EU0K3lfqTvWQ2hd3eMMuNEd84UpWgJHsTfIv7tAiJx9tBmMmJHPQUNWB5GxdDcFQWJU46WnslDlcoELHA_OzqmiCRYBlGeajWuRa58ebG5onDXBrbBUNn-44OlDXyGfjPwOfiuyWT506Nn6jgsFrOjMAu8CoVn1ZK1uzTOqHQ9vgicxobtNB6f6zGW4Oe1fDU96gaqaQKetwrcTdnlwgnvrF9mJbcbT35EWaT-TI3wyy08J_J7o0zsA269lZfcwqeO3xcEUF7RdL3tXpUe0TO3AedkK4p8XG40oMHOuX49I0KO7GhTgtaoP9I2PxmhCBfS9IQZgdyAjPQYCwfQckKyTaLs13ojrD5VI4NqyeS6PtPZ0BUYF0h_B6ZrEWCeoktZy4ChfHl5S-y--aQmlpPWFy4KtRqJ2</td>
+      <td class="reason">LLM אישר (0.98): זהות שם ייחודית (Naim Kosher Pizza), כתובת זהה לחלוטין (3904 15th Ave, Brooklyn, NY 11218), סוג עסק תואם (פיצריה כשרה). ההבדלים במיקום בבסיס הנתונים שלנו לעומת Google היא שגיאה טכנית קלה. כל הפרטים העיקריים תואמים.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Naim%20Pizza%203904%2015th%20Avenue%20%20Brooklyn%2C%20NY%2C%2011218%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJLQ5xmipbwokRbnKvZfcml1Y" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8003</td>
+      <td><b>Naomi's Kosher Pizza &amp; Falafel</b><div class="muted">New York · United States</div></td>
+      <td>68-28 Main Street Flushing, NY, 11367, United States</td>
+      <td>Naomi's Kosher Pizza &amp; Falafel</td>
+      <td>68-28 Main St, Flushing, NY 11367, USA</td>
+      <td>4.6 (767)</td>
+      <td>(718) 520-8754</td>
+      <td class="photo">places/ChIJPQGeFmJgwokRnTmkDXwlsVQ/photos/AaVGc3nlePSO8xrm4rSW0hvs557iN-5JH84DYDQk2j7GH-V9Abb2JaXtOT6v5O7L2XlHCwWAA9yiJXblgzdhCGcrOaevfj4OCwQzJTmd0elGhqUTPtfpiUM58GNfM9VoJ-GHKTsMJ5Ul-hnNpAU-6TT45ONvj89W886buvZacvP4hfzJQ3AfaSER0asjuF-ZaQkHTH-mXrXWDdf-19eqb1epUwKMr_DVgdR6XVqYlB_kEsEISZOeAZRZjtosK5kcY7I07z4fqLhPR5XUfVIisKDSOhPSINdEp0f1LQu7gMDGw7CfDjaVzHfLDrtiXxRuFyr0o0qfuyxLBfSQFMIdMXYtWUbfaQ3YAOiYkTUXUrIrK_IvHFd4WMUgb2p7BlnxEy1HBEX5AIOFXycblGgovAurCUFwIkasCaEtbxBBnloj20Cxd79k</td>
+      <td class="reason">LLM אישר (0.98): Identical unique name (Naomi's Kosher Pizza &amp; Falafel), exact house number match (68-28), matching street (Main St/Main Street), matching zip code (11367), matching city (Flushing), matching state (NY). Minor address formatting differences are standard Google vs database variations. High confidence these are the same location.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Naomi's%20Kosher%20Pizza%20%26%20Falafel%2068-28%20Main%20Street%20Flushing%2C%20NY%2C%2011367%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJPQGeFmJgwokRnTmkDXwlsVQ" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8004</td>
+      <td><b>NBA Glatt Market</b><div class="muted">New York · United States</div></td>
+      <td>185-02 Union Tpke, Fresh Meadows, NY 11366, USA</td>
+      <td>Nba Glatt Market</td>
+      <td>185-02 Union Tpke, Flushing, NY 11366, USA</td>
+      <td>4.6 (41)</td>
+      <td>(347) 644-5959</td>
+      <td class="photo">places/ChIJ5fub8-JhwokRUlhWPyzwh4w/photos/AaVGc3n3q99XMXoBqEt3xDHnr8DdMGe-ziI6YiqHcjG-agauhx9ko6e9pd9kfDiBF3eKbAzTce6UHkVz8J363oCfw9vLOQ45PHFguNAOhc6BrmbJ3zrcMCGFXlVDeCrL1lRYEsk7YoP9j8AXCduWv0yT5KqInWwzlIgljiTlXVGb2E1Lzq2GHgiec0Lnb9WsypjRAOQHaqYsskUW0YTW4O4wzbBbcXiRo33AnvQNVvzscAnZOWJsgLevw1A2iayfD15BtM548GGiQM_9nF9DCfBNihxs1LXUOVOVPZvNiDrKs4js26TRcA_FynURUORx6BRjZD4qQLL4PcrtNJ1j0gymngAXc8crkMgeZE7Hoty28PZFX8hFMmbLVinamFts4qFdm-TFEumiSdHZumQ86Tqu7bdHAZAihRIiaZyyVgujeBgIsKE</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=NBA%20Glatt%20Market%20185-02%20Union%20Tpke%2C%20Fresh%20Meadows%2C%20NY%2011366%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ5fub8-JhwokRUlhWPyzwh4w" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8006</td>
+      <td><b>Next Stop Vegan</b><div class="muted">New York · United States</div></td>
+      <td>88 Livingston St, Brooklyn, NY, 11201, USA</td>
+      <td>NSV Kitchen by Next Stop Vegan</td>
+      <td>88 Livingston St, Brooklyn, NY 11201, USA</td>
+      <td>4.7 (1150)</td>
+      <td>(917) 966-6066</td>
+      <td class="photo">places/ChIJtxeOqXdbwokRa1M5fa8HJXE/photos/AaVGc3l2UlHBodbGQv2dY8BxzZJfNbQAAxCJsgG7KAlWOAQ3cD8GJTbM1sglM5rZ18GHc9aN9D4hN7JW3LN0HWAEVlegjJuyQoWz7-lGl0hbqYssJlkYi_z8w7rTNssk2sjNvbE5zcxIXcIdtADMDaTJf4wJHHxr8GUC_glxqbFo8d5DKANGtRJCjROfzz4ThSBljcK6wCp68ghLwX12grErSf5KP6MCY9dgNTk-NH1PdUn10MUBGZowupAsacl7Kxi9379gxzgKsz0ZDRagoPP1KDK9Ez4CvcsmBqPwkUzaVcCPX-CM1ZcsBRO8jDbHlTGlW9ADRUW4U-8LyjykK6fin6SfYHQsgb6SkFklfocJxa5F5D_7S-n81YRGkV9mXKvq3ZpXeOQu06WL3GHOd3-RWfWXrXqCKa3IbU-t5MQ0OhDVyI7pUDx2zok78sprbCmK</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Next%20Stop%20Vegan%2088%20Livingston%20St%2C%20Brooklyn%2C%20NY%2C%2011201%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJtxeOqXdbwokRa1M5fa8HJXE" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8007</td>
+      <td><b>Noi Due Gelato</b><div class="muted">New York · United States</div></td>
+      <td>489 Columbus Ave, New York, NY, 10024, USA</td>
+      <td>Noi Due Gelato</td>
+      <td>489 Columbus Ave, New York, NY 10024, USA</td>
+      <td>4.7 (192)</td>
+      <td>(212) 712-2222</td>
+      <td class="photo">places/ChIJe_7zI5RZwokRO9DEK6X_KXk/photos/AaVGc3lthK5JTqhWhGGfIIex_Fd-g_laf49IBfD1h0wD-hfSgAl_KP8qI59hkvjV93bDTV3oOHz8axtaf-e_xrkxPk8-wb5K6JyFMhQD_PITsuqakfvG19lELiTRms5IDRwbF21LvZu5-16nJx8klKaB1Dh8joXknfkhRXuHx8ZE3oSHPBUlMM0FMaluOWcQJkdqBisNw-nM8QryanXXFXoXe1HTnEymMhiTbB5hMIBgCzh6c7zbw5IdghnYpumpul3A9ea0ipSmrb6puKzvNhayVzhG60Qz0swxT2h5RXV2yRvOPHMHgBK3lTMI8o6tOUFxJu5htM2jcDv-g18aZshCWRcpdnrMXHEODwbjJxWH6O9yM0csTP1lLv2bp-Scpu0PI_v5FhKJVR6PgiyxpguLBi1rJb19JqsgDyLZyucQX5m-6A</td>
+      <td class="reason">unique name matches + same city</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Noi%20Due%20Gelato%20489%20Columbus%20Ave%2C%20New%20York%2C%20NY%2C%2010024%2C%20USA" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJe_7zI5RZwokRO9DEK6X_KXk" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">❓ אולי / בדיקה ידנית — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">❌ לא נכון / לא נמצא — 3</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    <tr>
+      <td>7977</td>
+      <td><b>Milk N' Honey NYC</b><div class="muted">New York · United States</div></td>
+      <td>12 E 46th Street New York, NY , 10036, United States</td>
+      <td>Milk N' Honey</td>
+      <td>12 E 46th St, New York, NY 10017, USA</td>
+      <td>3.9 (869)</td>
+      <td>(212) 764-4400</td>
+      <td class="photo">places/ChIJf1MYtv9YwokRWpMQlbMfU_g/photos/AaVGc3kWu3L6k67cytkKbIzXvLfb-kyXjBpOVh7LE6kSu0WLn7tsw6XmkZWkpGkKtqR6nnDYvIb1Lzp5qJkq5e0OOOU_Pho4uNH3lqpu4LRVaE9w4MJFZ5WSLzYoRqvZV002xDC_scpfwtmdEvT3Z872obKe-4MlJALnsVAgzPThHGeUGjcauZQUlyY2XNbxz9p5WAJXVJfdZr4Ded5zgg4DAz8JOUt5jGJN3kyg092t_m9EUeuW_meOpsZSdzVIu9XSSYTmYIlOTEUKLUxO59pICH8bPHbJNJgoVaRoiXefyUeNp9auqQ2rd5HZGDzhCT4U3VkURhltJkmNvzwv8oywNL5X2ulWv6QeJ4zBaz2YEycJdM9Phd46EmxFFrcjKzRHKJLZhxnQNnpT6eWlu9gsOidZAxe4s9Ps00T3LlMXsjdxBX-Y</td>
+      <td class="reason">LLM דחה (0.85): Same street and house number (12 E 46th St), but ZIP codes differ significantly (10036 vs 10017). These are different Manhattan neighborhoods - 10036 is Midtown West (Times Square area), 10017 is Financial District/Lower Manhattan. ~5.3km apart. Also, B is Japanese/sushi while A is described as kosher dairy. Different concepts despite name match.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Milk%20N'%20Honey%20NYC%2012%20E%2046th%20Street%20New%20York%2C%20NY%20%2C%2010036%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJf1MYtv9YwokRWpMQlbMfU_g" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8001</td>
+      <td><b>My Most Favorite Food</b><div class="muted">New York · United States</div></td>
+      <td>37-22 13th St Long Island City, NY, 11101, United States</td>
+      <td>My Most Favorite Dessert</td>
+      <td>37-22 13th St, Long Island City, NY 11101, USA</td>
+      <td>4.1 (491)</td>
+      <td>(212) 580-5130</td>
+      <td class="photo">places/ChIJAZgA_GFYwokRh_u5O7--qd4/photos/AaVGc3l_kTzYF0omR6n_T9qRF0Y-QpLUnNWGKFIb4vQuPG0ANcoHjIi6ALq10vihUY5EGGlfHwH28BtdhrZlB74q2eKpDTQRNP8cmHkBCW7-fnn3af3bNU3-RQq6gHWMjLbgEWTlsO6gYs2zGQqIHwcef2Q1apoZcSHZKTVre250FRNZBCKb10UvyHzLHehP3HeLvpNtkSo52DC8j0zne5biOWr-I6h2Hn12NdL5GCis8G3VES-p_-pPEU4V0qLwx1zOFhRTYgCYQERQgAOvkt8jncIrdTaCo6eiYe54Mg3vUdTq-RpOx517k4jWVsn8ExUhOpui-3rv0TYTTJaYwiM8tNoz6MyLQYH9XP1NwtJw5dbOewEiPos0osnugqo31jKbzBT_ylIhwEkYqHy-Ze476HadQq0fFZU39SwmHI0FosCeqQ</td>
+      <td class="reason">LLM דחה (0.85): Different business names (Food vs Dessert) and different types. A is restaurant, B is bakery/food_store. Same address but different operations suggest different businesses at same location or name change. Unlikely to be same kosher restaurant.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=My%20Most%20Favorite%20Food%2037-22%2013th%20St%20Long%20Island%20City%2C%20NY%2C%2011101%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJAZgA_GFYwokRh_u5O7--qd4" target="_blank">פין Google</a></td>
+    </tr><tr>
+      <td>8005</td>
+      <td><b>Neighbors Cafe</b><div class="muted">New York · United States</div></td>
+      <td>1878 E 4th St,  Brooklyn, NY , 11223, United States</td>
+      <td>Happy Neighbors</td>
+      <td>1878 E 4th St, Brooklyn, NY 11223, USA</td>
+      <td>4.7 (21)</td>
+      <td>(516) 619-1823</td>
+      <td class="photo">places/ChIJbUAwEkBFwokRQBeyabGypXw/photos/AaVGc3n9uEjlShZS_bYMRSe95MzCum8xZLHnaMZXgjuWGPv4n4Y7sa3Pjha1xmkTwCoWgf1ESb_Pj9ySZah8x50vNvt7ZVGpXpPDV23oIVAcTO5ZbR6vRtnsRPs5_AbWrq841j3cfUlFH5JdDxjb8ZcoAPmgMWbghv1r5I5KgzTtg-4CP1ucm6euUV36O0HcnYtorIa8fbhdyW8haTsrPAuhOWjaoPJLG3yNh6rmYwvtzzgl5JLPH78n8CI5g9Pq0sCk2JfSF1jApSPRzfd899B8YxtDF9LoSJPnZbqJb7NQBLWw1erRwdxpRD60JLqZQZe-oOSfBLODp-wXUOqXTlwxvwIG-TsH83aKL_Fhu3-DcaNDXNtMC83vLf0DOhVGdnOktQG9RoPfFf0_hgu3gcoLN3ry2cspsGioNY7qrauXo3BfrEV0Nf5NmjjvI06g0RFJ</td>
+      <td class="reason">LLM דחה (0.85): Different business names (Neighbors Cafe vs Happy Neighbors) at same address. While address/coordinates match exactly, the names are distinctly different - not a translation/transliteration variant. Likely different businesses at same location or a rebranding where Google data is outdated.</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Neighbors%20Cafe%201878%20E%204th%20St%2C%20%20Brooklyn%2C%20NY%20%2C%2011223%2C%20United%20States" target="_blank">שלנו</a> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJbUAwEkBFwokRQBeyabGypXw" target="_blank">פין Google</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#6a1b9a">⚠️ שגיאות — 0</h2>
+    <table><thead><tr>
+      <th>ID</th><th>השם שלנו</th><th>כתובת שלנו</th><th>Google מצא</th><th>כתובת Google</th>
+      <th>דירוג</th><th>טלפון</th><th>Photo name</th><th>נימוק</th><th>קישורים</th>
+    </tr></thead><tbody>
+    
+    </tbody></table>
+</body></html>

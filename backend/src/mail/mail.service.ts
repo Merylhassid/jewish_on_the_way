@@ -40,7 +40,7 @@ export class MailService {
         </div>
       `,
     });
-    this.logger.log(`Verification code sent to ${toEmail}`);
+    this.logger.log('Verification email sent');
   }
 
   async sendContactMessage(
@@ -73,7 +73,7 @@ export class MailService {
         </div>
       `,
     });
-    this.logger.log(`Contact message from ${fromEmail} saved and forwarded`);
+    this.logger.log('Contact message saved and forwarded');
   }
 
   async sendPasswordReset(toEmail: string, resetToken: string): Promise<void> {
@@ -107,7 +107,38 @@ export class MailService {
       `,
     });
 
-    this.logger.log(`Password reset email sent to ${toEmail}`);
+    this.logger.log('Password reset email sent');
+  }
+
+  async sendAccountDeletionLink(
+    toEmail: string,
+    deletionToken: string,
+  ): Promise<void> {
+    const publicWebUrl = this.config
+      .get<string>('PUBLIC_WEB_URL')
+      ?.replace(/\/$/, '');
+    if (!publicWebUrl) {
+      throw new Error('PUBLIC_WEB_URL is not configured');
+    }
+
+    const deletionLink = `${publicWebUrl}/delete-account?token=${encodeURIComponent(deletionToken)}`;
+    await this.transporter.sendMail({
+      from: `"Jewish On The Way" <${this.config.get<string>('MAIL_USER')}>`,
+      to: toEmail,
+      subject: 'Confirm account deletion – Jewish On The Way',
+      html: `
+        <div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;padding:24px;color:#1f2937;">
+          <h2 style="color:#0b1736;">Confirm account deletion</h2>
+          <p>A request was made to permanently delete your Jewish On The Way account and its associated data.</p>
+          <p>This link expires in <strong>one hour</strong>. Opening it does not delete the account; you must confirm the deletion on the page.</p>
+          <div style="text-align:center;margin:28px 0;">
+            <a href="${deletionLink}" style="display:inline-block;background:#b91c1c;color:#fff;text-decoration:none;padding:12px 22px;border-radius:8px;font-weight:700;">Review deletion request</a>
+          </div>
+          <p>If you did not request this, ignore this message. Your account will remain active.</p>
+        </div>
+      `,
+    });
+    this.logger.log('Account deletion email sent');
   }
 
   async sendReportNotification(opts: {

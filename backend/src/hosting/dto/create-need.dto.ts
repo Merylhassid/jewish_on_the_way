@@ -1,10 +1,14 @@
-import { IsBoolean, IsDateString, IsInt, IsOptional, IsString, Min } from 'class-validator';
+import { IsBoolean, IsDateString, IsIn, IsInt, IsOptional, IsString, Min } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateNeedDto {
   @IsInt() @Min(1)
   @Transform(({ value }) => parseInt(value, 10))
   destinationId: number;
+
+  @IsOptional()
+  @IsIn(['stay', 'meals'])
+  hostingType?: 'stay' | 'meals';
 
   @IsDateString()
   arrivalDate: string;

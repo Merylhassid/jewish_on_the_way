@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>דוגמאות שדות Google למסעדות</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:20px;margin:0 0 8px}.note{font-size:13px;line-height:1.55;max-width:1150px}.sum{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.sum span{background:#145a32;color:#fff;border-radius:4px;padding:4px 9px;font-size:12px}.legend{background:#fff;border:1px solid #ddd;padding:10px;margin:10px 0 14px;max-width:1150px;font-size:13px;line-height:1.55}table{border-collapse:collapse;width:100%;font-size:12px;background:#fff}th,td{border:1px solid #ddd;padding:6px 7px;text-align:right;vertical-align:top}th{position:sticky;top:0;background:#eceff1;z-index:1}tr:nth-child(even){background:#f8fafb}.mono{font-family:Consolas,monospace;direction:ltr;text-align:left}.v{white-space:nowrap;font-variant-numeric:tabular-nums}.yes{color:#1b5e20;font-weight:bold}.no{color:#b71c1c;font-weight:bold}.advice{color:#0d47a1}.warn{color:#7a3e00}.small{font-size:11px;color:#555;max-width:260px;word-break:break-word}a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}.pill{display:inline-block;background:#eef3f7;border:1px solid #d4dde5;border-radius:4px;padding:2px 5px;margin:1px 0}.group{font-weight:bold;color:#00695c}
+</style>
+</head>
+<body>
+<h1>דוגמאות למסעדות עם שכבת Google — להחלטת UI/API</h1>
+<div class="note">הדוח הזה לא משנה DB. הוא מציג דוגמאות אמיתיות מתוך <span class="mono">combined-dryrun-1783240537425-resolved.csv</span>, כדי להחליט אילו שדות לקחת למובייל ואיך להציג אותם. השם/כתובת המקוריים נשארים מקור האמת; שדות Google הם שכבת העשרה.</div>
+<div class="sum">
+<span>verified: 2558</span><span>עם photo_name: 2415</span><span>עם טלפון Google: 2371</span><span>עם דירוג: 2518</span><span>עם שעות פתיחה: 2463</span><span>עם Maps URI: 2558</span><span>בדוח זה: 70 דוגמאות</span>
+</div>
+<div class="legend"><b>המלצה ראשונית:</b> במובייל להציג דירוג + מספר ביקורות, טלפון אם חסר/משני, כפתור Google Maps, ושעות פתיחה רק אחרי שמוודאים פורמט נוח. תמונות דורשות שלב נפרד: להוריד מ-Google לפי <span class="mono">photo_name</span>, להעלות ל-Cloudinary, ואז להציג URL משלך.</div>
+<table>
+<thead><tr>
+<th>#</th><th>סוג דוגמה</th><th>ID</th><th>שלנו</th><th>Google</th><th>דירוג</th><th>טלפון</th><th>תמונה</th><th>שעות</th><th>סטטוס/סוג</th><th>מיקום/מרחק</th><th>IDs וקישורים</th><th>מה כדאי להציג</th><th>הערות זהירות</th>
+</tr></thead><tbody>
+<tr>
+<td class="v">1</td>
+<td class="group">מלא וחזק</td>
+<td class="v">8</td>
+<td><b>פטרוזיליה</b><br><span class="small">תל אביב, Israel</span></td>
+<td><b>Petrozilia</b><br><span class="small">מתחם שרונה, Aluf Kalman Magen 3, Tel Aviv-Jaffa, Israel</span></td>
+<td class="v">4.4 <span class="small">(1045)</span></td>
+<td class="v">03-516-2468</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJXZMwQ31LHRURgNF5KTyf1JY/photos/AaVGc3mpHNmwN...</span><br><span class="small">מסעדת פטרוזיליה</span></td>
+<td><span class="small">Monday: 11:00 AM – 5:00 PM | Tuesday: 11:00 AM – 5:00 PM | Wednesday: 11:00 AM – 5:00 PM | Thursday: 11:00 AM – 5:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;israeli_restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.714<br>1,641 מ׳<br><span class="small mono">32.0711769, 34.786860499999996</span></td>
+<td><a href="https://maps.google.com/?cid=10868486881494552960&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%98%D7%A8%D7%95%D7%96%D7%99%D7%9C%D7%99%D7%94%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJXZMwQ31LHRURgNF5KTyf1JY</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">2</td>
+<td class="group">מלא וחזק</td>
+<td class="v">85</td>
+<td><b>ניו דלי</b><br><span class="small">דרך מנחם בגין 132, קניון עזריאלי, תל אביב, Israel</span></td>
+<td><b>ניודלי Newdeli</b><br><span class="small">דרך בגין 132 תל אביב מרכז, Tel Aviv-Yafo, 6701101, Israel</span></td>
+<td class="v">4.2 <span class="small">(777)</span></td>
+<td class="v">03-696-1000</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJdZvpDE5LHRURR0FdUK0f4jc/photos/AaVGc3n08muCS...</span><br><span class="small">Avi Kerimov</span></td>
+<td><span class="small">Monday: 11:00 AM – 9:30 PM | Tuesday: 11:00 AM – 9:30 PM | Wednesday: 11:00 AM – 9:30 PM | Thursday: 11:00 AM – 9:30 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">sandwich_shop</span><br><span class="small">sandwich_shop;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.571<br>1,239 מ׳<br><span class="small mono">32.074389700000005, 34.7921693</span></td>
+<td><a href="https://maps.google.com/?cid=4026815846060736839&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%99%D7%95%20%D7%93%D7%9C%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%A0%D7%97%D7%9D%20%D7%91%D7%92%D7%99%D7%9F%20132%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A2%D7%96%D7%A8%D7%99%D7%90%D7%9C%D7%99%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJdZvpDE5LHRURR0FdUK0f4jc</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">3</td>
+<td class="group">מלא וחזק</td>
+<td class="v">89</td>
+<td><b>פיצה דומינו</b><br><span class="small">לסקוב חיים 4, תל אביב, Israel</span></td>
+<td><b>Domino Pizza</b><br><span class="small">לסקוב 4 תל אביב טלפו, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">4.6 <span class="small">(847)</span></td>
+<td class="v">03-695-9103</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJZUo5iIJLHRURCv2YH04YoQ4/photos/AaVGc3nIayvhB...</span><br><span class="small">פיצה דומינו - פיצה בתל אביב</span></td>
+<td><span class="small">Monday: 9:00 AM – 2:00 AM | Tuesday: 9:00 AM – 5:00 AM | Wednesday: 9:00 AM – 2:00 AM | Thursday: 9:00 AM – 2:00 AM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">pizza_delivery</span><br><span class="small">pizza_delivery;meal_delivery;food_delivery;meal_takeaway;restaurant;food;point_of_interest...</span></td>
+<td class="v">sim 0.600<br>8,196 מ׳<br><span class="small mono">32.0712598, 34.7824498</span></td>
+<td><a href="https://maps.google.com/?cid=1054150511598042378&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%93%D7%95%D7%9E%D7%99%D7%A0%D7%95%20%D7%9C%D7%A1%D7%A7%D7%95%D7%91%20%D7%97%D7%99%D7%99%D7%9D%204%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJZUo5iIJLHRURCv2YH04YoQ4</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">4</td>
+<td class="group">מלא וחזק</td>
+<td class="v">162</td>
+<td><b>בר בשר</b><br><span class="small">Hadar Yosef St 12, Tel Aviv-Yafo, Israel</span></td>
+<td><b>בר בשר</b><br><span class="small">Hadar Yosef St 12, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">4 <span class="small">(155)</span></td>
+<td class="v">03-644-4433</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJYUcJV51JHRURDEmKeC3bkGU/photos/AaVGc3nSenAL4...</span><br><span class="small">Guy Keren</span></td>
+<td><span class="small">Monday: 11:00 AM – 7:00 PM | Tuesday: 11:00 AM – 7:00 PM | Wednesday: 11:00 AM – 7:00 PM | Thursday: 11:00 AM – 7:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.109508, 34.8180908</span></td>
+<td><a href="https://maps.google.com/?cid=7318590382819395852&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A8%20%D7%91%D7%A9%D7%A8%20Hadar%20Yosef%20St%2012%2C%20Tel%20Aviv-Yafo%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJYUcJV51JHRURDEmKeC3bkGU</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">5</td>
+<td class="group">מלא וחזק</td>
+<td class="v">175</td>
+<td><b>חבש</b><br><span class="small">Ha-Negev St 10, Tel Aviv-Yafo, Israel</span></td>
+<td><b>Habash</b><br><span class="small">Ha-Negev St 10, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">4.5 <span class="small">(251)</span></td>
+<td class="v">054-469-6076</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJjVoRTGNLHRURCCEKi96C9XE/photos/AaVGc3kY4HII9...</span><br><span class="small">Habash</span></td>
+<td><span class="small">Monday: 11:00 AM – 11:00 PM | Tuesday: 11:00 AM – 11:00 PM | Wednesday: 11:00 AM – 11:00 PM | Thursday: 11:00 AM – 11:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">ethiopian_restaurant</span><br><span class="small">ethiopian_restaurant;restaurant;point_of_interest;food;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.0615524, 34.7789066</span></td>
+<td><a href="https://maps.google.com/?cid=8211613387907014920&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%91%D7%A9%20Ha-Negev%20St%2010%2C%20Tel%20Aviv-Yafo%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJjVoRTGNLHRURCCEKi96C9XE</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">6</td>
+<td class="group">מלא וחזק</td>
+<td class="v">216</td>
+<td><b>חומוס הבן של הסורי</b><br><span class="small">Yigal Alon St 121, Tel Aviv-Yafo, Israel</span></td>
+<td><b>חומוס הבן של הסורי</b><br><span class="small">Yigal Alon St 121, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">3.9 <span class="small">(442)</span></td>
+<td class="v">03-676-7505</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJq6qqqp1LHRURWSaITLP7kxM/photos/AaVGc3nfsXZOF...</span><br><span class="small">Dmitry Ryzhkovich</span></td>
+<td><span class="small">Monday: 7:45 AM – 9:00 PM | Tuesday: 7:45 AM – 9:00 PM | Wednesday: 7:45 AM – 9:00 PM | Thursday: 7:45 AM – 9:00 PM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.074912499999996, 34.7954481</span></td>
+<td><a href="https://maps.google.com/?cid=1410747855798806105&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%94%D7%91%D7%9F%20%D7%A9%D7%9C%20%D7%94%D7%A1%D7%95%D7%A8%D7%99%20Yigal%20Alon%20St%20121%2C%20Tel%20Aviv-Yafo%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJq6qqqp1LHRURWSaITLP7kxM</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">7</td>
+<td class="group">מלא וחזק</td>
+<td class="v">426</td>
+<td><b>בוטיק הפיתה סניף רובע י&quot;ג</b><br><span class="small">David HaMelech St 20, Ashdod, Israel</span></td>
+<td><b>בוטיק הפיתה סניף רובע י&quot;ג</b><br><span class="small">David HaMelech St 20, Ashdod, Israel</span></td>
+<td class="v">4.5 <span class="small">(819)</span></td>
+<td class="v">08-956-1000</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ-_0rUPWiAhUR9WoRoqoUXIw/photos/AaVGc3nasOPG1...</span><br><span class="small">Dotan Harpaz</span></td>
+<td><span class="small">Monday: 6:00 AM – 9:00 PM | Tuesday: 6:00 AM – 9:00 PM | Wednesday: 6:00 AM – 9:00 PM | Thursday: 6:00 AM – 9:00 PM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">bakery</span><br><span class="small">bakery;food_store;food;point_of_interest;store;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">31.7752887, 34.641973199999995</span></td>
+<td><a href="https://maps.google.com/?cid=10113981586263337717&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%98%D7%99%D7%A7%20%D7%94%D7%A4%D7%99%D7%AA%D7%94%20%D7%A1%D7%A0%D7%99%D7%A3%20%D7%A8%D7%95%D7%91%D7%A2%20%D7%99%22%D7%92%20David%20HaMelech%20St%2020%2C%20Ashdod%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ-_0rUPWiAhUR9WoRoqoUXIw</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">8</td>
+<td class="group">מלא וחזק</td>
+<td class="v">470</td>
+<td><b>Aroma Espresso Bar ארומה אספרסו בר</b><br><span class="small">ויצמן פינת בן גוריון, סטאר סנטר, Ashdod, 7721902, Israel</span></td>
+<td><b>Aroma Espresso Bar ארומה אספרסו בר</b><br><span class="small">ויצמן פינת בן גוריון, סטאר סנטר, Ashdod, 7721902, Israel</span></td>
+<td class="v">4.2 <span class="small">(2341)</span></td>
+<td class="v">08-856-8160</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJZaDroQyjAhURrgb3RQZryQM/photos/AaVGc3l_66Cjy...</span><br><span class="small">Aroma Espresso Bar ארומה אספרסו בר</span></td>
+<td><span class="small">Monday: 5:00 AM – 11:00 PM | Tuesday: 5:00 AM – 11:00 PM | Wednesday: 5:00 AM – 11:00 PM | Thursday: 5:00 AM – 11:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">coffee_shop</span><br><span class="small">coffee_shop;breakfast_restaurant;cafe;food_store;store;restaurant;food;point_of_interest;e...</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">31.808858200000003, 34.6582332</span></td>
+<td><a href="https://maps.google.com/?cid=272866927120418478&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Aroma%20Espresso%20Bar%20%D7%90%D7%A8%D7%95%D7%9E%D7%94%20%D7%90%D7%A1%D7%A4%D7%A8%D7%A1%D7%95%20%D7%91%D7%A8%20%D7%95%D7%99%D7%A6%D7%9E%D7%9F%20%D7%A4%D7%99%D7%A0%D7%AA%20%D7%91%D7%9F%20%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F%2C%20%D7%A1%D7%98%D7%90%D7%A8%20%D7%A1%D7%A0%D7%98%D7%A8%2C%20Ashdod%2C%207721902%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJZaDroQyjAhURrgb3RQZryQM</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">9</td>
+<td class="group">מלא וחזק</td>
+<td class="v">550</td>
+<td><b>מיכליס בראסרי</b><br><span class="small">מודיעין, Israel</span></td>
+<td><b>Michali&#39;s</b><br><span class="small">VXQ6+7MR מרכז עינב, HaHarat 7, Modi&#39;in Makabim-Re&#39;ut, Israel</span></td>
+<td class="v">4.4 <span class="small">(3553)</span></td>
+<td class="v">08-669-1000</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ2XBEA6bOAhUR854NBrduXgE/photos/AaVGc3notCCWA...</span><br><span class="small">orly shalem</span></td>
+<td><span class="small">Monday: 8:30 AM – 11:00 PM | Tuesday: 8:30 AM – 11:00 PM | Wednesday: 8:30 AM – 11:00 PM | Thursday: 8:30 AM – 11:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;pastry_shop;bakery;dessert_shop;confectionery;point_of_interest;food_store;food...</span></td>
+<td class="v">sim 0.250<br>4,827 מ׳<br><span class="small mono">31.888401, 34.9616584</span></td>
+<td><a href="https://maps.google.com/?cid=98637974208356083&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%99%D7%9B%D7%9C%D7%99%D7%A1%20%D7%91%D7%A8%D7%90%D7%A1%D7%A8%D7%99%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ2XBEA6bOAhUR854NBrduXgE</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified · שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">10</td>
+<td class="group">מלא וחזק</td>
+<td class="v">551</td>
+<td><b>Alfredo | מסעדת אלפרדו</b><br><span class="small">Shlomo Shmeltzer Rd 94, Petah Tikva, Israel</span></td>
+<td><b>Alfredo | מסעדת אלפרדו</b><br><span class="small">Shlomo Shmeltzer Rd 94, Petah Tikva, Israel</span></td>
+<td class="v">4 <span class="small">(4618)</span></td>
+<td class="v">03-923-0643</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJT5i50e9JHRURich5UvGkdAk/photos/AaVGc3n-1DsgL...</span><br><span class="small">Arbiv Adi</span></td>
+<td><span class="small">Monday: 10:00 AM – 11:30 PM | Tuesday: 10:00 AM – 11:30 PM | Wednesday: 10:00 AM – 11:30 PM | Thursday: 10:00 AM – 11:30...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">italian_restaurant</span><br><span class="small">italian_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.1012335, 34.8506626</span></td>
+<td><a href="https://maps.google.com/?cid=681350800017574025&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Alfredo%20%7C%20%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%90%D7%9C%D7%A4%D7%A8%D7%93%D7%95%20Shlomo%20Shmeltzer%20Rd%2094%2C%20Petah%20Tikva%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJT5i50e9JHRURich5UvGkdAk</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">11</td>
+<td class="group">מלא וחזק</td>
+<td class="v">559</td>
+<td><b>מסובין</b><br><span class="small">בית שמש, Israel</span></td>
+<td><b>Mesubin</b><br><span class="small">Yig&#39;al Alon Ave 2, Beit Shemesh, Israel</span></td>
+<td class="v">4.1 <span class="small">(1698)</span></td>
+<td class="v">02-991-1778</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJdzb621rEAhUR2qV27cWVf3s/photos/AaVGc3mDvnDaa...</span><br><span class="small">Samy A.</span></td>
+<td><span class="small">Monday: 12:00 – 11:00 PM | Tuesday: 12:00 – 11:00 PM | Wednesday: 12:00 – 11:00 PM | Thursday: 12:00 – 11:00 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.800<br>1,133 מ׳<br><span class="small mono">31.755876699999998, 34.9848818</span></td>
+<td><a href="https://maps.google.com/?cid=8898996066032461274&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%95%D7%91%D7%99%D7%9F%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%9E%D7%A9%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJdzb621rEAhUR2qV27cWVf3s</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">12</td>
+<td class="group">מלא וחזק</td>
+<td class="v">568</td>
+<td><b>מסעדת ויצמן אשדוד</b><br><span class="small">HaBana&#39;im St 9, Ashdod, Israel</span></td>
+<td><b>מסעדת ויצמן אשדוד</b><br><span class="small">HaBana&#39;im St 9, Ashdod, Israel</span></td>
+<td class="v">4.3 <span class="small">(1126)</span></td>
+<td class="v">08-852-2593</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJd5wpVGmjAhURvh-8SE8H7_M/photos/AaVGc3n5oDs_s...</span><br><span class="small">Meni Wolf</span></td>
+<td><span class="small">Monday: 12:00 – 10:30 PM | Tuesday: 12:00 – 10:30 PM | Wednesday: 12:00 – 10:30 PM | Thursday: 12:00 – 11:00 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">31.814879599999998, 34.6583482</span></td>
+<td><a href="https://maps.google.com/?cid=17577275907754434494&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%95%D7%99%D7%A6%D7%9E%D7%9F%20%D7%90%D7%A9%D7%93%D7%95%D7%93%20HaBana&#39;im%20St%209%2C%20Ashdod%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJd5wpVGmjAhURvh-8SE8H7_M</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">13</td>
+<td class="group">מלא וחזק</td>
+<td class="v">573</td>
+<td><b>הפי פיש</b><br><span class="small">Mamilla Rd 14, Jerusalem, Israel</span></td>
+<td><b>Happy Fish</b><br><span class="small">Mamilla Rd 14, Jerusalem, Israel</span></td>
+<td class="v">3.9 <span class="small">(447)</span></td>
+<td class="v">02-548-2230</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJY3K8gtEpAxURbq4kplsAZa8/photos/AaVGc3kb7iEI2...</span><br><span class="small">Happy Fish</span></td>
+<td><span class="small">Monday: 12:00 – 11:00 PM | Tuesday: 12:00 – 11:00 PM | Wednesday: 12:00 – 11:00 PM | Thursday: 12:00 – 11:00 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;mediterranean_restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.833<br>0 מ׳<br><span class="small mono">31.777699899999998, 35.2241508</span></td>
+<td><a href="https://maps.google.com/?cid=12638508322914610798&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A4%D7%99%20%D7%A4%D7%99%D7%A9%20Mamilla%20Rd%2014%2C%20Jerusalem%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJY3K8gtEpAxURbq4kplsAZa8</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">14</td>
+<td class="group">מלא וחזק</td>
+<td class="v">576</td>
+<td><b>נויה</b><br><span class="small">Queen Shlomziyon St 3, Jerusalem, Israel</span></td>
+<td><b>Noya</b><br><span class="small">Queen Shlomziyon St 3, Jerusalem, Israel</span></td>
+<td class="v">4.1 <span class="small">(1394)</span></td>
+<td class="v">02-625-7311</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJX4cEGNEpAxURS-pljMErU8E/photos/AaVGc3nZmBFhC...</span><br><span class="small">נויה</span></td>
+<td><span class="small">Monday: 1:00 – 11:00 PM | Tuesday: 1:00 – 11:00 PM | Wednesday: 1:00 – 11:00 PM | Thursday: 1:00 – 11:00 PM | Friday: Cl...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.333<br>0 מ׳<br><span class="small mono">31.780077199999997, 35.2218478</span></td>
+<td><a href="https://maps.google.com/?cid=13930526182671247947&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%95%D7%99%D7%94%20Queen%20Shlomziyon%20St%203%2C%20Jerusalem%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJX4cEGNEpAxURS-pljMErU8E</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">15</td>
+<td class="group">מלא וחזק</td>
+<td class="v">579</td>
+<td><b>בוש בייגלס</b><br><span class="small">ירושלים, Israel</span></td>
+<td><b>Bush Bagels</b><br><span class="small">Tsfanya St 61, Jerusalem, Israel</span></td>
+<td class="v">4.5 <span class="small">(344)</span></td>
+<td class="v">02-651-4123</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJXd29jt8pAxURsHNdQ00YSZg/photos/AaVGc3n5zUmrE...</span><br><span class="small">Shin</span></td>
+<td><span class="small">Monday: 9:00 AM – 11:00 PM | Tuesday: 9:00 AM – 11:00 PM | Wednesday: 9:00 AM – 11:00 PM | Thursday: 9:00 AM – 11:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">breakfast_restaurant</span><br><span class="small">breakfast_restaurant;fast_food_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.875<br>1,903 מ׳<br><span class="small mono">31.7934532, 35.215301499999995</span></td>
+<td><a href="https://maps.google.com/?cid=10973328687186670512&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A9%20%D7%91%D7%99%D7%99%D7%92%D7%9C%D7%A1%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJXd29jt8pAxURsHNdQ00YSZg</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">16</td>
+<td class="group">מלא וחזק</td>
+<td class="v">580</td>
+<td><b>בורגר בייט</b><br><span class="small">ירושלים, Israel</span></td>
+<td><b>Burger Bite</b><br><span class="small">Shamgar St 16, Jerusalem, Israel</span></td>
+<td class="v">4.3 <span class="small">(337)</span></td>
+<td class="v">02-651-4260</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJg6sIziPWAhURztQgUXI-6uE/photos/AaVGc3mFNK1vp...</span><br><span class="small">חיים יואל לסמן</span></td>
+<td><span class="small">Monday: 11:00 AM – 11:30 PM | Tuesday: 11:00 AM – 11:30 PM | Wednesday: 11:00 AM – 11:30 PM | Thursday: 11:00 AM – 11:30...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">fast_food_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.857<br>2,374 מ׳<br><span class="small mono">31.794428099999994, 35.208620499999995</span></td>
+<td><a href="https://maps.google.com/?cid=16278892463792379086&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%20%D7%91%D7%99%D7%99%D7%98%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJg6sIziPWAhURztQgUXI-6uE</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">17</td>
+<td class="group">בלי טלפון</td>
+<td class="v">140</td>
+<td><b>קנסאי יגאל אלון</b><br><span class="small">Yigal Alon St 94, Tel Aviv-Yafo, Israel</span></td>
+<td><b>Kansai</b><br><span class="small">Yigal Alon St 94, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">4.2 <span class="small">(335)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJGVA_i1BLHRURPeES6Q3DIJo/photos/AaVGc3mBn4zJR...</span><br><span class="small">benny atias</span></td>
+<td><span class="small">Monday: 11:00 AM – 11:00 PM | Tuesday: 11:00 AM – 11:00 PM | Wednesday: 11:00 AM – 11:00 PM | Thursday: 11:00 AM – 11:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">asian_restaurant</span><br><span class="small">asian_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.375<br>0 מ׳<br><span class="small mono">32.0685272, 34.794156799999996</span></td>
+<td><a href="https://maps.google.com/?cid=11106091145607962941&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A0%D7%A1%D7%90%D7%99%20%D7%99%D7%92%D7%90%D7%9C%20%D7%90%D7%9C%D7%95%D7%9F%20Yigal%20Alon%20St%2094%2C%20Tel%20Aviv-Yafo%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJGVA_i1BLHRURPeES6Q3DIJo</span></td>
+<td class="advice">דירוג · מספר ביקורות · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">שם שונה שפה/כתיב: לא להחליף שם מקור · אין טלפון Google</td>
+</tr>
+<tr>
+<td class="v">18</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1202</td>
+<td><b>ג&#39;אפן ג&#39;אפן באר שבע</b><br><span class="small">מתחם הבלוק, ראובן רובין 5, באר שבע, 8454942, Israel</span></td>
+<td><b>ג&#39;אפן ג&#39;אפן באר שבע</b><br><span class="small">מתחם הבלוק, ראובן רובין 5, באר שבע, 8454942, Israel</span></td>
+<td class="v">3.9 <span class="small">(226)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJh9FBisBnAhUREpw_gsle5VQ/photos/AaVGc3mTIFDPN...</span><br><span class="small">ג&#39;אפן ג&#39;אפן באר שבע</span></td>
+<td><span class="small">Monday: 11:30 AM – 11:00 PM | Tuesday: 11:30 AM – 11:00 PM | Wednesday: 11:30 AM – 11:00 PM | Thursday: 11:30 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">asian_restaurant</span><br><span class="small">asian_restaurant;sushi_restaurant;meal_takeaway;thai_restaurant;japanese_restaurant;restau...</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">31.259290500000002, 34.796526899999996</span></td>
+<td><a href="https://maps.google.com/?cid=6117399888419331090&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92&#39;%D7%90%D7%A4%D7%9F%20%D7%92&#39;%D7%90%D7%A4%D7%9F%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%20%D7%9E%D7%AA%D7%97%D7%9D%20%D7%94%D7%91%D7%9C%D7%95%D7%A7%2C%20%D7%A8%D7%90%D7%95%D7%91%D7%9F%20%D7%A8%D7%95%D7%91%D7%99%D7%9F%205%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%208454942%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJh9FBisBnAhUREpw_gsle5VQ</span></td>
+<td class="advice">דירוג · מספר ביקורות · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google</td>
+</tr>
+<tr>
+<td class="v">19</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1222</td>
+<td><b>איטליקה</b><br><span class="small">קאמפן 8, אילת, Israel</span></td>
+<td><b>איטליקה אילת</b><br><span class="small">Kampen St 6, Eilat, Israel</span></td>
+<td class="v">4.4 <span class="small">(45)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJlxB3heNxABURnLjwv5JG-H4/photos/AaVGc3lFLEhAk...</span><br><span class="small">Zahi</span></td>
+<td><span class="small">Monday: 12:00 – 9:00 PM | Tuesday: 12:00 – 9:00 PM | Wednesday: 12:00 – 9:00 PM | Thursday: 12:00 – 9:00 PM | Friday: Cl...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">italian_restaurant</span><br><span class="small">italian_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>112 מ׳<br><span class="small mono">29.5543224, 34.9649104</span></td>
+<td><a href="https://maps.google.com/?cid=9149140239102556316&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%99%D7%98%D7%9C%D7%99%D7%A7%D7%94%20%D7%A7%D7%90%D7%9E%D7%A4%D7%9F%208%2C%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJlxB3heNxABURnLjwv5JG-H4</span></td>
+<td class="advice">דירוג · מספר ביקורות · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google</td>
+</tr>
+<tr>
+<td class="v">20</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1225</td>
+<td><b>טעם העמק</b><br><span class="small">יפה נוף 5, אשקלון, Israel</span></td>
+<td><b>טעם העמק</b><br><span class="small">Yefe Nof St 5, Ashkelon, Israel</span></td>
+<td class="v">4.2 <span class="small">(17)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJJw5apUucAhURCp-4bl2QYXY/photos/AaVGc3lwOS0-X...</span><br><span class="small">svetstyle56 SK</span></td>
+<td><span class="small">Monday: 12:00 – 11:00 PM | Tuesday: 12:00 – 11:00 PM | Wednesday: 12:00 – 11:00 PM | Thursday: 12:00 – 11:00 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>624 מ׳<br><span class="small mono">31.6777467, 34.556349399999995</span></td>
+<td><a href="https://maps.google.com/?cid=8530257900180381450&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%A2%D7%9D%20%D7%94%D7%A2%D7%9E%D7%A7%20%D7%99%D7%A4%D7%94%20%D7%A0%D7%95%D7%A3%205%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJJw5apUucAhURCp-4bl2QYXY</span></td>
+<td class="advice">דירוג · מספר ביקורות · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">21</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1282</td>
+<td><b>פיצה דליה</b><br><span class="small">דימונה, Israel</span></td>
+<td><b>לה פיאצ&#39;ה (פיצה דליה)</b><br><span class="small">מרכז מסחרי, Dimona, Israel</span></td>
+<td class="v">4.2 <span class="small">(5)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJpzEndfVHAhURNAJygSNMzcw/photos/AaVGc3kggKUer...</span><br><span class="small">Meir Kashany</span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">coffee_shop</span><br><span class="small">coffee_shop;cafe;food_store;store;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>603 מ׳<br><span class="small mono">31.064412699999995, 35.0327128</span></td>
+<td><a href="https://maps.google.com/?cid=14757535269342282292&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%93%D7%9C%D7%99%D7%94%20%D7%93%D7%99%D7%9E%D7%95%D7%A0%D7%94%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJpzEndfVHAhURNAJygSNMzcw</span></td>
+<td class="advice">דירוג · מספר ביקורות · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">22</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1295</td>
+<td><b>ריבס הכשרה</b><br><span class="small">אורט 1, נמל אשדוד, Israel</span></td>
+<td><b>ריבס הכשרה</b><br><span class="small">Ort St 1, Ashdod, Israel</span></td>
+<td class="v">1 <span class="small">(2)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJTfABD3OjAhURG-9qPi43zzs/photos/AaVGc3kCmLloN...</span><br><span class="small">Yakir Shahak Shaban</span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">point_of_interest</span><br><span class="small">point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>210 מ׳<br><span class="small mono">31.814647299999997, 34.648840899999996</span></td>
+<td><a href="https://maps.google.com/?cid=4309724040172072731&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%99%D7%91%D7%A1%20%D7%94%D7%9B%D7%A9%D7%A8%D7%94%20%D7%90%D7%95%D7%A8%D7%98%201%2C%20%D7%A0%D7%9E%D7%9C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJTfABD3OjAhURG-9qPi43zzs</span></td>
+<td class="advice">דירוג · מספר ביקורות · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">23</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1430</td>
+<td><b>פיצה האט</b><br><span class="small">דרך מנחם בגין, שדרות, Israel</span></td>
+<td><b>פיצה האט - שדרות</b><br><span class="small">מרכז מול 7, שדרות, Israel</span></td>
+<td class="v">3.5 <span class="small">(215)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJH8GMLlWBAhURHp5rozh8HAc/photos/AaVGc3nv735Xd...</span><br><span class="small">פיצה האט - שדרות</span></td>
+<td><span class="small">Monday: 11:00 AM – 11:00 PM | Tuesday: 11:00 AM – 11:00 PM | Wednesday: 11:00 AM – 11:00 PM | Thursday: 11:00 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">pizza_restaurant</span><br><span class="small">pizza_restaurant;pizza_delivery;meal_delivery;food_delivery;meal_takeaway;restaurant;food;...</span></td>
+<td class="v">sim 1.000<br>144 מ׳<br><span class="small mono">31.516755999999997, 34.589301999999996</span></td>
+<td><a href="https://maps.google.com/?cid=512421040315145758&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%94%D7%90%D7%98%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%A0%D7%97%D7%9D%20%D7%91%D7%92%D7%99%D7%9F%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJH8GMLlWBAhURHp5rozh8HAc</span></td>
+<td class="advice">דירוג · מספר ביקורות · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google</td>
+</tr>
+<tr>
+<td class="v">24</td>
+<td class="group">בלי טלפון</td>
+<td class="v">1462</td>
+<td><b>המקום של ניב</b><br><span class="small">ההסתדרות 40, קניון לב אשקלון, Israel</span></td>
+<td><b>המקום של ניב</b><br><span class="small">Ha-Histadrut St 40, Ashkelon, Israel</span></td>
+<td class="v">4.7 <span class="small">(3)</span></td>
+<td class="v"></td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJJb4tN_ycAhURTMxPbcYQLtg/photos/AaVGc3l_ZCZ5I...</span><br><span class="small">Ben Cohen</span></td>
+<td><span class="small">Monday: 10:00 AM – 8:00 PM | Tuesday: 10:00 AM – 8:00 PM | Wednesday: 10:00 AM – 8:00 PM | Thursday: 10:00 AM – 8:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>208 מ׳<br><span class="small mono">31.655117699999998, 34.5562909</span></td>
+<td><a href="https://maps.google.com/?cid=15577406605544639564&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%A7%D7%95%D7%9D%20%D7%A9%D7%9C%20%D7%A0%D7%99%D7%91%20%D7%94%D7%94%D7%A1%D7%AA%D7%93%D7%A8%D7%95%D7%AA%2040%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%9C%D7%91%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJJb4tN_ycAhURTMxPbcYQLtg</span></td>
+<td class="advice">דירוג · מספר ביקורות · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">אין טלפון Google · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">25</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1196</td>
+<td><b>רוזה אשדוד כשרות מהדרין מחפוד</b><br><span class="small">ז&#39;בוטינסקי 45, סטאר סנטר, אשדוד, Israel</span></td>
+<td><b>Roza Ashdod - רוזה אשדוד</b><br><span class="small">| Star center, Jabotinski St 45, Ashdod, 7721902, Israel</span></td>
+<td class="v">4.2 <span class="small">(244)</span></td>
+<td class="v">08-618-1717</td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small">Monday: 5:00 – 10:30 PM | Tuesday: 5:00 – 10:30 PM | Wednesday: 5:00 – 10:30 PM | Thursday: 5:00 – 11:30 PM | Friday: Cl...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.500<br>420 מ׳<br><span class="small mono">31.808469499999998, 34.657857</span></td>
+<td><a href="https://maps.google.com/?cid=10473141702648758471&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%95%D7%96%D7%94%20%D7%90%D7%A9%D7%93%D7%95%D7%93%20%D7%9B%D7%A9%D7%A8%D7%95%D7%AA%20%D7%9E%D7%94%D7%93%D7%A8%D7%99%D7%9F%20%D7%9E%D7%97%D7%A4%D7%95%D7%93%20%D7%96&#39;%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99%2045%2C%20%D7%A1%D7%98%D7%90%D7%A8%20%D7%A1%D7%A0%D7%98%D7%A8%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ-7E-V1KjAhURx4C1tOMSWJE</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps</td>
+<td class="warn">אין תמונה</td>
+</tr>
+<tr>
+<td class="v">26</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1237</td>
+<td><b>HAVAS</b><br><span class="small">יוסף טרומפלדור 73, באר שבע, Israel</span></td>
+<td><b>מסעדת חבס</b><br><span class="small">Trumpeldor Joseph St 73, Be&#39;er Sheva, Israel</span></td>
+<td class="v">3.9 <span class="small">(56)</span></td>
+<td class="v">054-479-4127</td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small">Monday: 12:00 – 10:00 PM | Tuesday: 12:00 – 10:00 PM | Wednesday: 12:00 – 10:00 PM | Thursday: 12:00 – 10:00 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.667<br>102 מ׳<br><span class="small mono">31.2395361, 34.791787899999996</span></td>
+<td><a href="https://maps.google.com/?cid=4714790967926767454&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=HAVAS%20%D7%99%D7%95%D7%A1%D7%A3%20%D7%98%D7%A8%D7%95%D7%9E%D7%A4%D7%9C%D7%93%D7%95%D7%A8%2073%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJrRSEoSZnAhURXr9-wWdNbkE</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps</td>
+<td class="warn">אין תמונה</td>
+</tr>
+<tr>
+<td class="v">27</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1270</td>
+<td><b>פיצה מרציאנו</b><br><span class="small">וינגייט 32, באר שבע, Israel</span></td>
+<td><b>Pizza Marciano</b><br><span class="small">Wingate St 15, Be&#39;er Sheva, Israel</span></td>
+<td class="v">2.6 <span class="small">(18)</span></td>
+<td class="v">08-910-6565</td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small">Monday: 11:00 AM – 12:00 AM | Tuesday: 11:00 AM – 12:00 AM | Wednesday: 11:00 AM – 12:00 AM | Thursday: 11:00 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">pizza_restaurant</span><br><span class="small">pizza_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.500<br>148 מ׳<br><span class="small mono">31.2561219, 34.8084675</span></td>
+<td><a href="https://maps.google.com/?cid=16765797495170255300&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%9E%D7%A8%D7%A6%D7%99%D7%90%D7%A0%D7%95%20%D7%95%D7%99%D7%A0%D7%92%D7%99%D7%99%D7%98%2032%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ6zuTx1BmAhURxMnBK_4TrOg</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps</td>
+<td class="warn">אין תמונה · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">28</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1317</td>
+<td><b>כיכר הטעמים</b><br><span class="small">וינגייט 2, באר שבע, Israel</span></td>
+<td><b>כיכר הטעמים</b><br><span class="small">Wingate St 2, Be&#39;er Sheva, Israel</span></td>
+<td class="v">5 <span class="small">(1)</span></td>
+<td class="v"></td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;point_of_interest;food;establishment</span></td>
+<td class="v">sim 1.000<br>751 מ׳<br><span class="small mono">31.256656999999997, 34.8104676</span></td>
+<td><a href="https://maps.google.com/?cid=13963964001242007113&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%99%D7%9B%D7%A8%20%D7%94%D7%98%D7%A2%D7%9E%D7%99%D7%9D%20%D7%95%D7%99%D7%A0%D7%92%D7%99%D7%99%D7%98%202%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ4V_k0lZmAhURSUZfXkb3ycE</span></td>
+<td class="advice">דירוג · מספר ביקורות · כפתור Google Maps</td>
+<td class="warn">אין טלפון Google · אין תמונה · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">29</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1331</td>
+<td><b>פיצה דהרי</b><br><span class="small">רשב&quot;י 15, אשדוד, Israel</span></td>
+<td><b>דהרי</b><br><span class="small">Rashbi St 14, Ashdod, Israel</span></td>
+<td class="v">4.3 <span class="small">(132)</span></td>
+<td class="v">08-855-7755</td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small">Monday: 7:00 AM – 10:00 PM | Tuesday: 7:00 AM – 10:00 PM | Wednesday: 7:00 AM – 10:00 PM | Thursday: 7:00 AM – 10:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">bakery</span><br><span class="small">bakery;food_store;store;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>156 מ׳<br><span class="small mono">31.7890596, 34.664900599999996</span></td>
+<td><a href="https://maps.google.com/?cid=6146285022081492700&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%93%D7%94%D7%A8%D7%99%20%D7%A8%D7%A9%D7%91%22%D7%99%2015%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJaytjPyCjAhUR3KZ4xan9S1U</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps</td>
+<td class="warn">אין תמונה</td>
+</tr>
+<tr>
+<td class="v">30</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1332</td>
+<td><b>ישראלי קריספי</b><br><span class="small">יוסף סמלו 1, נתיבות, Israel</span></td>
+<td><b>ישראלי קריספי</b><br><span class="small">Yosef Samelo St 1, Netivot, Israel</span></td>
+<td class="v">5 <span class="small">(1)</span></td>
+<td class="v"></td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>877 מ׳<br><span class="small mono">31.4235635, 34.598839</span></td>
+<td><a href="https://maps.google.com/?cid=11792035758686441552&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A7%D7%A8%D7%99%D7%A1%D7%A4%D7%99%20%D7%99%D7%95%D7%A1%D7%A3%20%D7%A1%D7%9E%D7%9C%D7%95%201%2C%20%D7%A0%D7%AA%D7%99%D7%91%D7%95%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJY-aebN99AhURUJA1rwu6paM</span></td>
+<td class="advice">דירוג · מספר ביקורות · כפתור Google Maps</td>
+<td class="warn">אין טלפון Google · אין תמונה · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">31</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1418</td>
+<td><b>יהלי שירותי הסעדה</b><br><span class="small">שאר ישוב 1, שדרות, Israel</span></td>
+<td><b>יהלי שירותי הסעדה</b><br><span class="small">She&#39;ar Yashuv St 1, Sderot, Israel</span></td>
+<td class="v">3 <span class="small">(4)</span></td>
+<td class="v"></td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;point_of_interest;food;establishment</span></td>
+<td class="v">sim 1.000<br>50 מ׳<br><span class="small mono">31.5269168, 34.6026187</span></td>
+<td><a href="https://maps.google.com/?cid=6107795773183150904&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%99%D7%94%D7%9C%D7%99%20%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%20%D7%94%D7%A1%D7%A2%D7%93%D7%94%20%D7%A9%D7%90%D7%A8%20%D7%99%D7%A9%D7%95%D7%91%201%2C%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJb5X39wGEAhUROMs2LeU_w1Q</span></td>
+<td class="advice">דירוג · מספר ביקורות · כפתור Google Maps</td>
+<td class="warn">אין טלפון Google · אין תמונה · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">32</td>
+<td class="group">בלי תמונה</td>
+<td class="v">1436</td>
+<td><b>טריפוליטנה</b><br><span class="small">החלוץ 120, באר שבע, Israel</span></td>
+<td><b>טריפוליטנה</b><br><span class="small">He-Khaluts St 120, Be&#39;er Sheva, Israel</span></td>
+<td class="v">4 <span class="small">(1)</span></td>
+<td class="v">053-942-7681</td>
+<td><span class="no">לא</span><br><span class="small mono"></span><br><span class="small"></span></td>
+<td><span class="small">Monday: 12:00 – 10:30 PM | Tuesday: 12:00 – 10:30 PM | Wednesday: 12:00 – 10:30 PM | Thursday: 12:00 – 10:30 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>371 מ׳<br><span class="small mono">31.241456899999996, 34.791694299999996</span></td>
+<td><a href="https://maps.google.com/?cid=6148484337918278058&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%A8%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%A0%D7%94%20%D7%94%D7%97%D7%9C%D7%95%D7%A5%20120%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJpU54vBZmAhURqvmr5O3NU1U</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps</td>
+<td class="warn">אין תמונה · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">33</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1192</td>
+<td><b>פטריקס</b><br><span class="small">Hita St 1, Be&#39;er Sheva, 8424617, Israel</span></td>
+<td><b>Patrick&#39;s B7</b><br><span class="small">Hita St 1, Be&#39;er Sheva, 8424617, Israel</span></td>
+<td class="v">4.7 <span class="small">(2125)</span></td>
+<td class="v">052-656-6132</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJA-kX61tnAhUR-CIfjJ2Xf5Q/photos/AaVGc3nVOpjvp...</span><br><span class="small">פטריקס באר שבע</span></td>
+<td><span class="small">Monday: 12:00 – 11:30 PM | Tuesday: 12:00 – 11:30 PM | Wednesday: 12:00 – 11:30 PM | Thursday: 12:00 PM – 12:30 AM | Fri...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.714<br>0 מ׳<br><span class="small mono">31.233848499999997, 34.799861899999996</span></td>
+<td><a href="https://maps.google.com/?cid=10700437942572098296&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%98%D7%A8%D7%99%D7%A7%D7%A1%20Hita%20St%201%2C%20Be&#39;er%20Sheva%2C%208424617%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJA-kX61tnAhUR-CIfjJ2Xf5Q</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">34</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1223</td>
+<td><b>בום בר</b><br><span class="small">מבקיעים, Israel</span></td>
+<td><b>עגלת קפה בום בר - מושב מבקיעים</b><br><span class="small">שדרת עצי הזית, Mavki&#39;im, Israel</span></td>
+<td class="v">4.8 <span class="small">(239)</span></td>
+<td class="v">052-667-0295</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJEYY8BOOdAhURLQWhbiCK-ug/photos/AaVGc3mwfKavB...</span><br><span class="small">עגלת קפה בום בר - מושב מבקיעים</span></td>
+<td><span class="small">Monday: Closed | Tuesday: Closed | Wednesday: Closed | Thursday: 9:00 AM – 3:00 PM | Friday: 8:00 AM – 3:00 PM | Saturda...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">coffee_shop</span><br><span class="small">coffee_shop;cafe;food_store;food;point_of_interest;store;establishment</span></td>
+<td class="v">sim 1.000<br>109 מ׳<br><span class="small mono">31.6213642, 34.577793299999996</span></td>
+<td><a href="https://maps.google.com/?cid=16787882432876578093&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%9D%20%D7%91%D7%A8%20%D7%9E%D7%91%D7%A7%D7%99%D7%A2%D7%99%D7%9D%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJEYY8BOOdAhURLQWhbiCK-ug</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">35</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1230</td>
+<td><b>בית החצ&#39;אפורי באר שבע</b><br><span class="small">החלוץ 53, באר שבע, Israel</span></td>
+<td><b>בית החצ&#39;פורי</b><br><span class="small">He-Khaluts St 53, Be&#39;er Sheva, 8421431, Israel</span></td>
+<td class="v">4.9 <span class="small">(108)</span></td>
+<td class="v">08-648-8886</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ59yM6nZnAhURNA9ybkjztO8/photos/AaVGc3nEivH2Z...</span><br><span class="small">בית החצ&#39;פורי</span></td>
+<td><span class="small">Monday: 10:00 AM – 10:00 PM | Tuesday: 10:00 AM – 10:00 PM | Wednesday: 10:00 AM – 10:00 PM | Thursday: 10:00 AM – 10:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.583<br>28 מ׳<br><span class="small mono">31.238848400000002, 34.788928299999995</span></td>
+<td><a href="https://maps.google.com/?cid=17272697963288858420&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%A6&#39;%D7%90%D7%A4%D7%95%D7%A8%D7%99%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%20%D7%94%D7%97%D7%9C%D7%95%D7%A5%2053%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ59yM6nZnAhURNA9ybkjztO8</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">36</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1452</td>
+<td><b>פושטק</b><br><span class="small">הרצל 5, אשקלון, Israel</span></td>
+<td><b>פושטק</b><br><span class="small">בית פרנק, Hertsel 5, Ashkelon, Israel</span></td>
+<td class="v">4.7 <span class="small">(391)</span></td>
+<td class="v">08-938-8556</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJm7qC-2-cAhURTOYacE4xeAY/photos/AaVGc3n9tdmBG...</span><br><span class="small">Eyal Artzi</span></td>
+<td><span class="small">Monday: 8:00 AM – 4:00 PM | Tuesday: 8:00 AM – 4:00 PM | Wednesday: 8:00 AM – 4:00 PM | Thursday: 8:00 AM – 4:00 PM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>81 מ׳<br><span class="small mono">31.662090599999996, 34.5856704</span></td>
+<td><a href="https://maps.google.com/?cid=466176774390867532&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%95%D7%A9%D7%98%D7%A7%20%D7%94%D7%A8%D7%A6%D7%9C%205%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJm7qC-2-cAhURTOYacE4xeAY</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">37</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1504</td>
+<td><b>הירושלמי</b><br><span class="small">העמל 41, נמל אשדוד, Israel</span></td>
+<td><b>חומוס ירושלמי</b><br><span class="small">Ha-Amal St 41, Ashdod, 7725904, Israel</span></td>
+<td class="v">4.7 <span class="small">(355)</span></td>
+<td class="v">08-655-8818</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJZasFqeSjAhURNmJasigGzPM/photos/AaVGc3ltW3grE...</span><br><span class="small">חומוס ירושלמי</span></td>
+<td><span class="small">Monday: 9:00 AM – 4:00 PM | Tuesday: 9:00 AM – 4:00 PM | Wednesday: 9:00 AM – 4:00 PM | Thursday: 9:00 AM – 4:00 PM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.636<br>1,897 מ׳<br><span class="small mono">31.8096904, 34.667311</span></td>
+<td><a href="https://maps.google.com/?cid=17567423018326188598&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%9E%D7%99%20%D7%94%D7%A2%D7%9E%D7%9C%2041%2C%20%D7%A0%D7%9E%D7%9C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJZasFqeSjAhURNmJasigGzPM</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">38</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1705</td>
+<td><b>המטבחון של עמוס</b><br><span class="small">ברנע 463, אילת, Israel</span></td>
+<td><b>The kitchen of Amos</b><br><span class="small">18, Barne&#39;a 48, Eilat, Israel</span></td>
+<td class="v">4.7 <span class="small">(153)</span></td>
+<td class="v">08-631-8881</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJuckgqgFyABURCwVvxQyNwwk/photos/AaVGc3n2fCP5q...</span><br><span class="small">Shahar Zuberi</span></td>
+<td><span class="small">Monday: 11:00 AM – 3:30 PM | Tuesday: 11:00 AM – 3:30 PM | Wednesday: 11:00 AM – 3:30 PM | Thursday: 11:00 AM – 3:30 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.200<br>109 מ׳<br><span class="small mono">29.561845299999998, 34.948012</span></td>
+<td><a href="https://maps.google.com/?cid=703561052791440651&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%98%D7%91%D7%97%D7%95%D7%9F%20%D7%A9%D7%9C%20%D7%A2%D7%9E%D7%95%D7%A1%20%D7%91%D7%A8%D7%A0%D7%A2%20463%2C%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJuckgqgFyABURCwVvxQyNwwk</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">39</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1717</td>
+<td><b>קבב התקווה</b><br><span class="small">צה&quot;ל 2, אשקלון, Israel</span></td>
+<td><b>Kebab Hope</b><br><span class="small">Tsahal St 2, Ashkelon, Israel</span></td>
+<td class="v">4.7 <span class="small">(218)</span></td>
+<td class="v">052-300-3501</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJYzgg7XGcAhURDSIZT0QioBY/photos/AaVGc3k5lfQXF...</span><br><span class="small">Shimon Zaken</span></td>
+<td><span class="small">Monday: 10:30 AM – 10:00 PM | Tuesday: 10:30 AM – 10:00 PM | Wednesday: 10:30 AM – 10:00 PM | Thursday: 10:30 AM – 10:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.444<br>566 מ׳<br><span class="small mono">31.6652459, 34.5870953</span></td>
+<td><a href="https://maps.google.com/?cid=1630340741888287245&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%91%D7%91%20%D7%94%D7%AA%D7%A7%D7%95%D7%95%D7%94%20%D7%A6%D7%94%22%D7%9C%202%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJYzgg7XGcAhURDSIZT0QioBY</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">40</td>
+<td class="group">דירוג גבוה</td>
+<td class="v">1827</td>
+<td><b>חומוס סוף</b><br><span class="small">המלאכה 5, אילת, Israel</span></td>
+<td><b>Hummusuf</b><br><span class="small">HaMelacha St 6, Eilat, Israel</span></td>
+<td class="v">4.7 <span class="small">(699)</span></td>
+<td class="v">077-799-2120</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJodvaUAJuABURJAOMLXqH6ww/photos/AaVGc3kC7MNUx...</span><br><span class="small">MDEP</span></td>
+<td><span class="small">Monday: 8:30 AM – 4:30 PM | Tuesday: 8:30 AM – 4:30 PM | Wednesday: 8:30 AM – 4:30 PM | Thursday: 8:30 AM – 4:30 PM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.375<br>315 מ׳<br><span class="small mono">29.563819400000003, 34.9587155</span></td>
+<td><a href="https://maps.google.com/?cid=930986706802049828&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%A1%D7%95%D7%A3%20%D7%94%D7%9E%D7%9C%D7%90%D7%9B%D7%94%205%2C%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJodvaUAJuABURJAOMLXqH6ww</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">41</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">279</td>
+<td><b>מסעדת באביקה Babica</b><br><span class="small">שד&#39; רוטשילד 60, תל אביב, Israel</span></td>
+<td><b>BABICA מסעדת שף אותנטית כשרה</b><br><span class="small">Rothschild Blvd 60, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">3 <span class="small">(3)</span></td>
+<td class="v">052-339-0044</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ8VodmO_rBaYRZVQBzcWNNCM/photos/AaVGc3nzt_aZa...</span><br><span class="small">BABICA מסעדת שף אותנטית כשרה</span></td>
+<td><span class="small">Monday: 5:00 – 11:00 PM | Tuesday: 5:00 – 11:00 PM | Wednesday: 5:00 – 11:00 PM | Thursday: 5:00 PM – 12:00 AM | Friday:...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill"></span><br><span class="small">point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>2,388 מ׳<br><span class="small mono">32.0643822, 34.7760701</span></td>
+<td><a href="https://maps.google.com/?cid=2536808370803922021&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%91%D7%90%D7%91%D7%99%D7%A7%D7%94%20Babica%20%D7%A9%D7%93&#39;%20%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93%2060%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ8VodmO_rBaYRZVQBzcWNNCM</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">42</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">588</td>
+<td><b>פיצה האט - נתניה - פולג</b><br><span class="small">Sderot Giborei Israel 22, Netanya, Israel</span></td>
+<td><b>פיצה האט - נתניה - פולג</b><br><span class="small">Sderot Giborei Israel 22, Netanya, Israel</span></td>
+<td class="v">3.3 <span class="small">(287)</span></td>
+<td class="v">1-700-506-070</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJkapaIYJAHRURvBIbgyhHL1g/photos/AaVGc3lt9Vw30...</span><br><span class="small">Oded Arbel</span></td>
+<td><span class="small">Monday: 11:00 AM – 1:00 AM | Tuesday: 11:00 AM – 1:00 AM | Wednesday: 11:00 AM – 1:00 AM | Thursday: 11:00 AM – 2:00 AM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">pizza_restaurant</span><br><span class="small">pizza_restaurant;pizza_delivery;meal_delivery;food_delivery;meal_takeaway;restaurant;food;...</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.27965, 34.8604497</span></td>
+<td><a href="https://maps.google.com/?cid=6354375838566912700&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%94%D7%90%D7%98%20-%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%20-%20%D7%A4%D7%95%D7%9C%D7%92%20Sderot%20Giborei%20Israel%2022%2C%20Netanya%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJkapaIYJAHRURvBIbgyhHL1g</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">43</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">589</td>
+<td><b>בליקר בייקרי</b><br><span class="small">נתניה, Israel</span></td>
+<td><b>Bleecker Bakery</b><br><span class="small">Ir Yamim Mall, Beni Berman St 2, Netanya, Israel</span></td>
+<td class="v">3.1 <span class="small">(282)</span></td>
+<td class="v">077-303-4175</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJpcrg6JFAHRURP4Z5d2VsYro/photos/AaVGc3n8L8ArH...</span><br><span class="small">BASHAR SAID AHMAD</span></td>
+<td><span class="small">Monday: 9:00 AM – 9:00 PM | Tuesday: 9:00 AM – 9:00 PM | Wednesday: 9:00 AM – 9:00 PM | Thursday: 9:00 AM – 9:00 PM | Fr...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">italian_restaurant</span><br><span class="small">italian_restaurant;bakery;food_store;store;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.800<br>5,606 מ׳<br><span class="small mono">32.2788732, 34.846949099999996</span></td>
+<td><a href="https://maps.google.com/?cid=13430416221824190015&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%9C%D7%99%D7%A7%D7%A8%20%D7%91%D7%99%D7%99%D7%A7%D7%A8%D7%99%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJpcrg6JFAHRURP4Z5d2VsYro</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">44</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">1264</td>
+<td><b>שווארמה סבן</b><br><span class="small">פרץ סנטר, פרץ סנטר דימונה, Israel</span></td>
+<td><b>מרכז השווארמה דימונה</b><br><span class="small">Peretz Center Mall, Dimona, Israel</span></td>
+<td class="v">2.6 <span class="small">(71)</span></td>
+<td class="v">054-599-2030</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJM2yZAwFHAhURhAjPIpAMBD8/photos/AaVGc3kU2ddBd...</span><br><span class="small">Michael Kupy</span></td>
+<td><span class="small">Monday: 9:00 AM – 10:00 PM | Tuesday: 9:00 AM – 10:00 PM | Wednesday: 9:00 AM – 10:00 PM | Thursday: 9:00 AM – 10:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">fast_food_restaurant</span><br><span class="small">fast_food_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.615<br>47 מ׳<br><span class="small mono">31.060080499999994, 35.0203723</span></td>
+<td><a href="https://maps.google.com/?cid=4540768137495120004&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%A1%D7%91%D7%9F%20%D7%A4%D7%A8%D7%A5%20%D7%A1%D7%A0%D7%98%D7%A8%2C%20%D7%A4%D7%A8%D7%A5%20%D7%A1%D7%A0%D7%98%D7%A8%20%D7%93%D7%99%D7%9E%D7%95%D7%A0%D7%94%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJM2yZAwFHAhURhAjPIpAMBD8</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">45</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">1291</td>
+<td><b>מקדונלד&#39;ס</b><br><span class="small">שד&#39; בן גוריון 21, קניון גירון, אשקלון, Israel</span></td>
+<td><b>McDonald&#39;s</b><br><span class="small">Sderot David Ben Gurion 21, Ashkelon, 7828134, Israel</span></td>
+<td class="v">3.2 <span class="small">(534)</span></td>
+<td class="v">052-944-0123</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ9VI6OVqcAhURVEuHk7_WqFQ/photos/AaVGc3ky9xRfI...</span><br><span class="small">Ariel Svahat</span></td>
+<td><span class="small">Monday: 10:30 AM – 11:00 PM | Tuesday: 10:30 AM – 11:00 PM | Wednesday: 10:30 AM – 11:00 PM | Thursday: 10:30 AM – 11:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">fast_food_restaurant</span><br><span class="small">fast_food_restaurant;hamburger_restaurant;american_restaurant;restaurant;food;point_of_int...</span></td>
+<td class="v">sim 0.750<br>1,800 מ׳<br><span class="small mono">31.664744600000002, 34.5657269</span></td>
+<td><a href="https://maps.google.com/?cid=6100361813575551828&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A7%D7%93%D7%95%D7%A0%D7%9C%D7%93&#39;%D7%A1%20%D7%A9%D7%93&#39;%20%D7%91%D7%9F%20%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F%2021%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%92%D7%99%D7%A8%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ9VI6OVqcAhURVEuHk7_WqFQ</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">46</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">1327</td>
+<td><b>המקסיקני</b><br><span class="small">הגדוד העברי 5, אשדוד, Israel</span></td>
+<td><b>מקסיקני באשדוד</b><br><span class="small">Ha-Gdud ha-Ivri St, Ashdod, Israel</span></td>
+<td class="v">3 <span class="small">(269)</span></td>
+<td class="v">050-808-6257</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJE2qXylWiAhURsi5DhKnU3qw/photos/AaVGc3mukgC6O...</span><br><span class="small">שמעון מימון</span></td>
+<td><span class="small">Monday: 11:00 AM – 11:00 PM | Tuesday: 11:00 AM – 11:00 PM | Wednesday: 11:00 AM – 11:00 PM | Thursday: 11:00 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.429<br>50 מ׳<br><span class="small mono">31.7915274, 34.638621300000004</span></td>
+<td><a href="https://maps.google.com/?cid=12456627443886927538&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%A7%D7%A1%D7%99%D7%A7%D7%A0%D7%99%20%D7%94%D7%92%D7%93%D7%95%D7%93%20%D7%94%D7%A2%D7%91%D7%A8%D7%99%205%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJE2qXylWiAhURsi5DhKnU3qw</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">47</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">1368</td>
+<td><b>אושי אושי באר שבע</b><br><span class="small">שד&#39; יצחק רגר 2, באר שבע, Israel</span></td>
+<td><b>אושי אושי באר שבע</b><br><span class="small">קניון הנגב, Yitzhack I. Rager Blvd 2, Be&#39;er Sheva, Israel</span></td>
+<td class="v">2.7 <span class="small">(137)</span></td>
+<td class="v">08-611-8888</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJo1dHNchnAhURfvQnBWdM_xE/photos/AaVGc3nZEq6h9...</span><br><span class="small">THAER TAIB</span></td>
+<td><span class="small">Monday: 10:00 AM – 11:00 PM | Tuesday: 10:00 AM – 11:00 PM | Wednesday: 10:00 AM – 11:00 PM | Thursday: 10:00 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">asian_restaurant</span><br><span class="small">asian_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>291 מ׳<br><span class="small mono">31.2438875, 34.794681499999996</span></td>
+<td><a href="https://maps.google.com/?cid=1296839223057839230&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%95%D7%A9%D7%99%20%D7%90%D7%95%D7%A9%D7%99%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%20%D7%A9%D7%93&#39;%20%D7%99%D7%A6%D7%97%D7%A7%20%D7%A8%D7%92%D7%A8%202%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJo1dHNchnAhURfvQnBWdM_xE</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">48</td>
+<td class="group">דירוג נמוך</td>
+<td class="v">1402</td>
+<td><b>ביג בראשית שווארמה</b><br><span class="small">הבנים 3, אשדוד, Israel</span></td>
+<td><b>Shawarma Bereshit</b><br><span class="small">HaBanim St 7, Ashdod, 55555, Israel</span></td>
+<td class="v">3.1 <span class="small">(33)</span></td>
+<td class="v">053-710-3906</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ9deHTFWiAhURzgcycW5lxUs/photos/AaVGc3k5XAP6Q...</span><br><span class="small">Irina Breyterman</span></td>
+<td><span class="small">Monday: 10:00 AM – 8:00 PM | Tuesday: 10:00 AM – 8:00 PM | Wednesday: 10:00 AM – 8:00 PM | Thursday: 10:00 AM – 8:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">gyro_restaurant</span><br><span class="small">gyro_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.214<br>101 מ׳<br><span class="small mono">31.7945475, 34.639275</span></td>
+<td><a href="https://maps.google.com/?cid=5459881648276506574&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%20%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA%20%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%94%D7%91%D7%A0%D7%99%D7%9D%203%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ9deHTFWiAhURzgcycW5lxUs</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">49</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">555</td>
+<td><b>Thirty Three</b><br><span class="small">ירושלים, Israel</span></td>
+<td><b>Thirty Thtee</b><br><span class="small">בקומת הגלריה, Yirmiyahu 33, Jerusalem, 9446718, Israel</span></td>
+<td class="v">3.8 <span class="small">(14)</span></td>
+<td class="v">055-681-0165</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJVwH6nJ7XAhURk-jr-qyddD0/photos/AaVGc3m9J3T_u...</span><br><span class="small">Thirty Thtee</span></td>
+<td><span class="small">Monday: 6:00 – 11:30 PM | Tuesday: 6:00 – 11:30 PM | Wednesday: 6:00 – 11:30 PM | Thursday: 6:00 – 11:30 PM | Friday: Cl...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.917<br>2,539 מ׳<br><span class="small mono">31.790782499999995, 35.2028909</span></td>
+<td><a href="https://maps.google.com/?cid=4428337699881740435&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Thirty%20Three%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJVwH6nJ7XAhURk-jr-qyddD0</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified · מעט ביקורות</td>
+</tr>
+<tr>
+<td class="v">50</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">575</td>
+<td><b>תמרה הבשרי</b><br><span class="small">ירושלים, Israel</span></td>
+<td><b>תמרה הבשרי-Tamara events</b><br><span class="small">HaTa&#39;asiya St 4, Jerusalem, Israel</span></td>
+<td class="v">5 <span class="small">(53)</span></td>
+<td class="v">058-557-7507</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJSd8wAz3XAhURnnvm5q3UUBg/photos/AaVGc3n7xnkin...</span><br><span class="small">תמרה הבשרי-Tamara events</span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">event_venue</span><br><span class="small">event_venue;catering_service;food_delivery;wedding_venue;service;food;point_of_interest;es...</span></td>
+<td class="v">sim 1.000<br>3,490 מ׳<br><span class="small mono">31.7490062, 35.2143516</span></td>
+<td><a href="https://maps.google.com/?cid=1752134098415418270&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%AA%D7%9E%D7%A8%D7%94%20%D7%94%D7%91%D7%A9%D7%A8%D7%99%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJSd8wAz3XAhURnnvm5q3UUBg</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">51</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">582</td>
+<td><b>ניו דלי שרי ישראל</b><br><span class="small">ירושלים, Israel</span></td>
+<td><b>ניודלי Newdeli</b><br><span class="small">Sarei Israel Blvd 15, Jerusalem, Israel</span></td>
+<td class="v">4.4 <span class="small">(773)</span></td>
+<td class="v">02-629-9744</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ-_GmcyXWAhURlR72FmPsfxQ/photos/AaVGc3n0UqM1a...</span><br><span class="small">Alla Anatot</span></td>
+<td><span class="small">Monday: 11:00 AM – 12:45 AM | Tuesday: 11:00 AM – 12:45 AM | Wednesday: 11:00 AM – 12:45 AM | Thursday: 11:00 AM – 12:45...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">sandwich_shop</span><br><span class="small">sandwich_shop;fast_food_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.455<br>2,181 מ׳<br><span class="small mono">31.7891446, 35.2061448</span></td>
+<td><a href="https://maps.google.com/?cid=1477159113131957909&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A0%D7%99%D7%95%20%D7%93%D7%9C%D7%99%20%D7%A9%D7%A8%D7%99%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ-_GmcyXWAhURlR72FmPsfxQ</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">52</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1198</td>
+<td><b>רובן</b><br><span class="small">ז&#39;בוטינסקי 43, סטאר סנטר, אשדוד, Israel</span></td>
+<td><b>רובן אשדוד סטאר סנטר ruben‏</b><br><span class="small">Jabotinski St 43, Ashdod, Israel</span></td>
+<td class="v">4.5 <span class="small">(1881)</span></td>
+<td class="v">08-930-5055</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJs4k7zdGjAhURxVUlrKPbFvY/photos/AaVGc3kgSIeJp...</span><br><span class="small">Igal Ha</span></td>
+<td><span class="small">Monday: 11:30 AM – 12:00 AM | Tuesday: 11:30 AM – 12:00 AM | Wednesday: 11:30 AM – 12:00 AM | Thursday: 11:30 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">american_restaurant</span><br><span class="small">american_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>3,934 מ׳<br><span class="small mono">31.808465499999993, 34.6578795</span></td>
+<td><a href="https://maps.google.com/?cid=17732602078832186821&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%95%D7%91%D7%9F%20%D7%96&#39;%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99%2043%2C%20%D7%A1%D7%98%D7%90%D7%A8%20%D7%A1%D7%A0%D7%98%D7%A8%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJs4k7zdGjAhURxVUlrKPbFvY</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">53</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1211</td>
+<td><b>אווז הזהב, ביג</b><br><span class="small">דרך אליהו נאוי 24, באר שבע, Israel</span></td>
+<td><b>Golden Goose Restaurant</b><br><span class="small">מרכז ביג, אליהו נאוי 24, באר שבע, Israel</span></td>
+<td class="v">4.2 <span class="small">(5232)</span></td>
+<td class="v">08-628-7675</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ0V_FWmlmAhURNeSjEEjJLMA/photos/AaVGc3mG68Bk6...</span><br><span class="small">מסעדת אווז הזהב</span></td>
+<td><span class="small">Monday: 11:00 AM – 11:00 PM | Tuesday: 11:00 AM – 11:00 PM | Wednesday: 11:00 AM – 11:00 PM | Thursday: 11:00 AM – 11:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.000<br>1,935 מ׳<br><span class="small mono">31.2453737, 34.8128716</span></td>
+<td><a href="https://maps.google.com/?cid=13847664265611437109&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%95%D7%95%D7%96%20%D7%94%D7%96%D7%94%D7%91%2C%20%D7%91%D7%99%D7%92%20%D7%93%D7%A8%D7%9A%20%D7%90%D7%9C%D7%99%D7%94%D7%95%20%D7%A0%D7%90%D7%95%D7%99%2024%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ0V_FWmlmAhURNeSjEEjJLMA</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified · שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">54</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1214</td>
+<td><b>אנג&#39;לינה פיצה ופסטה</b><br><span class="small">אילת, Israel</span></td>
+<td><b>מסעדת אנג&#39;לינה באילת</b><br><span class="small">מלון המלך שלמה, Eilat, Israel</span></td>
+<td class="v">4.3 <span class="small">(1296)</span></td>
+<td class="v">08-636-3439</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ67-_L-VxABURFyBhxrW-dgw/photos/AaVGc3knGQ9Y8...</span><br><span class="small">P M</span></td>
+<td><span class="small">Monday: 6:00 – 10:00 PM | Tuesday: 6:00 – 10:00 PM | Wednesday: 6:00 – 10:00 PM | Thursday: 6:00 – 10:00 PM | Friday: Cl...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">italian_restaurant</span><br><span class="small">italian_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.615<br>1,225 מ׳<br><span class="small mono">29.5525, 34.961388899999996</span></td>
+<td><a href="https://maps.google.com/?cid=898114863633604631&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A0%D7%92&#39;%D7%9C%D7%99%D7%A0%D7%94%20%D7%A4%D7%99%D7%A6%D7%94%20%D7%95%D7%A4%D7%A1%D7%98%D7%94%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ67-_L-VxABURFyBhxrW-dgw</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">55</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1215</td>
+<td><b>קירה</b><br><span class="small">יאיר 4, אשדוד, Israel</span></td>
+<td><b>קירה</b><br><span class="small">Yair St 4, Ashdod, 7722611, Israel</span></td>
+<td class="v">4.2 <span class="small">(3422)</span></td>
+<td class="v">08-856-1632</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJC4t1WHOjAhURLofDxX4F1D4/photos/AaVGc3nArx7Ss...</span><br><span class="small">קירה</span></td>
+<td><span class="small">Monday: 11:00 AM – 12:00 AM | Tuesday: 11:00 AM – 12:00 AM | Wednesday: 11:00 AM – 12:00 AM | Thursday: 11:00 AM – 12:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;coffee_shop;cafe;food_store;store;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>3,532 מ׳<br><span class="small mono">31.8141658, 34.645444399999995</span></td>
+<td><a href="https://maps.google.com/?cid=4527249567456134958&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%99%D7%A8%D7%94%20%D7%99%D7%90%D7%99%D7%A8%204%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJC4t1WHOjAhURLofDxX4F1D4</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">56</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1216</td>
+<td><b>ראנץ&#39; האוס</b><br><span class="small">אילת, Israel</span></td>
+<td><b>Ranch House</b><br><span class="small">טיילת רויאל ביץ, אילת, Israel</span></td>
+<td class="v">4.3 <span class="small">(1316)</span></td>
+<td class="v">08-636-8989</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJmY5N7e9xABURuSIAsmdOK-I/photos/AaVGc3l09PoKn...</span><br><span class="small">יהודה מוסקוביץ</span></td>
+<td><span class="small">Monday: 6:30 – 10:30 PM | Tuesday: 6:30 – 10:30 PM | Wednesday: 6:30 – 10:30 PM | Thursday: 6:30 – 10:30 PM | Friday: Cl...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.429<br>1,525 מ׳<br><span class="small mono">29.5492612, 34.962859</span></td>
+<td><a href="https://maps.google.com/?cid=16297205883845223097&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%90%D7%A0%D7%A5&#39;%20%D7%94%D7%90%D7%95%D7%A1%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJmY5N7e9xABURuSIAsmdOK-I</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">57</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1238</td>
+<td><b>בית הפול והשווארמה נווה זאב</b><br><span class="small">שד&#39; יוהנה ז&#39;בוטינסקי 11, באר שבע, Israel</span></td>
+<td><b>בית הפול והשווארמה - נווה זאב באר שבע | ב&quot;ש | חומוס | פלאפל | סביח | שניצל | שווארמה | משלוחים</b><br><span class="small">Sderot Johana Jabotinsky 11, Beersheba, Israel</span></td>
+<td class="v">4.5 <span class="small">(1113)</span></td>
+<td class="v">1599-545328</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJSWOfZQdmAhUR_IDBoaq3Ug4/photos/AaVGc3m8mEnqB...</span><br><span class="small">בית הפול והשווארמה - נווה זאב באר שבע | ב&quot;ש | חומוס | פלאפל | סביח | שניצל | שוו...</span></td>
+<td><span class="small">Monday: 9:30 AM – 10:00 PM | Tuesday: 9:30 AM – 10:00 PM | Wednesday: 9:30 AM – 10:00 PM | Thursday: 9:30 AM – 10:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">israeli_restaurant</span><br><span class="small">israeli_restaurant;diner;shawarma_restaurant;meal_delivery;food_delivery;fast_food_restaur...</span></td>
+<td class="v">sim 1.000<br>1,872 מ׳<br><span class="small mono">31.2389991, 34.7744721</span></td>
+<td><a href="https://maps.google.com/?cid=1032089208107401468&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%94%D7%A4%D7%95%D7%9C%20%D7%95%D7%94%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%A0%D7%95%D7%95%D7%94%20%D7%96%D7%90%D7%91%20%D7%A9%D7%93&#39;%20%D7%99%D7%95%D7%94%D7%A0%D7%94%20%D7%96&#39;%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99%2011%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJSWOfZQdmAhUR_IDBoaq3Ug4</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">58</td>
+<td class="group">מרחק גבוה</td>
+<td class="v">1246</td>
+<td><b>פיצה שמש נווה זאב</b><br><span class="small">שד&#39; יוהנה ז&#39;בוטינסקי 24, באר שבע, Israel</span></td>
+<td><b>פיצה שמש נווה זאב</b><br><span class="small">Sderot Johana Jabotinsky 24, Beersheba, Israel</span></td>
+<td class="v">4.3 <span class="small">(851)</span></td>
+<td class="v">08-855-5428</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJb05EnwdmAhURrcmjQR2FD9s/photos/AaVGc3kmGm4hS...</span><br><span class="small">nicolai mindru</span></td>
+<td><span class="small">Monday: 11:30 AM – 11:00 PM | Tuesday: 11:30 AM – 11:00 PM | Wednesday: 11:30 AM – 11:00 PM | Thursday: 11:30 AM – 11:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">pizza_restaurant</span><br><span class="small">pizza_restaurant;meal_takeaway;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>1,759 מ׳<br><span class="small mono">31.2400303, 34.7752646</span></td>
+<td><a href="https://maps.google.com/?cid=15784981579658676653&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%A9%D7%9E%D7%A9%20%D7%A0%D7%95%D7%95%D7%94%20%D7%96%D7%90%D7%91%20%D7%A9%D7%93&#39;%20%D7%99%D7%95%D7%94%D7%A0%D7%94%20%D7%96&#39;%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99%2024%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJb05EnwdmAhURrcmjQR2FD9s</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">מרחק גבוה: להציג רק אם verified</td>
+</tr>
+<tr>
+<td class="v">59</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">275</td>
+<td><b>אלוף הסביח</b><br><span class="small">Carlebach St 18, Tel Aviv-Yafo, Israel</span></td>
+<td><b>אלוף הסביח</b><br><span class="small">Carlebach St 18, Tel Aviv-Yafo, Israel</span></td>
+<td class="v">3.9 <span class="small">(39)</span></td>
+<td class="v">052-835-5113</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJCb5xlOxLHRURRsWU4HgFDf0/photos/AaVGc3lPuEF6S...</span><br><span class="small">Dovi Rosh Hai</span></td>
+<td><span class="small">Monday: 10:00 AM – 9:00 PM | Tuesday: 10:00 AM – 9:00 PM | Wednesday: 10:00 AM – 9:00 PM | Thursday: 10:00 AM – 9:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.0707205, 34.7825503</span></td>
+<td><a href="https://maps.google.com/?cid=18234236483015066950&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%9C%D7%95%D7%A3%20%D7%94%D7%A1%D7%91%D7%99%D7%97%20Carlebach%20St%2018%2C%20Tel%20Aviv-Yafo%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJCb5xlOxLHRURRsWU4HgFDf0</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">60</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">583</td>
+<td><b>פלאפל מוסא</b><br><span class="small">נתניה, Israel</span></td>
+<td><b>Falafel mosa</b><br><span class="small">Sderot Hayim Weizman 12, Netanya, Israel</span></td>
+<td class="v">4.3 <span class="small">(480)</span></td>
+<td class="v">09-865-5500</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJ6d27kKtqHRUR0hiVMqjCgjw/photos/AaVGc3mpX8c0Z...</span><br><span class="small">Zimmer Yam</span></td>
+<td><span class="small">Monday: 8:00 AM – 12:00 AM | Tuesday: 8:00 AM – 12:00 AM | Wednesday: 8:00 AM – 12:00 AM | Thursday: 8:00 AM – 12:00 AM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">falafel_restaurant</span><br><span class="small">falafel_restaurant;fast_food_restaurant;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.571<br>265 מ׳<br><span class="small mono">32.3298276, 34.8590488</span></td>
+<td><a href="https://maps.google.com/?cid=4360261416906987730&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%9C%D7%90%D7%A4%D7%9C%20%D7%9E%D7%95%D7%A1%D7%90%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJ6d27kKtqHRUR0hiVMqjCgjw</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">61</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">586</td>
+<td><b>פיצה דון פדרו</b><br><span class="small">נתניה, Israel</span></td>
+<td><b>Don Pedro</b><br><span class="small">Herzl St 5, Netanya, 42400, Israel</span></td>
+<td class="v">4.4 <span class="small">(105)</span></td>
+<td class="v">09-777-8071</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJAyRw-KhqHRURprEaYR9WKrc/photos/AaVGc3mnXCGF_...</span><br><span class="small">Iwona WS</span></td>
+<td><span class="small">Monday: 10:00 AM – 3:00 PM | Tuesday: 10:00 AM – 3:00 PM | Wednesday: 10:00 AM – 3:00 PM | Thursday: 10:00 AM – 3:00 PM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">pizza_restaurant</span><br><span class="small">pizza_restaurant;pizza_delivery;meal_delivery;food_delivery;meal_takeaway;restaurant;food;...</span></td>
+<td class="v">sim 0.714<br>331 מ׳<br><span class="small mono">32.329963299999996, 34.8534812</span></td>
+<td><a href="https://maps.google.com/?cid=13198456350735774118&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%93%D7%95%D7%9F%20%D7%A4%D7%93%D7%A8%D7%95%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJAyRw-KhqHRURprEaYR9WKrc</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">62</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">591</td>
+<td><b>היקב</b><br><span class="small">Gad Machnes St 6, Netanya, Israel</span></td>
+<td><b>HaYekev</b><br><span class="small">Gad Machnes St 6, Netanya, Israel</span></td>
+<td class="v">4.5 <span class="small">(9061)</span></td>
+<td class="v">09-862-2220</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJC2nDlKdqHRURPYcUo-8fUqs/photos/AaVGc3m-u93eW...</span><br><span class="small">היקב</span></td>
+<td><span class="small">Monday: 8:30 AM – 11:30 PM | Tuesday: 8:30 AM – 11:30 PM | Wednesday: 8:30 AM – 11:30 PM | Thursday: 8:30 AM – 12:00 AM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">mediterranean_restaurant;italian_restaurant;cafe;event_venue;restaurant;food;point_of_inte...</span></td>
+<td class="v">sim 0.667<br>0 מ׳<br><span class="small mono">32.3293342, 34.849590299999996</span></td>
+<td><a href="https://maps.google.com/?cid=12344964642669627197&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%99%D7%A7%D7%91%20Gad%20Machnes%20St%206%2C%20Netanya%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJC2nDlKdqHRURPYcUo-8fUqs</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">63</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">599</td>
+<td><b>קפה גן סיפור</b><br><span class="small">Sacher Park, Jerusalem, Israel</span></td>
+<td><b>Gan Sipur Café</b><br><span class="small">Sacher Park, Jerusalem, Israel</span></td>
+<td class="v">4.4 <span class="small">(5887)</span></td>
+<td class="v">072-336-0999</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJQQHV9r_XAhURUZW0zafyYqw/photos/AaVGc3lPdCQzW...</span><br><span class="small">קפה גן סיפור ירושלים</span></td>
+<td><span class="small">Monday: 8:00 AM – 12:00 AM | Tuesday: 8:00 AM – 12:00 AM | Wednesday: 8:00 AM – 12:00 AM | Thursday: 8:00 AM – 12:00 AM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">cafe</span><br><span class="small">cafe;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.833<br>0 מ׳<br><span class="small mono">31.7821221, 35.2076257</span></td>
+<td><a href="https://maps.google.com/?cid=12421757524765873489&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%92%D7%9F%20%D7%A1%D7%99%D7%A4%D7%95%D7%A8%20Sacher%20Park%2C%20Jerusalem%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJQQHV9r_XAhURUZW0zafyYqw</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">64</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">1195</td>
+<td><b>ריבר באר שבע - River</b><br><span class="small">Hita St 1, Be&#39;er Sheva, 8424617, Israel</span></td>
+<td><b>ריבר באר שבע - River</b><br><span class="small">Hita St 1, Be&#39;er Sheva, 8424617, Israel</span></td>
+<td class="v">4.4 <span class="small">(461)</span></td>
+<td class="v">053-681-6010</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJV8mFbU5nAhURRSeKchKwK54/photos/AaVGc3kByadls...</span><br><span class="small">liat meran</span></td>
+<td><span class="small">Monday: 12:00 – 11:30 PM | Tuesday: 12:00 – 11:30 PM | Wednesday: 12:00 – 11:30 PM | Thursday: 12:00 PM – 12:30 AM | Fri...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">asian_restaurant</span><br><span class="small">asian_restaurant;cocktail_bar;bar;restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">31.2338523, 34.799724499999996</span></td>
+<td><a href="https://maps.google.com/?cid=11397396875268728645&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%99%D7%91%D7%A8%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%20-%20River%20Hita%20St%201%2C%20Be&#39;er%20Sheva%2C%208424617%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJV8mFbU5nAhURRSeKchKwK54</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">65</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">1199</td>
+<td><b>כולנו - Kulanu</b><br><span class="small">Makhal St 1, Ashkelon, Israel</span></td>
+<td><b>כולנו - Kulanu</b><br><span class="small">Makhal St 1, Ashkelon, Israel</span></td>
+<td class="v">4.1 <span class="small">(615)</span></td>
+<td class="v">055-973-0077</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJr9aVl4ydAhURqeGq68TwLPY/photos/AaVGc3lll7cKX...</span><br><span class="small">tuvya br</span></td>
+<td><span class="small">Monday: 6:00 PM – 12:00 AM | Tuesday: 6:00 PM – 12:00 AM | Wednesday: 6:00 PM – 12:00 AM | Thursday: 6:00 PM – 12:00 AM ...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">31.680789899999997, 34.570194199999996</span></td>
+<td><a href="https://maps.google.com/?cid=17738817760863642025&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%95%D7%9C%D7%A0%D7%95%20-%20Kulanu%20Makhal%20St%201%2C%20Ashkelon%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJr9aVl4ydAhURqeGq68TwLPY</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">66</td>
+<td class="group">שעות פתיחה</td>
+<td class="v">1203</td>
+<td><b>טעם העמק</b><br><span class="small">בעלי המלאכה 5, צים סנטר נתיבות, Israel</span></td>
+<td><b>Taste of the Valley</b><br><span class="small">פריז סנטר, Ba&#39;alei HaMelacha 5, Netivot, Israel</span></td>
+<td class="v">4.3 <span class="small">(1958)</span></td>
+<td class="v">08-676-5532</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJjTNKk3l-AhUReEM8LT6It9s/photos/AaVGc3npta1FZ...</span><br><span class="small">Zadok Shmuel</span></td>
+<td><span class="small">Monday: 12:00 – 11:00 PM | Tuesday: 12:00 – 11:00 PM | Wednesday: 12:00 – 11:00 PM | Thursday: 12:00 – 11:00 PM | Friday...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.167<br>87 מ׳<br><span class="small mono">31.417544499999998, 34.5942558</span></td>
+<td><a href="https://maps.google.com/?cid=15832272815672542072&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%A2%D7%9D%20%D7%94%D7%A2%D7%9E%D7%A7%20%D7%91%D7%A2%D7%9C%D7%99%20%D7%94%D7%9E%D7%9C%D7%90%D7%9B%D7%94%205%2C%20%D7%A6%D7%99%D7%9D%20%D7%A1%D7%A0%D7%98%D7%A8%20%D7%A0%D7%AA%D7%99%D7%91%D7%95%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJjTNKk3l-AhUReEM8LT6It9s</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">שם שונה שפה/כתיב: לא להחליף שם מקור</td>
+</tr>
+<tr>
+<td class="v">67</td>
+<td class="group">עוד דוגמאות</td>
+<td class="v">587</td>
+<td><b>גלי צאנז</b><br><span class="small">Ha-Melakhim St 6, Netanya, Israel</span></td>
+<td><b>Galei Tsanz</b><br><span class="small">Ha-Melakhim St 6, Netanya, Israel</span></td>
+<td class="v">4.4 <span class="small">(1084)</span></td>
+<td class="v">09-862-1777</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJbSqTWrZqHRURVrzcW7vdI5Y/photos/AaVGc3nBSbEBy...</span><br><span class="small">גלי צאנז</span></td>
+<td><span class="small"></span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">hotel</span><br><span class="small">hotel;market;bed_and_breakfast;restaurant;lodging;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>0 מ׳<br><span class="small mono">32.3452439, 34.8546633</span></td>
+<td><a href="https://maps.google.com/?cid=10818734526643878998&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%9C%D7%99%20%D7%A6%D7%90%D7%A0%D7%96%20Ha-Melakhim%20St%206%2C%20Netanya%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJbSqTWrZqHRURVrzcW7vdI5Y</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">68</td>
+<td class="group">עוד דוגמאות</td>
+<td class="v">1206</td>
+<td><b>פרש דה מרקט</b><br><span class="small">דרך הדרום 3, קריית גת, Israel</span></td>
+<td><b>פרש דה מרקט Fresh The Market</b><br><span class="small">Derekh ha-Darom 3, Kiryat Gat, Israel</span></td>
+<td class="v">4.2 <span class="small">(691)</span></td>
+<td class="v">08-850-0085</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJpVkLPEiRAhURYe2c83whzhQ/photos/AaVGc3m1z6gYk...</span><br><span class="small">פרש דה מרקט Fresh The Market</span></td>
+<td><span class="small">Monday: 10:00 AM – 10:00 PM | Tuesday: 10:00 AM – 10:00 PM | Wednesday: 10:00 AM – 10:00 PM | Thursday: 10:00 AM – 10:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 1.000<br>559 מ׳<br><span class="small mono">31.602088, 34.7706965</span></td>
+<td><a href="https://maps.google.com/?cid=1499172546507763041&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%A8%D7%A9%20%D7%93%D7%94%20%D7%9E%D7%A8%D7%A7%D7%98%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%93%D7%A8%D7%95%D7%9D%203%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%92%D7%AA%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJpVkLPEiRAhURYe2c83whzhQ</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">69</td>
+<td class="group">עוד דוגמאות</td>
+<td class="v">1213</td>
+<td><b>ראיחונה- בית האוכל הבוכרי</b><br><span class="small">הבנאים 3, נמל אשדוד, Israel</span></td>
+<td><b>ראיחונה, מסעדה בוכרית</b><br><span class="small">HaBana&#39;im St 3, Ashdod, Israel</span></td>
+<td class="v">4.2 <span class="small">(449)</span></td>
+<td class="v">052-404-0602</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJSSNB82ujAhURLOUSrWuf6Z0/photos/AaVGc3llWgMPo...</span><br><span class="small">victor peer</span></td>
+<td><span class="small">Monday: 11:00 AM – 10:00 PM | Tuesday: 11:00 AM – 10:00 PM | Wednesday: 11:00 AM – 10:00 PM | Thursday: 11:00 AM – 10:00...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">restaurant;food;point_of_interest;establishment</span></td>
+<td class="v">sim 0.600<br>478 מ׳<br><span class="small mono">31.8133643, 34.6585934</span></td>
+<td><a href="https://maps.google.com/?cid=11378801218342282540&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%90%D7%99%D7%97%D7%95%D7%A0%D7%94-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%90%D7%95%D7%9B%D7%9C%20%D7%94%D7%91%D7%95%D7%9B%D7%A8%D7%99%20%D7%94%D7%91%D7%A0%D7%90%D7%99%D7%9D%203%2C%20%D7%A0%D7%9E%D7%9C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJSSNB82ujAhURLOUSrWuf6Z0</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+<tr>
+<td class="v">70</td>
+<td class="group">עוד דוגמאות</td>
+<td class="v">1217</td>
+<td><b>באדה בום גן העיר</b><br><span class="small">Ha-Gdud ha-Ivri St 5, Ashdod, 7770089, Israel</span></td>
+<td><b>באדה בום -Bada Boom</b><br><span class="small">Ha-Gdud ha-Ivri St 5, Ashdod, 7770089, Israel</span></td>
+<td class="v">4.3 <span class="small">(683)</span></td>
+<td class="v">08-615-7777</td>
+<td><span class="yes">כן</span><br><span class="small mono">places/ChIJPzZ8KrOjAhURE0zPLDMY23Y/photos/AaVGc3lxSlkNy...</span><br><span class="small">מאור שטרית</span></td>
+<td><span class="small">Monday: 11:30 AM – 11:30 PM | Tuesday: 11:30 AM – 11:30 PM | Wednesday: 11:30 AM – 11:30 PM | Thursday: 11:30 AM – 11:30...</span></td>
+<td><span class="pill">OPERATIONAL</span><br><span class="pill">restaurant</span><br><span class="small">pizza_restaurant;pizza_delivery;meal_delivery;food_delivery;meal_takeaway;italian_restaura...</span></td>
+<td class="v">sim 0.667<br>0 מ׳<br><span class="small mono">31.791144799999998, 34.6382663</span></td>
+<td><a href="https://maps.google.com/?cid=8564465724449311763&amp;g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank">פין Google</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%90%D7%93%D7%94%20%D7%91%D7%95%D7%9D%20%D7%92%D7%9F%20%D7%94%D7%A2%D7%99%D7%A8%20Ha-Gdud%20ha-Ivri%20St%205%2C%20Ashdod%2C%207770089%2C%20Israel" target="_blank">חיפוש שלנו</a><br><span class="small mono">ChIJPzZ8KrOjAhURE0zPLDMY23Y</span></td>
+<td class="advice">דירוג · מספר ביקורות · טלפון · שעות פתיחה · כפתור Google Maps · תמונה אחרי הורדה</td>
+<td class="warn">נקי להצגה</td>
+</tr>
+</tbody></table>
+</body></html>

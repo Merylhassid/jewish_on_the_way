@@ -7,11 +7,11 @@ export type PrayerIconCfg = {
 };
 
 export const PRAYER_ICON_CONFIG: Record<string, PrayerIconCfg> = {
-  shacharit: { Icon: Sunrise,  color: '#F59E0B', bg: '#FFFBEB' },
-  mincha:    { Icon: Sun,      color: '#EF4444', bg: '#FEF2F2' },
-  maariv:    { Icon: Moon,     color: '#6366F1', bg: '#EEF2FF' },
-  musaf:     { Icon: Sparkles, color: '#8B5CF6', bg: '#F5F3FF' },
-  other:     { Icon: Users,    color: '#1a3a6b', bg: '#EFF6FF' },
+  shacharit: { Icon: Sunrise,  color: '#C48A2C', bg: '#FBF6E9' },
+  mincha:    { Icon: Sun,      color: '#B4544A', bg: '#F7EEEC' },
+  maariv:    { Icon: Moon,     color: '#5B7C99', bg: '#EEF2F6' },
+  musaf:     { Icon: Sparkles, color: '#7A6B9D', bg: '#F2F0F7' },
+  other:     { Icon: Users,    color: '#0B1736', bg: '#F4F4F5' },
 };
 
 export function getPrayerConfig(type: string): PrayerIconCfg {

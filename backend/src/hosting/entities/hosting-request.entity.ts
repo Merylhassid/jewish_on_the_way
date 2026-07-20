@@ -44,6 +44,10 @@ export class HostingRequest {
   @Column({ default: false })
   for_shabbat: boolean;
 
+  // stay|meals — carried over from the offer/need this request is for
+  @Column({ type: 'varchar', length: 10, default: 'stay' })
+  hosting_type: 'stay' | 'meals';
+
   @Column({ type: 'text', nullable: true })
   special_requests: string | null;
 
@@ -56,6 +60,10 @@ export class HostingRequest {
   // Explicit host reference — used when request originates from a need (offer=null)
   @Column({ type: 'int', nullable: true, name: 'host_id' })
   host_id: number | null;
+
+  // Links back to the need this request answered (offer=null path only)
+  @Column({ type: 'int', nullable: true, name: 'need_id' })
+  need_id: number | null;
 
   @Column({ default: false })
   guest_hidden: boolean;

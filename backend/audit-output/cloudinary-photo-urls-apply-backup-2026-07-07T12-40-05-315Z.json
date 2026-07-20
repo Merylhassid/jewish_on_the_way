@@ -1,0 +1,63 @@
+{
+  "takenAt": "2026-07-07T12:40:05.327Z",
+  "sourceCsv": "audit-output\\google-photos-cloudinary-bulk-ids-file-offset-0-2026-07-07T12-39-40-831Z.csv",
+  "count": 7,
+  "rows": [
+    {
+      "id": 6416,
+      "name": "איטליז מרכוס  Marcus",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7351,
+      "name": "המסעדה הבשרית פוקט",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7354,
+      "name": "המלך דוד – בשרי",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7409,
+      "name": "Darima Marrakech",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7410,
+      "name": "La coupole Marrakech",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 7418,
+      "name": "Butcher's Burger",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    },
+    {
+      "id": 8433,
+      "name": "Glatt Cafe & Makolet Larnaca",
+      "photo_url": null,
+      "photo_attribution": null,
+      "photo_source": null,
+      "photo_fetched_at": null
+    }
+  ]
+}

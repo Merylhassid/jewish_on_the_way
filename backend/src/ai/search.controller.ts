@@ -20,6 +20,7 @@ import { SearchFeedback } from './search-feedback.entity';
 import { DestinationIndexService } from './destination-index.service';
 import { QueryParserService } from './query-parser.service';
 import { ConfigService } from '@nestjs/config';
+import { Throttle } from '@nestjs/throttler';
 
 // Re-export pure helpers so existing imports (e.g. in tests) continue to work
 export {
@@ -32,7 +33,10 @@ import {
   buildDestinationCandidates,
   detectCountryInText,
   DESTINATION_STOP_WORDS,
+  levenshtein,
+  normalizeDestinationText,
 } from './destination-index.service';
+import { lookupFoodRelationMatch } from '../restaurants/food-relations';
 
 class SearchDto {
   @IsString()
@@ -81,7 +85,7 @@ const HEBREW_FOOD_TERMS = new Set([
   'ריזוטו','ניוקי','קארי','ראמן','פוקה','טאקו','בוריטו','נאן',
   'מרק','תבשיל','אורז','קינוח','קינוחים','מנה','מנות','ארוחות',
   // Generic food/meal words
-  'בשר','סלט','עוגה','אוכל','ארוחה','ארוחת','מטבח',
+  'בשר','סלט','עוגה','אוכל','לאכול','ארוחה','ארוחת','מטבח',
   // Dietary types
   'טבעוני','טבעונית','צמחוני','צמחונית','גלוטן',
   // Restaurant type keywords
@@ -94,6 +98,13 @@ const HEBREW_FOOD_TERMS = new Set([
   'מאפייה','מאפיה','מאפיית',
   // Missing food query terms
   'קציצות','קציצה','פריקסה','בגט','יין',
+  // Additional dishes + cuisines found missing in the 1000-query audit.
+  // Being a food term both routes to restaurant AND excludes the word from being treated
+  // as an (unresolvable) destination → no false "destination_not_found".
+  'לזניה','פרגית','פרגיות','אנטריקוט','קובה','מעורב','קוסקוס','מגדרה',
+  'גחנון','מלאווח','מלבי','כנאפה','בקלאווה','קלאווה','סביח','לאפה',
+  'פנקייק','פנקייקים','טוסט','טוסטים','קרפ','קרפים','ופל',
+  'איטלקי','אסייתי','סיני','יפני','תאילנדי','מקסיקני','אמריקאי','צרפתי','טורקי','לבנוני','עיראקי','מזרחי','אירופאי',
 ]);
 
 // English food/restaurant terms the ML model may misclassify
@@ -105,13 +116,13 @@ const ENGLISH_FOOD_TERMS = new Set([
   'kosher','ice','seafood','noodles','spaghetti','lasagna','risotto',
   'bagel','sandwich','dessert','cookie','croissant','donut','taco','burrito',
   'ramen','curry','soup','sushi','chocolate','cake','asian','italian','chinese',
-  'thai','indian','japanese','mediterranean','gourmet','bistro','deli',
+  'thai','indian','japanese','mediterranean','gourmet','bistro','deli','gelato',
 ]);
 
 function containsFoodTerm(text: string): boolean {
   const lower = text.toLowerCase();
-  if ((lower.match(/[א-ת]+/g) ?? []).some((w: string) => HEBREW_FOOD_TERMS.has(w))) return true;
-  if ((lower.match(/[a-z]+/g) ?? []).some((w: string) => ENGLISH_FOOD_TERMS.has(w))) return true;
+  if ((lower.match(/[א-ת]+/g) ?? []).some((w: string) => HEBREW_FOOD_TERMS.has(w) || Boolean(lookupFoodRelationMatch(w)))) return true;
+  if ((lower.match(/[a-z]+/g) ?? []).some((w: string) => ENGLISH_FOOD_TERMS.has(w) || Boolean(lookupFoodRelationMatch(w)))) return true;
   return false;
 }
 
@@ -119,9 +130,70 @@ function containsFoodTerm(text: string): boolean {
 // Denomination words alone (ספרדי, חב"ד) should not override the ML model —
 // "מניין שחרית ספרדי" is still a minyan, the model handles denomination context.
 function containsSynagogueExplicitTerm(text: string): boolean {
+  if (/בית\s+גנסת/.test(text)) return true;
+  if (/בית\s+כנס(?:ת)?/.test(text)) return true;
   if (/בתי\s+כנסת/.test(text) || /בתי\s+כנסיות/.test(text)) return true;
   if (/בית\s+כנסת/.test(text)) return true;
+  if (/בית\s+חב(?:["׳']?ד|ד)/.test(text) || /בתי\s+חב/.test(text)) return true; // בית חב"ד / בית חבד
+  if (/\b(?:synagogue|synagoge|synagog|shul|chabad)\b/i.test(text)) return true;
   return false;
+}
+
+// ── Minyan / prayer intent ────────────────────────────────────────────────
+// The ML model tends to misclassify minyan queries as restaurant, and there was
+// no explicit override for "מניין" (only for "בית כנסת"). Two tiers:
+//   strong = the word מניין/minyan itself; weak = a prayer-time word.
+function hasStrongMinyanTerm(text: string): boolean {
+  if (/(?:^|[\s,.;:!?])(?:מניין|מנין|מניינים|מנינים)(?:$|[\s,.;:!?])/.test(text)) return true;
+  if (/\b(?:minyan|minyn|minyen)\b/i.test(text)) return true;
+  return false;
+}
+function hasPrayerTimeTerm(text: string): boolean {
+  if (/(?:^|[\s,.;:!?])(?:שחרית|מנחה|מעריב|ערבית|מוסף|ותיקין|תפילה|תפילת)(?:$|[\s,.;:!?])/.test(text)) return true;
+  if (/(?:^|[\s,.;:!?])נץ(?:$|[\s,.;:!?])/.test(text)) return true;
+  if (/\b(?:shacharit|shaharit|mincha|maariv|arvit|davening|pray|prayer)\b/i.test(text)) return true;
+  return false;
+}
+function containsMinyanTerm(text: string): boolean {
+  return hasStrongMinyanTerm(text) || hasPrayerTimeTerm(text);
+}
+// "בית כנסת עם מניין" → the minyan is a feature of the place → keep it a synagogue.
+function minyanIsModifier(text: string): boolean {
+  return /עם\s+מניין|ובו\s+מניין|יש\s+(?:בו\s+)?מניין|with\s+(?:a\s+)?minyan/i.test(text);
+}
+
+// ── near-me guardrail ─────────────────────────────────────────────────────
+// EXACT markers only. "קרוב" alone is NOT near-me ("קרוב למלון"/"קרוב לבית חבד" are not GPS).
+export function hasNearMeMarker(text: string): boolean {
+  const lower = text.toLowerCase();
+  if (/(?:^|[\s,.;:!?])(?:לידי|פה|כאן)(?:$|[\s,.;:!?])/.test(text)) return true;
+  if (/קרוב\s+אל[יי]+/.test(text)) return true;              // קרוב אלי / קרוב אליי
+  if (/באזור\s+שלי/.test(text)) return true;
+  if (/\b(?:near\s+me|around\s+me|nearby|close\s+to\s+me)\b/.test(lower)) return true;
+  return false;
+}
+
+// Remove a "current location" declaration so an explicit target destination wins over it:
+// "אני בתל אביב אבל רוצה חומוס בבית שמש" → resolve "בית שמש", not "תל אביב".
+export function stripCurrentLocation(text: string): string {
+  return text
+    .replace(/(?:^|\s)אני\s+(?:נמצאת?\s+|נמצאים\s+)?[בל]\S.*?(?=\s+(?:אבל|אך|ו?רוצה|ו?מחפשת?|ו?צריכ|מעוניינ|,)|$)/g, ' ')
+    .replace(/\bi(?:'m| am)\s+in\s+.+?(?=\s+but\b|$)/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Remove near-me markers before destination resolution so they can't fuzzy-match a city
+// (e.g. "כאן" → "קאן"/Cannes, "לידי" → "לוד"/Lod). The nearMe flag still drives GPS.
+export function stripNearMe(text: string): string {
+  return text
+    .replace(/(?:^|\s)(?:לידי|פה|כאן)(?=$|\s|[,.;:!?])/g, ' ')
+    .replace(/קרוב\s+אל[יי]+/g, ' ')
+    .replace(/באזור\s+שלי/g, ' ')
+    .replace(/ליד\s+הבית/g, ' ')
+    .replace(/\b(?:near\s+me|around\s+me|nearby|close\s+to\s+me)\b/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 const KASHRUT_KEYWORDS: Record<string, string> = {
   'מהדרין':'mehadrin','mehadrin':'mehadrin',
@@ -131,20 +203,134 @@ const KASHRUT_KEYWORDS: Record<string, string> = {
 
 // Whitelist-based typo correction for high-value food terms only.
 // Only very safe, common Hebrew keyboard mistakes are included.
+// Controlled typo dictionary (he + en). Deterministic — no free correction.
+const TYPO_MAP: Record<string, string> = {
+  // hebrew
+  'כנתס': 'כנסת', 'כסנת': 'כנסת', 'גנסת': 'כנסת', 'ליהנ': 'לינה',
+  'קפא': 'קפה', 'פסתה': 'פסטה', 'סושיי': 'סושי', 'גליד': 'גלידה',
+  'חמס': 'חומוס', 'חומו': 'חומוס', 'פיש': 'דגים', 'שוארמה': 'שווארמה', 'שאורמה': 'שווארמה',
+  'המברגר': 'המבורגר', 'שינצל': 'שניצל', 'פלפל': 'פלאפל', 'פיצא': 'פיצה', 'פסה': 'פסטה', 'ביגל': 'בייגל',
+  'מסעד': 'מסעדה', 'שניצ': 'שניצל', 'פנקיק': 'פנקייק', 'בייג': 'בייגל', 'צחמוני': 'צמחוני',
+  'וטב': 'טוב', 'מומל': 'מומלץ', 'אבזור': 'באזור', 'שרחית': 'שחרית', 'יתמן': 'תימן', 'חלי': 'חלבי',
+  'יבת': 'בית', 'שוקול': 'שוקולד', 'מלואוח': 'מלאווח', 'קואסון': 'קרואסון', 'רומנט': 'רומנטי', 'קרו': 'קרוב',
+  // english
+  'synagoge': 'synagogue', 'synagog': 'synagogue', 'minyn': 'minyan', 'minyen': 'minyan',
+  'hambuger': 'hamburger', 'humus': 'hummus', 'shwarma': 'shawarma', 'felafel': 'falafel',
+  'pizzeria': 'pizza', 'piza': 'pizza', 'sushii': 'sushi',
+};
+// Anchors for a conservative distance-1 fuzzy (Hebrew, length >= 5 only).
+const FUZZY_ANCHORS = ['פיצה','המבורגר','שווארמה','פלאפל','חומוס','סושי','שניצל','פסטה','גלידה','שקשוקה','לזניה','מסעדה','מניין','שחרית','ערבית','אירוח'];
+
 function normalizeTypos(text: string): string {
-  return text
+  let t = text
+    .replace(/([א-ת])['׳]([א-ת])/g, '$1$2') // ג׳חנון → גחנון (geresh inside a Hebrew word)
+    .replace(/(^|[\s])פיצ(?=$|[\s,.;:!?])/g, '$1פיצה')
     .replace(/(^|[\s])פיצמ([\s]|$)/g, '$1פיצה$2')
     .replace(/(^|[\s])פיצנ([\s]|$)/g, '$1פיצה$2')
+    .replace(/(^|[\s])המבןרגר(?=$|[\s,.;:!?])/g, '$1המבורגר')
+    .replace(/(^|[\s])המבורג(?=$|[\s,.;:!?])/g, '$1המבורגר')
+    .replace(/(^|[\s])סוש(?=$|[\s,.;:!?])/g, '$1סושי')
     .replace(/(^|[\s])בפעולה(?=$|[\s,.;:!?])/g, '$1בעפולה')
     .replace(/(^|[\s])לפעולה(?=$|[\s,.;:!?])/g, '$1לעפולה');
+  // explicit typo map (word-wise, he + en)
+  t = t.replace(/[א-ת]+|[a-zA-Z]+/g, (w) => TYPO_MAP[w.toLowerCase()] ?? TYPO_MAP[w] ?? w);
+  // conservative fuzzy: Hebrew words length >= 5, exactly 1 edit from a domain anchor
+  t = t.replace(/[א-ת]{5,}/g, (w) => {
+    if (HEBREW_FOOD_TERMS.has(w)) return w;
+    for (const a of FUZZY_ANCHORS) {
+      if (Math.abs(a.length - w.length) <= 1 && levenshtein(w, a) === 1) return a;
+    }
+    return w;
+  });
+  return t;
 }
 
 // Hosting signal: explicit words OR (שבת + hosting verb)
 function containsHostingSignal(text: string): boolean {
   const lower = text.toLowerCase();
-  if (/(?:^|[\s])(?:אירוח|הארחה|לינה|להתארח|מתארח|מתארחת|מתארחים|מתארחות|מארח|מארחת|מארחים|מארחות)(?:$|[\s,.;:!?])/.test(lower)) return true;
-  if (/שבת/.test(lower) && /יארח|יארחו|שיארח|שיארחו|אארח|נארח|להתארח|מתארח|מארח/.test(lower)) return true;
+  if (/(?:^|[\s])(?:אירוח|הארחה|לינה|להתארח|להתאר|מתארח|מתארחת|מתארחים|מתארחות|מארח|מארחת|מארחים|מארחות)(?:$|[\s,.;:!?])/.test(lower)) return true;
+  if (/שב[תט]|בשת|לשבת|בשבת/.test(lower) && /יארח|יארחו|שיארח|שיארחו|אארח|נארח|להתארח|להתאר|מתארח|מארח/.test(lower)) return true;
+  if (/\b(?:hosting|host\s+family|shabbat\s+host)/.test(lower)) return true;
   return false;
+}
+
+// Strong Shabbat-hosting phrases. Checked BEFORE the food override because these
+// contain the food word "ארוחת" (which would otherwise route them to restaurant).
+// Guarded so an explicit restaurant query ("מסעדה לארוחת שבת") still wins as food.
+function containsShabbatHostingPhrase(text: string): boolean {
+  const lower = text.toLowerCase();
+  if (/מסעד|restaurant/.test(lower)) return false;
+  // "ארוחת שבת" and its typos ("ארוחת שב", "ארוחת לי שבת", "ארוחת בשת")
+  if (/ארוח[הת]/.test(lower) && /(?:^|\s)(?:שבת|שב|בשת|לשבת|בשבת)(?:$|\s)/.test(lower)) return true;
+  if (/סעוד(?:ה|ת)\s+(?:שליש|שבת)/.test(lower)) return true;
+  if (/ליל\s+שבת/.test(lower) && /(אירוח|מארח|להתארח|משפח|ארוח|סעוד)/.test(lower)) return true;
+  if (/אצל\s+משפחה|משפחה\s+מארחת|מקום\s+לשבת/.test(lower)) return true;
+  if (/\bshabbat\s+(?:hosting|meal|dinner)\b|\bhost\s+family\b|where\s+to\s+stay\s+for\s+shabbat/.test(lower)) return true;
+  return false;
+}
+
+// ── position of the first keyword of each intent (for "head word wins") ──────
+function synagogueFirstIdx(text: string): number {
+  const m = /בית\s+גנסת|בית\s+כנס|בתי\s+כנס|בית\s+חב|בתי\s+חב|synagogue|synagoge|synagog|shul|chabad/i.exec(text);
+  return m ? m.index : Infinity;
+}
+function minyanFirstIdx(text: string): number {
+  const m = /(?:^|[\s,.;:!?])(?:מניין|מנין|מניינים|מנינים|שחרית|מנחה|מעריב|ערבית|מוסף|ותיקין|תפילה|תפילת|נץ)(?:$|[\s,.;:!?])|\b(?:minyan|minyn|minyen|shacharit|shaharit|mincha|maariv|arvit|davening|pray|prayer)\b/i.exec(text);
+  return m ? m.index : Infinity;
+}
+function foodFirstIdx(text: string): number {
+  const lower = text.toLowerCase();
+  const words = lower.match(/[א-ת]+|[a-z]+/g) ?? [];
+  let scan = 0;
+  for (const w of words) {
+    const at = lower.indexOf(w, scan);
+    scan = at + w.length;
+    // Exact food sets only — the fuzzy food-relation match spuriously matches non-food
+    // words (city/hosting tokens like "גת"/"שמונה") and would hijack the head position.
+    // Food typos are handled deterministically by normalizeTypos/TYPO_MAP instead.
+    if (HEBREW_FOOD_TERMS.has(w) || ENGLISH_FOOD_TERMS.has(w)) return at;
+  }
+  return Infinity;
+}
+
+// Unified intent decision. Backbone = Codex "intent priority", but the food/minyan/
+// synagogue conflict is resolved by **head word** (whichever appears first wins), so
+// "מניין ליד מסעדה" → minyan while "מסעדה ליד מניין" → restaurant.
+export function decideCategory<T extends { category?: string; emoji?: string }>(text: string, mlResult: T): T {
+  if (containsShabbatHostingPhrase(text)) return { ...mlResult, category: 'hosting', emoji: '🏠' };
+  const syn = containsSynagogueExplicitTerm(text);
+  const minyanish = containsMinyanTerm(text);
+  // "בית כנסת עם מניין" — the minyan is a feature of the place → synagogue.
+  if (syn && minyanish && minyanIsModifier(text)) return { ...mlResult, category: 'synagogue', emoji: '🕍' };
+
+  const cands: Array<[string, string, number]> = [];
+  const fp = foodFirstIdx(text);            if (fp !== Infinity)      cands.push(['restaurant', '🍽️', fp]);
+  const mp = minyanish ? minyanFirstIdx(text) : Infinity; if (mp !== Infinity) cands.push(['minyan', '🙏', mp]);
+  const sp = syn ? synagogueFirstIdx(text) : Infinity;    if (sp !== Infinity) cands.push(['synagogue', '🕍', sp]);
+  if (cands.length) {
+    cands.sort((a, b) => a[2] - b[2]); // earliest keyword = the head intent
+    const [category, emoji] = cands[0];
+    return { ...mlResult, category, emoji };
+  }
+  if (containsHostingSignal(text)) return { ...mlResult, category: 'hosting', emoji: '🏠' };
+  return mlResult;
+}
+export function hasExplicitIntent(text: string): boolean {
+  // EXACT food only (foodFirstIdx) — not the fuzzy food-relation match, which false-matches
+  // bare destinations ("מרקש"→"מרק"/soup) and would wrongly block the destination-only guardrail.
+  return containsShabbatHostingPhrase(text) || foodFirstIdx(text) !== Infinity || containsMinyanTerm(text)
+    || containsSynagogueExplicitTerm(text) || containsHostingSignal(text);
+}
+
+// Conflicting intents joined by "או"/"or" (e.g. "בית כנסת או מסעדה") → don't guess, ask to clarify.
+export function isAmbiguousIntent(text: string): boolean {
+  if (!/(?:^|[\s])או(?:$|[\s])/.test(text) && !/\bor\b/i.test(text)) return false;
+  let n = 0;
+  if (containsFoodTerm(text)) n++;
+  if (containsSynagogueExplicitTerm(text)) n++;
+  if (containsMinyanTerm(text)) n++;
+  if (containsHostingSignal(text) || containsShabbatHostingPhrase(text)) n++;
+  return n >= 2;
 }
 
 function extractRestaurantFilters(text: string): { type: string | null; kashrut: string | null } {
@@ -154,6 +340,10 @@ function extractRestaurantFilters(text: string): { type: string | null; kashrut:
   for (const [kw, val] of Object.entries(RESTAURANT_TYPE_KEYWORDS)) {
     if (lower.includes(kw)) { type = val; break; }
   }
+  if (!type) {
+    const relation = lookupFoodRelationMatch(lower)?.relation;
+    if (relation?.fallbackType) type = relation.fallbackType === 'pareve' ? 'parve' : relation.fallbackType;
+  }
   for (const [kw, val] of Object.entries(KASHRUT_KEYWORDS)) {
     if (lower.includes(kw)) { kashrut = val; break; }
   }
@@ -161,7 +351,7 @@ function extractRestaurantFilters(text: string): { type: string | null; kashrut:
 }
 
 const SFARAD_DENOMINATION_PATTERNS = [
-  /(?:^|[\s,.;:!?])נוסח\s+ספרד(?:$|[\s,.;:!?])/,
+  /(?:^|[\s,.;:!?])(?:ב|ל|ה)?נוסח\s+ספרד(?:$|[\s,.;:!?])/,
   /(?:^|[\s,.;:!?])ספרדי(?:$|[\s,.;:!?])/,
   /(?:^|[\s,.;:!?])ספרדית(?:$|[\s,.;:!?])/,
   /(?:^|[\s,.;:!?])ספרדים(?:$|[\s,.;:!?])/,
@@ -182,6 +372,8 @@ function isSfaradDenominationCandidate(candidate: string): boolean {
 
 function isExplicitDestinationCandidate(candidate: string): boolean {
   if (!candidate || DESTINATION_STOP_WORDS.has(candidate) || isSfaradDenominationCandidate(candidate)) return false;
+  // A Hebrew-prefixed filler word ("בנוסח" → "נוסח") is not a real destination
+  if (/^[בלמה][א-ת]{2,}$/.test(candidate) && DESTINATION_STOP_WORDS.has(candidate.slice(1))) return false;
   if (candidate.includes(' ')) {
     const words = candidate.split(' ');
     if (words.some(isSfaradDenominationCandidate)) return false;
@@ -191,10 +383,26 @@ function isExplicitDestinationCandidate(candidate: string): boolean {
   return candidate.length >= 3;
 }
 
+function isSearchIntentCandidate(candidate: string): boolean {
+  if (candidate === 'בית' || candidate === 'כנס' || candidate === 'כנסת' || candidate === 'גנסת') return true;
+  // EXACT food only — fuzzy would skip real destinations ("מרקש"→"מרק"/soup) in the resolver.
+  return foodFirstIdx(candidate) !== Infinity || containsSynagogueExplicitTerm(candidate)
+    || containsHostingSignal(candidate) || containsMinyanTerm(candidate); // מוסף/נץ/ותיקין etc. aren't places
+}
+
 interface DestinationResolution {
   destination: Destination | null;
   explicitMention: boolean;
+  matched?: string; // the candidate string that resolved (for "bare destination" checks)
 }
+
+// Filler words used ONLY inside the destination-only guardrail (NOT global stop-words, so they
+// never weaken intent detection). Lets "יעד ניו יורק" / "מידע על טורונטו" / "מה יש לעשות בX"
+// reduce to just the place. Intent queries ("מה יש לאכול בX") are caught earlier by hasExplicitIntent.
+const DESTINATION_FILLER = new Set([
+  'יעד', 'מידע', 'על', 'מה', 'יש', 'לעשות', 'לבקר', 'לראות',
+  'info', 'about', 'destination', 'things', 'to', 'do', 'see', 'visit',
+]);
 
 interface RouteOptions {
   expandNearby?: boolean;
@@ -243,17 +451,8 @@ export class SearchController {
     if (!text?.trim()) return { category: null, emoji: null, denomination: null, confidence: 0 };
     const normalized = normalizeTypos(text);
     const mlResult = this.classifier.classify(normalized);
-    const foodOverride = containsFoodTerm(normalized);
-    const synagoguePluralOverride = !foodOverride && containsSynagogueExplicitTerm(normalized);
-    const hostingOverride = !foodOverride && !synagoguePluralOverride && containsHostingSignal(normalized);
-    const result = foodOverride
-      ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
-      : synagoguePluralOverride
-      ? { ...mlResult, category: 'synagogue', emoji: '🕍' }
-      : hostingOverride
-      ? { ...mlResult, category: 'hosting', emoji: '🏠' }
-      : mlResult;
-    if (!foodOverride && !synagoguePluralOverride && !hostingOverride && result.confidence < 0.45) {
+    const result = decideCategory(normalized, mlResult);
+    if (!hasExplicitIntent(normalized) && result.confidence < 0.45) {
       return { category: null, emoji: null, denomination: null, confidence: result.confidence };
     }
     let denomination: string | null = null;
@@ -271,6 +470,7 @@ export class SearchController {
   }
 
   @Post()
+  @Throttle({ default: { ttl: 60_000, limit: 30 } })
   async search(@Body() dto: SearchDto) {
     const { destinationId } = dto;
     // Normalise typos before any processing
@@ -279,38 +479,78 @@ export class SearchController {
     // ── שלב 1: Model 1 — סיווג קטגוריה ────────────────
     const mlResult = this.classifier.classify(text);
 
-    // Override ML when food/restaurant terms are present — prevents "בית" in city
-    // names (בית שמש, בית שאן) from biasing the ML toward synagogue
-    const hebrewFoodOverride = containsFoodTerm(text);
-    const hebrewSynagogueOverride = !hebrewFoodOverride && containsSynagogueExplicitTerm(text);
-    const hebrewHostingOverride = !hebrewFoodOverride && !hebrewSynagogueOverride && containsHostingSignal(text);
-    const result = hebrewFoodOverride
-      ? { ...mlResult, category: 'restaurant', emoji: '🍽️' }
-      : hebrewSynagogueOverride
-      ? { ...mlResult, category: 'synagogue', emoji: '🕍' }
-      : hebrewHostingOverride
-      ? { ...mlResult, category: 'hosting', emoji: '🏠' }
-      : mlResult;
+    // Intent override — deterministic rules beat the ML model (head-word wins).
+    const result = decideCategory(text, mlResult);
 
-    if (!hebrewFoodOverride && !hebrewSynagogueOverride && !hebrewHostingOverride && result.confidence < 0.45) {
-      // Before giving up: check if the text is a destination-only query (e.g. "מרקש", "קאן")
+    // Conflicting intents ("בית כנסת או מסעדה") → ask to clarify instead of guessing.
+    if (isAmbiguousIntent(text)) {
+      return {
+        category: 'unknown',
+        emoji: '❓',
+        error: 'ambiguous',
+        message: 'לא בטוח מה חיפשת — מסעדה, בית כנסת, מניין או אירוח? נסו לנסח מחדש.',
+        confidence: result.confidence,
+      };
+    }
+
+    // ── Destination-only guardrail ──────────────────────────────────────────
+    // A query with NO explicit intent is a place lookup — do NOT trust the ML category
+    // (it may confidently mis-classify a bare city like "מרקש"/"בני ברק"/"בית שמש" as
+    // minyan/synagogue/restaurant). Runs regardless of confidence. Explicit-intent queries
+    // ("מניין במרקש", "מסעדה בבית שמש") skip this block entirely and are unaffected.
+    if (!hasExplicitIntent(text)) {
+      // Meaningful words of the query (drop generic stop-words + destination-lookup fillers).
+      const meaningfulWords = normalizeDestinationText(text)
+        .split(' ')
+        .filter((w) => w && !DESTINATION_STOP_WORDS.has(w) && !DESTINATION_FILLER.has(w));
+
+      // City-level alias — fire ONLY if the query is JUST the destination (nothing meaningful
+      // remains beyond the matched alias). This prevents hijacking queries whose intent we
+      // didn't recognize (e.g. "stay with family in Beit Shemesh" → stays hosting, not destination).
       const destOnlyResolution = this.resolveDestinationFromText(text);
-      if (destOnlyResolution.destination) {
-        const d = destOnlyResolution.destination;
-        this.recordSearchFeedback(text, { detectedKeyword: 'destination_only' });
-        return {
-          category: 'destination',
-          emoji: '📍',
-          confidence: result.confidence,
-          // resolveDestinationFromText only indexes city-level destinations (WHERE parent_id IS NOT NULL),
-          // so all matches here are cities → go to city overview, not subdestinations picker.
-          route: `/destination/${d.id}`,
-          destinationId: d.id,
-          detectedCity: d.city ?? null,
-          gpsUsed: false,
-        };
+      if (destOnlyResolution.destination && destOnlyResolution.matched) {
+        const aliasWords = new Set(destOnlyResolution.matched.split(' '));
+        const bareDestination = meaningfulWords.every((w) => aliasWords.has(w));
+        if (bareDestination) {
+          const d = destOnlyResolution.destination;
+          this.recordSearchFeedback(text, { detectedKeyword: 'destination_only' });
+          return {
+            category: 'destination',
+            emoji: '📍',
+            confidence: result.confidence,
+            route: `/destination/${d.id}`,
+            destinationId: d.id,
+            detectedCity: d.city ?? null,
+            gpsUsed: false,
+          };
+        }
       }
-      return { error: 'low_confidence', message: 'לא הצלחתי להבין מה אתה מחפש. נסה לכתוב למשל: "מסעדה כשרה בתל אביב"', confidence: result.confidence };
+      // Country-level (e.g. "מרוקו", "תאילנד") — only if the query is JUST the country, and it's a
+      // real parent destination. "נוסח ספרד" is NOT Spain (detectCountryInText excludes the nusach).
+      const countryEng = detectCountryInText(text);
+      if (countryEng) {
+        const bareCountry = meaningfulWords.every((w) => detectCountryInText(w) === countryEng);
+        if (bareCountry) {
+          const parentDest = await this.findParentDestinationByCountry(countryEng);
+          if (parentDest) {
+            this.recordSearchFeedback(text, { detectedKeyword: 'destination_only' });
+            return {
+              category: 'destination',
+              emoji: '📍',
+              confidence: result.confidence,
+              route: this.getCountryRoute('destination', parentDest.id),
+              destinationId: parentDest.id,
+              detectedCity: parentDest.city ?? parentDest.country,
+              gpsUsed: false,
+            };
+          }
+        }
+      }
+      // Not a bare destination: keep the original low-confidence clarify; otherwise fall through
+      // to the normal flow (ML category + city/GPS resolution) — same as before the guardrail.
+      if (result.confidence < 0.45) {
+        return { error: 'low_confidence', message: 'לא הצלחתי להבין מה אתה מחפש. נסה לכתוב למשל: "מסעדה כשרה בתל אביב"', confidence: result.confidence };
+      }
     }
 
     // ── שלב 2: Model 2 — סיווג נוסח (רק לבתי כנסת/מניין) ──
@@ -351,13 +591,22 @@ export class SearchController {
       };
     }
 
-    const destinationResolution = await this.resolveDestinationFromText(text);
+    const nearMe = hasNearMeMarker(text);
+    // strip "אני נמצא ב..." (current location) and near-me markers so an explicit target
+    // wins and near-me words don't fuzzy-match a city ("כאן"→Cannes, "לידי"→Lod).
+    const destText = stripNearMe(stripCurrentLocation(text));
+    const destinationResolution = await this.resolveDestinationFromText(destText);
     let foundDest = destinationResolution.destination;
     let gpsUsed = false;
 
+    // "ספרד" / "נוסח ספרד" (incl. "בנוסח ספרד") = the Sfarad *nusach*, NOT Spain the country —
+    // unless the user explicitly wrote "בספרד"/"לספרד". Only a bare country mention routes to Spain.
+    const sfaradAsDenomination =
+      hasSfaradDenominationSignal(text.toLowerCase()) && !hasExplicitSpainLocation(text.toLowerCase());
+
     if (!foundDest) {
-      const countryEng = detectCountryInText(text);
-      if (countryEng) {
+      const countryEng = detectCountryInText(destText);
+      if (countryEng && !(countryEng === 'Spain' && sfaradAsDenomination)) {
         const parentDest = await this.findParentDestinationByCountry(countryEng);
         if (parentDest) {
           this.recordSearchFeedback(text, { detectedKeyword: result.category });
@@ -373,12 +622,15 @@ export class SearchController {
           };
         }
       } else {
-        foundDest = this.indexService.fuzzyMatch(buildDestinationCandidates(text));
+        foundDest = this.indexService.fuzzyMatch(
+          buildDestinationCandidates(destText).filter((c) => !(sfaradAsDenomination && c.includes('ספרד'))),
+        );
         // The ML model already identified the category. If no city was found in the index,
         // GPS is the right fallback only when the user did not explicitly ask for an
         // unresolved destination. If they typed a destination-like place, fail closed
         // instead of showing local results from the user's current GPS position.
-        const allowGpsFallback = !destinationResolution.explicitMention;
+        // near-me forces GPS even if a leftover word looked like an explicit destination
+        const allowGpsFallback = nearMe || !destinationResolution.explicitMention;
         if (!foundDest && allowGpsFallback && dto.lat != null && dto.lng != null) {
           foundDest = await this.findNearestDestination(dto.lat, dto.lng);
           if (foundDest) gpsUsed = true;
@@ -386,7 +638,27 @@ export class SearchController {
       }
     }
 
-    if (!foundDest && destinationResolution.explicitMention) {
+    // near-me but no GPS available → ask for location, don't fail closed or guess randomly
+    if (!foundDest && nearMe && (dto.lat == null || dto.lng == null)) {
+      return {
+        ...result,
+        error: 'location_required',
+        message: 'כדי לחפש לידך צריך הרשאת מיקום, או שתכתוב שם עיר.',
+        route: null,
+        destinationId: undefined,
+        detectedCity: null,
+        gpsUsed: false,
+        denomination,
+        denomEmoji,
+        denomLabel,
+        restaurantType,
+        restaurantKashrut,
+      };
+    }
+
+    // Fail closed only for an explicit place-name that didn't resolve (e.g. "פיצה בעיר-לא-קיימת").
+    // near-me is handled above (GPS / location_required), so it never fails closed here.
+    if (!foundDest && destinationResolution.explicitMention && !nearMe) {
       return {
         ...result,
         error: 'destination_not_found',
@@ -507,18 +779,33 @@ export class SearchController {
     // Try longer candidates first so "קריית גת" wins over "קריית"
     const sorted = [...candidates].sort((a, b) => b.length - a.length);
     for (const candidate of sorted) {
+      if (isSearchIntentCandidate(candidate)) continue;
       if (candidate === 'ספרד' && hasSfaradDenominationSignal(text.toLowerCase()) && !hasExplicitSpainLocation(text.toLowerCase())) {
         continue;
       }
       const destination = aliasIndex.get(candidate);
       if (destination) {
-        return { destination, explicitMention: true };
+        return { destination, explicitMention: true, matched: candidate };
       }
     }
 
+    const sfaradAsDenomination =
+      hasSfaradDenominationSignal(text.toLowerCase()) && !hasExplicitSpainLocation(text.toLowerCase());
     return {
       destination: null,
-      explicitMention: candidates.some(isExplicitDestinationCandidate),
+      // A candidate counts as an explicit destination only if it appears as a WHOLE WORD in
+      // the query — this drops prefix-stripped ghosts ("לזניה"→"זניה", "מלבי"→"לבי") and
+      // multi-word pair noise, while still catching a real "בקזבלנקה".
+      explicitMention: (() => {
+        const textWords = new Set(normalizeDestinationText(text).split(' '));
+        return candidates.some(
+          (candidate) =>
+            textWords.has(candidate) &&
+            isExplicitDestinationCandidate(candidate) &&
+            !isSearchIntentCandidate(candidate) &&
+            !(sfaradAsDenomination && candidate.includes('ספרד')),
+        );
+      })(),
     };
   }
 

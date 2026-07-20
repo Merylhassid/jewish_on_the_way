@@ -14,14 +14,28 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column({ name: 'password_hash' })
-  passwordHash: string;
+  @Column({ name: 'password_hash', type: 'varchar', nullable: true })
+  passwordHash: string | null;
+
+  @Column({ name: 'google_id', type: 'varchar', nullable: true, unique: true })
+  googleId: string | null;
+
+  @Column({ name: 'apple_id', type: 'varchar', nullable: true, unique: true })
+  appleId: string | null;
+
+  @Column({ name: 'facebook_id', type: 'varchar', nullable: true, unique: true })
+  facebookId: string | null;
 
   @Column({ name: 'first_name' })
   firstName: string;
 
   @Column({ default: true })
   isActive: boolean;
+
+  // Admin-imposed disable (distinct from isActive, which tracks email
+  // verification / self-deletion) — must survive email re-verification.
+  @Column({ name: 'is_disabled', default: false })
+  isDisabled: boolean;
 
   @Column({ default: 'user' })
   role: string; // 'user' | 'admin'

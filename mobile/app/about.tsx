@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import {
   View, Text, ScrollView, Pressable, StyleSheet,
-  Animated, LayoutAnimation, Platform, UIManager,
+  LayoutAnimation, Platform, UIManager,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import { C } from '@/constants/theme';
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const NAVY = '#0B1736';
-const GOLD = '#D4AF37';
+const NAVY = C.navy;
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -48,7 +48,7 @@ export default function AboutScreen() {
       {/* Header */}
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backBtn} hitSlop={12}>
-          <MaterialIcons name="chevron-left" size={28} color="#fff" />
+          <MaterialIcons name="chevron-left" size={28} color={C.navy} />
         </Pressable>
         <Text style={styles.headerTitle}>{t('about.title')}</Text>
         <View style={{ width: 44 }} />
@@ -83,66 +83,89 @@ export default function AboutScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F0F2F8' },
+  container: { flex: 1, backgroundColor: C.bg },
 
   header: {
-    backgroundColor: NAVY,
+    backgroundColor: C.cream,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: 56,
-    paddingBottom: 16,
+    paddingBottom: 18,
     paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: C.goldBorder,
   },
-  backBtn: { width: 44, alignItems: 'flex-start' },
-  headerTitle: { fontSize: 18, fontWeight: '700', color: '#fff' },
+  backBtn: {
+    width: 44,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: C.goldBorder,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: C.navy,
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  headerTitle: { fontFamily: 'Inter-Black', fontSize: 20, color: C.navy },
 
   body: { padding: 20, paddingBottom: 48 },
 
   descCard: {
     backgroundColor: '#fff',
-    borderRadius: 16,
+    borderRadius: 20,
     padding: 24,
     alignItems: 'center',
     marginBottom: 24,
     borderWidth: 1,
-    borderColor: '#E8ECF4',
+    borderColor: 'rgba(11,23,54,0.08)',
+    shadowColor: C.navy,
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
   logoBox: {
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: 'rgba(11,23,54,0.08)',
+    backgroundColor: C.goldFaint,
+    borderWidth: 1,
+    borderColor: C.goldBorder,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
   },
-  appName: { fontSize: 18, fontWeight: '700', color: NAVY, marginBottom: 8 },
-  descText: { fontSize: 14, color: '#4B5563', lineHeight: 22, textAlign: 'center' },
+  appName: { fontFamily: 'Inter-Bold', fontSize: 18, color: NAVY, marginBottom: 8 },
+  descText: { fontFamily: 'Inter-Regular', fontSize: 14, color: C.textSecondary, lineHeight: 22, textAlign: 'center' },
 
   sectionLabel: {
     fontSize: 11,
-    fontWeight: '700',
+    fontFamily: 'Inter-Bold',
     letterSpacing: 1.1,
-    color: '#8895A7',
+    color: C.goldEyebrow,
     marginBottom: 8,
     marginLeft: 4,
   },
 
   card: {
     backgroundColor: '#fff',
-    borderRadius: 16,
+    borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#E8ECF4',
+    borderColor: 'rgba(11,23,54,0.08)',
     overflow: 'hidden',
     marginBottom: 24,
   },
-  divider: { height: 1, backgroundColor: '#F0F2F8', marginHorizontal: 16 },
+  divider: { height: 1, backgroundColor: 'rgba(11,23,54,0.07)', marginHorizontal: 16 },
 
   faqItem: { paddingHorizontal: 16, paddingVertical: 14 },
   faqHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  faqQuestion: { flex: 1, fontSize: 14, fontWeight: '600', color: NAVY, marginRight: 8 },
-  faqAnswer: { fontSize: 13, color: '#4B5563', lineHeight: 20, marginTop: 10 },
+  faqQuestion: { flex: 1, fontFamily: 'Inter-SemiBold', fontSize: 14, color: NAVY, marginRight: 8 },
+  faqAnswer: { fontFamily: 'Inter-Regular', fontSize: 13, color: C.textSecondary, lineHeight: 20, marginTop: 10 },
 
-  version: { textAlign: 'center', fontSize: 12, color: '#9CA3AF' },
+  version: { fontFamily: 'Inter-Regular', textAlign: 'center', fontSize: 12, color: C.textMuted },
 });

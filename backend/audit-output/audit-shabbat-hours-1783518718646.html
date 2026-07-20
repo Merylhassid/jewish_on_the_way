@@ -1,0 +1,2238 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ביקורת שעות שבת — בדיקת כשרות</title>
+<style>
+body{font-family:Arial,sans-serif;margin:16px;background:#fafafa;color:#212121}
+h1{font-size:20px}h2{font-size:16px;margin-top:26px}
+.summary{background:#fff;border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin:12px 0 20px;font-size:13.5px;line-height:1.7}
+.note{font-size:12.5px;color:#607d8b;margin:4px 0 10px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:12.5px;margin-bottom:10px}
+th,td{border:1px solid #e0e0e0;padding:6px 8px;text-align:right;vertical-align:top}
+th{background:#eceff1;position:sticky;top:0}
+.reason{max-width:260px}
+.warn{color:#b71c1c;font-weight:700;font-size:11px}
+a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
+</style></head><body>
+<h1>ביקורת שעות שבת — בדיקת כשרות (עלות: $0, ללא קריאות API)</h1>
+<div class="summary">
+נבדקו <b>3715</b> מסעדות מאומתות עם שעות פתיחה מגוגל.<br>
+✅ ללא חשד: <b>3471</b> · 🔴 חשד ודאי (עסק רגיל): <b>241</b> · 🟠 צריך שיקול דעת (מלון/אירוח): <b>3</b> · לא ניתן היה לפרסר: <b>0</b><br>
+בנוסף, <b>14</b> רשומות כבר מסומנות is_kosher=false במאגר (ללא קשר לשעות).<br>
+<b>חוקים:</b> שישי פתוח אחרי 21:00 → חשד · שבת פתוח בין 08:00–16:00 → חשד. פתיחה במוצ"ש (למשל 21:30–00:00) לא נחשבת חשד.
+</div>
+
+    <h2 style="color:#6a1b9a">ℹ️ כבר מסומן אצלנו is_kosher=false — 14</h2>
+    <p class="note">רשומות שכבר יש להן דגל פנימי שהן לא כשרות (לא קשור לשעות) — כרגע לא מסוננות בקוד ה-API, כך שהמאומתות שביניהן מוצגות למשתמשים. לא נגעתי בהן, זה רק תזכורת.</p>
+    <table><thead><tr><th>ID</th><th>שם</th><th>יעד</th><th>סטטוס</th><th>כתובת</th></tr></thead><tbody>
+    <tr><td>4705</td><td><b>El Galpon</b></td><td>Buenos Aires, Argentina</td><td>verified</td><td>Av. Corrientes 2900, Buenos Aires</td></tr><tr><td>4693</td><td><b>L'As du Fallafel</b></td><td>Paris, France</td><td>verified</td><td>34 Rue des Rosiers, Paris 4e</td></tr><tr><td>4696</td><td><b>Café des Psaumes</b></td><td>Paris, France</td><td>verified</td><td>14-17 Rue des Rosiers, Paris 4e</td></tr><tr><td>4695</td><td><b>Chez Marianne</b></td><td>Paris, France</td><td>verified</td><td>2 Rue des Hospitalières Saint-Gervais, Paris 4e</td></tr><tr><td>4694</td><td><b>Florence Kahn</b></td><td>Paris, France</td><td>verified</td><td>24 Rue des Écouffes, Paris 4e</td></tr><tr><td>4690</td><td><b>Miznon</b></td><td>Tel Aviv, Israel</td><td>verified</td><td>23 Ibn Gavirol St, Tel Aviv</td></tr><tr><td>4691</td><td><b>Meshek Barzilay</b></td><td>Tel Aviv, Israel</td><td>verified</td><td>6 Ahad Ha'am St, Tel Aviv</td></tr><tr><td>4689</td><td><b>HaBasta</b></td><td>Tel Aviv, Israel</td><td>verified</td><td>Hacarmel Market, Tel Aviv</td></tr><tr><td>4697</td><td><b>Katz's Delicatessen</b></td><td>New York, United States</td><td>verified</td><td>205 E Houston St, Manhattan</td></tr><tr><td>4698</td><td><b>Taam Tov</b></td><td>New York, United States</td><td>verified</td><td>41 W 47th St, Manhattan</td></tr><tr><td>4700</td><td><b>Pardes</b></td><td>New York, United States</td><td>verified</td><td>15 Lafayette Ave, Brooklyn</td></tr><tr><td>4692</td><td><b>Port Said</b></td><td>Tel Aviv, Israel</td><td>pending</td><td>Bet Lessin Theatre, Tel Aviv</td></tr><tr><td>4704</td><td><b>La Fiesta</b></td><td>London, United Kingdom</td><td>pending</td><td>236 Golders Green Rd, London NW11</td></tr><tr><td>4702</td><td><b>Moshikis</b></td><td>London, United Kingdom</td><td>pending</td><td>46 Golders Green Rd, London NW11</td></tr>
+    </tbody></table>
+
+    <h2 style="color:#b71c1c">🔴 חשד ודאי — פתוח בזמן שאסור — 241</h2>
+    <p class="note">עסקים רגילים (לא מלון/אירוח). אלה החשודים המרכזיים לבדיקה שלך.</p>
+    <table><thead><tr><th>ID</th><th>שם</th><th>יעד</th><th>כתובת</th><th>סוג עסק (Google)</th><th>שישי</th><th>שבת</th><th>קישור</th></tr></thead><tbody>
+    <tr>
+      <td>4705</td>
+      <td><b>El Galpon</b> <span class="warn">⚠ is_kosher=false</span></td>
+      <td>Buenos Aires, Argentina</td>
+      <td>Av. Corrientes 2900, Buenos Aires</td>
+      <td>concert_hall</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=El%20Galpon%20Av.%20Corrientes%202900%2C%20Buenos%20Aires" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8079</td>
+      <td><b>McDonalds</b></td>
+      <td>Buenos Aires, Argentina</td>
+      <td>Av. Corrientes 3247, Buenos Aires, Buenos Aires, C1193 CABA, Argentina</td>
+      <td>fast_food_restaurant</td>
+      <td class="reason">פתוח עד 1:30 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:30 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=McDonalds%20Av.%20Corrientes%203247%2C%20Buenos%20Aires%2C%20Buenos%20Aires%2C%20C1193%20CABA%2C%20Argentina" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8088</td>
+      <td><b>Sushi Ko Tucuman</b></td>
+      <td>Buenos Aires, Argentina</td>
+      <td>Tucumán 617, CABA, C1049AAM, Argentina</td>
+      <td>meal_takeaway</td>
+      <td class="reason">פתוח עד 12:30 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sushi%20Ko%20Tucuman%20Tucum%C3%A1n%20617%2C%20CABA%2C%20C1049AAM%2C%20Argentina" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6451</td>
+      <td><b>מסעדת האוכל של שלום   Schalom Food</b></td>
+      <td>Vienna, Austria</td>
+      <td>Rotensterngasse 16, Wien.</td>
+      <td>sushi_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%94%D7%90%D7%95%D7%9B%D7%9C%20%D7%A9%D7%9C%20%D7%A9%D7%9C%D7%95%D7%9D%20%20%20Schalom%20Food%20Rotensterngasse%2016%2C%20Wien." target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8015</td>
+      <td><b>Café de l'Avenue</b></td>
+      <td>Montreal, Canada</td>
+      <td>5800 Cavendish Boulevard, Côte Saint-Luc, QC H4W 2T5, Canada</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20de%20l'Avenue%205800%20Cavendish%20Boulevard%2C%20C%C3%B4te%20Saint-Luc%2C%20QC%20H4W%202T5%2C%20Canada" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8030</td>
+      <td><b>Gare 18</b></td>
+      <td>Montreal, Canada</td>
+      <td>5767 Legare Street, Montreal, QC H3T 1E4, Canada</td>
+      <td>train_station</td>
+      <td class="reason">פתוח עד 12:30 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 4:30 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gare%2018%205767%20Legare%20Street%2C%20Montreal%2C%20QC%20H3T%201E4%2C%20Canada" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8032</td>
+      <td><b>Kebab Shop</b></td>
+      <td>Montreal, Canada</td>
+      <td>3755 Chemin de la Côte-Sainte-Catherine, Montreal, QC H3T 1E2, Canada</td>
+      <td>turkish_restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kebab%20Shop%203755%20Chemin%20de%20la%20C%C3%B4te-Sainte-Catherine%2C%20Montreal%2C%20QC%20H3T%201E2%2C%20Canada" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8433</td>
+      <td><b>Glatt Cafe &amp; Makolet Larnaca</b></td>
+      <td>Larnaca, Cyprus</td>
+      <td>Apollodorou 4, Larnaca, 6020, Cyprus</td>
+      <td>community_center</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Glatt%20Cafe%20%26%20Makolet%20Larnaca%20Apollodorou%204%2C%20Larnaca%2C%206020%2C%20Cyprus" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7343</td>
+      <td><b>חב&quot;ד לימסול</b></td>
+      <td>Limassol, Cyprus</td>
+      <td>Porfyriou Dikaiou 5, Limasol 3095, Cyprus, Limassol</td>
+      <td>synagogue</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%91%22%D7%93%20%D7%9C%D7%99%D7%9E%D7%A1%D7%95%D7%9C%20Porfyriou%20Dikaiou%205%2C%20Limasol%203095%2C%20Cyprus%2C%20Limassol" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7350</td>
+      <td><b>מסעדת ירושלים – 
+חב&quot;ד פאפוס</b></td>
+      <td>Paphos, Cyprus</td>
+      <td>Othelou 5, Kato Paphos 8042, Cyprus</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:30 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%E2%80%93%20%0A%D7%97%D7%91%22%D7%93%20%D7%A4%D7%90%D7%A4%D7%95%D7%A1%20Othelou%205%2C%20Kato%20Paphos%208042%2C%20Cyprus" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8445</td>
+      <td><b>Kosher Food at the Chabad Latchi</b></td>
+      <td>Paphos, Cyprus</td>
+      <td>Box 66091, Latchi CY, E713, Polis Crysochous, Cyprus</td>
+      <td>synagogue</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:30 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kosher%20Food%20at%20the%20Chabad%20Latchi%20Box%2066091%2C%20Latchi%20CY%2C%20E713%2C%20Polis%20Crysochous%2C%20Cyprus" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7356</td>
+      <td><b>שלום</b></td>
+      <td>Prague, Czech Republic</td>
+      <td>Maiselova 250/18, Josefov, 110 00 Praha-Praha 1, Czechia, Prague</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–2:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%9C%D7%95%D7%9D%20Maiselova%20250%2F18%2C%20Josefov%2C%20110%2000%20Praha-Praha%201%2C%20Czechia%2C%20Prague" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8374</td>
+      <td><b>5th District by King Solomon</b></td>
+      <td>Prague, Czech Republic</td>
+      <td>Široká 8,  Josefov, Prague, 110 00, Czech Republic</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=5th%20District%20by%20King%20Solomon%20%C5%A0irok%C3%A1%208%2C%20%20Josefov%2C%20Prague%2C%20110%2000%2C%20Czech%20Republic" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8377</td>
+      <td><b>Mansson's Bakery</b></td>
+      <td>Prague, Czech Republic</td>
+      <td>Josefov CZ, Bílkova 6/8, Staré Město, Prague, 110 00, Czech Republic</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mansson's%20Bakery%20Josefov%20CZ%2C%20B%C3%ADlkova%206%2F8%2C%20Star%C3%A9%20M%C4%9Bsto%2C%20Prague%2C%20110%2000%2C%20Czech%20Republic" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8382</td>
+      <td><b>Trdelník &amp; Coffee</b></td>
+      <td>Prague, Czech Republic</td>
+      <td>Josefov CZ, U Starého Hřbitova 42/2, Prague, 110 00, Czech Republic</td>
+      <td>bistro</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–7:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Trdeln%C3%ADk%20%26%20Coffee%20Josefov%20CZ%2C%20U%20Star%C3%A9ho%20H%C5%99bitova%2042%2F2%2C%20Prague%2C%20110%2000%2C%20Czech%20Republic" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4694</td>
+      <td><b>Florence Kahn</b> <span class="warn">⚠ is_kosher=false</span></td>
+      <td>Paris, France</td>
+      <td>24 Rue des Écouffes, Paris 4e</td>
+      <td>catering_service</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–6:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Florence%20Kahn%2024%20Rue%20des%20%C3%89couffes%2C%20Paris%204e" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4695</td>
+      <td><b>Chez Marianne</b> <span class="warn">⚠ is_kosher=false</span></td>
+      <td>Paris, France</td>
+      <td>2 Rue des Hospitalières Saint-Gervais, Paris 4e</td>
+      <td>mediterranean_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 9:30 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chez%20Marianne%202%20Rue%20des%20Hospitali%C3%A8res%20Saint-Gervais%2C%20Paris%204e" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8195</td>
+      <td><b>Canal Grill</b></td>
+      <td>Paris, France</td>
+      <td>153 Rue de Crimée , Paris, 75019 , France</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Canal%20Grill%20153%20Rue%20de%20Crim%C3%A9e%20%2C%20Paris%2C%2075019%20%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8196</td>
+      <td><b>Chabad Champs Elysees Shabbat</b></td>
+      <td>Paris, France</td>
+      <td>122 Av. des Champs-Élysées, Paris, 75008, France</td>
+      <td>association_or_organization</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–3:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Champs%20Elysees%20Shabbat%20122%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%20Paris%2C%2075008%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8216</td>
+      <td><b>Doron 17e</b></td>
+      <td>Paris, France</td>
+      <td>73 Av. Niel, Paris, 75017, France</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Doron%2017e%2073%20Av.%20Niel%2C%20Paris%2C%2075017%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8220</td>
+      <td><b>Friday Night Great Synagogue</b></td>
+      <td>Paris, France</td>
+      <td>Synagogue de la Victoire 44, rue de la Victoire  , Paris, 75009, France</td>
+      <td>synagogue</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–12:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Friday%20Night%20Great%20Synagogue%20Synagogue%20de%20la%20Victoire%2044%2C%20rue%20de%20la%20Victoire%20%20%2C%20Paris%2C%2075009%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8238</td>
+      <td><b>La Délicieuse Voltaire</b></td>
+      <td>Paris, France</td>
+      <td>234, Boulevard Voltaire, Paris, 75011, France</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20D%C3%A9licieuse%20Voltaire%20234%2C%20Boulevard%20Voltaire%2C%20Paris%2C%2075011%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8270</td>
+      <td><b>O'Woks 19</b></td>
+      <td>Paris, France</td>
+      <td>115, rue Manin, Paris, 75019, France</td>
+      <td>asian_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–3:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=O'Woks%2019%20115%2C%20rue%20Manin%2C%20Paris%2C%2075019%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8279</td>
+      <td><b>Shinzzo Manin</b></td>
+      <td>Paris, France</td>
+      <td>68 Rue Manin, Paris, 75019, France</td>
+      <td>chinese_restaurant</td>
+      <td class="reason">פתוח עד 10:45 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–10:45 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Shinzzo%20Manin%2068%20Rue%20Manin%2C%20Paris%2C%2075019%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6422</td>
+      <td><b>בית חב&quot;ד מערב ברלין</b></td>
+      <td>Berlin, Germany</td>
+      <td>Münstersche Str. 6, 10709 Berlin, Germany.</td>
+      <td>association_or_organization</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:30 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%97%D7%91%22%D7%93%20%D7%9E%D7%A2%D7%A8%D7%91%20%D7%91%D7%A8%D7%9C%D7%99%D7%9F%20M%C3%BCnstersche%20Str.%206%2C%2010709%20Berlin%2C%20Germany." target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6423</td>
+      <td><b>בית חב&quot;ד ברלין לישראלים – אלכסנדרפלאץ</b></td>
+      <td>Berlin, Germany</td>
+      <td>Karl-Liebknecht Str. 34, 10178 Berlin.</td>
+      <td>synagogue</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–6:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%97%D7%91%22%D7%93%20%D7%91%D7%A8%D7%9C%D7%99%D7%9F%20%D7%9C%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%9D%20%E2%80%93%20%D7%90%D7%9C%D7%9B%D7%A1%D7%A0%D7%93%D7%A8%D7%A4%D7%9C%D7%90%D7%A5%20Karl-Liebknecht%20Str.%2034%2C%2010178%20Berlin." target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6311</td>
+      <td><b>hummusbar</b></td>
+      <td>Budapest, Hungary</td>
+      <td>Budapest, Október 6. u. 19, 1051 Hungary</td>
+      <td>middle_eastern_restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–9:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=hummusbar%20Budapest%2C%20Okt%C3%B3ber%206.%20u.%2019%2C%201051%20Hungary" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8400</td>
+      <td><b>The Bretzel Bakery - ONLY THE BREAD</b></td>
+      <td>Dublin, Ireland</td>
+      <td>1a Lennox St Portobello, Dublin 8, Dublin, Ireland</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=The%20Bretzel%20Bakery%20-%20ONLY%20THE%20BREAD%201a%20Lennox%20St%20Portobello%2C%20Dublin%208%2C%20Dublin%2C%20Ireland" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2196</td>
+      <td><b>תחנה 4</b></td>
+      <td>Afula, Israel</td>
+      <td>זלמן הוז 1, עפולה, Israel</td>
+      <td>event_venue</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%AA%D7%97%D7%A0%D7%94%204%20%D7%96%D7%9C%D7%9E%D7%9F%20%D7%94%D7%95%D7%96%201%2C%20%D7%A2%D7%A4%D7%95%D7%9C%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6662</td>
+      <td><b>BIGA נוף הגליל</b></td>
+      <td>Afula, Israel</td>
+      <td>דרך העמק 41, נוף הגליל</td>
+      <td>cafe</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=BIGA%20%D7%A0%D7%95%D7%A3%20%D7%94%D7%92%D7%9C%D7%99%D7%9C%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%A2%D7%9E%D7%A7%2041%2C%20%D7%A0%D7%95%D7%A3%20%D7%94%D7%92%D7%9C%D7%99%D7%9C" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2638</td>
+      <td><b>הרופטופ של עכותיקה</b></td>
+      <td>Akko, Israel</td>
+      <td>רח' 10 31, עכו, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:30 AM–12:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A8%D7%95%D7%A4%D7%98%D7%95%D7%A4%20%D7%A9%D7%9C%20%D7%A2%D7%9B%D7%95%D7%AA%D7%99%D7%A7%D7%94%20%D7%A8%D7%97'%2010%2031%2C%20%D7%A2%D7%9B%D7%95%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1444</td>
+      <td><b>קמפאי סטריט ווק</b></td>
+      <td>Ashdod, Israel</td>
+      <td>גור דב 13, אשדוד, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–11:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%9E%D7%A4%D7%90%D7%99%20%D7%A1%D7%98%D7%A8%D7%99%D7%98%20%D7%95%D7%95%D7%A7%20%D7%92%D7%95%D7%A8%20%D7%93%D7%91%2013%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1837</td>
+      <td><b>גרג קיטשן</b></td>
+      <td>Ashdod, Israel</td>
+      <td>הגדוד העברי 1, אשדוד, Israel</td>
+      <td>cafe</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%A8%D7%92%20%D7%A7%D7%99%D7%98%D7%A9%D7%9F%20%D7%94%D7%92%D7%93%D7%95%D7%93%20%D7%94%D7%A2%D7%91%D7%A8%D7%99%201%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1892</td>
+      <td><b>מקדונלד'ס</b></td>
+      <td>Ashdod, Israel</td>
+      <td>בלפור 14, קניון לב אשדוד, Israel</td>
+      <td>fast_food_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:30 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A7%D7%93%D7%95%D7%A0%D7%9C%D7%93'%D7%A1%20%D7%91%D7%9C%D7%A4%D7%95%D7%A8%2014%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%9C%D7%91%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1928</td>
+      <td><b>T-MIX</b></td>
+      <td>Ashdod, Israel</td>
+      <td>העצמאות 4, אשדוד, Israel</td>
+      <td>grocery_store</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=T-MIX%20%D7%94%D7%A2%D7%A6%D7%9E%D7%90%D7%95%D7%AA%204%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3214</td>
+      <td><b>בורה בורה</b></td>
+      <td>Bat Yam, Israel</td>
+      <td>דרך בן גוריון 96, טיילת בת ים, Israel</td>
+      <td>swimming_pool</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–6:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%94%20%D7%91%D7%95%D7%A8%D7%94%20%D7%93%D7%A8%D7%9A%20%D7%91%D7%9F%20%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F%2096%2C%20%D7%98%D7%99%D7%99%D7%9C%D7%AA%20%D7%91%D7%AA%20%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3506</td>
+      <td><b>מרכז המאפה</b></td>
+      <td>Bat Yam, Israel</td>
+      <td>אהוד קנמון 27, בת ים, Israel</td>
+      <td>manufacturer</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A8%D7%9B%D7%96%20%D7%94%D7%9E%D7%90%D7%A4%D7%94%20%D7%90%D7%94%D7%95%D7%93%20%D7%A7%D7%A0%D7%9E%D7%95%D7%9F%2027%2C%20%D7%91%D7%AA%20%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3553</td>
+      <td><b>ארומה</b></td>
+      <td>Bat Yam, Israel</td>
+      <td>יוספטל 92, קניון בת ים, Israel</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A8%D7%95%D7%9E%D7%94%20%D7%99%D7%95%D7%A1%D7%A4%D7%98%D7%9C%2092%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%91%D7%AA%20%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1324</td>
+      <td><b>סומבררו</b></td>
+      <td>Be'er Sheva, Israel</td>
+      <td>בורנשטיין 801, ירוחם, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 3:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%95%D7%9E%D7%91%D7%A8%D7%A8%D7%95%20%D7%91%D7%95%D7%A8%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%20801%2C%20%D7%99%D7%A8%D7%95%D7%97%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6582</td>
+      <td><b>Cinnabon באר שבע</b></td>
+      <td>Be'er Sheva, Israel</td>
+      <td>שדרות טוביהו 125 גראנד קניון, באר שבע</td>
+      <td>bakery</td>
+      <td class="reason">פתוח עד 9:30 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cinnabon%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%98%D7%95%D7%91%D7%99%D7%94%D7%95%20125%20%D7%92%D7%A8%D7%90%D7%A0%D7%93%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%2C%20%D7%91%D7%90%D7%A8%20%D7%A9%D7%91%D7%A2" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2180</td>
+      <td><b>דלאל</b></td>
+      <td>Beit She'an, Israel</td>
+      <td>הארבעה 1, בית שאן, Israel</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–11:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%93%D7%9C%D7%90%D7%9C%20%D7%94%D7%90%D7%A8%D7%91%D7%A2%D7%94%201%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2694</td>
+      <td><b>בויה נקניק מגולגל בטוסט</b></td>
+      <td>Beit She'an, Israel</td>
+      <td>אהבת ישראל 9, בית שאן, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%99%D7%94%20%D7%A0%D7%A7%D7%A0%D7%99%D7%A7%20%D7%9E%D7%92%D7%95%D7%9C%D7%92%D7%9C%20%D7%91%D7%98%D7%95%D7%A1%D7%98%20%D7%90%D7%94%D7%91%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%209%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2702</td>
+      <td><b>מפגש מאור</b></td>
+      <td>Beit She'an, Israel</td>
+      <td>ירושלים הבירה 31, בית שאן, Israel</td>
+      <td>fast_food_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A4%D7%92%D7%A9%20%D7%9E%D7%90%D7%95%D7%A8%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%94%D7%91%D7%99%D7%A8%D7%94%2031%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2983</td>
+      <td><b>מפגש השווארמה</b></td>
+      <td>Beit She'an, Israel</td>
+      <td>אהבת ישראל 3, בית שאן, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A4%D7%92%D7%A9%20%D7%94%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%90%D7%94%D7%91%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%203%2C%20%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5455</td>
+      <td><b>הבית של זוהרה</b></td>
+      <td>Beit Shemesh, Israel</td>
+      <td>לוזית, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%91%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%96%D7%95%D7%94%D7%A8%D7%94%20%D7%9C%D7%95%D7%96%D7%99%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1907</td>
+      <td><b>הפיצה של יהושוע</b></td>
+      <td>Dimona, Israel</td>
+      <td>דימונה, Israel</td>
+      <td>pizza_delivery</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A4%D7%99%D7%A6%D7%94%20%D7%A9%D7%9C%20%D7%99%D7%94%D7%95%D7%A9%D7%95%D7%A2%20%D7%93%D7%99%D7%9E%D7%95%D7%A0%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1724</td>
+      <td><b>כפות תמרים</b></td>
+      <td>Eilat, Israel</td>
+      <td>אילות, Israel</td>
+      <td>catering_service</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%A4%D7%95%D7%AA%20%D7%AA%D7%9E%D7%A8%D7%99%D7%9D%20%D7%90%D7%99%D7%9C%D7%95%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1728</td>
+      <td><b>פיצה מטר אילת</b></td>
+      <td>Eilat, Israel</td>
+      <td>חיל ההנדסה 6, אילת, Israel</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%9E%D7%98%D7%A8%20%D7%90%D7%99%D7%9C%D7%AA%20%D7%97%D7%99%D7%9C%20%D7%94%D7%94%D7%A0%D7%93%D7%A1%D7%94%206%2C%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1789</td>
+      <td><b>פיצה האט</b></td>
+      <td>Eilat, Israel</td>
+      <td>אילת, Israel</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:30 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%94%D7%90%D7%98%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1869</td>
+      <td><b>גולדה</b></td>
+      <td>Eilat, Israel</td>
+      <td>אילת, Israel</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 9:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%95%D7%9C%D7%93%D7%94%20%D7%90%D7%99%D7%9C%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5566</td>
+      <td><b>ארוחות קטנות</b></td>
+      <td>Gedera, Israel</td>
+      <td>ההדר 94, קדרון, Israel</td>
+      <td>catering_service</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–6:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A8%D7%95%D7%97%D7%95%D7%AA%20%D7%A7%D7%98%D7%A0%D7%95%D7%AA%20%D7%94%D7%94%D7%93%D7%A8%2094%2C%20%D7%A7%D7%93%D7%A8%D7%95%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5688</td>
+      <td><b>חוות אלבואדי מסעדת אג'אויד</b></td>
+      <td>Hadera, Israel</td>
+      <td>זמר, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 1:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 9:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%95%D7%AA%20%D7%90%D7%9C%D7%91%D7%95%D7%90%D7%93%D7%99%20%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%90%D7%92'%D7%90%D7%95%D7%99%D7%93%20%D7%96%D7%9E%D7%A8%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2034</td>
+      <td><b>כתום</b></td>
+      <td>Haifa, Israel</td>
+      <td>חיפה, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%AA%D7%95%D7%9D%20%D7%97%D7%99%D7%A4%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2520</td>
+      <td><b>סטיישן סנדביץ' קלאב-STATION SANDWICH CLUB</b></td>
+      <td>Haifa, Israel</td>
+      <td>דרך שמחה גולן 54, גרנד קניון חיפה, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%98%D7%99%D7%99%D7%A9%D7%9F%20%D7%A1%D7%A0%D7%93%D7%91%D7%99%D7%A5'%20%D7%A7%D7%9C%D7%90%D7%91-STATION%20SANDWICH%20CLUB%20%D7%93%D7%A8%D7%9A%20%D7%A9%D7%9E%D7%97%D7%94%20%D7%92%D7%95%D7%9C%D7%9F%2054%2C%20%D7%92%D7%A8%D7%A0%D7%93%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%97%D7%99%D7%A4%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2692</td>
+      <td><b>ברוקלין 17</b></td>
+      <td>Haifa, Israel</td>
+      <td>חיפה, Israel</td>
+      <td>italian_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A8%D7%95%D7%A7%D7%9C%D7%99%D7%9F%2017%20%D7%97%D7%99%D7%A4%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6530</td>
+      <td><b>Greg חוצות המפרץ חיפה</b></td>
+      <td>Haifa, Israel</td>
+      <td>החרושת 8, חיפה</td>
+      <td>cafe</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Greg%20%D7%97%D7%95%D7%A6%D7%95%D7%AA%20%D7%94%D7%9E%D7%A4%D7%A8%D7%A5%20%D7%97%D7%99%D7%A4%D7%94%20%D7%94%D7%97%D7%A8%D7%95%D7%A9%D7%AA%208%2C%20%D7%97%D7%99%D7%A4%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6583</td>
+      <td><b>קפה מנדרין</b></td>
+      <td>Haifa, Israel</td>
+      <td>צפרירים 1, חיפה</td>
+      <td>cafe</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–2:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%9E%D7%A0%D7%93%D7%A8%D7%99%D7%9F%20%D7%A6%D7%A4%D7%A8%D7%99%D7%A8%D7%99%D7%9D%201%2C%20%D7%97%D7%99%D7%A4%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6694</td>
+      <td><b>Jorno בייקרי הרצליה</b></td>
+      <td>Herzliya, Israel</td>
+      <td>הצדף 2, הרצליה</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jorno%20%D7%91%D7%99%D7%99%D7%A7%D7%A8%D7%99%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%94%D7%A6%D7%93%D7%A3%202%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6828</td>
+      <td><b>Jorno הרצליה</b></td>
+      <td>Herzliya, Israel</td>
+      <td>חבצלת השרון 36, הרצליה</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jorno%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%20%D7%97%D7%91%D7%A6%D7%9C%D7%AA%20%D7%94%D7%A9%D7%A8%D7%95%D7%9F%2036%2C%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4370</td>
+      <td><b>מיטאו</b></td>
+      <td>Holon, Israel</td>
+      <td>הפלד 46, חולון, Israel</td>
+      <td>barbecue_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%99%D7%98%D7%90%D7%95%20%D7%94%D7%A4%D7%9C%D7%93%2046%2C%20%D7%97%D7%95%D7%9C%D7%95%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4781</td>
+      <td><b>בנדורה</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>יפו 36, ירושלים, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 1:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 1:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A0%D7%93%D7%95%D7%A8%D7%94%20%D7%99%D7%A4%D7%95%2036%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4845</td>
+      <td><b>בר יין</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>עזה 82, ירושלים, Israel</td>
+      <td>bar</td>
+      <td class="reason">פתוח עד 1:30 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%A8%20%D7%99%D7%99%D7%9F%20%D7%A2%D7%96%D7%94%2082%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5060</td>
+      <td><b>שערי שמחה</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>שכונת גאולה, ירושלים, Israel</td>
+      <td>educational_institution</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%A2%D7%A8%D7%99%20%D7%A9%D7%9E%D7%97%D7%94%20%D7%A9%D7%9B%D7%95%D7%A0%D7%AA%20%D7%92%D7%90%D7%95%D7%9C%D7%94%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5072</td>
+      <td><b>קפה עלית-אספרסו בר</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>הר הצופים 1, ירושלים, Israel</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%A2%D7%9C%D7%99%D7%AA-%D7%90%D7%A1%D7%A4%D7%A8%D7%A1%D7%95%20%D7%91%D7%A8%20%D7%94%D7%A8%20%D7%94%D7%A6%D7%95%D7%A4%D7%99%D7%9D%201%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5081</td>
+      <td><b>מסעדת טרסה</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>נכון 6, ירושלים, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–1:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%98%D7%A8%D7%A1%D7%94%20%D7%A0%D7%9B%D7%95%D7%9F%206%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5282</td>
+      <td><b>אימפריאל רד</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>קריית ענבים, Israel</td>
+      <td>cocktail_bar</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%99%D7%9E%D7%A4%D7%A8%D7%99%D7%90%D7%9C%20%D7%A8%D7%93%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%A2%D7%A0%D7%91%D7%99%D7%9D%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5300</td>
+      <td><b>מזנון רוקפלר</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>סולטן סולימן, ירושלים העתיקה, Israel</td>
+      <td>park</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%96%D7%A0%D7%95%D7%9F%20%D7%A8%D7%95%D7%A7%D7%A4%D7%9C%D7%A8%20%D7%A1%D7%95%D7%9C%D7%98%D7%9F%20%D7%A1%D7%95%D7%9C%D7%99%D7%9E%D7%9F%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D%20%D7%94%D7%A2%D7%AA%D7%99%D7%A7%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5324</td>
+      <td><b>גריל B</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>המגיד ממעזריטש 70, ביתר עילית, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%A8%D7%99%D7%9C%20B%20%D7%94%D7%9E%D7%92%D7%99%D7%93%20%D7%9E%D7%9E%D7%A2%D7%96%D7%A8%D7%99%D7%98%D7%A9%2070%2C%20%D7%91%D7%99%D7%AA%D7%A8%20%D7%A2%D7%99%D7%9C%D7%99%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6544</td>
+      <td><b>באב אל ימן</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>דרך עזה 29, ירושלים</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%90%D7%91%20%D7%90%D7%9C%20%D7%99%D7%9E%D7%9F%20%D7%93%D7%A8%D7%9A%20%D7%A2%D7%96%D7%94%2029%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6580</td>
+      <td><b>Mula Botani</b></td>
+      <td>Jerusalem, Israel</td>
+      <td>הגן הבוטני האוניברסיטאי, גבעת רם, ירושלים</td>
+      <td>botanical_garden</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–6:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mula%20Botani%20%D7%94%D7%92%D7%9F%20%D7%94%D7%91%D7%95%D7%98%D7%A0%D7%99%20%D7%94%D7%90%D7%95%D7%A0%D7%99%D7%91%D7%A8%D7%A1%D7%99%D7%98%D7%90%D7%99%2C%20%D7%92%D7%91%D7%A2%D7%AA%20%D7%A8%D7%9D%2C%20%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2210</td>
+      <td><b>DINER BURGER דיינר בורגר</b></td>
+      <td>Karmiel, Israel</td>
+      <td>שד' קק&quot;ל 98, כרמיאל, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:30 AM–11:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=DINER%20BURGER%20%D7%93%D7%99%D7%99%D7%A0%D7%A8%20%D7%91%D7%95%D7%A8%D7%92%D7%A8%20%D7%A9%D7%93'%20%D7%A7%D7%A7%22%D7%9C%2098%2C%20%D7%9B%D7%A8%D7%9E%D7%99%D7%90%D7%9C%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2545</td>
+      <td><b>שניצל 20 טעמים</b></td>
+      <td>Karmiel, Israel</td>
+      <td>מעלה כמון 5, כרמיאל, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%A0%D7%99%D7%A6%D7%9C%2020%20%D7%98%D7%A2%D7%9E%D7%99%D7%9D%20%D7%9E%D7%A2%D7%9C%D7%94%20%D7%9B%D7%9E%D7%95%D7%9F%205%2C%20%D7%9B%D7%A8%D7%9E%D7%99%D7%90%D7%9C%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6510</td>
+      <td><b>טגלוס</b></td>
+      <td>Karmiel, Israel</td>
+      <td>מתחם גן העיר, כרמיאל</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 9:00 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%92%D7%9C%D7%95%D7%A1%20%D7%9E%D7%AA%D7%97%D7%9D%20%D7%92%D7%9F%20%D7%94%D7%A2%D7%99%D7%A8%2C%20%D7%9B%D7%A8%D7%9E%D7%99%D7%90%D7%9C" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3688</td>
+      <td><b>חומוס כספי</b></td>
+      <td>Kfar Saba, Israel</td>
+      <td>יהודה המכבי 61, תל אביב, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:30 AM–3:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%9B%D7%A1%D7%A4%D7%99%20%D7%99%D7%94%D7%95%D7%93%D7%94%20%D7%94%D7%9E%D7%9B%D7%91%D7%99%2061%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4014</td>
+      <td><b>סקיצה</b></td>
+      <td>Kfar Saba, Israel</td>
+      <td>דרך האורנים 13, רינתיה, Israel</td>
+      <td>event_venue</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%A7%D7%99%D7%A6%D7%94%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%95%D7%A8%D7%A0%D7%99%D7%9D%2013%2C%20%D7%A8%D7%99%D7%A0%D7%AA%D7%99%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2435</td>
+      <td><b>פיצה מייקר</b></td>
+      <td>Kiryat Ata, Israel</td>
+      <td>סוקולוב 40, קרית אתא, Israel</td>
+      <td>pizza_delivery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%9E%D7%99%D7%99%D7%A7%D7%A8%20%D7%A1%D7%95%D7%A7%D7%95%D7%9C%D7%95%D7%91%2040%2C%20%D7%A7%D7%A8%D7%99%D7%AA%20%D7%90%D7%AA%D7%90%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1313</td>
+      <td><b>פיצה סופיה</b></td>
+      <td>Kiryat Gat, Israel</td>
+      <td>אמציה, Israel</td>
+      <td>pizza_delivery</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 2:23 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%A1%D7%95%D7%A4%D7%99%D7%94%20%D7%90%D7%9E%D7%A6%D7%99%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>1870</td>
+      <td><b>הקוסקוס של רותם</b></td>
+      <td>Kiryat Gat, Israel</td>
+      <td>דרך הדרום 9, קריית גת, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A7%D7%95%D7%A1%D7%A7%D7%95%D7%A1%20%D7%A9%D7%9C%20%D7%A8%D7%95%D7%AA%D7%9D%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%93%D7%A8%D7%95%D7%9D%209%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%92%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4672</td>
+      <td><b>קולינאריק</b></td>
+      <td>Kiryat Ono, Israel</td>
+      <td>המייסדים 3, קריית אונו, Israel</td>
+      <td>deli</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–6:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%95%D7%9C%D7%99%D7%A0%D7%90%D7%A8%D7%99%D7%A7%20%D7%94%D7%9E%D7%99%D7%99%D7%A1%D7%93%D7%99%D7%9D%203%2C%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%90%D7%95%D7%A0%D7%95%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2837</td>
+      <td><b>בית האוכל של מושיקו</b></td>
+      <td>Kiryat Shmona, Israel</td>
+      <td>קריית שמונה, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–4:53 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%AA%20%D7%94%D7%90%D7%95%D7%9B%D7%9C%20%D7%A9%D7%9C%20%D7%9E%D7%95%D7%A9%D7%99%D7%A7%D7%95%20%D7%A7%D7%A8%D7%99%D7%99%D7%AA%20%D7%A9%D7%9E%D7%95%D7%A0%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3206</td>
+      <td><b>בונז'ור מלך השווארמה</b></td>
+      <td>Lod, Israel</td>
+      <td>הרצל 64, לוד, Israel</td>
+      <td>shawarma_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A0%D7%96'%D7%95%D7%A8%20%D7%9E%D7%9C%D7%9A%20%D7%94%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%94%D7%A8%D7%A6%D7%9C%2064%2C%20%D7%9C%D7%95%D7%93%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6751</td>
+      <td><b>בייגל קפה מבשרת</b></td>
+      <td>Mevaseret Zion, Israel</td>
+      <td>קניון הראל, מבשרת ציון</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%99%D7%92%D7%9C%20%D7%A7%D7%A4%D7%94%20%D7%9E%D7%91%D7%A9%D7%A8%D7%AA%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%94%D7%A8%D7%90%D7%9C%2C%20%D7%9E%D7%91%D7%A9%D7%A8%D7%AA%20%D7%A6%D7%99%D7%95%D7%9F" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3507</td>
+      <td><b>ג'פניקה</b></td>
+      <td>Modiin, Israel</td>
+      <td>לב העיר 2, מודיעין והסביבה, Israel</td>
+      <td>asian_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92'%D7%A4%D7%A0%D7%99%D7%A7%D7%94%20%D7%9C%D7%91%20%D7%94%D7%A2%D7%99%D7%A8%202%2C%20%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%99%D7%9F%20%D7%95%D7%94%D7%A1%D7%91%D7%99%D7%91%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2494</td>
+      <td><b>סחבק</b></td>
+      <td>Nahariya, Israel</td>
+      <td>שד' הגעתון 20, נהריה, Israel</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">פתוח עד 10:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%97%D7%91%D7%A7%20%D7%A9%D7%93'%20%D7%94%D7%92%D7%A2%D7%AA%D7%95%D7%9F%2020%2C%20%D7%A0%D7%94%D7%A8%D7%99%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6678</td>
+      <td><b>BBB נהריה</b></td>
+      <td>Nahariya, Israel</td>
+      <td>ויצמן 71, נהריה</td>
+      <td>hamburger_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=BBB%20%D7%A0%D7%94%D7%A8%D7%99%D7%94%20%D7%95%D7%99%D7%A6%D7%9E%D7%9F%2071%2C%20%D7%A0%D7%94%D7%A8%D7%99%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6773</td>
+      <td><b>איבן בית מאפה</b></td>
+      <td>Ness Ziona, Israel</td>
+      <td>הסנונית 18, נס ציונה</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–2:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%99%D7%91%D7%9F%20%D7%91%D7%99%D7%AA%20%D7%9E%D7%90%D7%A4%D7%94%20%D7%94%D7%A1%D7%A0%D7%95%D7%A0%D7%99%D7%AA%2018%2C%20%D7%A0%D7%A1%20%D7%A6%D7%99%D7%95%D7%A0%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3232</td>
+      <td><b>מקדונלד'ס</b></td>
+      <td>Netanya, Israel</td>
+      <td>נחלת יצחק 20, תל אביב, Israel</td>
+      <td>fast_food_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A7%D7%93%D7%95%D7%A0%D7%9C%D7%93'%D7%A1%20%D7%A0%D7%97%D7%9C%D7%AA%20%D7%99%D7%A6%D7%97%D7%A7%2020%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5903</td>
+      <td><b>צ'יקו</b></td>
+      <td>Netanya, Israel</td>
+      <td>דרך דגניה 14, נתניה, Israel</td>
+      <td>dessert_shop</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A6'%D7%99%D7%A7%D7%95%20%D7%93%D7%A8%D7%9A%20%D7%93%D7%92%D7%A0%D7%99%D7%94%2014%2C%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5990</td>
+      <td><b>הכרם אירועים</b></td>
+      <td>Netanya, Israel</td>
+      <td>גד מכנס 6, נתניה, Israel</td>
+      <td>event_venue</td>
+      <td class="reason">פתוח עד 4:09 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9B%D7%A8%D7%9D%20%D7%90%D7%99%D7%A8%D7%95%D7%A2%D7%99%D7%9D%20%D7%92%D7%93%20%D7%9E%D7%9B%D7%A0%D7%A1%206%2C%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7170</td>
+      <td><b>Jorno בייקרי נתניה</b></td>
+      <td>Netanya, Israel</td>
+      <td>קהילת צפת 1, נתניה</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jorno%20%D7%91%D7%99%D7%99%D7%A7%D7%A8%D7%99%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94%20%D7%A7%D7%94%D7%99%D7%9C%D7%AA%20%D7%A6%D7%A4%D7%AA%201%2C%20%D7%A0%D7%AA%D7%A0%D7%99%D7%94" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3330</td>
+      <td><b>בורגרים</b></td>
+      <td>Petah Tikva, Israel</td>
+      <td>בן ציון גליס 30, B סנטר פתח תקווה, Israel</td>
+      <td>hamburger_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%95%D7%A8%D7%92%D7%A8%D7%99%D7%9D%20%D7%91%D7%9F%20%D7%A6%D7%99%D7%95%D7%9F%20%D7%92%D7%9C%D7%99%D7%A1%2030%2C%20B%20%D7%A1%D7%A0%D7%98%D7%A8%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4126</td>
+      <td><b>קסאנאדו Xanadu</b></td>
+      <td>Petah Tikva, Israel</td>
+      <td>בן ציון גליס 50, פתח תקווה, Israel</td>
+      <td>event_venue</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A1%D7%90%D7%A0%D7%90%D7%93%D7%95%20Xanadu%20%D7%91%D7%9F%20%D7%A6%D7%99%D7%95%D7%9F%20%D7%92%D7%9C%D7%99%D7%A1%2050%2C%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5791</td>
+      <td><b>פיצה פארטי</b></td>
+      <td>Ra'anana, Israel</td>
+      <td>ביל&quot;ו 21, רעננה, Israel</td>
+      <td>food</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%A4%D7%90%D7%A8%D7%98%D7%99%20%D7%91%D7%99%D7%9C%22%D7%95%2021%2C%20%D7%A8%D7%A2%D7%A0%D7%A0%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3189</td>
+      <td><b>קפה לוגאנו</b></td>
+      <td>Ramat Gan, Israel</td>
+      <td>החוגה 2, רמת אפעל, Israel</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A7%D7%A4%D7%94%20%D7%9C%D7%95%D7%92%D7%90%D7%A0%D7%95%20%D7%94%D7%97%D7%95%D7%92%D7%94%202%2C%20%D7%A8%D7%9E%D7%AA%20%D7%90%D7%A4%D7%A2%D7%9C%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3302</td>
+      <td><b>הדרים קייטרינג</b></td>
+      <td>Ramat Gan, Israel</td>
+      <td>זיסמן שלום 14, מתחם הבורסה, רמת גן, Israel</td>
+      <td>catering_service</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 9:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%93%D7%A8%D7%99%D7%9D%20%D7%A7%D7%99%D7%99%D7%98%D7%A8%D7%99%D7%A0%D7%92%20%D7%96%D7%99%D7%A1%D7%9E%D7%9F%20%D7%A9%D7%9C%D7%95%D7%9D%2014%2C%20%D7%9E%D7%AA%D7%97%D7%9D%20%D7%94%D7%91%D7%95%D7%A8%D7%A1%D7%94%2C%20%D7%A8%D7%9E%D7%AA%20%D7%92%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3410</td>
+      <td><b>מפגש בר</b></td>
+      <td>Ramat Gan, Israel</td>
+      <td>תובל 16, מתחם הבורסה, רמת גן, Israel</td>
+      <td>hamburger_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A4%D7%92%D7%A9%20%D7%91%D7%A8%20%D7%AA%D7%95%D7%91%D7%9C%2016%2C%20%D7%9E%D7%AA%D7%97%D7%9D%20%D7%94%D7%91%D7%95%D7%A8%D7%A1%D7%94%2C%20%D7%A8%D7%9E%D7%AA%20%D7%92%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4268</td>
+      <td><b>פיצה קראסט</b></td>
+      <td>Ramat Gan, Israel</td>
+      <td>קריניצי 12, רמת גן, Israel</td>
+      <td>pizza_delivery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%A6%D7%94%20%D7%A7%D7%A8%D7%90%D7%A1%D7%98%20%D7%A7%D7%A8%D7%99%D7%A0%D7%99%D7%A6%D7%99%2012%2C%20%D7%A8%D7%9E%D7%AA%20%D7%92%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3130</td>
+      <td><b>מאנצ'י טוסט</b></td>
+      <td>Ramla, Israel</td>
+      <td>אבא אחימאיר 15, רמלה, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%90%D7%A0%D7%A6'%D7%99%20%D7%98%D7%95%D7%A1%D7%98%20%D7%90%D7%91%D7%90%20%D7%90%D7%97%D7%99%D7%9E%D7%90%D7%99%D7%A8%2015%2C%20%D7%A8%D7%9E%D7%9C%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5461</td>
+      <td><b>מאפיית פארין</b></td>
+      <td>Rehovot, Israel</td>
+      <td>הרצל 192, רחובות, Israel</td>
+      <td>bakery</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%90%D7%A4%D7%99%D7%99%D7%AA%20%D7%A4%D7%90%D7%A8%D7%99%D7%9F%20%D7%94%D7%A8%D7%A6%D7%9C%20192%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5538</td>
+      <td><b>טרי</b></td>
+      <td>Rehovot, Israel</td>
+      <td>הרצל 194, רחובות, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:30 AM–11:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%98%D7%A8%D7%99%20%D7%94%D7%A8%D7%A6%D7%9C%20194%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5567</td>
+      <td><b>הרצל street food</b></td>
+      <td>Rehovot, Israel</td>
+      <td>הרצל 210, רחובות, Israel</td>
+      <td>gastropub</td>
+      <td class="reason">פתוח עד 2:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%A8%D7%A6%D7%9C%20street%20food%20%D7%94%D7%A8%D7%A6%D7%9C%20210%2C%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5610</td>
+      <td><b>שווארמה אקספרס</b></td>
+      <td>Rehovot, Israel</td>
+      <td>ביל&quot;ו 2, קניון רחובות, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1%20%D7%91%D7%99%D7%9C%22%D7%95%202%2C%20%D7%A7%D7%A0%D7%99%D7%95%D7%9F%20%D7%A8%D7%97%D7%95%D7%91%D7%95%D7%AA%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3386</td>
+      <td><b>גולדות</b></td>
+      <td>Rishon LeZion, Israel</td>
+      <td>רוטשילד 83, ראשון לציון, Israel</td>
+      <td>hamburger_restaurant</td>
+      <td class="reason">פתוח עד 4:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%92%D7%95%D7%9C%D7%93%D7%95%D7%AA%20%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93%2083%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3475</td>
+      <td><b>כל טעם</b></td>
+      <td>Rishon LeZion, Israel</td>
+      <td>רוטשילד 64, ראשון לציון, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 3:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9B%D7%9C%20%D7%98%D7%A2%D7%9D%20%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93%2064%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4375</td>
+      <td><b>שווארמה רוטשילד</b></td>
+      <td>Rishon LeZion, Israel</td>
+      <td>רוטשילד 39, ראשון לציון, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94%20%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93%20%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93%2039%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7182</td>
+      <td><b>B-FRESH - ראשונים ראשל&quot;צ</b></td>
+      <td>Rishon LeZion, Israel</td>
+      <td>שדרות נים 2, ראשון לציון</td>
+      <td>juice_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=B-FRESH%20-%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%9D%20%D7%A8%D7%90%D7%A9%D7%9C%22%D7%A6%20%D7%A9%D7%93%D7%A8%D7%95%D7%AA%20%D7%A0%D7%99%D7%9D%202%2C%20%D7%A8%D7%90%D7%A9%D7%95%D7%9F%20%D7%9C%D7%A6%D7%99%D7%95%D7%9F" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4067</td>
+      <td><b>מאפיית הכפר</b></td>
+      <td>Rosh HaAyin, Israel</td>
+      <td>הרב שלום שבזי 26, ראש העין, Israel</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%90%D7%A4%D7%99%D7%99%D7%AA%20%D7%94%D7%9B%D7%A4%D7%A8%20%D7%94%D7%A8%D7%91%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A9%D7%91%D7%96%D7%99%2026%2C%20%D7%A8%D7%90%D7%A9%20%D7%94%D7%A2%D7%99%D7%9F%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>216</td>
+      <td><b>חומוס הבן של הסורי</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>Yigal Alon St 121, Tel Aviv-Yafo, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 3:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%97%D7%95%D7%9E%D7%95%D7%A1%20%D7%94%D7%91%D7%9F%20%D7%A9%D7%9C%20%D7%94%D7%A1%D7%95%D7%A8%D7%99%20Yigal%20Alon%20St%20121%2C%20Tel%20Aviv-Yafo%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>3313</td>
+      <td><b>מסי</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>השרון 10, תל אביב, Israel</td>
+      <td>night_club</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 AM–12:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%99%20%D7%94%D7%A9%D7%A8%D7%95%D7%9F%2010%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4049</td>
+      <td><b>פיתה בשר</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>נחלת בנימין 75, תל אביב, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 5:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A4%D7%99%D7%AA%D7%94%20%D7%91%D7%A9%D7%A8%20%D7%A0%D7%97%D7%9C%D7%AA%20%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F%2075%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4295</td>
+      <td><b>מסעדת הלובי</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>אליעזר פרי 10, תל אביב, Israel</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A1%D7%A2%D7%93%D7%AA%20%D7%94%D7%9C%D7%95%D7%91%D7%99%20%D7%90%D7%9C%D7%99%D7%A2%D7%96%D7%A8%20%D7%A4%D7%A8%D7%99%2010%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4690</td>
+      <td><b>Miznon</b> <span class="warn">⚠ is_kosher=false</span></td>
+      <td>Tel Aviv, Israel</td>
+      <td>23 Ibn Gavirol St, Tel Aviv</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 1:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Miznon%2023%20Ibn%20Gavirol%20St%2C%20Tel%20Aviv" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4691</td>
+      <td><b>Meshek Barzilay</b> <span class="warn">⚠ is_kosher=false</span></td>
+      <td>Tel Aviv, Israel</td>
+      <td>6 Ahad Ha'am St, Tel Aviv</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Meshek%20Barzilay%206%20Ahad%20Ha'am%20St%2C%20Tel%20Aviv" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7020</td>
+      <td><b>Banana beach</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>יוניצמן 21, תל אביב</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Banana%20beach%20%D7%99%D7%95%D7%A0%D7%99%D7%A6%D7%9E%D7%9F%2021%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7083</td>
+      <td><b>דלאל הקונדיטוריה, נוה צדק</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>כל ישראל חברים 7, תל אביב</td>
+      <td>pastry_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%93%D7%9C%D7%90%D7%9C%20%D7%94%D7%A7%D7%95%D7%A0%D7%93%D7%99%D7%98%D7%95%D7%A8%D7%99%D7%94%2C%20%D7%A0%D7%95%D7%94%20%D7%A6%D7%93%D7%A7%20%D7%9B%D7%9C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%20%D7%97%D7%91%D7%A8%D7%99%D7%9D%207%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7238</td>
+      <td><b>Jorno בייקרי ת&quot;א</b></td>
+      <td>Tel Aviv, Israel</td>
+      <td>ויינשל 6, תל אביב</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jorno%20%D7%91%D7%99%D7%99%D7%A7%D7%A8%D7%99%20%D7%AA%22%D7%90%20%D7%95%D7%99%D7%99%D7%A0%D7%A9%D7%9C%206%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>5466</td>
+      <td><b>אורו</b></td>
+      <td>Yavne, Israel</td>
+      <td>גאליה, Israel</td>
+      <td>event_venue</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%95%D7%A8%D7%95%20%D7%92%D7%90%D7%9C%D7%99%D7%94%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4058</td>
+      <td><b>ביג בורגר</b></td>
+      <td>Yehud, Israel</td>
+      <td>צבי ישי 1, יהוד, Israel</td>
+      <td>hamburger_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:30 AM–12:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%91%D7%99%D7%92%20%D7%91%D7%95%D7%A8%D7%92%D7%A8%20%D7%A6%D7%91%D7%99%20%D7%99%D7%A9%D7%99%201%2C%20%D7%99%D7%94%D7%95%D7%93%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6629</td>
+      <td><b>ארקפה יהוד</b></td>
+      <td>Yehud, Israel</td>
+      <td>אלטלף 4, יהוד</td>
+      <td>cafe</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%90%D7%A8%D7%A7%D7%A4%D7%94%20%D7%99%D7%94%D7%95%D7%93%20%D7%90%D7%9C%D7%98%D7%9C%D7%A3%204%2C%20%D7%99%D7%94%D7%95%D7%93" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>2437</td>
+      <td><b>דונסון</b></td>
+      <td>Zichron Yaakov, Israel</td>
+      <td>חוחית 16, זכרון יעקב, Israel</td>
+      <td>pizza_delivery</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%93%D7%95%D7%A0%D7%A1%D7%95%D7%9F%20%D7%97%D7%95%D7%97%D7%99%D7%AA%2016%2C%20%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%99%D7%A2%D7%A7%D7%91%2C%20Israel" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6698</td>
+      <td><b>משיגנע</b></td>
+      <td>Zichron Yaakov, Israel</td>
+      <td>המייסדים 41, זיכרון יעקב</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:30 AM–6:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%9E%D7%A9%D7%99%D7%92%D7%A0%D7%A2%20%D7%94%D7%9E%D7%99%D7%99%D7%A1%D7%93%D7%99%D7%9D%2041%2C%20%D7%96%D7%99%D7%9B%D7%A8%D7%95%D7%9F%20%D7%99%D7%A2%D7%A7%D7%91" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8353</td>
+      <td><b>Bona Pizza Romana</b></td>
+      <td>Rome, Italy</td>
+      <td>Via del Portico d'Ottavia, 7, 00186 Roma RM, Italy, Rome, 00186, Italy</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 9:30 AM–9:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bona%20Pizza%20Romana%20Via%20del%20Portico%20d'Ottavia%2C%207%2C%2000186%20Roma%20RM%2C%20Italy%2C%20Rome%2C%2000186%2C%20Italy" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8451</td>
+      <td><b>First Grill Marrakech</b></td>
+      <td>Marrakech, Morocco</td>
+      <td>Av. du Président Kennedy,  Marrakech 40000, , Morocco</td>
+      <td>tour_agency</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=First%20Grill%20Marrakech%20Av.%20du%20Pr%C3%A9sident%20Kennedy%2C%20%20Marrakech%2040000%2C%20%2C%20Morocco" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6415</td>
+      <td><b>סופרמרקט ג'מבו  Jumbo</b></td>
+      <td>Amsterdam, Netherlands</td>
+      <td>Kastelenstraat 70, Amsterdam.</td>
+      <td>supermarket</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%95%D7%A4%D7%A8%D7%9E%D7%A8%D7%A7%D7%98%20%D7%92'%D7%9E%D7%91%D7%95%20%20Jumbo%20Kastelenstraat%2070%2C%20Amsterdam." target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8327</td>
+      <td><b>Jewish Museum Cafe Amsterdam</b></td>
+      <td>Amsterdam, Netherlands</td>
+      <td>Nieuwe Amstelstraat 1, Amsterdam, 1011 PL , Netherlands</td>
+      <td>cafe</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jewish%20Museum%20Cafe%20Amsterdam%20Nieuwe%20Amstelstraat%201%2C%20Amsterdam%2C%201011%20PL%20%2C%20Netherlands" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8385</td>
+      <td><b>Chabad Barcelona Tourist Center</b></td>
+      <td>Barcelona, Spain</td>
+      <td>Carrer de Sant Honorat, 9, Barcelona, 08002, Spain</td>
+      <td>synagogue</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:30 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Barcelona%20Tourist%20Center%20Carrer%20de%20Sant%20Honorat%2C%209%2C%20Barcelona%2C%2008002%2C%20Spain" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8401</td>
+      <td><b>Chabad of Bangkok Dairy Cafe</b></td>
+      <td>Bangkok, Thailand</td>
+      <td>18 Phra Sumen Rd, Talat Yot, Phra Nakhon,, Bangkok, 10200, Thailand</td>
+      <td>non_profit_organization</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20of%20Bangkok%20Dairy%20Cafe%2018%20Phra%20Sumen%20Rd%2C%20Talat%20Yot%2C%20Phra%20Nakhon%2C%2C%20Bangkok%2C%2010200%2C%20Thailand" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8410</td>
+      <td><b>Burekas Ramle Koh Samui</b></td>
+      <td>Ko Samui, Thailand</td>
+      <td>200, 15, Bo Put, Amphoe Ko Samui, Surat Thani , 84320, Thailand</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Burekas%20Ramle%20Koh%20Samui%20200%2C%2015%2C%20Bo%20Put%2C%20Amphoe%20Ko%20Samui%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8417</td>
+      <td><b>Oria'Sweets - Banana Market</b></td>
+      <td>Ko Samui, Thailand</td>
+      <td>30 Chaweng Beach Rd, Bo Put Ko Samui District, Surat Thani , 84320, Thailand</td>
+      <td>market</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 3:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Oria'Sweets%20-%20Banana%20Market%2030%20Chaweng%20Beach%20Rd%2C%20Bo%20Put%20Ko%20Samui%20District%2C%20Surat%20Thani%20%2C%2084320%2C%20Thailand" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8429</td>
+      <td><b>Le Triskel</b></td>
+      <td>Pai, Thailand</td>
+      <td>28, rue Saint-Hilaire, Saint-Maur-des-Fossés, 94210, France</td>
+      <td>dessert_shop</td>
+      <td class="reason">פתוח עד 10:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:45 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Triskel%2028%2C%20rue%20Saint-Hilaire%2C%20Saint-Maur-des-Foss%C3%A9s%2C%2094210%2C%20France" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8422</td>
+      <td><b>Chabad Phuket</b></td>
+      <td>Phuket, Thailand</td>
+      <td>9/6 Rat-U-Thit 200 Pee Rd Patong, Kathu District, Phuket, Thailand, Phuket, 83150, Thailand</td>
+      <td>non_profit_organization</td>
+      <td class="reason">פתוח עד 10:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chabad%20Phuket%209%2F6%20Rat-U-Thit%20200%20Pee%20Rd%20Patong%2C%20Kathu%20District%2C%20Phuket%2C%20Thailand%2C%20Phuket%2C%2083150%2C%20Thailand" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8425</td>
+      <td><b>Pistachio Restaurant Phuket | Patong</b></td>
+      <td>Phuket, Thailand</td>
+      <td>9 Rat Uthit Song Roi Pi Rd, Pa Tong Kathu District, Phuket , 83150, Thailand</td>
+      <td>turkish_restaurant</td>
+      <td class="reason">פתוח עד 1:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pistachio%20Restaurant%20Phuket%20%7C%20Patong%209%20Rat%20Uthit%20Song%20Roi%20Pi%20Rd%2C%20Pa%20Tong%20Kathu%20District%2C%20Phuket%20%2C%2083150%2C%20Thailand" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8122</td>
+      <td><b>Hot Cut</b></td>
+      <td>London, United Kingdom</td>
+      <td>98 Golders Green Rd Golders Green, London NW11 8HB, UK</td>
+      <td>snack_bar</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hot%20Cut%2098%20Golders%20Green%20Rd%20Golders%20Green%2C%20London%20NW11%208HB%2C%20UK" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8131</td>
+      <td><b>M&amp;S Muswell Hill</b></td>
+      <td>London, United Kingdom</td>
+      <td>Simply Food, The, 126-138 Muswell Hill Broadway, Muswell Hill, London, N10 3RU, UK</td>
+      <td>convenience_store</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=M%26S%20Muswell%20Hill%20Simply%20Food%2C%20The%2C%20126-138%20Muswell%20Hill%20Broadway%2C%20Muswell%20Hill%2C%20London%2C%20N10%203RU%2C%20UK" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7540</td>
+      <td><b>Dairy Star Ice Cream of Lincolnwood</b></td>
+      <td>Chicago, United States</td>
+      <td>3472 W Devon Ave, Lincolnwood, IL 60712, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 2:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dairy%20Star%20Ice%20Cream%20of%20Lincolnwood%203472%20W%20Devon%20Ave%2C%20Lincolnwood%2C%20IL%2060712%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7542</td>
+      <td><b>Dunkin Donuts Skokie</b></td>
+      <td>Chicago, United States</td>
+      <td>3900 Dempster Street, Skokie, IL 60076, United States</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 4:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin%20Donuts%20Skokie%203900%20Dempster%20Street%2C%20Skokie%2C%20IL%2060076%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7543</td>
+      <td><b>Dunkin Donuts/Baskin Robbins</b></td>
+      <td>Chicago, United States</td>
+      <td>3132 West Devon Avenue West Rogers Park, Chicago, 60659-1427, Illinois</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin%20Donuts%2FBaskin%20Robbins%203132%20West%20Devon%20Avenue%20West%20Rogers%20Park%2C%20Chicago%2C%2060659-1427%2C%20Illinois" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7547</td>
+      <td><b>Graeter's Ice Cream</b></td>
+      <td>Chicago, United States</td>
+      <td>1347 Shermer Road, Northbrook, IL 60062</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Graeter's%20Ice%20Cream%201347%20Shermer%20Road%2C%20Northbrook%2C%20IL%2060062" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7560</td>
+      <td><b>Rocket Slice</b></td>
+      <td>Chicago, United States</td>
+      <td>3918 West Touhy Avenue, Lincolnwood, IL, 60712, USA</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Rocket%20Slice%203918%20West%20Touhy%20Avenue%2C%20Lincolnwood%2C%20IL%2C%2060712%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7713</td>
+      <td><b>Tom Thumb Bakery, Kosher Deli and Fresh Meat Market</b></td>
+      <td>Dallas, United States</td>
+      <td>The Market at Preston Forest 11920 Preston Road, Dallas, TX  75230</td>
+      <td>grocery_store</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tom%20Thumb%20Bakery%2C%20Kosher%20Deli%20and%20Fresh%20Meat%20Market%20The%20Market%20at%20Preston%20Forest%2011920%20Preston%20Road%2C%20Dallas%2C%20TX%20%2075230" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7699</td>
+      <td><b>Pita's</b></td>
+      <td>Las Vegas, United States</td>
+      <td>5115 Spring Mountain Rd, Las Vegas, NV , 89103, USA</td>
+      <td>mediterranean_restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–9:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pita's%205115%20Spring%20Mountain%20Rd%2C%20Las%20Vegas%2C%20NV%20%2C%2089103%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7580</td>
+      <td><b>Bacio di Latte - Century City Mall</b></td>
+      <td>Los Angeles, United States</td>
+      <td>10250 Santa Monica Boulevard, Los Angeles, CA 90067, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bacio%20di%20Latte%20-%20Century%20City%20Mall%2010250%20Santa%20Monica%20Boulevard%2C%20Los%20Angeles%2C%20CA%2090067%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7582</td>
+      <td><b>Baskin-Robbins (LA Cienega Plaza)</b></td>
+      <td>Los Angeles, United States</td>
+      <td>1831 S La Cienega Blvd Suite B Los Angeles, CA, 90035, United States</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Baskin-Robbins%20(LA%20Cienega%20Plaza)%201831%20S%20La%20Cienega%20Blvd%20Suite%20B%20Los%20Angeles%2C%20CA%2C%2090035%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7593</td>
+      <td><b>Cold Stone Creamery of Sherman Oaks</b></td>
+      <td>Los Angeles, United States</td>
+      <td>14622 Ventura Blvd. #119, Sherman oaks-Los Angeles County, 91403, usa</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 2:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cold%20Stone%20Creamery%20of%20Sherman%20Oaks%2014622%20Ventura%20Blvd.%20%23119%2C%20Sherman%20oaks-Los%20Angeles%20County%2C%2091403%2C%20usa" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7599</td>
+      <td><b>Erin McKenna's Bakery LA</b></td>
+      <td>Los Angeles, United States</td>
+      <td>236 North Larchmont Boulevard, Los Angeles, CA 90004, USA</td>
+      <td>bakery</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Erin%20McKenna's%20Bakery%20LA%20236%20North%20Larchmont%20Boulevard%2C%20Los%20Angeles%2C%20CA%2090004%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7616</td>
+      <td><b>Julie's Bakery and Catering</b></td>
+      <td>Los Angeles, United States</td>
+      <td>9030 Owensmouth Ave, Canoga Park, CA, 91304, USA</td>
+      <td>grocery_store</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Julie's%20Bakery%20and%20Catering%209030%20Owensmouth%20Ave%2C%20Canoga%20Park%2C%20CA%2C%2091304%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7624</td>
+      <td><b>LA Burger Bar</b></td>
+      <td>Los Angeles, United States</td>
+      <td>8581 Pico Boulevard, Los Angeles, CA 90035, USA</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 1:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=LA%20Burger%20Bar%208581%20Pico%20Boulevard%2C%20Los%20Angeles%2C%20CA%2090035%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7638</td>
+      <td><b>Modern Bread and Bagel Los Angeles</b></td>
+      <td>Los Angeles, United States</td>
+      <td>6256 CA-27 #1200, Woodland Hills, CA, 91367, USA</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20Los%20Angeles%206256%20CA-27%20%231200%2C%20Woodland%20Hills%2C%20CA%2C%2091367%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7643</td>
+      <td><b>Nothing Bundt Cakes Sherman Oaks</b></td>
+      <td>Los Angeles, United States</td>
+      <td>14622 Ventura Blvd Suite 104, Sherman Oaks, CA 91403, USA</td>
+      <td>cake_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Nothing%20Bundt%20Cakes%20Sherman%20Oaks%2014622%20Ventura%20Blvd%20Suite%20104%2C%20Sherman%20Oaks%2C%20CA%2091403%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7644</td>
+      <td><b>Nothing Bundt Cakes West Hills</b></td>
+      <td>Los Angeles, United States</td>
+      <td>6524 Platt Avenue, West Hills, CA 91307, USA</td>
+      <td>cake_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Nothing%20Bundt%20Cakes%20West%20Hills%206524%20Platt%20Avenue%2C%20West%20Hills%2C%20CA%2091307%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7654</td>
+      <td><b>PopUp Bagels Los Angeles</b></td>
+      <td>Los Angeles, United States</td>
+      <td>11710 San Vicente Blvd Los Angeles, CA, 90049, United States</td>
+      <td>bagel_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=PopUp%20Bagels%20Los%20Angeles%2011710%20San%20Vicente%20Blvd%20Los%20Angeles%2C%20CA%2C%2090049%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7669</td>
+      <td><b>Sweet E's Bake Shop</b></td>
+      <td>Los Angeles, United States</td>
+      <td>4574 W Adams Blvd, Los Angeles, CA, 90016, USA</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–2:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sweet%20E's%20Bake%20Shop%204574%20W%20Adams%20Blvd%2C%20Los%20Angeles%2C%20CA%2C%2090016%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7676</td>
+      <td><b>The Bagel Factory Cadillac Avenue</b></td>
+      <td>Los Angeles, United States</td>
+      <td>8986 Cadillac Avenue, Los Angeles, CA 90034, USA</td>
+      <td>bagel_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–2:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=The%20Bagel%20Factory%20Cadillac%20Avenue%208986%20Cadillac%20Avenue%2C%20Los%20Angeles%2C%20CA%2090034%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7677</td>
+      <td><b>The Bagel Factory Sepulveda</b></td>
+      <td>Los Angeles, United States</td>
+      <td>3004 South Sepulveda Boulevard, Los Angeles, CA 90034-4202, United States</td>
+      <td>bagel_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:30 AM–2:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=The%20Bagel%20Factory%20Sepulveda%203004%20South%20Sepulveda%20Boulevard%2C%20Los%20Angeles%2C%20CA%2090034-4202%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7445</td>
+      <td><b>Carvel North Miami Beach #1657</b></td>
+      <td>Miami, United States</td>
+      <td>725 NE 165th Street, North Miami Beach, FL 33162, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Carvel%20North%20Miami%20Beach%20%231657%20725%20NE%20165th%20Street%2C%20North%20Miami%20Beach%2C%20FL%2033162%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7471</td>
+      <td><b>In &amp; Out Bagels</b></td>
+      <td>Miami, United States</td>
+      <td>18800 NE 29th Ave Suite 9, Aventura, FL, 33180, USA, Miami, FL</td>
+      <td>bagel_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=In%20%26%20Out%20Bagels%2018800%20NE%2029th%20Ave%20Suite%209%2C%20Aventura%2C%20FL%2C%2033180%2C%20USA%2C%20Miami%2C%20FL" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7473</td>
+      <td><b>Jajaja Mexicana Wynwood</b></td>
+      <td>Miami, United States</td>
+      <td>2775 NW 3rd Ave Miami, FL, 33127, United States</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Jajaja%20Mexicana%20Wynwood%202775%20NW%203rd%20Ave%20Miami%2C%20FL%2C%2033127%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7480</td>
+      <td><b>Krispy Kreme #1049</b></td>
+      <td>Miami, United States</td>
+      <td>16851 S. Dixie Highway, Palmetto Bay, FL 33157, USA, Miami, FL</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Krispy%20Kreme%20%231049%2016851%20S.%20Dixie%20Highway%2C%20Palmetto%20Bay%2C%20FL%2033157%2C%20USA%2C%20Miami%2C%20FL" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7481</td>
+      <td><b>Krispy Kreme #1177</b></td>
+      <td>Miami, United States</td>
+      <td>590 NE 167th Street, Miami, FL 33162, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Krispy%20Kreme%20%231177%20590%20NE%20167th%20Street%2C%20Miami%2C%20FL%2033162%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7483</td>
+      <td><b>La Pistachio</b></td>
+      <td>Miami, United States</td>
+      <td>7500 SW 120th Street,  Pinecrest, FL , 33156 , United States, Miami, FL</td>
+      <td>dessert_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–6:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Pistachio%207500%20SW%20120th%20Street%2C%20%20Pinecrest%2C%20FL%20%2C%2033156%20%2C%20United%20States%2C%20Miami%2C%20FL" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7486</td>
+      <td><b>Levy's Shawarma</b></td>
+      <td>Miami, United States</td>
+      <td>3575 North East 207th Street, Miami, FL 33180, USA</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">—</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Levy's%20Shawarma%203575%20North%20East%20207th%20Street%2C%20Miami%2C%20FL%2033180%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7489</td>
+      <td><b>Mama Pizza &amp; Coffee Shop</b></td>
+      <td>Miami, United States</td>
+      <td>19200 West Dixie Highway, Miami, FL 33180, USA</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mama%20Pizza%20%26%20Coffee%20Shop%2019200%20West%20Dixie%20Highway%2C%20Miami%2C%20FL%2033180%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7493</td>
+      <td><b>Miami N' Ice</b></td>
+      <td>Miami, United States</td>
+      <td>1214 Washington Ave, Miami Beach, FL, 33139, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 3:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Miami%20N'%20Ice%201214%20Washington%20Ave%2C%20Miami%20Beach%2C%20FL%2C%2033139%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7499</td>
+      <td><b>Morelia Gourmet Paletas</b></td>
+      <td>Miami, United States</td>
+      <td>76 Miracle Mile, Coral Gables, FL 33134, USA, Miami, FL</td>
+      <td>dessert_restaurant</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Morelia%20Gourmet%20Paletas%2076%20Miracle%20Mile%2C%20Coral%20Gables%2C%20FL%2033134%2C%20USA%2C%20Miami%2C%20FL" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7510</td>
+      <td><b>Playa Bowls Coral Gables</b></td>
+      <td>Miami, United States</td>
+      <td>6620 SW 57th Ave, South Miami,  FL, 33143, USA</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20Bowls%20Coral%20Gables%206620%20SW%2057th%20Ave%2C%20South%20Miami%2C%20%20FL%2C%2033143%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7511</td>
+      <td><b>Playa Bowls Miami Midtown</b></td>
+      <td>Miami, United States</td>
+      <td>3111 NE 1st Avenue, Suite 200 Miami, FL, 33137, USA</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20Bowls%20Miami%20Midtown%203111%20NE%201st%20Avenue%2C%20Suite%20200%20Miami%2C%20FL%2C%2033137%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7512</td>
+      <td><b>Playa Bowls North Miami Beach</b></td>
+      <td>Miami, United States</td>
+      <td>14881 Biscayne Blvd North Miami Beach, FL, 33181, United States</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Playa%20Bowls%20North%20Miami%20Beach%2014881%20Biscayne%20Blvd%20North%20Miami%20Beach%2C%20FL%2C%2033181%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7515</td>
+      <td><b>Pure Green - Juice Bar Sunset Harbour</b></td>
+      <td>Miami, United States</td>
+      <td>1915 Purdy Ave Miami Beach, FL, 33139, United States</td>
+      <td>juice_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pure%20Green%20-%20Juice%20Bar%20Sunset%20Harbour%201915%20Purdy%20Ave%20Miami%20Beach%2C%20FL%2C%2033139%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7516</td>
+      <td><b>Pure Green Juice &amp; Smoothie Bar Aventura</b></td>
+      <td>Miami, United States</td>
+      <td>2960 NE 199th St, Ste. 4,  Aventura, FL , 33180, USA, Miami, FL</td>
+      <td>juice_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pure%20Green%20Juice%20%26%20Smoothie%20Bar%20Aventura%202960%20NE%20199th%20St%2C%20Ste.%204%2C%20%20Aventura%2C%20FL%20%2C%2033180%2C%20USA%2C%20Miami%2C%20FL" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7519</td>
+      <td><b>Serendipity Creamery &amp; Yogurt Cafe</b></td>
+      <td>Miami, United States</td>
+      <td>9457 Harding Ave, Surfside, FL 33154, United States, Miami, FL</td>
+      <td>dessert_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:30 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Serendipity%20Creamery%20%26%20Yogurt%20Cafe%209457%20Harding%20Ave%2C%20Surfside%2C%20FL%2033154%2C%20United%20States%2C%20Miami%2C%20FL" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7522</td>
+      <td><b>Silan Fusion Cuisine</b></td>
+      <td>Miami, United States</td>
+      <td>5225 Collins Ave,  Miami Beach, FL, 33140, USA</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–2:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Silan%20Fusion%20Cuisine%205225%20Collins%20Ave%2C%20%20Miami%20Beach%2C%20FL%2C%2033140%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7523</td>
+      <td><b>Skoops</b></td>
+      <td>Miami, United States</td>
+      <td>401 Biscayne Blvd S10,  Miami, FL , 33132, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 9:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Skoops%20401%20Biscayne%20Blvd%20S10%2C%20%20Miami%2C%20FL%20%2C%2033132%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>4697</td>
+      <td><b>Katz's Delicatessen</b> <span class="warn">⚠ is_kosher=false</span></td>
+      <td>New York, United States</td>
+      <td>205 E Houston St, Manhattan</td>
+      <td>deli</td>
+      <td class="reason">פתוח עד 11:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Katz's%20Delicatessen%20205%20E%20Houston%20St%2C%20Manhattan" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>6401</td>
+      <td><b>Bodhi Kosher Vegetarian Restaurant</b></td>
+      <td>New York, United States</td>
+      <td>77 Mulberry St, New York, NY 10013.</td>
+      <td>vegetarian_restaurant</td>
+      <td class="reason">פתוח עד 9:45 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–9:45 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bodhi%20Kosher%20Vegetarian%20Restaurant%2077%20Mulberry%20St%2C%20New%20York%2C%20NY%2010013." target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7714</td>
+      <td><b>16 Handles 3rd Ave</b></td>
+      <td>New York, United States</td>
+      <td>428 3rd Avenue, Manhattan, NY 10016, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=16%20Handles%203rd%20Ave%20428%203rd%20Avenue%2C%20Manhattan%2C%20NY%2010016%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7715</td>
+      <td><b>16 Handles Amsterdam</b></td>
+      <td>New York, United States</td>
+      <td>325 Amsterdam Avenue (75th Street), Manhattan, NY 10023, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=16%20Handles%20Amsterdam%20325%20Amsterdam%20Avenue%20(75th%20Street)%2C%20Manhattan%2C%20NY%2010023%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7716</td>
+      <td><b>16 Handles Chelsea</b></td>
+      <td>New York, United States</td>
+      <td>178 8th Avenue, NY 10011, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=16%20Handles%20Chelsea%20178%208th%20Avenue%2C%20NY%2010011%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7718</td>
+      <td><b>16 Handles Upper East Side</b></td>
+      <td>New York, United States</td>
+      <td>1569 2nd Avenue (between 81st and 82nd), New York, NY, 10028, USA</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=16%20Handles%20Upper%20East%20Side%201569%202nd%20Avenue%20(between%2081st%20and%2082nd)%2C%20New%20York%2C%20NY%2C%2010028%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7722</td>
+      <td><b>Ahimsa Garden</b></td>
+      <td>New York, United States</td>
+      <td>204 East 38th Street New York, NY, 10016, USA</td>
+      <td>indian_restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–9:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ahimsa%20Garden%20204%20East%2038th%20Street%20New%20York%2C%20NY%2C%2010016%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7730</td>
+      <td><b>Anixi</b></td>
+      <td>New York, United States</td>
+      <td>290 8th Ave, New York, NY , 10001, USA</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Anixi%20290%208th%20Ave%2C%20New%20York%2C%20NY%20%2C%2010001%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7733</td>
+      <td><b>Asia Glatt Kosher</b></td>
+      <td>New York, United States</td>
+      <td>4813 New Utrecht Avenue Brooklyn, NY, 11219, United States</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Asia%20Glatt%20Kosher%204813%20New%20Utrecht%20Avenue%20Brooklyn%2C%20NY%2C%2011219%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7735</td>
+      <td><b>Avenue P Appetizers &amp; Bagels</b></td>
+      <td>New York, United States</td>
+      <td>466 Avenue P, Brooklyn, NY 11223, USA</td>
+      <td>bagel_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:30 AM–5:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Avenue%20P%20Appetizers%20%26%20Bagels%20466%20Avenue%20P%2C%20Brooklyn%2C%20NY%2011223%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7737</td>
+      <td><b>B &amp; H Dairy</b></td>
+      <td>New York, United States</td>
+      <td>127 2nd Ave. New York, NY, 10003, United States</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=B%20%26%20H%20Dairy%20127%202nd%20Ave.%20New%20York%2C%20NY%2C%2010003%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7738</td>
+      <td><b>Bagel Boss Murray Hill</b></td>
+      <td>New York, United States</td>
+      <td>544 Third Ave New York, NY, Manhattan, 10016, United States</td>
+      <td>bagel_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–2:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bagel%20Boss%20Murray%20Hill%20544%20Third%20Ave%20New%20York%2C%20NY%2C%20Manhattan%2C%2010016%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7746</td>
+      <td><b>Benjy's Kosher Pizza and Dairy Restaurant</b></td>
+      <td>New York, United States</td>
+      <td>72-72 Main St. Kew Gardens Hills, NY, 11367, United States</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Benjy's%20Kosher%20Pizza%20and%20Dairy%20Restaurant%2072-72%20Main%20St.%20Kew%20Gardens%20Hills%2C%20NY%2C%2011367%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7750</td>
+      <td><b>Beyond Sushi 56th Street</b></td>
+      <td>New York, United States</td>
+      <td>62 W 56th St, Manhattan, NY 10019, USA</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:30 AM–9:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Beyond%20Sushi%2056th%20Street%2062%20W%2056th%20St%2C%20Manhattan%2C%20NY%2010019%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7751</td>
+      <td><b>Beyond Sushi Herald Square</b></td>
+      <td>New York, United States</td>
+      <td>134 W 37th St, Manhattan, NY 10018, USA</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">פתוח עד 10:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:30 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Beyond%20Sushi%20Herald%20Square%20134%20W%2037th%20St%2C%20Manhattan%2C%20NY%2010018%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7755</td>
+      <td><b>Blue Grill - Catering Only</b></td>
+      <td>New York, United States</td>
+      <td>3502 Flatlands Ave Brooklyn, NY, 11234, USA</td>
+      <td>american_restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:30 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Blue%20Grill%20-%20Catering%20Only%203502%20Flatlands%20Ave%20Brooklyn%2C%20NY%2C%2011234%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7765</td>
+      <td><b>BUBA Bureka</b></td>
+      <td>New York, United States</td>
+      <td>193 Bleecker St New York, NY, 10012, United States</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=BUBA%20Bureka%20193%20Bleecker%20St%20New%20York%2C%20NY%2C%2010012%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7766</td>
+      <td><b>Buddha Bodai</b></td>
+      <td>New York, United States</td>
+      <td>5 Mott Street New York, NY, 10013, United States</td>
+      <td>vegetarian_restaurant</td>
+      <td class="reason">פתוח עד 9:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–9:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Buddha%20Bodai%205%20Mott%20Street%20New%20York%2C%20NY%2C%2010013%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7782</td>
+      <td><b>Candle Cafe</b></td>
+      <td>New York, United States</td>
+      <td>388 Third Ave, Between 28th and 29th St, New York, NY, 10016, USA</td>
+      <td>restaurant</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Candle%20Cafe%20388%20Third%20Ave%2C%20Between%2028th%20and%2029th%20St%2C%20New%20York%2C%20NY%2C%2010016%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7784</td>
+      <td><b>Caravan of Dreams</b></td>
+      <td>New York, United States</td>
+      <td>406 E 6th St  New York, NY, 10009, United States</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–11:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Caravan%20of%20Dreams%20406%20E%206th%20St%20%20New%20York%2C%20NY%2C%2010009%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7786</td>
+      <td><b>Carvel Coney Island Avenue</b></td>
+      <td>New York, United States</td>
+      <td>2744 Coney Island Ave Brooklyn, NY, 11235, United States</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 10:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Carvel%20Coney%20Island%20Avenue%202744%20Coney%20Island%20Ave%20Brooklyn%2C%20NY%2C%2011235%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7787</td>
+      <td><b>Carvel Manor Road</b></td>
+      <td>New York, United States</td>
+      <td>762 Manor Rd. Staten Island, NY, 10314, United States</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Carvel%20Manor%20Road%20762%20Manor%20Rd.%20Staten%20Island%2C%20NY%2C%2010314%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7788</td>
+      <td><b>Carvel Union Turnpike</b></td>
+      <td>New York, United States</td>
+      <td>161-02 Union Tpke. Queens, NY, Flushing, 11366, United States</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Carvel%20Union%20Turnpike%20161-02%20Union%20Tpke.%20Queens%2C%20NY%2C%20Flushing%2C%2011366%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7795</td>
+      <td><b>Chloe</b></td>
+      <td>New York, United States</td>
+      <td>185 Bleecker St,  New York, NY , 10012, United States</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Chloe%20185%20Bleecker%20St%2C%20%20New%20York%2C%20NY%20%2C%2010012%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7801</td>
+      <td><b>Cold Stone Creamery Rosedale</b></td>
+      <td>New York, United States</td>
+      <td>25301 Rockaway Blvd, STE 25A Rosedale, NY , 11422, United States</td>
+      <td>ice_cream_shop</td>
+      <td class="reason">פתוח עד 11:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–11:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cold%20Stone%20Creamery%20Rosedale%2025301%20Rockaway%20Blvd%2C%20STE%2025A%20Rosedale%2C%20NY%20%2C%2011422%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7802</td>
+      <td><b>Coletta</b></td>
+      <td>New York, United States</td>
+      <td>365 3rd Avenue, New York, NY, 10016, USA</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Coletta%20365%203rd%20Avenue%2C%20New%20York%2C%20NY%2C%2010016%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7816</td>
+      <td><b>Dough Donuts UWS</b></td>
+      <td>New York, United States</td>
+      <td>133 W 72nd St New York, NY, 10023, United States</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dough%20Donuts%20UWS%20133%20W%2072nd%20St%20New%20York%2C%20NY%2C%2010023%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7817</td>
+      <td><b>Dough Doughnuts</b></td>
+      <td>New York, United States</td>
+      <td>646 Vanderbilt Ave, Brooklyn, NY , 11238, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dough%20Doughnuts%20646%20Vanderbilt%20Ave%2C%20Brooklyn%2C%20NY%20%2C%2011238%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7818</td>
+      <td><b>Dough Doughnuts - Astoria</b></td>
+      <td>New York, United States</td>
+      <td>21-70 31st St, Astoria, NY , 11105, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dough%20Doughnuts%20-%20Astoria%2021-70%2031st%20St%2C%20Astoria%2C%20NY%20%2C%2011105%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7819</td>
+      <td><b>Dough Doughnuts - Flatiron</b></td>
+      <td>New York, United States</td>
+      <td>14 West 19th Street at 5th Ave, New York, NY, 10011, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dough%20Doughnuts%20-%20Flatiron%2014%20West%2019th%20Street%20at%205th%20Ave%2C%20New%20York%2C%20NY%2C%2010011%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7820</td>
+      <td><b>Dough Doughnuts - Rockefeller Center</b></td>
+      <td>New York, United States</td>
+      <td>10 Rockefeller Center (48th St. between 5th &amp; 6th Ave), New York, NY , 10020, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dough%20Doughnuts%20-%20Rockefeller%20Center%2010%20Rockefeller%20Center%20(48th%20St.%20between%205th%20%26%206th%20Ave)%2C%20New%20York%2C%20NY%20%2C%2010020%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7822</td>
+      <td><b>Doughnut Plant Brooklyn</b></td>
+      <td>New York, United States</td>
+      <td>245 Flatbush Avenue, Brooklyn, NY 11217, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Doughnut%20Plant%20Brooklyn%20245%20Flatbush%20Avenue%2C%20Brooklyn%2C%20NY%2011217%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7823</td>
+      <td><b>Doughnut Plant Grand Central Terminal</b></td>
+      <td>New York, United States</td>
+      <td>89 East 42nd Street, Manhattan, NY 10017, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Doughnut%20Plant%20Grand%20Central%20Terminal%2089%20East%2042nd%20Street%2C%20Manhattan%2C%20NY%2010017%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7824</td>
+      <td><b>Doughnut Plant Lower East Side</b></td>
+      <td>New York, United States</td>
+      <td>379 Grand Street, Manhattan, NY 10012, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 7:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Doughnut%20Plant%20Lower%20East%20Side%20379%20Grand%20Street%2C%20Manhattan%2C%20NY%2010012%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7825</td>
+      <td><b>Doughnut Plant Queens</b></td>
+      <td>New York, United States</td>
+      <td>31-00 47th Avenue Long Island City, Queens, NY 11101, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:30 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Doughnut%20Plant%20Queens%2031-00%2047th%20Avenue%20Long%20Island%20City%2C%20Queens%2C%20NY%2011101%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7826</td>
+      <td><b>Doughnut Plant Williamsburg</b></td>
+      <td>New York, United States</td>
+      <td>198 Bedford Avenue at North 6th Street,  Brooklyn, NY , 11249, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Doughnut%20Plant%20Williamsburg%20198%20Bedford%20Avenue%20at%20North%206th%20Street%2C%20%20Brooklyn%2C%20NY%20%2C%2011249%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7827</td>
+      <td><b>Dunkin Donuts Kings Highway</b></td>
+      <td>New York, United States</td>
+      <td>373 Kings Highway, Brooklyn, NY 11223, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin%20Donuts%20Kings%20Highway%20373%20Kings%20Highway%2C%20Brooklyn%2C%20NY%2011223%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7828</td>
+      <td><b>Dunkin Donuts McDonald Ave</b></td>
+      <td>New York, United States</td>
+      <td>1080 McDonald Avenue, Brooklyn, NY 11204, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin%20Donuts%20McDonald%20Ave%201080%20McDonald%20Avenue%2C%20Brooklyn%2C%20NY%2011204%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7829</td>
+      <td><b>Dunkin Donuts Riverdale Ave</b></td>
+      <td>New York, United States</td>
+      <td>508 West 259th St (Riverdale Ave), Bronx, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin%20Donuts%20Riverdale%20Ave%20508%20West%20259th%20St%20(Riverdale%20Ave)%2C%20Bronx%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7830</td>
+      <td><b>Dunkin Donuts Staten Island</b></td>
+      <td>New York, United States</td>
+      <td>995 Manor Road, Staten Island, NY 10314, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin%20Donuts%20Staten%20Island%20995%20Manor%20Road%2C%20Staten%20Island%2C%20NY%2010314%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7831</td>
+      <td><b>Dunkin' 1903 Kings Highway</b></td>
+      <td>New York, United States</td>
+      <td>1903 Kings Highway, Brooklyn, NY 11229, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%201903%20Kings%20Highway%201903%20Kings%20Highway%2C%20Brooklyn%2C%20NY%2011229%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7832</td>
+      <td><b>Dunkin' 2419 Coney Island Ave</b></td>
+      <td>New York, United States</td>
+      <td>2419 Coney Island Avenue, Brooklyn, NY 11223, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–7:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%202419%20Coney%20Island%20Ave%202419%20Coney%20Island%20Avenue%2C%20Brooklyn%2C%20NY%2011223%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7833</td>
+      <td><b>Dunkin' Audubon Ave</b></td>
+      <td>New York, United States</td>
+      <td>398 Audubon Avenue, Manhattan, NY 10033, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 6:00 AM–3:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Audubon%20Ave%20398%20Audubon%20Avenue%2C%20Manhattan%2C%20NY%2010033%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7834</td>
+      <td><b>Dunkin' Avenue J</b></td>
+      <td>New York, United States</td>
+      <td>1410 Avenue J  Brooklyn, NY, 11230, United States</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:00 AM–7:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Avenue%20J%201410%20Avenue%20J%20%20Brooklyn%2C%20NY%2C%2011230%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7835</td>
+      <td><b>Dunkin' Avenue P</b></td>
+      <td>New York, United States</td>
+      <td>418 Avenue P, Brooklyn, NY 11223, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Avenue%20P%20418%20Avenue%20P%2C%20Brooklyn%2C%20NY%2011223%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7836</td>
+      <td><b>Dunkin' Avenue U</b></td>
+      <td>New York, United States</td>
+      <td>6620 Avenue U, Brooklyn, NY 11234, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Avenue%20U%206620%20Avenue%20U%2C%20Brooklyn%2C%20NY%2011234%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7837</td>
+      <td><b>Dunkin' Coney</b></td>
+      <td>New York, United States</td>
+      <td>906 Coney Island Avenue, Brooklyn, NY 11218, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 5:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Coney%20906%20Coney%20Island%20Avenue%2C%20Brooklyn%2C%20NY%2011218%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7840</td>
+      <td><b>Dunkin' Flatbush</b></td>
+      <td>New York, United States</td>
+      <td>1922 Flatbush Avenue, Brooklyn, NY 11210, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 5:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Flatbush%201922%20Flatbush%20Avenue%2C%20Brooklyn%2C%20NY%2011210%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7841</td>
+      <td><b>Dunkin' Flushing</b></td>
+      <td>New York, United States</td>
+      <td>79-27 Main Street, Flushing, NY 11367, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 5:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Flushing%2079-27%20Main%20Street%2C%20Flushing%2C%20NY%2011367%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7842</td>
+      <td><b>Dunkin' Fort Hamilton</b></td>
+      <td>New York, United States</td>
+      <td>4912 Fort Hamilton Parkway, Brooklyn, NY 11219, USA</td>
+      <td>coffee_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 5:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunkin'%20Fort%20Hamilton%204912%20Fort%20Hamilton%20Parkway%2C%20Brooklyn%2C%20NY%2011219%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7845</td>
+      <td><b>Effy's Cafe</b></td>
+      <td>New York, United States</td>
+      <td>104 West 96th Street, Manhattan, NY 10025, USA</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Effy's%20Cafe%20104%20West%2096th%20Street%2C%20Manhattan%2C%20NY%2010025%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7892</td>
+      <td><b>Hummus Kitchen Hells Kitchen</b></td>
+      <td>New York, United States</td>
+      <td>768 9th Avenue, Manhattan, NY 10019, USA</td>
+      <td>mediterranean_restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:30 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hummus%20Kitchen%20Hells%20Kitchen%20768%209th%20Avenue%2C%20Manhattan%2C%20NY%2010019%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7894</td>
+      <td><b>Hummus Kitchen UES</b></td>
+      <td>New York, United States</td>
+      <td>1613 2nd Avenue, Manhattan, NY 10028, USA</td>
+      <td>israeli_restaurant</td>
+      <td class="reason">פתוח עד 10:30 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hummus%20Kitchen%20UES%201613%202nd%20Avenue%2C%20Manhattan%2C%20NY%2010028%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7895</td>
+      <td><b>Hummus Place</b></td>
+      <td>New York, United States</td>
+      <td>305 Amsterdam Avenue, Manhattan, NY 10023, USA</td>
+      <td>israeli_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–9:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hummus%20Place%20305%20Amsterdam%20Avenue%2C%20Manhattan%2C%20NY%2010023%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7897</td>
+      <td><b>Insomnia Cookies - Penn Station</b></td>
+      <td>New York, United States</td>
+      <td>One Pennsylvania Plaza Suite C108 New York, NY, 10119, United States</td>
+      <td>dessert_shop</td>
+      <td class="reason">פתוח עד 3:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Insomnia%20Cookies%20-%20Penn%20Station%20One%20Pennsylvania%20Plaza%20Suite%20C108%20New%20York%2C%20NY%2C%2010119%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7898</td>
+      <td><b>Insomnia Cookies Fresh Meadows</b></td>
+      <td>New York, United States</td>
+      <td>176-69 Union Tpke,  Fresh Meadows, NY , 11366, United States</td>
+      <td>dessert_shop</td>
+      <td class="reason">פתוח עד 3:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 12:00 PM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Insomnia%20Cookies%20Fresh%20Meadows%20176-69%20Union%20Tpke%2C%20%20Fresh%20Meadows%2C%20NY%20%2C%2011366%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7908</td>
+      <td><b>Juice Press Tribeca</b></td>
+      <td>New York, United States</td>
+      <td>415 Greenwich St, New York, NY, 10013, United States</td>
+      <td>juice_shop</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Juice%20Press%20Tribeca%20415%20Greenwich%20St%2C%20New%20York%2C%20NY%2C%2010013%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7933</td>
+      <td><b>Krispy Kreme Penn Station</b></td>
+      <td>New York, United States</td>
+      <td>Two Penn Plaza Amtrak Level New York, NY, 10001, United States</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Krispy%20Kreme%20Penn%20Station%20Two%20Penn%20Plaza%20Amtrak%20Level%20New%20York%2C%20NY%2C%2010001%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7934</td>
+      <td><b>Krispy Kreme Times Square</b></td>
+      <td>New York, United States</td>
+      <td>1601 Broadway,  New York, NY, 10019, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 2:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 7:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Krispy%20Kreme%20Times%20Square%201601%20Broadway%2C%20%20New%20York%2C%20NY%2C%2010019%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7935</td>
+      <td><b>Krispy Kreme Upper East Side</b></td>
+      <td>New York, United States</td>
+      <td>1276 Lexington Avenue (and 86th St) New York, NY, 10028, USA</td>
+      <td>donut_shop</td>
+      <td class="reason">פתוח עד 10:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 6:00 AM–10:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Krispy%20Kreme%20Upper%20East%20Side%201276%20Lexington%20Avenue%20(and%2086th%20St)%20New%20York%2C%20NY%2C%2010028%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7941</td>
+      <td><b>Le Basque</b></td>
+      <td>New York, United States</td>
+      <td>15 Union Square W,  New York, NY , 10003, United States</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:30 AM–10:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Basque%2015%20Union%20Square%20W%2C%20%20New%20York%2C%20NY%20%2C%2010003%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7969</td>
+      <td><b>Mezze Mediterranean Pizzeria</b></td>
+      <td>New York, United States</td>
+      <td>100-18 Queens Boulevard Forest Hills, Queens, NY 11375, USA</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 11:00 AM–8:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mezze%20Mediterranean%20Pizzeria%20100-18%20Queens%20Boulevard%20Forest%20Hills%2C%20Queens%2C%20NY%2011375%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7978</td>
+      <td><b>Mill Basin Deli</b></td>
+      <td>New York, United States</td>
+      <td>5823 Avenue T Brooklyn, NY, 11234, United States</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 9:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mill%20Basin%20Deli%205823%20Avenue%20T%20Brooklyn%2C%20NY%2C%2011234%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7983</td>
+      <td><b>Modern Bread and Bagel Chelsea</b></td>
+      <td>New York, United States</td>
+      <td>139 West 14th St, New York, NY, 10011</td>
+      <td>bakery</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–5:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20Chelsea%20139%20West%2014th%20St%2C%20New%20York%2C%20NY%2C%2010011" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7984</td>
+      <td><b>Modern Bread and Bagel Midtown East</b></td>
+      <td>New York, United States</td>
+      <td>630 Lexington Ave, New York, NY 10022, United States</td>
+      <td>cafe</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–4:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20Midtown%20East%20630%20Lexington%20Ave%2C%20New%20York%2C%20NY%2010022%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7985</td>
+      <td><b>Modern Bread and Bagel UES</b></td>
+      <td>New York, United States</td>
+      <td>1427 3rd Ave New York, NY, 10028, United States</td>
+      <td>cafe</td>
+      <td class="reason">פתוח עד 12:00 AM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 8:00 AM–12:00 AM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Modern%20Bread%20and%20Bagel%20UES%201427%203rd%20Ave%20New%20York%2C%20NY%2C%2010028%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7994</td>
+      <td><b>Mozzarella</b></td>
+      <td>New York, United States</td>
+      <td>264 Lee Avenue, Brooklyn, NY 11208, USA</td>
+      <td>restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 8:00 AM–7:30 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mozzarella%20264%20Lee%20Avenue%2C%20Brooklyn%2C%20NY%2011208%2C%20USA" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8002</td>
+      <td><b>Naim Pizza</b></td>
+      <td>New York, United States</td>
+      <td>3904 15th Avenue  Brooklyn, NY, 11218, United States</td>
+      <td>pizza_restaurant</td>
+      <td class="reason">—</td>
+      <td class="reason">פתוח 10:00 AM–8:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Naim%20Pizza%203904%2015th%20Avenue%20%20Brooklyn%2C%20NY%2C%2011218%2C%20United%20States" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8006</td>
+      <td><b>Next Stop Vegan</b></td>
+      <td>New York, United States</td>
+      <td>88 Livingston St, Brooklyn, NY, 11201, USA</td>
+      <td>vegan_restaurant</td>
+      <td class="reason">פתוח עד 11:00 PM בערב שישי (אחרי 21:00)</td>
+      <td class="reason">פתוח 11:00 AM–11:00 PM בשבת (חופף ל-08:00–16:00)</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Next%20Stop%20Vegan%2088%20Livingston%20St%2C%20Brooklyn%2C%20NY%2C%2011201%2C%20USA" target="_blank">מפות</a></td>
+    </tr>
+    </tbody></table>
+
+    <h2 style="color:#e65100">🟠 מלון / אירוח — צריך שיקול דעת — 3</h2>
+    <p class="note">מלונות/אירוח עלולים להגיש ארוחות שבת בתשלום מראש בלי להיות "פתוחים" במובן הרגיל. תחליט פרטנית.</p>
+    <table><thead><tr><th>ID</th><th>שם</th><th>יעד</th><th>כתובת</th><th>סוג עסק (Google)</th><th>שישי</th><th>שבת</th><th>קישור</th></tr></thead><tbody>
+    <tr>
+      <td>7354</td>
+      <td><b>המלך דוד – בשרי</b></td>
+      <td>Prague, Czech Republic</td>
+      <td>Hybernská 1674/42, 110 00 Nové Město, צ'כיה., Prague</td>
+      <td>hotel</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%9C%D7%9A%20%D7%93%D7%95%D7%93%20%E2%80%93%20%D7%91%D7%A9%D7%A8%D7%99%20Hybernsk%C3%A1%201674%2F42%2C%20110%2000%20Nov%C3%A9%20M%C4%9Bsto%2C%20%D7%A6'%D7%9B%D7%99%D7%94.%2C%20Prague" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>7355</td>
+      <td><b>המלך דוד – חלבי</b></td>
+      <td>Prague, Czech Republic</td>
+      <td>Hybernská 1674/42, 110 00 Nové Město, צ'כיה., Prague</td>
+      <td>hotel</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%94%D7%9E%D7%9C%D7%9A%20%D7%93%D7%95%D7%93%20%E2%80%93%20%D7%97%D7%9C%D7%91%D7%99%20Hybernsk%C3%A1%201674%2F42%2C%20110%2000%20Nov%C3%A9%20M%C4%9Bsto%2C%20%D7%A6'%D7%9B%D7%99%D7%94.%2C%20Prague" target="_blank">מפות</a></td>
+    </tr><tr>
+      <td>8392</td>
+      <td><b>Hotel da Música</b></td>
+      <td>Porto, Portugal</td>
+      <td>Largo de Ferreira Lapa 21, Porto, 4150-323, Portugal</td>
+      <td>hotel</td>
+      <td class="reason">פתוח 24 שעות (כולל כניסת שבת)</td>
+      <td class="reason">פתוח 24 שעות בשבת</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20da%20M%C3%BAsica%20Largo%20de%20Ferreira%20Lapa%2021%2C%20Porto%2C%204150-323%2C%20Portugal" target="_blank">מפות</a></td>
+    </tr>
+    </tbody></table>
+</body></html>

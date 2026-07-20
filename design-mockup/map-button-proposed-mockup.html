@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proposed Map Button Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1736;
+      --gold: #D4AF37;
+      --gold-muted: #A8882A;
+      --gold-faint: rgba(212,175,55,0.10);
+      --gold-border: rgba(212,175,55,0.25);
+      --cream: #FAF8F3;
+      --card: #FFFFFF;
+      --text: #111827;
+      --secondary: #6B7280;
+      --muted: #9CA3AF;
+      --line: #F3EFE7;
+      --dairy: #5B7C99;
+      --dairy-bg: #EEF2F6;
+      --shadow: rgba(11, 23, 54, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: #E9EDF4;
+      font-family: Rubik, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+
+    .phone {
+      width: 390px;
+      height: 844px;
+      overflow: hidden;
+      border: 10px solid #151923;
+      border-radius: 38px;
+      background: var(--cream);
+      box-shadow: 0 28px 70px rgba(11, 23, 54, 0.30);
+      position: relative;
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 104px;
+      height: 28px;
+      border-radius: 0 0 18px 18px;
+      background: #151923;
+      z-index: 20;
+    }
+
+    .screen {
+      height: 100%;
+      overflow: auto;
+      background: var(--cream);
+    }
+
+    .header {
+      background: var(--dairy-bg);
+      padding: 64px 24px 30px;
+      text-align: center;
+      border-bottom: 1px solid #F0EDE6;
+      position: relative;
+    }
+
+    .back {
+      position: absolute;
+      top: 60px;
+      left: 18px;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 18px;
+      background: var(--card);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      font-size: 24px;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .icon-ring {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 14px;
+      border-radius: 36px;
+      display: grid;
+      place-items: center;
+      background: var(--dairy);
+      border: 4px solid var(--card);
+      color: white;
+      font-size: 32px;
+      box-shadow: 0 4px 12px rgba(11, 23, 54, 0.10);
+    }
+
+    .header-card {
+      border-radius: 20px;
+      padding: 14px 16px;
+      background: var(--card);
+      border: 1px solid #F0EDE6;
+      box-shadow: 0 4px 14px var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .sub {
+      margin-top: 6px;
+      color: var(--secondary);
+      font-size: 13px;
+    }
+
+    .body {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .type-card,
+    .info-card,
+    .review-card,
+    .action {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 14px rgba(11, 23, 54, 0.06);
+    }
+
+    .type-card {
+      border-radius: 20px;
+      padding: 16px;
+      background: var(--dairy-bg);
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 18px;
+      padding: 5px 12px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--dairy);
+      color: var(--dairy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .desc {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 13px;
+      line-height: 19px;
+    }
+
+    .info-card {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .info-card.address-card {
+      align-items: center;
+      position: relative;
+    }
+
+    .info-icon {
+      color: var(--gold);
+      font-size: 18px;
+      margin-top: 1px;
+    }
+
+    .info-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    .address-copy {
+      display: grid;
+      gap: 4px;
+    }
+
+    .open-map-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--gold-muted);
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .google-maps-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: #F7F5F0;
+      border: 1px solid #EEE7D8;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+    }
+
+    .maps-pin {
+      position: relative;
+      width: 22px;
+      height: 29px;
+      border-radius: 13px 13px 13px 2px;
+      transform: rotate(-45deg);
+      background:
+        linear-gradient(135deg, #4285F4 0 36%, #34A853 36% 58%, #FBBC05 58% 78%, #EA4335 78% 100%);
+      box-shadow: 0 3px 8px rgba(11, 23, 54, 0.14);
+    }
+
+    .maps-pin::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      top: 7px;
+      left: 7px;
+      box-shadow: 0 0 0 1px rgba(11, 23, 54, 0.08);
+    }
+
+    .section-title {
+      margin: 2px 0;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .review-card {
+      border-radius: 14px;
+      padding: 14px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .review-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .stars {
+      color: var(--gold);
+      direction: ltr;
+      font-size: 14px;
+    }
+
+    .review-text {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .action {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-radius: 18px;
+      padding: 14px;
+      direction: ltr;
+    }
+
+    .action-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #EEF3EE;
+      color: #6B8E6B;
+      font-size: 20px;
+    }
+
+    .action-copy {
+      flex: 1;
+      text-align: left;
+    }
+
+    .action-title {
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .action-sub {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chevron {
+      color: var(--muted);
+      font-size: 22px;
+    }
+
+    .note {
+      padding: 2px 10px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 450px) {
+      body { padding: 0; background: var(--cream); }
+      .phone {
+        width: 100vw;
+        height: 100vh;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .phone::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="phone">
+    <div class="screen">
+      <header class="header">
+        <button class="back" type="button">‹</button>
+        <div class="icon-ring">☕</div>
+        <div class="header-card">
+          <h1>Cafe Noya</h1>
+          <div class="sub">Jerusalem, Israel</div>
+        </div>
+      </header>
+
+      <section class="body">
+        <div class="type-card">
+          <div class="chips">
+            <span class="chip">חלבי</span>
+            <span class="chip">מהדרין</span>
+          </div>
+          <p class="desc">Higher kosher supervision, often preferred by more observant travelers.</p>
+        </div>
+
+        <div class="info-card address-card">
+          <div class="info-icon">●</div>
+          <div class="info-main">
+            <div class="address-copy">
+              <div class="info-label">כתובת</div>
+              <div class="info-value">King George St 12, Jerusalem</div>
+              <div class="open-map-line">פתח ב-Google Maps ›</div>
+            </div>
+          </div>
+          <div class="google-maps-icon" aria-label="Google Maps">
+            <div class="maps-pin"></div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">◷</div>
+          <div>
+            <div class="info-label">שעות פתיחה</div>
+            <div class="info-value">Sun-Thu 08:00-22:00</div>
+          </div>
+        </div>
+
+        <div class="section-title">ביקורות</div>
+        <div class="review-card">
+          <div class="review-head">
+            <span>Daniel C.</span>
+            <span class="stars">★★★★★</span>
+          </div>
+          <p class="review-text">Great place, quick service and the kashrut certificate was easy to find.</p>
+        </div>
+
+        <div class="note">כאן המפה צמודה לכתובת, אז אין צורך בכפתור מפה גדול ונפרד למטה.</div>
+
+        <div class="actions">
+          <div class="action">
+            <div class="action-icon">☎</div>
+            <div class="action-copy">
+              <div class="action-title">התקשר</div>
+              <div class="action-sub">+972 2-123-4567</div>
+            </div>
+            <div class="chevron">›</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

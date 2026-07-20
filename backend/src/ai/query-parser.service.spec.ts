@@ -55,6 +55,74 @@ describe('QueryParserService', () => {
     });
   });
 
+  it('parses safe food typos without using the LLM', async () => {
+    const service = createService();
+
+    await expect(service.parse('פיצ במיאמי', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'restaurant',
+        destinationText: 'מיאמי',
+        restaurant: {
+          dish: 'pizza',
+          type: 'dairy',
+        },
+      },
+    });
+
+    await expect(service.parse('המבןרגר במיאמי', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'restaurant',
+        destinationText: 'מיאמי',
+        restaurant: {
+          dish: 'burger',
+          type: 'meat',
+        },
+      },
+    });
+
+    await expect(service.parse('חומו במיאמי', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'restaurant',
+        destinationText: 'מיאמי',
+        restaurant: {
+          dish: 'hummus',
+          type: 'pareve',
+        },
+      },
+    });
+
+    await expect(service.parse('שוארמה במיאמי', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'restaurant',
+        destinationText: 'מיאמי',
+        restaurant: {
+          dish: 'shawarma',
+          type: 'meat',
+        },
+      },
+    });
+  });
+
+  it('parses a missing-letter synagogue phrase without using the LLM', async () => {
+    const service = createService();
+
+    await expect(service.parse('בית כנס במיאמי', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'synagogue',
+        destinationText: 'מיאמי',
+        explicitDestination: true,
+      },
+    });
+
+    await expect(service.parse('בית גנסת במיאמי', { allowLlm: false })).resolves.toMatchObject({
+      parsed: {
+        category: 'synagogue',
+        destinationText: 'מיאמי',
+        explicitDestination: true,
+      },
+    });
+  });
+
   it('keeps hosting intent stronger than the local category model', async () => {
     const service = createService();
 

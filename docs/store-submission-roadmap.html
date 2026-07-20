@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jewish On The Way — תוכנית הגשה לחנויות</title>
+  <style>
+    :root{--ink:#10213f;--muted:#68758b;--line:#dbe3ef;--paper:#fff;--bg:#f3f6fb;--blue:#245edb;--blue2:#eaf0ff;--green:#147d56;--green2:#e8f7f0;--amber:#a46106;--amber2:#fff5dd;--red:#b42318;--red2:#ffedeb}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Noto Sans Hebrew",sans-serif;line-height:1.65}
+    .hero{background:linear-gradient(135deg,#0d1d3c,#183e83 65%,#2769df);color:#fff;padding:54px 24px 76px}.wrap{max-width:1120px;margin:auto}.eyebrow{font-size:13px;letter-spacing:.08em;opacity:.8}.hero h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:12px 0}.hero p{max-width:760px;font-size:18px;color:#dce7ff}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.pill{border:1px solid #ffffff42;background:#ffffff12;border-radius:999px;padding:7px 12px;font-size:13px}
+    .toolbar{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.toolbar .wrap{display:flex;gap:10px;align-items:center;padding:12px 20px;flex-wrap:wrap}.progress{flex:1;min-width:180px}.bar{height:8px;background:#e3e9f2;border-radius:99px;overflow:hidden}.bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),#2bc68e);transition:.2s}.progress small{color:var(--muted)}button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:8px 11px;cursor:pointer}button:hover{border-color:#aebbd0}
+    main{max-width:1120px;margin:-42px auto 70px;padding:0 20px}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px;box-shadow:0 10px 30px #1b37630c}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{border-radius:14px;padding:18px}.stat b{display:block;font-size:30px}.stat small{color:var(--muted)}.s-red{background:var(--red2)}.s-amber{background:var(--amber2)}.s-green{background:var(--green2)}.s-blue{background:var(--blue2)}
+    h2{font-size:28px;margin:0 0 12px}h3{font-size:20px;margin:22px 0 8px}.sub{color:var(--muted);margin-top:-6px}.alert{border-right:4px solid var(--red);background:var(--red2);padding:14px 16px;border-radius:10px;margin:14px 0}.note{border-right:4px solid var(--blue);background:var(--blue2);padding:14px 16px;border-radius:10px;margin:14px 0}.ok{border-right-color:var(--green);background:var(--green2)}
+    table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}th{color:var(--muted);font-size:12px}.status{white-space:nowrap;font-weight:700}.red{color:var(--red)}.amber{color:var(--amber)}.green{color:var(--green)}
+    .stage{scroll-margin-top:90px}.stagehead{display:flex;gap:14px;align-items:flex-start}.num{flex:0 0 42px;height:42px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px}.checks{display:grid;gap:8px;margin-top:14px}.check{display:flex;gap:10px;padding:9px 10px;border-radius:9px;border:1px solid transparent}.check:hover{background:#f7f9fc;border-color:#edf1f7}.check input{width:18px;height:18px;margin-top:4px;accent-color:var(--green)}.check.done span{text-decoration:line-through;color:#8a95a7}.gate{display:inline-block;background:#101f3d;color:#fff;border-radius:8px;padding:7px 10px;margin-top:14px;font-size:13px}
+    .draft{background:#f8fafc;border:1px dashed #bdc8d9;border-radius:12px;padding:16px}.draft strong{color:var(--blue)}code,pre{direction:ltr;text-align:left;background:#f4f6fa;border-radius:8px}code{padding:2px 5px}pre{padding:14px;overflow:auto;border:1px solid var(--line)}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}a{color:var(--blue)}footer{text-align:center;color:var(--muted);padding:20px}
+    @media(max-width:760px){.summary,.two{grid-template-columns:1fr}.hero{padding-top:38px}.card{padding:18px}table{display:block;overflow:auto}}
+    @media print{.toolbar{display:none}.hero{padding:25px;background:#fff;color:#000}.hero p{color:#333}main{margin:0}.card{box-shadow:none;break-inside:avoid}.check input{appearance:none;border:1px solid #555}.hero .pill{border-color:#777}}
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="wrap">
+    <div class="eyebrow">STORE RELEASE ROADMAP · 19.07.2026</div>
+    <h1>מהפרויקט לחנויות.</h1>
+    <p>תוכנית עבודה ל־Jewish On The Way, המבוססת על מסמך המכללה ועל בדיקת הקוד הקיים. עוברים לפי הסדר, מסמנים, ובסוף מוסרים תיקיית Drive מלאה.</p>
+    <div class="meta"><span class="pill">Google Play</span><span class="pill">Apple App Store</span><span class="pill">Expo SDK 54</span><span class="pill">Bundle ID: com.jewishontheway.app</span></div>
+  </div></header>
+  <div class="toolbar"><div class="wrap">
+    <div class="progress"><div class="bar"><span id="bar"></span></div><small id="progressText">0% הושלמו</small></div>
+    <button onclick="window.print()">הדפס / שמור PDF</button><button onclick="resetChecks()">איפוס סימונים</button>
+  </div></div>
+  <main>
+    <section class="card">
+      <h2>מצב התחלתי</h2><p class="sub">הסימונים נשמרים אוטומטית בדפדפן הזה.</p>
+      <div class="summary"><div class="stat s-green"><b>3</b><small>בסיסים קיימים: מזהים, Expo והתחברות</small></div><div class="stat s-amber"><b>3</b><small>קיימים חלקית: אייקון, הרשאות ומחיקה</small></div><div class="stat s-red"><b>6</b><small>חוסמים מרכזיים לפני מסירה</small></div><div class="stat s-blue"><b>10</b><small>שלבים עד למסירה</small></div></div>
+      <div class="alert"><b>ארבעת החסמים הראשונים:</b> שרת HTTP במקום HTTPS; חסרה תצורת Release/EAS; מחיקת חשבון רק משביתה את המשתמש; אין Privacy Policy ציבורי.</div>
+      <table><thead><tr><th>נושא</th><th>מצב</th><th>נמצא</th><th>הבא</th></tr></thead><tbody>
+        <tr><td>מזהי חבילה</td><td class="status green">✅ קיים</td><td><code>com.jewishontheway.app</code></td><td>אישור המכללה</td></tr>
+        <tr><td>תצורת Release</td><td class="status red">🔴 חסר</td><td>אין eas.json וגרסאות Build</td><td>הגדרה לאחר אישור בעלות</td></tr>
+        <tr><td>שרת</td><td class="status red">🔴 חוסם</td><td>כתובת API קשיחה ב־HTTP</td><td>דומיין HTTPS</td></tr>
+        <tr><td>אייקון</td><td class="status amber">🟡 חלקי</td><td>1024×1024 RGB קיים</td><td>אישור, חיבור והפקת 512×512</td></tr>
+        <tr><td>פרטיות</td><td class="status red">🔴 חסר</td><td>אין דף ציבורי</td><td>מלאי מידע, ניסוח ופרסום</td></tr>
+        <tr><td>חשבון Review</td><td class="status red">🔴 חסר</td><td>מערכת login קיימת</td><td>משתמש דמו והוראות באנגלית</td></tr>
+      </tbody></table>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">0</div><div><h2>סוגרים בעלות והחלטות</h2><p class="sub">לפני Build, חתימות או פתיחת רשומות בחנויות.</p></div></div>
+      <div class="checks">
+        <label class="check"><input type="checkbox"><span>לקבל אישור שהפרסום יהיה בחשבונות Google ו־Apple של המכללה.</span></label>
+        <label class="check"><input type="checkbox"><span>לאשר בכתב את <code>com.jewishontheway.app</code> בשתי החנויות.</span></label>
+        <label class="check"><input type="checkbox"><span>לקבוע מי מנהל EAS, חתימות Android, certificates ו־provisioning של iOS.</span></label>
+        <label class="check"><input type="checkbox"><span>לקבוע אם iOS יועלה דרך EAS Submit או דרך Mac/Xcode של המכללה.</span></label>
+        <label class="check"><input type="checkbox"><span>לחתום על מסמך הוויתור/ההסכמה של עדי.</span></label>
+        <label class="check"><input type="checkbox"><span>לאשר שם רשמי: Jewish On The Way; לבחור שפות, מדינות ואימייל תמיכה.</span></label>
+        <label class="check"><input type="checkbox"><span>להחליט אם 1.0 היא לטלפונים בלבד. המלצה: כן, עד QA מלא לטאבלטים.</span></label>
+      </div><span class="gate">שער יציאה: בעלות, מזהים ודרך העלאה מאושרים בכתב</span>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">1</div><div><h2>מסירים חסמי Production ו־Review</h2><p class="sub">השלב הקריטי ביותר.</p></div></div>
+      <h3>HTTPS</h3><div class="checks">
+        <label class="check"><input type="checkbox"><span>להגדיר API בדומיין HTTPS עם TLS תקין.</span></label>
+        <label class="check"><input type="checkbox"><span>להעביר כתובת Production למשתנה סביבה ולמחוק תלות ב־HTTP קשיח.</span></label>
+        <label class="check"><input type="checkbox"><span>לבדוק REST, Socket.IO, העלאת תמונות ואיפוס סיסמה מול Production.</span></label>
+      </div>
+      <h3>מחיקת חשבון</h3><div class="checks">
+        <label class="check"><input type="checkbox"><span>למפות את כל נתוני המשתמש והקשרים שלהם.</span></label>
+        <label class="check"><input type="checkbox"><span>להגדיר מחיקה/אנונימיזציה ומדיניות שימור; השבתת <code>isActive</code> בלבד אינה מספיקה.</span></label>
+        <label class="check"><input type="checkbox"><span>למחוק tokens, תמונות ומידע אישי משויך ולבדוק sessions ישנים.</span></label>
+      </div>
+      <h3>הרשאות ותוכן קהילה</h3><div class="checks">
+        <label class="check"><input type="checkbox"><span>לבקש מיקום, תמונות והתראות רק בהקשר מתאים ולספק חלופה כשאפשר.</span></label>
+        <label class="check"><input type="checkbox"><span>לבדוק דיווח, חסימה ויצירת קשר עם התמיכה בכל אזורי תוכן המשתמשים.</span></label>
+      </div><span class="gate">שער יציאה: HTTPS, מחיקה תקינה והרשאות שנבדקו במכשיר</span>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">2</div><div><h2>מגדירים Release ו־EAS</h2></div></div>
+      <div class="checks">
+        <label class="check"><input type="checkbox"><span>להגדיר name, icon, version 1.0.0, buildNumber 1 ו־versionCode 1.</span></label>
+        <label class="check"><input type="checkbox"><span>לתקן את נתיב אייקון ההתראות ולהגדיר splash סופי.</span></label>
+        <label class="check"><input type="checkbox"><span>להריץ eas init תחת הבעלות שסוכמה וליצור eas.json.</span></label>
+        <label class="check"><input type="checkbox"><span>להגדיר secrets ומשתני Production מחוץ ל־Git.</span></label>
+        <label class="check"><input type="checkbox"><span>לאמת עם <code>npx expo config --type public</code>.</span></label>
+      </div><span class="gate">שער יציאה: config ציבורי מלא וללא שגיאות</span>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">3</div><div><h2>מכינים Metadata</h2><p class="sub">טיוטות מוכנות לאישור.</p></div></div>
+      <div class="two">
+        <div class="draft"><strong>App Name</strong><br>Jewish On The Way<br><br><strong>App Store Subtitle</strong><br>מטיילים יהודים בכל מקום<br><br><strong>Google Short Description</strong><br>כשרות, בתי כנסת, מניינים ואירוח למטיילים יהודים בארץ ובעולם.</div>
+        <div class="draft"><strong>Category</strong><br>Travel / נסיעות<br><br><strong>Secondary</strong><br>Lifestyle / סגנון חיים<br><br><strong>Keywords</strong><br>יהדות,כשרות,מסעדות,בתי כנסת,מניין,שבת,אירוח,טיולים,Jewish,kosher,travel</div>
+      </div>
+      <h3>תיאור מלא — כיוון</h3><p>Jewish On The Way מרכזת את המידע והשירותים שמטיילים יהודים צריכים בדרך: יעדים, מסעדות כשרות, בתי כנסת, מניינים, מידע לשבת, קהילה ואירוח. הנוסח המלא והניתן להעתקה נמצא בקובץ ה־MD המקביל.</p>
+      <div class="checks"><label class="check"><input type="checkbox"><span>לאשר שם, תיאורים, קטגוריה ומילות מפתח.</span></label><label class="check"><input type="checkbox"><span>להשלים Support Email, Privacy URL, בעל זכויות ולוקליזציה באנגלית.</span></label></div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">4</div><div><h2>פרטיות ו־Data Safety</h2></div></div>
+      <p>המלאי הראשוני כולל: שם ואימייל, credentials ו־tokens, העדפת כשרות, תמונת פרופיל, push token, מיקום בזמן שימוש, תמונות, הודעות, ביקורות, דיווחים, חסימות, מניינים ואירוח.</p>
+      <div class="checks">
+        <label class="check"><input type="checkbox"><span>לאמת מה נאסף בפועל ואילו ספקי צד שלישי פעילים ב־Production.</span></label>
+        <label class="check"><input type="checkbox"><span>לנסח מטרות, שיתוף, אבטחה, שימור, מחיקה וזכויות משתמש.</span></label>
+        <label class="check"><input type="checkbox"><span>לפרסם דף HTTPS קבוע ולהוסיף קישור נגיש בתוך האפליקציה.</span></label>
+        <label class="check"><input type="checkbox"><span>למלא Google Data Safety ו־Apple App Privacy באופן תואם.</span></label>
+      </div><div class="note">הטיוטה הטכנית למדיניות פרטיות צריכה לעבור בדיקה משפטית לפני פרסום סופי.</div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">5</div><div><h2>גרפיקה וצילומי מסך</h2></div></div>
+      <div class="checks">
+        <label class="check"><input type="checkbox"><span>Apple icon: PNG ‏1024×1024 ללא Alpha.</span></label>
+        <label class="check"><input type="checkbox"><span>Google icon: PNG ‏512×512 עם רקע, עד 1MB.</span></label>
+        <label class="check"><input type="checkbox"><span>Google Feature Graphic: ‏1024×500 ללא שקיפות.</span></label>
+        <label class="check"><input type="checkbox"><span>לצלם 8 מסכים: בית, יעד, מסעדות, בתי כנסת/מניינים, שבת, קהילה, אירוח ומפה.</span></label>
+        <label class="check"><input type="checkbox"><span>Google: לפחות 4 צילומי טלפון; מומלץ 8.</span></label>
+        <label class="check"><input type="checkbox"><span>Apple: סט 6.9″ עדכני, ובנוסף 6.5″ ו־5.5″ לפי מסמך המכללה.</span></label>
+        <label class="check"><input type="checkbox"><span>לצלם מחשבון דמו בלבד, ללא מידע אישי וללא מסגרת מכשיר.</span></label>
+      </div><div class="note"><b>עדכון מול המסמך:</b> Apple מאפשרת כיום להעלות את הרזולוציה הגבוהה הנדרשת ולבצע scaling. עדיין נכין 6.5″ ו־5.5″ כי המכללה ביקשה אותם במפורש.</div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">6</div><div><h2>חשבון Review</h2></div></div>
+      <div class="checks">
+        <label class="check"><input type="checkbox"><span>ליצור חשבון ייעודי ומאומת שאינו דורש קוד חד־פעמי.</span></label>
+        <label class="check"><input type="checkbox"><span>להזין נתוני דמו בלבד ולוודא גישה לכל הפיצ'רים.</span></label>
+        <label class="check"><input type="checkbox"><span>לכתוב הוראות בדיקה קצרות באנגלית ויעד מומלץ לבדיקה.</span></label>
+        <label class="check"><input type="checkbox"><span>לשמור credentials בקובץ פרטי, לא ב־Git.</span></label>
+      </div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">7</div><div><h2>QA של Release</h2></div></div>
+      <div class="checks">
+        <label class="check"><input type="checkbox"><span>TypeScript, lint, backend build/tests ו־health.</span></label>
+        <label class="check"><input type="checkbox"><span>הרשמה, אימות, כניסה, יציאה, איפוס ומחיקת חשבון.</span></label>
+        <label class="check"><input type="checkbox"><span>מסעדות, בתי כנסת, מניינים, מפה, שבת, קהילה ואירוח.</span></label>
+        <label class="check"><input type="checkbox"><span>תמונות, צ'אטים, דיווח, חסימה והתראות.</span></label>
+        <label class="check"><input type="checkbox"><span>הרשאה שנדחתה, מיקום כבוי ורשת חלשה.</span></label>
+        <label class="check"><input type="checkbox"><span>עברית RTL, אנגלית וצרפתית; Android ו־iOS במכשירים אמיתיים.</span></label>
+        <label class="check"><input type="checkbox"><span>להקפיא commit/tag ולתעד version/build.</span></label>
+      </div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">8</div><div><h2>יוצרים Builds</h2></div></div>
+      <div class="two"><div><h3>Android</h3><div class="checks"><label class="check"><input type="checkbox"><span>AAB חתום של Production.</span></label><label class="check"><input type="checkbox"><span>Internal Testing במכשיר אמיתי.</span></label><label class="check"><input type="checkbox"><span>תיעוד checksum, תאריך ובעלות חתימה.</span></label></div></div><div><h3>iOS</h3><div class="checks"><label class="check"><input type="checkbox"><span>Bundle ID ו־credentials בחשבון המוסדי.</span></label><label class="check"><input type="checkbox"><span>Build/Archive והעלאה ל־App Store Connect.</span></label><label class="check"><input type="checkbox"><span>בדיקה ב־TestFlight לפני Review.</span></label></div></div></div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">9</div><div><h2>אורזים תיקיית Drive</h2></div></div>
+      <pre>Jewish-On-The-Way-Store-Submission/
+├── 01-Metadata/
+├── 02-Builds/android + ios-proof/
+├── 03-Graphics/
+├── 04-Screenshots/google + apple/
+├── 05-Legal/privacy + signed-consent/
+├── 06-Review-Credentials-PRIVATE/
+└── 07-QA/</pre>
+      <div class="checks"><label class="check"><input type="checkbox"><span>לבדוק הרשאות Drive בגלישה פרטית.</span></label><label class="check"><input type="checkbox"><span>לוודא שאין API keys, secrets, מפתחות חתימה או סיסמאות אישיות.</span></label><label class="check"><input type="checkbox"><span>לצרף AAB, הוכחת העלאת iOS והמסמך החתום.</span></label></div>
+    </section>
+
+    <section class="card stage"><div class="stagehead"><div class="num">10</div><div><h2>מסירה ומעקב</h2></div></div>
+      <div class="checks"><label class="check"><input type="checkbox"><span>לקבל אישור שהמכללה פתחה והורידה את כל החומרים.</span></label><label class="check"><input type="checkbox"><span>לעבור על טיוטות החנויות ולמלא שאלוני גיל, תוכן ופרטיות.</span></label><label class="check"><input type="checkbox"><span>לתעד הערות Review ותיקונים.</span></label><label class="check"><input type="checkbox"><span>אחרי אישור, לשמור גיבוי ודרך ברורה לשחרור עדכונים.</span></label></div>
+    </section>
+
+    <section class="card"><h2>מה עושים עכשיו?</h2><div class="note ok"><b>הצעד הראשון:</b> שולחים למכללה את שאלות הבעלות והמזהים שבשלב 0, ובמקביל קובעים אימייל תמיכה, שפות חנות, מדינות הפצה ותמיכה בטלפונים בלבד. לאחר התשובות מתחילים ב־HTTPS.</div>
+      <h3>מקורות רשמיים</h3><p><a href="https://developer.apple.com/app-store/review/guidelines/">Apple Review Guidelines</a> · <a href="https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/">Apple Screenshot Specifications</a> · <a href="https://developer.apple.com/support/offering-account-deletion-in-your-app">Apple Account Deletion</a> · <a href="https://support.google.com/googleplay/android-developer/answer/9866151?hl=en">Google Preview Assets</a> · <a href="https://docs.expo.dev/build/setup/">Expo EAS Build</a></p>
+    </section>
+  </main>
+  <footer>Jewish On The Way · Store Submission Roadmap · המסמך המפורט נמצא גם ב־MD</footer>
+  <script>
+    const KEY='jotw-store-roadmap-v1';const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+    function update(){const state=boxes.map(x=>x.checked);localStorage.setItem(KEY,JSON.stringify(state));boxes.forEach(x=>x.closest('.check')?.classList.toggle('done',x.checked));const n=state.filter(Boolean).length,p=boxes.length?Math.round(n/boxes.length*100):0;document.getElementById('bar').style.width=p+'%';document.getElementById('progressText').textContent=`${p}% הושלמו · ${n} מתוך ${boxes.length}`}
+    function resetChecks(){if(confirm('לאפס את כל הסימונים?')){boxes.forEach(x=>x.checked=false);update()}}
+    try{const state=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((x,i)=>x.checked=!!state[i])}catch{}boxes.forEach(x=>x.addEventListener('change',update));update();
+  </script>
+</body>
+</html>

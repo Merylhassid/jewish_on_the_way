@@ -14,13 +14,15 @@ import {
 import { Image } from 'expo-image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-  ArrowLeft, Globe, Home, Map,
+  ArrowLeft, House, Map,
   MessageCircle, Search, Sparkles, Users, Utensils,
 } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import client from '@/src/api/client';
 import { C, getDestinationImageUrl } from '@/constants/theme';
 import { translateCity, translateCountry } from '@/src/i18n/geo';
+import SynagogueIcon, { SYNAGOGUE_ICON_BG, SYNAGOGUE_ICON_COLOR } from '@/src/components/SynagogueIcon';
+import { useRequireAuth } from '@/src/auth/auth-gates';
 
 
 interface Destination {
@@ -29,21 +31,22 @@ interface Destination {
   location?: { coordinates: [number, number] };
 }
 
-type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'hosting' | 'chat' | 'map';
+type ServiceKey = 'restaurants' | 'synagogues' | 'minyans' | 'chat' | 'hosting' | 'map';
 const ACTIVE: ServiceKey[] = ['restaurants', 'synagogues', 'chat', 'minyans', 'hosting', 'map'];
 
 const SERVICE_DEFS: { key: ServiceKey; tKey: string; subTKey: string; Icon: any; color: string; bg: string; }[] = [
   { key: 'restaurants', tKey: 'restaurants', subTKey: 'restaurantsSub', Icon: Utensils,      color: '#16A34A', bg: '#F0FDF4' },
-  { key: 'synagogues',  tKey: 'synagogues',  subTKey: 'synagoguesSub',  Icon: Globe,         color: '#7C3AED', bg: '#F5F3FF' },
+  { key: 'synagogues',  tKey: 'synagogues',  subTKey: 'synagoguesSub',  Icon: SynagogueIcon, color: SYNAGOGUE_ICON_COLOR, bg: SYNAGOGUE_ICON_BG },
   { key: 'minyans',     tKey: 'minyans',     subTKey: 'minyansSub',     Icon: Users,         color: '#D97706', bg: '#FFFBEB' },
-  { key: 'hosting',     tKey: 'hosting',     subTKey: 'hostingSub',     Icon: Home,          color: '#DB2777', bg: '#FDF2F8' },
   { key: 'chat',        tKey: 'chat',        subTKey: 'chatSub',        Icon: MessageCircle, color: '#0891B2', bg: '#F0F9FF' },
+  { key: 'hosting',     tKey: 'hosting',     subTKey: 'hostingSub',     Icon: House,          color: '#7A6B9D', bg: '#F5F3FF' },
   { key: 'map',         tKey: 'map',         subTKey: 'mapSub',         Icon: Map,           color: '#0F766E', bg: '#F0FDFA' },
 ];
 
 export default function DestinationScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t, i18n } = useTranslation();
+  const requireAuth = useRequireAuth();
   const lang = i18n.language;
   const [dest, setDest]         = useState<Destination | null>(null);
   const [loading, setLoading]   = useState(true);
@@ -78,7 +81,14 @@ export default function DestinationScreen() {
       setSearching(true);
       const res = await client.post('/search', { text: searchText.trim(), destinationId: Number(id) });
       router.push(res.data.route as any);
-    } catch { Alert.alert('Error', 'Search unavailable'); }
+    } catch (error: any) {
+      Alert.alert(
+        t('common.error'),
+        error?.response?.status === 429
+          ? t('destination.searchRateLimited')
+          : t('destination.searchUnavailable'),
+      );
+    }
     finally { setSearching(false); }
   };
 
@@ -94,7 +104,10 @@ export default function DestinationScreen() {
     else if (key === 'synagogues') router.push(`/synagogues/${id}?city=${city}`);
     else if (key === 'chat')       router.push(`/chat/${id}?city=${city}`);
     else if (key === 'minyans')    router.push(`/minyans/${id}?city=${city}`);
-    else if (key === 'hosting')    router.push(`/hosting/${id}?city=${city}`);
+    else if (key === 'hosting')    requireAuth(
+      () => router.push(`/hosting/${id}?city=${city}` as any),
+      { reason: 'hosting' },
+    );
     else if (key === 'map') {
       const la = dest.location?.coordinates?.[1] ?? '';
       const lo = dest.location?.coordinates?.[0] ?? '';
@@ -172,7 +185,7 @@ export default function DestinationScreen() {
                 onPress={() => nav(svc.key)}
               >
                 <View style={[s.svcIcon, { backgroundColor: active ? svc.bg : '#F9FAFB' }]}>
-                  <svc.Icon size={22} color={active ? svc.color : '#D1D5DB'} strokeWidth={2} />
+                  <svc.Icon size={svc.key === 'synagogues' ? 24 : 22} color={active ? svc.color : '#D1D5DB'} strokeWidth={2} />
                 </View>
                 <View style={s.svcText}>
                   <Text style={[s.svcLabel, !active && s.svcLabelOff]}>{t(`destination.${svc.tKey}`)}</Text>

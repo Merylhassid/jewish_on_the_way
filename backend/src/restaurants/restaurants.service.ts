@@ -142,6 +142,25 @@ function rankRowsByKashrutPreference(rows: any[], preferredKashrut?: string | nu
   return [...rows].sort((a, b) => kashrutPreferenceRank(a, preferredKashrut) - kashrutPreferenceRank(b, preferredKashrut));
 }
 
+function googleListSelect(alias = 'r'): string {
+  return `
+    ${alias}.address AS "originalAddress",
+    CASE
+      WHEN ${alias}.verification_status = 'verified' AND ${alias}.google_formatted_address_he IS NOT NULL
+      THEN ${alias}.google_formatted_address_he
+      WHEN ${alias}.verification_status = 'verified' AND ${alias}.google_formatted_address_en IS NOT NULL
+      THEN ${alias}.google_formatted_address_en
+      ELSE ${alias}.address
+    END AS address,
+    ${alias}.photo_url AS "photoUrl",
+    ${alias}.photo_attribution AS "photoAttribution",
+    ${alias}.photo_source AS "photoSource",
+    ${alias}.verification_status AS "verificationStatus",
+    ${alias}.google_rating AS "googleRating",
+    ${alias}.google_rating_count AS "googleRatingCount",
+    ${alias}.google_maps_uri AS "googleMapsUri"`;
+}
+
 @Injectable()
 export class RestaurantsService {
   private readonly logger = new Logger(RestaurantsService.name);
@@ -154,6 +173,19 @@ export class RestaurantsService {
     private readonly geocodingService: GeocodingService,
     private readonly config: ConfigService,
   ) {}
+
+  private withGoogleDisplayFields<T extends Record<string, any>>(row: T): T {
+    const verified = row.verificationStatus === 'verified';
+    return {
+      ...row,
+      originalAddress: row.address,
+      originalPhone: row.phone,
+      address: verified
+        ? row.googleFormattedAddressHe || row.googleFormattedAddressEn || row.address
+        : row.address,
+      phone: verified && row.googlePhone ? row.googlePhone : row.phone,
+    };
+  }
 
   // req 4.1 — list restaurants with optional filters + distance
   async findByDestination(
@@ -193,7 +225,7 @@ export class RestaurantsService {
       gpsParams.push(offset);
       const data = await this.restaurantsRepo.query(
         `SELECT r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
-                r.address, r.opening_hours AS "openingHours", r.created_at AS "createdAt",
+                ${googleListSelect('r')}, r.opening_hours AS "openingHours", r.created_at AS "createdAt",
                 ST_Y(r.location::geometry) AS lat, ST_X(r.location::geometry) AS lng,
                 ROUND(ST_Distance(r.location::geography, ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
          FROM restaurants r
@@ -213,12 +245,30 @@ export class RestaurantsService {
 
     const [data, total] = await this.restaurantsRepo.findAndCount({
       where,
-      select: { id: true, name: true, restaurantType: true, kashrutLevel: true, address: true, openingHours: true, createdAt: true, location: true },
+      select: {
+        id: true,
+        name: true,
+        restaurantType: true,
+        kashrutLevel: true,
+        address: true,
+        googleFormattedAddressHe: true,
+        googleFormattedAddressEn: true,
+        googleRating: true,
+        googleRatingCount: true,
+        googleMapsUri: true,
+        verificationStatus: true,
+        photoUrl: true,
+        photoAttribution: true,
+        photoSource: true,
+        openingHours: true,
+        createdAt: true,
+        location: true,
+      },
       order: { name: 'ASC' },
       take: 50,
       skip: offset,
     });
-    return { data, total };
+    return { data: data.map((row) => this.withGoogleDisplayFields(row as any)), total };
   }
 
   // כל המסעדות מכל ערי מדינה אחת, ממויינות לפי מרחק
@@ -239,7 +289,7 @@ export class RestaurantsService {
         SELECT r.id, r.name,
                r.restaurant_type AS "restaurantType",
                r.kashrut_level   AS "kashrutLevel",
-               r.address, r.opening_hours AS "openingHours",
+               ${googleListSelect('r')}, r.opening_hours AS "openingHours",
                r.created_at AS "createdAt",
                d.city AS "destinationCity",
                ROUND(ST_Distance(
@@ -297,7 +347,7 @@ export class RestaurantsService {
       SELECT r.id, r.name,
              r.restaurant_type AS "restaurantType",
              r.kashrut_level   AS "kashrutLevel",
-             r.address, r.opening_hours AS "openingHours",
+             ${googleListSelect('r')}, r.opening_hours AS "openingHours",
              r.created_at AS "createdAt",
              d.city AS "destinationCity"
       FROM restaurants r
@@ -350,11 +400,26 @@ export class RestaurantsService {
       isKosher: boolean | null;
       address: string | null;
       phone: string | null;
+      originalAddress: string | null;
+      originalPhone: string | null;
       category: string | null;
       openingHours: string | null;
       createdAt: string;
       lat: number | null;
       lng: number | null;
+      googleLat: number | null;
+      googleLng: number | null;
+      verificationStatus: string | null;
+      googleDisplayName: string | null;
+      googleDisplayNameHe: string | null;
+      googleFormattedAddressHe: string | null;
+      googleRating: string | number | null;
+      googleRatingCount: number | null;
+      googlePhone: string | null;
+      googleMapsUri: string | null;
+      photoUrl: string | null;
+      photoAttribution: string | null;
+      photoSource: string | null;
       destId: number | null;
       destName: string | null;
       destCity: string | null;
@@ -368,13 +433,38 @@ export class RestaurantsService {
          r.restaurant_type   AS "restaurantType",
          r.kashrut_level     AS "kashrutLevel",
          r.is_kosher         AS "isKosher",
-         r.address,
-         r.phone,
+         r.address           AS "originalAddress",
+         CASE
+           WHEN r.verification_status = 'verified' AND r.google_formatted_address_he IS NOT NULL
+           THEN r.google_formatted_address_he
+           WHEN r.verification_status = 'verified' AND r.google_formatted_address_en IS NOT NULL
+           THEN r.google_formatted_address_en
+           ELSE r.address
+         END                 AS address,
+         r.phone             AS "originalPhone",
+         CASE
+           WHEN r.verification_status = 'verified' AND r.google_phone IS NOT NULL
+           THEN r.google_phone
+           ELSE r.phone
+         END                 AS phone,
          r.category,
          r.opening_hours     AS "openingHours",
          r.created_at        AS "createdAt",
          CASE WHEN r.location IS NOT NULL THEN ST_Y(r.location::geometry) END AS lat,
          CASE WHEN r.location IS NOT NULL THEN ST_X(r.location::geometry) END AS lng,
+         r.google_lat        AS "googleLat",
+         r.google_lng        AS "googleLng",
+         r.verification_status AS "verificationStatus",
+         r.google_display_name AS "googleDisplayName",
+         r.google_display_name_he AS "googleDisplayNameHe",
+         r.google_formatted_address_he AS "googleFormattedAddressHe",
+         r.google_rating     AS "googleRating",
+         r.google_rating_count AS "googleRatingCount",
+         r.google_phone      AS "googlePhone",
+         r.google_maps_uri   AS "googleMapsUri",
+         r.photo_url         AS "photoUrl",
+         r.photo_attribution AS "photoAttribution",
+         r.photo_source      AS "photoSource",
          d.id                AS "destId",
          d.name              AS "destName",
          d.city              AS "destCity",
@@ -394,11 +484,26 @@ export class RestaurantsService {
       isKosher: r.isKosher,
       address: r.address,
       phone: r.phone,
+      originalAddress: r.originalAddress,
+      originalPhone: r.originalPhone,
       category: r.category,
       openingHours: r.openingHours,
       createdAt: r.createdAt,
       lat: r.lat,
       lng: r.lng,
+      googleLat: r.googleLat,
+      googleLng: r.googleLng,
+      verificationStatus: r.verificationStatus,
+      googleDisplayName: r.googleDisplayName,
+      googleDisplayNameHe: r.googleDisplayNameHe,
+      googleFormattedAddressHe: r.googleFormattedAddressHe,
+      googleRating: r.googleRating,
+      googleRatingCount: r.googleRatingCount,
+      googlePhone: r.googlePhone,
+      googleMapsUri: r.googleMapsUri,
+      photoUrl: r.photoUrl,
+      photoAttribution: r.photoAttribution,
+      photoSource: r.photoSource,
       location: null,
       destination: r.destId
         ? { id: r.destId, name: r.destName, city: r.destCity, country: r.destCountry }
@@ -417,7 +522,7 @@ export class RestaurantsService {
         r.id, r.name,
         r.restaurant_type   AS "restaurantType",
         r.kashrut_level     AS "kashrutLevel",
-        r.address,
+        ${googleListSelect('r')},
         ST_Y(r.location::geometry) AS lat,
         ST_X(r.location::geometry) AS lng,
         ROUND(ST_Distance(
@@ -1281,7 +1386,7 @@ export class RestaurantsService {
     }
 
     const select = `r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
-                    r.address, r.opening_hours AS "openingHours", d.city AS "destinationCity"`;
+                    ${googleListSelect('r')}, r.opening_hours AS "openingHours", d.city AS "destinationCity"`;
     const paramOffset = baseParams.length;
 
     const tryQuery = async (where: string, params: any[]): Promise<any[]> => {
@@ -1375,7 +1480,7 @@ export class RestaurantsService {
 
       const data = await this.restaurantsRepo.query(
         `SELECT r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
-                r.address, r.opening_hours AS "openingHours",
+                ${googleListSelect('r')}, r.opening_hours AS "openingHours",
                 ST_Y(r.location::geometry) AS lat, ST_X(r.location::geometry) AS lng,
                 ROUND(ST_Distance(r.location::geography,
                   ST_SetSRID(ST_MakePoint($1,$2),4326)::geography)::numeric) AS "distanceMeters"
@@ -1393,7 +1498,7 @@ export class RestaurantsService {
 
     const data = await this.restaurantsRepo.query(
       `SELECT r.id, r.name, r.restaurant_type AS "restaurantType", r.kashrut_level AS "kashrutLevel",
-              r.address, r.opening_hours AS "openingHours"
+              ${googleListSelect('r')}, r.opening_hours AS "openingHours"
        FROM restaurants r WHERE ${dWhere}
        ORDER BY r.name ASC LIMIT 50`,
       dParams,

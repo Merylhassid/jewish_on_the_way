@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Jewish On The Way — טיוטת מדיניות פרטיות</title>
+  <style>
+    :root {
+      --navy: #10213f;
+      --navy-2: #1c3157;
+      --gold: #c79a2b;
+      --gold-soft: #fff8e7;
+      --paper: #ffffff;
+      --bg: #f4f6fa;
+      --text: #25324a;
+      --muted: #68748a;
+      --line: #dfe5ef;
+      --warn: #9a3412;
+      --warn-bg: #fff7ed;
+      --warn-line: #fdba74;
+      --shadow: 0 18px 50px rgba(16, 33, 63, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, "Noto Sans Hebrew", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: #2459a9; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px max(20px, calc((100vw - 1040px) / 2));
+      color: #fff;
+      background: rgba(16, 33, 63, .96);
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      backdrop-filter: blur(12px);
+    }
+    .brand { font-weight: 800; letter-spacing: .02em; }
+    .topnav { display: flex; gap: 8px; }
+    .topnav a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 14px;
+    }
+    .page {
+      width: min(1040px, calc(100% - 32px));
+      margin: 32px auto 72px;
+    }
+    .hero {
+      padding: 44px clamp(24px, 5vw, 58px);
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(199, 154, 43, .30), transparent 30%),
+        linear-gradient(135deg, var(--navy), var(--navy-2));
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 5px 11px;
+      color: #ffe8aa;
+      background: rgba(199, 154, 43, .16);
+      border: 1px solid rgba(255, 232, 170, .34);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    h1 { margin: 0; font-size: clamp(30px, 5vw, 52px); line-height: 1.15; }
+    .subtitle { margin: 12px 0 0; color: #dce5f5; font-size: 18px; }
+    .status {
+      margin: 24px 0;
+      padding: 20px 22px;
+      color: var(--warn);
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-line);
+      border-radius: 18px;
+    }
+    .status strong { display: block; margin-bottom: 4px; }
+    .checklist, .policy {
+      margin-top: 24px;
+      padding: clamp(22px, 4vw, 46px);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .checklist h2, .policy > h2 { margin-top: 0; }
+    .checklist ul { list-style: none; padding: 0; }
+    .checklist li {
+      position: relative;
+      margin: 10px 0;
+      padding: 12px 46px 12px 14px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      right: 15px;
+      top: 17px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #9aa7ba;
+      border-radius: 4px;
+    }
+    .checklist li.done::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: #15803d;
+      border-color: #15803d;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .policy { margin-top: 34px; }
+    .policy h2 {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 40px);
+      line-height: 1.25;
+    }
+    .updated { margin: 0 0 28px; color: var(--muted); font-weight: 700; }
+    .policy h3 {
+      margin: 38px 0 12px;
+      padding-bottom: 8px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      font-size: 23px;
+    }
+    .policy h4 { margin: 24px 0 7px; color: var(--navy-2); font-size: 18px; }
+    .policy p { margin: 8px 0 14px; }
+    .policy ul, .policy ol { padding-inline-start: 24px; }
+    .policy li { margin: 5px 0; }
+    .contact {
+      margin-top: 18px;
+      padding: 18px 20px;
+      background: var(--gold-soft);
+      border: 1px solid #efd99d;
+      border-radius: 14px;
+    }
+    .english { direction: ltr; text-align: left; }
+    .english ul, .english ol { padding-left: 24px; padding-right: 0; }
+    code {
+      padding: 2px 6px;
+      direction: ltr;
+      color: #7c2d12;
+      background: #fff1e6;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+      font-size: .9em;
+    }
+    footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 680px) {
+      .topbar { position: static; align-items: flex-start; flex-direction: column; }
+      .page { width: min(100% - 20px, 1040px); margin-top: 12px; }
+      .hero, .policy, .checklist { border-radius: 18px; }
+      .topnav { flex-wrap: wrap; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .topbar { display: none; }
+      .page { width: 100%; margin: 0; }
+      .hero { color: #000; background: #fff; box-shadow: none; border: 1px solid #bbb; }
+      .subtitle { color: #333; }
+      .checklist, .policy { box-shadow: none; break-inside: auto; }
+      .policy h3, .policy h4 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Jewish On The Way</div>
+    <nav class="topnav" aria-label="ניווט במסמך">
+      <a href="#prepublish">לפני פרסום</a>
+      <a href="#hebrew">עברית</a>
+      <a href="#english">English</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <span class="eyebrow">טיוטה לבדיקה בלבד</span>
+      <h1>מדיניות פרטיות</h1>
+      <p class="subtitle">Privacy Policy Draft · Hebrew &amp; English</p>
+    </section>
+
+    <aside class="status">
+      <strong>אין לפרסם את הקובץ עדיין.</strong>
+      תאריך הכנה: 19 ביולי 2026. הגרסה העברית והאנגלית נועדו להיות זהות במשמעותן.
+    </aside>
+
+    <section class="checklist" id="prepublish">
+      <h2>תנאים שחובה להשלים לפני פרסום המדיניות</h2>
+      <ul>
+        <li>להפעיל HTTPS בשרת הייצור ולעדכן את כתובת ה-API באפליקציה.</li>
+        <li class="done">כתובות אימייל גלויות וטוקן איפוס הוסרו מלוגי <code>MailService</code> ו-<code>AuthService</code>.</li>
+        <li>להגדיר בפריסת השרת <code>pm2-logrotate</code> כך שלוגים ייצאו מהמחזור לאחר תקופת השמירה.</li>
+        <li class="done">נקבעו 365 ימי שמירה ומומשה מחיקה אוטומטית מלאה של רשומות <code>search_feedback</code> ישנות.</li>
+        <li>בזמן הפריסה: להגדיר <code>SEARCH_FEEDBACK_RETENTION_DAYS=365</code>, להריץ את migration האינדקס ולהפעיל את גרסת הבקאנד החדשה.</li>
+        <li class="done">הוכן מקומית דף דו-לשוני עם אימות באימייל לבקשת מחיקת חשבון ללא האפליקציה.</li>
+        <li>בזמן הפריסה: להריץ את migration של <code>account_deletion_requests</code>, להגדיר <code>PUBLIC_WEB_URL</code>, לאפשר CORS ולהעלות את הדף ל-<code>https://jewishontheway.com/delete-account</code>.</li>
+        <li>לוודא שקישור למדיניות מופיע באפליקציה, ב-Google Play Console וב-App Store Connect.</li>
+        <li>לוודא שטפסי Google Data Safety ו-Apple App Privacy תואמים למדיניות הסופית.</li>
+      </ul>
+    </section>
+
+    <article class="policy" id="hebrew">
+      <h2>מדיניות הפרטיות של Jewish On The Way</h2>
+      <p class="updated">עודכן לאחרונה: 19 ביולי 2026</p>
+
+      <p>Jewish On The Way (להלן: <strong>“האפליקציה”</strong>, <strong>“השירות”</strong> או <strong>“אנחנו”</strong>) מכבדת את פרטיות המשתמשים. מדיניות זו מסבירה איזה מידע נאסף כאשר משתמשים באפליקציה, מדוע אנו משתמשים בו, עם מי הוא עשוי להיות משותף, כמה זמן הוא נשמר וכיצד ניתן לבקש גישה אליו או מחיקה שלו.</p>
+      <p>לשאלות בנושא פרטיות ניתן לפנות אלינו בכתובת: <strong>jewishontheway@gmail.com</strong>.</p>
+
+      <h3>1. המידע שאנו אוספים</h3>
+      <h4>1.1 פרטי חשבון ואימות</h4>
+      <p>בעת הרשמה או שימוש בחשבון אנו עשויים לעבד:</p>
+      <ul>
+        <li>שם פרטי ושם משפחה;</li>
+        <li>כתובת אימייל ומזהה משתמש פנימי;</li>
+        <li>סיסמה כשהיא שמורה באמצעות גיבוב חד-כיווני (hash), ולא כסיסמה גלויה;</li>
+        <li>קודים וטוקנים זמניים לצורך אימות אימייל, התחברות ואיפוס סיסמה;</li>
+        <li>תמונת פרופיל, אם המשתמש בוחר להעלות תמונה.</li>
+      </ul>
+      <p>גרסה 1.0 אינה משתמשת ב-Google Sign-In ואינה אוספת אסימוני Push. אם יכולות אלו יופעלו בעתיד, המדיניות וטפסי החנויות יעודכנו לפני הפעלתן.</p>
+
+      <h4>1.2 העדפות משתמש</h4>
+      <p>המשתמש יכול לבחור העדפת כשרות לצורך התאמת תוצאות. העדפה זו עשויה להעיד על אמונה או אורח חיים דתי ולכן אנו מתייחסים אליה כאל מידע רגיש. מסירת ההעדפה אינה חובה וניתן לשנות או להסיר אותה מהפרופיל.</p>
+
+      <h4>1.3 מיקום</h4>
+      <p>בהסכמת המשתמש, האפליקציה ניגשת למיקום מדויק או משוער <strong>רק בזמן השימוש באפליקציה</strong> לצורך:</p>
+      <ul>
+        <li>הצגת מסעדות, בתי כנסת ומניינים קרובים;</li>
+        <li>חישוב מרחקים והצגת מפה;</li>
+        <li>הפעלת המצפן לכיוון ירושלים;</li>
+        <li>השלמת חיפוש המבוסס על “קרוב אליי”.</li>
+      </ul>
+      <p>האפליקציה אינה מבקשת הרשאת מיקום ברקע ואינה משתמשת במיקום לצורכי פרסום או מעקב. גרסה 1.0 אינה שולחת מיקום ל-Hebcal. ניתן לסרב להרשאת המיקום, אך חלק מהיכולות המבוססות על קרבה או מצפן לא יפעלו.</p>
+
+      <h4>1.4 תוכן ופעילות שהמשתמש יוצר</h4>
+      <p>בהתאם לאופן השימוש בשירות, אנו עשויים לשמור:</p>
+      <ul>
+        <li>פוסטים, תגובות, הודעות, תמונות, סימוני “אהבתי” ותוכן קהילתי;</li>
+        <li>מועדפים ורשימת משתמשים חסומים;</li>
+        <li>ביקורות, דיווחים על מקומות והצעות להוספת מסעדה או בית כנסת;</li>
+        <li>פרטי מניינים והרשמה למניינים;</li>
+        <li>הצעות אירוח, בקשות אירוח, צרכי אירוח ושיחות פרטיות הקשורות לאירוח;</li>
+        <li>פניות לתמיכה, כולל שם, אימייל, נושא ותוכן הפנייה.</li>
+      </ul>
+      <p>תוכן שמפורסם באזור קהילתי עשוי להיות גלוי למשתמשים אחרים. הודעות פרטיות ותוכן אירוח מוצגים רק לצדדים הרלוונטיים ולמנהלי השירות כאשר הדבר נחוץ לתמיכה, בטיחות, טיפול בדיווח או אכיפת הכללים.</p>
+      <p>אין להזין באזורים ציבוריים, בחיפושים או בהודעות מידע אישי שאינו נחוץ, כגון מספר זהות, מידע פיננסי או מידע רפואי.</p>
+
+      <h4>1.5 חיפושים ונתוני שיפור השירות</h4>
+      <p>אנו עשויים לשמור את הטקסט שהוזן בחיפוש החכם, הסיווג שהמערכת הסיקה ממנו, יעד שזוהה, העדפות חיפוש כגון סוג אוכל או כשרות, התוצאה שנבחרה ונתונים טכניים כמו זמן עיבוד ומקור הסיווג.</p>
+      <p>רשומות החיפוש אינן נשמרות בטבלת החיפוש יחד עם שם, כתובת אימייל או מזהה המשתמש. עם זאת, טקסט חופשי שהמשתמש עצמו מקליד עלול להכיל מידע אישי; לכן מומלץ שלא להזין מידע אישי או רגיש בשדה החיפוש.</p>
+
+      <h4>1.6 נתוני אבטחה ותפעול</h4>
+      <p>אנו שומרים אירועי אבטחה ותפעול הנחוצים להגנה על החשבונות, לאיתור שימוש לרעה, אבחון תקלות ושמירה על יציבות השירות. אירועים רגילים מזוהים באמצעות מזהה משתמש כאשר קיים. ניסיונות התחברות או איפוס שאינם משויכים לחשבון עשויים להישמר באמצעות טביעת HMAC פסאודונימית של כתובת האימייל, ולא באמצעות כתובת האימייל הגלויה.</p>
+
+      <h3>2. כיצד אנו משתמשים במידע</h3>
+      <p>אנו משתמשים במידע לצורך:</p>
+      <ul>
+        <li>יצירה, אימות, אבטחה וניהול של חשבונות;</li>
+        <li>אספקת תכונות האפליקציה והתאמת תוצאות לבקשת המשתמש;</li>
+        <li>הצגת מידע ושירותים יהודיים לפי יעד או מיקום;</li>
+        <li>הפעלת אזורי קהילה, מניינים ואירוח;</li>
+        <li>שליחת הודעות שירות כגון אימות כתובת אימייל ואיפוס סיסמה;</li>
+        <li>מענה לפניות, טיפול בדיווחים ומניעת פגיעה או שימוש לרעה;</li>
+        <li>שיפור החיפוש, הביצועים, האמינות וחוויית המשתמש;</li>
+        <li>עמידה בדרישות חוקיות ואכיפת תנאי השירות.</li>
+      </ul>
+      <p>איננו מוכרים מידע אישי, איננו מציגים פרסומות מותאמות ואיננו משתמשים במידע לצורך מעקב פרסומי בין אפליקציות או אתרים.</p>
+
+      <h3>3. ספקי שירות ושיתוף מידע</h3>
+      <p>אנו משתפים מידע רק במידה הנדרשת להפעלת השירות, עם הגורמים הבאים:</p>
+      <ul>
+        <li><strong>ספקי אחסון ותשתית:</strong> אחסון מסד הנתונים, ה-API ולוגי השרת.</li>
+        <li><strong>Cloudinary:</strong> אחסון ואספקה של תמונות פרופיל ותמונות שהועלו לתוכן הקהילתי.</li>
+        <li><strong>ספק שירות הדואר האלקטרוני המוגדר במערכת:</strong> שליחת קודי אימות, קישורי איפוס סיסמה, הודעות שירות והעברת פניות או דיווחים לצוות.</li>
+        <li><strong>Anthropic:</strong> חלק מדגימות החיפוש החכם עשוי להישלח לעיבוד באמצעות מודל שפה לצורך הבנת החיפוש ושיפורו. הבקשה אינה מצרפת במכוון שם, כתובת אימייל או מזהה משתמש, אך טקסט שהמשתמש הקליד בעצמו עשוי להכיל מידע שהוא בחר להזין.</li>
+        <li><strong>אפליקציות מפה או ניווט חיצוניות:</strong> כאשר המשתמש בוחר לפתוח ניווט, היעד מועבר לאפליקציה החיצונית שנבחרה והמשך הטיפול כפוף למדיניות שלה.</li>
+        <li><strong>רשויות או גורמים משפטיים:</strong> כאשר הדבר נדרש לפי דין, צו תקף, הגנה על זכויות או בטיחות, או חקירת שימוש לרעה.</li>
+      </ul>
+      <p>ספקי השירות רשאים לעבד מידע רק לצורך מתן השירותים הרלוונטיים ובהתאם להסכמים ולמדיניות שלהם. מידע יכול להיות מעובד במדינות שונות, שבהן דיני הפרטיות עשויים להיות שונים מהדין במדינת המשתמש.</p>
+
+      <h3>4. אבטחת מידע</h3>
+      <p>אנו נוקטים אמצעים טכניים וארגוניים סבירים להגנת המידע, ובכלל זה:</p>
+      <ul>
+        <li>העברת מידע בין האפליקציה לשרת הייצור באמצעות HTTPS;</li>
+        <li>שמירת סיסמאות כ-hash ולא כטקסט גלוי;</li>
+        <li>שימוש בטוקנים מוגבלים בזמן לצורכי אימות ואיפוס;</li>
+        <li>הגבלת גישה מנהלית למידע;</li>
+        <li>שימוש בלוגי אבטחה פסאודונימיים ובמחזור אוטומטי של לוגים.</li>
+      </ul>
+      <p>אין מערכת המאובטחת באופן מוחלט, ולכן איננו יכולים להבטיח שמידע לעולם לא ייחשף, יאבד או ייעשה בו שימוש בלתי מורשה.</p>
+
+      <h3>5. שמירת מידע</h3>
+      <ul>
+        <li>פרטי חשבון ותוכן המשויך לחשבון נשמרים כל עוד החשבון פעיל או כל עוד הם נחוצים להפעלת השירות.</li>
+        <li>טקסטי חיפוש ונתוני משוב על החיפוש נשמרים עד 12 חודשים לצורך שיפור החיפוש, ולאחר מכן נמחקים או עוברים אנונימיזציה.</li>
+        <li>לוגי אבטחה פסאודונימיים נשמרים עד 90 יום לצורכי אבטחה ומניעת שימוש לרעה.</li>
+        <li>טוקנים וקודי אימות זמניים פוקעים בהתאם למטרה שלשמה נוצרו.</li>
+        <li>מידע עשוי להישמר לתקופה ארוכה יותר רק כאשר קיימת חובה חוקית, צורך בטיפול במחלוקת או צורך מהותי באבטחה ומניעת הונאה.</li>
+      </ul>
+
+      <h3>6. מחיקת חשבון ומידע</h3>
+      <p>ניתן לבקש מחיקת חשבון:</p>
+      <ol>
+        <li>מתוך האפליקציה: <strong>פרופיל ← מחיקת חשבון</strong>; או</li>
+        <li>באמצעות הדף הציבורי: <strong>https://jewishontheway.com/delete-account</strong>.</li>
+      </ol>
+      <p>מחיקת החשבון מסירה את החשבון ואת המידע המשויך אליו ממערכות הפעילות, לרבות פרטי הפרופיל, מועדפים, ביקורות ודיווחים, פניות, תוכן קהילתי, נתוני מניינים ואירוח, הודעות ותמונות שהועלו. מחיקת פוסט עשויה להסיר גם תגובות שנכתבו עליו, משום שהן חלק מאותו שרשור.</p>
+      <p>עותקים שיוריים עשויים להישאר לזמן מוגבל במערכות גיבוי או אצל ספקי תשתית עד למחזור המחיקה הרגיל שלהם. מידע שאנו נדרשים לשמור לפי דין או לצורך אבטחה עשוי להישמר רק לתקופה ולמטרה הנדרשות.</p>
+
+      <h3>7. זכויות ובחירות המשתמש</h3>
+      <p>בהתאם לדין החל, ניתן לבקש:</p>
+      <ul>
+        <li>לעיין במידע אישי שאנו מחזיקים;</li>
+        <li>לתקן מידע לא מדויק דרך הפרופיל או בפנייה אלינו;</li>
+        <li>למחוק את החשבון והמידע המשויך אליו;</li>
+        <li>לבטל הרשאת מיקום בהגדרות המכשיר;</li>
+        <li>להתנגד לעיבוד מסוים או לבקש הגבלת עיבוד, כאשר הדין מעניק זכות זו;</li>
+        <li>לקבל מידע נוסף על ספקים או העברות מידע.</li>
+      </ul>
+      <p>ניתן לשלוח בקשה אל <strong>jewishontheway@gmail.com</strong>. ייתכן שנבקש פרטים הנחוצים לאימות זהות המבקש לפני מסירת מידע או ביצוע פעולה בחשבון.</p>
+
+      <h3>8. פרטיות ילדים</h3>
+      <p>השירות אינו מיועד לילדים מתחת לגיל 13 ואיננו אוספים ביודעין מידע אישי מילדים מתחת לגיל זה. אם נודע לנו שמידע כזה נאסף, נפעל למחיקתו. הורה או אפוטרופוס יכול לפנות אלינו בכתובת הדוא״ל המופיעה במדיניות.</p>
+
+      <h3>9. שינויים במדיניות</h3>
+      <p>אנו עשויים לעדכן מדיניות זו בעקבות שינוי באפליקציה, בספקי השירות או בדרישות הדין והחנויות. תאריך העדכון האחרון יוצג בראש המדיניות. כאשר שינוי מהותי משפיע על אופן הטיפול במידע, נמסור הודעה מתאימה באפליקציה או באמצעי סביר אחר.</p>
+
+      <h3>10. יצירת קשר</h3>
+      <div class="contact"><strong>Jewish On The Way</strong><br>דוא״ל: jewishontheway@gmail.com</div>
+    </article>
+
+    <article class="policy english" id="english" lang="en" dir="ltr">
+      <h2>Jewish On The Way Privacy Policy</h2>
+      <p class="updated">Last updated: July 19, 2026</p>
+
+      <p>Jewish On The Way (the <strong>“App,” “Service,” “we,” “us,”</strong> or <strong>“our”</strong>) respects your privacy. This Privacy Policy explains what information is collected when you use the App, why we use it, with whom it may be shared, how long it is retained, and how you may request access to or deletion of your information.</p>
+      <p>For privacy questions, contact us at <strong>jewishontheway@gmail.com</strong>.</p>
+
+      <h3>1. Information We Collect</h3>
+      <h4>1.1 Account and authentication information</h4>
+      <p>When you register or use an account, we may process:</p>
+      <ul>
+        <li>your first and last name;</li>
+        <li>your email address and an internal user identifier;</li>
+        <li>your password in one-way hashed form, not as readable text;</li>
+        <li>temporary codes and tokens used for email verification, authentication, and password reset; and</li>
+        <li>a profile image, if you choose to upload one.</li>
+      </ul>
+      <p>Version 1.0 does not use Google Sign-In and does not collect push notification tokens. If these capabilities are enabled in the future, this Policy and the applicable store disclosures will be updated before they are activated.</p>
+
+      <h4>1.2 User preferences</h4>
+      <p>You may choose a kashrut preference to personalize results. This preference may indicate religious beliefs or practices, so we treat it as sensitive information. Providing it is optional, and you may change or remove it from your profile.</p>
+
+      <h4>1.3 Location</h4>
+      <p>With your permission, the App accesses precise or approximate location <strong>only while you are using the App</strong> to:</p>
+      <ul>
+        <li>show nearby restaurants, synagogues, and minyans;</li>
+        <li>calculate distances and display maps;</li>
+        <li>operate the prayer-direction compass toward Jerusalem; and</li>
+        <li>complete “near me” searches.</li>
+      </ul>
+      <p>The App does not request background location and does not use location for advertising or tracking. Version 1.0 does not send location to Hebcal. You may deny or revoke location permission, but proximity and compass features may then be unavailable.</p>
+
+      <h4>1.4 Content and activity you provide</h4>
+      <p>Depending on how you use the Service, we may store:</p>
+      <ul>
+        <li>posts, comments, messages, images, likes, and community content;</li>
+        <li>favorites and blocked-user lists;</li>
+        <li>reviews, place reports, and restaurant or synagogue suggestions;</li>
+        <li>minyan information and registrations;</li>
+        <li>hosting offers, hosting needs, hosting requests, and private hosting conversations; and</li>
+        <li>support inquiries, including your name, email address, subject, and message.</li>
+      </ul>
+      <p>Content posted in a community area may be visible to other users. Private messages and hosting content are shown only to the relevant participants and to Service administrators when necessary for support, safety, report handling, or rule enforcement.</p>
+      <p>Do not enter unnecessary personal information—such as government identifiers, financial information, or health information—in public areas, searches, or messages.</p>
+
+      <h4>1.5 Searches and service-improvement data</h4>
+      <p>We may retain the text entered into smart search, classifications inferred from it, a detected destination, search preferences such as food type or kashrut, a selected result, and technical details such as processing time and classification source.</p>
+      <p>Search records are not stored in the search-feedback table together with your name, email address, or user identifier. However, free text that you enter may itself contain personal information. You should therefore avoid entering personal or sensitive information in search queries.</p>
+
+      <h4>1.6 Security and operational data</h4>
+      <p>We retain security and operational events needed to protect accounts, detect abuse, diagnose failures, and maintain Service reliability. Ordinary account events are identified by an internal user identifier where available. Login or reset attempts that cannot be associated with an account may be recorded using a pseudonymous HMAC fingerprint of the email address rather than the readable email address.</p>
+
+      <h3>2. How We Use Information</h3>
+      <p>We use information to:</p>
+      <ul>
+        <li>create, verify, secure, and administer accounts;</li>
+        <li>provide App features and tailor results to your request;</li>
+        <li>show Jewish information and services based on a destination or location;</li>
+        <li>operate community, minyan, and hosting features;</li>
+        <li>send service messages such as email verification and password-reset messages;</li>
+        <li>respond to requests, review reports, and prevent harm or abuse;</li>
+        <li>improve search, performance, reliability, and user experience; and</li>
+        <li>comply with legal obligations and enforce our terms.</li>
+      </ul>
+      <p>We do not sell personal information, serve personalized advertising, or use information for cross-app or cross-site advertising tracking.</p>
+
+      <h3>3. Service Providers and Sharing</h3>
+      <p>We share information only as needed to operate the Service, including with:</p>
+      <ul>
+        <li><strong>Hosting and infrastructure providers:</strong> to host the database, API, and server logs.</li>
+        <li><strong>Cloudinary:</strong> to store and deliver profile images and images uploaded to community content.</li>
+        <li><strong>The email service provider configured for the Service:</strong> to send verification codes, password-reset links, service messages, and forward support inquiries or reports to our team.</li>
+        <li><strong>Anthropic:</strong> a sample of smart-search queries may be processed by a language model to understand and improve search. We do not intentionally attach your name, email address, or user identifier to the request, but text you enter may contain information you choose to include.</li>
+        <li><strong>External map or navigation applications:</strong> when you choose to open navigation, the selected destination is sent to that application, and its handling is governed by its own privacy policy.</li>
+        <li><strong>Authorities or legal recipients:</strong> when required by applicable law, a valid legal request, protection of rights or safety, or investigation of abuse.</li>
+      </ul>
+      <p>Service providers may process information only to provide the relevant services and under their applicable agreements and policies. Information may be processed in countries whose privacy laws differ from those in your country.</p>
+
+      <h3>4. Data Security</h3>
+      <p>We use reasonable technical and organizational measures designed to protect information, including:</p>
+      <ul>
+        <li>transmitting information between the App and the production server using HTTPS;</li>
+        <li>storing passwords as hashes rather than readable text;</li>
+        <li>using time-limited authentication and reset tokens;</li>
+        <li>limiting administrative access to information; and</li>
+        <li>using pseudonymous security logs and automated log rotation.</li>
+      </ul>
+      <p>No system is completely secure, and we cannot guarantee that information will never be disclosed, lost, or accessed without authorization.</p>
+
+      <h3>5. Data Retention</h3>
+      <ul>
+        <li>Account information and account-related content are retained while the account is active or as needed to provide the Service.</li>
+        <li>Search text and search-feedback data are retained for up to 12 months to improve search and are then deleted or anonymized.</li>
+        <li>Pseudonymous security logs are retained for up to 90 days for security and abuse prevention.</li>
+        <li>Temporary verification codes and tokens expire according to the purpose for which they were created.</li>
+        <li>Information may be retained longer only where required by law, needed to resolve a dispute, or materially necessary for security or fraud prevention.</li>
+      </ul>
+
+      <h3>6. Account and Data Deletion</h3>
+      <p>You may request account deletion:</p>
+      <ol>
+        <li>in the App under <strong>Profile → Delete Account</strong>; or</li>
+        <li>through <strong>https://jewishontheway.com/delete-account</strong>.</li>
+      </ol>
+      <p>Deleting your account removes the account and associated information from active systems, including profile information, favorites, reviews and reports, support inquiries, community content, minyan and hosting data, messages, and uploaded images. Deleting a post may also remove replies posted to that thread because they form part of the same conversation.</p>
+      <p>Residual copies may remain temporarily in backups or service-provider systems until their normal deletion cycle is completed. Information that must be retained by law or for security may be retained only for the required purpose and period.</p>
+
+      <h3>7. Your Rights and Choices</h3>
+      <p>Depending on applicable law, you may request to:</p>
+      <ul>
+        <li>access personal information we hold about you;</li>
+        <li>correct inaccurate information through your profile or by contacting us;</li>
+        <li>delete your account and associated information;</li>
+        <li>revoke location permission through your device settings;</li>
+        <li>object to or restrict certain processing where the law provides that right; and</li>
+        <li>receive further information about service providers or data transfers.</li>
+      </ul>
+      <p>Send requests to <strong>jewishontheway@gmail.com</strong>. We may ask for information reasonably necessary to verify your identity before disclosing information or acting on an account.</p>
+
+      <h3>8. Children's Privacy</h3>
+      <p>The Service is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If we learn that such information has been collected, we will take steps to delete it. A parent or guardian may contact us using the email address in this Policy.</p>
+
+      <h3>9. Changes to This Policy</h3>
+      <p>We may update this Policy when the App, our providers, or legal and store requirements change. The “Last updated” date will appear at the top. If a material change affects how information is handled, we will provide an appropriate notice in the App or by another reasonable method.</p>
+
+      <h3>10. Contact Us</h3>
+      <div class="contact"><strong>Jewish On The Way</strong><br>Email: jewishontheway@gmail.com</div>
+    </article>
+
+    <footer>Jewish On The Way · Privacy Policy Draft · Not for publication</footer>
+  </main>
+</body>
+</html>

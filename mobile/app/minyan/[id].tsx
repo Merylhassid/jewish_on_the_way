@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -19,12 +19,14 @@ import { io, Socket } from 'socket.io-client';
 import { useTranslation } from 'react-i18next';
 import {
   ArrowLeft, Calendar, Clock, Crown,
-  FileText, Flame, MapPin, MessageCircle, User, Users,
+  FileText, Flame, MapPin, MessageCircle, User,
 } from 'lucide-react-native';
 import client, { API_URL } from '@/src/api/client';
 import { useAuth } from '@/src/store/auth';
 import HomeButton from '@/src/components/HomeButton';
 import { getPrayerConfig } from '@/src/utils/prayerIcons';
+import { C } from '@/constants/theme';
+import { useRequireAuth } from '@/src/auth/auth-gates';
 
 interface MinyanDetail {
   id: number;
@@ -37,7 +39,7 @@ interface MinyanDetail {
   almostFull: boolean;
   isFull: boolean;
   isRegistered: boolean;
-  creator: { id: number; firstName: string; lastName: string } | null;
+  creator: { id?: number; firstName: string; lastName: string } | null;
   destination: { id: number; city: string } | null;
 }
 
@@ -136,7 +138,7 @@ function EditMinyanModal({
             <Text style={es.label}>{t('minyans.date')}</Text>
             <Pressable style={es.pickerBtn} onPress={() => setShowDatePicker(true)}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                <Calendar size={16} color="#1a3a6b" strokeWidth={2} />
+                <Calendar size={16} color={C.navy} strokeWidth={2} />
                 <Text style={es.pickerText}>{dateStr}</Text>
               </View>
             </Pressable>
@@ -148,7 +150,7 @@ function EditMinyanModal({
             <Text style={es.label}>{t('minyans.time')}</Text>
             <Pressable style={es.pickerBtn} onPress={() => setShowTimePicker(true)}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-                <Clock size={16} color="#1a3a6b" strokeWidth={2} />
+                <Clock size={16} color={C.navy} strokeWidth={2} />
                 <Text style={es.pickerText}>{timeStr}</Text>
               </View>
             </Pressable>
@@ -178,7 +180,8 @@ function EditMinyanModal({
 // ─── Main Screen ──────────────────────────────────────────────────────────────
 export default function MinyanDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { user, getValidToken } = useAuth();
+  const { user, getValidToken, isAuthenticated } = useAuth();
+  const requireAuth = useRequireAuth();
   const { t } = useTranslation();
   const PRAYER_LABEL: Record<string, string> = {
     shacharit: t('minyans.shacharit'), mincha: t('minyans.mincha'),
@@ -192,33 +195,34 @@ export default function MinyanDetailScreen() {
   const [editVisible, setEditVisible]     = useState(false);
   const socketRef                         = useRef<Socket | null>(null);
 
-  const fetchParticipants = async () => {
+  const fetchParticipants = useCallback(async () => {
     try {
       const r = await client.get(`/minyans/${id}/participants`);
       setParticipants(r.data);
     } catch {}
-  };
+  }, [id]);
 
-  const fetchMinyan = async () => {
+  const fetchMinyan = useCallback(async () => {
     try {
-      const [detailRes, participantsRes] = await Promise.all([
-        client.get(`/minyans/${id}`),
-        client.get(`/minyans/${id}/participants`),
-      ]);
+      const detailRes = await client.get(`/minyans/${id}`);
       setMinyan(detailRes.data);
-      setParticipants(participantsRes.data);
+      if (isAuthenticated) {
+        await fetchParticipants();
+      } else {
+        setParticipants([]);
+      }
     } catch {
       Alert.alert(t('common.error'), t('minyans.loadError'));
       router.back();
     } finally {
       setLoading(false);
     }
-  };
+  }, [fetchParticipants, id, isAuthenticated, t]);
 
-  useEffect(() => { void fetchMinyan(); }, [id]);
+  useEffect(() => { void fetchMinyan(); }, [fetchMinyan]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id || !isAuthenticated) return;
     let socket: Socket;
 
     const connect = async () => {
@@ -248,7 +252,11 @@ export default function MinyanDetailScreen() {
         socketRef.current = null;
       }
     };
-  }, [id]);
+  }, [fetchParticipants, getValidToken, id, isAuthenticated]);
+
+  const requestRegistration = () => {
+    requireAuth(() => { void handleRegister(); }, { reason: 'minyanJoin' });
+  };
 
   const handleRegister = async () => {
     if (!minyan) return;
@@ -300,7 +308,7 @@ export default function MinyanDetailScreen() {
   };
 
   if (loading) {
-    return <View style={styles.center}><ActivityIndicator size="large" color="#1a3a6b" /></View>;
+    return <View style={styles.center}><ActivityIndicator size="large" color={C.gold} /></View>;
   }
 
   if (!minyan) return null;
@@ -309,23 +317,23 @@ export default function MinyanDetailScreen() {
   const isCreator = minyan.creator?.id === user?.id;
   const count = minyan.participantsCount;
   const progressWidth = Math.min((count / 10) * 100, 100);
-  const progressColor = minyan.isFull ? '#4caf50' : minyan.almostFull ? '#ff9800' : '#1a3a6b';
+  const progressColor = minyan.isFull ? C.typeParve : minyan.almostFull ? C.kashrutGold : C.navy;
 
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <Pressable style={styles.backBtn} onPress={() => router.back()}>
-          <ArrowLeft size={22} color="#fff" strokeWidth={2.5} />
+          <ArrowLeft size={20} color={C.navy} strokeWidth={2.5} />
         </Pressable>
         <HomeButton />
-        <View style={[styles.headerIconRing, { borderColor: cfg.color + '60' }]}>
-          <cfg.Icon size={32} color="#fff" strokeWidth={1.8} />
+        <View style={[styles.headerIconRing, { backgroundColor: cfg.bg, borderColor: cfg.bg }]}>
+          <cfg.Icon size={32} color={cfg.color} strokeWidth={2} />
         </View>
         <Text style={styles.headerTitle}>{PRAYER_LABEL[minyan.prayerType]}</Text>
         {minyan.destination && (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 4 }}>
-            <MapPin size={13} color="#a8c4e8" strokeWidth={2} />
+            <MapPin size={13} color={C.goldMuted} strokeWidth={2} />
             <Text style={styles.headerSub}>{minyan.destination.city}</Text>
           </View>
         )}
@@ -335,31 +343,31 @@ export default function MinyanDetailScreen() {
         {/* Badges */}
         <View style={styles.badgeRow}>
           {minyan.isFull && (
-            <View style={[styles.badge, { backgroundColor: '#4caf50' }]}>
-              <Text style={styles.badgeText}>{t('minyans.complete')}</Text>
+            <View style={[styles.badge, styles.badgeFull]}>
+              <Text style={[styles.badgeText, styles.badgeTextFull]}>{t('minyans.complete')}</Text>
             </View>
           )}
           {minyan.almostFull && !minyan.isFull && (
-            <View style={[styles.badge, { backgroundColor: '#ff9800', flexDirection: 'row', alignItems: 'center', gap: 4 }]}>
-              <Flame size={12} color="#fff" strokeWidth={2} />
-              <Text style={styles.badgeText}>{t('minyans.almostFull')}</Text>
+            <View style={[styles.badge, styles.badgeAlmost, { flexDirection: 'row', alignItems: 'center', gap: 4 }]}>
+              <Flame size={12} color={C.kashrutGold} strokeWidth={2} />
+              <Text style={[styles.badgeText, styles.badgeTextAlmost]}>{t('minyans.almostFull')}</Text>
             </View>
           )}
           {minyan.isRegistered && (
-            <View style={[styles.badge, { backgroundColor: '#1a3a6b' }]}>
-              <Text style={styles.badgeText}>{t('minyans.youreRegistered')}</Text>
+            <View style={[styles.badge, styles.badgeRegistered]}>
+              <Text style={[styles.badgeText, styles.badgeTextRegistered]}>{t('minyans.youreRegistered')}</Text>
             </View>
           )}
         </View>
 
         {/* Info card */}
         <View style={styles.card}>
-          <InfoRow icon={<Calendar size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.date')} value={formatDate(minyan.date)} />
-          <InfoRow icon={<Clock size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.time')} value={minyan.time} />
-          <InfoRow icon={<MapPin size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.location')} value={minyan.locationText} />
-          {minyan.notes && <InfoRow icon={<FileText size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.notesLabel')} value={minyan.notes} />}
+          <InfoRow icon={<Calendar size={18} color={C.goldMuted} strokeWidth={2} />} label={t('minyans.date')} value={formatDate(minyan.date)} />
+          <InfoRow icon={<Clock size={18} color={C.goldMuted} strokeWidth={2} />} label={t('minyans.time')} value={minyan.time} />
+          <InfoRow icon={<MapPin size={18} color={C.goldMuted} strokeWidth={2} />} label={t('minyans.location')} value={minyan.locationText} />
+          {minyan.notes && <InfoRow icon={<FileText size={18} color={C.goldMuted} strokeWidth={2} />} label={t('minyans.notesLabel')} value={minyan.notes} />}
           {minyan.creator && (
-            <InfoRow icon={<User size={18} color="#1a3a6b" strokeWidth={2} />} label={t('minyans.organiser')} value={`${minyan.creator.firstName} ${minyan.creator.lastName}`} />
+            <InfoRow icon={<User size={18} color={C.goldMuted} strokeWidth={2} />} label={t('minyans.organiser')} value={`${minyan.creator.firstName} ${minyan.creator.lastName}`} />
           )}
         </View>
 
@@ -414,7 +422,7 @@ export default function MinyanDetailScreen() {
           ) : (
             <TouchableOpacity
               style={[styles.registerBtn, minyan.isFull && styles.registerBtnDisabled]}
-              onPress={handleRegister}
+              onPress={requestRegistration}
               disabled={actionLoading || minyan.isFull}
             >
               {actionLoading
@@ -429,7 +437,10 @@ export default function MinyanDetailScreen() {
         {/* Chat button */}
         <TouchableOpacity
           style={styles.chatBtn}
-          onPress={() => router.push(`/minyan/chat/${id}?prayerType=${minyan.prayerType}&city=${minyan.destination?.city ?? ''}` as any)}
+          onPress={() => requireAuth(
+            () => router.push(`/minyan/chat/${id}?prayerType=${minyan.prayerType}&city=${minyan.destination?.city ?? ''}` as any),
+            { reason: 'minyanChat' },
+          )}
         >
           <MessageCircle size={18} color="#fff" strokeWidth={2} />
           <Text style={styles.chatBtnText}>{t('minyans.chatBtn')}</Text>
@@ -477,71 +488,111 @@ function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string;
 }
 
 const styles = StyleSheet.create({
-  container:            { flex: 1, backgroundColor: '#f0f4ff' },
+  container:            { flex: 1, backgroundColor: C.cream },
   center:               { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  header:               { backgroundColor: '#1a3a6b', paddingTop: 60, paddingBottom: 28, paddingHorizontal: 20, alignItems: 'center' },
-  backBtn:              { position: 'absolute', top: 60, left: 20 },
-  headerIconRing:       { width: 72, height: 72, borderRadius: 36, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center', marginBottom: 12, borderWidth: 1.5 },
-  headerTitle:          { fontSize: 24, fontWeight: '700', color: '#fff', marginBottom: 4 },
-  headerSub:            { fontSize: 14, color: '#a8c4e8' },
+  header:               {
+    backgroundColor: C.cream,
+    paddingTop: 60,
+    paddingBottom: 26,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EDE6',
+  },
+  backBtn:              {
+    position: 'absolute',
+    top: 60,
+    left: 20,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: C.card,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  headerIconRing:       { width: 72, height: 72, borderRadius: 24, justifyContent: 'center', alignItems: 'center', marginBottom: 12, borderWidth: 1 },
+  headerTitle:          { fontSize: 26, fontFamily: 'Inter-Black', fontWeight: '900', color: C.navy, marginBottom: 4, letterSpacing: -0.4 },
+  headerSub:            { fontSize: 14, color: C.textSecondary },
   body:                 { padding: 16, gap: 14 },
   badgeRow:             { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  badge:                { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20 },
-  badgeText:            { color: '#fff', fontSize: 13, fontWeight: '600' },
-  card:                 { backgroundColor: '#fff', borderRadius: 16, padding: 16, shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 6, elevation: 1 },
-  cardTitle:            { fontSize: 14, fontWeight: '700', color: '#1a3a6b', marginBottom: 12, textTransform: 'uppercase', letterSpacing: 0.5 },
-  infoRow:              { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#f0f4ff' },
+  badge:                { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, borderWidth: 1 },
+  badgeFull:            { backgroundColor: C.typeParveBg, borderColor: C.typeParveBg },
+  badgeAlmost:          { backgroundColor: '#FBF6E9', borderColor: '#FBF6E9' },
+  badgeRegistered:      { backgroundColor: C.goldFaint, borderColor: C.goldBorder },
+  badgeText:            { fontSize: 13, fontFamily: 'Inter-Bold', fontWeight: '700' },
+  badgeTextFull:        { color: C.typeParve },
+  badgeTextAlmost:      { color: C.kashrutGold },
+  badgeTextRegistered:  { color: C.navy },
+  card:                 {
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 16,
+    shadowColor: C.cardShadow,
+    shadowOpacity: 0.06,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#F3EFE7',
+  },
+  cardTitle:            { fontSize: 14, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy, marginBottom: 12, textTransform: 'uppercase', letterSpacing: 0.5 },
+  infoRow:              { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#F0EDE6' },
   infoIcon:             { width: 32, justifyContent: 'center', alignItems: 'center', paddingTop: 1 },
   infoContent:          { flex: 1 },
-  infoLabel:            { fontSize: 12, color: '#999', fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.4 },
-  infoValue:            { fontSize: 15, color: '#1a1a2e', marginTop: 2 },
-  progressTrack:        { height: 12, backgroundColor: '#f0f4ff', borderRadius: 6, marginBottom: 8, overflow: 'hidden' },
+  infoLabel:            { fontSize: 12, color: C.textMuted, fontFamily: 'Inter-Bold', fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.4 },
+  infoValue:            { fontSize: 15, color: C.textPrimary, marginTop: 2 },
+  progressTrack:        { height: 12, backgroundColor: C.surface, borderRadius: 6, marginBottom: 8, overflow: 'hidden' },
   progressFill:         { height: '100%', borderRadius: 6 },
-  progressLabel:        { fontSize: 16, fontWeight: '700', color: '#1a1a2e' },
-  progressSub:          { fontSize: 12, color: '#999', marginTop: 2, marginBottom: 16 },
+  progressLabel:        { fontSize: 16, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
+  progressSub:          { fontSize: 12, color: C.textMuted, marginTop: 2, marginBottom: 16 },
   participantsList:     { gap: 10, marginTop: 4 },
   participantRow:       { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  participantAvatar:    { width: 34, height: 34, borderRadius: 17, backgroundColor: '#e8eef8', justifyContent: 'center', alignItems: 'center' },
-  participantAvatarText:{ fontSize: 12, fontWeight: '700', color: '#1a3a6b' },
-  participantName:      { flex: 1, fontSize: 14, color: '#1a1a2e', fontWeight: '500' },
-  noParticipants:       { fontSize: 13, color: '#bbb', textAlign: 'center', marginTop: 12 },
-  registerBtn:          { backgroundColor: '#1a3a6b', borderRadius: 14, padding: 18, alignItems: 'center' },
+  participantAvatar:    { width: 34, height: 34, borderRadius: 17, backgroundColor: C.goldFaint, justifyContent: 'center', alignItems: 'center' },
+  participantAvatarText:{ fontSize: 12, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
+  participantName:      { flex: 1, fontSize: 14, color: C.textPrimary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
+  noParticipants:       { fontSize: 13, color: C.textMuted, textAlign: 'center', marginTop: 12 },
+  registerBtn:          { backgroundColor: C.navy, borderRadius: 14, padding: 18, alignItems: 'center' },
   registerBtnDisabled:  { backgroundColor: '#ccc' },
-  registerBtnText:      { color: '#fff', fontSize: 17, fontWeight: '700' },
+  registerBtnText:      { color: '#fff', fontSize: 17, fontFamily: 'Inter-Bold', fontWeight: '700' },
   cancelBtn:            { backgroundColor: '#fff', borderRadius: 14, padding: 18, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
-  cancelBtnText:        { color: '#e53935', fontSize: 16, fontWeight: '600' },
+  cancelBtnText:        { color: '#e53935', fontSize: 16, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
   confirmBox:           { backgroundColor: '#fff0f0', borderRadius: 14, padding: 16, borderWidth: 1, borderColor: '#ffcccc' },
   confirmText:          { fontSize: 14, color: '#c00', textAlign: 'center', marginBottom: 12 },
   confirmRow:           { flexDirection: 'row', gap: 10 },
-  confirmKeepBtn:       { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#f0f4ff', alignItems: 'center' },
-  confirmKeepText:      { fontSize: 15, fontWeight: '600', color: '#1a3a6b' },
+  confirmKeepBtn:       { flex: 1, padding: 12, borderRadius: 10, backgroundColor: C.surface, alignItems: 'center' },
+  confirmKeepText:      { fontSize: 15, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.navy },
   confirmCancelBtn:     { flex: 1, padding: 12, borderRadius: 10, backgroundColor: '#e53935', alignItems: 'center' },
-  confirmCancelText:    { fontSize: 15, fontWeight: '600', color: '#fff' },
-  creatorNote:          { backgroundColor: '#e8eef8', borderRadius: 14, padding: 16, alignItems: 'center' },
-  creatorNoteText:      { color: '#1a3a6b', fontSize: 14, fontWeight: '600' },
-  chatBtn:              { backgroundColor: '#4F46E5', borderRadius: 14, padding: 16, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 },
-  chatBtnText:          { color: '#fff', fontSize: 15, fontWeight: '600' },
-  editBtn:              { backgroundColor: '#1a3a6b', borderRadius: 14, padding: 16, alignItems: 'center' },
-  editBtnText:          { color: '#fff', fontSize: 15, fontWeight: '600' },
+  confirmCancelText:    { fontSize: 15, fontFamily: 'Inter-SemiBold', fontWeight: '600', color: '#fff' },
+  creatorNote:          { backgroundColor: C.goldFaint, borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: C.goldBorder },
+  creatorNoteText:      { color: C.navy, fontSize: 14, fontFamily: 'Inter-Bold', fontWeight: '700' },
+  chatBtn:              { backgroundColor: '#7A6B9D', borderRadius: 14, padding: 16, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 },
+  chatBtnText:          { color: '#fff', fontSize: 15, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
+  editBtn:              { backgroundColor: C.navy, borderRadius: 14, padding: 16, alignItems: 'center' },
+  editBtnText:          { color: '#fff', fontSize: 15, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
   deleteBtn:            { backgroundColor: '#fff', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: '#ffcccc' },
-  deleteBtnText:        { color: '#e53935', fontSize: 15, fontWeight: '600' },
+  deleteBtnText:        { color: '#e53935', fontSize: 15, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
 });
 
 const es = StyleSheet.create({
   overlay:     { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
   sheetWrap:   { maxHeight: '90%' },
-  sheet:       { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24 },
+  sheet:       { backgroundColor: C.card, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24 },
   header:      { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
-  title:       { fontSize: 20, fontWeight: '700', color: '#1a3a6b' },
-  close:       { fontSize: 18, color: '#999' },
-  label:       { fontSize: 13, fontWeight: '600', color: '#1a3a6b', marginBottom: 6 },
-  input:       { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, fontSize: 15, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0', color: '#1a1a2e' },
-  chip:        { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20, backgroundColor: '#f0f4ff', borderWidth: 1, borderColor: '#dde3f0' },
-  chipActive:  { backgroundColor: '#1a3a6b', borderColor: '#1a3a6b' },
-  chipText:    { fontSize: 13, color: '#555', fontWeight: '500' },
+  title:       { fontSize: 20, fontFamily: 'Inter-ExtraBold', fontWeight: '800', color: C.navy },
+  close:       { fontSize: 18, color: C.textMuted },
+  label:       { fontSize: 13, fontFamily: 'Inter-Bold', fontWeight: '700', color: C.navy, marginBottom: 6 },
+  input:       { backgroundColor: C.cream, borderRadius: 12, padding: 14, fontSize: 15, marginBottom: 14, borderWidth: 1, borderColor: '#ECE7DE', color: C.textPrimary },
+  chip:        { paddingHorizontal: 12, paddingVertical: 8, borderRadius: 20, backgroundColor: C.cream, borderWidth: 1, borderColor: '#ECE7DE' },
+  chipActive:  { backgroundColor: C.navy, borderColor: C.navy },
+  chipText:    { fontSize: 13, color: C.textSecondary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
   chipTextActive: { color: '#fff' },
-  pickerBtn:   { backgroundColor: '#f0f4ff', borderRadius: 12, padding: 14, marginBottom: 14, borderWidth: 1, borderColor: '#dde3f0' },
-  pickerText:  { fontSize: 15, color: '#1a1a2e', fontWeight: '500' },
-  saveBtn:     { backgroundColor: '#1a3a6b', borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
-  saveBtnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  pickerBtn:   { backgroundColor: C.cream, borderRadius: 12, padding: 14, marginBottom: 14, borderWidth: 1, borderColor: '#ECE7DE' },
+  pickerText:  { fontSize: 15, color: C.textPrimary, fontFamily: 'Inter-SemiBold', fontWeight: '600' },
+  saveBtn:     { backgroundColor: C.navy, borderRadius: 12, padding: 16, alignItems: 'center', marginTop: 6 },
+  saveBtnText: { color: '#fff', fontSize: 16, fontFamily: 'Inter-Bold', fontWeight: '700' },
 });
