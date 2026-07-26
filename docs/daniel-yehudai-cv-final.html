@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniel Yehudai — Resume</title>
+  <style>
+    @page { size:A4; margin:11mm 14mm; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:#172033; background:#edf1f5; font:13.1px/1.32 Arial,Helvetica,sans-serif; }
+    .page { width:210mm; min-height:297mm; margin:20px auto; padding:11mm 14mm; background:#fff; box-shadow:0 8px 30px rgba(20,35,55,.12); }
+    header { text-align:center; border-bottom:2px solid #1f4f85; padding-bottom:9px; }
+    h1 { margin:0; font-size:29px; letter-spacing:.2px; }
+    .title { margin:3px 0 6px; color:#1f4f85; font-size:15px; font-weight:700; }
+    .contact { font-size:11.6px; }
+    .contact a { color:inherit; text-decoration:none; }
+    section { margin-top:11px; }
+    h2 { margin:0 0 5px; color:#1f4f85; border-bottom:1px solid #b8c8d9; font-size:14.2px; letter-spacing:.6px; text-transform:uppercase; }
+    p { margin:0; }
+    .row { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+    .name { font-weight:700; font-size:13.4px; }
+    .date { white-space:nowrap; color:#46566a; font-weight:700; }
+    .sub { color:#46566a; margin-top:1px; }
+    ul { margin:4px 0 0; padding-left:18px; }
+    li { margin:2.5px 0; }
+    .skills p { margin:2px 0; }
+    .skills strong { color:#233d5d; }
+    .entry + .entry { margin-top:7px; }
+    .note { display:none; }
+    @media print {
+      body { background:#fff; }
+      .page { width:auto; min-height:auto; margin:0; padding:0; box-shadow:none; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>Daniel Yehudai</h1>
+    <div class="title">Software Engineering Graduate | Full-Stack Developer</div>
+    <div class="contact">
+      <a href="tel:+972508211682">050-821-1682</a> &nbsp;|&nbsp;
+      <a href="mailto:daniyehudai@gmail.com">daniyehudai@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/daniel-yehudai-30a454318">linkedin.com/in/daniel-yehudai-30a454318</a> &nbsp;|&nbsp;
+      <a href="https://github.com/Daniely2090">github.com/Daniely2090</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Profile</h2>
+    <p>Software Engineering graduate with hands-on experience developing a full-stack mobile application using React Native, Expo, NestJS, TypeScript, and PostgreSQL/PostGIS. Built REST APIs, geospatial search, JWT-based authentication, real-time communication, and an explainable NLP search pipeline. Motivated by turning product requirements into reliable, user-focused software.</p>
+  </section>
+
+  <section class="skills">
+    <h2>Technical Skills</h2>
+    <p><strong>Languages:</strong> TypeScript, JavaScript, Python <strong>| Academic familiarity:</strong> Java, C++</p>
+    <p><strong>Frontend &amp; Mobile:</strong> React Native, Expo, Expo Router</p>
+    <p><strong>Backend:</strong> NestJS, Node.js, REST APIs, JWT authentication, Socket.IO</p>
+    <p><strong>Data:</strong> PostgreSQL, PostGIS, SQL, TypeORM</p>
+    <p><strong>Machine Learning:</strong> Text classification, TF-IDF, Naive Bayes, data preprocessing, train/validation/test evaluation, Precision, Recall, F1</p>
+    <p><strong>Tools:</strong> Git, GitHub, Jira, Swagger, PM2</p>
+  </section>
+
+  <section>
+    <h2>Project</h2>
+    <div class="entry">
+      <div class="row"><span class="name">Jewish On The Way | Final-Year Team Project</span></div>
+      <div class="sub">React Native, Expo, NestJS, TypeScript, PostgreSQL, PostGIS, TypeORM, Socket.IO</div>
+      <ul>
+        <li>Developed a cross-platform mobile application that helps Jewish travelers find kosher restaurants, synagogues, minyans, and Shabbat hosting by destination or current location.</li>
+        <li>Built an explainable multilingual search pipeline using TF-IDF and Naive Bayes classifiers, with Python-based training and TypeScript inference; achieved 82.6% accuracy on a held-out test set.</li>
+        <li>Designed REST APIs and relational data flows with NestJS, TypeORM, and PostgreSQL; implemented JWT authentication with refresh tokens and role-protected operations.</li>
+        <li>Implemented location-based discovery with PostGIS distance queries, plus real-time chat and hosting updates using Socket.IO.</li>
+        <li>Deployed the backend to a Linux VPS with PM2 and a cloud-hosted PostgreSQL database; documented APIs with Swagger and supported the backend with automated tests.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="row"><span class="name">B.Sc. in Software Engineering | SCE – Shamoon College of Engineering</span><span class="date">2021–2026</span></div>
+      <div class="sub">Moshal Program Scholar — Selected for an international excellence and leadership program for high-achieving students.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Military Experience</h2>
+    <div class="entry">
+      <div class="row"><span class="name">Planning and Production Control Technician | Israel Defense Forces</span><span class="date">2017–2019</span></div>
+      <p>Coordinated operational workflows, maintained schedules and documentation, monitored task progress, and supported on-time execution in a structured, team-based environment.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Volunteer Experience</h2>
+    <div class="entry">
+      <div class="row"><span class="name">Matityahu Elementary School</span><span class="date">2018–Present</span></div>
+      <p>Provide educational and social support to children in special education.</p>
+    </div>
+    <div class="entry">
+      <div class="row"><span class="name">Tzamid Program</span><span class="date">2021–2022</span></div>
+      <p>Supported social and educational activities for children with disabilities.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <p><strong>Hebrew:</strong> Native &nbsp;|&nbsp; <strong>English:</strong> Working proficiency</p>
+  </section>
+</main>
+</body>
+</html>

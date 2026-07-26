@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תוכנית עצמאות + העלאה לחנויות — Jewish On The Way</title>
+<style>
+  :root {
+    --brand: #1a3a6b;
+    --brand-light: #eaf0fa;
+    --ok: #1a7f3c;
+    --warn: #b07d00;
+    --bad: #c0392b;
+    --info: #2563a8;
+    --border: #dde3ec;
+    --text: #22303f;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", "Heebo", Arial, sans-serif;
+    color: var(--text);
+    background: #f6f8fb;
+    margin: 0;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 24px 20px 80px; }
+  header.hero {
+    background: linear-gradient(135deg, var(--brand), #2a5aa8);
+    color: #fff;
+    border-radius: 16px;
+    padding: 28px 28px 22px;
+    margin-bottom: 28px;
+  }
+  header.hero h1 { margin: 0 0 6px; font-size: 1.7em; }
+  header.hero p { margin: 0; opacity: .9; }
+  h2 {
+    color: var(--brand);
+    border-bottom: 3px solid var(--brand-light);
+    padding-bottom: 6px;
+    margin-top: 44px;
+    font-size: 1.35em;
+  }
+  h3 { color: var(--brand); margin-top: 26px; font-size: 1.1em; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  table { border-collapse: collapse; width: 100%; background: #fff; border-radius: 10px; overflow: hidden; }
+  th, td { border: 1px solid var(--border); padding: 9px 12px; text-align: right; font-size: .95em; }
+  th { background: var(--brand-light); color: var(--brand); }
+  tr.total td { font-weight: 700; background: #fbfcfe; }
+  .overflow { overflow-x: auto; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .82em; font-weight: 600; white-space: nowrap; }
+  .tag.ok   { background: #e4f5ea; color: var(--ok); }
+  .tag.warn { background: #fdf3d7; color: var(--warn); }
+  .tag.bad  { background: #fde8e4; color: var(--bad); }
+  .tag.info { background: #e3edf9; color: var(--info); }
+  .alert {
+    border-right: 5px solid var(--bad);
+    background: #fff5f3;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .note {
+    border-right: 5px solid var(--brand);
+    background: var(--brand-light);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .decision {
+    border-right: 5px solid var(--warn);
+    background: #fffaf0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .win {
+    border-right: 5px solid var(--ok);
+    background: #f2fbf5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  code, pre {
+    font-family: Consolas, "Courier New", monospace;
+    background: #f0f3f8;
+    border-radius: 6px;
+    direction: ltr;
+    text-align: left;
+  }
+  code { padding: 1px 6px; font-size: .9em; }
+  pre { padding: 14px 16px; overflow-x: auto; border: 1px solid var(--border); }
+  ul.check { list-style: none; padding-right: 0; }
+  ul.check li { padding: 6px 0; }
+  ul.check li::before { content: "☐ "; color: var(--brand); font-weight: bold; margin-left: 8px; }
+  .muted { color: var(--muted); font-size: .9em; }
+  .stepnum {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--brand); color: #fff; font-weight: 700; margin-left: 8px; font-size: .85em;
+  }
+  .kpi-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+  .kpi {
+    flex: 1 1 200px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .kpi .label { color: var(--muted); font-size: .85em; margin-bottom: 4px; }
+  .kpi .value { color: var(--brand); font-size: 1.3em; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>🚀 תוכנית עצמאות + העלאה לחנויות — Jewish On The Way</h1>
+  <p>שרת עצמאי · בדיקת Neon · בירוקרטיית Apple &amp; Google · עלויות מא' עד ת' · עדכון: 26.07.2026</p>
+</header>
+
+<div class="decision">
+  <b>גרסה משווה זמינה:</b> קודקס הכין גרסה מקבילה, שבדקה בפועל את ה-DB, כללה מקורות מצוטטים לכל מספר, וזיהתה שני חסמים אמיתיים שהמסמך הזה לא כיסה — ראו <a href="codex-independence-and-launch-plan.html">codex-independence-and-launch-plan.html</a>. מומלץ לעבוד לפי הגרסה של קודקס; המסמך הזה נשמר להשוואה ולהיסטוריה.
+</div>
+
+<div class="note">
+  מסמך זה עונה על 4 שאלות: (1) איך יוצאים משרת המכללה לשרת עצמאי, (2) האם ה-DB (Neon) תקין כמו שהוא, (3) מה כל הבירוקרטיה מול Apple ו-Google להעלאה עצמאית, (4) מה כל העלויות. מבוסס על בדיקת הקוד בפועל (<code>app.json</code>, <code>eas.json</code>, <code>client.ts</code>, <code>.env.example</code>, <code>CLAUDE.md</code>) ועל <a href="store-submission-plan.html">store-submission-plan.html</a> הקיים.
+</div>
+
+<div class="decision">
+  <b>שינוי אסטרטגי מהתוכנית הקודמת:</b> התוכנית הקיימת הניחה הגשה <b>דרך המכללה</b> (חשבון Google Play, Apple Team של המכללה — סעיף 0.2 שם). מסמך זה מניח מעבר לעצמאות מלאה: שרת שלך, חשבון Apple שלך, חשבון Google שלך. זה מבטל את החסם של סעיף 0.2. כל שאר ההכנות הטכניות (EAS, app.json, metadata, מדיניות פרטיות, מחיקת חשבון) <b>נשארות תקפות במלואן</b>.
+</div>
+
+<h2>תקציר מנהלים</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="label">עלות חד-פעמית (Apple+Google)</div><div class="value">~$124</div></div>
+  <div class="kpi"><div class="label">עלות חודשית מומלצת</div><div class="value">~$15-32</div></div>
+  <div class="kpi"><div class="label">זמן עד הגשה סופית</div><div class="value">~3-4 שבועות</div></div>
+  <div class="kpi"><div class="label">צוואר הבקבוק</div><div class="value">14 יום closed test בגוגל</div></div>
+</div>
+
+<div class="overflow">
+<table>
+  <tr><th>שאלה</th><th>תשובה קצרה</th></tr>
+  <tr><td>כדאי לעבור לשרת עצמאי?</td><td>כן — שרת המכללה זמני, ללא SLA, ללא root מלא, תלוי בגורם חיצוני</td></tr>
+  <tr><td>ה-DB תקין כמו שהוא?</td><td>כמעט — Neon עצמו תקין, אבל <b>הסיסמה חשופה כרגע ב-Git</b> (כולל ב-CLAUDE.md) — חובה לתקן</td></tr>
+  <tr><td>כמה עולה הכל?</td><td>~$124 חד-פעמי + ~$6.5-32/חודש (תלוי בשדרוגים)</td></tr>
+  <tr><td>כמה זמן?</td><td>תשתית: שבוע-שבועיים. אישור חשבונות: 3-10 ימים. סה"כ: ~3-4 שבועות</td></tr>
+</table>
+</div>
+
+<h2><span class="stepnum">א</span>יציאה משרת המכללה לשרת עצמאי</h2>
+
+<div class="card">
+  <h3>א.1 למה בכלל לעבור</h3>
+  <ul class="check">
+    <li>שרת המכללה אינו שלך — יכול להיסגר/להיחסם בכל רגע בלי התראה</li>
+    <li>למשתמש <code>student</code> אין הרשאות sudo — כל שינוי תשתית תלוי במארק במכללה (זו הסיבה שסעיף 0.1 בתוכנית הקיימת תקוע)</li>
+    <li>אפליקציה עם משתמשים אמיתיים לא צריכה להיות מבוססת על תשתית שאינה בשליטתך</li>
+  </ul>
+
+  <h3>א.2 בחירת ספק</h3>
+  <div class="overflow">
+  <table>
+    <tr><th>ספק</th><th>מפרט</th><th>עלות חודשית</th><th>הערות</th></tr>
+    <tr><td><b>Hetzner Cloud</b> ✅</td><td>CX22 — 2 vCPU / 4GB / 40GB SSD</td><td>~$5.5</td><td>הכי זול, DC בגרמניה/פינלנד</td></tr>
+    <tr><td>DigitalOcean</td><td>Basic Droplet 2GB</td><td>~$12</td><td>תיעוד/קהילה טובים, יקר יותר</td></tr>
+    <tr><td>AWS Lightsail</td><td>2GB plan</td><td>~$10</td><td>נוטה "להתנפח" עם שירותים נוספים</td></tr>
+    <tr><td>Railway / Render</td><td>—</td><td>~$10-20</td><td>הכי פשוט, יקר בקנה מידה</td></tr>
+  </table>
+  </div>
+  <p><b>המלצה: Hetzner CX22.</b></p>
+
+  <h3>א.3 שלבי המעבר</h3>
+  <ul class="check">
+    <li>פתיחת חשבון Hetzner + הקמת שרת Ubuntu 22.04 LTS</li>
+    <li>הקשחה: משתמש לא-root עם sudo, SSH key בלבד, ufw firewall</li>
+    <li>התקנת Node.js, PM2, Nginx, Certbot</li>
+    <li>העברת קוד, <code>npm ci &amp;&amp; npm run build</code>, <code>.env</code> מוזן ידנית בשרת (לא מ-Git)</li>
+    <li><code>pm2 start dist/main.js --name jewish-on-the-way-api</code>, <code>pm2 save</code>, <code>pm2 startup</code></li>
+    <li>Nginx reverse proxy מ-443 לפורט הפנימי (3001)</li>
+    <li>עדכון DNS: <code>api.jewishontheway.com</code> → IP של השרת החדש</li>
+    <li><code>certbot --nginx -d api.jewishontheway.com</code> — עכשיו אתה מריץ בעצמך, לא ממתינים למכללה</li>
+    <li>בדיקת socket.io על <code>wss://</code> (צ'אט, מניינים, אירוח)</li>
+    <li>לשמור את שרת המכללה כ-fallback שבוע-שבועיים לפני כיבוי</li>
+    <li>גיבוי אוטומטי יומי (Hetzner, ~$1-2/חודש נוסף) — מומלץ מאוד</li>
+  </ul>
+
+  <h3>א.4 עלות חלק א'</h3>
+  <div class="overflow">
+  <table>
+    <tr><th>פריט</th><th>עלות</th></tr>
+    <tr><td>שרת Hetzner CX22</td><td>~$5.5/חודש</td></tr>
+    <tr><td>גיבוי אוטומטי (מומלץ)</td><td>~$1-2/חודש</td></tr>
+    <tr><td>דומיין (כבר שולם)</td><td>~$12-15/שנה חידוש</td></tr>
+    <tr class="total"><td>סה"כ</td><td>~$6.5-7.5/חודש + ~$13/שנה</td></tr>
+  </table>
+  </div>
+</div>
+
+<h2><span class="stepnum">ב</span>בדיקת מסד הנתונים (Neon)</h2>
+
+<div class="card">
+  <h3>ב.1 מה תקין</h3>
+  <ul class="check">
+    <li>DB בענן (Neon), לא מותקן על שרת המכללה — אין תלות</li>
+    <li>חיבור עם SSL (<code>DB_SSL=true</code>)</li>
+    <li>הקוד קורא פרטי חיבור ממשתני סביבה (<code>.env.example</code>) — תבנית נכונה</li>
+  </ul>
+
+  <h3>ב.2 🚨 הבעיה הקריטית — סיסמה חשופה</h3>
+  <div class="alert">
+    מחרוזת החיבור המלאה ל-Neon, כולל סיסמה, מופיעה כרגע בטקסט גלוי ב-<code>CLAUDE.md</code> בשורש הפרויקט (ב-Git!), וגם ב-29 קבצי סקריפט עזר תחת <code>backend/</code>. זה סעיף 0.13 בתוכנית הקיימת — אבל הסיסמה חשופה <b>בפועל, עכשיו</b>, לא רק תיאורטית.
+  </div>
+  <p><b>חובה לפני שהאפליקציה יוצאת החוצה:</b></p>
+  <ul class="check">
+    <li>להחליף את סיסמת המשתמש ב-Neon (Console → Roles → Reset password)</li>
+    <li>להסיר את מחרוזת החיבור מ-CLAUDE.md ומכל סקריפט עזר → משתנה סביבה בלבד</li>
+    <li>לבדוק אם הסיסמה הישנה בהיסטוריית Git → לשקול ניקוי היסטוריה אם המאגר משותף עם המכללה</li>
+    <li>לעדכן פרטי חיבור בכל סביבה פעילה אחרי ההחלפה</li>
+  </ul>
+  <p class="muted">לא לבצע בלי אישור מפורש — משבית זמנית גישה לכל מי שמחזיק את הסיסמה הישנה.</p>
+
+  <h3>ב.3 מה לבדוק בדשבורד Neon (ידנית, לא נגיש לי)</h3>
+  <div class="overflow">
+  <table>
+    <tr><th>בדיקה</th><th>למה זה חשוב</th></tr>
+    <tr><td>Plan נוכחי</td><td>Free tier מוגבל ל-0.5GB ופרויקט אחד</td></tr>
+    <tr><td>Autosuspend</td><td>Free tier "נרדם" אחרי 5 דק' — cold start של כמה שניות בבקשה הראשונה</td></tr>
+    <tr><td>Region</td><td>אם עוברים ל-Hetzner אירופה, Neon ב-US East מוסיף ~80-150ms latency לכל query</td></tr>
+    <tr><td>גיבויים / PITR</td><td>Free tier retention קצר מאוד — בעייתי עם מחיקות חשבון בלתי הפיכות</td></tr>
+  </table>
+  </div>
+
+  <h3>ב.4 המלצה + עלות</h3>
+  <div class="overflow">
+  <table>
+    <tr><th>פריט</th><th>עלות</th></tr>
+    <tr><td>Neon Free (כרגע כנראה)</td><td>$0</td></tr>
+    <tr><td>Neon Launch (מומלץ סביב ההשקה)</td><td>~$19/חודש</td></tr>
+  </table>
+  </div>
+</div>
+
+<h2><span class="stepnum">ג</span>Apple App Store — בירוקרטיה, דרישות ועלויות</h2>
+
+<div class="card">
+  <h3>ג.1 סוג חשבון</h3>
+  <div class="overflow">
+  <table>
+    <tr><th></th><th>Individual (יחיד)</th><th>Organization (חברה)</th></tr>
+    <tr><td>עלות</td><td>$99/שנה</td><td>$99/שנה</td></tr>
+    <tr><td>דרישות</td><td>Apple ID + כרטיס אשראי + ת.ז.</td><td>מספר D-U-N-S (חינם, 1-2 שבועות) + מסמכי התאגדות</td></tr>
+    <tr><td>שם מפתח בחנות</td><td>שמך המלא (לא "Jewish On The Way")</td><td>שם החברה הרשמי</td></tr>
+    <tr><td>זמן לאישור</td><td>1-2 ימים</td><td>שבועות</td></tr>
+  </table>
+  </div>
+  <div class="win">מומלץ: <b>Individual</b> — זה מוצר אישי, לא חברה רשומה. שים לב: שם המוכר יהיה שמך האישי, לא שם המותג (משפיע רק על שדה "Seller", לא על שם האפליקציה).</div>
+
+  <h3>ג.2 שלבי הרשמה</h3>
+  <ul class="check">
+    <li>Apple ID עם 2FA חובה</li>
+    <li>הרשמה ל-Apple Developer Program — $99, אימות זהות</li>
+    <li>המתנה לאישור (24-48 שעות ל-Individual)</li>
+    <li>App ID תואם ל-<code>com.jewishontheway.app</code> (כבר קבוע ב-app.json — אי אפשר לשנות אחרי פרסום)</li>
+  </ul>
+
+  <h3>ג.3 מה שנשאר למלא ב-App Store Connect</h3>
+  <ul class="check">
+    <li>App Privacy (Nutrition Label) — מגזירת privacy-policy-draft.md</li>
+    <li>Age Rating questionnaire</li>
+    <li>Export Compliance (שאלת הצפנה — HTTPS/TLS סטנדרטי בד"כ פטור)</li>
+    <li>App Review Information — חשבון בדיקה קיים + הערות לבודק</li>
+    <li>צילומי מסך iPhone 6.5" / 5.5" במידות מדויקות (עדיין חסר)</li>
+  </ul>
+
+  <h3>ג.4 זמן בדיקה</h3>
+  <p>24-48 שעות בד"כ, עד שבוע בגרסה ראשונה. דחיות נפוצות: מדיניות פרטיות לא זמינה, חשבון בדיקה לא עובד — כבר מטופלים בתוכנית הקיימת.</p>
+
+  <h3>ג.5 עלות חלק ג'</h3>
+  <div class="overflow">
+  <table>
+    <tr><th>פריט</th><th>עלות</th></tr>
+    <tr><td>Apple Developer Program</td><td><b>$99/שנה</b> (חוזר)</td></tr>
+    <tr><td>D-U-N-S (רק אם Organization)</td><td>$0, שבועות המתנה</td></tr>
+  </table>
+  </div>
+</div>
+
+<h2><span class="stepnum">ד</span>Google Play — בירוקרטיה, דרישות ועלויות</h2>
+
+<div class="card">
+  <h3>ד.1 הרשמה</h3>
+  <ul class="check">
+    <li>חשבון Google ייעודי לעסק</li>
+    <li>Google Play Console — $25 חד-פעמי (לא חוזר)</li>
+    <li>אימות זהות (ת.ז. + לפעמים סלפי-וידאו) — מספר ימי עסקים</li>
+    <li>קבלת Developer Distribution Agreement</li>
+  </ul>
+
+  <h3>ד.2 ⚠️ דרישת Closed Testing לחשבונות חדשים</h3>
+  <div class="decision">
+    מדיניות Google הנוכחית (לאמת מול Play Console — משתנה) מחייבת חשבונות מפתח אישיים חדשים להריץ <b>closed testing עם ~12-20 בודקים במשך 14 יום רצופים</b> לפני קבלת גישה לפרסום ל-production. אי אפשר "לפרסם ומוכן" מיד — יש לתכנן שבועיים מראש, ולהתחיל מוקדם ככל האפשר במקביל להכנת iOS.
+  </div>
+
+  <h3>ד.3 מה שנשאר למלא ב-Play Console</h3>
+  <ul class="check">
+    <li>Data Safety form (כולל Cloudinary לתמונות, Anthropic ל-smart search)</li>
+    <li>Content rating questionnaire (IARC) — כנראה "Everyone"/"3+"</li>
+    <li>Target audience &amp; content declarations</li>
+    <li>Ads declaration — "No ads"</li>
+    <li>App access — פרטי חשבון בדיקה</li>
+    <li>Government apps / COVID tracing / Financial / Health — "לא" לכולם</li>
+  </ul>
+
+  <h3>ד.4 עלות חלק ד'</h3>
+  <div class="overflow">
+  <table>
+    <tr><th>פריט</th><th>עלות</th></tr>
+    <tr><td>Google Play Console</td><td><b>$25 חד-פעמי</b></td></tr>
+  </table>
+  </div>
+</div>
+
+<h2><span class="stepnum">ה</span>טבלת עלויות מלאה, מא' עד ת'</h2>
+
+<h3>חד-פעמי</h3>
+<div class="overflow">
+<table>
+  <tr><th>פריט</th><th>עלות</th><th>הערה</th></tr>
+  <tr><td>Apple Developer Program (שנה 1)</td><td>$99</td><td>חוזר כל שנה</td></tr>
+  <tr><td>Google Play Console</td><td>$25</td><td>חד-פעמי לכל החיים</td></tr>
+  <tr><td>דומיין jewishontheway.com</td><td>~$13</td><td>כבר שולם</td></tr>
+  <tr class="total"><td>סה"כ (בפועל, נשאר לשלם)</td><td>~$124</td><td></td></tr>
+</table>
+</div>
+
+<h3>חודשי (שוטף)</h3>
+<div class="overflow">
+<table>
+  <tr><th>פריט</th><th>טווח עלות</th><th>הערה</th></tr>
+  <tr><td>שרת Hetzner CX22</td><td>$5.5-8</td><td>כולל גיבוי</td></tr>
+  <tr><td>Neon DB</td><td>$0 – $19</td><td>תלוי בהחלטה בחלק ב'</td></tr>
+  <tr><td>Cloudinary</td><td>$0 – עד ~$99</td><td>לבדוק שימוש נוכחי בדשבורד</td></tr>
+  <tr><td>EAS Build (Expo)</td><td>$0 – $29</td><td>Free מספיק ל-build מזדמן</td></tr>
+  <tr><td>Anthropic API (smart search)</td><td>~$1-5</td><td>מוגבל ב-SMART_SEARCH_LLM_DAILY_CAP</td></tr>
+  <tr><td>Gmail SMTP</td><td>$0</td><td></td></tr>
+  <tr><td>SSL (Let's Encrypt)</td><td>$0</td><td>מתחדש אוטומטית</td></tr>
+  <tr class="total"><td>מינימלי (הכל ב-free tier)</td><td>~$6.5-13/חודש</td><td></td></tr>
+  <tr class="total"><td>מומלץ (Neon+גיבוי בתשלום)</td><td>~$25-32/חודש</td><td></td></tr>
+  <tr class="total"><td>מקסימלי (הכל בתשלום)</td><td>~$150+/חודש</td><td>תרחיש קצה בלבד</td></tr>
+</table>
+</div>
+
+<h3>שנתי (חוזר)</h3>
+<div class="overflow">
+<table>
+  <tr><th>פריט</th><th>עלות</th></tr>
+  <tr><td>Apple Developer Program</td><td>$99/שנה</td></tr>
+  <tr><td>חידוש דומיין</td><td>~$13/שנה</td></tr>
+</table>
+</div>
+
+<div class="win"><b>שורה תחתונה:</b> להתחלה ריאלית — <b>~$124 חד-פעמי</b> + <b>~$15-30/חודש</b> (שרת + Neon בסיסי). שדרוגים יקרים יותר (Cloudinary, EAS Production) רלוונטיים רק כשיש כמות משתמשים אמיתית שמצדיקה זאת.</div>
+
+<h2><span class="stepnum">ו</span>סדר עבודה ולוח זמנים מומלץ</h2>
+<div class="overflow">
+<table>
+  <tr><th>שלב</th><th>פעולות</th><th>משך משוער</th><th>תלות</th></tr>
+  <tr><td>1</td><td>הקמת שרת Hetzner + מעבר קוד + Nginx + Let's Encrypt</td><td>2-4 ימים</td><td>—</td></tr>
+  <tr><td>2</td><td>תיקון סיסמת Neon + הסרת סודות מ-Git</td><td>חצי יום</td><td>לפני שלב 1 מסתיים בפועל</td></tr>
+  <tr><td>3</td><td>(מקביל) פתיחת Apple Developer + Google Play</td><td>1-10 ימים</td><td>ללא תלות בשרת</td></tr>
+  <tr><td>4</td><td>(מקביל) תחילת Closed Testing בגוגל</td><td>14 יום</td><td>דורש build ראשון (כבר מוכן טכנית)</td></tr>
+  <tr><td>5</td><td>צילומי מסך במידות הנכונות</td><td>1-2 ימים</td><td>אפליקציה רצה מול שרת חדש</td></tr>
+  <tr><td>6</td><td>פרסום privacy policy + delete-account לדומיין</td><td>חצי יום</td><td>תלוי בשלב 1</td></tr>
+  <tr><td>7</td><td>build production והגשה סופית</td><td>1 יום + זמן בדיקה</td><td>תלוי בכל הקודם</td></tr>
+</table>
+</div>
+<p class="muted">צוואר הבקבוק העיקרי: 14 יום closed testing בגוגל — כדאי להתחיל אותו מוקדם ככל האפשר, אפילו מול שרת המכללה הקיים בינתיים.</p>
+
+<h2>מה נשאר תקף מהתוכנית הישנה</h2>
+<div class="note">
+  כל שאר הפרטים הטכניים — Metadata מאושר, EAS+app.json, מדיניות פרטיות בטיוטה, מחיקת חשבון, שמירת לוגים — מפורטים ב-<a href="store-submission-plan.html">store-submission-plan.html</a> ולא תלויים בשאלת "מי מגיש". <b>הדבר היחיד שהתבטל:</b> תיאום מול המכללה (סעיף 0.2) — הוחלף בפתיחת חשבונות Apple/Google עצמאיים (חלקים ג'+ד' כאן).
+</div>
+
+<h2>מסמך משווה</h2>
+<div class="decision">
+  קודקס הכין גרסה מקבילה למסמך הזה — <a href="codex-independence-and-launch-plan.html">codex-independence-and-launch-plan.html</a> / <a href="codex-independence-and-launch-plan.md">.md</a>. היא בדקה בפועל את ה-DB (PostgreSQL 17.10, PostGIS, ~37MiB), כללה מקורות רשמיים מצוטטים לכל מספר, וזיהתה שני חסמים אמיתיים שהמסמך הזה לא כיסה: (1) דרישת Apple Guideline 1.2 לסינון תוכן משתמשים — אומת בקוד שאין מנגנון כזה כרגע, ו-(2) הצהרת DSA Trader/Non-Trader הנדרשת מ-Apple להפצה באיחוד האירופי. מומלץ לעבוד לפי הגרסה של קודקס; המסמך הזה נשמר להשוואה ולהיסטוריה.
+</div>
+
+</div>
+</body>
+</html>

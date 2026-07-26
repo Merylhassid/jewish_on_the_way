@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ביקורת ושכתוב קורות חיים — Daniel Yehudai</title>
+  <style>
+    :root { --ink:#172033; --muted:#5c667a; --line:#dfe4ec; --brand:#174ea6; --soft:#f5f8fc; --good:#16734b; --warn:#9a5b00; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#eef2f7; color:var(--ink); font-family:Arial,"Noto Sans Hebrew",sans-serif; line-height:1.65; }
+    main { max-width:1040px; margin:32px auto; background:white; padding:42px 50px; box-shadow:0 10px 35px rgba(20,35,60,.09); }
+    h1 { margin:0 0 8px; font-size:34px; }
+    h2 { margin:42px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--brand); font-size:24px; }
+    h3 { margin:0 0 10px; font-size:19px; }
+    p { margin:8px 0; }
+    .lead { color:var(--muted); font-size:18px; }
+    .verdict { margin:26px 0; padding:20px 24px; border-right:5px solid var(--brand); background:var(--soft); }
+    .score { font-size:22px; font-weight:700; color:var(--brand); }
+    .change { margin:20px 0; padding:22px; border:1px solid var(--line); border-radius:10px; page-break-inside:avoid; }
+    .label { display:block; margin:15px 0 5px; color:var(--muted); font-size:13px; font-weight:700; letter-spacing:.03em; }
+    .quote { direction:ltr; text-align:left; white-space:pre-wrap; padding:14px 16px; border-radius:7px; background:#f7f8fa; border-left:4px solid #aab3c2; font-family:Arial,sans-serif; line-height:1.5; }
+    .new { border-left-color:var(--good); background:#f3faf7; }
+    .reason { padding:12px 15px; background:#fff8ec; border-right:4px solid #e1a436; }
+    code { direction:ltr; display:inline-block; font-family:Consolas,monospace; font-size:.92em; }
+    ul { margin:8px 0; padding-right:22px; }
+    li { margin:5px 0; }
+    table { width:100%; border-collapse:collapse; margin:16px 0; }
+    th,td { padding:10px 12px; border:1px solid var(--line); vertical-align:top; }
+    th { background:var(--soft); text-align:right; }
+    .must { color:#a13a28; font-weight:700; }
+    .good { color:var(--good); font-weight:700; }
+    .small { color:var(--muted); font-size:14px; }
+    a { color:var(--brand); }
+    @media print { body{background:white} main{margin:0;max-width:none;box-shadow:none;padding:22mm 18mm} .change{break-inside:avoid} }
+  </style>
+</head>
+<body>
+<main>
+  <h1>ביקורת ושכתוב קורות החיים</h1>
+  <p class="lead">Daniel Yehudai — התאמה לתפקידי Junior Full-Stack / Backend / Mobile Developer</p>
+
+  <section class="verdict">
+    <div class="score">הערכה כללית: בסיס טוב, אך הנוסח הנוכחי לא מציג את רמת הפרויקט במלואה</div>
+    <p>היתרון המרכזי שלך הוא פרויקט גמר אמיתי ורחב: אפליקציית React Native, שרת NestJS, מסד PostgreSQL/PostGIS, אימות משתמשים, WebSockets, חיפוש גאוגרפי ומודל סיווג טקסט שבניתם ומדדתם. בנוסח המקורי כל זה נדחס לפסקה אחת, ולכן הוא נשמע מעט כמו רשימת מילות מפתח ולא כמו ניסיון הנדסי מוכח.</p>
+    <p>מצד שני, הביטויים <span lang="en" dir="ltr">“skilled”</span>, <span lang="en" dir="ltr">“scalable applications”</span> ו־<span lang="en" dir="ltr">“custom AI models”</span> רחבים מדי לבוגר בתחילת הדרך אם אינם מגובים בהקשר. השכתוב מדגיש עשייה ממשית, אך לא מציג אותך כמומחה בכל טכנולוגיה שבה נגעת.</p>
+  </section>
+
+  <h2>החלטות מרכזיות לפני השינויים</h2>
+  <table>
+    <tr><th>נושא</th><th>החלטה</th><th>הסיבה</th></tr>
+    <tr><td>אורך</td><td>עמוד אחד</td><td>לבוגר ללא ניסיון תעשייתי ממושך, עמוד אחד הוא חד ומקצועי יותר.</td></tr>
+    <tr><td>מיקוד</td><td>Full-Stack עם נטייה ל־Backend/Mobile</td><td>זה מה שהפרויקט מוכיח בפועל; רשימת תחומים כללית מדי מחלישה את המסר.</td></tr>
+    <tr><td>פרויקט</td><td>4 נקודות הישג ולא פסקה צפופה</td><td>כך מגייס יכול לזהות בתוך שניות ארכיטקטורה, AI, geospatial, real-time ופריסה.</td></tr>
+    <tr><td>AI</td><td>ניסוח מדויק ומדד אחד</td><td>המודל מבוסס TF-IDF ו־Naive Bayes ונבדק על holdout; זה חזק יותר מהמילה הכללית “AI”.</td></tr>
+    <tr><td>טכנולוגיות</td><td>רק מה שניתן להסביר בראיון</td><td>Java ו־C++ מסומנות כ־academic familiarity אם לא נצבר בהן ניסיון מעשי עדכני.</td></tr>
+  </table>
+
+  <h2>שינויים מפורטים — מקור, החלפה ונוסח חדש</h2>
+
+  <article class="change">
+    <h3>1. כותרת מקצועית ופרטי קשר</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Daniel Yehudai
+Software Engineering Graduate | Developer
+daniyehudai@gmail.com | 050-821-1682 |
+LinkedIn- daniel-yehudai-30a454318 | GitHub</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">החלפתי את <span lang="en" dir="ltr">Developer</span> הכללי ב־<span lang="en" dir="ltr">Full-Stack Developer</span>, כי זה הכיוון שהפרויקט מוכיח. ניקיתי מקפים וקווים מיותרים, והפכתי את LinkedIn ו־GitHub לקישורים מלאים. לפי היסטוריית המאגר, חשבון ה־GitHub שלך הוא <code>Daniely2090</code>.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Daniel Yehudai
+Software Engineering Graduate | Full-Stack Developer
+050-821-1682 | daniyehudai@gmail.com
+linkedin.com/in/daniel-yehudai-30a454318 | github.com/Daniely2090</div>
+    <p class="small"><span class="must">בדיקה נדרשת:</span> ודא ששני הקישורים ציבוריים ותקינים. אין להשאיר את המילה “GitHub” ללא כתובת.</p>
+  </article>
+
+  <article class="change">
+    <h3>2. תקציר מקצועי</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Software Engineering graduate with hands-on experience in full-stack development, backend systems, mobile applications, machine learning, and database design. Skilled in developing scalable applications using React Native, NestJS, PostgreSQL, and TypeScript, as well as building custom AI models for text classification and natural language search.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">הסרתי את הרשימה הרחבה של חמישה תחומים ואת הטענה <span lang="en" dir="ltr">scalable applications</span>, מפני שלא כדאי לטעון לקנה מידה ללא נתוני שימוש ממשיים. במקום זאת קשרתי את הכישורים למוצר שבנית. החלפתי <span lang="en" dir="ltr">custom AI models</span> בתיאור המדויק <span lang="en" dir="ltr">explainable NLP search</span>. הוספתי REST APIs, geospatial queries ו־real-time communication משום שאלה קיימים בפועל בפרויקט.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Software Engineering graduate with hands-on experience developing a full-stack mobile application using React Native, Expo, NestJS, TypeScript, and PostgreSQL/PostGIS. Built REST APIs, geospatial search, JWT-based authentication, real-time communication, and an explainable NLP search pipeline. Motivated by turning product requirements into reliable, user-focused software.</div>
+    <p class="small">הניסוח שאפתני אך אמין: הוא אומר מה בנית, לא מכריז שאתה מומחה או שכבר פיתחת מערכות enterprise.</p>
+  </article>
+
+  <article class="change">
+    <h3>3. השכלה ותוכנית מושל</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">B.Sc. Software Engineering, SCE – Sami Shamoon College of Engineering (2021–Present)
+Moshal Program – Selected to participate in an international excellence and leadership program for high-achieving undergraduate students.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">יש סתירה בין <span lang="en" dir="ltr">Graduate</span> לבין <span lang="en" dir="ltr">Present</span>. מאחר שהצגת את עצמך כבוגר והפרויקט נמצא בשלב הגמר, בגרסה הסופית הנחתי סיום ב־2026. קיצרתי את תיאור Moshal, תיקנתי את שם המוסד לכתיבה אחידה והפכתי את תוכנית ההצטיינות לנקודה תמציתית.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">B.Sc. in Software Engineering | SCE – Shamoon College of Engineering | 2021–2026
+Moshal Program Scholar — Selected for an international excellence and leadership program for high-achieving students.</div>
+    <p class="small"><span class="must">חובה לאמת:</span> אם עדיין לא התקבל אישור זכאות לתואר, כתוב במקום זאת <span lang="en" dir="ltr">“B.Sc. in Software Engineering, Expected 2026”</span> ובכותרת <span lang="en" dir="ltr">“Software Engineering Student”</span> או <span lang="en" dir="ltr">“B.Sc. Candidate”</span>. אל תשלח קורות חיים עם הסתירה המקורית.</p>
+  </article>
+
+  <article class="change">
+    <h3>4. כישורים טכניים</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Programming Languages: Python, Java, JavaScript, TypeScript, C++
+Backend: NestJS, Node.js, REST APIs, JWT Authentication, Socket.IO
+Frontend &amp; Mobile: React Native, Expo
+Databases: PostgreSQL, PostGIS, SQL
+AI &amp; Machine Learning: Text Classification, TF-IDF, Naive Bayes, Data Preprocessing, Model Evaluation
+Tools: Git, GitHub, Jira.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">סידרתי את הרשימה לפי מה שמגייס מחפש, הוספתי TypeORM ו־Expo Router שמופיעים בליבת המימוש, והעברתי Socket.IO לקטגוריית backend/real-time. הרחבתי את model evaluation רק למדדים שאתה באמת מכיר מהפרויקט. לא הוספתי כל ספרייה או שירות קטן. Java ו־C++ נשארו רק כ־academic familiarity כדי לא לייצר רושם של ניסיון מקצועי אם עבדת בהן בעיקר בלימודים.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Languages: TypeScript, JavaScript, Python | Academic familiarity: Java, C++
+Frontend &amp; Mobile: React Native, Expo, Expo Router
+Backend: NestJS, Node.js, REST APIs, JWT authentication, Socket.IO
+Data: PostgreSQL, PostGIS, SQL, TypeORM
+Machine Learning: Text classification, TF-IDF, Naive Bayes, data preprocessing, train/validation/test evaluation, Precision, Recall, F1
+Tools: Git, GitHub, Jira, Swagger, PM2</div>
+    <p class="small">אם אתה מסוגל לפתור שאלות קוד ולכתוב פרויקט קטן ב־Java או C++ ללא עזרה, אפשר להעביר אותן בחזרה ל־Languages. אם לא, החלוקה הנוכחית בטוחה יותר.</p>
+  </article>
+
+  <article class="change">
+    <h3>5. פרויקט הגמר — פתיח</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Jewish On The Way – Final Year Project A full-stack mobile application helping Jewish travelers discover kosher restaurants, synagogues, and points of interest nearby. Built with React Native, NestJS, PostgreSQL, PostGIS, TypeScript, and Socket.IO.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">הוספתי הפרדה ברורה בין שם הפרויקט, סוג הפרויקט והטכנולוגיות. תיקנתי את תיאור המוצר כך שיכלול את תחומי הליבה בפועל — מסעדות כשרות, בתי כנסת, מניינים ואירוח שבת. השתמשתי ב־<span lang="en" dir="ltr">Team Project</span>, משום שבהיסטוריית המאגר מופיעים שני תורמים מרכזיים; זה שומר על אמינות ואינו מפחית מהתרומה שלך.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Jewish On The Way | Final-Year Team Project
+React Native, Expo, NestJS, TypeScript, PostgreSQL, PostGIS, TypeORM, Socket.IO
+Developed a cross-platform mobile application that helps Jewish travelers find kosher restaurants, synagogues, minyans, and Shabbat hosting by destination or current location.</div>
+  </article>
+
+  <article class="change">
+    <h3>6. פרויקט הגמר — החיפוש החכם</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Key features: AI-powered natural language search using TF-IDF and Naive Bayes classification...</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">הביטוי <span lang="en" dir="ltr">AI-powered</span> כללי ושיווקי. המימוש בפועל חזק יותר כשמסבירים אותו: pipeline רב־לשוני, TF-IDF ו־Naive Bayes שנבנו ב־Python ללא ספריית ML, ייצוא inference ל־TypeScript, וזיהוי קטגוריית חיפוש. הוספתי את דיוק ה־held-out של 82.6%, שמופיע במסמכי ההערכה של הפרויקט, אך לא הצגתי אותו כנתון production.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Built an explainable multilingual search pipeline using TF-IDF and Naive Bayes classifiers, with Python-based training and TypeScript inference; evaluated the main intent classifier on a held-out test set, achieving 82.6% accuracy.</div>
+    <p class="small">זה משפט מצוין לראיון רק אם אתה מוכן להסביר train/validation/test, data leakage, Precision/Recall/F1, ולמה בחרתם בפתרון מקומי ופשוט.</p>
+  </article>
+
+  <article class="change">
+    <h3>7. פרויקט הגמר — Backend, מיקום ו־real-time</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">...real-time chat via Socket.IO, JWT authentication, and geolocation services.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">הניסוח המקורי אינו מראה את עומק העבודה. הפרויקט כולל REST API מודולרי, TypeORM, refresh tokens, שאילתות PostGIS, צ'אט ובקשות אירוח. פיצלתי זאת לשתי נקודות כדי לשמור על קריאות ולא לדחוס הכול למשפט אחד.</div>
+    <span class="label">הפסקאות החדשות</span>
+    <div class="quote new">Designed REST APIs and relational data flows with NestJS, TypeORM, and PostgreSQL; implemented JWT authentication with refresh tokens and role-protected operations.
+
+Implemented location-based discovery with PostGIS distance queries, plus real-time chat and hosting updates using Socket.IO.</div>
+    <p class="small">לא השתמשתי במילה <span lang="en" dir="ltr">architected</span>, ולא טענתי לביצועים בקנה מידה גדול. אלה ניסוחים מדויקים יותר לבוגר שהקים מערכת שלמה.</p>
+  </article>
+
+  <article class="change">
+    <h3>8. פרויקט הגמר — פריסה ואיכות</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">לא הופיע בנוסח המקורי.</div>
+    <span class="label">מה הוספתי</span>
+    <div class="reason">הפרויקט אינו רק קוד מקומי: ה־backend נבנה ונפרס לשרת Linux עם PM2, מחובר למסד ענן, קיימים Swagger ובדיקות backend. זה מסמן יכולת להביא מערכת מקצה לקצה. איחדתי את הנושאים לנקודה אחת, בלי לפרט כל כלי.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Deployed the backend to a Linux VPS with PM2 and a cloud-hosted PostgreSQL database; documented APIs with Swagger and supported the backend with automated tests.</div>
+    <p class="small">לא כתבתי מספר בדיקות, כי מספר כזה משתנה עם הזמן. אם תרצה מדד מספרי, יש לוודא אותו מיד לפני כל שליחה.</p>
+  </article>
+
+  <article class="change">
+    <h3>9. ניסיון צבאי</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Planning, Development and Production Technician (2017–2019)
+Supported planning and coordination of daily operational workflows, maintained schedules and documentation, monitored task progress, and helped ensure the timely execution of daily operations.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">השם באנגלית נשמע מעט לא טבעי. אם התפקיד היה תפ״י, התרגום המקובל והברור יותר הוא <span lang="en" dir="ltr">Planning and Production Control Technician</span>. הוספתי IDF כדי שמגייס מחוץ לישראל יבין שמדובר בשירות צבאי. קיצרתי כפילויות של <span lang="en" dir="ltr">daily operations</span>.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Planning and Production Control Technician | Israel Defense Forces | 2017–2019
+Coordinated operational workflows, maintained schedules and documentation, monitored task progress, and supported on-time execution in a structured, team-based environment.</div>
+    <p class="small"><span class="must">בדיקה נדרשת:</span> אם זה אינו התרגום הנכון של שם התפקיד הרשמי, שמור את התיאור החדש אך החלף את הכותרת בשם המדויק.</p>
+  </article>
+
+  <article class="change">
+    <h3>10. התנדבות</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Tzamid Program (2021–2022) – Worked with children with special needs.
+Matityahu Elementary School (2018–Present) – Educational and social support for children in special education.</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason">איחדתי ניסוח, הפכתי את שמות המסגרות לבולטים והשתמשתי במונח מכבד ומקובל יותר: <span lang="en" dir="ltr">children with disabilities</span>. שמרתי את הסעיף כי התנדבות מתמשכת מעידה על אחריות ומחויבות, אך לא הרחבתי מעבר למה שסיפקת.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Matityahu Elementary School | 2018–Present
+Provide educational and social support to children in special education.
+
+Tzamid Program | 2021–2022
+Supported social and educational activities for children with disabilities.</div>
+    <p class="small"><span class="must">בדיקה נדרשת:</span> השאר <span lang="en" dir="ltr">Present</span> רק אם הפעילות אכן נמשכת כיום. אם היא הסתיימה, רשום שנת סיום אמיתית.</p>
+  </article>
+
+  <article class="change">
+    <h3>11. שפות</h3>
+    <span class="label">הפסקה המקורית</span>
+    <div class="quote">Hebrew – Native
+English – Good</div>
+    <span class="label">מה החלפתי</span>
+    <div class="reason"><span lang="en" dir="ltr">Good</span> אינו דירוג מקצועי ברור. החלפתי אותו ב־<span lang="en" dir="ltr">Working proficiency</span>, ניסוח מאוזן שאינו טוען לשטף מלא. את עברית השארתי כשפת אם.</div>
+    <span class="label">הפסקה החדשה</span>
+    <div class="quote new">Hebrew — Native | English — Working proficiency</div>
+  </article>
+
+  <h2>מה בכוונה לא הוספתי</h2>
+  <ul>
+    <li><strong>לא “Machine Learning Engineer”:</strong> בנית מודל חשוב ומעניין, אך פרויקט אחד אינו מצדיק עדיין תואר תפקיד כזה.</li>
+    <li><strong>לא “scalable” או “high-performance”:</strong> יש עבודת עומסים ושאילתות מרחביות, אבל אין צורך להציג ניסיון production רחב שלא נמדד לאורך זמן.</li>
+    <li><strong>לא כל ספרייה:</strong> Cloudinary, i18next, Axios, Nominatim ועוד קיימים בפרויקט, אבל רשימה מלאה תיראה כמו keyword stuffing.</li>
+    <li><strong>לא “expert/proficient in”:</strong> הרשימה מציגה טכנולוגיות שבהן עבדת; רמת העומק תתברר בדוגמאות ובראיון.</li>
+    <li><strong>לא בעלות יחידנית:</strong> המאגר כולל שני תורמים מרכזיים, ולכן הגדרת הפרויקט כ־Team Project אמינה יותר. בתוך הבולטים אפשר לציין במדויק על אילו אזורים אתה היית אחראי, אם תרצה לחדד בהמשך.</li>
+  </ul>
+
+  <h2>בדיקות אחרונות לפני שליחה</h2>
+  <ul>
+    <li><span class="must">אמת סטטוס תואר ותאריך סיום.</span></li>
+    <li>ודא שמספר הטלפון כולל קידומת <code>+972</code> אם שולחים לחברות מחוץ לישראל.</li>
+    <li>ודא ש־LinkedIn ו־GitHub פתוחים, מעודכנים ותואמים לקישורים.</li>
+    <li>הוסף עיר מגורים רק אם היא מועילה למשרה; אין צורך בכתובת מלאה.</li>
+    <li>אם ב־GitHub המאגר פרטי, הכן README ציבורי או עמוד portfolio שמציג screenshots, architecture ותפקיד אישי.</li>
+    <li>התאם את סדר הכישורים למשרה: למשרת Backend הקדם NestJS/PostgreSQL; למשרת Mobile הקדם React Native/Expo.</li>
+  </ul>
+</main>
+</body>
+</html>

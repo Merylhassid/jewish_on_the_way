@@ -403,6 +403,8 @@ export class RestaurantsService {
       originalAddress: string | null;
       originalPhone: string | null;
       category: string | null;
+      about: string | null;
+      websiteUrl: string | null;
       openingHours: string | null;
       createdAt: string;
       lat: number | null;
@@ -448,6 +450,8 @@ export class RestaurantsService {
            ELSE r.phone
          END                 AS phone,
          r.category,
+         r.website_text      AS about,
+         r.website_url       AS "websiteUrl",
          r.opening_hours     AS "openingHours",
          r.created_at        AS "createdAt",
          CASE WHEN r.location IS NOT NULL THEN ST_Y(r.location::geometry) END AS lat,
@@ -487,6 +491,8 @@ export class RestaurantsService {
       originalAddress: r.originalAddress,
       originalPhone: r.originalPhone,
       category: r.category,
+      about: r.about,
+      websiteUrl: r.websiteUrl,
       openingHours: r.openingHours,
       createdAt: r.createdAt,
       lat: r.lat,

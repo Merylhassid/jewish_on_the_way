@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jewish On The Way — תוכנית עצמאית מלאה</title>
+  <style>
+    :root {
+      --navy: #0b1736;
+      --navy-2: #14264f;
+      --gold: #d6a83d;
+      --gold-soft: #fff6da;
+      --paper: #f5f7fb;
+      --card: #ffffff;
+      --ink: #17213b;
+      --muted: #65708a;
+      --line: #dce2ee;
+      --green: #147d64;
+      --green-soft: #e7f7f2;
+      --orange: #a85a00;
+      --orange-soft: #fff2df;
+      --red: #b42336;
+      --red-soft: #fff0f2;
+      --blue: #245bb5;
+      --blue-soft: #edf4ff;
+      --shadow: 0 16px 44px rgba(11, 23, 54, .09);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, "Segoe UI", sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--blue); }
+    code {
+      direction: ltr;
+      unicode-bidi: isolate;
+      padding: .12rem .38rem;
+      border-radius: 6px;
+      background: #eef1f7;
+      color: #26375f;
+      font-family: Consolas, monospace;
+      font-size: .92em;
+    }
+    .shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 26px 20px;
+      background: var(--navy);
+      color: #fff;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #f0cc6d, var(--gold));
+      color: var(--navy);
+      font-size: 21px;
+    }
+    nav a {
+      display: block;
+      padding: 9px 11px;
+      margin: 2px 0;
+      border-radius: 9px;
+      color: #dfe7fb;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    nav a:hover { background: rgba(255,255,255,.09); color: #fff; }
+    .side-note {
+      margin-top: 24px;
+      padding: 13px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      color: #c7d2ed;
+      font-size: 12px;
+    }
+    main { min-width: 0; }
+    .hero {
+      padding: 70px clamp(24px, 6vw, 86px) 54px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(214,168,61,.24), transparent 31%),
+        linear-gradient(130deg, #09142f, #152b59);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 11px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      color: #f3d687;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    h1 {
+      max-width: 900px;
+      margin: 19px 0 12px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+    .hero p { max-width: 850px; color: #d7e0f5; font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 11px;
+      border: 1px solid rgba(255,255,255,.24);
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .button.primary { color: var(--navy); background: var(--gold); border-color: var(--gold); }
+    .content {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 40px 0 90px;
+    }
+    .notice {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 13px;
+      margin: 0 0 28px;
+      padding: 18px 20px;
+      border: 1px solid #efd381;
+      border-radius: 15px;
+      background: var(--gold-soft);
+    }
+    .notice strong { color: #72500a; }
+    section {
+      scroll-margin-top: 20px;
+      margin: 0 0 32px;
+      padding: clamp(22px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    h2 {
+      margin: 0 0 20px;
+      color: var(--navy);
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.2;
+    }
+    h3 { margin: 28px 0 10px; color: var(--navy-2); font-size: 21px; }
+    h4 { margin: 21px 0 8px; color: var(--navy-2); }
+    p { margin: 9px 0 15px; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; gap: 16px; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .stat {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(155deg, #fff, #f8faff);
+    }
+    .stat .label { color: var(--muted); font-size: 13px; }
+    .stat .value { margin-top: 5px; color: var(--navy); font-size: 27px; font-weight: 900; }
+    .stat .sub { margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .ok { color: var(--green); background: var(--green-soft); }
+    .warn { color: var(--orange); background: var(--orange-soft); }
+    .bad { color: var(--red); background: var(--red-soft); }
+    .info { color: var(--blue); background: var(--blue-soft); }
+    .table-wrap { overflow-x: auto; margin: 15px 0 21px; border: 1px solid var(--line); border-radius: 14px; }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; background: #fff; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+    th { color: var(--navy); background: #f1f4fa; font-size: 13px; }
+    tr:last-child td { border-bottom: 0; }
+    ul, ol { padding-right: 24px; }
+    li { margin: 6px 0; }
+    .checklist { display: grid; gap: 8px; padding: 0; list-style: none; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0;
+      padding: 10px 12px;
+      border: 1px solid #e5e9f2;
+      border-radius: 10px;
+      background: #fafbfe;
+    }
+    .checklist input { margin-top: 6px; accent-color: var(--green); }
+    .checklist input:checked + span { color: #768099; text-decoration: line-through; }
+    .callout {
+      margin: 17px 0;
+      padding: 16px 18px;
+      border-right: 4px solid var(--blue);
+      border-radius: 10px;
+      background: var(--blue-soft);
+    }
+    .callout.danger { border-color: var(--red); background: var(--red-soft); }
+    .callout.success { border-color: var(--green); background: var(--green-soft); }
+    .flow {
+      direction: ltr;
+      overflow: auto;
+      padding: 20px;
+      border: 1px dashed #b9c3d7;
+      border-radius: 14px;
+      background: #f8faff;
+      color: var(--navy);
+      text-align: center;
+      font-family: Consolas, monospace;
+      white-space: pre;
+      line-height: 1.55;
+    }
+    .phase {
+      position: relative;
+      padding-right: 42px;
+      margin: 20px 0;
+    }
+    .phase::before {
+      content: attr(data-step);
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      color: var(--navy);
+      background: var(--gold);
+      font-weight: 900;
+    }
+    .phase::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      top: 32px;
+      bottom: -20px;
+      width: 1px;
+      background: var(--line);
+    }
+    .phase:last-child::after { display: none; }
+    .phase h3 { margin-top: 0; }
+    .source-list { columns: 2; column-gap: 35px; }
+    .source-list li { break-inside: avoid; }
+    footer {
+      padding: 26px;
+      color: #94a1bd;
+      background: var(--navy);
+      text-align: center;
+      font-size: 13px;
+    }
+    @media (max-width: 960px) {
+      .shell { display: block; }
+      aside { position: static; height: auto; }
+      aside nav { display: flex; overflow-x: auto; gap: 5px; }
+      aside nav a { flex: 0 0 auto; background: rgba(255,255,255,.06); }
+      .side-note { display: none; }
+      .grid.three, .grid.two { grid-template-columns: 1fr; }
+      .source-list { columns: 1; }
+    }
+    @media print {
+      aside, .hero-actions { display: none !important; }
+      .shell { display: block; }
+      .hero { padding: 30px; color: #111; background: #fff; border-bottom: 2px solid #111; }
+      .hero p { color: #333; }
+      .content { width: 100%; padding: 20px; }
+      section { break-inside: avoid; box-shadow: none; border-color: #bbb; }
+      a { color: #111; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="brand">
+      <div class="brand-mark">J</div>
+      <div>Jewish On The Way<br><small style="color:#aebbd8">Independent Launch</small></div>
+    </div>
+    <nav aria-label="ניווט במסמך">
+      <a href="#summary">תקציר ועלויות</a>
+      <a href="#current">מצב נוכחי</a>
+      <a href="#ownership">בעלות והיפרדות</a>
+      <a href="#accounts">חשבונות החנויות</a>
+      <a href="#server">שרת עצמאי</a>
+      <a href="#database">Neon Database</a>
+      <a href="#security">אבטחה וסודות</a>
+      <a href="#compliance">ציות ומוצר</a>
+      <a href="#assets">אתר וגרפיקה</a>
+      <a href="#builds">Build ובדיקות</a>
+      <a href="#google">Google Play</a>
+      <a href="#apple">App Store</a>
+      <a href="#costs">טבלת עלויות</a>
+      <a href="#roadmap">סדר עבודה</a>
+      <a href="#sources">מקורות</a>
+    </nav>
+    <div class="side-note">
+      הסימונים נשמרים מקומית בדפדפן. שינוי סימון כאן אינו מבצע פעולה בשירות חיצוני.
+    </div>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <span class="eyebrow">תוכנית עצמאית · 26.07.2026</span>
+      <h1>מהשרת של המכללה אל השקה עצמאית מלאה</h1>
+      <p>תוכנית עבודה מא׳ עד ת׳ להעברת הבעלות, הקמת תשתית, בדיקת Neon, פתיחת חשבונות Apple ו־Google, מילוי הבירוקרטיה, יצירת Builds ופרסום בטוח.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#roadmap">התחלת סדר העבודה</a>
+        <a class="button" href="codex-independence-and-launch-plan.md">פתיחת גרסת MD</a>
+        <button class="button" type="button" onclick="window.print()">הדפסה / PDF</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="notice">
+        <div>⚑</div>
+        <div><strong>החלטה:</strong> המכללה יוצאת מהתהליך. לא מוסרים למארק חומרי חנויות, לא מפרסמים מחשבונות המכללה ולא משאירים תלות בשרת שלה. כל רכישה או שינוי יבוצעו רק לאחר אישור נפרד.</div>
+      </div>
+
+      <section id="summary">
+        <h2>תקציר ועלויות</h2>
+        <div class="grid three">
+          <div class="stat"><div class="label">פתיחת שתי החנויות</div><div class="value">כ־₪380</div><div class="sub">Google ₪77 חד־פעמי + Apple ₪303 לשנה</div></div>
+          <div class="stat"><div class="label">תשתית חודשית מינימלית</div><div class="value">כ־₪30</div><div class="sub">Hetzner עם IPv4 וגיבוי; Neon/EAS/Cloudinary Free</div></div>
+          <div class="stat"><div class="label">תקציב שנה ראשונה מומלץ</div><div class="value">₪1,350–1,800</div><div class="sub">כולל Neon Launch ותקציב שימוש קטן</div></div>
+        </div>
+        <h3>הכיוון המומלץ</h3>
+        <ol>
+          <li>לפתוח מוקדם Google Play אישי בגלל 12 בודקים במשך 14 ימים.</li>
+          <li>לפתוח Apple Developer Individual אם אין חברה רשומה עם D‑U‑N‑S.</li>
+          <li>להקים Hetzner CX23 בגרמניה עבור ה־Backend.</li>
+          <li>להשאיר PostgreSQL ב־Neon, אך להעביר לפרויקט חדש בבעלותך ב־Frankfurt.</li>
+          <li>לפרסם את האתר והמסמכים ב־Cloudflare Pages בחינם.</li>
+          <li>להשלים אבטחה, סינון תוכן, Terms, בדיקות וגרפיקה לפני Build סופי.</li>
+        </ol>
+        <p class="muted">המרה לשקלים לפי שערי בנק ישראל מ־24.07.2026: דולר ₪3.0620, אירו ₪3.4863. חיוב בפועל עשוי לכלול מס ושער אשראי.</p>
+      </section>
+
+      <section id="current">
+        <h2>מה נמצא בפרויקט עכשיו</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>רכיב</th><th>מצב</th><th>מה זה אומר</th></tr></thead>
+            <tbody>
+              <tr><td>Expo/EAS</td><td><span class="pill ok">מוכן</span></td><td>Project ID קיים תחת `jewish-on-the-way`</td></tr>
+              <tr><td>Bundle/Package</td><td><code>com.jewishontheway.app</code></td><td>זהה ל־iOS ול־Android; לא לשנות לאחר פרסום</td></tr>
+              <tr><td>Expo SDK</td><td>54 / API 36</td><td>מתאים לדרישת Google מאוגוסט 2026</td></tr>
+              <tr><td>API באפליקציה</td><td><span class="pill bad">חסם</span></td><td>עדיין מצביע ל־<code>http://49.12.189.108:3000</code></td></tr>
+              <tr><td>Backend</td><td>NestJS + Socket.IO</td><td>יעבור לשרת עצמאי</td></tr>
+              <tr><td>Neon</td><td><span class="pill ok">תקין טכנית</span></td><td>PostgreSQL 17.10, PostGIS ו־SSL פעילים</td></tr>
+              <tr><td>גודל DB</td><td>כ־37MiB</td><td>רחוק ממגבלת 0.5GB של Free</td></tr>
+              <tr><td>אתר ומדיניות</td><td><span class="pill warn">מוכן מקומית</span></td><td>טרם פורסם ב־HTTPS</td></tr>
+              <tr><td>Guest mode</td><td><span class="pill ok">קיים</span></td><td>יש לבדוק מקצה לקצה</td></tr>
+              <tr><td>דיווח וחסימה</td><td><span class="pill ok">קיים</span></td><td>כולל Admin; חסר סינון תוכן לפני פרסום</td></tr>
+              <tr><td>Terms/Community Rules</td><td><span class="pill bad">חסר</span></td><td>באתר עדיין רשום „בקרוב”</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout success"><strong>ממצא DB:</strong> Neon מתאים לפרויקט. אין צורך להריץ PostgreSQL על ה־VPS. השינוי המומלץ הוא פרויקט חדש ב־Frankfurt, לא החלפת הטכנולוגיה.</div>
+      </section>
+
+      <section id="ownership">
+        <h2>בעלות והיפרדות מהמכללה</h2>
+        <div class="grid two">
+          <div>
+            <h3>נכסים שחייבים להיות שלך</h3>
+            <ul class="checklist">
+              <li><input data-task="own-domain" type="checkbox"><span>Domain ו־DNS</span></li>
+              <li><input data-task="own-hetzner" type="checkbox"><span>Hetzner + SSH keys</span></li>
+              <li><input data-task="own-neon" type="checkbox"><span>Neon Organization/Billing</span></li>
+              <li><input data-task="own-expo" type="checkbox"><span>Expo/EAS</span></li>
+              <li><input data-task="own-cloudinary" type="checkbox"><span>Cloudinary</span></li>
+              <li><input data-task="own-git" type="checkbox"><span>Git repository</span></li>
+              <li><input data-task="own-google" type="checkbox"><span>Google Cloud/Maps</span></li>
+              <li><input data-task="own-anthropic" type="checkbox"><span>Anthropic</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>סיום גישה של המכללה</h3>
+            <ul class="checklist">
+              <li><input data-task="remove-collab" type="checkbox"><span>להסיר Collaborators, Deploy Keys וחשבונות צוות</span></li>
+              <li><input data-task="rotate-all" type="checkbox"><span>להחליף את כל הסודות שהיו על השרת</span></li>
+              <li><input data-task="verify-new" type="checkbox"><span>לאמת שרת ו־DB חדשים לפני ניתוק הישן</span></li>
+              <li><input data-task="request-delete" type="checkbox"><span>לבקש מחיקת קוד, env, לוגים וגיבויים משרת המכללה</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="accounts">
+        <h2>חשבונות החנויות והבירוקרטיה</h2>
+        <div class="grid two">
+          <div class="stat">
+            <span class="pill info">Google Play</span>
+            <div class="value">$25 פעם אחת</div>
+            <p>אם אין ישות משפטית עם D‑U‑N‑S, לפתוח Personal. נדרשים Payments profile, תעודה מזהה, אימייל/טלפון מאומתים ומכשיר Android פיזי.</p>
+            <strong>חסם זמן:</strong> 12 בודקים Opt‑in במשך 14 ימים רצופים, ואז בקשת Production access.
+          </div>
+          <div class="stat">
+            <span class="pill info">Apple Developer</span>
+            <div class="value">$99 בכל שנה</div>
+            <p>ללא חברה רשומה — Individual. Apple ID עם שם משפטי ו־2FA. השם המשפטי מוצג כ־Seller.</p>
+            <strong>אירופה:</strong> נדרשת הצהרת DSA Trader/Non‑Trader. יש לענות אמת או לדחות זמנית הפצה באיחוד עד בירור.
+          </div>
+        </div>
+        <h3>Google — להכין מראש</h3>
+        <ul class="checklist">
+          <li><input data-task="g-account" type="checkbox"><span>Google Account ייעודי עם 2FA</span></li>
+          <li><input data-task="g-id" type="checkbox"><span>תעודה מזהה ופרופיל תשלומים תואם</span></li>
+          <li><input data-task="g-device" type="checkbox"><span>מכשיר Android פיזי לאימות</span></li>
+          <li><input data-task="g-public" type="checkbox"><span>אימייל ציבורי, שם מפתח ואתר פעיל</span></li>
+          <li><input data-task="g-testers" type="checkbox"><span>רשימה של 12–15 בודקים זמינים לשבועיים</span></li>
+        </ul>
+        <h3>Apple — להכין מראש</h3>
+        <ul class="checklist">
+          <li><input data-task="a-account" type="checkbox"><span>Apple Account בשם המשפטי עם 2FA</span></li>
+          <li><input data-task="a-id" type="checkbox"><span>תעודה, כתובת ואמצעי תשלום</span></li>
+          <li><input data-task="a-record" type="checkbox"><span>App Store Connect record ל־<code>com.jewishontheway.app</code></span></li>
+          <li><input data-task="a-dsa" type="checkbox"><span>החלטת DSA Trader והמדינות שיופצו</span></li>
+        </ul>
+      </section>
+
+      <section id="server">
+        <h2>השרת העצמאי</h2>
+        <div class="flow">Mobile App
+    │
+    ▼
+api.jewishontheway.com
+    │
+    ▼
+Hetzner CX23 ── Nginx ── NestJS/PM2
+    │
+    ├── Neon Frankfurt
+    ├── Cloudinary
+    ├── Google Maps/Places
+    ├── Anthropic
+    └── Gmail SMTP</div>
+        <h3>בחירה</h3>
+        <p><strong>Hetzner CX23 בגרמניה</strong> — מתאים להשקה כאשר DB חיצוני. מחיר €5.49 לפני IPv4 ומס; עם Backup של 20% לתכנן כ־₪25–32 בחודש.</p>
+        <h3>צ׳קליסט הקמה</h3>
+        <ul class="checklist">
+          <li><input data-task="srv-account" type="checkbox"><span>חשבון Hetzner עם 2FA ו־SSH key</span></li>
+          <li><input data-task="srv-os" type="checkbox"><span>Ubuntu 24.04 LTS באזור גרמניה</span></li>
+          <li><input data-task="srv-hardening" type="checkbox"><span>משתמש sudo, ביטול סיסמת SSH, UFW, Fail2ban ועדכוני אבטחה</span></li>
+          <li><input data-task="srv-stack" type="checkbox"><span>Node LTS, PM2, Nginx ו־Certbot</span></li>
+          <li><input data-task="srv-build" type="checkbox"><span><code>npm ci</code>, Build ו־migrations</span></li>
+          <li><input data-task="srv-env" type="checkbox"><span>.env ידני עם הרשאות מצומצמות</span></li>
+          <li><input data-task="srv-wss" type="checkbox"><span>Nginx reverse proxy עם WebSocket/WSS</span></li>
+          <li><input data-task="srv-logs" type="checkbox"><span>PM2 startup + logrotate ל־90 יום</span></li>
+          <li><input data-task="srv-backup" type="checkbox"><span>Hetzner Backup וניסוי שחזור</span></li>
+          <li><input data-task="srv-monitor" type="checkbox"><span>Health endpoint וניטור חיצוני</span></li>
+        </ul>
+        <h3>DNS ואתר</h3>
+        <ul>
+          <li><code>jewishontheway.com</code> ו־<code>www</code> → Cloudflare Pages.</li>
+          <li><code>api.jewishontheway.com</code> → Hetzner.</li>
+          <li>Let's Encrypt על ה־Origin וכל התעבורה HTTPS/WSS.</li>
+          <li>לעבור ב־Mobile למשתנה <code>EXPO_PUBLIC_API_URL</code>, לא IP קשיח.</li>
+        </ul>
+      </section>
+
+      <section id="database">
+        <h2>בדיקת Neon והחלטת DB</h2>
+        <div class="grid three">
+          <div class="stat"><div class="label">גרסה</div><div class="value">PostgreSQL 17.10</div><div class="sub">PostGIS פעיל</div></div>
+          <div class="stat"><div class="label">גודל בפועל</div><div class="value">כ־37MiB</div><div class="sub">כ־7% ממגבלת 0.5GB</div></div>
+          <div class="stat"><div class="label">אזור נוכחי</div><div class="value">US East</div><div class="sub">מומלץ Frankfurt</div></div>
+        </div>
+        <div class="callout"><strong>החלטה:</strong> Neon כן; הפרויקט הנוכחי לא לטווח ארוך. נקים פרויקט חדש בבעלותך ב־Frankfurt ונעביר אליו את הנתונים.</div>
+        <h3>למה פרויקט חדש?</h3>
+        <ol>
+          <li>מאמת בעלות ו־Billing עצמאיים.</li>
+          <li>מבטל את הסיסמה הישנה שנחשפה ב־Git.</li>
+          <li>מצמצם Latency בין Backend בגרמניה למסד.</li>
+        </ol>
+        <h3>מעבר בטוח</h3>
+        <ul class="checklist">
+          <li><input data-task="db-new" type="checkbox"><span>Neon Organization ופרויקט Frankfurt בבעלותך</span></li>
+          <li><input data-task="db-postgis" type="checkbox"><span>PostGIS ו־Role חדש לאפליקציה</span></li>
+          <li><input data-task="db-dump" type="checkbox"><span>חלון תחזוקה + pg_dump מוצפן</span></li>
+          <li><input data-task="db-restore" type="checkbox"><span>pg_restore + migrations</span></li>
+          <li><input data-task="db-compare" type="checkbox"><span>השוואת ספירות וישויות קריטיות</span></li>
+          <li><input data-task="db-smoke" type="checkbox"><span>עדכון env ו־Smoke test מלא</span></li>
+          <li><input data-task="db-backup" type="checkbox"><span>pg_dump שבועי וניסוי שחזור</span></li>
+        </ul>
+        <p><strong>מסלול:</strong> Free מספיק ל־Closed Test. לפרודקשן, Launch טיפוסי סביב $15 לחודש נותן חלון שחזור עד 7 ימים ויותר מרווח.</p>
+      </section>
+
+      <section id="security">
+        <h2>אבטחה וסודות</h2>
+        <div class="callout danger"><strong>דחוף:</strong> פרטי Neon מלאים קיימים בקובצי Git. בנוסף, כל סוד שהיה ב־.env על שרת המכללה נחשב נגיש למנהל השרת ויש להחליפו.</div>
+        <div class="grid two">
+          <div>
+            <h3>Rotation</h3>
+            <ul class="checklist">
+              <li><input data-task="sec-db" type="checkbox"><span>Neon role/password</span></li>
+              <li><input data-task="sec-jwt" type="checkbox"><span>JWT_SECRET</span></li>
+              <li><input data-task="sec-audit" type="checkbox"><span>AUDIT_FINGERPRINT_SECRET</span></li>
+              <li><input data-task="sec-cloudinary" type="checkbox"><span>Cloudinary secret</span></li>
+              <li><input data-task="sec-anthropic" type="checkbox"><span>Anthropic key</span></li>
+              <li><input data-task="sec-google" type="checkbox"><span>Google Places key + restrictions</span></li>
+              <li><input data-task="sec-mail" type="checkbox"><span>Gmail App Password</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Git והגנות</h3>
+            <ul class="checklist">
+              <li><input data-task="sec-code" type="checkbox"><span>הסרת connection strings מכל הסקריפטים</span></li>
+              <li><input data-task="sec-ignore" type="checkbox"><span>.gitignore ל־env, credentials ו־keys</span></li>
+              <li><input data-task="sec-scan" type="checkbox"><span>סריקת secrets בהיסטוריה</span></li>
+              <li><input data-task="sec-history" type="checkbox"><span>לאחר Rotation: החלטה לגבי ניקוי היסטוריה</span></li>
+              <li><input data-task="sec-budgets" type="checkbox"><span>Budget alerts ו־API quotas</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="compliance">
+        <h2>השלמות מוצר וציות</h2>
+        <h3>תוכן משתמשים — חסם Apple</h3>
+        <p>הדיווח, החסימה ומסך הניהול קיימים. לא נמצא סינון תוכן פוגעני לפני שמירה, ולכן הוא משימה לפני הגשה.</p>
+        <ul class="checklist">
+          <li><input data-task="ugc-filter" type="checkbox"><span>סינון שרת לפוסטים, תגובות, צ׳אטים וטקסטי אירוח</span></li>
+          <li><input data-task="ugc-report" type="checkbox"><span>בדיקת Report מקצה לקצה</span></li>
+          <li><input data-task="ugc-block" type="checkbox"><span>בדיקת Block דו־צדדי בכל המודולים</span></li>
+          <li><input data-task="ugc-admin" type="checkbox"><span>תור דיווחים וזמן תגובה תפעולי</span></li>
+          <li><input data-task="ugc-notes" type="checkbox"><span>הסבר Report/Block ב־App Review Notes</span></li>
+        </ul>
+        <h3>מסמכים ציבוריים</h3>
+        <ul class="checklist">
+          <li><input data-task="doc-privacy" type="checkbox"><span>Privacy Policy סופית בעברית ובאנגלית</span></li>
+          <li><input data-task="doc-delete" type="checkbox"><span>Delete Account ציבורי ועובד</span></li>
+          <li><input data-task="doc-terms" type="checkbox"><span>Terms of Use בעברית ובאנגלית</span></li>
+          <li><input data-task="doc-community" type="checkbox"><span>Community Guidelines ומדיניות תוכן</span></li>
+          <li><input data-task="doc-hosting" type="checkbox"><span>בטיחות ואחריות באירוח</span></li>
+        </ul>
+        <h3>מחיקת חשבון ומצב אורח</h3>
+        <ul class="checklist">
+          <li><input data-task="delete-prod" type="checkbox"><span>בדיקת מחיקה אמיתית בפרודקשן כולל Cloudinary וטוקן ישן</span></li>
+          <li><input data-task="guest-browse" type="checkbox"><span>אורח רואה מקומות ומידע בלי חשבון</span></li>
+          <li><input data-task="guest-gates" type="checkbox"><span>פעולות אישיות מציגות בקשת התחברות</span></li>
+          <li><input data-task="guest-errors" type="checkbox"><span>אין קריסות/לולאות 401 במצב אורח</span></li>
+        </ul>
+      </section>
+
+      <section id="assets">
+        <h2>אתר, Metadata וגרפיקה</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>שימוש</th><th>כתובת</th></tr></thead>
+            <tbody>
+              <tr><td>אתר</td><td><code>https://jewishontheway.com</code></td></tr>
+              <tr><td>Privacy</td><td><code>https://jewishontheway.com/privacy</code></td></tr>
+              <tr><td>מחיקת חשבון</td><td><code>https://jewishontheway.com/delete-account</code></td></tr>
+              <tr><td>Terms</td><td><code>https://jewishontheway.com/terms</code></td></tr>
+              <tr><td>כללי קהילה</td><td><code>https://jewishontheway.com/community-guidelines</code></td></tr>
+              <tr><td>API</td><td><code>https://api.jewishontheway.com</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>מוכן</h3>
+        <p>Metadata, אייקון Apple 1024×1024, אייקון Google 512×512 ו־Feature Graphic 1024×500 קיימים.</p>
+        <h3>נשאר</h3>
+        <ul class="checklist">
+          <li><input data-task="asset-site" type="checkbox"><span>פרסום האתר והמסמכים ב־Cloudflare Pages</span></li>
+          <li><input data-task="asset-ios-shots" type="checkbox"><span>סט iPhone 6.9″ במידה נתמכת</span></li>
+          <li><input data-task="asset-android-shots" type="checkbox"><span>4–8 צילומי Android איכותיים</span></li>
+          <li><input data-task="asset-accurate" type="checkbox"><span>התמונות מציגות רק פיצ׳רים שקיימים בגרסה</span></li>
+        </ul>
+      </section>
+
+      <section id="builds">
+        <h2>Builds ובדיקות</h2>
+        <div class="grid two">
+          <div class="stat">
+            <span class="pill info">Android</span>
+            <p><code>eas build --platform android --profile production</code></p>
+            <p>תוצאה: AAB חתום. להפעיל Play App Signing ולהעלות versionCode בכל Build חדש.</p>
+          </div>
+          <div class="stat">
+            <span class="pill info">iOS</span>
+            <p><code>eas build --platform ios --profile production</code></p>
+            <p>תוצאה: Build חתום בחשבון Apple שלך. אין צורך ב־Mac; להעלות buildNumber בכל Build חדש.</p>
+          </div>
+        </div>
+        <p><strong>EAS:</strong> Free מספיק להתחלה. אם נגמרת המכסה או רוצים תור מהיר, Starter עולה $19 לחודש ואפשר לבטל לאחר חודש ההגשה.</p>
+        <h3>מטריצת בדיקות</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>בדיקה</th><th>Android</th><th>iOS</th></tr></thead>
+            <tbody>
+              <tr><td>התקנה נקייה ומצב אורח</td><td>☐</td><td>☐</td></tr>
+              <tr><td>הרשמה, Login, Logout, Password reset</td><td>☐</td><td>☐</td></tr>
+              <tr><td>Location — אישור וסירוב</td><td>☐</td><td>☐</td></tr>
+              <tr><td>תמונות ו־Cloudinary</td><td>☐</td><td>☐</td></tr>
+              <tr><td>קהילה, Report, Block, Filter</td><td>☐</td><td>☐</td></tr>
+              <tr><td>Minyan/Hosting/Chat דרך WSS</td><td>☐</td><td>☐</td></tr>
+              <tr><td>מחיקת חשבון</td><td>☐</td><td>☐</td></tr>
+              <tr><td>עברית, אנגלית, צרפתית</td><td>☐</td><td>☐</td></tr>
+              <tr><td>רשת חלשה/מנותקת</td><td>☐</td><td>☐</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="google">
+        <h2>Google Play — טפסים והגשה</h2>
+        <div class="grid two">
+          <div>
+            <h3>Store Listing</h3>
+            <ul>
+              <li>שם עד 30, תיאור קצר עד 80, מלא עד 4,000.</li>
+              <li>אייקון, Feature Graphic וצילומי מסך.</li>
+              <li>Travel & Local, אתר, אימייל ו־Privacy URL.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>App Content</h3>
+            <ul>
+              <li>Data Safety כולל SDKs וצדדים שלישיים.</li>
+              <li>App Access עם Demo account ללא OTP.</li>
+              <li>Ads: No; Content Rating; Target Audience.</li>
+              <li>Location, Account Deletion ויתר ההצהרות.</li>
+            </ul>
+          </div>
+        </div>
+        <h3>מסלול</h3>
+        <div class="phase" data-step="1"><h3>Internal testing</h3><p>ווידוא שה־AAB מתקין ונפתח.</p></div>
+        <div class="phase" data-step="2"><h3>Closed testing</h3><p>12 בודקים במשך 14 ימים רצופים.</p></div>
+        <div class="phase" data-step="3"><h3>Production access</h3><p>מענה לשאלון הבדיקה והגשת בקשה.</p></div>
+        <div class="phase" data-step="4"><h3>Staged rollout</h3><p>10%–20%, מעקב Vitals, ואז 100%.</p></div>
+      </section>
+
+      <section id="apple">
+        <h2>App Store — טפסים והגשה</h2>
+        <div class="grid two">
+          <div>
+            <h3>Product Page</h3>
+            <ul>
+              <li>Name, Subtitle, Description ו־Keywords.</li>
+              <li>Support, Marketing ו־Privacy URLs.</li>
+              <li>צילומי iPhone ו־Copyright.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Compliance</h3>
+            <ul>
+              <li>App Privacy / Nutrition Labels.</li>
+              <li>Age Rating, Encryption, Content Rights.</li>
+              <li>DSA Trader והמדינות להפצה.</li>
+              <li>Review account ו־Notes מפורטים.</li>
+            </ul>
+          </div>
+        </div>
+        <h3>מסלול</h3>
+        <ol>
+          <li>Build חתום דרך EAS.</li>
+          <li>Internal TestFlight על iPhone אמיתי.</li>
+          <li>תיקון והעלאת Build Number חדש אם צריך.</li>
+          <li>App Review עם Backend חי וחשבון בדיקה.</li>
+          <li>Manual Release לאחר אישור.</li>
+        </ol>
+        <div class="callout"><strong>Sign in with Apple:</strong> אינו נדרש בגרסה 1.0 כי האפליקציה משתמשת באימייל וסיסמה בלבד. אם נפעיל Google Sign‑In בעתיד, נוסיף גם Sign in with Apple.</div>
+      </section>
+
+      <section id="costs">
+        <h2>טבלת עלויות מלאה</h2>
+        <h3>הכרחי</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>רכיב</th><th>מחיר</th><th>אומדן ₪</th><th>תדירות</th></tr></thead>
+            <tbody>
+              <tr><td>Google Play</td><td>$25</td><td>כ־₪77</td><td>חד־פעמי</td></tr>
+              <tr><td>Apple Developer</td><td>$99</td><td>כ־₪303</td><td>שנתי</td></tr>
+              <tr><td>Hetzner + IPv4 + Backup</td><td>כ־€7.1</td><td>כ־₪25 לפני מס; לתכנן ₪30</td><td>חודשי</td></tr>
+              <tr><td>Domain</td><td>כ־$11.28 + fee</td><td>כ־₪35</td><td>שנתי; כבר שולם</td></tr>
+              <tr><td>SSL + Cloudflare Pages</td><td>$0</td><td>₪0</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>לפי שימוש</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>שירות</th><th>התחלה</th><th>תרחיש תשלום</th></tr></thead>
+            <tbody>
+              <tr><td>Neon</td><td>$0</td><td>Launch טיפוסי $15/חודש</td></tr>
+              <tr><td>Expo EAS</td><td>$0</td><td>Starter $19 לחודש Build עמוס</td></tr>
+              <tr><td>Cloudinary</td><td>$0 / 25 credits</td><td>Plus $99 רק בחריגה משמעותית</td></tr>
+              <tr><td>Google Maps</td><td>Free caps</td><td>Pay‑as‑you‑go אחרי מכסה</td></tr>
+              <tr><td>Anthropic Haiku</td><td>שימוש קטן</td><td>$1/MTok input, $5/MTok output</td></tr>
+              <tr><td>Gmail SMTP</td><td>$0</td><td>ספק מייל בתשלום בעת גדילה</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid two">
+          <div class="stat"><div class="label">מינימום שנה ראשונה</div><div class="value">₪800–1,000</div><div class="sub">Free tiers, לפני שימוש חריג</div></div>
+          <div class="stat"><div class="label">מומלץ לפרודקשן</div><div class="value">₪1,350–1,800</div><div class="sub">Neon Launch + Buffer קטן</div></div>
+        </div>
+      </section>
+
+      <section id="roadmap">
+        <h2>סדר עבודה מאושר</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>משימה</th><th>משך</th><th>עלות</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Inventory והרשאות מכללה</strong></td><td>חצי יום</td><td>₪0</td></tr>
+              <tr><td>2</td><td>Google Play + אימות</td><td>1–7 ימים</td><td>₪77</td></tr>
+              <tr><td>3</td><td>Apple Developer</td><td>1–7 ימים</td><td>₪303</td></tr>
+              <tr><td>4</td><td>Cloudflare + אתר</td><td>חצי יום</td><td>₪0</td></tr>
+              <tr><td>5</td><td>Hetzner והקשחה</td><td>יום</td><td>₪30/חודש</td></tr>
+              <tr><td>6</td><td>Neon Frankfurt + Migration</td><td>חצי–יום</td><td>₪0 לבדיקה</td></tr>
+              <tr><td>7</td><td>Rotation וניקוי סודות</td><td>יום</td><td>₪0</td></tr>
+              <tr><td>8</td><td>Backend + HTTPS/WSS + migrations</td><td>1–2 ימים</td><td>כלול</td></tr>
+              <tr><td>9</td><td>Terms, Community Rules וסינון</td><td>1–3 ימים</td><td>₪0 ללא עו״ד</td></tr>
+              <tr><td>10</td><td>בדיקות וצילומי מסך</td><td>3–5 ימים</td><td>₪0</td></tr>
+              <tr><td>11</td><td>Google Closed Test</td><td>14+ ימים</td><td>EAS Free</td></tr>
+              <tr><td>12</td><td>iOS TestFlight</td><td>2–5 ימים</td><td>EAS Free</td></tr>
+              <tr><td>13</td><td>טפסים, Review ו־Release</td><td>2–10 ימים</td><td>₪0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout success"><strong>המשימה הראשונה:</strong> Inventory ללא רכישה — נבדוק באיזה חשבון נמצאים Domain, Expo, Neon, Cloudinary, Git ו־Google Cloud, והאם למכללה עדיין יש הרשאה. לאחר אישור נפתח Google Play.</div>
+        <h3>תנאי Go/No‑Go</h3>
+        <ul class="checklist">
+          <li><input data-task="go-owned" type="checkbox"><span>כל החשבונות וה־Billing בבעלותך</span></li>
+          <li><input data-task="go-api" type="checkbox"><span>API ב־HTTPS ללא תלות במכללה</span></li>
+          <li><input data-task="go-db" type="checkbox"><span>DB וגיבוי בבעלותך ושחזור נבדק</span></li>
+          <li><input data-task="go-secrets" type="checkbox"><span>אין סודות תקפים ב־Git</span></li>
+          <li><input data-task="go-docs" type="checkbox"><span>כל המסמכים הציבוריים פעילים</span></li>
+          <li><input data-task="go-ugc" type="checkbox"><span>Filter, Report, Block ומודרציה עובדים</span></li>
+          <li><input data-task="go-test" type="checkbox"><span>Closed Test ו־TestFlight הושלמו</span></li>
+          <li><input data-task="go-forms" type="checkbox"><span>הצהרות הפרטיות תואמות לקוד</span></li>
+          <li><input data-task="go-monitor" type="checkbox"><span>ניטור, גיבויים ותקציבי API פעילים</span></li>
+        </ul>
+      </section>
+
+      <section id="sources">
+        <h2>מקורות רשמיים</h2>
+        <ul class="source-list">
+          <li><a href="https://developer.apple.com/programs/enroll/">Apple enrollment ו־$99</a></li>
+          <li><a href="https://developer.apple.com/app-store/review/guidelines/">Apple Review Guidelines</a></li>
+          <li><a href="https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy/">Apple App Privacy</a></li>
+          <li><a href="https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/">Apple screenshots</a></li>
+          <li><a href="https://developer.apple.com/news/upcoming-requirements/">Apple 2026 SDK requirements</a></li>
+          <li><a href="https://support.google.com/googleplay/android-developer/answer/6112435?hl=en">Google Play registration</a></li>
+          <li><a href="https://support.google.com/googleplay/android-developer/answer/14151465?hl=en">Google personal testing</a></li>
+          <li><a href="https://support.google.com/googleplay/android-developer/answer/10841920?hl=en">Google identity verification</a></li>
+          <li><a href="https://support.google.com/googleplay/android-developer/answer/10787469?hl=en">Google Data Safety</a></li>
+          <li><a href="https://support.google.com/googleplay/android-developer/answer/11926878?hl=en-GB_ALL">Google Target API</a></li>
+          <li><a href="https://docs.expo.dev/eas/">Expo EAS</a></li>
+          <li><a href="https://docs.expo.dev/billing/faq/">Expo billing</a></li>
+          <li><a href="https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/">Hetzner 2026 pricing</a></li>
+          <li><a href="https://neon.com/pricing">Neon pricing</a></li>
+          <li><a href="https://developers.cloudflare.com/pages/">Cloudflare Pages</a></li>
+          <li><a href="https://cloudinary.com/pricing">Cloudinary pricing</a></li>
+          <li><a href="https://developers.google.com/maps/billing-and-pricing/pricing">Google Maps pricing</a></li>
+          <li><a href="https://platform.claude.com/docs/en/about-claude/models/overview">Anthropic pricing</a></li>
+          <li><a href="https://www.boi.org.il/en/economic-roles/financial-markets/exchange-rates/">בנק ישראל — שערים</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>Jewish On The Way · תוכנית עצמאית מלאה · עודכן 26.07.2026</footer>
+  </main>
+</div>
+<script>
+  document.querySelectorAll('[data-task]').forEach((box) => {
+    const key = 'jotw-launch:' + box.dataset.task;
+    box.checked = localStorage.getItem(key) === '1';
+    box.addEventListener('change', () => {
+      localStorage.setItem(key, box.checked ? '1' : '0');
+    });
+  });
+</script>
+</body>
+</html>

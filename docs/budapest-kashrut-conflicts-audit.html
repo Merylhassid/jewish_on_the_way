@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>בודפשט - ביקורת סתירות כשרות</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f9fb;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #dbe3ea;
+      --brand: #0f766e;
+      --warn: #b45309;
+      --danger: #b91c1c;
+      --soft-warn: #fff7ed;
+      --soft-danger: #fef2f2;
+      --soft-brand: #ecfdf5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, "Noto Sans Hebrew", "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      color: #0f172a;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 24px;
+      color: #0f172a;
+    }
+
+    h3 {
+      margin-top: 22px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 12px 0 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--soft-danger);
+      color: var(--danger);
+      font-weight: 700;
+      border: 1px solid #fecaca;
+    }
+
+    section {
+      margin-top: 24px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .notice {
+      border: 1px solid #fed7aa;
+      background: var(--soft-warn);
+      color: #7c2d12;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    ol,
+    ul {
+      margin: 14px 0 0;
+      padding-right: 22px;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .table-wrap {
+      margin-top: 16px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: right;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .num {
+      width: 42px;
+      color: var(--brand);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .todo {
+      color: var(--warn);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .source {
+      color: #334155;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--soft-brand);
+      color: var(--brand);
+      border: 1px solid #bbf7d0;
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    code {
+      direction: ltr;
+      display: inline-block;
+      background: #eef2f7;
+      color: #0f172a;
+      border-radius: 5px;
+      padding: 1px 6px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+
+    footer {
+      color: var(--muted);
+      margin-top: 20px;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      header,
+      section {
+        padding: 18px;
+        border-radius: 8px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>בודפשט - ביקורת סתירות כשרות</h1>
+      <p class="subtitle">קובץ עבודה להשוואה בין מה שכבר קיים במסד הנתונים לבין סקריפט ההוספה החדש והמידע מהתמונות.</p>
+      <div class="status">Review only - לא להריץ Import, לא Seed, ולא לדרוס ערכים קיימים</div>
+      <p class="notice">כל סתירה בין הסקריפט לבין המסד הקיים נעצרת לבדיקה ידנית. ברירת המחדל: לא משנים את המסד.</p>
+      <p class="subtitle">עודכן אחרי apply של <code>backend/scripts/import-budapest-launch-data.js --apply</code>. יעדים קיימים: Hungary id 549, Budapest id 481. עודכנו 13 מקומות קיימים לפי Google place ID, נוסף מקום אחד חדש: Slow Moe's id 8485, ונמחקה כפילות ישנה של hummusbar id 6311 אחרי backup.</p>
+    </header>
+
+    <section>
+      <h2>מטרה</h2>
+      <p>בודפשט כבר קיימת במסד הנתונים. הדף הזה נועד לרכז את הסתירות האפשריות, בעיקר סביב כשרויות, לפני שמאשרים כל שינוי עתידי.</p>
+      <p>המידע כאן אינו מקור אמת לייבוא. הוא כלי בקרה בלבד.</p>
+    </section>
+
+    <section>
+      <h2>כללי בדיקה</h2>
+      <ol>
+        <li>התאמה לפי Google place ID קודמת לכל. אחריה Maps URL מדויק, טלפון ועיר, ואז שם מנורמל עם כתובת.</li>
+        <li>לא לערבב בין <code>restaurantType</code> לבין <code>kashrutLevel</code>.</li>
+        <li>הערות, טיפים, אזהרות ומידע כללי מהתמונה נכנסים ל־<code>about</code> או verification notes, לא לשדה הכשרות.</li>
+        <li>לא מצמידים דירוגים של מלון או גוף לא קשור למסעדה ספציפית.</li>
+        <li>במקום ששייך לחב"ד, דירוג/ביקורות של מעטפת חב"ד מותרים רק כשברור שהמסעדה מופעלת על ידי אותו גוף.</li>
+        <li>אין עדכון DB בלי החלטה מפורשת על שורת הסתירה.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>טבלת סתירות</h2>
+      <p>יש למלא את עמודות המסד והסקריפט לפני החלטה. השדה מהתמונה הוזן לפי המידע שסופק בצילום.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>מקום</th>
+              <th>כשרות לפי תמונה / מקור משתמש</th>
+              <th>כשרות קיימת במסד</th>
+              <th>כשרות בסקריפט</th>
+              <th>סתירה?</th>
+              <th>החלטה</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">1</td><td>CAFE TAMAR / קפה תמר<br><small>DB id 6303</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">2</td><td>TEL AVIV CAFE / קפה תל אביב<br><small>DB id 6304</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">3</td><td>BROOKLYN BAGEL / ברוקלין בייגל<br><small>DB id 6305</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">4</td><td>MARRAKESH / מסעדת מרקש<br><small>DB id 6309</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">5</td><td>SHUK HACARMEL / שוק הכרמל<br><small>DB id 6310</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">6</td><td>HUMMUSBAR / חומוס בר<br><small>DB id 8342</small></td><td class="source">בד"ץ חוג חתם סופר פתח תקוה</td><td>badatz<br><small>type: pareve</small></td><td>badatz<br><small>type: pareve</small></td><td>נפתר</td><td>עודכן לפי המקור שסופק: בד"ץ חתם סופר, ללא כפילות.</td></tr>
+            <tr><td class="num">7</td><td>NITAVALO / מסעדת ניטאבלו<br><small>DB id 6312</small></td><td class="source">בד"ץ תפארת ישראל בראשות הרב הראל אשר זיידי</td><td>badatz</td><td>badatz</td><td>לא</td><td>אין סתירת כשרות. אפשר להשאיר.</td></tr>
+            <tr><td class="num">8</td><td>HANNA / מסעדת חנה<br><small>DB id 6313</small></td><td class="source">בהשגחת מערכת הכשרות CRC שע"י התאחדות הרבנים דארה"ב וקנדה</td><td>badatz</td><td>badatz</td><td>נפתר</td><td>עודכן לפי המקור שסופק: CRC / התאחדות הרבנים, ללא כפילות.</td></tr>
+            <tr><td class="num">9</td><td>CARMEL / מסעדת כרמל<br><small>DB id 6314</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">10</td><td>FALAFEL BAR / פלאפל בר<br><small>DB id 6315</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. לא לייבא מחדש בלי צורך.</td></tr>
+            <tr><td class="num">11</td><td>ASHIS / מסעדת אשיז<br><small>DB id 6318</small></td><td class="source">בהשגחת הרב נחמיה רוטנברג</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>אין סתירת כשרות. שם המשגיח יכול להיכנס ל־about/notes אם צריך.</td></tr>
+            <tr><td class="num">12</td><td>UpTown Kosher bakery / מאפיית שמש<br><small>DB id 8348</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>נפתר</td><td>עודכן לפי המקור שסופק: מהדרין חב"ד בודפשט, ללא כפילות.</td></tr>
+            <tr><td class="num">13</td><td>Slow Moe's Kosher Bakery<br><small>DB id 8485</small></td><td class="source">בהשגחת הרב ברוך אוברלנדר, חב"ד בודפשט</td><td>mehadrin</td><td>mehadrin</td><td>לא</td><td>נוסף כמקום חדש אחד. לפני ההוספה לא נמצא במסד לפי place ID, שם, או כתובת.</td></tr>
+            <tr><td class="num">14</td><td>Koser Piac / Kosher Market / חנות כשרה<br><small>DB id 8346</small></td><td class="source">בתמונה יש פרטי חנות, אבל לא מופיע קו כשרות מפורש</td><td>rabbinate</td><td>rabbinate</td><td>לא</td><td>אין סתירת כשרות, אבל אין מקור תמונה לרמת ההשגחה. להשאיר DB.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>הערות שצריכות להיכנס ל־About</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>הערה מהתמונה</th>
+              <th>שדה יעד</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">1</td><td>מסעדה חלבית כשרה איטלקית באזור היהודי. במקום מוצעים ארוחות בוקר.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">2</td><td>בית קפה/מסעדה חלבית במרכז האזור היהודי. פיצות, פסטות, דגים, סלטים, טייק-אוויי וקייטרינג.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">3</td><td>מסעדה חלבית ליד האי מרגיט וסמוך לבית הכנסת המרכזי של חב"ד.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">4</td><td>מסעדה מרוקאית אותנטית ברובע היהודי.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">5</td><td>מסעדת מזון מהיר מבית היוצר של מסעדת כרמל: שווארמה, שניצל, חומוס, פלאפל ועוד.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">6</td><td>סניף של רשת החומוסיות הישראלית בבודפשט, עם חומוס, פלאפל, מסבחה, שקשוקה ועוד.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">7</td><td>מזנון שף כשר למהדרין של השף אהרון פייגין.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">8</td><td>מסעדה מסורתית עם אוכל יהודי ביתי. סעודות שבת בהזמנה מראש.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">9</td><td>מסעדה בשרית כשרה במטבח יהודי/הונגרי קלאסי. סעודות שבת בהזמנה מראש.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">10</td><td>חנות פלאפל ומסעדת מזון מהיר מבית קפה תמר.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">11</td><td>מסעדת סטריט-פוד בסגנון ישראלי: פלאפל, חומוס, שניצל, המבורגר ועוד.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">12</td><td>מאפייה כשרה באזור היהודי עם מאפים, לחמים, חלות ועוגות הונגריות.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">13</td><td>עגלה/מאפייה כשרה מבית מאפיית שמש ליד מלון 7seasons.</td><td><span class="tag">about</span></td></tr>
+            <tr><td class="num">14</td><td>חנות מוצרים כשרים באזור היהודי, כולל מוצרים ישראליים.</td><td><span class="tag">about / category tag</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>שדות להשוואה לפני אישור</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>שדה</th>
+              <th>מסד קיים</th>
+              <th>סקריפט</th>
+              <th>מקור אמון ראשון</th>
+              <th>הערה</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>name</td><td>קיים ל־13 מקומות; Slow Moe's לא נמצא לפי place ID</td><td>14 שמות בסקריפט</td><td>Google / DB קיים</td><td>לא לשנות שמות קיימים בלי בדיקה.</td></tr>
+            <tr><td>address</td><td>קיים ברוב המקומות, חלק מהכתובות ישנות/חלקיות</td><td>כתובות Google מלאות לכל 14</td><td>Google Maps</td><td>עדכון כתובת הוא לא כשרות, אבל דורש אישור כי הוא משנה רשומות קיימות.</td></tr>
+            <tr><td>phone</td><td>ברוב הרשומות null</td><td>קיים לחלק מהמקומות</td><td>Google Maps / אתר רשמי</td><td>אפשר לשקול עדכון נפרד, לא כחלק מתיקון כשרות.</td></tr>
+            <tr><td>website</td><td>ברוב הרשומות null; Hanna כולל אתר שבת</td><td>יש אתרים/פייסבוק לחלק מהמקומות</td><td>אתר רשמי של המקום</td><td>לא להחליף אתר קיים בלי בדיקה.</td></tr>
+            <tr><td>googleMapsUrl</td><td>קיים לכל 13 שנמצאו</td><td>קיים לכל 14</td><td>Google URL פתור</td><td>ההתאמה בוצעה לפי place ID של הסקריפט.</td></tr>
+            <tr><td>rating</td><td>rating המקומי null; google_rating קיים</td><td>rating מספרי קיים בסקריפט</td><td>רישום ישיר בגוגל</td><td>לא נדרש לדוח הכשרות כרגע.</td></tr>
+            <tr><td>reviewCount</td><td>google_rating_count קיים</td><td>googleRatingCount קיים</td><td>רישום ישיר בגוגל</td><td>המספרים השתנו מעט בין DB לסקריפט, זה טבעי בגוגל.</td></tr>
+            <tr><td>restaurantType</td><td>Hummus Bar עודכן מ־dairy ל־pareve</td><td>Hummus Bar מוגדר pareve</td><td>תמונה / אתר רשמי</td><td>חלבי/בשרי/פרווה/חנות - לא גוף הכשרות.</td></tr>
+            <tr><td>kashrutLevel</td><td>הסתירות #6, #8, #12 נפתרו לפי המקור שסופק</td><td>הסקריפט עודכן בהתאם</td><td>תמונות ומלל מקור שסופקו על ידי המשתמש</td><td>Kosher Market נשאר rabbinate כי לא סופקה רמת השגחה מפורשת.</td></tr>
+            <tr><td>about</td><td>website_text לרוב null</td><td>websiteText מלא לפי התמונה</td><td>תמונה / אתר רשמי</td><td>הערות וטיפים צריכים להיכנס ל־about רק אחרי אישור עדכון תוכן.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>לוג אישורים</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>תאריך</th>
+              <th>בודק</th>
+              <th>מה אושר</th>
+              <th>הערות</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2026-07-21</td><td>Codex</td><td>Budapest food batch applied</td><td>13 upserts, 1 insert, ללא העלאת תמונות. Slow Moe's נוסף כ־id 8485.</td></tr>
+            <tr><td>2026-07-21</td><td>Codex</td><td>Duplicate cleanup</td><td>נמחקה רשומת hummusbar ישנה id 6311 אחרי backup: <code>backend/audit-output/delete-specific-restaurants-6311-backup.json</code>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      קובץ זה נועד לביקורת ידנית בלבד. הוא לא מחליף בדיקת DB, Google Maps, ואתרי מקור רשמיים.
+    </footer>
+  </main>
+</body>
+</html>

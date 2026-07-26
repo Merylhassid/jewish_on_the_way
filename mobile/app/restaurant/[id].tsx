@@ -30,6 +30,8 @@ interface Restaurant {
   phone?: string;
   originalPhone?: string;
   category?: string;
+  about?: string;
+  websiteUrl?: string;
   openingHours?: string;
   lat?: number;
   lng?: number;
@@ -136,6 +138,10 @@ export default function RestaurantDetailScreen() {
 
   const openCall = (phone: string) => {
     Linking.openURL(`tel:${phone}`).catch(() => {});
+  };
+
+  const openWebsite = (websiteUrl: string) => {
+    Linking.openURL(websiteUrl).catch(() => {});
   };
 
   const openMap = (lat: number, lng: number, name: string) => {
@@ -313,12 +319,22 @@ export default function RestaurantDetailScreen() {
           </View>
         )}
 
+        {restaurant.about && (
+          <View style={s.infoCard}>
+            <MaterialIcons name="info-outline" size={18} color={C.gold} style={s.infoIcon} />
+            <View style={s.infoText}>
+              <Text style={s.infoLabel}>{t('restaurants.about')}</Text>
+              <Text style={s.infoValue}>{restaurant.about}</Text>
+            </View>
+          </View>
+        )}
+
         {/* ── Reviews ── */}
         <Text style={s.sectionTitle}>{t('restaurants.reviews')}</Text>
         <ReviewSection entityType="restaurant" entityId={Number(id)} />
 
         {/* ── Action buttons ── */}
-        {(hasPhone || restaurant.googleMapsUri || hasLocation || hasAddress) && (
+        {(hasPhone || restaurant.websiteUrl || restaurant.googleMapsUri || hasLocation || hasAddress) && (
           <View style={s.actions}>
             {hasPhone && (
               <Pressable
@@ -331,6 +347,22 @@ export default function RestaurantDetailScreen() {
                 <View style={s.actionContent}>
                   <Text style={s.actionTitle}>{t('restaurants.call')}</Text>
                   <Text style={s.actionSub}>{restaurant.phone}</Text>
+                </View>
+                <MaterialIcons name="chevron-right" size={20} color={C.textMuted} />
+              </Pressable>
+            )}
+
+            {restaurant.websiteUrl && (
+              <Pressable
+                style={({ pressed }) => [s.actionBtn, pressed && s.actionBtnPressed]}
+                onPress={() => openWebsite(restaurant.websiteUrl!)}
+              >
+                <View style={[s.actionIconBox, { backgroundColor: C.typeDairyBg }]}>
+                  <MaterialIcons name="language" size={22} color={C.typeDairy} />
+                </View>
+                <View style={s.actionContent}>
+                  <Text style={s.actionTitle}>{t('restaurants.website')}</Text>
+                  <Text style={s.actionSub}>{t('restaurants.visitWebsite')}</Text>
                 </View>
                 <MaterialIcons name="chevron-right" size={20} color={C.textMuted} />
               </Pressable>
