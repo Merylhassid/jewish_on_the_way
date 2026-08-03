@@ -48,7 +48,7 @@ jobs:
           install -d -m 700 ~/.ssh
           ssh-keyscan -t ed25519 159.195.212.37 > ~/.ssh/known_hosts.scan
           ssh-keygen -lf ~/.ssh/known_hosts.scan -E sha256 | \
-            grep -F 'SHA256:otm/tj2Ffj5BzPWFzjNbXpoFf0RLov6j33l5eK0tmwM'
+            grep -F 'SHA256:otm/tj2Ffj5BzPWFzjNbXpoFf0RLov6j33l5eKOtmwM'
           mv ~/.ssh/known_hosts.scan ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
