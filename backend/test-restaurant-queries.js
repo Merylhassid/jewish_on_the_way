@@ -7,7 +7,7 @@
 const https = require('https');
 const http = require('http');
 
-const BASE_URL = 'http://49.12.189.108:3000';
+const BASE_URL = process.env.BASE_URL || 'https://api.jewishontheway.com';
 const CONCURRENCY = 3;
 const REQUEST_DELAY_MS = 200; // delay between requests to avoid throttling
 const TEL_AVIV_LAT = 32.0853;

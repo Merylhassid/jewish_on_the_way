@@ -17,7 +17,7 @@ const https = require('https');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SERVER = process.env.BENCH_SERVER || 'http://49.12.189.108:3000';
+const SERVER = process.env.BENCH_SERVER || 'https://api.jewishontheway.com';
 const EMAIL = process.env.BENCH_EMAIL;
 const PASSWORD = process.env.BENCH_PASSWORD;
 const TARGET_COUNT = Number(process.env.BENCH_COUNT || 1000);

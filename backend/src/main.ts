@@ -13,6 +13,14 @@ const parseCorsOrigins = () =>
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  // Production traffic reaches Nest through the local Nginx reverse proxy.
+  // Trust exactly that single hop so req.ip and HTTPS detection use the
+  // forwarded values without accepting an arbitrary proxy chain.
+  if (isProduction) {
+    app.getHttpAdapter().getInstance().set('trust proxy', 1);
+  }
 
   // req 9.1.2 / 13.3 — HTTPS enforcement + security headers
   app.use((req: any, res: any, next: () => void) => {
@@ -40,8 +48,6 @@ async function bootstrap() {
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-  const isProduction = process.env.NODE_ENV === 'production';
-
   app.enableCors({
     origin: isProduction ? parseCorsOrigins() : '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
@@ -68,8 +74,9 @@ async function bootstrap() {
   }
 
   const port = Number(process.env.PORT) || 3001;
-  await app.listen(port, '0.0.0.0');
+  const host = process.env.HOST?.trim() || '0.0.0.0';
+  await app.listen(port, host);
 
-  console.log(`✅ Server running on http://localhost:${port}`);
+  console.log(`✅ Server running on http://${host}:${port}`);
 }
 bootstrap();

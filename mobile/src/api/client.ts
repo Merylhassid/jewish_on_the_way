@@ -12,7 +12,11 @@ const storage = {
   remove: (k: string) => Platform.OS === 'web' ? AsyncStorage.removeItem(k)    : SecureStore.deleteItemAsync(k),
 };
 
-export const API_URL = 'http://49.12.189.108:3000';
+const configuredApiUrl = process.env.EXPO_PUBLIC_API_URL?.trim();
+
+export const API_URL = (
+  configuredApiUrl || 'https://api.jewishontheway.com'
+).replace(/\/+$/, '');
 
 export function describeApiError(error: unknown) {
   const e = error as any;

@@ -2,7 +2,7 @@
  * Runs docs/smart-search-random-1000.json against the real app API.
  *
  * Usage:
- *   BENCH_SERVER=http://49.12.189.108:3000 BENCH_TOKEN=... node docs/run-smart-search-random-1000.js
+ *   BENCH_SERVER=https://api.jewishontheway.com BENCH_TOKEN=... node docs/run-smart-search-random-1000.js
  *   BENCH_EMAIL=... BENCH_PASSWORD=... node docs/run-smart-search-random-1000.js
  *
  * Optional:
@@ -19,7 +19,7 @@ const https = require('https');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SERVER = process.env.BENCH_SERVER || 'http://49.12.189.108:3000';
+const SERVER = process.env.BENCH_SERVER || 'https://api.jewishontheway.com';
 const EMAIL = process.env.BENCH_EMAIL;
 const PASSWORD = process.env.BENCH_PASSWORD;
 const TOKEN = process.env.BENCH_TOKEN;

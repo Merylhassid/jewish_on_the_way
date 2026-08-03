@@ -1,14 +1,15 @@
 /**
  * Restaurant search benchmark runner
- * Usage: node run-benchmark.js <path-to-benchmark.json>
+ * Usage:
+ *   BENCH_EMAIL=... BENCH_PASSWORD=... node run-benchmark.js <path-to-benchmark.json>
  */
 const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
-const SERVER = 'http://49.12.189.108:3000';
-const EMAIL = 'daniyehudai@gmail.com';
-const PASSWORD = 'daniel2109';
+const SERVER = process.env.BENCH_SERVER || 'https://api.jewishontheway.com';
+const EMAIL = process.env.BENCH_EMAIL;
+const PASSWORD = process.env.BENCH_PASSWORD;
 
 async function request(method, url, body, headers = {}) {
   return new Promise((resolve, reject) => {
@@ -41,6 +42,10 @@ async function request(method, url, body, headers = {}) {
 }
 
 async function getToken() {
+  if (!EMAIL || !PASSWORD) {
+    throw new Error('BENCH_EMAIL and BENCH_PASSWORD must be set');
+  }
+
   const r = await request('POST', `${SERVER}/auth/login`, { email: EMAIL, password: PASSWORD });
   return r.body.access_token;
 }

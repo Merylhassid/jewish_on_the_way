@@ -5,7 +5,7 @@ const { spawn } = require('child_process');
 const email = process.env.JOTW_EMAIL;
 const password = process.env.JOTW_PASSWORD;
 const baseUrl = process.env.JOTW_WEB_URL || 'http://localhost:8081';
-const apiUrl = process.env.JOTW_API_URL || 'http://49.12.189.108:3000';
+const apiUrl = process.env.JOTW_API_URL || 'https://api.jewishontheway.com';
 const chromePath = process.env.CHROME_PATH
   || path.join(process.env.LOCALAPPDATA || '', 'ms-playwright', 'chromium-1223', 'chrome-win64', 'chrome.exe');
 
